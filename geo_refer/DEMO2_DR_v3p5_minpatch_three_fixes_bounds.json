@@ -1,0 +1,2100 @@
+{
+  "UNITS": "cm",
+  "VERSION": "DEMO2_DR_v3p5_minpatch_three_fixes",
+  "DESIGN_NOTE": "DEMO2 DR_v3p5 side-entry flight-style DR local detector-head mass model.\n\nThis is a documentation/geometry generator for a Geant4/Cosima proxy mass model.\nIt is not a fabrication CAD.  Units are cm / kg.\n\nMain modeling decisions:\n  * Start from the v3 commercial-proportion DR topology, not from the chaotic v3p3:\n    300 K service lid on top; 60 K / 4 K / still / CP / MXC stages below it;\n    detector bay hangs below the MXC plate.\n  * Do NOT invert the DR and do NOT put the optical bore through all upper plates.\n    511 keV photons enter from the side (-x to +x) through local side ports.\n  * Keep the previous TES intrinsic geometry unchanged, but rigidly rotate the module\n    so the absorber/substrate stack depth lies along the side-entry beam axis.\n  * Remove the large Cu sample box and its window to reduce Cu-64 511-keV activation.\n    Replace it with a horizontal Nb sample can + 1.2 mm Cryoperm sleeve + Al 50 mK can.\n  * Add a Cu cold finger/rail that actually contacts the lower side of the detector\n    substrate stack and returns to the MXC plate; this preserves thermal anchoring.\n  * Wrap CsI only around the detector bay, outside the cryostat and passive liners:\n      outer Al shell > CsI active veto > Cu/W passive liner > vacuum jacket > thermal shields.\n  * Keep CP/100 mK stage in the nominal because it improves credibility of a DR\n    cold stack; provide a delete-CP mini-DR systematic.\n\nThe generated geometry is a mass/bounds proxy.  Final Geant4/Cosima needs explicit\nCSG holes for side windows, cap slots, and the W aperture sleeve.\n\n\nMINIMAL PATCH: only three changes from v3p5: explicit side-port CSG authority, relocate SQUID/uMUX box out of detector-layer projection, replace old Cu rail/stem with a low-Cu multi-stage disk/ring/rod support frame.",
+  "META": {
+    "claim_level": "SIDE_ENTRY_FLIGHT_DR_LOCAL_HEAD_PROXY_NOT_FINAL_CAD",
+    "coordinate_policy": "+z vertical; 300 K/service lid on top; MXC at bottom; detector bay hangs below MXC; photons travel -x to +x at z=-5.2 cm.",
+    "layer_order_outside_in_at_detector_bay": [
+      "Outer Al mechanical shell",
+      "Kapton/Al active-shield package",
+      "CsI active veto",
+      "W/Cu passive liner",
+      "Al vacuum jacket",
+      "60K/4K/still shields",
+      "50mK Al local can",
+      "Cryoperm sleeve",
+      "Nb sample can",
+      "TES/substrate/cold rail"
+    ],
+    "stage_z_centers_cm": {
+      "MXC": 0.0,
+      "CP_100mK": 5.0,
+      "Still": 11.0,
+      "4K": 20.0,
+      "60K": 29.0,
+      "300K_lid": 38.0
+    },
+    "stage_gaps_between_plate_faces_cm": [
+      4.45,
+      5.45,
+      8.4,
+      8.35,
+      8.15
+    ],
+    "beam_axis": {
+      "direction": "-x_to_+x",
+      "z_cm": -5.2,
+      "r_cm": 1.898
+    },
+    "geometry_authority_lists": [
+      "COMPONENTS"
+    ],
+    "total_mass_kg": 91.3608572331412,
+    "active_csi_mass_kg": 62.83369781500205,
+    "non_active_mass_kg": 28.527159418139156,
+    "caveat": "Mass/bounds proxy only. Final Geant4/Cosima model must implement declared side holes/cap slots using CSG and rerun overlap checks.",
+    "version": "DEMO2_DR_v3p5_minpatch_three_fixes",
+    "minimal_patch_policy": "Start from v3p5 and change only the three user-reviewed items. DR stack, cryostat envelope, CsI bay-only shield, plates, DR unit, and optical side-entry concept are otherwise unchanged.",
+    "three_user_fixes": [
+      "Add explicit side-port CSG authority for shell/window line so windows are not interpreted as sitting behind closed material.",
+      "Move the SQUID/uMUX box out of the detector-layer X-Z projection; it remains off-beam at +y.",
+      "Replace the long Cu rail with one deepest solid support disk, five open edge rings, four thin rods, a short bridge, and an off-axis stem to the MXC plate."
+    ]
+  },
+  "COMPONENTS": [
+    {
+      "cid": "C001",
+      "name": "TES_Ta_Absorber_Stack_side_entry",
+      "category": "detector",
+      "material": "Ta",
+      "shape": "x_disc_stack",
+      "params": {
+        "n_layers": 6,
+        "pixels_per_layer": 376,
+        "pixel_size_cm": [
+          0.15,
+          0.15,
+          0.3
+        ],
+        "disc_r_cm": 1.8,
+        "disc_t_cm": 0.3,
+        "x_centers_cm": [
+          -3.0,
+          -1.8,
+          -0.6,
+          0.6,
+          1.8,
+          3.0
+        ],
+        "axis_y_cm": 0.0,
+        "axis_z_cm": -5.2,
+        "beam_direction": "-x_to_+x"
+      },
+      "volume_cm3": 15.227999999999998,
+      "mass_kg": 0.25415531999999996,
+      "install": "Rigidly rotate the existing DEMO2 TES module so layer depth lies along the side-entry beam; do not change pixel count, pixel size, layer spacing, or material.",
+      "why_for_sim": "Primary 511 keV science detector and dominant detection-efficiency mass.",
+      "size_basis": "Same DEMO2 TES convention: 6 layers, 376 Ta pixels/layer, 3 mm absorber depth; only global orientation changes.",
+      "source_tag": "DEMO2 baseline + 511-CAM stacked TES concept"
+    },
+    {
+      "cid": "C002",
+      "name": "Si_Substrate_Stack_side_entry",
+      "category": "substrate",
+      "material": "Silicon",
+      "shape": "x_disc_stack",
+      "params": {
+        "n_layers": 6,
+        "disc_r_cm": 2.2,
+        "disc_t_cm": 0.03,
+        "x_centers_cm": [
+          -2.82,
+          -1.62,
+          -0.42,
+          0.78,
+          1.98,
+          3.18
+        ],
+        "axis_y_cm": 0.0,
+        "axis_z_cm": -5.2,
+        "downstream_of_each_absorber": true
+      },
+      "volume_cm3": 2.7369555198074282,
+      "mass_kg": 0.0063743694056315,
+      "install": "Rigidly rotated with the TES stack; each Si substrate sits downstream of its absorber along +x.",
+      "why_for_sim": "Captures substrate scattering/activation and mechanical support behind each TES layer.",
+      "size_basis": "Unchanged DEMO2 substrate radius/thickness; local coordinate changed only by rotation.",
+      "source_tag": "DEMO2 baseline"
+    },
+    {
+      "cid": "C003",
+      "name": "Cu_SubstrateSupport_OpenRing_L1",
+      "category": "thermal_link",
+      "material": "Copper",
+      "shape": "x_annulus",
+      "params": {
+        "x_center_cm": -2.65,
+        "r_in_cm": 1.85,
+        "r_out_cm": 2.2,
+        "thickness_cm": 0.3,
+        "axis_y_cm": 0.0,
+        "axis_z_cm": -5.2,
+        "behind_substrate": true,
+        "clearance_logic": "inner radius 1.85 cm clears TES active radius 1.80 cm"
+      },
+      "volume_cm3": 1.3359622759390597,
+      "mass_kg": 0.011970221992413975,
+      "install": "Open Cu ring immediately behind a substrate layer; it supports the substrate edge but leaves the TES/beam footprint open.",
+      "why_for_sim": "Replaces the old continuous rail with a low-Cu edge support so no copper plate lies under the whole detector stack.",
+      "size_basis": "Outer radius matches 2.2 cm substrate; inner radius 1.85 cm clears 1.8 cm TES active footprint, so the requested 1 cm ring was reduced because it would cover active TES area.",
+      "source_tag": "User support-frame request + Cu-64 mitigation"
+    },
+    {
+      "cid": "C004",
+      "name": "Cu_SubstrateSupport_OpenRing_L2",
+      "category": "thermal_link",
+      "material": "Copper",
+      "shape": "x_annulus",
+      "params": {
+        "x_center_cm": -1.4500000000000002,
+        "r_in_cm": 1.85,
+        "r_out_cm": 2.2,
+        "thickness_cm": 0.3,
+        "axis_y_cm": 0.0,
+        "axis_z_cm": -5.2,
+        "behind_substrate": true,
+        "clearance_logic": "inner radius 1.85 cm clears TES active radius 1.80 cm"
+      },
+      "volume_cm3": 1.3359622759390597,
+      "mass_kg": 0.011970221992413975,
+      "install": "Open Cu ring immediately behind a substrate layer; it supports the substrate edge but leaves the TES/beam footprint open.",
+      "why_for_sim": "Replaces the old continuous rail with a low-Cu edge support so no copper plate lies under the whole detector stack.",
+      "size_basis": "Outer radius matches 2.2 cm substrate; inner radius 1.85 cm clears 1.8 cm TES active footprint, so the requested 1 cm ring was reduced because it would cover active TES area.",
+      "source_tag": "User support-frame request + Cu-64 mitigation"
+    },
+    {
+      "cid": "C005",
+      "name": "Cu_SubstrateSupport_OpenRing_L3",
+      "category": "thermal_link",
+      "material": "Copper",
+      "shape": "x_annulus",
+      "params": {
+        "x_center_cm": -0.24999999999999997,
+        "r_in_cm": 1.85,
+        "r_out_cm": 2.2,
+        "thickness_cm": 0.3,
+        "axis_y_cm": 0.0,
+        "axis_z_cm": -5.2,
+        "behind_substrate": true,
+        "clearance_logic": "inner radius 1.85 cm clears TES active radius 1.80 cm"
+      },
+      "volume_cm3": 1.3359622759390597,
+      "mass_kg": 0.011970221992413975,
+      "install": "Open Cu ring immediately behind a substrate layer; it supports the substrate edge but leaves the TES/beam footprint open.",
+      "why_for_sim": "Replaces the old continuous rail with a low-Cu edge support so no copper plate lies under the whole detector stack.",
+      "size_basis": "Outer radius matches 2.2 cm substrate; inner radius 1.85 cm clears 1.8 cm TES active footprint, so the requested 1 cm ring was reduced because it would cover active TES area.",
+      "source_tag": "User support-frame request + Cu-64 mitigation"
+    },
+    {
+      "cid": "C006",
+      "name": "Cu_SubstrateSupport_OpenRing_L4",
+      "category": "thermal_link",
+      "material": "Copper",
+      "shape": "x_annulus",
+      "params": {
+        "x_center_cm": 0.9500000000000001,
+        "r_in_cm": 1.85,
+        "r_out_cm": 2.2,
+        "thickness_cm": 0.3,
+        "axis_y_cm": 0.0,
+        "axis_z_cm": -5.2,
+        "behind_substrate": true,
+        "clearance_logic": "inner radius 1.85 cm clears TES active radius 1.80 cm"
+      },
+      "volume_cm3": 1.3359622759390597,
+      "mass_kg": 0.011970221992413975,
+      "install": "Open Cu ring immediately behind a substrate layer; it supports the substrate edge but leaves the TES/beam footprint open.",
+      "why_for_sim": "Replaces the old continuous rail with a low-Cu edge support so no copper plate lies under the whole detector stack.",
+      "size_basis": "Outer radius matches 2.2 cm substrate; inner radius 1.85 cm clears 1.8 cm TES active footprint, so the requested 1 cm ring was reduced because it would cover active TES area.",
+      "source_tag": "User support-frame request + Cu-64 mitigation"
+    },
+    {
+      "cid": "C007",
+      "name": "Cu_SubstrateSupport_OpenRing_L5",
+      "category": "thermal_link",
+      "material": "Copper",
+      "shape": "x_annulus",
+      "params": {
+        "x_center_cm": 2.15,
+        "r_in_cm": 1.85,
+        "r_out_cm": 2.2,
+        "thickness_cm": 0.3,
+        "axis_y_cm": 0.0,
+        "axis_z_cm": -5.2,
+        "behind_substrate": true,
+        "clearance_logic": "inner radius 1.85 cm clears TES active radius 1.80 cm"
+      },
+      "volume_cm3": 1.3359622759390597,
+      "mass_kg": 0.011970221992413975,
+      "install": "Open Cu ring immediately behind a substrate layer; it supports the substrate edge but leaves the TES/beam footprint open.",
+      "why_for_sim": "Replaces the old continuous rail with a low-Cu edge support so no copper plate lies under the whole detector stack.",
+      "size_basis": "Outer radius matches 2.2 cm substrate; inner radius 1.85 cm clears 1.8 cm TES active footprint, so the requested 1 cm ring was reduced because it would cover active TES area.",
+      "source_tag": "User support-frame request + Cu-64 mitigation"
+    },
+    {
+      "cid": "C008",
+      "name": "Cu_SubstrateSupport_SolidDisk_L0_deepest",
+      "category": "thermal_link",
+      "material": "Copper",
+      "shape": "x_disc",
+      "params": {
+        "x_center_cm": 3.35,
+        "r_cm": 2.2,
+        "thickness_cm": 0.35,
+        "axis_y_cm": 0.0,
+        "axis_z_cm": -5.2,
+        "position": "deepest/downstream support disk, does not shadow upstream TES layers"
+      },
+      "volume_cm3": 5.32185795518111,
+      "mass_kg": 0.047683847278422745,
+      "install": "Single solid Cu disk behind the deepest/downstream substrate only.",
+      "why_for_sim": "Gives the stack a real thermal/mechanical anchor without putting a Cu disk in front of active absorber layers.",
+      "size_basis": "3.5 mm disk follows the requested 3–4 mm support disk; used only once to limit Cu mass.",
+      "source_tag": "User support-frame request + Cu-64 mitigation"
+    },
+    {
+      "cid": "C009",
+      "name": "Cu_SubstrateSupport_EdgeRod_1",
+      "category": "thermal_link",
+      "material": "Copper",
+      "shape": "x_cylinder_offaxis",
+      "params": {
+        "r_cm": 0.1,
+        "x0_cm": -2.65,
+        "x1_cm": 3.9000000000000004,
+        "y_center_cm": 1.95,
+        "z_center_cm": -3.25
+      },
+      "volume_cm3": 0.2057743188101315,
+      "mass_kg": 0.0018437378965387786,
+      "install": "Thin Cu edge rod linking the open support rings to the deepest support disk.",
+      "why_for_sim": "Represents the requested multi-level frame/columns while staying outside the central TES/beam footprint.",
+      "size_basis": "Rod radius 1.0 mm; four edge rods keep stiffness proxy but minimize Cu mass.",
+      "source_tag": "User support-frame request + Cu-64 mitigation"
+    },
+    {
+      "cid": "C010",
+      "name": "Cu_SubstrateSupport_EdgeRod_2",
+      "category": "thermal_link",
+      "material": "Copper",
+      "shape": "x_cylinder_offaxis",
+      "params": {
+        "r_cm": 0.1,
+        "x0_cm": -2.65,
+        "x1_cm": 3.9000000000000004,
+        "y_center_cm": -1.95,
+        "z_center_cm": -3.25
+      },
+      "volume_cm3": 0.2057743188101315,
+      "mass_kg": 0.0018437378965387786,
+      "install": "Thin Cu edge rod linking the open support rings to the deepest support disk.",
+      "why_for_sim": "Represents the requested multi-level frame/columns while staying outside the central TES/beam footprint.",
+      "size_basis": "Rod radius 1.0 mm; four edge rods keep stiffness proxy but minimize Cu mass.",
+      "source_tag": "User support-frame request + Cu-64 mitigation"
+    },
+    {
+      "cid": "C011",
+      "name": "Cu_SubstrateSupport_EdgeRod_3",
+      "category": "thermal_link",
+      "material": "Copper",
+      "shape": "x_cylinder_offaxis",
+      "params": {
+        "r_cm": 0.1,
+        "x0_cm": -2.65,
+        "x1_cm": 3.9000000000000004,
+        "y_center_cm": 1.95,
+        "z_center_cm": -7.15
+      },
+      "volume_cm3": 0.2057743188101315,
+      "mass_kg": 0.0018437378965387786,
+      "install": "Thin Cu edge rod linking the open support rings to the deepest support disk.",
+      "why_for_sim": "Represents the requested multi-level frame/columns while staying outside the central TES/beam footprint.",
+      "size_basis": "Rod radius 1.0 mm; four edge rods keep stiffness proxy but minimize Cu mass.",
+      "source_tag": "User support-frame request + Cu-64 mitigation"
+    },
+    {
+      "cid": "C012",
+      "name": "Cu_SubstrateSupport_EdgeRod_4",
+      "category": "thermal_link",
+      "material": "Copper",
+      "shape": "x_cylinder_offaxis",
+      "params": {
+        "r_cm": 0.1,
+        "x0_cm": -2.65,
+        "x1_cm": 3.9000000000000004,
+        "y_center_cm": -1.95,
+        "z_center_cm": -7.15
+      },
+      "volume_cm3": 0.2057743188101315,
+      "mass_kg": 0.0018437378965387786,
+      "install": "Thin Cu edge rod linking the open support rings to the deepest support disk.",
+      "why_for_sim": "Represents the requested multi-level frame/columns while staying outside the central TES/beam footprint.",
+      "size_basis": "Rod radius 1.0 mm; four edge rods keep stiffness proxy but minimize Cu mass.",
+      "source_tag": "User support-frame request + Cu-64 mitigation"
+    },
+    {
+      "cid": "C013",
+      "name": "Cu_ColdFinger_Bridge_to_Stem",
+      "category": "thermal_link",
+      "material": "Copper",
+      "shape": "box",
+      "params": {
+        "x0_cm": 3.35,
+        "x1_cm": 6.85,
+        "y0_cm": -0.85,
+        "y1_cm": 0.85,
+        "z0_cm": -7.45,
+        "z1_cm": -7.1
+      },
+      "volume_cm3": 2.0824999999999996,
+      "mass_kg": 0.018659199999999997,
+      "install": "Short Cu bridge from the deepest support disk to the off-axis vertical thermal stem.",
+      "why_for_sim": "Completes the thermal path without restoring the old massive rail.",
+      "size_basis": "Short 3.5 mm-thick bridge; placed downstream of the stack.",
+      "source_tag": "User support-frame request + thermal anchoring"
+    },
+    {
+      "cid": "C014",
+      "name": "Cu_ColdFinger_Stem_to_MXC_minimal",
+      "category": "thermal_link",
+      "material": "Copper",
+      "shape": "z_cylinder_offaxis",
+      "params": {
+        "r_cm": 0.35,
+        "x_center_cm": 6.85,
+        "y_center_cm": 0.0,
+        "z0_cm": -7.275,
+        "z1_cm": -0.3
+      },
+      "volume_cm3": 2.6842945729516288,
+      "mass_kg": 0.024051279373646598,
+      "install": "Off-axis Cu stem from the support bridge to the underside of the MXC plate.",
+      "why_for_sim": "Provides the required 50 mK thermal path while avoiding the incoming beam and detector-layer gaps.",
+      "size_basis": "7 mm diameter stem is smaller than v3p5 11 mm stem to reduce Cu mass.",
+      "source_tag": "User support-frame request + Cu-64 mitigation"
+    },
+    {
+      "cid": "C015",
+      "name": "Cu_MXC_Clamp_Pad_for_MinimalStem",
+      "category": "thermal_link",
+      "material": "Copper",
+      "shape": "z_cylinder_offaxis",
+      "params": {
+        "r_cm": 0.8,
+        "x_center_cm": 6.85,
+        "y_center_cm": 0.0,
+        "z0_cm": -0.5,
+        "z1_cm": -0.3
+      },
+      "volume_cm3": 0.4021238596594936,
+      "mass_kg": 0.003603029782549063,
+      "install": "Small Cu clamp pad at the MXC/stem interface.",
+      "why_for_sim": "Adds a realistic joint proxy without recreating the removed Cu sample box.",
+      "size_basis": "16 mm diameter, 2 mm thick compact pad.",
+      "source_tag": "Engineering proxy"
+    },
+    {
+      "cid": "C016",
+      "name": "Nb_SideEntry_Sample_Can_with_side_aperture",
+      "category": "magnetic_sample_can",
+      "material": "Nb",
+      "shape": "x_can",
+      "params": {
+        "r_in_cm": 4.0,
+        "r_out_cm": 4.05,
+        "x0_cm": -5.8,
+        "x1_cm": 6.2,
+        "axis_y_cm": 0.0,
+        "axis_z_cm": -5.2,
+        "minus_x_aperture_r_cm": 1.95,
+        "plus_x_cap_slots": [
+          "Cu cold-finger rail/stem slot",
+          "readout slot"
+        ],
+        "side_port_csg_authority": true,
+        "side_port_radius_cm": 2.05,
+        "side_port_axis": "-x_to_+x, centered at y=0,z=-5.2"
+      },
+      "volume_cm3": 19.729594563625596,
+      "mass_kg": 0.16908262541027136,
+      "install": "Horizontal Nb enclosure around the TES module; side-entry aperture on the -x face and service/cold-finger slot on +x face. Side port is an explicit CSG aperture in this minimal patch.",
+      "why_for_sim": "Replaces the removed Cu sample box as the nearest local enclosure while reducing Cu-64 beta-plus/511-keV risk.",
+      "size_basis": "Inner radius clears 2.2 cm substrates plus harness and rail; 0.5 mm Nb wall is a superconducting magnetic shield proxy.",
+      "source_tag": "DIXE hybrid Nb/Cryoperm shield + user Cu-64 mitigation"
+    },
+    {
+      "cid": "C017",
+      "name": "Cryoperm_Horizontal_Sleeve_1p2mm",
+      "category": "magnetic_shield",
+      "material": "Cryoperm",
+      "shape": "x_can",
+      "params": {
+        "r_in_cm": 4.25,
+        "r_out_cm": 4.37,
+        "x0_cm": -6.1,
+        "x1_cm": 6.5,
+        "axis_y_cm": 0.0,
+        "axis_z_cm": -5.2,
+        "minus_x_aperture_r_cm": 1.95,
+        "plus_x_cap_slots": [
+          "cold-finger/readout slot"
+        ],
+        "wall_cm": 0.12,
+        "side_port_csg_authority": true,
+        "side_port_radius_cm": 2.05,
+        "side_port_axis": "-x_to_+x, centered at y=0,z=-5.2"
+      },
+      "volume_cm3": 53.910974006291724,
+      "mass_kg": 0.469025473854738,
+      "install": "Outer high-permeability magnetic sleeve around the Nb can; side aperture aligned with the optical path. Side port is an explicit CSG aperture in this minimal patch.",
+      "why_for_sim": "TES/SQUID require magnetic attenuation; using 1.2 mm instead of the old 4.5 mm reduces Ni-rich activation mass while retaining a magnetic-shield proxy.",
+      "size_basis": "DIXE explicitly uses outer Cryoperm + inner Nb hybrid magnetic shield; 1.2 mm is chosen as a light nominal with 4.5 mm kept as a systematic.",
+      "source_tag": "DIXE detector assembly"
+    },
+    {
+      "cid": "C018",
+      "name": "Al_50mK_Local_Can_side_entry",
+      "category": "cryostat_shell",
+      "material": "Aluminium",
+      "shape": "x_can",
+      "params": {
+        "r_in_cm": 4.5,
+        "r_out_cm": 4.58,
+        "x0_cm": -6.6,
+        "x1_cm": 7.0,
+        "axis_y_cm": 0.0,
+        "axis_z_cm": -5.2,
+        "minus_x_aperture_r_cm": 1.95,
+        "plus_x_cap_slots": [
+          "cold-finger/readout slot"
+        ],
+        "side_port_csg_authority": true,
+        "side_port_radius_cm": 2.05,
+        "side_port_axis": "-x_to_+x, centered at y=0,z=-5.2"
+      },
+      "volume_cm3": 40.624135665499516,
+      "mass_kg": 0.10968516629684871,
+      "install": "Local 50 mK Al radiation can around the magnetic sample can. Side port is an explicit CSG aperture in this minimal patch.",
+      "why_for_sim": "Radiation shield and local activation/scattering mass nearest the detector; carries the 50 mK side filter.",
+      "size_basis": "0.8 mm Al wall; top of can remains below the MXC plate, avoiding the v3p2 top-bore problem.",
+      "source_tag": "Flight microcalorimeter nested-shield practice"
+    },
+    {
+      "cid": "C019",
+      "name": "ColdPlate_MXC_50mK_SD_anchor",
+      "category": "cold_plate",
+      "material": "Copper",
+      "shape": "z_cylinder",
+      "params": {
+        "r_cm": 7.4,
+        "h_cm": 0.6,
+        "z_center_cm": 0.0
+      },
+      "volume_cm3": 103.22016822634625,
+      "mass_kg": 0.9248527073080625,
+      "install": "Stage plate mounted in the vertical DR/service tower; plates grow with temperature and support colder shields from above.",
+      "why_for_sim": "Major local mass for scattering/activation and the mechanical anchor for shields/DR plumbing.",
+      "size_basis": "MXC plate at bottom of DR tower; detector bay hangs below it.  Ø148 mm matches SD-class MXC flange scale.",
+      "source_tag": "Bluefors stage inventory + SD flange anchor + flight compact spacing"
+    },
+    {
+      "cid": "C020",
+      "name": "ColdPlate_CP_100mK_intercept",
+      "category": "cold_plate",
+      "material": "Copper",
+      "shape": "z_cylinder",
+      "params": {
+        "r_cm": 7.8,
+        "h_cm": 0.5,
+        "z_center_cm": 5.0
+      },
+      "volume_cm3": 95.56724852220151,
+      "mass_kg": 0.8562825467589256,
+      "install": "Stage plate mounted in the vertical DR/service tower; plates grow with temperature and support colder shields from above.",
+      "why_for_sim": "Major local mass for scattering/activation and the mechanical anchor for shields/DR plumbing.",
+      "size_basis": "Intermediate cold plate / 100 mK intercept retained in nominal; delete-CP is a systematic for mini/open-cycle DR.",
+      "source_tag": "Bluefors stage inventory + SD flange anchor + flight compact spacing"
+    },
+    {
+      "cid": "C021",
+      "name": "ColdPlate_Still_0p7K",
+      "category": "cold_plate",
+      "material": "Copper",
+      "shape": "z_cylinder",
+      "params": {
+        "r_cm": 8.8,
+        "h_cm": 0.6,
+        "z_center_cm": 11.0
+      },
+      "volume_cm3": 145.97096105639616,
+      "mass_kg": 1.3078998110653097,
+      "install": "Stage plate mounted in the vertical DR/service tower; plates grow with temperature and support colder shields from above.",
+      "why_for_sim": "Major local mass for scattering/activation and the mechanical anchor for shields/DR plumbing.",
+      "size_basis": "Still flange; still shield hangs from its rim.",
+      "source_tag": "Bluefors stage inventory + SD flange anchor + flight compact spacing"
+    },
+    {
+      "cid": "C022",
+      "name": "ColdPlate_4K",
+      "category": "cold_plate",
+      "material": "Copper",
+      "shape": "z_cylinder",
+      "params": {
+        "r_cm": 10.4,
+        "h_cm": 0.6,
+        "z_center_cm": 20.0
+      },
+      "volume_cm3": 203.8767968473632,
+      "mass_kg": 1.8267360997523745,
+      "install": "Stage plate mounted in the vertical DR/service tower; plates grow with temperature and support colder shields from above.",
+      "why_for_sim": "Major local mass for scattering/activation and the mechanical anchor for shields/DR plumbing.",
+      "size_basis": "4 K flange with condenser/intercept hardware.",
+      "source_tag": "Bluefors stage inventory + SD flange anchor + flight compact spacing"
+    },
+    {
+      "cid": "C023",
+      "name": "ColdPlate_60K",
+      "category": "cold_plate",
+      "material": "Aluminium",
+      "shape": "z_cylinder",
+      "params": {
+        "r_cm": 11.9,
+        "h_cm": 0.7,
+        "z_center_cm": 29.0
+      },
+      "volume_cm3": 311.4166549723954,
+      "mass_kg": 0.8408249684254676,
+      "install": "Stage plate mounted in the vertical DR/service tower; plates grow with temperature and support colder shields from above.",
+      "why_for_sim": "Major local mass for scattering/activation and the mechanical anchor for shields/DR plumbing.",
+      "size_basis": "First-stage 50/60 K flange and radiation-shield support.",
+      "source_tag": "Bluefors stage inventory + SD flange anchor + flight compact spacing"
+    },
+    {
+      "cid": "C024",
+      "name": "Plate_300K_Top_Service_Lid",
+      "category": "vacuum_jacket",
+      "material": "Aluminium",
+      "shape": "z_cylinder",
+      "params": {
+        "r_cm": 13.8,
+        "h_cm": 1.0,
+        "z_center_cm": 38.0
+      },
+      "volume_cm3": 598.2849049496402,
+      "mass_kg": 1.6153692433640288,
+      "install": "Stage plate mounted in the vertical DR/service tower; plates grow with temperature and support colder shields from above.",
+      "why_for_sim": "Major local mass for scattering/activation and the mechanical anchor for shields/DR plumbing.",
+      "size_basis": "Room-temperature top lid: services exit upward; side optical access avoids trying to observe through this plate.",
+      "source_tag": "Bluefors stage inventory + SD flange anchor + flight compact spacing"
+    },
+    {
+      "cid": "C025",
+      "name": "Still_Shield_Al_side_window",
+      "category": "cryostat_shell",
+      "material": "Aluminium",
+      "shape": "z_can_open_top",
+      "params": {
+        "r_in_cm": 8.5,
+        "r_out_cm": 8.6,
+        "z_out_bot_cm": -10.5,
+        "z_in_bot_cm": -10.4,
+        "z_top_cm": 10.7,
+        "side_hole": {
+          "azimuth_deg": 180,
+          "z_cm": -5.2,
+          "r_cm": 1.95
+        },
+        "open_top_mount": "hangs from matching stage plate",
+        "side_port_csg_authority": true,
+        "side_port_radius_cm": 1.95,
+        "side_port_axis": "-x_to_+x, centered at y=0,z=-5.2"
+      },
+      "volume_cm3": 136.58702380012303,
+      "mass_kg": 0.36878496426033225,
+      "install": "Nested vertical radiation/vacuum enclosure; side window hole rather than top optical bore. Side port is an explicit CSG aperture in this minimal patch.",
+      "why_for_sim": "Important local Al activation/scattering mass and necessary thermal boundary in the cryostat.",
+      "size_basis": "Still shield, open at top and hanging from the still plate; encloses bay and MXC/CP region.",
+      "source_tag": "Bluefors DR enclosure logic + XRISM/Resolve flight nested-shield practice"
+    },
+    {
+      "cid": "C026",
+      "name": "Shield_4K_Al_side_window",
+      "category": "cryostat_shell",
+      "material": "Aluminium",
+      "shape": "z_can_open_top",
+      "params": {
+        "r_in_cm": 9.9,
+        "r_out_cm": 10.02,
+        "z_out_bot_cm": -11.52,
+        "z_in_bot_cm": -11.4,
+        "z_top_cm": 19.7,
+        "side_hole": {
+          "azimuth_deg": 180,
+          "z_cm": -5.2,
+          "r_cm": 1.95
+        },
+        "open_top_mount": "hangs from matching stage plate",
+        "side_port_csg_authority": true,
+        "side_port_radius_cm": 1.95,
+        "side_port_axis": "-x_to_+x, centered at y=0,z=-5.2"
+      },
+      "volume_cm3": 271.4005808481822,
+      "mass_kg": 0.732781568290092,
+      "install": "Nested vertical radiation/vacuum enclosure; side window hole rather than top optical bore. Side port is an explicit CSG aperture in this minimal patch.",
+      "why_for_sim": "Important local Al activation/scattering mass and necessary thermal boundary in the cryostat.",
+      "size_basis": "4 K radiation shield, open at top and hanging from the 4 K plate.",
+      "source_tag": "Bluefors DR enclosure logic + XRISM/Resolve flight nested-shield practice"
+    },
+    {
+      "cid": "C027",
+      "name": "Shield_60K_Al_side_window",
+      "category": "cryostat_shell",
+      "material": "Aluminium",
+      "shape": "z_can_open_top",
+      "params": {
+        "r_in_cm": 11.4,
+        "r_out_cm": 11.55,
+        "z_out_bot_cm": -12.55,
+        "z_in_bot_cm": -12.4,
+        "z_top_cm": 28.65,
+        "side_hole": {
+          "azimuth_deg": 180,
+          "z_cm": -5.2,
+          "r_cm": 1.95
+        },
+        "open_top_mount": "hangs from matching stage plate",
+        "side_port_csg_authority": true,
+        "side_port_radius_cm": 1.95,
+        "side_port_axis": "-x_to_+x, centered at y=0,z=-5.2"
+      },
+      "volume_cm3": 506.81743484037275,
+      "mass_kg": 1.3684070740690064,
+      "install": "Nested vertical radiation/vacuum enclosure; side window hole rather than top optical bore. Side port is an explicit CSG aperture in this minimal patch.",
+      "why_for_sim": "Important local Al activation/scattering mass and necessary thermal boundary in the cryostat.",
+      "size_basis": "60 K radiation shield; 13.5 mm radial gap to OVC inner wall gives MLI/clearance room.",
+      "source_tag": "Bluefors DR enclosure logic + XRISM/Resolve flight nested-shield practice"
+    },
+    {
+      "cid": "C028",
+      "name": "Vacuum_Jacket_Al_266mmClass_side_port",
+      "category": "vacuum_jacket",
+      "material": "Aluminium",
+      "shape": "z_can_open_top",
+      "params": {
+        "r_in_cm": 12.9,
+        "r_out_cm": 13.3,
+        "z_out_bot_cm": -14.1,
+        "z_in_bot_cm": -13.6,
+        "z_top_cm": 37.5,
+        "side_hole": {
+          "azimuth_deg": 180,
+          "z_cm": -5.2,
+          "r_cm": 1.95
+        },
+        "open_top_mount": "hangs from matching stage plate",
+        "side_port_csg_authority": true,
+        "side_port_radius_cm": 1.95,
+        "side_port_axis": "-x_to_+x, centered at y=0,z=-5.2"
+      },
+      "volume_cm3": 1960.268992838387,
+      "mass_kg": 5.292726280663645,
+      "install": "Nested vertical radiation/vacuum enclosure; side window hole rather than top optical bore. Side port is an explicit CSG aperture in this minimal patch.",
+      "why_for_sim": "Important local Al activation/scattering mass and necessary thermal boundary in the cryostat.",
+      "size_basis": "Cylindrical OVC around the local DR tower and detector bay; side port holds Be window.",
+      "source_tag": "Bluefors DR enclosure logic + XRISM/Resolve flight nested-shield practice"
+    },
+    {
+      "cid": "C029",
+      "name": "Win_50mK_Al_foil_side",
+      "category": "window",
+      "material": "Aluminium",
+      "shape": "x_disc",
+      "params": {
+        "x_center_cm": -6.64,
+        "thickness_cm": 0.0025,
+        "r_cm": 1.898,
+        "axis_y_cm": 0.0,
+        "axis_z_cm": -5.2
+      },
+      "volume_cm3": 0.028293214854156208,
+      "mass_kg": 7.639168010622177e-05,
+      "install": "Side-entry optical/IR/pressure window element on the local beam line.",
+      "why_for_sim": "Tracks attenuation, fluorescence and activation in the window/filter stack while avoiding top-bore plates.",
+      "size_basis": "50 mK local can side foil; radius retains the existing 1.898 cm optical-bore convention.",
+      "source_tag": "XRISM Be GV / DIXE multi-temperature filters / DEMO2 aperture convention"
+    },
+    {
+      "cid": "C030",
+      "name": "Win_Still_Al_foil_side",
+      "category": "window",
+      "material": "Aluminium",
+      "shape": "x_disc",
+      "params": {
+        "x_center_cm": -8.65,
+        "thickness_cm": 0.0025,
+        "r_cm": 1.898,
+        "axis_y_cm": 0.0,
+        "axis_z_cm": -5.2
+      },
+      "volume_cm3": 0.028293214854156208,
+      "mass_kg": 7.639168010622177e-05,
+      "install": "Side-entry optical/IR/pressure window element on the local beam line.",
+      "why_for_sim": "Tracks attenuation, fluorescence and activation in the window/filter stack while avoiding top-bore plates.",
+      "size_basis": "still-shield side foil; radius retains the existing 1.898 cm optical-bore convention.",
+      "source_tag": "XRISM Be GV / DIXE multi-temperature filters / DEMO2 aperture convention"
+    },
+    {
+      "cid": "C031",
+      "name": "Win_4K_Al_foil_side",
+      "category": "window",
+      "material": "Aluminium",
+      "shape": "x_disc",
+      "params": {
+        "x_center_cm": -10.07,
+        "thickness_cm": 0.0025,
+        "r_cm": 1.898,
+        "axis_y_cm": 0.0,
+        "axis_z_cm": -5.2
+      },
+      "volume_cm3": 0.028293214854156208,
+      "mass_kg": 7.639168010622177e-05,
+      "install": "Side-entry optical/IR/pressure window element on the local beam line.",
+      "why_for_sim": "Tracks attenuation, fluorescence and activation in the window/filter stack while avoiding top-bore plates.",
+      "size_basis": "4 K shield side foil; radius retains the existing 1.898 cm optical-bore convention.",
+      "source_tag": "XRISM Be GV / DIXE multi-temperature filters / DEMO2 aperture convention"
+    },
+    {
+      "cid": "C032",
+      "name": "Win_60K_Al_foil_side",
+      "category": "window",
+      "material": "Aluminium",
+      "shape": "x_disc",
+      "params": {
+        "x_center_cm": -11.6,
+        "thickness_cm": 0.0025,
+        "r_cm": 1.898,
+        "axis_y_cm": 0.0,
+        "axis_z_cm": -5.2
+      },
+      "volume_cm3": 0.028293214854156208,
+      "mass_kg": 7.639168010622177e-05,
+      "install": "Side-entry optical/IR/pressure window element on the local beam line.",
+      "why_for_sim": "Tracks attenuation, fluorescence and activation in the window/filter stack while avoiding top-bore plates.",
+      "size_basis": "60 K shield side foil; radius retains the existing 1.898 cm optical-bore convention.",
+      "source_tag": "XRISM Be GV / DIXE multi-temperature filters / DEMO2 aperture convention"
+    },
+    {
+      "cid": "C033",
+      "name": "Win_Be_Vacuum_150um_side",
+      "category": "window",
+      "material": "Be",
+      "shape": "x_disc",
+      "params": {
+        "x_center_cm": -13.1,
+        "thickness_cm": 0.015,
+        "r_cm": 1.898,
+        "axis_y_cm": 0.0,
+        "axis_z_cm": -5.2
+      },
+      "volume_cm3": 0.16975928912493723,
+      "mass_kg": 0.00031405468488113393,
+      "install": "Side-entry optical/IR/pressure window element on the local beam line.",
+      "why_for_sim": "Tracks attenuation, fluorescence and activation in the window/filter stack while avoiding top-bore plates.",
+      "size_basis": "OVC pressure window seated in side port; radius retains the existing 1.898 cm optical-bore convention.",
+      "source_tag": "XRISM Be GV / DIXE multi-temperature filters / DEMO2 aperture convention"
+    },
+    {
+      "cid": "C034",
+      "name": "Win_Outer_Al_Filter_side",
+      "category": "window",
+      "material": "Aluminium",
+      "shape": "x_disc",
+      "params": {
+        "x_center_cm": -13.72,
+        "thickness_cm": 0.003,
+        "r_cm": 1.898,
+        "axis_y_cm": 0.0,
+        "axis_z_cm": -5.2
+      },
+      "volume_cm3": 0.03395185782498745,
+      "mass_kg": 9.167001612746611e-05,
+      "install": "Side-entry optical/IR/pressure window element on the local beam line.",
+      "why_for_sim": "Tracks attenuation, fluorescence and activation in the window/filter stack while avoiding top-bore plates.",
+      "size_basis": "outer low-Z filter after Be / before W sleeve; radius retains the existing 1.898 cm optical-bore convention.",
+      "source_tag": "XRISM Be GV / DIXE multi-temperature filters / DEMO2 aperture convention"
+    },
+    {
+      "cid": "C035",
+      "name": "DR_MixingChamber_Cu",
+      "category": "dr_unit",
+      "material": "Copper",
+      "shape": "z_cylinder",
+      "params": {
+        "r_cm": 2.2,
+        "h_cm": 1.8,
+        "z_center_cm": 1.21
+      },
+      "volume_cm3": 27.369555198074284,
+      "mass_kg": 0.24523121457474562,
+      "install": "Mixing chamber mounted just above the MXC plate; cold-at-bottom orientation is preserved.",
+      "why_for_sim": "Nominal DR component providing the 50 mK thermal stage. Mass matters for local activation/scatter.",
+      "size_basis": "z=0.31..2.11, 1 mm above MXC plate; size is a compact detector-head proxy, not full vendor CAD.",
+      "source_tag": "DR fundamentals + flight-compact stage gaps"
+    },
+    {
+      "cid": "C036",
+      "name": "DR_MXC_Sinter_HEX_AgProxy",
+      "category": "dr_unit",
+      "material": "SilverSinterProxy",
+      "shape": "z_annulus",
+      "params": {
+        "r_in_cm": 2.5,
+        "r_out_cm": 3.5,
+        "z0_cm": 0.4,
+        "z1_cm": 2.2
+      },
+      "volume_cm3": 33.929200658769766,
+      "mass_kg": 0.16964600329384882,
+      "install": "Annular silver-sinter equivalent around mixing chamber.",
+      "why_for_sim": "Heat-exchanger mass and possible activation material close to TES.",
+      "size_basis": "50% dense Ag proxy; kept close to MXC body.",
+      "source_tag": "DR fundamentals + flight-compact stage gaps"
+    },
+    {
+      "cid": "C037",
+      "name": "DR_Continuous_HEX_CuNi_MXC_to_CP",
+      "category": "dr_unit",
+      "material": "CuNi",
+      "shape": "z_annulus_phi",
+      "params": {
+        "r_in_cm": 5.2,
+        "r_out_cm": 5.5,
+        "z0_cm": 0.4,
+        "z1_cm": 4.6,
+        "phi_frac": 0.3
+      },
+      "volume_cm3": 12.706485646709266,
+      "mass_kg": 0.11308772225571248,
+      "install": "First segment of the continuous heat exchanger coil.",
+      "why_for_sim": "Represents CuNi tubing mass; segmented so it does not unrealistically pass through plates.",
+      "size_basis": "Actual tube length is coiled around circumference; z footprint is flight compact.",
+      "source_tag": "DR fundamentals + flight-compact stage gaps"
+    },
+    {
+      "cid": "C038",
+      "name": "DR_Continuous_HEX_CuNi_CP_to_Still",
+      "category": "dr_unit",
+      "material": "CuNi",
+      "shape": "z_annulus_phi",
+      "params": {
+        "r_in_cm": 5.2,
+        "r_out_cm": 5.5,
+        "z0_cm": 5.4,
+        "z1_cm": 9.6,
+        "phi_frac": 0.3
+      },
+      "volume_cm3": 12.706485646709266,
+      "mass_kg": 0.11308772225571248,
+      "install": "Second segment of the continuous heat exchanger coil.",
+      "why_for_sim": "Same function as previous, split at the CP plate with real clearance/ports left for CSG.",
+      "size_basis": "Segmented per stage gap; 12 cm commercial spacing retained as systematic.",
+      "source_tag": "DR fundamentals + flight-compact stage gaps"
+    },
+    {
+      "cid": "C039",
+      "name": "DR_Still_Pot_Cu",
+      "category": "dr_unit",
+      "material": "Copper",
+      "shape": "z_cylinder",
+      "params": {
+        "r_cm": 2.6,
+        "h_cm": 1.6,
+        "z_center_cm": 9.8
+      },
+      "volume_cm3": 33.979466141227206,
+      "mass_kg": 0.30445601662539584,
+      "install": "Still pot hung below the still plate.",
+      "why_for_sim": "Essential DR component and local Cu activation/scattering source.",
+      "size_basis": "z=9.0..10.6, 1 mm below still plate bottom.",
+      "source_tag": "DR fundamentals + flight-compact stage gaps"
+    },
+    {
+      "cid": "C040",
+      "name": "DR_Still_Heater_SS_ring",
+      "category": "dr_unit",
+      "material": "StainlessSteel",
+      "shape": "z_annulus",
+      "params": {
+        "r_in_cm": 2.7,
+        "r_out_cm": 2.9,
+        "z0_cm": 9.2,
+        "z1_cm": 9.5
+      },
+      "volume_cm3": 1.0555751316061697,
+      "mass_kg": 0.008444601052849358,
+      "install": "Still heater/support ring around the pot.",
+      "why_for_sim": "Adds SS structural/electrical hardware at the still stage for activation bookkeeping.",
+      "size_basis": "Thin ring proxy; exact heater wire not modeled.",
+      "source_tag": "DR fundamentals + flight-compact stage gaps"
+    },
+    {
+      "cid": "C041",
+      "name": "DR_4K_Condenser_Cu",
+      "category": "dr_unit",
+      "material": "Copper",
+      "shape": "z_cylinder",
+      "params": {
+        "r_cm": 1.8,
+        "h_cm": 1.2,
+        "z_center_cm": 19.0
+      },
+      "volume_cm3": 12.214512237157116,
+      "mass_kg": 0.10944202964492777,
+      "install": "4 K condenser/pre-cooling part below the 4 K plate.",
+      "why_for_sim": "Necessary DR plumbing mass and activation source.",
+      "size_basis": "z=18.4..19.6, clear of 4 K plate.",
+      "source_tag": "DR fundamentals + flight-compact stage gaps"
+    },
+    {
+      "cid": "C042",
+      "name": "DR_60K_Charcoal_Trap",
+      "category": "dr_unit",
+      "material": "CharcoalProxy",
+      "shape": "z_cylinder",
+      "params": {
+        "r_cm": 1.9,
+        "h_cm": 2.2,
+        "z_center_cm": 27.4
+      },
+      "volume_cm3": 24.950528854810138,
+      "mass_kg": 0.029940634625772164,
+      "install": "Charcoal/cold-trap proxy at first-stage intercept.",
+      "why_for_sim": "Represents cold cleanup/trap hardware used in dry/closed-cycle DR plumbing.",
+      "size_basis": "z=26.3..28.5, clear of the 60 K plate.",
+      "source_tag": "DR fundamentals + flight-compact stage gaps"
+    },
+    {
+      "cid": "C043",
+      "name": "DR_Capillary_CuNi_MXC_CP",
+      "category": "service_proxy",
+      "material": "CuNi",
+      "shape": "z_annulus_phi",
+      "params": {
+        "r_in_cm": 6.2,
+        "r_out_cm": 6.32,
+        "z0_cm": 0.4,
+        "z1_cm": 4.6,
+        "phi_frac": 0.12,
+        "azimuth_center_deg": 60
+      },
+      "volume_cm3": 2.3788441165876675,
+      "mass_kg": 0.021171712637630243,
+      "install": "Segmented CuNi inlet/return capillary mass, MXC to CP.",
+      "why_for_sim": "Prevents the v1/v3 error of long pipes unrealistically cutting through plates.",
+      "size_basis": "Routed in the corresponding stage gap and stepped outward with shield radius.",
+      "source_tag": "DR plumbing proxy"
+    },
+    {
+      "cid": "C044",
+      "name": "DR_Capillary_CuNi_CP_Still",
+      "category": "service_proxy",
+      "material": "CuNi",
+      "shape": "z_annulus_phi",
+      "params": {
+        "r_in_cm": 6.2,
+        "r_out_cm": 6.32,
+        "z0_cm": 5.4,
+        "z1_cm": 9.6,
+        "phi_frac": 0.12,
+        "azimuth_center_deg": 60
+      },
+      "volume_cm3": 2.3788441165876675,
+      "mass_kg": 0.021171712637630243,
+      "install": "Segmented CuNi inlet/return capillary mass, CP to still.",
+      "why_for_sim": "Prevents the v1/v3 error of long pipes unrealistically cutting through plates.",
+      "size_basis": "Routed in the corresponding stage gap and stepped outward with shield radius.",
+      "source_tag": "DR plumbing proxy"
+    },
+    {
+      "cid": "C045",
+      "name": "DR_Capillary_CuNi_Still_4K",
+      "category": "service_proxy",
+      "material": "CuNi",
+      "shape": "z_annulus_phi",
+      "params": {
+        "r_in_cm": 9.2,
+        "r_out_cm": 9.32,
+        "z0_cm": 11.4,
+        "z1_cm": 19.6,
+        "phi_frac": 0.12,
+        "azimuth_center_deg": 60
+      },
+      "volume_cm3": 6.870165505124617,
+      "mass_kg": 0.061144472995609093,
+      "install": "Segmented CuNi inlet/return capillary mass, still to 4 K.",
+      "why_for_sim": "Prevents the v1/v3 error of long pipes unrealistically cutting through plates.",
+      "size_basis": "Routed in the corresponding stage gap and stepped outward with shield radius.",
+      "source_tag": "DR plumbing proxy"
+    },
+    {
+      "cid": "C046",
+      "name": "DR_Capillary_CuNi_4K_60K",
+      "category": "service_proxy",
+      "material": "CuNi",
+      "shape": "z_annulus_phi",
+      "params": {
+        "r_in_cm": 10.7,
+        "r_out_cm": 10.82,
+        "z0_cm": 20.4,
+        "z1_cm": 28.5,
+        "phi_frac": 0.12,
+        "azimuth_center_deg": 60
+      },
+      "volume_cm3": 7.885689100308699,
+      "mass_kg": 0.07018263299274743,
+      "install": "Segmented CuNi inlet/return capillary mass, 4 K to 60 K.",
+      "why_for_sim": "Prevents the v1/v3 error of long pipes unrealistically cutting through plates.",
+      "size_basis": "Routed in the corresponding stage gap and stepped outward with shield radius.",
+      "source_tag": "DR plumbing proxy"
+    },
+    {
+      "cid": "C047",
+      "name": "DR_Still_PumpLine_SS_to_300K_top",
+      "category": "service_proxy",
+      "material": "StainlessSteel",
+      "shape": "box",
+      "params": {
+        "x_cm": 12.15,
+        "y_cm": 0.0,
+        "z0_cm": 12.0,
+        "z1_cm": 37.4,
+        "hx_cm": 0.2,
+        "hy_cm": 0.2,
+        "top_connection": "declared port in 300K lid"
+      },
+      "volume_cm3": 4.064000000000001,
+      "mass_kg": 0.032512000000000006,
+      "install": "Still pumping/service line rises to the 300 K top lid inside the vacuum jacket at +x, not through the optical side aperture.",
+      "why_for_sim": "Retains correct commercial DR service topology without forcing a top optical bore.",
+      "size_basis": "SS line kept as a local proxy; external pump/gas handling is platform-level systematic.",
+      "source_tag": "Bluefors DR topology + user side-entry constraint"
+    },
+    {
+      "cid": "C048",
+      "name": "PreCool_FlexLink_Cu_remote_interface",
+      "category": "service_proxy",
+      "material": "Copper",
+      "shape": "box",
+      "params": {
+        "x_cm": -10.7,
+        "y_cm": 0.0,
+        "z0_cm": 24.0,
+        "z1_cm": 28.5,
+        "hx_cm": 0.15,
+        "hy_cm": 0.5
+      },
+      "volume_cm3": 1.3499999999999999,
+      "mass_kg": 0.012096,
+      "install": "Flexible Cu link to remote precooler/PT interface, placed high in the 60 K/4 K region.",
+      "why_for_sim": "Keeps a local cold-head interface mass without adding full PT/compressor mass to the detector-head nominal.",
+      "size_basis": "PT cold head remains non-nominal because dry-DR PT mass/power is a platform decision.",
+      "source_tag": "PT405/cryocooler systematic"
+    },
+    {
+      "cid": "C049",
+      "name": "SQUID_uMUX_Box_Al_relocated_offbeam_minimal",
+      "category": "service_proxy",
+      "material": "Aluminium",
+      "shape": "box",
+      "params": {
+        "x_cm": 7.4,
+        "y_cm": 5.8,
+        "z0_cm": -2.2,
+        "z1_cm": 0.2,
+        "hx_cm": 0.3,
+        "hy_cm": 0.8,
+        "relocation_reason": "moved out of X-Z detector-layer projection; still off-beam at +y"
+      },
+      "volume_cm3": 2.304,
+      "mass_kg": 0.006220799999999999,
+      "install": "Readout box relocated to the +y/+x off-beam corner; it is not between TES layers.",
+      "why_for_sim": "TES/SQUID readout hardware is a local scattering/activation source and must not be omitted.",
+      "size_basis": "Same box dimensions and mass as v3p5; only placement changed to remove 2D-projection ambiguity.",
+      "source_tag": "DIXE TES+SQUID detector assembly + DEMO2 readout proxy"
+    },
+    {
+      "cid": "C050",
+      "name": "NbTi_Bundle_bay_to_MXC",
+      "category": "service_proxy",
+      "material": "NbTiCableProxy",
+      "shape": "z_annulus_phi",
+      "params": {
+        "r_in_cm": 6.6,
+        "r_out_cm": 6.9,
+        "z0_cm": -8.0,
+        "z1_cm": -0.4,
+        "phi_frac": 0.17,
+        "azimuth_center_deg": 90
+      },
+      "volume_cm3": 16.438697719173998,
+      "mass_kg": 0.10685153517463099,
+      "install": "NbTi/SS readout harness segment routed at +y azimuth; Cu is minimized to reduce Cu-64 risk.",
+      "why_for_sim": "Readout wiring mass is needed for activation/scattering and thermal intercept modeling.",
+      "size_basis": "Segmented by stage gap; 0.17 azimuth fraction gives a ~0.3 kg-class total wiring proxy.",
+      "source_tag": "TES readout proxy + Cu-64 mitigation"
+    },
+    {
+      "cid": "C051",
+      "name": "NbTi_Bundle_MXC_CP",
+      "category": "service_proxy",
+      "material": "NbTiCableProxy",
+      "shape": "z_annulus_phi",
+      "params": {
+        "r_in_cm": 6.6,
+        "r_out_cm": 6.9,
+        "z0_cm": 0.4,
+        "z1_cm": 4.6,
+        "phi_frac": 0.17,
+        "azimuth_center_deg": 90
+      },
+      "volume_cm3": 9.08454347638563,
+      "mass_kg": 0.059049532596506596,
+      "install": "NbTi/SS readout harness segment routed at +y azimuth; Cu is minimized to reduce Cu-64 risk.",
+      "why_for_sim": "Readout wiring mass is needed for activation/scattering and thermal intercept modeling.",
+      "size_basis": "Segmented by stage gap; 0.17 azimuth fraction gives a ~0.3 kg-class total wiring proxy.",
+      "source_tag": "TES readout proxy + Cu-64 mitigation"
+    },
+    {
+      "cid": "C052",
+      "name": "NbTi_Bundle_CP_Still",
+      "category": "service_proxy",
+      "material": "NbTiCableProxy",
+      "shape": "z_annulus_phi",
+      "params": {
+        "r_in_cm": 6.6,
+        "r_out_cm": 6.9,
+        "z0_cm": 5.4,
+        "z1_cm": 9.6,
+        "phi_frac": 0.17,
+        "azimuth_center_deg": 90
+      },
+      "volume_cm3": 9.08454347638563,
+      "mass_kg": 0.059049532596506596,
+      "install": "NbTi/SS readout harness segment routed at +y azimuth; Cu is minimized to reduce Cu-64 risk.",
+      "why_for_sim": "Readout wiring mass is needed for activation/scattering and thermal intercept modeling.",
+      "size_basis": "Segmented by stage gap; 0.17 azimuth fraction gives a ~0.3 kg-class total wiring proxy.",
+      "source_tag": "TES readout proxy + Cu-64 mitigation"
+    },
+    {
+      "cid": "C053",
+      "name": "NbTi_Bundle_Still_4K",
+      "category": "service_proxy",
+      "material": "NbTiCableProxy",
+      "shape": "z_annulus_phi",
+      "params": {
+        "r_in_cm": 9.2,
+        "r_out_cm": 9.5,
+        "z0_cm": 11.4,
+        "z1_cm": 19.6,
+        "phi_frac": 0.17,
+        "azimuth_center_deg": 90
+      },
+      "volume_cm3": 24.56832269257447,
+      "mass_kg": 0.15969409750173405,
+      "install": "NbTi/SS readout harness segment routed at +y azimuth; Cu is minimized to reduce Cu-64 risk.",
+      "why_for_sim": "Readout wiring mass is needed for activation/scattering and thermal intercept modeling.",
+      "size_basis": "Segmented by stage gap; 0.17 azimuth fraction gives a ~0.3 kg-class total wiring proxy.",
+      "source_tag": "TES readout proxy + Cu-64 mitigation"
+    },
+    {
+      "cid": "C054",
+      "name": "NbTi_Bundle_4K_60K",
+      "category": "service_proxy",
+      "material": "NbTiCableProxy",
+      "shape": "z_annulus_phi",
+      "params": {
+        "r_in_cm": 10.7,
+        "r_out_cm": 11.0,
+        "z0_cm": 20.4,
+        "z1_cm": 28.5,
+        "phi_frac": 0.17,
+        "azimuth_center_deg": 90
+      },
+      "volume_cm3": 28.162084776795467,
+      "mass_kg": 0.18305355104917054,
+      "install": "NbTi/SS readout harness segment routed at +y azimuth; Cu is minimized to reduce Cu-64 risk.",
+      "why_for_sim": "Readout wiring mass is needed for activation/scattering and thermal intercept modeling.",
+      "size_basis": "Segmented by stage gap; 0.17 azimuth fraction gives a ~0.3 kg-class total wiring proxy.",
+      "source_tag": "TES readout proxy + Cu-64 mitigation"
+    },
+    {
+      "cid": "C055",
+      "name": "G10_Support_Ring_MXC_CP",
+      "category": "support",
+      "material": "G10",
+      "shape": "z_annulus_phi",
+      "params": {
+        "r_in_cm": 7.45,
+        "r_out_cm": 7.75,
+        "z0_cm": 0.4,
+        "z1_cm": 4.6,
+        "phi_frac": 0.25,
+        "equiv_geometry": "four/eight rods plus ring mass"
+      },
+      "volume_cm3": 15.04194562538791,
+      "mass_kg": 0.027827599406967635,
+      "install": "Equivalent G10 inter-stage support mass; not an exact rod CAD.",
+      "why_for_sim": "Flight/balloon loads require support mass; previous symbolic posts were too light.",
+      "size_basis": "Clears plate rims and shield walls; 0.1 kg-class per group is an engineering proxy.",
+      "source_tag": "Cryogenic support practice"
+    },
+    {
+      "cid": "C056",
+      "name": "G10_Support_Ring_CP_Still",
+      "category": "support",
+      "material": "G10",
+      "shape": "z_annulus_phi",
+      "params": {
+        "r_in_cm": 8.05,
+        "r_out_cm": 8.35,
+        "z0_cm": 5.4,
+        "z1_cm": 9.6,
+        "phi_frac": 0.25,
+        "equiv_geometry": "four/eight rods plus ring mass"
+      },
+      "volume_cm3": 16.229467648444828,
+      "mass_kg": 0.03002451514962293,
+      "install": "Equivalent G10 inter-stage support mass; not an exact rod CAD.",
+      "why_for_sim": "Flight/balloon loads require support mass; previous symbolic posts were too light.",
+      "size_basis": "Clears plate rims and shield walls; 0.1 kg-class per group is an engineering proxy.",
+      "source_tag": "Cryogenic support practice"
+    },
+    {
+      "cid": "C057",
+      "name": "G10_Support_Ring_Still_4K",
+      "category": "support",
+      "material": "G10",
+      "shape": "z_annulus_phi",
+      "params": {
+        "r_in_cm": 9.35,
+        "r_out_cm": 9.65,
+        "z0_cm": 11.4,
+        "z1_cm": 19.6,
+        "phi_frac": 0.25,
+        "equiv_geometry": "four/eight rods plus ring mass"
+      },
+      "volume_cm3": 36.70951015719675,
+      "mass_kg": 0.067912593790814,
+      "install": "Equivalent G10 inter-stage support mass; not an exact rod CAD.",
+      "why_for_sim": "Flight/balloon loads require support mass; previous symbolic posts were too light.",
+      "size_basis": "Clears plate rims and shield walls; 0.1 kg-class per group is an engineering proxy.",
+      "source_tag": "Cryogenic support practice"
+    },
+    {
+      "cid": "C058",
+      "name": "G10_Support_Ring_4K_60K",
+      "category": "support",
+      "material": "G10",
+      "shape": "z_annulus_phi",
+      "params": {
+        "r_in_cm": 10.85,
+        "r_out_cm": 11.15,
+        "z0_cm": 20.4,
+        "z1_cm": 28.5,
+        "phi_frac": 0.25,
+        "equiv_geometry": "four/eight rods plus ring mass"
+      },
+      "volume_cm3": 41.98738581522765,
+      "mass_kg": 0.07767666375817114,
+      "install": "Equivalent G10 inter-stage support mass; not an exact rod CAD.",
+      "why_for_sim": "Flight/balloon loads require support mass; previous symbolic posts were too light.",
+      "size_basis": "Clears plate rims and shield walls; 0.1 kg-class per group is an engineering proxy.",
+      "source_tag": "Cryogenic support practice"
+    },
+    {
+      "cid": "C059",
+      "name": "G10_Support_Ring_60K_Top",
+      "category": "support",
+      "material": "G10",
+      "shape": "z_annulus_phi",
+      "params": {
+        "r_in_cm": 12.45,
+        "r_out_cm": 12.7,
+        "z0_cm": 29.4,
+        "z1_cm": 37.4,
+        "phi_frac": 0.25,
+        "equiv_geometry": "four/eight rods plus ring mass"
+      },
+      "volume_cm3": 39.50552761889179,
+      "mass_kg": 0.07308522609494982,
+      "install": "Equivalent G10 inter-stage support mass; not an exact rod CAD.",
+      "why_for_sim": "Flight/balloon loads require support mass; previous symbolic posts were too light.",
+      "size_basis": "Clears plate rims and shield walls; 0.1 kg-class per group is an engineering proxy.",
+      "source_tag": "Cryogenic support practice"
+    },
+    {
+      "cid": "C060",
+      "name": "Passive_Cu_Liner_detector_bay",
+      "category": "passive_shield",
+      "material": "Copper",
+      "shape": "z_annulus",
+      "params": {
+        "r_in_cm": 13.42,
+        "r_out_cm": 13.5,
+        "z0_cm": -14.2,
+        "z1_cm": 2.0,
+        "side_hole": {
+          "azimuth_deg": 180,
+          "z_cm": -5.2,
+          "r_cm": 2.7
+        },
+        "side_port_csg_authority": true,
+        "side_port_radius_cm": 2.7,
+        "side_port_axis": "-x_to_+x, centered at y=0,z=-5.2"
+      },
+      "volume_cm3": 109.60488980809043,
+      "mass_kg": 0.9820598126804904,
+      "install": "Thin Cu liner outside the OVC but inside the CsI veto, in the detector-bay region only. Side port is an explicit CSG aperture in this minimal patch.",
+      "why_for_sim": "Graded-Z inner layer and local passive mass for fluorescence/scattering studies.",
+      "size_basis": "0.8 mm Cu, bay-limited so it does not wrap the full upper DR tower.",
+      "source_tag": "DEMO2 Cu/W graded-Z policy"
+    },
+    {
+      "cid": "C061",
+      "name": "Passive_W_Liner_detector_bay",
+      "category": "passive_shield",
+      "material": "W",
+      "shape": "z_annulus",
+      "params": {
+        "r_in_cm": 13.55,
+        "r_out_cm": 13.62,
+        "z0_cm": -14.2,
+        "z1_cm": 2.0,
+        "side_hole": {
+          "azimuth_deg": 180,
+          "z_cm": -5.2,
+          "r_cm": 2.7
+        },
+        "side_port_csg_authority": true,
+        "side_port_radius_cm": 2.7,
+        "side_port_axis": "-x_to_+x, centered at y=0,z=-5.2"
+      },
+      "volume_cm3": 96.79492009936904,
+      "mass_kg": 1.8681419579178224,
+      "install": "Thin W liner outside the Cu liner, bay-limited. Side port is an explicit CSG aperture in this minimal patch.",
+      "why_for_sim": "High-Z passive shield proxy while avoiding W as the material closest to TES.",
+      "size_basis": "0.7 mm W; side hole declared for the beam sleeve.",
+      "source_tag": "DEMO2 graded-Z policy + balloon gamma shielding practice"
+    },
+    {
+      "cid": "C062",
+      "name": "Passive_W_Bottom_Plate_detector_bay",
+      "category": "passive_shield",
+      "material": "W",
+      "shape": "z_cylinder",
+      "params": {
+        "r_cm": 13.62,
+        "h_cm": 0.2,
+        "z_center_cm": -14.25
+      },
+      "volume_cm3": 116.55585204971646,
+      "mass_kg": 2.249527944559528,
+      "install": "W bottom plate just below the OVC bottom and above the CsI bottom panel.",
+      "why_for_sim": "Hardens upward atmospheric/secondary photon path under the detector bay.",
+      "size_basis": "0.2 cm W floor with 0.05 cm clearances to adjacent shells in the proxy layout.",
+      "source_tag": "Balloon gamma-ray shielding practice"
+    },
+    {
+      "cid": "C063",
+      "name": "W_Side_Aperture_Sleeve_collimator",
+      "category": "collimator",
+      "material": "W",
+      "shape": "x_tube",
+      "params": {
+        "r_in_cm": 1.95,
+        "r_out_cm": 2.55,
+        "x0_cm": -18.0,
+        "x1_cm": -14.0,
+        "axis_y_cm": 0.0,
+        "axis_z_cm": -5.2,
+        "inside_csi_side_hole_r_cm": 2.6,
+        "side_port_csg_authority": true,
+        "side_port_radius_cm": 2.05,
+        "side_port_axis": "-x_to_+x, centered at y=0,z=-5.2"
+      },
+      "volume_cm3": 33.929200658769766,
+      "mass_kg": 0.6548335727142566,
+      "install": "W sleeve through the side aperture of the CsI veto, aligned with the Laue focus beam. Side port is an explicit CSG aperture in this minimal patch.",
+      "why_for_sim": "Defines the local side-entry aperture and suppresses low-energy off-axis leakage through the veto penetration.",
+      "size_basis": "Inner radius follows 1.95 cm shield hole; outer radius leaves 0.5 mm clearance inside the 2.60 cm CsI side hole.",
+      "source_tag": "511-CAM side-window/collimator analogy + DEMO2 aperture convention"
+    },
+    {
+      "cid": "C064",
+      "name": "CsI_Side_Segment_00",
+      "category": "active_shield_side",
+      "material": "CsI",
+      "shape": "z_annulus_phi_segment",
+      "params": {
+        "r_in_cm": 14.0,
+        "r_out_cm": 18.0,
+        "z0_cm": -14.2,
+        "z1_cm": 2.0,
+        "phi0_deg": 0.0,
+        "dphi_deg": 45.0
+      },
+      "volume_cm3": 814.3008158104743,
+      "mass_kg": 3.672496679305239,
+      "install": "One of eight CsI side-veto segments outside the cryostat; segment 04 carries the side beam aperture.",
+      "why_for_sim": "Active anticoincidence for local charged/Compton background around the detector bay only; not wrapped around the entire upper DR service tower.",
+      "size_basis": "4 cm radial side thickness preserves original DEMO2 nominal side shield and keeps mass near the old 65 kg scale; 6/8 cm scan is mandatory.",
+      "source_tag": "511-CAM small shielded focal-plane concept + DEMO2 CsI policy"
+    },
+    {
+      "cid": "C065",
+      "name": "CsI_Side_Segment_01",
+      "category": "active_shield_side",
+      "material": "CsI",
+      "shape": "z_annulus_phi_segment",
+      "params": {
+        "r_in_cm": 14.0,
+        "r_out_cm": 18.0,
+        "z0_cm": -14.2,
+        "z1_cm": 2.0,
+        "phi0_deg": 45.0,
+        "dphi_deg": 45.0
+      },
+      "volume_cm3": 814.3008158104743,
+      "mass_kg": 3.672496679305239,
+      "install": "One of eight CsI side-veto segments outside the cryostat; segment 04 carries the side beam aperture.",
+      "why_for_sim": "Active anticoincidence for local charged/Compton background around the detector bay only; not wrapped around the entire upper DR service tower.",
+      "size_basis": "4 cm radial side thickness preserves original DEMO2 nominal side shield and keeps mass near the old 65 kg scale; 6/8 cm scan is mandatory.",
+      "source_tag": "511-CAM small shielded focal-plane concept + DEMO2 CsI policy"
+    },
+    {
+      "cid": "C066",
+      "name": "CsI_Side_Segment_02",
+      "category": "active_shield_side",
+      "material": "CsI",
+      "shape": "z_annulus_phi_segment",
+      "params": {
+        "r_in_cm": 14.0,
+        "r_out_cm": 18.0,
+        "z0_cm": -14.2,
+        "z1_cm": 2.0,
+        "phi0_deg": 90.0,
+        "dphi_deg": 45.0
+      },
+      "volume_cm3": 814.3008158104743,
+      "mass_kg": 3.672496679305239,
+      "install": "One of eight CsI side-veto segments outside the cryostat; segment 04 carries the side beam aperture.",
+      "why_for_sim": "Active anticoincidence for local charged/Compton background around the detector bay only; not wrapped around the entire upper DR service tower.",
+      "size_basis": "4 cm radial side thickness preserves original DEMO2 nominal side shield and keeps mass near the old 65 kg scale; 6/8 cm scan is mandatory.",
+      "source_tag": "511-CAM small shielded focal-plane concept + DEMO2 CsI policy"
+    },
+    {
+      "cid": "C067",
+      "name": "CsI_Side_Segment_03",
+      "category": "active_shield_side",
+      "material": "CsI",
+      "shape": "z_annulus_phi_segment",
+      "params": {
+        "r_in_cm": 14.0,
+        "r_out_cm": 18.0,
+        "z0_cm": -14.2,
+        "z1_cm": 2.0,
+        "phi0_deg": 135.0,
+        "dphi_deg": 45.0
+      },
+      "volume_cm3": 814.3008158104743,
+      "mass_kg": 3.672496679305239,
+      "install": "One of eight CsI side-veto segments outside the cryostat; segment 04 carries the side beam aperture.",
+      "why_for_sim": "Active anticoincidence for local charged/Compton background around the detector bay only; not wrapped around the entire upper DR service tower.",
+      "size_basis": "4 cm radial side thickness preserves original DEMO2 nominal side shield and keeps mass near the old 65 kg scale; 6/8 cm scan is mandatory.",
+      "source_tag": "511-CAM small shielded focal-plane concept + DEMO2 CsI policy"
+    },
+    {
+      "cid": "C068",
+      "name": "CsI_Side_Segment_04",
+      "category": "active_shield_side",
+      "material": "CsI",
+      "shape": "z_annulus_phi_segment",
+      "params": {
+        "r_in_cm": 14.0,
+        "r_out_cm": 18.0,
+        "z0_cm": -14.2,
+        "z1_cm": 2.0,
+        "phi0_deg": 180.0,
+        "dphi_deg": 45.0,
+        "side_hole": {
+          "azimuth_deg": 180,
+          "z_cm": -5.2,
+          "r_cm": 2.6
+        },
+        "side_port_csg_authority": true,
+        "side_port_radius_cm": 2.6,
+        "side_port_axis": "-x_to_+x, centered at y=0,z=-5.2"
+      },
+      "volume_cm3": 814.3008158104743,
+      "mass_kg": 3.672496679305239,
+      "install": "One of eight CsI side-veto segments outside the cryostat; segment 04 carries the side beam aperture. Side port is an explicit CSG aperture in this minimal patch.",
+      "why_for_sim": "Active anticoincidence for local charged/Compton background around the detector bay only; not wrapped around the entire upper DR service tower.",
+      "size_basis": "4 cm radial side thickness preserves original DEMO2 nominal side shield and keeps mass near the old 65 kg scale; 6/8 cm scan is mandatory.",
+      "source_tag": "511-CAM small shielded focal-plane concept + DEMO2 CsI policy"
+    },
+    {
+      "cid": "C069",
+      "name": "CsI_Side_Segment_05",
+      "category": "active_shield_side",
+      "material": "CsI",
+      "shape": "z_annulus_phi_segment",
+      "params": {
+        "r_in_cm": 14.0,
+        "r_out_cm": 18.0,
+        "z0_cm": -14.2,
+        "z1_cm": 2.0,
+        "phi0_deg": 225.0,
+        "dphi_deg": 45.0
+      },
+      "volume_cm3": 814.3008158104743,
+      "mass_kg": 3.672496679305239,
+      "install": "One of eight CsI side-veto segments outside the cryostat; segment 04 carries the side beam aperture.",
+      "why_for_sim": "Active anticoincidence for local charged/Compton background around the detector bay only; not wrapped around the entire upper DR service tower.",
+      "size_basis": "4 cm radial side thickness preserves original DEMO2 nominal side shield and keeps mass near the old 65 kg scale; 6/8 cm scan is mandatory.",
+      "source_tag": "511-CAM small shielded focal-plane concept + DEMO2 CsI policy"
+    },
+    {
+      "cid": "C070",
+      "name": "CsI_Side_Segment_06",
+      "category": "active_shield_side",
+      "material": "CsI",
+      "shape": "z_annulus_phi_segment",
+      "params": {
+        "r_in_cm": 14.0,
+        "r_out_cm": 18.0,
+        "z0_cm": -14.2,
+        "z1_cm": 2.0,
+        "phi0_deg": 270.0,
+        "dphi_deg": 45.0
+      },
+      "volume_cm3": 814.3008158104743,
+      "mass_kg": 3.672496679305239,
+      "install": "One of eight CsI side-veto segments outside the cryostat; segment 04 carries the side beam aperture.",
+      "why_for_sim": "Active anticoincidence for local charged/Compton background around the detector bay only; not wrapped around the entire upper DR service tower.",
+      "size_basis": "4 cm radial side thickness preserves original DEMO2 nominal side shield and keeps mass near the old 65 kg scale; 6/8 cm scan is mandatory.",
+      "source_tag": "511-CAM small shielded focal-plane concept + DEMO2 CsI policy"
+    },
+    {
+      "cid": "C071",
+      "name": "CsI_Side_Segment_07",
+      "category": "active_shield_side",
+      "material": "CsI",
+      "shape": "z_annulus_phi_segment",
+      "params": {
+        "r_in_cm": 14.0,
+        "r_out_cm": 18.0,
+        "z0_cm": -14.2,
+        "z1_cm": 2.0,
+        "phi0_deg": 315.0,
+        "dphi_deg": 45.0
+      },
+      "volume_cm3": 814.3008158104743,
+      "mass_kg": 3.672496679305239,
+      "install": "One of eight CsI side-veto segments outside the cryostat; segment 04 carries the side beam aperture.",
+      "why_for_sim": "Active anticoincidence for local charged/Compton background around the detector bay only; not wrapped around the entire upper DR service tower.",
+      "size_basis": "4 cm radial side thickness preserves original DEMO2 nominal side shield and keeps mass near the old 65 kg scale; 6/8 cm scan is mandatory.",
+      "source_tag": "511-CAM small shielded focal-plane concept + DEMO2 CsI policy"
+    },
+    {
+      "cid": "C072",
+      "name": "CsI_Bottom_Quadrant_00",
+      "category": "active_shield_bottom",
+      "material": "CsI",
+      "shape": "z_annulus_phi_segment",
+      "params": {
+        "r_in_cm": 0.0,
+        "r_out_cm": 18.0,
+        "z0_cm": -20.4,
+        "z1_cm": -14.4,
+        "phi0_deg": 0.0,
+        "dphi_deg": 90.0
+      },
+      "volume_cm3": 1526.8140296446395,
+      "mass_kg": 6.885931273697325,
+      "install": "One of four bottom CsI veto quadrants below the cryostat bay.",
+      "why_for_sim": "Bottom/upward atmospheric-secondary path is important for balloon background; bottom is thicker than the side.",
+      "size_basis": "6 cm bottom thickness is an intermediate between original 8 cm bottom and v3p3 lighter bay model.",
+      "source_tag": "DEMO2 CsI policy + GRIS contrast"
+    },
+    {
+      "cid": "C073",
+      "name": "CsI_Bottom_Quadrant_01",
+      "category": "active_shield_bottom",
+      "material": "CsI",
+      "shape": "z_annulus_phi_segment",
+      "params": {
+        "r_in_cm": 0.0,
+        "r_out_cm": 18.0,
+        "z0_cm": -20.4,
+        "z1_cm": -14.4,
+        "phi0_deg": 90.0,
+        "dphi_deg": 90.0
+      },
+      "volume_cm3": 1526.8140296446395,
+      "mass_kg": 6.885931273697325,
+      "install": "One of four bottom CsI veto quadrants below the cryostat bay.",
+      "why_for_sim": "Bottom/upward atmospheric-secondary path is important for balloon background; bottom is thicker than the side.",
+      "size_basis": "6 cm bottom thickness is an intermediate between original 8 cm bottom and v3p3 lighter bay model.",
+      "source_tag": "DEMO2 CsI policy + GRIS contrast"
+    },
+    {
+      "cid": "C074",
+      "name": "CsI_Bottom_Quadrant_02",
+      "category": "active_shield_bottom",
+      "material": "CsI",
+      "shape": "z_annulus_phi_segment",
+      "params": {
+        "r_in_cm": 0.0,
+        "r_out_cm": 18.0,
+        "z0_cm": -20.4,
+        "z1_cm": -14.4,
+        "phi0_deg": 180.0,
+        "dphi_deg": 90.0
+      },
+      "volume_cm3": 1526.8140296446395,
+      "mass_kg": 6.885931273697325,
+      "install": "One of four bottom CsI veto quadrants below the cryostat bay.",
+      "why_for_sim": "Bottom/upward atmospheric-secondary path is important for balloon background; bottom is thicker than the side.",
+      "size_basis": "6 cm bottom thickness is an intermediate between original 8 cm bottom and v3p3 lighter bay model.",
+      "source_tag": "DEMO2 CsI policy + GRIS contrast"
+    },
+    {
+      "cid": "C075",
+      "name": "CsI_Bottom_Quadrant_03",
+      "category": "active_shield_bottom",
+      "material": "CsI",
+      "shape": "z_annulus_phi_segment",
+      "params": {
+        "r_in_cm": 0.0,
+        "r_out_cm": 18.0,
+        "z0_cm": -20.4,
+        "z1_cm": -14.4,
+        "phi0_deg": 270.0,
+        "dphi_deg": 90.0
+      },
+      "volume_cm3": 1526.8140296446395,
+      "mass_kg": 6.885931273697325,
+      "install": "One of four bottom CsI veto quadrants below the cryostat bay.",
+      "why_for_sim": "Bottom/upward atmospheric-secondary path is important for balloon background; bottom is thicker than the side.",
+      "size_basis": "6 cm bottom thickness is an intermediate between original 8 cm bottom and v3p3 lighter bay model.",
+      "source_tag": "DEMO2 CsI policy + GRIS contrast"
+    },
+    {
+      "cid": "C076",
+      "name": "CsI_TopAnnulus_Segment_00",
+      "category": "active_shield_top",
+      "material": "CsI",
+      "shape": "z_annulus_phi_segment",
+      "params": {
+        "r_in_cm": 13.6,
+        "r_out_cm": 18.0,
+        "z0_cm": 2.0,
+        "z1_cm": 5.0,
+        "phi0_deg": 0.0,
+        "dphi_deg": 45.0,
+        "central_hole": "passes upper cryostat/service tower; not an optical bore"
+      },
+      "volume_cm3": 163.80264095817182,
+      "mass_kg": 0.7387499107213549,
+      "install": "One of eight CsI top-annulus segments around the upper cryostat tower.",
+      "why_for_sim": "Closes the detector-bay veto while allowing the DR tower/services to continue upward without piercing active CsI.",
+      "size_basis": "3 cm axial thickness; the central hole is mechanical/service clearance, not an observation hole.",
+      "source_tag": "511-CAM detector-bay shielding analogy"
+    },
+    {
+      "cid": "C077",
+      "name": "CsI_TopAnnulus_Segment_01",
+      "category": "active_shield_top",
+      "material": "CsI",
+      "shape": "z_annulus_phi_segment",
+      "params": {
+        "r_in_cm": 13.6,
+        "r_out_cm": 18.0,
+        "z0_cm": 2.0,
+        "z1_cm": 5.0,
+        "phi0_deg": 45.0,
+        "dphi_deg": 45.0,
+        "central_hole": "passes upper cryostat/service tower; not an optical bore"
+      },
+      "volume_cm3": 163.80264095817182,
+      "mass_kg": 0.7387499107213549,
+      "install": "One of eight CsI top-annulus segments around the upper cryostat tower.",
+      "why_for_sim": "Closes the detector-bay veto while allowing the DR tower/services to continue upward without piercing active CsI.",
+      "size_basis": "3 cm axial thickness; the central hole is mechanical/service clearance, not an observation hole.",
+      "source_tag": "511-CAM detector-bay shielding analogy"
+    },
+    {
+      "cid": "C078",
+      "name": "CsI_TopAnnulus_Segment_02",
+      "category": "active_shield_top",
+      "material": "CsI",
+      "shape": "z_annulus_phi_segment",
+      "params": {
+        "r_in_cm": 13.6,
+        "r_out_cm": 18.0,
+        "z0_cm": 2.0,
+        "z1_cm": 5.0,
+        "phi0_deg": 90.0,
+        "dphi_deg": 45.0,
+        "central_hole": "passes upper cryostat/service tower; not an optical bore"
+      },
+      "volume_cm3": 163.80264095817182,
+      "mass_kg": 0.7387499107213549,
+      "install": "One of eight CsI top-annulus segments around the upper cryostat tower.",
+      "why_for_sim": "Closes the detector-bay veto while allowing the DR tower/services to continue upward without piercing active CsI.",
+      "size_basis": "3 cm axial thickness; the central hole is mechanical/service clearance, not an observation hole.",
+      "source_tag": "511-CAM detector-bay shielding analogy"
+    },
+    {
+      "cid": "C079",
+      "name": "CsI_TopAnnulus_Segment_03",
+      "category": "active_shield_top",
+      "material": "CsI",
+      "shape": "z_annulus_phi_segment",
+      "params": {
+        "r_in_cm": 13.6,
+        "r_out_cm": 18.0,
+        "z0_cm": 2.0,
+        "z1_cm": 5.0,
+        "phi0_deg": 135.0,
+        "dphi_deg": 45.0,
+        "central_hole": "passes upper cryostat/service tower; not an optical bore"
+      },
+      "volume_cm3": 163.80264095817182,
+      "mass_kg": 0.7387499107213549,
+      "install": "One of eight CsI top-annulus segments around the upper cryostat tower.",
+      "why_for_sim": "Closes the detector-bay veto while allowing the DR tower/services to continue upward without piercing active CsI.",
+      "size_basis": "3 cm axial thickness; the central hole is mechanical/service clearance, not an observation hole.",
+      "source_tag": "511-CAM detector-bay shielding analogy"
+    },
+    {
+      "cid": "C080",
+      "name": "CsI_TopAnnulus_Segment_04",
+      "category": "active_shield_top",
+      "material": "CsI",
+      "shape": "z_annulus_phi_segment",
+      "params": {
+        "r_in_cm": 13.6,
+        "r_out_cm": 18.0,
+        "z0_cm": 2.0,
+        "z1_cm": 5.0,
+        "phi0_deg": 180.0,
+        "dphi_deg": 45.0,
+        "central_hole": "passes upper cryostat/service tower; not an optical bore"
+      },
+      "volume_cm3": 163.80264095817182,
+      "mass_kg": 0.7387499107213549,
+      "install": "One of eight CsI top-annulus segments around the upper cryostat tower.",
+      "why_for_sim": "Closes the detector-bay veto while allowing the DR tower/services to continue upward without piercing active CsI.",
+      "size_basis": "3 cm axial thickness; the central hole is mechanical/service clearance, not an observation hole.",
+      "source_tag": "511-CAM detector-bay shielding analogy"
+    },
+    {
+      "cid": "C081",
+      "name": "CsI_TopAnnulus_Segment_05",
+      "category": "active_shield_top",
+      "material": "CsI",
+      "shape": "z_annulus_phi_segment",
+      "params": {
+        "r_in_cm": 13.6,
+        "r_out_cm": 18.0,
+        "z0_cm": 2.0,
+        "z1_cm": 5.0,
+        "phi0_deg": 225.0,
+        "dphi_deg": 45.0,
+        "central_hole": "passes upper cryostat/service tower; not an optical bore"
+      },
+      "volume_cm3": 163.80264095817182,
+      "mass_kg": 0.7387499107213549,
+      "install": "One of eight CsI top-annulus segments around the upper cryostat tower.",
+      "why_for_sim": "Closes the detector-bay veto while allowing the DR tower/services to continue upward without piercing active CsI.",
+      "size_basis": "3 cm axial thickness; the central hole is mechanical/service clearance, not an observation hole.",
+      "source_tag": "511-CAM detector-bay shielding analogy"
+    },
+    {
+      "cid": "C082",
+      "name": "CsI_TopAnnulus_Segment_06",
+      "category": "active_shield_top",
+      "material": "CsI",
+      "shape": "z_annulus_phi_segment",
+      "params": {
+        "r_in_cm": 13.6,
+        "r_out_cm": 18.0,
+        "z0_cm": 2.0,
+        "z1_cm": 5.0,
+        "phi0_deg": 270.0,
+        "dphi_deg": 45.0,
+        "central_hole": "passes upper cryostat/service tower; not an optical bore"
+      },
+      "volume_cm3": 163.80264095817182,
+      "mass_kg": 0.7387499107213549,
+      "install": "One of eight CsI top-annulus segments around the upper cryostat tower.",
+      "why_for_sim": "Closes the detector-bay veto while allowing the DR tower/services to continue upward without piercing active CsI.",
+      "size_basis": "3 cm axial thickness; the central hole is mechanical/service clearance, not an observation hole.",
+      "source_tag": "511-CAM detector-bay shielding analogy"
+    },
+    {
+      "cid": "C083",
+      "name": "CsI_TopAnnulus_Segment_07",
+      "category": "active_shield_top",
+      "material": "CsI",
+      "shape": "z_annulus_phi_segment",
+      "params": {
+        "r_in_cm": 13.6,
+        "r_out_cm": 18.0,
+        "z0_cm": 2.0,
+        "z1_cm": 5.0,
+        "phi0_deg": 315.0,
+        "dphi_deg": 45.0,
+        "central_hole": "passes upper cryostat/service tower; not an optical bore"
+      },
+      "volume_cm3": 163.80264095817182,
+      "mass_kg": 0.7387499107213549,
+      "install": "One of eight CsI top-annulus segments around the upper cryostat tower.",
+      "why_for_sim": "Closes the detector-bay veto while allowing the DR tower/services to continue upward without piercing active CsI.",
+      "size_basis": "3 cm axial thickness; the central hole is mechanical/service clearance, not an observation hole.",
+      "source_tag": "511-CAM detector-bay shielding analogy"
+    },
+    {
+      "cid": "C084",
+      "name": "ActiveShield_Al_Backplane_detector_bay",
+      "category": "shield_packaging",
+      "material": "Aluminium",
+      "shape": "z_annulus",
+      "params": {
+        "r_in_cm": 18.05,
+        "r_out_cm": 18.15,
+        "z0_cm": -14.4,
+        "z1_cm": 2.2,
+        "side_hole": {
+          "azimuth_deg": 180,
+          "z_cm": -5.2,
+          "r_cm": 2.7
+        },
+        "side_port_csg_authority": true,
+        "side_port_radius_cm": 2.7,
+        "side_port_axis": "-x_to_+x, centered at y=0,z=-5.2"
+      },
+      "volume_cm3": 188.78458573951514,
+      "mass_kg": 0.5097183814966909,
+      "install": "Al support/readout backplane outside the CsI side panels. Side port is an explicit CSG aperture in this minimal patch.",
+      "why_for_sim": "Active shield is not bare scintillator; packaging/readout mass affects local background.",
+      "size_basis": "1 mm Al shell outside side CsI panels; bay-limited.",
+      "source_tag": "DEMO2 shield packaging proxy"
+    },
+    {
+      "cid": "C085",
+      "name": "ActiveShield_Flex_Kapton_detector_bay",
+      "category": "shield_packaging",
+      "material": "Kapton",
+      "shape": "z_annulus",
+      "params": {
+        "r_in_cm": 18.17,
+        "r_out_cm": 18.2,
+        "z0_cm": -14.4,
+        "z1_cm": 2.2,
+        "side_hole": {
+          "azimuth_deg": 180,
+          "z_cm": -5.2,
+          "r_cm": 2.7
+        },
+        "side_port_csg_authority": true,
+        "side_port_radius_cm": 2.7,
+        "side_port_axis": "-x_to_+x, centered at y=0,z=-5.2"
+      },
+      "volume_cm3": 56.90134295590146,
+      "mass_kg": 0.08079990699738007,
+      "install": "Kapton flex/readout layer outside the CsI panels. Side port is an explicit CSG aperture in this minimal patch.",
+      "why_for_sim": "Keeps active-shield electronics/support mass in the local model.",
+      "size_basis": "0.3 mm Kapton layer; corrects the old Al/Kapton material confusion.",
+      "source_tag": "DEMO2 shield packaging proxy"
+    },
+    {
+      "cid": "C086",
+      "name": "Outer_Al_Mechanical_Shell_detector_bay",
+      "category": "outer_shell",
+      "material": "Aluminium",
+      "shape": "z_shell_top_annulus",
+      "params": {
+        "r_in_cm": 18.3,
+        "r_out_cm": 18.6,
+        "z_in_bot_cm": -20.7,
+        "z_out_bot_cm": -21.0,
+        "z_top_cm": 5.2,
+        "top_ann_z0_cm": 5.2,
+        "top_ann_z1_cm": 5.5,
+        "top_hole_r_cm": 13.7,
+        "side_hole": {
+          "azimuth_deg": 180,
+          "z_cm": -5.2,
+          "r_cm": 2.7
+        },
+        "side_port_csg_authority": true,
+        "side_port_radius_cm": 2.7,
+        "side_port_axis": "-x_to_+x, centered at y=0,z=-5.2"
+      },
+      "volume_cm3": 1375.9610336045644,
+      "mass_kg": 3.7150947907323237,
+      "install": "Outermost bay mechanical cover outside the CsI veto. Side port is an explicit CSG aperture in this minimal patch.",
+      "why_for_sim": "Mechanical shell/support proxy and local activation/scattering mass; not a pressure vessel.",
+      "size_basis": "3 mm Al bay cover with top annulus around the cryostat tower and side aperture for the beam.",
+      "source_tag": "Mechanical packaging proxy"
+    }
+  ],
+  "REMOVED_COMPONENTS": [
+    {
+      "name": "REMOVED_TES_SampleBox_Cu",
+      "material": "Copper",
+      "mass_kg": 0.671,
+      "reason": "Deleted because user simulation found Cu-64 as an important 511-keV background source. Function replaced by Nb can + Cu cold finger/rail."
+    },
+    {
+      "name": "REMOVED_SampleBox_Al_Window",
+      "material": "Aluminium",
+      "mass_kg": 0.0001,
+      "reason": "Belonged to the removed Cu sample box; side-entry window chain now lives on shield/OVC side ports."
+    },
+    {
+      "name": "REMOVED_full-height_CsI_wrapping_DR_tower",
+      "material": "CsI",
+      "mass_kg": "not used",
+      "reason": "Active veto wraps detector bay only; upper DR/service tower is not surrounded by CsI in nominal."
+    }
+  ],
+  "SYSTEMATICS_NOT_NOMINAL": [
+    {
+      "name": "Stage_spacing_12cm_lab_commercial",
+      "purpose": "Return to v3 12-cm plate spacing to bound the activation/scattering effect of a lab-commercial dry-DR envelope."
+    },
+    {
+      "name": "Delete_CP_plate_miniDR_or_open_cycle_variant",
+      "purpose": "Four cold-stage flight/minDR/open-cycle DR variant if project DR does not need a separate CP plate."
+    },
+    {
+      "name": "CsI_side_thickness_4_6_8cm",
+      "purpose": "Quantify 511-keV veto leakage; current side is 4 cm, bottom 6 cm."
+    },
+    {
+      "name": "MXC_plate_Cu_vs_Au_plated_Al",
+      "purpose": "Large nearby Cu plate is the next Cu-64 risk after deleting the sample box."
+    },
+    {
+      "name": "Cryoperm_1p2mm_vs_4p5mm",
+      "purpose": "Magnetic margin vs Ni/Co activation mass."
+    },
+    {
+      "name": "Remote_PT405_cold_head_and_compressor",
+      "purpose": "Complete dry-DR platform option; not part of detector-head nominal due PT mass/power."
+    },
+    {
+      "name": "Open_cycle_DR_Archeops_style_platform",
+      "purpose": "Balloon platform option with wet/open-cycle DR rather than dry-DR."
+    },
+    {
+      "name": "CSG_side_ports_to_implement",
+      "purpose": "Explicit holes for side windows, W sleeve, CsI aperture, OVC Be port, and +x cold-finger slots in final Geant4."
+    }
+  ],
+  "REFERENCES": [
+    {
+      "tag": "Bluefors DR components",
+      "fact": "Commercial DR stage inventory: 50K, 4K, still, cold plate, mixing chamber, vacuum enclosure/radiation shields, dilution unit, heat switch, pulse tube.",
+      "url": "https://bluefors.com/stories/components-of-the-dilution-refrigerator-measurement-system/"
+    },
+    {
+      "tag": "Bluefors SD",
+      "fact": "SD system provides the SD-scale MXC flange anchor and optical access options; v3p5 uses the flange scale, not full lab spacing.",
+      "url": "https://bluefors.com/products/dilution-refrigerator-measurement-systems/sd-dilution-refrigerator-measurement-system/"
+    },
+    {
+      "tag": "PT405",
+      "fact": "PT cold head mass/power are platform-level and non-nominal for balloon detector-head mass model.",
+      "url": "https://bluefors.com/products/pulse-tube-cryocoolers/pt405-pulse-tube-cryocooler/"
+    },
+    {
+      "tag": "511-CAM",
+      "fact": "Pointed 511 keV mission using focusing gamma optics and stacked TES microcalorimeter arrays; supports side-entry detector-bay philosophy.",
+      "url": "https://arxiv.org/abs/2206.14652"
+    },
+    {
+      "tag": "DIXE DA",
+      "fact": "TES/SQUID detector assembly uses hybrid outer Cryoperm + inner Nb magnetic shielding and filters at multiple temperature stages.",
+      "url": "https://arxiv.org/abs/2405.07559"
+    },
+    {
+      "tag": "XRISM GV",
+      "fact": "Resolve uses a microcalorimeter in a Dewar and an X-ray-transparent Be/mesh gate-valve window along the optical path.",
+      "url": "https://arxiv.org/abs/2104.07241"
+    },
+    {
+      "tag": "XRISM coolers",
+      "fact": "Resolve illustrates custom flight cryostat/cryocooler chain and micro-vibration concerns, not a lab DR copy.",
+      "url": "https://arxiv.org/abs/2303.01004"
+    },
+    {
+      "tag": "XQC",
+      "fact": "Sounding-rocket microcalorimeter payload demonstrates custom compact sub-K flight packaging.",
+      "url": "https://arxiv.org/abs/1909.07432"
+    },
+    {
+      "tag": "Archeops",
+      "fact": "Balloon experiment cooled bolometers to 85 mK using a flight/open-cycle cryogenic architecture.",
+      "url": "https://arxiv.org/abs/astro-ph/0112012"
+    },
+    {
+      "tag": "PIPER",
+      "fact": "Balloon cryogenic telescope uses a custom LHe bucket dewar; flight cryogenic payloads need not copy lab-commercial DR geometry.",
+      "url": "https://arxiv.org/abs/2105.08734"
+    }
+  ],
+  "MASS_BY_CATEGORY": {
+    "detector": 0.25415531999999996,
+    "substrate": 0.0063743694056315,
+    "thermal_link": 0.16122341798284334,
+    "magnetic_sample_can": 0.16908262541027136,
+    "magnetic_shield": 0.469025473854738,
+    "cryostat_shell": 2.5796587729162797,
+    "cold_plate": 5.75659613331014,
+    "vacuum_jacket": 6.908095524027674,
+    "window": 0.0007112914214334871,
+    "dr_unit": 1.0933359443289645,
+    "service_proxy": 0.7921975801821658,
+    "support": 0.2765265982005255,
+    "passive_shield": 5.0997297151578405,
+    "collimator": 0.6548335727142566,
+    "active_shield_side": 29.379973434441915,
+    "active_shield_bottom": 27.5437250947893,
+    "active_shield_top": 5.909999285770838,
+    "shield_packaging": 0.590518288494071,
+    "outer_shell": 3.7150947907323237
+  },
+  "MASS_BY_MATERIAL": {
+    "Ta": 0.25415531999999996,
+    "Silicon": 0.0063743694056315,
+    "Copper": 6.730279656393076,
+    "Nb": 0.16908262541027136,
+    "Cryoperm": 0.469025473854738,
+    "Aluminium": 14.560010474334991,
+    "Be": 0.00031405468488113393,
+    "SilverSinterProxy": 0.16964600329384882,
+    "CuNi": 0.399845975775042,
+    "StainlessSteel": 0.040956601052849366,
+    "CharcoalProxy": 0.029940634625772164,
+    "NbTiCableProxy": 0.5676982489185488,
+    "G10": 0.2765265982005255,
+    "W": 4.772503475191607,
+    "CsI": 62.83369781500203,
+    "Kapton": 0.08079990699738007
+  }
+}

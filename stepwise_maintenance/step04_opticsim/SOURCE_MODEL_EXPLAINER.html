@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Step04 Source Model Explainer</title>
+<style>
+  :root {
+    color-scheme: light;
+    --ink:#111827; --muted:#475569; --line:#cbd5e1; --panel:#f8fafc;
+    --blue:#2563eb; --red:#dc2626; --green:#059669; --amber:#d97706;
+  }
+  * { box-sizing:border-box; }
+  body { margin:0; font-family: Arial, "Noto Sans CJK SC", sans-serif; color:var(--ink); background:#ffffff; line-height:1.55; }
+  header { padding:32px 44px 22px; background:#111827; color:white; }
+  header h1 { margin:0 0 8px; font-size:32px; letter-spacing:0; }
+  header p { margin:0; max-width:1040px; color:#cbd5e1; font-size:16px; }
+  main { max-width:1180px; margin:0 auto; padding:28px 28px 56px; }
+  section { margin:28px 0; }
+  h2 { margin:0 0 12px; font-size:24px; }
+  h3 { margin:18px 0 8px; font-size:18px; }
+  p { margin:8px 0; }
+  .grid { display:grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap:14px; }
+  .two { display:grid; grid-template-columns: 1.1fr .9fr; gap:18px; align-items:start; }
+  .card { border:1px solid var(--line); border-radius:8px; padding:16px; background:var(--panel); min-height:146px; }
+  .card strong { display:block; margin-bottom:8px; font-size:17px; }
+  .tag { display:inline-block; padding:2px 8px; border-radius:999px; font-size:12px; font-weight:700; background:#e0f2fe; color:#075985; margin-right:6px; }
+  .warn { background:#fff7ed; border-color:#fed7aa; }
+  .ok { background:#ecfdf5; border-color:#bbf7d0; }
+  figure { margin:0; border:1px solid var(--line); border-radius:8px; overflow:hidden; background:white; }
+  figure img { display:block; width:100%; height:auto; }
+  figcaption { padding:10px 14px; color:var(--muted); font-size:13px; border-top:1px solid #e2e8f0; }
+  table { width:100%; border-collapse:collapse; margin-top:10px; font-size:14px; }
+  th, td { border:1px solid #e2e8f0; padding:8px 10px; text-align:left; vertical-align:top; }
+  th { background:#f1f5f9; }
+  code { background:#f1f5f9; padding:1px 5px; border-radius:4px; }
+  ul { margin-top:8px; }
+  li { margin:6px 0; }
+  .refs li span { display:block; color:var(--muted); font-size:13px; }
+  .links a { display:inline-block; margin:0 10px 10px 0; padding:8px 10px; border:1px solid var(--line); border-radius:6px; color:#0f172a; text-decoration:none; background:#ffffff; }
+  .decision { border-left:4px solid var(--green); padding:12px 14px; background:#f0fdf4; }
+  @media (max-width: 860px) { .grid, .two { grid-template-columns:1fr; } header { padding:24px 20px; } main { padding:20px; } }
+</style>
+</head>
+<body>
+<header>
+  <h1>Step04 source model explainer</h1>
+  <p>Purpose: answer which source classes should be simulated, what "point" and "diffuse" mean for a focused 511 keV balloon telescope, and where atmosphere, optics mass, delayed activation, and veto analysis enter.</p>
+</header>
+<main>
+  <section class="grid">
+    <div class="card ok"><strong>Current decision</strong>Use Be-window/FoV Compton veto for Step05. For Step04 source design, include the Laue lens mass in prompt and delayed-background studies before claiming a production source.</div>
+    <div class="card"><strong>Point source</strong>V404 or a compact GC proxy is a sky direction. The far-field start sphere is a sampling surface, not a physical angular size.</div>
+    <div class="card"><strong>Diffuse source</strong>Diffuse means a sky intensity distribution over solid angle, such as bulge/disk 511 keV emission; it is not intrinsically "random over the whole downward plane".</div>
+  </section>
+
+  <section class="two">
+    <figure>
+      <img src="outputs/source_model_sky_to_detector.svg" alt="source model sky to detector schematic">
+      <figcaption>Conceptual source-to-detector geometry. Blue/cyan are astrophysical source classes; red/amber are instrumental backgrounds that require the optics mass model.</figcaption>
+    </figure>
+    <div>
+      <h2>Answers to the specific questions</h2>
+      <h3>1. Should the focusing-lens mass be in prompt cosmic and delayed background?</h3>
+      <p>Yes. Even if the mass model is not final, the production plan should treat lens crystals, support, and nearby structures as background-producing material. Prompt cosmic rays can interact in that mass, prompt atmospheric gamma rays can scatter or occasionally satisfy diffraction geometry, and activation produced in the lens/support can later decay toward the detector.</p>
+      <h3>2. Can prompt and delayed backgrounds be "focused"?</h3>
+      <p>Prompt atmospheric gamma rays are not the science beam, but photons in the right energy/direction range can be affected by the same crystals. Charged particles are not focused; they create prompt hits and activation. Delayed activation is local radiation from instrument material, not a far-field sky signal, but its photons can still scatter or propagate through the optics/detector geometry.</p>
+      <h3>3. Does a point source have solid-angle width on the far-field sphere?</h3>
+      <p>No for the baseline point source. A distant point source is one incident direction. MEGAlib far-field or an opticsim entrance plane can spread particle start positions across an aperture for sampling, but that is not the source's angular extent. Add angular radius only for an explicit morphology scan, pointing jitter, or finite source-size test.</p>
+      <h3>4. What is a diffuse source?</h3>
+      <p>Diffuse source means sky brightness distributed over directions. The local config uses Galactic bulge/disk proxies. In a detector-only approximation one may sample a plane, but the physical model is an angular sky map folded through atmosphere, pointing, optics effective area, and PSF.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>Pipeline distinction</h2>
+    <figure>
+      <img src="outputs/source_model_pipeline.svg" alt="source model pipeline">
+      <figcaption>The science source path and instrumental-background path should remain conceptually separate until they meet at the event/timeline analysis.</figcaption>
+    </figure>
+  </section>
+
+  <section>
+    <h2>Local facts used</h2>
+    <table>
+      <tr><th>Item</th><th>Current evidence</th><th>Interpretation</th></tr>
+      <tr><td>V404 source case</td><td><code>stepwise_maintenance/step07_source_cases/outputs/configs/source_cases_511_ABC.yaml</code></td><td>Marked as <code>transient_point_source_with_Aeff_E</code>, benchmark only.</td></tr>
+      <tr><td>Old V404 implementation</td><td><code>HomogeneousBeam 0.0 0.0 127.66 ... 18.0</code></td><td>Post-optics detector beam, stale 10x convention, not a current sky-to-Laue production source.</td></tr>
+      <tr><td>Science detector smoke</td><td><code>HomogeneousBeam 0 0 16.051 0 0 -1 1.8</code></td><td>Current detector-response authority is a Be-plane focused beam smoke, not a complete sky/Laue bridge.</td></tr>
+      <tr><td>B-FULL 511-line optics</td><td>50000 primaries; 15963 diffracted interactions; 12566 diffracted focal crossings; 511-511 keV optical band</td><td>Current Step04/Step09 focused-photon handoff; optics hardware mass is still not in the detector geometry.</td></tr>
+      <tr><td>Atmosphere</td><td>Ledger <code>T_atm=0.739042</code>; profile <code>profile not present</code></td><td>Atmosphere is already included in rate folding, not inside the fixed-trigger Cosima source card.</td></tr>
+      <tr><td>Rate formula</td><td><code>R = F_511 * A_opt * T_atm</code>, with current optics <code>A_opt(511)=13.56 cm2</code></td><td>Science flux is normalized after transport; triggers are Monte Carlo sampling, not physical flux by themselves.</td></tr>
+    </table>
+  </section>
+
+  <section class="grid">
+    <div class="card"><strong>Point source baseline</strong><span class="tag">V404</span><span class="tag">compact GC proxy</span><p>Use one sky direction. Use a flux/time grid from literature. Generate optics phase space, then replay into Cosima as EventList.</p></div>
+    <div class="card"><strong>Diffuse source baseline</strong><span class="tag">bulge</span><span class="tag">disk</span><p>Sample sky directions from a map or analytic morphology. Fold through atmosphere and optics response. It should not be treated as a single focal spot.</p></div>
+    <div class="card warn"><strong>Prompt/delayed baseline</strong><span class="tag">mass model</span><span class="tag">activation</span><p>Add lens/support material to background geometry when the mass model is ready enough for a first smoke. Do not wait for final optimization to recognize this requirement.</p></div>
+  </section>
+
+  <section>
+    <h2>Atmospheric transmission</h2>
+    <p>Yes, the current workflow considers atmospheric transmission. In the existing ledger, the detector injection rate is computed as <code>F_511 * A_opt * T_atm</code>. The phase2 profile also stores time-dependent <code>T_atm_511</code> values driven by altitude and source zenith angle. The current implementation uses an attenuation-style factor and local validation checks the ledger arithmetic.</p>
+    <p>For final astrophysical claims, the atmosphere should be tied to the actual flight pointing and altitude profile. For this Step04 explainer, the important decision is that atmosphere belongs in source-rate folding before the detector timeline, not as an arbitrary change to Cosima trigger count.</p>
+  </section>
+
+  <section>
+    <h2>References and anchors</h2>
+    <ul class="refs">
+      <li><a href="https://arxiv.org/abs/2206.14652">511-CAM line-focused science and Laue-lens scale</a><span>JATIS 2023 / arXiv:2206.14652</span></li>
+<li><a href="https://arxiv.org/abs/1603.01169">V404 Cyg transient positron-annihilation feature</a><span>Siegert et al. 2016, Nature 531, 341-343 / arXiv:1603.01169</span></li>
+<li><a href="https://arxiv.org/abs/1512.00325">Galactic 511-keV bulge/disk/central-component flux anchors</a><span>Siegert et al. 2016, A&amp;A 586 A84 / arXiv:1512.00325</span></li>
+<li><a href="https://www.sciencedirect.com/science/article/abs/pii/S1387647303003129">Laue-lens balloon precedent</a><span>CLAIRE first light: Laue lens + active shield + balloon gondola</span></li>
+<li><a href="https://www.nist.gov/pml/xcom-photon-cross-sections-database">Photon attenuation reference</a><span>NIST XCOM photon cross-section database</span></li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Artifacts</h2>
+    <p class="links">
+      <a href="outputs/source_model_smoke.wrl">Conceptual source-model WRL smoke</a>
+      <a href="outputs/opticsim_laue_bfull_xopmap_real/laue_multiring_scene.wrl">Current B-FULL XOP-map WRL</a>
+      <a href="outputs/source_model_sky_to_detector.svg">Source geometry SVG</a>
+      <a href="outputs/source_model_pipeline.svg">Pipeline SVG</a>
+      <a href="outputs/source_model_explainer_audit.json">Audit JSON</a>
+    </p>
+    <div class="decision">Next production move: build a current EventList bridge from the latest opticsim phase space, then use the same source taxonomy to decide which point/diffuse cases are worth detector smoke tests.</div>
+  </section>
+</main>
+</body>
+</html>

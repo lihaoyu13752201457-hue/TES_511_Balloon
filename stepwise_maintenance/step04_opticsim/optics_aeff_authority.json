@@ -1,0 +1,122 @@
+{
+  "design_name": "balloon511_f9m_ge111_511line",
+  "status": "RUN_AVAILABLE",
+  "science_policy": "511-keV line optimized Laue lens. 480-550 keV is the TES spectral analysis window, not an equal-weight optical focusing band.",
+  "normalization_policy": "A_eff(E) = ring geometric area times B-FULL emergent within-Be focal diffraction efficiency when the run is available. The exact 511-keV line-center A_eff is the optical authority for this line-focused design.",
+  "design_target": {
+    "aeff_511_design_cm2": 16.0,
+    "aeff_tolerance_fraction": 0.15,
+    "tolerance_policy": "If B-FULL A_eff(511) differs from the 16 cm2 design value by more than 15%, the lens geometry must be adjusted and rerun."
+  },
+  "natural_passband_fwhm": {
+    "center_keV": 511.0,
+    "fwhm_keV": 20.012125776358307,
+    "lo_keV": 500.99393711182086,
+    "hi_keV": 521.0060628881791,
+    "relative_fwhm": 0.0391626727521689,
+    "formula": "DeltaE/E = cot(theta_B) * mosaic_FWHM_rad"
+  },
+  "ring_config": "/home/ubuntu/opticsim/data/laue/ge111_balloon511_f9m_511keV_line_config.csv",
+  "ring_config_repo_copy": "stepwise_maintenance/step04_opticsim/ge111_balloon511_f9m_511keV_line_config.csv",
+  "rocking_curve_map": "stepwise_maintenance/step04_opticsim/ge111_balloon511_f9m_511keV_xop_map.csv",
+  "bfull_run_dir": "stepwise_maintenance/step04_opticsim/outputs/opticsim_laue_bfull_xopmap_real",
+  "focal_length_mm": 9000.0,
+  "tile_size_mm": 15.0,
+  "mosaic_fwhm_arcsec": 30.0,
+  "energy_rows": [
+    {
+      "ring_id": 0,
+      "energy_keV": 511.0,
+      "geometric_area_cm2": 60.75,
+      "n_tiles": 27,
+      "analytic_reference_efficiency": 0.257481,
+      "emergent_within_be_efficiency": 0.25184,
+      "adopted_efficiency": 0.25184,
+      "aeff_cm2": 15.299280000000001,
+      "within_be_focal_crossings": 12592,
+      "primaries": 50000
+    }
+  ],
+  "aeff_511_cm2": 15.299280000000001,
+  "sampled_line_band_aeff_sum_cm2": 15.299280000000001,
+  "total_geometric_area_cm2": 60.75,
+  "total_tiles": 27,
+  "total_ge_mass_kg": 0.330447667167225,
+  "bragg_radius_check": {
+    "max_abs_residual_mm": 0.0,
+    "pass_0p2mm_bfull_gate": true,
+    "per_ring": [
+      {
+        "ring_id": 0,
+        "energy_keV": 511.0,
+        "z_offset_mm": 0.0,
+        "radius_mm": 66.85013569222848,
+        "expected_radius_mm": 66.85013569222848,
+        "abs_residual_mm": 0.0
+      }
+    ]
+  },
+  "ring_clearance_check": {
+    "method": "within-ring clearance is checked by adjacent tile chord pitch; if future line-band rings are added, inter-ring clearance is checked in z.",
+    "tile_size_mm": 15.0,
+    "z_pitch_mm": 0.0,
+    "min_z_surface_clearance_mm": null,
+    "min_azimuthal_edge_gap_mm": 0.521654124355738,
+    "pass": true,
+    "radial_center_gaps_for_reference": [],
+    "inter_ring_z_clearances": [],
+    "within_ring_azimuthal_gaps": [
+      {
+        "ring_id": 0,
+        "chord_pitch_mm": 15.521654124355738,
+        "azimuthal_edge_gap_mm": 0.521654124355738
+      }
+    ]
+  },
+  "rocking_curve_map_coverage": {
+    "map_csv": "/home/ubuntu/codex_tes_511_sim/new_geo_re/stepwise_maintenance/step04_opticsim/ge111_balloon511_f9m_511keV_xop_map.csv",
+    "required_ring_ids": [
+      0
+    ],
+    "covered_ring_ids": [
+      0
+    ],
+    "missing_ring_ids": [],
+    "energy_mismatches": [],
+    "online_darwin_ring_ids": [],
+    "policy": "The 511-keV science ring is required to use the existing external XOP/CRYSTAL curve.",
+    "pass": true
+  },
+  "focal_stats": {
+    "diffracted_focal_rows": 12605,
+    "within_be_rows": 12592,
+    "outside_be_rows": 13,
+    "within_be_fraction": 0.9989686632288775,
+    "r50_cm": 0.07499827612424247,
+    "r90_cm": 0.18369303433091594,
+    "r95_cm": 0.21910820009595977,
+    "r99_cm": 0.2914104898226177,
+    "r999_cm": 2.646681533694775,
+    "rmax_within_be_cm": 1.457668248002899,
+    "rmax_all_diffracted_cm": 17.76366688614018,
+    "be_radius_cm": 1.898,
+    "pass_r99_within_be": true
+  },
+  "ring_id_reconstruction": {
+    "source": "stepwise_maintenance/step04_opticsim/outputs/opticsim_laue_bfull_xopmap_real/optics_history.csv",
+    "method": "focal_crossings.csv has no ring_id, so diffracted focal rows are joined to optics_history.csv DIFFRACT rows by event_id.",
+    "unmatched_diffracted_focal_rows": 0
+  },
+  "run_summary": {
+    "run_matches_design": true,
+    "n_primaries": 50000,
+    "emergent_focal_diffraction_fraction": 0.2521,
+    "analytic_reference_focal_diffraction_fraction": 0.257481,
+    "emergent_minus_analytic_focal_diffraction": -0.00538123,
+    "abs_emergent_minus_analytic_focal_diffraction": 0.00538123,
+    "pass_crosscheck_0p04_gate": true,
+    "pass_strict_0p01_gate": true,
+    "rocking_curve_backend": "external_per_ring_csv_map",
+    "rocking_curve_map_csv": "/home/ubuntu/codex_tes_511_sim/new_geo_re/stepwise_maintenance/step04_opticsim/ge111_balloon511_f9m_511keV_xop_map.csv"
+  }
+}

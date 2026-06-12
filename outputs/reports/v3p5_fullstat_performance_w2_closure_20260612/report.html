@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>v3p5 Full-Stat Performance and W2 Background Closure</title>
+  <style>
+    :root {
+      --ink: #1f2430;
+      --muted: #667085;
+      --line: #d9dee8;
+      --panel: #ffffff;
+      --bg: #f7f8fb;
+      --blue: #2e4780;
+      --gold: #736422;
+    }
+    body {
+      margin: 0;
+      font-family: Inter, Segoe UI, Arial, sans-serif;
+      color: var(--ink);
+      background: var(--bg);
+      line-height: 1.55;
+    }
+    main {
+      max-width: 1040px;
+      margin: 0 auto;
+      padding: 36px 24px 56px;
+    }
+    h1 {
+      margin: 0 0 10px;
+      font-size: 30px;
+      line-height: 1.15;
+      letter-spacing: 0;
+    }
+    h2 {
+      margin-top: 34px;
+      padding-top: 18px;
+      border-top: 1px solid var(--line);
+      font-size: 20px;
+      letter-spacing: 0;
+    }
+    p, li {
+      font-size: 15px;
+    }
+    .status {
+      color: var(--muted);
+      font-family: SFMono-Regular, Consolas, monospace;
+      font-size: 13px;
+    }
+    .metric-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+      margin: 22px 0 8px;
+    }
+    .metric {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 12px;
+    }
+    .metric span {
+      display: block;
+      color: var(--muted);
+      font-size: 12px;
+      margin-bottom: 5px;
+    }
+    .metric strong {
+      font-size: 18px;
+      font-family: SFMono-Regular, Consolas, monospace;
+    }
+    figure {
+      margin: 22px 0;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 16px;
+    }
+    figure img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    figcaption {
+      color: var(--muted);
+      font-size: 13px;
+      margin-top: 10px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      margin: 16px 0;
+    }
+    th, td {
+      border-bottom: 1px solid var(--line);
+      padding: 9px 10px;
+      text-align: left;
+      vertical-align: top;
+      font-size: 13px;
+    }
+    th {
+      color: var(--muted);
+      font-weight: 600;
+    }
+    a {
+      color: var(--blue);
+    }
+    code {
+      font-family: SFMono-Regular, Consolas, monospace;
+      font-size: 0.95em;
+    }
+    @media (max-width: 760px) {
+      main { padding: 24px 14px 40px; }
+      .metric-grid { grid-template-columns: 1fr 1fr; }
+      table { display: block; overflow-x: auto; }
+    }
+  </style>
+</head>
+<body>
+<main>
+  <h1>v3p5 Full-Stat Performance and W2 Background Closure</h1>
+  <div class="status">PASS_V3P5_FULLSTAT_PERFORMANCE_W2_CLOSURE | fullstat_v2</div>
+
+  <section>
+    <h2>Technical Summary</h2>
+    <p>The full-stat v3p5 center-finger chain closes through Step02, Step05, Step06, Step07, Step08, the 1 Ms benchmark comparison, and the W2 background-source decomposition. This is an L1 rate-level result: it is suitable for branch comparison and next-step planning, but still carries the delayed-source compression and non-profile-likelihood limitations.</p>
+    <div class="metric-grid">
+      <div class="metric"><span>W2 background</span><strong>0.0729576</strong> cps</div>
+      <div class="metric"><span>W2 signal at 1e-4</span><strong>0.00118117</strong> cps</div>
+      <div class="metric"><span>Step08 Z20d</span><strong>5.70221</strong></div>
+      <div class="metric"><span>1 Ms F3sigma</span><strong>6.823007e-05</strong></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>1 Ms Performance Comparison</h2>
+    <p>The chart compares the full-stat v3p5 W2 curve with legacy pre-fix DEMO2 cases and public benchmark markers. The DEMO2 markers are retained as historical provenance after the reproduced x8.0116 delayed-source normalization issue. The 511-CAM point is figure-derived, SPI is a published 1e6 s marker, and COSI is sqrt-time scaled from a published 2-year sensitivity.</p>
+    <figure>
+      <img src="assets/performance_curve_comparison_1Ms.png" alt="1 Ms 3sigma performance comparison">
+      <figcaption>Gaussian S/sqrt(B)=3 flux limits; external points are comparison markers, not identical observing strategies.</figcaption>
+    </figure>
+    <table>
+      <thead><tr><th>Case</th><th>1 Ms 3sigma flux</th><th>Method</th></tr></thead>
+      <tbody><tr><td>v3p5 W2</td><td>6.823007e-05</td><td>v3p5_time_dependent_cumulative_interpolation</td></tr>
+<tr><td>DEMO2 legacy W2 spot_r90</td><td>8.748416e-05</td><td>legacy_pre_fix_documented_20d_Z_sqrt_exposure_scaling</td></tr>
+<tr><td>DEMO2 legacy W2 line</td><td>1.441678e-04</td><td>legacy_pre_fix_documented_20d_Z_sqrt_exposure_scaling</td></tr>
+<tr><td>511-CAM Fig.11</td><td>2.700000e-06</td><td>digitized_from_511CAM_Fig11_right_panel_at_511keV</td></tr>
+<tr><td>INTEGRAL/SPI</td><td>5.000000e-05</td><td>published_3sigma_1e6s_511keV_narrow_line</td></tr>
+<tr><td>COSI scaled to 1 Ms</td><td>9.533409e-05</td><td>sqrt_time_scaled_from_published_2yr_3sigma_narrow_line_point_source_sensitivity</td></tr></tbody>
+    </table>
+  </section>
+
+  <section>
+    <h2>W2 Background Source Mix</h2>
+    <p>The decomposition recomputes the same W2 active-veto and side-entry Compton/FoV selection used by Step05. The leading selected component is <code>prompt:eplus</code>, with 80 events and 0.0543377 cps. The delayed slice is small; within delayed-only W2 events, <code>Cu64</code> is the largest nuclide.</p>
+    <figure>
+      <img src="assets/w2_background_source_breakdown.png" alt="W2 background source breakdown">
+      <figcaption>The total decomposition rate is checked against the Step05 W2 background rate.</figcaption>
+    </figure>
+  </section>
+
+  <section>
+    <h2>Scope, Data, And Method</h2>
+    <p>W2 is <code>510.58-511.42 keV</code>; the reference flux is <code>1e-4 ph cm^-2 s^-1</code>; 1 Ms is <code>1,000,000 s</code>. Step02 produces the full-stat prompt, buildup, delayed source, and delayed transport; Step05 applies detector selection; Step06-08 fold mission time and counting significance.</p>
+  </section>
+
+  <section>
+    <h2>Limitations And Robustness Checks</h2>
+    <ul><li>This is an L1 rate-level full-stat closure; it is not a profile-likelihood or final paper-facing spatial analysis.</li>
+<li>The delayed source still uses the legacy axisymmetric RadialProfileBeam compression for v3p5.</li>
+<li>511-CAM is figure-derived from Fig.11; COSI is sqrt-time scaled from a published 2-year sensitivity and is a benchmark marker, not an observing-strategy equivalence.</li>
+<li>Flux limits use Gaussian S/sqrt(B)=3 scaling for comparison consistency.</li></ul>
+  </section>
+  
+  <section>
+    <h2>Sources And Artifacts</h2>
+    <p>Primary repo artifacts are copied into <code>summaries/</code>, <code>tables/</code>, and <code>assets/</code>. DEMO2/new_geo_re comparison values come from legacy pre-fix <code>core_md/README.md</code> and <code>core_md/VALIDATION.md</code> records; they are not current authority after the reproduced x8.0116 delayed-source normalization issue. The legacy <code>stepwise_3sigma_headline_results.png</code> file named in older notes is absent in this checkout. External benchmark sources: <a href="https://arxiv.org/abs/2206.14652">511-CAM</a>, <a href="https://arxiv.org/abs/astro-ph/0310793">SPI</a>, and <a href="https://arxiv.org/abs/2308.12362">COSI</a>.</p>
+  </section>
+</main>
+</body>
+</html>

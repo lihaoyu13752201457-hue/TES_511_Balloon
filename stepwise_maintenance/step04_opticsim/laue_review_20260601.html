@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Laue 模块物理正确性审核 + B-FULL 修复 — laue_review_20260601</title>
+<style>
+  :root{
+    --ok:#1b7f3b; --okbg:#e7f6ec; --warn:#b5710a; --warnbg:#fbf1de;
+    --bad:#b3261e; --badbg:#fbe9e7; --ink:#1a1a1a; --muted:#5a5a5a;
+    --line:#d8d8d8; --code:#f4f5f7; --accent:#1f4e79;
+  }
+  *{box-sizing:border-box}
+  body{font-family:-apple-system,"Segoe UI","Microsoft YaHei",Roboto,Helvetica,Arial,sans-serif;
+       color:var(--ink); line-height:1.65; max-width:1000px; margin:0 auto; padding:28px 22px 80px;}
+  h1{font-size:1.65rem; margin:0 0 4px; color:var(--accent)}
+  h2{font-size:1.26rem; margin:34px 0 10px; padding-bottom:6px; border-bottom:2px solid var(--accent); color:var(--accent)}
+  h3{font-size:1.05rem; margin:18px 0 6px}
+  .sub{color:var(--muted); font-size:.92rem; margin:0 0 18px}
+  code,kbd{background:var(--code); padding:1px 5px; border-radius:4px; font-family:"SF Mono",Consolas,Menlo,monospace; font-size:.85em}
+  pre{background:var(--code); padding:12px 14px; border-radius:8px; overflow:auto; font-size:.83rem; border:1px solid var(--line)}
+  table{border-collapse:collapse; width:100%; margin:12px 0; font-size:.89rem}
+  th,td{border:1px solid var(--line); padding:7px 10px; text-align:left; vertical-align:top}
+  th{background:#eef2f7}
+  .verdict{border:1px solid var(--line); border-left:6px solid var(--ok); background:var(--okbg);
+           padding:16px 20px; border-radius:8px; margin:18px 0}
+  .badge{display:inline-block; font-size:.74rem; font-weight:700; padding:2px 8px; border-radius:10px; vertical-align:middle}
+  .b-ok{background:var(--okbg); color:var(--ok); border:1px solid var(--ok)}
+  .b-warn{background:var(--warnbg); color:var(--warn); border:1px solid var(--warn)}
+  .b-bad{background:var(--badbg); color:var(--bad); border:1px solid var(--bad)}
+  .b-na{background:#eceff1; color:#555; border:1px solid #b0b0b0}
+  .b-fix{background:#e8f0fb; color:#1f4e79; border:1px solid #1f4e79}
+  .card{border:1px solid var(--line); border-radius:8px; padding:6px 18px 14px; margin:14px 0}
+  .card.ok{border-left:6px solid var(--ok)} .card.warn{border-left:6px solid var(--warn)} .card.fix{border-left:6px solid var(--accent)}
+  .muted{color:var(--muted)} .small{font-size:.85rem}
+  ul{margin:6px 0 10px} li{margin:3px 0}
+  a{color:var(--accent)}
+  .num{font-variant-numeric:tabular-nums}
+  .foot{margin-top:40px; padding-top:14px; border-top:1px solid var(--line); color:var(--muted); font-size:.82rem}
+</style>
+</head>
+<body>
+
+<h1>Laue 模块物理正确性审核 + B-FULL 修复</h1>
+<p class="sub">代号 <code>laue_review_20260601</code> · 2026-06-01 · 审核人 Claude (Opus 4.8) · 范围:<b>Laue 衍射光学物理正确性</b>,作为 <code>codex_tes_511_sim/new_geo_re</code> TES&nbsp;511&nbsp;keV 论文的一个版块。<b>本版已按"B-FULL 接入论文"的决定更新</b>,并记录已实施并验证的三项修复。</p>
+
+<div class="verdict">
+<b>总体结论 — <span class="badge b-ok">物理正确,B-FULL 已修复并在 Geant4 11.4 验证通过</span></b><br>
+决定把 <b>B-FULL(EM 竞争 + 有限 MFP + 固定取向涌现聚焦)</b>作为论文的 Laue 前端光学版本。其底层衍射物理(Bragg 几何、Darwin–Hamilton 镶嵌效率、消光长度、μ、镶嵌分布)<b>正确且被三个真·独立外部源锚定</b>(Barrière 实测 &lt;1%、CRYSTAL diff_pat ~4%、Kohnle &lt;1.4%)。
+本次审核发现的三个 B-FULL 实现问题<b>已全部修复并实测验证</b>(见 §C):① 吸收双重计数(外部曲线路径 −33%→−3.2%);② Geant4 11.4 运行崩溃(已可在 11.4 编译+运行);③ 缺"涌现 vs 解析"验证门控(已加,在线后端涌现 0.2465 vs 解析 0.2462 = 0.1%)。
+<b>就"Laue 本身物理没有错误"而言:通过。</b>剩下的是几处<b>论文措辞口径</b>(§D)与一个建议做一次的<b>PSF 独立核验</b>(§E),以及用修复后的二进制<b>重生成交叉校验证据</b>(§F)。
+</div>
+
+<h2>A. 论文采用的 Laue 版本:B-FULL(已确定)</h2>
+<table>
+<tr><th>版本</th><th>进程基类</th><th>衍射物理</th><th>EM</th><th>论文角色</th></tr>
+<tr><td><code>laue_multiring_bfull_demo</code></td><td><b><code>G4VDiscreteProcess</code></b>(修复后)</td><td>有限 MFP + 标准 EM 竞争,固定取向涌现聚焦</td><td><b>开</b></td><td><b>✅ 论文目标版本</b></td></tr>
+<tr><td><code>laue_multiring_darwin_guan_demo</code></td><td><code>G4VDiscreteProcess</code></td><td>解析三分支(forced)</td><td>关</td><td>保留为 B-FULL 的验证 oracle</td></tr>
+<tr><td><code>laue_multiring_table_demo</code></td><td><code>G4VDiscreteProcess</code></td><td>读外部效率表</td><td>关</td><td>基准用</td></tr>
+</table>
+<p class="small"><b>为什么 B-FULL 在物理上更合理:</b>它保持标准 EM 开启,晶体内康普顿/光电与衍射<b>竞争</b>,衍射光作为真 secondary 被 track(出晶时还会被 EM 衰减),非衍射的康普顿光子也被 track 到焦面 → 对 TES <b>本底</b>是真实增量。<b>关键认知:</b>解析三分支不是被丢弃的"占位",而是 B-FULL 必须复现的<b>已验证参考解</b>(镶嵌 Laue 的 Darwin–Hamilton 闭式 = CRYSTAL 数值解的解析形式)。修复后已验证 B-FULL 确实复现它(§C3)。</p>
+
+<h2>B. 底层衍射物理逐项复核 <span class="badge b-ok">全部通过</span></h2>
+<p class="small">以下公式/常数 B-FULL 在线后端与解析三分支共用,均经手算或独立源复核。</p>
+<table>
+<tr><th>物理量</th><th>代码</th><th>独立复核</th><th>判定</th></tr>
+<tr><td>消光长度 Λ</td><td>539.79 µm @511keV</td><td>手算 Pendellösung πV·cosθ_B/(r_e·λ·|F₁₁₁|) ≈ 537 µm</td><td><span class="badge b-ok">&lt;1%</span></td></tr>
+<tr><td>线性衰减 μ</td><td>0.432 cm⁻¹ @511keV</td><td>NIST XCOM Ge ≈ 0.434(总衰减,见 §D2)</td><td><span class="badge b-ok">&lt;1%</span></td></tr>
+<tr><td>镶嵌高斯 W(Δθ)</td><td><code>MosaicWeightRadInv</code></td><td>峰值=1/(√2π·σ)、FWHM 处半高 ✓</td><td><span class="badge b-ok">归一正确</span></td></tr>
+<tr><td>三分支 Darwin–Hamilton</td><td>0.5(1−e<sup>−2σt</sup>)·e<sup>−µt/cosθ</sup></td><td>标准镶嵌 Laue 闭式;吸收只计一次</td><td><span class="badge b-ok">正确</span></td></tr>
+<tr><td>Bragg 几何</td><td>r=f·tan(2θ_B) 硬校验</td><td>on-axis 代数验证 Δθ=0 精确自洽</td><td><span class="badge b-ok">正确</span></td></tr>
+<tr><td>50% 效率封顶</td><td>0.5·(…)</td><td>镶嵌晶物理上限(文献);非 bug</td><td><span class="badge b-ok">正确</span></td></tr>
+</table>
+<p class="small"><b>外部锚定(论文该主打这三条):</b>vs Barrière 2009 实测 Cu/Au 效率 &lt;0.9% / 反射率 &lt;1.6%;vs CRYSTAL diff_pat 独立动力学码 Ge(111)@511 峰 0.2575 vs 核 0.2469(~4.5%);vs Kohnle 1998 实测 &lt;1.4%。<b>C++↔Python 5e-11 是循环</b>(同公式同常数),只能写成"跨语言实现回归",不可当独立物理验证。</p>
+
+<h2>C. 本次实施并验证的三项 B-FULL 修复 <span class="badge b-fix">已完成</span></h2>
+<p class="small">修改文件:<code>opticsim/geant4_app/src/laue_multiring_bfull_demo.cc</code>(+ CMake 已含 bfull target)。在 Geant4 11.4 上重建并以 20000 事件/seed 20260601 实测在线 + 外部 XOP-map 两后端。</p>
+
+<div class="card fix">
+<h3>C1. 吸收双重计数 — 已修</h3>
+外部 XOP/CRYSTAL 曲线 reflectivity R 已含吸收;旧代码把它直接喂衍射 MFP,EM 再吸收一遍 → 双计。<b>修法:</b>喂 MFP 前恢复无吸收衍射效率 <code>R₀(Δθ)=R/(1−A)</code>(用曲线自带 absorption 列),EM 只吸收一次。<br>
+<span class="muted">位置:<code>BFullEquivalentDiffractionScale</code>。记录用 p_reflect 仍保留为曲线 R(读表保真审计不变)。</span>
+</div>
+
+<div class="card fix">
+<h3>C2. Geant4 11.4 运行崩溃 — 已修</h3>
+旧 B-FULL 派生 <code>G4VEmProcess</code> 仅挂空 <code>G4VEmModel</code>,11.x EM model manager 拒绝 → <code>em0002 No models found for gamma</code> 崩溃(锁死 G4 10.2.3)。<b>修法:</b>改为普通 <code>G4VDiscreteProcess</code>(重写 <code>GetMeanFreePath</code>+<code>PostStepDoIt</code>,非 forced、EM 仍竞争),删除 no-op model。物理行为不变,只去掉脆性与一个本就只是标签的 EM-category 徽章。<br>
+<span class="muted">实测:在 Geant4 11.4 编译 exit0、20000 事件运行正常退出。</span>
+</div>
+
+<div class="card fix">
+<h3>C3. 缺"涌现 vs 解析"验证门控 — 已加</h3>
+新增 <code>analytic_reference_focal_diffraction_fraction</code>(已验证的镶嵌-Laue 参考)、<code>emergent_focal_diffraction_fraction</code>(蒙卡 EM 竞争实跑)、及残差,写入 <code>summary.json</code> 与 per-ring。这是证明"B-FULL 复现了已验证衍射物理"的直接量。
+</div>
+
+<h4>验证结果(Geant4 11.4,20000 事件)</h4>
+<table>
+<tr><th>指标</th><th>修复前</th><th>修复后</th></tr>
+<tr><td>Geant4 11.4 运行</td><td>崩溃 <code>em0002</code></td><td><span class="badge b-ok">✅ 两后端跑通</span></td></tr>
+<tr><td>在线后端:涌现焦面衍射分数 vs 解析参考</td><td>—</td><td class="num">0.2465 vs 0.2462 = <b>+0.1%</b> ✓</td></tr>
+<tr><td>外部 XOP-map:涌现 vs 解析(CRYSTAL 0.257)</td><td class="num">0.166 vs 0.247 = <b>−33%</b></td><td class="num">0.2488 vs 0.2570 = <b>−3.2%</b> ✓</td></tr>
+<tr><td>两后端是否一致</td><td>不一致(~0.31 vs ~0.17)</td><td class="num">0.2465 vs 0.2488 ≈ <b>一致</b> ✓</td></tr>
+<tr><td>焦斑 d90</td><td>—</td><td class="num">0.340 / 0.335 cm(后端无关,符合预期)</td></tr>
+</table>
+<p class="small">在线 0.1% 不是循环:解析参考是闭式,涌现是 EM 竞争蒙卡实跑,两者机制不同却吻合 → 证明 EM 竞争 MC 正确复现衍射物理。外部 map 残差 −3.2% 来自厚晶点衍射近似 + CRYSTAL/Geant4 的 µ 微差,属正常量级。</p>
+
+<h2>D. 论文措辞口径(物理没错,但别写错)</h2>
+<div class="card warn">
+<h3>D1. <span class="badge b-warn">措辞</span> 现在可以正当地说"与标准 EM 竞争的 Geant4 离散 Laue 过程",但<b>不要</b>称"首创/原生 patch"</h3>
+修复后 B-FULL 是 EM 竞争的真过程,可写"<b>non-forced G4VDiscreteProcess with finite diffraction MFP competing with standard EM</b>"。但 <b>Reiazi et al. 2025 (J. Phys. D 58, <code>G4BraggReflection</code>)</b> 与 <b>Guan 2023</b> 已做 Geant4 内 mosaic+EM 竞争晶体衍射 → <b>必须引用</b>,并把差异化定位成 <b>Laue 透射几何 / 511 keV 软伽马 / 多环整镜涌现聚焦 + 焦平面相空间桥到 TES 探测器仿真</b>(他们只做 Bragg 反射、低能、单晶)。
+</div>
+<div class="card warn">
+<h3>D2. <span class="badge b-warn">口径</span> "absorption" 是总 μ(含康普顿)</h3>
+@511keV μ ~95% 是康普顿。B-FULL 里这些康普顿光子被 track(散到焦面当本底),正是用 B-FULL 的好处。文中描述吸收时写"removed from the focused beam (Compton + photo-absorption)",并说明康普顿光子进入本底通道。
+</div>
+<div class="card warn">
+<h3>D3. <span class="badge b-warn">范围</span> 镶嵌平晶基线,非弯晶镜</h3>
+模型是镶嵌平 tile,效率封顶 50%。若论文目标镜是弯晶(&gt;50% 效率、~1′ PSF),写明"镶嵌平晶基线建模,弯晶为后续",不得声称代表弯晶镜。
+</div>
+<div class="card warn">
+<h3>D4. <span class="badge b-warn">口径</span> A_eff≈0.57 cm² 是 480–550 宽带 demo 总量,非 511 单能</h3>
+每环在其设计能量照明(480/500/<b>511</b>/530/550);511 处有效面积主要来自 ring 2。报告 A_eff 要写清能量与口径,且这是 demo 镜规模。
+</div>
+
+<h2>E. 唯一建议再核一次的物理量:焦斑 d90 <span class="badge b-warn">建议</span></h2>
+<div class="card warn">
+焦斑由对反射平面法向施加整条 mosaic σ 抽样,镜面法向偏 δ→反射偏 2δ。实测 d90≈0.34 cm,量级合理,但因子相对标准镶嵌-Laue PSF(反射束发散 ≈ mosaic FWHM)可能偏宽 ~×2,且与既有 H2(HEART 原生更窄)一致。<b>建议:</b>对同一组 tile 取向用 HEART/McXtrace <b>原生</b>跑一次比 d90。一致则 PSF 可信;明显偏宽则把方向抽样改为"给定 Δθ 条件下抽参与衍射的晶粒取向"。<b>这是唯一仍可能影响 PSF 物理可信度的开放项</b>(不影响衍射效率/A_eff,那块已验证)。
+</div>
+
+<h2>F. 你接下来需要做的(让这版块在论文里闭环)</h2>
+<ul>
+<li><span class="badge b-fix">已替你做</span> 修吸收双计 + 改 <code>G4VDiscreteProcess</code> + 加验证门控,并在 G4 11.4 实测通过。</li>
+<li><span class="badge b-warn">待你做</span> <b>用修复后的二进制重生成交叉校验证据</b>:<code>cross_check_laue</code> 里留存的 bfull 报告是旧(10.2.3、含 bug)二进制跑的;重跑 <code>run_bfull_*_scan.py</code> + <code>build_validation_summary.py</code>,并加一条门控 <code>|emergent − analytic| &lt; 容差</code>(数据已在 summary.json)。</li>
+<li><span class="badge b-warn">待你做</span> 跑<b>能量扫描</b>出 A_eff(E)、<b>离轴扫描</b>出 PSF(E);d90 对 HEART/McXtrace 原生核验一次(§E)。</li>
+<li><span class="badge b-warn">待你做</span> 论文引用 Reiazi 2025 + Guan 2023,按 §D1 定位;验证叙事主打 Barrière/CRYSTAL/Kohnle 三外锚。</li>
+</ul>
+
+<h2>结论清单</h2>
+<ul>
+<li><span class="badge b-ok">物理对</span> 衍射三分支、消光长度、μ、镶嵌分布、Bragg 几何、50% 上限 —— 正确,外部锚定。</li>
+<li><span class="badge b-fix">已修验证</span> 吸收双计(−33%→−3.2%)、G4 11.4 崩溃(已跑通)、验证门控(在线 0.1%、两后端一致)。</li>
+<li><span class="badge b-warn">措辞/口径</span> EM 竞争过程(引 Reiazi/Guan)、absorption=removed-from-beam、镶嵌基线非弯晶、A_eff 宽带 demo 总量。</li>
+<li><span class="badge b-warn">建议核 1 点</span> d90 对原生光追核验。</li>
+<li><span class="badge b-warn">待重生成</span> 用修复二进制重跑交叉校验证据。</li>
+</ul>
+<p>一句话:<b>你选 B-FULL 的物理直觉成立,但旧实现有两个真实漏洞(吸收双计 + 版本崩溃)和一个缺失门控——现已全部修好并在 Geant4 11.4 实测验证 B-FULL 精确复现了已验证的衍射物理(在线 0.1%)。把措辞写准、d90 核一次、用新二进制重生成交叉校验,这个 Laue 版块就站得住,不会因物理错误被审稿人挑。</b></p>
+
+<div class="foot">
+生成:laue_review_20260601(v2,B-FULL 修复版)· 修改 <code>opticsim/geant4_app/src/laue_multiring_bfull_demo.cc</code>:absorption-free MFP 输入 / <code>G4VEmProcess</code>→<code>G4VDiscreteProcess</code> / 新增 analytic-vs-emergent 门控字段。Geant4 11.4 实测构建+运行(在线 0.2465 vs 解析 0.2462;外部 map 0.2488 vs 0.2570)。<br>
+关联记录:<code>cross_check_laue/laue_lens_review_log.md</code> 条目 11。联网核对:Reiazi 2025·Guan 2023·Virgilli 2016·Barrière 2009。
+</div>
+
+</body>
+</html>

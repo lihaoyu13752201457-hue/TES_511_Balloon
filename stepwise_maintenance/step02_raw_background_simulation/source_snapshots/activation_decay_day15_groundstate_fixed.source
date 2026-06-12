@@ -1,0 +1,57 @@
+Version 1
+Geometry outputs/geometry/XZTES_ADR_v4c_mkflange_cm/TibetTES_ADR_v4c_mkflange_cm.geo.setup
+
+PhysicsListHD qgsp-bic-hp
+PhysicsListEM LivermorePol
+PhysicsListRadioactiveDecay true
+DecayMode ActivationDelayedDecay
+StoreSimulationInfo all
+StoreIsotopes true
+DetectorTimeConstant 1e-9
+
+Run DecayRun
+DecayRun.FileName runs/step02_delayed_transport_smoke1k/DelayedDecayRPIPGroundStateFixed
+DecayRun.Triggers 1000
+
+DecayRun.Source S_CsI_Active_Shield_Side00_53128_z005
+DecayRun.Source S_CsI_Active_Shield_Side02_53128_z005
+DecayRun.Source S_CsI_Active_Shield_Side04_53128_z005
+DecayRun.Source S_CsI_Active_Shield_Side07_53128_z005
+DecayRun.Source S_CsI_Active_Shield_Top07_53128_z005
+DecayRun.Source S_CsI_Active_Shield_Bottom03_55134_z000
+DecayRun.Source S_CsI_Active_Shield_Bottom03_55134_z009
+DecayRun.Source S_CsI_Active_Shield_Bottom00_55134_z005
+
+# ===== Sources =====
+S_CsI_Active_Shield_Side00_53128_z005.ParticleType 53128
+S_CsI_Active_Shield_Side00_53128_z005.Beam RadialProfileBeam 0.000000 0.000000 1.042110  0.000000 0.000000 1.000000  /home/ubuntu/codex_tes_511_sim/new_geo_re/runs/step02_decay_source_smoke1k/profiles/CsI_Active_Shield_Side00/ZA53128_exc0/radial_z005.dat
+S_CsI_Active_Shield_Side00_53128_z005.Flux 1.82008795e+01
+
+S_CsI_Active_Shield_Side02_53128_z005.ParticleType 53128
+S_CsI_Active_Shield_Side02_53128_z005.Beam RadialProfileBeam 0.000000 0.000000 -7.867260  0.000000 0.000000 1.000000  /home/ubuntu/codex_tes_511_sim/new_geo_re/runs/step02_decay_source_smoke1k/profiles/CsI_Active_Shield_Side02/ZA53128_exc0/radial_z005.dat
+S_CsI_Active_Shield_Side02_53128_z005.Flux 1.82008795e+01
+
+S_CsI_Active_Shield_Side04_53128_z005.ParticleType 53128
+S_CsI_Active_Shield_Side04_53128_z005.Beam RadialProfileBeam 0.000000 0.000000 -6.034399  0.000000 0.000000 1.000000  /home/ubuntu/codex_tes_511_sim/new_geo_re/runs/step02_decay_source_smoke1k/profiles/CsI_Active_Shield_Side04/ZA53128_exc0/radial_z005.dat
+S_CsI_Active_Shield_Side04_53128_z005.Flux 1.82008795e+01
+
+S_CsI_Active_Shield_Side07_53128_z005.ParticleType 53128
+S_CsI_Active_Shield_Side07_53128_z005.Beam RadialProfileBeam 0.000000 0.000000 -5.543174  0.000000 0.000000 1.000000  /home/ubuntu/codex_tes_511_sim/new_geo_re/runs/step02_decay_source_smoke1k/profiles/CsI_Active_Shield_Side07/ZA53128_exc0/radial_z005.dat
+S_CsI_Active_Shield_Side07_53128_z005.Flux 1.82008795e+01
+
+S_CsI_Active_Shield_Top07_53128_z005.ParticleType 53128
+S_CsI_Active_Shield_Top07_53128_z005.Beam RadialProfileBeam 0.000000 0.000000 15.163480  0.000000 0.000000 1.000000  /home/ubuntu/codex_tes_511_sim/new_geo_re/runs/step02_decay_source_smoke1k/profiles/CsI_Active_Shield_Top07/ZA53128_exc0/radial_z005.dat
+S_CsI_Active_Shield_Top07_53128_z005.Flux 1.82008795e+01
+
+S_CsI_Active_Shield_Bottom03_55134_z000.ParticleType 55134
+S_CsI_Active_Shield_Bottom03_55134_z000.Beam RadialProfileBeam 0.000000 0.000000 -18.027885  0.000000 0.000000 1.000000  /home/ubuntu/codex_tes_511_sim/new_geo_re/runs/step02_decay_source_smoke1k/profiles/CsI_Active_Shield_Bottom03/ZA55134_exc0/radial_z000.dat
+S_CsI_Active_Shield_Bottom03_55134_z000.Flux 2.49177532e-01
+
+S_CsI_Active_Shield_Bottom03_55134_z009.ParticleType 55134
+S_CsI_Active_Shield_Bottom03_55134_z009.Beam RadialProfileBeam 0.000000 0.000000 -14.524095  0.000000 0.000000 1.000000  /home/ubuntu/codex_tes_511_sim/new_geo_re/runs/step02_decay_source_smoke1k/profiles/CsI_Active_Shield_Bottom03/ZA55134_exc0/radial_z009.dat
+S_CsI_Active_Shield_Bottom03_55134_z009.Flux 2.49177532e-01
+
+S_CsI_Active_Shield_Bottom00_55134_z005.ParticleType 55134
+S_CsI_Active_Shield_Bottom00_55134_z005.Beam RadialProfileBeam 0.000000 0.000000 -14.139500  0.000000 0.000000 1.000000  /home/ubuntu/codex_tes_511_sim/new_geo_re/runs/step02_decay_source_smoke1k/profiles/CsI_Active_Shield_Bottom00/ZA55134_exc0/radial_z005.dat
+S_CsI_Active_Shield_Bottom00_55134_z005.Flux 2.49177532e-01
+

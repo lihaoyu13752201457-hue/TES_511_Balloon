@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>B-FULL Laue 光学到 new_geo_re 后端集成审阅报告 2026-06-01</title>
+<style>
+  :root{
+    --bg:#eef2f6; --paper:#fff; --ink:#1f2937; --muted:#5b6778;
+    --line:#d7dde6; --head:#18365f; --blue:#1f6feb;
+    --ok:#187038; --warn:#9a6700; --bad:#b42318; --note:#4b5563;
+    --okbg:#edf8f0; --warnbg:#fff6e6; --badbg:#fff0f0; --code:#f4f6f9;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:-apple-system,"Segoe UI","Noto Sans CJK SC","Microsoft YaHei",Roboto,Helvetica,Arial,sans-serif;
+    line-height:1.62;font-size:15px}
+  .wrap{max-width:1120px;margin:0 auto;padding:26px 20px 72px}
+  header{background:#12233c;color:#edf5ff;border-radius:8px;padding:28px 32px;margin-bottom:18px}
+  h1{font-size:25px;margin:0 0 8px}
+  .sub{color:#cbd8ea;font-size:13px}
+  .meta{margin-top:12px;padding-top:12px;border-top:1px solid rgba(255,255,255,.22);font-size:12px;color:#c5d1e4}
+  .card{background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:18px 22px;margin:14px 0}
+  h2{font-size:20px;color:var(--head);border-bottom:2px solid var(--line);padding-bottom:7px;margin:30px 0 12px}
+  h3{font-size:16px;color:#233b61;margin:18px 0 7px}
+  p{margin:8px 0}
+  ul{margin:7px 0 7px 22px;padding:0}
+  li{margin:4px 0}
+  table{width:100%;border-collapse:collapse;margin:12px 0;font-size:13.5px}
+  th,td{border:1px solid var(--line);padding:8px 10px;vertical-align:top;text-align:left}
+  th{background:#f0f4f9;color:#20385e}
+  tr:nth-child(even) td{background:#fbfcfe}
+  code{background:var(--code);border:1px solid #e6e9ef;border-radius:5px;padding:1px 5px;
+    font-family:"SFMono-Regular",Consolas,"Liberation Mono",monospace;font-size:.88em;color:#9b2463}
+  .toc{columns:2;column-gap:36px}
+  .toc a{display:block;color:var(--blue);text-decoration:none;margin:3px 0}
+  .toc a:hover{text-decoration:underline}
+  .badge{display:inline-block;border-radius:999px;padding:2px 9px;font-size:11px;font-weight:700;margin-right:6px}
+  .ok{background:var(--okbg);color:var(--ok);border:1px solid #8fd19e}
+  .warn{background:var(--warnbg);color:var(--warn);border:1px solid #e5bd61}
+  .bad{background:var(--badbg);color:var(--bad);border:1px solid #e6a19b}
+  .note{background:#eef2f7;color:var(--note);border:1px solid #c7d0dc}
+  .callout{border-left:5px solid var(--blue);background:#eef5ff;border-radius:0 8px 8px 0;padding:12px 16px;margin:12px 0}
+  .callout.warn{border-left-color:var(--warn);background:var(--warnbg)}
+  .callout.bad{border-left-color:var(--bad);background:var(--badbg)}
+  .kpi{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px;margin:12px 0}
+  .kpi div{background:#f8fafc;border:1px solid var(--line);border-radius:8px;padding:11px 12px}
+  .kpi strong{font-size:20px;color:var(--head);display:block}
+  .small{font-size:12.5px;color:var(--muted)}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <h1>B-FULL Laue 光学到 new_geo_re 后端集成审阅报告</h1>
+  <div class="sub">11 小节版 · 2026-06-01 · 依据 <code>OPTICS_BFULL_BACKEND_INTEGRATION_20260601.md</code>、0601 Laue HTML、当前本地验证产物与公开物理资料</div>
+  <div class="meta">
+    项目：<code>/home/ubuntu/codex_tes_511_sim/new_geo_re</code><br>
+    本报告文件：<code>stepwise_maintenance/OPTICS_BFULL_BACKEND_INTEGRATION_20260601_REPORT.html</code><br>
+    当前验证：<code>python3 code/tools/validate_new_geo_re.py</code> = PASS
+  </div>
+</header>
+
+<div class="card">
+  <h3>目录：11 小节</h3>
+  <div class="toc">
+    <a href="#s01">01. 总体结论</a>
+    <a href="#s02">02. 集成 brief 要求逐项映射</a>
+    <a href="#s03">03. new_geo_re 后端几何约束</a>
+    <a href="#s04">04. B-FULL 光学模型与材料选择</a>
+    <a href="#s05">05. 当前已接入的真实证据</a>
+    <a href="#s06">06. focal_crossings vs phase_space 不变量</a>
+    <a href="#s07">07. A_eff 归一化与五能梳风险</a>
+    <a href="#s08">08. Step07/Step08 后端状态</a>
+    <a href="#s09">09. 光学立体角、质子/中子与活化</a>
+    <a href="#s10">10. 验证门、公开依据与可信度</a>
+    <a href="#s11">11. 下一步执行清单</a>
+  </div>
+</div>
+
+<section id="s01">
+<h2>01. 总体结论</h2>
+<div class="card">
+  <p><span class="badge ok">结论</span>B-FULL Laue 前端作为 <strong>聚焦 PSF 相空间源生成器</strong>已经适合继续接入 <code>new_geo_re</code> 后端；当前 Step04/Step09 已经完成 tracked diffracted focal crossings 的 EventList 桥接和 1000-event Cosima smoke。</p>
+  <p><span class="badge warn">边界</span>它还没有完成 <strong>主链 Step07 科学源全量替换</strong>：真实目标镜 A_eff(E) 权威、路线 A/B 选择、全量 detector-coupled Cosima 输运、Step05 后处理和 Step08 最终 Z 尚未闭合。</p>
+  <p><span class="badge ok">本轮推进</span>我把 Step08 空间 proxy 修正为 511 线只使用 511-keV EventList 子集，不再把 480/500/530/550 keV 梳线误当 511 信号；并同步 closure/docs，生成本 11 小节报告。</p>
+  <div class="kpi">
+    <div><strong>4968</strong>tracked diffracted within-Be EventList rows</div>
+    <div><strong>995</strong>511-keV line subset rows</div>
+    <div><strong>0.1718 cm</strong>当前 511-only best cut 半径</div>
+    <div><strong>22.10</strong>L1 spatial-line proxy Z20d</div>
+  </div>
+</div>
+</section>
+
+<section id="s02">
+<h2>02. 集成 brief 要求逐项映射</h2>
+<div class="card">
+  <table>
+    <tr><th>brief 要求</th><th>当前证据</th><th>状态</th></tr>
+    <tr><td>光学输出必须来自真实聚焦 PSF 相空间</td><td><code>step09_optics_bridge_summary.json</code> 指向 <code>focal_crossings.csv</code>，不是解析投影</td><td><span class="badge ok">已完成 L1</span></td></tr>
+    <tr><td>焦斑不能大于 Be 窗</td><td>Be 半径 <code>1.898 cm</code>；within-Be EventList 最大注入半径 <code>1.4291 cm</code></td><td><span class="badge ok">通过</span></td></tr>
+    <tr><td>禁用 <code>phase_space.csv</code> 作为科学交接源</td><td>Step09 代码只选择 <code>source_tag=laue_bfull_diffracted</code> 的 tracked focal crossings</td><td><span class="badge ok">通过</span></td></tr>
+    <tr><td>511 线不要把五能梳全当 511 信号</td><td>空间 proxy 现在只用 <code>995</code> 条 511-keV 子集；五能计数为 480:1047, 500:1023, 511:995, 530:960, 550:943</td><td><span class="badge ok">本轮修正</span></td></tr>
+    <tr><td>Step07 主链科学源改为聚焦 EventList</td><td>Step07 仍是 rate-folding 与 HomogeneousBeam source-card 候选；缺 A_eff(E) authority</td><td><span class="badge warn">未完成</span></td></tr>
+    <tr><td>全量 Cosima detector-coupled 输运</td><td>当前只有 1000-event smoke，未跑 A_eff 归一的全量科学输运</td><td><span class="badge warn">未完成</span></td></tr>
+    <tr><td>0531 closure 的 P1 focused spot 关闭</td><td>closure 已更新到 995-row 511-only proxy，但仍标 PARTIAL_L1</td><td><span class="badge warn">不能关闭</span></td></tr>
+  </table>
+</div>
+</section>
+
+<section id="s03">
+<h2>03. new_geo_re 后端几何约束</h2>
+<div class="card">
+  <p>后端权威几何仍是 <code>outputs/geometry/XZTES_ADR_v4c_mkflange_cm/TibetTES_ADR_v4c_mkflange_cm.geo.setup</code> 与同目录 <code>bounds.json</code>。</p>
+  <ul>
+    <li>科学注入面：<code>science_beam_z_cm = 16.051</code>。</li>
+    <li>Be 窗半径：<code>1.898 cm</code>；厚度：<code>0.015 cm</code>。</li>
+    <li>W aperture stop 与 Be 入口是当前焦斑是否可进入 TES 后端的硬门。</li>
+    <li>单位约定：opticsim 的 <code>x_mm/y_mm</code> 转 cm 乘 <code>0.1</code>；Step09 反转 <code>uz</code> 让光子射向探测器。</li>
+  </ul>
+  <div class="callout">当前 B-FULL tracked within-Be EventList 最大注入半径 <code>1.4291 cm</code>，没有超过 Be 半径；常规 PSF 核心更小，511-only <code>r95=0.2052 cm</code>。</div>
+</div>
+</section>
+
+<section id="s04">
+<h2>04. B-FULL 光学模型与材料选择</h2>
+<div class="card">
+  <p>采用的前端是 B-FULL Ge(111) 镶嵌平晶 Laue 透射几何基线：<code>G4VDiscreteProcess</code>、有限衍射 MFP、与标准 Geant4 EM 竞争、外部 per-ring XOP/CRYSTAL rocking-curve map。</p>
+  <table>
+    <tr><th>参数</th><th>当前值</th></tr>
+    <tr><td>晶体材料</td><td>Ge(111)</td></tr>
+    <tr><td>能量环</td><td>480 / 500 / 511 / 530 / 550 keV</td></tr>
+    <tr><td>焦距</td><td>8300 mm</td></tr>
+    <tr><td>环半径</td><td>57.289-65.644 mm</td></tr>
+    <tr><td>tile</td><td>每环 72 tiles，tile size 0.8 mm</td></tr>
+    <tr><td>厚度</td><td>9.45-11.18 mm</td></tr>
+  </table>
+  <p>材料选择上，Ge 是 480-550 keV Laue 透射镜的合理基线：晶格常数、Ge(111) d-spacing、511 keV 附近衰减与镶嵌效率已有本地 B-FULL/XOP/CRYSTAL 交叉验证。Be 窗仅属于后端入口，不是前端晶体材料。</p>
+</div>
+</section>
+
+<section id="s05">
+<h2>05. 当前已接入的真实证据</h2>
+<div class="card">
+  <table>
+    <tr><th>证据</th><th>数值/状态</th><th>文件</th></tr>
+    <tr><td>Step04 audit</td><td><code>PASS_BFULL_XOPMAP_EVENTLIST_READY</code></td><td><code>stepwise_maintenance/step04_opticsim/outputs/step04_opticsim_audit.json</code></td></tr>
+    <tr><td>XOP-map B-FULL</td><td>20k primaries；emergent focal diffraction <code>0.24885</code> vs analytic <code>0.25704</code></td><td><code>opticsim_laue_bfull_xopmap_20k/summary.json</code></td></tr>
+    <tr><td>tracked diffracted focal rows</td><td><code>4977</code> total；<code>4968</code> within Be；<code>9</code> outside Be</td><td><code>focal_crossings.csv</code></td></tr>
+    <tr><td>Step09 EventList</td><td><code>4968</code> rows；energy <code>480-550 keV</code>；max radius <code>1.4291 cm</code></td><td><code>step09_optics_bridge_summary.json</code></td></tr>
+    <tr><td>Cosima smoke</td><td><code>1000</code> stored events；observation time <code>1.059e-06 s</code></td><td><code>runs/step09_optics_bridge/...smoke1000.sim.gz</code></td></tr>
+    <tr><td>root validator</td><td><code>PASS</code></td><td><code>VALIDATION.md</code></td></tr>
+  </table>
+</div>
+</section>
+
+<section id="s06">
+<h2>06. focal_crossings vs phase_space 不变量</h2>
+<div class="card">
+  <p><span class="badge bad">禁止</span><code>phase_space.csv</code> 不能作为科学交接源。它是解析投影，一行对应一次衍射相互作用，未携带衍射光子出晶后的 EM 吸收/康普顿散射损失，因此会高估聚焦通量。</p>
+  <p><span class="badge ok">使用</span>当前 Step09 使用 <code>focal_crossings.csv</code> 中 <code>source_tag=laue_bfull_diffracted</code> 的 tracked gamma crossing，并过滤到 Be 半径内。这是物理上正确的 detector handoff。</p>
+  <table>
+    <tr><th>来源</th><th>行数</th><th>用途</th></tr>
+    <tr><td><code>phase_space.csv</code></td><td><code>6358</code></td><td>只作为可视化/解析投影参考</td></tr>
+    <tr><td>tracked diffracted focal crossings</td><td><code>4977</code></td><td>真实衍射光子穿越焦平面</td></tr>
+    <tr><td>tracked within-Be EventList</td><td><code>4968</code></td><td>Step09 MEGAlib EventList 源</td></tr>
+    <tr><td>511-keV line subset</td><td><code>995</code></td><td>511 线空间 proxy signal-retention</td></tr>
+  </table>
+</div>
+</section>
+
+<section id="s07">
+<h2>07. A_eff 归一化与五能梳风险</h2>
+<div class="card">
+  <p>集成的最大风险不是 PSF 形状，而是绝对有效面积归一化。当前 Step07 主链沿用 <code>A_opt=50.89 cm2</code> 的项目标量；B-FULL demo 五环玩具镜的绝对 A_eff 约 <code>0.57 cm2</code> 量级，两者不能混用。</p>
+  <div class="callout warn">正确策略是拆开两件事：PSF 形状来自 B-FULL EventList；绝对计数来自项目采纳的目标镜 <code>A_eff(E)</code> 权威。没有 <code>optics_aeff_authority.json</code> 前，不应把 Step07 主链科学源替换成 demo EventList 并声称最终灵敏度。</div>
+  <table>
+    <tr><th>路线</th><th>判断</th><th>本轮建议</th></tr>
+    <tr><td>路线 A：真实目标镜几何重跑 B-FULL</td><td>shape 与 A_eff 同源，论文最干净</td><td><span class="badge ok">推荐最终路线</span></td></tr>
+    <tr><td>路线 B：demo EventList 只作 PSF 模板，A_eff 另给</td><td>可快速闭合 detector-coupled 研究，但必须明确是模板化</td><td><span class="badge warn">可作中间层</span></td></tr>
+  </table>
+  <p>对 511 线，必须只使用 511-keV ring/subset；对 480-550 宽带，才可以使用五能梳的全 EventList。</p>
+</div>
+</section>
+
+<section id="s08">
+<h2>08. Step07/Step08 后端状态</h2>
+<div class="card">
+  <p>Step07 现在仍是 <code>L1_SOURCE_CASE_RATE_FOLDING</code>，并未进行 detector-coupled focused source 的全量科学输运。Step08 主计数显著性仍来自 Step07/Step06 rate folding。</p>
+  <p>本轮修正后的 Step08 空间 sidecar 是更干净的 L1 proxy：</p>
+  <ul>
+    <li>背景：当前 day-15 final-selected prompt+delayed TES centroid catalog。</li>
+    <li>信号保留：只用 Step09 EventList 中 511-keV 子集的半径分布。</li>
+    <li>无空间 511±3σ：background <code>0.184347 cps</code>，<code>Z20d=7.3093</code>。</li>
+    <li>best robust cut：<code>spot_r90=0.1718 cm</code>，signal fraction <code>0.8995</code>，background <code>0.01632 cps</code>，<code>Z20d=22.10</code>。</li>
+  </ul>
+  <div class="callout warn">该 Z 仍是 proxy，不是 detector-coupled PSF transport 结果；不能把 <code>P1_FOCUSED_SPOT_SPATIAL_PROXY</code> 标 CLOSED。</div>
+</div>
+</section>
+
+<section id="s09">
+<h2>09. 光学立体角、质子/中子与活化</h2>
+<div class="card">
+  <p>用户提出的判断是对的：前端光学占用一部分立体角后，质子/中子穿过透镜材料会产生次级与活化，最终影响后端本底。但这件事不能通过简单把 n/p 事件叠加到全天 far-field 背景上解决。</p>
+  <ul>
+    <li>当前 far-field 背景已经覆盖探测器全天 4π 入射。</li>
+    <li>透镜的新增净效应是 <strong>透镜材料自身</strong>引入的散射、次级、活化与遮挡/准直，而不是重复计一块天空立体角。</li>
+    <li>因此下一轮全链背景必须先把 Ge tiles、支撑结构、框架、线缆/对准架等透镜质量放入几何，再重跑 prompt、buildup activation、delayed transport。</li>
+  </ul>
+  <p>这与本轮工作解耦：本轮只闭合光学聚焦信号侧的 PSF/EventList handoff 与报告。</p>
+</div>
+</section>
+
+<section id="s10">
+<h2>10. 验证门、公开依据与可信度</h2>
+<div class="card">
+  <p>当前高置信度来自三类证据：本地可重复验证、外部光学交叉验证、公开物理资料。</p>
+  <table>
+    <tr><th>类别</th><th>依据</th></tr>
+    <tr><td>本地验证</td><td><code>validate_new_geo_re.py</code> PASS；Step04 audit PASS；Step09 smoke transported；closure matrix PASS</td></tr>
+    <tr><td>光学交叉验证</td><td>0601 Laue HTML：B-FULL 在线后端 emergent vs analytic 约 0.1%；XOP-map residual 约 -3.2%</td></tr>
+    <tr><td>公开物理资料</td><td>NIST XCOM 支持 Ge/Be 511 keV 衰减量级；Geant4 文档支持离散过程与 EM 竞争建模；Reiazi 2025/Guan 2023 说明 Geant4 晶体衍射已有相关工作，本文不应声称 Geant4 原生 patch</td></tr>
+  </table>
+  <div class="callout">措辞门：B-FULL 应写成“镶嵌平晶基线、Laue 透射几何、与标准 EM 竞争的 <code>G4VDiscreteProcess</code>”。不要写成弯晶镜，不要写成 Geant4 toolkit patch，不要把 C++↔Python 同公式回归当外部物理验证。</div>
+</div>
+</section>
+
+<section id="s11">
+<h2>11. 下一步执行清单</h2>
+<div class="card">
+  <ol>
+    <li>确定路线 A 或 B。若路线 A，提供真实目标镜环配置/口径/A_eff；若路线 B，写入 <code>optics_aeff_authority.json</code> 明确 A_eff(E) 来源。</li>
+    <li>若路线 A，使用真实镜配置重跑 B-FULL XOP-map，重新生成 <code>focal_crossings.csv</code> 与 Step09 EventList。</li>
+    <li>把 Step07 主链科学源从 HomogeneousBeam 候选改为 B-FULL focused EventList 源，绝对触发数由 <code>Flux × A_eff(E) × T_obs</code> 决定。</li>
+    <li>跑非 smoke 全量 Cosima detector transport，并复用 Step05 veto/time-axis 后处理得到真实 detector-coupled focused response。</li>
+    <li>Step08 使用 detector-coupled 聚焦响应重算显著性；届时才能考虑把 0531 closure 的 <code>P1_FOCUSED_SPOT_SPATIAL_PROXY</code> 标 CLOSED。</li>
+    <li>另起背景链：加入透镜质量几何，重跑 prompt/proton/neutron、buildup activation、delayed source/transport、day-15 merge/veto、Step06/07/08。</li>
+    <li>论文输出前补 A_eff(E)、PSF(E)、离轴响应、装调/镶嵌误差扫描，并保持 NIST/Geant4/Reiazi/Guan 等公开引用口径。</li>
+  </ol>
+  <p><span class="badge ok">本轮完成项</span>本报告已给出 11 小节审阅；Step08 511-only spatial proxy 与 closure/docs 已同步；项目可进入 git 保存。</p>
+</div>
+</section>
+
+<div class="card small">
+  生成时间：2026-06-01。关键命令：<code>python3 stepwise_maintenance/step08_significance/code/build_spatial_line_proxy.py</code>、<code>python3 code/tools/build_review_20260531_closure.py</code>、<code>python3 code/tools/validate_new_geo_re.py</code>。
+</div>
+
+</div>
+</body>
+</html>

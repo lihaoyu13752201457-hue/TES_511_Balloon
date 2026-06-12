@@ -1,0 +1,20 @@
+# NEW_GEO_RE ADR v4c cm geometry smoke test: 1000 monoenergetic 511 keV photons.
+
+Version 1
+Geometry outputs/geometry/XZTES_ADR_v4c_mkflange_cm/TibetTES_ADR_v4c_mkflange_cm.geo.setup
+PhysicsListEM LivermorePol
+PhysicsListHD qgsp-bic-hp
+StoreSimulationInfo all
+DiscretizeHits true
+DetectorTimeConstant 1e-9
+Seed 5113026
+
+Run Science511ADRSmoke
+Science511ADRSmoke.FileName runs/science_511_onaxis_source/Science_511_onaxis_ADR_cmfix_smoke1k
+Science511ADRSmoke.Triggers 1000
+Science511ADRSmoke.Source Science511_OnAxis
+
+Science511_OnAxis.ParticleType 1
+Science511_OnAxis.Beam HomogeneousBeam 0.0 0.0 16.051 0.0 0.0 -1.0 1.8
+Science511_OnAxis.Spectrum Mono 511.000000
+Science511_OnAxis.Flux 1.000000000000e+00
