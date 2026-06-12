@@ -150,6 +150,14 @@ Current v3p5 center-finger DR branch checkpoint completed 2026-06-12:
   `Z20d=5.70221`, `T3=5.46687 day`, and 20-day 3-sigma flux
   `5.26111e-5 ph cm-2 s-1`. The 1 Ms comparison gives v3p5 W2
   `F_3sigma(1 Ms)=6.82301e-5 ph cm-2 s-1`.
+- Full-stat v2 focused-spot W2 spatial sidecar:
+  `stepwise_maintenance/step08_significance/outputs_v3p5_centerfinger_fullstat_v2_spatial/v3p5_spatial_line_proxy.md`.
+  Detector-coupled TES centroids are measured in the v3p5 side-window local
+  frame, not around the global origin. `spot_r90=1.05164 cm` keeps `0.9000`
+  of the focused W2 signal, reduces background to `0.0232510 cps`, and gives
+  time-dependent `Z20d=8.17566`, `T3=2.23643 day`, and 20-day 3-sigma flux
+  `3.66943e-5 ph cm-2 s-1`. This is a post-processing spatial sidecar; no
+  profile-likelihood gain is claimed.
 - Full-stat v2 W2 background source breakdown:
   `stepwise_maintenance/step08_significance/outputs_v3p5_centerfinger_fullstat_v2/w2_background_source_breakdown/`.
   The selected W2 background is dominated by prompt `eplus`: `80` events,
@@ -908,6 +916,9 @@ authority until the named modeling and rerun work is done.
   Step05 prompt override missing the non-gamma multi-rep exposure normalization.
   Current fullstat_v2 W2 authority is `0.0729576 cps`, `Z20d=5.70221`,
   `F_3sigma(20d)=5.26111e-5`, and `F_3sigma(1Ms)=6.82301e-5`.
+- Do not compute v3p5 side-entry focused-spot radii around the global origin.
+  The correct sidecar uses the local side-window frame and gives
+  `spot_r90=1.05164 cm`, not the invalid global-origin `~6 cm` scale.
 - Do not quote historical CeBr3, old homogeneous-beam, or broad-window-only
   numbers as the current focused Route-A authority.
 - Do not use broad `480-550 keV` day-15 final rates as W2 or spot-cut results.

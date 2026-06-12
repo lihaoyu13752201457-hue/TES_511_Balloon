@@ -7,10 +7,12 @@ against the local `TES_511_Balloon` checkout.
 
 ## Status
 
-`PASS_R2_P0_V3P5_FULLSTAT_REPAIR`
+`PASS_R2_V3P5_FULLSTAT_REPAIR_AND_SPATIAL_SIDECAR`
 
 The new R2 P0 was fixed and rerun through the full rate-level chain:
 Step05 -> Step06 -> Step07 -> Step08 -> 1 Ms comparison -> W2 closure.
+The R2 high-value `spot_r90` analysis upgrade was also migrated as a v3p5
+fullstat detector-coupled sidecar.
 
 ## Fixed Items
 
@@ -35,6 +37,12 @@ Step05 -> Step06 -> Step07 -> Step08 -> 1 Ms comparison -> W2 closure.
 - Docs now state that v3p5 science normalization inherits scalar mainline
   `T_atm=0.739042`; the absolute 45 deg side-entry atmospheric line of sight
   has not been recomputed.
+- The detector-coupled focus response builder now supports the v3p5 fullstat
+  profile and measures side-entry spatial radii in the local side-window frame,
+  not around the global origin.
+- v3p5 fullstat `spot_r90` W2 spatial sidecar was built and folded over the
+  Step06 time axis: `Z20d=8.175664736254516`, 20-day 3-sigma flux
+  `3.669426397460591e-05 ph cm^-2 s^-1`.
 - The root CubeSat Compton-telescope draft was moved to `old_md/templates/`.
 - Git was initialized and the first controlled commit was prepared with large
   run products ignored.
@@ -51,6 +59,10 @@ Step05 -> Step06 -> Step07 -> Step08 -> 1 Ms comparison -> W2 closure.
 | Step08 W2 20-day 3-sigma flux | `5.261114904156606e-05 ph cm^-2 s^-1` |
 | 1 Ms v3p5 W2 3-sigma flux | `6.823006741638457e-05 ph cm^-2 s^-1` |
 | W2 leading background component | prompt `eplus`, `80` events, `0.0543377 cps`, `74.5%` |
+| Spatial sidecar `spot_r90` radius | `1.0516422148529696 cm` |
+| Spatial sidecar `spot_r90` background | `0.023251049574647638 cps` |
+| Spatial sidecar `spot_r90` `Z20d` | `8.175664736254516` |
+| Spatial sidecar `spot_r90` 20-day 3-sigma flux | `3.669426397460591e-05 ph cm^-2 s^-1` |
 
 Do not quote the superseded R2-bad fullstat values:
 `0.486136 cps`, `Z20d=2.20208`, `1.36235e-4`, `1.76837e-4`, or `89.3% eplus`.
@@ -70,6 +82,10 @@ They remain only in the `Project_Memory` misquote guardrail.
   `outputs/reports/v3p5_fullstat_performance_w2_closure_20260612/v3p5_fullstat_performance_w2_closure_report.md`
 - Narrow-line comparison:
   `outputs/reports/compare_511_narrow_1Ms_20260612/compare_511_narrow_1Ms.md`
+- v3p5 detector-coupled focus response:
+  `stepwise_maintenance/step09_optics_bridge/outputs_f10m_a1_v3p5/detector_coupled_focus_response.json`
+- v3p5 fullstat spatial sidecar:
+  `stepwise_maintenance/step08_significance/outputs_v3p5_centerfinger_fullstat_v2_spatial/v3p5_spatial_line_proxy.md`
 - v3p5 R2 validator:
   `code/tools/validate_v3p5_fullstat_r2.py`
 
@@ -85,6 +101,8 @@ python3 stepwise_maintenance/step08_significance/code/build_performance_curve_co
 python3 code/tools/build_compare_511_narrow_1Ms.py
 python3 code/tools/build_v3p5_fullstat_performance_w2_closure_report.py
 python3 code/tools/backfill_v3p5_decay_source_audits.py
+python3 stepwise_maintenance/step09_optics_bridge/code/build_detector_coupled_focus_response.py --profile v3p5_fullstat_v2
+python3 stepwise_maintenance/step08_significance/code/build_v3p5_spatial_line_proxy.py
 python3 code/tools/validate_v3p5_fullstat_r2.py
 ```
 
@@ -93,7 +111,8 @@ python3 code/tools/validate_v3p5_fullstat_r2.py
 - `python3 code/tools/validate_v3p5_fullstat_r2.py`:
   `PASS_V3P5_FULLSTAT_R2_VALIDATION`, `problems=[]`.
 - `python3 -m py_compile` passed for the changed Step05, Step06, Step08,
-  compare, backfill, source-builder, and validator scripts.
+  compare, backfill, source-builder, detector-response, spatial-sidecar, and
+  validator scripts.
 - Manual multi-TT guard smoke test passed for both
   `makedecaysourcewithplot_rpip.py` and `build_fixed_delay_source.py`: two
   files with three TT lines produced
@@ -102,12 +121,15 @@ python3 code/tools/validate_v3p5_fullstat_r2.py
   authority products.
 - R2-bad fullstat values are absent from current authority outputs; they remain
   only in the explicit `What Not To Misquote` guardrail.
+- v3p5 spatial sidecar is included in `validate_v3p5_fullstat_r2.py`; the
+  validator checks the local side-entry spatial frame, `spot_r90` radius,
+  background, time-dependent `Z20d`, and 20-day flux.
 
 ## Remaining Boundary
 
-- `spot_r90` has not yet been migrated to v3p5 fullstat. R2 identifies it as
-  the next high-value analysis upgrade because prompt `eplus` is still the
-  leading W2 background component.
+- `spot_r90` is now migrated as a v3p5 fullstat detector-coupled sidecar. It
+  is not yet a profile-likelihood analysis and does not replace the current
+  hard-window W2 authority.
 - Exact-position delayed-source sampling is still pending; current v3p5 delayed
   source uses legacy axisymmetric `RadialProfileBeam` compression.
 - The old broad `validate_new_geo_re.py` remains a legacy validator. The new

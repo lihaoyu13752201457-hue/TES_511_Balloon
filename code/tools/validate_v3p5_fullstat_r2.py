@@ -16,6 +16,8 @@ STEP08 = ROOT / "stepwise_maintenance/step08_significance/outputs_v3p5_centerfin
 PERF = ROOT / "stepwise_maintenance/step08_significance/outputs/performance_curve_comparison_1Ms"
 COMPARE = ROOT / "outputs/reports/compare_511_narrow_1Ms_20260612"
 CLOSURE = ROOT / "outputs/reports/v3p5_fullstat_performance_w2_closure_20260612"
+SPATIAL = ROOT / "stepwise_maintenance/step08_significance/outputs_v3p5_centerfinger_fullstat_v2_spatial"
+DETECTOR_RESPONSE = ROOT / "stepwise_maintenance/step09_optics_bridge/outputs_f10m_a1_v3p5/detector_coupled_focus_response.json"
 DECAY_AUDITS = [
     ROOT / "runs/step02_decay_source_v3p5_centerfinger_1of10/normalization_audit_day15.json",
     ROOT / "runs/step02_delay_fix_v3p5_centerfinger_1of10/normalization_audit_groundstate_fix.json",
@@ -103,6 +105,20 @@ def validate_compare(problems: list[str]) -> None:
     close(float(by_case["TES_511_Balloon_v3p5_fullstat_W2_current"]["flux_3sigma_1Ms_ph_cm2_s"]), 6.823006741638457e-05, 1.0e-18, "compare current v3p5 flux", problems)
 
 
+def validate_spatial_sidecar(problems: list[str]) -> None:
+    spatial = load_json(SPATIAL / "v3p5_spatial_line_proxy_summary.json")
+    detector = load_json(DETECTOR_RESPONSE)
+    checks = spatial["checks"]
+    frame = detector["inputs"]["spatial_frame"]
+    require(spatial.get("status") == "PASS_V3P5_FULLSTAT_SPATIAL_LINE_PROXY", "bad v3p5 spatial sidecar status", problems)
+    require(frame.get("axis_policy") == "v3p5_side_entry_tilt45", "detector response spatial frame is not v3p5 side-entry", problems)
+    close(float(checks["signal_radius_r90_cm"]), 1.0516422148529696, 1.0e-15, "spatial spot_r90 radius", problems)
+    close(float(checks["spot_r90_background_cps"]), 0.023251049574647638, 1.0e-15, "spatial spot_r90 background", problems)
+    close(float(checks["spot_r90_Z20d_time_dependent"]), 8.175664736254516, 1.0e-15, "spatial spot_r90 Z20d time", problems)
+    close(float(checks["spot_r90_flux_3sigma_20d_time_dependent_ph_cm2_s"]), 3.669426397460591e-05, 1.0e-18, "spatial spot_r90 flux20", problems)
+    require(float(checks["signal_radius_r90_cm"]) < float(detector["inputs"]["spatial_frame"].get("be_radius_cm", 1.898)) if "be_radius_cm" in detector["inputs"]["spatial_frame"] else True, "spatial radius exceeds Be radius", problems)
+
+
 def validate_decay_audits(problems: list[str]) -> None:
     for path in DECAY_AUDITS:
         data = load_json(path)
@@ -140,6 +156,7 @@ def main() -> int:
     validate_headlines(problems)
     validate_labels(problems)
     validate_compare(problems)
+    validate_spatial_sidecar(problems)
     validate_decay_audits(problems)
     validate_bad_values(problems)
     payload = {

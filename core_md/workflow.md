@@ -139,13 +139,20 @@ python3 stepwise_maintenance/step07_source_cases/code/build_v3p5_centerfinger_st
 python3 stepwise_maintenance/step08_significance/code/build_v3p5_centerfinger_step08_time_dependent.py --label fullstat_v2
 python3 stepwise_maintenance/step08_significance/code/build_performance_curve_comparison_1Ms.py --v3p5-label fullstat_v2
 python3 stepwise_maintenance/step08_significance/code/build_v3p5_w2_background_source_breakdown.py --label fullstat_v2
+python3 stepwise_maintenance/step09_optics_bridge/code/build_detector_coupled_focus_response.py --profile v3p5_fullstat_v2
+python3 stepwise_maintenance/step08_significance/code/build_v3p5_spatial_line_proxy.py
 python3 code/tools/build_v3p5_fullstat_performance_w2_closure_report.py
 ```
 
 Known limitation: delayed-source generation still uses axisymmetric
 `RadialProfileBeam` compression. The v3p5 full-stat v2 mission-axis
 significance is a rate-level closure, not a profile-likelihood or final
-paper-facing production statistic. Exact-position delayed-source sampling and
+paper-facing production statistic. The focused `spot_r90` W2 spatial sidecar
+is now available at
+`stepwise_maintenance/step08_significance/outputs_v3p5_centerfinger_fullstat_v2_spatial/v3p5_spatial_line_proxy.md`
+(`Z20d=8.17566`, 20-day 3-sigma flux `3.66943e-5 ph cm-2 s-1`), but it is
+still a detector-coupled counting sidecar and does not claim a profile
+likelihood gain. Exact-position delayed-source sampling and
 selection-consistent spatial/profile likelihood remain the next confidence
 upgrades before paper-facing v3p5 numbers.
 

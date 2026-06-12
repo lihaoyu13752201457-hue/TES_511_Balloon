@@ -11,6 +11,10 @@ This is the current v3p5 center-finger rate-level authority. It supersedes the
 rate-level closure rather than a profile-likelihood or final paper-facing
 spatial analysis.
 
+The v3p5 full-stat focused-spot W2 spatial sidecar is now available, but it is
+still a detector-coupled counting sidecar rather than a spatial/profile
+likelihood result.
+
 The old `1of10` name is a compatibility label: gamma prompt exposure is about
 `1/10`, non-gamma prompt exposure is about `1/80`, and total generated particle
 count is about `1/21.2`. Treat that branch as low-stat closure only.
@@ -35,6 +39,7 @@ Authority:
   `stepwise_maintenance/step08_significance/outputs_v3p5_centerfinger_fullstat_v2/`
 - R2 repaired sidecars:
   `outputs/reports/compare_511_narrow_1Ms_20260612/compare_511_narrow_1Ms.md`,
+  `stepwise_maintenance/step08_significance/outputs_v3p5_centerfinger_fullstat_v2_spatial/v3p5_spatial_line_proxy.md`,
   `runs/step02_decay_source_v3p5_centerfinger_fullstat_v2/normalization_audit_day15.json`,
   and
   `runs/step02_delay_fix_v3p5_centerfinger_fullstat_v2/normalization_audit_groundstate_fix.json`
@@ -48,6 +53,10 @@ Headline full-stat v2 result:
 - Step08 W2 time-dependent `Z20d=5.70221`, `T3=5.46687 day`, 20-day
   3-sigma flux `5.26111e-5 ph cm^-2 s^-1`.
 - 1 Ms v3p5 W2 3-sigma flux: `6.82301e-5 ph cm^-2 s^-1`.
+- v3p5 full-stat `spot_r90` sidecar: local side-window radius
+  `1.05164 cm`, background `0.0232510 cps`, time-dependent `Z20d=8.17566`,
+  `T3=2.23643 day`, and 20-day 3-sigma flux
+  `3.66943e-5 ph cm^-2 s^-1`.
 - W2 background source driver: prompt `eplus` is still the largest component
   (`80` events, `0.0543377 cps`, `74.5%` of final W2 background); delayed
   activation is `0.0138749 cps` total and is led by `Cu64` within the delayed

@@ -33,6 +33,8 @@ they are explicitly listed in this v3p5 authority block.
 - Unified 1/10 transport closure report: `outputs/reports/v3p5_centerfinger_1of10_closure/v3p5_centerfinger_1of10_closure_report.md`
 - Full-stat v2 performance/W2 closure report: `outputs/reports/v3p5_fullstat_performance_w2_closure_20260612/v3p5_fullstat_performance_w2_closure_report.md`
 - Full-stat v2 Step05 prompt normalization audit: `stepwise_maintenance/step05_veto_time_axis/outputs_v3p5_centerfinger_fullstat_v2_l1/prompt_normalization_audit.json`
+- Full-stat v2 detector-coupled focused response: `stepwise_maintenance/step09_optics_bridge/outputs_f10m_a1_v3p5/detector_coupled_focus_response.json`
+- Full-stat v2 focused-spot W2 spatial sidecar: `stepwise_maintenance/step08_significance/outputs_v3p5_centerfinger_fullstat_v2_spatial/v3p5_spatial_line_proxy.md`
 - Full-stat v2 decay-source audits:
   `runs/step02_decay_source_v3p5_centerfinger_fullstat_v2/normalization_audit_day15.json`
   and
@@ -42,6 +44,14 @@ Current full-stat v2 W2 headline after the R2 prompt-normalization repair:
 Step05 background/signal `0.0729576/0.00118117 cps`, Step08
 `Z20d=5.70221`, 20-day 3-sigma flux `5.26111e-5 ph cm^-2 s^-1`, and
 1 Ms 3-sigma flux `6.82301e-5 ph cm^-2 s^-1`.
+
+Current v3p5 full-stat focused-spot W2 sidecar: side-entry detector centroids
+are measured in the local side-window frame, not around the global origin.
+`spot_r90=1.05164 cm` keeps `0.9000` of the focused W2 signal, reduces W2
+background to `0.0232510 cps`, and gives time-dependent
+`Z20d=8.17566` with 20-day 3-sigma flux
+`3.66943e-5 ph cm^-2 s^-1`. This is a detector-coupled spatial sidecar, not a
+profile-likelihood gain and not a replacement for the hard-window W2 authority.
 
 Low-stat `1of10` remains a directory/status compatibility label only. Its
 actual v3p5 prompt exposure split is gamma about `1/10`, non-gamma about

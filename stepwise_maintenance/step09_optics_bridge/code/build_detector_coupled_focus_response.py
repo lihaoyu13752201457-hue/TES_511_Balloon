@@ -13,6 +13,7 @@ not rerun transport.  The output is the single downstream authority for:
 from __future__ import annotations
 
 import csv
+import argparse
 import gzip
 import json
 import math
@@ -49,6 +50,7 @@ STEP06_SUMMARY = ROOT / "stepwise_maintenance" / "step06_mission_time_variation"
 DAY15_SUMMARY = ROOT / "outputs" / "reports" / "day15_complete_report" / "complete_day15_summary.json"
 BACKGROUND_CATALOG = ROOT / "outputs" / "reports" / "day15_complete_report" / "work" / "event_catalog.pkl"
 FOCUSED_SIM = ROOT / "runs" / "step09_optics_bridge" / "Opticsim_laue_new_geo_re.inc1.id1.sim.gz"
+SPATIAL_FRAME: dict[str, Any] = {"axis_policy": "legacy_z_entry"}
 
 REFERENCE_FLUX = 1.0e-4
 LINE_CENTER_KEV = 511.0
@@ -61,6 +63,51 @@ SPECTRUM_BINW = 0.01
 
 sys.path.insert(0, str(ROOT / "code" / "tools"))
 import make_complete_day15_report_ADR as complete  # noqa: E402
+
+
+def configure_profile(profile: str) -> None:
+    global OUT, FIG_DIR, FOCUS_RESPONSE_JSON, FOCUS_RESPONSE_MD, WINDOW_CSV, BACKGROUND_CSV, SPATIAL_CSV, SPECTRUM_CSV
+    global OPTICS_AUTHORITY, STEP09_SUMMARY, STEP06_SUMMARY, DAY15_SUMMARY, BACKGROUND_CATALOG, FOCUSED_SIM
+
+    if profile in {"legacy", "new_geo_re"}:
+        return
+    if profile not in {"v3p5_fullstat_v2", "f10m_a1_v3p5_fullstat_v2"}:
+        raise ValueError(f"unknown profile: {profile}")
+
+    OUT = STEP_DIR / "outputs_f10m_a1_v3p5"
+    FIG_DIR = OUT / "figures"
+    FOCUS_RESPONSE_JSON = OUT / "detector_coupled_focus_response.json"
+    FOCUS_RESPONSE_MD = OUT / "detector_coupled_focus_response.md"
+    WINDOW_CSV = OUT / "detector_coupled_focus_windows.csv"
+    BACKGROUND_CSV = OUT / "non_xray_background_w1_w2_veto_table.csv"
+    SPATIAL_CSV = OUT / "detector_coupled_spatial_line_cuts.csv"
+    SPECTRUM_CSV = OUT / "non_xray_background_spectrum_480_550.csv"
+
+    OPTICS_AUTHORITY = ROOT / "stepwise_maintenance" / "step04_opticsim" / "optics_aeff_authority_f10m_a1.json"
+    STEP09_SUMMARY = OUT / "step09_optics_bridge_summary.json"
+    STEP06_SUMMARY = (
+        ROOT
+        / "stepwise_maintenance"
+        / "step06_mission_time_variation"
+        / "outputs_v3p5_centerfinger_fullstat_v2"
+        / "step06_v3p5_centerfinger_fullstat_v2_summary.json"
+    )
+    DAY15_SUMMARY = (
+        ROOT
+        / "stepwise_maintenance"
+        / "step05_veto_time_axis"
+        / "outputs_v3p5_centerfinger_fullstat_v2_l1"
+        / "step05_v3p5_centerfinger_l1_response_summary.json"
+    )
+    BACKGROUND_CATALOG = (
+        ROOT
+        / "stepwise_maintenance"
+        / "step05_veto_time_axis"
+        / "outputs_v3p5_centerfinger_fullstat_v2_l1"
+        / "work"
+        / "event_catalog.pkl"
+    )
+    FOCUSED_SIM = ROOT / "runs" / "step09_optics_bridge" / "Opticsim_laue_f10m_a1_v3p5_centerfinger.inc1.id1.sim.gz"
 
 
 def rel(path: Path) -> str:
@@ -117,6 +164,31 @@ def fmt(value: Any, nd: int = 6) -> str:
 def gaussian_window_probability(energy_kev: float, lo_kev: float, hi_kev: float, sigma_kev: float = TES_SIGMA_KEV) -> float:
     inv = 1.0 / (math.sqrt(2.0) * sigma_kev)
     return 0.5 * (math.erf((hi_kev - energy_kev) * inv) - math.erf((lo_kev - energy_kev) * inv))
+
+
+def rotate_y(values: tuple[float, float, float], angle_deg: float) -> tuple[float, float, float]:
+    x, y, z = values
+    angle = math.radians(angle_deg)
+    c = math.cos(angle)
+    s = math.sin(angle)
+    return c * x + s * z, y, -s * x + c * z
+
+
+def configure_spatial_frame(step09: dict[str, Any]) -> None:
+    global SPATIAL_FRAME
+
+    bridge = step09.get("bridge", {})
+    policy = str(bridge.get("axis_policy", "legacy_z_entry"))
+    if policy == "v3p5_side_entry_tilt45":
+        SPATIAL_FRAME = {
+            "axis_policy": policy,
+            "axis_y_cm": float(bridge.get("axis_y_cm", 0.0)),
+            "axis_z_cm": float(bridge.get("axis_z_cm", -5.2)),
+            "be_radius_cm": float(bridge.get("be_radius_cm", 1.898)),
+            "instrument_rotation_y_deg": float(bridge.get("instrument_rotation_y_deg", 45.0)),
+        }
+    else:
+        SPATIAL_FRAME = {"axis_policy": "legacy_z_entry"}
 
 
 def line_windows(optics: dict[str, Any]) -> list[dict[str, Any]]:
@@ -226,6 +298,7 @@ def event_centroid_radius_cm(cat: dict[str, Any], idx: int) -> float | None:
     sum_e = 0.0
     wx = 0.0
     wy = 0.0
+    wz = 0.0
     for j in range(start, start + count):
         e = float(cat["pix_e"][j])
         if e <= 0.0:
@@ -233,9 +306,16 @@ def event_centroid_radius_cm(cat: dict[str, Any], idx: int) -> float | None:
         sum_e += e
         wx += e * float(cat["pix_x"][j])
         wy += e * float(cat["pix_y"][j])
+        wz += e * float(cat["pix_z"][j])
     if sum_e <= 0.0:
         return None
-    return math.hypot(wx / sum_e, wy / sum_e)
+    cx = wx / sum_e
+    cy = wy / sum_e
+    cz = wz / sum_e
+    if SPATIAL_FRAME.get("axis_policy") == "v3p5_side_entry_tilt45":
+        _lx, ly, lz = rotate_y((cx, cy, cz), -float(SPATIAL_FRAME["instrument_rotation_y_deg"]))
+        return math.hypot(ly - float(SPATIAL_FRAME["axis_y_cm"]), lz - float(SPATIAL_FRAME["axis_z_cm"]))
+    return math.hypot(cx, cy)
 
 
 def weighted_percentile(values: list[float], weights: list[float], frac: float) -> float:
@@ -849,13 +929,19 @@ def build() -> dict[str, Any]:
     step09 = load_json(STEP09_SUMMARY, {})
     step06 = load_json(STEP06_SUMMARY, {})
     day15 = load_json(DAY15_SUMMARY, {})
+    configure_spatial_frame(step09)
     if not FOCUSED_SIM.exists():
         raise FileNotFoundError(FOCUSED_SIM)
     windows = line_windows(optics)
     wmap = {str(w["window_id"]): w for w in windows}
     reject_policy = str(day15.get("normalization", {}).get("reject_policy", "keep"))
-    reference_flux = float(day15.get("normalization", {}).get("science_flux_ph_cm2_s", REFERENCE_FLUX))
-    t_atm = float(step06.get("atmosphere", {}).get("T_ref", 0.7390423888027))
+    reference_flux = float(
+        day15.get("science_physical_normalization", {}).get(
+            "reference_flux_ph_cm2_s",
+            day15.get("normalization", {}).get("science_flux_ph_cm2_s", REFERENCE_FLUX),
+        )
+    )
+    t_atm = float(step06.get("normalization", {}).get("T_ref", step06.get("atmosphere", {}).get("T_ref", 0.7390423888027)))
     aeff = float(optics["aeff_511_cm2"])
     eventlist_rows = int(step09.get("bridge", {}).get("rows_written", 0))
     focused_rate = reference_flux * aeff * t_atm
@@ -946,6 +1032,7 @@ def build() -> dict[str, Any]:
             "day15_summary": rel(DAY15_SUMMARY),
             "step06_summary": rel(STEP06_SUMMARY),
             "reject_policy": reject_policy,
+            "spatial_frame": SPATIAL_FRAME,
         },
         "normalization": {
             "reference_flux_ph_cm2_s": reference_flux,
@@ -997,6 +1084,15 @@ def build() -> dict[str, Any]:
 
 
 def main() -> int:
+    ap = argparse.ArgumentParser()
+    ap.add_argument(
+        "--profile",
+        default="legacy",
+        choices=["legacy", "new_geo_re", "v3p5_fullstat_v2", "f10m_a1_v3p5_fullstat_v2"],
+        help="Input/output profile. Default preserves the legacy new_geo_re paths.",
+    )
+    args = ap.parse_args()
+    configure_profile(args.profile)
     payload = build()
     print(
         json.dumps(
