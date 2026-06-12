@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import csv
 import json
+import math
 import re
 from pathlib import Path
 
@@ -18,6 +19,13 @@ COMPARE = ROOT / "outputs/reports/compare_511_narrow_1Ms_20260612"
 CLOSURE = ROOT / "outputs/reports/v3p5_fullstat_performance_w2_closure_20260612"
 SPATIAL = ROOT / "stepwise_maintenance/step08_significance/outputs_v3p5_centerfinger_fullstat_v2_spatial"
 DETECTOR_RESPONSE = ROOT / "stepwise_maintenance/step09_optics_bridge/outputs_f10m_a1_v3p5/detector_coupled_focus_response.json"
+OPTICS_AEFF = ROOT / "stepwise_maintenance/step04_opticsim/optics_aeff_authority_f10m_a1.json"
+OPTICS_OUTPUT = ROOT / "stepwise_maintenance/step04_opticsim/outputs/opticsim_laue_bfull_f10m_a1_r2_3seed"
+I128_ANCHOR = ROOT / "stepwise_maintenance/step03_delay_source/outputs/i128_anchor_r2_20260612.json"
+PLACEHOLDER_READMES = [
+    ROOT / "runs/step02_delayed_transport_mainline_div8_review_20260612/README.md",
+    ROOT / "outputs/reports/validation_new_geo_re/README.md",
+]
 DECAY_AUDITS = [
     ROOT / "runs/step02_decay_source_v3p5_centerfinger_1of10/normalization_audit_day15.json",
     ROOT / "runs/step02_delay_fix_v3p5_centerfinger_1of10/normalization_audit_groundstate_fix.json",
@@ -119,6 +127,58 @@ def validate_spatial_sidecar(problems: list[str]) -> None:
     require(float(checks["signal_radius_r90_cm"]) < float(detector["inputs"]["spatial_frame"].get("be_radius_cm", 1.898)) if "be_radius_cm" in detector["inputs"]["spatial_frame"] else True, "spatial radius exceeds Be radius", problems)
 
 
+def validate_optics_per_seed(problems: list[str]) -> None:
+    authority = load_json(OPTICS_AEFF)
+    focal = authority["focal_stats"]
+    be_radius_cm = float(focal["be_radius_cm"])
+    summed_diffracted = 0
+    summed_within = 0
+    summed_outside = 0
+    require((OPTICS_OUTPUT / "focal_crossings.csv").exists(), "missing combined f10m focal crossings", problems)
+    require((OPTICS_OUTPUT / "seed_runs_summary.json").exists(), "missing f10m seed_runs_summary.json", problems)
+    require((OPTICS_OUTPUT / "README.md").exists(), "missing f10m output README", problems)
+    for seed in focal["per_seed"]:
+        repo_path = ROOT / seed.get("repo_focal_crossings", "")
+        require(seed.get("repo_focal_crossings"), f"seed {seed.get('seed')} missing repo_focal_crossings", problems)
+        require(repo_path.exists(), f"seed {seed.get('seed')} repo focal crossings missing: {rel(repo_path)}", problems)
+        if not repo_path.exists():
+            continue
+        diffracted = 0
+        within = 0
+        outside = 0
+        with repo_path.open("r", encoding="utf-8", newline="") as handle:
+            for row in csv.DictReader(handle):
+                if row["source_tag"] != "laue_bfull_diffracted":
+                    continue
+                diffracted += 1
+                r_cm = math.hypot(float(row["x_mm"]) / 10.0, float(row["y_mm"]) / 10.0)
+                if r_cm <= be_radius_cm:
+                    within += 1
+                else:
+                    outside += 1
+        require(diffracted == int(seed["diffracted_rows"]), f"seed {seed['seed']} diffracted rows mismatch: got {diffracted}", problems)
+        require(within == int(seed["within_be_rows"]), f"seed {seed['seed']} within-Be rows mismatch: got {within}", problems)
+        require(outside == int(seed["outside_be_rows"]), f"seed {seed['seed']} outside-Be rows mismatch: got {outside}", problems)
+        summed_diffracted += diffracted
+        summed_within += within
+        summed_outside += outside
+    require(summed_diffracted == int(focal["diffracted_focal_rows"]), f"optics diffracted sum mismatch: got {summed_diffracted}", problems)
+    require(summed_within == int(focal["within_be_rows"]), f"optics within-Be sum mismatch: got {summed_within}", problems)
+    require(summed_outside == int(focal["outside_be_rows"]), f"optics outside-Be sum mismatch: got {summed_outside}", problems)
+
+
+def validate_i128_anchor(problems: list[str]) -> None:
+    anchor = load_json(I128_ANCHOR)
+    checks = anchor["checks"]
+    require(anchor.get("status") == "PASS_I128_R2_CURRENT_CHAIN_ANCHOR", "bad I-128 R2 anchor status", problems)
+    close(float(checks["mainline_div8_i128_activity_bq"]), 66.62942376598845, 1.0e-12, "mainline div8 I-128 activity", problems)
+    close(float(checks["v3p5_i128_activity_bq"]), 66.00180110381153, 1.0e-12, "v3p5 I-128 activity", problems)
+    close(float(checks["v3p5_active_csi_mass_kg"]), 62.83369781500205, 1.0e-12, "v3p5 active CsI mass", problems)
+    close(float(checks["v3p5_i128_specific_activity_bq_per_kg"]), 1.0504204495195741, 1.0e-15, "v3p5 I-128 Bq/kg", problems)
+    retired = anchor.get("retired_anchor", {})
+    require(retired.get("reason"), "I-128 anchor missing retired-anchor reason", problems)
+
+
 def validate_decay_audits(problems: list[str]) -> None:
     for path in DECAY_AUDITS:
         data = load_json(path)
@@ -128,6 +188,28 @@ def validate_decay_audits(problems: list[str]) -> None:
             files = int(row["files"])
             require(int(row["tt_files"]) == files, f"{rel(path)} {row['tag']} TT files != files", problems)
             require(int(row["tt_line_count"]) == files, f"{rel(path)} {row['tag']} TT lines != files", problems)
+
+
+def validate_placeholder_readmes(problems: list[str]) -> None:
+    for path in PLACEHOLDER_READMES:
+        require(path.exists(), f"missing placeholder README: {rel(path)}", problems)
+        if path.exists():
+            text = path.read_text(encoding="utf-8")
+            require("placeholder" in text.lower() or "legacy" in text.lower(), f"placeholder README lacks boundary wording: {rel(path)}", problems)
+            require("v3p5" in text or "R2" in text, f"placeholder README lacks current-authority pointer: {rel(path)}", problems)
+
+
+def validate_current_docs(problems: list[str]) -> None:
+    memory = (ROOT / "core_md/Project_Memory.md").read_text(encoding="utf-8")
+    readme = (ROOT / "core_md/README.md").read_text(encoding="utf-8")
+    workflow = (ROOT / "core_md/workflow.md").read_text(encoding="utf-8")
+    require("stepwise_maintenance/step03_delay_source/outputs/i128_anchor_r2_20260612.md" in memory, "Project_Memory Fast Authority Map missing R2 I-128 anchor", problems)
+    require("stepwise_maintenance/step03_delay_source/outputs/i128_anchor_r2_20260612.md" in readme, "README missing R2 I-128 anchor", problems)
+    require("sec(45 deg)=1.414" in readme, "README missing 45 deg T_atm slant-column caveat", problems)
+    require("sec(45 deg)=1.414" in workflow, "workflow missing 45 deg T_atm slant-column caveat", problems)
+    workflow_head = "\n".join(workflow.splitlines()[:35])
+    require("runs/step02_decay_source_equiv2602_aligned" not in workflow_head, "workflow head still points at equiv2602 aligned as current", problems)
+    require("outputs/geometry/XZTES_ADR_v4c_mkflange_cm" not in workflow_head, "workflow head still points at XZTES as current", problems)
 
 
 def validate_bad_values(problems: list[str]) -> None:
@@ -141,6 +223,8 @@ def validate_bad_values(problems: list[str]) -> None:
     for root in roots:
         for path in root.rglob("*"):
             if path.suffix not in {".md", ".json", ".csv"}:
+                continue
+            if path.name.startswith("focal_crossings") and OPTICS_OUTPUT in path.parents:
                 continue
             if path in allowed:
                 continue
@@ -157,7 +241,11 @@ def main() -> int:
     validate_labels(problems)
     validate_compare(problems)
     validate_spatial_sidecar(problems)
+    validate_optics_per_seed(problems)
+    validate_i128_anchor(problems)
     validate_decay_audits(problems)
+    validate_placeholder_readmes(problems)
+    validate_current_docs(problems)
     validate_bad_values(problems)
     payload = {
         "status": "PASS_V3P5_FULLSTAT_R2_VALIDATION" if not problems else "FAIL_V3P5_FULLSTAT_R2_VALIDATION",

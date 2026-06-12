@@ -1,18 +1,27 @@
 # NEW_GEO_RE Workflow
 
-This directory is the DEMO2 `new_geo_re` workflow root.
+This directory is the DEMO2/v3p5 `new_geo_re` workflow root. As of the
+2026-06-12 R1/R2 reviews, the current in-repo rate-level authority is the
+v3p5 full-stat v2 branch. Older DEMO2 `equiv2602_aligned` and
+`XZTES_ADR_v4c_mkflange_cm` paths are legacy pre-fix provenance only unless a
+paragraph explicitly says it is current v3p5 authority.
 
-- Authoritative geometry: `outputs/geometry/XZTES_ADR_v4c_mkflange_cm/TibetTES_ADR_v4c_mkflange_cm.geo.setup`.
-- Authoritative detector file: `outputs/geometry/XZTES_ADR_v4c_mkflange_cm/TibetTES_ADR_v4c_mkflange_cm.det`.
-- Prompt production: `runs/step02_instant_equiv2602_aligned`.
-- Buildup production: `runs/step02_buildup_equiv2602_aligned`.
-- Day-15 decay source: `runs/step02_decay_source_equiv2602_aligned`.
-- Fixed delayed source: `runs/step02_delay_fix_equiv2602_aligned/activation_decay_day15_groundstate_fixed.source`.
+Current v3p5 full-stat v2 anchors:
+
+- Geometry bounds: `geo_refer/DEMO2_DR_v3p5_minpatch_centerfinger_bounds.json`.
+- MEGAlib proxy setup: `outputs/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup`.
+- Step05 full-stat response: `stepwise_maintenance/step05_veto_time_axis/outputs_v3p5_centerfinger_fullstat_v2_l1/step05_v3p5_centerfinger_l1_response_summary.json`.
+- Step08 full-stat time fold: `stepwise_maintenance/step08_significance/outputs_v3p5_centerfinger_fullstat_v2/step08_v3p5_centerfinger_time_dependent_summary.json`.
+- Full-stat W2 closure: `outputs/reports/v3p5_fullstat_performance_w2_closure_20260612/v3p5_fullstat_performance_w2_closure_report.md`.
+- Full-stat `spot_r90` sidecar: `stepwise_maintenance/step08_significance/outputs_v3p5_centerfinger_fullstat_v2_spatial/v3p5_spatial_line_proxy.md`.
+- f10m A1 optics authority with repo-local per-seed CSVs: `stepwise_maintenance/step04_opticsim/optics_aeff_authority_f10m_a1.json`.
+- R2 CsI I-128 chain anchor: `stepwise_maintenance/step03_delay_source/outputs/i128_anchor_r2_20260612.md`.
+- R2 validator: `code/tools/validate_v3p5_fullstat_r2.py`.
 - Archived NUBASE2020 table for ground-state correction audit: `inputs/nubase/nubase_2020.txt`.
-- Fixed delayed 1M decay transport: `runs/step02_delayed_transport_equiv2602_aligned/DelayedDecayRPIPGroundStateFixed.inc1.id1.sim.gz`.
-- Science 511 run: `runs/science_511_onaxis_source/Science_511_onaxis_ADR_cmfix.inc1.id1.sim.gz`.
 
-Report rule: reports must use only DEMO2 `new_geo_re` prompt, buildup, fixed-delayed, science, and cm geometry products unless explicitly labeled as legacy comparison.
+Report rule: reports must use v3p5 full-stat v2 products for current
+rate-level claims. DEMO2 `equiv2602_aligned` paths may be cited only as legacy
+pre-fix comparison/provenance.
 
 Detector-trigger rule: the `.det` authority contains a formal TES main trigger plus 20 native CsI veto triggers. Current production SIM files predate those native triggers, so quantitative veto numbers still come from the Step05 post-processing model.
 
@@ -49,8 +58,10 @@ for rate-level comparisons.
 - Step05 physical reference scaling: f10m A1 `A_eff(511)=20.08476 cm2`,
   inherited `T_atm=0.739042`, and injection-plane rate `0.00148435 s^-1` at
   `1e-4 ph cm^-2 s^-1`.
-  The inherited `T_atm` is a scalar reference; absolute transmission for the
-  45 deg side-entry line of sight has not been recomputed.
+  The inherited `T_atm` is a scalar reference, not an absolute 45 deg
+  side-entry line-of-sight transmission. In a plane-parallel atmosphere the
+  45 deg slant column is already larger by `sec(45 deg)=1.414`, so final
+  absolute flux claims need a dedicated atmospheric LOS recomputation.
 - Step06 mission-axis fold:
   `PASS_V3P5_STEP06_TIME_AXIS_1OF10`, output
   `stepwise_maintenance/step06_mission_time_variation/outputs_v3p5_centerfinger_1of10/`.

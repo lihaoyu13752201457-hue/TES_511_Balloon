@@ -36,13 +36,25 @@ fullstat detector-coupled sidecar.
   and generated particle count about `1/21.2`.
 - Docs now state that v3p5 science normalization inherits scalar mainline
   `T_atm=0.739042`; the absolute 45 deg side-entry atmospheric line of sight
-  has not been recomputed.
+  has not been recomputed. A plane-parallel 45 deg sightline would increase
+  slant column by `sec(45 deg)=1.414`, so current `T_atm` is a normalization
+  scalar, not an absolute LOS claim.
 - The detector-coupled focus response builder now supports the v3p5 fullstat
   profile and measures side-entry spatial radii in the local side-window frame,
   not around the global origin.
 - v3p5 fullstat `spot_r90` W2 spatial sidecar was built and folded over the
   Step06 time axis: `Z20d=8.175664736254516`, 20-day 3-sigma flux
   `3.669426397460591e-05 ph cm^-2 s^-1`.
+- f10m A1/R2 optics per-seed focal crossing CSVs were copied into the repo and
+  linked from `optics_aeff_authority_f10m_a1.json`; the validator now counts
+  diffracted and within-Be rows from those repo-local files.
+- The R2 CsI I-128 anchor was rebuilt from current repo-local products:
+  v3p5 `66.00180110381153 Bq` over `62.83369781500205 kg`, or
+  `1.0504204495195741 Bq/kg`. The old 2026-06-11 `8.185` vs `6.323 Bq/kg`
+  no-self-shielding anchor is explicitly retired as pre-R2 provenance.
+- Empty legacy placeholder directories now contain README boundary notes:
+  `runs/step02_delayed_transport_mainline_div8_review_20260612/` and
+  `outputs/reports/validation_new_geo_re/`.
 - The root CubeSat Compton-telescope draft was moved to `old_md/templates/`.
 - Git was initialized and the first controlled commit was prepared with large
   run products ignored.
@@ -63,6 +75,9 @@ fullstat detector-coupled sidecar.
 | Spatial sidecar `spot_r90` background | `0.023251049574647638 cps` |
 | Spatial sidecar `spot_r90` `Z20d` | `8.175664736254516` |
 | Spatial sidecar `spot_r90` 20-day 3-sigma flux | `3.669426397460591e-05 ph cm^-2 s^-1` |
+| R2 v3p5 CsI I-128 activity | `66.00180110381153 Bq` |
+| R2 v3p5 active CsI mass | `62.83369781500205 kg` |
+| R2 v3p5 CsI I-128 specific activity | `1.0504204495195741 Bq/kg` |
 
 Do not quote the superseded R2-bad fullstat values:
 `0.486136 cps`, `Z20d=2.20208`, `1.36235e-4`, `1.76837e-4`, or `89.3% eplus`.
@@ -86,6 +101,10 @@ They remain only in the `Project_Memory` misquote guardrail.
   `stepwise_maintenance/step09_optics_bridge/outputs_f10m_a1_v3p5/detector_coupled_focus_response.json`
 - v3p5 fullstat spatial sidecar:
   `stepwise_maintenance/step08_significance/outputs_v3p5_centerfinger_fullstat_v2_spatial/v3p5_spatial_line_proxy.md`
+- f10m A1 optics authority with repo-local per-seed CSV provenance:
+  `stepwise_maintenance/step04_opticsim/optics_aeff_authority_f10m_a1.json`
+- R2 CsI I-128 anchor:
+  `stepwise_maintenance/step03_delay_source/outputs/i128_anchor_r2_20260612.md`
 - v3p5 R2 validator:
   `code/tools/validate_v3p5_fullstat_r2.py`
 
@@ -103,6 +122,7 @@ python3 code/tools/build_v3p5_fullstat_performance_w2_closure_report.py
 python3 code/tools/backfill_v3p5_decay_source_audits.py
 python3 stepwise_maintenance/step09_optics_bridge/code/build_detector_coupled_focus_response.py --profile v3p5_fullstat_v2
 python3 stepwise_maintenance/step08_significance/code/build_v3p5_spatial_line_proxy.py
+python3 stepwise_maintenance/step03_delay_source/code/build_i128_anchor_r2_20260612.py
 python3 code/tools/validate_v3p5_fullstat_r2.py
 ```
 
@@ -124,6 +144,8 @@ python3 code/tools/validate_v3p5_fullstat_r2.py
 - v3p5 spatial sidecar is included in `validate_v3p5_fullstat_r2.py`; the
   validator checks the local side-entry spatial frame, `spot_r90` radius,
   background, time-dependent `Z20d`, and 20-day flux.
+- The validator also checks repo-local f10m per-seed focal crossing CSVs, the
+  R2 I-128 anchor, placeholder README boundary notes, and current doc pointers.
 
 ## Remaining Boundary
 
@@ -134,3 +156,6 @@ python3 code/tools/validate_v3p5_fullstat_r2.py
   source uses legacy axisymmetric `RadialProfileBeam` compression.
 - The old broad `validate_new_geo_re.py` remains a legacy validator. The new
   R2-specific validator covers the v3p5 fullstat invariants introduced here.
+- Absolute atmospheric transmission for the 45 deg side-entry line of sight is
+  still an explicit scalar-inheritance boundary (`T_atm=0.739042`); a dedicated
+  atmospheric LOS recomputation is required before final absolute flux claims.

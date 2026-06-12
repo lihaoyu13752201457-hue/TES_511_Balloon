@@ -35,6 +35,7 @@ they are explicitly listed in this v3p5 authority block.
 - Full-stat v2 Step05 prompt normalization audit: `stepwise_maintenance/step05_veto_time_axis/outputs_v3p5_centerfinger_fullstat_v2_l1/prompt_normalization_audit.json`
 - Full-stat v2 detector-coupled focused response: `stepwise_maintenance/step09_optics_bridge/outputs_f10m_a1_v3p5/detector_coupled_focus_response.json`
 - Full-stat v2 focused-spot W2 spatial sidecar: `stepwise_maintenance/step08_significance/outputs_v3p5_centerfinger_fullstat_v2_spatial/v3p5_spatial_line_proxy.md`
+- R2 CsI I-128 chain anchor: `stepwise_maintenance/step03_delay_source/outputs/i128_anchor_r2_20260612.md`
 - Full-stat v2 decay-source audits:
   `runs/step02_decay_source_v3p5_centerfinger_fullstat_v2/normalization_audit_day15.json`
   and
@@ -121,12 +122,12 @@ Ground-state half-life audit:
 - unit self-tests cover `ky/My/Gy/Ty/Py/Ey`;
 - W-180 is reduced from `0.28452 Bq` raw-source activity to `5.09e-21 Bq` and no `74180/74183` source blocks remain in the fixed delayed source.
 
-CsI activation baseline:
+Legacy CsI activation baseline:
 
-- `outputs/reports/csi_activation_baseline/csi_activation_baseline_summary.json` quantifies the current fixed delayed-source activity budget;
-- CsI active-shield volumes contribute `561.13 Bq`, or `89.89%` of the fixed source activity;
-- I-128 contributes `533.28 Bq`, or `85.42%` of the total fixed source activity, all in CsI volumes;
-- this is an L1 current-geometry baseline only.  It is not a BGO replacement/control simulation.
+- `outputs/reports/csi_activation_baseline/csi_activation_baseline_summary.json` is a legacy DEMO2/mainline pre-fix activity budget and is not current authority;
+- CsI active-shield volumes contributed `561.13 Bq`, or `89.89%` of that legacy fixed source activity;
+- I-128 contributed `533.28 Bq`, or `85.42%` of that legacy total fixed source activity, all in CsI volumes;
+- current v3p5 R2 I-128 authority is `stepwise_maintenance/step03_delay_source/outputs/i128_anchor_r2_20260612.md`: `66.0018 Bq` over `62.8337 kg`, or `1.05042 Bq/kg`.
 
 BGO control geometry scaffold:
 
@@ -155,8 +156,11 @@ v3p5 center-finger DR branch checkpoint:
 - Step05 physical reference scaling uses f10m A1 `A_eff(511)=20.08476 cm2`,
   inherited `T_atm=0.739042`, and injection-plane rate `0.00148435 s^-1` at
   `1e-4 ph cm^-2 s^-1`.
-  The inherited `T_atm` is a scalar mainline reference for normalization; the
-  absolute 45 deg side-entry atmospheric line of sight has not been recomputed.
+  The inherited `T_atm` is a scalar mainline reference for normalization, not
+  an absolute 45 deg side-entry line-of-sight transmission. In a
+  plane-parallel atmosphere the 45 deg slant column is already larger by
+  `sec(45 deg)=1.414`, so final absolute flux claims need a dedicated
+  atmospheric LOS recomputation.
 - Step06 v3p5 mission-axis fold is `PASS_V3P5_STEP06_TIME_AXIS_1OF10`; W2
   mission-mean background/signal are `0.0155714/0.00117281 cps`.
 - Step07 v3p5 source-case ledger is `PASS_V3P5_STEP07_SOURCE_CASES_1OF10`;
@@ -184,16 +188,17 @@ v3p5 center-finger DR branch checkpoint:
 - `code/tools/`: report, validation, and detector helper scripts.
 - `config/`: Cosima source templates and science-rate metadata.
 - `inputs/nubase/`: archived NUBASE2020 ASCII input used by the half-life audit.
-- `outputs/geometry/`: generated geometry authority.
+- `outputs/geometry/`: generated geometry outputs; current v3p5 authority is the
+  center-finger proxy listed in the Current Authority block above.
 - `outputs/geometry/XZTES_ADR_v4c_mkflange_bgo_control/`: BGO active-shield control geometry scaffold.
-- `outputs/reports/csi_activation_baseline/`: current CsI active-shield activation baseline outputs.
-- `outputs/reports/day15_complete_report/`: current day-15 catalog, spectra, summary JSON, PDF, and audit.
-- `outputs/reports/half_life_unit_audit/`: prefix-year half-life unit audit outputs.
-- `outputs/reports/review_20260531_closure/`: priority-ordered closure matrix for `review_20260531.html`.
+- `outputs/reports/csi_activation_baseline/`: legacy DEMO2 CsI active-shield activation baseline outputs under review hold.
+- `outputs/reports/day15_complete_report/`: legacy DEMO2 day-15 catalog/report outputs under review hold.
+- `outputs/reports/half_life_unit_audit/`: legacy DEMO2 prefix-year half-life unit audit outputs.
+- `outputs/reports/review_20260531_closure/`: legacy priority-ordered closure matrix for `review_20260531.html`.
 - `outputs/reports/experiment_report_20260601/`: Route-A full-chain focused EventList report.
 - `records/00_geometry/`: geometry record and schematic.
-- `runs/step02_*_equiv2602_aligned/`: current DEMO2 prompt, buildup, delay-fix, and delayed-transport products.
-- `runs/science_511_onaxis_source/`: current 100k on-axis 511 keV science run.
+- `runs/step02_*_equiv2602_aligned/`: legacy pre-fix DEMO2 prompt, buildup, delay-fix, and delayed-transport products.
+- `runs/science_511_onaxis_source/`: legacy 100k on-axis 511 keV science run.
 - `stepwise_maintenance/step01_geo/` through `stepwise_maintenance/step09_optics_bridge/`: stepwise audit products.
 - `tests/`: lightweight validation helpers.
 
