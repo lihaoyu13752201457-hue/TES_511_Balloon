@@ -3,10 +3,13 @@
 
 from __future__ import annotations
 
+import argparse
 import csv
 import html
 import json
 import shutil
+import subprocess
+import sys
 from pathlib import Path
 from typing import Any
 
@@ -66,6 +69,97 @@ W2_BREAKDOWN = (
     / "w2_background_source_breakdown"
     / "w2_background_source_breakdown_summary.json"
 )
+BOUNDARY = (
+    ROOT
+    / "outputs"
+    / "reports"
+    / "v3p5_boundary_closure_20260613"
+    / "v3p5_boundary_closure_summary.json"
+)
+EXACTPOS_CONVERGENCE = ROOT / "outputs" / "reports" / "v3p5_exactpos_convergence_20260614" / "v3p5_exactpos_convergence_summary.json"
+
+
+def configure_paths(label: str) -> None:
+    global LABEL, OUT, STEP02, STEP05, STEP06, STEP07, STEP08, PERF, W2_BREAKDOWN, BOUNDARY
+
+    LABEL = label
+    if label == "fullstat_v2":
+        OUT = ROOT / "outputs" / "reports" / "v3p5_fullstat_performance_w2_closure_20260612"
+        PERF = (
+            ROOT
+            / "stepwise_maintenance"
+            / "step08_significance"
+            / "outputs"
+            / "performance_curve_comparison_1Ms"
+            / "performance_curve_comparison_1Ms_summary.json"
+        )
+        BOUNDARY = (
+            ROOT
+            / "outputs"
+            / "reports"
+            / "v3p5_boundary_closure_20260613"
+            / "v3p5_boundary_closure_summary.json"
+        )
+    else:
+        OUT = ROOT / "outputs" / "reports" / f"v3p5_fullstat_performance_w2_closure_{label}_20260613"
+        PERF = (
+            ROOT
+            / "stepwise_maintenance"
+            / "step08_significance"
+            / "outputs"
+            / f"performance_curve_comparison_1Ms_{label}"
+            / "performance_curve_comparison_1Ms_summary.json"
+        )
+        BOUNDARY = (
+            ROOT
+            / "outputs"
+            / "reports"
+            / f"v3p5_boundary_closure_{label}_20260613"
+            / "v3p5_boundary_closure_summary.json"
+        )
+    STEP02 = (
+        ROOT
+        / "stepwise_maintenance"
+        / "step02_raw_background_simulation"
+        / f"outputs_v3p5_centerfinger_{label}"
+        / f"step02_v3p5_centerfinger_{label}_summary.json"
+    )
+    STEP05 = (
+        ROOT
+        / "stepwise_maintenance"
+        / "step05_veto_time_axis"
+        / f"outputs_v3p5_centerfinger_{label}_l1"
+        / "step05_v3p5_centerfinger_l1_response_summary.json"
+    )
+    STEP06 = (
+        ROOT
+        / "stepwise_maintenance"
+        / "step06_mission_time_variation"
+        / f"outputs_v3p5_centerfinger_{label}"
+        / f"step06_v3p5_centerfinger_{label}_summary.json"
+    )
+    STEP07 = (
+        ROOT
+        / "stepwise_maintenance"
+        / "step07_source_cases"
+        / f"outputs_v3p5_centerfinger_{label}"
+        / "source_case_summary.json"
+    )
+    STEP08 = (
+        ROOT
+        / "stepwise_maintenance"
+        / "step08_significance"
+        / f"outputs_v3p5_centerfinger_{label}"
+        / "step08_v3p5_centerfinger_time_dependent_summary.json"
+    )
+    W2_BREAKDOWN = (
+        ROOT
+        / "stepwise_maintenance"
+        / "step08_significance"
+        / f"outputs_v3p5_centerfinger_{label}"
+        / "w2_background_source_breakdown"
+        / "w2_background_source_breakdown_summary.json"
+    )
 
 
 def rel(path: Path) -> str:
@@ -77,6 +171,26 @@ def rel(path: Path) -> str:
 
 def load_json(path: Path) -> Any:
     return json.loads(path.read_text(encoding="utf-8"))
+
+
+def exactpos_convergence() -> dict[str, Any] | None:
+    if not EXACTPOS_CONVERGENCE.exists():
+        return None
+    return load_json(EXACTPOS_CONVERGENCE)
+
+
+def exactpos_promoted() -> bool:
+    report = exactpos_convergence()
+    evaluation = (report or {}).get("evaluation", {})
+    return (
+        report is not None
+        and report.get("status") == "PASS_EXACTPOS_TRANSPORT_CONVERGENCE"
+        and evaluation.get("authority_recommendation") == "PROMOTE_EXACTPOS_TO_CURRENT_RATE_AUTHORITY"
+    )
+
+
+def is_exactpos_label() -> bool:
+    return LABEL.startswith("fullstat_v2_exactpos")
 
 
 def read_csv(path: Path) -> list[dict[str, str]]:
@@ -116,12 +230,51 @@ def expect_label(name: str, payload: dict[str, Any], problems: list[str]) -> Non
         problems.append(f"{name} statistics_label is {label!r}, expected {LABEL!r}")
 
 
+def authority_role() -> str:
+    if is_exactpos_label():
+        if exactpos_promoted():
+            return "CURRENT_EXACT_POSITION_RATE_AUTHORITY"
+        return "PROVISIONAL_EXACT_POSITION_CLOSURE_SUPPORT_SIZE_PENDING"
+    if exactpos_promoted():
+        return "CONSERVATIVE_RADIALPROFILE_BASELINE_CROSSCHECK"
+    return "CONSERVATIVE_CURRENT_RATE_AUTHORITY"
+
+
+def report_title() -> str:
+    if is_exactpos_label():
+        if exactpos_promoted():
+            return "v3p5 Exact-Position Performance and W2 Background Closure"
+        return "v3p5 Provisional Exact-Position Performance and W2 Background Closure"
+    return "v3p5 Full-Stat Performance and W2 Background Closure"
+
+
 def copy_file(src: Path, dst: Path, copied: list[dict[str, str]]) -> None:
     if not src.exists():
         return
     dst.parent.mkdir(parents=True, exist_ok=True)
     shutil.copy2(src, dst)
     copied.append({"source": rel(src), "report_copy": rel(dst)})
+
+
+def ensure_boundary_sidecar() -> str | None:
+    if BOUNDARY.exists():
+        return None
+    script = ROOT / "code/tools/build_v3p5_boundary_closure_report.py"
+    result = subprocess.run(
+        [sys.executable, str(script), "--label", LABEL],
+        cwd=ROOT,
+        text=True,
+        capture_output=True,
+        check=False,
+    )
+    if result.returncode != 0:
+        return (
+            "failed to rebuild missing boundary closure sidecar "
+            f"{rel(BOUNDARY)}: {result.stderr.strip() or result.stdout.strip()}"
+        )
+    if not BOUNDARY.exists():
+        return f"boundary closure sidecar rebuild did not create {rel(BOUNDARY)}"
+    return None
 
 
 def collect_artifacts(payload: dict[str, Any]) -> list[dict[str, str]]:
@@ -145,6 +298,8 @@ def collect_artifacts(payload: dict[str, Any]) -> list[dict[str, str]]:
         PERF.parent / "performance_curve_comparison_1Ms.md",
         W2_BREAKDOWN,
         W2_BREAKDOWN.parent / "w2_background_source_breakdown.md",
+        BOUNDARY,
+        BOUNDARY.with_name("v3p5_boundary_closure_report.md"),
     ]:
         copy_file(src, summaries / src.name, copied)
 
@@ -167,6 +322,8 @@ def collect_artifacts(payload: dict[str, Any]) -> list[dict[str, str]]:
         STEP07.parent / "source_case_rates.csv",
         STEP08.parent / "cumulative_significance_by_case.csv",
         STEP08.parent / "t3_t5_summary.csv",
+        BOUNDARY.with_name("v3p5_45deg_los_time_curve.csv"),
+        BOUNDARY.with_name("v3p5_spatial_annular_likelihood.csv"),
     ]:
         copy_file(src, tables / src.name, copied)
 
@@ -182,6 +339,7 @@ def row_for_case(rows: list[dict[str, str]], case_id: str, exposure_s: float = 1
 
 
 def build_payload() -> dict[str, Any]:
+    boundary_problem = ensure_boundary_sidecar()
     step02 = load_json(STEP02)
     step05 = load_json(STEP05)
     step06 = load_json(STEP06)
@@ -189,11 +347,14 @@ def build_payload() -> dict[str, Any]:
     step08 = load_json(STEP08)
     perf = load_json(PERF)
     w2_breakdown = load_json(W2_BREAKDOWN)
+    boundary = load_json(BOUNDARY) if BOUNDARY.exists() else {}
     perf_rows = read_csv(PERF.parent / "performance_curve_comparison_1Ms.csv")
     delayed_nuclide_rows = read_csv(W2_BREAKDOWN.parent / "w2_delayed_nuclides.csv")
     stream_rows = read_csv(W2_BREAKDOWN.parent / "w2_background_streams.csv")
 
     problems: list[str] = []
+    if boundary_problem:
+        problems.append(boundary_problem)
     for name, item in [
         ("Step02", step02),
         ("Step05", step05),
@@ -233,8 +394,29 @@ def build_payload() -> dict[str, Any]:
     for key in ["511CAM_Fig11_digitized_511keV", "SPI_511keV_1Ms_public", "COSI_SMEX_scaled_to_1Ms", "v3p5_W2"]:
         if key not in perf.get("one_Ms", {}):
             problems.append(f"performance comparison is missing {key}")
+    if boundary.get("status") != "PASS_V3P5_BOUNDARY_CLOSURE_SIDECARS":
+        problems.append(f"boundary closure sidecars are missing or not PASS: {boundary.get('status')}")
 
     top_components = w2_breakdown.get("top_components", [])
+    exact_position_status = boundary.get("exact_position_delayed_source", {}).get("status")
+    exactpos_closed = str(exact_position_status).startswith("PASS_EXACT_RPIP")
+    delayed_source_limitation = (
+        "The exact-RPIP PointSource delayed transport is included for this label; convergence across M/seed supports using sampled_equal_flux_pointsource_blocks is recorded in the exactpos convergence report."
+        if exactpos_closed
+        else "The production delayed transport still uses the legacy axisymmetric RadialProfileBeam compression for v3p5; exact-RPIP PointSource sampling is smoke-validated but not yet rerun at fixed-inventory production scale."
+    )
+    if is_exactpos_label():
+        authority_limitation = (
+            "The exact-position M/seed convergence report passes and promotes fullstat_v2_exactpos to the current rate authority; fullstat_v2 remains the conservative radial-profile baseline cross-check."
+            if exactpos_promoted()
+            else "This exact-position closure is provisional until support-size and seed convergence of the delayed W2 rate are demonstrated; use fullstat_v2 as the conservative current rate authority before that convergence check."
+        )
+    else:
+        authority_limitation = (
+            "This fullstat_v2 closure is the conservative radial-profile baseline cross-check; fullstat_v2_exactpos is the current rate authority after the M/seed convergence report."
+            if exactpos_promoted()
+            else "This fullstat_v2 closure is the conservative current rate authority; exact-position delayed-source closure should be treated as provisional until support-size and seed convergence are demonstrated."
+        )
     perf_1ms = {
         "v3p5_W2": row_for_case(perf_rows, "v3p5_W2"),
         "DEMO2_W2_spot_r90": row_for_case(perf_rows, "DEMO2_W2_spot_r90"),
@@ -247,6 +429,7 @@ def build_payload() -> dict[str, Any]:
     payload: dict[str, Any] = {
         "status": "PASS_V3P5_FULLSTAT_PERFORMANCE_W2_CLOSURE" if not problems else "FAIL_V3P5_FULLSTAT_PERFORMANCE_W2_CLOSURE",
         "statistics_label": LABEL,
+        "authority_role": authority_role(),
         "claim_level": "full-stat v3p5 center-finger L1 rate-level closure with external 1 Ms benchmark markers",
         "problems": problems,
         "headline": {
@@ -270,6 +453,25 @@ def build_payload() -> dict[str, Any]:
             "w2_delayed_top_nuclide": delayed_nuclide_rows[0] if delayed_nuclide_rows else {},
         },
         "performance_1Ms": perf_1ms,
+        "boundary_closure": {
+            "status": boundary.get("status", ""),
+            "base_label": boundary.get("base_label", boundary.get("statistics_label", "")),
+            "authority_role": boundary.get("authority_role", ""),
+            "report": rel(BOUNDARY.with_name("v3p5_boundary_closure_report.md")),
+            "w2_45deg_Z20d": boundary.get("atmosphere_45deg_los", {}).get("w2_hard_window", {}).get("Z20d"),
+            "w2_45deg_flux_3sigma_20d": boundary.get("atmosphere_45deg_los", {}).get("w2_hard_window", {}).get("flux_3sigma_20d_ph_cm2_s"),
+            "spot_r90_45deg_Z20d": boundary.get("atmosphere_45deg_los", {}).get("spot_r90", {}).get("Z20d"),
+            "spot_r90_45deg_flux_3sigma_20d": boundary.get("atmosphere_45deg_los", {}).get("spot_r90", {}).get("flux_3sigma_20d_ph_cm2_s"),
+            "annular_likelihood_Z20d": boundary.get("spatial_annular_likelihood", {}).get("annular_likelihood_Z20d"),
+            "annular_likelihood_flux_3sigma_20d": boundary.get("spatial_annular_likelihood", {}).get("flux_3sigma_20d_ph_cm2_s"),
+            "exact_position_status": boundary.get("exact_position_delayed_source", {}).get("status"),
+            "exact_position_feasibility_status": boundary.get("exact_position_delayed_source", {}).get("feasibility_status"),
+        },
+        "exactpos_convergence": {
+            "status": (exactpos_convergence() or {}).get("status"),
+            "authority_recommendation": ((exactpos_convergence() or {}).get("evaluation") or {}).get("authority_recommendation"),
+            "summary_json": rel(EXACTPOS_CONVERGENCE),
+        },
         "external_benchmarks": {
             "511CAM": {
                 "source": "511-CAM paper Fig.11; local rendered /tmp/511cam_page16-16.png; figure-derived digitization",
@@ -313,8 +515,9 @@ def build_payload() -> dict[str, Any]:
             "summary_json": rel(OUT / "v3p5_fullstat_performance_w2_closure_summary.json"),
         },
         "limitations": [
-            "This is an L1 rate-level full-stat closure; it is not a profile-likelihood or final paper-facing spatial analysis.",
-            "The delayed source still uses the legacy axisymmetric RadialProfileBeam compression for v3p5.",
+            authority_limitation,
+            "This is an L1 rate-level full-stat closure; boundary sidecars close the 45 deg LOS normalization and fixed-template annular spatial-likelihood checks, but they are not a nuisance-profile publication analysis.",
+            delayed_source_limitation,
             "511-CAM is figure-derived from Fig.11; COSI is sqrt-time scaled from a published 2-year sensitivity and is a benchmark marker, not an observing-strategy equivalence.",
             "Flux limits use Gaussian S/sqrt(B)=3 scaling for comparison consistency.",
         ],
@@ -326,12 +529,14 @@ def build_payload() -> dict[str, Any]:
 def markdown(payload: dict[str, Any]) -> str:
     h = payload["headline"]
     perf = payload["performance_1Ms"]
+    boundary = payload.get("boundary_closure", {})
     top = h["w2_top_background_component"]
     delayed_top = h["w2_delayed_top_nuclide"]
     lines = [
-        "# v3p5 Full-Stat Performance and W2 Background Closure",
+        f"# {report_title()}",
         "",
         f"Status: `{payload['status']}`.",
+        f"Authority role: `{payload['authority_role']}`.",
         "",
         f"Claim level: {payload['claim_level']}.",
         "",
@@ -377,13 +582,22 @@ def markdown(payload: dict[str, Any]) -> str:
             "",
             "- W2 is `510.58-511.42 keV`, i.e. `511 +/- 420 eV`.",
             "- Reference flux is `1e-4 ph cm^-2 s^-1` unless a row explicitly reports a 3sigma flux limit.",
-            "- Full-stat label is `fullstat_v2`.",
+            f"- Full-stat label is `{payload['statistics_label']}`.",
             "- 1 Ms means `1,000,000 s` exposure.",
             "- Background and signal rates are Step05 L1 side-entry Compton/FoV selected rates, folded through Step06/07/08 for mission-time significance.",
+            f"- Boundary sidecars are packaged at `{boundary.get('report', '')}`.",
             "",
             "## Methodology",
             "",
             "Step02 produces the full-stat prompt, buildup, fixed delayed source, and delayed transport. Step05 parses prompt, delayed, and focused EventList detector outputs with the v3p5 active-veto and side-entry Compton/FoV selection. Step06 applies the mission time axis; Step07 builds source cases; Step08 computes time-dependent counting significance with analytic accidental-live factors. The performance comparison converts the Step08 cumulative significance to 3sigma flux limits at fixed exposures and adds public 1 Ms markers.",
+            "",
+            "## Boundary Closure Sidecars",
+            "",
+            f"- 45 deg LOS W2 sidecar: `Z20d={fmt(boundary.get('w2_45deg_Z20d'))}`, 20-day 3sigma flux `{fmt(boundary.get('w2_45deg_flux_3sigma_20d'))}` ph cm^-2 s^-1.",
+            f"- 45 deg LOS `spot_r90` sidecar: `Z20d={fmt(boundary.get('spot_r90_45deg_Z20d'))}`, 20-day 3sigma flux `{fmt(boundary.get('spot_r90_45deg_flux_3sigma_20d'))}` ph cm^-2 s^-1.",
+            f"- Fixed-template multi-annulus spatial-likelihood sidecar: `Z20d={fmt(boundary.get('annular_likelihood_Z20d'))}`, 20-day 3sigma flux `{fmt(boundary.get('annular_likelihood_flux_3sigma_20d'))}` ph cm^-2 s^-1.",
+            f"- Exact-position delayed-source status: `{boundary.get('exact_position_status', '')}`.",
+            f"- Exact-position feasibility status: `{boundary.get('exact_position_feasibility_status', '')}`.",
             "",
             "## Limitations And Robustness Checks",
             "",
@@ -400,14 +614,20 @@ def markdown(payload: dict[str, Any]) -> str:
             "",
             "## Recommended Next Steps",
             "",
-            "- Replace the delayed-source RadialProfileBeam compression with exact-position sampling for paper-facing v3p5 numbers.",
-            "- Promote the comparison to a spatial/profile-likelihood analysis once selection-consistent spatial cuts are available.",
+            (
+                "- Optimize exact-position source parsing and optionally test the full weighted-table one-block-per-RPIP source if that engineering mode is needed."
+                if str(boundary.get("exact_position_status", "")).startswith("PASS_EXACT_RPIP") and exactpos_promoted()
+                else "- Quantify exact-position sampling stability by increasing the sampled PointSource support or by making Cosima practical for the full weighted RPIP table."
+                if str(boundary.get("exact_position_status", "")).startswith("PASS_EXACT_RPIP")
+                else "- Promote the smoke-validated exact-RPIP PointSource path to a v3p5 fullstat fixed-inventory production delayed source and rerun delayed transport."
+            ),
+            "- Promote the fixed-template annular sidecar to a nuisance-profile publication likelihood only if that claim is needed.",
             "- Re-digitize or table-source external benchmark curves before any publication figure.",
             "",
             "## Further Questions",
             "",
             "- How much does exact-position delayed sampling move the W2 background mix?",
-            "- Does a selection-consistent spatial cut improve v3p5 W2 beyond the current L1 rate-level estimate?",
+            "- Does a nuisance-profile spatial likelihood materially improve beyond the current fixed-template annular sidecar?",
             "- Which external benchmark definitions should be normalized for field of view, line width, and observing strategy in a publication table?",
             "",
             "## Artifact Index",
@@ -439,17 +659,33 @@ def html_report(payload: dict[str, Any]) -> str:
         [perf.get(key, {}).get("label", key), fmt(perf.get(key, {}).get("flux_3sigma_ph_cm2_s", "")), perf.get(key, {}).get("method", "")]
         for key in ["v3p5_W2", "DEMO2_W2_spot_r90", "DEMO2_W2_line", "511CAM", "SPI", "COSI"]
     ]
+    exact_status = str(payload.get("boundary_closure", {}).get("exact_position_status", ""))
+    exact_html_text = (
+        "Exact-RPIP PointSource sampling is included in this label's delayed transport, and the M/seed convergence report promotes exactpos to current rate authority."
+        if exact_status.startswith("PASS_EXACT_RPIP") and exactpos_promoted()
+        else "Exact-RPIP PointSource sampling is included in this label's delayed transport, but this exact-position closure is provisional until support-size and seed convergence are demonstrated."
+        if exact_status.startswith("PASS_EXACT_RPIP")
+        else "Exact-RPIP PointSource sampling is smoke-validated, but fixed-inventory production delayed transport remains pending."
+    )
+    boundary_html_text = (
+        "The exact-position delayed transport is included for this label; support-size and seed convergence are now closed in the exactpos convergence report."
+        if exact_status.startswith("PASS_EXACT_RPIP") and exactpos_promoted()
+        else "The exact-position delayed transport is included for this label; the remaining boundary is support-size and seed convergence before using it as the single paper-facing rate authority."
+        if exact_status.startswith("PASS_EXACT_RPIP")
+        else "The delayed-source exact-position method is smoke-validated; the remaining boundary is productionizing it with the fixed inventory and rerunning delayed transport."
+    )
     limitation_items = "\n".join(f"<li>{html.escape(item)}</li>" for item in payload["limitations"])
     problem_block = ""
     if payload["problems"]:
         problems = "\n".join(f"<li>{html.escape(item)}</li>" for item in payload["problems"])
         problem_block = f"<section><h2>Audit Problems</h2><ul>{problems}</ul></section>"
+    problem_block_html = f"  {problem_block}" if problem_block else ""
     return f"""<!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>v3p5 Full-Stat Performance and W2 Background Closure</title>
+  <title>{html.escape(report_title())}</title>
   <style>
     :root {{
       --ink: #1f2430;
@@ -566,12 +802,12 @@ def html_report(payload: dict[str, Any]) -> str:
 </head>
 <body>
 <main>
-  <h1>v3p5 Full-Stat Performance and W2 Background Closure</h1>
-  <div class="status">{html.escape(payload['status'])} | {html.escape(payload['statistics_label'])}</div>
+  <h1>{html.escape(report_title())}</h1>
+  <div class="status">{html.escape(payload['status'])} | {html.escape(payload['statistics_label'])} | {html.escape(payload['authority_role'])}</div>
 
   <section>
     <h2>Technical Summary</h2>
-    <p>The full-stat v3p5 center-finger chain closes through Step02, Step05, Step06, Step07, Step08, the 1 Ms benchmark comparison, and the W2 background-source decomposition. This is an L1 rate-level result: it is suitable for branch comparison and next-step planning, but still carries the delayed-source compression and non-profile-likelihood limitations.</p>
+    <p>The full-stat v3p5 center-finger chain closes through Step02, Step05, Step06, Step07, Step08, the 1 Ms benchmark comparison, and the W2 background-source decomposition. Boundary sidecars also close the 45 deg LOS normalization and fixed-template annular spatial-likelihood checks. This is still an L1 result suitable for branch comparison and next-step planning; {html.escape(exact_html_text)}</p>
     <div class="metric-grid">
       <div class="metric"><span>W2 background</span><strong>{fmt(h['w2_step05_background_cps'])}</strong> cps</div>
       <div class="metric"><span>W2 signal at 1e-4</span><strong>{fmt(h['w2_step05_signal_cps_at_1e_4'])}</strong> cps</div>
@@ -608,10 +844,21 @@ def html_report(payload: dict[str, Any]) -> str:
   </section>
 
   <section>
+    <h2>Boundary Closure Sidecars</h2>
+    <p>The sidecar package closes two previously open analysis boundaries without new transport: the 45 deg side-entry LOS normalization and a fixed-template annular spatial likelihood. {html.escape(boundary_html_text)}</p>
+    <div class="metric-grid">
+      <div class="metric"><span>45 deg W2 Z20d</span><strong>{fmt(payload.get('boundary_closure', {}).get('w2_45deg_Z20d'))}</strong></div>
+      <div class="metric"><span>45 deg spot_r90 Z20d</span><strong>{fmt(payload.get('boundary_closure', {}).get('spot_r90_45deg_Z20d'))}</strong></div>
+      <div class="metric"><span>Annular likelihood Z20d</span><strong>{fmt(payload.get('boundary_closure', {}).get('annular_likelihood_Z20d'))}</strong></div>
+      <div class="metric"><span>Annular F3sigma 20d</span><strong>{fmt(payload.get('boundary_closure', {}).get('annular_likelihood_flux_3sigma_20d'))}</strong></div>
+    </div>
+  </section>
+
+  <section>
     <h2>Limitations And Robustness Checks</h2>
     <ul>{limitation_items}</ul>
   </section>
-  {problem_block}
+{problem_block_html}
   <section>
     <h2>Sources And Artifacts</h2>
     <p>Primary repo artifacts are copied into <code>summaries/</code>, <code>tables/</code>, and <code>assets/</code>. DEMO2/new_geo_re comparison values come from legacy pre-fix <code>core_md/README.md</code> and <code>core_md/VALIDATION.md</code> records; they are not current authority after the reproduced x8.0116 delayed-source normalization issue. The legacy <code>stepwise_3sigma_headline_results.png</code> file named in older notes is absent in this checkout. External benchmark sources: <a href="https://arxiv.org/abs/2206.14652">511-CAM</a>, <a href="https://arxiv.org/abs/astro-ph/0310793">SPI</a>, and <a href="https://arxiv.org/abs/2308.12362">COSI</a>.</p>
@@ -623,6 +870,11 @@ def html_report(payload: dict[str, Any]) -> str:
 
 
 def main() -> int:
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--label", default="fullstat_v2", help="Run/output label, e.g. fullstat_v2 or fullstat_v2_exactpos")
+    args = ap.parse_args()
+
+    configure_paths(args.label)
     OUT.mkdir(parents=True, exist_ok=True)
     payload = build_payload()
     report_md = OUT / "v3p5_fullstat_performance_w2_closure_report.md"

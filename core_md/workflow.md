@@ -1,27 +1,33 @@
 # NEW_GEO_RE Workflow
 
 This directory is the DEMO2/v3p5 `new_geo_re` workflow root. As of the
-2026-06-12 R1/R2 reviews, the current in-repo rate-level authority is the
-v3p5 full-stat v2 branch. Older DEMO2 `equiv2602_aligned` and
+2026-06-12 R1/R2 reviews and the 2026-06-14 exactpos convergence closure, the
+current in-repo rate-level authority is the v3p5 full-stat exact-position
+`fullstat_v2_exactpos` branch. `fullstat_v2` remains the conservative
+radial-profile baseline cross-check. Older DEMO2 `equiv2602_aligned` and
 `XZTES_ADR_v4c_mkflange_cm` paths are legacy pre-fix provenance only unless a
 paragraph explicitly says it is current v3p5 authority.
 
-Current v3p5 full-stat v2 anchors:
+Current v3p5 anchors:
 
 - Geometry bounds: `geo_refer/DEMO2_DR_v3p5_minpatch_centerfinger_bounds.json`.
 - MEGAlib proxy setup: `outputs/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup`.
 - Step05 full-stat response: `stepwise_maintenance/step05_veto_time_axis/outputs_v3p5_centerfinger_fullstat_v2_l1/step05_v3p5_centerfinger_l1_response_summary.json`.
 - Step08 full-stat time fold: `stepwise_maintenance/step08_significance/outputs_v3p5_centerfinger_fullstat_v2/step08_v3p5_centerfinger_time_dependent_summary.json`.
 - Full-stat W2 closure: `outputs/reports/v3p5_fullstat_performance_w2_closure_20260612/v3p5_fullstat_performance_w2_closure_report.md`.
+- Full-stat exact-position W2 closure: `outputs/reports/v3p5_fullstat_performance_w2_closure_fullstat_v2_exactpos_20260613/v3p5_fullstat_performance_w2_closure_report.md`.
+- Full-stat exact-position convergence closure: `outputs/reports/v3p5_exactpos_convergence_20260614/v3p5_exactpos_convergence_report.md`.
 - Full-stat `spot_r90` sidecar: `stepwise_maintenance/step08_significance/outputs_v3p5_centerfinger_fullstat_v2_spatial/v3p5_spatial_line_proxy.md`.
+- Full-stat boundary-closure sidecars: `outputs/reports/v3p5_boundary_closure_20260613/v3p5_boundary_closure_report.md`.
 - f10m A1 optics authority with repo-local per-seed CSVs: `stepwise_maintenance/step04_opticsim/optics_aeff_authority_f10m_a1.json`.
 - R2 CsI I-128 chain anchor: `stepwise_maintenance/step03_delay_source/outputs/i128_anchor_r2_20260612.md`.
 - R2 validator: `code/tools/validate_v3p5_fullstat_r2.py`.
 - Archived NUBASE2020 table for ground-state correction audit: `inputs/nubase/nubase_2020.txt`.
 
-Report rule: reports must use v3p5 full-stat v2 products for current
-rate-level claims. DEMO2 `equiv2602_aligned` paths may be cited only as legacy
-pre-fix comparison/provenance.
+Report rule: reports must use `fullstat_v2_exactpos` for current rate-level
+claims after the convergence closure, with `fullstat_v2` retained as the
+conservative radial-profile baseline cross-check. DEMO2 `equiv2602_aligned`
+paths may be cited only as legacy pre-fix comparison/provenance.
 
 Detector-trigger rule: the `.det` authority contains a formal TES main trigger plus 20 native CsI veto triggers. Current production SIM files predate those native triggers, so quantitative veto numbers still come from the Step05 post-processing model.
 
@@ -105,7 +111,7 @@ for rate-level comparisons.
 - R2 sidecar repairs:
   `outputs/reports/compare_511_narrow_1Ms_20260612/compare_511_narrow_1Ms.md`
   now labels the old `2.99e-5` TES point as delayed-only aspiration and lists
-  the current v3p5 fullstat W2 `6.82301e-5` row. Decay-source normalization
+  the conservative v3p5 fullstat_v2 W2 `6.82301e-5` row. Decay-source normalization
   audits are backfilled in
   `runs/step02_decay_source_v3p5_centerfinger_fullstat_v2/normalization_audit_day15.json`
   and
@@ -155,17 +161,42 @@ python3 stepwise_maintenance/step08_significance/code/build_v3p5_spatial_line_pr
 python3 code/tools/build_v3p5_fullstat_performance_w2_closure_report.py
 ```
 
-Known limitation: delayed-source generation still uses axisymmetric
-`RadialProfileBeam` compression. The v3p5 full-stat v2 mission-axis
-significance is a rate-level closure, not a profile-likelihood or final
-paper-facing production statistic. The focused `spot_r90` W2 spatial sidecar
-is now available at
+Current exact-position delayed-source rate authority is available as
+`fullstat_v2_exactpos`:
+
+```bash
+python3 code/tools/build_v3p5_exactpos_delayed_source.py build --source-mode sampled --n-decays 5000 --triggers 1000000 --seed 260613 --workers 8
+cosima -s 260613 runs/step02_delay_fix_v3p5_centerfinger_fullstat_v2_exactpos/activation_decay_day15_groundstate_fixed.source
+python3 code/tools/build_v3p5_exactpos_delayed_source.py summarize-transport
+python3 code/tools/build_v3p5_centerfinger_step05_l1_response.py --label fullstat_v2_exactpos --workers 8
+python3 stepwise_maintenance/step06_mission_time_variation/code/build_v3p5_centerfinger_step06_time_axis.py --label fullstat_v2_exactpos
+python3 stepwise_maintenance/step07_source_cases/code/build_v3p5_centerfinger_step07_source_cases.py --label fullstat_v2_exactpos
+python3 stepwise_maintenance/step08_significance/code/build_v3p5_centerfinger_step08_time_dependent.py --label fullstat_v2_exactpos
+python3 stepwise_maintenance/step08_significance/code/build_v3p5_w2_background_source_breakdown.py --label fullstat_v2_exactpos
+python3 stepwise_maintenance/step08_significance/code/build_performance_curve_comparison_1Ms.py --v3p5-label fullstat_v2_exactpos
+python3 code/tools/build_v3p5_boundary_closure_report.py --label fullstat_v2_exactpos
+python3 code/tools/build_v3p5_fullstat_performance_w2_closure_report.py --label fullstat_v2_exactpos
+python3 code/tools/build_v3p5_exactpos_convergence_report.py --labels fullstat_v2_exactpos fullstat_v2_exactpos_m05000_s260614 fullstat_v2_exactpos_m20000_s260613 fullstat_v2_exactpos_m50000_s260613
+python3 code/tools/validate_v3p5_exactpos_closure.py --label fullstat_v2_exactpos
+```
+
+The exactpos run uses 5000 sampled `PointSource` support blocks, stores
+`SE=1,000,000`, `ID=1,000,000`, and `TE=11530.473845 s`, and contains no
+`RadialProfileBeam` blocks. The M/seed convergence report is
+`PASS_EXACTPOS_TRANSPORT_CONVERGENCE` using four transport-backed cases across
+`M=5000`, `M=20000`, and `M=50000`; it promotes `fullstat_v2_exactpos` to the
+current rate authority. `fullstat_v2` remains the conservative radial-profile
+baseline cross-check. Remaining engineering work is optional source-parsing
+optimization or a full weighted-table one-block-per-RPIP stress test. The
+focused `spot_r90` W2 spatial sidecar is available at
 `stepwise_maintenance/step08_significance/outputs_v3p5_centerfinger_fullstat_v2_spatial/v3p5_spatial_line_proxy.md`
-(`Z20d=8.17566`, 20-day 3-sigma flux `3.66943e-5 ph cm-2 s-1`), but it is
-still a detector-coupled counting sidecar and does not claim a profile
-likelihood gain. Exact-position delayed-source sampling and
-selection-consistent spatial/profile likelihood remain the next confidence
-upgrades before paper-facing v3p5 numbers.
+(`Z20d=8.17566`, 20-day 3-sigma flux `3.66943e-5 ph cm-2 s-1`). Boundary
+sidecars are now available at
+`outputs/reports/v3p5_boundary_closure_20260613/v3p5_boundary_closure_report.md`:
+the 45 deg LOS sidecar gives W2 `Z20d=5.02544` and `spot_r90`
+`Z20d=7.20533`, while the fixed-template multi-annulus spatial-likelihood
+sidecar gives `Z20d=8.45804`. The exactpos boundary package is
+`outputs/reports/v3p5_boundary_closure_fullstat_v2_exactpos_20260613/`.
 
 ## 2026-05-31 DEMO2 Mainline (Legacy Pre-Fix Review Hold)
 

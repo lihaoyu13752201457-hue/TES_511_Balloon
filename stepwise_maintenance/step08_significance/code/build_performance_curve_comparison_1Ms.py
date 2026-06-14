@@ -118,9 +118,13 @@ CAM511_DIGITIZED_POINTS = [
 
 
 def configure_v3p5(label: str) -> None:
-    global V3P5_LABEL, V3P5_CUMULATIVE, V3P5_TD
+    global OUT, V3P5_LABEL, V3P5_CUMULATIVE, V3P5_TD
 
     V3P5_LABEL = label
+    if label == "fullstat_v2":
+        OUT = ROOT / "stepwise_maintenance" / "step08_significance" / "outputs" / "performance_curve_comparison_1Ms"
+    else:
+        OUT = ROOT / "stepwise_maintenance" / "step08_significance" / "outputs" / f"performance_curve_comparison_1Ms_{label}"
     V3P5_CUMULATIVE = ROOT / "stepwise_maintenance" / "step08_significance" / f"outputs_v3p5_centerfinger_{label}" / "cumulative_significance_by_case.csv"
     V3P5_TD = ROOT / "stepwise_maintenance" / "step08_significance" / f"outputs_v3p5_centerfinger_{label}" / "step08_v3p5_centerfinger_time_dependent_summary.json"
 

@@ -1,6 +1,7 @@
 {
   "status": "PASS_V3P5_FULLSTAT_PERFORMANCE_W2_CLOSURE",
   "statistics_label": "fullstat_v2",
+  "authority_role": "CONSERVATIVE_RADIALPROFILE_BASELINE_CROSSCHECK",
   "claim_level": "full-stat v3p5 center-finger L1 rate-level closure with external 1 Ms benchmark markers",
   "problems": [],
   "headline": {
@@ -136,6 +137,25 @@
       "native_flux_3sigma_ph_cm2_s": "1.2e-05"
     }
   },
+  "boundary_closure": {
+    "status": "PASS_V3P5_BOUNDARY_CLOSURE_SIDECARS",
+    "base_label": "fullstat_v2",
+    "authority_role": "CONSERVATIVE_RADIALPROFILE_BASELINE_CROSSCHECK",
+    "report": "outputs/reports/v3p5_boundary_closure_20260613/v3p5_boundary_closure_report.md",
+    "w2_45deg_Z20d": 5.02544147909131,
+    "w2_45deg_flux_3sigma_20d": 5.969624783179157e-05,
+    "spot_r90_45deg_Z20d": 7.205329171859502,
+    "spot_r90_45deg_flux_3sigma_20d": 4.1635849361560546e-05,
+    "annular_likelihood_Z20d": 8.458041391463423,
+    "annular_likelihood_flux_3sigma_20d": 3.5469204525622874e-05,
+    "exact_position_status": "SOURCE_AUDITS_PASS_TRANSPORT_NOT_RERUN",
+    "exact_position_feasibility_status": "EXACT_RPIP_POINTSOURCE_SMOKE_VALIDATED_NOT_PRODUCTION_RERUN"
+  },
+  "exactpos_convergence": {
+    "status": "PASS_EXACTPOS_TRANSPORT_CONVERGENCE",
+    "authority_recommendation": "PROMOTE_EXACTPOS_TO_CURRENT_RATE_AUTHORITY",
+    "summary_json": "outputs/reports/v3p5_exactpos_convergence_20260614/v3p5_exactpos_convergence_summary.json"
+  },
   "external_benchmarks": {
     "511CAM": {
       "source": "511-CAM paper Fig.11; local rendered /tmp/511cam_page16-16.png; figure-derived digitization",
@@ -179,8 +199,9 @@
     "summary_json": "outputs/reports/v3p5_fullstat_performance_w2_closure_20260612/v3p5_fullstat_performance_w2_closure_summary.json"
   },
   "limitations": [
-    "This is an L1 rate-level full-stat closure; it is not a profile-likelihood or final paper-facing spatial analysis.",
-    "The delayed source still uses the legacy axisymmetric RadialProfileBeam compression for v3p5.",
+    "This fullstat_v2 closure is the conservative radial-profile baseline cross-check; fullstat_v2_exactpos is the current rate authority after the M/seed convergence report.",
+    "This is an L1 rate-level full-stat closure; boundary sidecars close the 45 deg LOS normalization and fixed-template annular spatial-likelihood checks, but they are not a nuisance-profile publication analysis.",
+    "The production delayed transport still uses the legacy axisymmetric RadialProfileBeam compression for v3p5; exact-RPIP PointSource sampling is smoke-validated but not yet rerun at fixed-inventory production scale.",
     "511-CAM is figure-derived from Fig.11; COSI is sqrt-time scaled from a published 2-year sensitivity and is a benchmark marker, not an observing-strategy equivalence.",
     "Flux limits use Gaussian S/sqrt(B)=3 scaling for comparison consistency."
   ],
@@ -242,6 +263,14 @@
       "report_copy": "outputs/reports/v3p5_fullstat_performance_w2_closure_20260612/summaries/w2_background_source_breakdown.md"
     },
     {
+      "source": "outputs/reports/v3p5_boundary_closure_20260613/v3p5_boundary_closure_summary.json",
+      "report_copy": "outputs/reports/v3p5_fullstat_performance_w2_closure_20260612/summaries/v3p5_boundary_closure_summary.json"
+    },
+    {
+      "source": "outputs/reports/v3p5_boundary_closure_20260613/v3p5_boundary_closure_report.md",
+      "report_copy": "outputs/reports/v3p5_fullstat_performance_w2_closure_20260612/summaries/v3p5_boundary_closure_report.md"
+    },
+    {
       "source": "stepwise_maintenance/step08_significance/outputs/performance_curve_comparison_1Ms/performance_curve_comparison_1Ms.png",
       "report_copy": "outputs/reports/v3p5_fullstat_performance_w2_closure_20260612/assets/performance_curve_comparison_1Ms.png"
     },
@@ -296,6 +325,14 @@
     {
       "source": "stepwise_maintenance/step08_significance/outputs_v3p5_centerfinger_fullstat_v2/t3_t5_summary.csv",
       "report_copy": "outputs/reports/v3p5_fullstat_performance_w2_closure_20260612/tables/t3_t5_summary.csv"
+    },
+    {
+      "source": "outputs/reports/v3p5_boundary_closure_20260613/v3p5_45deg_los_time_curve.csv",
+      "report_copy": "outputs/reports/v3p5_fullstat_performance_w2_closure_20260612/tables/v3p5_45deg_los_time_curve.csv"
+    },
+    {
+      "source": "outputs/reports/v3p5_boundary_closure_20260613/v3p5_spatial_annular_likelihood.csv",
+      "report_copy": "outputs/reports/v3p5_fullstat_performance_w2_closure_20260612/tables/v3p5_spatial_annular_likelihood.csv"
     }
   ]
 }

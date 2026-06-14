@@ -8,7 +8,9 @@
 > numbers in the legacy sections below are kept for provenance only and must
 > not be quoted as current sensitivity authority until a div-corrected
 > mainline source and downstream Step05+ chain are rerun. The current closed
-> rate-level branch authority is v3p5 full-stat v2. R2 on 2026-06-12 also
+> rate-level branch authority is v3p5 full-stat exact-position
+> `fullstat_v2_exactpos`; `fullstat_v2` remains the conservative
+> radial-profile baseline cross-check. R2 on 2026-06-12 also
 > repaired the v3p5 fullstat_v2 Step05 prompt normalization: prompt rates now
 > use per-tag `1/sum(TT_tag)`, with audit files in the Step05 fullstat output.
 
@@ -32,16 +34,20 @@ they are explicitly listed in this v3p5 authority block.
 - 511 narrow-line comparison sidecar: `outputs/reports/compare_511_narrow_1Ms_20260612/compare_511_narrow_1Ms.md`
 - Unified 1/10 transport closure report: `outputs/reports/v3p5_centerfinger_1of10_closure/v3p5_centerfinger_1of10_closure_report.md`
 - Full-stat v2 performance/W2 closure report: `outputs/reports/v3p5_fullstat_performance_w2_closure_20260612/v3p5_fullstat_performance_w2_closure_report.md`
+- Full-stat exact-position performance/W2 closure report: `outputs/reports/v3p5_fullstat_performance_w2_closure_fullstat_v2_exactpos_20260613/v3p5_fullstat_performance_w2_closure_report.md`
+- Full-stat exact-position M/seed convergence report: `outputs/reports/v3p5_exactpos_convergence_20260614/v3p5_exactpos_convergence_report.md`
 - Full-stat v2 Step05 prompt normalization audit: `stepwise_maintenance/step05_veto_time_axis/outputs_v3p5_centerfinger_fullstat_v2_l1/prompt_normalization_audit.json`
 - Full-stat v2 detector-coupled focused response: `stepwise_maintenance/step09_optics_bridge/outputs_f10m_a1_v3p5/detector_coupled_focus_response.json`
 - Full-stat v2 focused-spot W2 spatial sidecar: `stepwise_maintenance/step08_significance/outputs_v3p5_centerfinger_fullstat_v2_spatial/v3p5_spatial_line_proxy.md`
+- Full-stat v2 boundary-closure sidecars: `outputs/reports/v3p5_boundary_closure_20260613/v3p5_boundary_closure_report.md`
 - R2 CsI I-128 chain anchor: `stepwise_maintenance/step03_delay_source/outputs/i128_anchor_r2_20260612.md`
 - Full-stat v2 decay-source audits:
   `runs/step02_decay_source_v3p5_centerfinger_fullstat_v2/normalization_audit_day15.json`
   and
   `runs/step02_delay_fix_v3p5_centerfinger_fullstat_v2/normalization_audit_groundstate_fix.json`
 
-Current full-stat v2 W2 headline after the R2 prompt-normalization repair:
+Conservative radial-profile full-stat v2 W2 baseline after the R2
+prompt-normalization repair:
 Step05 background/signal `0.0729576/0.00118117 cps`, Step08
 `Z20d=5.70221`, 20-day 3-sigma flux `5.26111e-5 ph cm^-2 s^-1`, and
 1 Ms 3-sigma flux `6.82301e-5 ph cm^-2 s^-1`.
@@ -53,6 +59,36 @@ background to `0.0232510 cps`, and gives time-dependent
 `Z20d=8.17566` with 20-day 3-sigma flux
 `3.66943e-5 ph cm^-2 s^-1`. This is a detector-coupled spatial sidecar, not a
 profile-likelihood gain and not a replacement for the hard-window W2 authority.
+
+Current v3p5 boundary-closure sidecars: applying the same Step06 Beer-Lambert
+depth model to a 45 deg side-entry slant column gives `T_ref=0.652034`, W2
+`Z20d=5.02544` and 20-day 3-sigma flux
+`5.96962e-5 ph cm^-2 s^-1`; the corresponding `spot_r90` sidecar gives
+`Z20d=7.20533` and `4.16358e-5 ph cm^-2 s^-1`. A fixed-template
+multi-annulus W2 spatial-likelihood sidecar gives `Z20d=8.45804` and
+`3.54692e-5 ph cm^-2 s^-1`. These sidecars close the scalar-`T_atm` and
+single-spatial-cut analysis boundaries for the `fullstat_v2` baseline.
+
+Current v3p5 exact-position delayed-source rate authority:
+`fullstat_v2_exactpos` promotes the smoke-validated exact-RPIP `PointSource`
+path to the fixed inventory, runs `1,000,000` delayed triggers, and closes
+through Step05-08 plus the W2/performance/boundary packaging at
+`outputs/reports/v3p5_fullstat_performance_w2_closure_fullstat_v2_exactpos_20260613/`.
+The exact-position Step02 delayed transport has `SE=1,000,000`,
+`ID=1,000,000`, `TE=11530.473845 s`, and 5000 sampled `PointSource` support
+blocks with no `RadialProfileBeam` blocks. Its W2 headline is
+Step05 background/signal `0.0624651/0.00118117 cps`, Step08 `Z20d=6.15522`,
+20-day 3-sigma flux `4.87391e-5 ph cm^-2 s^-1`, and 1 Ms 3-sigma flux
+`6.32564e-5 ph cm^-2 s^-1`. The M/seed convergence report
+`outputs/reports/v3p5_exactpos_convergence_20260614/` is
+`PASS_EXACTPOS_TRANSPORT_CONVERGENCE` and recommends
+`PROMOTE_EXACTPOS_TO_CURRENT_RATE_AUTHORITY`: four transport-backed cases cover
+`M=5000` at seeds `260613/260614`, `M=20000` at seed `260613`, and `M=50000`
+at seed `260613`; W2 delayed cps relative range is `0.187413`, W2 background
+cps relative range is `0.0111915`, and `Z20d` relative range is `0.00550844`.
+`fullstat_v2` remains the conservative radial-profile baseline cross-check.
+The remaining engineering work is optional source-parsing optimization or a
+full weighted-table one-block-per-RPIP stress test, not an authority blocker.
 
 Low-stat `1of10` remains a directory/status compatibility label only. Its
 actual v3p5 prompt exposure split is gamma about `1/10`, non-gamma about
@@ -159,8 +195,8 @@ v3p5 center-finger DR branch checkpoint:
   The inherited `T_atm` is a scalar mainline reference for normalization, not
   an absolute 45 deg side-entry line-of-sight transmission. In a
   plane-parallel atmosphere the 45 deg slant column is already larger by
-  `sec(45 deg)=1.414`, so final absolute flux claims need a dedicated
-  atmospheric LOS recomputation.
+  `sec(45 deg)=1.414`. The dedicated LOS sidecar is now recorded in
+  `outputs/reports/v3p5_boundary_closure_20260613/`.
 - Step06 v3p5 mission-axis fold is `PASS_V3P5_STEP06_TIME_AXIS_1OF10`; W2
   mission-mean background/signal are `0.0155714/0.00117281 cps`.
 - Step07 v3p5 source-case ledger is `PASS_V3P5_STEP07_SOURCE_CASES_1OF10`;

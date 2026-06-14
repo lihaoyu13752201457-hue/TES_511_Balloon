@@ -121,11 +121,11 @@
 <body>
 <main>
   <h1>v3p5 Full-Stat Performance and W2 Background Closure</h1>
-  <div class="status">PASS_V3P5_FULLSTAT_PERFORMANCE_W2_CLOSURE | fullstat_v2</div>
+  <div class="status">PASS_V3P5_FULLSTAT_PERFORMANCE_W2_CLOSURE | fullstat_v2 | CONSERVATIVE_RADIALPROFILE_BASELINE_CROSSCHECK</div>
 
   <section>
     <h2>Technical Summary</h2>
-    <p>The full-stat v3p5 center-finger chain closes through Step02, Step05, Step06, Step07, Step08, the 1 Ms benchmark comparison, and the W2 background-source decomposition. This is an L1 rate-level result: it is suitable for branch comparison and next-step planning, but still carries the delayed-source compression and non-profile-likelihood limitations.</p>
+    <p>The full-stat v3p5 center-finger chain closes through Step02, Step05, Step06, Step07, Step08, the 1 Ms benchmark comparison, and the W2 background-source decomposition. Boundary sidecars also close the 45 deg LOS normalization and fixed-template annular spatial-likelihood checks. This is still an L1 result suitable for branch comparison and next-step planning; Exact-RPIP PointSource sampling is smoke-validated, but fixed-inventory production delayed transport remains pending.</p>
     <div class="metric-grid">
       <div class="metric"><span>W2 background</span><strong>0.0729576</strong> cps</div>
       <div class="metric"><span>W2 signal at 1e-4</span><strong>0.00118117</strong> cps</div>
@@ -167,13 +167,25 @@
   </section>
 
   <section>
+    <h2>Boundary Closure Sidecars</h2>
+    <p>The sidecar package closes two previously open analysis boundaries without new transport: the 45 deg side-entry LOS normalization and a fixed-template annular spatial likelihood. The delayed-source exact-position method is smoke-validated; the remaining boundary is productionizing it with the fixed inventory and rerunning delayed transport.</p>
+    <div class="metric-grid">
+      <div class="metric"><span>45 deg W2 Z20d</span><strong>5.02544</strong></div>
+      <div class="metric"><span>45 deg spot_r90 Z20d</span><strong>7.20533</strong></div>
+      <div class="metric"><span>Annular likelihood Z20d</span><strong>8.45804</strong></div>
+      <div class="metric"><span>Annular F3sigma 20d</span><strong>3.546920e-05</strong></div>
+    </div>
+  </section>
+
+  <section>
     <h2>Limitations And Robustness Checks</h2>
-    <ul><li>This is an L1 rate-level full-stat closure; it is not a profile-likelihood or final paper-facing spatial analysis.</li>
-<li>The delayed source still uses the legacy axisymmetric RadialProfileBeam compression for v3p5.</li>
+    <ul><li>This fullstat_v2 closure is the conservative radial-profile baseline cross-check; fullstat_v2_exactpos is the current rate authority after the M/seed convergence report.</li>
+<li>This is an L1 rate-level full-stat closure; boundary sidecars close the 45 deg LOS normalization and fixed-template annular spatial-likelihood checks, but they are not a nuisance-profile publication analysis.</li>
+<li>The production delayed transport still uses the legacy axisymmetric RadialProfileBeam compression for v3p5; exact-RPIP PointSource sampling is smoke-validated but not yet rerun at fixed-inventory production scale.</li>
 <li>511-CAM is figure-derived from Fig.11; COSI is sqrt-time scaled from a published 2-year sensitivity and is a benchmark marker, not an observing-strategy equivalence.</li>
 <li>Flux limits use Gaussian S/sqrt(B)=3 scaling for comparison consistency.</li></ul>
   </section>
-  
+
   <section>
     <h2>Sources And Artifacts</h2>
     <p>Primary repo artifacts are copied into <code>summaries/</code>, <code>tables/</code>, and <code>assets/</code>. DEMO2/new_geo_re comparison values come from legacy pre-fix <code>core_md/README.md</code> and <code>core_md/VALIDATION.md</code> records; they are not current authority after the reproduced x8.0116 delayed-source normalization issue. The legacy <code>stepwise_3sigma_headline_results.png</code> file named in older notes is absent in this checkout. External benchmark sources: <a href="https://arxiv.org/abs/2206.14652">511-CAM</a>, <a href="https://arxiv.org/abs/astro-ph/0310793">SPI</a>, and <a href="https://arxiv.org/abs/2308.12362">COSI</a>.</p>

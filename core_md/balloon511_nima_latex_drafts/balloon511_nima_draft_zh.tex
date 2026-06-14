@@ -1,0 +1,322 @@
+
+% NIM A / Elsevier 中文对照初稿
+% 建议使用 XeLaTeX 编译：xelatex balloon511_nima_draft_zh.tex
+% 正式投稿 NIM A 应使用英文稿；此中文稿用于内部讨论、合作者审阅和技术内容对照。
+
+\documentclass[preprint,12pt]{elsarticle}
+
+\usepackage[UTF8]{ctex}
+\usepackage{amsmath,amssymb}
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{lineno}
+\usepackage{xcolor}
+
+\journal{Nuclear Instruments and Methods in Physics Research Section A}
+\biboptions{numbers,sort&compress}
+
+\newcommand{\keV}{\,\mathrm{keV}}
+\newcommand{\MeV}{\,\mathrm{MeV}}
+\newcommand{\cms}{\,\mathrm{cm^{-2}\,s^{-1}}}
+\newcommand{\cps}{\,\mathrm{s^{-1}}}
+\newcommand{\wii}{W2}
+\newcommand{\aeff}{A_{\mathrm{eff}}}
+\newcommand{\fref}{F_{\mathrm{ref}}}
+\newcommand{\fthree}{F_{3\sigma}}
+
+\begin{document}
+
+\begin{frontmatter}
+
+\title{气球载 TES Laue 透镜望远镜的 511 keV 线本底与灵敏度模拟\tnoteref{t1}}
+\tnotetext[t1]{NIM A 风格论文中文对照初稿。正式投稿前需将作者、单位、数据仓库和最终验证结果补齐，并以英文稿为准。}
+
+\author[inst1]{作者列表待定}
+\address[inst1]{单位列表待定}
+
+\begin{abstract}
+银河系 511 keV 正电子湮灭线是低能正电子最直接的观测示踪，但由于 MeV 仪器强烈受本底限制，其紧凑源成分和窄线运动学仍难以测量。本文给出一种气球载指向式 511 keV 望远镜的全链路 Monte Carlo 与任务时间折叠研究。该概念将 Ge(111) Laue 透镜与 transition-edge sensor（TES）微量热计焦平面结合，并把聚焦光学相空间、工程化探测器/低温系统几何、瞬发大气本底、活化积累、精确位置延迟源输运、主动屏蔽 veto、康普顿/视场一致性筛选、窄线窗以及任务时间率变化统一到同一探测器耦合选择空间中。当前 v3p5 full-stat exact-position 链路采用焦距 10 m 的 Laue 构型，$\aeff(511\keV)=20.08476\,\mathrm{cm^2}$，分析线窗为 $510.58$--$511.42\keV$。对 $10^{-4}\,\mathrm{ph\,cm^{-2}\,s^{-1}}$ 的参考点源流量，选后线窗本底和信号率分别为 $0.0624651\cps$ 和 $0.00118117\cps$。任务时间折叠后得到 $Z_{20\mathrm{d}}=6.15522$、$3\sigma$ 探测时间 $4.73758$ d、20 d 的 $3\sigma$ 流量阈值 $4.87391\times10^{-5}\cms$，以及 1 Ms 阈值 $6.32564\times10^{-5}\cms$。基于真实输运的精确位置支撑点数和随机种子扫描表明，总线窗本底变化仅 1.119\%，$Z_{20\mathrm{d}}$ 变化仅 0.551\%。结果显示，在同一探测器耦合选择空间内处理信号、本底和延迟活化后，聚焦式 TES 谱学可在气球平台上达到有科学价值的 511 keV 窄线点源灵敏度。
+\end{abstract}
+
+\begin{keyword}
+伽马射线仪器 \sep 511 keV 湮灭线 \sep TES 微量热计 \sep Laue 透镜 \sep 气球载望远镜 \sep Monte Carlo 本底模拟 \sep 活化本底
+\end{keyword}
+
+\end{frontmatter}
+
+\linenumbers
+
+% Elsevier highlights 可单独提交；这里保留为草稿注释：
+% - 针对气球载聚焦式 511 keV TES 望远镜建立探测器耦合本底模型。
+% - 精确位置延迟活化源通过与聚焦信号相同的线窗选择输运。
+% - 硬线窗 exact-position 链路给出 F_3sigma(20 d)=4.87e-5 ph cm^-2 s^-1。
+% - M/seed 真实输运收敛检验显示最终 W2 显著度在亚百分比水平稳定。
+
+\section{引言}
+\label{sec:intro}
+
+电子--正电子湮灭产生的 511 keV 伽马射线，是银河系反物质研究中最清晰的谱线信号之一。正电子在星际介质中减速后，可与电子直接湮灭并产生两条约 511 keV 的光子，也可先形成正电子素，再产生 511 keV 线和低于 511 keV 的三光子连续谱。因此，该谱线复合结构同时探测正电子的产生、传播、热化和湮灭环境 \cite{Prantzos2011}。这一谱线最早由气球实验在银河中心方向报告，随后由高分辨 Ge 探测器明确证认为正电子湮灭辐射 \cite{Prantzos2011}。观测到的银河系流量对应约 $10^{43}\,\mathrm{e^+\,s^{-1}}$ 的正电子湮灭率，使其来源问题长期成为 MeV 伽马天文学中的核心难题 \cite{Prantzos2011,Kierans2020}。
+
+目前提出的候选源横跨标准天体物理和非标准物理。标准候选包括大质量恒星、新星、核塌缩超新星和热核超新星中放射性核素的 $\beta^+$ 衰变，也包括 X 射线双星、微类星体、脉冲星和银河中心黑洞等致密天体中的成对产生过程，以及宇宙线相互作用 \cite{Prantzos2011,Siegert2016AA}。更特殊的解释包括轻暗物质衰变或湮灭以及隐藏扇区模型 \cite{Prantzos2011,Yoneda2025}。困难在于，观测到的湮灭形态不仅取决于正电子产生位置，还取决于其在热化和湮灭前传播多远。谱学测量可以通过线心、线宽和正电子素比例约束湮灭介质；511 keV 以上连续谱上限也可限制正电子注入能量 \cite{Prantzos2011,Siegert2016AA}。真正有助于区分候选源的观测量——紧凑源成分、小尺度结构、速度位移和空间分辨线宽——仍然受限于仪器灵敏度、角分辨率和本底系统误差。
+
+现有观测图像主要由 OSSE/CGRO、INTEGRAL/SPI 和 COSI 建立。INTEGRAL/SPI 确认了明亮的核球状成分和较弱的银盘成分，但核球/银盘分解会随天空模型和仪器本底处理变化 \cite{Siegert2016AA,Yoneda2025}。最新长曝光 SPI 分析重建出中心、宽核球和银盘结构，并给出与大质量恒星区相关的边际显著度结构迹象 \cite{Yoneda2025}。COSI 在 46 d 超压气球飞行中给出了重要的独立测量，利用康普顿成像探测到银河系 511 keV 信号，并发现该辐射比单一点源更宽 \cite{Kierans2020,Siegert2020COSI}。这些结果说明，MeV 谱线天文学的科学价值很高，但实验上也极其困难：天体线信号弱，而大气和仪器本底强且随时间变化。
+
+宽视场康普顿望远镜对绘制 511 keV 大尺度天空图像不可替代。与其互补的策略，是使用指向式望远镜把 511 keV 光子集中到小尺寸、高能量分辨率焦平面上。指向式系统特别适合检验湮灭光度中是否包含未分辨点源、明亮中心核，或者致密天体中瞬变正负电子等离子体事件。V404 Cygni 在 2015 年爆发期间报告的湮灭特征表明，吸积恒星级黑洞可以以天体物理上有意义的速率产生正负电子等离子体 \cite{Siegert2016V404}。因此，这类载荷并不是要取代宽视场康普顿任务，而是在较窄视场内追踪另一类诊断量。
+
+511-CAM 概念正是这一思路的代表：它将伽马射线集中光学与堆叠式 TES 微量热计阵列结合起来 \cite{Shirazi2023}。其吸引力在于，把光子集中能力和亚 keV 量热能量分辨率结合在一起，而这两种能力在 MeV 能段通常难以兼得。几百 eV FWHM 量级的 511 keV 探测器组件分辨率对应数百 $\mathrm{km\,s^{-1}}$ 的速度尺度，在有利情况下可测量速度位移或天体线宽 \cite{Shirazi2023}。事例拓扑也很重要：单像素光电事例提供最干净的谱学信息，多像素事例则可用康普顿运动学检验，并剔除不可能来自聚焦光学方向的事例。
+
+核心技术挑战是本底。气球载伽马射线谱仪工作在强辐射环境中，观测天然处于本底主导状态。早期气球载 Ge 谱仪研究指出，主要本底包括大气中子散射、大气和宇宙伽马射线孔径通量、活化产物的 beta 衰变以及屏蔽泄漏；同时强调应尽量减少探测器附近被动材料，并在可行范围内降低有效屏蔽阈值 \cite{Gehrels1985}。对 511 keV 线载荷而言，问题更加尖锐，因为科学信号所在能量正好也是强大气/仪器湮灭特征所在位置。可信灵敏度估计必须同时建模光学、入射窗、低温系统、被动材料、主动屏蔽、瞬发大气成分和延迟活化。
+
+详细 Monte Carlo 质量模型是解决这类问题的标准路线。INTEGRAL/SPI 响应矩阵生成需要高保真质量模型、地面和在轨标定比较，并在计算与存储代价可控的条件下分离成像响应和能量再分布响应 \cite{Sturner2003}。现代 MeV 任务研究，包括 AMEGO 和 COSI，也依赖 Geant4/MEGAlib 体系计算仪器响应、本底、事例重建和灵敏度 \cite{Agostinelli2003,Zoglauer2006,Caputo2017,Karwin2023,Gallego2025}。本文采用同样思路，但目标更窄也更苛刻：带 TES 焦平面的气球载、聚焦式、窄线 511 keV 望远镜。
+
+本文给出该载荷的探测器耦合模拟和灵敏度研究。模拟链从 511 keV Ge(111) Laue 透镜源模型出发，将聚焦光子经探测器入射窗输运到工程化探测器/低温系统质量模型中。模型包括 TES 焦平面、多级热窗、Be 入射窗、Cu/W 被动屏蔽、低温结构代理质量以及 CsI 主动屏蔽。本底链路包括瞬发大气成分、活化积累、精确位置延迟源输运、主动屏蔽 veto、康普顿/视场一致性筛选、窄 511 keV 线窗、任务时间率演化和计数显著度估计。本文的重点不是孤立有效面积估计，而是在同一探测器耦合选择定义下闭合信号和本底率计算。
+
+本文结构如下。第~\ref{sec:requirements} 节总结科学驱动的仪器需求。第~\ref{sec:workflow} 节介绍模拟链。第~\ref{sec:geometry}--\ref{sec:selection} 节分别介绍探测器几何、光学桥接、本底模型和事例筛选。第~\ref{sec:results} 节给出灵敏度、收敛性和本底组成结果。第~\ref{sec:discussion} 节讨论解释、局限性和后续工作。第~\ref{sec:conclusions} 节总结主要结论。
+
+\section{科学与仪器需求}
+\label{sec:requirements}
+
+本文考虑的仪器针对指向式窄线测量，而不是全天巡天成像。主要科学目标是在长时气球曝光中探测或限制 $10^{-4}\cms$ 量级及以下的紧凑 511 keV 辐射。该流量尺度适合检验明亮中心核、紧凑源和瞬变成对等离子体情形，并与宽视场康普顿巡天形成互补。
+
+由此得到四条需求。第一，望远镜必须集中 511 keV 光子，使小焦平面不牺牲收集面积。第二，焦平面必须具有亚 keV 能量分辨率，使线窗本底随窄谱窗而非宽 MeV 连续谱缩放。第三，探测器和屏蔽设计必须抑制大气、活化和侧向入射本底，同时避免在 TES 吸收体附近放置过多被动材料。第四，模拟链必须一致处理瞬发本底、延迟活化、聚焦信号、veto、事例拓扑和任务时间变化。以下方法围绕这些需求建立。
+
+\section{模拟流程}
+\label{sec:workflow}
+
+图~\ref{fig:workflow} 总结了本文工作流。计算分为几何定义、瞬发与活化积累输运、延迟源构建、聚焦光学输运、探测器耦合信号重放、探测器事例筛选、任务时间率折叠、源流量归一化以及累积显著度评估。本文以 v3p5 full-stat exact-position 分支作为主要率级 authority；保守 radial-profile 延迟源分支仅作为交叉检查。
+
+\begin{figure}[t]
+\centering
+\fbox{\parbox{0.92\linewidth}{\centering 图占位：几何 $\rightarrow$ 瞬发/活化积累输运 $\rightarrow$ 精确位置延迟源 $\rightarrow$ Laue 光学 $\rightarrow$ EventList 探测器重放 $\rightarrow$ veto/康普顿/视场筛选 $\rightarrow$ 时间折叠 $\rightarrow$ 显著度。}}
+\caption{本文采用的概念性模拟链。关键点是聚焦信号和全部本底流在同一探测器响应与事例选择空间内评估。}
+\label{fig:workflow}
+\end{figure}
+
+当前率级 authority 为标记 \texttt{fullstat\_v2\_exactpos} 的精确位置延迟源链路。它使用 full-stat 瞬发和活化积累输运、固定 day-15 延迟活化 inventory、采样精确位置 \texttt{PointSource} 延迟源支撑，并完整通过 Step05--Step08 探测器响应和显著度链路。旧的均匀束流和 legacy 延迟源分支不用于 headline 灵敏度。
+
+\section{探测器与低温系统质量模型}
+\label{sec:geometry}
+
+探测器模型是气球载 TES 焦平面组件的工程化 Geant4/MEGAlib 代理模型。它不是最终飞行 CAD 复现，而是捕捉对 MeV 本底形成和事例筛选最重要的材料与几何特征。当前 v3p5 center-finger 几何包含 TES 像素阵列、Be 入射窗、多级 Al 热窗、Cu/W 被动屏蔽与准直、低温服务质量代理，以及分段 CsI 主动屏蔽。局部侧入射几何使窗口在 zenith-frame 源坐标中向上倾斜 $45^\circ$，仪器框架旋转为 $0,45,0$ 度。2 cm 厚 W 方孔侧准直套筒定义局部侧窗口入口。
+
+主动屏蔽在后处理层定量实现，而不是依赖 native production-trigger 过滤。候选事例在统一 Poisson 时间轴上分组；若 coincidence 窗内 CsI 屏蔽总沉积能量超过分析阈值，则该候选事例被 veto。这样可避免在输运阶段过滤活化产生位置，同时保证瞬发、延迟和聚焦科学流使用同一 veto 定义。
+
+\begin{table}[t]
+\centering
+\caption{主要 v3p5 exact-position 链路的关键探测器与分析参数。}
+\label{tab:geometry}
+\begin{tabular}{ll}
+\toprule
+参数 & 数值或策略 \\
+\midrule
+探测器概念 & TES 微量热计焦平面 \\
+主动屏蔽 & 分段 CsI，后处理 veto \\
+入射窗 & Be 侧窗口 \\
+被动屏蔽/准直 & Cu/W 代理屏蔽和 2 cm W 侧套筒 \\
+指向 & 局部侧窗口向上倾斜 $45^\circ$ \\
+触发/veto 定量 authority & Step05 后处理选择 \\
+线窗 $\wii$ & $510.58$--$511.42\keV$ \\
+参考流量 $\fref$ & $10^{-4}\cms$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\section{Laue 光学与探测器耦合信号重放}
+\label{sec:optics}
+
+信号模型采用调谐到 511 keV 的 Ge(111) Laue 透镜构型。当前 f10m A1 光学 authority 的焦距为 $10\,\mathrm{m}$，25 个晶片，晶片尺寸 18 mm，mosaicity 为 30 arcsec，有效 Ge 质量 $0.44063\,\mathrm{kg}$，且 $\aeff(511\keV)=20.08476\,\mathrm{cm^2}$。三随机种子 B-FULL 焦面穿越聚合包含 37,194 条 within-Be 焦面记录，within-Be fraction 为 0.998336，$r_{90}=1.02853\,\mathrm{cm}$，$r_{99}=1.24527\,\mathrm{cm}$。
+
+光学和探测器通过 EventList bridge 耦合。Be 窗口门内的焦面穿越记录被转换到局部探测器坐标系，并在完整探测器/低温系统几何中重放。这避免把解析 phase-space 投影作为信号 authority，并保留了光学聚焦到探测器入口平面的实际交接。v3p5 bridge 输运了 37,194/37,194 条 EventList 记录。在 $\fref=10^{-4}\cms$ 下，Step05 硬线窗信号响应为 $0.00118117\cps$，对应 Step07 响应 $11.8117\,\mathrm{cps}/(\mathrm{ph\,cm^{-2}\,s^{-1}})$。
+
+\section{瞬发与延迟本底模型}
+\label{sec:background}
+
+本底模型包括瞬发大气输运和延迟活化。full-stat 瞬发流和活化积累流各生成 25,210,216 个粒子。瞬发归一化使用每个 tag 的曝光归一化；延迟活化则由活化产生 ledger 构建，并进行基态半衰期修正。当前链路固定 day-15 延迟 inventory 活度为 $85.636696\,\mathrm{Bq}$。
+
+当前分支的主要方法升级是精确位置延迟源输运。不同于把产生位置压缩为轴对称 radial-profile source blocks，exact-position 链路从加权放射性产生行中采样等通量 \texttt{PointSource} 支撑块。基准 exact-position 源使用 $M=5000$ 个支撑块、随机种子 260613，不含 \texttt{RadialProfileBeam} 块，并保持固定活度预算。延迟输运使用 $10^6$ 触发并存储 $10^6$ 个事例，观测时间为 $11530.473845\,\mathrm{s}$。
+
+该精确位置表示不是 one-block-per-production-row 极限测试，而是统计采样表示。其充分性在第~\ref{subsec:convergence} 节通过下游最终线窗率和显著度评估，而不仅仅通过源采样诊断评估。
+
+\section{事例选择与显著度计算}
+\label{sec:selection}
+
+分析线窗为
+\begin{equation}
+  \wii = [510.58,511.42]\keV,
+\end{equation}
+即 $511\keV\pm420\,\mathrm{eV}$。该线窗匹配亚 keV TES 响应假设，在保留主要线响应的同时抑制连续谱本底。
+
+事例在统一时间轴上处理。瞬发、延迟和聚焦信号事例按各自率抽样、按时间排序，并以 $1\,\mu\mathrm{s}$ coincidence 窗分组。随后对总屏蔽能量施加主动屏蔽 veto。TES 命中拓扑使用自定义康普顿/视场一致性检验。单命中事例保留；双命中事例测试两个可能的第一散射顺序；更高多重度事例枚举候选顺序并使用康普顿序列质量指标，然后测试第一散射锥是否与 Be 窗口接受相容。当前保守策略下，没有有效重建的事例保留。
+
+时间相关显著度采用累积计数统计。对参考流量 $\fref$，累积显著度为
+\begin{equation}
+  Z(t) = \frac{N_s(t)}{\sqrt{N_b(t)}},
+\end{equation}
+其中 $N_s(t)$ 和 $N_b(t)$ 分别为经过任务时间缩放和 live-factor 修正后的积分信号计数和本底计数。用于比较不同分析变体的 $3\sigma$ 流量阈值按
+\begin{equation}
+  \fthree(t) = \fref \frac{3}{Z(t)}
+\end{equation}
+缩放。硬线窗结果和 sidecar 比较均使用这一 Gaussian counting 约定。
+
+\section{结果}
+\label{sec:results}
+
+\subsection{主要硬线窗灵敏度}
+\label{subsec:primary}
+
+表~\ref{tab:headline} 给出主要硬线窗结果。在 exact-position 链路中，对 $\fref=10^{-4}\cms$，Step05 选后 $\wii$ 本底率和信号率分别为 $0.0624651\cps$ 和 $0.00118117\cps$。任务时间折叠后，平均本底率和信号率为 $0.0626835\cps$ 和 $0.00117281\cps$。对应 20 d 显著度为 $Z_{20\mathrm{d}}=6.15522$，$3\sigma$ 探测时间 $4.73758$ d。20 d $3\sigma$ 流量阈值为 $4.87391\times10^{-5}\cms$，1 Ms 阈值为 $6.32564\times10^{-5}\cms$。
+
+\begin{table}[t]
+\centering
+\caption{主要灵敏度和若干比较情形。exact-position hard-window 行是当前率级 authority；radial-profile 行是保守交叉检查；空间和视线大气行是 sidecar，不替代硬线窗 authority。}
+\label{tab:headline}
+\begin{tabular}{lccccc}
+\toprule
+情形 & $B_{\wii}$ (cps) & $S_{\wii}$ at $\fref$ (cps) & $Z_{20\mathrm{d}}$ & $T_{3\sigma}$ (d) & $\fthree(20\mathrm{d})$ \\
+\midrule
+Exact-position 硬线窗 & 0.0624651 & 0.00118117 & 6.15522 & 4.73758 & $4.87391\times10^{-5}$ \\
+Radial-profile 基线 & 0.0729576 & 0.00118117 & 5.70221 & 5.46687 & $5.26111\times10^{-5}$ \\
+聚焦 $r_{90}$ sidecar & 0.0232510 & $\approx0.001063$ & 8.17566 & 2.23643 & $3.66943\times10^{-5}$ \\
+45$^\circ$ LOS sidecar & -- & -- & 5.02544 & -- & $5.96962\times10^{-5}$ \\
+多环 likelihood sidecar & -- & -- & 8.45804 & -- & $3.54692\times10^{-5}$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+硬线窗结果相对于空间 sidecar 是有意保守的。它只需要窄能窗、主动屏蔽 veto 和拓扑/视场一致性选择。$r_{90}$ sidecar 展示了在局部侧窗口探测器坐标系中利用聚焦光斑的潜在增益，但它目前应理解为后处理空间分析，而非最终 profile-likelihood 结果。
+
+\subsection{本底组成}
+\label{subsec:bgcomp}
+
+exact-position $\wii$ 选后本底由瞬发大气事例主导。Step05 流分解为 $0.0590827\cps$ 瞬发和 $0.00338234\cps$ 延迟，对应总选后硬线窗本底的 94.6\% 和 5.4\%。最大的瞬发成分是 positron-tagged 大气流，贡献 $0.0543377\cps$，即总 $\wii$ 本底的 86.99\%。延迟成分由 $^{64}$Cu 主导，贡献 $0.00251507\cps$，占延迟 $\wii$ 事例的 74.36\%。
+
+\begin{table}[t]
+\centering
+\caption{exact-position 链路中选后 $\wii$ 本底组成。除特别说明外，百分比相对于总 $\wii$ 本底。}
+\label{tab:bgcomp}
+\begin{tabular}{lcc}
+\toprule
+成分 & 率 (cps) & 比例 \\
+\midrule
+全部瞬发大气流 & 0.0590827 & 94.6\% \\
+全部延迟活化流 & 0.00338234 & 5.4\% \\
+瞬发 $e^+$ 流 & 0.0543377 & 86.99\% \\
+延迟 $^{64}$Cu & 0.00251507 & 延迟成分的 74.36\% \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+这一组成有两个含义。第一，当前几何和选择下提高硬线窗灵敏度主要是瞬发本底问题。第二，延迟活化较小但不可忽略；其线窗贡献具有空间和材料结构，因此精确位置延迟输运仍值得保留。
+
+\subsection{精确位置支撑点数与随机种子收敛}
+\label{subsec:convergence}
+
+表~\ref{tab:convergence} 总结了基于真实输运的 exact-position 收敛扫描。共运行四个下游情形：$M=5000$ 的两个随机种子，以及 $M=20000$ 和 $M=50000$ 两个更大支撑点数。虽然延迟子成分存在可见 Monte Carlo 波动，但总选后 $\wii$ 本底仅变化 1.119\%，$Z_{20\mathrm{d}}$ 仅变化 0.551\%。因此，最终灵敏度在当前率级 claim 所需水平上稳定。
+
+\begin{table}[t]
+\centering
+\caption{真实输运支撑的 exact-position 收敛情形。}
+\label{tab:convergence}
+\begin{tabular}{lcccc}
+\toprule
+标签 & $M$ & Seed & $B_{\wii}$ (cps) & $Z_{20\mathrm{d}}$ \\
+\midrule
+\texttt{fullstat\_v2\_exactpos} & 5000 & 260613 & 0.0624651 & 6.15522 \\
+\texttt{m05000\_s260614} & 5000 & 260614 & 0.0631683 & 6.12141 \\
+\texttt{m20000\_s260613} & 20000 & 260613 & 0.0627261 & 6.14261 \\
+\texttt{m50000\_s260613} & 50000 & 260613 & 0.0629804 & 6.13039 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{与现有仪器基准的比较}
+\label{subsec:benchmarks}
+
+本文计算不是全天成像预测，而是指向式、窄线、紧凑源灵敏度估计。因此，最相关的比较不是单纯视场巡天速度，而是对聚焦点源流量的线窗本底抑制。INTEGRAL/SPI 和 COSI 仍是绘制弥散 511 keV 天图的关键参照 \cite{Siegert2016AA,Kierans2020,Siegert2020COSI,Yoneda2025}。COSI 卫星将以宽视场和 Ge 探测器谱学巡测 0.2--5 MeV 天空；NASA 公开任务资料列出其计划 2027 年发射，并给出 511 keV 处 6.0 keV 能量分辨率 \cite{NASACOSI,HEASARCCOSI}。本文考虑的 TES Laue 透镜概念与其互补：它以天空覆盖换取集中束流和亚 keV 线窗。
+
+相对于宽视场康普顿望远镜，本文载荷对紧凑 511 keV 目标、中心核搜索和已知位置瞬变后随观测最有竞争力。它不适合直接测量完整弥散核球和银盘光度，因为小聚焦孔径只采样很小的立体角。因此，比较 point-source Route-A 和 diffuse-sky Route-B 时必须区分物理问题和归一化定义。
+
+\section{讨论}
+\label{sec:discussion}
+
+主要结果是，聚焦式 TES 线谱仪可在当前硬线窗 exact-position 链路中达到低于 $5\times10^{-5}\cms$ 的 20 d $3\sigma$ 点源阈值。该阈值没有把聚焦光斑空间 sidecar 作为 headline 使用，而是来自光学集中、亚 keV 能窗以及探测器耦合 veto/拓扑选择三者的组合。
+
+精确位置延迟源处理是相对于 radial-profile 压缩的重要方法改进。虽然在当前链路中延迟活化仅占选后硬线窗本底约 5.4\%，但它具有空间和材料结构。保留采样产生位置可避免人为方位角或径向重分布成为未量化系统误差。下游收敛扫描显示，$M=5000$ 支撑块足以支持当前硬线窗率级 claim，而更大支撑点数仍可作为工程压力测试。
+
+本底组成指出了下一步优化方向。选后硬线窗率由瞬发大气 $e^+$-tagged 事例主导。因此，改进可能来自屏蔽几何、侧入射准直、焦平面附近材料减量、更严格拓扑 cuts，或多像素事例重建改进。延迟活化虽小，但由可识别核素和体积主导，说明局部材料替换或局部屏蔽仍可能有价值。
+
+需要明确的局限性包括：第一，探测器/低温系统模型是工程代理，不是最终飞行 CAD；第二，生产 SIM 的定量主动屏蔽 authority 来自 Step05 后处理，而不是 native trigger/veto 生产过滤；第三，Step06 任务时间计算是率级折叠，不是在每个轨迹时间点重新输运粒子；第四，自定义康普顿/视场 veto 尚不是完整 Revan/Mimrec 重建；第五，上游 Laue 透镜硬件自身的宇宙线本底和活化未纳入 headline 探测器本底预算；第六，$r_{90}$ 和多环 likelihood 等空间 sidecar 很有前景，但尚不是 publication-grade nuisance-profile likelihood。
+
+这些限制并不否定主要结论，但定义了最终仪器方案或飞行性能论文之前应完成的后续工作。最有价值的后续研究包括：多命中子样本的 Revan 交叉检查、光学硬件 self-background 模拟、最终低温/DR 几何更新、与实测或文献锚定的 TES 饱和和 pile-up 研究，以及可 profile 本底 nuisance 参数的空间--谱联合 likelihood。
+
+\section{结论}
+\label{sec:conclusions}
+
+本文给出了气球载指向式 511 keV TES Laue 透镜望远镜的首版全链路探测器耦合本底和灵敏度研究。当前 v3p5 exact-position 链路把 Ge(111) Laue 光学响应与 TES 焦平面质量模型、瞬发大气输运、延迟活化、主动屏蔽 veto、康普顿/视场拓扑选择、任务时间率折叠和计数显著度评估结合起来。在主要 $510.58$--$511.42\keV$ 硬线窗中，链路给出 $B=0.0624651\cps$，对 $10^{-4}\cms$ 参考点源有 $S=0.00118117\cps$，对应 $Z_{20\mathrm{d}}=6.15522$ 和 $\fthree(20\mathrm{d})=4.87391\times10^{-5}\cms$。精确位置延迟源在最终硬线窗显著度层面稳定。结果支持聚焦式 TES 谱学作为 511 keV 紧凑源和中心核搜索的互补技术，同时指出瞬发大气本底抑制和重建验证是下一阶段最重要的工作。
+
+\section*{CRediT 作者贡献声明}
+占位：最终作者列表确定后填写。
+
+\section*{利益冲突声明}
+作者声明不存在利益冲突。投稿前需由全体作者确认。
+
+\section*{数据与软件可用性}
+模拟卡、验证摘要和分析脚本将在发表前通过公开代码仓库或机构存档提供。本文草稿中的内部路径名应在投稿前替换为持久标识符。
+
+\section*{致谢}
+占位：填写经费、机构支持、计算资源和合作组致谢。
+
+\begin{thebibliography}{99}
+
+\bibitem{Prantzos2011}
+N. Prantzos, C. Boehm, A.M. Bykov, R. Diehl, K. Ferriere, N. Guessoum, P. Jean, J. Knoedlseder, A. Marcowith, I.V. Moskalenko, A. Strong, G. Weidenspointner, The 511 keV emission from positron annihilation in the Galaxy, Rev. Mod. Phys. 83 (2011) 1001--1056.
+
+\bibitem{Siegert2016AA}
+T. Siegert, R. Diehl, G. Khachatryan, M.G.H. Krause, F. Guglielmetti, J. Greiner, A.W. Strong, X. Zhang, Gamma-ray spectroscopy of positron annihilation in the Milky Way, Astron. Astrophys. 586 (2016) A84.
+
+\bibitem{Yoneda2025}
+H. Yoneda, T. Siegert, S. Mittal, Imaging the positron annihilation line with 20 years of INTEGRAL/SPI observations, arXiv:2509.01066, 2025.
+
+\bibitem{Kierans2020}
+C.A. Kierans, S.E. Boggs, A. Zoglauer, A.W. Lowell, C. Sleator, J. Beechert, T.J. Brandt, P. Jean, H. Lazar, J. Roberts, T. Siegert, J.A. Tomsick, P. von Ballmoos, Detection of the 511 keV Galactic positron annihilation line with COSI, Astrophys. J. 895 (2020) 44.
+
+\bibitem{Siegert2020COSI}
+T. Siegert, S.E. Boggs, J.A. Tomsick, A.C. Zoglauer, C.A. Kierans, C.C. Sleator, J. Beechert, T.J. Brandt, P. Jean, H. Lazar, A.W. Lowell, J.M. Roberts, P. von Ballmoos, Imaging the 511 keV positron annihilation sky with COSI, Astrophys. J. 897 (2020) 45.
+
+\bibitem{Siegert2016V404}
+T. Siegert, R. Diehl, J. Greiner, M.G.H. Krause, A.M. Beloborodov, M. Cadolle Bel, F. Guglielmetti, J. Rodriguez, A.W. Strong, X. Zhang, Positron annihilation signatures associated with the outburst of the microquasar V404 Cygni, Nature 531 (2016) 341--343.
+
+\bibitem{Shirazi2023}
+F. Shirazi, E. Gau, M.A. Hossen, D. Becker, D. Schmidt, D. Swetz, D. Bennett, D. Braun, F. Kislat, J. Gard, J. Mates, J. Weber, N.R. Cavero, S. Chun, L. Lisalda, A. West, B. Dev, F. Ferrer, R. Bose, J. Ullom, H. Krawczynski, The 511-CAM Mission: A pointed 511 keV gamma-ray telescope with a focal plane detector made of stacked transition edge sensor microcalorimeter arrays, arXiv:2206.14652, 2023.
+
+\bibitem{Gehrels1985}
+N. Gehrels, Instrumental background in balloon-borne gamma-ray spectrometers and techniques for its reduction, NASA Technical Memorandum 86162, accepted for publication in Nuclear Instruments and Methods, 1985.
+
+\bibitem{Sturner2003}
+S.J. Sturner, C.R. Shrader, G. Weidenspointner, B.J. Teegarden, D. Attie, B. Cordier, R. Diehl, C. Ferguson, P. Jean, A. von Kienlin, P. Paul, F. Sanchez, S. Schanne, P. Sizun, G. Skinner, C.B. Wunderer, Monte Carlo simulations and generation of the SPI response, Astron. Astrophys. 411 (2003) L81--L84.
+
+\bibitem{Agostinelli2003}
+S. Agostinelli, J. Allison, K. Amako, et al., Geant4---a simulation toolkit, Nucl. Instrum. Methods Phys. Res. A 506 (2003) 250--303.
+
+\bibitem{Zoglauer2006}
+A. Zoglauer, R. Andritschke, F. Schopper, MEGAlib: The Medium Energy Gamma-ray Astronomy Library, New Astron. Rev. 50 (2006) 629--632.
+
+\bibitem{Caputo2017}
+R. Caputo, F. Kislat, J. Racusin, AMEGO: Simulations of the instrument performance, Proc. 35th International Cosmic Ray Conference, PoS(ICRC2017)783, 2017.
+
+\bibitem{Karwin2023}
+C.M. Karwin, T. Siegert, J. Beechert, J.A. Tomsick, T.A. Porter, M. Negro, C. Kierans, M. Ajello, I. Martinez Castellanos, A. Shih, A. Zoglauer, S.E. Boggs, Probing the Galactic diffuse continuum emission with COSI, arXiv:2310.12206, 2023.
+
+\bibitem{Gallego2025}
+S. Gallego, U. Oberlack, J. Lommler, C.M. Karwin, F. Fenu, V. Fioretti, A. Zoglauer, et al., Pre-flight background estimates for COSI, arXiv:2510.25304, 2025.
+
+\bibitem{NASACOSI}
+NASA Science, COSI mission page, \url{https://science.nasa.gov/mission/cosi/}, accessed 14 June 2026.
+
+\bibitem{HEASARCCOSI}
+NASA HEASARC, Compton Spectrometer and Imager (COSI), \url{https://heasarc.gsfc.nasa.gov/docs/heasarc/missions/cosi.html}, accessed 14 June 2026.
+
+\end{thebibliography}
+
+\end{document}

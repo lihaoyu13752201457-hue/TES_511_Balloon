@@ -17,7 +17,7 @@ Normalization:
 - physical reference flux: `0.0001 ph cm^-2 s^-1`
 - f10m A1 A_eff(511): `20.08476 cm2`
 - inherited T_atm: `0.73904239`
-- T_atm limitation: scalar mainline reference transmission is inherited; the 45 deg side-entry absolute atmospheric path has not been recomputed.
+- T_atm boundary: scalar mainline reference transmission is inherited here; the dedicated 45 deg side-entry LOS atmosphere sidecar is `outputs/reports/v3p5_boundary_closure_20260613/v3p5_boundary_closure_summary.json`.
 - reference injection-plane rate: `0.0014843489 s^-1`
 
 ## broad_480_550

@@ -7,6 +7,8 @@ import csv
 import json
 import math
 import re
+import subprocess
+import sys
 from pathlib import Path
 
 
@@ -18,6 +20,7 @@ PERF = ROOT / "stepwise_maintenance/step08_significance/outputs/performance_curv
 COMPARE = ROOT / "outputs/reports/compare_511_narrow_1Ms_20260612"
 CLOSURE = ROOT / "outputs/reports/v3p5_fullstat_performance_w2_closure_20260612"
 SPATIAL = ROOT / "stepwise_maintenance/step08_significance/outputs_v3p5_centerfinger_fullstat_v2_spatial"
+BOUNDARY = ROOT / "outputs/reports/v3p5_boundary_closure_20260613"
 DETECTOR_RESPONSE = ROOT / "stepwise_maintenance/step09_optics_bridge/outputs_f10m_a1_v3p5/detector_coupled_focus_response.json"
 OPTICS_AEFF = ROOT / "stepwise_maintenance/step04_opticsim/optics_aeff_authority_f10m_a1.json"
 OPTICS_OUTPUT = ROOT / "stepwise_maintenance/step04_opticsim/outputs/opticsim_laue_bfull_f10m_a1_r2_3seed"
@@ -79,6 +82,11 @@ def validate_headlines(problems: list[str]) -> None:
     require(step06["status"] == "PASS_V3P5_STEP06_TIME_AXIS_FULLSTAT_V2", "bad Step06 status", problems)
     require(step08["status"] == "PASS_V3P5_STEP08_TIME_DEPENDENT_FULLSTAT_V2", "bad Step08 status", problems)
     require(closure["status"] == "PASS_V3P5_FULLSTAT_PERFORMANCE_W2_CLOSURE", "bad closure status", problems)
+    require(
+        closure.get("authority_role") in {"CONSERVATIVE_CURRENT_RATE_AUTHORITY", "CONSERVATIVE_RADIALPROFILE_BASELINE_CROSSCHECK"},
+        f"bad closure authority_role: {closure.get('authority_role')}",
+        problems,
+    )
     require(not closure.get("problems"), f"closure problems: {closure.get('problems')}", problems)
 
     close(float(w2["background_cps"]), 0.07295764410312272, 1.0e-15, "Step05 W2 background", problems)
@@ -125,6 +133,52 @@ def validate_spatial_sidecar(problems: list[str]) -> None:
     close(float(checks["spot_r90_Z20d_time_dependent"]), 8.175664736254516, 1.0e-15, "spatial spot_r90 Z20d time", problems)
     close(float(checks["spot_r90_flux_3sigma_20d_time_dependent_ph_cm2_s"]), 3.669426397460591e-05, 1.0e-18, "spatial spot_r90 flux20", problems)
     require(float(checks["signal_radius_r90_cm"]) < float(detector["inputs"]["spatial_frame"].get("be_radius_cm", 1.898)) if "be_radius_cm" in detector["inputs"]["spatial_frame"] else True, "spatial radius exceeds Be radius", problems)
+
+
+def validate_boundary_closure_sidecars(problems: list[str]) -> None:
+    path = BOUNDARY / "v3p5_boundary_closure_summary.json"
+    if not path.exists():
+        script = ROOT / "code/tools/build_v3p5_boundary_closure_report.py"
+        result = subprocess.run(
+            [sys.executable, str(script)],
+            cwd=ROOT,
+            text=True,
+            capture_output=True,
+            check=False,
+        )
+        if result.returncode != 0:
+            problems.append(
+                "failed to rebuild missing boundary closure sidecar "
+                f"{rel(path)}: {result.stderr.strip() or result.stdout.strip()}"
+            )
+    require(path.exists(), f"missing boundary closure summary: {rel(path)}", problems)
+    if not path.exists():
+        return
+    data = load_json(path)
+    atmosphere = data["atmosphere_45deg_los"]
+    likelihood = data["spatial_annular_likelihood"]
+    exact = data["exact_position_delayed_source"]
+    require(data.get("status") == "PASS_V3P5_BOUNDARY_CLOSURE_SIDECARS", "bad boundary closure status", problems)
+    require(atmosphere.get("status") == "PASS_V3P5_45DEG_LOS_ATMOSPHERE_SIDECAR", "bad 45deg LOS sidecar status", problems)
+    require(likelihood.get("status") == "PASS_V3P5_SPATIAL_ANNULAR_LIKELIHOOD_SIDECAR", "bad spatial likelihood sidecar status", problems)
+    require(exact.get("status") == "SOURCE_AUDITS_PASS_TRANSPORT_NOT_RERUN", "exact-position boundary incorrectly marked", problems)
+    require(
+        exact.get("feasibility_status") == "EXACT_RPIP_POINTSOURCE_SMOKE_VALIDATED_NOT_PRODUCTION_RERUN",
+        "exact-position feasibility status should record smoke validation without production rerun",
+        problems,
+    )
+    close(float(atmosphere["w2_hard_window"]["T_ref_slant"]), 0.6520342542373311, 1.0e-15, "45deg T_ref slant", problems)
+    close(float(atmosphere["w2_hard_window"]["Z20d"]), 5.02544147909131, 1.0e-15, "45deg W2 Z20d", problems)
+    close(float(atmosphere["spot_r90"]["Z20d"]), 7.205329171859502, 1.0e-15, "45deg spot_r90 Z20d", problems)
+    close(float(likelihood["annular_likelihood_Z20d"]), 8.458041391463423, 1.0e-15, "annular likelihood Z20d", problems)
+    close(float(likelihood["flux_3sigma_20d_ph_cm2_s"]), 3.5469204525622874e-05, 1.0e-18, "annular likelihood flux20", problems)
+    require(float(likelihood["gain_vs_spot_r90_time_dependent"]) > 1.0, "annular likelihood does not exceed spot_r90 sidecar", problems)
+    require("NOT_CLOSED" in exact.get("claim_level", ""), "exact-position transport boundary should remain not paper-closed", problems)
+    smoke_readme = ROOT / exact.get("feasibility_evidence", {}).get("repo_smoke_readme", "")
+    require(smoke_readme.exists(), f"missing exact-position smoke-test README: {rel(smoke_readme)}", problems)
+    if smoke_readme.exists():
+        smoke_text = smoke_readme.read_text(encoding="utf-8")
+        require("PointSource" in smoke_text and "smoke test" in smoke_text.lower(), "exact-position smoke README lacks PointSource evidence wording", problems)
 
 
 def validate_optics_per_seed(problems: list[str]) -> None:
@@ -241,6 +295,7 @@ def main() -> int:
     validate_labels(problems)
     validate_compare(problems)
     validate_spatial_sidecar(problems)
+    validate_boundary_closure_sidecars(problems)
     validate_optics_per_seed(problems)
     validate_i128_anchor(problems)
     validate_decay_audits(problems)

@@ -144,18 +144,38 @@ python3 code/tools/validate_v3p5_fullstat_r2.py
 - v3p5 spatial sidecar is included in `validate_v3p5_fullstat_r2.py`; the
   validator checks the local side-entry spatial frame, `spot_r90` radius,
   background, time-dependent `Z20d`, and 20-day flux.
+- v3p5 boundary-closure sidecars are included in
+  `validate_v3p5_fullstat_r2.py`; the validator checks the 45 deg LOS
+  sidecar, the fixed-template annular spatial-likelihood sidecar, and that the
+  legacy `fullstat_v2` exact-position delayed-source transport boundary is not
+  mis-marked as paper-closed.
+- Exact-position production closure is separately validated by
+  `python3 code/tools/validate_v3p5_exactpos_closure.py --label fullstat_v2_exactpos`:
+  `PASS_V3P5_EXACTPOS_CLOSURE_VALIDATION`, `problems=[]`.
 - The validator also checks repo-local f10m per-seed focal crossing CSVs, the
   R2 I-128 anchor, placeholder README boundary notes, and current doc pointers.
 
 ## Remaining Boundary
 
-- `spot_r90` is now migrated as a v3p5 fullstat detector-coupled sidecar. It
-  is not yet a profile-likelihood analysis and does not replace the current
-  hard-window W2 authority.
-- Exact-position delayed-source sampling is still pending; current v3p5 delayed
-  source uses legacy axisymmetric `RadialProfileBeam` compression.
+- `spot_r90` is migrated as a v3p5 fullstat detector-coupled sidecar, and
+  `outputs/reports/v3p5_boundary_closure_20260613/` adds a fixed-template
+  multi-annulus spatial-likelihood sidecar. This closes the selection-consistent
+  spatial-likelihood sidecar boundary, but not a nuisance-profile publication
+  likelihood.
+- Exact-position delayed-source production transport is closed but provisional for the
+  `fullstat_v2_exactpos` branch:
+  `outputs/reports/v3p5_fullstat_performance_w2_closure_fullstat_v2_exactpos_20260613/`.
+  The fixed-inventory exact-RPIP source uses 5000 sampled `PointSource`
+  support blocks, no `RadialProfileBeam` blocks, and `1,000,000` delayed
+  triggers (`SE=ID=1,000,000`, `TE=11530.473845 s`). Remaining robustness work
+  is support-size and seed stability, or making the full weighted-table
+  one-block-per-RPIP source practical for Cosima parsing. Until that convergence
+  is demonstrated, `fullstat_v2` remains the conservative current rate
+  authority.
 - The old broad `validate_new_geo_re.py` remains a legacy validator. The new
   R2-specific validator covers the v3p5 fullstat invariants introduced here.
 - Absolute atmospheric transmission for the 45 deg side-entry line of sight is
-  still an explicit scalar-inheritance boundary (`T_atm=0.739042`); a dedicated
-  atmospheric LOS recomputation is required before final absolute flux claims.
+  now closed as a Step06 Beer-Lambert LOS sidecar in
+  `outputs/reports/v3p5_boundary_closure_20260613/`; the current hard-window
+  W2 authority still remains the inherited-scalar mainline result unless that
+  sidecar is explicitly selected for an absolute-flux comparison.

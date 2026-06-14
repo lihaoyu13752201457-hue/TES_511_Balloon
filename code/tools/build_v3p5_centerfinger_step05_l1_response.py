@@ -41,6 +41,7 @@ SCIENCE_SIM = ROOT / "runs" / "step09_optics_bridge" / "Opticsim_laue_f10m_a1_v3
 STEP09_SUMMARY = ROOT / "stepwise_maintenance" / "step09_optics_bridge" / "outputs_f10m_a1_v3p5" / "step09_optics_bridge_summary.json"
 F10M_A1_AEFF = ROOT / "stepwise_maintenance" / "step04_opticsim" / "optics_aeff_authority_f10m_a1.json"
 SCIENCE_RATE_LEDGER = ROOT / "config" / "science_511_onaxis_source" / "metadata" / "science_rate_ledger.csv"
+BOUNDARY_CLOSURE_SUMMARY = ROOT / "outputs" / "reports" / "v3p5_boundary_closure_20260613" / "v3p5_boundary_closure_summary.json"
 
 WINDOWS = {
     "broad_480_550": (480.0, 550.0),
@@ -64,10 +65,14 @@ TT_RE = re.compile(r"^\s*TT\s+([-+0-9.eE]+)\s*$")
 _PROMPT_NORMALIZATION_AUDIT: dict[str, Any] | None = None
 
 
+def is_exactpos_label(label: str) -> bool:
+    return label.startswith("fullstat_v2_exactpos")
+
+
 def configure_paths(label: str) -> None:
     global _PROMPT_NORMALIZATION_AUDIT
     global OUT, SUMMARY_JSON, SUMMARY_MD, RATES_CSV, TIMELINE_CSV
-    global PROMPT_DIR, PROMPT_NORM, DELAYED_SIM, FIXED_SOURCE, STEP02_SUMMARY
+    global PROMPT_DIR, PROMPT_NORM, DELAYED_SIM, FIXED_SOURCE, STEP02_SUMMARY, BOUNDARY_CLOSURE_SUMMARY
 
     _PROMPT_NORMALIZATION_AUDIT = None
     if label == "1of10":
@@ -79,7 +84,8 @@ def configure_paths(label: str) -> None:
     RATES_CSV = OUT / "step05_v3p5_centerfinger_l1_rates.csv"
     TIMELINE_CSV = OUT / "step05_v3p5_centerfinger_l1_timeline_rates.csv"
 
-    PROMPT_DIR = ROOT / "runs" / f"step02_instant_v3p5_centerfinger_{label}"
+    prompt_label = "fullstat_v2" if is_exactpos_label(label) else label
+    PROMPT_DIR = ROOT / "runs" / f"step02_instant_v3p5_centerfinger_{prompt_label}"
     PROMPT_NORM = PROMPT_DIR / "normalization.json"
     DELAYED_SIM = ROOT / "runs" / f"step02_delayed_transport_v3p5_centerfinger_{label}" / "DelayedDecayRPIPGroundStateFixed.inc1.id1.sim.gz"
     FIXED_SOURCE = ROOT / "runs" / f"step02_delay_fix_v3p5_centerfinger_{label}" / "activation_decay_day15_groundstate_fixed.source"
@@ -90,6 +96,22 @@ def configure_paths(label: str) -> None:
         / f"outputs_v3p5_centerfinger_{label}"
         / f"step02_v3p5_centerfinger_{label}_summary.json"
     )
+    if is_exactpos_label(label):
+        BOUNDARY_CLOSURE_SUMMARY = (
+            ROOT
+            / "outputs"
+            / "reports"
+            / "v3p5_boundary_closure_fullstat_v2_exactpos_20260613"
+            / "v3p5_boundary_closure_summary.json"
+        )
+    else:
+        BOUNDARY_CLOSURE_SUMMARY = (
+            ROOT
+            / "outputs"
+            / "reports"
+            / "v3p5_boundary_closure_20260613"
+            / "v3p5_boundary_closure_summary.json"
+        )
 
 
 def rel(path: Path) -> str:
@@ -264,7 +286,7 @@ def write_prompt_normalization_audit(audit: dict[str, Any]) -> None:
         out["warnings"] = "; ".join(str(item) for item in out.get("warnings", []))
         rows.append(out)
     with (OUT / "prompt_normalization_audit.csv").open("w", encoding="utf-8", newline="") as fh:
-        writer = csv.DictWriter(fh, fieldnames=fields, extrasaction="ignore")
+        writer = csv.DictWriter(fh, fieldnames=fields, extrasaction="ignore", lineterminator="\n")
         writer.writeheader()
         writer.writerows(rows)
     (OUT / "prompt_normalization_audit.json").write_text(json.dumps(audit, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
@@ -323,8 +345,8 @@ def load_reference_atmospheric_transmission() -> dict[str, Any]:
         "T_atm": float(best["T_atm"]),
         "note": (
             "Only scalar T_atm is inherited from this mainline ledger; v3p5/f10m A1 uses the "
-            "f10m_a1 A_eff authority below. This is not a recomputed absolute atmospheric "
-            "transmission for the 45 deg side-entry line of sight."
+            "f10m_a1 A_eff authority below. A dedicated 45 deg side-entry LOS atmosphere "
+            f"sidecar is available in {rel(BOUNDARY_CLOSURE_SUMMARY)}."
         ),
     }
 
@@ -828,7 +850,7 @@ def analyze_timeline(cat: dict, timeline: dict[str, Any], obs_time_s: float, dis
 def write_rates_csv(payload: dict[str, Any]) -> None:
     with RATES_CSV.open("w", encoding="utf-8", newline="") as fh:
         fields = ["window", "stream", "stage", "events", "rate_s-1", "survival_fraction_vs_raw"]
-        writer = csv.DictWriter(fh, fieldnames=fields)
+        writer = csv.DictWriter(fh, fieldnames=fields, lineterminator="\n")
         writer.writeheader()
         for win, item in payload["windows"].items():
             for stream, row in item["by_stream"].items():
@@ -853,7 +875,7 @@ def write_rates_csv(payload: dict[str, Any]) -> None:
 def write_timeline_csv(payload: dict[str, Any]) -> None:
     with TIMELINE_CSV.open("w", encoding="utf-8", newline="") as fh:
         fields = ["window", "stage", "counts", "rate_s-1"]
-        writer = csv.DictWriter(fh, fieldnames=fields)
+        writer = csv.DictWriter(fh, fieldnames=fields, lineterminator="\n")
         writer.writeheader()
         for win, item in payload["timeline"]["windows"].items():
             for stage, count in item["counts"].items():
@@ -882,7 +904,7 @@ def markdown(payload: dict[str, Any]) -> str:
         f"- physical reference flux: `{payload['science_physical_normalization']['reference_flux_ph_cm2_s']:.6g} ph cm^-2 s^-1`",
         f"- f10m A1 A_eff(511): `{payload['science_physical_normalization']['aeff_511_cm2']:.8g} cm2`",
         f"- inherited T_atm: `{payload['science_physical_normalization']['atmospheric_transmission']['T_atm']:.8g}`",
-        "- T_atm limitation: scalar mainline reference transmission is inherited; the 45 deg side-entry absolute atmospheric path has not been recomputed.",
+        f"- T_atm boundary: scalar mainline reference transmission is inherited here; the dedicated 45 deg side-entry LOS atmosphere sidecar is `{rel(BOUNDARY_CLOSURE_SUMMARY)}`.",
         f"- reference injection-plane rate: `{payload['science_physical_normalization']['rate_to_v3p5_injection_plane_s-1']:.8g} s^-1`",
         "",
     ]
@@ -927,12 +949,11 @@ def markdown(payload: dict[str, Any]) -> str:
     for win, item in payload["timeline"]["windows"].items():
         rates = item["rates_s-1"]
         lines.append(f"| {win} | {rates['raw']:.6g} | {rates['active_veto_pass']:.6g} | {rates['side_compton_fov_pass']:.6g} |")
+    lines.extend(["", "Pending before paper-facing v3p5 statistics:"])
+    for item in payload.get("pending", []):
+        lines.append(f"- {item}")
     lines.extend(
         [
-            "",
-            "Pending before paper-facing v3p5 statistics:",
-            "- replace the axisymmetric delayed-source compression with exact-position sampling before paper-facing numbers.",
-            "- add selection-consistent spatial/profile likelihood products.",
             "",
             f"CSV: `{rel(RATES_CSV)}`",
             f"Timeline CSV: `{rel(TIMELINE_CSV)}`",
@@ -970,6 +991,15 @@ def main() -> int:
     rng = np.random.default_rng(RNG_SEED)
     timeline_draw = draw_timeline(cat, delayed_time_s(), rng)
     timeline = analyze_timeline(cat, timeline_draw, delayed_time_s(), disk, reject_policy)
+    if is_exactpos_label(args.label):
+        pending = [
+            "quantify exact-RPIP PointSource support-size stability, or run the full weighted-table source if Cosima parsing is made practical",
+            "add selection-consistent spatial/profile likelihood products",
+        ]
+    else:
+        pending = [
+            "promote smoke-validated exact-RPIP PointSource sampling to v3p5 fullstat fixed-inventory delayed transport",
+        ]
     payload = {
         "status": f"PASS_V3P5_STEP05_SIDE_ENTRY_COMPTON_TIME_AXIS_L1_{args.label.upper()}",
         "statistics_label": args.label,
@@ -1014,9 +1044,7 @@ def main() -> int:
         "windows": windows,
         "timeline": timeline,
         "timeline_draw_summary": timeline_draw["draw_summary"],
-        "pending": [
-            "exact-position delayed-source sampling instead of the current RadialProfileBeam compression",
-        ],
+        "pending": pending,
     }
     write_rates_csv(payload)
     write_timeline_csv(payload)

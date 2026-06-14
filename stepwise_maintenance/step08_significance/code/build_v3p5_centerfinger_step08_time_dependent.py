@@ -30,6 +30,10 @@ STEP07_RATES = ROOT / "stepwise_maintenance" / "step07_source_cases" / "outputs_
 SECONDS_PER_DAY = 86400.0
 
 
+def is_exactpos_label(label: str) -> bool:
+    return label.startswith("fullstat_v2_exactpos")
+
+
 def configure_paths(label: str) -> None:
     global OUT, FIG, STEP05, STEP06, STEP06_BG, STEP07, STEP07_RATES
 
@@ -294,8 +298,7 @@ def markdown(summary: dict[str, Any]) -> str:
             f"- summary JSON: `{summary['outputs']['summary_json']}`",
             "",
             "Limitations:",
-            "- delayed source is still RadialProfileBeam-compressed;",
-            "- no spatial/profile likelihood gain is applied.",
+            *[f"- {item}" for item in summary.get("pending", [])],
             "",
         ]
     )
@@ -317,6 +320,17 @@ def build_summary(
     t5 = a_ref["T5_day_counting"] or a_ref["T5_day_extrapolated_constant_profile"]
     loss_values = [float(row["accidental_loss_fraction"]) for row in accidentals]
     w2_phys = step05["windows"]["w2_510p58_511p42"]["physical_reference_flux"]
+    if is_exactpos_label(label):
+        pending = [
+            "exact-position delayed source uses sampled PointSource support; support-size stability remains a robustness check",
+            "no spatial/profile likelihood gain is applied",
+        ]
+    else:
+        pending = [
+            "delayed source is still RadialProfileBeam-compressed",
+            "Exact-position delayed-source sampling",
+            "Selection-consistent spatial/profile likelihood",
+        ]
     return {
         "status": f"PASS_V3P5_STEP08_TIME_DEPENDENT_{label.upper()}",
         "statistics_label": label,
@@ -349,10 +363,7 @@ def build_summary(
             "accidental_veto_by_time": rel(OUT / "accidental_veto_by_time.csv"),
             "figures": rel(FIG),
         },
-        "pending": [
-            "Exact-position delayed-source sampling.",
-            "Selection-consistent spatial/profile likelihood.",
-        ],
+        "pending": pending,
     }
 
 

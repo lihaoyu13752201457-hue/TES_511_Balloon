@@ -1,6 +1,7 @@
 # v3p5 Full-Stat Performance and W2 Background Closure
 
 Status: `PASS_V3P5_FULLSTAT_PERFORMANCE_W2_CLOSURE`.
+Authority role: `CONSERVATIVE_RADIALPROFILE_BASELINE_CROSSCHECK`.
 
 Claim level: full-stat v3p5 center-finger L1 rate-level closure with external 1 Ms benchmark markers.
 
@@ -49,28 +50,38 @@ The delayed slice is small; within delayed-only W2 events, `Cu64` is the largest
 - Full-stat label is `fullstat_v2`.
 - 1 Ms means `1,000,000 s` exposure.
 - Background and signal rates are Step05 L1 side-entry Compton/FoV selected rates, folded through Step06/07/08 for mission-time significance.
+- Boundary sidecars are packaged at `outputs/reports/v3p5_boundary_closure_20260613/v3p5_boundary_closure_report.md`.
 
 ## Methodology
 
 Step02 produces the full-stat prompt, buildup, fixed delayed source, and delayed transport. Step05 parses prompt, delayed, and focused EventList detector outputs with the v3p5 active-veto and side-entry Compton/FoV selection. Step06 applies the mission time axis; Step07 builds source cases; Step08 computes time-dependent counting significance with analytic accidental-live factors. The performance comparison converts the Step08 cumulative significance to 3sigma flux limits at fixed exposures and adds public 1 Ms markers.
 
+## Boundary Closure Sidecars
+
+- 45 deg LOS W2 sidecar: `Z20d=5.02544`, 20-day 3sigma flux `5.969625e-05` ph cm^-2 s^-1.
+- 45 deg LOS `spot_r90` sidecar: `Z20d=7.20533`, 20-day 3sigma flux `4.163585e-05` ph cm^-2 s^-1.
+- Fixed-template multi-annulus spatial-likelihood sidecar: `Z20d=8.45804`, 20-day 3sigma flux `3.546920e-05` ph cm^-2 s^-1.
+- Exact-position delayed-source status: `SOURCE_AUDITS_PASS_TRANSPORT_NOT_RERUN`.
+- Exact-position feasibility status: `EXACT_RPIP_POINTSOURCE_SMOKE_VALIDATED_NOT_PRODUCTION_RERUN`.
+
 ## Limitations And Robustness Checks
 
-- This is an L1 rate-level full-stat closure; it is not a profile-likelihood or final paper-facing spatial analysis.
-- The delayed source still uses the legacy axisymmetric RadialProfileBeam compression for v3p5.
+- This fullstat_v2 closure is the conservative radial-profile baseline cross-check; fullstat_v2_exactpos is the current rate authority after the M/seed convergence report.
+- This is an L1 rate-level full-stat closure; boundary sidecars close the 45 deg LOS normalization and fixed-template annular spatial-likelihood checks, but they are not a nuisance-profile publication analysis.
+- The production delayed transport still uses the legacy axisymmetric RadialProfileBeam compression for v3p5; exact-RPIP PointSource sampling is smoke-validated but not yet rerun at fixed-inventory production scale.
 - 511-CAM is figure-derived from Fig.11; COSI is sqrt-time scaled from a published 2-year sensitivity and is a benchmark marker, not an observing-strategy equivalence.
 - Flux limits use Gaussian S/sqrt(B)=3 scaling for comparison consistency.
 
 ## Recommended Next Steps
 
-- Replace the delayed-source RadialProfileBeam compression with exact-position sampling for paper-facing v3p5 numbers.
-- Promote the comparison to a spatial/profile-likelihood analysis once selection-consistent spatial cuts are available.
+- Promote the smoke-validated exact-RPIP PointSource path to a v3p5 fullstat fixed-inventory production delayed source and rerun delayed transport.
+- Promote the fixed-template annular sidecar to a nuisance-profile publication likelihood only if that claim is needed.
 - Re-digitize or table-source external benchmark curves before any publication figure.
 
 ## Further Questions
 
 - How much does exact-position delayed sampling move the W2 background mix?
-- Does a selection-consistent spatial cut improve v3p5 W2 beyond the current L1 rate-level estimate?
+- Does a nuisance-profile spatial likelihood materially improve beyond the current fixed-template annular sidecar?
 - Which external benchmark definitions should be normalized for field of view, line width, and observing strategy in a publication table?
 
 ## Artifact Index

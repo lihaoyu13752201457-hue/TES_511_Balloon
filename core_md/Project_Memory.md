@@ -1,6 +1,6 @@
 # Project Memory: NEW_GEO_RE 511 keV Balloon Full Chain
 
-Last reviewed: 2026-06-12
+Last reviewed: 2026-06-13
 
 This file is the fast re-entry map for the project. Read this first when
 returning to the repository, then open the authority files named below only if
@@ -143,7 +143,7 @@ Current v3p5 center-finger DR branch checkpoint completed 2026-06-12:
   `25,210,216` generated particles. Fixed delayed activity is
   `85.636696 Bq`; delayed transport is gzip-valid with `SE=1,000,000`,
   `ID=1,000,000`, `TE=11531.59846 s`.
-- Full-stat v2 W2 L1/mission significance headline:
+- Conservative radial-profile full-stat v2 W2 L1/mission significance baseline:
   Step05 W2 background/signal at `1e-4 ph cm-2 s-1` is
   `0.0729576/0.00118117 cps`; Step06 mission-mean background/signal is
   `0.0730428/0.00117281 cps`; Step08 time-dependent W2 gives
@@ -158,6 +158,33 @@ Current v3p5 center-finger DR branch checkpoint completed 2026-06-12:
   time-dependent `Z20d=8.17566`, `T3=2.23643 day`, and 20-day 3-sigma flux
   `3.66943e-5 ph cm-2 s-1`. This is a post-processing spatial sidecar; no
   profile-likelihood gain is claimed.
+- Boundary-closure sidecars completed 2026-06-13:
+  `outputs/reports/v3p5_boundary_closure_20260613/`. The 45 deg side-entry
+  LOS sidecar applies the Step06 Beer-Lambert depth model with
+  `sec(45 deg)` and gives W2 `Z20d=5.02544`,
+  `F3_20d=5.96962e-5`, and `spot_r90` `Z20d=7.20533`,
+  `F3_20d=4.16358e-5`. The fixed-template multi-annulus W2 spatial-likelihood
+  sidecar gives `Z20d=8.45804` and `F3_20d=3.54692e-5`. These close the
+  scalar-`T_atm` and single-cut spatial-analysis boundaries as sidecars; they
+  are still not a nuisance-profile publication likelihood.
+- Current exact-position delayed-source rate authority completed 2026-06-14 as
+  `fullstat_v2_exactpos`:
+  `outputs/reports/v3p5_fullstat_performance_w2_closure_fullstat_v2_exactpos_20260613/`.
+  The fixed-inventory exact-RPIP `PointSource` source uses 5000 sampled support
+  blocks, no `RadialProfileBeam` blocks, and preserves the fixed activity
+  `85.636696 Bq`. Cosima delayed transport stored `SE=1,000,000`,
+  `ID=1,000,000`, `TE=11530.473845 s`. Step05 exactpos W2
+  background/signal is `0.0624651/0.00118117 cps`; Step08 gives
+  `Z20d=6.15522`, `T3=4.73758 day`, and 20-day 3-sigma flux
+  `4.87391e-5 ph cm-2 s-1`. The 1 Ms comparison gives v3p5 W2
+  `F_3sigma(1 Ms)=6.32564e-5 ph cm-2 s-1`. The convergence package
+  `outputs/reports/v3p5_exactpos_convergence_20260614/` is
+  `PASS_EXACTPOS_TRANSPORT_CONVERGENCE` and recommends
+  `PROMOTE_EXACTPOS_TO_CURRENT_RATE_AUTHORITY`. It uses four transport-backed
+  cases over `M=5000` seeds `260613/260614`, `M=20000` seed `260613`, and
+  `M=50000` seed `260613`; W2 background relative range is `1.119%` and
+  `Z20d` relative range is `0.551%`. `fullstat_v2` remains the conservative
+  radial-profile baseline cross-check.
 - Full-stat v2 W2 background source breakdown:
   `stepwise_maintenance/step08_significance/outputs_v3p5_centerfinger_fullstat_v2/w2_background_source_breakdown/`.
   The selected W2 background is dominated by prompt `eplus`: `80` events,
@@ -172,9 +199,12 @@ Current v3p5 center-finger DR branch checkpoint completed 2026-06-12:
   `runs/step02_delay_fix_v3p5_centerfinger_fullstat_v2/normalization_audit_groundstate_fix.json`.
   The 1of10 equivalents are also present under the matching `1of10` run
   directories.
-- Limitation to keep explicit: this v3p5 delayed source still uses the legacy
-  axisymmetric `RadialProfileBeam` compression; exact-position delayed-source
-  sampling remains the next confidence upgrade before paper-facing numbers.
+- Limitation to keep explicit: `fullstat_v2_exactpos` now replaces the legacy
+  axisymmetric delayed-source compression as the current rate authority, but it
+  uses sampled equal-flux `PointSource` support rather than the full weighted
+  RPIP table as one block per row. The M/seed convergence closure makes this
+  adequate for the current W2 rate claim; a full one-block-per-RPIP stress test
+  is an optional engineering upgrade, not a current authority blocker.
 
 `../new_geo_re_2` is the BGO equal-attenuation control branch (`70 keV` veto
 threshold, equal-stopping material control only). Its state, including the
@@ -917,8 +947,14 @@ authority until the named modeling and rerun work is done.
   `1.36235e-4 ph cm-2 s-1`, 1 Ms flux `1.76837e-4 ph cm-2 s-1`, or prompt
   `eplus` fraction `89.3%`. The 2026-06-12 R2 review found and fixed the
   Step05 prompt override missing the non-gamma multi-rep exposure normalization.
-  Current fullstat_v2 W2 authority is `0.0729576 cps`, `Z20d=5.70221`,
-  `F_3sigma(20d)=5.26111e-5`, and `F_3sigma(1Ms)=6.82301e-5`.
+  Conservative radial-profile fullstat_v2 W2 baseline is `0.0729576 cps`,
+  `Z20d=5.70221`, `F_3sigma(20d)=5.26111e-5`, and
+  `F_3sigma(1Ms)=6.82301e-5`.
+- Do not describe `fullstat_v2_exactpos` as provisional after the 2026-06-14
+  convergence closure. It is now the current exact-position rate authority:
+  W2 background `0.0624651 cps`, `Z20d=6.15522`, and
+  `F_3sigma(1Ms)=6.32564e-5`. Keep `fullstat_v2` as the conservative
+  radial-profile baseline cross-check.
 - Do not compute v3p5 side-entry focused-spot radii around the global origin.
   The correct sidecar uses the local side-window frame and gives
   `spot_r90=1.05164 cm`, not the invalid global-origin `~6 cm` scale.
@@ -966,6 +1002,7 @@ authority until the named modeling and rerun work is done.
 | v3p5 full-stat Step08 significance | `stepwise_maintenance/step08_significance/outputs_v3p5_centerfinger_fullstat_v2/step08_v3p5_centerfinger_time_dependent_summary.json` |
 | v3p5 full-stat W2 closure | `outputs/reports/v3p5_fullstat_performance_w2_closure_20260612/v3p5_fullstat_performance_w2_closure_report.md` |
 | v3p5 full-stat `spot_r90` sidecar | `stepwise_maintenance/step08_significance/outputs_v3p5_centerfinger_fullstat_v2_spatial/v3p5_spatial_line_proxy.md` |
+| v3p5 boundary-closure sidecars | `outputs/reports/v3p5_boundary_closure_20260613/v3p5_boundary_closure_report.md` |
 | f10m A1 optics authority | `stepwise_maintenance/step04_opticsim/optics_aeff_authority_f10m_a1.json` |
 | v3p5 EventList bridge | `stepwise_maintenance/step09_optics_bridge/outputs_f10m_a1_v3p5/step09_optics_bridge_summary.json` |
 | v3p5 detector-coupled focus response | `stepwise_maintenance/step09_optics_bridge/outputs_f10m_a1_v3p5/detector_coupled_focus_response.json` |

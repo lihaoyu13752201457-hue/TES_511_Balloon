@@ -1,0 +1,321 @@
+
+% NIM A / Elsevier first manuscript draft
+% Compile with: pdflatex balloon511_nima_draft_en.tex
+% For submission, replace placeholder authors/affiliations and move Highlights to Elsevier's separate highlights file if requested.
+
+\documentclass[preprint,12pt]{elsarticle}
+
+\usepackage{amsmath,amssymb}
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{lineno}
+\usepackage{xcolor}
+
+\journal{Nuclear Instruments and Methods in Physics Research Section A}
+\biboptions{numbers,sort&compress}
+
+\newcommand{\keV}{\,\mathrm{keV}}
+\newcommand{\MeV}{\,\mathrm{MeV}}
+\newcommand{\cms}{\,\mathrm{cm^{-2}\,s^{-1}}}
+\newcommand{\cps}{\,\mathrm{s^{-1}}}
+\newcommand{\wii}{W2}
+\newcommand{\aeff}{A_{\mathrm{eff}}}
+\newcommand{\fref}{F_{\mathrm{ref}}}
+\newcommand{\fthree}{F_{3\sigma}}
+
+\begin{document}
+
+\begin{frontmatter}
+
+\title{Background and 511 keV line sensitivity of a balloon-borne TES Laue-lens telescope\tnoteref{t1}}
+\tnotetext[t1]{First full-manuscript draft prepared for a NIM A style submission. Numerical results should be rechecked against the final repository validation outputs before submission.}
+
+\author[inst1]{Author list to be completed}
+\address[inst1]{Institution list to be completed}
+
+\begin{abstract}
+The Galactic 511 keV annihilation line is a direct tracer of low-energy positrons, but its compact-source content and narrow-line kinematics remain difficult to measure because MeV instruments are strongly background dominated. We present a full-chain Monte Carlo and rate-folding study for a balloon-borne pointed 511 keV telescope that combines a Ge(111) Laue lens with a transition-edge-sensor (TES) microcalorimeter focal plane. The model couples the focused optical phase space to an engineering detector/cryostat geometry, prompt atmospheric backgrounds, activation buildup, exact-position delayed-source transport, active-shield vetoes, Compton/field-of-view consistency cuts, a narrow line window, and mission-time rate variation. The current v3p5 full-stat exact-position chain uses a 10 m focal-length Laue configuration with $\aeff(511\keV)=20.08476\,\mathrm{cm^2}$ and a $510.58$--$511.42\keV$ analysis window. At a reference point-source flux of $10^{-4}\,\mathrm{ph\,cm^{-2}\,s^{-1}}$, the selected line-window background and signal rates are $0.0624651\cps$ and $0.00118117\cps$, respectively. The mission-time fold gives $Z_{20\mathrm{d}}=6.15522$, a $3\sigma$ detection time of $4.73758$ d, a 20-d $3\sigma$ flux threshold of $4.87391\times10^{-5}\cms$, and a 1 Ms threshold of $6.32564\times10^{-5}\cms$. A transport-backed exact-position support-size and seed sweep changes the total line-window background by only 1.119\% and $Z_{20\mathrm{d}}$ by 0.551\%. We also report spatial-analysis and atmospheric-line-of-sight sidecars, while keeping the hard-window exact-position chain as the primary rate authority. The results indicate that focused TES spectroscopy can reach scientifically useful narrow-line sensitivity from a balloon platform, provided activation and prompt atmospheric backgrounds are modeled in the same detector-coupled selection space as the signal.
+\end{abstract}
+
+\begin{keyword}
+Gamma-ray instrumentation \sep 511 keV annihilation line \sep transition-edge sensors \sep Laue lens \sep balloon-borne telescope \sep Monte Carlo background simulation \sep activation background
+\end{keyword}
+
+\end{frontmatter}
+
+\linenumbers
+
+% Highlights for Elsevier submission system, to be placed in a separate file if required:
+% - Detector-coupled background model for a balloon-borne focused 511 keV TES telescope.
+% - Exact-position delayed activation is transported through the same line-window selection as the focused signal.
+% - The hard-window exact-position chain gives F_3sigma(20 d)=4.87e-5 ph cm^-2 s^-1.
+% - Transport-backed M/seed convergence stabilizes the final W2 significance at the sub-percent level.
+
+\section{Introduction}
+\label{sec:intro}
+
+The 511 keV gamma-ray line from electron--positron annihilation is one of the cleanest spectroscopic signatures of antimatter in the Galaxy. After positrons slow down in the interstellar medium, they annihilate either directly with electrons, producing two photons near 511 keV, or through positronium formation, producing the 511 keV line together with a three-photon continuum below the line. This radiative complex probes positron production, propagation, thermalization, and annihilation conditions \cite{Prantzos2011}. The line was first reported from the Galactic-center direction by balloon-borne experiments and later identified unambiguously with high-resolution Ge detectors as positron-annihilation radiation \cite{Prantzos2011}. The observed Galactic flux implies a positron annihilation rate of order $10^{43}\,\mathrm{e^+\,s^{-1}}$, making the origin of these positrons a long-standing problem in MeV gamma-ray astronomy \cite{Prantzos2011,Kierans2020}.
+
+The candidate source classes span standard and non-standard physics. Conventional astrophysical candidates include $\beta^+$ decay of radioisotopes synthesized in massive stars, novae, core-collapse supernovae, and thermonuclear supernovae; pair creation in compact objects such as X-ray binaries, microquasars, pulsars, and the Galactic-center black hole; and cosmic-ray interactions \cite{Prantzos2011,Siegert2016AA}. More speculative explanations include light dark matter decay or annihilation and hidden-sector scenarios \cite{Prantzos2011,Yoneda2025}. The difficulty is that the observed annihilation morphology is shaped not only by where positrons are produced, but also by how far they propagate before thermalization and annihilation. Spectroscopy constrains the annihilation medium through the line centroid, line width, and positronium fraction, while continuum limits above 511 keV constrain the injection energy \cite{Prantzos2011,Siegert2016AA}. The most discriminating observables for source identification---compact-source content, small-scale structure, velocity shifts, and spatially resolved line broadening---remain limited by instrumental sensitivity, angular resolution, and background systematics.
+
+The current observational picture has been shaped by OSSE/CGRO, INTEGRAL/SPI, and COSI. INTEGRAL/SPI established a bright bulge-like component and fainter disk emission, with the detailed bulge/disk decomposition depending on the adopted sky model and instrumental-background treatment \cite{Siegert2016AA,Yoneda2025}. Recent long-exposure SPI analyses recover the central, broad-bulge, and disk structures and suggest marginal additional structures associated with massive-star regions \cite{Yoneda2025}. COSI provided an important independent measurement from a 46-d super-pressure-balloon flight, detecting the Galactic 511 keV signal with Compton imaging and finding that the emission is broader than a single point source \cite{Kierans2020,Siegert2020COSI}. These results demonstrate both the scientific value and the practical difficulty of MeV line astronomy: the celestial line is weak, while atmospheric and instrumental backgrounds are strong and time dependent.
+
+Wide-field Compton telescopes are essential for mapping the large-scale 511 keV sky. A complementary strategy is to use a pointed telescope that concentrates 511 keV photons onto a small, high-resolution focal plane. A pointed system is especially useful for testing whether a fraction of the annihilation luminosity is produced by unresolved point sources, a bright central core, or transient pair-plasma episodes in compact objects. This motivation is reinforced by annihilation signatures reported during the 2015 outburst of V404 Cygni, which indicate that accreting stellar-mass black holes can produce pair plasma at astrophysically relevant rates \cite{Siegert2016V404}. Such a payload does not replace wide-field Compton missions; it addresses a different observable in a narrower field of view.
+
+The 511-CAM concept follows this route by combining gamma-ray concentrating optics with stacked transition-edge-sensor microcalorimeter arrays \cite{Shirazi2023}. It is attractive because it joins photon concentration with sub-keV calorimetric energy resolution, two capabilities rarely available together at MeV energies. A projected 511 keV detector-assembly resolution of a few $10^2$ eV FWHM corresponds to a velocity scale of a few $10^2\,\mathrm{km\,s^{-1}}$ and could enable velocity-shift or line-broadening measurements in favorable cases \cite{Shirazi2023}. Event topology also matters. Single-pixel photoelectric events provide the cleanest spectroscopy, while multi-pixel events can be checked against Compton kinematics and rejected if inconsistent with photons arriving through the focusing optics.
+
+The central technical challenge is background. Balloon-borne gamma-ray spectrometers operate in a strong radiation environment and are necessarily background dominated. Classical studies of balloon-borne Ge spectrometers identify atmospheric-neutron scattering, atmospheric and cosmic gamma-ray aperture flux, beta decays of activation products, and shield leakage as major background components; they also emphasize minimizing passive material near the detector and lowering effective shield thresholds where possible \cite{Gehrels1985}. For a 511 keV line payload, the problem is sharper because the science signal lies at the same energy as strong atmospheric and instrumental annihilation features. A credible sensitivity estimate therefore requires a detector-coupled model of the optics, entrance windows, cryostat, passive material, active shield, prompt atmospheric components, and delayed activation.
+
+Detailed Monte Carlo mass modeling is the standard route to such estimates. The INTEGRAL/SPI response production required a high-fidelity mass model, ground- and in-flight-calibration comparisons, and a practical separation between imaging response and redistribution response to control computing and storage costs \cite{Sturner2003}. Modern MeV mission studies, including AMEGO and COSI, similarly rely on Geant4/MEGAlib-based simulations to calculate response, background, event reconstruction, and sensitivity \cite{Agostinelli2003,Zoglauer2006,Caputo2017,Karwin2023,Gallego2025}. The same philosophy is adopted here, but applied to a narrower and more demanding target: a balloon-borne, focused, narrow-line 511 keV telescope with a TES focal plane.
+
+This paper presents a detector-coupled simulation and sensitivity study for such a payload. The simulation chain starts from a Ge(111) Laue-lens source model at 511 keV and transports focused photons through the detector entrance window into an engineering detector/cryostat mass model. The modeled assembly includes the TES focal plane, staged thermal windows, a Be entrance window, Cu/W passive shielding, cryogenic service proxies, and an active CsI shield. The background chain includes prompt atmospheric components, activation buildup, exact-position delayed-source transport, active-shield vetoes, Compton/field-of-view consistency cuts, a narrow 511 keV line window, mission-time rate evolution, and counting-significance estimates. The main contribution is not an isolated effective-area estimate, but a closed rate calculation in which signal and background pass through the same detector-coupled selection definitions.
+
+The remainder of the paper is organized as follows. Section~\ref{sec:requirements} summarizes the science-driven instrument requirements. Section~\ref{sec:workflow} describes the simulation chain. Sections~\ref{sec:geometry}--\ref{sec:selection} describe the detector geometry, optics bridge, background model, and event selections. Section~\ref{sec:results} presents the sensitivity, convergence, and background-composition results. Section~\ref{sec:discussion} discusses interpretation, limitations, and future work. Section~\ref{sec:conclusions} summarizes the main conclusions.
+
+\section{Science and instrument requirements}
+\label{sec:requirements}
+
+The instrument considered here is optimized for a pointed, narrow-line measurement rather than all-sky imaging. The primary science case is the detection or exclusion of compact 511 keV emission at fluxes of order $10^{-4}\cms$ or below during a long-duration balloon exposure. This flux scale is motivated by the need to test bright central-core, compact-source, and transient pair-plasma scenarios while remaining complementary to wide-field Compton surveys.
+
+Four requirements follow. First, the telescope must concentrate 511 keV photons so that a small focal plane can be used without sacrificing the collecting area. Second, the focal plane must provide sub-keV energy resolution so that the line-window background scales with a narrow spectral interval rather than a broad MeV-band continuum. Third, the detector and shield design must suppress atmospheric, activation, and side-entry backgrounds without placing excessive passive material near the TES absorbers. Fourth, the simulation chain must treat prompt background, delayed activation, focused signal, vetoes, event topology, and mission-time variation consistently. These requirements define the methods used below.
+
+\section{Simulation workflow}
+\label{sec:workflow}
+
+Figure~\ref{fig:workflow} summarizes the workflow. The calculation is divided into geometry definition, prompt and buildup transport, delayed-source construction, focused-optics transport, detector-coupled signal replay, detector event selection, mission-time rate folding, source-case normalization, and cumulative significance evaluation. The present manuscript uses the v3p5 full-stat exact-position branch as the primary rate authority. The conservative radial-profile delayed-source branch is retained only as a cross-check.
+
+\begin{figure}[t]
+\centering
+\fbox{\parbox{0.92\linewidth}{\centering Placeholder for workflow diagram: geometry $\rightarrow$ prompt/buildup transport $\rightarrow$ exact-position delayed source $\rightarrow$ Laue optics $\rightarrow$ EventList detector replay $\rightarrow$ veto/Compton/FoV selection $\rightarrow$ time fold $\rightarrow$ significance.}}
+\caption{Conceptual simulation chain used in this work. The important feature is that the focused signal and all background streams are evaluated in the same detector-response and event-selection space.}
+\label{fig:workflow}
+\end{figure}
+
+The rate-level authority is the exact-position delayed-source chain labeled \texttt{fullstat\_v2\_exactpos}. It uses full-stat prompt and buildup transport, a fixed day-15 delayed inventory, sampled exact-position \texttt{PointSource} delayed support, and full downstream propagation through the Step05--Step08 detector response and significance chain. The older homogeneous-beam and legacy delayed-source branches are not used for the headline sensitivities.
+
+\section{Detector and cryostat mass model}
+\label{sec:geometry}
+
+The detector model is an engineering Geant4/MEGAlib proxy for a balloon-borne TES focal-plane assembly. It is not intended to be a final CAD reproduction; rather, it captures the material and geometrical features most relevant to MeV background formation and event selection. The current v3p5 center-finger geometry contains a TES pixel array, a Be entrance window, staged Al thermal windows, Cu/W passive shields and collimation, cryogenic service-mass proxies, and a segmented CsI active shield. The local side-entry geometry points the window $45^\circ$ upward in the zenith-frame source coordinates, with an instrument-frame rotation of $0,45,0$ degrees. A 2 cm-thick W square-bore side collimator defines the local side-window entrance.
+
+The active shield is treated quantitatively by post-processing rather than by relying on native production-trigger filtering. Candidate events are grouped on a common Poisson time axis and vetoed if the summed CsI shield energy in the coincidence window exceeds the analysis threshold. This choice avoids filtering activation-production storage at the transport stage and keeps the veto definition common to prompt, delayed, and focused-science streams.
+
+\begin{table}[t]
+\centering
+\caption{Key detector and analysis parameters used for the primary v3p5 exact-position chain.}
+\label{tab:geometry}
+\begin{tabular}{ll}
+\toprule
+Parameter & Value or policy \\
+\midrule
+Detector concept & TES microcalorimeter focal plane \\
+Active shield & Segmented CsI, post-processing veto \\
+Entrance window & Be side window \\
+Passive shielding/collimation & Cu/W proxy shields and 2 cm W side sleeve \\
+Pointing & Local side window tilted $45^\circ$ upward \\
+Detector trigger/veto authority & Step05 post-processing selection \\
+Line window $\wii$ & $510.58$--$511.42\keV$ \\
+Reference flux $\fref$ & $10^{-4}\cms$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\section{Laue optics and detector-coupled signal replay}
+\label{sec:optics}
+
+The signal model uses a Ge(111) Laue-lens configuration tuned to 511 keV. The current f10m A1 optical authority has focal length $10\,\mathrm{m}$, 25 tiles, 18 mm tile size, 30 arcsec mosaicity, active Ge mass $0.44063\,\mathrm{kg}$, and $\aeff(511\keV)=20.08476\,\mathrm{cm^2}$. A three-seed B-FULL focal-crossing aggregate contains 37,194 within-Be focal rows, with within-Be fraction 0.998336, $r_{90}=1.02853\,\mathrm{cm}$, and $r_{99}=1.24527\,\mathrm{cm}$.
+
+The optics and detector are coupled through an EventList bridge. Focal-crossing rows accepted inside the Be-window gate are transformed into the local detector coordinate system and replayed through the full detector/cryostat geometry. This avoids using an analytic phase-space projection as the signal authority and preserves the optical focusing handoff at the detector entrance plane. The v3p5 bridge transported 37,194/37,194 EventList rows. At $\fref=10^{-4}\cms$, the Step05 hard-window signal response is $0.00118117\cps$, corresponding to a Step07 response of $11.8117\,\mathrm{cps}/(\mathrm{ph\,cm^{-2}\,s^{-1}})$.
+
+\section{Prompt and delayed background model}
+\label{sec:background}
+
+The background model contains prompt atmospheric transport and delayed activation. The full-stat prompt stream and the activation-buildup stream each generated 25,210,216 particles. Prompt normalization uses per-tag exposure normalization, while delayed activation is constructed from the activation-production ledgers and corrected ground-state half-lives. The fixed day-15 delayed inventory activity for the current chain is $85.636696\,\mathrm{Bq}$.
+
+The main methodological upgrade in the current branch is exact-position delayed-source transport. Instead of compressing production positions into axisymmetric radial-profile source blocks, the exact-position chain samples equal-flux \texttt{PointSource} support blocks from weighted radioactive-production rows. The baseline exact-position source uses $M=5000$ support blocks with seed 260613, contains no \texttt{RadialProfileBeam} blocks, and preserves the fixed activity budget. The delayed transport used $10^6$ triggers and stored $10^6$ events, with observation time $11530.473845\,\mathrm{s}$.
+
+This exact-position source representation is not a one-block-per-production-row stress test. Instead, it is a statistically sampled representation whose adequacy is evaluated downstream in Section~\ref{subsec:convergence}. The convergence test is performed on the final selected line-window rates and significance, not only on source-sampling diagnostics.
+
+\section{Event selection and significance calculation}
+\label{sec:selection}
+
+The analysis window is
+\begin{equation}
+  \wii = [510.58,511.42]\keV,
+\end{equation}
+corresponding to $511\keV\pm420\,\mathrm{eV}$. This window is matched to a sub-keV TES response assumption and is narrow enough to suppress continuum background while retaining most of the line response.
+
+Events are processed on a common time axis. Prompt, delayed, and focused signal event instances are drawn according to their rates, sorted by time, and grouped within a $1\,\mu\mathrm{s}$ coincidence window. The active-shield veto is then applied to the summed shield energy. TES hit topologies are classified with a custom Compton/field-of-view consistency test. One-hit events are retained. Two-hit events test both possible first-scatter orders. Higher-multiplicity events enumerate candidate orders and use a Compton sequence quality metric before testing whether the first-scatter cone is consistent with the Be-window acceptance. Events without a valid reconstruction are retained under the current conservative rejection policy.
+
+The time-dependent significance is computed as a cumulative counting statistic. For a reference flux $\fref$, the cumulative significance is
+\begin{equation}
+  Z(t) = \frac{N_s(t)}{\sqrt{N_b(t)}},
+\end{equation}
+where $N_s(t)$ and $N_b(t)$ are the time-integrated selected signal and background counts after mission-time scaling and live-factor corrections. For comparison among analysis variants, the $3\sigma$ flux threshold is scaled as
+\begin{equation}
+  \fthree(t) = \fref \frac{3}{Z(t)}.
+\end{equation}
+This Gaussian counting convention is used consistently for the hard-window results and sidecar comparisons.
+
+\section{Results}
+\label{sec:results}
+
+\subsection{Primary hard-window sensitivity}
+\label{subsec:primary}
+
+Table~\ref{tab:headline} gives the primary hard-window result. In the exact-position chain, the Step05 selected $\wii$ background and signal rates at $\fref=10^{-4}\cms$ are $0.0624651\cps$ and $0.00118117\cps$, respectively. After the mission-time fold, the mean background and signal rates are $0.0626835\cps$ and $0.00117281\cps$. The resulting 20-d significance is $Z_{20\mathrm{d}}=6.15522$, with a $3\sigma$ detection time of $4.73758$ d. The 20-d $3\sigma$ flux threshold is $4.87391\times10^{-5}\cms$, and the 1 Ms threshold is $6.32564\times10^{-5}\cms$.
+
+\begin{table}[t]
+\centering
+\caption{Primary sensitivity and selected comparison cases. The exact-position hard-window row is the current rate authority. The radial-profile row is a conservative baseline cross-check. Spatial and line-of-sight rows are sidecars, not replacements for the hard-window authority.}
+\label{tab:headline}
+\begin{tabular}{lccccc}
+\toprule
+Case & $B_{\wii}$ (cps) & $S_{\wii}$ at $\fref$ (cps) & $Z_{20\mathrm{d}}$ & $T_{3\sigma}$ (d) & $\fthree(20\mathrm{d})$ \\
+\midrule
+Exact-position hard window & 0.0624651 & 0.00118117 & 6.15522 & 4.73758 & $4.87391\times10^{-5}$ \\
+Radial-profile baseline & 0.0729576 & 0.00118117 & 5.70221 & 5.46687 & $5.26111\times10^{-5}$ \\
+Focused $r_{90}$ sidecar & 0.0232510 & $\approx0.001063$ & 8.17566 & 2.23643 & $3.66943\times10^{-5}$ \\
+45$^\circ$ LOS sidecar & -- & -- & 5.02544 & -- & $5.96962\times10^{-5}$ \\
+Multi-annulus sidecar & -- & -- & 8.45804 & -- & $3.54692\times10^{-5}$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The hard-window result is intentionally conservative relative to the spatial sidecars. It requires only the narrow energy window, active-shield veto, and topology/FoV consistency selection. The $r_{90}$ sidecar illustrates the possible gain from using the focused spot in the local side-window detector frame, but it should be treated as a post-processing spatial analysis rather than a finalized profile-likelihood result.
+
+\subsection{Background composition}
+\label{subsec:bgcomp}
+
+The selected exact-position $\wii$ background is dominated by prompt atmospheric events. The Step05 stream split is $0.0590827\cps$ prompt and $0.00338234\cps$ delayed, corresponding to 94.6\% and 5.4\% of the total selected hard-window background. The largest prompt component is the positron-tagged atmospheric stream, contributing $0.0543377\cps$ or 86.99\% of the total $\wii$ background. The delayed component is led by $^{64}$Cu, which contributes $0.00251507\cps$, or 74.36\% of the delayed $\wii$ events.
+
+\begin{table}[t]
+\centering
+\caption{Selected $\wii$ background composition in the exact-position chain. Percentages are relative to the total $\wii$ background unless otherwise stated.}
+\label{tab:bgcomp}
+\begin{tabular}{lcc}
+\toprule
+Component & Rate (cps) & Fraction \\
+\midrule
+All prompt atmospheric streams & 0.0590827 & 94.6\% \\
+All delayed activation streams & 0.00338234 & 5.4\% \\
+Prompt $e^+$ stream & 0.0543377 & 86.99\% \\
+Delayed $^{64}$Cu & 0.00251507 & 74.36\% of delayed \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+This composition has two implications. First, improving the hard-window sensitivity is primarily a prompt-background problem for the current geometry and selection. Second, delayed activation is small but not negligible; its line-window contribution is sufficiently structured that exact-position delayed transport is worth preserving in the chain.
+
+\subsection{Exact-position support-size and seed convergence}
+\label{subsec:convergence}
+
+Table~\ref{tab:convergence} summarizes the transport-backed exact-position convergence sweep. Four downstream cases were run: two seeds at $M=5000$ and two larger support sizes at $M=20000$ and $M=50000$. Across these cases, the delayed subcomponent shows visible Monte Carlo variation, but the total selected $\wii$ background changes by only 1.119\%, and $Z_{20\mathrm{d}}$ changes by only 0.551\%. The final sensitivity is therefore stable at the level required for the present rate claim.
+
+\begin{table}[t]
+\centering
+\caption{Transport-backed exact-position convergence cases.}
+\label{tab:convergence}
+\begin{tabular}{lcccc}
+\toprule
+Label & $M$ & Seed & $B_{\wii}$ (cps) & $Z_{20\mathrm{d}}$ \\
+\midrule
+\texttt{fullstat\_v2\_exactpos} & 5000 & 260613 & 0.0624651 & 6.15522 \\
+\texttt{m05000\_s260614} & 5000 & 260614 & 0.0631683 & 6.12141 \\
+\texttt{m20000\_s260613} & 20000 & 260613 & 0.0627261 & 6.14261 \\
+\texttt{m50000\_s260613} & 50000 & 260613 & 0.0629804 & 6.13039 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Comparison with instrument benchmarks}
+\label{subsec:benchmarks}
+
+The present calculation is not an all-sky imaging forecast. It is a pointed, narrow-line, compact-source sensitivity estimate. The comparison most relevant to its design philosophy is therefore not simply field-of-view survey speed, but line-window background suppression per focused point-source flux. INTEGRAL/SPI and COSI remain the key references for mapping the diffuse 511 keV sky \cite{Siegert2016AA,Kierans2020,Siegert2020COSI,Yoneda2025}. COSI's satellite implementation will survey the 0.2--5 MeV sky with wide field of view and Ge detector spectroscopy, and public NASA mission information lists a planned 2027 launch and a 6.0 keV energy resolution at 511 keV \cite{NASACOSI,HEASARCCOSI}. The TES Laue-lens concept considered here is complementary: it trades sky coverage for a concentrated beam and a sub-keV line window.
+
+Relative to a wide-field Compton telescope, the proposed payload would be most competitive for compact 511 keV targets, central-core searches, and transient follow-up observations where the source position is known or constrained. It is less suited to measuring the full diffuse bulge and disk luminosity, because the small focused aperture samples only a small solid angle. This distinction is essential when comparing point-source Route-A results with diffuse-sky Route-B foreground estimates.
+
+\section{Discussion}
+\label{sec:discussion}
+
+The main result is that a focused TES line spectrometer can reach a 20-d $3\sigma$ point-source threshold below $5\times10^{-5}\cms$ in the current hard-window exact-position chain. This threshold is obtained without invoking the focused-spot spatial sidecar as the headline result. It follows from three combined effects: optical concentration, a sub-keV energy window, and a detector-coupled veto/topology selection that suppresses prompt and delayed backgrounds in the same selection space as the signal.
+
+The exact-position delayed-source treatment is a methodological improvement over radial-profile compression. Although delayed activation contributes only about 5.4\% of the selected hard-window background in the present chain, it is spatially and materially structured. Preserving sampled production positions prevents artificial azimuthal or radial redistribution from becoming an unquantified systematic. The downstream convergence sweep indicates that $M=5000$ support blocks are sufficient for the current hard-window rate claim, while larger support-size stress tests remain useful engineering checks.
+
+The background composition points to the next optimization targets. The selected hard-window rate is dominated by prompt atmospheric $e^+$-tagged events. Improvements may therefore come from shield geometry, side-entry collimation, material reduction near the focal plane, stricter topology cuts, or improved reconstruction of multi-pixel events. Delayed activation is smaller but led by identifiable nuclides and volumes, suggesting targeted material substitutions or local shielding may still be valuable.
+
+Several limitations should be kept explicit. First, the detector/cryostat model is an engineering proxy, not a final flight CAD model. Second, the production SIM files use a post-processing active-shield authority; native trigger/veto production filtering is not the source of quantitative rates. Third, the Step06 mission-time calculation is a rate-level fold, not a new particle transport at each trajectory time bin. Fourth, the custom Compton/FoV veto is not yet a full Revan/Mimrec reconstruction. Fifth, upstream Laue-lens self-background and activation from cosmic-ray interactions in the optics hardware are not included in the headline detector-background budget. Sixth, spatial sidecars such as $r_{90}$ and multi-annulus likelihood estimates are promising, but they are not yet a publication-grade nuisance-profile likelihood.
+
+These limitations do not invalidate the primary conclusion, but they define the next work required before a final instrument proposal or flight performance paper. The most valuable follow-up studies are a Revan cross-check of the multi-hit subset, an optics self-background simulation, a final cryostat/DR geometry update, measured or literature-anchored TES saturation and pile-up studies at the relevant rates, and a spatial-spectral likelihood that profiles background nuisance parameters.
+
+\section{Conclusions}
+\label{sec:conclusions}
+
+We have presented a first full-chain detector-coupled background and sensitivity study for a balloon-borne pointed 511 keV TES Laue-lens telescope. The current v3p5 exact-position chain couples a Ge(111) Laue optical response to a TES focal-plane mass model, prompt atmospheric transport, delayed activation, active-shield vetoing, Compton/FoV topology selection, mission-time rate folding, and counting-significance evaluation. In the primary $510.58$--$511.42\keV$ hard window, the chain predicts $B=0.0624651\cps$ and $S=0.00118117\cps$ at $10^{-4}\cms$, giving $Z_{20\mathrm{d}}=6.15522$ and $\fthree(20\mathrm{d})=4.87391\times10^{-5}\cms$. Exact-position delayed-source convergence is stable at the final hard-window significance level. The result supports the feasibility of focused TES spectroscopy as a complementary 511 keV technique for compact-source and central-core searches, while identifying prompt atmospheric background suppression and reconstruction validation as the most important next steps.
+
+\section*{CRediT authorship contribution statement}
+Placeholder: to be completed with the final author list.
+
+\section*{Declaration of competing interest}
+The authors declare no competing financial interests. This statement should be verified by all authors before submission.
+
+\section*{Data and software availability}
+Simulation cards, validation summaries, and analysis scripts will be made available in a public repository or institutional archive before publication. Internal path names in this draft are placeholders and should be replaced by persistent identifiers.
+
+\section*{Acknowledgments}
+Placeholder: include funding, institutional support, computing resources, and collaboration acknowledgments.
+
+\begin{thebibliography}{99}
+
+\bibitem{Prantzos2011}
+N. Prantzos, C. Boehm, A.M. Bykov, R. Diehl, K. Ferriere, N. Guessoum, P. Jean, J. Knoedlseder, A. Marcowith, I.V. Moskalenko, A. Strong, G. Weidenspointner, The 511 keV emission from positron annihilation in the Galaxy, Rev. Mod. Phys. 83 (2011) 1001--1056.
+
+\bibitem{Siegert2016AA}
+T. Siegert, R. Diehl, G. Khachatryan, M.G.H. Krause, F. Guglielmetti, J. Greiner, A.W. Strong, X. Zhang, Gamma-ray spectroscopy of positron annihilation in the Milky Way, Astron. Astrophys. 586 (2016) A84.
+
+\bibitem{Yoneda2025}
+H. Yoneda, T. Siegert, S. Mittal, Imaging the positron annihilation line with 20 years of INTEGRAL/SPI observations, arXiv:2509.01066, 2025.
+
+\bibitem{Kierans2020}
+C.A. Kierans, S.E. Boggs, A. Zoglauer, A.W. Lowell, C. Sleator, J. Beechert, T.J. Brandt, P. Jean, H. Lazar, J. Roberts, T. Siegert, J.A. Tomsick, P. von Ballmoos, Detection of the 511 keV Galactic positron annihilation line with COSI, Astrophys. J. 895 (2020) 44.
+
+\bibitem{Siegert2020COSI}
+T. Siegert, S.E. Boggs, J.A. Tomsick, A.C. Zoglauer, C.A. Kierans, C.C. Sleator, J. Beechert, T.J. Brandt, P. Jean, H. Lazar, A.W. Lowell, J.M. Roberts, P. von Ballmoos, Imaging the 511 keV positron annihilation sky with COSI, Astrophys. J. 897 (2020) 45.
+
+\bibitem{Siegert2016V404}
+T. Siegert, R. Diehl, J. Greiner, M.G.H. Krause, A.M. Beloborodov, M. Cadolle Bel, F. Guglielmetti, J. Rodriguez, A.W. Strong, X. Zhang, Positron annihilation signatures associated with the outburst of the microquasar V404 Cygni, Nature 531 (2016) 341--343.
+
+\bibitem{Shirazi2023}
+F. Shirazi, E. Gau, M.A. Hossen, D. Becker, D. Schmidt, D. Swetz, D. Bennett, D. Braun, F. Kislat, J. Gard, J. Mates, J. Weber, N.R. Cavero, S. Chun, L. Lisalda, A. West, B. Dev, F. Ferrer, R. Bose, J. Ullom, H. Krawczynski, The 511-CAM Mission: A pointed 511 keV gamma-ray telescope with a focal plane detector made of stacked transition edge sensor microcalorimeter arrays, arXiv:2206.14652, 2023.
+
+\bibitem{Gehrels1985}
+N. Gehrels, Instrumental background in balloon-borne gamma-ray spectrometers and techniques for its reduction, NASA Technical Memorandum 86162, accepted for publication in Nuclear Instruments and Methods, 1985.
+
+\bibitem{Sturner2003}
+S.J. Sturner, C.R. Shrader, G. Weidenspointner, B.J. Teegarden, D. Attie, B. Cordier, R. Diehl, C. Ferguson, P. Jean, A. von Kienlin, P. Paul, F. Sanchez, S. Schanne, P. Sizun, G. Skinner, C.B. Wunderer, Monte Carlo simulations and generation of the SPI response, Astron. Astrophys. 411 (2003) L81--L84.
+
+\bibitem{Agostinelli2003}
+S. Agostinelli, J. Allison, K. Amako, et al., Geant4---a simulation toolkit, Nucl. Instrum. Methods Phys. Res. A 506 (2003) 250--303.
+
+\bibitem{Zoglauer2006}
+A. Zoglauer, R. Andritschke, F. Schopper, MEGAlib: The Medium Energy Gamma-ray Astronomy Library, New Astron. Rev. 50 (2006) 629--632.
+
+\bibitem{Caputo2017}
+R. Caputo, F. Kislat, J. Racusin, AMEGO: Simulations of the instrument performance, Proc. 35th International Cosmic Ray Conference, PoS(ICRC2017)783, 2017.
+
+\bibitem{Karwin2023}
+C.M. Karwin, T. Siegert, J. Beechert, J.A. Tomsick, T.A. Porter, M. Negro, C. Kierans, M. Ajello, I. Martinez Castellanos, A. Shih, A. Zoglauer, S.E. Boggs, Probing the Galactic diffuse continuum emission with COSI, arXiv:2310.12206, 2023.
+
+\bibitem{Gallego2025}
+S. Gallego, U. Oberlack, J. Lommler, C.M. Karwin, F. Fenu, V. Fioretti, A. Zoglauer, et al., Pre-flight background estimates for COSI, arXiv:2510.25304, 2025.
+
+\bibitem{NASACOSI}
+NASA Science, COSI mission page, \url{https://science.nasa.gov/mission/cosi/}, accessed 14 June 2026.
+
+\bibitem{HEASARCCOSI}
+NASA HEASARC, Compton Spectrometer and Imager (COSI), \url{https://heasarc.gsfc.nasa.gov/docs/heasarc/missions/cosi.html}, accessed 14 June 2026.
+
+\end{thebibliography}
+
+\end{document}
