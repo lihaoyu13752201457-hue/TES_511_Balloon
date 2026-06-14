@@ -21,7 +21,8 @@ Smoke runs:
 Boundary:
 - This closes BGO source-card migration and prompt/buildup Cosima transport connectivity for all eight source-card particle classes.
 - Full BGO Step02 still requires production statistics, not this 596-event smoke scale.
-- BGO delayed source, delayed transport, Step05 response, Step06/07/08 significance, and BGO-vs-CsI comparison remain not run for this Bgo_sample package.
+- Later BGO delayed-source checks are recorded in `DELAYED_SMOKE.md` and `STEP02_1OF10_EXACTPOS.md`; this note remains only the all-particle prompt/buildup smoke record.
+- Full-stat BGO delayed source/rate transport, Step05 response, Step06/07/08 significance, and BGO-vs-CsI comparison remain not run for this Bgo_sample package.
 
 Outputs:
 - summary JSON: `Bgo_sample/step02_smoke_summary.json`

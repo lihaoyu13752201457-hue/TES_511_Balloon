@@ -18,3 +18,7 @@ Authority policy:
 - These files are paper-facing summaries, not primary numerical authority.
 - Numerical authority remains in the validation and closure outputs under `outputs/reports/` and `stepwise_maintenance/`.
 - If a value differs between this directory and the closure reports, the closure reports win and this directory must be updated.
+- `opticsim_full` is the raw external B-FULL run environment referenced by
+  the Step04 authority JSON. Paper-facing optical authority is the repo copy in
+  `stepwise_maintenance/step04_opticsim/` plus the Step09 EventList bridge
+  summaries.

@@ -101,7 +101,9 @@
 
 当前率级 authority 为标记 \texttt{fullstat\_v2\_exactpos} 的精确位置延迟源链路。它使用 full-stat 瞬发和活化积累输运、固定 day-15 延迟活化 inventory、采样精确位置 \texttt{PointSource} 延迟源支撑，并完整通过 Step05--Step08 探测器响应和显著度链路。旧的均匀束流和 legacy 延迟源分支不用于 headline 灵敏度。
 
-表~\ref{tab:simulation_workflow} 给出该链路的逐 step 版本。在仓库中，\path{Project_Memory.md} 是 audit map：它记录哪些文件是当前数值 authority、哪些路径只是 legacy provenance，以及哪些 sidecar 只用于边界测试。在论文中，这个内部地图被压缩为可复现的方法描述：每一步都有明确输入、物理或统计操作、传递给后续步骤的输出，以及可声明结论的边界。\path{opticsim_full}/B-FULL 计算只是该链路中的一个步骤，而不是整个链路本身。它提供 Laue 透镜有效面积和追踪得到的聚焦相空间；真正把该相空间转化为探测器耦合点源灵敏度的是 Step09 EventList bridge 以及 Step05--Step08 探测器响应链。
+表~\ref{tab:simulation_workflow} 给出该链路的逐 step 版本。在仓库中，\path{Project_Memory.md} 是 audit map：它记录哪些文件是当前数值 authority、哪些路径只是 legacy provenance，以及哪些 sidecar 只用于边界测试。在论文中，这个内部地图被压缩为可复现的方法描述：每一步都有明确输入、物理或统计操作、传递给后续步骤的输出，以及可声明结论的边界。Step04 authority 文件记录的 B-FULL 光学计算只是该链路中的一个步骤，而不是整个链路本身。其原始运行来自 \texttt{opticsim\_full} 环境；论文面对的 authority 则是仓库内复制保存的 Step04 summary、line configuration、rocking-curve map 和 focal-crossing table。该光学步骤提供 Laue 透镜有效面积和追踪得到的聚焦相空间；真正把该相空间转化为探测器耦合点源灵敏度的是 Step09 EventList bridge 以及 Step05--Step08 探测器响应链。
+
+如果按审计框架阅读，各 step 的 authority 等级不同。Step00--01 固定探测器质量模型和坐标策略，但不产生率。Step02 生成瞬发和活化产生历史，并定义曝光归一化。Step03 将这些产生历史转换为固定 day-15 延迟 inventory，并输运采样的精确位置衰变。Step04 只属于光学：它计算 511 keV 聚焦相空间和有效面积，不包含探测器本底。Step09 是光学到探测器输运的接口。Step05 是瞬发本底、延迟本底和聚焦信号第一次在同一 veto、拓扑和线窗规则下比较的位置。Step06--08 再把选后率推进到任务时间显著度。Step10 不是新的物理阶段，而是在最终选后率层面检验 exact-position 支撑点数和随机种子依赖的稳健性 sidecar。
 
 \input{paper_resource/table_simulation_workflow_zh.tex}
 
@@ -266,7 +268,7 @@ exact-position $\wii$ 选后本底由瞬发大气事例主导。Step05 流分解
 
 本底组成指出了下一步优化方向。选后硬线窗率由瞬发大气 $e^+$-tagged 事例主导。因此，改进可能来自屏蔽几何、侧入射准直、焦平面附近材料减量、更严格拓扑 cuts，或多像素事例重建改进。延迟活化虽小，但由可识别核素和体积主导，说明局部材料替换或局部屏蔽仍可能有价值。
 
-需要明确的局限性包括：第一，探测器/低温系统模型是工程代理，不是最终飞行 CAD；第二，生产 SIM 的定量主动屏蔽 authority 来自 Step05 后处理，而不是 native trigger/veto 生产过滤；第三，Step06 任务时间计算是率级折叠，不是在每个轨迹时间点重新输运粒子；第四，自定义康普顿/视场 veto 尚不是完整 Revan/Mimrec 重建；第五，上游 Laue 透镜硬件自身的宇宙线本底和活化未纳入 headline 探测器本底预算；第六，$r_{90}$ 和多环 likelihood 等空间 sidecar 很有前景，但尚不是 publication-grade nuisance-profile likelihood。第七，主动屏蔽材料替换不属于本文 CsI headline 灵敏度。当前 BGO 等效衰减样例采用 70 keV veto 阈值，已经通过几何/重叠控制，并且只做了小规模全粒子 prompt/buildup 输运 smoke test；它尚未进入生产统计量级 Step02 链路、延迟源构建、延迟输运、Step05 响应或 Step08 显著度链路。
+需要明确的局限性包括：第一，探测器/低温系统模型是工程代理，不是最终飞行 CAD；第二，生产 SIM 的定量主动屏蔽 authority 来自 Step05 后处理，而不是 native trigger/veto 生产过滤；第三，Step06 任务时间计算是率级折叠，不是在每个轨迹时间点重新输运粒子；第四，自定义康普顿/视场 veto 尚不是完整 Revan/Mimrec 重建；第五，上游 Laue 透镜硬件自身的宇宙线本底和活化未纳入 headline 探测器本底预算；第六，$r_{90}$ 和多环 likelihood 等空间 sidecar 很有前景，但尚不是 publication-grade nuisance-profile likelihood。第七，主动屏蔽材料替换不属于本文 CsI headline 灵敏度。当前 BGO 等效衰减样例采用 70 keV veto 阈值，已经通过几何/重叠控制，并且在 smoke 尺度完成了小规模全粒子 prompt/buildup 输运以及 activation-probe 延迟源输运；后者使用 30 个真实 RPIP \texttt{PointSource} 支撑块，\texttt{SE}=\texttt{ID}=200。它现在还完成了低统计 \texttt{1of10} 精确位置 day-15 闭合：instant 和 buildup 各生成 1,190,129 个事例，修正后的 day-15 活度为 $24.791139\,\mathrm{Bq}$，该活度守恒分配到 568 个真实 RPIP \texttt{PointSource} 支撑块，延迟输运得到 \texttt{SE}=\texttt{ID}=100000，$\mathrm{TE}=3730.929734\,\mathrm{s}$。这些 BGO 运行不是率级 authority：该样例尚未进入 full-statistics Step02 链路、full-statistics day-15 延迟源/率链路、Step05 响应或 Step08 显著度链路。
 
 这些限制并不否定主要结论，但定义了最终仪器方案或飞行性能论文之前应完成的后续工作。最有价值的后续研究包括：多命中子样本的 Revan 交叉检查、光学硬件 self-background 模拟、最终低温/DR 几何更新、与实测或文献锚定的 TES 饱和和 pile-up 研究，以及可 profile 本底 nuisance 参数的空间--谱联合 likelihood。
 

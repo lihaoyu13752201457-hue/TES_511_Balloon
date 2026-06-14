@@ -10,7 +10,7 @@
 00--01 几何 & 定义探测器质量模型、主动体、局部侧入射坐标和注入面 & v3p5 center-finger 几何，包含 TES 阵列、Be 侧窗、Cu/W 被动材料和分段 CsI 主动屏蔽；局部窗口向上倾斜 $45^\circ$ & 只闭合几何，不产生率级结果 \\
 02 瞬发与积累输运 & 产生瞬发大气事例和活化产生历史 & full-stat v2 瞬发和活化积累流各生成 25,210,216 个粒子；瞬发率采用逐 tag 曝光归一化 & 低统计分支仅作闭包检查，不作论文率级 authority \\
 03 延迟 inventory 与源 & 将活化产物转换为固定 day-15 源并输运延迟衰变 & 固定 inventory 活度 $85.636696\,\mathrm{Bq}$；exact-position 采样 \texttt{PointSource} 支撑，$M=5000$，延迟输运触发数 $10^6$ & 采样支撑保持总活度；充分性由 Step10 下游收敛检验约束 \\
-04 B-FULL Laue 光学 & 计算 511 keV 光学有效面积和聚焦焦面相空间 & \texttt{opticsim\_full}/B-FULL Ge(111) 模型，使用外部 XOP/CRYSTAL rocking curve；f10m A1 给出 $\aeff(511)=20.08476\,\mathrm{cm^2}$ 和 37,194 条 within-Be 焦面记录 & 只计算光学信号；未加入上游光学硬件 self-background \\
+04 B-FULL Laue 光学 & 计算 511 keV 光学有效面积和聚焦焦面相空间 & Step04 B-FULL Ge(111) authority 文件，来自使用外部 XOP/CRYSTAL rocking curve 的原始 \texttt{opticsim\_full} 运行；f10m A1 给出 $\aeff(511)=20.08476\,\mathrm{cm^2}$ 和 37,194 条 within-Be 焦面记录 & 只计算光学信号；未加入上游光学硬件 self-background \\
 09 EventList 桥接 & 将光学焦面记录重放到探测器几何中 & 37,194/37,194 条 Step04 记录写成 MEGAlib EventList，并通过 v3p5 探测器设置输运 & 使用真实追踪焦面记录，不使用解析 phase-space 投影 \\
 05 探测器响应 & 对瞬发、延迟和聚焦流施加同一探测器选择 & 主动屏蔽后处理 veto、侧入射 Compton/FoV 一致性和 $\wii$ 硬线窗选择；day-15 $\wii$ 率为 $B/S=0.0624651/0.00118117\cps$ & 定量 veto authority 为后处理模型，不是 native production filtering \\
 06 任务时间折叠 & 将选后率沿气球任务时间传播 & 折叠瞬发、延迟活度、大气透过和 accidental-veto live factor；任务平均 $\wii$ 率为 $B/S=0.0626835/0.00117281\cps$ & 率级时间折叠，不是在每个时间 bin 重新粒子输运 \\
