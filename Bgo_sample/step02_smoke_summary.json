@@ -1,6 +1,6 @@
 {
-  "status": "PASS_BGO_SAMPLE_STEP02_SMOKE_TRANSPORT",
-  "claim_level": "BGO_SAMPLE_STEP02_PROMPT_BUILDUP_SMOKE_NO_RATE_NO_DELAYED_SOURCE_NO_SIGNIFICANCE",
+  "status": "PASS_BGO_SAMPLE_STEP02_ALLPARTICLE_SMOKE_TRANSPORT",
+  "claim_level": "BGO_SAMPLE_STEP02_ALLPARTICLE_PROMPT_BUILDUP_SMOKE_NO_RATE_NO_DELAYED_SOURCE_NO_SIGNIFICANCE",
   "source_manifest": {
     "status": "PASS",
     "claim_level": "BGO_SAMPLE_STEP02_SOURCE_CARDS_NO_TRANSPORT",
@@ -125,8 +125,762 @@
       }
     ]
   },
+  "pair_smoke": {
+    "status": "PASS",
+    "instant": {
+      "run_dir": "runs/step02_bgo_sample_smoke_instant",
+      "mode": "instant",
+      "normalization": {
+        "source_dir": "config/megalib_sources_fullsphere20_bgo_sample_tilt45",
+        "gamma_events": 500,
+        "gamma_splits": 1,
+        "non_gamma_replicas": 1,
+        "farfield_radius_cm": 60.0,
+        "selected_particles": [
+          "gamma",
+          "p"
+        ],
+        "base_events_by_particle": {
+          "gamma": 500,
+          "alpha": 1,
+          "eminus": 21,
+          "eplus": 12,
+          "muminus": 1,
+          "muplus": 1,
+          "n": 48,
+          "p": 12
+        }
+      },
+      "jobs": 2,
+      "passes": 2,
+      "events_requested": 512,
+      "events_generated": 512,
+      "sim_size_bytes": 50957,
+      "dat_size_bytes": 523,
+      "rows": [
+        {
+          "job_name": "Background_gamma_fullsphere20_rep01_part01",
+          "particle": "gamma",
+          "status": "PASS",
+          "events": 500,
+          "generated_particles": 500,
+          "cpu_s": 0.504416,
+          "observation_time_s": 0.00945858,
+          "sim": {
+            "path": "runs/step02_bgo_sample_smoke_instant/Background_gamma_fullsphere20_rep01_part01.inc1.id1.sim.gz",
+            "exists": true,
+            "size_bytes": 48071,
+            "SE": 500,
+            "ID": 500,
+            "TS": 500,
+            "TE_s": 0.009459,
+            "geometry": "/home/ubuntu/TES_511_Balloon/Bgo_sample/Bgo_sample.geo.setup"
+          },
+          "dat_path": "runs/step02_bgo_sample_smoke_instant/Background_gamma_fullsphere20_rep01_part01.dat.inc1.dat",
+          "dat_exists": true,
+          "dat_size_bytes": 262,
+          "source": {
+            "path": "runs/step02_bgo_sample_smoke_instant/job_sources/Background_gamma_fullsphere20_rep01_part01.source",
+            "exists": true,
+            "geometry_is_bgo_sample": true,
+            "store_isotopes_true": true,
+            "has_activation_buildup": false,
+            "activation_mode_expected": false
+          }
+        },
+        {
+          "job_name": "Background_p_fullsphere20_rep01_part01",
+          "particle": "p",
+          "status": "PASS",
+          "events": 12,
+          "generated_particles": 12,
+          "cpu_s": 0.0405105,
+          "observation_time_s": 0.0118536,
+          "sim": {
+            "path": "runs/step02_bgo_sample_smoke_instant/Background_p_fullsphere20_rep01_part01.inc1.id1.sim.gz",
+            "exists": true,
+            "size_bytes": 2886,
+            "SE": 12,
+            "ID": 12,
+            "TS": 12,
+            "TE_s": 0.011854,
+            "geometry": "/home/ubuntu/TES_511_Balloon/Bgo_sample/Bgo_sample.geo.setup"
+          },
+          "dat_path": "runs/step02_bgo_sample_smoke_instant/Background_p_fullsphere20_rep01_part01.dat.inc1.dat",
+          "dat_exists": true,
+          "dat_size_bytes": 261,
+          "source": {
+            "path": "runs/step02_bgo_sample_smoke_instant/job_sources/Background_p_fullsphere20_rep01_part01.source",
+            "exists": true,
+            "geometry_is_bgo_sample": true,
+            "store_isotopes_true": true,
+            "has_activation_buildup": false,
+            "activation_mode_expected": false
+          }
+        }
+      ],
+      "problems": []
+    },
+    "buildup": {
+      "run_dir": "runs/step02_bgo_sample_smoke_buildup",
+      "mode": "buildup",
+      "normalization": {
+        "source_dir": "config/megalib_sources_fullsphere20_bgo_sample_tilt45",
+        "gamma_events": 500,
+        "gamma_splits": 1,
+        "non_gamma_replicas": 1,
+        "farfield_radius_cm": 60.0,
+        "selected_particles": [
+          "gamma",
+          "p"
+        ],
+        "base_events_by_particle": {
+          "gamma": 500,
+          "alpha": 1,
+          "eminus": 21,
+          "eplus": 12,
+          "muminus": 1,
+          "muplus": 1,
+          "n": 48,
+          "p": 12
+        }
+      },
+      "jobs": 2,
+      "passes": 2,
+      "events_requested": 512,
+      "events_generated": 512,
+      "sim_size_bytes": 49867,
+      "dat_size_bytes": 523,
+      "rows": [
+        {
+          "job_name": "Background_gamma_fullsphere20_rep01_part01",
+          "particle": "gamma",
+          "status": "PASS",
+          "events": 500,
+          "generated_particles": 500,
+          "cpu_s": 0.446385,
+          "observation_time_s": 0.00864931,
+          "sim": {
+            "path": "runs/step02_bgo_sample_smoke_buildup/Background_gamma_fullsphere20_rep01_part01.inc1.id1.sim.gz",
+            "exists": true,
+            "size_bytes": 46187,
+            "SE": 500,
+            "ID": 500,
+            "TS": 500,
+            "TE_s": 0.008649,
+            "geometry": "/home/ubuntu/TES_511_Balloon/Bgo_sample/Bgo_sample.geo.setup"
+          },
+          "dat_path": "runs/step02_bgo_sample_smoke_buildup/Background_gamma_fullsphere20_rep01_part01.dat.inc1.dat",
+          "dat_exists": true,
+          "dat_size_bytes": 262,
+          "source": {
+            "path": "runs/step02_bgo_sample_smoke_buildup/job_sources/Background_gamma_fullsphere20_rep01_part01.source",
+            "exists": true,
+            "geometry_is_bgo_sample": true,
+            "store_isotopes_true": true,
+            "has_activation_buildup": true,
+            "activation_mode_expected": true
+          }
+        },
+        {
+          "job_name": "Background_p_fullsphere20_rep01_part01",
+          "particle": "p",
+          "status": "PASS",
+          "events": 12,
+          "generated_particles": 12,
+          "cpu_s": 0.0292524,
+          "observation_time_s": 0.0081783,
+          "sim": {
+            "path": "runs/step02_bgo_sample_smoke_buildup/Background_p_fullsphere20_rep01_part01.inc1.id1.sim.gz",
+            "exists": true,
+            "size_bytes": 3680,
+            "SE": 12,
+            "ID": 12,
+            "TS": 12,
+            "TE_s": 0.008178,
+            "geometry": "/home/ubuntu/TES_511_Balloon/Bgo_sample/Bgo_sample.geo.setup"
+          },
+          "dat_path": "runs/step02_bgo_sample_smoke_buildup/Background_p_fullsphere20_rep01_part01.dat.inc1.dat",
+          "dat_exists": true,
+          "dat_size_bytes": 261,
+          "source": {
+            "path": "runs/step02_bgo_sample_smoke_buildup/job_sources/Background_p_fullsphere20_rep01_part01.source",
+            "exists": true,
+            "geometry_is_bgo_sample": true,
+            "store_isotopes_true": true,
+            "has_activation_buildup": true,
+            "activation_mode_expected": true
+          }
+        }
+      ],
+      "problems": []
+    }
+  },
+  "all_particle_smoke": {
+    "status": "PASS",
+    "instant": {
+      "run_dir": "runs/step02_bgo_sample_allparticle_smoke_instant",
+      "mode": "instant",
+      "normalization": {
+        "source_dir": "config/megalib_sources_fullsphere20_bgo_sample_tilt45",
+        "gamma_events": 500,
+        "gamma_splits": 1,
+        "non_gamma_replicas": 1,
+        "farfield_radius_cm": 60.0,
+        "selected_particles": [
+          "alpha",
+          "eminus",
+          "eplus",
+          "gamma",
+          "muminus",
+          "muplus",
+          "n",
+          "p"
+        ],
+        "base_events_by_particle": {
+          "gamma": 500,
+          "alpha": 1,
+          "eminus": 21,
+          "eplus": 12,
+          "muminus": 1,
+          "muplus": 1,
+          "n": 48,
+          "p": 12
+        }
+      },
+      "jobs": 8,
+      "passes": 8,
+      "events_requested": 596,
+      "events_generated": 596,
+      "sim_size_bytes": 66833,
+      "dat_size_bytes": 2092,
+      "rows": [
+        {
+          "job_name": "Background_alpha_fullsphere20_rep01_part01",
+          "particle": "alpha",
+          "status": "PASS",
+          "events": 1,
+          "generated_particles": 1,
+          "cpu_s": 0.0186076,
+          "observation_time_s": 0.0106075,
+          "sim": {
+            "path": "runs/step02_bgo_sample_allparticle_smoke_instant/Background_alpha_fullsphere20_rep01_part01.inc1.id1.sim.gz",
+            "exists": true,
+            "size_bytes": 1519,
+            "SE": 1,
+            "ID": 1,
+            "TS": 1,
+            "TE_s": 0.010607,
+            "geometry": "/home/ubuntu/TES_511_Balloon/Bgo_sample/Bgo_sample.geo.setup"
+          },
+          "dat_path": "runs/step02_bgo_sample_allparticle_smoke_instant/Background_alpha_fullsphere20_rep01_part01.dat.inc1.dat",
+          "dat_exists": true,
+          "dat_size_bytes": 261,
+          "source": {
+            "path": "runs/step02_bgo_sample_allparticle_smoke_instant/job_sources/Background_alpha_fullsphere20_rep01_part01.source",
+            "exists": true,
+            "geometry_is_bgo_sample": true,
+            "store_isotopes_true": true,
+            "has_activation_buildup": false,
+            "activation_mode_expected": false
+          }
+        },
+        {
+          "job_name": "Background_eminus_fullsphere20_rep01_part01",
+          "particle": "eminus",
+          "status": "PASS",
+          "events": 21,
+          "generated_particles": 21,
+          "cpu_s": 0.0436312,
+          "observation_time_s": 0.00964312,
+          "sim": {
+            "path": "runs/step02_bgo_sample_allparticle_smoke_instant/Background_eminus_fullsphere20_rep01_part01.inc1.id1.sim.gz",
+            "exists": true,
+            "size_bytes": 3649,
+            "SE": 21,
+            "ID": 21,
+            "TS": 21,
+            "TE_s": 0.009643,
+            "geometry": "/home/ubuntu/TES_511_Balloon/Bgo_sample/Bgo_sample.geo.setup"
+          },
+          "dat_path": "runs/step02_bgo_sample_allparticle_smoke_instant/Background_eminus_fullsphere20_rep01_part01.dat.inc1.dat",
+          "dat_exists": true,
+          "dat_size_bytes": 262,
+          "source": {
+            "path": "runs/step02_bgo_sample_allparticle_smoke_instant/job_sources/Background_eminus_fullsphere20_rep01_part01.source",
+            "exists": true,
+            "geometry_is_bgo_sample": true,
+            "store_isotopes_true": true,
+            "has_activation_buildup": false,
+            "activation_mode_expected": false
+          }
+        },
+        {
+          "job_name": "Background_eplus_fullsphere20_rep01_part01",
+          "particle": "eplus",
+          "status": "PASS",
+          "events": 12,
+          "generated_particles": 12,
+          "cpu_s": 0.0352253,
+          "observation_time_s": 0.0106495,
+          "sim": {
+            "path": "runs/step02_bgo_sample_allparticle_smoke_instant/Background_eplus_fullsphere20_rep01_part01.inc1.id1.sim.gz",
+            "exists": true,
+            "size_bytes": 4518,
+            "SE": 12,
+            "ID": 12,
+            "TS": 12,
+            "TE_s": 0.010649,
+            "geometry": "/home/ubuntu/TES_511_Balloon/Bgo_sample/Bgo_sample.geo.setup"
+          },
+          "dat_path": "runs/step02_bgo_sample_allparticle_smoke_instant/Background_eplus_fullsphere20_rep01_part01.dat.inc1.dat",
+          "dat_exists": true,
+          "dat_size_bytes": 261,
+          "source": {
+            "path": "runs/step02_bgo_sample_allparticle_smoke_instant/job_sources/Background_eplus_fullsphere20_rep01_part01.source",
+            "exists": true,
+            "geometry_is_bgo_sample": true,
+            "store_isotopes_true": true,
+            "has_activation_buildup": false,
+            "activation_mode_expected": false
+          }
+        },
+        {
+          "job_name": "Background_gamma_fullsphere20_rep01_part01",
+          "particle": "gamma",
+          "status": "PASS",
+          "events": 500,
+          "generated_particles": 500,
+          "cpu_s": 0.701693,
+          "observation_time_s": 0.00903192,
+          "sim": {
+            "path": "runs/step02_bgo_sample_allparticle_smoke_instant/Background_gamma_fullsphere20_rep01_part01.inc1.id1.sim.gz",
+            "exists": true,
+            "size_bytes": 48088,
+            "SE": 500,
+            "ID": 500,
+            "TS": 500,
+            "TE_s": 0.009032,
+            "geometry": "/home/ubuntu/TES_511_Balloon/Bgo_sample/Bgo_sample.geo.setup"
+          },
+          "dat_path": "runs/step02_bgo_sample_allparticle_smoke_instant/Background_gamma_fullsphere20_rep01_part01.dat.inc1.dat",
+          "dat_exists": true,
+          "dat_size_bytes": 262,
+          "source": {
+            "path": "runs/step02_bgo_sample_allparticle_smoke_instant/job_sources/Background_gamma_fullsphere20_rep01_part01.source",
+            "exists": true,
+            "geometry_is_bgo_sample": true,
+            "store_isotopes_true": true,
+            "has_activation_buildup": false,
+            "activation_mode_expected": false
+          }
+        },
+        {
+          "job_name": "Background_muminus_fullsphere20_rep01_part01",
+          "particle": "muminus",
+          "status": "PASS",
+          "events": 1,
+          "generated_particles": 1,
+          "cpu_s": 0.00495893,
+          "observation_time_s": 0.00724996,
+          "sim": {
+            "path": "runs/step02_bgo_sample_allparticle_smoke_instant/Background_muminus_fullsphere20_rep01_part01.inc1.id1.sim.gz",
+            "exists": true,
+            "size_bytes": 477,
+            "SE": 1,
+            "ID": 1,
+            "TS": 1,
+            "TE_s": 0.00725,
+            "geometry": "/home/ubuntu/TES_511_Balloon/Bgo_sample/Bgo_sample.geo.setup"
+          },
+          "dat_path": "runs/step02_bgo_sample_allparticle_smoke_instant/Background_muminus_fullsphere20_rep01_part01.dat.inc1.dat",
+          "dat_exists": true,
+          "dat_size_bytes": 262,
+          "source": {
+            "path": "runs/step02_bgo_sample_allparticle_smoke_instant/job_sources/Background_muminus_fullsphere20_rep01_part01.source",
+            "exists": true,
+            "geometry_is_bgo_sample": true,
+            "store_isotopes_true": true,
+            "has_activation_buildup": false,
+            "activation_mode_expected": false
+          }
+        },
+        {
+          "job_name": "Background_muplus_fullsphere20_rep01_part01",
+          "particle": "muplus",
+          "status": "PASS",
+          "events": 1,
+          "generated_particles": 1,
+          "cpu_s": 0.00518406,
+          "observation_time_s": 0.00643656,
+          "sim": {
+            "path": "runs/step02_bgo_sample_allparticle_smoke_instant/Background_muplus_fullsphere20_rep01_part01.inc1.id1.sim.gz",
+            "exists": true,
+            "size_bytes": 475,
+            "SE": 1,
+            "ID": 1,
+            "TS": 1,
+            "TE_s": 0.006437,
+            "geometry": "/home/ubuntu/TES_511_Balloon/Bgo_sample/Bgo_sample.geo.setup"
+          },
+          "dat_path": "runs/step02_bgo_sample_allparticle_smoke_instant/Background_muplus_fullsphere20_rep01_part01.dat.inc1.dat",
+          "dat_exists": true,
+          "dat_size_bytes": 262,
+          "source": {
+            "path": "runs/step02_bgo_sample_allparticle_smoke_instant/job_sources/Background_muplus_fullsphere20_rep01_part01.source",
+            "exists": true,
+            "geometry_is_bgo_sample": true,
+            "store_isotopes_true": true,
+            "has_activation_buildup": false,
+            "activation_mode_expected": false
+          }
+        },
+        {
+          "job_name": "Background_n_fullsphere20_rep01_part01",
+          "particle": "n",
+          "status": "PASS",
+          "events": 48,
+          "generated_particles": 48,
+          "cpu_s": 0.0628777,
+          "observation_time_s": 0.0107431,
+          "sim": {
+            "path": "runs/step02_bgo_sample_allparticle_smoke_instant/Background_n_fullsphere20_rep01_part01.inc1.id1.sim.gz",
+            "exists": true,
+            "size_bytes": 6477,
+            "SE": 48,
+            "ID": 48,
+            "TS": 48,
+            "TE_s": 0.010743,
+            "geometry": "/home/ubuntu/TES_511_Balloon/Bgo_sample/Bgo_sample.geo.setup"
+          },
+          "dat_path": "runs/step02_bgo_sample_allparticle_smoke_instant/Background_n_fullsphere20_rep01_part01.dat.inc1.dat",
+          "dat_exists": true,
+          "dat_size_bytes": 261,
+          "source": {
+            "path": "runs/step02_bgo_sample_allparticle_smoke_instant/job_sources/Background_n_fullsphere20_rep01_part01.source",
+            "exists": true,
+            "geometry_is_bgo_sample": true,
+            "store_isotopes_true": true,
+            "has_activation_buildup": false,
+            "activation_mode_expected": false
+          }
+        },
+        {
+          "job_name": "Background_p_fullsphere20_rep01_part01",
+          "particle": "p",
+          "status": "PASS",
+          "events": 12,
+          "generated_particles": 12,
+          "cpu_s": 0.0157802,
+          "observation_time_s": 0.0115908,
+          "sim": {
+            "path": "runs/step02_bgo_sample_allparticle_smoke_instant/Background_p_fullsphere20_rep01_part01.inc1.id1.sim.gz",
+            "exists": true,
+            "size_bytes": 1630,
+            "SE": 12,
+            "ID": 12,
+            "TS": 12,
+            "TE_s": 0.011591,
+            "geometry": "/home/ubuntu/TES_511_Balloon/Bgo_sample/Bgo_sample.geo.setup"
+          },
+          "dat_path": "runs/step02_bgo_sample_allparticle_smoke_instant/Background_p_fullsphere20_rep01_part01.dat.inc1.dat",
+          "dat_exists": true,
+          "dat_size_bytes": 261,
+          "source": {
+            "path": "runs/step02_bgo_sample_allparticle_smoke_instant/job_sources/Background_p_fullsphere20_rep01_part01.source",
+            "exists": true,
+            "geometry_is_bgo_sample": true,
+            "store_isotopes_true": true,
+            "has_activation_buildup": false,
+            "activation_mode_expected": false
+          }
+        }
+      ],
+      "problems": []
+    },
+    "buildup": {
+      "run_dir": "runs/step02_bgo_sample_allparticle_smoke_buildup",
+      "mode": "buildup",
+      "normalization": {
+        "source_dir": "config/megalib_sources_fullsphere20_bgo_sample_tilt45",
+        "gamma_events": 500,
+        "gamma_splits": 1,
+        "non_gamma_replicas": 1,
+        "farfield_radius_cm": 60.0,
+        "selected_particles": [
+          "alpha",
+          "eminus",
+          "eplus",
+          "gamma",
+          "muminus",
+          "muplus",
+          "n",
+          "p"
+        ],
+        "base_events_by_particle": {
+          "gamma": 500,
+          "alpha": 1,
+          "eminus": 21,
+          "eplus": 12,
+          "muminus": 1,
+          "muplus": 1,
+          "n": 48,
+          "p": 12
+        }
+      },
+      "jobs": 8,
+      "passes": 8,
+      "events_requested": 596,
+      "events_generated": 596,
+      "sim_size_bytes": 68328,
+      "dat_size_bytes": 2093,
+      "rows": [
+        {
+          "job_name": "Background_alpha_fullsphere20_rep01_part01",
+          "particle": "alpha",
+          "status": "PASS",
+          "events": 1,
+          "generated_particles": 1,
+          "cpu_s": 0.0101278,
+          "observation_time_s": 0.0106075,
+          "sim": {
+            "path": "runs/step02_bgo_sample_allparticle_smoke_buildup/Background_alpha_fullsphere20_rep01_part01.inc1.id1.sim.gz",
+            "exists": true,
+            "size_bytes": 1519,
+            "SE": 1,
+            "ID": 1,
+            "TS": 1,
+            "TE_s": 0.010607,
+            "geometry": "/home/ubuntu/TES_511_Balloon/Bgo_sample/Bgo_sample.geo.setup"
+          },
+          "dat_path": "runs/step02_bgo_sample_allparticle_smoke_buildup/Background_alpha_fullsphere20_rep01_part01.dat.inc1.dat",
+          "dat_exists": true,
+          "dat_size_bytes": 261,
+          "source": {
+            "path": "runs/step02_bgo_sample_allparticle_smoke_buildup/job_sources/Background_alpha_fullsphere20_rep01_part01.source",
+            "exists": true,
+            "geometry_is_bgo_sample": true,
+            "store_isotopes_true": true,
+            "has_activation_buildup": true,
+            "activation_mode_expected": true
+          }
+        },
+        {
+          "job_name": "Background_eminus_fullsphere20_rep01_part01",
+          "particle": "eminus",
+          "status": "PASS",
+          "events": 21,
+          "generated_particles": 21,
+          "cpu_s": 0.0568893,
+          "observation_time_s": 0.00964312,
+          "sim": {
+            "path": "runs/step02_bgo_sample_allparticle_smoke_buildup/Background_eminus_fullsphere20_rep01_part01.inc1.id1.sim.gz",
+            "exists": true,
+            "size_bytes": 3649,
+            "SE": 21,
+            "ID": 21,
+            "TS": 21,
+            "TE_s": 0.009643,
+            "geometry": "/home/ubuntu/TES_511_Balloon/Bgo_sample/Bgo_sample.geo.setup"
+          },
+          "dat_path": "runs/step02_bgo_sample_allparticle_smoke_buildup/Background_eminus_fullsphere20_rep01_part01.dat.inc1.dat",
+          "dat_exists": true,
+          "dat_size_bytes": 262,
+          "source": {
+            "path": "runs/step02_bgo_sample_allparticle_smoke_buildup/job_sources/Background_eminus_fullsphere20_rep01_part01.source",
+            "exists": true,
+            "geometry_is_bgo_sample": true,
+            "store_isotopes_true": true,
+            "has_activation_buildup": true,
+            "activation_mode_expected": true
+          }
+        },
+        {
+          "job_name": "Background_eplus_fullsphere20_rep01_part01",
+          "particle": "eplus",
+          "status": "PASS",
+          "events": 12,
+          "generated_particles": 12,
+          "cpu_s": 0.0386239,
+          "observation_time_s": 0.0106495,
+          "sim": {
+            "path": "runs/step02_bgo_sample_allparticle_smoke_buildup/Background_eplus_fullsphere20_rep01_part01.inc1.id1.sim.gz",
+            "exists": true,
+            "size_bytes": 4518,
+            "SE": 12,
+            "ID": 12,
+            "TS": 12,
+            "TE_s": 0.010649,
+            "geometry": "/home/ubuntu/TES_511_Balloon/Bgo_sample/Bgo_sample.geo.setup"
+          },
+          "dat_path": "runs/step02_bgo_sample_allparticle_smoke_buildup/Background_eplus_fullsphere20_rep01_part01.dat.inc1.dat",
+          "dat_exists": true,
+          "dat_size_bytes": 261,
+          "source": {
+            "path": "runs/step02_bgo_sample_allparticle_smoke_buildup/job_sources/Background_eplus_fullsphere20_rep01_part01.source",
+            "exists": true,
+            "geometry_is_bgo_sample": true,
+            "store_isotopes_true": true,
+            "has_activation_buildup": true,
+            "activation_mode_expected": true
+          }
+        },
+        {
+          "job_name": "Background_gamma_fullsphere20_rep01_part01",
+          "particle": "gamma",
+          "status": "PASS",
+          "events": 500,
+          "generated_particles": 500,
+          "cpu_s": 0.621692,
+          "observation_time_s": 0.00903192,
+          "sim": {
+            "path": "runs/step02_bgo_sample_allparticle_smoke_buildup/Background_gamma_fullsphere20_rep01_part01.inc1.id1.sim.gz",
+            "exists": true,
+            "size_bytes": 48088,
+            "SE": 500,
+            "ID": 500,
+            "TS": 500,
+            "TE_s": 0.009032,
+            "geometry": "/home/ubuntu/TES_511_Balloon/Bgo_sample/Bgo_sample.geo.setup"
+          },
+          "dat_path": "runs/step02_bgo_sample_allparticle_smoke_buildup/Background_gamma_fullsphere20_rep01_part01.dat.inc1.dat",
+          "dat_exists": true,
+          "dat_size_bytes": 262,
+          "source": {
+            "path": "runs/step02_bgo_sample_allparticle_smoke_buildup/job_sources/Background_gamma_fullsphere20_rep01_part01.source",
+            "exists": true,
+            "geometry_is_bgo_sample": true,
+            "store_isotopes_true": true,
+            "has_activation_buildup": true,
+            "activation_mode_expected": true
+          }
+        },
+        {
+          "job_name": "Background_muminus_fullsphere20_rep01_part01",
+          "particle": "muminus",
+          "status": "PASS",
+          "events": 1,
+          "generated_particles": 1,
+          "cpu_s": 0.00513762,
+          "observation_time_s": 0.00724996,
+          "sim": {
+            "path": "runs/step02_bgo_sample_allparticle_smoke_buildup/Background_muminus_fullsphere20_rep01_part01.inc1.id1.sim.gz",
+            "exists": true,
+            "size_bytes": 477,
+            "SE": 1,
+            "ID": 1,
+            "TS": 1,
+            "TE_s": 0.00725,
+            "geometry": "/home/ubuntu/TES_511_Balloon/Bgo_sample/Bgo_sample.geo.setup"
+          },
+          "dat_path": "runs/step02_bgo_sample_allparticle_smoke_buildup/Background_muminus_fullsphere20_rep01_part01.dat.inc1.dat",
+          "dat_exists": true,
+          "dat_size_bytes": 262,
+          "source": {
+            "path": "runs/step02_bgo_sample_allparticle_smoke_buildup/job_sources/Background_muminus_fullsphere20_rep01_part01.source",
+            "exists": true,
+            "geometry_is_bgo_sample": true,
+            "store_isotopes_true": true,
+            "has_activation_buildup": true,
+            "activation_mode_expected": true
+          }
+        },
+        {
+          "job_name": "Background_muplus_fullsphere20_rep01_part01",
+          "particle": "muplus",
+          "status": "PASS",
+          "events": 1,
+          "generated_particles": 1,
+          "cpu_s": 0.0055293,
+          "observation_time_s": 0.00643656,
+          "sim": {
+            "path": "runs/step02_bgo_sample_allparticle_smoke_buildup/Background_muplus_fullsphere20_rep01_part01.inc1.id1.sim.gz",
+            "exists": true,
+            "size_bytes": 475,
+            "SE": 1,
+            "ID": 1,
+            "TS": 1,
+            "TE_s": 0.006437,
+            "geometry": "/home/ubuntu/TES_511_Balloon/Bgo_sample/Bgo_sample.geo.setup"
+          },
+          "dat_path": "runs/step02_bgo_sample_allparticle_smoke_buildup/Background_muplus_fullsphere20_rep01_part01.dat.inc1.dat",
+          "dat_exists": true,
+          "dat_size_bytes": 262,
+          "source": {
+            "path": "runs/step02_bgo_sample_allparticle_smoke_buildup/job_sources/Background_muplus_fullsphere20_rep01_part01.source",
+            "exists": true,
+            "geometry_is_bgo_sample": true,
+            "store_isotopes_true": true,
+            "has_activation_buildup": true,
+            "activation_mode_expected": true
+          }
+        },
+        {
+          "job_name": "Background_n_fullsphere20_rep01_part01",
+          "particle": "n",
+          "status": "PASS",
+          "events": 48,
+          "generated_particles": 48,
+          "cpu_s": 0.100556,
+          "observation_time_s": 0.0107431,
+          "sim": {
+            "path": "runs/step02_bgo_sample_allparticle_smoke_buildup/Background_n_fullsphere20_rep01_part01.inc1.id1.sim.gz",
+            "exists": true,
+            "size_bytes": 6477,
+            "SE": 48,
+            "ID": 48,
+            "TS": 48,
+            "TE_s": 0.010743,
+            "geometry": "/home/ubuntu/TES_511_Balloon/Bgo_sample/Bgo_sample.geo.setup"
+          },
+          "dat_path": "runs/step02_bgo_sample_allparticle_smoke_buildup/Background_n_fullsphere20_rep01_part01.dat.inc1.dat",
+          "dat_exists": true,
+          "dat_size_bytes": 261,
+          "source": {
+            "path": "runs/step02_bgo_sample_allparticle_smoke_buildup/job_sources/Background_n_fullsphere20_rep01_part01.source",
+            "exists": true,
+            "geometry_is_bgo_sample": true,
+            "store_isotopes_true": true,
+            "has_activation_buildup": true,
+            "activation_mode_expected": true
+          }
+        },
+        {
+          "job_name": "Background_p_fullsphere20_rep01_part01",
+          "particle": "p",
+          "status": "PASS",
+          "events": 12,
+          "generated_particles": 12,
+          "cpu_s": 0.0227731,
+          "observation_time_s": 0.00817359,
+          "sim": {
+            "path": "runs/step02_bgo_sample_allparticle_smoke_buildup/Background_p_fullsphere20_rep01_part01.inc1.id1.sim.gz",
+            "exists": true,
+            "size_bytes": 3125,
+            "SE": 12,
+            "ID": 12,
+            "TS": 12,
+            "TE_s": 0.008174,
+            "geometry": "/home/ubuntu/TES_511_Balloon/Bgo_sample/Bgo_sample.geo.setup"
+          },
+          "dat_path": "runs/step02_bgo_sample_allparticle_smoke_buildup/Background_p_fullsphere20_rep01_part01.dat.inc1.dat",
+          "dat_exists": true,
+          "dat_size_bytes": 262,
+          "source": {
+            "path": "runs/step02_bgo_sample_allparticle_smoke_buildup/job_sources/Background_p_fullsphere20_rep01_part01.source",
+            "exists": true,
+            "geometry_is_bgo_sample": true,
+            "store_isotopes_true": true,
+            "has_activation_buildup": true,
+            "activation_mode_expected": true
+          }
+        }
+      ],
+      "problems": []
+    }
+  },
   "instant": {
-    "run_dir": "runs/step02_bgo_sample_smoke_instant",
+    "run_dir": "runs/step02_bgo_sample_allparticle_smoke_instant",
     "mode": "instant",
     "normalization": {
       "source_dir": "config/megalib_sources_fullsphere20_bgo_sample_tilt45",
@@ -135,7 +889,13 @@
       "non_gamma_replicas": 1,
       "farfield_radius_cm": 60.0,
       "selected_particles": [
+        "alpha",
+        "eminus",
+        "eplus",
         "gamma",
+        "muminus",
+        "muplus",
+        "n",
         "p"
       ],
       "base_events_by_particle": {
@@ -149,36 +909,216 @@
         "p": 12
       }
     },
-    "jobs": 2,
-    "passes": 2,
-    "events_requested": 512,
-    "events_generated": 512,
-    "sim_size_bytes": 50957,
-    "dat_size_bytes": 523,
+    "jobs": 8,
+    "passes": 8,
+    "events_requested": 596,
+    "events_generated": 596,
+    "sim_size_bytes": 66833,
+    "dat_size_bytes": 2092,
     "rows": [
+      {
+        "job_name": "Background_alpha_fullsphere20_rep01_part01",
+        "particle": "alpha",
+        "status": "PASS",
+        "events": 1,
+        "generated_particles": 1,
+        "cpu_s": 0.0186076,
+        "observation_time_s": 0.0106075,
+        "sim": {
+          "path": "runs/step02_bgo_sample_allparticle_smoke_instant/Background_alpha_fullsphere20_rep01_part01.inc1.id1.sim.gz",
+          "exists": true,
+          "size_bytes": 1519,
+          "SE": 1,
+          "ID": 1,
+          "TS": 1,
+          "TE_s": 0.010607,
+          "geometry": "/home/ubuntu/TES_511_Balloon/Bgo_sample/Bgo_sample.geo.setup"
+        },
+        "dat_path": "runs/step02_bgo_sample_allparticle_smoke_instant/Background_alpha_fullsphere20_rep01_part01.dat.inc1.dat",
+        "dat_exists": true,
+        "dat_size_bytes": 261,
+        "source": {
+          "path": "runs/step02_bgo_sample_allparticle_smoke_instant/job_sources/Background_alpha_fullsphere20_rep01_part01.source",
+          "exists": true,
+          "geometry_is_bgo_sample": true,
+          "store_isotopes_true": true,
+          "has_activation_buildup": false,
+          "activation_mode_expected": false
+        }
+      },
+      {
+        "job_name": "Background_eminus_fullsphere20_rep01_part01",
+        "particle": "eminus",
+        "status": "PASS",
+        "events": 21,
+        "generated_particles": 21,
+        "cpu_s": 0.0436312,
+        "observation_time_s": 0.00964312,
+        "sim": {
+          "path": "runs/step02_bgo_sample_allparticle_smoke_instant/Background_eminus_fullsphere20_rep01_part01.inc1.id1.sim.gz",
+          "exists": true,
+          "size_bytes": 3649,
+          "SE": 21,
+          "ID": 21,
+          "TS": 21,
+          "TE_s": 0.009643,
+          "geometry": "/home/ubuntu/TES_511_Balloon/Bgo_sample/Bgo_sample.geo.setup"
+        },
+        "dat_path": "runs/step02_bgo_sample_allparticle_smoke_instant/Background_eminus_fullsphere20_rep01_part01.dat.inc1.dat",
+        "dat_exists": true,
+        "dat_size_bytes": 262,
+        "source": {
+          "path": "runs/step02_bgo_sample_allparticle_smoke_instant/job_sources/Background_eminus_fullsphere20_rep01_part01.source",
+          "exists": true,
+          "geometry_is_bgo_sample": true,
+          "store_isotopes_true": true,
+          "has_activation_buildup": false,
+          "activation_mode_expected": false
+        }
+      },
+      {
+        "job_name": "Background_eplus_fullsphere20_rep01_part01",
+        "particle": "eplus",
+        "status": "PASS",
+        "events": 12,
+        "generated_particles": 12,
+        "cpu_s": 0.0352253,
+        "observation_time_s": 0.0106495,
+        "sim": {
+          "path": "runs/step02_bgo_sample_allparticle_smoke_instant/Background_eplus_fullsphere20_rep01_part01.inc1.id1.sim.gz",
+          "exists": true,
+          "size_bytes": 4518,
+          "SE": 12,
+          "ID": 12,
+          "TS": 12,
+          "TE_s": 0.010649,
+          "geometry": "/home/ubuntu/TES_511_Balloon/Bgo_sample/Bgo_sample.geo.setup"
+        },
+        "dat_path": "runs/step02_bgo_sample_allparticle_smoke_instant/Background_eplus_fullsphere20_rep01_part01.dat.inc1.dat",
+        "dat_exists": true,
+        "dat_size_bytes": 261,
+        "source": {
+          "path": "runs/step02_bgo_sample_allparticle_smoke_instant/job_sources/Background_eplus_fullsphere20_rep01_part01.source",
+          "exists": true,
+          "geometry_is_bgo_sample": true,
+          "store_isotopes_true": true,
+          "has_activation_buildup": false,
+          "activation_mode_expected": false
+        }
+      },
       {
         "job_name": "Background_gamma_fullsphere20_rep01_part01",
         "particle": "gamma",
         "status": "PASS",
         "events": 500,
         "generated_particles": 500,
-        "cpu_s": 0.504416,
-        "observation_time_s": 0.00945858,
+        "cpu_s": 0.701693,
+        "observation_time_s": 0.00903192,
         "sim": {
-          "path": "runs/step02_bgo_sample_smoke_instant/Background_gamma_fullsphere20_rep01_part01.inc1.id1.sim.gz",
+          "path": "runs/step02_bgo_sample_allparticle_smoke_instant/Background_gamma_fullsphere20_rep01_part01.inc1.id1.sim.gz",
           "exists": true,
-          "size_bytes": 48071,
+          "size_bytes": 48088,
           "SE": 500,
           "ID": 500,
           "TS": 500,
-          "TE_s": 0.009459,
+          "TE_s": 0.009032,
           "geometry": "/home/ubuntu/TES_511_Balloon/Bgo_sample/Bgo_sample.geo.setup"
         },
-        "dat_path": "runs/step02_bgo_sample_smoke_instant/Background_gamma_fullsphere20_rep01_part01.dat.inc1.dat",
+        "dat_path": "runs/step02_bgo_sample_allparticle_smoke_instant/Background_gamma_fullsphere20_rep01_part01.dat.inc1.dat",
         "dat_exists": true,
         "dat_size_bytes": 262,
         "source": {
-          "path": "runs/step02_bgo_sample_smoke_instant/job_sources/Background_gamma_fullsphere20_rep01_part01.source",
+          "path": "runs/step02_bgo_sample_allparticle_smoke_instant/job_sources/Background_gamma_fullsphere20_rep01_part01.source",
+          "exists": true,
+          "geometry_is_bgo_sample": true,
+          "store_isotopes_true": true,
+          "has_activation_buildup": false,
+          "activation_mode_expected": false
+        }
+      },
+      {
+        "job_name": "Background_muminus_fullsphere20_rep01_part01",
+        "particle": "muminus",
+        "status": "PASS",
+        "events": 1,
+        "generated_particles": 1,
+        "cpu_s": 0.00495893,
+        "observation_time_s": 0.00724996,
+        "sim": {
+          "path": "runs/step02_bgo_sample_allparticle_smoke_instant/Background_muminus_fullsphere20_rep01_part01.inc1.id1.sim.gz",
+          "exists": true,
+          "size_bytes": 477,
+          "SE": 1,
+          "ID": 1,
+          "TS": 1,
+          "TE_s": 0.00725,
+          "geometry": "/home/ubuntu/TES_511_Balloon/Bgo_sample/Bgo_sample.geo.setup"
+        },
+        "dat_path": "runs/step02_bgo_sample_allparticle_smoke_instant/Background_muminus_fullsphere20_rep01_part01.dat.inc1.dat",
+        "dat_exists": true,
+        "dat_size_bytes": 262,
+        "source": {
+          "path": "runs/step02_bgo_sample_allparticle_smoke_instant/job_sources/Background_muminus_fullsphere20_rep01_part01.source",
+          "exists": true,
+          "geometry_is_bgo_sample": true,
+          "store_isotopes_true": true,
+          "has_activation_buildup": false,
+          "activation_mode_expected": false
+        }
+      },
+      {
+        "job_name": "Background_muplus_fullsphere20_rep01_part01",
+        "particle": "muplus",
+        "status": "PASS",
+        "events": 1,
+        "generated_particles": 1,
+        "cpu_s": 0.00518406,
+        "observation_time_s": 0.00643656,
+        "sim": {
+          "path": "runs/step02_bgo_sample_allparticle_smoke_instant/Background_muplus_fullsphere20_rep01_part01.inc1.id1.sim.gz",
+          "exists": true,
+          "size_bytes": 475,
+          "SE": 1,
+          "ID": 1,
+          "TS": 1,
+          "TE_s": 0.006437,
+          "geometry": "/home/ubuntu/TES_511_Balloon/Bgo_sample/Bgo_sample.geo.setup"
+        },
+        "dat_path": "runs/step02_bgo_sample_allparticle_smoke_instant/Background_muplus_fullsphere20_rep01_part01.dat.inc1.dat",
+        "dat_exists": true,
+        "dat_size_bytes": 262,
+        "source": {
+          "path": "runs/step02_bgo_sample_allparticle_smoke_instant/job_sources/Background_muplus_fullsphere20_rep01_part01.source",
+          "exists": true,
+          "geometry_is_bgo_sample": true,
+          "store_isotopes_true": true,
+          "has_activation_buildup": false,
+          "activation_mode_expected": false
+        }
+      },
+      {
+        "job_name": "Background_n_fullsphere20_rep01_part01",
+        "particle": "n",
+        "status": "PASS",
+        "events": 48,
+        "generated_particles": 48,
+        "cpu_s": 0.0628777,
+        "observation_time_s": 0.0107431,
+        "sim": {
+          "path": "runs/step02_bgo_sample_allparticle_smoke_instant/Background_n_fullsphere20_rep01_part01.inc1.id1.sim.gz",
+          "exists": true,
+          "size_bytes": 6477,
+          "SE": 48,
+          "ID": 48,
+          "TS": 48,
+          "TE_s": 0.010743,
+          "geometry": "/home/ubuntu/TES_511_Balloon/Bgo_sample/Bgo_sample.geo.setup"
+        },
+        "dat_path": "runs/step02_bgo_sample_allparticle_smoke_instant/Background_n_fullsphere20_rep01_part01.dat.inc1.dat",
+        "dat_exists": true,
+        "dat_size_bytes": 261,
+        "source": {
+          "path": "runs/step02_bgo_sample_allparticle_smoke_instant/job_sources/Background_n_fullsphere20_rep01_part01.source",
           "exists": true,
           "geometry_is_bgo_sample": true,
           "store_isotopes_true": true,
@@ -192,23 +1132,23 @@
         "status": "PASS",
         "events": 12,
         "generated_particles": 12,
-        "cpu_s": 0.0405105,
-        "observation_time_s": 0.0118536,
+        "cpu_s": 0.0157802,
+        "observation_time_s": 0.0115908,
         "sim": {
-          "path": "runs/step02_bgo_sample_smoke_instant/Background_p_fullsphere20_rep01_part01.inc1.id1.sim.gz",
+          "path": "runs/step02_bgo_sample_allparticle_smoke_instant/Background_p_fullsphere20_rep01_part01.inc1.id1.sim.gz",
           "exists": true,
-          "size_bytes": 2886,
+          "size_bytes": 1630,
           "SE": 12,
           "ID": 12,
           "TS": 12,
-          "TE_s": 0.011854,
+          "TE_s": 0.011591,
           "geometry": "/home/ubuntu/TES_511_Balloon/Bgo_sample/Bgo_sample.geo.setup"
         },
-        "dat_path": "runs/step02_bgo_sample_smoke_instant/Background_p_fullsphere20_rep01_part01.dat.inc1.dat",
+        "dat_path": "runs/step02_bgo_sample_allparticle_smoke_instant/Background_p_fullsphere20_rep01_part01.dat.inc1.dat",
         "dat_exists": true,
         "dat_size_bytes": 261,
         "source": {
-          "path": "runs/step02_bgo_sample_smoke_instant/job_sources/Background_p_fullsphere20_rep01_part01.source",
+          "path": "runs/step02_bgo_sample_allparticle_smoke_instant/job_sources/Background_p_fullsphere20_rep01_part01.source",
           "exists": true,
           "geometry_is_bgo_sample": true,
           "store_isotopes_true": true,
@@ -220,7 +1160,7 @@
     "problems": []
   },
   "buildup": {
-    "run_dir": "runs/step02_bgo_sample_smoke_buildup",
+    "run_dir": "runs/step02_bgo_sample_allparticle_smoke_buildup",
     "mode": "buildup",
     "normalization": {
       "source_dir": "config/megalib_sources_fullsphere20_bgo_sample_tilt45",
@@ -229,7 +1169,13 @@
       "non_gamma_replicas": 1,
       "farfield_radius_cm": 60.0,
       "selected_particles": [
+        "alpha",
+        "eminus",
+        "eplus",
         "gamma",
+        "muminus",
+        "muplus",
+        "n",
         "p"
       ],
       "base_events_by_particle": {
@@ -243,36 +1189,216 @@
         "p": 12
       }
     },
-    "jobs": 2,
-    "passes": 2,
-    "events_requested": 512,
-    "events_generated": 512,
-    "sim_size_bytes": 49867,
-    "dat_size_bytes": 523,
+    "jobs": 8,
+    "passes": 8,
+    "events_requested": 596,
+    "events_generated": 596,
+    "sim_size_bytes": 68328,
+    "dat_size_bytes": 2093,
     "rows": [
+      {
+        "job_name": "Background_alpha_fullsphere20_rep01_part01",
+        "particle": "alpha",
+        "status": "PASS",
+        "events": 1,
+        "generated_particles": 1,
+        "cpu_s": 0.0101278,
+        "observation_time_s": 0.0106075,
+        "sim": {
+          "path": "runs/step02_bgo_sample_allparticle_smoke_buildup/Background_alpha_fullsphere20_rep01_part01.inc1.id1.sim.gz",
+          "exists": true,
+          "size_bytes": 1519,
+          "SE": 1,
+          "ID": 1,
+          "TS": 1,
+          "TE_s": 0.010607,
+          "geometry": "/home/ubuntu/TES_511_Balloon/Bgo_sample/Bgo_sample.geo.setup"
+        },
+        "dat_path": "runs/step02_bgo_sample_allparticle_smoke_buildup/Background_alpha_fullsphere20_rep01_part01.dat.inc1.dat",
+        "dat_exists": true,
+        "dat_size_bytes": 261,
+        "source": {
+          "path": "runs/step02_bgo_sample_allparticle_smoke_buildup/job_sources/Background_alpha_fullsphere20_rep01_part01.source",
+          "exists": true,
+          "geometry_is_bgo_sample": true,
+          "store_isotopes_true": true,
+          "has_activation_buildup": true,
+          "activation_mode_expected": true
+        }
+      },
+      {
+        "job_name": "Background_eminus_fullsphere20_rep01_part01",
+        "particle": "eminus",
+        "status": "PASS",
+        "events": 21,
+        "generated_particles": 21,
+        "cpu_s": 0.0568893,
+        "observation_time_s": 0.00964312,
+        "sim": {
+          "path": "runs/step02_bgo_sample_allparticle_smoke_buildup/Background_eminus_fullsphere20_rep01_part01.inc1.id1.sim.gz",
+          "exists": true,
+          "size_bytes": 3649,
+          "SE": 21,
+          "ID": 21,
+          "TS": 21,
+          "TE_s": 0.009643,
+          "geometry": "/home/ubuntu/TES_511_Balloon/Bgo_sample/Bgo_sample.geo.setup"
+        },
+        "dat_path": "runs/step02_bgo_sample_allparticle_smoke_buildup/Background_eminus_fullsphere20_rep01_part01.dat.inc1.dat",
+        "dat_exists": true,
+        "dat_size_bytes": 262,
+        "source": {
+          "path": "runs/step02_bgo_sample_allparticle_smoke_buildup/job_sources/Background_eminus_fullsphere20_rep01_part01.source",
+          "exists": true,
+          "geometry_is_bgo_sample": true,
+          "store_isotopes_true": true,
+          "has_activation_buildup": true,
+          "activation_mode_expected": true
+        }
+      },
+      {
+        "job_name": "Background_eplus_fullsphere20_rep01_part01",
+        "particle": "eplus",
+        "status": "PASS",
+        "events": 12,
+        "generated_particles": 12,
+        "cpu_s": 0.0386239,
+        "observation_time_s": 0.0106495,
+        "sim": {
+          "path": "runs/step02_bgo_sample_allparticle_smoke_buildup/Background_eplus_fullsphere20_rep01_part01.inc1.id1.sim.gz",
+          "exists": true,
+          "size_bytes": 4518,
+          "SE": 12,
+          "ID": 12,
+          "TS": 12,
+          "TE_s": 0.010649,
+          "geometry": "/home/ubuntu/TES_511_Balloon/Bgo_sample/Bgo_sample.geo.setup"
+        },
+        "dat_path": "runs/step02_bgo_sample_allparticle_smoke_buildup/Background_eplus_fullsphere20_rep01_part01.dat.inc1.dat",
+        "dat_exists": true,
+        "dat_size_bytes": 261,
+        "source": {
+          "path": "runs/step02_bgo_sample_allparticle_smoke_buildup/job_sources/Background_eplus_fullsphere20_rep01_part01.source",
+          "exists": true,
+          "geometry_is_bgo_sample": true,
+          "store_isotopes_true": true,
+          "has_activation_buildup": true,
+          "activation_mode_expected": true
+        }
+      },
       {
         "job_name": "Background_gamma_fullsphere20_rep01_part01",
         "particle": "gamma",
         "status": "PASS",
         "events": 500,
         "generated_particles": 500,
-        "cpu_s": 0.446385,
-        "observation_time_s": 0.00864931,
+        "cpu_s": 0.621692,
+        "observation_time_s": 0.00903192,
         "sim": {
-          "path": "runs/step02_bgo_sample_smoke_buildup/Background_gamma_fullsphere20_rep01_part01.inc1.id1.sim.gz",
+          "path": "runs/step02_bgo_sample_allparticle_smoke_buildup/Background_gamma_fullsphere20_rep01_part01.inc1.id1.sim.gz",
           "exists": true,
-          "size_bytes": 46187,
+          "size_bytes": 48088,
           "SE": 500,
           "ID": 500,
           "TS": 500,
-          "TE_s": 0.008649,
+          "TE_s": 0.009032,
           "geometry": "/home/ubuntu/TES_511_Balloon/Bgo_sample/Bgo_sample.geo.setup"
         },
-        "dat_path": "runs/step02_bgo_sample_smoke_buildup/Background_gamma_fullsphere20_rep01_part01.dat.inc1.dat",
+        "dat_path": "runs/step02_bgo_sample_allparticle_smoke_buildup/Background_gamma_fullsphere20_rep01_part01.dat.inc1.dat",
         "dat_exists": true,
         "dat_size_bytes": 262,
         "source": {
-          "path": "runs/step02_bgo_sample_smoke_buildup/job_sources/Background_gamma_fullsphere20_rep01_part01.source",
+          "path": "runs/step02_bgo_sample_allparticle_smoke_buildup/job_sources/Background_gamma_fullsphere20_rep01_part01.source",
+          "exists": true,
+          "geometry_is_bgo_sample": true,
+          "store_isotopes_true": true,
+          "has_activation_buildup": true,
+          "activation_mode_expected": true
+        }
+      },
+      {
+        "job_name": "Background_muminus_fullsphere20_rep01_part01",
+        "particle": "muminus",
+        "status": "PASS",
+        "events": 1,
+        "generated_particles": 1,
+        "cpu_s": 0.00513762,
+        "observation_time_s": 0.00724996,
+        "sim": {
+          "path": "runs/step02_bgo_sample_allparticle_smoke_buildup/Background_muminus_fullsphere20_rep01_part01.inc1.id1.sim.gz",
+          "exists": true,
+          "size_bytes": 477,
+          "SE": 1,
+          "ID": 1,
+          "TS": 1,
+          "TE_s": 0.00725,
+          "geometry": "/home/ubuntu/TES_511_Balloon/Bgo_sample/Bgo_sample.geo.setup"
+        },
+        "dat_path": "runs/step02_bgo_sample_allparticle_smoke_buildup/Background_muminus_fullsphere20_rep01_part01.dat.inc1.dat",
+        "dat_exists": true,
+        "dat_size_bytes": 262,
+        "source": {
+          "path": "runs/step02_bgo_sample_allparticle_smoke_buildup/job_sources/Background_muminus_fullsphere20_rep01_part01.source",
+          "exists": true,
+          "geometry_is_bgo_sample": true,
+          "store_isotopes_true": true,
+          "has_activation_buildup": true,
+          "activation_mode_expected": true
+        }
+      },
+      {
+        "job_name": "Background_muplus_fullsphere20_rep01_part01",
+        "particle": "muplus",
+        "status": "PASS",
+        "events": 1,
+        "generated_particles": 1,
+        "cpu_s": 0.0055293,
+        "observation_time_s": 0.00643656,
+        "sim": {
+          "path": "runs/step02_bgo_sample_allparticle_smoke_buildup/Background_muplus_fullsphere20_rep01_part01.inc1.id1.sim.gz",
+          "exists": true,
+          "size_bytes": 475,
+          "SE": 1,
+          "ID": 1,
+          "TS": 1,
+          "TE_s": 0.006437,
+          "geometry": "/home/ubuntu/TES_511_Balloon/Bgo_sample/Bgo_sample.geo.setup"
+        },
+        "dat_path": "runs/step02_bgo_sample_allparticle_smoke_buildup/Background_muplus_fullsphere20_rep01_part01.dat.inc1.dat",
+        "dat_exists": true,
+        "dat_size_bytes": 262,
+        "source": {
+          "path": "runs/step02_bgo_sample_allparticle_smoke_buildup/job_sources/Background_muplus_fullsphere20_rep01_part01.source",
+          "exists": true,
+          "geometry_is_bgo_sample": true,
+          "store_isotopes_true": true,
+          "has_activation_buildup": true,
+          "activation_mode_expected": true
+        }
+      },
+      {
+        "job_name": "Background_n_fullsphere20_rep01_part01",
+        "particle": "n",
+        "status": "PASS",
+        "events": 48,
+        "generated_particles": 48,
+        "cpu_s": 0.100556,
+        "observation_time_s": 0.0107431,
+        "sim": {
+          "path": "runs/step02_bgo_sample_allparticle_smoke_buildup/Background_n_fullsphere20_rep01_part01.inc1.id1.sim.gz",
+          "exists": true,
+          "size_bytes": 6477,
+          "SE": 48,
+          "ID": 48,
+          "TS": 48,
+          "TE_s": 0.010743,
+          "geometry": "/home/ubuntu/TES_511_Balloon/Bgo_sample/Bgo_sample.geo.setup"
+        },
+        "dat_path": "runs/step02_bgo_sample_allparticle_smoke_buildup/Background_n_fullsphere20_rep01_part01.dat.inc1.dat",
+        "dat_exists": true,
+        "dat_size_bytes": 261,
+        "source": {
+          "path": "runs/step02_bgo_sample_allparticle_smoke_buildup/job_sources/Background_n_fullsphere20_rep01_part01.source",
           "exists": true,
           "geometry_is_bgo_sample": true,
           "store_isotopes_true": true,
@@ -286,23 +1412,23 @@
         "status": "PASS",
         "events": 12,
         "generated_particles": 12,
-        "cpu_s": 0.0292524,
-        "observation_time_s": 0.0081783,
+        "cpu_s": 0.0227731,
+        "observation_time_s": 0.00817359,
         "sim": {
-          "path": "runs/step02_bgo_sample_smoke_buildup/Background_p_fullsphere20_rep01_part01.inc1.id1.sim.gz",
+          "path": "runs/step02_bgo_sample_allparticle_smoke_buildup/Background_p_fullsphere20_rep01_part01.inc1.id1.sim.gz",
           "exists": true,
-          "size_bytes": 3680,
+          "size_bytes": 3125,
           "SE": 12,
           "ID": 12,
           "TS": 12,
-          "TE_s": 0.008178,
+          "TE_s": 0.008174,
           "geometry": "/home/ubuntu/TES_511_Balloon/Bgo_sample/Bgo_sample.geo.setup"
         },
-        "dat_path": "runs/step02_bgo_sample_smoke_buildup/Background_p_fullsphere20_rep01_part01.dat.inc1.dat",
+        "dat_path": "runs/step02_bgo_sample_allparticle_smoke_buildup/Background_p_fullsphere20_rep01_part01.dat.inc1.dat",
         "dat_exists": true,
-        "dat_size_bytes": 261,
+        "dat_size_bytes": 262,
         "source": {
-          "path": "runs/step02_bgo_sample_smoke_buildup/job_sources/Background_p_fullsphere20_rep01_part01.source",
+          "path": "runs/step02_bgo_sample_allparticle_smoke_buildup/job_sources/Background_p_fullsphere20_rep01_part01.source",
           "exists": true,
           "geometry_is_bgo_sample": true,
           "store_isotopes_true": true,

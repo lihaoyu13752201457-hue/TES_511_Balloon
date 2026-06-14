@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import gzip
 import json
+import re
 from pathlib import Path
 from typing import Any
 
@@ -12,10 +13,13 @@ from typing import Any
 ROOT = Path(__file__).resolve().parents[2]
 BGO_DIR = ROOT / "Bgo_sample"
 SOURCE_MANIFEST = ROOT / "config" / "megalib_sources_fullsphere20_bgo_sample_tilt45" / "source_migration_manifest.json"
-INSTANT = ROOT / "runs" / "step02_bgo_sample_smoke_instant"
-BUILDUP = ROOT / "runs" / "step02_bgo_sample_smoke_buildup"
+PAIR_INSTANT = ROOT / "runs" / "step02_bgo_sample_smoke_instant"
+PAIR_BUILDUP = ROOT / "runs" / "step02_bgo_sample_smoke_buildup"
+ALLPARTICLE_INSTANT = ROOT / "runs" / "step02_bgo_sample_allparticle_smoke_instant"
+ALLPARTICLE_BUILDUP = ROOT / "runs" / "step02_bgo_sample_allparticle_smoke_buildup"
 SUMMARY_JSON = BGO_DIR / "step02_smoke_summary.json"
 SUMMARY_MD = BGO_DIR / "STEP02_SMOKE.md"
+SOURCE_RE = re.compile(r"Background_(?P<tag>.+?)_fullsphere20\.source$")
 
 
 def rel(path: Path) -> str:
@@ -27,6 +31,16 @@ def rel(path: Path) -> str:
 
 def load_json(path: Path) -> Any:
     return json.loads(path.read_text(encoding="utf-8"))
+
+
+def manifest_particles(manifest: dict[str, Any]) -> set[str]:
+    particles: set[str] = set()
+    for item in manifest.get("sources", []):
+        name = Path(item.get("source", "")).name
+        match = SOURCE_RE.match(name)
+        if match:
+            particles.add(match.group("tag"))
+    return particles
 
 
 def sim_info(path: Path) -> dict[str, Any]:
@@ -130,15 +144,21 @@ def summarize_run(path: Path, mode: str) -> dict[str, Any]:
     }
 
 
+def run_is_complete(run: dict[str, Any]) -> bool:
+    return not run["problems"] and run["jobs"] == run["passes"] and run["events_generated"] == run["events_requested"]
+
+
 def markdown(summary: dict[str, Any]) -> str:
-    instant = summary["instant"]
-    buildup = summary["buildup"]
+    pair_instant = summary["pair_smoke"]["instant"]
+    pair_buildup = summary["pair_smoke"]["buildup"]
+    all_instant = summary["all_particle_smoke"]["instant"]
+    all_buildup = summary["all_particle_smoke"]["buildup"]
     lines = [
         "# Bgo_sample Step02 Smoke Transport",
         "",
         f"Status: `{summary['status']}`.",
         "",
-        "Scope: prompt and activation-build-up smoke transport only. This is not an all-particle Step02 production, not a delayed source, and not a Step05--Step08 BGO sensitivity result.",
+        "Scope: prompt and activation-build-up smoke transport only. This is an all-particle source-card connectivity check at tiny statistics, not a full Step02 production, not a delayed source, and not a Step05--Step08 BGO sensitivity result.",
         "",
         "Source and geometry:",
         f"- source cards: `{summary['source_manifest']['source_dir']}`",
@@ -148,41 +168,65 @@ def markdown(summary: dict[str, Any]) -> str:
         f"- attenuation check: `{summary['source_manifest']['bgo_checks']['attenuation_status']}` with max relative difference `{summary['source_manifest']['bgo_checks']['attenuation_max_abs_relative_difference']}`",
         "",
         "Smoke runs:",
-        f"- instant: `{instant['passes']}/{instant['jobs']}` jobs passed, `{instant['events_generated']}` generated particles",
-        f"- buildup: `{buildup['passes']}/{buildup['jobs']}` jobs passed, `{buildup['events_generated']}` generated particles",
-        f"- selected particles: `{', '.join(instant['normalization']['selected_particles'])}`",
+        f"- pair instant: `{pair_instant['passes']}/{pair_instant['jobs']}` jobs passed, `{pair_instant['events_generated']}` generated particles",
+        f"- pair buildup: `{pair_buildup['passes']}/{pair_buildup['jobs']}` jobs passed, `{pair_buildup['events_generated']}` generated particles",
+        f"- all-particle instant: `{all_instant['passes']}/{all_instant['jobs']}` jobs passed, `{all_instant['events_generated']}` generated particles",
+        f"- all-particle buildup: `{all_buildup['passes']}/{all_buildup['jobs']}` jobs passed, `{all_buildup['events_generated']}` generated particles",
+        f"- all-particle selected particles: `{', '.join(all_instant['normalization']['selected_particles'])}`",
         "",
         "Boundary:",
-        "- This closes BGO source-card migration and prompt/buildup Cosima transport connectivity only.",
-        "- Full BGO Step02 requires all particles and production statistics.",
+        "- This closes BGO source-card migration and prompt/buildup Cosima transport connectivity for all eight source-card particle classes.",
+        "- Full BGO Step02 still requires production statistics, not this 596-event smoke scale.",
         "- BGO delayed source, delayed transport, Step05 response, Step06/07/08 significance, and BGO-vs-CsI comparison remain not run for this Bgo_sample package.",
         "",
         "Outputs:",
         f"- summary JSON: `{rel(SUMMARY_JSON)}`",
-        f"- instant run: `{instant['run_dir']}`",
-        f"- buildup run: `{buildup['run_dir']}`",
+        f"- pair instant run: `{pair_instant['run_dir']}`",
+        f"- pair buildup run: `{pair_buildup['run_dir']}`",
+        f"- all-particle instant run: `{all_instant['run_dir']}`",
+        f"- all-particle buildup run: `{all_buildup['run_dir']}`",
     ]
     return "\n".join(lines) + "\n"
 
 
 def main() -> int:
     manifest = load_json(SOURCE_MANIFEST)
-    instant = summarize_run(INSTANT, "instant")
-    buildup = summarize_run(BUILDUP, "buildup")
+    pair_instant = summarize_run(PAIR_INSTANT, "instant")
+    pair_buildup = summarize_run(PAIR_BUILDUP, "buildup")
+    all_instant = summarize_run(ALLPARTICLE_INSTANT, "instant")
+    all_buildup = summarize_run(ALLPARTICLE_BUILDUP, "buildup")
     problems = []
-    problems.extend(instant["problems"])
-    problems.extend(buildup["problems"])
+    for run in [pair_instant, pair_buildup, all_instant, all_buildup]:
+        problems.extend(run["problems"])
     if manifest.get("status") != "PASS":
         problems.append("source_manifest_status_not_PASS")
     if manifest.get("geometry_setup") != "Bgo_sample/Bgo_sample.geo.setup":
         problems.append("source_manifest_geometry_not_Bgo_sample")
+    all_particles = manifest_particles(manifest)
+    selected_all = set(all_instant["normalization"]["selected_particles"])
+    if selected_all != all_particles:
+        problems.append(f"allparticle_instant_selected_mismatch={sorted(selected_all)}")
+    if set(all_buildup["normalization"]["selected_particles"]) != all_particles:
+        problems.append("allparticle_buildup_selected_mismatch")
+    if all_instant["events_generated"] != 596 or all_buildup["events_generated"] != 596:
+        problems.append("allparticle_smoke_expected_596_events_per_mode")
 
     summary = {
-        "status": "PASS_BGO_SAMPLE_STEP02_SMOKE_TRANSPORT" if not problems else "FAIL_BGO_SAMPLE_STEP02_SMOKE_TRANSPORT",
-        "claim_level": "BGO_SAMPLE_STEP02_PROMPT_BUILDUP_SMOKE_NO_RATE_NO_DELAYED_SOURCE_NO_SIGNIFICANCE",
+        "status": "PASS_BGO_SAMPLE_STEP02_ALLPARTICLE_SMOKE_TRANSPORT" if not problems else "FAIL_BGO_SAMPLE_STEP02_ALLPARTICLE_SMOKE_TRANSPORT",
+        "claim_level": "BGO_SAMPLE_STEP02_ALLPARTICLE_PROMPT_BUILDUP_SMOKE_NO_RATE_NO_DELAYED_SOURCE_NO_SIGNIFICANCE",
         "source_manifest": manifest,
-        "instant": instant,
-        "buildup": buildup,
+        "pair_smoke": {
+            "status": "PASS" if run_is_complete(pair_instant) and run_is_complete(pair_buildup) else "FAIL",
+            "instant": pair_instant,
+            "buildup": pair_buildup,
+        },
+        "all_particle_smoke": {
+            "status": "PASS" if run_is_complete(all_instant) and run_is_complete(all_buildup) else "FAIL",
+            "instant": all_instant,
+            "buildup": all_buildup,
+        },
+        "instant": all_instant,
+        "buildup": all_buildup,
         "problems": problems,
     }
     SUMMARY_JSON.write_text(json.dumps(summary, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")

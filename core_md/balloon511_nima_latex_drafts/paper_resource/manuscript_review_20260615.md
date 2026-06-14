@@ -34,10 +34,11 @@ Scope: current English and Chinese LaTeX drafts in
   a fixed-template post-processing likelihood. They should not be described as
   independent Step05 transported rate rows.
 - The BGO equal-attenuation sample is closed at Step01 geometry/control level
-  and has a small Step02 prompt/buildup smoke transport:
-  `PASS_BGO_SAMPLE_STEP02_SMOKE_TRANSPORT` for gamma and proton cards with 512
-  generated events in each mode. This still is not a full all-particle Step02
-  production, delayed-source, Step05, or Step08 BGO sensitivity chain.
+  and has a small all-particle Step02 prompt/buildup smoke transport:
+  `PASS_BGO_SAMPLE_STEP02_ALLPARTICLE_SMOKE_TRANSPORT` for all eight
+  source-card particle classes with 596 generated events in each mode. This
+  still is not a production-statistics Step02, delayed-source, Step05, or
+  Step08 BGO sensitivity chain.
 
 ## Edits Made In This Pass
 
@@ -47,9 +48,9 @@ Scope: current English and Chinese LaTeX drafts in
   equal-attenuation control is not part of the current CsI Step02--Step08
   sensitivity chain.
 - Updated the BGO limitation wording in both drafts after the BGO sample
-  gained a prompt/buildup smoke test: the manuscript now says the BGO sample
-  has only gamma/proton smoke connectivity and no full BGO background-rate or
-  sensitivity result.
+  gained all-particle prompt/buildup smoke connectivity. The manuscript now
+  says the BGO sample has smoke-scale connectivity only and no full BGO
+  background-rate or sensitivity result.
 
 ## Still Open
 
