@@ -1,0 +1,22 @@
+\begin{table}[t]
+\centering
+\caption{v3p5 exact-position 率级 authority 所采用的逐步模拟流程。该表是仓库 workflow 的论文版压缩表述；真正数值 authority 仍由对应验证文件和闭包报告定义。}
+\label{tab:simulation_workflow}
+\scriptsize
+\begin{tabular}{@{}p{0.12\linewidth}p{0.25\linewidth}p{0.36\linewidth}p{0.18\linewidth}@{}}
+\toprule
+步骤 & 计算作用 & 当前实现或证据 & 解释边界 \\
+\midrule
+00--01 几何 & 定义探测器质量模型、主动体、局部侧入射坐标和注入面 & v3p5 center-finger 几何，包含 TES 阵列、Be 侧窗、Cu/W 被动材料和分段 CsI 主动屏蔽；局部窗口向上倾斜 $45^\circ$ & 只闭合几何，不产生率级结果 \\
+02 瞬发与积累输运 & 产生瞬发大气事例和活化产生历史 & full-stat v2 瞬发和活化积累流各生成 25,210,216 个粒子；瞬发率采用逐 tag 曝光归一化 & 低统计分支仅作闭包检查，不作论文率级 authority \\
+03 延迟 inventory 与源 & 将活化产物转换为固定 day-15 源并输运延迟衰变 & 固定 inventory 活度 $85.636696\,\mathrm{Bq}$；exact-position 采样 \texttt{PointSource} 支撑，$M=5000$，延迟输运触发数 $10^6$ & 采样支撑保持总活度；充分性由 Step10 下游收敛检验约束 \\
+04 B-FULL Laue 光学 & 计算 511 keV 光学有效面积和聚焦焦面相空间 & \texttt{opticsim\_full}/B-FULL Ge(111) 模型，使用外部 XOP/CRYSTAL rocking curve；f10m A1 给出 $\aeff(511)=20.08476\,\mathrm{cm^2}$ 和 37,194 条 within-Be 焦面记录 & 只计算光学信号；未加入上游光学硬件 self-background \\
+09 EventList 桥接 & 将光学焦面记录重放到探测器几何中 & 37,194/37,194 条 Step04 记录写成 MEGAlib EventList，并通过 v3p5 探测器设置输运 & 使用真实追踪焦面记录，不使用解析 phase-space 投影 \\
+05 探测器响应 & 对瞬发、延迟和聚焦流施加同一探测器选择 & 主动屏蔽后处理 veto、侧入射 Compton/FoV 一致性和 $\wii$ 硬线窗选择；day-15 $\wii$ 率为 $B/S=0.0624651/0.00118117\cps$ & 定量 veto authority 为后处理模型，不是 native production filtering \\
+06 任务时间折叠 & 将选后率沿气球任务时间传播 & 折叠瞬发、延迟活度、大气透过和 accidental-veto live factor；任务平均 $\wii$ 率为 $B/S=0.0626835/0.00117281\cps$ & 率级时间折叠，不是在每个时间 bin 重新粒子输运 \\
+07 源情形 ledger & 将探测器响应映射到源流量单位 & 参考点源情形下 W2 响应为 $11.8117\,\mathrm{cps}/(\mathrm{ph\,cm^{-2}\,s^{-1}})$ & 保持 Route-A 点源归一化与弥散天空 sidecar 分离 \\
+08 显著度 & 计算累积探测显著度和流量阈值 & 时间相关硬线窗结果：$Z_{20\mathrm{d}}=6.15522$，$T_{3\sigma}=4.73758\,\mathrm{d}$，$\fthree(20\mathrm{d})=4.87391\times10^{-5}\cms$ & 使用 Gaussian counting 指标以保持比较一致 \\
+10 稳健性 sidecar & 在最终选后率层面检验 exact-position 支撑点数和随机种子依赖 & 四个真实输运情形覆盖 $M=5000$、20,000 和 50,000；W2 本底和 $Z_{20\mathrm{d}}$ 相对范围为 1.119\% 和 0.551\% & 支持将 exact-position 延迟输运提升为当前率级 authority \\
+\bottomrule
+\end{tabular}
+\end{table}

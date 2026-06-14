@@ -1,0 +1,16 @@
+\begin{table}[t]
+\centering
+\caption{Traceability from science drivers to instrument and simulation requirements. The table summarizes requirements used to define the current v3p5 exact-position analysis; it is not a separate sensitivity calculation.}
+\label{tab:requirements_traceability}
+\footnotesize
+\begin{tabular}{@{}p{0.20\linewidth}p{0.22\linewidth}p{0.35\linewidth}p{0.14\linewidth}@{}}
+\toprule
+Science driver & Requirement & Current implementation or evidence & Authority \\
+\midrule
+Compact 511 keV targets at $\sim10^{-4}\cms$ or below & Concentrate 511 keV photons onto a small focal plane & Ge(111) f10m A1 Laue lens with $\aeff(511\keV)=20.08476\,\mathrm{cm^2}$; 37,194 within-Be focal rows transported through the detector bridge & Step04, Step09 \\
+Narrow-line spectroscopy rather than broad-band counting & Use a sub-keV analysis window and preserve source-flux normalization & $\wii=510.58$--$511.42\keV$; Step05 signal $0.00118117\cps$ at $\fref=10^{-4}\cms$; Step07 response $11.8117\,\mathrm{cps}/(\mathrm{ph\,cm^{-2}\,s^{-1}})$ & Step05, Step07 \\
+Balloon prompt, side-entry, and activation backgrounds & Apply detector-coupled veto and topology cuts to signal and background streams & CsI post-processing veto, side-entry Compton/FoV consistency, exact-position delayed transport; selected $\wii$ background $0.0624651\cps$ split into prompt $0.0590827\cps$ and delayed $0.00338234\cps$ & Step05 exactpos \\
+Mission-level sensitivity claim & Fold rates through mission time and test delayed-source sampling stability & Step08 gives $Z_{20\mathrm{d}}=6.15522$ and $\fthree(20\mathrm{d})=4.87391\times10^{-5}\cms$; M/seed sweep changes $Z_{20\mathrm{d}}$ by 0.551\% & Step06--08; M/seed \\
+\bottomrule
+\end{tabular}
+\end{table}

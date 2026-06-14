@@ -78,7 +78,13 @@ The remainder of the paper is organized as follows. Section~\ref{sec:requirement
 
 The instrument considered here is optimized for a pointed, narrow-line measurement rather than all-sky imaging. The primary science case is the detection or exclusion of compact 511 keV emission at fluxes of order $10^{-4}\cms$ or below during a long-duration balloon exposure. This flux scale is motivated by the need to test bright central-core, compact-source, and transient pair-plasma scenarios while remaining complementary to wide-field Compton surveys.
 
-Four requirements follow. First, the telescope must concentrate 511 keV photons so that a small focal plane can be used without sacrificing the collecting area. Second, the focal plane must provide sub-keV energy resolution so that the line-window background scales with a narrow spectral interval rather than a broad MeV-band continuum. Third, the detector and shield design must suppress atmospheric, activation, and side-entry backgrounds without placing excessive passive material near the TES absorbers. Fourth, the simulation chain must treat prompt background, delayed activation, focused signal, vetoes, event topology, and mission-time variation consistently. These requirements define the methods used below.
+The requirements are stated at the level needed for the present simulation, not as final flight-system specifications. They define what the model must preserve for a credible rate claim: the source flux normalization, the focused entrance phase space, the narrow line-window response, and the same detector selection for signal and background. This distinction is important because several quantities, including the TES energy response and final cryostat layout, remain design assumptions or engineering proxies.
+
+Four requirements follow. First, the telescope must concentrate 511 keV photons so that a small focal plane can be used without sacrificing collecting area. Second, the focal-plane response must support a sub-keV analysis window so that the line-window background scales with a narrow spectral interval rather than a broad MeV-band continuum. Third, the detector and shield model must suppress atmospheric, activation, and side-entry backgrounds while explicitly accounting for passive material near the TES absorbers. Fourth, the simulation chain must treat prompt background, delayed activation, focused signal, vetoes, event topology, and mission-time variation consistently. Table~\ref{tab:requirements_traceability} summarizes how these requirements map onto the current v3p5 exact-position implementation.
+
+\input{paper_resource/table_requirements_traceability_en.tex}
+
+These requirements also set the interpretation of the results. A hard-window sensitivity is the primary claim because it depends only on energy selection, vetoing, topology/FoV consistency, and the mission-time rate fold. Focused-spot and annular sidecars test spatial-analysis boundaries, but they do not replace the hard-window requirement until a publication-grade spatial-spectral likelihood and nuisance-background treatment are in place.
 
 \section{Simulation workflow}
 \label{sec:workflow}
@@ -93,6 +99,10 @@ Figure~\ref{fig:workflow} summarizes the workflow. The calculation is divided in
 \end{figure}
 
 The rate-level authority is the exact-position delayed-source chain labeled \texttt{fullstat\_v2\_exactpos}. It uses full-stat prompt and buildup transport, a fixed day-15 delayed inventory, sampled exact-position \texttt{PointSource} delayed support, and full downstream propagation through the Step05--Step08 detector response and significance chain. The older homogeneous-beam and legacy delayed-source branches are not used for the headline sensitivities.
+
+Table~\ref{tab:simulation_workflow} gives the stepwise version of this chain. In the repository, \path{Project_Memory.md} is the audit map that records which files are current numerical authority, which paths are legacy provenance, and which sidecars are boundary tests. In this manuscript, that internal map is compressed into a reproducible method description: each step has a defined input, a physical or statistical operation, an output consumed by later steps, and an explicit boundary on what may be claimed from it. The \path{opticsim_full}/B-FULL calculation is one step in this chain, not the chain itself. It supplies the Laue-lens effective area and the tracked focused phase space; the Step09 EventList bridge and the Step05--Step08 detector-response chain are what convert that optical phase space into a detector-coupled point-source sensitivity.
+
+\input{paper_resource/table_simulation_workflow_en.tex}
 
 \section{Detector and cryostat mass model}
 \label{sec:geometry}
@@ -168,22 +178,34 @@ Table~\ref{tab:headline} gives the primary hard-window result. In the exact-posi
 
 \begin{table}[t]
 \centering
-\caption{Primary sensitivity and selected comparison cases. The exact-position hard-window row is the current rate authority. The radial-profile row is a conservative baseline cross-check. Spatial and line-of-sight rows are sidecars, not replacements for the hard-window authority.}
+\caption{Primary sensitivity and selected comparison cases. The exact-position hard-window row is the current rate authority. The radial-profile row is a conservative baseline cross-check. Sidecar rows state their base branch explicitly and are not replacements for the hard-window authority.}
 \label{tab:headline}
-\begin{tabular}{lccccc}
+\footnotesize
+\begin{tabular}{llccccc}
 \toprule
-Case & $B_{\wii}$ (cps) & $S_{\wii}$ at $\fref$ (cps) & $Z_{20\mathrm{d}}$ & $T_{3\sigma}$ (d) & $\fthree(20\mathrm{d})$ \\
+Case & Base & $B_{\wii}$ (cps) & $S_{\wii}$ at $\fref$ (cps) & $Z_{20\mathrm{d}}$ & $T_{3\sigma}$ (d) & $\fthree(20\mathrm{d})$ \\
 \midrule
-Exact-position hard window & 0.0624651 & 0.00118117 & 6.15522 & 4.73758 & $4.87391\times10^{-5}$ \\
-Radial-profile baseline & 0.0729576 & 0.00118117 & 5.70221 & 5.46687 & $5.26111\times10^{-5}$ \\
-Focused $r_{90}$ sidecar & 0.0232510 & $\approx0.001063$ & 8.17566 & 2.23643 & $3.66943\times10^{-5}$ \\
-45$^\circ$ LOS sidecar & -- & -- & 5.02544 & -- & $5.96962\times10^{-5}$ \\
-Multi-annulus sidecar & -- & -- & 8.45804 & -- & $3.54692\times10^{-5}$ \\
+Exact-position hard window & exactpos & 0.0624651 & 0.00118117 & 6.15522 & 4.73758 & $4.87391\times10^{-5}$ \\
+Radial-profile hard window & radial & 0.0729576 & 0.00118117 & 5.70221 & 5.46687 & $5.26111\times10^{-5}$ \\
+Focused $r_{90}$ spatial sidecar & radial & 0.0232510 & $\approx0.001063$ & 8.17566 & 2.23643 & $3.66943\times10^{-5}$ \\
+45$^\circ$ LOS hard-window sidecar & exactpos & -- & -- & 5.42468 & 5.93004 & $5.53028\times10^{-5}$ \\
+45$^\circ$ LOS $r_{90}$ sidecar & exactpos & -- & -- & 7.20513 & 2.85677 & $4.16370\times10^{-5}$ \\
+Fixed-template annular sidecar & exactpos & -- & -- & 8.45781 & -- & $3.54702\times10^{-5}$ \\
 \bottomrule
 \end{tabular}
+\vspace{0.5ex}
+\begin{minipage}{0.94\linewidth}
+\footnotesize
+Dash entries indicate sidecar quantities that are not independent Step05
+day-15 transported rates. The 45$^\circ$ LOS rows are derived by applying the
+mission-time atmospheric slant-column model to the exact-position chain; the
+annular row is a fixed-template post-processing likelihood evaluated with
+selected W2 event rates and is reported only by its final significance and
+flux threshold.
+\end{minipage}
 \end{table}
 
-The hard-window result is intentionally conservative relative to the spatial sidecars. It requires only the narrow energy window, active-shield veto, and topology/FoV consistency selection. The $r_{90}$ sidecar illustrates the possible gain from using the focused spot in the local side-window detector frame, but it should be treated as a post-processing spatial analysis rather than a finalized profile-likelihood result.
+The hard-window result is intentionally conservative relative to the spatial sidecars. It requires only the narrow energy window, active-shield veto, and topology/FoV consistency selection. The standalone $r_{90}$ sidecar uses the radial-profile full-stat branch and illustrates the possible gain from using the focused spot in the local side-window detector frame. The exact-position boundary sidecars apply a 45$^\circ$ line-of-sight atmosphere fold and a fixed-template annular spatial likelihood. These rows should be treated as boundary tests and post-processing analyses, not as finalized nuisance-profile likelihood results.
 
 \subsection{Background composition}
 \label{subsec:bgcomp}
@@ -217,14 +239,14 @@ Table~\ref{tab:convergence} summarizes the transport-backed exact-position conve
 \centering
 \caption{Transport-backed exact-position convergence cases.}
 \label{tab:convergence}
-\begin{tabular}{lcccc}
+\begin{tabular}{lccccc}
 \toprule
-Label & $M$ & Seed & $B_{\wii}$ (cps) & $Z_{20\mathrm{d}}$ \\
+Label & $M$ & Seed & $B_{\wii}$ (cps) & $Z_{20\mathrm{d}}$ & $\fthree(20\mathrm{d})$ \\
 \midrule
-\texttt{fullstat\_v2\_exactpos} & 5000 & 260613 & 0.0624651 & 6.15522 \\
-\texttt{m05000\_s260614} & 5000 & 260614 & 0.0631683 & 6.12141 \\
-\texttt{m20000\_s260613} & 20000 & 260613 & 0.0627261 & 6.14261 \\
-\texttt{m50000\_s260613} & 50000 & 260613 & 0.0629804 & 6.13039 \\
+\texttt{fullstat\_v2\_exactpos} & 5000 & 260613 & 0.0624651 & 6.15522 & $4.87391\times10^{-5}$ \\
+\texttt{m05000\_s260614} & 5000 & 260614 & 0.0631683 & 6.12141 & $4.90083\times10^{-5}$ \\
+\texttt{m20000\_s260613} & 20000 & 260613 & 0.0627261 & 6.14261 & $4.88392\times10^{-5}$ \\
+\texttt{m50000\_s260613} & 50000 & 260613 & 0.0629804 & 6.13039 & $4.89365\times10^{-5}$ \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -232,7 +254,7 @@ Label & $M$ & Seed & $B_{\wii}$ (cps) & $Z_{20\mathrm{d}}$ \\
 \subsection{Comparison with instrument benchmarks}
 \label{subsec:benchmarks}
 
-The present calculation is not an all-sky imaging forecast. It is a pointed, narrow-line, compact-source sensitivity estimate. The comparison most relevant to its design philosophy is therefore not simply field-of-view survey speed, but line-window background suppression per focused point-source flux. INTEGRAL/SPI and COSI remain the key references for mapping the diffuse 511 keV sky \cite{Siegert2016AA,Kierans2020,Siegert2020COSI,Yoneda2025}. COSI's satellite implementation will survey the 0.2--5 MeV sky with wide field of view and Ge detector spectroscopy, and public NASA mission information lists a planned 2027 launch and a 6.0 keV energy resolution at 511 keV \cite{NASACOSI,HEASARCCOSI}. The TES Laue-lens concept considered here is complementary: it trades sky coverage for a concentrated beam and a sub-keV line window.
+The present calculation is not an all-sky imaging forecast. It is a pointed, narrow-line, compact-source sensitivity estimate. The comparison most relevant to its design philosophy is therefore not simply field-of-view survey speed, but line-window background suppression per focused point-source flux. INTEGRAL/SPI and COSI remain the key references for mapping the diffuse 511 keV sky \cite{Siegert2016AA,Kierans2020,Siegert2020COSI,Yoneda2025}. COSI's satellite implementation will survey the 0.2--5 MeV sky with wide field of view and Ge detector spectroscopy; NASA and HEASARC mission pages list a planned 2027 launch and a 6.0 keV energy resolution at 511 keV \cite{NASACOSI,HEASARCCOSI}. The TES Laue-lens concept considered here is complementary: it trades sky coverage for a concentrated beam and a sub-keV line window.
 
 Relative to a wide-field Compton telescope, the proposed payload would be most competitive for compact 511 keV targets, central-core searches, and transient follow-up observations where the source position is known or constrained. It is less suited to measuring the full diffuse bulge and disk luminosity, because the small focused aperture samples only a small solid angle. This distinction is essential when comparing point-source Route-A results with diffuse-sky Route-B foreground estimates.
 
@@ -245,7 +267,7 @@ The exact-position delayed-source treatment is a methodological improvement over
 
 The background composition points to the next optimization targets. The selected hard-window rate is dominated by prompt atmospheric $e^+$-tagged events. Improvements may therefore come from shield geometry, side-entry collimation, material reduction near the focal plane, stricter topology cuts, or improved reconstruction of multi-pixel events. Delayed activation is smaller but led by identifiable nuclides and volumes, suggesting targeted material substitutions or local shielding may still be valuable.
 
-Several limitations should be kept explicit. First, the detector/cryostat model is an engineering proxy, not a final flight CAD model. Second, the production SIM files use a post-processing active-shield authority; native trigger/veto production filtering is not the source of quantitative rates. Third, the Step06 mission-time calculation is a rate-level fold, not a new particle transport at each trajectory time bin. Fourth, the custom Compton/FoV veto is not yet a full Revan/Mimrec reconstruction. Fifth, upstream Laue-lens self-background and activation from cosmic-ray interactions in the optics hardware are not included in the headline detector-background budget. Sixth, spatial sidecars such as $r_{90}$ and multi-annulus likelihood estimates are promising, but they are not yet a publication-grade nuisance-profile likelihood.
+Several limitations should be kept explicit. First, the detector/cryostat model is an engineering proxy, not a final flight CAD model. Second, the production SIM files use a post-processing active-shield authority; native trigger/veto production filtering is not the source of quantitative rates. Third, the Step06 mission-time calculation is a rate-level fold, not a new particle transport at each trajectory time bin. Fourth, the custom Compton/FoV veto is not yet a full Revan/Mimrec reconstruction. Fifth, upstream Laue-lens self-background and activation from cosmic-ray interactions in the optics hardware are not included in the headline detector-background budget. Sixth, spatial sidecars such as $r_{90}$ and multi-annulus likelihood estimates are promising, but they are not yet a publication-grade nuisance-profile likelihood. Seventh, active-shield material alternatives are not part of the present CsI headline sensitivity. The current BGO equal-attenuation sample has a 70 keV veto threshold, passed the geometry/overlap controls, and has only a small prompt/buildup transport smoke test for the gamma and proton source cards. It has not yet been run as a full all-particle Step02 production, delayed-source construction, delayed transport, Step05 response, or Step08 significance chain.
 
 These limitations do not invalidate the primary conclusion, but they define the next work required before a final instrument proposal or flight performance paper. The most valuable follow-up studies are a Revan cross-check of the multi-hit subset, an optics self-background simulation, a final cryostat/DR geometry update, measured or literature-anchored TES saturation and pile-up studies at the relevant rates, and a spatial-spectral likelihood that profiles background nuisance parameters.
 

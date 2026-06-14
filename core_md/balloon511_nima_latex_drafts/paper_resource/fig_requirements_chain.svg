@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="620" viewBox="0 0 1200 620">
+  <defs>
+    <style>
+      .title { font: 700 28px Arial, sans-serif; fill: #111827; }
+      .label { font: 600 18px Arial, sans-serif; fill: #111827; }
+      .body { font: 15px Arial, sans-serif; fill: #111827; }
+      .small { font: 13px Arial, sans-serif; fill: #374151; }
+      .box { fill: #f8fafc; stroke: #334155; stroke-width: 2; rx: 8; }
+      .driver { fill: #ecfeff; stroke: #0e7490; }
+      .req { fill: #fefce8; stroke: #a16207; }
+      .evidence { fill: #f0fdf4; stroke: #15803d; }
+      .review { fill: #fff7ed; stroke: #c2410c; }
+      .arrow { stroke: #334155; stroke-width: 2.5; fill: none; marker-end: url(#arrowhead); }
+      .dash { stroke-dasharray: 8 6; }
+    </style>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#334155"/>
+    </marker>
+  </defs>
+
+  <text x="60" y="48" class="title">Science-to-instrument requirements chain for the v3p5 exact-position analysis</text>
+
+  <rect x="60" y="90" width="260" height="120" class="box driver"/>
+  <text x="80" y="122" class="label">Science driver</text>
+  <text x="80" y="152" class="body">Compact or central-core</text>
+  <text x="80" y="174" class="body">511 keV emission</text>
+  <text x="80" y="196" class="small">Target scale: ~1e-4 ph cm-2 s-1</text>
+
+  <rect x="395" y="70" width="330" height="165" class="box req"/>
+  <text x="415" y="102" class="label">Instrument requirements</text>
+  <text x="415" y="132" class="body">R1 Focus photons onto a small TES plane</text>
+  <text x="415" y="156" class="body">R2 Use a sub-keV 511 keV window</text>
+  <text x="415" y="180" class="body">R3 Suppress prompt and activation background</text>
+  <text x="415" y="204" class="body">R4 Fold rates through mission time</text>
+
+  <rect x="800" y="75" width="330" height="155" class="box evidence"/>
+  <text x="820" y="107" class="label">Current evidence</text>
+  <text x="820" y="137" class="body">Aeff(511) = 20.08476 cm2</text>
+  <text x="820" y="161" class="body">W2 = 510.58-511.42 keV</text>
+  <text x="820" y="185" class="body">B/S = 0.0624651 / 0.00118117 cps</text>
+  <text x="820" y="209" class="body">Step07 response = 11.8117 cps/flux</text>
+  <text x="820" y="228" class="body">Z20d = 6.15522, F3 = 4.87391e-5</text>
+
+  <path d="M 320 150 C 345 150, 365 150, 395 150" class="arrow"/>
+  <path d="M 725 150 C 755 150, 775 150, 800 150" class="arrow"/>
+
+  <rect x="170" y="310" width="290" height="150" class="box evidence"/>
+  <text x="190" y="342" class="label">Optics bridge</text>
+  <text x="190" y="372" class="body">37,194/37,194 rows transported</text>
+  <text x="190" y="396" class="body">within-Be fraction = 0.998336</text>
+  <text x="190" y="420" class="small">Authority: Step04/Step09</text>
+
+  <rect x="505" y="310" width="300" height="150" class="box evidence"/>
+  <text x="525" y="342" class="label">Background selection</text>
+  <text x="525" y="372" class="body">CsI veto + Compton/FoV cuts</text>
+  <text x="525" y="396" class="body">prompt = 0.0590827 cps</text>
+  <text x="525" y="420" class="body">delayed = 0.00338234 cps</text>
+
+  <rect x="850" y="310" width="290" height="150" class="box review"/>
+  <text x="870" y="342" class="label">Review boundary</text>
+  <text x="870" y="372" class="body">TES performance is an assumption</text>
+  <text x="870" y="396" class="body">native veto is not production authority</text>
+  <text x="870" y="420" class="body">optics self-background remains future work</text>
+
+  <path d="M 560 235 L 315 310" class="arrow dash"/>
+  <path d="M 560 235 L 655 310" class="arrow dash"/>
+  <path d="M 965 230 L 995 310" class="arrow dash"/>
+
+  <text x="60" y="555" class="small">Numerical authority: v3p5 full-stat exact-position closure and M/seed convergence reports, 2026-06-13/14.</text>
+</svg>

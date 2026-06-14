@@ -79,7 +79,13 @@
 
 本文考虑的仪器针对指向式窄线测量，而不是全天巡天成像。主要科学目标是在长时气球曝光中探测或限制 $10^{-4}\cms$ 量级及以下的紧凑 511 keV 辐射。该流量尺度适合检验明亮中心核、紧凑源和瞬变成对等离子体情形，并与宽视场康普顿巡天形成互补。
 
-由此得到四条需求。第一，望远镜必须集中 511 keV 光子，使小焦平面不牺牲收集面积。第二，焦平面必须具有亚 keV 能量分辨率，使线窗本底随窄谱窗而非宽 MeV 连续谱缩放。第三，探测器和屏蔽设计必须抑制大气、活化和侧向入射本底，同时避免在 TES 吸收体附近放置过多被动材料。第四，模拟链必须一致处理瞬发本底、延迟活化、聚焦信号、veto、事例拓扑和任务时间变化。以下方法围绕这些需求建立。
+这里的需求是当前模拟所需的分析级需求，而不是最终飞行系统指标。它们规定了可信率级 claim 必须保留的量：源流量归一化、聚焦入口相空间、窄线窗响应，以及信号和本底共用的探测器选择定义。这个区分很重要，因为 TES 能量响应和最终低温系统布局等量仍属于设计假设或工程代理。
+
+由此得到四条需求。第一，望远镜必须集中 511 keV 光子，使小焦平面不牺牲收集面积。第二，焦平面响应必须支持亚 keV 分析线窗，使线窗本底随窄谱窗而非宽 MeV 连续谱缩放。第三，探测器和屏蔽模型必须抑制大气、活化和侧向入射本底，同时显式计入 TES 吸收体附近的被动材料。第四，模拟链必须一致处理瞬发本底、延迟活化、聚焦信号、veto、事例拓扑和任务时间变化。表~\ref{tab:requirements_traceability} 总结这些需求如何对应到当前 v3p5 exact-position 实现。
+
+\input{paper_resource/table_requirements_traceability_zh.tex}
+
+这些需求也限定了结果解释。硬线窗灵敏度是本文主 claim，因为它只依赖能窗选择、veto、拓扑/视场一致性和任务时间率折叠。聚焦光斑和多环 sidecar 用来检验空间分析边界；在形成 publication-grade 空间--谱联合 likelihood 并 profile 本底 nuisance 参数之前，它们不替代硬线窗需求。
 
 \section{模拟流程}
 \label{sec:workflow}
@@ -94,6 +100,10 @@
 \end{figure}
 
 当前率级 authority 为标记 \texttt{fullstat\_v2\_exactpos} 的精确位置延迟源链路。它使用 full-stat 瞬发和活化积累输运、固定 day-15 延迟活化 inventory、采样精确位置 \texttt{PointSource} 延迟源支撑，并完整通过 Step05--Step08 探测器响应和显著度链路。旧的均匀束流和 legacy 延迟源分支不用于 headline 灵敏度。
+
+表~\ref{tab:simulation_workflow} 给出该链路的逐 step 版本。在仓库中，\path{Project_Memory.md} 是 audit map：它记录哪些文件是当前数值 authority、哪些路径只是 legacy provenance，以及哪些 sidecar 只用于边界测试。在论文中，这个内部地图被压缩为可复现的方法描述：每一步都有明确输入、物理或统计操作、传递给后续步骤的输出，以及可声明结论的边界。\path{opticsim_full}/B-FULL 计算只是该链路中的一个步骤，而不是整个链路本身。它提供 Laue 透镜有效面积和追踪得到的聚焦相空间；真正把该相空间转化为探测器耦合点源灵敏度的是 Step09 EventList bridge 以及 Step05--Step08 探测器响应链。
+
+\input{paper_resource/table_simulation_workflow_zh.tex}
 
 \section{探测器与低温系统质量模型}
 \label{sec:geometry}
@@ -169,22 +179,32 @@
 
 \begin{table}[t]
 \centering
-\caption{主要灵敏度和若干比较情形。exact-position hard-window 行是当前率级 authority；radial-profile 行是保守交叉检查；空间和视线大气行是 sidecar，不替代硬线窗 authority。}
+\caption{主要灵敏度和若干比较情形。exact-position hard-window 行是当前率级 authority；radial-profile 行是保守交叉检查；sidecar 行显式标出其 base 分支，均不替代硬线窗 authority。}
 \label{tab:headline}
-\begin{tabular}{lccccc}
+\footnotesize
+\begin{tabular}{llccccc}
 \toprule
-情形 & $B_{\wii}$ (cps) & $S_{\wii}$ at $\fref$ (cps) & $Z_{20\mathrm{d}}$ & $T_{3\sigma}$ (d) & $\fthree(20\mathrm{d})$ \\
+情形 & Base & $B_{\wii}$ (cps) & $S_{\wii}$ at $\fref$ (cps) & $Z_{20\mathrm{d}}$ & $T_{3\sigma}$ (d) & $\fthree(20\mathrm{d})$ \\
 \midrule
-Exact-position 硬线窗 & 0.0624651 & 0.00118117 & 6.15522 & 4.73758 & $4.87391\times10^{-5}$ \\
-Radial-profile 基线 & 0.0729576 & 0.00118117 & 5.70221 & 5.46687 & $5.26111\times10^{-5}$ \\
-聚焦 $r_{90}$ sidecar & 0.0232510 & $\approx0.001063$ & 8.17566 & 2.23643 & $3.66943\times10^{-5}$ \\
-45$^\circ$ LOS sidecar & -- & -- & 5.02544 & -- & $5.96962\times10^{-5}$ \\
-多环 likelihood sidecar & -- & -- & 8.45804 & -- & $3.54692\times10^{-5}$ \\
+Exact-position 硬线窗 & exactpos & 0.0624651 & 0.00118117 & 6.15522 & 4.73758 & $4.87391\times10^{-5}$ \\
+Radial-profile 硬线窗 & radial & 0.0729576 & 0.00118117 & 5.70221 & 5.46687 & $5.26111\times10^{-5}$ \\
+聚焦 $r_{90}$ 空间 sidecar & radial & 0.0232510 & $\approx0.001063$ & 8.17566 & 2.23643 & $3.66943\times10^{-5}$ \\
+45$^\circ$ LOS 硬线窗 sidecar & exactpos & -- & -- & 5.42468 & 5.93004 & $5.53028\times10^{-5}$ \\
+45$^\circ$ LOS $r_{90}$ sidecar & exactpos & -- & -- & 7.20513 & 2.85677 & $4.16370\times10^{-5}$ \\
+固定模板多环 sidecar & exactpos & -- & -- & 8.45781 & -- & $3.54702\times10^{-5}$ \\
 \bottomrule
 \end{tabular}
+\vspace{0.5ex}
+\begin{minipage}{0.94\linewidth}
+\footnotesize
+短横线表示该 sidecar 没有独立的 Step05 day-15 输运率含义。45$^\circ$
+LOS 行是在 exact-position 链路上施加任务时间大气斜柱模型得到；
+多环行是使用选后 W2 事例率的固定模板后处理 likelihood，因此只报告
+最终显著度和流量阈值。
+\end{minipage}
 \end{table}
 
-硬线窗结果相对于空间 sidecar 是有意保守的。它只需要窄能窗、主动屏蔽 veto 和拓扑/视场一致性选择。$r_{90}$ sidecar 展示了在局部侧窗口探测器坐标系中利用聚焦光斑的潜在增益，但它目前应理解为后处理空间分析，而非最终 profile-likelihood 结果。
+硬线窗结果相对于空间 sidecar 是有意保守的。它只需要窄能窗、主动屏蔽 veto 和拓扑/视场一致性选择。独立 $r_{90}$ sidecar 使用 radial-profile full-stat 分支，用于展示在局部侧窗口探测器坐标系中利用聚焦光斑的潜在增益。exact-position boundary sidecar 则施加 45$^\circ$ 视线大气折叠和固定模板多环空间 likelihood。这些行应理解为边界检验和后处理分析，而不是最终 nuisance-profile likelihood 结果。
 
 \subsection{本底组成}
 \label{subsec:bgcomp}
@@ -218,14 +238,14 @@ exact-position $\wii$ 选后本底由瞬发大气事例主导。Step05 流分解
 \centering
 \caption{真实输运支撑的 exact-position 收敛情形。}
 \label{tab:convergence}
-\begin{tabular}{lcccc}
+\begin{tabular}{lccccc}
 \toprule
-标签 & $M$ & Seed & $B_{\wii}$ (cps) & $Z_{20\mathrm{d}}$ \\
+标签 & $M$ & Seed & $B_{\wii}$ (cps) & $Z_{20\mathrm{d}}$ & $\fthree(20\mathrm{d})$ \\
 \midrule
-\texttt{fullstat\_v2\_exactpos} & 5000 & 260613 & 0.0624651 & 6.15522 \\
-\texttt{m05000\_s260614} & 5000 & 260614 & 0.0631683 & 6.12141 \\
-\texttt{m20000\_s260613} & 20000 & 260613 & 0.0627261 & 6.14261 \\
-\texttt{m50000\_s260613} & 50000 & 260613 & 0.0629804 & 6.13039 \\
+\texttt{fullstat\_v2\_exactpos} & 5000 & 260613 & 0.0624651 & 6.15522 & $4.87391\times10^{-5}$ \\
+\texttt{m05000\_s260614} & 5000 & 260614 & 0.0631683 & 6.12141 & $4.90083\times10^{-5}$ \\
+\texttt{m20000\_s260613} & 20000 & 260613 & 0.0627261 & 6.14261 & $4.88392\times10^{-5}$ \\
+\texttt{m50000\_s260613} & 50000 & 260613 & 0.0629804 & 6.13039 & $4.89365\times10^{-5}$ \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -233,7 +253,7 @@ exact-position $\wii$ 选后本底由瞬发大气事例主导。Step05 流分解
 \subsection{与现有仪器基准的比较}
 \label{subsec:benchmarks}
 
-本文计算不是全天成像预测，而是指向式、窄线、紧凑源灵敏度估计。因此，最相关的比较不是单纯视场巡天速度，而是对聚焦点源流量的线窗本底抑制。INTEGRAL/SPI 和 COSI 仍是绘制弥散 511 keV 天图的关键参照 \cite{Siegert2016AA,Kierans2020,Siegert2020COSI,Yoneda2025}。COSI 卫星将以宽视场和 Ge 探测器谱学巡测 0.2--5 MeV 天空；NASA 公开任务资料列出其计划 2027 年发射，并给出 511 keV 处 6.0 keV 能量分辨率 \cite{NASACOSI,HEASARCCOSI}。本文考虑的 TES Laue 透镜概念与其互补：它以天空覆盖换取集中束流和亚 keV 线窗。
+本文计算不是全天成像预测，而是指向式、窄线、紧凑源灵敏度估计。因此，最相关的比较不是单纯视场巡天速度，而是对聚焦点源流量的线窗本底抑制。INTEGRAL/SPI 和 COSI 仍是绘制弥散 511 keV 天图的关键参照 \cite{Siegert2016AA,Kierans2020,Siegert2020COSI,Yoneda2025}。COSI 卫星将以宽视场和 Ge 探测器谱学巡测 0.2--5 MeV 天空；NASA 和 HEASARC 任务页面分别列出其计划 2027 年发射以及 511 keV 处 6.0 keV 能量分辨率 \cite{NASACOSI,HEASARCCOSI}。本文考虑的 TES Laue 透镜概念与其互补：它以天空覆盖换取集中束流和亚 keV 线窗。
 
 相对于宽视场康普顿望远镜，本文载荷对紧凑 511 keV 目标、中心核搜索和已知位置瞬变后随观测最有竞争力。它不适合直接测量完整弥散核球和银盘光度，因为小聚焦孔径只采样很小的立体角。因此，比较 point-source Route-A 和 diffuse-sky Route-B 时必须区分物理问题和归一化定义。
 
@@ -246,7 +266,7 @@ exact-position $\wii$ 选后本底由瞬发大气事例主导。Step05 流分解
 
 本底组成指出了下一步优化方向。选后硬线窗率由瞬发大气 $e^+$-tagged 事例主导。因此，改进可能来自屏蔽几何、侧入射准直、焦平面附近材料减量、更严格拓扑 cuts，或多像素事例重建改进。延迟活化虽小，但由可识别核素和体积主导，说明局部材料替换或局部屏蔽仍可能有价值。
 
-需要明确的局限性包括：第一，探测器/低温系统模型是工程代理，不是最终飞行 CAD；第二，生产 SIM 的定量主动屏蔽 authority 来自 Step05 后处理，而不是 native trigger/veto 生产过滤；第三，Step06 任务时间计算是率级折叠，不是在每个轨迹时间点重新输运粒子；第四，自定义康普顿/视场 veto 尚不是完整 Revan/Mimrec 重建；第五，上游 Laue 透镜硬件自身的宇宙线本底和活化未纳入 headline 探测器本底预算；第六，$r_{90}$ 和多环 likelihood 等空间 sidecar 很有前景，但尚不是 publication-grade nuisance-profile likelihood。
+需要明确的局限性包括：第一，探测器/低温系统模型是工程代理，不是最终飞行 CAD；第二，生产 SIM 的定量主动屏蔽 authority 来自 Step05 后处理，而不是 native trigger/veto 生产过滤；第三，Step06 任务时间计算是率级折叠，不是在每个轨迹时间点重新输运粒子；第四，自定义康普顿/视场 veto 尚不是完整 Revan/Mimrec 重建；第五，上游 Laue 透镜硬件自身的宇宙线本底和活化未纳入 headline 探测器本底预算；第六，$r_{90}$ 和多环 likelihood 等空间 sidecar 很有前景，但尚不是 publication-grade nuisance-profile likelihood。第七，主动屏蔽材料替换不属于本文 CsI headline 灵敏度。当前 BGO 等效衰减样例采用 70 keV veto 阈值，已经通过几何/重叠控制，并且只对 gamma 和 proton source cards 做了小规模 prompt/buildup 输运 smoke test；它尚未进入全粒子 Step02 生产、延迟源构建、延迟输运、Step05 响应或 Step08 显著度链路。
 
 这些限制并不否定主要结论，但定义了最终仪器方案或飞行性能论文之前应完成的后续工作。最有价值的后续研究包括：多命中子样本的 Revan 交叉检查、光学硬件 self-background 模拟、最终低温/DR 几何更新、与实测或文献锚定的 TES 饱和和 pile-up 研究，以及可 profile 本底 nuisance 参数的空间--谱联合 likelihood。
 

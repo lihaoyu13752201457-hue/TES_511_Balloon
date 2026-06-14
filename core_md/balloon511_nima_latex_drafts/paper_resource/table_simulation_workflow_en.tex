@@ -1,0 +1,22 @@
+\begin{table}[t]
+\centering
+\caption{Stepwise simulation workflow used for the v3p5 exact-position rate authority. The table is a manuscript-facing compression of the repository workflow; it does not replace the validation files that define the numerical authority.}
+\label{tab:simulation_workflow}
+\scriptsize
+\begin{tabular}{@{}p{0.12\linewidth}p{0.25\linewidth}p{0.36\linewidth}p{0.18\linewidth}@{}}
+\toprule
+Step & Role in the calculation & Current implementation or evidence & Boundary for interpretation \\
+\midrule
+00--01 Geometry & Define detector mass model, active volumes, local side-entry frame, and injection surfaces & v3p5 center-finger geometry with TES array, Be side window, Cu/W passive material, and segmented CsI active shield; local window tilted $45^\circ$ upward & Geometry closure only; not a rate calculation \\
+02 Prompt and buildup transport & Generate prompt atmospheric events and activation-production histories & Full-stat v2 prompt and buildup streams, each with 25,210,216 generated particles; prompt rates use per-tag exposure normalization & Low-stat branches are closure checks, not paper-facing rate authority \\
+03 Delayed inventory and source & Convert activation products to a fixed day-15 source and transport delayed decays & Fixed inventory activity $85.636696\,\mathrm{Bq}$; exact-position sampled \texttt{PointSource} support with $M=5000$ and $10^6$ delayed transport triggers & Sampled support is activity preserving; convergence is tested downstream in Step10 \\
+04 B-FULL Laue optics & Compute the 511 keV optical effective area and focused focal-plane phase space & \texttt{opticsim\_full}/B-FULL Ge(111) model with external XOP/CRYSTAL rocking curves; f10m A1 gives $\aeff(511)=20.08476\,\mathrm{cm^2}$ and 37,194 within-Be focal rows & Optical signal calculation only; no upstream optics self-background is added \\
+09 EventList bridge & Replay tracked optical focal crossings through the detector geometry & 37,194/37,194 Step04 rows are written as a MEGAlib EventList and transported through the v3p5 detector setup & Uses tracked focal crossings, not an analytic phase-space projection \\
+05 Detector response & Apply common detector selection to prompt, delayed, and focused streams & Active-shield post-processing veto, side-entry Compton/FoV consistency, and $\wii$ hard-window selection; day-15 $\wii$ rates $B/S=0.0624651/0.00118117\cps$ & Quantitative veto authority is the post-processing model, not native production filtering \\
+06 Mission-time fold & Propagate selected rates through balloon mission time & Time-dependent prompt, delayed-activity, atmosphere, and accidental-veto live-factor fold; mission-mean $\wii$ rates $B/S=0.0626835/0.00117281\cps$ & Rate-level fold; not a new particle transport at each time bin \\
+07 Source-case ledger & Map detector response to source-flux units & W2 response $11.8117\,\mathrm{cps}/(\mathrm{ph\,cm^{-2}\,s^{-1}})$ for the reference point-source case & Keeps Route-A point-source normalization separate from diffuse-sky sidecars \\
+08 Significance & Compute cumulative detection significance and flux thresholds & Time-dependent hard-window result: $Z_{20\mathrm{d}}=6.15522$, $T_{3\sigma}=4.73758\,\mathrm{d}$, and $\fthree(20\mathrm{d})=4.87391\times10^{-5}\cms$ & Gaussian counting metric used for consistent comparisons \\
+10 Robustness sidecar & Test exact-position support size and seed dependence at final selected-rate level & Four transport-backed cases over $M=5000$, 20,000, and 50,000; W2 background and $Z_{20\mathrm{d}}$ relative ranges are 1.119\% and 0.551\% & Supports promoting exact-position delayed transport as the current rate authority \\
+\bottomrule
+\end{tabular}
+\end{table}
