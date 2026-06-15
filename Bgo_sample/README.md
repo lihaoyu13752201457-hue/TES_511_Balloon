@@ -62,6 +62,10 @@ This package is a current-v3p5 BGO equal-attenuation geometry sample for TES_511
 - `step02_1of10_exactpos_summary.json` / `STEP02_1OF10_EXACTPOS.md`
 - `step02_fullstat_v2_exactpos_summary.json` / `STEP02_FULLSTAT_V2_EXACTPOS.md`
 - `step09_focus_summary.json` / `STEP09_FOCUS.md`
+- `closure_summary.json` / `CLOSURE_SUMMARY.md` (tracked GitHub-facing Step05--Step08/comparison digest)
+
+Local regenerated outputs (ignored by Git because they can be rebuilt):
+
 - `../stepwise_maintenance/step05_veto_time_axis/outputs_bgo_sample_fullstat_v2_exactpos_l1/step05_bgo_sample_l1_response_summary.json`
 - `../stepwise_maintenance/step05_veto_time_axis/outputs_bgo_sample_fullstat_v2_exactpos_l1/step05_bgo_sample_l1_response_summary.md`
 - `../stepwise_maintenance/step06_mission_time_variation/outputs_bgo_sample_fullstat_v2_exactpos/step06_bgo_sample_fullstat_v2_exactpos_summary.json`
@@ -69,6 +73,9 @@ This package is a current-v3p5 BGO equal-attenuation geometry sample for TES_511
 - `../stepwise_maintenance/step08_significance/outputs_bgo_sample_fullstat_v2_exactpos/step08_bgo_sample_time_dependent_summary.json`
 - `../outputs/reports/bgo_sample_csi_comparison_20260615/bgo_vs_csi_summary.json`
 - `../outputs/reports/bgo_sample_csi_comparison_20260615/bgo_vs_csi_report.md`
+
+Code:
+
 - related code: `code/tools/build_bgo_sample_fullstat_exactpos.py`
 - related code: `code/tools/build_bgo_sample_step09_focus.py`
 - related code: `code/tools/build_v3p5_centerfinger_step05_l1_response.py --label bgo_sample_fullstat_v2_exactpos`

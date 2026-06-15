@@ -11,13 +11,18 @@ from typing import Any
 
 ROOT = Path(__file__).resolve().parents[2]
 OUT = ROOT / "outputs" / "reports" / "bgo_sample_csi_comparison_20260615"
+BGO_DIR = ROOT / "Bgo_sample"
+TRACKED_SUMMARY_JSON = BGO_DIR / "closure_summary.json"
+TRACKED_SUMMARY_MD = BGO_DIR / "CLOSURE_SUMMARY.md"
 
 CSI_STEP05 = ROOT / "stepwise_maintenance" / "step05_veto_time_axis" / "outputs_v3p5_centerfinger_fullstat_v2_exactpos_l1" / "step05_v3p5_centerfinger_l1_response_summary.json"
 CSI_STEP06 = ROOT / "stepwise_maintenance" / "step06_mission_time_variation" / "outputs_v3p5_centerfinger_fullstat_v2_exactpos" / "step06_v3p5_centerfinger_fullstat_v2_exactpos_summary.json"
+CSI_STEP07 = ROOT / "stepwise_maintenance" / "step07_source_cases" / "outputs_v3p5_centerfinger_fullstat_v2_exactpos" / "source_case_summary.json"
 CSI_STEP08 = ROOT / "stepwise_maintenance" / "step08_significance" / "outputs_v3p5_centerfinger_fullstat_v2_exactpos" / "step08_v3p5_centerfinger_time_dependent_summary.json"
 
 BGO_STEP05 = ROOT / "stepwise_maintenance" / "step05_veto_time_axis" / "outputs_bgo_sample_fullstat_v2_exactpos_l1" / "step05_bgo_sample_l1_response_summary.json"
 BGO_STEP06 = ROOT / "stepwise_maintenance" / "step06_mission_time_variation" / "outputs_bgo_sample_fullstat_v2_exactpos" / "step06_bgo_sample_fullstat_v2_exactpos_summary.json"
+BGO_STEP07 = ROOT / "stepwise_maintenance" / "step07_source_cases" / "outputs_bgo_sample_fullstat_v2_exactpos" / "source_case_summary.json"
 BGO_STEP08 = ROOT / "stepwise_maintenance" / "step08_significance" / "outputs_bgo_sample_fullstat_v2_exactpos" / "step08_bgo_sample_time_dependent_summary.json"
 BGO_GEOMETRY = ROOT / "Bgo_sample" / "bgo_sample_summary.json"
 
@@ -60,7 +65,14 @@ def fmt(x: float, ndigits: int = 6) -> str:
     return f"{x:.{ndigits}g}"
 
 
-def row(material: str, step05: dict[str, Any], step06: dict[str, Any], step08: dict[str, Any], geometry: dict[str, Any] | None = None) -> dict[str, Any]:
+def row(
+    material: str,
+    step05: dict[str, Any],
+    step06: dict[str, Any],
+    step07: dict[str, Any],
+    step08: dict[str, Any],
+    geometry: dict[str, Any] | None = None,
+) -> dict[str, Any]:
     w2 = step05["windows"]["w2_510p58_511p42"]["physical_reference_flux"]
     c6 = step06["checks"]
     c8 = step08["checks"]
@@ -68,6 +80,7 @@ def row(material: str, step05: dict[str, Any], step06: dict[str, Any], step08: d
         "material": material,
         "status_step05": step05["status"],
         "status_step06": step06["status"],
+        "status_step07": step07["status"],
         "status_step08": step08["status"],
         "active_veto_threshold_keV": step05["normalization"]["active_veto_threshold_keV"],
         "step05_w2_background_cps": w2["background_cps"],
@@ -141,7 +154,9 @@ def markdown(payload: dict[str, Any]) -> str:
             f"- Equal-attenuation check max absolute relative difference: `{bgo['attenuation_max_abs_relative_difference']:.6g}`.",
             "",
             "Authority files:",
+            f"- CsI Step07: `{payload['inputs']['csi_step07']}`",
             f"- CsI Step08: `{payload['inputs']['csi_step08']}`",
+            f"- BGO Step07: `{payload['inputs']['bgo_step07']}`",
             f"- BGO Step08: `{payload['inputs']['bgo_step08']}`",
             "",
         ]
@@ -149,9 +164,108 @@ def markdown(payload: dict[str, Any]) -> str:
     return "\n".join(lines)
 
 
+def tracked_closure_payload(payload: dict[str, Any]) -> dict[str, Any]:
+    bgo = payload["rows"]["BGO"]
+    c = payload["comparison"]
+    return {
+        "status": "PASS_BGO_SAMPLE_MATERIAL_CHAIN_CLOSED",
+        "scope": "Tracked GitHub-facing digest of the local Bgo_sample Step05--Step08 hard-window material comparison.",
+        "source_report": rel(OUT / "bgo_vs_csi_report.md"),
+        "tracked_digest": rel(TRACKED_SUMMARY_JSON),
+        "geometry": {
+            "bgo_veto_threshold_keV": bgo["active_veto_threshold_keV"],
+            "source_csi_active_mass_kg": bgo["source_csi_active_mass_kg"],
+            "bgo_active_mass_kg": bgo["bgo_active_mass_kg"],
+            "active_mass_ratio_bgo_over_csi": bgo["active_mass_ratio_bgo_over_csi"],
+            "attenuation_max_abs_relative_difference": bgo["attenuation_max_abs_relative_difference"],
+            "outer_shell_r_out_cm": bgo["outer_shell_r_out_cm"],
+        },
+        "statuses": {
+            "step05": bgo["status_step05"],
+            "step06": bgo["status_step06"],
+            "step07": bgo["status_step07"],
+            "step08": bgo["status_step08"],
+            "comparison": payload["status"],
+        },
+        "w2_rates": {
+            "step05_background_cps": bgo["step05_w2_background_cps"],
+            "step05_signal_cps_at_1e-4": bgo["step05_w2_signal_cps_at_1e-4"],
+            "step06_mission_mean_background_cps": bgo["step06_w2_mission_mean_background_cps"],
+            "step06_mission_mean_signal_cps_at_1e-4": bgo["step06_w2_mission_mean_signal_cps_at_1e-4"],
+        },
+        "step08": {
+            "Z20d": bgo["step08_w2_Z20d"],
+            "T3_day": bgo["step08_w2_T3_day"],
+            "T5_day": bgo["step08_w2_T5_day"],
+            "F3_20d_ph_cm2_s": bgo["step08_w2_F3_20d_ph_cm2_s"],
+            "source_counts": bgo["step08_w2_source_counts"],
+            "background_counts": bgo["step08_w2_background_counts"],
+        },
+        "relative_to_csi_exactpos": {
+            "mission_mean_background_delta": c["step06_w2_mission_mean_background_cps"]["relative_delta"],
+            "Z20d_delta": c["step08_w2_Z20d"]["relative_delta"],
+            "F3_20d_delta": c["step08_w2_F3_20d_ph_cm2_s"]["relative_delta"],
+        },
+        "boundaries": [
+            "This is a hard-window counting material comparison only.",
+            "No BGO spatial/profile-likelihood gain is applied.",
+            "BGO material-uncertainty and detector-threshold scans remain optional follow-up work.",
+            "Detailed regenerated Step05--Step08 outputs live under ignored local output directories; this tracked digest preserves the paper-facing closure numbers on GitHub.",
+        ],
+    }
+
+
+def tracked_closure_markdown(payload: dict[str, Any]) -> str:
+    bgo = payload["rows"]["BGO"]
+    c = payload["comparison"]
+    lines = [
+        "# Bgo_sample Closure Summary",
+        "",
+        "Status: `PASS_BGO_SAMPLE_MATERIAL_CHAIN_CLOSED`.",
+        "",
+        "This tracked summary preserves the BGO Step05--Step08 hard-window material-comparison authority in Git, while the full regenerated Step05--Step08 output directories remain ignored.",
+        "",
+        "| item | value |",
+        "| --- | ---: |",
+        f"| BGO active-veto threshold | {bgo['active_veto_threshold_keV']:.6g} keV |",
+        f"| Equal-attenuation max abs relative diff | {bgo['attenuation_max_abs_relative_difference']:.7g} |",
+        f"| BGO active mass | {bgo['bgo_active_mass_kg']:.7g} kg |",
+        f"| Source CsI active mass | {bgo['source_csi_active_mass_kg']:.7g} kg |",
+        f"| Active mass ratio BGO/CsI | {bgo['active_mass_ratio_bgo_over_csi']:.7g} |",
+        f"| Outer shell radius | {bgo['outer_shell_r_out_cm']:.7g} cm |",
+        f"| Step05 status | `{bgo['status_step05']}` |",
+        f"| Step06 status | `{bgo['status_step06']}` |",
+        f"| Step07 status | `{bgo['status_step07']}` |",
+        f"| Step08 status | `{bgo['status_step08']}` |",
+        f"| Step06 W2 mission-mean background | {bgo['step06_w2_mission_mean_background_cps']:.12g} cps |",
+        f"| Step06 W2 mission-mean signal at 1e-4 | {bgo['step06_w2_mission_mean_signal_cps_at_1e-4']:.12g} cps |",
+        f"| Step08 W2 Z20d | {bgo['step08_w2_Z20d']:.12g} |",
+        f"| Step08 W2 T3 | {bgo['step08_w2_T3_day']:.12g} d |",
+        f"| Step08 W2 F3(20d) | {bgo['step08_w2_F3_20d_ph_cm2_s']:.12g} ph cm^-2 s^-1 |",
+        f"| BGO/CsI mission-mean background delta | {c['step06_w2_mission_mean_background_cps']['relative_delta'] * 100:.3f}% |",
+        f"| BGO/CsI Z20d delta | {c['step08_w2_Z20d']['relative_delta'] * 100:.3f}% |",
+        f"| BGO/CsI F3(20d) delta | {c['step08_w2_F3_20d_ph_cm2_s']['relative_delta'] * 100:.3f}% |",
+        "",
+        "Boundary:",
+        "- This is a hard-window counting material comparison only.",
+        "- No BGO spatial/profile-likelihood gain is applied.",
+        "- BGO material-uncertainty and detector-threshold scans remain optional follow-up work.",
+        "- The detailed regenerated Step05--Step08 outputs are local ignored artifacts; this tracked digest is the GitHub-facing closure record.",
+        "",
+        "Regeneration:",
+        "- Step05: `python3 code/tools/build_v3p5_centerfinger_step05_l1_response.py --label bgo_sample_fullstat_v2_exactpos --workers 8`",
+        "- Step06: `python3 stepwise_maintenance/step06_mission_time_variation/code/build_v3p5_centerfinger_step06_time_axis.py --label bgo_sample_fullstat_v2_exactpos`",
+        "- Step07: `python3 stepwise_maintenance/step07_source_cases/code/build_v3p5_centerfinger_step07_source_cases.py --label bgo_sample_fullstat_v2_exactpos`",
+        "- Step08: `python3 stepwise_maintenance/step08_significance/code/build_v3p5_centerfinger_step08_time_dependent.py --label bgo_sample_fullstat_v2_exactpos`",
+        "- Comparison: `python3 code/tools/build_bgo_sample_csi_comparison.py`",
+        "",
+    ]
+    return "\n".join(lines)
+
+
 def main() -> int:
-    csi = row("CsI_exactpos", load_json(CSI_STEP05), load_json(CSI_STEP06), load_json(CSI_STEP08))
-    bgo = row("BGO", load_json(BGO_STEP05), load_json(BGO_STEP06), load_json(BGO_STEP08), load_json(BGO_GEOMETRY))
+    csi = row("CsI_exactpos", load_json(CSI_STEP05), load_json(CSI_STEP06), load_json(CSI_STEP07), load_json(CSI_STEP08))
+    bgo = row("BGO", load_json(BGO_STEP05), load_json(BGO_STEP06), load_json(BGO_STEP07), load_json(BGO_STEP08), load_json(BGO_GEOMETRY))
     keys = [
         "step05_w2_background_cps",
         "step05_w2_signal_cps_at_1e-4",
@@ -171,9 +285,11 @@ def main() -> int:
         "inputs": {
             "csi_step05": rel(CSI_STEP05),
             "csi_step06": rel(CSI_STEP06),
+            "csi_step07": rel(CSI_STEP07),
             "csi_step08": rel(CSI_STEP08),
             "bgo_step05": rel(BGO_STEP05),
             "bgo_step06": rel(BGO_STEP06),
+            "bgo_step07": rel(BGO_STEP07),
             "bgo_step08": rel(BGO_STEP08),
             "bgo_geometry": rel(BGO_GEOMETRY),
         },
@@ -188,6 +304,8 @@ def main() -> int:
     write_json(OUT / "bgo_vs_csi_summary.json", payload)
     write_csv(OUT / "bgo_vs_csi_rows.csv", [csi, bgo])
     (OUT / "bgo_vs_csi_report.md").write_text(markdown(payload), encoding="utf-8")
+    write_json(TRACKED_SUMMARY_JSON, tracked_closure_payload(payload))
+    TRACKED_SUMMARY_MD.write_text(tracked_closure_markdown(payload), encoding="utf-8")
     print(json.dumps({"status": payload["status"], "summary": rel(OUT / "bgo_vs_csi_summary.json"), "report": rel(OUT / "bgo_vs_csi_report.md")}, indent=2, ensure_ascii=False))
     return 0
 

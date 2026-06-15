@@ -970,7 +970,7 @@ def markdown(payload: dict[str, Any]) -> str:
     title = "# Step05 Bgo_sample L1 Detector Response" if is_bgo_sample_label(label) else "# Step05 v3p5 Center-Finger L1 Detector Response"
     claim = (
         f"Bgo_sample side-entry Compton/FoV response with {ACTIVE_VETO_THRESHOLD_KEV:g} keV BGO active-veto threshold; "
-        "direct expectation only until Step06--Step08 are rebuilt."
+        "direct detector-response expectation feeding the closed Step06--Step08 hard-window material comparison."
         if is_bgo_sample_label(label)
         else "v3p5 side-entry Compton/FoV migrated to the tilted Be disk, plus direct expectation, physical reference-flux scaling, and one common Poisson time-axis draw."
     )
