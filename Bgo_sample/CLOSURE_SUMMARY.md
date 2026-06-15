@@ -27,8 +27,8 @@ This tracked summary preserves the BGO Step05--Step08 hard-window material-compa
 
 Boundary:
 - This is a hard-window counting material comparison only.
-- No BGO spatial/profile-likelihood gain is applied.
-- BGO material-uncertainty and detector-threshold scans remain optional follow-up work.
+- No BGO spatial/profile-likelihood gain is applied to this hard-window comparison.
+- BGO spatial, detector-threshold replay, and material attenuation sidecars are tracked separately in `Bgo_sample/EXTENDED_CLOSURE_SUMMARY.md`.
 - The detailed regenerated Step05--Step08 outputs are local ignored artifacts; this tracked digest is the GitHub-facing closure record.
 
 Regeneration:

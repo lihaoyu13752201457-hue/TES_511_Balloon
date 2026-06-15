@@ -208,8 +208,8 @@ def tracked_closure_payload(payload: dict[str, Any]) -> dict[str, Any]:
         },
         "boundaries": [
             "This is a hard-window counting material comparison only.",
-            "No BGO spatial/profile-likelihood gain is applied.",
-            "BGO material-uncertainty and detector-threshold scans remain optional follow-up work.",
+            "No BGO spatial/profile-likelihood gain is applied to this hard-window comparison.",
+            "BGO spatial, detector-threshold replay, and material attenuation sidecars are tracked separately in Bgo_sample/EXTENDED_CLOSURE_SUMMARY.md.",
             "Detailed regenerated Step05--Step08 outputs live under ignored local output directories; this tracked digest preserves the paper-facing closure numbers on GitHub.",
         ],
     }
@@ -248,8 +248,8 @@ def tracked_closure_markdown(payload: dict[str, Any]) -> str:
         "",
         "Boundary:",
         "- This is a hard-window counting material comparison only.",
-        "- No BGO spatial/profile-likelihood gain is applied.",
-        "- BGO material-uncertainty and detector-threshold scans remain optional follow-up work.",
+        "- No BGO spatial/profile-likelihood gain is applied to this hard-window comparison.",
+        "- BGO spatial, detector-threshold replay, and material attenuation sidecars are tracked separately in `Bgo_sample/EXTENDED_CLOSURE_SUMMARY.md`.",
         "- The detailed regenerated Step05--Step08 outputs are local ignored artifacts; this tracked digest is the GitHub-facing closure record.",
         "",
         "Regeneration:",
@@ -295,9 +295,8 @@ def main() -> int:
         },
         "rows": {"CsI_exactpos": csi, "BGO": bgo},
         "comparison": {key: ratio_delta(bgo, csi, key) for key in keys},
-        "pending": [
-            "Optional: run BGO spatial/profile likelihood sidecars before claiming spatial-analysis gains.",
-            "Optional: add BGO material uncertainty or detector-threshold sensitivity scans.",
+        "sidecar_closure": [
+            "BGO spatial, fixed-template annular likelihood, detector-threshold replay, and material attenuation sidecars are tracked in Bgo_sample/EXTENDED_CLOSURE_SUMMARY.md.",
         ],
     }
     OUT.mkdir(parents=True, exist_ok=True)

@@ -64,8 +64,9 @@ Scope: current English and Chinese LaTeX drafts in
   `0.0578330/0.00117756 cps`, Step08 gives `Z20d=6.43475`,
   `T3=4.21622 d`, and `F3(20d)=4.66219e-05 ph cm-2 s-1`, and the matched
   BGO-vs-CsI exact-position comparison passes. This is now a valid
-  hard-window material-comparison result, but it still does not include BGO
-  spatial/profile-likelihood sidecars or threshold/material-uncertainty scans.
+  hard-window material-comparison result, and the tracked extended closure adds
+  BGO detector-coupled spatial cuts, fixed-template annular likelihood,
+  detector-threshold replay, and the material attenuation design scan.
 
 ## Edits Made In This Pass
 

@@ -2,7 +2,7 @@
 
 Status: `PASS`.
 
-This package is a current-v3p5 BGO equal-attenuation geometry sample for TES_511_Balloon. The Step01 geometry/control closure is complete, a small all-particle Step02 prompt/buildup smoke transport has been run, an activation-probe delayed-source/transport smoke has been run, a low-statistics `1of10` exact-position day-15 delayed-source/transport closure has passed, the full-statistics v2 prompt/buildup plus exact-position day-15 delayed-source/transport gate has passed, the f10m A1 focused Step09 EventList has been transported through the BGO geometry, Step05 L1 detector response has consumed the BGO prompt, exact-position delayed, and focused-signal SIMs, Step06--Step08 mission-time significance has been rebuilt, and a matched BGO-vs-CsI exact-position comparison has passed. These runs now close the BGO material branch through the same Step05--Step08 W2 counting-significance gates used by the CsI exact-position authority, without claiming any spatial/profile-likelihood gain.
+This package is a current-v3p5 BGO equal-attenuation geometry sample for TES_511_Balloon. The Step01 geometry/control closure is complete, a small all-particle Step02 prompt/buildup smoke transport has been run, an activation-probe delayed-source/transport smoke has been run, a low-statistics `1of10` exact-position day-15 delayed-source/transport closure has passed, the full-statistics v2 prompt/buildup plus exact-position day-15 delayed-source/transport gate has passed, the f10m A1 focused Step09 EventList has been transported through the BGO geometry, Step05 L1 detector response has consumed the BGO prompt, exact-position delayed, and focused-signal SIMs, Step06--Step08 mission-time significance has been rebuilt, and a matched BGO-vs-CsI exact-position comparison has passed. These runs close the BGO material branch through the same Step05--Step08 W2 counting-significance gates used by the CsI exact-position authority. The extended sidecar closure also covers detector-coupled spatial cuts, a fixed-template annular likelihood, detector-threshold replay, and the BGO material attenuation design scan.
 
 | quantity | value |
 | --- | --- |
@@ -47,6 +47,11 @@ This package is a current-v3p5 BGO equal-attenuation geometry sample for TES_511
 | BGO/CsI mission-mean background ratio | 0.922619 (-7.738%) |
 | BGO/CsI Z20d ratio | 1.04541 (+4.541%) |
 | BGO/CsI F3(20d) ratio | 0.956560 (-4.344%; lower is better) |
+| Extended closure | PASS_BGO_SAMPLE_EXTENDED_CLOSURE |
+| BGO spatial `spot_r90` sidecar Z20d/F3 | 9.15885 / 3.27552e-05 ph cm^-2 s^-1 |
+| BGO fixed-template annular likelihood Z20d/F3 | 9.27696 / 3.23382e-05 ph cm^-2 s^-1 |
+| BGO threshold replay scan | PASS, 70 keV replay relative error 0 |
+| BGO material attenuation scan | PASS, max abs relative diff 0.0731183 < 0.1 |
 
 ## Files
 
@@ -63,6 +68,9 @@ This package is a current-v3p5 BGO equal-attenuation geometry sample for TES_511
 - `step02_fullstat_v2_exactpos_summary.json` / `STEP02_FULLSTAT_V2_EXACTPOS.md`
 - `step09_focus_summary.json` / `STEP09_FOCUS.md`
 - `closure_summary.json` / `CLOSURE_SUMMARY.md` (tracked GitHub-facing Step05--Step08/comparison digest)
+- `extended_closure_summary.json` / `EXTENDED_CLOSURE_SUMMARY.md` (tracked spatial, threshold-replay, and material-attenuation sidecar closure)
+- `extended_closure_threshold_scan.csv`
+- `extended_closure_spatial_sidecar.csv`
 
 Local regenerated outputs (ignored by Git because they can be rebuilt):
 
@@ -71,6 +79,8 @@ Local regenerated outputs (ignored by Git because they can be rebuilt):
 - `../stepwise_maintenance/step06_mission_time_variation/outputs_bgo_sample_fullstat_v2_exactpos/step06_bgo_sample_fullstat_v2_exactpos_summary.json`
 - `../stepwise_maintenance/step07_source_cases/outputs_bgo_sample_fullstat_v2_exactpos/source_case_summary.json`
 - `../stepwise_maintenance/step08_significance/outputs_bgo_sample_fullstat_v2_exactpos/step08_bgo_sample_time_dependent_summary.json`
+- `../stepwise_maintenance/step09_optics_bridge/outputs_bgo_sample_fullstat_v2_exactpos/detector_coupled_focus_response.json`
+- `../stepwise_maintenance/step09_optics_bridge/outputs_bgo_sample_fullstat_v2_exactpos/detector_coupled_spatial_line_cuts.csv`
 - `../outputs/reports/bgo_sample_csi_comparison_20260615/bgo_vs_csi_summary.json`
 - `../outputs/reports/bgo_sample_csi_comparison_20260615/bgo_vs_csi_report.md`
 
@@ -83,6 +93,8 @@ Code:
 - related code: `stepwise_maintenance/step07_source_cases/code/build_v3p5_centerfinger_step07_source_cases.py --label bgo_sample_fullstat_v2_exactpos`
 - related code: `stepwise_maintenance/step08_significance/code/build_v3p5_centerfinger_step08_time_dependent.py --label bgo_sample_fullstat_v2_exactpos`
 - related code: `code/tools/build_bgo_sample_csi_comparison.py`
+- related code: `stepwise_maintenance/step09_optics_bridge/code/build_detector_coupled_focus_response.py --profile bgo_sample_fullstat_v2_exactpos`
+- related code: `code/tools/build_bgo_sample_extended_closure.py`
 
 ## Boundary
 
@@ -96,4 +108,5 @@ Code:
 - The Step09 focused transport replays the current f10m A1 v3p5 EventList through `Bgo_sample.geo.setup` and stores `SE=ID=37194`. It is a BGO focused-signal SIM, not a selected detector-response rate.
 - Step05 L1 detector response now consumes the BGO prompt, exact-position delayed, and focused SIMs with a 70 keV BGO active-veto threshold. Its W2 direct detector-response expectation is `B/S=0.0578455/0.00118595 cps` at `1e-4 ph cm^-2 s^-1`.
 - Step05 direct `Z20d/T3/F3` is a constant-rate detector-response diagnostic only. The material-comparison sensitivity authority is Step08 time-dependent: W2 `Z20d=6.43475`, `T3=4.21622 d`, and `F3(20d)=4.66219e-05 ph cm^-2 s^-1`.
-- The matched CsI exact-position comparison gives BGO `F3(20d)` lower by 4.344% and `Z20d` higher by 4.541%. This is a hard-window counting comparison only; BGO spatial/profile-likelihood sidecars and threshold/material uncertainty scans remain optional follow-up work.
+- The matched CsI exact-position comparison gives BGO `F3(20d)` lower by 4.344% and `Z20d` higher by 4.541%. This is the hard-window counting authority.
+- The extended sidecar closure gives detector-coupled `spot_r90` spatial `Z20d=9.15885`, fixed-template annular-likelihood `Z20d=9.27696`, a threshold replay scan with exact 70 keV Step08 reproduction, and a material attenuation design scan with max absolute relative difference `0.0731183 < 0.1`. The annular result is a fixed-template sidecar, not a nuisance-profile publication likelihood.

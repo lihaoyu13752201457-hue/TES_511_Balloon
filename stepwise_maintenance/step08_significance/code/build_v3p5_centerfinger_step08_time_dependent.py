@@ -370,8 +370,7 @@ def build_summary(
     if is_bgo_sample_label(label):
         pending = [
             "The matched BGO-vs-CsI hard-window comparison is closed for this label.",
-            "Optional: run BGO spatial/profile-likelihood sidecars before claiming spatial-analysis gains.",
-            "Optional: add BGO material-uncertainty or detector-threshold sensitivity scans before claiming robustness against those choices.",
+            "BGO spatial, fixed-template annular-likelihood, detector-threshold replay, and material attenuation sidecars are closed in Bgo_sample/EXTENDED_CLOSURE_SUMMARY.md.",
         ]
     elif is_exactpos_label(label):
         pending = [

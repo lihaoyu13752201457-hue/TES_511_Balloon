@@ -177,7 +177,8 @@ Current Bgo_sample material-comparison branch:
 - `Bgo_sample/` is the current-v3p5 equal-attenuation BGO sample with a `70 keV` BGO veto threshold, current center-finger side-entry geometry, adaptive outer shell, and equal-attenuation side/bottom/top thicknesses `2.137/3.287/1.582 cm`;
 - full-stat v2 BGO prompt/buildup each generated `25,210,216` particles; the exact-position delayed source uses `5000` equal-flux true-RPIP `PointSource` blocks from `43,043` eligible RPIP rows and delayed transport stores `SE=ID=1,000,000`, `TE=39653.861364 s`;
 - BGO Step05--Step08 hard-window W2 chain now passes through detector response, mission-time fold, source cases, and time-dependent significance: Step08 `Z20d=6.43475`, `T3=4.21622 d`, `F3(20d)=4.66219e-05 ph cm^-2 s^-1`;
-- matched BGO-vs-CsI exact-position comparison passes at `outputs/reports/bgo_sample_csi_comparison_20260615/bgo_vs_csi_report.md`: BGO lowers W2 mission-mean background by `7.738%`, raises `Z20d` by `4.541%`, and lowers `F3(20d)` by `4.344%` relative to the CsI exact-position authority.
+- matched BGO-vs-CsI exact-position comparison passes at `outputs/reports/bgo_sample_csi_comparison_20260615/bgo_vs_csi_report.md`: BGO lowers W2 mission-mean background by `7.738%`, raises `Z20d` by `4.541%`, and lowers `F3(20d)` by `4.344%` relative to the CsI exact-position authority;
+- `Bgo_sample/EXTENDED_CLOSURE_SUMMARY.md` closes the BGO sidecar boundaries: detector-coupled `spot_r90` spatial `Z20d=9.15885`, fixed-template annular-likelihood `Z20d=9.27696`, exact 70 keV threshold replay of Step08, and BGO material attenuation scan max absolute relative difference `0.0731183 < 0.1`.
 
 v3p5 center-finger DR branch checkpoint:
 

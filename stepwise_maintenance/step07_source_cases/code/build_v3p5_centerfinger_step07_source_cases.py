@@ -293,8 +293,7 @@ def build_summary(step05: dict[str, Any], step06: dict[str, Any], step09: dict[s
         "pending": (
             [
                 "Downstream Step08 and the BGO-vs-CsI hard-window comparison are closed for this label.",
-                "Optional: run BGO spatial/profile-likelihood sidecars before claiming spatial-analysis gains.",
-                "Optional: add BGO material-uncertainty or detector-threshold sensitivity scans before claiming robustness against those choices.",
+                "BGO spatial, fixed-template annular-likelihood, detector-threshold replay, and material attenuation sidecars are closed in Bgo_sample/EXTENDED_CLOSURE_SUMMARY.md.",
             ]
             if is_bgo_sample_label(label)
             else [

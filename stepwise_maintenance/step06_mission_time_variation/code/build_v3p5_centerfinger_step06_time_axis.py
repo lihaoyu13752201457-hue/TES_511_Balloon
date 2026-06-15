@@ -453,8 +453,7 @@ def build_summary(
         claim_level = "BGO_SAMPLE_L1_MISSION_RATE_FOLD_FULLSTAT_V2_EXACTPOS_NO_NEW_TRANSPORT"
         pending = [
             "Downstream Step07, Step08, and the BGO-vs-CsI hard-window comparison are closed for this label.",
-            "Optional: run BGO spatial/profile-likelihood sidecars before claiming spatial-analysis gains.",
-            "Optional: add BGO material-uncertainty or detector-threshold sensitivity scans before claiming robustness against those choices.",
+            "BGO spatial, fixed-template annular-likelihood, detector-threshold replay, and material attenuation sidecars are closed in Bgo_sample/EXTENDED_CLOSURE_SUMMARY.md.",
         ]
     else:
         status = f"PASS_V3P5_STEP06_TIME_AXIS_{label.upper()}"

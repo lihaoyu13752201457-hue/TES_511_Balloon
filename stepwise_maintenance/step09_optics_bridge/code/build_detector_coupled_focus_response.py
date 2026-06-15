@@ -43,6 +43,7 @@ WINDOW_CSV = OUT / "detector_coupled_focus_windows.csv"
 BACKGROUND_CSV = OUT / "non_xray_background_w1_w2_veto_table.csv"
 SPATIAL_CSV = OUT / "detector_coupled_spatial_line_cuts.csv"
 SPECTRUM_CSV = OUT / "non_xray_background_spectrum_480_550.csv"
+PROFILE = "legacy"
 
 OPTICS_AUTHORITY = ROOT / "stepwise_maintenance" / "step04_opticsim" / "optics_aeff_authority.json"
 STEP09_SUMMARY = OUT / "step09_optics_bridge_summary.json"
@@ -66,15 +67,21 @@ import make_complete_day15_report_ADR as complete  # noqa: E402
 
 
 def configure_profile(profile: str) -> None:
+    global PROFILE
     global OUT, FIG_DIR, FOCUS_RESPONSE_JSON, FOCUS_RESPONSE_MD, WINDOW_CSV, BACKGROUND_CSV, SPATIAL_CSV, SPECTRUM_CSV
     global OPTICS_AUTHORITY, STEP09_SUMMARY, STEP06_SUMMARY, DAY15_SUMMARY, BACKGROUND_CATALOG, FOCUSED_SIM
 
+    PROFILE = profile
     if profile in {"legacy", "new_geo_re"}:
         return
-    if profile not in {"v3p5_fullstat_v2", "f10m_a1_v3p5_fullstat_v2"}:
+    if profile not in {"v3p5_fullstat_v2", "f10m_a1_v3p5_fullstat_v2", "bgo_sample_fullstat_v2_exactpos"}:
         raise ValueError(f"unknown profile: {profile}")
 
-    OUT = STEP_DIR / "outputs_f10m_a1_v3p5"
+    OUT = (
+        STEP_DIR / "outputs_bgo_sample_fullstat_v2_exactpos"
+        if profile == "bgo_sample_fullstat_v2_exactpos"
+        else STEP_DIR / "outputs_f10m_a1_v3p5"
+    )
     FIG_DIR = OUT / "figures"
     FOCUS_RESPONSE_JSON = OUT / "detector_coupled_focus_response.json"
     FOCUS_RESPONSE_MD = OUT / "detector_coupled_focus_response.md"
@@ -84,30 +91,57 @@ def configure_profile(profile: str) -> None:
     SPECTRUM_CSV = OUT / "non_xray_background_spectrum_480_550.csv"
 
     OPTICS_AUTHORITY = ROOT / "stepwise_maintenance" / "step04_opticsim" / "optics_aeff_authority_f10m_a1.json"
-    STEP09_SUMMARY = OUT / "step09_optics_bridge_summary.json"
-    STEP06_SUMMARY = (
-        ROOT
-        / "stepwise_maintenance"
-        / "step06_mission_time_variation"
-        / "outputs_v3p5_centerfinger_fullstat_v2"
-        / "step06_v3p5_centerfinger_fullstat_v2_summary.json"
-    )
-    DAY15_SUMMARY = (
-        ROOT
-        / "stepwise_maintenance"
-        / "step05_veto_time_axis"
-        / "outputs_v3p5_centerfinger_fullstat_v2_l1"
-        / "step05_v3p5_centerfinger_l1_response_summary.json"
-    )
-    BACKGROUND_CATALOG = (
-        ROOT
-        / "stepwise_maintenance"
-        / "step05_veto_time_axis"
-        / "outputs_v3p5_centerfinger_fullstat_v2_l1"
-        / "work"
-        / "event_catalog.pkl"
-    )
-    FOCUSED_SIM = ROOT / "runs" / "step09_optics_bridge" / "Opticsim_laue_f10m_a1_v3p5_centerfinger.inc1.id1.sim.gz"
+    if profile == "bgo_sample_fullstat_v2_exactpos":
+        STEP09_SUMMARY = ROOT / "Bgo_sample" / "step09_focus_summary.json"
+        STEP06_SUMMARY = (
+            ROOT
+            / "stepwise_maintenance"
+            / "step06_mission_time_variation"
+            / "outputs_bgo_sample_fullstat_v2_exactpos"
+            / "step06_bgo_sample_fullstat_v2_exactpos_summary.json"
+        )
+        DAY15_SUMMARY = (
+            ROOT
+            / "stepwise_maintenance"
+            / "step05_veto_time_axis"
+            / "outputs_bgo_sample_fullstat_v2_exactpos_l1"
+            / "step05_bgo_sample_l1_response_summary.json"
+        )
+        BACKGROUND_CATALOG = (
+            ROOT
+            / "stepwise_maintenance"
+            / "step05_veto_time_axis"
+            / "outputs_bgo_sample_fullstat_v2_exactpos_l1"
+            / "work"
+            / "event_catalog.pkl"
+        )
+        FOCUSED_SIM = ROOT / "runs" / "step09_bgo_sample_focus" / "Opticsim_laue_f10m_a1_bgo_sample.inc1.id1.sim.gz"
+        complete.BGO_THR_KEV = 70.0
+    else:
+        STEP09_SUMMARY = OUT / "step09_optics_bridge_summary.json"
+        STEP06_SUMMARY = (
+            ROOT
+            / "stepwise_maintenance"
+            / "step06_mission_time_variation"
+            / "outputs_v3p5_centerfinger_fullstat_v2"
+            / "step06_v3p5_centerfinger_fullstat_v2_summary.json"
+        )
+        DAY15_SUMMARY = (
+            ROOT
+            / "stepwise_maintenance"
+            / "step05_veto_time_axis"
+            / "outputs_v3p5_centerfinger_fullstat_v2_l1"
+            / "step05_v3p5_centerfinger_l1_response_summary.json"
+        )
+        BACKGROUND_CATALOG = (
+            ROOT
+            / "stepwise_maintenance"
+            / "step05_veto_time_axis"
+            / "outputs_v3p5_centerfinger_fullstat_v2_l1"
+            / "work"
+            / "event_catalog.pkl"
+        )
+        FOCUSED_SIM = ROOT / "runs" / "step09_optics_bridge" / "Opticsim_laue_f10m_a1_v3p5_centerfinger.inc1.id1.sim.gz"
 
 
 def rel(path: Path) -> str:
@@ -177,7 +211,7 @@ def rotate_y(values: tuple[float, float, float], angle_deg: float) -> tuple[floa
 def configure_spatial_frame(step09: dict[str, Any]) -> None:
     global SPATIAL_FRAME
 
-    bridge = step09.get("bridge", {})
+    bridge = step09.get("bridge") or step09.get("base_bridge", {})
     policy = str(bridge.get("axis_policy", "legacy_z_entry"))
     if policy == "v3p5_side_entry_tilt45":
         SPATIAL_FRAME = {
@@ -943,7 +977,13 @@ def build() -> dict[str, Any]:
     )
     t_atm = float(step06.get("normalization", {}).get("T_ref", step06.get("atmosphere", {}).get("T_ref", 0.7390423888027)))
     aeff = float(optics["aeff_511_cm2"])
-    eventlist_rows = int(step09.get("bridge", {}).get("rows_written", 0))
+    bridge_for_rate = step09.get("bridge") or step09.get("base_bridge", {})
+    eventlist_rows = int(
+        bridge_for_rate.get("rows_written")
+        or step09.get("focused_transport", {}).get("SE")
+        or step09.get("triggers")
+        or 0
+    )
     focused_rate = reference_flux * aeff * t_atm
     rate_per_event = focused_rate / max(eventlist_rows, 1)
 
@@ -1023,9 +1063,14 @@ def build() -> dict[str, Any]:
     payload = {
         "status": "PASS_DETECTOR_COUPLED_FOCUSED_EVENTLIST",
         "claim_level": "L1_DETECTOR_COUPLED_FOCUSED_EVENTLIST",
-        "scope": "Full non-smoke Step09 focused EventList science transport parsed through the current TES/CsI/Compton-FoV selection. Optics hardware mass activation is still not included.",
+        "scope": (
+            "Full non-smoke Step09 focused EventList science transport parsed through the Bgo_sample TES/BGO/Compton-FoV selection. Optics hardware mass activation is still not included."
+            if PROFILE == "bgo_sample_fullstat_v2_exactpos"
+            else "Full non-smoke Step09 focused EventList science transport parsed through the current TES/CsI/Compton-FoV selection. Optics hardware mass activation is still not included."
+        ),
         "inputs": {
             "focused_sim": rel(FOCUSED_SIM),
+            "profile": PROFILE,
             "background_catalog": rel(BACKGROUND_CATALOG),
             "optics_authority": rel(OPTICS_AUTHORITY),
             "step09_summary": rel(STEP09_SUMMARY),
@@ -1043,6 +1088,7 @@ def build() -> dict[str, Any]:
             "rate_per_event_cps": rate_per_event,
             "tes_sigma_keV": TES_SIGMA_KEV,
             "mission_days": MISSION_DAYS,
+            "active_veto_threshold_keV": float(complete.BGO_THR_KEV),
         },
         "optics": {
             "design_name": optics.get("design_name"),
@@ -1088,7 +1134,7 @@ def main() -> int:
     ap.add_argument(
         "--profile",
         default="legacy",
-        choices=["legacy", "new_geo_re", "v3p5_fullstat_v2", "f10m_a1_v3p5_fullstat_v2"],
+        choices=["legacy", "new_geo_re", "v3p5_fullstat_v2", "f10m_a1_v3p5_fullstat_v2", "bgo_sample_fullstat_v2_exactpos"],
         help="Input/output profile. Default preserves the legacy new_geo_re paths.",
     )
     args = ap.parse_args()

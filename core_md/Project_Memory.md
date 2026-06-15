@@ -219,9 +219,13 @@ Current v3p5 center-finger DR branch checkpoint completed 2026-06-12:
   `outputs/reports/bgo_sample_csi_comparison_20260615/bgo_vs_csi_report.md`
   is `PASS_BGO_SAMPLE_VS_CSI_EXACTPOS_COMPARISON`: relative to the CsI
   exact-position authority, BGO lowers W2 mission-mean background by `7.738%`,
-  raises `Z20d` by `4.541%`, and lowers `F3(20d)` by `4.344%`. This is a
-  hard-window material comparison only; BGO spatial/profile-likelihood sidecars
-  and threshold/material uncertainty scans remain optional follow-up work.
+  raises `Z20d` by `4.541%`, and lowers `F3(20d)` by `4.344%`. The tracked
+  extended closure `Bgo_sample/EXTENDED_CLOSURE_SUMMARY.md` closes the
+  sidecar boundaries from the same transported products: detector-coupled
+  `spot_r90` spatial `Z20d=9.15885`, fixed-template annular-likelihood
+  `Z20d=9.27696`, threshold replay with exact 70 keV Step08 reproduction, and
+  BGO material attenuation scan max absolute relative difference
+  `0.0731183 < 0.1`.
 
 `../new_geo_re_2` is the BGO equal-attenuation control branch (`70 keV` veto
 threshold, equal-stopping material control only). Its state, including the
