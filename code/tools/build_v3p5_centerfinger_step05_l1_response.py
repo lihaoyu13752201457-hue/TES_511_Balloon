@@ -42,6 +42,9 @@ STEP09_SUMMARY = ROOT / "stepwise_maintenance" / "step09_optics_bridge" / "outpu
 F10M_A1_AEFF = ROOT / "stepwise_maintenance" / "step04_opticsim" / "optics_aeff_authority_f10m_a1.json"
 SCIENCE_RATE_LEDGER = ROOT / "config" / "science_511_onaxis_source" / "metadata" / "science_rate_ledger.csv"
 BOUNDARY_CLOSURE_SUMMARY = ROOT / "outputs" / "reports" / "v3p5_boundary_closure_20260613" / "v3p5_boundary_closure_summary.json"
+ACTIVE_VETO_THRESHOLD_KEV = 50.0
+ACTIVE_VETO_MATCH_DESCRIPTION = "volume name starts with CsI_ plus legacy BGO/ACTIVE_SHIELD/CEBR3 tokens"
+BGO_SAMPLE_LABEL = "bgo_sample_fullstat_v2_exactpos"
 
 WINDOWS = {
     "broad_480_550": (480.0, 550.0),
@@ -69,12 +72,47 @@ def is_exactpos_label(label: str) -> bool:
     return label.startswith("fullstat_v2_exactpos")
 
 
+def is_bgo_sample_label(label: str) -> bool:
+    return label == BGO_SAMPLE_LABEL
+
+
 def configure_paths(label: str) -> None:
     global _PROMPT_NORMALIZATION_AUDIT
     global OUT, SUMMARY_JSON, SUMMARY_MD, RATES_CSV, TIMELINE_CSV
-    global PROMPT_DIR, PROMPT_NORM, DELAYED_SIM, FIXED_SOURCE, STEP02_SUMMARY, BOUNDARY_CLOSURE_SUMMARY
+    global PROMPT_DIR, PROMPT_NORM, DELAYED_SIM, FIXED_SOURCE, STEP02_SUMMARY
+    global SCIENCE_SIM, STEP09_SUMMARY, BOUNDARY_CLOSURE_SUMMARY
+    global ACTIVE_VETO_THRESHOLD_KEV, ACTIVE_VETO_MATCH_DESCRIPTION
 
     _PROMPT_NORMALIZATION_AUDIT = None
+    ACTIVE_VETO_THRESHOLD_KEV = 50.0
+    ACTIVE_VETO_MATCH_DESCRIPTION = "volume name starts with CsI_ plus legacy BGO/ACTIVE_SHIELD/CEBR3 tokens"
+    SCIENCE_SIM = ROOT / "runs" / "step09_optics_bridge" / "Opticsim_laue_f10m_a1_v3p5_centerfinger.inc1.id1.sim.gz"
+    STEP09_SUMMARY = ROOT / "stepwise_maintenance" / "step09_optics_bridge" / "outputs_f10m_a1_v3p5" / "step09_optics_bridge_summary.json"
+
+    if is_bgo_sample_label(label):
+        OUT = ROOT / "stepwise_maintenance" / "step05_veto_time_axis" / "outputs_bgo_sample_fullstat_v2_exactpos_l1"
+        SUMMARY_JSON = OUT / "step05_bgo_sample_l1_response_summary.json"
+        SUMMARY_MD = OUT / "step05_bgo_sample_l1_response_summary.md"
+        RATES_CSV = OUT / "step05_bgo_sample_l1_rates.csv"
+        TIMELINE_CSV = OUT / "step05_bgo_sample_l1_timeline_rates.csv"
+        PROMPT_DIR = ROOT / "runs" / "step02_bgo_sample_fullstat_v2_instant"
+        PROMPT_NORM = PROMPT_DIR / "normalization.json"
+        DELAYED_SIM = ROOT / "runs" / "step02_bgo_sample_fullstat_v2_exactpos_delayed_transport" / "DelayedDecayBgoSampleFullstatV2Exactpos.inc1.id1.sim.gz"
+        FIXED_SOURCE = ROOT / "runs" / "step02_bgo_sample_fullstat_v2_delay_fix" / "activation_decay_day15_groundstate_fixed.source"
+        STEP02_SUMMARY = ROOT / "Bgo_sample" / "step02_fullstat_v2_exactpos_summary.json"
+        SCIENCE_SIM = ROOT / "runs" / "step09_bgo_sample_focus" / "Opticsim_laue_f10m_a1_bgo_sample.inc1.id1.sim.gz"
+        STEP09_SUMMARY = ROOT / "Bgo_sample" / "step09_focus_summary.json"
+        BOUNDARY_CLOSURE_SUMMARY = (
+            ROOT
+            / "outputs"
+            / "reports"
+            / "v3p5_boundary_closure_fullstat_v2_exactpos_20260613"
+            / "v3p5_boundary_closure_summary.json"
+        )
+        ACTIVE_VETO_THRESHOLD_KEV = 70.0
+        ACTIVE_VETO_MATCH_DESCRIPTION = "volume name contains BGO/ACTIVE_SHIELD active-shield tokens; Bgo_sample uses a 70 keV veto threshold"
+        return
+
     if label == "1of10":
         OUT = ROOT / "stepwise_maintenance" / "step05_veto_time_axis" / "outputs_v3p5_centerfinger_l1"
     else:
@@ -324,7 +362,11 @@ def write_event_catalog_cache(cat: dict[str, Any]) -> None:
 
 
 def delayed_time_s() -> float:
-    return float(load_json(STEP02_SUMMARY)["delayed_transport"]["TE_s"])
+    summary = load_json(STEP02_SUMMARY)
+    transport = summary.get("delayed_transport") or summary.get("transport")
+    if not isinstance(transport, dict) or "TE_s" not in transport:
+        raise KeyError(f"Cannot locate delayed transport TE_s in {STEP02_SUMMARY}")
+    return float(transport["TE_s"])
 
 
 def load_reference_atmospheric_transmission() -> dict[str, Any]:
@@ -415,7 +457,20 @@ def add_physical_reference_to_windows(windows: dict[str, Any], norm: dict[str, A
 
 
 def signal_triggers() -> int:
-    return int(load_json(STEP09_SUMMARY)["step09_focused_signal"]["eventlist_rows"]) if "step09_focused_signal" in load_json(STEP09_SUMMARY) else int(load_json(STEP09_SUMMARY)["bridge"]["rows_written"])
+    summary = load_json(STEP09_SUMMARY)
+    if "step09_focused_signal" in summary:
+        return int(summary["step09_focused_signal"]["eventlist_rows"])
+    if "triggers" in summary:
+        return int(summary["triggers"])
+    return int(summary["bridge"]["rows_written"])
+
+
+def step09_bridge() -> dict[str, Any]:
+    summary = load_json(STEP09_SUMMARY)
+    bridge = summary.get("bridge") or summary.get("base_bridge")
+    if not isinstance(bridge, dict):
+        raise KeyError(f"Cannot locate Step09 bridge geometry in {STEP09_SUMMARY}")
+    return bridge
 
 
 def configure_parser(adr) -> None:
@@ -461,7 +516,7 @@ def rotate_y(values: tuple[float, float, float], angle_deg: float) -> np.ndarray
 
 
 def side_entry_disk() -> dict[str, Any]:
-    bridge = load_json(STEP09_SUMMARY)["bridge"]
+    bridge = step09_bridge()
     angle = float(bridge["instrument_rotation_y_deg"])
     local_center = (
         float(bridge["x_plane_cm"]),
@@ -704,7 +759,7 @@ def summarize_window(cat: dict, emin: float, emax: float, disk: dict[str, Any], 
     for stream in ("prompt", "delayed", "science"):
         mask_stream = cat["stream"] == stream
         mask_tes = mask_stream & (cat["tes_total_keV"] >= emin) & (cat["tes_total_keV"] < emax)
-        mask_active = mask_tes & (cat["bgo_total_keV"] < 50.0)
+        mask_active = mask_tes & (cat["bgo_total_keV"] < ACTIVE_VETO_THRESHOLD_KEV)
         final_rate = 0.0
         final_events = 0
         class_counts = Counter()
@@ -813,33 +868,61 @@ def analyze_timeline(cat: dict, timeline: dict[str, Any], obs_time_s: float, dis
     idxs = timeline["event_index"]
     times = timeline["time_s"]
     n = len(idxs)
-    start = 0
-    while start < n:
-        end = start + 1
-        while end < n and (times[end] - times[end - 1]) <= COINCIDENCE_WINDOW_S:
-            end += 1
-        ev = idxs[start:end]
-        out["n_candidates_total"] += 1
-        streams = set(str(x) for x in cat["stream"][ev])
-        if len(streams) > 1:
-            out["n_mixed_candidates"] += 1
-        e = float(np.sum(cat["tes_total_keV"][ev]))
-        bgo = float(np.sum(cat["bgo_total_keV"][ev]))
-        if e > 0:
-            out["n_candidates_with_tes"] += 1
-        for name, (emin, emax) in WINDOWS.items():
-            if not (emin <= e < emax):
-                continue
-            out["windows"][name]["counts"]["raw"] += 1
-            if bgo < 50.0:
-                out["windows"][name]["counts"]["active_veto_pass"] += 1
-                keep, cls = side_keep_from_hits(aggregate_candidate_hits(cat, ev), disk, reject_policy)
-                class_counts[name][cls] += 1
-                if keep:
-                    out["windows"][name]["counts"]["side_compton_fov_pass"] += 1
-            else:
-                class_counts[name]["active_veto"] += 1
-        start = end
+    if n > 0:
+        boundaries = np.empty(n, dtype=bool)
+        boundaries[0] = True
+        boundaries[1:] = (times[1:] - times[:-1]) > COINCIDENCE_WINDOW_S
+        starts = np.flatnonzero(boundaries)
+        ends = np.empty_like(starts)
+        if len(starts) > 1:
+            ends[:-1] = starts[1:]
+        ends[-1] = n
+        sizes = ends - starts
+        out["n_candidates_total"] = int(len(starts))
+
+        single_starts = starts[sizes == 1]
+        single_event_idx = idxs[single_starts]
+        if len(single_event_idx) > 0:
+            single_e = cat["tes_total_keV"][single_event_idx]
+            single_bgo = cat["bgo_total_keV"][single_event_idx]
+            out["n_candidates_with_tes"] += int(np.count_nonzero(single_e > 0))
+            for name, (emin, emax) in WINDOWS.items():
+                raw_mask = (single_e >= emin) & (single_e < emax)
+                out["windows"][name]["counts"]["raw"] += int(np.count_nonzero(raw_mask))
+                if not np.any(raw_mask):
+                    continue
+                active_mask = raw_mask & (single_bgo < ACTIVE_VETO_THRESHOLD_KEV)
+                out["windows"][name]["counts"]["active_veto_pass"] += int(np.count_nonzero(active_mask))
+                vetoed = int(np.count_nonzero(raw_mask & ~active_mask))
+                if vetoed:
+                    class_counts[name]["active_veto"] += vetoed
+                for idx in single_event_idx[active_mask]:
+                    keep, cls = side_keep_from_hits(event_hits(cat, int(idx)), disk, reject_policy)
+                    class_counts[name][cls] += 1
+                    if keep:
+                        out["windows"][name]["counts"]["side_compton_fov_pass"] += 1
+
+        for start, end in zip(starts[sizes > 1], ends[sizes > 1]):
+            ev = idxs[start:end]
+            streams = set(str(x) for x in cat["stream"][ev])
+            if len(streams) > 1:
+                out["n_mixed_candidates"] += 1
+            e = float(np.sum(cat["tes_total_keV"][ev]))
+            bgo = float(np.sum(cat["bgo_total_keV"][ev]))
+            if e > 0:
+                out["n_candidates_with_tes"] += 1
+            for name, (emin, emax) in WINDOWS.items():
+                if not (emin <= e < emax):
+                    continue
+                out["windows"][name]["counts"]["raw"] += 1
+                if bgo < ACTIVE_VETO_THRESHOLD_KEV:
+                    out["windows"][name]["counts"]["active_veto_pass"] += 1
+                    keep, cls = side_keep_from_hits(aggregate_candidate_hits(cat, ev), disk, reject_policy)
+                    class_counts[name][cls] += 1
+                    if keep:
+                        out["windows"][name]["counts"]["side_compton_fov_pass"] += 1
+                else:
+                    class_counts[name]["active_veto"] += 1
     for name in WINDOWS:
         for stage, count in out["windows"][name]["counts"].items():
             out["windows"][name]["rates_s-1"][stage] = float(count) / obs_time_s if obs_time_s > 0 else 0.0
@@ -884,12 +967,19 @@ def write_timeline_csv(payload: dict[str, Any]) -> None:
 
 def markdown(payload: dict[str, Any]) -> str:
     label = payload["statistics_label"]
+    title = "# Step05 Bgo_sample L1 Detector Response" if is_bgo_sample_label(label) else "# Step05 v3p5 Center-Finger L1 Detector Response"
+    claim = (
+        f"Bgo_sample side-entry Compton/FoV response with {ACTIVE_VETO_THRESHOLD_KEV:g} keV BGO active-veto threshold; "
+        "direct expectation only until Step06--Step08 are rebuilt."
+        if is_bgo_sample_label(label)
+        else "v3p5 side-entry Compton/FoV migrated to the tilted Be disk, plus direct expectation, physical reference-flux scaling, and one common Poisson time-axis draw."
+    )
     lines = [
-        "# Step05 v3p5 Center-Finger L1 Detector Response",
+        title,
         "",
         f"Status: `{payload['status']}`.",
         "",
-        f"Claim level: v3p5 side-entry Compton/FoV migrated to the tilted Be disk, plus direct expectation, physical reference-flux scaling, and one common Poisson time-axis draw. Statistics label: `{label}`.",
+        f"Claim level: {claim} Statistics label: `{label}`.",
         "",
         "Inputs:",
         f"- prompt: `{payload['inputs']['prompt_dir']}`",
@@ -904,6 +994,7 @@ def markdown(payload: dict[str, Any]) -> str:
         f"- physical reference flux: `{payload['science_physical_normalization']['reference_flux_ph_cm2_s']:.6g} ph cm^-2 s^-1`",
         f"- f10m A1 A_eff(511): `{payload['science_physical_normalization']['aeff_511_cm2']:.8g} cm2`",
         f"- inherited T_atm: `{payload['science_physical_normalization']['atmospheric_transmission']['T_atm']:.8g}`",
+        f"- active-veto threshold: `{payload['normalization']['active_veto_threshold_keV']:.6g} keV`",
         f"- T_atm boundary: scalar mainline reference transmission is inherited here; the dedicated 45 deg side-entry LOS atmosphere sidecar is `{rel(BOUNDARY_CLOSURE_SUMMARY)}`.",
         f"- reference injection-plane rate: `{payload['science_physical_normalization']['rate_to_v3p5_injection_plane_s-1']:.8g} s^-1`",
         "",
@@ -991,7 +1082,13 @@ def main() -> int:
     rng = np.random.default_rng(RNG_SEED)
     timeline_draw = draw_timeline(cat, delayed_time_s(), rng)
     timeline = analyze_timeline(cat, timeline_draw, delayed_time_s(), disk, reject_policy)
-    if is_exactpos_label(args.label):
+    if is_bgo_sample_label(args.label):
+        pending = [
+            "Downstream Step06--Step08 and the BGO-vs-CsI hard-window comparison are closed for this label; this file remains the Step05 detector-response authority.",
+            "Optional: run BGO spatial/profile-likelihood sidecars before claiming spatial-analysis gains.",
+            "Optional: add BGO material-uncertainty or detector-threshold sensitivity scans before claiming robustness against those choices.",
+        ]
+    elif is_exactpos_label(args.label):
         pending = [
             "quantify exact-RPIP PointSource support-size stability, or run the full weighted-table source if Cosima parsing is made practical",
             "add selection-consistent spatial/profile likelihood products",
@@ -1000,10 +1097,20 @@ def main() -> int:
         pending = [
             "promote smoke-validated exact-RPIP PointSource sampling to v3p5 fullstat fixed-inventory delayed transport",
         ]
+    status = (
+        "PASS_BGO_SAMPLE_STEP05_SIDE_ENTRY_COMPTON_TIME_AXIS_L1_FULLSTAT_V2_EXACTPOS"
+        if is_bgo_sample_label(args.label)
+        else f"PASS_V3P5_STEP05_SIDE_ENTRY_COMPTON_TIME_AXIS_L1_{args.label.upper()}"
+    )
+    claim_level = (
+        "BGO_SAMPLE_L1_DETECTOR_RESPONSE_FULLSTAT_V2_EXACTPOS_NOT_STEP08_SENSITIVITY"
+        if is_bgo_sample_label(args.label)
+        else f"L1 side-entry Compton/FoV + common Poisson time-axis; direct physical reference-flux scaling added; {args.label} statistics"
+    )
     payload = {
-        "status": f"PASS_V3P5_STEP05_SIDE_ENTRY_COMPTON_TIME_AXIS_L1_{args.label.upper()}",
+        "status": status,
         "statistics_label": args.label,
-        "claim_level": f"L1 side-entry Compton/FoV + common Poisson time-axis; direct physical reference-flux scaling added; {args.label} statistics",
+        "claim_level": claim_level,
         "inputs": {
             "prompt_dir": rel(PROMPT_DIR),
             "prompt_files": len(sorted(PROMPT_DIR.glob("*.sim.gz"))),
@@ -1020,8 +1127,8 @@ def main() -> int:
             "prompt_normalization_audit": prompt_audit,
             "delayed_time_s": delayed_time_s(),
             "science_unit_injection_rate_s-1": 1.0,
-            "active_veto_threshold_keV": 50.0,
-            "active_veto_match": "volume name starts with CsI_ plus legacy BGO/ACTIVE_SHIELD/CEBR3 tokens",
+            "active_veto_threshold_keV": ACTIVE_VETO_THRESHOLD_KEV,
+            "active_veto_match": ACTIVE_VETO_MATCH_DESCRIPTION,
             "reject_policy": reject_policy,
             "coincidence_window_s": COINCIDENCE_WINDOW_S,
             "rng_seed": RNG_SEED,

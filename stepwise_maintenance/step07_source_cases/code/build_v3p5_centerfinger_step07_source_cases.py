@@ -23,8 +23,41 @@ TRANSIENT_DURATIONS_S = [3600.0, 21600.0, 86400.0, 259200.0]
 DIFFUSE_FOV_FLUX_PROXY = 6.26238e-7
 
 
+def is_bgo_sample_label(label: str) -> bool:
+    return label == "bgo_sample_fullstat_v2_exactpos"
+
+
+def output_prefix(label: str) -> str:
+    return "bgo_sample" if is_bgo_sample_label(label) else "v3p5_centerfinger"
+
+
+def step06_summary_filename(label: str) -> str:
+    if is_bgo_sample_label(label):
+        return "step06_bgo_sample_fullstat_v2_exactpos_summary.json"
+    return f"step06_{output_prefix(label)}_{label}_summary.json"
+
+
 def configure_paths(label: str) -> None:
-    global OUT, STEP05, STEP06
+    global OUT, STEP05, STEP06, STEP09
+
+    if is_bgo_sample_label(label):
+        OUT = ROOT / "stepwise_maintenance" / "step07_source_cases" / f"outputs_{label}"
+        STEP05 = (
+            ROOT
+            / "stepwise_maintenance"
+            / "step05_veto_time_axis"
+            / "outputs_bgo_sample_fullstat_v2_exactpos_l1"
+            / "step05_bgo_sample_l1_response_summary.json"
+        )
+        STEP06 = (
+            ROOT
+            / "stepwise_maintenance"
+            / "step06_mission_time_variation"
+            / f"outputs_{label}"
+            / step06_summary_filename(label)
+        )
+        STEP09 = ROOT / "Bgo_sample" / "step09_focus_summary.json"
+        return
 
     OUT = ROOT / "stepwise_maintenance" / "step07_source_cases" / f"outputs_v3p5_centerfinger_{label}"
     if label == "1of10":
@@ -38,6 +71,11 @@ def configure_paths(label: str) -> None:
         / f"outputs_v3p5_centerfinger_{label}"
         / f"step06_v3p5_centerfinger_{label}_summary.json"
     )
+
+
+def bridge_rows_written(step09: dict[str, Any]) -> int:
+    bridge = step09.get("bridge") or step09.get("base_bridge") or {}
+    return int(bridge["rows_written"])
 
 
 def rel(path: Path) -> str:
@@ -159,15 +197,21 @@ def build_rates(resp: list[dict[str, Any]]) -> list[dict[str, Any]]:
 
 def markdown(summary: dict[str, Any]) -> str:
     checks = summary["checks"]
+    title = "# Step07 Bgo_sample Source Cases" if is_bgo_sample_label(summary["statistics_label"]) else "# Step07 v3p5 Center-Finger Source Cases"
+    intro = (
+        f"This `{summary['statistics_label']}` source-case layer uses the Bgo_sample Step05 focused EventList detector response and does not change geometry, Step02 transport, or Step05 selection."
+        if is_bgo_sample_label(summary["statistics_label"])
+        else f"This `{summary['statistics_label']}` source-case layer uses the v3p5 Step05 focused EventList detector response and does not change geometry, Step02 transport, or Step05 selection."
+    )
     return "\n".join(
         [
-            "# Step07 v3p5 Center-Finger Source Cases",
+            title,
             "",
             f"Status: `{summary['status']}`.",
             "",
             f"Claim level: {summary['claim_level']}.",
             "",
-            f"This `{summary['statistics_label']}` source-case layer uses the v3p5 Step05 focused EventList detector response and does not change geometry, Step02 transport, or Step05 selection.",
+            intro,
             "",
             "Authority:",
             f"- optics design: `{summary['authority']['optics_design_name']}`",
@@ -202,10 +246,20 @@ def build_summary(step05: dict[str, Any], step06: dict[str, Any], step09: dict[s
     a_ref = next(row for row in rows if row["analysis_case_id"] == "A_point_w2_510p58_511p42_F0.0001")
     b_ref = next(row for row in rows if row["analysis_case_id"] == "B_diffuse_proxy_w2_510p58_511p42")
     norm = step05["science_physical_normalization"]
+    status = (
+        "PASS_BGO_SAMPLE_STEP07_SOURCE_CASES_FULLSTAT_V2_EXACTPOS"
+        if is_bgo_sample_label(label)
+        else f"PASS_V3P5_STEP07_SOURCE_CASES_{label.upper()}"
+    )
+    claim_level = (
+        "BGO_SAMPLE_L1_SOURCE_CASE_FOCUSED_EVENTLIST_RATE_FOLDING_FULLSTAT_V2_EXACTPOS"
+        if is_bgo_sample_label(label)
+        else f"V3P5_L1_SOURCE_CASE_FOCUSED_EVENTLIST_RATE_FOLDING_{label.upper()}"
+    )
     return {
-        "status": f"PASS_V3P5_STEP07_SOURCE_CASES_{label.upper()}",
+        "status": status,
         "statistics_label": label,
-        "claim_level": f"V3P5_L1_SOURCE_CASE_FOCUSED_EVENTLIST_RATE_FOLDING_{label.upper()}",
+        "claim_level": claim_level,
         "inputs": {
             "step05_summary": rel(STEP05),
             "step06_summary": rel(STEP06),
@@ -218,7 +272,7 @@ def build_summary(step05: dict[str, Any], step06: dict[str, Any], step09: dict[s
             "T_atm_ref": norm["atmospheric_transmission"]["T_atm"],
             "reference_flux_ph_cm2_s": norm["reference_flux_ph_cm2_s"],
             "reference_injection_rate_s-1": norm["rate_to_v3p5_injection_plane_s-1"],
-            "eventlist_rows": step09["bridge"]["rows_written"],
+            "eventlist_rows": bridge_rows_written(step09),
             "step06_status": step06["status"],
         },
         "checks": {
@@ -236,10 +290,18 @@ def build_summary(step05: dict[str, Any], step06: dict[str, Any], step09: dict[s
             "v3p5_response_authority": rel(OUT / "v3p5_response_authority.csv"),
             "source_case_rates": rel(OUT / "source_case_rates.csv"),
         },
-        "pending": [
-            "Full v3p5 Step08 time-dependent fold.",
-            "Diffuse/off-axis EventList source treatment for Route B.",
-        ],
+        "pending": (
+            [
+                "Downstream Step08 and the BGO-vs-CsI hard-window comparison are closed for this label.",
+                "Optional: run BGO spatial/profile-likelihood sidecars before claiming spatial-analysis gains.",
+                "Optional: add BGO material-uncertainty or detector-threshold sensitivity scans before claiming robustness against those choices.",
+            ]
+            if is_bgo_sample_label(label)
+            else [
+                "Full v3p5 Step08 time-dependent fold.",
+                "Diffuse/off-axis EventList source treatment for Route B.",
+            ]
+        ),
     }
 
 

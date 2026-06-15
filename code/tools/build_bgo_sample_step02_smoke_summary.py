@@ -177,7 +177,7 @@ def markdown(summary: dict[str, Any]) -> str:
         "Boundary:",
         "- This closes BGO source-card migration and prompt/buildup Cosima transport connectivity for all eight source-card particle classes.",
         "- Full BGO Step02 still requires production statistics, not this 596-event smoke scale.",
-        "- BGO delayed source, delayed transport, Step05 response, Step06/07/08 significance, and BGO-vs-CsI comparison remain not run for this Bgo_sample package.",
+        "- Supersession note: full-stat v2 exact-position BGO delayed transport, Step05 detector response, Step06--Step08 mission-time significance, and the matched BGO-vs-CsI exact-position comparison have since passed for the production `bgo_sample_fullstat_v2_exactpos` label. This file is retained only as the all-particle prompt/buildup smoke-connectivity record.",
         "",
         "Outputs:",
         f"- summary JSON: `{rel(SUMMARY_JSON)}`",

@@ -53,8 +53,36 @@ STAGE_MAP = {
 }
 
 
+def is_bgo_sample_label(label: str) -> bool:
+    return label == "bgo_sample_fullstat_v2_exactpos"
+
+
+def output_prefix(label: str) -> str:
+    return "bgo_sample" if is_bgo_sample_label(label) else "v3p5_centerfinger"
+
+
+def step06_summary_filename(label: str) -> str:
+    if is_bgo_sample_label(label):
+        return "step06_bgo_sample_fullstat_v2_exactpos_summary.json"
+    return f"step06_{output_prefix(label)}_{label}_summary.json"
+
+
 def configure_paths(label: str) -> None:
     global OUT, FIG, STEP05, STEP02, GROUNDSTATE
+
+    if is_bgo_sample_label(label):
+        OUT = ROOT / "stepwise_maintenance" / "step06_mission_time_variation" / f"outputs_{label}"
+        STEP05 = (
+            ROOT
+            / "stepwise_maintenance"
+            / "step05_veto_time_axis"
+            / "outputs_bgo_sample_fullstat_v2_exactpos_l1"
+            / "step05_bgo_sample_l1_response_summary.json"
+        )
+        STEP02 = ROOT / "Bgo_sample" / "step02_fullstat_v2_exactpos_summary.json"
+        GROUNDSTATE = ROOT / "runs" / "step02_bgo_sample_fullstat_v2_delay_fix" / "groundstate_activity_corrections.csv"
+        FIG = OUT / "figures"
+        return
 
     OUT = ROOT / "stepwise_maintenance" / "step06_mission_time_variation" / f"outputs_v3p5_centerfinger_{label}"
     FIG = OUT / "figures"
@@ -70,6 +98,12 @@ def configure_paths(label: str) -> None:
         / f"step02_v3p5_centerfinger_{label}_summary.json"
     )
     GROUNDSTATE = ROOT / "runs" / f"step02_delay_fix_v3p5_centerfinger_{label}" / "groundstate_activity_corrections.csv"
+
+
+def fixed_source_activity_bq(step02: dict[str, Any]) -> float:
+    if "fixed_decay_source" in step02:
+        return float(step02["fixed_decay_source"]["total_activity_Bq"])
+    return float(step02["fixed_total_activity_Bq"])
 
 
 def rel(path: Path) -> str:
@@ -359,15 +393,21 @@ def plot_outputs(trajectory: list[dict[str, Any]], background: list[dict[str, An
 
 def markdown(summary: dict[str, Any]) -> str:
     c = summary["checks"]
+    title = "# Step06 Bgo_sample Mission Time Variation" if is_bgo_sample_label(summary["statistics_label"]) else "# Step06 v3p5 Center-Finger Mission Time Variation"
+    intro = (
+        f"This is the Bgo_sample `{summary['statistics_label']}` mission-axis fold. It does not run new Cosima transport; it reweights the BGO Step05 direct response rates over a synthetic 20-day trajectory."
+        if is_bgo_sample_label(summary["statistics_label"])
+        else f"This is the v3p5 `{summary['statistics_label']}` mission-axis fold. It does not run new Cosima transport; it reweights the v3p5 Step05 direct response rates over a synthetic 20-day trajectory."
+    )
     return "\n".join(
         [
-            "# Step06 v3p5 Center-Finger Mission Time Variation",
+            title,
             "",
             f"Status: `{summary['status']}`.",
             "",
             f"Claim level: {summary['claim_level']}.",
             "",
-            f"This is the v3p5 `{summary['statistics_label']}` mission-axis fold. It does not run new Cosima transport; it reweights the v3p5 Step05 direct response rates over a synthetic 20-day trajectory.",
+            intro,
             "The 511-keV atmosphere factor is a relative Beer-Lambert time fold anchored to the inherited Step05 scalar T_atm; it is not a new absolute 45 deg side-entry line-of-sight atmosphere calculation.",
             "",
             "Key checks:",
@@ -383,8 +423,7 @@ def markdown(summary: dict[str, Any]) -> str:
             f"- figures: `{summary['outputs']['figures']}`",
             "",
             "Limitations:",
-            "- low-stat v3p5 prompt final rates can be zero in W2;",
-            "- delayed source still uses the axisymmetric RadialProfileBeam compression;",
+            *[f"- {item}" for item in summary.get("pending", [])],
             "- this is a rate-level fold, not per-bin detector transport.",
             "",
         ]
@@ -401,6 +440,7 @@ def build_summary(
     atmosphere_model: dict[str, float],
 ) -> dict[str, Any]:
     label = step05.get("statistics_label", "1of10")
+    prefix = output_prefix(label)
     t_ref = float(step05["science_physical_normalization"]["atmospheric_transmission"]["T_atm"])
     day15 = min(trajectory, key=lambda row: abs(float(row["day_mid"]) - DAY15))
     w2_rows = [row for row in background if row["selection_id"] == "w2_510p58_511p42"]
@@ -408,10 +448,25 @@ def build_summary(
     total_dt = sum(float(row["dt_s"]) for row in w2_rows)
     mean_b = sum(float(row["background_final_cps"]) * float(row["dt_s"]) for row in w2_rows) / total_dt
     mean_s = sum(float(row["science_final_cps_at_ref_flux"]) * float(row["dt_s"]) for row in w2_rows) / total_dt
+    if is_bgo_sample_label(label):
+        status = "PASS_BGO_SAMPLE_STEP06_TIME_AXIS_FULLSTAT_V2_EXACTPOS"
+        claim_level = "BGO_SAMPLE_L1_MISSION_RATE_FOLD_FULLSTAT_V2_EXACTPOS_NO_NEW_TRANSPORT"
+        pending = [
+            "Downstream Step07, Step08, and the BGO-vs-CsI hard-window comparison are closed for this label.",
+            "Optional: run BGO spatial/profile-likelihood sidecars before claiming spatial-analysis gains.",
+            "Optional: add BGO material-uncertainty or detector-threshold sensitivity scans before claiming robustness against those choices.",
+        ]
+    else:
+        status = f"PASS_V3P5_STEP06_TIME_AXIS_{label.upper()}"
+        claim_level = f"V3P5_L1_MISSION_RATE_FOLD_{label.upper()}_NO_NEW_TRANSPORT"
+        pending = [
+            "Replace delayed-source RadialProfileBeam compression with exact-position sampling.",
+            "Promote this branch fold only after full Step06-Step08 review.",
+        ]
     summary = {
-        "status": f"PASS_V3P5_STEP06_TIME_AXIS_{label.upper()}",
+        "status": status,
         "statistics_label": label,
-        "claim_level": f"V3P5_L1_MISSION_RATE_FOLD_{label.upper()}_NO_NEW_TRANSPORT",
+        "claim_level": claim_level,
         "inputs": {
             "step05_summary": rel(STEP05),
             "step02_summary": rel(STEP02),
@@ -442,10 +497,10 @@ def build_summary(
             "w2_day15_science_final_cps_at_ref_flux": float(w2_day15["science_final_cps_at_ref_flux"]),
             "w2_dt_weighted_background_final_cps": mean_b,
             "w2_dt_weighted_science_final_cps_at_ref_flux": mean_s,
-            "step02_fixed_source_activity_Bq": step02["fixed_decay_source"]["total_activity_Bq"],
+            "step02_fixed_source_activity_Bq": fixed_source_activity_bq(step02),
         },
         "outputs": {
-            "summary_json": rel(OUT / f"step06_v3p5_centerfinger_{label}_summary.json"),
+            "summary_json": rel(OUT / step06_summary_filename(label)),
             "readme": rel(OUT / "README.md"),
             "trajectory_profile": rel(OUT / "trajectory_profile.csv"),
             "atmosphere_transmission": rel(OUT / "atmosphere_transmission_511_by_time.csv"),
@@ -454,10 +509,7 @@ def build_summary(
             "background_time_variation": rel(OUT / "background_time_variation.csv"),
             "figures": rel(FIG),
         },
-        "pending": [
-            "Replace delayed-source RadialProfileBeam compression with exact-position sampling.",
-            "Promote this branch fold only after full Step06-Step08 review.",
-        ],
+        "pending": pending,
     }
     return summary
 
@@ -497,7 +549,7 @@ def main() -> int:
     write_csv(OUT / "background_time_variation.csv", background_rows)
     plot_outputs(trajectory, background_rows, total_rows)
     summary = build_summary(step05, step02, trajectory, total_rows, background_rows, activity_audit, atmosphere_model)
-    write_json(OUT / f"step06_v3p5_centerfinger_{args.label}_summary.json", summary)
+    write_json(OUT / step06_summary_filename(args.label), summary)
     (OUT / "README.md").write_text(markdown(summary), encoding="utf-8")
     print(json.dumps({"status": summary["status"], "summary": summary["outputs"]["summary_json"], "readme": summary["outputs"]["readme"]}, indent=2, ensure_ascii=False))
     return 0

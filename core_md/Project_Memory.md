@@ -205,6 +205,23 @@ Current v3p5 center-finger DR branch checkpoint completed 2026-06-12:
   RPIP table as one block per row. The M/seed convergence closure makes this
   adequate for the current W2 rate claim; a full one-block-per-RPIP stress test
   is an optional engineering upgrade, not a current authority blocker.
+- Current BGO equal-attenuation material-comparison branch is local
+  `Bgo_sample/`, not the older external `../new_geo_re_2` branch. It uses the
+  current v3p5 center-finger side-entry geometry, BGO side/bottom/top
+  thicknesses `2.137/3.287/1.582 cm`, a `70 keV` BGO active-veto threshold,
+  and an adaptive outer shell around the new BGO active envelope. Full-stat v2
+  prompt/buildup each generated `25,210,216` particles; exact-position delayed
+  transport uses `5000` equal-flux true-RPIP `PointSource` blocks from
+  `43,043` eligible RPIP rows and stores `SE=ID=1,000,000`,
+  `TE=39653.861364 s`. BGO Step05--Step08 now passes with Step08 W2
+  `Z20d=6.43475`, `T3=4.21622 day`, and
+  `F3(20d)=4.66219e-5 ph cm-2 s-1`. The matched comparison report
+  `outputs/reports/bgo_sample_csi_comparison_20260615/bgo_vs_csi_report.md`
+  is `PASS_BGO_SAMPLE_VS_CSI_EXACTPOS_COMPARISON`: relative to the CsI
+  exact-position authority, BGO lowers W2 mission-mean background by `7.738%`,
+  raises `Z20d` by `4.541%`, and lowers `F3(20d)` by `4.344%`. This is a
+  hard-window material comparison only; BGO spatial/profile-likelihood sidecars
+  and threshold/material uncertainty scans remain optional follow-up work.
 
 `../new_geo_re_2` is the BGO equal-attenuation control branch (`70 keV` veto
 threshold, equal-stopping material control only). Its state, including the

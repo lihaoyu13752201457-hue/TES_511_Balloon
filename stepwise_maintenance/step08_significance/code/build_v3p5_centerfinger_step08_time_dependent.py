@@ -34,8 +34,44 @@ def is_exactpos_label(label: str) -> bool:
     return label.startswith("fullstat_v2_exactpos")
 
 
+def is_bgo_sample_label(label: str) -> bool:
+    return label == "bgo_sample_fullstat_v2_exactpos"
+
+
+def output_prefix(label: str) -> str:
+    return "bgo_sample" if is_bgo_sample_label(label) else "v3p5_centerfinger"
+
+
+def step06_summary_filename(label: str) -> str:
+    if is_bgo_sample_label(label):
+        return "step06_bgo_sample_fullstat_v2_exactpos_summary.json"
+    return f"step06_{output_prefix(label)}_{label}_summary.json"
+
+
 def configure_paths(label: str) -> None:
     global OUT, FIG, STEP05, STEP06, STEP06_BG, STEP07, STEP07_RATES
+
+    if is_bgo_sample_label(label):
+        OUT = ROOT / "stepwise_maintenance" / "step08_significance" / f"outputs_{label}"
+        FIG = OUT / "figures"
+        STEP05 = (
+            ROOT
+            / "stepwise_maintenance"
+            / "step05_veto_time_axis"
+            / "outputs_bgo_sample_fullstat_v2_exactpos_l1"
+            / "step05_bgo_sample_l1_response_summary.json"
+        )
+        STEP06 = (
+            ROOT
+            / "stepwise_maintenance"
+            / "step06_mission_time_variation"
+            / f"outputs_{label}"
+            / step06_summary_filename(label)
+        )
+        STEP06_BG = ROOT / "stepwise_maintenance" / "step06_mission_time_variation" / f"outputs_{label}" / "background_time_variation.csv"
+        STEP07 = ROOT / "stepwise_maintenance" / "step07_source_cases" / f"outputs_{label}" / "source_case_summary.json"
+        STEP07_RATES = ROOT / "stepwise_maintenance" / "step07_source_cases" / f"outputs_{label}" / "source_case_rates.csv"
+        return
 
     OUT = ROOT / "stepwise_maintenance" / "step08_significance" / f"outputs_v3p5_centerfinger_{label}"
     FIG = OUT / "figures"
@@ -229,10 +265,15 @@ def fold_cases(cases: list[dict[str, str]], bg_rows: list[dict[str, str]], tau: 
         final_z = zvals[-1] if zvals else 0.0
         t3 = crossing_time(days, zvals, 3.0)
         t5 = crossing_time(days, zvals, 5.0)
+        claim_level = (
+            "BGO_SAMPLE_L1_COUNTING_TIME_DEP_WITH_ANALYTIC_ACCIDENTAL_FULLSTAT_V2_EXACTPOS"
+            if is_bgo_sample_label(label)
+            else f"V3P5_L1_COUNTING_TIME_DEP_WITH_ANALYTIC_ACCIDENTAL_{label.upper()}"
+        )
         summary.append(
             {
                 **case,
-                "claim_level": f"V3P5_L1_COUNTING_TIME_DEP_WITH_ANALYTIC_ACCIDENTAL_{label.upper()}",
+                "claim_level": claim_level,
                 "total_source_counts": cum_s,
                 "total_background_counts": cum_b,
                 "final_counting_Z": final_z,
@@ -274,15 +315,21 @@ def plot_examples(cumulative: list[dict[str, Any]]) -> None:
 
 def markdown(summary: dict[str, Any]) -> str:
     c = summary["checks"]
+    title = "# Step08 Bgo_sample Time-Dependent Significance" if is_bgo_sample_label(summary["statistics_label"]) else "# Step08 v3p5 Center-Finger Time-Dependent Significance"
+    intro = (
+        f"This folds Bgo_sample Step07 source cases through the Bgo_sample Step06 mission time axis and applies an analytic accidental live factor. Statistics label: `{summary['statistics_label']}`. It does not claim a profile-likelihood gain."
+        if is_bgo_sample_label(summary["statistics_label"])
+        else f"This folds v3p5 Step07 source cases through the v3p5 Step06 mission time axis and applies an analytic accidental live factor. Statistics label: `{summary['statistics_label']}`. It does not claim a profile-likelihood gain."
+    )
     return "\n".join(
         [
-            "# Step08 v3p5 Center-Finger Time-Dependent Significance",
+            title,
             "",
             f"Status: `{summary['status']}`.",
             "",
             f"Claim level: {summary['claim_level']}.",
             "",
-            f"This folds v3p5 Step07 source cases through the v3p5 Step06 mission time axis and applies an analytic accidental live factor. Statistics label: `{summary['statistics_label']}`. It does not claim a profile-likelihood gain.",
+            intro,
             "",
             "Headline:",
             f"- A reference W2 `1e-4 ph cm^-2 s^-1`: `Z20d={c['A_reference_w2_Z20d_time_dependent']:.6g}`.",
@@ -320,7 +367,13 @@ def build_summary(
     t5 = a_ref["T5_day_counting"] or a_ref["T5_day_extrapolated_constant_profile"]
     loss_values = [float(row["accidental_loss_fraction"]) for row in accidentals]
     w2_phys = step05["windows"]["w2_510p58_511p42"]["physical_reference_flux"]
-    if is_exactpos_label(label):
+    if is_bgo_sample_label(label):
+        pending = [
+            "The matched BGO-vs-CsI hard-window comparison is closed for this label.",
+            "Optional: run BGO spatial/profile-likelihood sidecars before claiming spatial-analysis gains.",
+            "Optional: add BGO material-uncertainty or detector-threshold sensitivity scans before claiming robustness against those choices.",
+        ]
+    elif is_exactpos_label(label):
         pending = [
             "exact-position delayed source uses sampled PointSource support; support-size stability remains a robustness check",
             "no spatial/profile likelihood gain is applied",
@@ -331,10 +384,20 @@ def build_summary(
             "Exact-position delayed-source sampling",
             "Selection-consistent spatial/profile likelihood",
         ]
+    status = (
+        "PASS_BGO_SAMPLE_STEP08_TIME_DEPENDENT_FULLSTAT_V2_EXACTPOS"
+        if is_bgo_sample_label(label)
+        else f"PASS_V3P5_STEP08_TIME_DEPENDENT_{label.upper()}"
+    )
+    claim_level = (
+        "BGO_SAMPLE_L1_COUNTING_TIME_DEP_WITH_ANALYTIC_ACCIDENTAL_FULLSTAT_V2_EXACTPOS"
+        if is_bgo_sample_label(label)
+        else f"V3P5_L1_COUNTING_TIME_DEP_WITH_ANALYTIC_ACCIDENTAL_{label.upper()}"
+    )
     return {
-        "status": f"PASS_V3P5_STEP08_TIME_DEPENDENT_{label.upper()}",
+        "status": status,
         "statistics_label": label,
-        "claim_level": f"V3P5_L1_COUNTING_TIME_DEP_WITH_ANALYTIC_ACCIDENTAL_{label.upper()}",
+        "claim_level": claim_level,
         "inputs": {
             "step05_summary": rel(STEP05),
             "step06_summary": rel(STEP06),
@@ -356,8 +419,8 @@ def build_summary(
             "step07_status": step07["status"],
         },
         "outputs": {
-            "summary_json": rel(OUT / "step08_v3p5_centerfinger_time_dependent_summary.json"),
-            "readme": rel(OUT / "step08_v3p5_centerfinger_time_dependent.md"),
+            "summary_json": rel(OUT / ("step08_bgo_sample_time_dependent_summary.json" if is_bgo_sample_label(label) else "step08_v3p5_centerfinger_time_dependent_summary.json")),
+            "readme": rel(OUT / ("step08_bgo_sample_time_dependent.md" if is_bgo_sample_label(label) else "step08_v3p5_centerfinger_time_dependent.md")),
             "cumulative_significance": rel(OUT / "cumulative_significance_by_case.csv"),
             "t3_t5_summary": rel(OUT / "t3_t5_summary.csv"),
             "accidental_veto_by_time": rel(OUT / "accidental_veto_by_time.csv"),
@@ -389,8 +452,10 @@ def main() -> int:
     write_csv(OUT / "t3_t5_summary.csv", t3_rows)
     plot_examples(cumulative)
     summary = build_summary(step05, step06, step07, accidentals, t3_rows)
-    write_json(OUT / "step08_v3p5_centerfinger_time_dependent_summary.json", summary)
-    (OUT / "step08_v3p5_centerfinger_time_dependent.md").write_text(markdown(summary), encoding="utf-8")
+    summary_path = OUT / ("step08_bgo_sample_time_dependent_summary.json" if is_bgo_sample_label(args.label) else "step08_v3p5_centerfinger_time_dependent_summary.json")
+    report_path = OUT / ("step08_bgo_sample_time_dependent.md" if is_bgo_sample_label(args.label) else "step08_v3p5_centerfinger_time_dependent.md")
+    write_json(summary_path, summary)
+    report_path.write_text(markdown(summary), encoding="utf-8")
     print(json.dumps({"status": summary["status"], "summary": summary["outputs"]["summary_json"], "report": summary["outputs"]["readme"]}, indent=2, ensure_ascii=False))
     return 0
 

@@ -93,8 +93,27 @@ Figure~\ref{fig:workflow} summarizes the workflow. The calculation is divided in
 
 \begin{figure}[t]
 \centering
-\fbox{\parbox{0.92\linewidth}{\centering Placeholder for workflow diagram: geometry $\rightarrow$ prompt/buildup transport $\rightarrow$ exact-position delayed source $\rightarrow$ Laue optics $\rightarrow$ EventList detector replay $\rightarrow$ veto/Compton/FoV selection $\rightarrow$ time fold $\rightarrow$ significance.}}
-\caption{Conceptual simulation chain used in this work. The important feature is that the focused signal and all background streams are evaluated in the same detector-response and event-selection space.}
+\newcommand{\flowbox}[1]{\fbox{\begin{minipage}{0.17\linewidth}\centering\scriptsize #1\end{minipage}}}
+\flowbox{Geometry\\Step00--01}
+\(\rightarrow\)
+\flowbox{Prompt and buildup\\Step02}
+\(\rightarrow\)
+\flowbox{Delayed inventory\\Step03}
+\(\rightarrow\)
+\flowbox{Exact-position transport\\Step03}
+
+\vspace{0.8ex}
+\(\downarrow\)
+\vspace{0.8ex}
+
+\flowbox{Laue optics\\Step04}
+\(\rightarrow\)
+\flowbox{EventList bridge\\Step09}
+\(\rightarrow\)
+\flowbox{Detector selection\\Step05}
+\(\rightarrow\)
+\flowbox{Time fold and significance\\Step06--08}
+\caption{Simulation chain used in this work. The important feature is that the focused signal and all background streams are evaluated in the same detector-response and event-selection space before mission-time significance is calculated.}
 \label{fig:workflow}
 \end{figure}
 
@@ -104,6 +123,16 @@ Table~\ref{tab:simulation_workflow} gives the stepwise version of this chain. In
 
 Read as an audit framework, the steps have different authority levels. Steps 00--01 freeze the detector mass model and coordinate policy but do not produce a rate. Step02 generates prompt and activation-production histories and defines the exposure normalization. Step03 converts those production histories into a fixed day-15 delayed inventory and transports sampled exact-position decays. Step04 is optical only: it computes the focused 511 keV phase space and effective area but contains no detector background. Step09 is the handoff between optics and detector transport. Step05 is the first point at which prompt background, delayed background, and focused signal are compared under the same veto, topology, and line-window rules. Steps 06--08 then move from selected rates to mission-time significance. Step10 is not a new physics stage; it is the robustness sidecar that tests exact-position support size and seed dependence at the final selected-rate level.
 
+The numerical hierarchy used below follows the same audit logic. Day-15
+selected rates are quoted from the Step05 physical-reference-flux block after
+the unit EventList signal stream has been scaled by the f10m A1 effective area
+and the reference atmospheric transmission. Mission-mean rates are quoted from
+Step06, and the headline $Z$, $T_{3\sigma}$, and flux thresholds are quoted
+from Step08. Exact-position support-size claims are quoted only after the
+sampled source has been transported through Step05--Step08. This separation is
+used to avoid mixing unit-injection bookkeeping rates, day-15 direct
+expectations, and mission-folded sensitivities in a single headline.
+
 \input{paper_resource/table_simulation_workflow_en.tex}
 
 \section{Detector and cryostat mass model}
@@ -111,7 +140,13 @@ Read as an audit framework, the steps have different authority levels. Steps 00-
 
 The detector model is an engineering Geant4/MEGAlib proxy for a balloon-borne TES focal-plane assembly. It is not intended to be a final CAD reproduction; rather, it captures the material and geometrical features most relevant to MeV background formation and event selection. The current v3p5 center-finger geometry contains a TES pixel array, a Be entrance window, staged Al thermal windows, Cu/W passive shields and collimation, cryogenic service-mass proxies, and a segmented CsI active shield. The local side-entry geometry points the window $45^\circ$ upward in the zenith-frame source coordinates, with an instrument-frame rotation of $0,45,0$ degrees. A 2 cm-thick W square-bore side collimator defines the local side-window entrance.
 
-The active shield is treated quantitatively by post-processing rather than by relying on native production-trigger filtering. Candidate events are grouped on a common Poisson time axis and vetoed if the summed CsI shield energy in the coincidence window exceeds the analysis threshold. This choice avoids filtering activation-production storage at the transport stage and keeps the veto definition common to prompt, delayed, and focused-science streams.
+The detector core is represented by six layers of 376 TES pixel copies
+($2256$ copies in total). The side-entry collimator is therefore an engineering
+aperture proxy rather than a pixel-matched 376-hole collimator. The geometry
+closure fixes these material and coordinate choices before rate calculations
+are made; it does not by itself define a sensitivity.
+
+The active shield is treated quantitatively by post-processing rather than by relying on native production-trigger filtering. Candidate events are grouped on a common Poisson time axis and vetoed if the summed CsI shield energy in the coincidence window exceeds the analysis threshold. For the current CsI branch the active-veto threshold is $50\keV$ and the coincidence window is $1\,\mu\mathrm{s}$. This choice avoids filtering activation-production storage at the transport stage and keeps the veto definition common to prompt, delayed, and focused-science streams.
 
 \begin{table}[t]
 \centering
@@ -122,11 +157,14 @@ The active shield is treated quantitatively by post-processing rather than by re
 Parameter & Value or policy \\
 \midrule
 Detector concept & TES microcalorimeter focal plane \\
+TES pixel copies & $6\times376=2256$ \\
 Active shield & Segmented CsI, post-processing veto \\
+CsI veto threshold & $50\keV$ summed shield energy \\
 Entrance window & Be side window \\
 Passive shielding/collimation & Cu/W proxy shields and 2 cm W side sleeve \\
 Pointing & Local side window tilted $45^\circ$ upward \\
 Detector trigger/veto authority & Step05 post-processing selection \\
+Coincidence window & $1\,\mu\mathrm{s}$ \\
 Line window $\wii$ & $510.58$--$511.42\keV$ \\
 Reference flux $\fref$ & $10^{-4}\cms$ \\
 \bottomrule
@@ -138,14 +176,14 @@ Reference flux $\fref$ & $10^{-4}\cms$ \\
 
 The signal model uses a Ge(111) Laue-lens configuration tuned to 511 keV. The current f10m A1 optical authority has focal length $10\,\mathrm{m}$, 25 tiles, 18 mm tile size, 30 arcsec mosaicity, active Ge mass $0.44063\,\mathrm{kg}$, and $\aeff(511\keV)=20.08476\,\mathrm{cm^2}$. A three-seed B-FULL focal-crossing aggregate contains 37,194 within-Be focal rows, with within-Be fraction 0.998336, $r_{90}=1.02853\,\mathrm{cm}$, and $r_{99}=1.24527\,\mathrm{cm}$.
 
-The optics and detector are coupled through an EventList bridge. Focal-crossing rows accepted inside the Be-window gate are transformed into the local detector coordinate system and replayed through the full detector/cryostat geometry. This avoids using an analytic phase-space projection as the signal authority and preserves the optical focusing handoff at the detector entrance plane. The v3p5 bridge transported 37,194/37,194 EventList rows. At $\fref=10^{-4}\cms$, the Step05 hard-window signal response is $0.00118117\cps$, corresponding to a Step07 response of $11.8117\,\mathrm{cps}/(\mathrm{ph\,cm^{-2}\,s^{-1}})$.
+The optics and detector are coupled through an EventList bridge. Focal-crossing rows accepted inside the Be-window gate are transformed into the local detector coordinate system and replayed through the full detector/cryostat geometry. This avoids using an analytic phase-space projection as the signal authority and preserves the optical focusing handoff at the detector entrance plane. The v3p5 bridge transported 37,194/37,194 EventList rows. The bridge is a signal handoff only: it does not add cosmic-ray prompt background or delayed activation in the Laue-lens hardware. At $\fref=10^{-4}\cms$, the Step05 hard-window signal response is $0.00118117\cps$, corresponding to a Step07 response of $11.8117\,\mathrm{cps}/(\mathrm{ph\,cm^{-2}\,s^{-1}})$.
 
 \section{Prompt and delayed background model}
 \label{sec:background}
 
-The background model contains prompt atmospheric transport and delayed activation. The full-stat prompt stream and the activation-buildup stream each generated 25,210,216 particles. Prompt normalization uses per-tag exposure normalization, while delayed activation is constructed from the activation-production ledgers and corrected ground-state half-lives. The fixed day-15 delayed inventory activity for the current chain is $85.636696\,\mathrm{Bq}$.
+The background model contains prompt atmospheric transport and delayed activation. The full-stat prompt stream and the activation-buildup stream each generated 25,210,216 particles. The prompt input is split into 68 SIM/DAT products, and each primary-particle tag is normalized with its own transported exposure using the rule $r_{\mathrm{event}}=1/\sum TT_{\mathrm{tag}}$. This per-tag normalization is important because gamma and non-gamma prompt streams have different splitting and exposure structure. Delayed activation is constructed from the activation-production ledgers and corrected ground-state half-lives. The fixed day-15 delayed inventory activity for the current chain is $85.636696\,\mathrm{Bq}$.
 
-The main methodological upgrade in the current branch is exact-position delayed-source transport. Instead of compressing production positions into axisymmetric radial-profile source blocks, the exact-position chain samples equal-flux \texttt{PointSource} support blocks from weighted radioactive-production rows. The baseline exact-position source uses $M=5000$ support blocks with seed 260613, contains no \texttt{RadialProfileBeam} blocks, and preserves the fixed activity budget. The delayed transport used $10^6$ triggers and stored $10^6$ events, with observation time $11530.473845\,\mathrm{s}$.
+The main methodological upgrade in the current branch is exact-position delayed-source transport. Instead of compressing production positions into axisymmetric radial-profile source blocks, the exact-position chain samples equal-flux \texttt{PointSource} support blocks from weighted radioactive-production rows. The baseline exact-position source uses $M=5000$ support blocks drawn from 253,770 sampling rows with seed 260613, contains no \texttt{RadialProfileBeam} blocks, and preserves the fixed activity budget. The delayed transport used $10^6$ triggers and stored $10^6$ events, with observation time $11530.473845\,\mathrm{s}$.
 
 This exact-position source representation is not a one-block-per-production-row stress test. Instead, it is a statistically sampled representation whose adequacy is evaluated downstream in Section~\ref{subsec:convergence}. The convergence test is performed on the final selected line-window rates and significance, not only on source-sampling diagnostics.
 
@@ -158,7 +196,7 @@ The analysis window is
 \end{equation}
 corresponding to $511\keV\pm420\,\mathrm{eV}$. This window is matched to a sub-keV TES response assumption and is narrow enough to suppress continuum background while retaining most of the line response.
 
-Events are processed on a common time axis. Prompt, delayed, and focused signal event instances are drawn according to their rates, sorted by time, and grouped within a $1\,\mu\mathrm{s}$ coincidence window. The active-shield veto is then applied to the summed shield energy. TES hit topologies are classified with a custom Compton/field-of-view consistency test. One-hit events are retained. Two-hit events test both possible first-scatter orders. Higher-multiplicity events enumerate candidate orders and use a Compton sequence quality metric before testing whether the first-scatter cone is consistent with the Be-window acceptance. Events without a valid reconstruction are retained under the current conservative rejection policy.
+Events are processed on a common time axis. Prompt, delayed, and focused signal event instances are drawn according to their rates, sorted by time, and grouped within a $1\,\mu\mathrm{s}$ coincidence window. The active-shield veto is then applied to the summed shield energy. TES hit topologies are classified with a custom Compton/field-of-view consistency test. One-hit events are retained. Two-hit events test both possible first-scatter orders. Higher-multiplicity events enumerate candidate orders and use a Compton sequence quality metric before testing whether the first-scatter cone is consistent with the Be-window acceptance. Events without a valid reconstruction are retained under the current conservative rejection policy, so the quoted hard-window sensitivity does not rely on an aggressive reconstruction failure veto.
 
 The time-dependent significance is computed as a cumulative counting statistic. For a reference flux $\fref$, the cumulative significance is
 \begin{equation}
@@ -169,6 +207,11 @@ where $N_s(t)$ and $N_b(t)$ are the time-integrated selected signal and backgrou
   \fthree(t) = \fref \frac{3}{Z(t)}.
 \end{equation}
 This Gaussian counting convention is used consistently for the hard-window results and sidecar comparisons.
+The Step05 summary also records a day-15 direct expectation. The manuscript
+headline does not use that constant-rate direct value; it uses the Step06
+mission-time fold and the Step08 cumulative significance. The distinction is
+small for the present hard-window case, but keeping it explicit is necessary
+for comparing branches and sidecars.
 
 \section{Results}
 \label{sec:results}
@@ -253,6 +296,47 @@ Label & $M$ & Seed & $B_{\wii}$ (cps) & $Z_{20\mathrm{d}}$ & $\fthree(20\mathrm{
 \end{tabular}
 \end{table}
 
+\subsection{Equal-attenuation BGO active-shield control}
+\label{subsec:bgo}
+
+An active-shield material control was run with a BGO shield adjusted to
+approximately match the CsI attenuation budget in the current geometry. The
+BGO sample uses side, bottom, and top active thicknesses of 2.137, 3.287, and
+1.582 cm, respectively, an adaptive outer Al shell around the new active
+envelope, and a 70 keV BGO active-veto threshold. The equal-attenuation check
+has a maximum absolute relative difference of 0.0731, and the BGO active mass
+is 45.0259 kg, compared with 62.8337 kg for the source CsI active shield.
+
+The BGO branch was propagated through the same hard-window Step05--Step08
+rate chain as the CsI exact-position authority. It includes full-stat prompt
+and buildup transport, a 5000-block exact-position delayed source drawn from
+true RPIP rows, delayed transport with 1,000,000 stored events, and detector
+replay of the f10m A1 focused EventList. Table~\ref{tab:bgo_control}
+summarizes the matched comparison. Relative to the CsI exact-position chain,
+the BGO sample lowers the W2 mission-mean background by 7.738\%, raises the
+20-d significance by 4.541\%, and lowers the 20-d $3\sigma$ flux threshold by
+4.344\%. This is a hard-window material-control result only; no BGO
+spatial/profile-likelihood sidecar or threshold/material-uncertainty scan is
+included.
+
+\begin{table}[t]
+\centering
+\caption{Matched CsI and equal-attenuation BGO hard-window comparison.}
+\label{tab:bgo_control}
+\footnotesize
+\begin{tabular}{lccc}
+\toprule
+Metric & CsI & BGO & Change \\
+\midrule
+Mission-mean $B_{\wii}$ (cps) & 0.0626835 & 0.0578330 & $-7.738\%$ \\
+Mission-mean $S_{\wii}$ at $\fref$ (cps) & 0.00117281 & 0.00117756 & $+0.405\%$ \\
+Step08 $Z_{20\mathrm{d}}$ & 6.15522 & 6.43475 & $+4.541\%$ \\
+Step08 $T_{3\sigma}$ (d) & 4.73758 & 4.21622 & $-11.005\%$ \\
+Step08 $\fthree(20\mathrm{d})$ & $4.87391\times10^{-5}$ & $4.66219\times10^{-5}$ & $-4.344\%$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
 \subsection{Comparison with instrument benchmarks}
 \label{subsec:benchmarks}
 
@@ -269,7 +353,7 @@ The exact-position delayed-source treatment is a methodological improvement over
 
 The background composition points to the next optimization targets. The selected hard-window rate is dominated by prompt atmospheric $e^+$-tagged events. Improvements may therefore come from shield geometry, side-entry collimation, material reduction near the focal plane, stricter topology cuts, or improved reconstruction of multi-pixel events. Delayed activation is smaller but led by identifiable nuclides and volumes, suggesting targeted material substitutions or local shielding may still be valuable.
 
-Several limitations should be kept explicit. First, the detector/cryostat model is an engineering proxy, not a final flight CAD model. Second, the production SIM files use a post-processing active-shield authority; native trigger/veto production filtering is not the source of quantitative rates. Third, the Step06 mission-time calculation is a rate-level fold, not a new particle transport at each trajectory time bin. Fourth, the custom Compton/FoV veto is not yet a full Revan/Mimrec reconstruction. Fifth, upstream Laue-lens self-background and activation from cosmic-ray interactions in the optics hardware are not included in the headline detector-background budget. Sixth, spatial sidecars such as $r_{90}$ and multi-annulus likelihood estimates are promising, but they are not yet a publication-grade nuisance-profile likelihood. Seventh, active-shield material alternatives are not part of the present CsI headline sensitivity. The current BGO equal-attenuation sample has a 70 keV veto threshold, passed the geometry/overlap controls, and has smoke-scale connectivity through a small all-particle prompt/buildup transport run plus an activation-probe delayed-source transport run with 30 true-RPIP \texttt{PointSource} blocks and \texttt{SE}=\texttt{ID}=200. It now also has a low-statistics \texttt{1of10} exact-position day-15 closure: the instant and buildup runs each generated 1,190,129 events, the fixed day-15 activity is $24.791139\,\mathrm{Bq}$, the activity is conserved over 568 true-RPIP \texttt{PointSource} blocks, and delayed transport stored \texttt{SE}=\texttt{ID}=100000 with $\mathrm{TE}=3730.929734\,\mathrm{s}$. These BGO runs are not rate authority: the sample has not yet been run as a full-statistics Step02 chain, a full-statistics day-15 delayed-source/rate chain, a Step05 response, or a Step08 significance chain.
+Several limitations should be kept explicit. First, the detector/cryostat model is an engineering proxy, not a final flight CAD model. Second, the production SIM files use a post-processing active-shield authority; native trigger/veto production filtering is not the source of quantitative rates. Third, the Step06 mission-time calculation is a rate-level fold, not a new particle transport at each trajectory time bin. Fourth, the custom Compton/FoV veto is not yet a full Revan/Mimrec reconstruction. Fifth, upstream Laue-lens self-background and activation from cosmic-ray interactions in the optics hardware are not included in the headline detector-background budget. Sixth, spatial sidecars such as $r_{90}$ and multi-annulus likelihood estimates are promising, but they are not yet a publication-grade nuisance-profile likelihood. Seventh, the BGO control in Section~\ref{subsec:bgo} is a hard-window material comparison under its 70 keV shield threshold. It does not include BGO spatial/profile-likelihood sidecars or threshold/material-uncertainty scans, so the CsI exact-position chain remains the manuscript headline.
 
 These limitations do not invalidate the primary conclusion, but they define the next work required before a final instrument proposal or flight performance paper. The most valuable follow-up studies are a Revan cross-check of the multi-hit subset, an optics self-background simulation, a final cryostat/DR geometry update, measured or literature-anchored TES saturation and pile-up studies at the relevant rates, and a spatial-spectral likelihood that profiles background nuisance parameters.
 

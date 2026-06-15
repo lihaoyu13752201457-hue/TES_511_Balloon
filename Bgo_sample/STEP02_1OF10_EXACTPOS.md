@@ -19,4 +19,5 @@ Status: `PASS_BGO_SAMPLE_1OF10_EXACTPOS_DELAYED_TRANSPORT`.
 Boundary:
 - Bgo_sample 1of10 exact-position delayed source/transport uses low-stat prompt/buildup production, not full-stat production.
 - Activity is day-15 ground-state-fixed and conserved over true RPIP PointSource blocks.
-- Delayed transport passed for this low-stat sample; Step05 response, Step06--Step08 significance, and full-stat BGO-vs-CsI comparison remain separate gates.
+- Delayed transport passed for this low-stat sample.
+- Supersession note: full-stat v2 exact-position BGO delayed transport, Step05 detector response, Step06--Step08 mission-time significance, and the matched BGO-vs-CsI exact-position comparison have since passed for the production bgo_sample_fullstat_v2_exactpos label. This file remains only the low-stat exact-position provenance record.

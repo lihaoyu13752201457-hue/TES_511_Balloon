@@ -18,5 +18,4 @@ Boundary:
 - This is a BGO delayed-source and delayed-transport smoke only.
 - The activation probe is p,n only at 50k gamma-equivalent statistics and does not define a BGO background rate.
 - A later low-stat `1of10` exact-position day-15 delayed-source/transport closure is recorded in `STEP02_1OF10_EXACTPOS.md`; this note remains only the p,n activation-probe smoke record.
-- Full-stat production day-15 BGO delayed-source/rate transport remains not run.
-- Step05 response, Step06--Step08 significance, and BGO-vs-CsI comparison remain not run.
+- Supersession note: full-stat v2 exact-position BGO delayed transport, Step05 detector response, Step06--Step08 mission-time significance, and the matched BGO-vs-CsI exact-position comparison have since passed for the production `bgo_sample_fullstat_v2_exactpos` label. This file is retained only as an early smoke-connectivity record.

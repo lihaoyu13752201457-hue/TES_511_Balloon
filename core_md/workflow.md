@@ -215,7 +215,7 @@ mainline source and downstream Step05+ chain are rerun.
 - Science final direct expectation at `1e-4 ph cm^-2 s^-1`: `0.002399 cps`.
 - Half-life audit: `74` prefix-year rows match archived NUBASE line references; W-180 is reduced to `5.09e-21 Bq` and absent from the fixed source.
 - CsI activation baseline: CsI active-shield activity is `561.13 Bq` (`89.89%` of fixed source activity); I-128 is `533.28 Bq` (`85.42%` of total). This is not a BGO control simulation.
-- BGO control geometry scaffold: `20` BGO active segments, `20` BGO native veto triggers, Cosima overlap `PASS`, BGO active mass `102.57 kg`; source/transport/significance status `NOT_RUN`.
+- Legacy BGO control geometry scaffold: `20` BGO active segments, `20` BGO native veto triggers, Cosima overlap `PASS`, BGO active mass `102.57 kg`; source/transport/significance status `NOT_RUN` for that DEMO2 scaffold. The current BGO material-comparison authority is the separate `Bgo_sample/` branch below.
 
 ## Half-Life/NUBASE Audit
 
@@ -228,14 +228,31 @@ mainline source and downstream Step05+ chain are rerun.
 - Rebuild: `python3 code/tools/audit_csi_activation_baseline.py`.
 - Output: `outputs/reports/csi_activation_baseline/csi_activation_baseline.md`.
 - The report quantifies the current CsI active-shield activation burden and explicitly records `BGO_control_status=NOT_RUN`.
-- A real CsI-vs-BGO conclusion still requires an alternate BGO geometry/source/transport chain through the same Step02-Step08 gates.
+- This is a legacy DEMO2/mainline activity report, not the current BGO material-comparison authority. The current Bgo_sample comparison is listed below.
 
 ## BGO Control Geometry Scaffold
 
 - Rebuild: `python3 code/tools/build_bgo_control_geometry.py`.
 - Output: `outputs/geometry/XZTES_ADR_v4c_mkflange_bgo_control/bgo_control_geometry.md`.
 - This creates a same-shape DEMO2 control geometry with BGO active-shield material/names, BGO native veto triggers, mass-budget update, and Cosima overlap smoke evidence.
-- It is an input scaffold only; BGO delayed source, delayed transport, Step05 selection, and Step08 significance are still not run.
+- It is a legacy input scaffold only; do not use it as the current BGO-vs-CsI physics result.
+
+## Current Bgo_sample Material Comparison
+
+- Rebuild BGO Step06--Step08 after BGO Step05 exists:
+  `python3 stepwise_maintenance/step06_mission_time_variation/code/build_v3p5_centerfinger_step06_time_axis.py --label bgo_sample_fullstat_v2_exactpos`,
+  `python3 stepwise_maintenance/step07_source_cases/code/build_v3p5_centerfinger_step07_source_cases.py --label bgo_sample_fullstat_v2_exactpos`,
+  and `python3 stepwise_maintenance/step08_significance/code/build_v3p5_centerfinger_step08_time_dependent.py --label bgo_sample_fullstat_v2_exactpos`.
+- Build the matched material comparison with
+  `python3 code/tools/build_bgo_sample_csi_comparison.py`.
+- Current output:
+  `outputs/reports/bgo_sample_csi_comparison_20260615/bgo_vs_csi_report.md`.
+- Current hard-window W2 result: BGO Step08 gives `Z20d=6.43475`,
+  `T3=4.21622 d`, and `F3(20d)=4.66219e-05 ph cm^-2 s^-1`.
+- Matched against CsI exact-position, BGO lowers the mission-mean W2
+  background by `7.738%`, raises `Z20d` by `4.541%`, and lowers
+  `F3(20d)` by `4.344%`. This does not include BGO spatial/profile-likelihood
+  sidecars.
 
 ## Step08 Detectability
 

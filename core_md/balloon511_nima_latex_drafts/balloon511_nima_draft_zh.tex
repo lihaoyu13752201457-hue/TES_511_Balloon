@@ -94,8 +94,27 @@
 
 \begin{figure}[t]
 \centering
-\fbox{\parbox{0.92\linewidth}{\centering 图占位：几何 $\rightarrow$ 瞬发/活化积累输运 $\rightarrow$ 精确位置延迟源 $\rightarrow$ Laue 光学 $\rightarrow$ EventList 探测器重放 $\rightarrow$ veto/康普顿/视场筛选 $\rightarrow$ 时间折叠 $\rightarrow$ 显著度。}}
-\caption{本文采用的概念性模拟链。关键点是聚焦信号和全部本底流在同一探测器响应与事例选择空间内评估。}
+\newcommand{\flowbox}[1]{\fbox{\begin{minipage}{0.17\linewidth}\centering\scriptsize #1\end{minipage}}}
+\flowbox{几何\\Step00--01}
+\(\rightarrow\)
+\flowbox{瞬发与积累\\Step02}
+\(\rightarrow\)
+\flowbox{延迟 inventory\\Step03}
+\(\rightarrow\)
+\flowbox{精确位置输运\\Step03}
+
+\vspace{0.8ex}
+\(\downarrow\)
+\vspace{0.8ex}
+
+\flowbox{Laue 光学\\Step04}
+\(\rightarrow\)
+\flowbox{EventList 桥接\\Step09}
+\(\rightarrow\)
+\flowbox{探测器选择\\Step05}
+\(\rightarrow\)
+\flowbox{时间折叠与显著度\\Step06--08}
+\caption{本文采用的模拟链。关键点是聚焦信号和全部本底流在同一探测器响应与事例选择空间内评估，然后再进入任务时间显著度计算。}
 \label{fig:workflow}
 \end{figure}
 
@@ -105,6 +124,14 @@
 
 如果按审计框架阅读，各 step 的 authority 等级不同。Step00--01 固定探测器质量模型和坐标策略，但不产生率。Step02 生成瞬发和活化产生历史，并定义曝光归一化。Step03 将这些产生历史转换为固定 day-15 延迟 inventory，并输运采样的精确位置衰变。Step04 只属于光学：它计算 511 keV 聚焦相空间和有效面积，不包含探测器本底。Step09 是光学到探测器输运的接口。Step05 是瞬发本底、延迟本底和聚焦信号第一次在同一 veto、拓扑和线窗规则下比较的位置。Step06--08 再把选后率推进到任务时间显著度。Step10 不是新的物理阶段，而是在最终选后率层面检验 exact-position 支撑点数和随机种子依赖的稳健性 sidecar。
 
+下文数值引用遵循同样的审计层级。day-15 选后率来自 Step05 的
+physical-reference-flux 块，即先把单位 EventList 信号流按 f10m A1 有效
+面积和参考大气透过率缩放后再引用；任务平均率来自 Step06；headline
+的 $Z$、$T_{3\sigma}$ 和流量阈值来自 Step08。exact-position 支撑点
+数的稳定性只在采样源完成输运并通过 Step05--Step08 后引用。这样可
+避免把单位注入率 bookkeeping、day-15 direct expectation 和任务时间
+折叠后的灵敏度混成一个 headline。
+
 \input{paper_resource/table_simulation_workflow_zh.tex}
 
 \section{探测器与低温系统质量模型}
@@ -112,7 +139,11 @@
 
 探测器模型是气球载 TES 焦平面组件的工程化 Geant4/MEGAlib 代理模型。它不是最终飞行 CAD 复现，而是捕捉对 MeV 本底形成和事例筛选最重要的材料与几何特征。当前 v3p5 center-finger 几何包含 TES 像素阵列、Be 入射窗、多级 Al 热窗、Cu/W 被动屏蔽与准直、低温服务质量代理，以及分段 CsI 主动屏蔽。局部侧入射几何使窗口在 zenith-frame 源坐标中向上倾斜 $45^\circ$，仪器框架旋转为 $0,45,0$ 度。2 cm 厚 W 方孔侧准直套筒定义局部侧窗口入口。
 
-主动屏蔽在后处理层定量实现，而不是依赖 native production-trigger 过滤。候选事例在统一 Poisson 时间轴上分组；若 coincidence 窗内 CsI 屏蔽总沉积能量超过分析阈值，则该候选事例被 veto。这样可避免在输运阶段过滤活化产生位置，同时保证瞬发、延迟和聚焦科学流使用同一 veto 定义。
+探测器核心由 6 层、每层 376 个 TES 像素 copy 表示，总计 2256 个 copy。
+因此侧入射准直器是工程化孔径代理，而不是逐像素匹配的 376 孔准直器。
+几何闭合先固定这些材料和坐标选择，再进入率级计算；几何本身不定义灵敏度。
+
+主动屏蔽在后处理层定量实现，而不是依赖 native production-trigger 过滤。候选事例在统一 Poisson 时间轴上分组；若 coincidence 窗内 CsI 屏蔽总沉积能量超过分析阈值，则该候选事例被 veto。当前 CsI 分支的主动屏蔽阈值为 $50\keV$，coincidence 窗为 $1\,\mu\mathrm{s}$。这样可避免在输运阶段过滤活化产生位置，同时保证瞬发、延迟和聚焦科学流使用同一 veto 定义。
 
 \begin{table}[t]
 \centering
@@ -123,11 +154,14 @@
 参数 & 数值或策略 \\
 \midrule
 探测器概念 & TES 微量热计焦平面 \\
+TES 像素 copy & $6\times376=2256$ \\
 主动屏蔽 & 分段 CsI，后处理 veto \\
+CsI veto 阈值 & 屏蔽总能量 $50\keV$ \\
 入射窗 & Be 侧窗口 \\
 被动屏蔽/准直 & Cu/W 代理屏蔽和 2 cm W 侧套筒 \\
 指向 & 局部侧窗口向上倾斜 $45^\circ$ \\
 触发/veto 定量 authority & Step05 后处理选择 \\
+coincidence 窗 & $1\,\mu\mathrm{s}$ \\
 线窗 $\wii$ & $510.58$--$511.42\keV$ \\
 参考流量 $\fref$ & $10^{-4}\cms$ \\
 \bottomrule
@@ -139,14 +173,14 @@
 
 信号模型采用调谐到 511 keV 的 Ge(111) Laue 透镜构型。当前 f10m A1 光学 authority 的焦距为 $10\,\mathrm{m}$，25 个晶片，晶片尺寸 18 mm，mosaicity 为 30 arcsec，有效 Ge 质量 $0.44063\,\mathrm{kg}$，且 $\aeff(511\keV)=20.08476\,\mathrm{cm^2}$。三随机种子 B-FULL 焦面穿越聚合包含 37,194 条 within-Be 焦面记录，within-Be fraction 为 0.998336，$r_{90}=1.02853\,\mathrm{cm}$，$r_{99}=1.24527\,\mathrm{cm}$。
 
-光学和探测器通过 EventList bridge 耦合。Be 窗口门内的焦面穿越记录被转换到局部探测器坐标系，并在完整探测器/低温系统几何中重放。这避免把解析 phase-space 投影作为信号 authority，并保留了光学聚焦到探测器入口平面的实际交接。v3p5 bridge 输运了 37,194/37,194 条 EventList 记录。在 $\fref=10^{-4}\cms$ 下，Step05 硬线窗信号响应为 $0.00118117\cps$，对应 Step07 响应 $11.8117\,\mathrm{cps}/(\mathrm{ph\,cm^{-2}\,s^{-1}})$。
+光学和探测器通过 EventList bridge 耦合。Be 窗口门内的焦面穿越记录被转换到局部探测器坐标系，并在完整探测器/低温系统几何中重放。这避免把解析 phase-space 投影作为信号 authority，并保留了光学聚焦到探测器入口平面的实际交接。v3p5 bridge 输运了 37,194/37,194 条 EventList 记录。该 bridge 只是信号交接，不加入 Laue 透镜硬件中的宇宙线瞬发本底或延迟活化。在 $\fref=10^{-4}\cms$ 下，Step05 硬线窗信号响应为 $0.00118117\cps$，对应 Step07 响应 $11.8117\,\mathrm{cps}/(\mathrm{ph\,cm^{-2}\,s^{-1}})$。
 
 \section{瞬发与延迟本底模型}
 \label{sec:background}
 
-本底模型包括瞬发大气输运和延迟活化。full-stat 瞬发流和活化积累流各生成 25,210,216 个粒子。瞬发归一化使用每个 tag 的曝光归一化；延迟活化则由活化产生 ledger 构建，并进行基态半衰期修正。当前链路固定 day-15 延迟 inventory 活度为 $85.636696\,\mathrm{Bq}$。
+本底模型包括瞬发大气输运和延迟活化。full-stat 瞬发流和活化积累流各生成 25,210,216 个粒子。瞬发输入由 68 个 SIM/DAT 产品组成；每个 primary-particle tag 用自身输运曝光归一化，规则为 $r_{\mathrm{event}}=1/\sum TT_{\mathrm{tag}}$。这种 per-tag 归一化很重要，因为 gamma 与 non-gamma 瞬发流具有不同的拆分和曝光结构。延迟活化则由活化产生 ledger 构建，并进行基态半衰期修正。当前链路固定 day-15 延迟 inventory 活度为 $85.636696\,\mathrm{Bq}$。
 
-当前分支的主要方法升级是精确位置延迟源输运。不同于把产生位置压缩为轴对称 radial-profile source blocks，exact-position 链路从加权放射性产生行中采样等通量 \texttt{PointSource} 支撑块。基准 exact-position 源使用 $M=5000$ 个支撑块、随机种子 260613，不含 \texttt{RadialProfileBeam} 块，并保持固定活度预算。延迟输运使用 $10^6$ 触发并存储 $10^6$ 个事例，观测时间为 $11530.473845\,\mathrm{s}$。
+当前分支的主要方法升级是精确位置延迟源输运。不同于把产生位置压缩为轴对称 radial-profile source blocks，exact-position 链路从加权放射性产生行中采样等通量 \texttt{PointSource} 支撑块。基准 exact-position 源从 253,770 条 sampling rows 中抽取 $M=5000$ 个支撑块，随机种子为 260613，不含 \texttt{RadialProfileBeam} 块，并保持固定活度预算。延迟输运使用 $10^6$ 触发并存储 $10^6$ 个事例，观测时间为 $11530.473845\,\mathrm{s}$。
 
 该精确位置表示不是 one-block-per-production-row 极限测试，而是统计采样表示。其充分性在第~\ref{subsec:convergence} 节通过下游最终线窗率和显著度评估，而不仅仅通过源采样诊断评估。
 
@@ -159,7 +193,7 @@
 \end{equation}
 即 $511\keV\pm420\,\mathrm{eV}$。该线窗匹配亚 keV TES 响应假设，在保留主要线响应的同时抑制连续谱本底。
 
-事例在统一时间轴上处理。瞬发、延迟和聚焦信号事例按各自率抽样、按时间排序，并以 $1\,\mu\mathrm{s}$ coincidence 窗分组。随后对总屏蔽能量施加主动屏蔽 veto。TES 命中拓扑使用自定义康普顿/视场一致性检验。单命中事例保留；双命中事例测试两个可能的第一散射顺序；更高多重度事例枚举候选顺序并使用康普顿序列质量指标，然后测试第一散射锥是否与 Be 窗口接受相容。当前保守策略下，没有有效重建的事例保留。
+事例在统一时间轴上处理。瞬发、延迟和聚焦信号事例按各自率抽样、按时间排序，并以 $1\,\mu\mathrm{s}$ coincidence 窗分组。随后对总屏蔽能量施加主动屏蔽 veto。TES 命中拓扑使用自定义康普顿/视场一致性检验。单命中事例保留；双命中事例测试两个可能的第一散射顺序；更高多重度事例枚举候选顺序并使用康普顿序列质量指标，然后测试第一散射锥是否与 Be 窗口接受相容。当前保守策略下，没有有效重建的事例保留，因此本文硬线窗灵敏度没有依赖激进的 reconstruction-failure veto。
 
 时间相关显著度采用累积计数统计。对参考流量 $\fref$，累积显著度为
 \begin{equation}
@@ -170,6 +204,10 @@
   \fthree(t) = \fref \frac{3}{Z(t)}
 \end{equation}
 缩放。硬线窗结果和 sidecar 比较均使用这一 Gaussian counting 约定。
+Step05 summary 还记录 day-15 direct expectation。本文 headline 不采用该
+常率 direct 值，而使用 Step06 任务时间折叠和 Step08 累积显著度。
+对当前硬线窗而言二者差异不大，但明确区分这两类量是比较不同分支
+和 sidecar 的必要条件。
 
 \section{结果}
 \label{sec:results}
@@ -252,6 +290,42 @@ exact-position $\wii$ 选后本底由瞬发大气事例主导。Step05 流分解
 \end{tabular}
 \end{table}
 
+\subsection{等效衰减 BGO 主动屏蔽对照}
+\label{subsec:bgo}
+
+本文还运行了一个主动屏蔽材料对照：在当前几何中调整 BGO 屏蔽厚度，使
+其近似匹配 CsI 的衰减预算。BGO 样例的侧面、底部和顶部主动层厚度分别
+为 2.137、3.287 和 1.582 cm；外层 Al 壳随新的主动屏蔽包络自适应调整；
+BGO 主动 veto 阈值为 70 keV。等效衰减检查的最大绝对相对差为 0.0731。
+BGO 主动质量为 45.0259 kg，而源 CsI 主动屏蔽质量为 62.8337 kg。
+
+该 BGO 分支通过了与 CsI exact-position authority 相同的硬线窗
+Step05--Step08 率级链路。它包括 full-stat 瞬发和 buildup 输运、从真实
+RPIP 行抽样得到的 5000 块 exact-position 延迟源、存储 1,000,000 个事例
+的延迟输运，以及 f10m A1 聚焦 EventList 的探测器重放。
+表~\ref{tab:bgo_control} 给出匹配对比。相对于 CsI exact-position 链路，
+BGO 样例使 W2 任务平均本底降低 7.738\%，使 20 d 显著度提高 4.541\%，并
+使 20 d 的 $3\sigma$ 流量阈值降低 4.344\%。这只是硬线窗材料对照结果；
+尚未包含 BGO 空间/profile-likelihood sidecar 或阈值/材料不确定性扫描。
+
+\begin{table}[t]
+\centering
+\caption{CsI 与等效衰减 BGO 的匹配硬线窗对比。}
+\label{tab:bgo_control}
+\footnotesize
+\begin{tabular}{lccc}
+\toprule
+指标 & CsI & BGO & 变化 \\
+\midrule
+任务平均 $B_{\wii}$ (cps) & 0.0626835 & 0.0578330 & $-7.738\%$ \\
+任务平均 $\fref$ 下 $S_{\wii}$ (cps) & 0.00117281 & 0.00117756 & $+0.405\%$ \\
+Step08 $Z_{20\mathrm{d}}$ & 6.15522 & 6.43475 & $+4.541\%$ \\
+Step08 $T_{3\sigma}$ (d) & 4.73758 & 4.21622 & $-11.005\%$ \\
+Step08 $\fthree(20\mathrm{d})$ & $4.87391\times10^{-5}$ & $4.66219\times10^{-5}$ & $-4.344\%$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
 \subsection{与现有仪器基准的比较}
 \label{subsec:benchmarks}
 
@@ -268,7 +342,7 @@ exact-position $\wii$ 选后本底由瞬发大气事例主导。Step05 流分解
 
 本底组成指出了下一步优化方向。选后硬线窗率由瞬发大气 $e^+$-tagged 事例主导。因此，改进可能来自屏蔽几何、侧入射准直、焦平面附近材料减量、更严格拓扑 cuts，或多像素事例重建改进。延迟活化虽小，但由可识别核素和体积主导，说明局部材料替换或局部屏蔽仍可能有价值。
 
-需要明确的局限性包括：第一，探测器/低温系统模型是工程代理，不是最终飞行 CAD；第二，生产 SIM 的定量主动屏蔽 authority 来自 Step05 后处理，而不是 native trigger/veto 生产过滤；第三，Step06 任务时间计算是率级折叠，不是在每个轨迹时间点重新输运粒子；第四，自定义康普顿/视场 veto 尚不是完整 Revan/Mimrec 重建；第五，上游 Laue 透镜硬件自身的宇宙线本底和活化未纳入 headline 探测器本底预算；第六，$r_{90}$ 和多环 likelihood 等空间 sidecar 很有前景，但尚不是 publication-grade nuisance-profile likelihood。第七，主动屏蔽材料替换不属于本文 CsI headline 灵敏度。当前 BGO 等效衰减样例采用 70 keV veto 阈值，已经通过几何/重叠控制，并且在 smoke 尺度完成了小规模全粒子 prompt/buildup 输运以及 activation-probe 延迟源输运；后者使用 30 个真实 RPIP \texttt{PointSource} 支撑块，\texttt{SE}=\texttt{ID}=200。它现在还完成了低统计 \texttt{1of10} 精确位置 day-15 闭合：instant 和 buildup 各生成 1,190,129 个事例，修正后的 day-15 活度为 $24.791139\,\mathrm{Bq}$，该活度守恒分配到 568 个真实 RPIP \texttt{PointSource} 支撑块，延迟输运得到 \texttt{SE}=\texttt{ID}=100000，$\mathrm{TE}=3730.929734\,\mathrm{s}$。这些 BGO 运行不是率级 authority：该样例尚未进入 full-statistics Step02 链路、full-statistics day-15 延迟源/率链路、Step05 响应或 Step08 显著度链路。
+需要明确的局限性包括：第一，探测器/低温系统模型是工程代理，不是最终飞行 CAD；第二，生产 SIM 的定量主动屏蔽 authority 来自 Step05 后处理，而不是 native trigger/veto 生产过滤；第三，Step06 任务时间计算是率级折叠，不是在每个轨迹时间点重新输运粒子；第四，自定义康普顿/视场 veto 尚不是完整 Revan/Mimrec 重建；第五，上游 Laue 透镜硬件自身的宇宙线本底和活化未纳入 headline 探测器本底预算；第六，$r_{90}$ 和多环 likelihood 等空间 sidecar 很有前景，但尚不是 publication-grade nuisance-profile likelihood。第七，第~\ref{subsec:bgo} 节的 BGO 对照是在 70 keV 屏蔽阈值下的硬线窗材料比较。它尚未包含 BGO 空间/profile-likelihood sidecar 或阈值/材料不确定性扫描，因此本文 headline 仍以 CsI exact-position 链路为准。
 
 这些限制并不否定主要结论，但定义了最终仪器方案或飞行性能论文之前应完成的后续工作。最有价值的后续研究包括：多命中子样本的 Revan 交叉检查、光学硬件 self-background 模拟、最终低温/DR 几何更新、与实测或文献锚定的 TES 饱和和 pile-up 研究，以及可 profile 本底 nuisance 参数的空间--谱联合 likelihood。
 

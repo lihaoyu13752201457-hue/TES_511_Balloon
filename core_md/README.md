@@ -165,12 +165,19 @@ Legacy CsI activation baseline:
 - I-128 contributed `533.28 Bq`, or `85.42%` of that legacy total fixed source activity, all in CsI volumes;
 - current v3p5 R2 I-128 authority is `stepwise_maintenance/step03_delay_source/outputs/i128_anchor_r2_20260612.md`: `66.0018 Bq` over `62.8337 kg`, or `1.05042 Bq/kg`.
 
-BGO control geometry scaffold:
+BGO control geometry scaffold (legacy DEMO2 scaffold):
 
 - `outputs/geometry/XZTES_ADR_v4c_mkflange_bgo_control/` is a same-shape DEMO2 active-shield material substitution scaffold;
 - the scaffold has `20` BGO active-shield detector segments, `20` native veto triggers, and a Cosima overlap check status `PASS`;
 - using local MEGAlib `BGO.Density 7.1`, the same active-shield volume gives `102.57 kg` BGO active mass versus `65.15 kg` CsI active mass;
-- transport/source/significance status remains `NOT_RUN`; this is an input geometry authority, not a CsI-vs-BGO physics result.
+- this legacy scaffold is not the current BGO material-comparison authority.
+
+Current Bgo_sample material-comparison branch:
+
+- `Bgo_sample/` is the current-v3p5 equal-attenuation BGO sample with a `70 keV` BGO veto threshold, current center-finger side-entry geometry, adaptive outer shell, and equal-attenuation side/bottom/top thicknesses `2.137/3.287/1.582 cm`;
+- full-stat v2 BGO prompt/buildup each generated `25,210,216` particles; the exact-position delayed source uses `5000` equal-flux true-RPIP `PointSource` blocks from `43,043` eligible RPIP rows and delayed transport stores `SE=ID=1,000,000`, `TE=39653.861364 s`;
+- BGO Step05--Step08 hard-window W2 chain now passes through detector response, mission-time fold, source cases, and time-dependent significance: Step08 `Z20d=6.43475`, `T3=4.21622 d`, `F3(20d)=4.66219e-05 ph cm^-2 s^-1`;
+- matched BGO-vs-CsI exact-position comparison passes at `outputs/reports/bgo_sample_csi_comparison_20260615/bgo_vs_csi_report.md`: BGO lowers W2 mission-mean background by `7.738%`, raises `Z20d` by `4.541%`, and lowers `F3(20d)` by `4.344%` relative to the CsI exact-position authority.
 
 v3p5 center-finger DR branch checkpoint:
 
