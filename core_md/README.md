@@ -9,7 +9,8 @@
 > not be quoted as current sensitivity authority until a div-corrected
 > mainline source and downstream Step05+ chain are rerun. The current closed
 > rate-level branch authority is v3p5 full-stat exact-position
-> `fullstat_v2_exactpos`; `fullstat_v2` remains the conservative
+> `fullstat_v2_exactpos_m50000_s260613`; `fullstat_v2_exactpos` is retained as
+> the M=5000 convergence point and `fullstat_v2` remains the conservative
 > radial-profile baseline cross-check. R2 on 2026-06-12 also
 > repaired the v3p5 fullstat_v2 Step05 prompt normalization: prompt rates now
 > use per-tag `1/sum(TT_tag)`, with audit files in the Step05 fullstat output.
@@ -70,23 +71,24 @@ multi-annulus W2 spatial-likelihood sidecar gives `Z20d=8.45804` and
 single-spatial-cut analysis boundaries for the `fullstat_v2` baseline.
 
 Current v3p5 exact-position delayed-source rate authority:
-`fullstat_v2_exactpos` promotes the smoke-validated exact-RPIP `PointSource`
-path to the fixed inventory, runs `1,000,000` delayed triggers, and closes
-through Step05-08 plus the W2/performance/boundary packaging at
-`outputs/reports/v3p5_fullstat_performance_w2_closure_fullstat_v2_exactpos_20260613/`.
-The exact-position Step02 delayed transport has `SE=1,000,000`,
-`ID=1,000,000`, `TE=11530.473845 s`, and 5000 sampled `PointSource` support
-blocks with no `RadialProfileBeam` blocks. Its W2 headline is
-Step05 background/signal `0.0624651/0.00118117 cps`, Step08 `Z20d=6.15522`,
-20-day 3-sigma flux `4.87391e-5 ph cm^-2 s^-1`, and 1 Ms 3-sigma flux
-`6.32564e-5 ph cm^-2 s^-1`. The M/seed convergence report
+`fullstat_v2_exactpos_m50000_s260613` promotes the smoke-validated exact-RPIP
+`PointSource` path to the fixed inventory, runs `1,000,000` delayed triggers,
+and closes through Step05-08. The exact-position Step02 delayed transport has
+`SE=1,000,000`, `ID=1,000,000`, `TE=11545.456287 s`, and 50000 sampled
+`PointSource` support blocks with no `RadialProfileBeam` blocks. Its W2
+headline is Step05 background/signal `0.0629804/0.00118117 cps`, Step06
+mission-mean background/signal `0.0631923/0.00117281 cps`, Step08
+`Z20d=6.13039`, `T3=4.77766 day`, 20-day 3-sigma flux
+`4.89365e-5 ph cm^-2 s^-1`, and 1 Ms 3-sigma flux
+`6.35099e-5 ph cm^-2 s^-1`. The M/seed convergence report
 `outputs/reports/v3p5_exactpos_convergence_20260614/` is
 `PASS_EXACTPOS_TRANSPORT_CONVERGENCE` and recommends
 `PROMOTE_EXACTPOS_TO_CURRENT_RATE_AUTHORITY`: four transport-backed cases cover
 `M=5000` at seeds `260613/260614`, `M=20000` at seed `260613`, and `M=50000`
-at seed `260613`; W2 delayed cps relative range is `0.187413`, W2 background
-cps relative range is `0.0111915`, and `Z20d` relative range is `0.00550844`.
-`fullstat_v2` remains the conservative radial-profile baseline cross-check.
+at seed `260613`; the largest support case is now the paper-facing nominal.
+W2 delayed cps relative range is `0.187413`, W2 background cps relative range
+is `0.0111915`, and `Z20d` relative range is `0.00550844`. `fullstat_v2`
+remains the conservative radial-profile baseline cross-check.
 The remaining engineering work is optional source-parsing optimization or a
 full weighted-table one-block-per-RPIP stress test, not an authority blocker.
 
@@ -177,7 +179,7 @@ Current Bgo_sample material-comparison branch:
 - `Bgo_sample/` is the current-v3p5 equal-attenuation BGO sample with a `70 keV` BGO veto threshold, current center-finger side-entry geometry, adaptive outer shell, and equal-attenuation side/bottom/top thicknesses `2.137/3.287/1.582 cm`;
 - full-stat v2 BGO prompt/buildup each generated `25,210,216` particles; the exact-position delayed source uses `5000` equal-flux true-RPIP `PointSource` blocks from `43,043` eligible RPIP rows and delayed transport stores `SE=ID=1,000,000`, `TE=39653.861364 s`;
 - BGO Step05--Step08 hard-window W2 chain now passes through detector response, mission-time fold, source cases, and time-dependent significance: Step08 `Z20d=6.43475`, `T3=4.21622 d`, `F3(20d)=4.66219e-05 ph cm^-2 s^-1`;
-- matched BGO-vs-CsI exact-position comparison passes at `outputs/reports/bgo_sample_csi_comparison_20260615/bgo_vs_csi_report.md`: BGO lowers W2 mission-mean background by `7.738%`, raises `Z20d` by `4.541%`, and lowers `F3(20d)` by `4.344%` relative to the CsI exact-position authority;
+- matched BGO-vs-CsI exact-position M=50000 comparison passes at `outputs/reports/bgo_sample_csi_comparison_20260615/bgo_vs_csi_report.md`: BGO lowers W2 mission-mean background by `8.481%`, raises `Z20d` by `4.965%`, and lowers `F3(20d)` by `4.730%` relative to the CsI exact-position M=50000 authority; this comparison uses material-specific active-veto thresholds (CsI 50 keV, BGO 70 keV), not a same-threshold veto scan;
 - `Bgo_sample/EXTENDED_CLOSURE_SUMMARY.md` closes the BGO sidecar boundaries: detector-coupled `spot_r90` spatial `Z20d=9.15885`, fixed-template annular-likelihood `Z20d=9.27696`, exact 70 keV threshold replay of Step08, and BGO material attenuation scan max absolute relative difference `0.0731183 < 0.1`.
 
 v3p5 center-finger DR branch checkpoint:

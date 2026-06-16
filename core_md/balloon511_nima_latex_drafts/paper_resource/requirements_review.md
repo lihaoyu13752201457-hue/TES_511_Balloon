@@ -9,8 +9,8 @@ This review covers the manuscript section `Science and instrument requirements` 
 
 ## Evidence Checked
 
-- Current headline authority: `outputs/reports/v3p5_fullstat_performance_w2_closure_fullstat_v2_exactpos_20260613/v3p5_fullstat_performance_w2_closure_summary.json`.
-- Exact-position convergence: `outputs/reports/v3p5_exactpos_convergence_20260614/v3p5_exactpos_convergence_summary.json`.
+- Current headline authority: the archived full-statistics exact-position W2 closure summary.
+- Exact-position convergence: the archived M/seed convergence summary for the exact-position delayed-source branch.
 - Method skeleton: `paper_draft/methodology_skeleton_20260614.md`.
 - Draft manuscript files:
   - `core_md/balloon511_nima_latex_drafts/balloon511_nima_draft_en.tex`

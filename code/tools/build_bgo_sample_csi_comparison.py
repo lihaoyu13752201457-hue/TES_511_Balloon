@@ -15,10 +15,11 @@ BGO_DIR = ROOT / "Bgo_sample"
 TRACKED_SUMMARY_JSON = BGO_DIR / "closure_summary.json"
 TRACKED_SUMMARY_MD = BGO_DIR / "CLOSURE_SUMMARY.md"
 
-CSI_STEP05 = ROOT / "stepwise_maintenance" / "step05_veto_time_axis" / "outputs_v3p5_centerfinger_fullstat_v2_exactpos_l1" / "step05_v3p5_centerfinger_l1_response_summary.json"
-CSI_STEP06 = ROOT / "stepwise_maintenance" / "step06_mission_time_variation" / "outputs_v3p5_centerfinger_fullstat_v2_exactpos" / "step06_v3p5_centerfinger_fullstat_v2_exactpos_summary.json"
-CSI_STEP07 = ROOT / "stepwise_maintenance" / "step07_source_cases" / "outputs_v3p5_centerfinger_fullstat_v2_exactpos" / "source_case_summary.json"
-CSI_STEP08 = ROOT / "stepwise_maintenance" / "step08_significance" / "outputs_v3p5_centerfinger_fullstat_v2_exactpos" / "step08_v3p5_centerfinger_time_dependent_summary.json"
+CSI_LABEL = "fullstat_v2_exactpos_m50000_s260613"
+CSI_STEP05 = ROOT / "stepwise_maintenance" / "step05_veto_time_axis" / f"outputs_v3p5_centerfinger_{CSI_LABEL}_l1" / "step05_v3p5_centerfinger_l1_response_summary.json"
+CSI_STEP06 = ROOT / "stepwise_maintenance" / "step06_mission_time_variation" / f"outputs_v3p5_centerfinger_{CSI_LABEL}" / f"step06_v3p5_centerfinger_{CSI_LABEL}_summary.json"
+CSI_STEP07 = ROOT / "stepwise_maintenance" / "step07_source_cases" / f"outputs_v3p5_centerfinger_{CSI_LABEL}" / "source_case_summary.json"
+CSI_STEP08 = ROOT / "stepwise_maintenance" / "step08_significance" / f"outputs_v3p5_centerfinger_{CSI_LABEL}" / "step08_v3p5_centerfinger_time_dependent_summary.json"
 
 BGO_STEP05 = ROOT / "stepwise_maintenance" / "step05_veto_time_axis" / "outputs_bgo_sample_fullstat_v2_exactpos_l1" / "step05_bgo_sample_l1_response_summary.json"
 BGO_STEP06 = ROOT / "stepwise_maintenance" / "step06_mission_time_variation" / "outputs_bgo_sample_fullstat_v2_exactpos" / "step06_bgo_sample_fullstat_v2_exactpos_summary.json"
@@ -121,13 +122,13 @@ def markdown(payload: dict[str, Any]) -> str:
     c = payload["comparison"]
     rows = payload["rows"]
     bgo = rows["BGO"]
-    csi = rows["CsI_exactpos"]
+    csi = rows["CsI_exactpos_m50000"]
     lines = [
         "# Bgo_sample vs CsI Exact-Position Comparison",
         "",
         f"Status: `{payload['status']}`.",
         "",
-        "Scope: equal-attenuation BGO active shield sample against the current CsI exact-position rate authority, using matched Step05--Step08 W2 outputs. No spatial/profile-likelihood gain is applied.",
+        "Scope: equal-attenuation BGO active shield sample against the current CsI exact-position M=50000 rate authority, using matched Step05--Step08 W2 outputs. No spatial/profile-likelihood gain is applied. The comparison uses the material-specific active-veto thresholds adopted by the two branches: CsI 50 keV and BGO 70 keV.",
         "",
         "| metric | CsI exactpos | BGO sample | BGO/CsI | relative change |",
         "| --- | ---: | ---: | ---: | ---: |",
@@ -152,9 +153,11 @@ def markdown(payload: dict[str, Any]) -> str:
             f"- BGO W2 20-day 3-sigma flux threshold is `{c['step08_w2_F3_20d_ph_cm2_s']['relative_delta'] * 100:.3f}%` relative to CsI; lower is better.",
             f"- BGO active mass is `{bgo['bgo_active_mass_kg']:.6g} kg` versus the source CsI active mass `{bgo['source_csi_active_mass_kg']:.6g} kg`, ratio `{bgo['active_mass_ratio_bgo_over_csi']:.6g}`.",
             f"- Equal-attenuation check max absolute relative difference: `{bgo['attenuation_max_abs_relative_difference']:.6g}`.",
+            f"- Active-veto thresholds are material-specific: CsI `{csi['active_veto_threshold_keV']:.6g} keV`, BGO `{bgo['active_veto_threshold_keV']:.6g} keV`; this is not a same-threshold veto scan.",
             "",
             "Authority files:",
-            f"- CsI Step07: `{payload['inputs']['csi_step07']}`",
+        f"- CsI label: `{payload['inputs']['csi_label']}`",
+        f"- CsI Step07: `{payload['inputs']['csi_step07']}`",
             f"- CsI Step08: `{payload['inputs']['csi_step08']}`",
             f"- BGO Step07: `{payload['inputs']['bgo_step07']}`",
             f"- BGO Step08: `{payload['inputs']['bgo_step08']}`",
@@ -208,6 +211,7 @@ def tracked_closure_payload(payload: dict[str, Any]) -> dict[str, Any]:
         },
         "boundaries": [
             "This is a hard-window counting material comparison only.",
+            "The comparison uses material-specific active-veto thresholds: CsI 50 keV and BGO 70 keV.",
             "No BGO spatial/profile-likelihood gain is applied to this hard-window comparison.",
             "BGO spatial, detector-threshold replay, and material attenuation sidecars are tracked separately in Bgo_sample/EXTENDED_CLOSURE_SUMMARY.md.",
             "Detailed regenerated Step05--Step08 outputs live under ignored local output directories; this tracked digest preserves the paper-facing closure numbers on GitHub.",
@@ -248,6 +252,7 @@ def tracked_closure_markdown(payload: dict[str, Any]) -> str:
         "",
         "Boundary:",
         "- This is a hard-window counting material comparison only.",
+        "- Active-veto thresholds are material-specific: CsI 50 keV and BGO 70 keV; this is not a same-threshold veto scan.",
         "- No BGO spatial/profile-likelihood gain is applied to this hard-window comparison.",
         "- BGO spatial, detector-threshold replay, and material attenuation sidecars are tracked separately in `Bgo_sample/EXTENDED_CLOSURE_SUMMARY.md`.",
         "- The detailed regenerated Step05--Step08 outputs are local ignored artifacts; this tracked digest is the GitHub-facing closure record.",
@@ -264,7 +269,7 @@ def tracked_closure_markdown(payload: dict[str, Any]) -> str:
 
 
 def main() -> int:
-    csi = row("CsI_exactpos", load_json(CSI_STEP05), load_json(CSI_STEP06), load_json(CSI_STEP07), load_json(CSI_STEP08))
+    csi = row("CsI_exactpos_m50000", load_json(CSI_STEP05), load_json(CSI_STEP06), load_json(CSI_STEP07), load_json(CSI_STEP08))
     bgo = row("BGO", load_json(BGO_STEP05), load_json(BGO_STEP06), load_json(BGO_STEP07), load_json(BGO_STEP08), load_json(BGO_GEOMETRY))
     keys = [
         "step05_w2_background_cps",
@@ -280,9 +285,10 @@ def main() -> int:
         "step08_w2_background_counts",
     ]
     payload = {
-        "status": "PASS_BGO_SAMPLE_VS_CSI_EXACTPOS_COMPARISON",
+        "status": "PASS_BGO_SAMPLE_VS_CSI_EXACTPOS_M50000_COMPARISON",
         "claim_level": "BGO_SAMPLE_MATERIAL_COMPARISON_AFTER_STEP08_NO_SPATIAL_LIKELIHOOD",
         "inputs": {
+            "csi_label": CSI_LABEL,
             "csi_step05": rel(CSI_STEP05),
             "csi_step06": rel(CSI_STEP06),
             "csi_step07": rel(CSI_STEP07),
@@ -293,7 +299,7 @@ def main() -> int:
             "bgo_step08": rel(BGO_STEP08),
             "bgo_geometry": rel(BGO_GEOMETRY),
         },
-        "rows": {"CsI_exactpos": csi, "BGO": bgo},
+        "rows": {"CsI_exactpos_m50000": csi, "BGO": bgo},
         "comparison": {key: ratio_delta(bgo, csi, key) for key in keys},
         "sidecar_closure": [
             "BGO spatial, fixed-template annular likelihood, detector-threshold replay, and material attenuation sidecars are tracked in Bgo_sample/EXTENDED_CLOSURE_SUMMARY.md.",

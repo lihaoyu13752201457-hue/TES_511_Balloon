@@ -1,0 +1,631 @@
+{
+  "status": "PASS_M_SAMPLING_AUDIT",
+  "scope": "Source-card M sampling plus existing transport-backed M/seed convergence for exact-position delayed activation.",
+  "exact_table": {
+    "table": "runs/step02_delay_fix_v3p5_centerfinger_fullstat_v2_exactpos/exactpos_weighted_rpip_table.csv",
+    "summary": "runs/step02_delay_fix_v3p5_centerfinger_fullstat_v2_exactpos/exactpos_weighted_rpip_summary.json",
+    "status": "PASS_EXACTPOS_WEIGHTED_RPIP_TABLE",
+    "rows": 253770,
+    "total_activity_Bq_from_table": 85.6366958652768,
+    "fixed_total_activity_Bq_from_summary": 85.63669586527698,
+    "relative_activity_delta": -1.991322234695988e-15,
+    "species_count": 208,
+    "row_weight_effective_sample_size": 128834.16557272544,
+    "species_weight_effective_sample_size": 1.6625910256959808,
+    "top20_species_activity_fraction": 0.9887118637145523,
+    "top50_species_activity_fraction": 0.9966713099336626,
+    "top100_species_activity_fraction": 0.9990945047272938,
+    "top200_species_activity_fraction": 0.9999999997160839,
+    "top500_species_activity_fraction": 1.0,
+    "expected_draws_at_M5000_by_incident_family": {
+      "n": 4832.590927044906,
+      "muminus": 140.40282231090774,
+      "p": 22.750613184515387,
+      "alpha": 3.8891837447414965,
+      "muplus": 0.28125984532080184,
+      "eplus": 0.08519386960935053
+    },
+    "category_activity_fraction": {
+      "CsI active shield": 0.8093010542933021,
+      "other": 0.07838039142809786,
+      "Cu/support": 0.04276031809894314,
+      "W/collimator": 0.0402300400453071,
+      "Al shells": 0.021383307524492516,
+      "window": 0.006149309317148476,
+      "TES/absorber": 0.0017955792927088186
+    },
+    "coordinate_weighted_quantiles": {
+      "x": [
+        -20.81027,
+        -5.437592734656192,
+        14.358696170386187
+      ],
+      "y": [
+        -15.802871548287996,
+        0.08143160408344467,
+        15.835009012549735
+      ],
+      "z": [
+        -21.40710346161114,
+        -7.3196344929408665,
+        14.19341
+      ]
+    }
+  },
+  "source_card_cases": [
+    {
+      "label": "M5000_seed260613",
+      "manifest": "runs/step02_delay_fix_v3p5_centerfinger_fullstat_v2_exactpos/exactpos_delayed_source_manifest.json",
+      "source": "runs/step02_delay_fix_v3p5_centerfinger_fullstat_v2_exactpos/activation_decay_day15_groundstate_fixed.source",
+      "manifest_status": "PASS_V3P5_EXACTPOS_DELAYED_SOURCE",
+      "sampling_audit_status": "PASS",
+      "M": 5000,
+      "seed": 260613,
+      "source_ref_count": 5000,
+      "parsed_pointsource_blocks": 5000,
+      "manifest_sum_flux_Bq": 85.63669586527698,
+      "source_text_sum_flux_Bq": 85.63669600000001,
+      "source_text_flux_relative_delta": 1.573192854974022e-09,
+      "manifest_flux_relative_delta": 0.0,
+      "flux_min_Bq": 0.0171273392,
+      "flux_max_Bq": 0.0171273392,
+      "matched_back_to_exact_table_fraction": 1.0,
+      "ambiguous_coordinate_key_fraction": 0.0,
+      "distinct_species_drawn": 61,
+      "manifest_distinct_species_drawn": 231,
+      "missed_nuclides_count": 147,
+      "missed_nuclides_total_activity_Bq": 0.3914859359396749,
+      "missed_nuclides_total_activity_fraction": 0.00457147408577694,
+      "missed_nuclides_expected_draws_sum": 22.8573704288847,
+      "missed_nuclides_activity_Bq_by_dominant_incident_family": {
+        "n": 0.2918852598520399,
+        "p": 0.05927710801906116,
+        "muminus": 0.0330799310295736,
+        "alpha": 0.0072436370390001
+      },
+      "missed_nuclides_activity_Bq_by_dominant_category": {
+        "CsI active shield": 0.2592074278906919,
+        "W/collimator": 0.06422471244603979,
+        "other": 0.05285493761142968,
+        "Cu/support": 0.010604065346083467,
+        "Al shells": 0.00455294087653003,
+        "TES/absorber": 4.18517689e-05
+      },
+      "species_total_variation": 0.01734208245639053,
+      "incident_family_total_variation": 0.002131691954116815,
+      "category_total_variation": 0.004343625623436549,
+      "top20_species_manifest_max_abs_sigma_delta": 2.085646112209594,
+      "top20_species_manifest_chi2": 17.16573052065295,
+      "max_abs_coordinate_mean_sigma": 0.5011127445252764,
+      "max_coordinate_histogram_tv_20bin": 0.024886173001779983,
+      "coordinate_checks": {
+        "x": {
+          "expected_weighted_mean_cm": -4.3086613336680335,
+          "sample_mean_cm": -4.2293069558,
+          "mean_delta_cm": 0.07935437786803323,
+          "mean_delta_sigma": 0.5011127445252764,
+          "expected_q05_q50_q95_cm": [
+            -20.81027,
+            -5.437592734656192,
+            14.358696170386187
+          ],
+          "sample_q05_q50_q95_cm": [
+            -20.6484895,
+            -5.424087500000001,
+            14.5645385
+          ],
+          "histogram_tv_20bin": 0.013547631549144738
+        },
+        "y": {
+          "expected_weighted_mean_cm": 0.028755134844338823,
+          "sample_mean_cm": 0.0903393108,
+          "mean_delta_cm": 0.06158417595566118,
+          "mean_delta_sigma": 0.4266442850011913,
+          "expected_q05_q50_q95_cm": [
+            -15.802871548287996,
+            0.08143160408344467,
+            15.835009012549735
+          ],
+          "sample_q05_q50_q95_cm": [
+            -15.853231,
+            0.1011495,
+            15.953301000000002
+          ],
+          "histogram_tv_20bin": 0.024886173001779983
+        },
+        "z": {
+          "expected_weighted_mean_cm": -5.637387899437145,
+          "sample_mean_cm": -5.6626714622,
+          "mean_delta_cm": -0.025283562762854928,
+          "mean_delta_sigma": -0.15826645973820383,
+          "expected_q05_q50_q95_cm": [
+            -21.40710346161114,
+            -7.3196344929408665,
+            14.19341
+          ],
+          "sample_q05_q50_q95_cm": [
+            -21.3854085,
+            -7.413449,
+            14.218843500000002
+          ],
+          "histogram_tv_20bin": 0.020881386466144167
+        }
+      }
+    },
+    {
+      "label": "M5000_seed260614",
+      "manifest": "runs/step02_delay_fix_v3p5_centerfinger_fullstat_v2_exactpos_m05000_s260614/exactpos_delayed_source_manifest.json",
+      "source": "runs/step02_delay_fix_v3p5_centerfinger_fullstat_v2_exactpos_m05000_s260614/activation_decay_day15_groundstate_fixed.source",
+      "manifest_status": "PASS_V3P5_EXACTPOS_DELAYED_SOURCE",
+      "sampling_audit_status": "PASS",
+      "M": 5000,
+      "seed": 260614,
+      "source_ref_count": 5000,
+      "parsed_pointsource_blocks": 5000,
+      "manifest_sum_flux_Bq": 85.63669586527698,
+      "source_text_sum_flux_Bq": 85.63669600000001,
+      "source_text_flux_relative_delta": 1.573192854974022e-09,
+      "manifest_flux_relative_delta": 0.0,
+      "flux_min_Bq": 0.0171273392,
+      "flux_max_Bq": 0.0171273392,
+      "matched_back_to_exact_table_fraction": 1.0,
+      "ambiguous_coordinate_key_fraction": 0.0,
+      "distinct_species_drawn": 50,
+      "manifest_distinct_species_drawn": 237,
+      "missed_nuclides_count": 158,
+      "missed_nuclides_total_activity_Bq": 0.4576792160396748,
+      "missed_nuclides_total_activity_fraction": 0.005344428710324046,
+      "missed_nuclides_expected_draws_sum": 26.72214355162023,
+      "missed_nuclides_activity_Bq_by_dominant_incident_family": {
+        "n": 0.3589015413650399,
+        "p": 0.06933131998406111,
+        "muminus": 0.02424145481957361,
+        "alpha": 0.0052048998710001
+      },
+      "missed_nuclides_activity_Bq_by_dominant_category": {
+        "CsI active shield": 0.2808135184276921,
+        "other": 0.0750646213564293,
+        "W/collimator": 0.06624262658603979,
+        "Cu/support": 0.03096365702408357,
+        "Al shells": 0.00455294087653003,
+        "TES/absorber": 4.18517689e-05
+      },
+      "species_total_variation": 0.015102320303055947,
+      "incident_family_total_variation": 0.0031415987888692275,
+      "category_total_variation": 0.004391073137490692,
+      "top20_species_manifest_max_abs_sigma_delta": 2.1574238446904457,
+      "top20_species_manifest_chi2": 22.514900248143714,
+      "max_abs_coordinate_mean_sigma": 1.176281150340706,
+      "max_coordinate_histogram_tv_20bin": 0.024202243148527466,
+      "coordinate_checks": {
+        "x": {
+          "expected_weighted_mean_cm": -4.3086613336680335,
+          "sample_mean_cm": -4.341952244,
+          "mean_delta_cm": -0.033290910331966295,
+          "mean_delta_sigma": -0.2102278398797304,
+          "expected_q05_q50_q95_cm": [
+            -20.81027,
+            -5.437592734656192,
+            14.358696170386187
+          ],
+          "sample_q05_q50_q95_cm": [
+            -21.093942000000002,
+            -5.255921,
+            14.759436500000012
+          ],
+          "histogram_tv_20bin": 0.024107605725789762
+        },
+        "y": {
+          "expected_weighted_mean_cm": 0.028755134844338823,
+          "sample_mean_cm": 0.19854600719999999,
+          "mean_delta_cm": 0.16979087235566115,
+          "mean_delta_sigma": 1.176281150340706,
+          "expected_q05_q50_q95_cm": [
+            -15.802871548287996,
+            0.08143160408344467,
+            15.835009012549735
+          ],
+          "sample_q05_q50_q95_cm": [
+            -15.9057095,
+            0.4958405,
+            16.0226045
+          ],
+          "histogram_tv_20bin": 0.024202243148527466
+        },
+        "z": {
+          "expected_weighted_mean_cm": -5.637387899437145,
+          "sample_mean_cm": -5.652415893,
+          "mean_delta_cm": -0.015027993562855002,
+          "mean_delta_sigma": -0.09407010240090918,
+          "expected_q05_q50_q95_cm": [
+            -21.40710346161114,
+            -7.3196344929408665,
+            14.19341
+          ],
+          "sample_q05_q50_q95_cm": [
+            -21.432964,
+            -7.2041345,
+            13.977635000000001
+          ],
+          "histogram_tv_20bin": 0.018666889950619353
+        }
+      }
+    },
+    {
+      "label": "M20000_seed260613",
+      "manifest": "runs/step02_delay_fix_v3p5_centerfinger_fullstat_v2_exactpos_m20000_s260613/exactpos_delayed_source_manifest.json",
+      "source": "runs/step02_delay_fix_v3p5_centerfinger_fullstat_v2_exactpos_m20000_s260613/activation_decay_day15_groundstate_fixed.source",
+      "manifest_status": "PASS_V3P5_EXACTPOS_DELAYED_SOURCE",
+      "sampling_audit_status": "PASS",
+      "M": 20000,
+      "seed": 260613,
+      "source_ref_count": 20000,
+      "parsed_pointsource_blocks": 20000,
+      "manifest_sum_flux_Bq": 85.63669586527698,
+      "source_text_sum_flux_Bq": 85.6366958,
+      "source_text_flux_relative_delta": -7.622547534053666e-10,
+      "manifest_flux_relative_delta": 0.0,
+      "flux_min_Bq": 0.00428183479,
+      "flux_max_Bq": 0.00428183479,
+      "matched_back_to_exact_table_fraction": 1.0,
+      "ambiguous_coordinate_key_fraction": 0.0,
+      "distinct_species_drawn": 101,
+      "manifest_distinct_species_drawn": 468,
+      "missed_nuclides_count": 107,
+      "missed_nuclides_total_activity_Bq": 0.1266086632276749,
+      "missed_nuclides_total_activity_fraction": 0.0014784393763493013,
+      "missed_nuclides_expected_draws_sum": 29.56878752698603,
+      "missed_nuclides_activity_Bq_by_dominant_incident_family": {
+        "n": 0.08313808966324011,
+        "p": 0.024441911184061128,
+        "muminus": 0.011785025341373604,
+        "alpha": 0.0072436370390001
+      },
+      "missed_nuclides_activity_Bq_by_dominant_category": {
+        "CsI active shield": 0.052280251776491746,
+        "other": 0.03770765230742968,
+        "W/collimator": 0.021421901152239995,
+        "Cu/support": 0.010604065346083467,
+        "Al shells": 0.00455294087653003,
+        "TES/absorber": 4.18517689e-05
+      },
+      "species_total_variation": 0.009607847465264371,
+      "incident_family_total_variation": 0.0034147758170979853,
+      "category_total_variation": 0.0032695963442430365,
+      "top20_species_manifest_max_abs_sigma_delta": 1.2434606077602683,
+      "top20_species_manifest_chi2": 10.410427775581601,
+      "max_abs_coordinate_mean_sigma": 0.9305361122216522,
+      "max_coordinate_histogram_tv_20bin": 0.010953373931985848,
+      "coordinate_checks": {
+        "x": {
+          "expected_weighted_mean_cm": -4.3086613336680335,
+          "sample_mean_cm": -4.3426289165,
+          "mean_delta_cm": -0.033967582831966325,
+          "mean_delta_sigma": -0.42900188030264197,
+          "expected_q05_q50_q95_cm": [
+            -20.81027,
+            -5.437592734656192,
+            14.358696170386187
+          ],
+          "sample_q05_q50_q95_cm": [
+            -20.777620499999998,
+            -5.5159804999999995,
+            14.486445499999993
+          ],
+          "histogram_tv_20bin": 0.00864824755974479
+        },
+        "y": {
+          "expected_weighted_mean_cm": 0.028755134844338823,
+          "sample_mean_cm": 0.05871967395,
+          "mean_delta_cm": 0.02996453910566118,
+          "mean_delta_sigma": 0.4151780603942578,
+          "expected_q05_q50_q95_cm": [
+            -15.802871548287996,
+            0.08143160408344467,
+            15.835009012549735
+          ],
+          "sample_q05_q50_q95_cm": [
+            -15.8002995,
+            0.1053345,
+            15.846924499999998
+          ],
+          "histogram_tv_20bin": 0.010953373931985848
+        },
+        "z": {
+          "expected_weighted_mean_cm": -5.637387899437145,
+          "sample_mean_cm": -5.7117159289999995,
+          "mean_delta_cm": -0.07432802956285478,
+          "mean_delta_sigma": -0.9305361122216522,
+          "expected_q05_q50_q95_cm": [
+            -21.40710346161114,
+            -7.3196344929408665,
+            14.19341
+          ],
+          "sample_q05_q50_q95_cm": [
+            -21.3320105,
+            -7.4030735,
+            14.147012
+          ],
+          "histogram_tv_20bin": 0.010509336725870264
+        }
+      }
+    },
+    {
+      "label": "M50000_seed260613",
+      "manifest": "runs/step02_delay_fix_v3p5_centerfinger_fullstat_v2_exactpos_m50000_s260613/exactpos_delayed_source_manifest.json",
+      "source": "runs/step02_delay_fix_v3p5_centerfinger_fullstat_v2_exactpos_m50000_s260613/activation_decay_day15_groundstate_fixed.source",
+      "manifest_status": "PASS_V3P5_EXACTPOS_DELAYED_SOURCE",
+      "sampling_audit_status": "PASS",
+      "M": 50000,
+      "seed": 260613,
+      "source_ref_count": 50000,
+      "parsed_pointsource_blocks": 50000,
+      "manifest_sum_flux_Bq": 85.63669586527698,
+      "source_text_sum_flux_Bq": 85.63669600000003,
+      "source_text_flux_relative_delta": 1.5731930209175417e-09,
+      "manifest_flux_relative_delta": 0.0,
+      "flux_min_Bq": 0.00171273392,
+      "flux_max_Bq": 0.00171273392,
+      "matched_back_to_exact_table_fraction": 1.0,
+      "ambiguous_coordinate_key_fraction": 0.0,
+      "distinct_species_drawn": 132,
+      "manifest_distinct_species_drawn": 696,
+      "missed_nuclides_count": 76,
+      "missed_nuclides_total_activity_Bq": 0.05745012620487438,
+      "missed_nuclides_total_activity_fraction": 0.0006708587437242382,
+      "missed_nuclides_expected_draws_sum": 33.542937186211915,
+      "missed_nuclides_activity_Bq_by_dominant_incident_family": {
+        "n": 0.03234047992053956,
+        "p": 0.018784461154961133,
+        "alpha": 0.0031661627030000997,
+        "muminus": 0.003159022426373603
+      },
+      "missed_nuclides_activity_Bq_by_dominant_category": {
+        "CsI active shield": 0.023237628217491636,
+        "other": 0.015243917412729282,
+        "Cu/support": 0.00992246156008347,
+        "W/collimator": 0.008927585028139999,
+        "Al shells": 7.668221753e-05,
+        "TES/absorber": 4.18517689e-05
+      },
+      "species_total_variation": 0.005443122453118755,
+      "incident_family_total_variation": 0.0012546531801949233,
+      "category_total_variation": 0.0009299811558097759,
+      "top20_species_manifest_max_abs_sigma_delta": 1.5324725818897746,
+      "top20_species_manifest_chi2": 10.818470621750377,
+      "max_abs_coordinate_mean_sigma": 1.343117749510497,
+      "max_coordinate_histogram_tv_20bin": 0.008143802024404208,
+      "coordinate_checks": {
+        "x": {
+          "expected_weighted_mean_cm": -4.3086613336680335,
+          "sample_mean_cm": -4.375920198239999,
+          "mean_delta_cm": -0.06725886457196584,
+          "mean_delta_sigma": -1.343117749510497,
+          "expected_q05_q50_q95_cm": [
+            -20.81027,
+            -5.437592734656192,
+            14.358696170386187
+          ],
+          "sample_q05_q50_q95_cm": [
+            -20.8576085,
+            -5.556578,
+            14.358748499999999
+          ],
+          "histogram_tv_20bin": 0.00644177457847345
+        },
+        "y": {
+          "expected_weighted_mean_cm": 0.028755134844338823,
+          "sample_mean_cm": -0.010355990219999998,
+          "mean_delta_cm": -0.03911112506433882,
+          "mean_delta_sigma": -0.8568348197937037,
+          "expected_q05_q50_q95_cm": [
+            -15.802871548287996,
+            0.08143160408344467,
+            15.835009012549735
+          ],
+          "sample_q05_q50_q95_cm": [
+            -15.843179000000001,
+            0.046836,
+            15.835035
+          ],
+          "histogram_tv_20bin": 0.008143802024404208
+        },
+        "z": {
+          "expected_weighted_mean_cm": -5.637387899437145,
+          "sample_mean_cm": -5.63768858032,
+          "mean_delta_cm": -0.00030068088285517547,
+          "mean_delta_sigma": -0.005951911063857183,
+          "expected_q05_q50_q95_cm": [
+            -21.40710346161114,
+            -7.3196344929408665,
+            14.19341
+          ],
+          "sample_q05_q50_q95_cm": [
+            -21.3574725,
+            -7.287079,
+            14.288842999999956
+          ],
+          "histogram_tv_20bin": 0.006632676676708745
+        }
+      }
+    }
+  ],
+  "transport": {
+    "summary": "outputs/reports/v3p5_exactpos_convergence_20260614/v3p5_exactpos_convergence_summary.json",
+    "case_table": "outputs/reports/v3p5_exactpos_convergence_20260614/v3p5_exactpos_convergence_cases.csv",
+    "status": "PASS_EXACTPOS_TRANSPORT_CONVERGENCE",
+    "evaluation": {
+      "status": "PASS_EXACTPOS_TRANSPORT_CONVERGENCE",
+      "authority_recommendation": "PROMOTE_EXACTPOS_TO_CURRENT_RATE_AUTHORITY",
+      "transport_backed_cases": 4,
+      "support_sizes_with_transport": [
+        5000,
+        20000,
+        50000
+      ],
+      "seeds_by_support": {
+        "5000": [
+          260613,
+          260614
+        ],
+        "20000": [
+          260613
+        ],
+        "50000": [
+          260613
+        ]
+      },
+      "w2_delayed_cps_relative_range": 0.18741272004229206,
+      "w2_background_cps_relative_range": 0.011191491816874802,
+      "Z20d_relative_range": 0.005508440853127455,
+      "problems": [],
+      "criteria": {
+        "minimum_transport_backed_cases": 3,
+        "minimum_support_sizes": 2,
+        "minimum_repeated_seed_supports": 1,
+        "max_w2_delayed_cps_relative_range": 0.2,
+        "max_w2_background_cps_relative_range": 0.05,
+        "max_Z20d_relative_range": 0.05
+      }
+    },
+    "recomputed": {
+      "transport_backed_cases": 4,
+      "w2_delayed_cps_min_max": [
+        0.003382341482601921,
+        0.004085558442574286
+      ],
+      "w2_background_cps_min_max": [
+        0.06246506611510684,
+        0.06316828307507921
+      ],
+      "Z20d_min_max": [
+        6.121414663524704,
+        6.155222219143131
+      ],
+      "w2_delayed_relative_range": 0.18741272004229206,
+      "w2_background_relative_range": 0.011191491816874804,
+      "Z20d_relative_range": 0.005508440853127454
+    },
+    "cases": [
+      {
+        "label": "fullstat_v2_exactpos",
+        "manifest": "runs/step02_delay_fix_v3p5_centerfinger_fullstat_v2_exactpos/exactpos_delayed_source_manifest.json",
+        "source_mode": "sampled_equal_flux_pointsource_blocks",
+        "n_pointsource_blocks": "5000",
+        "seed": "260613",
+        "sampling_rows": "253770",
+        "fixed_total_activity_Bq": "85.63669586527698",
+        "sum_flux_check_Bq": "85.63669586527698",
+        "sampling_status": "PASS",
+        "top20_max_abs_sigma_delta": "2.085646112209594",
+        "top20_expected_species_chi2": "17.16573052065295",
+        "transport_status": "PASS",
+        "transport_SE": "1000000",
+        "transport_ID": "1000000",
+        "transport_TE_s": "11530.473845",
+        "step05_status": "PASS_V3P5_STEP05_SIDE_ENTRY_COMPTON_TIME_AXIS_L1_FULLSTAT_V2_EXACTPOS",
+        "w2_prompt_cps": "0.05908272463250492",
+        "w2_delayed_cps": "0.003382341482601921",
+        "w2_background_cps": "0.06246506611510684",
+        "w2_signal_cps_at_1e_4": "7.957466258001846e-05",
+        "w2_final_events": "126",
+        "w2_delayed_events": "39",
+        "step08_status": "PASS_V3P5_STEP08_TIME_DEPENDENT_FULLSTAT_V2_EXACTPOS",
+        "Z20d": "6.155222219143131",
+        "F3_20d": "4.8739101419763696e-05",
+        "has_transport_backed_rate": "True"
+      },
+      {
+        "label": "fullstat_v2_exactpos_m05000_s260614",
+        "manifest": "runs/step02_delay_fix_v3p5_centerfinger_fullstat_v2_exactpos_m05000_s260614/exactpos_delayed_source_manifest.json",
+        "source_mode": "sampled_equal_flux_pointsource_blocks",
+        "n_pointsource_blocks": "5000",
+        "seed": "260614",
+        "sampling_rows": "253770",
+        "fixed_total_activity_Bq": "85.63669586527698",
+        "sum_flux_check_Bq": "85.63669586527698",
+        "sampling_status": "PASS",
+        "top20_max_abs_sigma_delta": "2.1574238446904457",
+        "top20_expected_species_chi2": "22.514900248143714",
+        "transport_status": "PASS",
+        "transport_SE": "1000000",
+        "transport_ID": "1000000",
+        "transport_TE_s": "11503.935303",
+        "step05_status": "PASS_V3P5_STEP05_SIDE_ENTRY_COMPTON_TIME_AXIS_L1_FULLSTAT_V2_EXACTPOS_M05000_S260614",
+        "w2_prompt_cps": "0.05908272463250492",
+        "w2_delayed_cps": "0.004085558442574286",
+        "w2_background_cps": "0.06316828307507921",
+        "w2_signal_cps_at_1e_4": "7.957466258001846e-05",
+        "w2_final_events": "134",
+        "w2_delayed_events": "47",
+        "step08_status": "PASS_V3P5_STEP08_TIME_DEPENDENT_FULLSTAT_V2_EXACTPOS_M05000_S260614",
+        "Z20d": "6.121414663524704",
+        "F3_20d": "4.900827937496074e-05",
+        "has_transport_backed_rate": "True"
+      },
+      {
+        "label": "fullstat_v2_exactpos_m20000_s260613",
+        "manifest": "runs/step02_delay_fix_v3p5_centerfinger_fullstat_v2_exactpos_m20000_s260613/exactpos_delayed_source_manifest.json",
+        "source_mode": "sampled_equal_flux_pointsource_blocks",
+        "n_pointsource_blocks": "20000",
+        "seed": "260613",
+        "sampling_rows": "253770",
+        "fixed_total_activity_Bq": "85.63669586527698",
+        "sum_flux_check_Bq": "85.63669586527698",
+        "sampling_status": "PASS",
+        "top20_max_abs_sigma_delta": "1.2434606077602683",
+        "top20_expected_species_chi2": "10.410427775581601",
+        "transport_status": "PASS",
+        "transport_SE": "1000000",
+        "transport_ID": "1000000",
+        "transport_TE_s": "11527.658342",
+        "step05_status": "PASS_V3P5_STEP05_SIDE_ENTRY_COMPTON_TIME_AXIS_L1_FULLSTAT_V2_EXACTPOS_M20000_S260613",
+        "w2_prompt_cps": "0.05908272463250492",
+        "w2_delayed_cps": "0.003643411242244815",
+        "w2_background_cps": "0.06272613587474973",
+        "w2_signal_cps_at_1e_4": "7.957466258001846e-05",
+        "w2_final_events": "129",
+        "w2_delayed_events": "42",
+        "step08_status": "PASS_V3P5_STEP08_TIME_DEPENDENT_FULLSTAT_V2_EXACTPOS_M20000_S260613",
+        "Z20d": "6.142605265176179",
+        "F3_20d": "4.883921187330203e-05",
+        "has_transport_backed_rate": "True"
+      },
+      {
+        "label": "fullstat_v2_exactpos_m50000_s260613",
+        "manifest": "runs/step02_delay_fix_v3p5_centerfinger_fullstat_v2_exactpos_m50000_s260613/exactpos_delayed_source_manifest.json",
+        "source_mode": "sampled_equal_flux_pointsource_blocks",
+        "n_pointsource_blocks": "50000",
+        "seed": "260613",
+        "sampling_rows": "253770",
+        "fixed_total_activity_Bq": "85.63669586527698",
+        "sum_flux_check_Bq": "85.63669586527698",
+        "sampling_status": "PASS",
+        "top20_max_abs_sigma_delta": "1.5324725818897746",
+        "top20_expected_species_chi2": "10.818470621750377",
+        "transport_status": "PASS",
+        "transport_SE": "1000000",
+        "transport_ID": "1000000",
+        "transport_TE_s": "11545.456287",
+        "step05_status": "PASS_V3P5_STEP05_SIDE_ENTRY_COMPTON_TIME_AXIS_L1_FULLSTAT_V2_EXACTPOS_M50000_S260613",
+        "w2_prompt_cps": "0.05908272463250492",
+        "w2_delayed_cps": "0.0038976372073461713",
+        "w2_background_cps": "0.06298036183985109",
+        "w2_signal_cps_at_1e_4": "7.957466258001846e-05",
+        "w2_final_events": "132",
+        "w2_delayed_events": "45",
+        "step08_status": "PASS_V3P5_STEP08_TIME_DEPENDENT_FULLSTAT_V2_EXACTPOS_M50000_S260613",
+        "Z20d": "6.130394687582996",
+        "F3_20d": "4.893649027323553e-05",
+        "has_transport_backed_rate": "True"
+      }
+    ]
+  },
+  "problems": [],
+  "outputs": {
+    "summary_json": "outputs/reports/m_sampling_audit_20260616/m_sampling_audit_summary.json",
+    "report_md": "outputs/reports/m_sampling_audit_20260616/m_sampling_audit_report.md",
+    "top20_species_deviation_csv": "outputs/reports/m_sampling_audit_20260616/m_sampling_audit_top20_species_deviation.csv",
+    "missed_nuclides_csv": "outputs/reports/m_sampling_audit_20260616/m_sampling_audit_missed_nuclides.csv"
+  }
+}

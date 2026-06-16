@@ -20,5 +20,5 @@ Authority policy:
 - If a value differs between this directory and the closure reports, the closure reports win and this directory must be updated.
 - `opticsim_full` is the raw external B-FULL run environment referenced by
   the Step04 authority JSON. Paper-facing optical authority is the repo copy in
-  `stepwise_maintenance/step04_opticsim/` plus the Step09 EventList bridge
-  summaries.
+  `stepwise_maintenance/step04_opticsim/` plus the Step09 focused-signal
+  event-table bridge summaries.

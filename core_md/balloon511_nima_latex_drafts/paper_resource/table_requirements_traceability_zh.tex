@@ -1,16 +1,16 @@
 \begin{table}[t]
 \centering
-\caption{科学目标到仪器与模拟需求的可追溯关系。该表总结当前 v3p5 exact-position 分析所采用的需求边界；它不是独立的灵敏度计算。}
+\caption{科学目标到仪器与模拟需求的可追溯关系。该表总结基准 exact-position 分析所采用的需求边界；它不是独立的灵敏度计算。}
 \label{tab:requirements_traceability}
 \footnotesize
 \begin{tabular}{@{}p{0.20\linewidth}p{0.22\linewidth}p{0.35\linewidth}p{0.14\linewidth}@{}}
 \toprule
-科学驱动 & 需求 & 当前实现或证据 & Authority \\
+科学驱动 & 需求 & 当前实现或证据 & 对应流程组件 \\
 \midrule
-$\sim10^{-4}\cms$ 及以下的紧凑 511 keV 目标 & 将 511 keV 光子集中到小焦平面 & Ge(111) f10m A1 Laue 透镜，$\aeff(511\keV)=20.08476\,\mathrm{cm^2}$；37,194 条 within-Be 焦面记录完成探测器桥接输运 & Step04, Step09 \\
-窄线谱学，而非宽能带计数 & 使用亚 keV 分析线窗并保持源流量归一化 & $\wii=510.58$--$511.42\keV$；Step05 在 $\fref=10^{-4}\cms$ 下信号率 $0.00118117\cps$；Step07 响应 $11.8117\,\mathrm{cps}/(\mathrm{ph\,cm^{-2}\,s^{-1}})$ & Step05, Step07 \\
-气球瞬发、侧入射和活化本底 & 对信号和本底使用同一探测器耦合 veto 与拓扑选择 & CsI 后处理 veto、侧入射 Compton/FoV 一致性检验、精确位置延迟输运；选后 $\wii$ 本底 $0.0624651\cps$，分解为瞬发 $0.0590827\cps$、延迟 $0.00338234\cps$ & Step05 exactpos \\
-任务级灵敏度 claim & 通过任务时间折叠计算率，并检验延迟源采样稳定性 & Step08 给出 $Z_{20\mathrm{d}}=6.15522$ 和 $\fthree(20\mathrm{d})=4.87391\times10^{-5}\cms$；M/seed 扫描使 $Z_{20\mathrm{d}}$ 仅变化 0.551\% & Step06--08; M/seed \\
+$\sim10^{-4}\cms$ 及以下的紧凑 511 keV 目标 & 将 511 keV 光子集中到小焦平面 & 10 m Ge(111) Laue 透镜，$\aeff(511\keV)=20.08476\,\mathrm{cm^2}$；通过 Be 入射孔径的真实追踪焦面粒子被重放到探测器模型中 & Laue 光学；探测器耦合 \\
+窄线谱学，而非宽能带计数 & 使用亚 keV 分析线窗并保持源流量归一化 & $\wii=510.58$--$511.42\keV$；$\fzero=10^{-4}\cms$ 下选后信号率 $0.00118117\cps$；源流量响应 $11.8117\,\mathrm{cps}/(\mathrm{ph\,cm^{-2}\,s^{-1}})$ & 探测器选择；源归一化 \\
+气球瞬发、侧入射和活化本底 & 对信号和本底使用同一探测器耦合 veto 与拓扑选择 & CsI 后处理 veto、侧入射 Compton/FoV 一致性检验、精确位置延迟输运；选后 $\wii$ 本底 $0.0629804\cps$，分解为瞬发 $0.0590827\cps$、延迟 $0.00389764\cps$；辅助上游光学接口闭合使用匹配 Ge 体积和 $1060\,\mathrm{cm}$ 源面 & 统一探测器选择；辅助闭合 \\
+任务级灵敏度结果 & 通过任务时间折叠计算率，并检验延迟源采样稳定性 & 最终累积计算给出 $Z_{20\mathrm{d}}=6.13039$ 和 $\fthree(20\mathrm{d})=4.89365\times10^{-5}\cms$；M/seed 扫描使 $Z_{20\mathrm{d}}$ 仅变化 0.551\% & 任务时间折叠；稳健性检查 \\
 \bottomrule
 \end{tabular}
 \end{table}

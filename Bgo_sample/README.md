@@ -43,10 +43,10 @@ This package is a current-v3p5 BGO equal-attenuation geometry sample for TES_511
 | Step05 W2 direct Z20d/T3/F3 | 6.48194 / 4.28413 d / 4.62824e-05 ph cm^-2 s^-1 |
 | Step06 W2 mission-mean B/S at 1e-4 ph cm^-2 s^-1 | 0.0578330 / 0.00117756 cps |
 | Step08 W2 time-dependent Z20d/T3/F3 | 6.43475 / 4.21622 d / 4.66219e-05 ph cm^-2 s^-1 |
-| BGO-vs-CsI exactpos comparison | PASS_BGO_SAMPLE_VS_CSI_EXACTPOS_COMPARISON |
-| BGO/CsI mission-mean background ratio | 0.922619 (-7.738%) |
-| BGO/CsI Z20d ratio | 1.04541 (+4.541%) |
-| BGO/CsI F3(20d) ratio | 0.956560 (-4.344%; lower is better) |
+| BGO-vs-CsI exactpos comparison | PASS_BGO_SAMPLE_VS_CSI_EXACTPOS_M50000_COMPARISON |
+| BGO/CsI mission-mean background ratio | 0.915191 (-8.481%) |
+| BGO/CsI Z20d ratio | 1.04965 (+4.965%) |
+| BGO/CsI F3(20d) ratio | 0.952702 (-4.730%; lower is better) |
 | Extended closure | PASS_BGO_SAMPLE_EXTENDED_CLOSURE |
 | BGO spatial `spot_r90` sidecar Z20d/F3 | 9.15885 / 3.27552e-05 ph cm^-2 s^-1 |
 | BGO fixed-template annular likelihood Z20d/F3 | 9.27696 / 3.23382e-05 ph cm^-2 s^-1 |
@@ -108,5 +108,6 @@ Code:
 - The Step09 focused transport replays the current f10m A1 v3p5 EventList through `Bgo_sample.geo.setup` and stores `SE=ID=37194`. It is a BGO focused-signal SIM, not a selected detector-response rate.
 - Step05 L1 detector response now consumes the BGO prompt, exact-position delayed, and focused SIMs with a 70 keV BGO active-veto threshold. Its W2 direct detector-response expectation is `B/S=0.0578455/0.00118595 cps` at `1e-4 ph cm^-2 s^-1`.
 - Step05 direct `Z20d/T3/F3` is a constant-rate detector-response diagnostic only. The material-comparison sensitivity authority is Step08 time-dependent: W2 `Z20d=6.43475`, `T3=4.21622 d`, and `F3(20d)=4.66219e-05 ph cm^-2 s^-1`.
-- The matched CsI exact-position comparison gives BGO `F3(20d)` lower by 4.344% and `Z20d` higher by 4.541%. This is the hard-window counting authority.
+- The matched CsI exact-position M=50000 comparison gives BGO `F3(20d)` lower by 4.730% and `Z20d` higher by 4.965%. This is the hard-window counting authority.
+- The comparison uses material-specific active-veto thresholds: CsI 50 keV and BGO 70 keV; it is not a same-threshold veto scan.
 - The extended sidecar closure gives detector-coupled `spot_r90` spatial `Z20d=9.15885`, fixed-template annular-likelihood `Z20d=9.27696`, a threshold replay scan with exact 70 keV Step08 reproduction, and a material attenuation design scan with max absolute relative difference `0.0731183 < 0.1`. The annular result is a fixed-template sidecar, not a nuisance-profile publication likelihood.

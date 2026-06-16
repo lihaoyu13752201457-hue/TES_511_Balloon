@@ -1,22 +1,27 @@
 \begin{table}[t]
 \centering
-\caption{v3p5 exact-position 率级 authority 所采用的逐步模拟流程。该表是仓库 workflow 的论文版压缩表述；真正数值 authority 仍由对应验证文件和闭包报告定义。}
+\caption{基准 exact-position 率级计算所采用的逐步模拟流程。该表是已验证工作流的论文版压缩表述；详细验证文件保留 run-level details。}
 \label{tab:simulation_workflow}
-\scriptsize
+\begingroup
+\setlength{\tabcolsep}{2pt}
+\renewcommand{\arraystretch}{0.78}
+\tiny
 \begin{tabular}{@{}p{0.12\linewidth}p{0.25\linewidth}p{0.36\linewidth}p{0.18\linewidth}@{}}
 \toprule
 步骤 & 计算作用 & 当前实现或证据 & 解释边界 \\
 \midrule
-00--01 几何 & 定义探测器质量模型、主动体、局部侧入射坐标和注入面 & v3p5 center-finger 几何，包含 TES 阵列、Be 侧窗、Cu/W 被动材料和分段 CsI 主动屏蔽；局部窗口向上倾斜 $45^\circ$ & 只闭合几何，不产生率级结果 \\
-02 瞬发与积累输运 & 产生瞬发大气事例和活化产生历史 & full-stat v2 瞬发和活化积累流各生成 25,210,216 个粒子；瞬发率采用逐 tag 曝光归一化 & 低统计分支仅作闭包检查，不作论文率级 authority \\
-03 延迟 inventory 与源 & 将活化产物转换为固定 day-15 源并输运延迟衰变 & 固定 inventory 活度 $85.636696\,\mathrm{Bq}$；exact-position 采样 \texttt{PointSource} 支撑，$M=5000$，延迟输运触发数 $10^6$ & 采样支撑保持总活度；充分性由 Step10 下游收敛检验约束 \\
-04 B-FULL Laue 光学 & 计算 511 keV 光学有效面积和聚焦焦面相空间 & Step04 B-FULL Ge(111) authority 文件，来自使用外部 XOP/CRYSTAL rocking curve 的原始 \texttt{opticsim\_full} 运行；f10m A1 给出 $\aeff(511)=20.08476\,\mathrm{cm^2}$ 和 37,194 条 within-Be 焦面记录 & 只计算光学信号；未加入上游光学硬件 self-background \\
-09 EventList 桥接 & 将光学焦面记录重放到探测器几何中 & 37,194/37,194 条 Step04 记录写成 MEGAlib EventList，并通过 v3p5 探测器设置输运 & 使用真实追踪焦面记录，不使用解析 phase-space 投影 \\
-05 探测器响应 & 对瞬发、延迟和聚焦流施加同一探测器选择 & 主动屏蔽后处理 veto、侧入射 Compton/FoV 一致性和 $\wii$ 硬线窗选择；day-15 $\wii$ 率为 $B/S=0.0624651/0.00118117\cps$ & 定量 veto authority 为后处理模型，不是 native production filtering \\
-06 任务时间折叠 & 将选后率沿气球任务时间传播 & 折叠瞬发、延迟活度、大气透过和 accidental-veto live factor；任务平均 $\wii$ 率为 $B/S=0.0626835/0.00117281\cps$ & 率级时间折叠，不是在每个时间 bin 重新粒子输运 \\
-07 源情形 ledger & 将探测器响应映射到源流量单位 & 参考点源情形下 W2 响应为 $11.8117\,\mathrm{cps}/(\mathrm{ph\,cm^{-2}\,s^{-1}})$ & 保持 Route-A 点源归一化与弥散天空 sidecar 分离 \\
-08 显著度 & 计算累积探测显著度和流量阈值 & 时间相关硬线窗结果：$Z_{20\mathrm{d}}=6.15522$，$T_{3\sigma}=4.73758\,\mathrm{d}$，$\fthree(20\mathrm{d})=4.87391\times10^{-5}\cms$ & 使用 Gaussian counting 指标以保持比较一致 \\
-10 稳健性 sidecar & 在最终选后率层面检验 exact-position 支撑点数和随机种子依赖 & 四个真实输运情形覆盖 $M=5000$、20,000 和 50,000；W2 本底和 $Z_{20\mathrm{d}}$ 相对范围为 1.119\% 和 0.551\% & 支持将 exact-position 延迟输运提升为当前率级 authority \\
+00--01 几何 & 定义探测器质量模型、主动体、侧入射坐标和注入面 & 基准探测器/低温系统几何：TES 阵列、Be 侧窗、Cu/W 被动材料、分段 CsI 主动屏蔽；窗口向上倾斜 $45^\circ$ & 只闭合几何，不产生率级结果 \\
+02 瞬发与积累输运 & 产生瞬发大气事例和活化历史 & 探测器/低温系统瞬发和积累流各生成 25,210,216 个粒子；瞬发率按粒子种类曝光归一化 & 低统计量级分支仅作闭包检查；上游光学质量不进入主要率级预算 \\
+03 延迟活度与源 & 将活化产物转换为固定 day-15 延迟源 & 探测器/低温系统延迟活度 $85.636696\,\mathrm{Bq}$；主线 exact-position 点源支撑，$M=50000$，延迟触发数 $10^6$ & 保持总活度；Step10 检验收敛；上游 Ge 代理延迟活度作为独立旁路分量处理 \\
+04 Laue 光学 & 计算 511 keV 有效面积和聚焦焦面相空间 & Ge(111) 10 m 光学 Monte Carlo 使用 XOP/CRYSTAL rocking curve；$\aeff(511)=20.08476\,\mathrm{cm^2}$，光斑被 Be 孔径接受 & 只计算信号；焦面记录是输运后 511 keV $\gamma$，不是光学硬件本底 \\
+09 光学-探测器耦合 & 将光学焦面记录重放到探测器几何 & 接受的焦面 $\gamma$ 光子写成 MEGAlib 粒子列表源，并通过基准探测器设置输运 & 只用真实追踪焦面记录；信号重放不代表光学硬件 self-background \\
+辅助光学硬件 & 检查上游透镜瞬发/活化边界 & 10 m 处等体积有效 Ge 透镜代理；远场源面半径由 $1008.8\,\mathrm{cm}$ 探测器加透镜包络得到，取 $1060\,\mathrm{cm}$；八类 EXPACS/PARMA 粒子族闭合瞬发和活化产生输运；隔离出的 Ge 代理延迟输运选出零个 W2 事例，95\% 上限为 $1.25\times10^{-4}\cps$ & Ge 代理延迟旁路分量已闭合；瞬发自本底隔离和支撑结构仍在主要预算之外 \\
+05 探测器响应 & 对瞬发、延迟和聚焦流施加同一选择 & 主动屏蔽后处理 veto、侧入射 Compton/FoV 一致性和 $\wii$ 硬线窗；day-15 $\wii$ 率为 $B/S=0.0629804/0.00118117\cps$ & 定量 veto 由后处理定义，不依赖生产阶段触发过滤 \\
+06 任务时间折叠 & 将选后率沿气球任务时间传播 & 折叠瞬发、延迟活度、大气透过和 accidental-veto live factor；平均 $\wii$ 率 $B/S=0.0631923/0.00117281\cps$ & 率级时间折叠，不在每个时间 bin 重新输运 \\
+07 源情形 & 将探测器响应映射到源流量单位 & 参考点源 W2 响应为 $11.8117\,\mathrm{cps}/(\mathrm{ph\,cm^{-2}\,s^{-1}})$ & 点源归一化与弥散天空检查分离 \\
+08 显著度 & 计算累积显著度和流量阈值 & 硬线窗结果：$Z_{20\mathrm{d}}=6.13039$，$T_{3\sigma}=4.77766\,\mathrm{d}$，$\fthree(20\mathrm{d})=4.89365\times10^{-5}\cms$ & 使用 Gaussian counting 指标保持比较一致 \\
+10 稳健性检查 & 在最终选后率层面检验支撑点数和随机种子 & 四个真实输运情形覆盖 $M=5000$、20,000 和 50,000；W2 本底和 $Z_{20\mathrm{d}}$ 范围为 1.119\% 和 0.551\% & 支持 exact-position 延迟输运用于主要率级结果 \\
 \bottomrule
 \end{tabular}
+\endgroup
 \end{table}

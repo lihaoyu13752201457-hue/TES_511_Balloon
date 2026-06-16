@@ -1,0 +1,63 @@
+{
+  "status": "BUILT_STEP11_SMOKE_INPUTS",
+  "geometry_setup": "stepwise_maintenance/step11_upstream_optics_background/smoke_geometry/DEMO2_DR_v3p5_centerfinger_with_f10m_laue_ge_proxy.geo.setup",
+  "source_cards": {
+    "gamma": "stepwise_maintenance/step11_upstream_optics_background/smoke_geometry/step11_gamma_smoke100_r1060.source",
+    "n": "stepwise_maintenance/step11_upstream_optics_background/smoke_geometry/step11_n_smoke100_r1060.source",
+    "eminus": "stepwise_maintenance/step11_upstream_optics_background/smoke_geometry/step11_eminus_smoke100_r1060.source",
+    "eplus": "stepwise_maintenance/step11_upstream_optics_background/smoke_geometry/step11_eplus_smoke100_r1060.source",
+    "p": "stepwise_maintenance/step11_upstream_optics_background/smoke_geometry/step11_p_smoke100_r1060.source",
+    "alpha": "stepwise_maintenance/step11_upstream_optics_background/smoke_geometry/step11_alpha_smoke100_r1060.source",
+    "muplus": "stepwise_maintenance/step11_upstream_optics_background/smoke_geometry/step11_muplus_smoke100_r1060.source",
+    "muminus": "stepwise_maintenance/step11_upstream_optics_background/smoke_geometry/step11_muminus_smoke100_r1060.source"
+  },
+  "forced_activation_source": "stepwise_maintenance/step11_upstream_optics_background/smoke_geometry/step11_forced_ge_activation.source",
+  "run_dir": "stepwise_maintenance/step11_upstream_optics_background/smoke_run_r1060",
+  "lens_proxy": {
+    "type": "equal_mass_ge_annulus",
+    "radius_mid_cm": 7.4277929,
+    "r_in_cm": 6.560001446737785,
+    "r_out_cm": 8.295584353262214,
+    "thickness_cm": 1.0218801,
+    "volume_cm3": 82.7722881,
+    "mass_kg": 0.44059688955630005,
+    "density_g_cm3": 5.323,
+    "tile_equivalent": {
+      "n_tiles": 25,
+      "tile_size_cm": 1.8,
+      "tile_thickness_cm": 1.0218801,
+      "total_geometric_area_cm2": 81.0,
+      "total_volume_cm3": 82.7722881
+    },
+    "position_cm": [
+      -707.1067811865474,
+      -0.0,
+      707.1067811865474
+    ],
+    "volume_bound_radius_cm": 8.799310211117145,
+    "production_caveat": "Smoke-test proxy only; production branch needs explicit tile and support volumes."
+  },
+  "source_surface": {
+    "radius_cm": 1060.0,
+    "start_area_cm2": 3529893.5055734916,
+    "geometry_bound_cm": 1008.7993102111171,
+    "margin_fraction": 0.05,
+    "detector_proxy_bound_cm": 138.56406460551017,
+    "lens_center_distance_cm": 1000.0,
+    "lens_volume_bound_radius_cm": 8.799310211117145,
+    "world_half_cm": 2500.0,
+    "closure_policy": "Far-field source surface radius is derived from the detector-plus-upstream-lens enclosing sphere and rounded upward to the next 10 cm."
+  },
+  "expacs_events_per_particle": 100,
+  "forced_activation_events": 1000,
+  "particles": [
+    "gamma",
+    "n",
+    "eminus",
+    "eplus",
+    "p",
+    "alpha",
+    "muplus",
+    "muminus"
+  ]
+}

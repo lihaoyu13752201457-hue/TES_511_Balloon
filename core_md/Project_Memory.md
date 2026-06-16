@@ -167,31 +167,34 @@ Current v3p5 center-finger DR branch checkpoint completed 2026-06-12:
   sidecar gives `Z20d=8.45804` and `F3_20d=3.54692e-5`. These close the
   scalar-`T_atm` and single-cut spatial-analysis boundaries as sidecars; they
   are still not a nuisance-profile publication likelihood.
-- Current exact-position delayed-source rate authority completed 2026-06-14 as
-  `fullstat_v2_exactpos`:
-  `outputs/reports/v3p5_fullstat_performance_w2_closure_fullstat_v2_exactpos_20260613/`.
-  The fixed-inventory exact-RPIP `PointSource` source uses 5000 sampled support
-  blocks, no `RadialProfileBeam` blocks, and preserves the fixed activity
+- Current exact-position delayed-source rate authority is the transported
+  `M=50000` case completed 2026-06-16 as
+  `fullstat_v2_exactpos_m50000_s260613`. The fixed-inventory exact-RPIP
+  `PointSource` source uses 50000 sampled support blocks, no
+  `RadialProfileBeam` blocks, and preserves the fixed activity
   `85.636696 Bq`. Cosima delayed transport stored `SE=1,000,000`,
-  `ID=1,000,000`, `TE=11530.473845 s`. Step05 exactpos W2
-  background/signal is `0.0624651/0.00118117 cps`; Step08 gives
-  `Z20d=6.15522`, `T3=4.73758 day`, and 20-day 3-sigma flux
-  `4.87391e-5 ph cm-2 s-1`. The 1 Ms comparison gives v3p5 W2
-  `F_3sigma(1 Ms)=6.32564e-5 ph cm-2 s-1`. The convergence package
+  `ID=1,000,000`, `TE=11545.456287 s`. Step05 exactpos W2
+  background/signal is `0.0629804/0.00118117 cps`; Step06 mission-mean
+  background/signal is `0.0631923/0.00117281 cps`; Step08 gives
+  `Z20d=6.13039`, `T3=4.77766 day`, and 20-day 3-sigma flux
+  `4.89365e-5 ph cm-2 s-1`. The 1 Ms comparison gives v3p5 W2
+  `F_3sigma(1 Ms)=6.35099e-5 ph cm-2 s-1`. The convergence package
   `outputs/reports/v3p5_exactpos_convergence_20260614/` is
   `PASS_EXACTPOS_TRANSPORT_CONVERGENCE` and recommends
   `PROMOTE_EXACTPOS_TO_CURRENT_RATE_AUTHORITY`. It uses four transport-backed
   cases over `M=5000` seeds `260613/260614`, `M=20000` seed `260613`, and
-  `M=50000` seed `260613`; W2 background relative range is `1.119%` and
-  `Z20d` relative range is `0.551%`. `fullstat_v2` remains the conservative
+  `M=50000` seed `260613`; the largest support case is the paper-facing
+  nominal, while the original `fullstat_v2_exactpos` label remains the M=5000
+  convergence point. W2 background relative range is `1.119%` and `Z20d`
+  relative range is `0.551%`. `fullstat_v2` remains the conservative
   radial-profile baseline cross-check.
-- Full-stat v2 W2 background source breakdown:
-  `stepwise_maintenance/step08_significance/outputs_v3p5_centerfinger_fullstat_v2/w2_background_source_breakdown/`.
-  The selected W2 background is dominated by prompt `eplus`: `80` events,
-  `0.0543377 cps`, `74.5%` of the W2 final background. Delayed activation is
-  `0.0138749 cps` total; within delayed-only W2 events,
-  `Cu64` is the largest nuclide (`52.5%` of delayed events), mainly from
-  `ColdPlate_MXC_50mK_SD_anchor` and `Cu_SubstrateSupport_SolidDisk_L0_deepest`.
+- Current M=50000 exact-position W2 background source breakdown:
+  `stepwise_maintenance/step08_significance/outputs_v3p5_centerfinger_fullstat_v2_exactpos_m50000_s260613/w2_background_source_breakdown/`.
+  The selected W2 background is dominated by prompt atmospheric events:
+  prompt `0.0590827 cps` (`93.8%` of total) and delayed activation
+  `0.00389764 cps` (`6.2%`). The largest prompt particle stream is `eplus`,
+  `0.0543377 cps` (`86.28%` of total). The delayed component is led by
+  `Cu64`, `0.00329134 cps` (`84.44%` of delayed).
 - Full-stat v2 decay-source normalization audits were backfilled with the
   current TT-line guard:
   `runs/step02_decay_source_v3p5_centerfinger_fullstat_v2/normalization_audit_day15.json`
@@ -199,12 +202,33 @@ Current v3p5 center-finger DR branch checkpoint completed 2026-06-12:
   `runs/step02_delay_fix_v3p5_centerfinger_fullstat_v2/normalization_audit_groundstate_fix.json`.
   The 1of10 equivalents are also present under the matching `1of10` run
   directories.
-- Limitation to keep explicit: `fullstat_v2_exactpos` now replaces the legacy
-  axisymmetric delayed-source compression as the current rate authority, but it
-  uses sampled equal-flux `PointSource` support rather than the full weighted
-  RPIP table as one block per row. The M/seed convergence closure makes this
-  adequate for the current W2 rate claim; a full one-block-per-RPIP stress test
-  is an optional engineering upgrade, not a current authority blocker.
+- Limitation to keep explicit: `fullstat_v2_exactpos_m50000_s260613` now
+  replaces the legacy axisymmetric delayed-source compression as the current
+  rate authority, but it uses sampled equal-flux `PointSource` support rather
+  than the full weighted RPIP table as one block per row. The M/seed convergence
+  closure makes this adequate for the current W2 rate claim; a full
+  one-block-per-RPIP stress test is an optional engineering upgrade, not a
+  current authority blocker.
+- Upstream Laue-hardware proxy branch completed a new delayed selected-rate
+  closure on 2026-06-16:
+  `stepwise_maintenance/step11_upstream_optics_background/`. The full-particle
+  prompt and activation-production transports for the detector-plus-10 m
+  equal-mass active-Ge proxy each completed `68/68` jobs with `25,210,216`
+  generated particles on a `1060 cm` source surface. The Ge proxy represents
+  `82.7722881 cm3` active Ge, `0.4405969 kg`, at the upstream lens position.
+  Its isolated day-15 delayed inventory has two true-RPIP records (`Ga-70` and
+  `Ga-73`) with total activity `0.42567438 Bq`. Because the inventory is only
+  two records, the delayed source uses all true positions directly, with no
+  M-sampling approximation. The 20,000-trigger delayed transport stored
+  `SE=ID=20000`, `TE=23900.760455 s`; the common detector-level W2 response
+  found zero selected events, giving direct rate `0` and a 95% zero-count upper
+  rate `1.2534e-4 s^-1`. This is about `0.20%` of the current primary W2
+  background `0.0629804 s^-1`, so it does not change the quoted hard-window
+  sensitivity at current precision. Boundary: this closes the equal-mass
+  active-Ge delayed side component only. Prompt self-background from upstream
+  hardware still needs provenance isolation or subtraction, and explicit lens
+  tile/support hardware remains a design-level systematic before any final
+  flight-design hardware-background claim.
 - Current BGO equal-attenuation material-comparison branch is local
   `Bgo_sample/`, not the older external `../new_geo_re_2` branch. It uses the
   current v3p5 center-finger side-entry geometry, BGO side/bottom/top
@@ -217,9 +241,11 @@ Current v3p5 center-finger DR branch checkpoint completed 2026-06-12:
   `Z20d=6.43475`, `T3=4.21622 day`, and
   `F3(20d)=4.66219e-5 ph cm-2 s-1`. The matched comparison report
   `outputs/reports/bgo_sample_csi_comparison_20260615/bgo_vs_csi_report.md`
-  is `PASS_BGO_SAMPLE_VS_CSI_EXACTPOS_COMPARISON`: relative to the CsI
-  exact-position authority, BGO lowers W2 mission-mean background by `7.738%`,
-  raises `Z20d` by `4.541%`, and lowers `F3(20d)` by `4.344%`. The tracked
+  is `PASS_BGO_SAMPLE_VS_CSI_EXACTPOS_M50000_COMPARISON`: relative to the CsI
+  exact-position M=50000 authority, BGO lowers W2 mission-mean background by
+  `8.481%`, raises `Z20d` by `4.965%`, and lowers `F3(20d)` by `4.730%`.
+  The comparison uses material-specific active-veto thresholds (CsI 50 keV,
+  BGO 70 keV), not a same-threshold veto scan. The tracked
   extended closure `Bgo_sample/EXTENDED_CLOSURE_SUMMARY.md` closes the
   sidecar boundaries from the same transported products: detector-coupled
   `spot_r90` spatial `Z20d=9.15885`, fixed-template annular-likelihood
@@ -971,18 +997,21 @@ authority until the named modeling and rerun work is done.
   Conservative radial-profile fullstat_v2 W2 baseline is `0.0729576 cps`,
   `Z20d=5.70221`, `F_3sigma(20d)=5.26111e-5`, and
   `F_3sigma(1Ms)=6.82301e-5`.
-- Do not describe `fullstat_v2_exactpos` as provisional after the 2026-06-14
-  convergence closure. It is now the current exact-position rate authority:
-  W2 background `0.0624651 cps`, `Z20d=6.15522`, and
-  `F_3sigma(1Ms)=6.32564e-5`. Keep `fullstat_v2` as the conservative
-  radial-profile baseline cross-check.
+- Do not describe exact-position delayed transport as provisional after the
+  2026-06-14 convergence closure. The current paper-facing exact-position rate
+  authority is `fullstat_v2_exactpos_m50000_s260613`: W2 background
+  `0.0629804 cps`, `Z20d=6.13039`, and `F_3sigma(1Ms)=6.35099e-5`. Keep
+  `fullstat_v2_exactpos` as the M=5000 convergence point and `fullstat_v2` as
+  the conservative radial-profile baseline cross-check.
 - Do not compute v3p5 side-entry focused-spot radii around the global origin.
   The correct sidecar uses the local side-window frame and gives
   `spot_r90=1.05164 cm`, not the invalid global-origin `~6 cm` scale.
 - Do not quote historical CeBr3, old homogeneous-beam, or broad-window-only
   numbers as the current focused Route-A authority.
 - Do not use broad `480-550 keV` day-15 final rates as W2 or spot-cut results.
-- Do not claim optics hardware activation/scattering is included.
+- Do not claim full optics hardware activation/scattering is included beyond
+  the equal-mass active-Ge proxy boundary check; explicit lens tile/support
+  hardware is still a design-level systematic.
 - Do not claim Route B receives point-source spot-cut gains.
 - Do not reuse CsI detector-coupled EventLists as BGO results. The repaired BGO
   delayed source passed a 2026-06-12 div=8/gamma-auto source-level audit, but

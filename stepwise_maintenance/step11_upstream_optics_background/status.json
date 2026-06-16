@@ -1,0 +1,151 @@
+{
+  "status": "DELAYED_GE_PROXY_SELECTED_RATE_CLOSED_PROMPT_SELF_BACKGROUND_OPEN",
+  "claim_level": "UPSTREAM_GE_PROXY_DELAYED_SELECTED_RATE_COMPONENT_PROMPT_SELF_BACKGROUND_OPEN",
+  "reason": "Step11 demonstrates that the MEGAlib/cosima background chain can include an upstream Laue-lens Ge mass proxy, run full-particle EXPACS/PARMA prompt and activation-production atmospheric streams through it, write isotope inventory files at the production event count, convert the Ge-proxy inventory into true-position delayed sources, and pass that delayed component through the common detector-level W2 selection. The delayed Ge-proxy selected-rate component is closed for the equal-mass active-Ge proxy. A prompt self-background selected-rate component from interactions in upstream hardware is still open because the combined prompt SIM also contains the ordinary detector/cryostat atmospheric background and needs provenance isolation or an explicit subtraction strategy.",
+  "required_inputs": [
+    "Prompt self-background provenance isolation or an explicit subtraction strategy for upstream-hardware prompt interactions",
+    "Optional longer delayed Ge-proxy transport if a tighter zero-count upper limit is needed",
+    "Explicit lens tile/support hardware or a documented bracket around the equal-mass active-Ge proxy before making a final flight-design background claim"
+  ],
+  "current_evidence": {
+    "optics_primary_generator": "/home/ubuntu/opticsim/opticsim_full/geant4_app/src/laue_multiring_bfull_demo.cc:1394",
+    "optics_focal_recorder_gamma_gate": "/home/ubuntu/opticsim/opticsim_full/geant4_app/src/laue_multiring_bfull_demo.cc:1454",
+    "step09_scope": "stepwise_maintenance/step09_optics_bridge/outputs_f10m_a1_v3p5/step09_optics_bridge_summary.json",
+    "baseline_detector_background_source_sphere_cm": "stepwise_maintenance/step02_raw_background_simulation/source_snapshots_v3p5_centerfinger_fullstat_v2/Background_gamma_fullsphere20.source:5",
+    "baseline_geometry_setup_surrounding_sphere_cm": "outputs/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup:5",
+    "baseline_geometry_local_instrument_frame_cm": "outputs/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy/Intro_DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo:16"
+  },
+  "smoke_evidence_2026_06_16": {
+    "builder": "stepwise_maintenance/step11_upstream_optics_background/build_step11_optics_background_smoke.py",
+    "runner": "stepwise_maintenance/step11_upstream_optics_background/run_step11_smokes.py",
+    "input_summary": "stepwise_maintenance/step11_upstream_optics_background/smoke_geometry/step11_smoke_input_summary.json",
+    "run_summary": "stepwise_maintenance/step11_upstream_optics_background/smoke_run_r1060/step11_smoke_run_summary.json",
+    "geometry_setup": "stepwise_maintenance/step11_upstream_optics_background/smoke_geometry/DEMO2_DR_v3p5_centerfinger_with_f10m_laue_ge_proxy.geo.setup",
+    "lens_proxy": "equal-volume and equal-mass Ge annulus for the f=10 m A1 Laue-ring active crystal volume; production must replace it with explicit tile/support geometry.",
+    "lens_proxy_numeric": {
+      "tile_equivalent": "25 Ge tiles, 1.8 cm square, 1.0218801 cm thick",
+      "active_ge_volume_cm3": 82.7722881,
+      "active_ge_mass_kg": 0.44059688955630005,
+      "lens_center_distance_cm": 1000.0,
+      "lens_volume_bound_radius_cm": 8.799310211117145
+    },
+    "source_surface": {
+      "radius_cm": 1060.0,
+      "start_area_cm2": 3529893.5055734916,
+      "geometry_bound_cm": 1008.7993102111171,
+      "margin_fraction": 0.05,
+      "world_half_cm": 2500.0,
+      "closure_policy": "Far-field source surface radius is derived from the detector-plus-upstream-lens enclosing sphere and rounded upward to the next 10 cm."
+    },
+    "expacs_particle_families": [
+      "gamma",
+      "n",
+      "eminus",
+      "eplus",
+      "p",
+      "alpha",
+      "muplus",
+      "muminus"
+    ],
+    "expacs_events_per_family": 100,
+    "forced_activation_events": 1000,
+    "closure_checks": {
+      "all_returncodes_zero": true,
+      "all_expacs_families_generated_requested_events": true,
+      "all_runs_wrote_sim_files": true,
+      "all_runs_wrote_isotope_files": true,
+      "outside_world_messages": 0,
+      "exception_messages": 0
+    }
+  },
+  "production_transport_evidence_2026_06_16": {
+    "builder": "stepwise_maintenance/step11_upstream_optics_background/build_step11_production_inputs.py",
+    "source_manifest": "stepwise_maintenance/step11_upstream_optics_background/production_sources_r1060/source_migration_manifest.json",
+    "geometry_setup": "stepwise_maintenance/step11_upstream_optics_background/smoke_geometry/DEMO2_DR_v3p5_centerfinger_with_f10m_laue_ge_proxy.geo.setup",
+    "source_surface": {
+      "radius_cm": 1060.0,
+      "start_area_cm2": 3529893.5055734916,
+      "geometry_bound_cm": 1008.7993102111171,
+      "world_half_cm": 2500.0
+    },
+    "prompt_transport": {
+      "outdir": "runs/step11_upstream_optics_fullstat_instant_r1060",
+      "run_summary": "runs/step11_upstream_optics_fullstat_instant_r1060/run_summary.md",
+      "jobs": 68,
+      "pass_or_skip": 68,
+      "fail": 0,
+      "events_requested": 25210216,
+      "events_generated": 25210216,
+      "cpu_s": 36158.925
+    },
+    "activation_production_transport": {
+      "outdir": "runs/step11_upstream_optics_fullstat_buildup_r1060",
+      "run_summary": "runs/step11_upstream_optics_fullstat_buildup_r1060/run_summary.md",
+      "jobs": 68,
+      "pass_or_skip": 68,
+      "fail": 0,
+      "events_requested": 25210216,
+      "events_generated": 25210216,
+      "cpu_s": 40692.496,
+      "sim_outputs": 68,
+      "isotope_inventory_outputs": 68
+    },
+    "particle_families": [
+      "gamma",
+      "n",
+      "eminus",
+      "eplus",
+      "p",
+      "alpha",
+      "muplus",
+      "muminus"
+    ],
+    "rate_status": "Ge-proxy delayed inventory converted and folded through detector-level selection; prompt self-background selected-rate isolation remains open"
+  },
+  "delayed_ge_proxy_selected_rate_evidence_2026_06_16": {
+    "builder": "stepwise_maintenance/step11_upstream_optics_background/build_step11_ge_proxy_delayed_source.py",
+    "source_manifest": "runs/step11_upstream_optics_ge_proxy_delay_source/step11_ge_proxy_exactpos_manifest.json",
+    "source": "runs/step11_upstream_optics_ge_proxy_delay_source/activation_decay_day15_step11_ge_proxy_exactpos.source",
+    "weighted_table": "runs/step11_upstream_optics_ge_proxy_delay_source/step11_ge_proxy_true_rpip_table.csv",
+    "target_volume": "Step11_Laue_Ge_Annulus_Proxy",
+    "source_mode": "all positive true RPIP positions; no M-sampling approximation",
+    "target_inventory": {
+      "raw_target_rp_records": 2,
+      "scaled_production_yield": 0.25,
+      "nuclides": [
+        {
+          "ZA": 31070,
+          "nuclide": "Ga-70",
+          "activity_Bq": 0.21283718997868864
+        },
+        {
+          "ZA": 31073,
+          "nuclide": "Ga-73",
+          "activity_Bq": 0.21283718997868864
+        }
+      ],
+      "total_activity_Bq": 0.4256743799573773
+    },
+    "delayed_transport": {
+      "sim": "runs/step11_upstream_optics_ge_proxy_delayed_transport/DelayedDecayStep11GeProxyExactpos.inc2.id1.sim.gz",
+      "triggers_requested": 20000,
+      "SE": 20000,
+      "ID": 20000,
+      "TE_s": 23900.760455
+    },
+    "detector_response": {
+      "summary": "stepwise_maintenance/step11_upstream_optics_background/outputs_ge_proxy_delayed_response/step11_ge_proxy_delayed_detector_response_summary.json",
+      "rates_csv": "stepwise_maintenance/step11_upstream_optics_background/outputs_ge_proxy_delayed_response/step11_ge_proxy_delayed_detector_response_rates.csv",
+      "w2_raw_events": 0,
+      "w2_active_veto_pass_events": 0,
+      "w2_side_compton_fov_pass_events": 0,
+      "w2_side_compton_fov_pass_rate_s-1": 0.0,
+      "zero_count_95_rate_s-1": 0.00012534045848433615
+    },
+    "boundary": [
+      "Detector/cryostat isotope records in the combined Step11 geometry are intentionally excluded to avoid double counting the baseline detector delayed background.",
+      "The selected W2 delayed Ge-proxy component is an additive upstream-hardware side component, not a replacement for the current fullstat_v2_exactpos background authority.",
+      "Prompt self-background from upstream hardware remains outside the primary budget until it can be isolated from ordinary detector/cryostat prompt background in the combined prompt SIM."
+    ]
+  }
+}

@@ -1,10 +1,12 @@
 # NEW_GEO_RE Workflow
 
 This directory is the DEMO2/v3p5 `new_geo_re` workflow root. As of the
-2026-06-12 R1/R2 reviews and the 2026-06-14 exactpos convergence closure, the
-current in-repo rate-level authority is the v3p5 full-stat exact-position
-`fullstat_v2_exactpos` branch. `fullstat_v2` remains the conservative
-radial-profile baseline cross-check. Older DEMO2 `equiv2602_aligned` and
+2026-06-12 R1/R2 reviews, the 2026-06-14 exactpos convergence closure, and the
+2026-06-16 transported M=50000 chain, the current in-repo rate-level authority
+is the v3p5 full-stat exact-position `fullstat_v2_exactpos_m50000_s260613`
+branch. The original `fullstat_v2_exactpos` label is retained as the M=5000
+convergence point, and `fullstat_v2` remains the conservative radial-profile
+baseline cross-check. Older DEMO2 `equiv2602_aligned` and
 `XZTES_ADR_v4c_mkflange_cm` paths are legacy pre-fix provenance only unless a
 paragraph explicitly says it is current v3p5 authority.
 
@@ -12,8 +14,8 @@ Current v3p5 anchors:
 
 - Geometry bounds: `geo_refer/DEMO2_DR_v3p5_minpatch_centerfinger_bounds.json`.
 - MEGAlib proxy setup: `outputs/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup`.
-- Step05 full-stat response: `stepwise_maintenance/step05_veto_time_axis/outputs_v3p5_centerfinger_fullstat_v2_l1/step05_v3p5_centerfinger_l1_response_summary.json`.
-- Step08 full-stat time fold: `stepwise_maintenance/step08_significance/outputs_v3p5_centerfinger_fullstat_v2/step08_v3p5_centerfinger_time_dependent_summary.json`.
+- Step05 exact-position M=50000 response: `stepwise_maintenance/step05_veto_time_axis/outputs_v3p5_centerfinger_fullstat_v2_exactpos_m50000_s260613_l1/step05_v3p5_centerfinger_l1_response_summary.json`.
+- Step08 exact-position M=50000 time fold: `stepwise_maintenance/step08_significance/outputs_v3p5_centerfinger_fullstat_v2_exactpos_m50000_s260613/step08_v3p5_centerfinger_time_dependent_summary.json`.
 - Full-stat W2 closure: `outputs/reports/v3p5_fullstat_performance_w2_closure_20260612/v3p5_fullstat_performance_w2_closure_report.md`.
 - Full-stat exact-position W2 closure: `outputs/reports/v3p5_fullstat_performance_w2_closure_fullstat_v2_exactpos_20260613/v3p5_fullstat_performance_w2_closure_report.md`.
 - Full-stat exact-position convergence closure: `outputs/reports/v3p5_exactpos_convergence_20260614/v3p5_exactpos_convergence_report.md`.
@@ -24,9 +26,10 @@ Current v3p5 anchors:
 - R2 validator: `code/tools/validate_v3p5_fullstat_r2.py`.
 - Archived NUBASE2020 table for ground-state correction audit: `inputs/nubase/nubase_2020.txt`.
 
-Report rule: reports must use `fullstat_v2_exactpos` for current rate-level
-claims after the convergence closure, with `fullstat_v2` retained as the
-conservative radial-profile baseline cross-check. DEMO2 `equiv2602_aligned`
+Report rule: reports must use `fullstat_v2_exactpos_m50000_s260613` for current
+rate-level claims, with `fullstat_v2_exactpos` retained as the M=5000
+convergence point and `fullstat_v2` retained as the conservative radial-profile
+baseline cross-check. DEMO2 `equiv2602_aligned`
 paths may be cited only as legacy pre-fix comparison/provenance.
 
 Detector-trigger rule: the `.det` authority contains a formal TES main trigger plus 20 native CsI veto triggers. Current production SIM files predate those native triggers, so quantitative veto numbers still come from the Step05 post-processing model.
@@ -162,32 +165,36 @@ python3 code/tools/build_v3p5_fullstat_performance_w2_closure_report.py
 ```
 
 Current exact-position delayed-source rate authority is available as
-`fullstat_v2_exactpos`:
+`fullstat_v2_exactpos_m50000_s260613`:
 
 ```bash
-python3 code/tools/build_v3p5_exactpos_delayed_source.py build --source-mode sampled --n-decays 5000 --triggers 1000000 --seed 260613 --workers 8
-cosima -s 260613 runs/step02_delay_fix_v3p5_centerfinger_fullstat_v2_exactpos/activation_decay_day15_groundstate_fixed.source
-python3 code/tools/build_v3p5_exactpos_delayed_source.py summarize-transport
-python3 code/tools/build_v3p5_centerfinger_step05_l1_response.py --label fullstat_v2_exactpos --workers 8
-python3 stepwise_maintenance/step06_mission_time_variation/code/build_v3p5_centerfinger_step06_time_axis.py --label fullstat_v2_exactpos
-python3 stepwise_maintenance/step07_source_cases/code/build_v3p5_centerfinger_step07_source_cases.py --label fullstat_v2_exactpos
-python3 stepwise_maintenance/step08_significance/code/build_v3p5_centerfinger_step08_time_dependent.py --label fullstat_v2_exactpos
-python3 stepwise_maintenance/step08_significance/code/build_v3p5_w2_background_source_breakdown.py --label fullstat_v2_exactpos
-python3 stepwise_maintenance/step08_significance/code/build_performance_curve_comparison_1Ms.py --v3p5-label fullstat_v2_exactpos
-python3 code/tools/build_v3p5_boundary_closure_report.py --label fullstat_v2_exactpos
-python3 code/tools/build_v3p5_fullstat_performance_w2_closure_report.py --label fullstat_v2_exactpos
+python3 code/tools/build_v3p5_exactpos_delayed_source.py build --label fullstat_v2_exactpos_m50000_s260613 --source-mode sampled --n-decays 50000 --triggers 1000000 --seed 260613 --workers 8
+cosima -s 260613 runs/step02_delay_fix_v3p5_centerfinger_fullstat_v2_exactpos_m50000_s260613/activation_decay_day15_groundstate_fixed.source
+python3 code/tools/build_v3p5_exactpos_delayed_source.py summarize-transport --label fullstat_v2_exactpos_m50000_s260613
+python3 code/tools/build_v3p5_centerfinger_step05_l1_response.py --label fullstat_v2_exactpos_m50000_s260613 --workers 8
+python3 stepwise_maintenance/step06_mission_time_variation/code/build_v3p5_centerfinger_step06_time_axis.py --label fullstat_v2_exactpos_m50000_s260613
+python3 stepwise_maintenance/step07_source_cases/code/build_v3p5_centerfinger_step07_source_cases.py --label fullstat_v2_exactpos_m50000_s260613
+python3 stepwise_maintenance/step08_significance/code/build_v3p5_centerfinger_step08_time_dependent.py --label fullstat_v2_exactpos_m50000_s260613
+python3 stepwise_maintenance/step08_significance/code/build_v3p5_w2_background_source_breakdown.py --label fullstat_v2_exactpos_m50000_s260613
+python3 stepwise_maintenance/step08_significance/code/build_performance_curve_comparison_1Ms.py --v3p5-label fullstat_v2_exactpos_m50000_s260613
+python3 code/tools/build_v3p5_boundary_closure_report.py --label fullstat_v2_exactpos_m50000_s260613
+python3 code/tools/build_v3p5_fullstat_performance_w2_closure_report.py --label fullstat_v2_exactpos_m50000_s260613
 python3 code/tools/build_v3p5_exactpos_convergence_report.py --labels fullstat_v2_exactpos fullstat_v2_exactpos_m05000_s260614 fullstat_v2_exactpos_m20000_s260613 fullstat_v2_exactpos_m50000_s260613
-python3 code/tools/validate_v3p5_exactpos_closure.py --label fullstat_v2_exactpos
+python3 code/tools/validate_v3p5_exactpos_closure.py --label fullstat_v2_exactpos_m50000_s260613
 ```
 
-The exactpos run uses 5000 sampled `PointSource` support blocks, stores
-`SE=1,000,000`, `ID=1,000,000`, and `TE=11530.473845 s`, and contains no
-`RadialProfileBeam` blocks. The M/seed convergence report is
+The exactpos nominal run uses 50000 sampled `PointSource` support blocks, stores
+`SE=1,000,000`, `ID=1,000,000`, and `TE=11545.456287 s`, and contains no
+`RadialProfileBeam` blocks. Its W2 headline is Step05 background/signal
+`0.0629804/0.00118117 cps`, Step06 mission-mean background/signal
+`0.0631923/0.00117281 cps`, Step08 `Z20d=6.13039`, `T3=4.77766 day`,
+20-day `F_3sigma=4.89365e-5 ph cm-2 s-1`, and 1 Ms
+`F_3sigma=6.35099e-5 ph cm-2 s-1`. The M/seed convergence report is
 `PASS_EXACTPOS_TRANSPORT_CONVERGENCE` using four transport-backed cases across
-`M=5000`, `M=20000`, and `M=50000`; it promotes `fullstat_v2_exactpos` to the
-current rate authority. `fullstat_v2` remains the conservative radial-profile
-baseline cross-check. Remaining engineering work is optional source-parsing
-optimization or a full weighted-table one-block-per-RPIP stress test. The
+`M=5000`, `M=20000`, and `M=50000`; the largest support case is the current
+rate authority. `fullstat_v2` remains the conservative radial-profile baseline
+cross-check. Remaining engineering work is optional source-parsing optimization
+or a full weighted-table one-block-per-RPIP stress test. The
 focused `spot_r90` W2 spatial sidecar is available at
 `stepwise_maintenance/step08_significance/outputs_v3p5_centerfinger_fullstat_v2_spatial/v3p5_spatial_line_proxy.md`
 (`Z20d=8.17566`, 20-day 3-sigma flux `3.66943e-5 ph cm-2 s-1`). Boundary
@@ -197,6 +204,30 @@ the 45 deg LOS sidecar gives W2 `Z20d=5.02544` and `spot_r90`
 `Z20d=7.20533`, while the fixed-template multi-annulus spatial-likelihood
 sidecar gives `Z20d=8.45804`. The exactpos boundary package is
 `outputs/reports/v3p5_boundary_closure_fullstat_v2_exactpos_20260613/`.
+
+Current upstream Laue-hardware proxy boundary branch is available as
+`stepwise_maintenance/step11_upstream_optics_background/`. It is a side
+component, not the primary rate authority. The production prompt and activation
+streams use the detector-plus-10 m equal-mass active-Ge proxy, a 1060 cm
+far-field source surface, and the same eight EXPACS/PARMA particle families as
+the detector background chain. Both production streams completed 68/68 jobs and
+25,210,216 generated particles. The isolated Ge-proxy delayed inventory contains
+only two true production-position records, so the delayed source uses all true
+positions directly and does not use M sampling. Rebuild the delayed side
+component with:
+
+```bash
+python3 stepwise_maintenance/step11_upstream_optics_background/build_step11_ge_proxy_delayed_source.py build-source --triggers 20000
+/home/ubuntu/MEGAlib_Install/megalib-main/bin/cosima runs/step11_upstream_optics_ge_proxy_delay_source/activation_decay_day15_step11_ge_proxy_exactpos.source
+python3 stepwise_maintenance/step11_upstream_optics_background/build_step11_ge_proxy_delayed_source.py summarize-transport
+python3 stepwise_maintenance/step11_upstream_optics_background/build_step11_ge_proxy_delayed_source.py summarize-response
+```
+
+The 2026-06-16 run stored `SE=ID=20000`, `TE=23900.760455 s` and selected zero
+W2 events in the common detector response, with a 95% zero-count upper rate
+`1.2534e-4 s^-1`. Prompt self-background from upstream hardware is still open
+because the combined prompt SIM needs provenance isolation or subtraction from
+the ordinary detector/cryostat prompt background.
 
 ## 2026-05-31 DEMO2 Mainline (Legacy Pre-Fix Review Hold)
 
@@ -249,10 +280,11 @@ mainline source and downstream Step05+ chain are rerun.
   `outputs/reports/bgo_sample_csi_comparison_20260615/bgo_vs_csi_report.md`.
 - Current hard-window W2 result: BGO Step08 gives `Z20d=6.43475`,
   `T3=4.21622 d`, and `F3(20d)=4.66219e-05 ph cm^-2 s^-1`.
-- Matched against CsI exact-position, BGO lowers the mission-mean W2
-  background by `7.738%`, raises `Z20d` by `4.541%`, and lowers
-  `F3(20d)` by `4.344%`. This does not include BGO spatial/profile-likelihood
-  sidecars.
+- Matched against the CsI exact-position M=50000 authority, BGO lowers the
+  mission-mean W2 background by `8.481%`, raises `Z20d` by `4.965%`, and lowers
+  `F3(20d)` by `4.730%`. The comparison uses material-specific active-veto
+  thresholds (CsI 50 keV, BGO 70 keV), not a same-threshold veto scan. This does
+  not include BGO spatial/profile-likelihood sidecars.
 
 ## Step08 Detectability
 

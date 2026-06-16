@@ -8,11 +8,11 @@ Scope: current English and Chinese LaTeX drafts in
 ## What Was Checked
 
 - Current rate authority:
-  `outputs/reports/v3p5_fullstat_performance_w2_closure_fullstat_v2_exactpos_20260613/v3p5_fullstat_performance_w2_closure_summary.json`.
+  the archived full-statistics exact-position W2 closure summary.
 - Exact-position convergence:
-  `outputs/reports/v3p5_exactpos_convergence_20260614/v3p5_exactpos_convergence_summary.json`.
+  the archived M/seed convergence summary for the delayed-source branch.
 - Exact-position boundary sidecars:
-  `outputs/reports/v3p5_boundary_closure_fullstat_v2_exactpos_20260613/v3p5_boundary_closure_summary.json`.
+  the archived boundary-closure summary for the full-statistics exact-position branch.
 - Current project map:
   `core_md/README.md`, `core_md/workflow.md`, and `core_md/Project_Memory.md`.
 - Current BGO sample boundary:
@@ -22,19 +22,19 @@ Scope: current English and Chinese LaTeX drafts in
   day-15 closure in `Bgo_sample/step02_1of10_exactpos_summary.json`, plus the
   full-stat v2 exact-position source/transport closure in
   `Bgo_sample/step02_fullstat_v2_exactpos_summary.json`, plus the BGO focused
-  EventList transport in `Bgo_sample/step09_focus_summary.json`, plus the BGO
+  signal-table transport in `Bgo_sample/step09_focus_summary.json`, plus the BGO
   Step05 L1 detector-response summary in
   `stepwise_maintenance/step05_veto_time_axis/outputs_bgo_sample_fullstat_v2_exactpos_l1/step05_bgo_sample_l1_response_summary.json`.
 
 ## Review Findings
 
-- The manuscript headline should remain the v3p5 full-stat exact-position CsI
+- The manuscript headline should remain the full-statistics exact-position CsI
   chain. The supporting closure summary reports Step05 W2
   `B/S=0.0624651/0.00118117 cps`, Step08 `Z20d=6.15522`,
   `T3=4.73758 d`, and `F3(20d)=4.87391e-5 ph cm-2 s-1`.
 - The manuscript must keep the numerical hierarchy explicit. Step05
   `physical_reference_flux` gives the day-15 selected rates after the unit
-  EventList stream is scaled to the f10m A1 effective area and reference
+  focused-signal stream is scaled to the f10m A1 effective area and reference
   atmospheric transmission; Step06 gives mission-mean rates; Step08 gives the
   headline significance and flux thresholds. Unit-injection bookkeeping rates
   from intermediate convergence summaries should not be quoted as physical
@@ -54,7 +54,7 @@ Scope: current English and Chinese LaTeX drafts in
   blocks drawn from 43,043 eligible RPIP rows, and delayed transport passed
   with `SE=ID=1000000` and `TE=39653.861364 s`. Earlier smoke and low-stat
   `1of10` closures remain useful provenance. The same branch has a focused
-  f10m A1 EventList transport through `Bgo_sample.geo.setup`, with
+  f10m A1 focused-signal transport through `Bgo_sample.geo.setup`, with
   `SE=ID=37194`, and now passes Step05 L1 detector response after consuming
   the BGO prompt, exact-position delayed, and focused-signal SIMs together.
   The Step05 W2 direct detector-response expectation is
@@ -114,13 +114,13 @@ Scope: current English and Chinese LaTeX drafts in
   side-entry sleeve, the CsI `50 keV` post-processing veto threshold, and the
   `1 us` coincidence window.
 - Expanded the optics, background, and selection method text in both drafts:
-  Step09 is now explicitly described as a signal-only EventList handoff with no
+  Step09 is now explicitly described as a signal-only focused-table handoff with no
   optics-hardware self-background; Step02 prompt normalization is described as
   per-tag `1/sum(TT_tag)` over 68 SIM/DAT products; exact-position source
   construction now states the `253,770` CsI sampling rows; and the conservative
   reconstruction-failure keep policy is stated in the selection section.
-- Updated the BGO limitation wording after BGO focused Step09 EventList
-  transport passed. The drafts now state that 37,194 focused EventList events
+- Updated the BGO limitation wording after BGO focused Step09 signal-table
+  transport passed. The drafts now state that 37,194 focused-signal events
   were generated/stored through BGO geometry. At that pass Step05 was still
   the next required gate; this was superseded by the Step05 PASS entry below.
 - Updated the BGO limitation wording after BGO Step05 L1 detector response
@@ -147,25 +147,25 @@ Scope: current English and Chinese LaTeX drafts in
   `TEXINPUTS=/tmp/elsarticle_ctan/elsarticle//:`.
 - Current render outputs after the BGO Step05 limitation update: English draft
   PDF has 20 pages; Chinese draft PDF has 19 pages.
-- `python3 -m py_compile code/tools/build_v3p5_centerfinger_step05_l1_response.py
-  code/tools/build_bgo_sample_fullstat_exactpos.py
-  code/tools/build_bgo_sample_step09_focus.py` passed.
-- `python3 code/tools/build_v3p5_centerfinger_step05_l1_response.py --label
-  bgo_sample_fullstat_v2_exactpos --workers 8` passed from the cached catalog
+- The main CsI Step05 L1 response builder, the BGO full-statistics
+  exact-position builder, and the BGO focused-signal builder passed Python
+  syntax checks.
+- The main Step05 L1 response builder passed for the BGO material-comparison
+  branch from the cached catalog
   with `PASS_BGO_SAMPLE_STEP05_SIDE_ENTRY_COMPTON_TIME_AXIS_L1_FULLSTAT_V2_EXACTPOS`.
 - The BGO Step05 summary records `prompt_files=68`, BGO delayed transport
   `TE=39653.861364 s`, BGO active-veto threshold `70 keV`, catalog stream
   events `675533/291221/36586` for prompt/delayed/science, and W2 direct
   `B/S=0.0578455/0.00118595 cps` at the reference flux.
-- `python3 stepwise_maintenance/step06_mission_time_variation/code/build_v3p5_centerfinger_step06_time_axis.py
-  --label bgo_sample_fullstat_v2_exactpos` passed with
+- The Step06 mission-time folding builder passed for the BGO
+  material-comparison branch with
   `PASS_BGO_SAMPLE_STEP06_TIME_AXIS_FULLSTAT_V2_EXACTPOS`; W2 mission-mean
   `B/S=0.0578330/0.00117756 cps`.
-- `python3 stepwise_maintenance/step07_source_cases/code/build_v3p5_centerfinger_step07_source_cases.py
-  --label bgo_sample_fullstat_v2_exactpos` passed with
+- The Step07 source-case builder passed for the BGO material-comparison
+  branch with
   `PASS_BGO_SAMPLE_STEP07_SOURCE_CASES_FULLSTAT_V2_EXACTPOS`.
-- `python3 stepwise_maintenance/step08_significance/code/build_v3p5_centerfinger_step08_time_dependent.py
-  --label bgo_sample_fullstat_v2_exactpos` passed with
+- The Step08 time-dependent significance builder passed for the BGO
+  material-comparison branch with
   `PASS_BGO_SAMPLE_STEP08_TIME_DEPENDENT_FULLSTAT_V2_EXACTPOS`; W2
   `Z20d=6.43475`, `T3=4.21622 d`, and
   `F3(20d)=4.66219e-05 ph cm-2 s-1`.

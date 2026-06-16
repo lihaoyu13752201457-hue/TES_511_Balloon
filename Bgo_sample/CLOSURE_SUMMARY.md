@@ -21,12 +21,13 @@ This tracked summary preserves the BGO Step05--Step08 hard-window material-compa
 | Step08 W2 Z20d | 6.43474787077 |
 | Step08 W2 T3 | 4.21622404524 d |
 | Step08 W2 F3(20d) | 4.6621873308e-05 ph cm^-2 s^-1 |
-| BGO/CsI mission-mean background delta | -7.738% |
-| BGO/CsI Z20d delta | 4.541% |
-| BGO/CsI F3(20d) delta | -4.344% |
+| BGO/CsI mission-mean background delta | -8.481% |
+| BGO/CsI Z20d delta | 4.965% |
+| BGO/CsI F3(20d) delta | -4.730% |
 
 Boundary:
 - This is a hard-window counting material comparison only.
+- Active-veto thresholds are material-specific: CsI 50 keV and BGO 70 keV; this is not a same-threshold veto scan.
 - No BGO spatial/profile-likelihood gain is applied to this hard-window comparison.
 - BGO spatial, detector-threshold replay, and material attenuation sidecars are tracked separately in `Bgo_sample/EXTENDED_CLOSURE_SUMMARY.md`.
 - The detailed regenerated Step05--Step08 outputs are local ignored artifacts; this tracked digest is the GitHub-facing closure record.
