@@ -21,24 +21,50 @@ POINT_FLUX_SCAN = [3.0e-5, 5.0e-5, 8.0e-5, 1.0e-4, 1.5e-4, 2.0e-4, 3.0e-4]
 TRANSIENT_FLUX_SCAN = [1.0e-4, 3.0e-4, 1.0e-3, 3.0e-3]
 TRANSIENT_DURATIONS_S = [3600.0, 21600.0, 86400.0, 259200.0]
 DIFFUSE_FOV_FLUX_PROXY = 6.26238e-7
+FIX5_FULLSTAT_LABEL = "fix5_fullstat_v2_exactpos_m50000_s260613"
+
+
+def canonical_label(label: str) -> str:
+    if label == "fix5_fullstat_v2":
+        return FIX5_FULLSTAT_LABEL
+    return label
 
 
 def is_bgo_sample_label(label: str) -> bool:
     return label == "bgo_sample_fullstat_v2_exactpos"
 
 
+def is_fix5_fullstat_label(label: str) -> bool:
+    return canonical_label(label) == FIX5_FULLSTAT_LABEL
+
+
 def output_prefix(label: str) -> str:
-    return "bgo_sample" if is_bgo_sample_label(label) else "v3p5_centerfinger"
+    if is_bgo_sample_label(label):
+        return "bgo_sample"
+    if is_fix5_fullstat_label(label):
+        return "fix5"
+    return "v3p5_centerfinger"
 
 
 def step06_summary_filename(label: str) -> str:
     if is_bgo_sample_label(label):
         return "step06_bgo_sample_fullstat_v2_exactpos_summary.json"
+    if is_fix5_fullstat_label(label):
+        return f"step06_{FIX5_FULLSTAT_LABEL}_summary.json"
     return f"step06_{output_prefix(label)}_{label}_summary.json"
+
+
+def response_authority_filename(label: str) -> str:
+    if is_bgo_sample_label(label):
+        return "bgo_sample_response_authority.csv"
+    if is_fix5_fullstat_label(label):
+        return "fix5_response_authority.csv"
+    return "v3p5_response_authority.csv"
 
 
 def configure_paths(label: str) -> None:
     global OUT, STEP05, STEP06, STEP09
+    label = canonical_label(label)
 
     if is_bgo_sample_label(label):
         OUT = ROOT / "stepwise_maintenance" / "step07_source_cases" / f"outputs_{label}"
@@ -57,6 +83,25 @@ def configure_paths(label: str) -> None:
             / step06_summary_filename(label)
         )
         STEP09 = ROOT / "Bgo_sample" / "step09_focus_summary.json"
+        return
+
+    if is_fix5_fullstat_label(label):
+        OUT = ROOT / "stepwise_maintenance" / "step07_source_cases" / f"outputs_{FIX5_FULLSTAT_LABEL}"
+        STEP05 = (
+            ROOT
+            / "stepwise_maintenance"
+            / "step05_veto_time_axis"
+            / f"outputs_{FIX5_FULLSTAT_LABEL}_l1"
+            / f"step05_{FIX5_FULLSTAT_LABEL}_l1_response_summary.json"
+        )
+        STEP06 = (
+            ROOT
+            / "stepwise_maintenance"
+            / "step06_mission_time_variation"
+            / f"outputs_{FIX5_FULLSTAT_LABEL}"
+            / step06_summary_filename(label)
+        )
+        STEP09 = ROOT / "stepwise_maintenance" / "step09_optics_bridge" / "outputs_f10m_a1_v3p5" / "step09_optics_bridge_summary.json"
         return
 
     OUT = ROOT / "stepwise_maintenance" / "step07_source_cases" / f"outputs_v3p5_centerfinger_{label}"
@@ -197,12 +242,16 @@ def build_rates(resp: list[dict[str, Any]]) -> list[dict[str, Any]]:
 
 def markdown(summary: dict[str, Any]) -> str:
     checks = summary["checks"]
-    title = "# Step07 Bgo_sample Source Cases" if is_bgo_sample_label(summary["statistics_label"]) else "# Step07 v3p5 Center-Finger Source Cases"
-    intro = (
-        f"This `{summary['statistics_label']}` source-case layer uses the Bgo_sample Step05 focused EventList detector response and does not change geometry, Step02 transport, or Step05 selection."
-        if is_bgo_sample_label(summary["statistics_label"])
-        else f"This `{summary['statistics_label']}` source-case layer uses the v3p5 Step05 focused EventList detector response and does not change geometry, Step02 transport, or Step05 selection."
-    )
+    label = str(summary["statistics_label"])
+    if is_bgo_sample_label(label):
+        title = "# Step07 Bgo_sample Source Cases"
+        intro = f"This `{label}` source-case layer uses the Bgo_sample Step05 focused EventList detector response and does not change geometry, Step02 transport, or Step05 selection."
+    elif is_fix5_fullstat_label(label):
+        title = "# Step07 fix5 Source Cases"
+        intro = f"This `{label}` source-case layer uses the current fix5 Step05 detector response, including the fix5 focused-signal replay. Promotion still requires the final fix5 promotion decision artifact."
+    else:
+        title = "# Step07 v3p5 Center-Finger Source Cases"
+        intro = f"This `{label}` source-case layer uses the v3p5 Step05 focused EventList detector response and does not change geometry, Step02 transport, or Step05 selection."
     return "\n".join(
         [
             title,
@@ -226,9 +275,12 @@ def markdown(summary: dict[str, Any]) -> str:
             f"- source-case rows: `{checks['source_case_rows']}`",
             "",
             "Outputs:",
-            f"- response authority: `{summary['outputs']['v3p5_response_authority']}`",
+            f"- response authority: `{summary['outputs'].get('response_authority', summary['outputs']['v3p5_response_authority'])}`",
             f"- source-case rates: `{summary['outputs']['source_case_rates']}`",
             f"- summary JSON: `{summary['outputs']['summary_json']}`",
+            "",
+            "Pending:",
+            *[f"- {item}" for item in summary.get("pending", [])],
             "",
             "Limitations:",
             "- B diffuse is a low-stat aperture-flux proxy, not a focal-spot Cosima source;",
@@ -240,22 +292,33 @@ def markdown(summary: dict[str, Any]) -> str:
 
 
 def build_summary(step05: dict[str, Any], step06: dict[str, Any], step09: dict[str, Any], resp: list[dict[str, Any]], rows: list[dict[str, Any]]) -> dict[str, Any]:
-    label = step05.get("statistics_label", "1of10")
+    label = canonical_label(str(step05.get("statistics_label", "1of10")))
     resp_by_sel = {row["selection_id"]: row for row in resp}
     w2 = resp_by_sel["w2_510p58_511p42"]
     a_ref = next(row for row in rows if row["analysis_case_id"] == "A_point_w2_510p58_511p42_F0.0001")
     b_ref = next(row for row in rows if row["analysis_case_id"] == "B_diffuse_proxy_w2_510p58_511p42")
     norm = step05["science_physical_normalization"]
-    status = (
-        "PASS_BGO_SAMPLE_STEP07_SOURCE_CASES_FULLSTAT_V2_EXACTPOS"
-        if is_bgo_sample_label(label)
-        else f"PASS_V3P5_STEP07_SOURCE_CASES_{label.upper()}"
-    )
-    claim_level = (
-        "BGO_SAMPLE_L1_SOURCE_CASE_FOCUSED_EVENTLIST_RATE_FOLDING_FULLSTAT_V2_EXACTPOS"
-        if is_bgo_sample_label(label)
-        else f"V3P5_L1_SOURCE_CASE_FOCUSED_EVENTLIST_RATE_FOLDING_{label.upper()}"
-    )
+    if is_bgo_sample_label(label):
+        status = "PASS_BGO_SAMPLE_STEP07_SOURCE_CASES_FULLSTAT_V2_EXACTPOS"
+        claim_level = "BGO_SAMPLE_L1_SOURCE_CASE_FOCUSED_EVENTLIST_RATE_FOLDING_FULLSTAT_V2_EXACTPOS"
+        pending = [
+            "Downstream Step08 and the BGO-vs-CsI hard-window comparison are closed for this label.",
+            "BGO spatial, fixed-template annular-likelihood, detector-threshold replay, and material attenuation sidecars are closed in Bgo_sample/EXTENDED_CLOSURE_SUMMARY.md.",
+        ]
+    elif is_fix5_fullstat_label(label):
+        status = f"PASS_FIX5_STEP07_SOURCE_CASES_{label.upper()}_SIGNAL_REPLAYED_NOT_PROMOTION"
+        claim_level = f"FIX5_L1_SOURCE_CASE_RATE_FOLDING_{label.upper()}_SIGNAL_REPLAYED_NOT_FINAL_PROMOTION"
+        pending = [
+            "Run Step08 from this source-case output and refresh the promotion decision artifact before any final replacement claim.",
+            "Old new_geo_re prompt/delayed numbers remain blocked as pass/fail gates while benchmark alignment is NOT_ALIGNED.",
+        ]
+    else:
+        status = f"PASS_V3P5_STEP07_SOURCE_CASES_{label.upper()}"
+        claim_level = f"V3P5_L1_SOURCE_CASE_FOCUSED_EVENTLIST_RATE_FOLDING_{label.upper()}"
+        pending = [
+            "Full v3p5 Step08 time-dependent fold.",
+            "Diffuse/off-axis EventList source treatment for Route B.",
+        ]
     return {
         "status": status,
         "statistics_label": label,
@@ -287,20 +350,11 @@ def build_summary(step05: dict[str, Any], step06: dict[str, Any], step09: dict[s
         "outputs": {
             "summary_json": rel(OUT / "source_case_summary.json"),
             "readme": rel(OUT / "README.md"),
-            "v3p5_response_authority": rel(OUT / "v3p5_response_authority.csv"),
+            "response_authority": rel(OUT / response_authority_filename(label)),
+            "v3p5_response_authority": rel(OUT / response_authority_filename(label)),
             "source_case_rates": rel(OUT / "source_case_rates.csv"),
         },
-        "pending": (
-            [
-                "Downstream Step08 and the BGO-vs-CsI hard-window comparison are closed for this label.",
-                "BGO spatial, fixed-template annular-likelihood, detector-threshold replay, and material attenuation sidecars are closed in Bgo_sample/EXTENDED_CLOSURE_SUMMARY.md.",
-            ]
-            if is_bgo_sample_label(label)
-            else [
-                "Full v3p5 Step08 time-dependent fold.",
-                "Diffuse/off-axis EventList source treatment for Route B.",
-            ]
-        ),
+        "pending": pending,
     }
 
 
@@ -310,6 +364,7 @@ def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--label", default="1of10", help="Run/output label, e.g. 1of10 or fullstat_v2")
     args = ap.parse_args()
+    args.label = canonical_label(args.label)
 
     configure_paths(args.label)
     OUT.mkdir(parents=True, exist_ok=True)
@@ -318,7 +373,7 @@ def main() -> int:
     step09 = load_json(STEP09)
     resp = response_rows(step05)
     rows = build_rates(resp)
-    write_csv(OUT / "v3p5_response_authority.csv", resp)
+    write_csv(OUT / response_authority_filename(args.label), resp)
     write_csv(OUT / "source_case_rates.csv", rows)
     summary = build_summary(step05, step06, step09, resp, rows)
     write_json(OUT / "source_case_summary.json", summary)

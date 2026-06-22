@@ -1,0 +1,53 @@
+{
+  "status": "PASS_EVENTLIST_BRIDGE_SMOKE_TRANSPORTED",
+  "claim_level": "L1_OPTICS_EVENTLIST_BRIDGE",
+  "profile": "f9m",
+  "scope": "Step04 B-FULL Laue tracked diffracted focal-plane crossings (EM-attenuated, within the Be window) replayed as a MEGAlib EventList at the new_geo_re detector injection plane. Uses focal_crossings.csv, not the analytic phase_space.csv projection, so the focused flux is not overcounted. This does not add optics-mass prompt/delayed activation.",
+  "optics_model": "B-FULL external per-ring XOP/CRYSTAL rocking-curve map; standard Geant4 EM competing with finite-MFP Laue diffraction; handoff = tracked diffracted focal crossings",
+  "inputs": {
+    "focal_crossings": "stepwise_maintenance/step04_opticsim/outputs/opticsim_laue_bfull_xopmap_real/focal_crossings.csv",
+    "geometry": "outputs/geometry/XZTES_ADR_v4c_mkflange_cm/TibetTES_ADR_v4c_mkflange_cm.geo.setup",
+    "bounds": "outputs/geometry/XZTES_ADR_v4c_mkflange_cm/bounds.json"
+  },
+  "bridge": {
+    "rows_seen": 12592,
+    "rows_written": 12592,
+    "rows_skipped": 0,
+    "energy_min_keV": 511.0,
+    "energy_max_keV": 511.0,
+    "max_radius_cm": 1.4576682480028988,
+    "direction_uz_min": -0.9999756999971282,
+    "direction_uz_max": -0.9999685935009206,
+    "r50_cm": 0.07487899399600108,
+    "r90_cm": 0.1831899059685543,
+    "r95_cm": 0.21763818395014004,
+    "r99_cm": 0.2877307252066416,
+    "n_diffracted_focal_total": 12605,
+    "n_within_be_window": 12592,
+    "n_scattered_outside_be": 13,
+    "z_plane_cm": 16.051,
+    "be_radius_cm": 1.898,
+    "xy_scale_cm_per_opticsim_mm": 0.1,
+    "eventlist": "stepwise_maintenance/step09_optics_bridge/outputs/eventlists/Opticsim_laue_new_geo_re.eventlist.dat",
+    "source": "stepwise_maintenance/step09_optics_bridge/outputs/run_configs/Opticsim_laue_new_geo_re.source",
+    "smoke_source": "stepwise_maintenance/step09_optics_bridge/outputs/run_configs/Opticsim_laue_new_geo_re_smoke1000.source",
+    "coordinate_policy": "x/y opticsim mm scaled to cm; z at science_beam_z_cm; direction reverse_z"
+  },
+  "smoke_transport": {
+    "source": "stepwise_maintenance/step09_optics_bridge/outputs/run_configs/Opticsim_laue_new_geo_re_smoke1000.source",
+    "sim": "runs/step09_optics_bridge/Opticsim_laue_new_geo_re_smoke1000.inc1.id1.sim.gz",
+    "sim_exists": true,
+    "log": "stepwise_maintenance/step09_optics_bridge/outputs/cosima_smoke1000.log",
+    "log_exists": true,
+    "sim_size_bytes": 655149,
+    "stored_events": 1000,
+    "log_tail": "Summary for run Opticsim_laue_new_geo_re_smoke1000\n\nTotal number of generated particles:     1060\n  Source Opticsim_laue_new_geo_re_smoke1000_PhaseSpace: 1060\n\nTotal CPU time spent in run:             2.61535 sec\nTime spent per event:                    0.00246731 sec\n\nObservation time:                        1.059e-06 sec\n\nGraphics systems deleted.\nVisualization Manager deleting...",
+    "observation_time_s": 1.059e-06
+  },
+  "checks": {
+    "rows_written_positive": true,
+    "max_radius_within_be": true,
+    "directions_point_to_detector": true,
+    "smoke_transport_done": true
+  }
+}

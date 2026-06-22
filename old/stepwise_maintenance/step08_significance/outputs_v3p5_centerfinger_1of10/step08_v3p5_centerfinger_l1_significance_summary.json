@@ -1,0 +1,97 @@
+{
+  "status": "PASS_V3P5_STEP08_L1_DIRECT_EXPECTATION_1OF10",
+  "claim_level": "L1 direct constant-rate expectation from v3p5 Step05 physical reference-flux rates; not a full Step06 mission-axis fold",
+  "inputs": {
+    "step05_summary": "stepwise_maintenance/step05_veto_time_axis/outputs_v3p5_centerfinger_l1/step05_v3p5_centerfinger_l1_response_summary.json",
+    "step05_status": "PASS_V3P5_STEP05_SIDE_ENTRY_COMPTON_TIME_AXIS_L1"
+  },
+  "physical_normalization": {
+    "reference_flux_ph_cm2_s": 0.0001,
+    "mission_days_for_direct_expectation": 20.0,
+    "optics_authority": "stepwise_maintenance/step04_opticsim/optics_aeff_authority_f10m_a1.json",
+    "optics_design_name": "balloon511_f10m_ge111_511line_a1",
+    "optics_profile": "f10m_a1_v3p5",
+    "aeff_511_cm2": 20.084760000000003,
+    "aeff_seed_pstdev_cm2": 0.22144082550424163,
+    "atmospheric_transmission": {
+      "ledger": "config/science_511_onaxis_source/metadata/science_rate_ledger.csv",
+      "source_id": "science_511_onaxis_v0",
+      "flux_ph_cm2_s": 0.0001,
+      "mainline_A_opt_cm2_in_ledger": 15.29928,
+      "T_atm": 0.7390423888027,
+      "note": "Only T_atm is inherited from this mainline ledger; v3p5/f10m A1 uses the f10m_a1 A_eff authority below."
+    },
+    "rate_to_v3p5_injection_plane_s-1": 0.0014843489008928919,
+    "unit_eventlist_injection_rate_s-1": 1.0,
+    "scale_from_unit_eventlist_rate": 0.0014843489008928919
+  },
+  "headline_window": "w2_510p58_511p42",
+  "headline": {
+    "window_keV": [
+      510.58,
+      511.42
+    ],
+    "background_cps": 0.015783279812947575,
+    "signal_cps_at_reference_flux": 0.0011811656293957314,
+    "signal_to_background": 0.07483651328456967,
+    "source_counts_20d": 2041.0542075958238,
+    "background_counts_20d": 27273.50751677341,
+    "Z20d_direct_s_over_sqrt_b": 12.35902020069842,
+    "T3_day_constant_rate_direct": 1.1784317117899297,
+    "T5_day_constant_rate_direct": 3.2734214216386945,
+    "flux_3sigma_20d_ph_cm2_s": 2.427376888525894e-05,
+    "low_stat_final_background_events": 18,
+    "low_stat_background_relative_poisson_sigma_approx": 0.23570226039551587,
+    "prompt_background_cps": 0.0,
+    "delayed_background_cps": 0.015783279812947575
+  },
+  "windows": {
+    "broad_480_550": {
+      "window_keV": [
+        480.0,
+        550.0
+      ],
+      "background_cps": 0.07277845691525832,
+      "signal_cps_at_reference_flux": 0.001183280768712488,
+      "signal_to_background": 0.016258668002404542,
+      "source_counts_20d": 2044.7091683351794,
+      "background_counts_20d": 125761.17354956637,
+      "Z20d_direct_s_over_sqrt_b": 5.765782473301814,
+      "T3_day_constant_rate_direct": 5.414470573912926,
+      "T5_day_constant_rate_direct": 15.040196038647018,
+      "flux_3sigma_20d_ph_cm2_s": 5.203109922879262e-05,
+      "low_stat_final_background_events": 83,
+      "low_stat_background_relative_poisson_sigma_approx": 0.10976425998969035,
+      "prompt_background_cps": 0.0,
+      "delayed_background_cps": 0.07277845691525832
+    },
+    "w2_510p58_511p42": {
+      "window_keV": [
+        510.58,
+        511.42
+      ],
+      "background_cps": 0.015783279812947575,
+      "signal_cps_at_reference_flux": 0.0011811656293957314,
+      "signal_to_background": 0.07483651328456967,
+      "source_counts_20d": 2041.0542075958238,
+      "background_counts_20d": 27273.50751677341,
+      "Z20d_direct_s_over_sqrt_b": 12.35902020069842,
+      "T3_day_constant_rate_direct": 1.1784317117899297,
+      "T5_day_constant_rate_direct": 3.2734214216386945,
+      "flux_3sigma_20d_ph_cm2_s": 2.427376888525894e-05,
+      "low_stat_final_background_events": 18,
+      "low_stat_background_relative_poisson_sigma_approx": 0.23570226039551587,
+      "prompt_background_cps": 0.0,
+      "delayed_background_cps": 0.015783279812947575
+    }
+  },
+  "warnings": [
+    "headline W2 background is based on fewer than 50 selected background events"
+  ],
+  "problems": [],
+  "pending": [
+    "Regenerate full v3p5 Step06 mission-time variation and accidental-live fold.",
+    "Increase v3p5 background statistics; the W2 low-stat background here has only 18 final selected events.",
+    "Replace axisymmetric delayed-source RadialProfileBeam compression with exact-position delayed-source sampling before paper-facing numbers."
+  ]
+}

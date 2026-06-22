@@ -1,0 +1,493 @@
+{
+  "status": "PASS_PARTICLE_FAMILY_REWEIGHTING_SMOKE",
+  "scope": "PARMA trajectory probes plus particle-family reweighting of existing fullstat activation inventory; no new Geant4 activation transport",
+  "parma_driver": "/home/ubuntu/codex_tes_511_sim/COSMOSRAY_BALLOON_SIM/external/expacs_parma/phase2_parma_grid_driver",
+  "trajectory_model": {
+    "day15": 15.0,
+    "alt_ref_km": 38.75,
+    "lat_ref_deg": 34.0,
+    "lon_ref_deg": 100.0,
+    "alt_amp_km": 2.5,
+    "lat_amp_deg": 0.25,
+    "lon_amp_deg": 0.25
+  },
+  "inputs": {
+    "buildup_dir": "runs/step02_buildup_v3p5_centerfinger_fullstat_v2",
+    "groundstate_activity_corrections": "runs/step02_delay_fix_v3p5_centerfinger_fullstat_v2_exactpos_m50000_s260613/groundstate_activity_corrections.csv"
+  },
+  "dat_audit": {
+    "dat_files": 68,
+    "gamma_files": 12,
+    "by_tag": {
+      "gamma": {
+        "files": 12,
+        "division": 12.0,
+        "rp_scaled_total": 0.0
+      },
+      "n": {
+        "files": 8,
+        "division": 8.0,
+        "rp_scaled_total": 31719.25
+      },
+      "p": {
+        "files": 8,
+        "division": 8.0,
+        "rp_scaled_total": 193.75
+      },
+      "alpha": {
+        "files": 8,
+        "division": 8.0,
+        "rp_scaled_total": 20.625
+      },
+      "eminus": {
+        "files": 8,
+        "division": 8.0,
+        "rp_scaled_total": 0.0
+      },
+      "eplus": {
+        "files": 8,
+        "division": 8.0,
+        "rp_scaled_total": 0.5
+      },
+      "muminus": {
+        "files": 8,
+        "division": 8.0,
+        "rp_scaled_total": 540.125
+      },
+      "muplus": {
+        "files": 8,
+        "division": 8.0,
+        "rp_scaled_total": 1.75
+      }
+    }
+  },
+  "activity_match": {
+    "groundstate_rows": 1328,
+    "matched_activity_Bq": 85.02854205952535,
+    "unmatched_activity_Bq": 0.608153806746535,
+    "matched_fraction": 0.9928984438202029
+  },
+  "activity_contribution_rows": 1824,
+  "reference_top_activity_nuclides": [
+    {
+      "key": "53128",
+      "fraction": 0.7762311278677057
+    },
+    {
+      "key": "29064",
+      "fraction": 0.056743854145315444
+    },
+    {
+      "key": "13028",
+      "fraction": 0.04488792272504462
+    },
+    {
+      "key": "74187",
+      "fraction": 0.027070586500565364
+    },
+    {
+      "key": "12027",
+      "fraction": 0.023962630754089036
+    },
+    {
+      "key": "29066",
+      "fraction": 0.01349985213032702
+    },
+    {
+      "key": "55134",
+      "fraction": 0.013400807934830533
+    },
+    {
+      "key": "55132",
+      "fraction": 0.006133703304776411
+    },
+    {
+      "key": "47110",
+      "fraction": 0.005098317252911289
+    },
+    {
+      "key": "53126",
+      "fraction": 0.004541475066696934
+    }
+  ],
+  "reference_top_activity_volume_classes": [
+    {
+      "key": "CsI_active_shield",
+      "fraction": 0.8150894578725193
+    },
+    {
+      "key": "Al_shell_or_window",
+      "fraction": 0.05888715109797232
+    },
+    {
+      "key": "cryogenic_service_mass",
+      "fraction": 0.05851116234588966
+    },
+    {
+      "key": "W_passive_collimator_or_liner",
+      "fraction": 0.029441824659734134
+    },
+    {
+      "key": "other",
+      "fraction": 0.029326189119482402
+    },
+    {
+      "key": "Cu_cold_mass_or_liner",
+      "fraction": 0.008720255893397161
+    },
+    {
+      "key": "Kapton_flex",
+      "fraction": 2.3959011005023717e-05
+    }
+  ],
+  "max_nonreference_metrics": {
+    "max_activity_TV_particle_reweighted": 0.005720326789023363,
+    "max_particle_family_TV": 0.0006764453219244723,
+    "max_particle_energy_bin_TV": 0.009045787776627297
+  },
+  "probe_summaries": {
+    "low_altitude": {
+      "probe": {
+        "probe": "low_altitude",
+        "time_bin_id": 15.0,
+        "day_mid": 3.75,
+        "altitude_km": 36.25,
+        "latitude_deg": 34.155872450464685,
+        "longitude_deg": 99.75,
+        "altitude_offset_km": -2.5,
+        "latitude_offset_deg": 0.15587245046468332,
+        "longitude_offset_deg": -0.25,
+        "depth_g_cm2": 4.999511042635957
+      },
+      "meta": {
+        "W_index": 114.6,
+        "Rc_GV_parma": 11.500960586,
+        "depth_g_cm2_parma": 4.99951104263
+      },
+      "particle_scale_to_day15": {
+        "gamma": 1.2016959561517124,
+        "n": 1.220856123138156,
+        "p": 1.08536809615939,
+        "alpha": 1.0639402522350019,
+        "eminus": 1.1265647260171707,
+        "eplus": 1.125460083715429,
+        "muminus": 1.4428491475380139,
+        "muplus": 1.449389349708596
+      },
+      "metrics": {
+        "particle_family_TV": 0.0006764453219244723,
+        "particle_angle_direction_TV": 0.0418488688256357,
+        "particle_energy_bin_TV": 0.008103133687676971,
+        "activity_nuclide_TV_particle_reweighted": 0.004783062243586787,
+        "activity_volume_class_TV_particle_reweighted": 0.004350570083603841,
+        "activity_volume_TV_particle_reweighted": 0.004473553429536491,
+        "activity_nuclide_volume_TV_particle_reweighted": 0.0048137388722504625,
+        "activity_particle_TV_particle_reweighted": 0.004983861284731949,
+        "total_activity_scale_particle_reweighted": 1.2263832388933775
+      },
+      "top_activity_nuclides": [
+        {
+          "key": "53128",
+          "fraction": 0.7727792178453229
+        },
+        {
+          "key": "29064",
+          "fraction": 0.05648548212903581
+        },
+        {
+          "key": "13028",
+          "fraction": 0.04468613771596223
+        },
+        {
+          "key": "12027",
+          "fraction": 0.027968677617252996
+        },
+        {
+          "key": "74187",
+          "fraction": 0.026948583638486654
+        },
+        {
+          "key": "29066",
+          "fraction": 0.013441017481347853
+        },
+        {
+          "key": "55134",
+          "fraction": 0.013340488985118552
+        },
+        {
+          "key": "55132",
+          "fraction": 0.006078629307702569
+        },
+        {
+          "key": "47110",
+          "fraction": 0.0050753399414803935
+        },
+        {
+          "key": "11024",
+          "fraction": 0.004724583223166791
+        }
+      ],
+      "top_activity_volume_classes": [
+        {
+          "key": "CsI_active_shield",
+          "fraction": 0.811144962061224
+        },
+        {
+          "key": "Al_shell_or_window",
+          "fraction": 0.0627221542186064
+        },
+        {
+          "key": "cryogenic_service_mass",
+          "fraction": 0.05823939366460985
+        },
+        {
+          "key": "other",
+          "fraction": 0.029841756082452146
+        },
+        {
+          "key": "W_passive_collimator_or_liner",
+          "fraction": 0.029351335031521736
+        },
+        {
+          "key": "Cu_cold_mass_or_liner",
+          "fraction": 0.008679194706164628
+        },
+        {
+          "key": "Kapton_flex",
+          "fraction": 2.1204235421210398e-05
+        }
+      ]
+    },
+    "day15_reference": {
+      "probe": {
+        "probe": "day15_reference",
+        "time_bin_id": 60.0,
+        "day_mid": 15.0,
+        "altitude_km": 38.75,
+        "latitude_deg": 34.0,
+        "longitude_deg": 100.0,
+        "altitude_offset_km": 0.0,
+        "latitude_offset_deg": 0.0,
+        "longitude_offset_deg": 0.0,
+        "depth_g_cm2": 3.4614689720143224
+      },
+      "meta": {
+        "W_index": 114.6,
+        "Rc_GV_parma": 11.6,
+        "depth_g_cm2_parma": 3.46146897201
+      },
+      "particle_scale_to_day15": {
+        "gamma": 1.0,
+        "n": 1.0,
+        "p": 1.0,
+        "alpha": 1.0,
+        "eminus": 1.0,
+        "eplus": 1.0,
+        "muminus": 1.0,
+        "muplus": 1.0
+      },
+      "metrics": {
+        "particle_family_TV": 0.0,
+        "particle_angle_direction_TV": 0.0,
+        "particle_energy_bin_TV": 0.0,
+        "activity_nuclide_TV_particle_reweighted": 0.0,
+        "activity_volume_class_TV_particle_reweighted": 0.0,
+        "activity_volume_TV_particle_reweighted": 0.0,
+        "activity_nuclide_volume_TV_particle_reweighted": 0.0,
+        "activity_particle_TV_particle_reweighted": 0.0,
+        "total_activity_scale_particle_reweighted": 1.0
+      },
+      "top_activity_nuclides": [
+        {
+          "key": "53128",
+          "fraction": 0.7762311278677057
+        },
+        {
+          "key": "29064",
+          "fraction": 0.056743854145315444
+        },
+        {
+          "key": "13028",
+          "fraction": 0.04488792272504462
+        },
+        {
+          "key": "74187",
+          "fraction": 0.027070586500565364
+        },
+        {
+          "key": "12027",
+          "fraction": 0.023962630754089036
+        },
+        {
+          "key": "29066",
+          "fraction": 0.01349985213032702
+        },
+        {
+          "key": "55134",
+          "fraction": 0.013400807934830533
+        },
+        {
+          "key": "55132",
+          "fraction": 0.006133703304776411
+        },
+        {
+          "key": "47110",
+          "fraction": 0.005098317252911289
+        },
+        {
+          "key": "53126",
+          "fraction": 0.004541475066696934
+        }
+      ],
+      "top_activity_volume_classes": [
+        {
+          "key": "CsI_active_shield",
+          "fraction": 0.8150894578725193
+        },
+        {
+          "key": "Al_shell_or_window",
+          "fraction": 0.05888715109797232
+        },
+        {
+          "key": "cryogenic_service_mass",
+          "fraction": 0.05851116234588966
+        },
+        {
+          "key": "W_passive_collimator_or_liner",
+          "fraction": 0.029441824659734134
+        },
+        {
+          "key": "other",
+          "fraction": 0.029326189119482402
+        },
+        {
+          "key": "Cu_cold_mass_or_liner",
+          "fraction": 0.008720255893397161
+        },
+        {
+          "key": "Kapton_flex",
+          "fraction": 2.3959011005023717e-05
+        }
+      ]
+    },
+    "high_altitude": {
+      "probe": {
+        "probe": "high_altitude",
+        "time_bin_id": 5.0,
+        "day_mid": 1.25,
+        "altitude_km": 41.25,
+        "latitude_deg": 34.055630233489076,
+        "longitude_deg": 100.04341204441673,
+        "altitude_offset_km": 2.5,
+        "latitude_offset_deg": 0.055630233489078716,
+        "longitude_offset_deg": 0.043412044416732444,
+        "depth_g_cm2": 2.3965878546996042
+      },
+      "meta": {
+        "W_index": 114.6,
+        "Rc_GV_parma": 11.571943381,
+        "depth_g_cm2_parma": 2.3965878547
+      },
+      "particle_scale_to_day15": {
+        "gamma": 0.8558872049892858,
+        "n": 0.8451801075722444,
+        "p": 0.9293811090291096,
+        "alpha": 0.9587598369518177,
+        "eminus": 0.898091355057357,
+        "eplus": 0.907040401121332,
+        "muminus": 0.6704261266074941,
+        "muplus": 0.6507426635126766
+      },
+      "metrics": {
+        "particle_family_TV": 0.0005373279886150728,
+        "particle_angle_direction_TV": 0.04236578696449634,
+        "particle_energy_bin_TV": 0.009045787776627297,
+        "activity_nuclide_TV_particle_reweighted": 0.005493955071060964,
+        "activity_volume_class_TV_particle_reweighted": 0.004995967591137308,
+        "activity_volume_TV_particle_reweighted": 0.005138053170735067,
+        "activity_nuclide_volume_TV_particle_reweighted": 0.00552853007530134,
+        "activity_particle_TV_particle_reweighted": 0.005720326789023363,
+        "total_activity_scale_particle_reweighted": 0.8407181138420466
+      },
+      "top_activity_nuclides": [
+        {
+          "key": "53128",
+          "fraction": 0.7802906712730421
+        },
+        {
+          "key": "29064",
+          "fraction": 0.0570468625130099
+        },
+        {
+          "key": "13028",
+          "fraction": 0.04512480945693711
+        },
+        {
+          "key": "74187",
+          "fraction": 0.027214259849871844
+        },
+        {
+          "key": "12027",
+          "fraction": 0.019365136701915333
+        },
+        {
+          "key": "29066",
+          "fraction": 0.013568982848198555
+        },
+        {
+          "key": "55134",
+          "fraction": 0.01347175044611671
+        },
+        {
+          "key": "55132",
+          "fraction": 0.006187163389458075
+        },
+        {
+          "key": "47110",
+          "fraction": 0.005125375858218471
+        },
+        {
+          "key": "53126",
+          "fraction": 0.00457204359073368
+        }
+      ],
+      "top_activity_volume_classes": [
+        {
+          "key": "CsI_active_shield",
+          "fraction": 0.819619789916735
+        },
+        {
+          "key": "cryogenic_service_mass",
+          "fraction": 0.05882206159606956
+        },
+        {
+          "key": "Al_shell_or_window",
+          "fraction": 0.05448443532583293
+        },
+        {
+          "key": "W_passive_collimator_or_liner",
+          "fraction": 0.029546200573802705
+        },
+        {
+          "key": "other",
+          "fraction": 0.02873293730048448
+        },
+        {
+          "key": "Cu_cold_mass_or_liner",
+          "fraction": 0.008768089661879232
+        },
+        {
+          "key": "Kapton_flex",
+          "fraction": 2.6485625196075e-05
+        }
+      ]
+    }
+  },
+  "claim_boundary": "This smoke supports only the particle-family reweighting layer of the distribution-invariance assumption. It does not test same-particle energy/angle-dependent activation cross sections or transport-position shifts; a stronger proof requires low/high/reference Geant4 activation-production reruns with generated PARMA source cards.",
+  "outputs": {
+    "summary_json": "core_md/balloon511_nima_latex_drafts/paper_resource/delayed_distribution_invariance_smoke_20260617.json",
+    "metrics_csv": "core_md/balloon511_nima_latex_drafts/paper_resource/delayed_distribution_invariance_smoke_metrics_20260617.csv",
+    "parma_rows_csv": "core_md/balloon511_nima_latex_drafts/paper_resource/delayed_distribution_invariance_smoke_parma_rows_20260617.csv",
+    "report_md": "core_md/balloon511_nima_latex_drafts/paper_resource/delayed_distribution_invariance_smoke_20260617.md"
+  }
+}

@@ -1,0 +1,247 @@
+{
+  "status": "PASS_DETECTOR_COUPLED_FOCUSED_EVENTLIST",
+  "claim_level": "L1_DETECTOR_COUPLED_FOCUSED_EVENTLIST",
+  "scope": "Full non-smoke Step09 focused EventList science transport parsed through the Bgo_sample TES/BGO/Compton-FoV selection. Optics hardware mass activation is still not included.",
+  "inputs": {
+    "focused_sim": "runs/step09_bgo_sample_focus/Opticsim_laue_f10m_a1_bgo_sample.inc1.id1.sim.gz",
+    "profile": "bgo_sample_fullstat_v2_exactpos",
+    "background_catalog": "stepwise_maintenance/step05_veto_time_axis/outputs_bgo_sample_fullstat_v2_exactpos_l1/work/event_catalog.pkl",
+    "optics_authority": "stepwise_maintenance/step04_opticsim/optics_aeff_authority_f10m_a1.json",
+    "step09_summary": "Bgo_sample/step09_focus_summary.json",
+    "day15_summary": "stepwise_maintenance/step05_veto_time_axis/outputs_bgo_sample_fullstat_v2_exactpos_l1/step05_bgo_sample_l1_response_summary.json",
+    "step06_summary": "stepwise_maintenance/step06_mission_time_variation/outputs_bgo_sample_fullstat_v2_exactpos/step06_bgo_sample_fullstat_v2_exactpos_summary.json",
+    "reject_policy": "keep",
+    "spatial_frame": {
+      "axis_policy": "v3p5_side_entry_tilt45",
+      "axis_y_cm": 0.0,
+      "axis_z_cm": -5.2,
+      "be_radius_cm": 1.898,
+      "instrument_rotation_y_deg": 45.0
+    }
+  },
+  "normalization": {
+    "reference_flux_ph_cm2_s": 0.0001,
+    "A_eff_511_cm2": 20.084760000000003,
+    "T_atm_ref": 0.7390423888027,
+    "focused_plane_rate_cps_at_reference_flux": 0.0014843489008928919,
+    "eventlist_rows": 37194,
+    "rate_per_event_cps": 3.9908288995345804e-08,
+    "tes_sigma_keV": 0.14,
+    "mission_days": 20.0,
+    "active_veto_threshold_keV": 70.0
+  },
+  "optics": {
+    "design_name": "balloon511_f10m_ge111_511line_a1",
+    "focal_length_mm": 10000.0,
+    "aeff_511_cm2": 20.084760000000003,
+    "natural_passband_fwhm": {
+      "center_keV": 511.0,
+      "fwhm_keV": 20.012125776358307,
+      "lo_keV": 500.99393711182086,
+      "hi_keV": 521.0060628881791,
+      "relative_fwhm": 0.0391626727521689,
+      "formula": "DeltaE/E = cot(theta_B) * mosaic_FWHM_rad"
+    },
+    "focal_stats": {
+      "combined_focal_crossings": "stepwise_maintenance/step04_opticsim/outputs/opticsim_laue_bfull_f10m_a1_r2_3seed/focal_crossings.csv",
+      "per_seed": [
+        {
+          "seed": 12345,
+          "source_focal_crossings": "/home/ubuntu/opticsim/opticsim_full/runs/f10m_ge111_511line/a1_R2_tilefoot_seed12345/focal_crossings.csv",
+          "repo_focal_crossings": "stepwise_maintenance/step04_opticsim/outputs/opticsim_laue_bfull_f10m_a1_r2_3seed/per_seed/focal_crossings_seed12345.csv",
+          "diffracted_rows": 12522,
+          "within_be_rows": 12504,
+          "outside_be_rows": 18,
+          "aeff_cm2": 20.256480000000003,
+          "r50_mm": 7.089393574837358,
+          "r90_mm": 10.285654234035201
+        },
+        {
+          "seed": 24680,
+          "source_focal_crossings": "/home/ubuntu/opticsim/opticsim_full/runs/f10m_ge111_511line/a1_R2_tilefoot_seed24680/focal_crossings.csv",
+          "repo_focal_crossings": "stepwise_maintenance/step04_opticsim/outputs/opticsim_laue_bfull_f10m_a1_r2_3seed/per_seed/focal_crossings_seed24680.csv",
+          "diffracted_rows": 12505,
+          "within_be_rows": 12485,
+          "outside_be_rows": 20,
+          "aeff_cm2": 20.2257,
+          "r50_mm": 7.165503416434568,
+          "r90_mm": 10.238788954691712
+        },
+        {
+          "seed": 98765,
+          "source_focal_crossings": "/home/ubuntu/opticsim/opticsim_full/runs/f10m_ge111_511line/a1_R2_tilefoot_seed98765/focal_crossings.csv",
+          "repo_focal_crossings": "stepwise_maintenance/step04_opticsim/outputs/opticsim_laue_bfull_f10m_a1_r2_3seed/per_seed/focal_crossings_seed98765.csv",
+          "diffracted_rows": 12229,
+          "within_be_rows": 12205,
+          "outside_be_rows": 24,
+          "aeff_cm2": 19.772100000000002,
+          "r50_mm": 7.217906499508449,
+          "r90_mm": 10.342580397467533
+        }
+      ],
+      "diffracted_focal_rows": 37256,
+      "within_be_rows": 37194,
+      "outside_be_rows": 62,
+      "within_be_fraction": 0.9983358385226541,
+      "r50_cm": 0.7156475612216279,
+      "r90_cm": 1.0285254697529675,
+      "r95_cm": 1.1063830117891582,
+      "r99_cm": 1.2452743097695802,
+      "r999_cm": 9.36297966974589,
+      "rmax_within_be_cm": 1.553563110869786,
+      "rmax_all_diffracted_cm": 21.09044857948191,
+      "be_radius_cm": 1.898,
+      "pass_r99_within_be": true
+    }
+  },
+  "windows": {
+    "W1_design_passband": {
+      "window_id": "W1_design_passband",
+      "label": "W1 design natural passband FWHM",
+      "lo_keV": 500.99393711182086,
+      "hi_keV": 521.0060628881791,
+      "basis": "Step04 optics_aeff_authority natural_passband_fwhm"
+    },
+    "line_pm_1sigma": {
+      "window_id": "line_pm_1sigma",
+      "label": "511 +/- 1 sigma_TES",
+      "lo_keV": 510.86,
+      "hi_keV": 511.14,
+      "basis": "TES Gaussian energy response"
+    },
+    "line_pm_2sigma": {
+      "window_id": "line_pm_2sigma",
+      "label": "511 +/- 2 sigma_TES",
+      "lo_keV": 510.72,
+      "hi_keV": 511.28,
+      "basis": "TES Gaussian energy response"
+    },
+    "W2_511_pm_420eV": {
+      "window_id": "W2_511_pm_420eV",
+      "label": "W2 511 +/- 420 eV",
+      "lo_keV": 510.58,
+      "hi_keV": 511.42,
+      "basis": "requested narrow line window, equal to +/-3 sigma_TES"
+    }
+  },
+  "window_checks": {
+    "W1_design_passband": {
+      "lo_keV": 500.99393711182086,
+      "hi_keV": 521.0060628881791,
+      "signal_raw_cps_at_reference_flux": 0.0012106864267341663,
+      "signal_scintillator_cps_at_reference_flux": 0.0012106864267341663,
+      "signal_compton_fov_cps_at_reference_flux": 0.0010681453573919552,
+      "signal_both_cps_at_reference_flux": 0.0010681453573919552,
+      "signal_both_response_cps_per_ph_cm2_s": 10.681453573919551,
+      "signal_scintillator_response_cps_per_ph_cm2_s": 12.106864267341663,
+      "signal_compton_fov_response_cps_per_ph_cm2_s": 10.681453573919551,
+      "background_raw_cps": 0.1375401786618738,
+      "background_scintillator_cps": 0.06902572179182372,
+      "background_compton_fov_cps": 0.11921773872638608,
+      "background_both_cps": 0.05977961490451396,
+      "Z20d_both": 5.742826156423591,
+      "T3_day_constant_rate": 5.4578445954274555,
+      "T3_status": "mission_internal_crossing",
+      "flux_3sigma_20d_ph_cm2_s": 5.22390878338599e-05
+    },
+    "line_pm_1sigma": {
+      "lo_keV": 510.86,
+      "hi_keV": 511.14,
+      "signal_raw_cps_at_reference_flux": 0.0008257559924161024,
+      "signal_scintillator_cps_at_reference_flux": 0.0008257559924161024,
+      "signal_compton_fov_cps_at_reference_flux": 0.0007287506809821186,
+      "signal_both_cps_at_reference_flux": 0.0007287506809821186,
+      "signal_both_response_cps_per_ph_cm2_s": 7.287506809821186,
+      "signal_scintillator_response_cps_per_ph_cm2_s": 8.257559924161024,
+      "signal_compton_fov_response_cps_per_ph_cm2_s": 7.287506809821186,
+      "background_raw_cps": 0.07912024096166016,
+      "background_scintillator_cps": 0.044036867190072014,
+      "background_compton_fov_cps": 0.06907019066567407,
+      "background_both_cps": 0.03866836766252107,
+      "Z20d_both": 4.8716145963791355,
+      "T3_day_constant_rate": 7.584494819412937,
+      "T3_status": "mission_internal_crossing",
+      "flux_3sigma_20d_ph_cm2_s": 6.158122611402333e-05
+    },
+    "line_pm_2sigma": {
+      "lo_keV": 510.72,
+      "hi_keV": 511.28,
+      "signal_raw_cps_at_reference_flux": 0.0011545468077014402,
+      "signal_scintillator_cps_at_reference_flux": 0.0011545468077014402,
+      "signal_compton_fov_cps_at_reference_flux": 0.0010189089275437998,
+      "signal_both_cps_at_reference_flux": 0.0010189089275437998,
+      "signal_both_response_cps_per_ph_cm2_s": 10.189089275437997,
+      "signal_scintillator_response_cps_per_ph_cm2_s": 11.545468077014402,
+      "signal_compton_fov_response_cps_per_ph_cm2_s": 10.189089275437997,
+      "background_raw_cps": 0.11099494089622862,
+      "background_scintillator_cps": 0.0617610453617712,
+      "background_compton_fov_cps": 0.0968616680423764,
+      "background_both_cps": 0.05425498705067107,
+      "Z20d_both": 5.750258974775246,
+      "T3_day_constant_rate": 5.443744030924761,
+      "T3_status": "mission_internal_crossing",
+      "flux_3sigma_20d_ph_cm2_s": 5.21715632836738e-05
+    },
+    "W2_511_pm_420eV": {
+      "lo_keV": 510.58,
+      "hi_keV": 511.42,
+      "signal_raw_cps_at_reference_flux": 0.001206345904875824,
+      "signal_scintillator_cps_at_reference_flux": 0.001206345904875824,
+      "signal_compton_fov_cps_at_reference_flux": 0.001064618310256617,
+      "signal_both_cps_at_reference_flux": 0.001064618310256617,
+      "signal_both_response_cps_per_ph_cm2_s": 10.64618310256617,
+      "signal_scintillator_response_cps_per_ph_cm2_s": 12.063459048758238,
+      "signal_compton_fov_response_cps_per_ph_cm2_s": 10.64618310256617,
+      "background_raw_cps": 0.11631780238081714,
+      "background_scintillator_cps": 0.06475383365577204,
+      "background_compton_fov_cps": 0.1014832113031615,
+      "background_both_cps": 0.056911150237755316,
+      "Z20d_both": 5.866338495315492,
+      "T3_day_constant_rate": 5.23044051942037,
+      "T3_status": "mission_internal_crossing",
+      "flux_3sigma_20d_ph_cm2_s": 5.113922427755612e-05
+    }
+  },
+  "spatial_checks": {
+    "signal_detector_events": 26752,
+    "background_detector_events": 253,
+    "signal_radius_r50_cm": 0.7245795359278085,
+    "signal_radius_r68_cm": 0.8539620688831576,
+    "signal_radius_r90_cm": 1.055732784975917,
+    "signal_radius_r95_cm": 1.1449645028010191,
+    "signal_radius_r99_cm": 1.3112857613168307,
+    "signal_radius_max_cm": 1.708006744272094,
+    "best_cut_id": "spot_r90",
+    "best_cut_radius_cm": 1.055732784975917,
+    "best_cut_signal_psf_fraction": 0.9000330387095764,
+    "best_cut_background_cps": 0.018669809029090937,
+    "best_cut_Z20d": 9.218373798909598,
+    "spot_r90_signal_psf_fraction": 0.9000330387095764,
+    "spot_r90_background_cps": 0.018669809029090937,
+    "spot_r90_Z20d": 9.218373798909598,
+    "spot_r90_flux_3sigma_20d_ph_cm2_s": 3.254370093296561e-05
+  },
+  "checks": {
+    "focused_generated_events_seen": 37194,
+    "focused_kept_events": 36586,
+    "focused_classified_events_480_550": 30379,
+    "background_classified_events_480_550": 753,
+    "focused_rate_matches_aeff_times_tatm": 0.0014843489008928919,
+    "aeff_design_target_cm2": 20.0,
+    "aeff_design_tolerance_fraction": 0.07,
+    "aeff_design_rel_residual": 0.004238000000000142,
+    "aeff_design_within_tolerance": true,
+    "W1_background_rejection_both_vs_raw": 2.300787298171239,
+    "W2_background_rejection_both_vs_raw": 2.0438490857218867
+  },
+  "outputs": {
+    "json": "stepwise_maintenance/step09_optics_bridge/outputs_bgo_sample_fullstat_v2_exactpos/detector_coupled_focus_response.json",
+    "markdown": "stepwise_maintenance/step09_optics_bridge/outputs_bgo_sample_fullstat_v2_exactpos/detector_coupled_focus_response.md",
+    "windows_csv": "stepwise_maintenance/step09_optics_bridge/outputs_bgo_sample_fullstat_v2_exactpos/detector_coupled_focus_windows.csv",
+    "background_veto_csv": "stepwise_maintenance/step09_optics_bridge/outputs_bgo_sample_fullstat_v2_exactpos/non_xray_background_w1_w2_veto_table.csv",
+    "spatial_csv": "stepwise_maintenance/step09_optics_bridge/outputs_bgo_sample_fullstat_v2_exactpos/detector_coupled_spatial_line_cuts.csv",
+    "spectrum_csv": "stepwise_maintenance/step09_optics_bridge/outputs_bgo_sample_fullstat_v2_exactpos/non_xray_background_spectrum_480_550.csv",
+    "background_spectrum_figure": "stepwise_maintenance/step09_optics_bridge/outputs_bgo_sample_fullstat_v2_exactpos/figures/non_xray_background_spectrum_w1_w2.png",
+    "spatial_figure": "stepwise_maintenance/step09_optics_bridge/outputs_bgo_sample_fullstat_v2_exactpos/figures/detector_coupled_spatial_line_cuts.png"
+  }
+}

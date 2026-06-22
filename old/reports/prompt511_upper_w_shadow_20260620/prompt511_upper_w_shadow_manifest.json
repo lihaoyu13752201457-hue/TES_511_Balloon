@@ -1,0 +1,135 @@
+{
+  "status": "PASS_PROMPT511_UPPER_W_SHADOW_GEOMETRY_READY",
+  "claim_level": "PROMPT511_UPPER_W_SHADOW_DESIGN_SMOKE_NO_RATE_AUTHORITY",
+  "base_geometry": "outputs/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup",
+  "geometry": {
+    "geometry_setup": "outputs/reports/prompt511_upper_w_shadow_20260620/geometry_upper_w_shadow/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy_prompt511_upper_w_shadow_r12p35_12p8.geo.setup",
+    "geometry_geo": "outputs/reports/prompt511_upper_w_shadow_20260620/geometry_upper_w_shadow/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy_prompt511_upper_w_shadow_r12p35_12p8.geo",
+    "geometry_det": "outputs/reports/prompt511_upper_w_shadow_20260620/geometry_upper_w_shadow/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy_prompt511_upper_w_shadow_r12p35_12p8.det",
+    "added_material": "W",
+    "added_w_envelope": {
+      "r_cm": [
+        12.35,
+        12.8
+      ],
+      "lower_z_cm": [
+        -13.0,
+        1.0
+      ],
+      "signal_port_gap": {
+        "phi_deg": [
+          171.0,
+          189.0
+        ],
+        "z_cm": [
+          -7.2,
+          -3.2
+        ]
+      },
+      "upper_notched_z_cm": [
+        1.05,
+        28.0
+      ],
+      "upper_notched_phi_deg": [
+        5.0,
+        355.0
+      ]
+    },
+    "estimated_added_w_mass_kg": 27.44939366045985,
+    "estimated_added_w_mass_breakdown_kg": {
+      "lower_nonport_arc_kg": 9.126606496044008,
+      "port_below_kg": 0.1990011942746438,
+      "port_above_kg": 0.14410431309543176,
+      "upper_notched_kg": 17.979681657045766
+    },
+    "selected_ray_proxy": {
+      "selected_records": 80,
+      "ray_trace_method": "piecewise segment-length through actual PCON z/phi coverage; not a single mid-radius hit test",
+      "caught_events": 77,
+      "caught_rate_s-1": 0.05230008293298872,
+      "missed_events": 3,
+      "missed_rate_s-1": 0.0020376655688177396,
+      "caught_by_region": {
+        "upper_notched": 45,
+        "lower_nonport_or_port_fill": 32
+      },
+      "nominal_w_thickness_cm": 0.45000000000000107,
+      "solid_path_length_stats_cm": {
+        "min_cm": 0.36406316421793133,
+        "p10_cm": 0.45233766699599476,
+        "median_cm": 0.5537837890030044,
+        "rate_weighted_mean_cm": 0.5999528733869132,
+        "max_cm": 1.2236308597315835
+      },
+      "attenuation_estimates": {
+        "0.0918": {
+          "mu_rho_cm2_g": 0.0918,
+          "normal_incidence_511_transmission": 0.45055145090899174,
+          "path_weighted_residual_estimate_s-1": 0.02083235888356931
+        },
+        "0.137": {
+          "mu_rho_cm2_g": 0.137,
+          "normal_incidence_511_transmission": 0.30426842201728027,
+          "path_weighted_residual_estimate_s-1": 0.013656078554988113
+        }
+      },
+      "miss_samples": [
+        {
+          "z_cm": 4.230467120651116,
+          "phi_deg": 356.7702104275923
+        },
+        {
+          "z_cm": -4.175739559091438,
+          "phi_deg": 180.01468745577702
+        }
+      ],
+      "claim_boundary": "Straight-line selected-event proxy only; MC must close self-emission, Compton refill, n/mu prompt, signal transport, and activation."
+    }
+  },
+  "sources": {
+    "status": "PASS_PROMPT511_UPPER_W_SHADOW_SOURCE_CARDS",
+    "source_dir": "outputs/reports/prompt511_upper_w_shadow_20260620/source_cards_upper_w_shadow",
+    "base_source_dir": "config/megalib_sources_fullsphere20_v3p5_centerfinger_tilt45",
+    "geometry_setup": "outputs/reports/prompt511_upper_w_shadow_20260620/geometry_upper_w_shadow/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy_prompt511_upper_w_shadow_r12p35_12p8.geo.setup",
+    "farfield_radius_cm": 60.0,
+    "sources": [
+      {
+        "source": "outputs/reports/prompt511_upper_w_shadow_20260620/source_cards_upper_w_shadow/Background_alpha_fullsphere20.source",
+        "base_source": "config/megalib_sources_fullsphere20_v3p5_centerfinger_tilt45/Background_alpha_fullsphere20.source"
+      },
+      {
+        "source": "outputs/reports/prompt511_upper_w_shadow_20260620/source_cards_upper_w_shadow/Background_eminus_fullsphere20.source",
+        "base_source": "config/megalib_sources_fullsphere20_v3p5_centerfinger_tilt45/Background_eminus_fullsphere20.source"
+      },
+      {
+        "source": "outputs/reports/prompt511_upper_w_shadow_20260620/source_cards_upper_w_shadow/Background_eplus_fullsphere20.source",
+        "base_source": "config/megalib_sources_fullsphere20_v3p5_centerfinger_tilt45/Background_eplus_fullsphere20.source"
+      },
+      {
+        "source": "outputs/reports/prompt511_upper_w_shadow_20260620/source_cards_upper_w_shadow/Background_gamma_fullsphere20.source",
+        "base_source": "config/megalib_sources_fullsphere20_v3p5_centerfinger_tilt45/Background_gamma_fullsphere20.source"
+      },
+      {
+        "source": "outputs/reports/prompt511_upper_w_shadow_20260620/source_cards_upper_w_shadow/Background_muminus_fullsphere20.source",
+        "base_source": "config/megalib_sources_fullsphere20_v3p5_centerfinger_tilt45/Background_muminus_fullsphere20.source"
+      },
+      {
+        "source": "outputs/reports/prompt511_upper_w_shadow_20260620/source_cards_upper_w_shadow/Background_muplus_fullsphere20.source",
+        "base_source": "config/megalib_sources_fullsphere20_v3p5_centerfinger_tilt45/Background_muplus_fullsphere20.source"
+      },
+      {
+        "source": "outputs/reports/prompt511_upper_w_shadow_20260620/source_cards_upper_w_shadow/Background_n_fullsphere20.source",
+        "base_source": "config/megalib_sources_fullsphere20_v3p5_centerfinger_tilt45/Background_n_fullsphere20.source"
+      },
+      {
+        "source": "outputs/reports/prompt511_upper_w_shadow_20260620/source_cards_upper_w_shadow/Background_p_fullsphere20.source",
+        "base_source": "config/megalib_sources_fullsphere20_v3p5_centerfinger_tilt45/Background_p_fullsphere20.source"
+      }
+    ]
+  },
+  "overlap": {
+    "overlap_source": "outputs/reports/prompt511_upper_w_shadow_20260620/overlap_upper_w_shadow.source",
+    "overlap_log": "outputs/reports/prompt511_upper_w_shadow_20260620/overlap_upper_w_shadow.log"
+  },
+  "readme": "outputs/reports/prompt511_upper_w_shadow_20260620/README_upper_w_shadow.md"
+}

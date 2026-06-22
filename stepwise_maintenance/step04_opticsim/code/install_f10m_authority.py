@@ -184,7 +184,7 @@ def build_compat_authority(authority: dict[str, Any], design: dict[str, Any], fo
     compatibility = {
         "design_name": "balloon511_f10m_ge111_511line_a1",
         "status": "RUN_AVAILABLE_F10M_PHASE0_EMBED_READY",
-        "science_policy": "511-keV line optimized f=10 m Ge(111) Laue lens. This is an embeddable candidate authority; f9m remains the current published headline until downstream Step09/Step07/Step08 are rerun.",
+        "science_policy": "511-keV line optimized f=10 m Ge(111) Laue lens. This is the current paper-facing optical authority after downstream Step09 detector coupling, Step07 source normalization, and Step08 significance reruns.",
         "normalization_policy": "A_eff(E) = ring geometric area times B-FULL emergent within-Be focal diffraction efficiency. A1/R2 honest tile-footprint seed aggregate is used for the embeddable EventList profile.",
         "design_target": {
             "aeff_511_design_cm2": 20.0,

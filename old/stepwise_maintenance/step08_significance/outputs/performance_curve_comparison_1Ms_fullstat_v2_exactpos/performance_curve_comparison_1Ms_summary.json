@@ -1,0 +1,93 @@
+{
+  "status": "PASS_PERFORMANCE_CURVE_COMPARISON_1MS",
+  "claim_level": "L1_3SIGMA_FLUX_LIMIT_EXPOSURE_SCALING_COMPARISON",
+  "exposure_s_requested": 1000000.0,
+  "one_Ms": {
+    "511CAM_Fig11_digitized_511keV": {
+      "label": "511-CAM Fig.11",
+      "flux_3sigma_ph_cm2_s": 2.7e-06,
+      "Z_at_1e-4": "",
+      "method": "digitized_from_511CAM_Fig11_right_panel_at_511keV"
+    },
+    "COSI_SMEX_scaled_to_1Ms": {
+      "label": "COSI scaled to 1 Ms",
+      "flux_3sigma_ph_cm2_s": 9.53340904398841e-05,
+      "Z_at_1e-4": "",
+      "method": "sqrt_time_scaled_from_published_2yr_3sigma_narrow_line_point_source_sensitivity"
+    },
+    "DEMO2_W1_mission_axis": {
+      "label": "DEMO2 legacy W1 mission-axis",
+      "flux_3sigma_ph_cm2_s": 0.000514215787988816,
+      "Z_at_1e-4": 0.5834126586687474,
+      "method": "legacy_pre_fix_documented_20d_Z_sqrt_exposure_scaling"
+    },
+    "DEMO2_W2_line": {
+      "label": "DEMO2 legacy W2 line",
+      "flux_3sigma_ph_cm2_s": 0.0001441677969479969,
+      "Z_at_1e-4": 2.0809085409567136,
+      "method": "legacy_pre_fix_documented_20d_Z_sqrt_exposure_scaling"
+    },
+    "DEMO2_W2_spot_r90": {
+      "label": "DEMO2 legacy W2 spot_r90",
+      "flux_3sigma_ph_cm2_s": 8.748416439180168e-05,
+      "Z_at_1e-4": 3.4291920381891843,
+      "method": "legacy_pre_fix_documented_20d_Z_sqrt_exposure_scaling"
+    },
+    "SPI_511keV_1Ms_public": {
+      "label": "INTEGRAL/SPI",
+      "flux_3sigma_ph_cm2_s": 5e-05,
+      "Z_at_1e-4": "",
+      "method": "published_3sigma_1e6s_511keV_narrow_line"
+    },
+    "v3p5_W2": {
+      "label": "v3p5 W2",
+      "flux_3sigma_ph_cm2_s": 6.325641871496743e-05,
+      "Z_at_1e-4": 4.74260171685969,
+      "method": "v3p5_time_dependent_cumulative_interpolation"
+    },
+    "v3p5_broad_480_550": {
+      "label": "v3p5 broad 480-550",
+      "flux_3sigma_ph_cm2_s": 7.048891078929421e-05,
+      "Z_at_1e-4": 4.255988589421696,
+      "method": "v3p5_time_dependent_cumulative_interpolation"
+    }
+  },
+  "best_one_Ms_case": {
+    "case_id": "511CAM_Fig11_digitized_511keV",
+    "label": "511-CAM Fig.11",
+    "flux_3sigma_ph_cm2_s": 2.7e-06
+  },
+  "best_1Ms": {
+    "case_id": "511CAM_Fig11_digitized_511keV",
+    "label": "511-CAM Fig.11",
+    "flux_3sigma_ph_cm2_s": 2.7e-06
+  },
+  "inputs": {
+    "v3p5_cumulative": "stepwise_maintenance/step08_significance/outputs_v3p5_centerfinger_fullstat_v2_exactpos/cumulative_significance_by_case.csv",
+    "v3p5_time_dependent_summary": "stepwise_maintenance/step08_significance/outputs_v3p5_centerfinger_fullstat_v2_exactpos/step08_v3p5_centerfinger_time_dependent_summary.json",
+    "v3p5_label": "fullstat_v2_exactpos",
+    "mainline_legacy_pre_fix_reference": [
+      "core_md/README.md",
+      "core_md/VALIDATION.md"
+    ],
+    "external_benchmark_sources": {
+      "511CAM": "511-CAM Fig.11 rendered from /tmp/511cam.pdf",
+      "SPI": "arXiv:astro-ph/0310793 / SPI public 511 keV narrow-line sensitivity",
+      "COSI": "arXiv:2308.12362"
+    }
+  },
+  "outputs": {
+    "summary_json": "stepwise_maintenance/step08_significance/outputs/performance_curve_comparison_1Ms_fullstat_v2_exactpos/performance_curve_comparison_1Ms_summary.json",
+    "csv": "stepwise_maintenance/step08_significance/outputs/performance_curve_comparison_1Ms_fullstat_v2_exactpos/performance_curve_comparison_1Ms.csv",
+    "cam511_digitized_csv": "stepwise_maintenance/step08_significance/outputs/performance_curve_comparison_1Ms_fullstat_v2_exactpos/cam511_fig11_digitized_points.csv",
+    "markdown": "stepwise_maintenance/step08_significance/outputs/performance_curve_comparison_1Ms_fullstat_v2_exactpos/performance_curve_comparison_1Ms.md",
+    "figure": "stepwise_maintenance/step08_significance/outputs/performance_curve_comparison_1Ms_fullstat_v2_exactpos/performance_curve_comparison_1Ms.png"
+  },
+  "limitations": [
+    "v3p5 curves use the `fullstat_v2_exactpos` Step08 products available in this checkout.",
+    "DEMO2 curves are legacy pre-fix documented 20-day headline values scaled as sqrt(exposure); they are retained only as historical markers after the x8.0116 delayed-source normalization review hold.",
+    "COSI is converted to a 1 Ms point by sqrt(time) scaling from a published 2-year all-sky narrow-line sensitivity, so it is a comparison marker, not an observing-strategy equivalence.",
+    "511-CAM is digitized from the rendered Fig.11 right panel and should be treated as figure-derived.",
+    "All values are Gaussian S/sqrt(B) 3-sigma flux limits, not a low-count exact Poisson construction."
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "label": "fix5_1of10",
+  "role": "Orchestrator",
+  "phase": "Phase 1 source-card/provenance checkpoint",
+  "generated_at_utc": "2026-06-21T16:54:09Z",
+  "inputs": {
+    "source_manifest": "outputs/reports/fix5_1of10/fix5_source_manifest.json",
+    "benchmark_alignment": "outputs/reports/fix5_1of10/fix5_benchmark_alignment.json",
+    "verification_verdict": "outputs/reports/fix5_1of10/fix5_verification_verdict.json",
+    "fix5_source_dir": "config/megalib_sources_fullsphere20_fix5_tilt45"
+  },
+  "decisions": {
+    "source_card_provenance": {
+      "decision": "PASS",
+      "meaning": "The pre-MC fix5 prompt/buildup source-card templates point to the fix5 .geo.setup and preserve the current v3p5 far-field source normalization.",
+      "allowed_next_step": "Runner may use these templates only for fix5-labeled prompt instant and activation buildup job-source generation, after writing run manifests with final seeds, event counts, and exposure ratios."
+    },
+    "old_new_geo_re_gate": {
+      "decision": "BLOCKED_NOT_ALIGNED",
+      "meaning": "The old new_geo_re prompt/delayed values are historical context only. They must not be used as pass/fail gates unless a later benchmark-alignment artifact reports decision == ALIGNED.",
+      "blocking_evidence": "outputs/reports/fix5_1of10/fix5_benchmark_alignment.json"
+    },
+    "runner_release": {
+      "decision": "NOT_RELEASED_FOR_MC_IN_THIS_CHECKPOINT",
+      "meaning": "This checkpoint intentionally stops before MC. Before any transport run, Runner must create fix5 run manifests/job-source cards from the approved templates and preserve the source_manifest/verification evidence chain.",
+      "reason": "The active user instruction for this stage was to complete Phase 0/checkpoint and confirm Builder/Verifier division before MC; Phase 1 source provenance is prepared, but no MC has been launched."
+    }
+  },
+  "non_negotiables_for_next_runner_step": [
+    "Do not use old new_geo_re prompt_total_cps or delayed_total_cps for pass/fail gating while benchmark_alignment decision is NOT_ALIGNED.",
+    "Generated job-source cards and SIM headers must contain the fix5 .geo.setup and must not contain the baseline v3p5 .geo.setup.",
+    "Run manifests must record final seeds, event counts, exposure ratios, and expected SIM outputs before transport.",
+    "Delayed source and delayed claims remain unavailable until fix5 activation buildup, NUBASE ground-state correction, per-family TT division guard, and M-sampling audit exist.",
+    "Append/merge is not allowed without a PASS fix5_merge_verdict.json; clean full-stat remains the default if the staged screen later passes."
+  ]
+}

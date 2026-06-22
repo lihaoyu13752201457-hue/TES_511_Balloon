@@ -63,7 +63,11 @@ import multiprocessing as mp
 
 import numpy as np
 import matplotlib.pyplot as plt
-from tqdm import tqdm
+try:
+    from tqdm import tqdm
+except ImportError:
+    def tqdm(iterable=None, *args, **kwargs):
+        return iterable if iterable is not None else []
 
 
 # -------------------------

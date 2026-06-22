@@ -1,16 +1,16 @@
 \begin{table}[t]
 \centering
-\caption{Traceability from science drivers to instrument and simulation requirements. The table summarizes requirements used to define the baseline exact-position analysis; it is not a separate sensitivity calculation.}
+\caption{Traceability from science drivers to instrument and simulation requirements. The table summarizes requirements used to define the current fix5 exact-position analysis; it is not a separate sensitivity calculation.}
 \label{tab:requirements_traceability}
 \footnotesize
 \begin{tabular}{@{}p{0.20\linewidth}p{0.22\linewidth}p{0.35\linewidth}p{0.14\linewidth}@{}}
 \toprule
 Science driver & Requirement & Current implementation or evidence & Workflow component \\
 \midrule
-Compact 511 keV targets at $\sim10^{-4}\cms$ or below & Concentrate 511 keV photons onto a small focal plane & 10 m Ge(111) Laue lens with $\aeff(511\keV)=20.08476\,\mathrm{cm^2}$; tracked focal particles passing the Be entrance aperture are replayed through the detector model & Laue optics; detector coupling \\
-Narrow-line spectroscopy rather than broad-band counting & Use a sub-keV analysis window and preserve source-flux normalization & $\wii=510.58$--$511.42\keV$; selected signal $0.00118117\cps$ at $\fzero=10^{-4}\cms$; source-flux response $11.8117\,\mathrm{cps}/(\mathrm{ph\,cm^{-2}\,s^{-1}})$ & Detector selection; source normalization \\
-Balloon prompt, side-entry, and activation backgrounds & Apply detector-coupled veto and topology cuts to signal and background streams & CsI post-processing veto, side-entry Compton/FoV consistency, exact-position delayed transport; selected $\wii$ background $0.0629804\cps$ split into prompt $0.0590827\cps$ and delayed $0.00389764\cps$; auxiliary upstream-optics interface closure with matched Ge volume and $1060\,\mathrm{cm}$ source surface & Common detector selection; auxiliary closure \\
-Mission-level sensitivity result & Fold rates through mission time and test delayed-source sampling stability & Final cumulative calculation gives $Z_{20\mathrm{d}}=6.13039$ and $\fthree(20\mathrm{d})=4.89365\times10^{-5}\cms$; M/seed sweep changes $Z_{20\mathrm{d}}$ by 0.551\% & Mission-time fold; robustness checks \\
+Compact 511 keV targets at $\sim10^{-4}\cms$ or below & Concentrate 511 keV photons onto a small focal plane & 10 m Ge(111) Laue lens with $\aeff(511\keV)=20.08476\,\mathrm{cm^2}$; tracked focal-plane photons passing the Be entrance aperture are replayed through the detector model & Laue optics; detector coupling \\
+Narrow-line spectroscopy rather than broad-band counting & Use a sub-keV analysis window and preserve source-flux normalization & $\wii=510.58$--$511.42\keV$; selected signal $0.00118587\cps$ at $\fzero=10^{-4}\cms$; source-flux response $11.8587\,\mathrm{cps}/(\mathrm{ph\,cm^{-2}\,s^{-1}})$ & Detector selection; source normalization \\
+Balloon prompt, side-entry, and activation backgrounds & Apply detector-coupled veto and topology selections to signal and background streams & CsI post-processing veto, side-entry Compton/FoV consistency, exact-position delayed transport; selected $\wii$ background $0.0392162\cps$ split into prompt $0.0366410\cps$ and delayed $0.00257520\cps$; selected W/collimator-origin delayed audit gives zero selected W/collimator events & Common detector selection; delayed activation audit \\
+Mission-level sensitivity result & Fold rates through mission time and test delayed-source sampling stability & Final cumulative calculation gives $Z_{20\mathrm{d}}=7.79950$ and $\fthree(20\mathrm{d})=3.84640\times10^{-5}\cms$; relative to the previous v3p5 authority, fix5 reduces total selected background to 0.623 and preserves the signal response at 1.004 & Mission-time fold; promotion checks \\
 \bottomrule
 \end{tabular}
 \end{table}

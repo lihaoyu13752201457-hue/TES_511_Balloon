@@ -1,0 +1,90 @@
+{
+  "status": "PASS_V3P5_BOUNDARY_CLOSURE_SIDECARS",
+  "statistics_label": "fullstat_v2",
+  "base_label": "fullstat_v2",
+  "authority_role": "CONSERVATIVE_RADIALPROFILE_BASELINE_CROSSCHECK",
+  "claim_level": "SIDECAR_CLOSURE_FOR_ATMOSPHERE_AND_SPATIAL_LIKELIHOOD",
+  "atmosphere_45deg_los": {
+    "status": "PASS_V3P5_45DEG_LOS_ATMOSPHERE_SIDECAR",
+    "base_label": "fullstat_v2",
+    "claim_level": "L1_ABSOLUTE_LOS_RENORMALIZATION_SIDECAR_NO_NEW_TRANSPORT",
+    "method": "T_slant(depth)=T_vertical(depth)**sec(45deg), using the same Step06 Beer-Lambert mu_eff and depth curve.",
+    "secant_45deg": 1.4142135623730951,
+    "w2_hard_window": {
+      "Z20d": 5.02544147909131,
+      "T3_day": 6.669122821836366,
+      "T3_status": "mission_internal_crossing",
+      "flux_3sigma_20d_ph_cm2_s": 5.969624783179157e-05,
+      "total_source_counts": 1784.709347109379,
+      "total_background_counts": 126120.75338089312,
+      "T_ref_vertical": 0.7390423888027,
+      "T_ref_slant": 0.6520342542373311,
+      "day15_signal_scale_slant_vs_vertical": 0.8822690878309049
+    },
+    "spot_r90": {
+      "Z20d": 7.205329171859502,
+      "T3_day": 2.8565703928856925,
+      "T3_status": "mission_internal_crossing",
+      "flux_3sigma_20d_ph_cm2_s": 4.1635849361560546e-05,
+      "total_source_counts": 1444.6241669832577,
+      "total_background_counts": 40197.78281930363,
+      "T_ref_vertical": 0.7390423888027,
+      "T_ref_slant": 0.6520342542373311,
+      "day15_signal_scale_slant_vs_vertical": 0.8822690878309049
+    },
+    "inputs": {
+      "step05": "stepwise_maintenance/step05_veto_time_axis/outputs_v3p5_centerfinger_fullstat_v2_l1/step05_v3p5_centerfinger_l1_response_summary.json",
+      "step06_background_time_variation": "stepwise_maintenance/step06_mission_time_variation/outputs_v3p5_centerfinger_fullstat_v2/background_time_variation.csv"
+    }
+  },
+  "spatial_annular_likelihood": {
+    "status": "PASS_V3P5_SPATIAL_ANNULAR_LIKELIHOOD_SIDECAR",
+    "base_label": "fullstat_v2",
+    "spatial_cuts_base": "detector_coupled_spatial_line_cuts_from_step09_f10m_a1_v3p5",
+    "claim_level": "L1_FIXED_TEMPLATE_MULTI_ANNULUS_POISSON_LIKELIHOOD_NO_NUISANCE_PROFILE",
+    "method": "Non-overlapping annuli from detector_coupled_spatial_line_cuts.csv; Asimov Poisson likelihood ratio for reference flux.",
+    "annulus_count": 6,
+    "total_source_counts_20d": 1821.2929487473261,
+    "total_background_counts_20d": 126191.18868971067,
+    "counting_Z20d_same_aperture": 5.127023293164827,
+    "annular_likelihood_Z20d": 8.458041391463423,
+    "flux_3sigma_20d_ph_cm2_s": 3.5469204525622874e-05,
+    "gain_vs_full_aperture_counting": 1.6496982572205974,
+    "gain_vs_spot_r90_time_dependent": 1.034538678421673,
+    "inputs": {
+      "spatial_cuts_csv": "stepwise_maintenance/step09_optics_bridge/outputs_f10m_a1_v3p5/detector_coupled_spatial_line_cuts.csv",
+      "step06_background_time_variation": "stepwise_maintenance/step06_mission_time_variation/outputs_v3p5_centerfinger_fullstat_v2/background_time_variation.csv",
+      "spatial_proxy_summary": "stepwise_maintenance/step08_significance/outputs_v3p5_centerfinger_fullstat_v2_spatial/v3p5_spatial_line_proxy_summary.json"
+    },
+    "boundaries": [
+      "This is a fixed-template annular likelihood sidecar, not a nuisance-profile publication analysis.",
+      "It uses W2-selected event rates already passed through active-veto and side-entry Compton/FoV selection."
+    ]
+  },
+  "exact_position_delayed_source": {
+    "status": "SOURCE_AUDITS_PASS_TRANSPORT_NOT_RERUN",
+    "claim_level": "NOT_CLOSED_FOR_PAPER_NUMBERS",
+    "raw_audit_status": "PASS",
+    "fixed_audit_status": "PASS",
+    "feasibility_status": "EXACT_RPIP_POINTSOURCE_SMOKE_VALIDATED_NOT_PRODUCTION_RERUN",
+    "feasibility_evidence": {
+      "repo_smoke_readme": "tests/realpos_delayed_smoke/README.md",
+      "new_geo_re_smoke_readme": "../codex_tes_511_sim/new_geo_re/tests/realpos_delayed_smoke/README.md",
+      "new_geo_re_verify_summary": "../codex_tes_511_sim/new_geo_re/tests/realpos_delayed_smoke/outputs/verify_summary.json",
+      "new_geo_re_smoke_events_SE": 2000,
+      "new_geo_re_smoke_match_fraction": 0.9905
+    },
+    "remaining_required_work": [
+      "Promote the smoke-validated exact-RPIP PointSource builder to v3p5 fullstat using ground-state-fixed activities and the in-fixed-inventory RPIP filter.",
+      "Run new delayed transport at the production trigger budget.",
+      "Rerun Step05/06/07/08 and this closure report from the exact-position delayed transport."
+    ],
+    "current_blocker": "The current v3p5 production delayed transport still uses the RadialProfileBeam-compressed source; feasibility is solved, production transport is not rerun."
+  },
+  "outputs": {
+    "summary_json": "outputs/reports/v3p5_boundary_closure_20260613/v3p5_boundary_closure_summary.json",
+    "report_md": "outputs/reports/v3p5_boundary_closure_20260613/v3p5_boundary_closure_report.md",
+    "atmosphere_45deg_curve_csv": "outputs/reports/v3p5_boundary_closure_20260613/v3p5_45deg_los_time_curve.csv",
+    "spatial_annulus_csv": "outputs/reports/v3p5_boundary_closure_20260613/v3p5_spatial_annular_likelihood.csv"
+  }
+}

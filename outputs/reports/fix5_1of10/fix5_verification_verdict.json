@@ -1,0 +1,209 @@
+{
+  "label": "fix5_1of10",
+  "role": "Subagent B - Verifier",
+  "phase": "Phase 4 Step05 detector-response extraction verification",
+  "generated_at_utc": "2026-06-21T17:36:35Z",
+  "contract_authority": "core_md/fix5_benchmarks.json",
+  "overall_status": "STEP05_1OF10_EXTRACTION_ARTIFACT_PASS_INCONCLUSIVE_ZERO_W2_SELECTED_EVENTS_NOT_FINAL_GATE",
+  "source_provenance_status": "PASS_PHASE1_AND_PHASE1_5_PRE_MC",
+  "runner_preflight_status": "PASS_PRE_MC_JOB_SOURCES_AND_MANIFESTS",
+  "phase2_transport_status": "PASS_1OF10_INSTANT_AND_BUILDUP_TRANSPORT_VERIFIED",
+  "delayed_source_level_status": "PASS_GROUNDSTATE_AND_EXACTPOS_SOURCE_READY_NOT_RATE_AUTHORITY",
+  "phase3_delayed_transport_status": "PASS_FIX5_1OF10_EXACTPOS_DELAYED_TRANSPORT_NOT_RATE_AUTHORITY",
+  "step05_extraction_status": "PASS_FIX5_STEP05_L1_SCREEN_ARTIFACT_NOT_FINAL_GATE",
+  "old_new_geo_re_gate_allowed": false,
+  "step05_is_final_rate_authority": false,
+  "w2_zero_selected_events_interpretation": "NO_OBSERVED_1OF10_W2_SELECTED_BACKGROUND_STATISTICALLY_INCONCLUSIVE",
+  "signal_claim_allowed": false,
+  "step06_08_or_fullstat_promotion_allowed": false,
+  "mc_or_transport_started_by_verifier": false,
+  "summary": {
+    "step05_status": "PASS_FIX5_STEP05_SIDE_ENTRY_COMPTON_TIME_AXIS_L1_1OF10_NOT_PROMOTION",
+    "claim_level": "FIX5_1OF10_L1_PROMPT_DELAYED_SCREEN_NOT_FINAL_GATE",
+    "prompt_time_s": 18.422009842958932,
+    "delayed_time_s": 1317.366549,
+    "prompt_normalization_status": "PASS",
+    "prompt_normalization_problems": [],
+    "w2_direct_prompt_raw_events": 2,
+    "w2_direct_prompt_final_events": 0,
+    "w2_direct_prompt_selected_rate_cps": 0.0,
+    "w2_direct_delayed_raw_events": 0,
+    "w2_direct_delayed_final_events": 0,
+    "w2_direct_delayed_selected_rate_cps": 0.0,
+    "w2_direct_total_background_selected_N_eff": 0,
+    "w2_direct_total_background_selected_rate_cps": 0.0,
+    "w2_direct_poisson_relative_sigma": null,
+    "broad_480_550_delayed_final_events": 1,
+    "broad_480_550_delayed_selected_rate_cps": 0.0007590901717969764,
+    "timeline_w2_side_compton_fov_pass_rate_cps": 0.7621265324841643,
+    "timeline_w2_is_gate_value": false,
+    "benchmark_alignment_decision": "NOT_ALIGNED",
+    "old_new_geo_re_gate": "BLOCKED_NOT_ALIGNED",
+    "promotion_status": "NOT_RELEASED_NOT_CLAIMED"
+  },
+  "rows": [
+    {
+      "check": "step05_summary_status_and_claim_level",
+      "status": "PASS",
+      "evidence_path": "stepwise_maintenance/step05_veto_time_axis/outputs_fix5_1of10_l1/step05_fix5_1of10_l1_response_summary.json; stepwise_maintenance/step05_veto_time_axis/outputs_fix5_1of10_l1/step05_fix5_1of10_l1_response_summary.md",
+      "blocking": true,
+      "details": {
+        "json_parse": "PASS",
+        "md_parse": "PASS",
+        "status": "PASS_FIX5_STEP05_SIDE_ENTRY_COMPTON_TIME_AXIS_L1_1OF10_NOT_PROMOTION",
+        "claim_level": "FIX5_1OF10_L1_PROMPT_DELAYED_SCREEN_NOT_FINAL_GATE",
+        "statistics_label": "fix5_1of10",
+        "not_promotion_authority": true
+      }
+    },
+    {
+      "check": "step05_inputs_and_signal_placeholder_boundary",
+      "status": "PASS",
+      "evidence_path": "stepwise_maintenance/step05_veto_time_axis/outputs_fix5_1of10_l1/step05_fix5_1of10_l1_response_summary.json; outputs/reports/fix5_1of10/fix5_step05_screen_summary.json",
+      "blocking": true,
+      "details": {
+        "prompt_dir": "runs/step02_instant_fix5_1of10",
+        "prompt_files": 19,
+        "prompt_dat_files": 19,
+        "delayed_sim": "runs/step02_delayed_transport_fix5_1of10/DelayedDecayFix5Exactpos.inc1.id1.sim.gz",
+        "science_sim": "runs/step09_optics_bridge/Opticsim_laue_f10m_a1_v3p5_centerfinger.inc1.id1.sim.gz",
+        "science_placeholder": "Existing v3p5 focused-signal EventList used by Step05 parser only; not a fix5 signal replay.",
+        "signal_claim_allowed": false,
+        "fix5_signal_replay_pending": true
+      }
+    },
+    {
+      "check": "prompt_normalization_audit",
+      "status": "PASS",
+      "evidence_path": "stepwise_maintenance/step05_veto_time_axis/outputs_fix5_1of10_l1/prompt_normalization_audit.json",
+      "blocking": true,
+      "details": {
+        "json_parse": "PASS",
+        "status": "PASS",
+        "problems": [],
+        "prompt_dir": "runs/step02_instant_fix5_1of10",
+        "prompt_time_s": 18.422009842958932,
+        "prompt_rate_rule": "per-tag event rate = 1 / sum(TT_s for prompt dat files with that tag)",
+        "rows": 8,
+        "gamma_files": 12,
+        "non_gamma_files": 1,
+        "all_rate_times_tt_sum_equal_1": true,
+        "mismatches": []
+      }
+    },
+    {
+      "check": "delayed_time_from_delayed_sim_TE",
+      "status": "PASS",
+      "evidence_path": "stepwise_maintenance/step05_veto_time_axis/outputs_fix5_1of10_l1/step05_fix5_1of10_l1_response_summary.json; runs/step02_delayed_transport_fix5_1of10/DelayedDecayFix5Exactpos.inc1.id1.sim.gz",
+      "blocking": true,
+      "details": {
+        "delayed_time_s": 1317.366549,
+        "source": "delayed SIM TE",
+        "delayed_transport_status_previously_verified": "PASS_FIX5_1OF10_EXACTPOS_DELAYED_TRANSPORT_NOT_RATE_AUTHORITY"
+      }
+    },
+    {
+      "check": "w2_direct_prompt_delayed_selected_rates",
+      "status": "PASS",
+      "evidence_path": "stepwise_maintenance/step05_veto_time_axis/outputs_fix5_1of10_l1/step05_fix5_1of10_l1_response_summary.json; stepwise_maintenance/step05_veto_time_axis/outputs_fix5_1of10_l1/step05_fix5_1of10_l1_rates.csv; outputs/reports/fix5_1of10/fix5_step05_screen_summary.json",
+      "blocking": true,
+      "details": {
+        "window": "w2_510p58_511p42",
+        "prompt": {
+          "raw_events": 2,
+          "active_veto_pass_events": 0,
+          "side_compton_fov_pass_events": 0,
+          "raw_rate_cps": 0.10867143734276602,
+          "selected_rate_cps": 0.0
+        },
+        "delayed": {
+          "raw_events": 0,
+          "active_veto_pass_events": 0,
+          "side_compton_fov_pass_events": 0,
+          "raw_rate_cps": 0.0,
+          "selected_rate_cps": 0.0
+        },
+        "total_background": {
+          "selected_events_N_eff": 0,
+          "selected_rate_cps": 0.0,
+          "poisson_relative_sigma": null,
+          "poisson_sigma_interpretation": "Undefined for zero observed selected events; use a one-sided upper-limit treatment if a quantitative bound is needed."
+        },
+        "verifier_interpretation": "No observed 1/10 W2 selected background, but this is statistically inconclusive and not a final rate authority."
+      }
+    },
+    {
+      "check": "broad_480_550_diagnostic_only",
+      "status": "PASS",
+      "evidence_path": "stepwise_maintenance/step05_veto_time_axis/outputs_fix5_1of10_l1/step05_fix5_1of10_l1_response_summary.json; stepwise_maintenance/step05_veto_time_axis/outputs_fix5_1of10_l1/step05_fix5_1of10_l1_rates.csv; outputs/reports/fix5_1of10/fix5_step05_screen_summary.json",
+      "blocking": false,
+      "details": {
+        "window": "broad_480_550",
+        "prompt_selected_events": 0,
+        "prompt_selected_rate_cps": 0.0,
+        "delayed_selected_events": 1,
+        "delayed_selected_rate_cps": 0.0007590901717969764,
+        "total_selected_events_N_eff": 1,
+        "poisson_relative_sigma": 1.0,
+        "verdict": "Broad-window result is recorded as a diagnostic only and is not the W2 gate."
+      }
+    },
+    {
+      "check": "timeline_w2_not_gate_value",
+      "status": "PASS",
+      "evidence_path": "stepwise_maintenance/step05_veto_time_axis/outputs_fix5_1of10_l1/step05_fix5_1of10_l1_timeline_rates.csv; stepwise_maintenance/step05_veto_time_axis/outputs_fix5_1of10_l1/step05_fix5_1of10_l1_response_summary.json; outputs/reports/fix5_1of10/fix5_step05_screen_summary.json",
+      "blocking": true,
+      "details": {
+        "timeline_w2_side_compton_fov_pass_counts": 1004,
+        "timeline_w2_side_compton_fov_pass_rate_cps": 0.7621265324841643,
+        "reason_not_gate": "Common timeline includes focused-signal event instances; prompt+delayed screening uses direct by_stream prompt/delayed rates.",
+        "gate_value_source": "direct prompt/delayed by_stream W2 side_compton_fov_pass rates",
+        "gate_prompt_plus_delayed_selected_rate_cps": 0.0
+      }
+    },
+    {
+      "check": "step05_screen_summary_gate_interpretation",
+      "status": "PASS",
+      "evidence_path": "outputs/reports/fix5_1of10/fix5_step05_screen_summary.json",
+      "blocking": true,
+      "details": {
+        "status": "PASS_STEP05_EXTRACTION_ARTIFACT_READY_NOT_FINAL_GATE",
+        "claim_level": "FIX5_1OF10_PROMPT_DELAYED_SCREEN_NOT_RATE_AUTHORITY",
+        "old_new_geo_re_gate": "BLOCKED_NOT_ALIGNED",
+        "current_screen_result": "NO_OBSERVED_W2_PROMPT_OR_DELAYED_SELECTED_EVENTS_IN_1OF10",
+        "rate_gate_decision": "INCONCLUSIVE_LOW_STAT_ZERO_SELECTED_EVENTS_NOT_FINAL_PASS",
+        "hard_fail_status": "NO_HARD_FAIL_OBSERVED",
+        "promotion_status": "NOT_RELEASED_NOT_CLAIMED"
+      }
+    },
+    {
+      "check": "benchmark_alignment_still_blocks_old_new_geo_re_gate",
+      "status": "FAIL",
+      "evidence_path": "outputs/reports/fix5_1of10/fix5_benchmark_alignment.json",
+      "blocking": true,
+      "details": {
+        "decision": "NOT_ALIGNED",
+        "required_decision_for_old_new_geo_re_gate": "ALIGNED",
+        "blocked_prompt_gate_value_cps": 0.0323247092031,
+        "blocked_delayed_gate_value_cps": 0.151456825339,
+        "old_new_geo_re_gate_blocker": true,
+        "verdict": "Do not use old new_geo_re prompt_total_cps or delayed_total_cps for pass/fail gating in the current state. They may only be reported as historical context."
+      }
+    },
+    {
+      "check": "fullstat_step06_08_promotion_remain_pending",
+      "status": "PENDING_FULLSTAT_AND_PROMOTION_PHASES",
+      "evidence_path": "outputs/reports/fix5_1of10/fix5_step05_screen_summary.json; stepwise_maintenance/step06_mission_time_variation/; stepwise_maintenance/step07_source_cases/; stepwise_maintenance/step08_significance/",
+      "blocking": false,
+      "details": {
+        "fix5_signal_replay_verified": false,
+        "signal_keep_claim_allowed": false,
+        "step06_08_closure_claim_allowed": false,
+        "full_stat_production_released": false,
+        "promotion_decision_allowed": false,
+        "readonly_probe_found_fix5_step06_08_or_promotion_outputs": 0,
+        "verdict": "Step05 1/10 extraction is a screen artifact only; no final promotion or full-stat replacement claim is allowed."
+      }
+    }
+  ]
+}

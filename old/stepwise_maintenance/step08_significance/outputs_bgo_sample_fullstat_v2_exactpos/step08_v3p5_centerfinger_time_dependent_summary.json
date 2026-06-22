@@ -1,0 +1,37 @@
+{
+  "status": "PASS_BGO_SAMPLE_STEP08_TIME_DEPENDENT_FULLSTAT_V2_EXACTPOS",
+  "statistics_label": "bgo_sample_fullstat_v2_exactpos",
+  "claim_level": "BGO_SAMPLE_L1_COUNTING_TIME_DEP_WITH_ANALYTIC_ACCIDENTAL_FULLSTAT_V2_EXACTPOS",
+  "inputs": {
+    "step05_summary": "stepwise_maintenance/step05_veto_time_axis/outputs_bgo_sample_fullstat_v2_exactpos_l1/step05_bgo_sample_l1_response_summary.json",
+    "step06_summary": "stepwise_maintenance/step06_mission_time_variation/outputs_bgo_sample_fullstat_v2_exactpos/step06_bgo_sample_fullstat_v2_exactpos_summary.json",
+    "step06_background_time_variation": "stepwise_maintenance/step06_mission_time_variation/outputs_bgo_sample_fullstat_v2_exactpos/background_time_variation.csv",
+    "step07_summary": "stepwise_maintenance/step07_source_cases/outputs_bgo_sample_fullstat_v2_exactpos/source_case_summary.json",
+    "step07_source_case_rates": "stepwise_maintenance/step07_source_cases/outputs_bgo_sample_fullstat_v2_exactpos/source_case_rates.csv"
+  },
+  "checks": {
+    "A_reference_w2_Z20d_time_dependent": 6.434747870773267,
+    "A_reference_w2_T3_day": 4.216224045243973,
+    "A_reference_w2_T5_day": 11.719261310605743,
+    "A_reference_w2_flux_3sigma_20d_ph_cm2_s": 4.662187330798229e-05,
+    "A_reference_w2_source_counts": 2033.5455891021018,
+    "A_reference_w2_background_counts": 99872.23214943838,
+    "accidental_loss_min": 0.0006058700319131471,
+    "accidental_loss_max": 0.0006622098199061677,
+    "w2_low_stat_background_events": 248,
+    "step06_status": "PASS_BGO_SAMPLE_STEP06_TIME_AXIS_FULLSTAT_V2_EXACTPOS",
+    "step07_status": "PASS_BGO_SAMPLE_STEP07_SOURCE_CASES_FULLSTAT_V2_EXACTPOS"
+  },
+  "outputs": {
+    "summary_json": "stepwise_maintenance/step08_significance/outputs_bgo_sample_fullstat_v2_exactpos/step08_v3p5_centerfinger_time_dependent_summary.json",
+    "readme": "stepwise_maintenance/step08_significance/outputs_bgo_sample_fullstat_v2_exactpos/step08_v3p5_centerfinger_time_dependent.md",
+    "cumulative_significance": "stepwise_maintenance/step08_significance/outputs_bgo_sample_fullstat_v2_exactpos/cumulative_significance_by_case.csv",
+    "t3_t5_summary": "stepwise_maintenance/step08_significance/outputs_bgo_sample_fullstat_v2_exactpos/t3_t5_summary.csv",
+    "accidental_veto_by_time": "stepwise_maintenance/step08_significance/outputs_bgo_sample_fullstat_v2_exactpos/accidental_veto_by_time.csv",
+    "figures": "stepwise_maintenance/step08_significance/outputs_bgo_sample_fullstat_v2_exactpos/figures"
+  },
+  "pending": [
+    "build a BGO-vs-CsI comparison package using the matched Step08 outputs",
+    "no spatial/profile likelihood gain is applied to the BGO sample"
+  ]
+}

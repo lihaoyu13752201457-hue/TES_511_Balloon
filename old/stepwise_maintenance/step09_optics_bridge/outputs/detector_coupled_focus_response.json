@@ -1,0 +1,202 @@
+{
+  "status": "PASS_DETECTOR_COUPLED_FOCUSED_EVENTLIST",
+  "claim_level": "L1_DETECTOR_COUPLED_FOCUSED_EVENTLIST",
+  "scope": "Full non-smoke Step09 focused EventList science transport parsed through the current TES/CsI/Compton-FoV selection. Optics hardware mass activation is still not included.",
+  "inputs": {
+    "focused_sim": "runs/step09_optics_bridge/Opticsim_laue_new_geo_re.inc1.id1.sim.gz",
+    "background_catalog": "outputs/reports/day15_complete_report/work/event_catalog.pkl",
+    "optics_authority": "stepwise_maintenance/step04_opticsim/optics_aeff_authority.json",
+    "step09_summary": "stepwise_maintenance/step09_optics_bridge/outputs/step09_optics_bridge_summary.json",
+    "day15_summary": "outputs/reports/day15_complete_report/complete_day15_summary.json",
+    "step06_summary": "stepwise_maintenance/step06_mission_time_variation/outputs/step06_mission_time_variation_summary.json",
+    "reject_policy": "keep"
+  },
+  "normalization": {
+    "reference_flux_ph_cm2_s": 0.0001,
+    "A_eff_511_cm2": 15.299280000000001,
+    "T_atm_ref": 0.7390423888027,
+    "focused_plane_rate_cps_at_reference_flux": 0.0011306816438161375,
+    "eventlist_rows": 12592,
+    "rate_per_event_cps": 8.979365023952807e-08,
+    "tes_sigma_keV": 0.14,
+    "mission_days": 20.0
+  },
+  "optics": {
+    "design_name": "balloon511_f9m_ge111_511line",
+    "focal_length_mm": 9000.0,
+    "aeff_511_cm2": 15.299280000000001,
+    "natural_passband_fwhm": {
+      "center_keV": 511.0,
+      "fwhm_keV": 20.012125776358307,
+      "lo_keV": 500.99393711182086,
+      "hi_keV": 521.0060628881791,
+      "relative_fwhm": 0.0391626727521689,
+      "formula": "DeltaE/E = cot(theta_B) * mosaic_FWHM_rad"
+    },
+    "focal_stats": {
+      "diffracted_focal_rows": 12605,
+      "within_be_rows": 12592,
+      "outside_be_rows": 13,
+      "within_be_fraction": 0.9989686632288775,
+      "r50_cm": 0.07499827612424247,
+      "r90_cm": 0.18369303433091594,
+      "r95_cm": 0.21910820009595977,
+      "r99_cm": 0.2914104898226177,
+      "r999_cm": 2.646681533694775,
+      "rmax_within_be_cm": 1.457668248002899,
+      "rmax_all_diffracted_cm": 17.76366688614018,
+      "be_radius_cm": 1.898,
+      "pass_r99_within_be": true
+    }
+  },
+  "windows": {
+    "W1_design_passband": {
+      "window_id": "W1_design_passband",
+      "label": "W1 design natural passband FWHM",
+      "lo_keV": 500.99393711182086,
+      "hi_keV": 521.0060628881791,
+      "basis": "Step04 optics_aeff_authority natural_passband_fwhm"
+    },
+    "line_pm_1sigma": {
+      "window_id": "line_pm_1sigma",
+      "label": "511 +/- 1 sigma_TES",
+      "lo_keV": 510.86,
+      "hi_keV": 511.14,
+      "basis": "TES Gaussian energy response"
+    },
+    "line_pm_2sigma": {
+      "window_id": "line_pm_2sigma",
+      "label": "511 +/- 2 sigma_TES",
+      "lo_keV": 510.72,
+      "hi_keV": 511.28,
+      "basis": "TES Gaussian energy response"
+    },
+    "W2_511_pm_420eV": {
+      "window_id": "W2_511_pm_420eV",
+      "label": "W2 511 +/- 420 eV",
+      "lo_keV": 510.58,
+      "hi_keV": 511.42,
+      "basis": "requested narrow line window, equal to +/-3 sigma_TES"
+    }
+  },
+  "window_checks": {
+    "W1_design_passband": {
+      "lo_keV": 500.99393711182086,
+      "hi_keV": 521.0060628881791,
+      "signal_raw_cps_at_reference_flux": 0.0009217318179719085,
+      "signal_scintillator_cps_at_reference_flux": 0.0009217318179719085,
+      "signal_compton_fov_cps_at_reference_flux": 0.0009009894865032862,
+      "signal_both_cps_at_reference_flux": 0.0009009894865032862,
+      "signal_both_response_cps_per_ph_cm2_s": 9.00989486503286,
+      "signal_scintillator_response_cps_per_ph_cm2_s": 9.217318179719085,
+      "signal_compton_fov_response_cps_per_ph_cm2_s": 9.00989486503286,
+      "background_raw_cps": 1.3085405496245035,
+      "background_scintillator_cps": 1.0802409144385412,
+      "background_compton_fov_cps": 0.9797081812245346,
+      "background_both_cps": 0.7830469008295956,
+      "Z20d_both": 1.3384362942987253,
+      "T3_day_constant_rate": 100.47941442144628,
+      "T3_status": "extrapolated_beyond_20d",
+      "flux_3sigma_20d_ph_cm2_s": 0.00022414215848591077
+    },
+    "line_pm_1sigma": {
+      "lo_keV": 510.86,
+      "hi_keV": 511.14,
+      "signal_raw_cps_at_reference_flux": 0.0006287582837292764,
+      "signal_scintillator_cps_at_reference_flux": 0.0006287582837292764,
+      "signal_compton_fov_cps_at_reference_flux": 0.0006149041341602648,
+      "signal_both_cps_at_reference_flux": 0.0006149041341602648,
+      "signal_both_response_cps_per_ph_cm2_s": 6.149041341602648,
+      "signal_scintillator_response_cps_per_ph_cm2_s": 6.287582837292764,
+      "signal_compton_fov_response_cps_per_ph_cm2_s": 6.149041341602648,
+      "background_raw_cps": 0.23736530150747714,
+      "background_scintillator_cps": 0.1377443058257478,
+      "background_compton_fov_cps": 0.20894287090846725,
+      "background_both_cps": 0.11998992412964499,
+      "Z20d_both": 2.3334950966187136,
+      "T3_day_constant_rate": 33.05664088734581,
+      "T3_status": "extrapolated_beyond_20d",
+      "flux_3sigma_20d_ph_cm2_s": 0.00012856251570217853
+    },
+    "line_pm_2sigma": {
+      "lo_keV": 510.72,
+      "hi_keV": 511.28,
+      "signal_raw_cps_at_reference_flux": 0.0008791047348437915,
+      "signal_scintillator_cps_at_reference_flux": 0.0008791047348437915,
+      "signal_compton_fov_cps_at_reference_flux": 0.0008597331743569036,
+      "signal_both_cps_at_reference_flux": 0.0008597331743569036,
+      "signal_both_response_cps_per_ph_cm2_s": 8.597331743569036,
+      "signal_scintillator_response_cps_per_ph_cm2_s": 8.791047348437914,
+      "signal_compton_fov_response_cps_per_ph_cm2_s": 8.597331743569036,
+      "background_raw_cps": 0.33786908141116556,
+      "background_scintillator_cps": 0.19779020419341722,
+      "background_compton_fov_cps": 0.2961434501243281,
+      "background_both_cps": 0.1712360747482911,
+      "Z20d_both": 2.73110201210164,
+      "T3_day_constant_rate": 24.132185815873157,
+      "T3_status": "extrapolated_beyond_20d",
+      "flux_3sigma_20d_ph_cm2_s": 0.00010984576873023638
+    },
+    "W2_511_pm_420eV": {
+      "lo_keV": 510.58,
+      "hi_keV": 511.42,
+      "signal_raw_cps_at_reference_flux": 0.0009185382661336878,
+      "signal_scintillator_cps_at_reference_flux": 0.0009185382661336878,
+      "signal_compton_fov_cps_at_reference_flux": 0.0008982877815429567,
+      "signal_both_cps_at_reference_flux": 0.0008982877815429567,
+      "signal_both_response_cps_per_ph_cm2_s": 8.982877815429566,
+      "signal_scintillator_response_cps_per_ph_cm2_s": 9.185382661336877,
+      "signal_compton_fov_response_cps_per_ph_cm2_s": 8.982877815429566,
+      "background_raw_cps": 0.3622258121407555,
+      "background_scintillator_cps": 0.21500665237415917,
+      "background_compton_fov_cps": 0.3154586255931091,
+      "background_both_cps": 0.18434717748640367,
+      "Z20d_both": 2.75023063412841,
+      "T3_day_constant_rate": 23.79766105040296,
+      "T3_status": "extrapolated_beyond_20d",
+      "flux_3sigma_20d_ph_cm2_s": 0.0001090817607357045
+    }
+  },
+  "spatial_checks": {
+    "signal_detector_events": 10031,
+    "background_detector_events": 470,
+    "signal_radius_r50_cm": 0.12665676532996006,
+    "signal_radius_r68_cm": 0.1882287646809658,
+    "signal_radius_r90_cm": 0.5236921318617493,
+    "signal_radius_r95_cm": 0.8523026245068006,
+    "signal_radius_r99_cm": 1.216797402482535,
+    "signal_radius_max_cm": 1.6965521015564764,
+    "best_cut_id": "spot_r68",
+    "best_cut_radius_cm": 0.1882287646809658,
+    "best_cut_signal_psf_fraction": 0.6800921417516116,
+    "best_cut_background_cps": 0.018225396313875198,
+    "best_cut_Z20d": 5.948625491467992,
+    "spot_r90_signal_psf_fraction": 0.9000099064754505,
+    "spot_r90_background_cps": 0.055100483553150656,
+    "spot_r90_Z20d": 4.527484229695351,
+    "spot_r90_flux_3sigma_20d_ph_cm2_s": 6.626196465408486e-05
+  },
+  "checks": {
+    "focused_generated_events_seen": 11910,
+    "focused_kept_events": 11910,
+    "focused_classified_events_480_550": 10277,
+    "background_classified_events_480_550": 7034,
+    "focused_rate_matches_aeff_times_tatm": 0.0011306816438161375,
+    "aeff_design_target_cm2": 16.0,
+    "aeff_design_tolerance_fraction": 0.15,
+    "aeff_design_rel_residual": 0.04379499999999992,
+    "aeff_design_within_tolerance": true,
+    "W1_background_rejection_both_vs_raw": 1.6710883450763625,
+    "W2_background_rejection_both_vs_raw": 1.9649110828804042
+  },
+  "outputs": {
+    "json": "stepwise_maintenance/step09_optics_bridge/outputs/detector_coupled_focus_response.json",
+    "markdown": "stepwise_maintenance/step09_optics_bridge/outputs/detector_coupled_focus_response.md",
+    "windows_csv": "stepwise_maintenance/step09_optics_bridge/outputs/detector_coupled_focus_windows.csv",
+    "background_veto_csv": "stepwise_maintenance/step09_optics_bridge/outputs/non_xray_background_w1_w2_veto_table.csv",
+    "spatial_csv": "stepwise_maintenance/step09_optics_bridge/outputs/detector_coupled_spatial_line_cuts.csv",
+    "spectrum_csv": "stepwise_maintenance/step09_optics_bridge/outputs/non_xray_background_spectrum_480_550.csv",
+    "background_spectrum_figure": "stepwise_maintenance/step09_optics_bridge/outputs/figures/non_xray_background_spectrum_w1_w2.png",
+    "spatial_figure": "stepwise_maintenance/step09_optics_bridge/outputs/figures/detector_coupled_spatial_line_cuts.png"
+  }
+}

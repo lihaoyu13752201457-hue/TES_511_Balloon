@@ -1,0 +1,105 @@
+{
+  "question": "why is new_geo_re prompt small; minimal mass-model change (NOT ROI)",
+  "window_vs_wall_leak": {
+    "old_top_window": {
+      "total_cps": 0.024474422682380752,
+      "window_leak_cps": 0.00231,
+      "wall_leak_cps": 0.02217
+    },
+    "v3p5_side_window": {
+      "total_cps": 0.05433774850180638,
+      "window_leak_strict_cps": 0.00068,
+      "window_leak_foilish_cps": 0.00204,
+      "wall_leak_cps": 0.0523
+    },
+    "verdict": "window<->window: both ~0.001-0.002 cps, v3p5 side window NOT worse than old top window. wall<->wall: v3p5 0.052 vs old 0.022 (2.4x) -> the leak is WALL, not the optical window. v3p5 non-side-port wall ~0.010 < old wall 0.022 (v3p5 top is solid); the side-port wall adds ~0.041."
+  },
+  "v3p5_side_entry": {
+    "prompt_eplus_total_cps": 0.05433774850180638,
+    "by_region": [
+      {
+        "region": "SIDE-PORT side-wall (v3p5-only leak)",
+        "events": 61,
+        "rate_cps": 0.04143253323262742,
+        "frac": 0.762500000000001,
+        "birth_r_z_median_cm": 13.3
+      },
+      {
+        "region": "outer Al mech shell (top/axial residual)",
+        "events": 14,
+        "rate_cps": 0.009509105987816116,
+        "frac": 0.175,
+        "birth_r_z_median_cm": 14.6
+      },
+      {
+        "region": "MISSING",
+        "events": 5,
+        "rate_cps": 0.0033961092813628987,
+        "frac": 0.0625,
+        "birth_r_z_median_cm": 18.6
+      }
+    ]
+  },
+  "old_new_geo_re_top_entry": {
+    "prompt_eplus_total_cps": 0.024474422682380752,
+    "by_region": [
+      {
+        "region": "outer Al mech shell (top/axial residual)",
+        "events": 88,
+        "rate_cps": 0.020318388641976517,
+        "frac": 0.8301886792452848,
+        "birth_r_z_median_cm": 14.4
+      },
+      {
+        "region": "MISSING",
+        "events": 12,
+        "rate_cps": 0.002770689360269519,
+        "frac": 0.11320754716981131,
+        "birth_r_z_median_cm": 0.0
+      },
+      {
+        "region": "CsI active shield",
+        "events": 2,
+        "rate_cps": 0.0004617815600449198,
+        "frac": 0.018867924528301886,
+        "birth_r_z_median_cm": 1.9
+      },
+      {
+        "region": "window/collimator",
+        "events": 2,
+        "rate_cps": 0.0004617815600449198,
+        "frac": 0.018867924528301886,
+        "birth_r_z_median_cm": 2.4
+      },
+      {
+        "region": "liner (Cu/W)",
+        "events": 2,
+        "rate_cps": 0.0004617815600449198,
+        "frac": 0.018867924528301886,
+        "birth_r_z_median_cm": 14.1
+      }
+    ]
+  },
+  "minimal_change": {
+    "target": "ONLY the side-port side-wall leak; leave everything else (v3p5 already <= old there)",
+    "side_port_leak_cps": 0.04143253323262742,
+    "v3p5_residual_if_leak_removed_cps": 0.01291,
+    "old_total_cps": 0.024474422682380752,
+    "verdict": "removing the side-port leak -> v3p5 prompt ~0.0129 cps, BELOW old 0.0245, with NO ROI",
+    "shield_areal_density_for_removal": {
+      "rule": "W2 removal = 1-exp(-0.085*g_cm2) (any material; mu/rho~0.085 @511keV)",
+      "g_cm2_for_90pct": 27.1,
+      "g_cm2_for_95pct": 35.2,
+      "examples_90pct": "27 g/cm2 = 1.4cm W = 3.8cm BGO = 6cm CsI = 10cm Al",
+      "old_side_column_g_cm2": 48.3,
+      "old_side_transmission": 0.016
+    },
+    "placement": "between TES (r~3) and emitters (r~13-19), in the side-port solid angle, hole only at the signal aperture (~28deg phi band at z=-5.2); close-to-TES minimizes area->mass",
+    "framing": "= restore old's solid-shield-except-entrance topology; minpatch over-cut the active shield far beyond the signal aperture (left thin Al). Minimal = shrink that hole to the aperture.",
+    "active_vs_passive": "CsI/BGO shield doubles as active veto (catches residual + partner 511, as old does); W is most compact passive. Removal-from-W2 itself depends only on areal density.",
+    "mc_caveats": [
+      "shield's own e+ annihilation 511 add-back",
+      "delayed activation of added Cu/W/CsI (BGO lesson)"
+    ]
+  }
+}

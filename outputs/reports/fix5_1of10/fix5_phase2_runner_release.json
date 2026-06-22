@@ -1,0 +1,52 @@
+{
+  "label": "fix5_1of10",
+  "role": "Orchestrator",
+  "phase": "Phase 2 1/10 prompt and buildup transport release",
+  "generated_at_utc": "2026-06-21T17:02:41Z",
+  "inputs": {
+    "source_manifest": "outputs/reports/fix5_1of10/fix5_source_manifest.json",
+    "runner_preflight_manifest": "outputs/reports/fix5_1of10/fix5_runner_preflight_manifest.json",
+    "benchmark_alignment": "outputs/reports/fix5_1of10/fix5_benchmark_alignment.json",
+    "verification_verdict": "outputs/reports/fix5_1of10/fix5_verification_verdict.json"
+  },
+  "release": {
+    "decision": "RELEASE_1OF10_INSTANT_AND_BUILDUP_TRANSPORT_ONLY",
+    "scope": [
+      "runs/step02_instant_fix5_1of10",
+      "runs/step02_buildup_fix5_1of10"
+    ],
+    "basis": "Verifier reports PASS_PRE_MC_JOB_SOURCES_AND_MANIFESTS with 38/38 job sources pointing to the fix5 .geo.setup and no existing MC outputs.",
+    "not_released": [
+      "old new_geo_re pass/fail gate",
+      "delayed source construction",
+      "delayed transport",
+      "Step05--Step08",
+      "full-stat production",
+      "append/merge"
+    ]
+  },
+  "post_transport_result": {
+    "status": "PASS_1OF10_INSTANT_AND_BUILDUP_TRANSPORT_COMPLETED",
+    "summary_artifact": "outputs/reports/fix5_1of10/fix5_phase2_transport_summary.json",
+    "instant_run_dir": "runs/step02_instant_fix5_1of10",
+    "buildup_run_dir": "runs/step02_buildup_fix5_1of10",
+    "combined_sim_gz_outputs": 38,
+    "combined_dat_inc1_outputs": 38,
+    "sim_headers_checked": 38,
+    "sim_headers_with_fix5_geometry": 38,
+    "sim_headers_with_forbidden_baseline_geometry": 0,
+    "old_new_geo_re_gate": "BLOCKED_NOT_ALIGNED",
+    "prompt_rate_extraction": "PENDING_STEP05",
+    "delayed_source_construction": "PENDING_FIX5_BUILDUP_ACTIVATION_AUDIT"
+  },
+  "gate_constraints_after_transport": [
+    "Generated SIM headers must be verified to contain the fix5 .geo.setup before any downstream use.",
+    "Old new_geo_re prompt/delayed numbers remain historical context only while benchmark_alignment decision is NOT_ALIGNED.",
+    "The 1/10 screen must report N_eff and Poisson sigma and must compare against current v3p5 authority unless a later benchmark alignment is ALIGNED.",
+    "Delayed source construction remains blocked until fix5 buildup transport exists and can feed the NUBASE ground-state correction, per-family TT division guard, and M-sampling inventory audit."
+  ],
+  "commands_released": [
+    "python3 code/tools/run_equiv2602_pipeline_NEW_GEO.py --mode instant --source-dir config/megalib_sources_fullsphere20_fix5_tilt45 --outdir runs/step02_instant_fix5_1of10 --gamma-events 1000000 --gamma-splits 12 --non-gamma-replicas 1 --farfield-radius-cm 60 --workers 8 --keep-sources",
+    "python3 code/tools/run_equiv2602_pipeline_NEW_GEO.py --mode buildup --source-dir config/megalib_sources_fullsphere20_fix5_tilt45 --outdir runs/step02_buildup_fix5_1of10 --gamma-events 1000000 --gamma-splits 12 --non-gamma-replicas 1 --farfield-radius-cm 60 --workers 8 --keep-sources"
+  ]
+}

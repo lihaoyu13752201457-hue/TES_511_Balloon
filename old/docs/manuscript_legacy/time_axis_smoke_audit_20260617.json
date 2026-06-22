@@ -1,0 +1,93 @@
+{
+  "status": "PASS_TIME_AXIS_FORMULA_SMOKE_AUDIT",
+  "scope": "Step06/Step08 exact-position M=50000 mission-time fold",
+  "inputs": {
+    "step06_summary": "/home/ubuntu/TES_511_Balloon/stepwise_maintenance/step06_mission_time_variation/outputs_v3p5_centerfinger_fullstat_v2_exactpos_m50000_s260613/step06_v3p5_centerfinger_fullstat_v2_exactpos_m50000_s260613_summary.json",
+    "step08_summary": "/home/ubuntu/TES_511_Balloon/stepwise_maintenance/step08_significance/outputs_v3p5_centerfinger_fullstat_v2_exactpos_m50000_s260613/step08_v3p5_centerfinger_time_dependent_summary.json"
+  },
+  "trajectory_formula_probe_rows": [
+    {
+      "day": 15.0,
+      "max_abs_formula_delta": 0.0,
+      "altitude_km": 38.75,
+      "T_atm_511": 0.7390423888027,
+      "prompt_scale_to_day15": 1.0,
+      "delayed_activity_scale_to_day15": 1.0
+    },
+    {
+      "day": 1.25,
+      "max_abs_formula_delta": 0.0,
+      "altitude_km": 41.25,
+      "T_atm_511": 0.8110949791979928,
+      "prompt_scale_to_day15": 0.9651818096122368,
+      "delayed_activity_scale_to_day15": 0.9130708393590858
+    },
+    {
+      "day": 3.75,
+      "max_abs_formula_delta": 0.0,
+      "altitude_km": 36.25,
+      "T_atm_511": 0.6461225723909806,
+      "prompt_scale_to_day15": 1.0529876305340695,
+      "delayed_activity_scale_to_day15": 1.0217897703330654
+    }
+  ],
+  "trajectory_ranges": {
+    "altitude_km": {
+      "min": 36.25,
+      "max": 41.25
+    },
+    "latitude_deg": {
+      "min": 33.75,
+      "max": 34.25
+    },
+    "longitude_deg": {
+      "min": 99.75,
+      "max": 100.25
+    },
+    "Rc_GV": {
+      "min": 10.97400625122798,
+      "max": 11.022131820177744
+    },
+    "T_atm_511": {
+      "min": 0.6461225723909806,
+      "max": 0.8110949791979928
+    },
+    "prompt_scale_to_day15": {
+      "min": 0.9647531838829096,
+      "max": 1.0529876305340695
+    },
+    "delayed_activity_scale_to_day15": {
+      "min": 0.8166422129915613,
+      "max": 1.0513740259478794
+    }
+  },
+  "max_w2_rate_formula_relative_delta": 0.0,
+  "step06_checks": {
+    "T_ref": 0.7390423888027,
+    "T_day15": 0.7390423888027,
+    "T_day15_abs_error": 0.0,
+    "activity_scale_min": 0.8166422129915613,
+    "activity_scale_max": 1.0513740259478794,
+    "w2_day15_background_final_cps": 0.06298036183985109,
+    "w2_day15_science_final_cps_at_ref_flux": 0.0011811656293957314,
+    "w2_dt_weighted_background_final_cps": 0.06319228710672735,
+    "w2_dt_weighted_science_final_cps_at_ref_flux": 0.0011728072724834458,
+    "step02_fixed_source_activity_Bq": 85.63669586527698
+  },
+  "step08_final_checks": {
+    "Z20d": 6.130394687582996,
+    "source_counts": 2024.9442412886613,
+    "background_counts": 109106.15864638158,
+    "summary_Z20d": 6.130394687582996,
+    "summary_source_counts": 2024.9442412886613,
+    "summary_background_counts": 109106.15864638158,
+    "Z20d_abs_delta": 0.0,
+    "source_counts_abs_delta": 0.0,
+    "background_counts_abs_delta": 0.0
+  },
+  "distribution_assumption": {
+    "current_model": "The reference activation-production nuclide/volume/position distribution is reused; the environment changes only a scalar production driver before isotope-by-isotope half-life ODE integration.",
+    "evidence_level": "internal formula closure only; no independent activation-production transport grid at trajectory extrema is present in this audit",
+    "fallback": "If center/extreme activation transports show material or nuclide distribution changes, replace the scalar delayed-production driver with interpolation over precomputed production vectors."
+  }
+}

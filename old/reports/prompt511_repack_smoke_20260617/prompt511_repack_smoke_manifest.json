@@ -1,0 +1,88 @@
+{
+  "status": "PASS_PROMPT511_REPACK_SMOKE_INPUTS",
+  "constraints": "outputs/reports/prompt511_repack_smoke_20260617/CONSTRAINTS.md",
+  "base_geometry": "outputs/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup",
+  "geometry": {
+    "geometry_setup": "outputs/reports/prompt511_repack_smoke_20260617/geometry_repack/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy_prompt511_repack_r4p25_5p95.geo.setup",
+    "geometry_geo": "outputs/reports/prompt511_repack_smoke_20260617/geometry_repack/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy_prompt511_repack_r4p25_5p95.geo",
+    "geometry_det": "outputs/reports/prompt511_repack_smoke_20260617/geometry_repack/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy_prompt511_repack_r4p25_5p95.det"
+  },
+  "source_cards": {
+    "status": "PASS_PROMPT511_REPACK_SOURCE_CARDS",
+    "source_dir": "outputs/reports/prompt511_repack_smoke_20260617/source_cards",
+    "base_source_dir": "config/megalib_sources_fullsphere20_v3p5_centerfinger_tilt45",
+    "geometry_setup": "outputs/reports/prompt511_repack_smoke_20260617/geometry_repack/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy_prompt511_repack_r4p25_5p95.geo.setup",
+    "farfield_radius_cm": 60.0,
+    "sources": [
+      {
+        "source": "outputs/reports/prompt511_repack_smoke_20260617/source_cards/Background_alpha_fullsphere20.source",
+        "base_source": "config/megalib_sources_fullsphere20_v3p5_centerfinger_tilt45/Background_alpha_fullsphere20.source"
+      },
+      {
+        "source": "outputs/reports/prompt511_repack_smoke_20260617/source_cards/Background_eminus_fullsphere20.source",
+        "base_source": "config/megalib_sources_fullsphere20_v3p5_centerfinger_tilt45/Background_eminus_fullsphere20.source"
+      },
+      {
+        "source": "outputs/reports/prompt511_repack_smoke_20260617/source_cards/Background_eplus_fullsphere20.source",
+        "base_source": "config/megalib_sources_fullsphere20_v3p5_centerfinger_tilt45/Background_eplus_fullsphere20.source"
+      },
+      {
+        "source": "outputs/reports/prompt511_repack_smoke_20260617/source_cards/Background_gamma_fullsphere20.source",
+        "base_source": "config/megalib_sources_fullsphere20_v3p5_centerfinger_tilt45/Background_gamma_fullsphere20.source"
+      },
+      {
+        "source": "outputs/reports/prompt511_repack_smoke_20260617/source_cards/Background_muminus_fullsphere20.source",
+        "base_source": "config/megalib_sources_fullsphere20_v3p5_centerfinger_tilt45/Background_muminus_fullsphere20.source"
+      },
+      {
+        "source": "outputs/reports/prompt511_repack_smoke_20260617/source_cards/Background_muplus_fullsphere20.source",
+        "base_source": "config/megalib_sources_fullsphere20_v3p5_centerfinger_tilt45/Background_muplus_fullsphere20.source"
+      },
+      {
+        "source": "outputs/reports/prompt511_repack_smoke_20260617/source_cards/Background_n_fullsphere20.source",
+        "base_source": "config/megalib_sources_fullsphere20_v3p5_centerfinger_tilt45/Background_n_fullsphere20.source"
+      },
+      {
+        "source": "outputs/reports/prompt511_repack_smoke_20260617/source_cards/Background_p_fullsphere20.source",
+        "base_source": "config/megalib_sources_fullsphere20_v3p5_centerfinger_tilt45/Background_p_fullsphere20.source"
+      }
+    ]
+  },
+  "overlap": {
+    "overlap_source": "outputs/reports/prompt511_repack_smoke_20260617/overlap_repack.source",
+    "overlap_log": "outputs/reports/prompt511_repack_smoke_20260617/overlap_repack.log"
+  },
+  "delayed_replay": {
+    "delayed_replay_source": "outputs/reports/prompt511_repack_smoke_20260617/runs/delayed_replay_existing_inventory/activation_decay_day15_groundstate_fixed_repack_replay_reduced.source",
+    "source_prefix": "outputs/reports/prompt511_repack_smoke_20260617/runs/delayed_replay_existing_inventory/DelayedDecayExistingInventoryRepackReduced",
+    "triggers": "20000",
+    "source_reduction": {
+      "total_sources": 50000,
+      "kept_sources": 2000,
+      "flux_scale": 25.0
+    },
+    "boundary": "flux-preserving transport replay of downsampled existing delayed inventory only; it does not include new W-liner activation"
+  },
+  "analytic_screen_upper_bound": {
+    "basis": "outputs/reports/prompt511_entry_audit_20260617/current_eplus_prompt_final_records.json",
+    "W_liner_r_cm": [
+      4.25,
+      5.95
+    ],
+    "W_liner_z_segments_cm": [
+      [
+        -8.75,
+        -0.65
+      ],
+      [
+        0.65,
+        4.65
+      ]
+    ],
+    "signal_gap_deg": [
+      160.0,
+      200.0
+    ],
+    "expected_prompt_eplus_suppression_upper_bound": "about 4.6x from the 80-event geometric screen; MC can only reduce this if W add-back matters"
+  }
+}

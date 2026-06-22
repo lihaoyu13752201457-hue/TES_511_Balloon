@@ -1,0 +1,224 @@
+{
+  "_README": "Single machine-readable numeric authority for the fix5 simulation-closure loop. Markdown contracts (AGENTS / GUIDE / CONSTRAINTS / PRE_PROMPT / METHOD) may keep short convenience copies for readability, but scripts and the Verifier must load this file, and this file wins if prose disagrees. Every benchmark carries its provenance, uncertainty status, and known caveats. A bare point value is never a gate by itself.",
+  "_date": "2026-06-22",
+  "_supersedes_nothing": "This file does not change any authority result. It only consolidates numbers already in core_md/HANDOFF_20260617.md, core_md/workflow.md, core_md/Project_Memory.md and the m_sampling/exactpos audits.",
+
+  "geometry": {
+    "fix5_geo_setup": "outputs/geometry/DEMO2_DR_v3p5_user_cylmag_redesign_multiholeW_fix5_20260621_megalib_proxy/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup",
+    "fix5_dir": "outputs/geometry/DEMO2_DR_v3p5_user_cylmag_redesign_multiholeW_fix5_20260621_megalib_proxy/",
+    "baseline_v3p5_geo_setup": "outputs/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup",
+    "baseline_use_rule": "The baseline v3p5 .geo.setup is COMPARISON-ONLY. No fix5 production source card may point to it. A run whose source card or SIM header points to the baseline setup but is labeled fix5 is INVALID."
+  },
+
+  "decision_bar": {
+    "primary_question": "Can fix5 replace the current v3p5 exact-position chain as the selected-rate authority for the 511 keV line result?",
+    "headline_metric": "W2 line-window selected TOTAL background B_cps after active-shield + Compton/FoV veto + Poisson time-axis merge, and the resulting Z20d / F3(20d). Prompt alone is a diagnostic, not the headline.",
+    "screen_target_new_geo_re": "Coarse 1/10 go/no-go only. Checks fix5 is in the right ballpark and that the multi-hole-W redesign did NOT blow up the prompt subcomponent. NOT the promotion bar.",
+    "promotion_bar_v3p5": "The real promotion decision at full statistics is against v3p5.benchmarks below: fix5 should LOWER total selected background B (mainly by cutting side-port prompt e+ 511) without the W redesign adding offsetting prompt fluorescence/secondaries or delayed W-activation, and should hold or improve Z20d / F3(20d), with auditable normalization."
+  },
+
+  "required_artifacts": {
+    "source_manifest": {
+      "path_template": "outputs/reports/fix5_<label>/fix5_source_manifest.json",
+      "required_before": "Any Cosima transport run.",
+      "required_fields": [
+        "label",
+        "geometry_setup",
+        "source_cards",
+        "source_family",
+        "far_field_or_surrounding_sphere",
+        "normalization_constants",
+        "event_or_exposure_ratio",
+        "random_seed_policy",
+        "expected_sim_outputs"
+      ],
+      "pass_rule": "geometry_setup == geometry.fix5_geo_setup for every source card; no source card may contain geometry.baseline_v3p5_geo_setup."
+    },
+    "benchmark_alignment": {
+      "path_template": "outputs/reports/fix5_<label>/fix5_benchmark_alignment.json",
+      "required_before": "Any pass/fail comparison to benchmarks.new_geo_re.",
+      "required_fields": [
+        "new_geo_re_source_or_report_paths",
+        "line_window_definition",
+        "active_shield_thresholds",
+        "compton_fov_definition",
+        "source_surface_or_far_field_normalization",
+        "rate_units_and_time_normalization",
+        "selection_equivalence_status",
+        "normalization_equivalence_status",
+        "decision"
+      ],
+      "pass_rule": "decision == ALIGNED. If not ALIGNED, the old new_geo_re numbers may be reported as historical context only; they cannot be used as a gate."
+    },
+    "verification_verdict": {
+      "path_template": "outputs/reports/fix5_<label>/fix5_verification_verdict.json",
+      "required_before": "Any gate decision.",
+      "required_fields": [
+        "check",
+        "status",
+        "evidence_path",
+        "blocking"
+      ],
+      "pass_rule": "No row with blocking == true may have status other than PASS."
+    },
+    "promotion_decision": {
+      "path_template": "outputs/reports/fix5_<label>/fix5_promotion_decision.json",
+      "required_before": "Any claim that fix5 can replace current v3p5.",
+      "required_fields": [
+        "B_cps",
+        "B_sigma_cps",
+        "prompt_cps",
+        "delayed_cps",
+        "w_activation_cps",
+        "signal_cps",
+        "signal_keep_fraction_vs_v3p5",
+        "Z20d",
+        "F3_20d_ph_cm2_s",
+        "comparison_vs_v3p5",
+        "decision"
+      ],
+      "pass_rule": "decision is PASS only if promotion_thresholds are satisfied or every miss is explicitly marked USER_REVIEW_REQUIRED."
+    }
+  },
+
+  "benchmarks": {
+    "new_geo_re": {
+      "role": "historical 1/10 screen target (prompt sub-component ballpark)",
+      "provenance": "Old new_geo_re from the prompt-511 refix handoff. Legacy provenance under the 2026-06-12 review hold.",
+      "selection_definition": "UNVERIFIED. The exact window / veto / Compton-FoV / source-surface normalization behind these numbers is NOT restated in the fix5 contracts. MUST be confirmed to match the fix5 selection before any gate comparison; otherwise the comparison is apples-to-oranges.",
+      "prompt_total_cps": 0.0323247092031,
+      "prompt_eplus_cps": 0.0244744226824,
+      "delayed_total_cps": 0.151456825339,
+      "sigma_cps": null,
+      "sigma_status": "NOT QUANTIFIED in repo. A consistency test against an unknown-uncertainty number is not rigorous; treat as a coarse target only.",
+      "caveats": [
+        "HANDOFF_20260617 Authority Hierarchy: old new_geo_re had LOWER hard-window prompt partly because its corresponding side region was blocked by a SOLID side-shield/material column AND because the source-surface normalization differed. So 0.0323 is partly a geometry-coverage + normalization artifact, not a pure physics floor.",
+        "delayed_total_cps=0.1515 is ~40x ABOVE the current v3p5 line-window delayed (~0.0039 cps). The C3 gate 'delayed < 0.1515' is therefore nearly vacuous; see decision_bar and gates.delayed."
+      ]
+    },
+    "v3p5_current_authority": {
+      "role": "current rate authority and the real fix5 promotion bar",
+      "label": "fullstat_v2_exactpos_m50000_s260613",
+      "selection": "W2 line-window, active-shield 50 keV (CsI) + custom Compton/FoV veto + common Poisson time-axis, day-15 baseline folded over the 20-day mission (Step06).",
+      "step05_background_cps": 0.06298036183985109,
+      "step05_signal_cps": 0.0011811656293957314,
+      "w2_prompt_cps": 0.05908272463250492,
+      "w2_delayed_cps": 0.0038976372073461713,
+      "w2_prompt_eplus_cps": 0.0543377485018,
+      "step08_Z20d": 6.130394687582996,
+      "step08_T3_day": 4.777656378990109,
+      "step08_F3_20d_ph_cm2_s": 4.893649027323553e-05,
+      "step08_F3_1Ms_ph_cm2_s": 6.35099e-05,
+      "composition_note": "Selected background is prompt-dominated: prompt 93.8% of total, of which e+ annihilation 511 is 86.28% of the TOTAL selected background. Delayed activation is 6.2%, led by Cu64. This is why fix5 (a side-port W redesign aimed at prompt e+ 511) is gated mainly on prompt and on not adding W self-background."
+    }
+  },
+
+  "uncertainty_anchor": {
+    "_why": "Pins the statistical resolution of the gate so tolerances are not set inside the noise.",
+    "v3p5_fullstat_w2_final_events": 132,
+    "v3p5_fullstat_w2_delayed_events": 45,
+    "v3p5_fullstat_w2_prompt_stream_events_approx": 87,
+    "sigma_total_fullstat_approx": 0.087,
+    "sigma_prompt_fullstat_approx": 0.107,
+    "implication_1of10": "At ~1/10 selected statistics expect ~13 total / ~9 prompt-stream selected events -> Poisson sigma ~28-34%. A bare 1.25x (25%) prompt tolerance is INSIDE the 1/10 noise. Therefore: always report N_eff (selected event counts) and Poisson sigma; treat |fix5 - target| within the COMBINED sigma as 'consistent'; and require a minimum selected-event count before declaring pass OR fail.",
+    "target_unknown_sigma_policy": "benchmarks.new_geo_re.sigma_cps is null; for the 1/10 screen use fix5 Poisson sigma only and mark the comparison COARSE unless required_artifacts.benchmark_alignment has decision == ALIGNED.",
+    "min_prompt_selected_events_for_any_screen_decision": 5,
+    "min_prompt_selected_events_for_hard_fail": 10,
+    "max_prompt_relative_sigma_for_hard_fail": 0.35,
+    "min_prompt_selected_events_for_rate_claim": 25,
+    "min_delayed_selected_events_for_meaningful_1of10_claim": 10,
+    "inconclusive_if": "N_prompt < min_prompt_selected_events_for_any_screen_decision, OR relative_sigma_prompt > max_prompt_relative_sigma_for_hard_fail when trying to hard-fail, OR the gap to target is <= 1 sigma and the rate is not already below target.",
+    "hard_fail_formula": "Hard fail C2 only if benchmark_alignment is ALIGNED, N_prompt >= 10, relative_sigma_prompt <= 0.35, and (PROMPT_total_1of10 - sigma_prompt_cps) > 1.25 * benchmarks.new_geo_re.prompt_total_cps.",
+    "provisional_pass_formula": "Provisional pass C2 only if benchmark_alignment is ALIGNED and either PROMPT_total_1of10 <= target, or abs(PROMPT_total_1of10 - target) <= sigma_prompt_cps, or PROMPT_total_1of10 <= 1.25 * target with N_prompt >= 5. Otherwise escalate statistics."
+  },
+
+  "gates": {
+    "C0_geometry": {
+      "audit": "outputs/reports/user_redesign_multiholeW_fix5_20260621/side_window_material_path_audit_fix5.json",
+      "require": "overall_pass == true (and det_reference_check.pass, side_window_through_cut_audit.pass, magnetic_incident_audit.pass, csi_bottom_side_seam_audit.pass all true)",
+      "overlap_log": "outputs/reports/user_redesign_multiholeW_fix5_20260621/cosima_overlap_fix5_20260621.log",
+      "overlap_require": "reaches 'Summary for run Minimum'; no GeomVol / Overlap / Fatal / Exception"
+    },
+    "C1_provenance": {
+      "require": "Every fix5 prompt/buildup/delayed/signal source card AND the generated SIM headers contain geometry.fix5_geo_setup; none contain geometry.baseline_v3p5_geo_setup. Surrounding-sphere / far-field source-surface normalization is reported explicitly and matched to the benchmark selection before comparison."
+    },
+    "C2_prompt_1of10": {
+      "target": "benchmarks.new_geo_re.prompt_total_cps",
+      "requires_artifact": "required_artifacts.benchmark_alignment with decision == ALIGNED.",
+      "provisional_pass": "Use uncertainty_anchor.provisional_pass_formula. If benchmark alignment is not ALIGNED, report prompt but do not pass/fail against new_geo_re.",
+      "strong_pass": "PROMPT_total_1of10 <= target.",
+      "mandatory_reporting": "selected prompt event count (N_eff) and Poisson sigma; the source-surface normalization used; whether selection_definition of the target was verified.",
+      "inconclusive": "see uncertainty_anchor.inconclusive_if.",
+      "hard_fail": "Use uncertainty_anchor.hard_fail_formula -> stop and report; do not spend 9/10."
+    },
+    "delayed_1of10": {
+      "loose_bar_new_geo_re": "DELAYED_total_1of10 < benchmarks.new_geo_re.delayed_total_cps (0.1515) may satisfy the user's coarse screen only if benchmark_alignment is ALIGNED. NOTE: nearly vacuous because current v3p5 delayed is ~0.0039.",
+      "meaningful_bar_v3p5": "Compare DELAYED_total_1of10 against benchmarks.v3p5_current_authority.w2_delayed_cps and watch the W/collimator activation subcomponent, since fix5 ADDS tungsten. If delayed exceeds v3p5 by more than its own 1 sigma, mark YELLOW even if it passes the loose old-new_geo_re bar; if it clearly exceeds v3p5 at full statistics, promotion fails unless the total B/Z/F3 trade is explicitly approved by the user.",
+      "mandatory_reporting": "delayed selected event count, sigma, normalization audit, activity inventory, dominant nuclides, W/collimator-origin activity/rate, and whether the sample has at least uncertainty_anchor.min_delayed_selected_events_for_meaningful_1of10_claim."
+    },
+    "C4_full_stat_promotion": "Only after the 1/10 screen passes or is promoted to a larger-stat screen by the inconclusive rule. Clean full-stat fix5 production is the default. Append-merge is allowed only if merge_policy.append_allowed_only_if is fully satisfied.",
+    "C5_full_closure_compare_against": ["benchmarks.new_geo_re", "benchmarks.v3p5_current_authority"]
+  },
+
+  "promotion_thresholds": {
+    "reference": "benchmarks.v3p5_current_authority",
+    "decisive_background_pass": "B_fix5_cps + sigma_fix5_cps < benchmarks.v3p5_current_authority.step05_background_cps",
+    "compatible_background_pass": "B_fix5_cps <= benchmarks.v3p5_current_authority.step05_background_cps and the difference is within 1 sigma; mark PASS_WITH_STAT_LIMIT, not decisive PASS.",
+    "delayed_red_flag": "Delayed_fix5_cps > benchmarks.v3p5_current_authority.w2_delayed_cps by more than 1 sigma, or W/collimator-origin delayed is a dominant new component.",
+    "min_signal_keep_fraction_vs_v3p5": 0.95,
+    "min_Z20d_vs_v3p5": "benchmarks.v3p5_current_authority.step08_Z20d",
+    "max_F3_20d_vs_v3p5": "benchmarks.v3p5_current_authority.step08_F3_20d_ph_cm2_s",
+    "automatic_pass_rule": "PASS only if decisive_background_pass or compatible_background_pass is true, signal_keep_fraction_vs_v3p5 >= 0.95, Z20d >= v3p5 Z20d, F3_20d <= v3p5 F3_20d, and no delayed_red_flag. Otherwise report as FAIL or USER_REVIEW_REQUIRED; do not claim replacement."
+  },
+
+  "merge_policy": {
+    "default": "clean_fullstat_fix5_required",
+    "append_allowed_only_if": [
+      "the 1/10 and 9/10 source manifests have identical geometry_setup",
+      "the 1/10 and 9/10 source manifests have compatible source surfaces and normalization constants",
+      "random seeds are disjoint and documented",
+      "prompt/buildup family exposure ratios add to the intended full-stat exposure",
+      "delayed source inventory is rebuilt or merged by an explicit audited rule, not silently concatenated",
+      "a merge-verdict artifact lists every component and reports PASS"
+    ],
+    "merge_verdict_path_template": "outputs/reports/fix5_<label>/fix5_merge_verdict.json",
+    "if_no_merge_verdict": "Do not append; run clean full-stat."
+  },
+
+  "audit_thresholds": {
+    "_source": "v3p5 m_sampling_audit_20260616 + exactpos convergence criteria; these are the bar a fix5 delayed source must meet.",
+    "delayed_source_per_case": {
+      "parsed_pointsource_blocks_equals_M": true,
+      "manifest_flux_relative_delta_max": 0.0,
+      "source_text_flux_relative_delta_max": 1e-06,
+      "matched_back_to_exact_table_fraction_min": 1.0,
+      "ambiguous_coordinate_key_fraction_max": 0.0,
+      "missed_nuclides_total_activity_fraction_max": 0.01,
+      "missed_nuclides_total_activity_fraction_m50000_reference": 0.0006708587437242382
+    },
+    "normalization_audit_groundstate_fix": {
+      "file": "runs/step02_delay_fix_<label>/normalization_audit_groundstate_fix.json",
+      "require": "status == PASS and problems == []. Each particle-family row: division == per-family buildup file/rep count (gamma in 'auto' mode); rp_scaled_total == rp_raw_total / division. A missing/incorrect division is the historical x8.0116 I-128 over-normalization bug.",
+      "fix5_caution": "fix5 adds tungsten; confirm the W/collimator-origin rows carry correct division and ground-state correction."
+    },
+    "convergence_if_multiple_M_or_seed": {
+      "max_w2_background_cps_relative_range": 0.05,
+      "max_Z20d_relative_range": 0.05,
+      "max_w2_delayed_cps_relative_range": 0.2,
+      "min_transport_backed_cases": 3,
+      "min_support_sizes": 2,
+      "min_repeated_seed_supports": 1
+    }
+  },
+
+  "scripts": {
+    "exactpos_closure_validator": "old/code/tools/validate_v3p5_exactpos_closure.py",
+    "exactpos_closure_validator_note": "Label-parametrized (--label) but its path templates hardcode the 'v3p5_centerfinger_{label}' prefix and 'step05_v3p5_centerfinger_l1_response_summary.json'. For fix5 either (a) use a label that keeps the v3p5_centerfinger_<label> directory mold, or (b) add a path-prefix argument. Path wiring is a Builder task; do NOT silently let it read v3p5 outputs.",
+    "r2_validator": "old/code/tools/validate_v3p5_fullstat_r2.py",
+    "groundstate_half_life_audit": "code/tools/audit_groundstate_half_life_units.py",
+    "m_sampling_audit_builder": "old/stepwise_maintenance/step03_delay_source/code/build_m_sampling_audit_20260616.py",
+    "fix5_geometry_audit": "outputs/reports/user_redesign_multiholeW_fix5_20260621/audit_fix5_geometry.py",
+    "prompt511_checker": "old/code/tools/check_prompt511_constraints.py",
+    "prompt511_checker_note": "EXPECTED to FAIL on fix5 (fix5 is a user redesign, not the minimal baseline-only prompt511 refix). It is HISTORICAL CONTEXT, not a fix5 gate. Do not treat its FAIL as a stop condition, and do not let its expected FAIL train the loop to ignore other red gates."
+  }
+}

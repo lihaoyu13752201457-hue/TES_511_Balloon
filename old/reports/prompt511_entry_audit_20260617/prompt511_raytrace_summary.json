@@ -1,0 +1,258 @@
+{
+  "status": "PASS_PROMPT511_RAYTRACE_LEDGER",
+  "method": {
+    "current_geo": "outputs/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo",
+    "old_geo": "/home/ubuntu/codex_tes_511_sim/new_geo_re/outputs/geometry/XZTES_ADR_v4c_mkflange_cm/TibetTES_ADR_v4c_mkflange_cm.geo",
+    "shape_support": [
+      "BRIK",
+      "PCON"
+    ],
+    "rotation_support": "none needed; proxy .geo files used here do not contain volume rotations",
+    "material_path_rule": "leaf-volume material path; deepest containing placed volume wins, so mother/child overlaps are not double-counted",
+    "pcon_boundary_note": "constant-radius/plane PCON boundaries are traced as straight-line chord intervals; decisive fixed side-axis lines are constant-z radial lines",
+    "event_ray": "SIM e+ annihilation point to selected TES centroid",
+    "fixed_side_axis": "straight local/global line through y=0,z=-5.2 cm"
+  },
+  "groups": {
+    "old_selected_all": {
+      "events": 106,
+      "median_passive_before_tes_cm": 6.456179539090356,
+      "max_passive_before_tes_cm": 10.002916621824298,
+      "events_with_lt_0p1cm_passive": 2,
+      "events_with_csi_chord": 103,
+      "events_with_aluminium_chord": 106,
+      "events_with_w_chord": 95,
+      "material_chord_sum_cm": {
+        "Ta/TES": 37.07312548812905,
+        "CsI": 423.2889032992731,
+        "Aluminium": 136.89729079524233,
+        "Copper": 42.43863750416591,
+        "W": 9.24752406667215,
+        "Be": 0.06153473516247138,
+        "Kapton": 4.274959173363185,
+        "LowCarbonSteel": 1.3631281252450693,
+        "Nb": 3.6758068569191122,
+        "Cryoperm": 50.18636356454061,
+        "Silicon": 3.1814080918291436
+      }
+    },
+    "current_selected_all": {
+      "events": 80,
+      "median_passive_before_tes_cm": 3.8646107172769315,
+      "max_passive_before_tes_cm": 8.485879167666548,
+      "events_with_lt_0p1cm_passive": 1,
+      "events_with_csi_chord": 41,
+      "events_with_aluminium_chord": 80,
+      "events_with_w_chord": 31,
+      "material_chord_sum_cm": {
+        "Ta/TES": 27.423818554490115,
+        "CsI": 151.7234970721146,
+        "Aluminium": 100.1524030432654,
+        "Copper": 52.34787951524652,
+        "W": 2.420186830403455,
+        "Be": 0.015045883198487117,
+        "Kapton": 0.8659960879645425,
+        "Nb": 1.6341591818072663,
+        "Cryoperm": 3.8845662309961013,
+        "Silicon": 3.866417980906578,
+        "SilverSinterProxy": 3.0275577859230074,
+        "CuNi": 1.8799118563782817,
+        "G10": 6.367417305107583,
+        "NbTiCableProxy": 1.34633358324376
+      }
+    },
+    "current_selected_nonwindow": {
+      "events": 77,
+      "median_passive_before_tes_cm": 4.411999874717497,
+      "max_passive_before_tes_cm": 8.485879167666548,
+      "events_with_lt_0p1cm_passive": 0,
+      "events_with_csi_chord": 40,
+      "events_with_aluminium_chord": 77,
+      "events_with_w_chord": 31,
+      "material_chord_sum_cm": {
+        "Ta/TES": 26.45824892065719,
+        "CsI": 148.844863831198,
+        "Aluminium": 98.50204413406803,
+        "Copper": 52.34787951524652,
+        "W": 2.420186830403455,
+        "Kapton": 0.8052341886559368,
+        "Nb": 1.6341591818072663,
+        "Cryoperm": 3.8845662309961013,
+        "Silicon": 3.7744830841636916,
+        "SilverSinterProxy": 3.0275577859230074,
+        "CuNi": 1.8799118563782817,
+        "G10": 6.367417305107583,
+        "NbTiCableProxy": 1.34633358324376
+      }
+    },
+    "current_selected_any_window": {
+      "events": 3,
+      "median_passive_before_tes_cm": 0.8684244039585232,
+      "max_passive_before_tes_cm": 3.8002247768504676,
+      "events_with_lt_0p1cm_passive": 1,
+      "events_with_csi_chord": 1,
+      "events_with_aluminium_chord": 3,
+      "events_with_w_chord": 0,
+      "material_chord_sum_cm": {
+        "Ta/TES": 0.965569633832923,
+        "CsI": 2.878633240916596,
+        "Aluminium": 1.6503589091973605,
+        "Be": 0.015045883198487117,
+        "Kapton": 0.060761899308605816,
+        "Silicon": 0.09193489674288674
+      }
+    }
+  },
+  "fixed_lines": [
+    {
+      "line": "current_side_axis_centerline",
+      "case": "current",
+      "p0": [
+        -25.0,
+        0.0,
+        -5.2
+      ],
+      "p1": [
+        8.0,
+        0.0,
+        -5.2
+      ],
+      "line_length_cm": 33.0,
+      "material_cm": "Ta/TES:1.8; Copper:0.35; Silicon:0.18; Be:0.015; Aluminium:0.013",
+      "top_volume_chords_cm": "Cu_SubstrateSupport_SolidDisk_L0_deepest:0.35; TP_L0_00188:0.3; TP_L4_00188:0.3; TP_L5_00188:0.3; TP_L1_00188:0.3; TP_L2_00188:0.3; TP_L3_00188:0.3; Si_Substrate_Stack_side_entry_L2:0.03; Si_Substrate_Stack_side_entry_L3:0.03; Si_Substrate_Stack_side_entry_L4:0.03; Si_Substrate_Stack_side_entry_L5:0.03; Si_Substrate_Stack_side_entry_L0:0.03",
+      "ray_cm_Ta/TES": 1.800000000018004,
+      "ray_cm_CsI": 0.0,
+      "ray_cm_Aluminium": 0.01299999996900103,
+      "ray_cm_Copper": 0.349999999998,
+      "ray_cm_W": 0.0,
+      "ray_cm_Be": 0.014999999981999246,
+      "ray_cm_Kapton": 0.0,
+      "ray_cm_StainlessSteel": 0.0,
+      "ray_cm_LowCarbonSteel": 0.0,
+      "ray_cm_Nb": 0.0,
+      "ray_cm_Cryoperm": 0.0,
+      "ray_cm_Silicon": 0.17999999998200122,
+      "ray_cm_SilverSinterProxy": 0.0,
+      "ray_cm_CuNi": 0.0,
+      "ray_cm_G10": 0.0,
+      "ray_cm_SaltProxy": 0.0,
+      "ray_cm_CharcoalProxy": 0.0,
+      "ray_cm_NbTiCableProxy": 0.0,
+      "ray_cm_other": 0.0
+    },
+    {
+      "line": "old_same_side_axis_centerline",
+      "case": "old",
+      "p0": [
+        -25.0,
+        0.0,
+        -5.2
+      ],
+      "p1": [
+        8.0,
+        0.0,
+        -5.2
+      ],
+      "line_length_cm": 33.0,
+      "material_cm": "SaltProxy:4.6; CsI:4; Copper:3.5; LowCarbonSteel:1.69; Aluminium:1.22; StainlessSteel:0.5; G10:0.16; W:0.06; Kapton:0.05",
+      "top_volume_chords_cm": "ADR_SaltPill_Proxy:4.6; CsI_Active_Shield_Side04:4; ADR_Magnet_Coil_Cu:3.1; ADR_Magnet_Yoke_Fe:1.69; ADR_HeatSwitch_Stainless_Link:0.5; Vacuum_Jacket_Al:0.4; ADR_SaltPill_Cu_Can:0.32; Thermal_4K_Al_Shield:0.24; Outer_Al_Mech_Shell:0.2; Support_G10_Post_B:0.16; Thermal_60K_Al_Shield:0.15; Vacuum_Jacket_Al_Reinforcement:0.12",
+      "ray_cm_Ta/TES": 0.0,
+      "ray_cm_CsI": 3.999999999996001,
+      "ray_cm_Aluminium": 1.2199999999769977,
+      "ray_cm_Copper": 3.499999999979998,
+      "ray_cm_W": 0.05999999999399919,
+      "ray_cm_Be": 0.0,
+      "ray_cm_Kapton": 0.04999999999499932,
+      "ray_cm_StainlessSteel": 0.5000000000160028,
+      "ray_cm_LowCarbonSteel": 1.6899999999959971,
+      "ray_cm_Nb": 0.0,
+      "ray_cm_Cryoperm": 0.0,
+      "ray_cm_Silicon": 0.0,
+      "ray_cm_SilverSinterProxy": 0.0,
+      "ray_cm_CuNi": 0.0,
+      "ray_cm_G10": 0.15999999998399966,
+      "ray_cm_SaltProxy": 4.600000000002001,
+      "ray_cm_CharcoalProxy": 0.0,
+      "ray_cm_NbTiCableProxy": 0.0,
+      "ray_cm_other": 0.0
+    },
+    {
+      "line": "current_side_axis_window_only",
+      "case": "current",
+      "p0": [
+        -14.2,
+        0.0,
+        -5.2
+      ],
+      "p1": [
+        -5.8,
+        0.0,
+        -5.2
+      ],
+      "line_length_cm": 8.399999999999999,
+      "material_cm": "Be:0.015; Aluminium:0.013",
+      "top_volume_chords_cm": "Win_Be_Vacuum_150um_side:0.015; Win_Outer_Al_Filter_side:0.003; Win_Still_Al_foil_side:0.0025; Win_60K_Al_foil_side:0.0025; Win_50mK_Al_foil_side:0.0025; Win_4K_Al_foil_side:0.0025",
+      "ray_cm_Ta/TES": 0.0,
+      "ray_cm_CsI": 0.0,
+      "ray_cm_Aluminium": 0.01300000000319988,
+      "ray_cm_Copper": 0.0,
+      "ray_cm_W": 0.0,
+      "ray_cm_Be": 0.014999999994000144,
+      "ray_cm_Kapton": 0.0,
+      "ray_cm_StainlessSteel": 0.0,
+      "ray_cm_LowCarbonSteel": 0.0,
+      "ray_cm_Nb": 0.0,
+      "ray_cm_Cryoperm": 0.0,
+      "ray_cm_Silicon": 0.0,
+      "ray_cm_SilverSinterProxy": 0.0,
+      "ray_cm_CuNi": 0.0,
+      "ray_cm_G10": 0.0,
+      "ray_cm_SaltProxy": 0.0,
+      "ray_cm_CharcoalProxy": 0.0,
+      "ray_cm_NbTiCableProxy": 0.0,
+      "ray_cm_other": 0.0
+    },
+    {
+      "line": "old_corresponding_outer_to_inner",
+      "case": "old",
+      "p0": [
+        -16.0,
+        0.0,
+        -5.2
+      ],
+      "p1": [
+        -2.5,
+        0.0,
+        -5.2
+      ],
+      "line_length_cm": 13.5,
+      "material_cm": "CsI:4; Copper:1.63; LowCarbonSteel:1.17; Aluminium:1.1; StainlessSteel:0.25; G10:0.16; W:0.06; Kapton:0.05",
+      "top_volume_chords_cm": "CsI_Active_Shield_Side04:4; ADR_Magnet_Coil_Cu:1.55; ADR_Magnet_Yoke_Fe:1.17; Vacuum_Jacket_Al:0.4; ADR_HeatSwitch_Stainless_Link:0.25; Outer_Al_Mech_Shell:0.2; Support_G10_Post_B:0.16; Thermal_60K_Al_Shield:0.15; Vacuum_Jacket_Al_Reinforcement:0.12; Thermal_4K_Al_Shield:0.12; ActiveShield_Al_Backplane_Liner:0.11; Passive_Cu_Inner_Liner:0.08",
+      "ray_cm_Ta/TES": 0.0,
+      "ray_cm_CsI": 4.0000000000095,
+      "ray_cm_Aluminium": 1.0999999999935002,
+      "ray_cm_Copper": 1.6300000000035,
+      "ray_cm_W": 0.06000000000749964,
+      "ray_cm_Be": 0.0,
+      "ray_cm_Kapton": 0.050000000004,
+      "ray_cm_StainlessSteel": 0.2499999999930002,
+      "ray_cm_LowCarbonSteel": 1.170000000004501,
+      "ray_cm_Nb": 0.0,
+      "ray_cm_Cryoperm": 0.0,
+      "ray_cm_Silicon": 0.0,
+      "ray_cm_SilverSinterProxy": 0.0,
+      "ray_cm_CuNi": 0.0,
+      "ray_cm_G10": 0.16000000000199993,
+      "ray_cm_SaltProxy": 0.0,
+      "ray_cm_CharcoalProxy": 0.0,
+      "ray_cm_NbTiCableProxy": 0.0,
+      "ray_cm_other": 0.0
+    }
+  ],
+  "outputs": {
+    "event_csv": "outputs/reports/prompt511_entry_audit_20260617/prompt511_raytrace_event_chords.csv",
+    "segment_csv": "outputs/reports/prompt511_entry_audit_20260617/prompt511_raytrace_volume_segments.csv",
+    "line_csv": "outputs/reports/prompt511_entry_audit_20260617/prompt511_raytrace_line_chords.csv",
+    "report_md": "outputs/reports/prompt511_entry_audit_20260617/prompt511_raytrace_ledger.md"
+  }
+}

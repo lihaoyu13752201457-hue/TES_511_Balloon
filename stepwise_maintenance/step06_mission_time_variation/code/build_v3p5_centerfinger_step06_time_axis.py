@@ -51,24 +51,46 @@ STAGE_MAP = {
     "active": "active_veto_pass_rate_s-1",
     "final": "side_compton_fov_pass_rate_s-1",
 }
+FIX5_FULLSTAT_LABEL = "fix5_fullstat_v2_exactpos_m50000_s260613"
+
+
+def canonical_label(label: str) -> str:
+    if label == "fix5_fullstat_v2":
+        return FIX5_FULLSTAT_LABEL
+    return label
 
 
 def is_bgo_sample_label(label: str) -> bool:
     return label == "bgo_sample_fullstat_v2_exactpos"
 
 
+def is_fix5_fullstat_label(label: str) -> bool:
+    return canonical_label(label) == FIX5_FULLSTAT_LABEL
+
+
+def is_exactpos_label(label: str) -> bool:
+    return label.startswith("fullstat_v2_exactpos")
+
+
 def output_prefix(label: str) -> str:
-    return "bgo_sample" if is_bgo_sample_label(label) else "v3p5_centerfinger"
+    if is_bgo_sample_label(label):
+        return "bgo_sample"
+    if is_fix5_fullstat_label(label):
+        return "fix5"
+    return "v3p5_centerfinger"
 
 
 def step06_summary_filename(label: str) -> str:
     if is_bgo_sample_label(label):
         return "step06_bgo_sample_fullstat_v2_exactpos_summary.json"
+    if is_fix5_fullstat_label(label):
+        return f"step06_{FIX5_FULLSTAT_LABEL}_summary.json"
     return f"step06_{output_prefix(label)}_{label}_summary.json"
 
 
 def configure_paths(label: str) -> None:
     global OUT, FIG, STEP05, STEP02, GROUNDSTATE
+    label = canonical_label(label)
 
     if is_bgo_sample_label(label):
         OUT = ROOT / "stepwise_maintenance" / "step06_mission_time_variation" / f"outputs_{label}"
@@ -81,6 +103,20 @@ def configure_paths(label: str) -> None:
         )
         STEP02 = ROOT / "Bgo_sample" / "step02_fullstat_v2_exactpos_summary.json"
         GROUNDSTATE = ROOT / "runs" / "step02_bgo_sample_fullstat_v2_delay_fix" / "groundstate_activity_corrections.csv"
+        FIG = OUT / "figures"
+        return
+
+    if is_fix5_fullstat_label(label):
+        OUT = ROOT / "stepwise_maintenance" / "step06_mission_time_variation" / f"outputs_{FIX5_FULLSTAT_LABEL}"
+        STEP05 = (
+            ROOT
+            / "stepwise_maintenance"
+            / "step05_veto_time_axis"
+            / f"outputs_{FIX5_FULLSTAT_LABEL}_l1"
+            / f"step05_{FIX5_FULLSTAT_LABEL}_l1_response_summary.json"
+        )
+        STEP02 = ROOT / "outputs" / "reports" / FIX5_FULLSTAT_LABEL / "fix5_delayed_source_exactpos_summary.json"
+        GROUNDSTATE = ROOT / "runs" / "step02_delay_fix_fix5_fullstat_v2" / "groundstate_activity_corrections.csv"
         FIG = OUT / "figures"
         return
 
@@ -310,6 +346,7 @@ def build_background_time_variation(
     prompt_event_rate = float(draw["prompt"]["rate_hz"])
     delayed_event_rate = float(draw["delayed"]["rate_hz"])
     label = str(step05.get("statistics_label", "1of10")).upper()
+    row_claim_prefix = "FIX5" if is_fix5_fullstat_label(str(step05.get("statistics_label", ""))) else "V3P5"
     rows: list[dict[str, Any]] = []
     for selection in step05["windows"]:
         rates = stage_rates(step05, selection)
@@ -339,7 +376,7 @@ def build_background_time_variation(
                 out[f"delayed_{stage}_cps"] = delayed
                 out[f"background_{stage}_cps"] = prompt + delayed
                 out[f"science_{stage}_cps_at_ref_flux"] = science
-            out["claim_level"] = f"V3P5_L1_RATE_FOLD_{label}_NO_NEW_TRANSPORT"
+            out["claim_level"] = f"{row_claim_prefix}_L1_RATE_FOLD_{label}_NO_NEW_TRANSPORT"
             rows.append(out)
     return rows
 
@@ -393,12 +430,16 @@ def plot_outputs(trajectory: list[dict[str, Any]], background: list[dict[str, An
 
 def markdown(summary: dict[str, Any]) -> str:
     c = summary["checks"]
-    title = "# Step06 Bgo_sample Mission Time Variation" if is_bgo_sample_label(summary["statistics_label"]) else "# Step06 v3p5 Center-Finger Mission Time Variation"
-    intro = (
-        f"This is the Bgo_sample `{summary['statistics_label']}` mission-axis fold. It does not run new Cosima transport; it reweights the BGO Step05 direct response rates over a synthetic 20-day trajectory."
-        if is_bgo_sample_label(summary["statistics_label"])
-        else f"This is the v3p5 `{summary['statistics_label']}` mission-axis fold. It does not run new Cosima transport; it reweights the v3p5 Step05 direct response rates over a synthetic 20-day trajectory."
-    )
+    label = str(summary["statistics_label"])
+    if is_bgo_sample_label(label):
+        title = "# Step06 Bgo_sample Mission Time Variation"
+        intro = f"This is the Bgo_sample `{label}` mission-axis fold. It does not run new Cosima transport; it reweights the BGO Step05 direct response rates over a synthetic 20-day trajectory."
+    elif is_fix5_fullstat_label(label):
+        title = "# Step06 fix5 Mission Time Variation"
+        intro = f"This is the fix5 `{label}` mission-axis fold. It does not run new Cosima transport; it reweights the fix5 Step05 direct response rates over a synthetic 20-day trajectory."
+    else:
+        title = "# Step06 v3p5 Center-Finger Mission Time Variation"
+        intro = f"This is the v3p5 `{label}` mission-axis fold. It does not run new Cosima transport; it reweights the v3p5 Step05 direct response rates over a synthetic 20-day trajectory."
     return "\n".join(
         [
             title,
@@ -439,7 +480,7 @@ def build_summary(
     activity_audit: dict[str, Any],
     atmosphere_model: dict[str, float],
 ) -> dict[str, Any]:
-    label = step05.get("statistics_label", "1of10")
+    label = canonical_label(str(step05.get("statistics_label", "1of10")))
     prefix = output_prefix(label)
     t_ref = float(step05["science_physical_normalization"]["atmospheric_transmission"]["T_atm"])
     day15 = min(trajectory, key=lambda row: abs(float(row["day_mid"]) - DAY15))
@@ -454,6 +495,20 @@ def build_summary(
         pending = [
             "Downstream Step07, Step08, and the BGO-vs-CsI hard-window comparison are closed for this label.",
             "BGO spatial, fixed-template annular-likelihood, detector-threshold replay, and material attenuation sidecars are closed in Bgo_sample/EXTENDED_CLOSURE_SUMMARY.md.",
+        ]
+    elif is_fix5_fullstat_label(label):
+        status = f"PASS_FIX5_STEP06_TIME_AXIS_{label.upper()}_NOT_PROMOTION"
+        claim_level = f"FIX5_L1_MISSION_RATE_FOLD_{label.upper()}_NO_NEW_TRANSPORT_NOT_FINAL_PROMOTION"
+        pending = [
+            "Run Step07/Step08 from this Step06 output and refresh the promotion decision artifact before any final replacement claim.",
+            "Old new_geo_re prompt/delayed numbers remain blocked as pass/fail gates while benchmark alignment is NOT_ALIGNED.",
+        ]
+    elif is_exactpos_label(str(label)):
+        status = f"PASS_V3P5_STEP06_TIME_AXIS_{label.upper()}"
+        claim_level = f"V3P5_L1_MISSION_RATE_FOLD_{label.upper()}_NO_NEW_TRANSPORT"
+        pending = [
+            "The delayed source is the exact-position sampled-source branch; M-sampling and seed stability are evaluated downstream in Step08 and the convergence audit.",
+            "This is a rate-level trajectory fold, not per-bin detector transport.",
         ]
     else:
         status = f"PASS_V3P5_STEP06_TIME_AXIS_{label.upper()}"
@@ -519,6 +574,7 @@ def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--label", default="1of10", help="Run/output label, e.g. 1of10 or fullstat_v2")
     args = ap.parse_args()
+    args.label = canonical_label(args.label)
 
     configure_paths(args.label)
     OUT.mkdir(parents=True, exist_ok=True)

@@ -1,0 +1,111 @@
+{
+  "status": "PASS_FIX5_GROUNDSTATE_HALF_LIFE_AUDIT",
+  "claim_level": "FIX5_DELAYED_SOURCE_NORMALIZATION_AUDIT_NOT_RATE_AUTHORITY",
+  "generated_at_utc": "2026-06-21T18:34:59Z",
+  "label": "fix5_fullstat_v2_exactpos_m50000_s260613",
+  "inputs": {
+    "corrections_csv": "runs/step02_delay_fix_fix5_fullstat_v2/groundstate_activity_corrections.csv",
+    "source_fix_summary": "runs/step02_delay_fix_fix5_fullstat_v2/source_fix_summary.json",
+    "fixed_source": "runs/step02_delay_fix_fix5_fullstat_v2/activation_decay_day15_groundstate_fixed.source",
+    "normalization_audit": "runs/step02_delay_fix_fix5_fullstat_v2/normalization_audit_groundstate_fix.json",
+    "nubase_archive": "inputs/nubase/nubase_2020.txt",
+    "nubase_archive_sha256": "1585a5eea86c5e17e90307c7e6e786d060049c4039e392a261ff6db977df9859"
+  },
+  "checks": {
+    "corrections_rows": 234,
+    "nubase_archive_lines": 5868,
+    "nubase_line_mismatches": 0,
+    "unit_self_test_max_rel_error": 0.0,
+    "raw_unit_counts": {
+      "Ey": 1,
+      "My": 1,
+      "d": 66,
+      "h": 28,
+      "ky": 23,
+      "m": 70,
+      "ms": 2,
+      "s": 12,
+      "y": 31
+    },
+    "normalization_status": "PASS",
+    "normalization_problems": [],
+    "normalization_rows": 8,
+    "fixed_source_geometry": "outputs/geometry/DEMO2_DR_v3p5_user_cylmag_redesign_multiholeW_fix5_20260621_megalib_proxy/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup",
+    "fixed_source_forbidden_particle_types": [],
+    "old_total_activity_Bq": 87.48329383240524,
+    "new_total_activity_Bq": 85.44920253876245,
+    "source_blocks_in": 9363,
+    "source_blocks_removed": 29,
+    "w_or_collimator_rows": 4,
+    "w_or_collimator_new_activity_Bq": 0.9860798287567217
+  },
+  "w_or_collimator_rows": [
+    {
+      "VN": "Passive_W_Bottom_Plate_detector_bay",
+      "ZA": "74187",
+      "nuclide": "W-187",
+      "old_source_activity_Bq": "0.9319387828799999",
+      "new_groundstate_activity_Bq": "0.9319387837983522",
+      "scale": "1.0000000009854213",
+      "action": "kept_rescaled",
+      "RP_yield": "171.625",
+      "nubase_half_life_s": "85712.40000000001",
+      "nubase_why": "nubase_ground",
+      "nubase_line": "4206",
+      "nubase_raw_value": "23.809",
+      "nubase_raw_unit": "h"
+    },
+    {
+      "VN": "Passive_W_Bottom_Plate_detector_bay",
+      "ZA": "74185",
+      "nuclide": "W-185",
+      "old_source_activity_Bq": "0.052128622171",
+      "new_groundstate_activity_Bq": "0.052128622183823456",
+      "scale": "1.0000000002459966",
+      "action": "kept_rescaled",
+      "RP_yield": "74.25",
+      "nubase_half_life_s": "6488639.999999999",
+      "nubase_why": "nubase_ground",
+      "nubase_line": "4151",
+      "nubase_raw_value": "75.1",
+      "nubase_raw_unit": "d"
+    },
+    {
+      "VN": "Passive_W_Bottom_Plate_detector_bay",
+      "ZA": "74180",
+      "nuclide": "W-180",
+      "old_source_activity_Bq": "0.01425438375",
+      "new_groundstate_activity_Bq": "2.5519832357038237e-22",
+      "scale": "1.790314671234962e-20",
+      "action": "removed_negligible_or_stable",
+      "RP_yield": "2.625",
+      "nubase_half_life_s": "5.0176584e+25",
+      "nubase_why": "nubase_ground",
+      "nubase_line": "4013",
+      "nubase_raw_value": "1.59",
+      "nubase_raw_unit": "Ey"
+    },
+    {
+      "VN": "Passive_W_Bottom_Plate_detector_bay",
+      "ZA": "74181",
+      "nuclide": "W-181",
+      "old_source_activity_Bq": "0.0020124227733999992",
+      "new_groundstate_activity_Bq": "0.0020124227745462087",
+      "scale": "1.0000000005695668",
+      "action": "kept_rescaled",
+      "RP_yield": "4.5",
+      "nubase_half_life_s": "10450598.4",
+      "nubase_why": "nubase_ground",
+      "nubase_line": "4039",
+      "nubase_raw_value": "120.956",
+      "nubase_raw_unit": "d"
+    }
+  ],
+  "problems": [],
+  "outputs": {
+    "summary_json": "outputs/reports/fix5_fullstat_v2_exactpos_m50000_s260613/fix5_groundstate_half_life_audit_summary.json",
+    "line_checks_csv": "outputs/reports/fix5_fullstat_v2_exactpos_m50000_s260613/fix5_groundstate_half_life_line_checks.csv",
+    "normalization_rows_csv": "outputs/reports/fix5_fullstat_v2_exactpos_m50000_s260613/fix5_groundstate_normalization_rows.csv",
+    "report_md": "outputs/reports/fix5_fullstat_v2_exactpos_m50000_s260613/fix5_groundstate_half_life_audit.md"
+  }
+}

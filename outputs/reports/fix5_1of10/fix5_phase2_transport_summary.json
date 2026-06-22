@@ -1,0 +1,90 @@
+{
+  "label": "fix5_1of10",
+  "role": "Orchestrator",
+  "phase": "Phase 2 1/10 instant and buildup transport completion",
+  "generated_at_utc": "2026-06-21T17:11:31Z",
+  "contract_authority": "core_md/fix5_benchmarks.json",
+  "inputs": {
+    "source_manifest": "outputs/reports/fix5_1of10/fix5_source_manifest.json",
+    "runner_preflight_manifest": "outputs/reports/fix5_1of10/fix5_runner_preflight_manifest.json",
+    "runner_release": "outputs/reports/fix5_1of10/fix5_phase2_runner_release.json",
+    "benchmark_alignment": "outputs/reports/fix5_1of10/fix5_benchmark_alignment.json"
+  },
+  "transport_status": "PASS_1OF10_INSTANT_AND_BUILDUP_TRANSPORT_COMPLETED",
+  "scope_completed": [
+    "runs/step02_instant_fix5_1of10",
+    "runs/step02_buildup_fix5_1of10"
+  ],
+  "environment_note": {
+    "megalib_environment_required": true,
+    "working_success_command_prefix": "source /home/ubuntu/MEGAlib_Install/megalib-main/bin/source-megalib.sh",
+    "reason": "cosima requires MEGAlib shared libraries such as libSivan.so in LD_LIBRARY_PATH"
+  },
+  "modes": {
+    "instant": {
+      "run_dir": "runs/step02_instant_fix5_1of10",
+      "run_summary_json": "runs/step02_instant_fix5_1of10/run_summary.json",
+      "run_summary_md": "runs/step02_instant_fix5_1of10/run_summary.md",
+      "jobs": 19,
+      "pass_or_skip": 19,
+      "fail": 0,
+      "events_requested": 1190129,
+      "events_generated": 1190129,
+      "cpu_s": 304.688,
+      "sim_gz_outputs": 19,
+      "dat_inc1_outputs": 19,
+      "sim_headers_checked": 19,
+      "sim_headers_with_fix5_geometry": 19,
+      "sim_headers_with_forbidden_baseline_geometry": 0
+    },
+    "buildup": {
+      "run_dir": "runs/step02_buildup_fix5_1of10",
+      "run_summary_json": "runs/step02_buildup_fix5_1of10/run_summary.json",
+      "run_summary_md": "runs/step02_buildup_fix5_1of10/run_summary.md",
+      "jobs": 19,
+      "pass_or_skip": 19,
+      "fail": 0,
+      "events_requested": 1190129,
+      "events_generated": 1190129,
+      "cpu_s": 303.754,
+      "sim_gz_outputs": 19,
+      "dat_inc1_outputs": 19,
+      "sim_headers_checked": 19,
+      "sim_headers_with_fix5_geometry": 19,
+      "sim_headers_with_forbidden_baseline_geometry": 0
+    }
+  },
+  "combined_outputs": {
+    "sim_gz_outputs": 38,
+    "dat_inc1_outputs": 38,
+    "transport_output_files_total": 76,
+    "sim_headers_checked": 38,
+    "sim_headers_with_fix5_geometry": 38,
+    "sim_headers_with_forbidden_baseline_geometry": 0
+  },
+  "geometry_header_contract": {
+    "required_fix5_geometry_setup_suffix": "outputs/geometry/DEMO2_DR_v3p5_user_cylmag_redesign_multiholeW_fix5_20260621_megalib_proxy/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup",
+    "forbidden_baseline_geometry_setup_suffix": "outputs/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup",
+    "status": "PASS"
+  },
+  "gate_status_after_transport": {
+    "old_new_geo_re_gate": "BLOCKED_NOT_ALIGNED",
+    "old_new_geo_re_gate_reason": "fix5_benchmark_alignment.json decision is NOT_ALIGNED, so the old new_geo_re prompt/delayed numbers remain historical context only.",
+    "prompt_rate_extraction": "PENDING_STEP05",
+    "delayed_source_construction": "PENDING_FIX5_BUILDUP_ACTIVATION_AUDIT",
+    "delayed_normalization_audit": "PENDING_NUBASE_GROUND_STATE_CORRECTION_TT_GUARD_M_SAMPLING",
+    "full_stat_promotion": "NOT_RELEASED"
+  },
+  "downstream_allowed_next": [
+    "Verifier review of completed Phase 2 transport outputs and SIM headers",
+    "Fix5 prompt Step05 extraction with N_eff and Poisson sigma reporting",
+    "Fix5 delayed source construction from fix5 buildup transport only, followed by required activation/source normalization audits"
+  ],
+  "downstream_not_allowed_without_new_release": [
+    "old new_geo_re pass/fail gate decision",
+    "delayed transport before delayed source audit",
+    "Step06--Step08 closure claims before prompt/delayed extraction and audits",
+    "full-stat production",
+    "append/merge"
+  ]
+}

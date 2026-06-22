@@ -1,0 +1,77 @@
+{
+  "label": "fix5_1of10",
+  "role": "Orchestrator",
+  "phase": "Phase 4 Step05 1/10 selected-rate screen",
+  "generated_at_utc": "2026-06-21T17:35:02Z",
+  "contract_authority": "core_md/fix5_benchmarks.json",
+  "status": "PASS_STEP05_EXTRACTION_ARTIFACT_READY_NOT_FINAL_GATE",
+  "claim_level": "FIX5_1OF10_PROMPT_DELAYED_SCREEN_NOT_RATE_AUTHORITY",
+  "inputs": {
+    "step05_summary": "stepwise_maintenance/step05_veto_time_axis/outputs_fix5_1of10_l1/step05_fix5_1of10_l1_response_summary.json",
+    "step05_report": "stepwise_maintenance/step05_veto_time_axis/outputs_fix5_1of10_l1/step05_fix5_1of10_l1_response_summary.md",
+    "prompt_normalization_audit": "stepwise_maintenance/step05_veto_time_axis/outputs_fix5_1of10_l1/prompt_normalization_audit.json",
+    "rates_csv": "stepwise_maintenance/step05_veto_time_axis/outputs_fix5_1of10_l1/step05_fix5_1of10_l1_rates.csv",
+    "timeline_csv": "stepwise_maintenance/step05_veto_time_axis/outputs_fix5_1of10_l1/step05_fix5_1of10_l1_timeline_rates.csv"
+  },
+  "normalization": {
+    "prompt_rate_rule": "per-tag event rate = 1/sum(TT_tag) from fix5 prompt dat files",
+    "prompt_time_s": 18.422009842958932,
+    "delayed_time_s": 1317.366549,
+    "prompt_normalization_status": "PASS",
+    "prompt_normalization_problems": []
+  },
+  "w2_510p58_511p42_direct_selected": {
+    "prompt": {
+      "raw_events": 2,
+      "active_veto_pass_events": 0,
+      "side_compton_fov_pass_events": 0,
+      "raw_rate_cps": 0.10867143734276602,
+      "selected_rate_cps": 0.0
+    },
+    "delayed": {
+      "raw_events": 0,
+      "active_veto_pass_events": 0,
+      "side_compton_fov_pass_events": 0,
+      "raw_rate_cps": 0.0,
+      "selected_rate_cps": 0.0
+    },
+    "total_background": {
+      "selected_events_N_eff": 0,
+      "selected_rate_cps": 0.0,
+      "poisson_relative_sigma": null,
+      "poisson_sigma_interpretation": "Undefined for zero observed selected events; use a one-sided upper-limit treatment if a quantitative bound is needed."
+    },
+    "science_placeholder": {
+      "source": "Existing v3p5 focused-signal EventList used by Step05 parser only; not a fix5 signal replay.",
+      "side_compton_fov_pass_events": 29597,
+      "signal_cps_at_1e_4_reference_flux": 0.00118117,
+      "signal_claim_allowed": false
+    }
+  },
+  "broad_480_550_direct_selected": {
+    "prompt_selected_events": 0,
+    "prompt_selected_rate_cps": 0.0,
+    "delayed_selected_events": 1,
+    "delayed_selected_rate_cps": 0.0007590901717969764,
+    "total_selected_events_N_eff": 1,
+    "poisson_relative_sigma": 1.0
+  },
+  "timeline_note": {
+    "common_poisson_time_axis_w2_side_compton_fov_pass_rate_cps": 0.7621265324841643,
+    "interpretation": "This common timeline includes focused-signal event instances and is not the prompt+delayed background gate value. Gate screening uses direct prompt/delayed by_stream rates above."
+  },
+  "gate_interpretation": {
+    "old_new_geo_re_gate": "BLOCKED_NOT_ALIGNED",
+    "old_new_geo_re_gate_reason": "fix5_benchmark_alignment.json decision is NOT_ALIGNED; old new_geo_re prompt/delayed values remain historical context only.",
+    "current_screen_result": "NO_OBSERVED_W2_PROMPT_OR_DELAYED_SELECTED_EVENTS_IN_1OF10",
+    "rate_gate_decision": "INCONCLUSIVE_LOW_STAT_ZERO_SELECTED_EVENTS_NOT_FINAL_PASS",
+    "hard_fail_status": "NO_HARD_FAIL_OBSERVED",
+    "promotion_status": "NOT_RELEASED_NOT_CLAIMED"
+  },
+  "pending": [
+    "Verifier review of Step05 extraction and screen interpretation.",
+    "Fix5 focused-signal replay before any signal keep, Z20d, F3(20d), or promotion claim.",
+    "Full-stat prompt/buildup/delayed closure before replacement of current v3p5 authority.",
+    "W/collimator selected delayed contribution requires Step05 source-origin breakdown; source-level W activity alone is not a selected-rate contribution."
+  ]
+}

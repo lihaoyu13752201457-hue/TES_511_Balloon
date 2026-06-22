@@ -203,6 +203,7 @@ def patch_source(job: dict[str, Any]) -> None:
     target.parent.mkdir(parents=True, exist_ok=True)
 
     mode = job["mode"]
+    store_isotopes = bool(job.get("store_isotopes", True))
     run_name = None
     seen_seed = False
     seen_store = False
@@ -224,11 +225,12 @@ def patch_source(job: dict[str, Any]) -> None:
             continue
         if stripped.startswith("StoreIsotopes"):
             seen_store = True
-            out_lines.append("StoreIsotopes true")
+            if store_isotopes:
+                out_lines.append("StoreIsotopes true")
             continue
         if stripped.startswith("DecayMode"):
             seen_decay = True
-            if mode == "buildup":
+            if store_isotopes and mode == "buildup":
                 out_lines.append("DecayMode ActivationBuildUp")
             continue
         if ".Events" in line:
@@ -241,8 +243,9 @@ def patch_source(job: dict[str, Any]) -> None:
             continue
         if ".IsotopeProductionFile" in line:
             seen_iso = True
-            prefix = line.split(".IsotopeProductionFile", 1)[0].strip()
-            out_lines.append(f"{prefix}.IsotopeProductionFile {job['iso_prefix']}")
+            if store_isotopes:
+                prefix = line.split(".IsotopeProductionFile", 1)[0].strip()
+                out_lines.append(f"{prefix}.IsotopeProductionFile {job['iso_prefix']}")
             continue
         out_lines.append(line)
 
@@ -254,13 +257,13 @@ def patch_source(job: dict[str, Any]) -> None:
     additions: list[str] = []
     if not seen_seed:
         additions.append(f"Seed {job['seed']}")
-    if not seen_store:
+    if store_isotopes and not seen_store:
         additions.append("StoreIsotopes true")
-    if mode == "buildup" and not seen_decay:
+    if store_isotopes and mode == "buildup" and not seen_decay:
         additions.append("DecayMode ActivationBuildUp")
     if additions:
         out_lines[insert_at:insert_at] = additions
-    if not seen_iso and run_name:
+    if store_isotopes and not seen_iso and run_name:
         out_lines.append(f"{run_name}.IsotopeProductionFile {job['iso_prefix']}")
 
     target.write_text("\n".join(out_lines) + "\n", encoding="utf-8")
@@ -271,7 +274,9 @@ def run_job(job: dict[str, Any]) -> dict[str, Any]:
     dat_path = Path(job["dat_path"])
     log_path = Path(job["log"])
 
-    if job["skip_existing"] and sim_path.exists() and dat_path.exists():
+    require_dat = bool(job.get("store_isotopes", True))
+
+    if job["skip_existing"] and sim_path.exists() and (dat_path.exists() or not require_dat):
         log = parse_log(log_path)
         return {**job, "status": "SKIP", "returncode": 0, **log}
 
@@ -285,8 +290,10 @@ def run_job(job: dict[str, Any]) -> dict[str, Any]:
         logf.write(f"source={job['source']}\n")
         logf.write(f"temp_source={job['temp_source']}\n")
         logf.write("-" * 72 + "\n")
+        cmd = [job["cosima"], "-s", str(job["seed"]), job["temp_source"]]
+        logf.write(f"cosima_command={' '.join(cmd)}\n")
         proc = subprocess.run(
-            [job["cosima"], job["temp_source"]],
+            cmd,
             cwd=str(ROOT),
             stdout=logf,
             stderr=subprocess.STDOUT,
@@ -317,7 +324,7 @@ def run_job(job: dict[str, Any]) -> dict[str, Any]:
     if not sim_path.exists():
         status = "FAIL"
         details.append("missing_sim")
-    if not dat_path.exists():
+    if require_dat and not dat_path.exists():
         status = "FAIL"
         details.append("missing_dat")
 
@@ -401,6 +408,7 @@ def build_jobs(args: argparse.Namespace) -> tuple[list[dict[str, Any]], dict[str
                 "cosima": args.cosima,
                 "skip_existing": not args.force,
                 "cleanup_source": not args.keep_sources,
+                "store_isotopes": not args.disable_isotope_store,
             }
         )
 
@@ -439,6 +447,7 @@ def build_jobs(args: argparse.Namespace) -> tuple[list[dict[str, Any]], dict[str
         "base_events_by_particle": base_events,
         "selected_particles": sorted(selected),
         "jobs": len(jobs),
+        "store_isotopes": not args.disable_isotope_store,
     }
     if source_manifest is not None:
         normalization["source_migration_manifest"] = {
@@ -473,6 +482,7 @@ def write_manifest(outdir: Path, jobs: list[dict[str, Any]], normalization: dict
         "temp_source",
         "sim_path",
         "dat_path",
+        "store_isotopes",
         "log",
     ]
     with (outdir / "run_manifest.csv").open("w", newline="", encoding="utf-8") as fh:
@@ -546,13 +556,25 @@ def main() -> int:
     ap.add_argument("--farfield-radius-cm", type=float, default=35.0)
     ap.add_argument("--cosima", default=default_cosima)
     ap.add_argument("--dry-run", action="store_true")
+    ap.add_argument(
+        "--prepare-sources-only",
+        action="store_true",
+        help="Write run manifests and patched job source cards, then exit before launching Cosima.",
+    )
     ap.add_argument("--force", action="store_true")
     ap.add_argument("--keep-sources", action="store_true")
     ap.add_argument("--allow-heavy-run", action="store_true")
+    ap.add_argument(
+        "--disable-isotope-store",
+        action="store_true",
+        help="Do not write StoreIsotopes/IsotopeProductionFile lines; for prompt-only instant smokes.",
+    )
     ap.add_argument("--max-events-without-confirmation", type=int, default=DEFAULT_EVENT_LIMIT_WITHOUT_CONFIRMATION)
     ap.add_argument("--max-estimated-gb-without-confirmation", type=float, default=DEFAULT_GB_LIMIT_WITHOUT_CONFIRMATION)
     ap.add_argument("--max-estimated-cpu-days-without-confirmation", type=float, default=DEFAULT_CPU_DAY_LIMIT_WITHOUT_CONFIRMATION)
     args = ap.parse_args()
+    if args.disable_isotope_store and args.mode != "instant":
+        raise SystemExit("--disable-isotope-store is only supported with --mode instant")
 
     if args.outdir is None:
         args.outdir = ROOT / "runs" / f"{args.mode}_equiv2602"
@@ -575,6 +597,14 @@ def main() -> int:
 
     if args.dry_run:
         print(f"dry_run wrote {rel(args.outdir / 'run_manifest.csv')}")
+        return 0
+    if args.prepare_sources_only:
+        for job in jobs:
+            patch_source(job)
+        print(
+            f"prepare_sources_only wrote {len(jobs)} job sources under "
+            f"{rel(args.outdir / 'job_sources')}"
+        )
         return 0
     if not jobs:
         print("No jobs selected")
