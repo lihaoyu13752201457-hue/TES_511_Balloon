@@ -1,0 +1,320 @@
+{
+  "artifact": "01_current_fix5_delay_chain_audit",
+  "date": "2026-06-23",
+  "role": "current_fix5_delayed_chain_auditor",
+  "repo": "/home/ubuntu/TES_511_Balloon",
+  "scope": "Current fix5 delayed chain only: buildup RPIP -> ground-state/NUBASE correction -> per-family TT division -> exact-position M sampling -> Cosima delayed transport SE/ID/TE -> Step05 selected delayed cps -> PI-02 convergence.",
+  "overall_status": "NO_BUG",
+  "overall_summary": "No current-fix5 processing, sampling, half-life, unit, or Step05 rate-conversion bug was found that can suppress the delayed selected cps by O(10-100).",
+  "answers": {
+    "fixed_total_activity_Bq": {
+      "status": "PASS",
+      "value_Bq": 85.44920253876245,
+      "answer": "The value is the ground-state-corrected fixed source total activity, source_fix_summary.json#/new_total_activity_Bq, copied into the exact-position manifest as fixed_total_activity_Bq and split evenly over 50000 PointSource blocks.",
+      "evidence": [
+        {
+          "path": "code/tools/build_fixed_delay_source.py",
+          "lines": "365-373",
+          "value": "activity_after_exposure returns (nprod / tt_s) * (-expm1(-lambda*Tflight))."
+        },
+        {
+          "path": "code/tools/build_fixed_delay_source.py",
+          "lines": "508-513",
+          "value": "new_activity_by_key accumulates activity_after_exposure(nprod, tt_by_tag[tag], NUBASE half_life_s, t_flight_days)."
+        },
+        {
+          "path": "code/tools/build_fixed_delay_source.py",
+          "lines": "613-615",
+          "value": "new_total_activity_Bq is the sum of surviving new_flux_by_name values."
+        },
+        {
+          "path": "runs/step02_delay_fix_fix5_fullstat_v2/source_fix_summary.json",
+          "json_pointer": "/new_total_activity_Bq",
+          "value": 85.44920253876245
+        },
+        {
+          "path": "runs/step02_delay_fix_fix5_fullstat_v2/source_fix_summary.json",
+          "json_pointer": "/old_total_activity_Bq",
+          "value": 87.48329383240524
+        },
+        {
+          "path": "code/tools/build_fix5_1of10_exactpos_delayed_source.py",
+          "lines": "431-433",
+          "value": "total_activity = fixed['new_total_activity_Bq']; flux_per_source = total_activity / n_decays."
+        },
+        {
+          "path": "outputs/reports/fix5_fullstat_v2_exactpos_m50000_s260613/fix5_delayed_source_exactpos_summary.json",
+          "json_pointer": "/fixed_total_activity_Bq",
+          "value": 85.44920253876245
+        }
+      ]
+    },
+    "per_family_division": {
+      "status": "PASS",
+      "answer": "Division is correct for the current full-stat fix5 delayed source: every particle family has division equal to its buildup file count, and scaled RP totals equal raw totals divided by division.",
+      "evidence": [
+        {
+          "path": "code/tools/build_fixed_delay_source.py",
+          "lines": "85-90",
+          "value": "gamma auto division resolves to file_count; non-gamma division uses configured value."
+        },
+        {
+          "path": "code/tools/build_fixed_delay_source.py",
+          "lines": "339-343",
+          "value": "scaled_val = raw_val / div; rp_raw_total and rp_scaled_total are audited."
+        },
+        {
+          "path": "runs/step02_delay_fix_fix5_fullstat_v2/normalization_audit_groundstate_fix.json",
+          "json_pointer": "/status",
+          "value": "PASS"
+        },
+        {
+          "path": "runs/step02_delay_fix_fix5_fullstat_v2/normalization_audit_groundstate_fix.json",
+          "json_pointer": "/problems",
+          "value": []
+        },
+        {
+          "path": "outputs/reports/fix5_fullstat_v2_exactpos_m50000_s260613/fix5_groundstate_normalization_rows.csv",
+          "csv_rows": "2-9",
+          "value": "alpha 145/8=18.125; eplus 4/8=0.5; gamma 0/12=0; muminus 4422/8=552.75; n 251062/8=31382.75; all PASS."
+        }
+      ],
+      "warnings": [
+        {
+          "status": "WARN",
+          "path": "runs/step02_delay_fix_fix5_fullstat_v2/normalization_audit_groundstate_fix.json",
+          "json_pointer": "/rows/4/warnings",
+          "value": "tag=muminus TT spread is 0.0352; rate uses mean TT"
+        },
+        {
+          "status": "WARN",
+          "path": "runs/step02_delay_fix_fix5_fullstat_v2/normalization_audit_groundstate_fix.json",
+          "json_pointer": "/rows/5/warnings",
+          "value": "tag=muplus TT spread is 0.026; rate uses mean TT"
+        }
+      ]
+    },
+    "half_life_source_and_material_changes": {
+      "status": "PASS",
+      "answer": "Half-lives come from the local archived NUBASE2020 file inputs/nubase/nubase_2020.txt, using ground-state records only. Material changes are expected long-lived ground-state corrections: Nb-94, Al-26, Ni-59, and W-180 are strongly reduced; W-187/W-185/W-181 and dominant I-128/Al-28/Cu-64 rows remain effectively scale 1.",
+      "evidence": [
+        {
+          "path": "code/tools/build_fixed_delay_source.py",
+          "lines": "265-300",
+          "value": "NUBASE parser skips non-ground states and parses fixed-width half-life fields."
+        },
+        {
+          "path": "outputs/reports/fix5_fullstat_v2_exactpos_m50000_s260613/fix5_groundstate_half_life_audit_summary.json",
+          "json_pointer": "/inputs/nubase_archive",
+          "value": "inputs/nubase/nubase_2020.txt"
+        },
+        {
+          "path": "outputs/reports/fix5_fullstat_v2_exactpos_m50000_s260613/fix5_groundstate_half_life_audit_summary.json",
+          "json_pointer": "/checks/nubase_line_mismatches",
+          "value": 0
+        },
+        {
+          "path": "outputs/reports/fix5_fullstat_v2_exactpos_m50000_s260613/fix5_groundstate_half_life_audit_summary.json",
+          "json_pointer": "/checks/unit_self_test_max_rel_error",
+          "value": 0.0
+        },
+        {
+          "path": "runs/step02_delay_fix_fix5_fullstat_v2/groundstate_activity_corrections.csv",
+          "csv_row": 40,
+          "value": "Nb-94 0.323099364628 -> 4.5085005708458237e-07 Bq; scale 1.3953913453332472e-06; NUBASE line 1563, 20.4 ky."
+        },
+        {
+          "path": "runs/step02_delay_fix_fix5_fullstat_v2/groundstate_activity_corrections.csv",
+          "csv_row": 46,
+          "value": "Al-26 0.229375551592 -> 9.106562176217918e-09 Bq; scale 3.970153799309939e-08; NUBASE line 252, 717 ky."
+        },
+        {
+          "path": "runs/step02_delay_fix_fix5_fullstat_v2/groundstate_activity_corrections.csv",
+          "csv_row": 88,
+          "value": "Ni-59 0.05633851987 -> 1.979916309545751e-08 Bq; scale 3.514320777532614e-07; NUBASE line 818, 81 ky."
+        },
+        {
+          "path": "runs/step02_delay_fix_fix5_fullstat_v2/groundstate_activity_corrections.csv",
+          "csv_row": 174,
+          "value": "W-180 0.01425438375 -> 2.5519832357038237e-22 Bq; action removed_negligible_or_stable; NUBASE line 4013, 1.59 Ey."
+        },
+        {
+          "path": "runs/step02_delay_fix_fix5_fullstat_v2/groundstate_activity_corrections.csv",
+          "csv_rows": "23, 90, 225",
+          "value": "W-187, W-185, W-181 are scale approximately 1 with half-lives 23.809 h, 75.1 d, 120.956 d."
+        }
+      ]
+    },
+    "exactpos_m50000_activity_preservation": {
+      "status": "PASS",
+      "answer": "M=50000 equal-flux PointSource sampling preserves total activity in the manifest exactly and in source text to 4.53631512934923e-10 relative error; unsampled rare-nuclide activity fraction is 0.0001463401094264377.",
+      "evidence": [
+        {
+          "path": "code/tools/build_fix5_1of10_exactpos_delayed_source.py",
+          "lines": "401-425",
+          "value": "point weights are activity(VN,ZA) * wfile / denom."
+        },
+        {
+          "path": "runs/step02_delay_fix_fix5_fullstat_v2/activation_decay_day15_groundstate_fixed_exactpos_m50000_s260613.source",
+          "line": 2,
+          "value": "Geometry outputs/geometry/DEMO2_DR_v3p5_user_cylmag_redesign_multiholeW_fix5_20260621_megalib_proxy/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup"
+        },
+        {
+          "path": "runs/step02_delay_fix_fix5_fullstat_v2/activation_decay_day15_groundstate_fixed_exactpos_m50000_s260613.source",
+          "line": 14,
+          "value": "DecayRun.Triggers 1000000"
+        },
+        {
+          "path": "runs/step02_delay_fix_fix5_fullstat_v2/activation_decay_day15_groundstate_fixed_exactpos_m50000_s260613.source",
+          "value": "Counted PointSource=50000, Flux=50000, ParticleType=50000."
+        },
+        {
+          "path": "outputs/reports/fix5_fullstat_v2_exactpos_m50000_s260613/fix5_delayed_source_exactpos_summary.json",
+          "json_pointer": "/sampling_audit/manifest_flux_relative_delta",
+          "value": 0.0
+        },
+        {
+          "path": "outputs/reports/fix5_fullstat_v2_exactpos_m50000_s260613/fix5_delayed_source_exactpos_summary.json",
+          "json_pointer": "/sampling_audit/source_text_flux_relative_delta",
+          "value": 4.53631512934923e-10
+        },
+        {
+          "path": "outputs/reports/fix5_fullstat_v2_exactpos_m50000_s260613/fix5_delayed_source_exactpos_summary.json",
+          "json_pointer": "/sampling_audit/missed_nuclides_total_activity_fraction",
+          "value": 0.0001463401094264377
+        }
+      ]
+    },
+    "delayed_selected_cps_from_events_and_TE": {
+      "status": "PASS",
+      "answer": "The selected delayed cps is selected_events / TE_s after Step05 W2, active-veto, and side-entry Compton/FoV selection. Current full-stat production sample: 30 selected events / 11649.564832 s = 0.0025752034889400762 cps.",
+      "evidence": [
+        {
+          "path": "outputs/reports/fix5_fullstat_v2_exactpos_m50000_s260613/fix5_delayed_source_exactpos_summary.json",
+          "json_pointer": "/delayed_transport/TE_s",
+          "value": 11649.564832
+        },
+        {
+          "path": "outputs/reports/fix5_fullstat_v2_exactpos_m50000_s260613/fix5_delayed_source_exactpos_summary.json",
+          "json_pointer": "/delayed_transport/SE",
+          "value": 1000000
+        },
+        {
+          "path": "outputs/reports/fix5_fullstat_v2_exactpos_m50000_s260613/fix5_delayed_source_exactpos_summary.json",
+          "json_pointer": "/delayed_transport/ID",
+          "value": 1000000
+        },
+        {
+          "path": "old/code/tools/build_v3p5_centerfinger_step05_l1_response.py",
+          "lines": "436-441",
+          "value": "delayed_time_s reads TE_s from the delayed transport summary."
+        },
+        {
+          "path": "old/code/tools/build_v3p5_centerfinger_step05_l1_response.py",
+          "lines": "561-570",
+          "value": "delayed event_rate_for_mode returns 1.0 / delayed_time_s()."
+        },
+        {
+          "path": "old/code/tools/build_v3p5_centerfinger_step05_l1_response.py",
+          "lines": "829-866",
+          "value": "summarize_window sums cat['rate_hz'] for final selected events."
+        },
+        {
+          "path": "stepwise_maintenance/step05_veto_time_axis/outputs_fix5_fullstat_v2_exactpos_m50000_s260613_l1/step05_fix5_fullstat_v2_exactpos_m50000_s260613_l1_rates.csv",
+          "csv_row": 16,
+          "value": "w2_510p58_511p42, delayed, side_compton_fov_pass, events=30, rate_s-1=0.00257520348894"
+        },
+        {
+          "path": "outputs/reports/fix5_fullstat_v2_exactpos_m50000_s260613/fix5_w_activation_selected_w2_audit.json",
+          "json_pointer": "/checks/rate_matches_step05",
+          "value": true
+        }
+      ]
+    },
+    "suspected_O10_to_O100_suppressor": {
+      "status": "NO_BUG",
+      "answer": "No current-fix5 processing bug or mismatch capable of suppressing delayed by O(10-100) was found.",
+      "supporting_evidence": [
+        "Per-family division PASS with problems=[].",
+        "NUBASE line/unit audit PASS with zero mismatches.",
+        "Exactpos sampling preserves source activity and misses only 0.0146% rare-nuclide activity.",
+        "Step05 delayed selected rate exactly equals selected events divided by TE_s.",
+        "W/collimator selected W2 delayed events are zero, while source-level W/collimator activity is audited at about 1.15% of fixed source activity.",
+        "PI-02 convergence is DONE with 103 combined selected events and <10% relative uncertainty."
+      ],
+      "warnings": [
+        {
+          "status": "WARN",
+          "name": "TE_vs_source_flux_offset",
+          "value": "1e6 / 11649.564832 = 85.8401162980025 s^-1, which is 1.0045748087 times fixed_total_activity_Bq=85.44920253876245. This inflates, not suppresses, the TE-based delayed cps by about 0.46%."
+        },
+        {
+          "status": "BUG",
+          "name": "w_activation_audit_rerun_path_stale",
+          "path": "code/tools/build_fix5_w_activation_selected_audit.py",
+          "lines": "28-34",
+          "value": "STEP05_SCRIPT points to code/tools/build_v3p5_centerfinger_step05_l1_response.py, which is absent; old/code/tools/build_v3p5_centerfinger_step05_l1_response.py exists. Existing artifact still matches Step05."
+        }
+      ]
+    },
+    "old_chain_quantities_for_supervisor": {
+      "status": "PASS",
+      "answer": [
+        "Compare source activity totals before/after ground-state correction, including fixed_total_activity_Bq.",
+        "Compare per-family files, division, TT sums/means, raw/scaled RP totals, and any TT-spread warnings.",
+        "Compare half-life archive/source, NUBASE line/value/unit, and correction rows for I-128, Al-28, Cu-64, Nb-94, Al-26, Ni-59, W-180, W-187, W-185, and W-181.",
+        "Compare exact-position/source-position method: M, PointSource vs compressed source, source flux conservation, missed activity, RPIP support, and geometry provenance.",
+        "Compare delayed transport source triggers, SE, ID, TS, TE_s, generated_decays/TE_s, source-card geometry, and SIM header geometry.",
+        "Compare Step05 selection: W2 window, active-veto threshold, side-entry Compton/FoV policy, direct selected cps versus common-time-axis product, and selected event counts.",
+        "Compare W/collimator source activity and selected W2 delayed events/rate.",
+        "Compare PI-02 or equivalent convergence support: independent samplings, combined selected events, combined rate, sigma, relative uncertainty, and provenance."
+      ]
+    }
+  },
+  "pi02_convergence": {
+    "status": "PASS",
+    "combined_selected_events": 103,
+    "combined_selected_rate_cps": 0.0022127821289687215,
+    "combined_sigma_cps": 0.00021803190178715983,
+    "combined_relative_uncertainty": 0.09853292781642932,
+    "evidence": [
+      {
+        "path": "outputs/reports/fix5_immediate_fixes_20260623/delayed_selected_rate_convergence.json",
+        "json_pointer": "/verdict/pi_status",
+        "value": "DONE"
+      },
+      {
+        "path": "outputs/reports/fix5_immediate_fixes_20260623/delayed_selected_rate_convergence.csv",
+        "csv_rows": "2-5",
+        "value": "Four same-inventory M50000 exact-position runs, selected events 30/18/20/35, all provenance_status=PASS."
+      },
+      {
+        "path": "code/tools/build_fix5_pi02_delayed_convergence.py",
+        "lines": "231-238",
+        "value": "combined_rate = total_events / total_TE_s; combined_sigma = sqrt(total_events) / total_TE_s."
+      }
+    ]
+  },
+  "top_findings": [
+    {
+      "status": "NO_BUG",
+      "finding": "No O(10-100) current-fix5 delayed-rate suppressor was found."
+    },
+    {
+      "status": "PASS",
+      "finding": "fixed_total_activity_Bq is 85.44920253876245 Bq and is preserved through M=50000 exact-position source construction."
+    },
+    {
+      "status": "PASS",
+      "finding": "Per-family division is correct and closes exactly for all audited buildup families."
+    },
+    {
+      "status": "PASS",
+      "finding": "NUBASE2020 ground-state handling is audited; material changes are expected long-lived corrections, not hidden suppression."
+    },
+    {
+      "status": "WARN",
+      "finding": "Step05 uses TE_s for selected delayed cps; the TE/source-flux offset is about +0.46% in rate, not a suppressor."
+    }
+  ]
+}

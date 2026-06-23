@@ -1,0 +1,88 @@
+{
+  "artifact": "07_final_normalization_and_sampling_verdict",
+  "date": "2026-06-23",
+  "status": "OLD_NEW_GEO_RE_DELAYED_NORMALIZATION_BUG_FOUND",
+  "supersedes": [
+    "04_revised_user_summary.md",
+    "05_deep_sampling_axis_collapse_audit.md",
+    "06_final_deep_sampling_verdict.md"
+  ],
+  "primary_finding": "Old new_geo_re delayed inventory/source used raw non-gamma RP yields rather than divide-by-8 scaled yields. This inflates delayed activity and delayed rates by exactly 8 for the dominant non-gamma activation component.",
+  "secondary_finding": "Old RadialProfileBeam source placement also remains unreliable: emitted old SIM I-128 IA INIT positions collapse to r=0, unlike current exact-position PointSource sampling.",
+  "old_recompute_from_dat": {
+    "i128_raw_RP_total": 288648.0,
+    "i128_scaled_RP_total_divide_by_8": 36081.0,
+    "i128_raw_over_scaled": 8.0,
+    "i128_reported_activity_Bq": 533.2757337939474,
+    "i128_corrected_activity_Bq": 66.65946672424344,
+    "total_inventory_csv_activity_Bq": 624.5591421308807,
+    "total_recomputed_raw_activity_Bq": 623.9633399015754,
+    "total_recomputed_scaled_activity_Bq": 77.99541748769693,
+    "total_raw_over_scaled": 8.0,
+    "by_tag_raw_activity_Bq": {
+      "n": 606.3008797493437,
+      "muminus": 13.687061939719735,
+      "p": 3.513806031658327,
+      "alpha": 0.3984350019750411,
+      "muplus": 0.04115894596035518,
+      "eplus": 0.0219982329131279
+    },
+    "by_tag_scaled_activity_Bq": {
+      "n": 75.78760996866797,
+      "muminus": 1.7108827424649669,
+      "p": 0.43922575395729085,
+      "alpha": 0.04980437524688014,
+      "muplus": 0.0051448682450443975,
+      "eplus": 0.0027497791141409874
+    }
+  },
+  "fixed_source_activity": {
+    "old_fixed_source_reported_Bq": 624.2710918319826,
+    "old_fixed_source_corrected_divide_by_8_Bq": 78.03388647899782,
+    "current_fix5_fixed_source_Bq": 85.44920253876245,
+    "reported_old_over_current": 7.30575679215723,
+    "corrected_old_over_current": 0.9132180486335835
+  },
+  "rate_implication": {
+    "old_inspected_w2_delayed_cps": 0.15211317269106375,
+    "old_w2_delayed_cps_divide_by_8": 0.01901414658638297,
+    "current_fix5_w2_delayed_cps": 0.0025752034889400762,
+    "reported_old_over_current_w2_rate": 59.06840890219195,
+    "divide_by_8_corrected_old_over_current_w2_rate": 7.383551112773993
+  },
+  "evidence": [
+    {
+      "claim": "Old inventory reports raw I-128 RP_yield and raw activity.",
+      "references": [
+        "/home/ubuntu/codex_tes_511_sim/new_geo_re/runs/step02_decay_source_equiv2602_aligned/activation_inventory_day15.csv:2-23"
+      ]
+    },
+    {
+      "claim": "Old fixed source block activity sums to raw/un-divided activity.",
+      "references": [
+        "/home/ubuntu/codex_tes_511_sim/new_geo_re/stepwise_maintenance/step03_delay_source/outputs/fixed_source_blocks.csv"
+      ]
+    },
+    {
+      "claim": "Old intended source snapshot code has a divide-by-8 path, but authority outputs do not reflect it.",
+      "references": [
+        "/home/ubuntu/codex_tes_511_sim/new_geo_re/stepwise_maintenance/step02_raw_background_simulation/source_snapshots/makedecaysourcewithplot_rpip.py:140-181",
+        "/home/ubuntu/codex_tes_511_sim/new_geo_re/stepwise_maintenance/step02_raw_background_simulation/source_snapshots/makedecaysourcewithplot_rpip.py:976-986"
+      ]
+    },
+    {
+      "claim": "Old radial source placement remains a secondary problem.",
+      "references": [
+        "/home/ubuntu/codex_tes_511_sim/new_geo_re/runs/step02_delay_fix_equiv2602_aligned/activation_decay_day15_groundstate_fixed.source:5986-5988",
+        "core_md/balloon511_nima_latex_drafts/revision_harness_runs/20260623_delay_processing_reaudit_3agent/05_deep_sampling_axis_collapse_audit.md"
+      ]
+    }
+  ],
+  "corrected_interpretation": [
+    "The old new_geo_re delayed activity is inflated by exactly 8x from missing non-gamma division.",
+    "After correction, old delayed activity is about 78 Bq, close to current fix5 85.45 Bq.",
+    "The old 0.1515/0.1521 cps delayed value is invalid as a fix5 comparison benchmark.",
+    "Current fix5 delayed normalization is not the source of the old/current activity discrepancy.",
+    "A corrected old replay must include both divide-by-8 source normalization and exact-position delayed sampling."
+  ]
+}

@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Build manuscript figures for veto selection and time-axis folding.
 
-The script reads the current fix5 M=50000 exact-position Step05/06/08 authority
+The script reads the current detector-selection, mission-time, and significance
 products and does not rerun transport or event selection.
 """
 
@@ -124,8 +124,8 @@ def build_selection_figure(step05: dict[str, Any], bg_rows: list[dict[str, str]]
     axes[0, 0].set_xticks(x)
     axes[0, 0].set_xticklabels(stage_labels)
     axes[0, 0].set_yscale("log")
-    axes[0, 0].set_ylabel("W2 rate (s$^{-1}$)")
-    axes[0, 0].set_title("A. Step05 W2 rate through veto stages")
+    axes[0, 0].set_ylabel("line-window rate (s$^{-1}$)")
+    axes[0, 0].set_title("A. Line-window rate through selection stages")
     axes[0, 0].legend(frameon=False, fontsize=8)
     axes[0, 0].grid(axis="y", alpha=0.25)
 
@@ -134,7 +134,7 @@ def build_selection_figure(step05: dict[str, Any], bg_rows: list[dict[str, str]]
         axes[0, 1].plot(stage_labels, vals, marker="o", lw=2.0, color=colors[stream], label=stream)
     axes[0, 1].set_ylim(0.0, 1.05)
     axes[0, 1].set_ylabel("rate / raw rate")
-    axes[0, 1].set_title("B. W2 survival fraction")
+    axes[0, 1].set_title("B. Line-window survival fraction")
     axes[0, 1].grid(alpha=0.25)
     axes[0, 1].legend(frameon=False, fontsize=8)
 
@@ -151,7 +151,7 @@ def build_selection_figure(step05: dict[str, Any], bg_rows: list[dict[str, str]]
         vals = np.asarray([classes.get(stream, {}).get(cls, 0) for stream in streams], dtype=float)
         axes[1, 0].bar(streams, vals, bottom=bottom, color=class_colors[cls], label=cls)
         bottom += vals
-    axes[1, 0].set_ylabel("active-pass W2 events")
+    axes[1, 0].set_ylabel("active-pass line-window events")
     axes[1, 0].set_title("C. Compton/FoV outcomes")
     axes[1, 0].legend(frameon=False, fontsize=8)
     axes[1, 0].grid(axis="y", alpha=0.25)
@@ -171,7 +171,7 @@ def build_selection_figure(step05: dict[str, Any], bg_rows: list[dict[str, str]]
     ax.plot(days, background, color="#4C78A8", label="background")
     ax.plot(days, science, color="#54A24B", label="signal @ $10^{-4}$")
     ax.set_xlabel("mission day")
-    ax.set_ylabel("W2 rate (s$^{-1}$)")
+    ax.set_ylabel("line-window rate (s$^{-1}$)")
     ax.set_title("D. Mission-time fold")
     ax.grid(alpha=0.25)
     ax2 = ax.twinx()
@@ -296,11 +296,11 @@ def write_summary(step05: dict[str, Any], bg_rows: list[dict[str, str]], cum_row
             [
                 "# Selection and time-axis figure caption",
                 "",
-                "The figure is generated from the current fix5 Step05/Step06/Step08 exact-position M=50000 authority products.",
-                "Panel A shows the W2 raw, active-veto-pass, and Compton/FoV-pass rates.",
+                "The figure is generated from the current detector-selection, mission-time, and significance products for the M=50000 sampled-position chain.",
+                "Panel A shows the line-window raw, active-veto-pass, and Compton/FoV-pass rates.",
                 "Panel B shows stream-wise survival fractions.",
                 "Panel C shows Compton/FoV classification outcomes after the active-veto gate.",
-                "Panel D shows the Step06/08 mission-time fold for the reference W2 point-source case, including the analytic accidental live factor.",
+                "Panel D shows the mission-time fold for the reference point-source case, including the analytic accidental live factor.",
                 "The separate Compton/FoV geometry panel uses the actual side-entry Be-window disk center, normal, radius, and the Compton kinematic equation used by the selection code.",
                 "",
             ]

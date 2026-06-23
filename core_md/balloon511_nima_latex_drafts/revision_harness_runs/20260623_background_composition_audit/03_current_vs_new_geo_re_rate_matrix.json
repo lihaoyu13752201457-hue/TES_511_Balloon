@@ -1,0 +1,205 @@
+{
+  "artifact_type": "local_data_auditor_current_vs_new_geo_re_rate_matrix",
+  "created_date": "2026-06-23",
+  "role": "Local Data Auditor",
+  "independence": "SUBAGENT",
+  "scope": "Read-only reconstruction from current fix5/v3p5 outputs and old /home/ubuntu/codex_tes_511_sim/new_geo_re authority outputs.",
+  "judgments": [
+    {
+      "id": "benchmark_alignment_old_new_geo_re",
+      "status": "WARN",
+      "judgment": "Old new_geo_re numbers are report-only for current fix5 pass/fail decisions because benchmark alignment is not available.",
+      "evidence": [
+        {
+          "path": "outputs/reports/fix5_fullstat_v2/fix5_benchmark_alignment.json",
+          "json_pointer": "/decision",
+          "value": "NOT_ALIGNED"
+        },
+        {
+          "path": "outputs/reports/fix5_fullstat_v2/fix5_benchmark_alignment.json",
+          "json_pointer": "/gate_consequence",
+          "value": "Old new_geo_re prompt_total_cps and delayed_total_cps may be reported as historical context only, not used as pass/fail gates."
+        }
+      ]
+    },
+    {
+      "id": "w2_line_window_values_available",
+      "status": "PASS",
+      "judgment": "Both old new_geo_re and current fix5 expose W2 510.58--511.42 keV final/both-stage prompt and delayed background rates.",
+      "evidence": [
+        {
+          "path": "/home/ubuntu/codex_tes_511_sim/new_geo_re/stepwise_maintenance/step09_optics_bridge/outputs/non_xray_background_w1_w2_veto_table.csv",
+          "csv_row": 9,
+          "value": "window_id=W2_511_pm_420eV, stage=both, rate_cps=0.18434717748640367, prompt_cps=0.03223400479533992, delayed_cps=0.15211317269106375"
+        },
+        {
+          "path": "stepwise_maintenance/step05_veto_time_axis/outputs_fix5_fullstat_v2_exactpos_m50000_s260613_l1/step05_fix5_fullstat_v2_exactpos_m50000_s260613_l1_response_summary.json",
+          "json_pointer": "/windows/w2_510p58_511p42/physical_reference_flux",
+          "value": {
+            "background_cps": 0.0392162265186315,
+            "prompt_background_cps": 0.036641023029691425,
+            "delayed_background_cps": 0.0025752034889400762
+          }
+        }
+      ]
+    },
+    {
+      "id": "current_100_10000_apples_to_apples_missing",
+      "status": "WARN",
+      "judgment": "The current fix5 Step05 authority does not expose the old image8-like 100--10000 keV component table; the current value is therefore NOT_AVAILABLE, not inferred.",
+      "evidence": [
+        {
+          "path": "stepwise_maintenance/step05_veto_time_axis/outputs_fix5_fullstat_v2_exactpos_m50000_s260613_l1/step05_fix5_fullstat_v2_exactpos_m50000_s260613_l1_response_summary.json",
+          "json_pointer": "/windows",
+          "value": "available keys are broad_480_550 and w2_510p58_511p42"
+        },
+        {
+          "path": "/home/ubuntu/codex_tes_511_sim/new_geo_re/outputs/reports/day15_complete_report/image8_like_component_rates_with_science.csv",
+          "csv_row": 10,
+          "value": "component=Total, rate_100_10000_keV_cps=61.6606315105"
+        }
+      ]
+    }
+  ],
+  "rate_matrix": [
+    {
+      "comparison_id": "w2_510p58_511p42_background_final",
+      "energy_window": "510.58--511.42 keV",
+      "stage_old": "both",
+      "stage_current": "side_compton_fov_pass",
+      "stream_scope": "prompt + delayed non-xray background; science excluded from total",
+      "apples_to_apples_status": "AVAILABLE_BUT_BENCHMARK_ALIGNMENT_NOT_ALIGNED",
+      "old_new_geo_re": {
+        "total_cps": 0.18434717748640367,
+        "prompt_cps": 0.03223400479533992,
+        "delayed_cps": 0.15211317269106375,
+        "delayed_fraction": 0.8251451135034747,
+        "effective_catalog_events": 366.68501714731394,
+        "evidence": {
+          "path": "/home/ubuntu/codex_tes_511_sim/new_geo_re/stepwise_maintenance/step09_optics_bridge/outputs/non_xray_background_w1_w2_veto_table.csv",
+          "csv_row": 9,
+          "value": "W2_511_pm_420eV,both,rate_cps=0.18434717748640367,prompt_cps=0.03223400479533992,delayed_cps=0.15211317269106375"
+        }
+      },
+      "current_fix5": {
+        "total_cps": 0.0392162265186315,
+        "prompt_cps": 0.036641023029691425,
+        "delayed_cps": 0.0025752034889400762,
+        "delayed_fraction": 0.06566678432756924,
+        "prompt_selected_events": 54,
+        "delayed_selected_events": 30,
+        "evidence": {
+          "path": "outputs/reports/fix5_fullstat_v2_exactpos_m50000_s260613/fix5_promotion_decision.json",
+          "json_pointer": "/B_cps, /prompt_cps, /delayed_cps, /prompt_selected_events, /delayed_selected_events",
+          "value": {
+            "B_cps": 0.0392162265186315,
+            "prompt_cps": 0.036641023029691425,
+            "delayed_cps": 0.0025752034889400762,
+            "prompt_selected_events": 54,
+            "delayed_selected_events": 30
+          }
+        }
+      },
+      "ratios": {
+        "current_over_old_total": 0.21273027910353468,
+        "current_over_old_prompt": 1.1367195377159163,
+        "current_over_old_delayed": 0.01692952321867758,
+        "old_over_current_delayed": 59.06840890219195
+      },
+      "interpretation": "The W2 prompt rates are close in scale, while old W2 delayed is about 59x the current fix5 W2 delayed. This row is still report-only for gates because old/current selection-normalization alignment is NOT_ALIGNED."
+    },
+    {
+      "comparison_id": "broad_480_550_background_final",
+      "energy_window": "480--550 keV",
+      "stage_old": "day15 final direct expectation",
+      "stage_current": "side_compton_fov_pass",
+      "stream_scope": "prompt + delayed background; science excluded from total",
+      "apples_to_apples_status": "DEFINITION_SIMILAR_BUT_BENCHMARK_ALIGNMENT_NOT_ALIGNED",
+      "old_new_geo_re": {
+        "total_background_cps": 2.365807527803181,
+        "prompt_cps": 0.05356666096521081,
+        "delayed_cps": 2.31224086683797,
+        "delayed_fraction": 0.9773579801671561,
+        "science_reference_cps": 0.0007213070478566968,
+        "evidence": {
+          "path": "/home/ubuntu/codex_tes_511_sim/new_geo_re/outputs/reports/day15_complete_report/complete_day15_summary.json",
+          "json_pointer": "/expectation_rates_by_stream_cps and /science_sensitivity/background_final_cps_prompt_plus_delayed",
+          "value": {
+            "prompt_final": 0.05356666096521081,
+            "delayed_final": 2.31224086683797,
+            "background_final_cps_prompt_plus_delayed": 2.365807527803181,
+            "science_final": 0.0007213070478566968
+          }
+        }
+      },
+      "current_fix5": {
+        "total_background_cps": 0.06628201291851338,
+        "prompt_cps": 0.06310592861548728,
+        "delayed_cps": 0.003176084303026095,
+        "delayed_fraction": 0.04791774062339884,
+        "prompt_selected_events": 86,
+        "delayed_selected_events": 37,
+        "evidence": {
+          "path": "stepwise_maintenance/step05_veto_time_axis/outputs_fix5_fullstat_v2_exactpos_m50000_s260613_l1/step05_fix5_fullstat_v2_exactpos_m50000_s260613_l1_response_summary.json",
+          "json_pointer": "/windows/broad_480_550/physical_reference_flux",
+          "value": {
+            "background_cps": 0.06628201291851338,
+            "prompt_background_cps": 0.06310592861548728,
+            "delayed_background_cps": 0.003176084303026095
+          }
+        }
+      },
+      "ratios": {
+        "current_over_old_total": 0.02801665483753909,
+        "current_over_old_prompt": 1.1780821779515398,
+        "current_over_old_delayed": 0.001373595782592255,
+        "old_over_current_delayed": 728.016213119697
+      },
+      "interpretation": "The broad-window delayed discrepancy is much larger than W2 because old day15 broad 480--550 was activation-dominated; it must not be quoted as a W2 line-window result."
+    },
+    {
+      "comparison_id": "old_image8_like_100_10000_component_table",
+      "energy_window": "100--10000 keV",
+      "stage_old": "image8-like component table; veto/final stage not encoded in this CSV",
+      "stage_current": "NOT_AVAILABLE",
+      "stream_scope": "component table with cosmic components, ActivationDelay(day15), Science511(reference), and Total",
+      "apples_to_apples_status": "NOT_AVAILABLE_FOR_CURRENT_FIX5",
+      "old_new_geo_re": {
+        "total_cps": 61.6606315105,
+        "activation_delay_cps": 58.8567533967,
+        "science_reference_cps": 0.000864044298572,
+        "evidence": {
+          "path": "/home/ubuntu/codex_tes_511_sim/new_geo_re/outputs/reports/day15_complete_report/image8_like_component_rates_with_science.csv",
+          "csv_rows": [8, 9, 10],
+          "value": "row 8 ActivationDelay(day15)=58.8567533967 cps; row 9 Science511(reference)=0.000864044298572 cps; row 10 Total=61.6606315105 cps in rate_100_10000_keV_cps"
+        }
+      },
+      "current_fix5": {
+        "total_cps": "NOT_AVAILABLE",
+        "activation_delay_cps": "NOT_AVAILABLE",
+        "evidence": {
+          "path": "stepwise_maintenance/step05_veto_time_axis/outputs_fix5_fullstat_v2_exactpos_m50000_s260613_l1/step05_fix5_fullstat_v2_exactpos_m50000_s260613_l1_response_summary.json",
+          "json_pointer": "/windows",
+          "value": "no 100--10000 key present"
+        }
+      },
+      "ratios": "NOT_AVAILABLE",
+      "interpretation": "No current apples-to-apples value exists in the named current fix5 authority; do not force a 100--10000 comparison."
+    }
+  ],
+  "non_comparable_reference_values": [
+    {
+      "id": "old_new_geo_re_json_screen_values",
+      "reason": "Machine-readable fix5 benchmark screen values are historical and explicitly unaligned.",
+      "values": {
+        "prompt_total_cps": 0.0323247092031,
+        "delayed_total_cps": 0.151456825339
+      },
+      "evidence": {
+        "path": "core_md/fix5_benchmarks.json",
+        "json_pointer": "/benchmarks/new_geo_re",
+        "value": "selection_definition=UNVERIFIED; prompt_total_cps=0.0323247092031; delayed_total_cps=0.151456825339"
+      }
+    }
+  ]
+}

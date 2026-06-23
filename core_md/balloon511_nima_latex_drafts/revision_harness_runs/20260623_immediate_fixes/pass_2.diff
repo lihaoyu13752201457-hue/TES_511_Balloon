@@ -1,0 +1,41 @@
+diff --git a/code/tools/build_fix5_1of10_exactpos_delayed_source.py b/code/tools/build_fix5_1of10_exactpos_delayed_source.py
+index 8205d0a..6b77002 100644
+--- a/code/tools/build_fix5_1of10_exactpos_delayed_source.py
++++ b/code/tools/build_fix5_1of10_exactpos_delayed_source.py
+@@ -88,12 +88,33 @@ def configure_paths(label: str) -> None:
+         SOURCE = FIX / "activation_decay_day15_groundstate_fixed_exactpos_m50000_s260613.source"
+         MANIFEST = FIX / "fix5_fullstat_v2_exactpos_m50000_s260613_delayed_source_manifest.json"
+         WEIGHTED_TABLE = FIX / "exactpos_weighted_rpip_table_m50000_s260613.csv"
++    elif re.fullmatch(r"fix5_pi02_exactpos_m50000_s\d+", label):
++        LABEL = label
++        seed_token = label.rsplit("_", 1)[-1]
++        seed_value = seed_token[1:]
++        camel_seed = seed_token.upper()
++        REPORT_DIR = ROOT / "outputs" / "reports" / LABEL
++        INSTANT = ROOT / "runs" / "step02_instant_fix5_fullstat_v2"
++        BUILDUP = ROOT / "runs" / "step02_buildup_fix5_fullstat_v2"
++        RAW_SOURCE_DIR = ROOT / "runs" / "step02_decay_source_fix5_fullstat_v2"
++        FIX = ROOT / "runs" / f"step02_delay_fix_{LABEL}"
++        TRANSPORT_DIR = ROOT / "runs" / f"step02_delayed_transport_{LABEL}"
++        SOURCE_PREFIX = TRANSPORT_DIR / f"DelayedDecayFix5Pi02ExactposM50000{camel_seed}"
++        SOURCE = FIX / f"activation_decay_day15_groundstate_fixed_exactpos_m50000_s{seed_value}.source"
++        MANIFEST = FIX / f"{LABEL}_delayed_source_manifest.json"
++        WEIGHTED_TABLE = FIX / f"exactpos_weighted_rpip_table_m50000_s{seed_value}.csv"
+     else:
+         raise SystemExit(f"unsupported fix5 exactpos label: {label}")
+ 
+-    FIXED_SOURCE = FIX / "activation_decay_day15_groundstate_fixed.source"
+-    FIX_SUMMARY = FIX / "source_fix_summary.json"
+-    FIX_AUDIT = FIX / "normalization_audit_groundstate_fix.json"
++    if re.fullmatch(r"fix5_pi02_exactpos_m50000_s\d+", label):
++        base_fix = ROOT / "runs" / "step02_delay_fix_fix5_fullstat_v2"
++        FIXED_SOURCE = base_fix / "activation_decay_day15_groundstate_fixed.source"
++        FIX_SUMMARY = base_fix / "source_fix_summary.json"
++        FIX_AUDIT = base_fix / "normalization_audit_groundstate_fix.json"
++    else:
++        FIXED_SOURCE = FIX / "activation_decay_day15_groundstate_fixed.source"
++        FIX_SUMMARY = FIX / "source_fix_summary.json"
++        FIX_AUDIT = FIX / "normalization_audit_groundstate_fix.json"
+     SOURCE_DIR = FIX
+     SUMMARY_JSON = REPORT_DIR / "fix5_delayed_source_exactpos_summary.json"
+     SUMMARY_MD = REPORT_DIR / "fix5_delayed_source_exactpos_summary.md"

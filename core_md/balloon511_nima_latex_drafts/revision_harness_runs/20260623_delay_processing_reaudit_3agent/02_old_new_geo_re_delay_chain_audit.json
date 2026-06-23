@@ -1,0 +1,428 @@
+{
+  "audit_id": "02_old_new_geo_re_delay_chain_audit",
+  "date": "2026-06-23",
+  "status": "WARN",
+  "old_project_root": "/home/ubuntu/codex_tes_511_sim/new_geo_re",
+  "scope": {
+    "requested_scope": "old new_geo_re delayed chain from buildup RPIP -> ground-state correction -> source-block construction/compression -> Cosima delayed transport SE/ID/TE -> Step05 selected delayed cps -> Step09 W2 table",
+    "modified_files": [
+      "/home/ubuntu/TES_511_Balloon/core_md/balloon511_nima_latex_drafts/revision_harness_runs/20260623_delay_processing_reaudit_3agent/02_old_new_geo_re_delay_chain_audit.md",
+      "/home/ubuntu/TES_511_Balloon/core_md/balloon511_nima_latex_drafts/revision_harness_runs/20260623_delay_processing_reaudit_3agent/02_old_new_geo_re_delay_chain_audit.json"
+    ],
+    "no_code_or_authority_outputs_modified": true
+  },
+  "top_level_verdict": {
+    "status": "WARN",
+    "summary": "No proven old-chain processing bug was found that directly inflates delayed W2 by O(10-100). The old chain does contain the intended non-gamma divide-by-8 and NUBASE ground-state half-life correction, but it lacks a current-style per-family TT/division audit and uses compressed radial-profile source sampling rather than exact-position delayed sampling."
+  },
+  "answers": [
+    {
+      "question_id": 1,
+      "question": "How old fixed/source activity was computed",
+      "status": "PASS",
+      "answer": "Raw activity was computed from RP yields divided by TT exposure, with non-gamma yields divided by the eight-replica factor, then built up over the flight/decay time using an exponential half-life formula. The fixed source recomputed ground-state activities from NUBASE and rescaled or removed matching source blocks. The raw old source total was 624.5591421396799 Bq and the fixed source total was 624.2710918319826 Bq.",
+      "evidence": [
+        {
+          "path": "/home/ubuntu/codex_tes_511_sim/new_geo_re/runs/step02_buildup_equiv2602_aligned/normalization.json",
+          "json_pointer": "/gamma_events",
+          "line": 5,
+          "value": 10000000
+        },
+        {
+          "path": "/home/ubuntu/codex_tes_511_sim/new_geo_re/runs/step02_buildup_equiv2602_aligned/normalization.json",
+          "json_pointer": "/non_gamma_replicas",
+          "line": 7,
+          "value": 8
+        },
+        {
+          "path": "/home/ubuntu/codex_tes_511_sim/new_geo_re/runs/step02_buildup_equiv2602_aligned/normalization.json",
+          "json_pointer": "/non_gamma_combined_norm_factor",
+          "line": 10,
+          "value": 67.67268921903281
+        },
+        {
+          "path": "/home/ubuntu/codex_tes_511_sim/new_geo_re/stepwise_maintenance/step02_raw_background_simulation/source_snapshots/makedecaysourcewithplot_rpip.py",
+          "line_range": "140-181",
+          "value": "parse RP records and add val / div"
+        },
+        {
+          "path": "/home/ubuntu/codex_tes_511_sim/new_geo_re/stepwise_maintenance/step02_raw_background_simulation/source_snapshots/makedecaysourcewithplot_rpip.py",
+          "line_range": "336-346",
+          "value": "activity formula R = N_prod / TT_s and A_end = R * (1 - exp(-lambda*Texp))"
+        },
+        {
+          "path": "/home/ubuntu/codex_tes_511_sim/new_geo_re/runs/step02_delay_fix_equiv2602_aligned/source_fix_summary.json",
+          "json_pointer": "/old_total_activity_Bq",
+          "line": 7,
+          "value": 624.5591421396799
+        },
+        {
+          "path": "/home/ubuntu/codex_tes_511_sim/new_geo_re/runs/step02_delay_fix_equiv2602_aligned/source_fix_summary.json",
+          "json_pointer": "/new_total_activity_Bq",
+          "line": 8,
+          "value": 624.2710918319826
+        },
+        {
+          "path": "/home/ubuntu/codex_tes_511_sim/new_geo_re/runs/step02_delay_fix_equiv2602_aligned/source_fix_summary.json",
+          "json_pointer": "/source_blocks_in",
+          "line": 9,
+          "value": 6008
+        },
+        {
+          "path": "/home/ubuntu/codex_tes_511_sim/new_geo_re/runs/step02_delay_fix_equiv2602_aligned/source_fix_summary.json",
+          "json_pointer": "/source_blocks_removed",
+          "line": 10,
+          "value": 40
+        }
+      ]
+    },
+    {
+      "question_id": 2,
+      "question": "Whether any per-family TT division exists or is missing",
+      "status": "WARN",
+      "answer": "The old implementation contains non-gamma divide-by-8 for RP yields and RPIP point weights, and the ground-state fixer repeats that division. What is missing is a current-style per-family TT/division audit artifact proving every family raw total, scaled total, TT, and activity. The old parser also overwrites TT by tag for repeated replica tags instead of recording a summed per-family exposure table.",
+      "evidence": [
+        {
+          "path": "/home/ubuntu/codex_tes_511_sim/new_geo_re/stepwise_maintenance/step02_raw_background_simulation/source_snapshots/makedecaysourcewithplot_rpip.py",
+          "line": 150,
+          "value": "div = 1.0 if tag == 'gamma' else non_gamma_div"
+        },
+        {
+          "path": "/home/ubuntu/codex_tes_511_sim/new_geo_re/stepwise_maintenance/step02_raw_background_simulation/source_snapshots/makedecaysourcewithplot_rpip.py",
+          "line": 176,
+          "value": "rp[(tag, vn, za, exc)] += val / div"
+        },
+        {
+          "path": "/home/ubuntu/codex_tes_511_sim/new_geo_re/stepwise_maintenance/step02_raw_background_simulation/source_snapshots/makedecaysourcewithplot_rpip.py",
+          "line": 205,
+          "value": "wfile = 1.0 if tag == 'gamma' else 1.0 / float(non_gamma_div)"
+        },
+        {
+          "path": "/home/ubuntu/codex_tes_511_sim/new_geo_re/stepwise_maintenance/step02_raw_background_simulation/source_snapshots/build_fixed_delay_source.py",
+          "line": 182,
+          "value": "div = 1.0 if tag == 'gamma' else float(non_gamma_div)"
+        },
+        {
+          "path": "/home/ubuntu/codex_tes_511_sim/new_geo_re/stepwise_maintenance/step02_raw_background_simulation/source_snapshots/build_fixed_delay_source.py",
+          "line": 204,
+          "value": "rp[(tag, vn, za, exc)] += value / div"
+        },
+        {
+          "path": "/home/ubuntu/codex_tes_511_sim/new_geo_re/stepwise_maintenance/step02_raw_background_simulation/source_snapshots/makedecaysourcewithplot_rpip.py",
+          "line": 179,
+          "value": "tt_by_tag[tag] = tt_val"
+        },
+        {
+          "path": "/home/ubuntu/codex_tes_511_sim/new_geo_re/stepwise_maintenance/step02_raw_background_simulation/source_snapshots/build_fixed_delay_source.py",
+          "line": 206,
+          "value": "tt_by_tag[tag] = tt_val"
+        }
+      ],
+      "bias_assessment": "If the divide-by-8 were absent, non-gamma-derived activity could be inflated by up to about 8x. In the inspected old files the divide exists, so this is an audit gap rather than direct evidence of O(10-100) inflation."
+    },
+    {
+      "question_id": 3,
+      "question": "What half-life correction source/method was used",
+      "status": "PASS",
+      "answer": "The fixed source used local NUBASE 2020 ground-state records to recompute exc=0 activity. The method parses ground-state NUBASE rows, supports prefix-year units, computes day-15 activity using exponential buildup, and rescales or removes source blocks. The half-life unit audit reports PASS and confirms W-180 removal.",
+      "evidence": [
+        {
+          "path": "/home/ubuntu/codex_tes_511_sim/new_geo_re/workflow.md",
+          "line": 10,
+          "value": "NUBASE authority: inputs/nubase/nubase_2020.txt"
+        },
+        {
+          "path": "/home/ubuntu/codex_tes_511_sim/new_geo_re/stepwise_maintenance/step02_raw_background_simulation/source_snapshots/build_fixed_delay_source.py",
+          "line_range": "55-73",
+          "value": "half-life unit conversion including prefix-year units"
+        },
+        {
+          "path": "/home/ubuntu/codex_tes_511_sim/new_geo_re/stepwise_maintenance/step02_raw_background_simulation/source_snapshots/build_fixed_delay_source.py",
+          "line_range": "139-174",
+          "value": "parse NUBASE ground-state records"
+        },
+        {
+          "path": "/home/ubuntu/codex_tes_511_sim/new_geo_re/stepwise_maintenance/step02_raw_background_simulation/source_snapshots/build_fixed_delay_source.py",
+          "line_range": "210-218",
+          "value": "ground-state activity formula"
+        },
+        {
+          "path": "/home/ubuntu/codex_tes_511_sim/new_geo_re/outputs/reports/half_life_unit_audit/half_life_unit_audit_summary.json",
+          "json_pointer": "/status",
+          "line_range": "2-3",
+          "value": "PASS"
+        },
+        {
+          "path": "/home/ubuntu/codex_tes_511_sim/new_geo_re/outputs/reports/half_life_unit_audit/half_life_unit_audit_summary.json",
+          "json_pointer": "/checks/w180_new_total_Bq",
+          "line_range": "47-54",
+          "value": 5.093794371872413e-21
+        },
+        {
+          "path": "/home/ubuntu/codex_tes_511_sim/new_geo_re/runs/step02_delay_fix_equiv2602_aligned/source_fix_summary.json",
+          "line_range": "15-28",
+          "value": "W-180 Passive_W_Outer_Liner scaled from 0.127479 Bq to 2.282484e-21 Bq using NUBASE line 4013 and raw half-life 1.59 Ey"
+        }
+      ]
+    },
+    {
+      "question_id": 4,
+      "question": "How old source sampling/compression works",
+      "status": "WARN",
+      "answer": "The old source builder reads true RPIP positions but compresses them into z bins and normalized radial-profile beams. Fixed source blocks use RadialProfileBeam and per-block flux, not exact positions. This preserves total flux by construction but can smear spatial distributions, especially thin passive shells.",
+      "evidence": [
+        {
+          "path": "/home/ubuntu/codex_tes_511_sim/new_geo_re/stepwise_maintenance/step02_raw_background_simulation/source_snapshots/makedecaysourcewithplot_rpip.py",
+          "line_range": "4-20",
+          "value": "documents RPIP input and source construction"
+        },
+        {
+          "path": "/home/ubuntu/codex_tes_511_sim/new_geo_re/stepwise_maintenance/step02_raw_background_simulation/source_snapshots/makedecaysourcewithplot_rpip.py",
+          "line_range": "269-330",
+          "value": "build z bins and radial profiles"
+        },
+        {
+          "path": "/home/ubuntu/codex_tes_511_sim/new_geo_re/stepwise_maintenance/step02_raw_background_simulation/source_snapshots/makedecaysourcewithplot_rpip.py",
+          "line_range": "745-756",
+          "value": "write ParticleType, Beam RadialProfileBeam, and Flux"
+        },
+        {
+          "path": "/home/ubuntu/codex_tes_511_sim/new_geo_re/runs/step02_delay_fix_equiv2602_aligned/activation_decay_day15_groundstate_fixed.source",
+          "line_range": "5986-5988",
+          "value": "CsI/I-128 source block using RadialProfileBeam, flux 9.27997922e+00"
+        },
+        {
+          "path": "/home/ubuntu/codex_tes_511_sim/new_geo_re/runs/step02_delay_fix_equiv2602_aligned/activation_decay_day15_groundstate_fixed.source",
+          "line_range": "6526-6528",
+          "value": "W-187 source block using RadialProfileBeam, flux 8.03639015e-01"
+        },
+        {
+          "path": "/home/ubuntu/codex_tes_511_sim/new_geo_re/tests/realpos_delayed_smoke/README.md",
+          "line_range": "5-10",
+          "value": "production source compresses true RPIP into axisymmetric z-bin plus radial-profile grid"
+        },
+        {
+          "path": "/home/ubuntu/codex_tes_511_sim/new_geo_re/tests/realpos_delayed_smoke/README.md",
+          "line_range": "12-19",
+          "value": "coarse radial grid weakness for thin-wall structures"
+        }
+      ]
+    },
+    {
+      "question_id": 5,
+      "question": "How old delayed selected cps is computed from selected events and TE/activity",
+      "status": "PASS",
+      "answer": "Step05 parses Cosima observation time from the delayed transport log and assigns each delayed catalog event rate 1/TE. It then sums selected event rates through broad and final selections. Step09 applies Gaussian W2 window probabilities and veto classes to event rates. The inspected old W2 both-veto delayed rate is 0.15211317269106375 cps.",
+      "evidence": [
+        {
+          "path": "/home/ubuntu/codex_tes_511_sim/new_geo_re/code/tools/make_complete_day15_report_ADR.py",
+          "line_range": "111-131",
+          "value": "delayed_time_s parses Observation time or falls back to source_triggers/source_activity"
+        },
+        {
+          "path": "/home/ubuntu/codex_tes_511_sim/new_geo_re/code/tools/make_complete_day15_report_ADR.py",
+          "line_range": "159-166",
+          "value": "delayed event rate is 1.0 / delayed_time_s()"
+        },
+        {
+          "path": "/home/ubuntu/codex_tes_511_sim/new_geo_re/runs/step02_delayed_transport_equiv2602_aligned/cosima_delayed_transport_1m.log",
+          "line": 4126878,
+          "value": "Total number of generated particles: 1000000"
+        },
+        {
+          "path": "/home/ubuntu/codex_tes_511_sim/new_geo_re/runs/step02_delayed_transport_equiv2602_aligned/cosima_delayed_transport_1m.log",
+          "line": 4132852,
+          "value": "Observation time: 1584.61 sec"
+        },
+        {
+          "path": "/home/ubuntu/codex_tes_511_sim/new_geo_re/outputs/reports/day15_complete_report/complete_day15_summary.json",
+          "json_pointer": "/normalization/delayed_time_s",
+          "line_range": "7-10",
+          "value": 1584.61
+        },
+        {
+          "path": "/home/ubuntu/codex_tes_511_sim/new_geo_re/outputs/reports/day15_complete_report/complete_day15_summary.json",
+          "json_pointer": "/catalog/by_stream/delayed/events",
+          "line_range": "24-43",
+          "value": 444640
+        },
+        {
+          "path": "/home/ubuntu/codex_tes_511_sim/new_geo_re/outputs/reports/day15_complete_report/complete_day15_summary.json",
+          "json_pointer": "/catalog/by_stream/delayed/rate_hz",
+          "line_range": "24-43",
+          "value": 280.59901174421475
+        },
+        {
+          "path": "/home/ubuntu/codex_tes_511_sim/new_geo_re/outputs/reports/day15_complete_report/complete_day15_summary.json",
+          "json_pointer": "/direct_expectation/rates_hz/delayed/final",
+          "line_range": "118-133",
+          "value": 2.31224086683797
+        },
+        {
+          "path": "/home/ubuntu/codex_tes_511_sim/new_geo_re/stepwise_maintenance/step09_optics_bridge/outputs/non_xray_background_w1_w2_veto_table.csv",
+          "csv_line": 9,
+          "row_key": "W2_511_pm_420eV,both,non_xray_background",
+          "value": {
+            "rate_cps": 0.18434717748640367,
+            "prompt_cps": 0.03223400479533992,
+            "delayed_cps": 0.15211317269106375
+          }
+        },
+        {
+          "path": "/home/ubuntu/codex_tes_511_sim/new_geo_re/stepwise_maintenance/step08_significance/outputs/headline_statistical_uncertainty_by_stream.csv",
+          "csv_line": 4,
+          "row_key": "W2,delayed",
+          "value": {
+            "B_cps": 0.1521131726910638,
+            "delta_B_cps": 0.009671642969996412,
+            "N_eff": 247.36208744053428,
+            "weighted_event_count": 344
+          }
+        }
+      ],
+      "te_activity_caveat": {
+        "status": "WARN",
+        "fixed_source_activity_Bq": 624.2710918319826,
+        "source_triggers": 1000000,
+        "triggers_div_activity_s": 1601.87,
+        "cosima_log_observation_time_s": 1584.61,
+        "relative_scale_difference_approx": 0.011,
+        "assessment": "Small compared with O(10-100), but current-chain supervisor should compare log TE against triggers/sum(source flux)."
+      }
+    },
+    {
+      "question_id": 6,
+      "question": "Any suspected bug or mismatch that could inflate delayed by O(10-100)",
+      "status": "NO_BUG",
+      "answer": "No proven O(10-100) old-chain processing inflation bug was found. Remaining WARN mechanisms are missing per-family TT/division audit, radial-profile spatial compression versus exact-position sampling, stale memory values that could mislead comparisons, and a small old benchmark nominal mismatch.",
+      "evidence": [
+        {
+          "path": "/home/ubuntu/codex_tes_511_sim/new_geo_re/outputs/reports/half_life_unit_audit/half_life_unit_audit_summary.json",
+          "json_pointer": "/status",
+          "line_range": "2-3",
+          "value": "PASS"
+        },
+        {
+          "path": "/home/ubuntu/codex_tes_511_sim/new_geo_re/code/tools/make_complete_day15_report_ADR.py",
+          "line_range": "159-166",
+          "value": "no activity double-multiply; delayed rate is 1/TE per event"
+        },
+        {
+          "path": "/home/ubuntu/codex_tes_511_sim/new_geo_re/stepwise_maintenance/step09_optics_bridge/code/build_detector_coupled_focus_response.py",
+          "line_range": "364-412",
+          "value": "W2 contribution is event rate times Gaussian window probability"
+        },
+        {
+          "path": "/home/ubuntu/codex_tes_511_sim/new_geo_re/MEMORY.md",
+          "line_range": "120-124",
+          "value": "stale delayed activity/time values 110.0882 Bq and 9003.74 s"
+        },
+        {
+          "path": "/home/ubuntu/TES_511_Balloon/core_md/fix5_benchmarks.json",
+          "line_range": "85-91",
+          "value": "old new_geo_re delayed total restated as 0.151456825339 cps"
+        },
+        {
+          "path": "/home/ubuntu/codex_tes_511_sim/new_geo_re/stepwise_maintenance/step09_optics_bridge/outputs/non_xray_background_w1_w2_veto_table.csv",
+          "csv_line": 9,
+          "value": "inspected old Step09 delayed_cps 0.15211317269106375"
+        }
+      ],
+      "bug_class_assessment": [
+        {
+          "candidate": "missing non-gamma divide",
+          "status": "NO_BUG",
+          "assessment": "Would be an up-to-8x class bug, but the inspected old implementation contains the divide."
+        },
+        {
+          "candidate": "half-life unit parse failure",
+          "status": "NO_BUG",
+          "assessment": "Half-life unit audit is PASS with zero conversion mismatches and W-180 removed."
+        },
+        {
+          "candidate": "activity double-multiply in selected cps",
+          "status": "NO_BUG",
+          "assessment": "Step05 uses 1/TE per delayed event and Step09 sums event rate times window probability."
+        },
+        {
+          "candidate": "radial-profile source compression",
+          "status": "WARN",
+          "assessment": "Credible spatial-response mismatch versus exact-position sampling, but not proven O(10-100) by this audit."
+        }
+      ]
+    },
+    {
+      "question_id": 7,
+      "question": "What current-chain quantities supervisor must compare",
+      "status": "WARN",
+      "answer": "Supervisor must compare normalization, half-life correction, source sampling, transport exposure, selected cps, and W2 construction side-by-side; final cps alone is insufficient.",
+      "compare_quantities": [
+        "raw source activity, fixed source activity, fixed source blocks, removed blocks",
+        "per-family raw RP total, scaled RP total, TT, non-gamma division, and post-fix activity",
+        "NUBASE hash, half-life unit audit, W-180/W-183 correction/removal rows",
+        "dominant inventory by nuclide and volume, especially CsI/I-128 and W/passive-shield families",
+        "old radial-profile z/r binning versus current exact-position M sampling",
+        "matched source point count, missing point count, missing activity, and flux conservation after sampling",
+        "source triggers, Cosima generated particles, Cosima observation time, SIM SE/ID count",
+        "TE from log versus triggers divided by sum(source flux)",
+        "SIM/source geometry header path",
+        "broad 480-550 delayed final cps",
+        "W2 delayed cps, W2 prompt cps, total cps, uncertainty, N_eff, weighted event count, sum_w2",
+        "W2 definition and veto class: raw, scintillator, Compton, both",
+        "reconciliation of fix5_benchmarks old delayed value 0.151456825339 cps against inspected old Step09 0.15211317269106375 cps"
+      ]
+    }
+  ],
+  "key_old_numeric_anchors": {
+    "status": "PASS",
+    "fixed_delayed_source_activity_Bq": 624.2710918319826,
+    "delayed_transport_triggers": 1000000,
+    "cosima_observation_time_s": 1584.61,
+    "step05_broad_delayed_final_cps": 2.31224086683797,
+    "step09_w2_both_delayed_cps_inspected": 0.15211317269106375,
+    "step09_w2_both_prompt_cps_inspected": 0.03223400479533992,
+    "step09_w2_both_total_cps_inspected": 0.18434717748640367,
+    "old_w2_delayed_delta_cps": 0.009671642969996412,
+    "fix5_benchmarks_old_delayed_cps": 0.151456825339,
+    "benchmark_difference_cps": 0.0006563473520637439,
+    "benchmark_difference_fraction": 0.004315,
+    "benchmark_difference_in_old_sigma": 0.0679
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "status": "PASS",
+      "title": "Old fixed delayed activity is traceable",
+      "summary": "Raw 624.5591421396799 Bq was fixed to 624.2710918319826 Bq by NUBASE ground-state correction.",
+      "primary_evidence": "/home/ubuntu/codex_tes_511_sim/new_geo_re/runs/step02_delay_fix_equiv2602_aligned/source_fix_summary.json:7-10"
+    },
+    {
+      "id": "F2",
+      "status": "WARN",
+      "title": "Per-family divide exists, but audit guard is missing",
+      "summary": "Code divides non-gamma RP/RPIP by 8, but old outputs do not provide a per-family raw/scaled/TT audit table.",
+      "primary_evidence": "/home/ubuntu/codex_tes_511_sim/new_geo_re/stepwise_maintenance/step02_raw_background_simulation/source_snapshots/makedecaysourcewithplot_rpip.py:150-179"
+    },
+    {
+      "id": "F3",
+      "status": "PASS",
+      "title": "Half-life correction is audited",
+      "summary": "NUBASE half-life unit audit is PASS; W-180 ground-state activity is reduced to near zero and removed from fixed source.",
+      "primary_evidence": "/home/ubuntu/codex_tes_511_sim/new_geo_re/outputs/reports/half_life_unit_audit/half_life_unit_audit_summary.json:2-54"
+    },
+    {
+      "id": "F4",
+      "status": "WARN",
+      "title": "Old source positions are compressed",
+      "summary": "Old production source uses z-bin/radial-profile beams, not exact-position source sampling; this can bias spatial detector response.",
+      "primary_evidence": "/home/ubuntu/codex_tes_511_sim/new_geo_re/tests/realpos_delayed_smoke/README.md:5-19"
+    },
+    {
+      "id": "F5",
+      "status": "NO_BUG",
+      "title": "No proven O(10-100) delayed processing inflation bug found",
+      "summary": "Step05 rates delayed events by 1/TE and Step09 sums rate times window probability; suspected issues are WARN-level audit/sampling mismatches, not demonstrated O(10-100) processing inflation.",
+      "primary_evidence": "/home/ubuntu/codex_tes_511_sim/new_geo_re/code/tools/make_complete_day15_report_ADR.py:159-166"
+    }
+  ]
+}

@@ -1,0 +1,578 @@
+{
+  "artifact_type": "source_normalization_audit",
+  "created_utc": "2026-06-23T08:38:09+00:00",
+  "scope": "PI-03 source normalization and unit trail for manuscript quantities; no manuscript edits.",
+  "source_classes": [
+    {
+      "id": "atmospheric_prompt_fix5",
+      "description": "EXPACS/PARMA-derived full-sphere prompt cosmic source cards for fix5 geometry.",
+      "status": "current",
+      "source_plane": {
+        "geometry": "outputs/geometry/DEMO2_DR_v3p5_user_cylmag_redesign_multiholeW_fix5_20260621_megalib_proxy/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup",
+        "surface": "FarFieldAreaSource full sphere, equal-mu theta bins, global zenith, instrument tilt 45 deg",
+        "radius_cm": 60.0,
+        "area_cm2": 11309.733552923255,
+        "source_path": "outputs/reports/fix5_fullstat_v2/fix5_source_manifest.json",
+        "source_locator": "json_pointer:/source_surface and /source_generation"
+      },
+      "parma_expacs_inputs": {
+        "particle_flux_by_type": {
+          "alpha": 0.011487096450232017,
+          "eminus": 0.19900204457214196,
+          "eplus": 0.11698054572276201,
+          "gamma": 4.7996615777852,
+          "muminus": 0.0049689300223750696,
+          "muplus": 0.0055700117660621405,
+          "n": 0.462239182229625,
+          "p": 0.11230072163133409
+        },
+        "gamma_norm_factor": 4.7996615777852e-07,
+        "non_gamma_combined_norm_factor": 5.9995769722315e-08,
+        "source_path": "outputs/reports/fix5_fullstat_v2/fix5_source_manifest.json",
+        "source_locator": "json_pointer:/source_cards and /fullstat_event_counts"
+      },
+      "megalib_cards": {
+        "count": 8,
+        "path_glob": "config/megalib_sources_fullsphere20_fix5_tilt45/*.source",
+        "contains_fix5_geometry": true,
+        "forbidden_geometry_count": 0,
+        "source_path": "outputs/reports/fix5_fullstat_v2/fix5_source_manifest.json",
+        "source_locator": "json_pointer:/source_cards"
+      },
+      "equations": [
+        {
+          "name": "prompt_transport_normalization",
+          "formula": "selected_prompt_rate = selected_events / sum(TT_over_jobs)",
+          "source_path": "core_md/METHOD_FIX5_SIM_CLOSURE.md",
+          "source_locator": "section 2"
+        },
+        {
+          "name": "Step05_prompt_rule",
+          "formula": "prompt_rate_rule = 1/sum(TT)",
+          "source_path": "stepwise_maintenance/step05_veto_time_axis/outputs_fix5_fullstat_v2_exactpos_m50000_s260613_l1/step05_fix5_fullstat_v2_exactpos_m50000_s260613_l1_response_summary.json",
+          "source_locator": "json_pointer:/normalization/prompt_rate_rule"
+        }
+      ],
+      "unit_checks": [
+        {
+          "check": "prompt TT closure",
+          "value": 1.0,
+          "units": "dimensionless",
+          "source_path": "stepwise_maintenance/step05_veto_time_axis/outputs_fix5_fullstat_v2_exactpos_m50000_s260613_l1/step05_fix5_fullstat_v2_exactpos_m50000_s260613_l1_response_summary.json",
+          "source_locator": "json_pointer:/normalization/prompt_normalization_audit/rate_times_tt_sum"
+        },
+        {
+          "check": "W2 prompt selected rate",
+          "value": 0.036641023029691425,
+          "units": "s^-1",
+          "source_path": "outputs/reports/fix5_fullstat_v2_exactpos_m50000_s260613/fix5_promotion_decision.json",
+          "source_locator": "json_pointer:/prompt_cps"
+        }
+      ],
+      "linked_manuscript_quantities": [
+        "fix5_prompt_selected_rate_day15_w2",
+        "fix5_day15_selected_background_w2"
+      ]
+    },
+    {
+      "id": "activation_delayed_fix5",
+      "description": "Day-15 activation delayed background with ground-state half-life correction and exact-position source sampling.",
+      "status": "current_pi02_minimum_convergence_screen_done",
+      "source_plane": {
+        "geometry": "outputs/geometry/DEMO2_DR_v3p5_user_cylmag_redesign_multiholeW_fix5_20260621_megalib_proxy/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup",
+        "source_card": "runs/step02_delay_fix_fix5_fullstat_v2/activation_decay_day15_groundstate_fixed_exactpos_m50000_s260613.source",
+        "M_pointsource_blocks": 50000,
+        "seed": 260613,
+        "flux_per_pointsource_Bq": 0.001708984050775249,
+        "source_text_flux_relative_delta": 4.53631512934923e-10,
+        "source_path": "outputs/reports/fix5_fullstat_v2_exactpos_m50000_s260613/fix5_delayed_source_exactpos_summary.json",
+        "source_locator": "json_pointer:/source_mode, /fixed_total_activity_Bq, /n_pointsource_blocks, /source_text_flux_relative_delta",
+        "pi02_convergence_source_path": "outputs/reports/fix5_immediate_fixes_20260623/delayed_selected_rate_convergence.json",
+        "pi02_sampling_ids": [
+          "M50000_exactpos_weighted_rpip_seed_260613",
+          "M50000_exactpos_weighted_rpip_seed_260614",
+          "M50000_exactpos_weighted_rpip_seed_260615",
+          "M50000_exactpos_weighted_rpip_seed_260617"
+        ]
+      },
+      "equations": [
+        {
+          "name": "ground_state_decay_constant",
+          "formula": "lambda = ln(2) / T_half_ground_state",
+          "source_path": "core_md/METHOD_FIX5_SIM_CLOSURE.md",
+          "source_locator": "section 3.1"
+        },
+        {
+          "name": "per_family_TT_division_guard",
+          "formula": "activation production is divided by source-family live time, not repeatedly by global TT",
+          "source_path": "core_md/METHOD_FIX5_SIM_CLOSURE.md",
+          "source_locator": "section 3.2"
+        },
+        {
+          "name": "delayed_rate_uncertainty",
+          "formula": "combined sigma = sqrt(sum selected_events) / sum(TE_s); relative = 1/sqrt(sum selected_events)",
+          "source_path": "outputs/reports/fix5_immediate_fixes_20260623/delayed_selected_rate_convergence.json",
+          "source_locator": "json_pointer:/combined and /runs"
+        }
+      ],
+      "unit_checks": [
+        {
+          "check": "old_total_activity_Bq",
+          "value": 87.48329383240524,
+          "units": "Bq",
+          "source_path": "outputs/reports/fix5_fullstat_v2_exactpos_m50000_s260613/fix5_groundstate_half_life_audit_summary.json",
+          "source_locator": "json_pointer:/old_total_activity_Bq"
+        },
+        {
+          "check": "new_total_activity_Bq",
+          "value": 85.44920253876245,
+          "units": "Bq",
+          "source_path": "outputs/reports/fix5_fullstat_v2_exactpos_m50000_s260613/fix5_groundstate_half_life_audit_summary.json",
+          "source_locator": "json_pointer:/new_total_activity_Bq"
+        },
+        {
+          "check": "normalization_status",
+          "value": "PASS",
+          "units": "status",
+          "source_path": "outputs/reports/fix5_fullstat_v2_exactpos_m50000_s260613/fix5_groundstate_half_life_audit_summary.json",
+          "source_locator": "json_pointer:/status"
+        },
+        {
+          "check": "selected_events",
+          "value": 103,
+          "units": "events",
+          "source_path": "outputs/reports/fix5_immediate_fixes_20260623/delayed_selected_rate_convergence.json",
+          "source_locator": "json_pointer:/combined/selected_events"
+        },
+        {
+          "check": "relative_uncertainty",
+          "value": 0.09853292781642932,
+          "units": "dimensionless",
+          "source_path": "outputs/reports/fix5_immediate_fixes_20260623/delayed_selected_rate_convergence.json",
+          "source_locator": "json_pointer:/combined/relative_uncertainty"
+        },
+        {
+          "check": "selected_rate_cps",
+          "value": 0.0022127821289687215,
+          "units": "s^-1",
+          "source_path": "outputs/reports/fix5_immediate_fixes_20260623/delayed_selected_rate_convergence.json",
+          "source_locator": "json_pointer:/combined/selected_rate_cps"
+        }
+      ],
+      "megalib_cards": {
+        "transport_events_requested": 4000000,
+        "transport_TE_s": 46547.736739,
+        "contains_fix5_geometry": true,
+        "source_path": "outputs/reports/fix5_immediate_fixes_20260623/delayed_selected_rate_convergence.json",
+        "source_locator": "json_pointer:/runs/*/sim_header_geometry_path and /combined/total_TE_s"
+      },
+      "linked_manuscript_quantities": [
+        "fix5_delayed_selected_rate_day15_w2",
+        "fix5_delayed_source_activity_day15"
+      ],
+      "convergence_status": "PI-02 DONE: four production-position samplings, 103 combined selected events, relative uncertainty 0.09853292781642932, and between-sampling check PASS."
+    },
+    {
+      "id": "focused_signal_fix5",
+      "description": "Focused 511 keV point-source replay through optics and detector response.",
+      "status": "current",
+      "source_plane": {
+        "F0_ph_cm2_s": 0.0001,
+        "Aeff_511_cm2": 20.084760000000003,
+        "atmospheric_transmission": 0.7390423888027,
+        "rate_to_v3p5_injection_plane_cps": 0.0014843489008928919,
+        "seed": 260616,
+        "source_path": "stepwise_maintenance/step05_veto_time_axis/outputs_fix5_fullstat_v2_exactpos_m50000_s260613_l1/step05_fix5_fullstat_v2_exactpos_m50000_s260613_l1_response_summary.json",
+        "source_locator": "json_pointer:/science_physical_normalization"
+      },
+      "equations": [
+        {
+          "name": "selected_effective_area",
+          "formula": "A_sel = selected_signal_rate / F0",
+          "source_path": "core_md/balloon511_nima_latex_drafts/revision_harness_runs/20260622/phase1_project_audit.md",
+          "source_locator": "lines 122-128"
+        },
+        {
+          "name": "significance",
+          "formula": "Z20d from Step08 using Step06 time-dependent background and science rates",
+          "source_path": "stepwise_maintenance/step08_significance/outputs_fix5_fullstat_v2_exactpos_m50000_s260613/step08_fix5_fullstat_v2_exactpos_m50000_s260613_time_dependent_summary.json",
+          "source_locator": "json_pointer:/results/A_point_w2_510p58_511p42_F0.0001"
+        }
+      ],
+      "unit_checks": [
+        {
+          "check": "A_sel = 0.00118587480749719 / 1e-4",
+          "value": 11.8587480749719,
+          "units": "cm^2",
+          "source_path": "stepwise_maintenance/step08_significance/outputs_fix5_fullstat_v2_exactpos_m50000_s260613/t3_t5_summary.csv",
+          "source_locator": "row analysis_case_id=A_point_w2_510p58_511p42_F0.0001"
+        },
+        {
+          "check": "Z20d",
+          "value": 7.79950030715189,
+          "units": "sigma",
+          "source_path": "stepwise_maintenance/step08_significance/outputs_fix5_fullstat_v2_exactpos_m50000_s260613/step08_fix5_fullstat_v2_exactpos_m50000_s260613_time_dependent_summary.json",
+          "source_locator": "json_pointer:/results/A_point_w2_510p58_511p42_F0.0001/Z20d"
+        },
+        {
+          "check": "F3_20d",
+          "value": 3.8464002588077305e-05,
+          "units": "ph cm^-2 s^-1",
+          "source_path": "stepwise_maintenance/step08_significance/outputs_fix5_fullstat_v2_exactpos_m50000_s260613/step08_fix5_fullstat_v2_exactpos_m50000_s260613_time_dependent_summary.json",
+          "source_locator": "json_pointer:/results/A_point_w2_510p58_511p42_F0.0001/F3_20d_ph_cm2_s"
+        }
+      ],
+      "linked_manuscript_quantities": [
+        "fix5_selected_signal_w2_F1e-4",
+        "fix5_selected_effective_area",
+        "fix5_Z20d_w2",
+        "fix5_F3_20d_w2"
+      ]
+    },
+    {
+      "id": "upstream_ge_proxy_archived",
+      "description": "Archived upstream-optics Ge proxy activation upper-limit calculation.",
+      "status": "archived_with_corrected_upper_limit",
+      "source_plane": {
+        "total_activity_Bq": 0.4256743799573773,
+        "generated_decays": 20000,
+        "selected_events": 0,
+        "source_path": "old/stepwise_maintenance/step11_upstream_optics_background/outputs_ge_proxy_delayed_response/step11_ge_proxy_delayed_detector_response_summary.json",
+        "source_locator": "json_pointer:/total_activity_Bq, /generated_events_seen, /analysis_windows/W2/final_selected_events"
+      },
+      "equations": [
+        {
+          "name": "corrected_zero_count_upper_rate",
+          "formula": "-ln(0.05) / (generated_decays / total_activity_Bq)",
+          "source_path": "core_md/balloon511_nima_latex_drafts/revision_harness_runs/20260622/phase1_project_audit.md",
+          "source_locator": "lines 77-111"
+        }
+      ],
+      "unit_checks": [
+        {
+          "check": "corrected 95 pct upper rate",
+          "value": 6.376e-05,
+          "units": "cps",
+          "source_path": "core_md/balloon511_nima_latex_drafts/revision_harness_runs/20260622/phase1_project_audit.md",
+          "source_locator": "lines 84-85"
+        },
+        {
+          "check": "deprecated TE based upper rate",
+          "value": 0.00012534045848433615,
+          "units": "s^-1",
+          "source_path": "old/stepwise_maintenance/step11_upstream_optics_background/outputs_ge_proxy_delayed_response/step11_ge_proxy_delayed_detector_response_summary.json",
+          "source_locator": "json_pointer:/zero_count_upper_limits/W2/final_rate_s-1"
+        }
+      ],
+      "linked_manuscript_quantities": [
+        "upstream_ge_proxy_upper_rate_corrected"
+      ]
+    }
+  ],
+  "sanity_checks": [
+    {
+      "id": "source_cards_fix5_geometry",
+      "status": "PASS",
+      "source_path": "outputs/reports/fix5_fullstat_v2/fix5_verification_verdict.json",
+      "source_locator": "json_pointer:/checks/source_cards_geometry"
+    },
+    {
+      "id": "job_sources_fix5_geometry",
+      "status": "PASS",
+      "source_path": "outputs/reports/fix5_fullstat_v2/fix5_verification_verdict.json",
+      "source_locator": "json_pointer:/checks/job_sources_geometry"
+    },
+    {
+      "id": "sim_headers_fix5_geometry",
+      "status": "PASS",
+      "source_path": "outputs/reports/fix5_fullstat_v2/fix5_verification_verdict.json",
+      "source_locator": "json_pointer:/checks/sim_header_geometry"
+    },
+    {
+      "id": "benchmark_alignment_old_new_geo_re",
+      "status": "NOT_ALIGNED_REPORT_ONLY",
+      "source_path": "outputs/reports/fix5_fullstat_v2/fix5_benchmark_alignment.json",
+      "source_locator": "json_pointer:/decision"
+    }
+  ],
+  "equations": [
+    {
+      "name": "prompt_transport_normalization",
+      "formula": "selected_prompt_rate = selected_events / sum(TT_over_jobs)",
+      "source_path": "core_md/METHOD_FIX5_SIM_CLOSURE.md",
+      "source_locator": "section 2",
+      "source_class": "atmospheric_prompt_fix5"
+    },
+    {
+      "name": "Step05_prompt_rule",
+      "formula": "prompt_rate_rule = 1/sum(TT)",
+      "source_path": "stepwise_maintenance/step05_veto_time_axis/outputs_fix5_fullstat_v2_exactpos_m50000_s260613_l1/step05_fix5_fullstat_v2_exactpos_m50000_s260613_l1_response_summary.json",
+      "source_locator": "json_pointer:/normalization/prompt_rate_rule",
+      "source_class": "atmospheric_prompt_fix5"
+    },
+    {
+      "name": "ground_state_decay_constant",
+      "formula": "lambda = ln(2) / T_half_ground_state",
+      "source_path": "core_md/METHOD_FIX5_SIM_CLOSURE.md",
+      "source_locator": "section 3.1",
+      "source_class": "activation_delayed_fix5"
+    },
+    {
+      "name": "per_family_TT_division_guard",
+      "formula": "activation production is divided by source-family live time, not repeatedly by global TT",
+      "source_path": "core_md/METHOD_FIX5_SIM_CLOSURE.md",
+      "source_locator": "section 3.2",
+      "source_class": "activation_delayed_fix5"
+    },
+    {
+      "name": "delayed_rate_uncertainty",
+      "formula": "combined sigma = sqrt(sum selected_events) / sum(TE_s); relative = 1/sqrt(sum selected_events)",
+      "source_path": "outputs/reports/fix5_immediate_fixes_20260623/delayed_selected_rate_convergence.json",
+      "source_locator": "json_pointer:/combined and /runs",
+      "source_class": "activation_delayed_fix5"
+    },
+    {
+      "name": "selected_effective_area",
+      "formula": "A_sel = selected_signal_rate / F0",
+      "source_path": "core_md/balloon511_nima_latex_drafts/revision_harness_runs/20260622/phase1_project_audit.md",
+      "source_locator": "lines 122-128",
+      "source_class": "focused_signal_fix5"
+    },
+    {
+      "name": "significance",
+      "formula": "Z20d from Step08 using Step06 time-dependent background and science rates",
+      "source_path": "stepwise_maintenance/step08_significance/outputs_fix5_fullstat_v2_exactpos_m50000_s260613/step08_fix5_fullstat_v2_exactpos_m50000_s260613_time_dependent_summary.json",
+      "source_locator": "json_pointer:/results/A_point_w2_510p58_511p42_F0.0001",
+      "source_class": "focused_signal_fix5"
+    },
+    {
+      "name": "corrected_zero_count_upper_rate",
+      "formula": "-ln(0.05) / (generated_decays / total_activity_Bq)",
+      "source_path": "core_md/balloon511_nima_latex_drafts/revision_harness_runs/20260622/phase1_project_audit.md",
+      "source_locator": "lines 77-111",
+      "source_class": "upstream_ge_proxy_archived"
+    }
+  ],
+  "unit_checks": [
+    {
+      "check": "prompt TT closure",
+      "value": 1.0,
+      "units": "dimensionless",
+      "source_path": "stepwise_maintenance/step05_veto_time_axis/outputs_fix5_fullstat_v2_exactpos_m50000_s260613_l1/step05_fix5_fullstat_v2_exactpos_m50000_s260613_l1_response_summary.json",
+      "source_locator": "json_pointer:/normalization/prompt_normalization_audit/rate_times_tt_sum",
+      "source_class": "atmospheric_prompt_fix5"
+    },
+    {
+      "check": "W2 prompt selected rate",
+      "value": 0.036641023029691425,
+      "units": "s^-1",
+      "source_path": "outputs/reports/fix5_fullstat_v2_exactpos_m50000_s260613/fix5_promotion_decision.json",
+      "source_locator": "json_pointer:/prompt_cps",
+      "source_class": "atmospheric_prompt_fix5"
+    },
+    {
+      "check": "old_total_activity_Bq",
+      "value": 87.48329383240524,
+      "units": "Bq",
+      "source_path": "outputs/reports/fix5_fullstat_v2_exactpos_m50000_s260613/fix5_groundstate_half_life_audit_summary.json",
+      "source_locator": "json_pointer:/old_total_activity_Bq",
+      "source_class": "activation_delayed_fix5"
+    },
+    {
+      "check": "new_total_activity_Bq",
+      "value": 85.44920253876245,
+      "units": "Bq",
+      "source_path": "outputs/reports/fix5_fullstat_v2_exactpos_m50000_s260613/fix5_groundstate_half_life_audit_summary.json",
+      "source_locator": "json_pointer:/new_total_activity_Bq",
+      "source_class": "activation_delayed_fix5"
+    },
+    {
+      "check": "normalization_status",
+      "value": "PASS",
+      "units": "status",
+      "source_path": "outputs/reports/fix5_fullstat_v2_exactpos_m50000_s260613/fix5_groundstate_half_life_audit_summary.json",
+      "source_locator": "json_pointer:/status",
+      "source_class": "activation_delayed_fix5"
+    },
+    {
+      "check": "selected_events",
+      "value": 103,
+      "units": "events",
+      "source_path": "outputs/reports/fix5_immediate_fixes_20260623/delayed_selected_rate_convergence.json",
+      "source_locator": "json_pointer:/combined/selected_events",
+      "source_class": "activation_delayed_fix5"
+    },
+    {
+      "check": "relative_uncertainty",
+      "value": 0.09853292781642932,
+      "units": "dimensionless",
+      "source_path": "outputs/reports/fix5_immediate_fixes_20260623/delayed_selected_rate_convergence.json",
+      "source_locator": "json_pointer:/combined/relative_uncertainty",
+      "source_class": "activation_delayed_fix5"
+    },
+    {
+      "check": "selected_rate_cps",
+      "value": 0.0022127821289687215,
+      "units": "s^-1",
+      "source_path": "outputs/reports/fix5_immediate_fixes_20260623/delayed_selected_rate_convergence.json",
+      "source_locator": "json_pointer:/combined/selected_rate_cps",
+      "source_class": "activation_delayed_fix5"
+    },
+    {
+      "check": "A_sel = 0.00118587480749719 / 1e-4",
+      "value": 11.8587480749719,
+      "units": "cm^2",
+      "source_path": "stepwise_maintenance/step08_significance/outputs_fix5_fullstat_v2_exactpos_m50000_s260613/t3_t5_summary.csv",
+      "source_locator": "row analysis_case_id=A_point_w2_510p58_511p42_F0.0001",
+      "source_class": "focused_signal_fix5"
+    },
+    {
+      "check": "Z20d",
+      "value": 7.79950030715189,
+      "units": "sigma",
+      "source_path": "stepwise_maintenance/step08_significance/outputs_fix5_fullstat_v2_exactpos_m50000_s260613/step08_fix5_fullstat_v2_exactpos_m50000_s260613_time_dependent_summary.json",
+      "source_locator": "json_pointer:/results/A_point_w2_510p58_511p42_F0.0001/Z20d",
+      "source_class": "focused_signal_fix5"
+    },
+    {
+      "check": "F3_20d",
+      "value": 3.8464002588077305e-05,
+      "units": "ph cm^-2 s^-1",
+      "source_path": "stepwise_maintenance/step08_significance/outputs_fix5_fullstat_v2_exactpos_m50000_s260613/step08_fix5_fullstat_v2_exactpos_m50000_s260613_time_dependent_summary.json",
+      "source_locator": "json_pointer:/results/A_point_w2_510p58_511p42_F0.0001/F3_20d_ph_cm2_s",
+      "source_class": "focused_signal_fix5"
+    },
+    {
+      "check": "corrected 95 pct upper rate",
+      "value": 6.376e-05,
+      "units": "cps",
+      "source_path": "core_md/balloon511_nima_latex_drafts/revision_harness_runs/20260622/phase1_project_audit.md",
+      "source_locator": "lines 84-85",
+      "source_class": "upstream_ge_proxy_archived"
+    },
+    {
+      "check": "deprecated TE based upper rate",
+      "value": 0.00012534045848433615,
+      "units": "s^-1",
+      "source_path": "old/stepwise_maintenance/step11_upstream_optics_background/outputs_ge_proxy_delayed_response/step11_ge_proxy_delayed_detector_response_summary.json",
+      "source_locator": "json_pointer:/zero_count_upper_limits/W2/final_rate_s-1",
+      "source_class": "upstream_ge_proxy_archived"
+    }
+  ],
+  "source_plane": {
+    "atmospheric_prompt_fix5": {
+      "geometry": "outputs/geometry/DEMO2_DR_v3p5_user_cylmag_redesign_multiholeW_fix5_20260621_megalib_proxy/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup",
+      "surface": "FarFieldAreaSource full sphere, equal-mu theta bins, global zenith, instrument tilt 45 deg",
+      "radius_cm": 60.0,
+      "area_cm2": 11309.733552923255,
+      "source_path": "outputs/reports/fix5_fullstat_v2/fix5_source_manifest.json",
+      "source_locator": "json_pointer:/source_surface and /source_generation"
+    },
+    "activation_delayed_fix5": {
+      "geometry": "outputs/geometry/DEMO2_DR_v3p5_user_cylmag_redesign_multiholeW_fix5_20260621_megalib_proxy/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup",
+      "source_card": "runs/step02_delay_fix_fix5_fullstat_v2/activation_decay_day15_groundstate_fixed_exactpos_m50000_s260613.source",
+      "M_pointsource_blocks": 50000,
+      "seed": 260613,
+      "flux_per_pointsource_Bq": 0.001708984050775249,
+      "source_text_flux_relative_delta": 4.53631512934923e-10,
+      "source_path": "outputs/reports/fix5_fullstat_v2_exactpos_m50000_s260613/fix5_delayed_source_exactpos_summary.json",
+      "source_locator": "json_pointer:/source_mode, /fixed_total_activity_Bq, /n_pointsource_blocks, /source_text_flux_relative_delta",
+      "pi02_convergence_source_path": "outputs/reports/fix5_immediate_fixes_20260623/delayed_selected_rate_convergence.json",
+      "pi02_sampling_ids": [
+        "M50000_exactpos_weighted_rpip_seed_260613",
+        "M50000_exactpos_weighted_rpip_seed_260614",
+        "M50000_exactpos_weighted_rpip_seed_260615",
+        "M50000_exactpos_weighted_rpip_seed_260617"
+      ]
+    },
+    "focused_signal_fix5": {
+      "F0_ph_cm2_s": 0.0001,
+      "Aeff_511_cm2": 20.084760000000003,
+      "atmospheric_transmission": 0.7390423888027,
+      "rate_to_v3p5_injection_plane_cps": 0.0014843489008928919,
+      "seed": 260616,
+      "source_path": "stepwise_maintenance/step05_veto_time_axis/outputs_fix5_fullstat_v2_exactpos_m50000_s260613_l1/step05_fix5_fullstat_v2_exactpos_m50000_s260613_l1_response_summary.json",
+      "source_locator": "json_pointer:/science_physical_normalization"
+    },
+    "upstream_ge_proxy_archived": {
+      "total_activity_Bq": 0.4256743799573773,
+      "generated_decays": 20000,
+      "selected_events": 0,
+      "source_path": "old/stepwise_maintenance/step11_upstream_optics_background/outputs_ge_proxy_delayed_response/step11_ge_proxy_delayed_detector_response_summary.json",
+      "source_locator": "json_pointer:/total_activity_Bq, /generated_events_seen, /analysis_windows/W2/final_selected_events"
+    }
+  },
+  "parma_expacs_inputs": {
+    "atmospheric_prompt_fix5": {
+      "particle_flux_by_type": {
+        "alpha": 0.011487096450232017,
+        "eminus": 0.19900204457214196,
+        "eplus": 0.11698054572276201,
+        "gamma": 4.7996615777852,
+        "muminus": 0.0049689300223750696,
+        "muplus": 0.0055700117660621405,
+        "n": 0.462239182229625,
+        "p": 0.11230072163133409
+      },
+      "gamma_norm_factor": 4.7996615777852e-07,
+      "non_gamma_combined_norm_factor": 5.9995769722315e-08,
+      "source_path": "outputs/reports/fix5_fullstat_v2/fix5_source_manifest.json",
+      "source_locator": "json_pointer:/source_cards and /fullstat_event_counts"
+    },
+    "activation_delayed_fix5": {
+      "applicability": "not an EXPACS/PARMA direct input; delayed source derives from fix5 activation inventory, NUBASE ground-state correction, and exact-position source sampling",
+      "source_path": "outputs/reports/fix5_fullstat_v2_exactpos_m50000_s260613/fix5_delayed_source_exactpos_summary.json",
+      "source_locator": "json_pointer:/fixed_total_activity_Bq, /source_mode, /n_pointsource_blocks",
+      "supporting_source_path": "outputs/reports/fix5_fullstat_v2_exactpos_m50000_s260613/fix5_groundstate_half_life_audit_summary.json",
+      "supporting_source_locator": "json_pointer:/new_total_activity_Bq and /status"
+    },
+    "focused_signal_fix5": "not applicable: focused signal source",
+    "upstream_ge_proxy_archived": {
+      "applicability": "archived upstream Ge proxy activation upper-limit input, not a current fix5 EXPACS/PARMA source",
+      "total_activity_Bq": 0.4256743799573773,
+      "generated_decays": 20000,
+      "selected_events": 0,
+      "source_path": "old/stepwise_maintenance/step11_upstream_optics_background/outputs_ge_proxy_delayed_response/step11_ge_proxy_delayed_detector_response_summary.json",
+      "source_locator": "json_pointer:/total_activity_Bq, /generated_events_seen, /analysis_windows/W2/final_selected_events"
+    }
+  },
+  "megalib_cards": {
+    "atmospheric_prompt_fix5": {
+      "count": 8,
+      "path_glob": "config/megalib_sources_fullsphere20_fix5_tilt45/*.source",
+      "contains_fix5_geometry": true,
+      "forbidden_geometry_count": 0,
+      "source_path": "outputs/reports/fix5_fullstat_v2/fix5_source_manifest.json",
+      "source_locator": "json_pointer:/source_cards"
+    },
+    "activation_delayed_fix5": {
+      "transport_events_requested": 4000000,
+      "transport_TE_s": 46547.736739,
+      "contains_fix5_geometry": true,
+      "source_path": "outputs/reports/fix5_immediate_fixes_20260623/delayed_selected_rate_convergence.json",
+      "source_locator": "json_pointer:/runs/*/sim_header_geometry_path and /combined/total_TE_s"
+    },
+    "focused_signal_fix5": {
+      "transport_source": "focused 511 keV optics replay; detector response summarized in Step05/Step08 outputs",
+      "F0_ph_cm2_s": 0.0001,
+      "rate_to_v3p5_injection_plane_cps": 0.0014843489008928919,
+      "seed": 260616,
+      "source_path": "stepwise_maintenance/step05_veto_time_axis/outputs_fix5_fullstat_v2_exactpos_m50000_s260613_l1/step05_fix5_fullstat_v2_exactpos_m50000_s260613_l1_response_summary.json",
+      "source_locator": "json_pointer:/science_physical_normalization and /windows/w2_510p58_511p42/by_stream/science",
+      "supporting_source_path": "stepwise_maintenance/step08_significance/outputs_fix5_fullstat_v2_exactpos_m50000_s260613/step08_fix5_fullstat_v2_exactpos_m50000_s260613_time_dependent_summary.json",
+      "supporting_source_locator": "json_pointer:/results/A_point_w2_510p58_511p42_F0.0001"
+    },
+    "upstream_ge_proxy_archived": "archived summary only"
+  },
+  "linked_manuscript_quantities": [
+    "fix5_F3_20d_w2",
+    "fix5_Z20d_w2",
+    "fix5_day15_selected_background_w2",
+    "fix5_delayed_selected_rate_day15_w2",
+    "fix5_delayed_source_activity_day15",
+    "fix5_prompt_selected_rate_day15_w2",
+    "fix5_selected_effective_area",
+    "fix5_selected_signal_w2_F1e-4",
+    "upstream_ge_proxy_upper_rate_corrected"
+  ]
+}
