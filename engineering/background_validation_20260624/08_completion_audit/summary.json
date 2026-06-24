@@ -1,0 +1,77 @@
+{
+  "artifact_type": "wp08_completion_audit",
+  "created_utc": "2026-06-23T18:01:15Z",
+  "status": "PASS_COMPLETION_AUDIT",
+  "terminal_status": "BLOCKED_RESOURCE_APPROVAL",
+  "checks": [
+    {
+      "requirement": "G0 authority manifest exists and passes",
+      "evidence": "00_manifest/baseline_authority_manifest.json",
+      "status": "PASS",
+      "note": ""
+    },
+    {
+      "requirement": "G1 prompt normalization passes",
+      "evidence": "01_prompt_source_audit/prompt_normalization_audit.json",
+      "status": "PASS",
+      "note": ""
+    },
+    {
+      "requirement": "G2 eplus provenance classifies at least 80% or reports insufficient trace",
+      "evidence": "02_prompt_eplus_provenance/eplus_survivor_provenance.json",
+      "status": "PASS",
+      "note": ""
+    },
+    {
+      "requirement": "G3 delayed convergence meets 100 events and <=10% relative uncertainty",
+      "evidence": "03_delayed_convergence/delayed_selected_rate_convergence.json",
+      "status": "PASS",
+      "note": ""
+    },
+    {
+      "requirement": "G4 BGO geometry is material-only and overlap checked",
+      "evidence": "04_bgo_variant/bgo_geometry_manifest.json",
+      "status": "PASS",
+      "note": ""
+    },
+    {
+      "requirement": "G5/G6 resource guard stops matched production with required failure fields",
+      "evidence": "05_matched_runs_resource_guard/summary.json",
+      "status": "PASS",
+      "note": ""
+    },
+    {
+      "requirement": "WP07 final support markdown includes all required sections",
+      "evidence": "07_manuscript_support/background_validation_necessity_and_paper_impact_final.md",
+      "status": "PASS",
+      "note": ""
+    },
+    {
+      "requirement": "FINAL_STATUS records allowed terminal status",
+      "evidence": "FINAL_STATUS.md",
+      "status": "PASS",
+      "note": ""
+    },
+    {
+      "requirement": "Authority/manuscript tracked files were not modified",
+      "evidence": "git status --short",
+      "status": "PASS",
+      "note": "Allowed untracked entries are the HARNESS input directory and engineering output root."
+    },
+    {
+      "requirement": "No CsI threshold optimization artifacts are present in engineering output",
+      "evidence": "engineering/background_validation_20260624",
+      "status": "PASS",
+      "note": ""
+    }
+  ],
+  "git_status_short": [
+    "?? core_md/balloon511_nima_latex_drafts/revision_harness_runs/HARNESS_20260624/",
+    "?? engineering/"
+  ],
+  "tracked_or_authority_modifications": [],
+  "outputs": {
+    "json": "engineering/background_validation_20260624/08_completion_audit/completion_audit.json",
+    "markdown": "engineering/background_validation_20260624/08_completion_audit/completion_audit.md"
+  }
+}

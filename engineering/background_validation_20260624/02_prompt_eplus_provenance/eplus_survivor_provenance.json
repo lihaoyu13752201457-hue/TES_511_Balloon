@@ -1,0 +1,58 @@
+{
+  "artifact_type": "wp02_prompt_eplus_survivor_provenance",
+  "status": "PASS_EPLUS_PROVENANCE",
+  "created_utc": "2026-06-23T17:23:32Z",
+  "inputs": {
+    "event_catalog": "stepwise_maintenance/step05_veto_time_axis/outputs_fix5_fullstat_v2_exactpos_m50000_s260613_l1/work/event_catalog.pkl",
+    "step05_summary": "stepwise_maintenance/step05_veto_time_axis/outputs_fix5_fullstat_v2_exactpos_m50000_s260613_l1/step05_fix5_fullstat_v2_exactpos_m50000_s260613_l1_response_summary.json",
+    "step05_code": "old/code/tools/build_v3p5_centerfinger_step05_l1_response.py",
+    "sim_files": [
+      "runs/step02_instant_fix5_fullstat_v2/Background_eplus_fullsphere20_rep01_part01.inc1.id1.sim.gz",
+      "runs/step02_instant_fix5_fullstat_v2/Background_eplus_fullsphere20_rep02_part01.inc1.id1.sim.gz",
+      "runs/step02_instant_fix5_fullstat_v2/Background_eplus_fullsphere20_rep03_part01.inc1.id1.sim.gz",
+      "runs/step02_instant_fix5_fullstat_v2/Background_eplus_fullsphere20_rep04_part01.inc1.id1.sim.gz",
+      "runs/step02_instant_fix5_fullstat_v2/Background_eplus_fullsphere20_rep05_part01.inc1.id1.sim.gz",
+      "runs/step02_instant_fix5_fullstat_v2/Background_eplus_fullsphere20_rep06_part01.inc1.id1.sim.gz",
+      "runs/step02_instant_fix5_fullstat_v2/Background_eplus_fullsphere20_rep07_part01.inc1.id1.sim.gz",
+      "runs/step02_instant_fix5_fullstat_v2/Background_eplus_fullsphere20_rep08_part01.inc1.id1.sim.gz"
+    ]
+  },
+  "selection": {
+    "stream": "prompt",
+    "tag": "eplus",
+    "window_keV": [
+      510.58,
+      511.42
+    ],
+    "active_veto_threshold_keV": 50.0,
+    "side_entry_policy": "same Step05 side_keep_from_hits/event_hits/side_entry_disk implementation",
+    "selected_events": 47,
+    "selected_rate_cps": 0.03188974561482074,
+    "selected_sum_w2": 2.1637359050595255e-05,
+    "mc_sigma_cps": 0.004651597472975844
+  },
+  "classification": {
+    "a_to_c_events": 47,
+    "a_to_c_rate_hz": 0.03188974561482074,
+    "a_to_c_event_fraction": 1.0,
+    "e_incomplete_trace_events": 0,
+    "e_incomplete_trace_fraction": 0.0,
+    "acceptance_rule": "PASS if >=80% survivors classify as A-C; otherwise explicit INSUFFICIENT_TRACE."
+  },
+  "classification_counts": {
+    "A": {
+      "label": "aperture-coupled annihilation photon",
+      "events": 47,
+      "rate_hz": 0.03188974561482074
+    }
+  },
+  "outputs": {
+    "events_csv": "engineering/background_validation_20260624/02_prompt_eplus_provenance/eplus_survivor_events.csv",
+    "process_summary_csv": "engineering/background_validation_20260624/02_prompt_eplus_provenance/eplus_survivor_process_summary.csv",
+    "volume_summary_csv": "engineering/background_validation_20260624/02_prompt_eplus_provenance/eplus_survivor_volume_summary.csv",
+    "entry_path_summary_csv": "engineering/background_validation_20260624/02_prompt_eplus_provenance/eplus_survivor_entry_path_summary.csv",
+    "json": "engineering/background_validation_20260624/02_prompt_eplus_provenance/eplus_survivor_provenance.json",
+    "markdown": "engineering/background_validation_20260624/02_prompt_eplus_provenance/eplus_survivor_provenance.md"
+  },
+  "problems": []
+}

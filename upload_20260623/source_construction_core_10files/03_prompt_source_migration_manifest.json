@@ -1,0 +1,75 @@
+{
+  "status": "PASS_FIX5_SOURCE_CARDS_PREPARED_NO_MC",
+  "label": "fix5_1of10",
+  "source_dir": "config/megalib_sources_fullsphere20_fix5_tilt45",
+  "template_source_dir": "config/megalib_sources_fullsphere20_v3p5_centerfinger_tilt45",
+  "base_source_dir": "config/megalib_sources_fullsphere20",
+  "geometry_setup": "outputs/geometry/DEMO2_DR_v3p5_user_cylmag_redesign_multiholeW_fix5_20260621_megalib_proxy/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup",
+  "baseline_geometry_setup_forbidden_in_fix5_cards": "outputs/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup",
+  "geometry_status_evidence": {
+    "side_window_material_path_audit": "outputs/reports/user_redesign_multiholeW_fix5_20260621/side_window_material_path_audit_fix5.json",
+    "det_reference_check": "outputs/reports/user_redesign_multiholeW_fix5_20260621/geometry_det_reference_check.json",
+    "overlap_log": "outputs/reports/user_redesign_multiholeW_fix5_20260621/cosima_overlap_fix5_20260621.log"
+  },
+  "change_scope": "Copied current v3p5 centerfinger tilt45 fullsphere20 source cards and replaced only the setup path in geometry_setup comments and MEGAlib Geometry lines.",
+  "farfield_radius_cm": 60.0,
+  "farfield_area_cm2": 11309.733552923255,
+  "source_surface": "20 equal-mu FarFieldAreaSource theta bins, phi 0-360 deg, global zenith frame.",
+  "pointing_policy": {
+    "megalib_length_unit": "cm",
+    "zenith_frame": "FarFieldAreaSource theta/phi bins remain in global zenith coordinates",
+    "implementation": "whole detector mass model is tilted through InstrumentFrame.Rotation 0 45 0",
+    "side_window_local_look_axis": "-x",
+    "side_window_look_elevation_deg": 45.0
+  },
+  "sources": [
+    {
+      "source": "config/megalib_sources_fullsphere20_fix5_tilt45/Background_alpha_fullsphere20.source",
+      "template_source": "config/megalib_sources_fullsphere20_v3p5_centerfinger_tilt45/Background_alpha_fullsphere20.source",
+      "particle": "alpha",
+      "total_flux_cm2_s": 0.01148709645023
+    },
+    {
+      "source": "config/megalib_sources_fullsphere20_fix5_tilt45/Background_eminus_fullsphere20.source",
+      "template_source": "config/megalib_sources_fullsphere20_v3p5_centerfinger_tilt45/Background_eminus_fullsphere20.source",
+      "particle": "eminus",
+      "total_flux_cm2_s": 0.1990020445721
+    },
+    {
+      "source": "config/megalib_sources_fullsphere20_fix5_tilt45/Background_eplus_fullsphere20.source",
+      "template_source": "config/megalib_sources_fullsphere20_v3p5_centerfinger_tilt45/Background_eplus_fullsphere20.source",
+      "particle": "eplus",
+      "total_flux_cm2_s": 0.1169805457228
+    },
+    {
+      "source": "config/megalib_sources_fullsphere20_fix5_tilt45/Background_gamma_fullsphere20.source",
+      "template_source": "config/megalib_sources_fullsphere20_v3p5_centerfinger_tilt45/Background_gamma_fullsphere20.source",
+      "particle": "gamma",
+      "total_flux_cm2_s": 4.799661577785
+    },
+    {
+      "source": "config/megalib_sources_fullsphere20_fix5_tilt45/Background_muminus_fullsphere20.source",
+      "template_source": "config/megalib_sources_fullsphere20_v3p5_centerfinger_tilt45/Background_muminus_fullsphere20.source",
+      "particle": "muminus",
+      "total_flux_cm2_s": 0.004968930022375
+    },
+    {
+      "source": "config/megalib_sources_fullsphere20_fix5_tilt45/Background_muplus_fullsphere20.source",
+      "template_source": "config/megalib_sources_fullsphere20_v3p5_centerfinger_tilt45/Background_muplus_fullsphere20.source",
+      "particle": "muplus",
+      "total_flux_cm2_s": 0.005570011766062
+    },
+    {
+      "source": "config/megalib_sources_fullsphere20_fix5_tilt45/Background_n_fullsphere20.source",
+      "template_source": "config/megalib_sources_fullsphere20_v3p5_centerfinger_tilt45/Background_n_fullsphere20.source",
+      "particle": "n",
+      "total_flux_cm2_s": 0.4622391822296
+    },
+    {
+      "source": "config/megalib_sources_fullsphere20_fix5_tilt45/Background_p_fullsphere20.source",
+      "template_source": "config/megalib_sources_fullsphere20_v3p5_centerfinger_tilt45/Background_p_fullsphere20.source",
+      "particle": "p",
+      "total_flux_cm2_s": 0.1123007216313
+    }
+  ]
+}

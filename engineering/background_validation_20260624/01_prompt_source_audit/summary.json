@@ -1,0 +1,86 @@
+{
+  "artifact_type": "prompt_normalization_audit",
+  "created_utc": "2026-06-23T17:06:17.189194+00:00",
+  "status": "PASS",
+  "problems": [],
+  "warnings": [],
+  "baseline_manifest": "engineering/background_validation_20260624/00_manifest/baseline_authority_manifest.json",
+  "source_cards": {
+    "count": 8,
+    "flux_bin_count_total": 160,
+    "max_flux_relative_diff_vs_manifest": 3.248179668082206e-13,
+    "max_delta_mu_abs_diff": 9.462712908331339e-06
+  },
+  "farfield": {
+    "status": "PASS",
+    "radii": {
+      "setup_surrounding_sphere_cm": 60.0,
+      "source_manifest_farfield_radius_cm": 60.0,
+      "instant_normalization_farfield_radius_cm": 60.0,
+      "source_card_comment_radii_cm": [
+        60.0
+      ]
+    },
+    "radius_unique": true,
+    "area_cm2_from_pi_r2": 11309.733552923255,
+    "normalization_area_cm2": 11309.733552923255,
+    "area_relative_diff": 0.0,
+    "source_semantics_evidence": {
+      "megalib_mcsource_cc": "/home/ubuntu/MEGAlib_Install/megalib-main/src/cosima/src/MCSource.cc",
+      "sphere_average_area_formula_found": true,
+      "farfield_flux_area_multiply_found": true,
+      "runner_area_formula_found": true,
+      "runner_prompt_time_formula_found": true
+    }
+  },
+  "run_manifest": {
+    "path": "runs/step02_instant_fix5_fullstat_v2/run_manifest.csv",
+    "rows": 68,
+    "unique_seeds": true,
+    "seed_count": 68,
+    "status_counts": {
+      "PASS": 68
+    },
+    "generated_by_particle": {
+      "alpha": 191464,
+      "eminus": 3316936,
+      "eplus": 1949816,
+      "gamma": 10000000,
+      "muminus": 82824,
+      "muplus": 92840,
+      "n": 7704528,
+      "p": 1871808
+    },
+    "gamma_splits": 12,
+    "non_gamma_replicas": 8
+  },
+  "selected_rate_closure": {
+    "prompt_final_sum_w": 0.036641023029691404,
+    "prompt_final_sum_w2": 2.486230720388958e-05,
+    "official_prompt_final_cps": 0.036641023029691425,
+    "reconstructed_prompt_final_cps": 0.036641023029691425,
+    "stream_diff": {
+      "prompt": {
+        "reconstructed_rate_cps": 0.036641023029691425,
+        "official_rate_cps": 0.036641023029691425,
+        "abs_diff_cps": 0.0,
+        "rel_diff": 0.0
+      },
+      "delayed": {
+        "reconstructed_rate_cps": 0.0025752034889400762,
+        "official_rate_cps": 0.0025752034889400762,
+        "abs_diff_cps": 0.0,
+        "rel_diff": 0.0
+      },
+      "science": {
+        "reconstructed_rate_cps": 0.7989191805133156,
+        "official_rate_cps": 0.7989191805133156,
+        "abs_diff_cps": 0.0,
+        "rel_diff": 0.0
+      }
+    },
+    "selection_code": "old/code/tools/build_v3p5_centerfinger_step05_l1_response.py",
+    "selection_code_sha256": "0c1e69e4a73bd8653e999b1d8d2aff404a37a44457e40f134388c819ad4b91ab",
+    "prompt_final_rel_diff_vs_official": 5.681250137271889e-16
+  }
+}

@@ -1,0 +1,87 @@
+{
+  "artifact_type": "wp03_delayed_selected_rate_convergence",
+  "status": "DELAYED_CONVERGED",
+  "created_utc": "2026-06-23T17:26:54Z",
+  "source_convergence_artifact": "outputs/reports/fix5_immediate_fixes_20260623/delayed_selected_rate_convergence.json",
+  "acceptance": {
+    "minimum_selected_events": 100,
+    "preferred_selected_events": 300,
+    "relative_uncertainty_max": 0.1,
+    "requires_between_sampling_check": true,
+    "requires_provenance_and_sampling_audit_pass": true
+  },
+  "combined": {
+    "independent_production_position_samplings": 4,
+    "selected_events": 103,
+    "selected_rate_cps": 0.0022127821289687215,
+    "sigma_cps": 0.00021803190178715983,
+    "uncertainty_cps": 0.00021803190178715983,
+    "relative_uncertainty": 0.09853292781642932,
+    "total_TE_s": 46547.736739,
+    "between_sampling_check": "PASS"
+  },
+  "between_sampling_check": {
+    "method": "Each run rate compared with combined rate using explicit k=2 sigma residuals.",
+    "status": "PASS",
+    "threshold_k_sigma": 2.0,
+    "max_abs_z_vs_combined": 1.8214153968855809,
+    "residuals": [
+      {
+        "run_id": "fix5_fullstat_v2_exactpos_m50000_s260613",
+        "rate_cps": 0.0025752034889400762,
+        "sigma_cps": 0.00047016568035282826,
+        "z_vs_combined": 0.7708375475202305
+      },
+      {
+        "run_id": "fix5_pi02_exactpos_m50000_s260614",
+        "rate_cps": 0.0015481452285469328,
+        "sigma_cps": 0.0003649013297890445,
+        "z_vs_combined": -1.8214153968855809
+      },
+      {
+        "run_id": "fix5_pi02_exactpos_m50000_s260615",
+        "rate_cps": 0.0017179001848149826,
+        "sigma_cps": 0.00038413415918057546,
+        "z_vs_combined": -1.2883049641026656
+      },
+      {
+        "run_id": "fix5_pi02_exactpos_m50000_s260617",
+        "rate_cps": 0.0030096560652930525,
+        "sigma_cps": 0.0005087247257703821,
+        "z_vs_combined": 1.5664147936147454
+      }
+    ],
+    "failures": []
+  },
+  "resource_estimate": {
+    "current_generated_decays": 4000000,
+    "current_selected_events": 103,
+    "selected_efficiency_per_decay": 2.575e-05,
+    "estimated_decays_for_100_selected": 3883496,
+    "estimated_decays_for_300_selected": 11650486,
+    "current_sim_gz_size_bytes": 3407449992,
+    "average_sim_gz_bytes_per_1M_decays": 851862498.0,
+    "resource_guard": {
+      "max_events_without_explicit_approval_per_launch_batch": 5000000,
+      "max_estimated_output_without_approval_bytes": 107374182400,
+      "max_estimated_cpu_without_approval_cpu_days": 7
+    },
+    "new_runs_required_for_g3": false,
+    "reason": "Existing PI-02 pooled sample already meets the harness minimum selected-event and relative-uncertainty targets."
+  },
+  "outputs": {
+    "run_manifest_csv": "engineering/background_validation_20260624/03_delayed_convergence/delayed_run_manifest.csv",
+    "selected_events_csv": "engineering/background_validation_20260624/03_delayed_convergence/delayed_selected_events.csv",
+    "decomposition_csv": "engineering/background_validation_20260624/03_delayed_convergence/delayed_selected_decomposition.csv",
+    "isotope_summary_csv": "engineering/background_validation_20260624/03_delayed_convergence/delayed_selected_isotope_summary.csv",
+    "volume_summary_csv": "engineering/background_validation_20260624/03_delayed_convergence/delayed_selected_volume_summary.csv",
+    "convergence_csv": "engineering/background_validation_20260624/03_delayed_convergence/delayed_selected_rate_convergence.csv",
+    "json": "engineering/background_validation_20260624/03_delayed_convergence/delayed_selected_rate_convergence.json",
+    "markdown": "engineering/background_validation_20260624/03_delayed_convergence/delayed_selected_rate_convergence.md"
+  },
+  "notes": [
+    "The existing PI-02 runs vary the exact-position production-position sampling seed and use matching Cosima transport seed tags.",
+    "No new delayed transport was launched by this engineering harness script."
+  ],
+  "problems": []
+}
