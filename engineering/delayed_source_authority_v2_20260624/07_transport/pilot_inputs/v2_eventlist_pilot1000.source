@@ -1,0 +1,16 @@
+# G7 pilot-only v2 weighted EventList source. Not authority.
+Version 1
+Geometry outputs/geometry/DEMO2_DR_v3p5_user_cylmag_redesign_multiholeW_fix5_20260621_megalib_proxy/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup
+PhysicsListEM LivermorePol
+PhysicsListRadioactiveDecay true
+DecayMode ActivationDelayedDecay
+StoreSimulationInfo all
+DiscretizeHits true
+DetectorTimeConstant 1e-9
+
+Run DelayedSourceV2Pilot
+DelayedSourceV2Pilot.FileName engineering/delayed_source_authority_v2_20260624/07_transport/pilot_runs/v2_eventlist_pilot1000
+DelayedSourceV2Pilot.Triggers 1000
+DelayedSourceV2Pilot.Source DelayedSourceV2Pilot_EventList
+
+DelayedSourceV2Pilot_EventList.EventList engineering/delayed_source_authority_v2_20260624/07_transport/pilot_inputs/v2_eventlist_pilot1000.dat

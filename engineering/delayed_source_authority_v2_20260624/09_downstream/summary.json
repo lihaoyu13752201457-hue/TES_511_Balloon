@@ -1,0 +1,24 @@
+{
+  "claim_impact": [
+    "No v2 delayed background, sensitivity, or BGO-delayed number may be quoted.",
+    "Existing downstream numbers are retained only under their legacy delayed-source method."
+  ],
+  "findings": [
+    "No delayed-dependent Step05-Step08 product was rebuilt.",
+    "No BGO delayed dependency was rerun or promoted.",
+    "Downstream rebuilds are blocked by WP08 NO_RATE_AUTHORITY."
+  ],
+  "inputs": [
+    "engineering/delayed_source_authority_v2_20260624/08_promotion/promotion_decision.json"
+  ],
+  "next_gate": "G10 manuscript support may only emit no-promoted-number guidance unless user approves future full-stat v2 work.",
+  "outputs": [
+    "engineering/delayed_source_authority_v2_20260624/09_downstream/step05_rebuild_manifest.json",
+    "engineering/delayed_source_authority_v2_20260624/09_downstream/step06_step08_rebuild_manifest.json",
+    "engineering/delayed_source_authority_v2_20260624/09_downstream/bgo_delayed_dependency_verdict.json",
+    "engineering/delayed_source_authority_v2_20260624/09_downstream/downstream_consistency_check.json",
+    "engineering/delayed_source_authority_v2_20260624/09_downstream/summary.md"
+  ],
+  "status": "NO_RATE_AUTHORITY",
+  "user_decision_required": true
+}

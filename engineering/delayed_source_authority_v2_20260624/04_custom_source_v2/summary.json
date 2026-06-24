@@ -1,0 +1,39 @@
+{
+  "status": "PASS",
+  "inputs": [
+    "engineering/delayed_source_authority_v2_20260624/01_raw_inventory/raw_inventory_ledger.csv",
+    "engineering/delayed_source_authority_v2_20260624/02_rpip_alignment/rpip_alignment.csv",
+    "outputs/geometry/DEMO2_DR_v3p5_user_cylmag_redesign_multiholeW_fix5_20260621_megalib_proxy/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup"
+  ],
+  "outputs": [
+    "engineering/delayed_source_authority_v2_20260624/04_custom_source_v2/source_v2_manifest.json",
+    "engineering/delayed_source_authority_v2_20260624/04_custom_source_v2/source_v2_eventlist.dat",
+    "engineering/delayed_source_authority_v2_20260624/04_custom_source_v2/source_v2_event_weights.csv",
+    "engineering/delayed_source_authority_v2_20260624/04_custom_source_v2/source_v2_eventlist.source",
+    "engineering/delayed_source_authority_v2_20260624/04_custom_source_v2/source_v2_native_activity_store_total.dat",
+    "engineering/delayed_source_authority_v2_20260624/04_custom_source_v2/source_v2_key_closure.csv",
+    "engineering/delayed_source_authority_v2_20260624/04_custom_source_v2/source_name_audit.json",
+    "engineering/delayed_source_authority_v2_20260624/04_custom_source_v2/sampling_audit.json",
+    "engineering/delayed_source_authority_v2_20260624/04_custom_source_v2/source_text_roundtrip.json",
+    "engineering/delayed_source_authority_v2_20260624/04_custom_source_v2/summary.md",
+    "engineering/delayed_source_authority_v2_20260624/04_custom_source_v2/delayed_inventory_v2.csv",
+    "engineering/delayed_source_authority_v2_20260624/04_custom_source_v2/delayed_position_weights_v2.csv",
+    "engineering/delayed_source_authority_v2_20260624/04_custom_source_v2/delayed_source_v2.source",
+    "engineering/delayed_source_authority_v2_20260624/04_custom_source_v2/delayed_source_v2_manifest.json",
+    "engineering/delayed_source_authority_v2_20260624/04_custom_source_v2/source_name_collision_audit.csv",
+    "engineering/delayed_source_authority_v2_20260624/04_custom_source_v2/delayed_source_v2_audit.json",
+    "engineering/delayed_source_authority_v2_20260624/04_custom_source_v2/delayed_source_v2_audit.md"
+  ],
+  "findings": [
+    "Built 254704 weighted EventList rows from RPIP points.",
+    "Total activity closure relative delta 0.0000000000000000000000000000000000000000000000000000000000000000000000000000069310470648400600716299305899373990060995821571678560069760449630209982406166097.",
+    "Duplicate source names 0.",
+    "Unsupported positive activity 0 Bq."
+  ],
+  "claim_impact": [
+    "Custom source-v2 EventList inventory is available for diagnostic transport.",
+    "No delayed selected-rate claim is made at source-build stage."
+  ],
+  "next_gate": "G5 native activation inventory/oracle comparison",
+  "user_decision_required": false
+}

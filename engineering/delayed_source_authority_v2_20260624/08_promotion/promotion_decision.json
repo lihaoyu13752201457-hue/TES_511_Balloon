@@ -1,0 +1,44 @@
+{
+  "decision": "DO_NOT_PROMOTE_V2_DELAYED_SELECTED_RATE",
+  "decision_reason": "G4 source-v2 and G6 timing are closed, and G5 native difference is explained, but G7 has only 1000-trigger v2/native pilot diagnostics and the legacy L0 comparator timed out. No full-stat v2 selected-rate convergence, seed variance, or sum_w2 ledger exists.",
+  "generated_at": "2026-06-24T07:05:29Z",
+  "inventory_model": "direct_production_only_from_raw_dat_with_tag_raw_volume_ZA_state_keys",
+  "inventory_total_activity_Bq": "86.99984206699579647254965784789326599505157688568",
+  "native_comparison_status": "EXPLAINED_MODEL_DIFFERENCE",
+  "next_minimum_step": "Generate an explicit resource/approval plan for v2 full-stat selected-rate convergence, or accept NO_RATE_AUTHORITY as the legal endpoint for this harness run.",
+  "promoted_source": {
+    "path": "engineering/delayed_source_authority_v2_20260624/04_custom_source_v2/source_v2_eventlist.source",
+    "sha256": "275199d1a8db95fefcbf0dbd47b79a649fd3d3ab622c174bd1ff5ed1277b4025",
+    "status": "SOURCE_CONSTRUCTION_AUTHORITY_ONLY_NOT_SELECTED_RATE_PROMOTED"
+  },
+  "replaced_numbers": [],
+  "retained_numbers": [
+    {
+      "evidence": "stepwise_maintenance/step05_veto_time_axis/outputs_fix5_fullstat_v2_exactpos_m50000_s260613_l1/step05_fix5_fullstat_v2_exactpos_m50000_s260613_l1_response_summary.json",
+      "name": "legacy fix5 delayed W2 selected cps",
+      "status": "RETAINED_AS_LEGACY_REFERENCE_NOT_V2_PROMOTED",
+      "value": "0.0025752034889400762"
+    }
+  ],
+  "selected_rate_authority": {
+    "available_evidence": "engineering/delayed_source_authority_v2_20260624/07_transport/summary.json",
+    "available_status": "PARTIAL_PILOT_TRANSPORT_SOURCE_V2_NATIVE_SELECTION_DIAGNOSTIC_LEGACY_TIMEOUT_NOT_PROMOTION",
+    "required_by_harness": [
+      "pooled final W2 selected events >= 300 or relative MC uncertainty <= 10%",
+      "at least 3 position-sampling seeds or documented resource reduction",
+      "at least 3 decay-transport seeds or documented orthogonal reduction",
+      "sum_w, sum_w2, and between-seed variance"
+    ],
+    "status": "MISSING_FULLSTAT_V2_SELECTED_RATE"
+  },
+  "stale_artifacts": "none replaced now; delayed-dependent legacy artifacts are stale only for a future v2-method claim",
+  "status": "NO_RATE_AUTHORITY",
+  "timing_authority_s": "1e-9",
+  "unresolved_limitations": [
+    "No v2 full-stat selected-rate authority.",
+    "No v2 selected-rate seed variance or sum_w2 ledger.",
+    "Legacy L0 pilot comparator did not produce a SIM output within the bounded 300 s cap.",
+    "Native volume-based pilot is diagnostic and not an exact-position selected-rate replacement."
+  ],
+  "user_decision_required": true
+}

@@ -1,0 +1,29 @@
+{
+  "status": "PASS",
+  "inputs": [
+    "/home/ubuntu/MEGAlib_Install/megalib-main/doc/Cosima.pdf",
+    "engineering/delayed_source_authority_v2_20260624/02_rpip_alignment/summary.json"
+  ],
+  "outputs": [
+    "engineering/delayed_source_authority_v2_20260624/03_source_semantics/source_semantics_verdict.json",
+    "engineering/delayed_source_authority_v2_20260624/03_source_semantics/installed_megalib_activation_semantics.md",
+    "engineering/delayed_source_authority_v2_20260624/03_source_semantics/decay_chain_semantics.md",
+    "engineering/delayed_source_authority_v2_20260624/03_source_semantics/detector_time_constant_authority.md",
+    "engineering/delayed_source_authority_v2_20260624/03_source_semantics/excited_ion_source_syntax_test.source",
+    "engineering/delayed_source_authority_v2_20260624/03_source_semantics/excited_ion_source_syntax_test.log",
+    "engineering/delayed_source_authority_v2_20260624/03_source_semantics/summary.md"
+  ],
+  "findings": [
+    "EventList preserves excitation and exact position for custom source-v2 transport.",
+    "ActivationSources/isotope-store preserves excitation and volume for native oracle transport.",
+    "ParticleType-only source cards cannot represent excitation state.",
+    ".Particles Ion syntax is rejected by installed Cosima parser.",
+    "DetectorTimeConstant is parsed as seconds and participates in activation delayed-decay branching."
+  ],
+  "claim_impact": [
+    "ParticleType-only delayed source cards are insufficient for v2 state-resolved claims.",
+    "EventList and native ActivationSources semantics are the only supported transport paths tested here."
+  ],
+  "next_gate": "G4 build source-v2 EventList, weight ledger, and native isotope-store authority from raw inventory and RPIP alignment",
+  "user_decision_required": false
+}

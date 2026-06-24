@@ -1,0 +1,30 @@
+{
+  "status": "PASS",
+  "inputs": [
+    "engineering/delayed_source_authority_v2_20260624/01_raw_inventory/raw_inventory_all_states.csv",
+    "runs/step02_buildup_fix5_fullstat_v2/run_manifest.csv",
+    "runs/step02_buildup_fix5_fullstat_v2/*.sim.gz"
+  ],
+  "outputs": [
+    "engineering/delayed_source_authority_v2_20260624/02_rpip_alignment/rpip_file_manifest.csv",
+    "engineering/delayed_source_authority_v2_20260624/02_rpip_alignment/rpip_points_all.csv",
+    "engineering/delayed_source_authority_v2_20260624/02_rpip_alignment/rpip_state_catalog.csv",
+    "engineering/delayed_source_authority_v2_20260624/02_rpip_alignment/dat_rpip_key_join.csv",
+    "engineering/delayed_source_authority_v2_20260624/02_rpip_alignment/dat_rpip_count_closure.csv",
+    "engineering/delayed_source_authority_v2_20260624/02_rpip_alignment/volume_identity_audit.csv",
+    "engineering/delayed_source_authority_v2_20260624/02_rpip_alignment/state_identity_audit.csv",
+    "engineering/delayed_source_authority_v2_20260624/02_rpip_alignment/rpip_coverage_summary.json",
+    "engineering/delayed_source_authority_v2_20260624/02_rpip_alignment/rpip_coverage_summary.md"
+  ],
+  "findings": [
+    "Parsed 257309 CC IP RP rows from 68 SIM files.",
+    "Positive-activity keys represented: 2032/2032.",
+    "Canonicalization would merge 2.750433400552640939885874179 Bq if used as the physics key."
+  ],
+  "claim_impact": [
+    "This closes spatial support for raw inventory keys only if status is PASS.",
+    "No delayed source v2 has been emitted or promoted yet."
+  ],
+  "next_gate": "G3 source semantics and excited-ion/native activation strategy",
+  "user_decision_required": false
+}

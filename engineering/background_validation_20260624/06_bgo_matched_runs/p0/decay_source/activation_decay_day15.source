@@ -1,0 +1,22 @@
+Version 1
+Geometry /home/ubuntu/TES_511_Balloon/engineering/background_validation_20260624/04_bgo_variant/geometry_bgo_same_envelope/DEMO2_DR_v3p5_minpatch_centerfinger_bgo_same_envelope_megalib_proxy.geo.setup
+
+PhysicsListHD qgsp-bic-hp
+PhysicsListEM LivermorePol
+PhysicsListRadioactiveDecay true
+DecayMode ActivationDelayedDecay
+StoreSimulationInfo all
+StoreIsotopes true
+DetectorTimeConstant 1e-9
+
+Run DecayRun
+DecayRun.FileName engineering/background_validation_20260624/06_bgo_matched_runs/p0/delayed_transport/DelayedDecayBgoP0
+DecayRun.Triggers 1000
+
+DecayRun.Source S_Outer_Al_Mechanical_Shell_detector_bay_side_wall_below_side_port_13028_z005
+
+# ===== Sources =====
+S_Outer_Al_Mechanical_Shell_detector_bay_side_wall_below_side_port_13028_z005.ParticleType 13028
+S_Outer_Al_Mechanical_Shell_detector_bay_side_wall_below_side_port_13028_z005.Beam RadialProfileBeam 0.000000 0.000000 -21.131760  0.000000 0.000000 1.000000  /home/ubuntu/TES_511_Balloon/engineering/background_validation_20260624/06_bgo_matched_runs/p0/decay_source/profiles/Outer_Al_Mechanical_Shell_detector_bay_side_wall_below_side_port/ZA13028_exc0/radial_z005.dat
+S_Outer_Al_Mechanical_Shell_detector_bay_side_wall_below_side_port_13028_z005.Flux 5.85905458e+01
+

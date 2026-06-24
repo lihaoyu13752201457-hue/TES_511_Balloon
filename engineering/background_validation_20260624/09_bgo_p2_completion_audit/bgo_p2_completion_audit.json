@@ -1,0 +1,444 @@
+{
+  "artifact_type": "bgo_p2_completion_audit",
+  "status": "PASS_BGO_P2_COMPLETION_AUDIT",
+  "generated_utc": "2026-06-24T07:22:42Z",
+  "harness": "core_md/balloon511_nima_latex_drafts/revision_harness_runs/HARNESS_20260624/HARNESS_ENGINEERING_TES511_BACKGROUND_VALIDATION.md",
+  "claim_boundary": "BGO engineering material-control run is complete under HARNESS staging. Differences are not material-preference claims unless statistically resolved and manuscript authority is separately promoted.",
+  "rows": [
+    {
+      "check": "harness_preconditions_g0_to_g4",
+      "status": "PASS",
+      "evidence_path": "engineering/background_validation_20260624",
+      "blocking": true,
+      "details": {
+        "statuses": {
+          "G0": "PASS",
+          "G1": "PASS",
+          "G2": "PASS_EPLUS_PROVENANCE",
+          "G3": "DELAYED_CONVERGED",
+          "G4": "PASS_BGO_SAME_ENVELOPE_GEOMETRY"
+        }
+      }
+    },
+    {
+      "check": "resource_guard_user_approval",
+      "status": "PASS",
+      "evidence_path": "engineering/background_validation_20260624/05_matched_runs_resource_guard/USER_APPROVAL_20260624.md",
+      "blocking": true,
+      "details": {
+        "approval_exists": true,
+        "resource_guard_status_before_approval": "BLOCKED_RESOURCE_APPROVAL"
+      }
+    },
+    {
+      "check": "bgo_same_envelope_geometry",
+      "status": "PASS",
+      "evidence_path": "engineering/background_validation_20260624/04_bgo_variant/summary.json",
+      "blocking": true,
+      "details": {
+        "status": "PASS_BGO_SAME_ENVELOPE_GEOMETRY",
+        "checks": {
+          "material_replaced_volume_count": 24,
+          "parser_active_volume_count": 24,
+          "legacy_volume_name_with_BGO_material": true,
+          "det_file_hash_equal": true,
+          "intro_file_hash_equal": true,
+          "materials_file_hash_equal": true,
+          "setup_surrounding_sphere_equal": true,
+          "setup_surrounding_sphere": "SurroundingSphere 60 4.49012806 0 4.49012806 60"
+        },
+        "problems": []
+      }
+    },
+    {
+      "check": "bgo_source_manifest_flux_geometry_parity",
+      "status": "PASS",
+      "evidence_path": "engineering/background_validation_20260624/05_matched_runs_resource_guard/bgo_source_card_manifest.csv",
+      "blocking": true,
+      "details": {
+        "source_card_rows": 8,
+        "all_physics_hash_equal_excluding_geometry": true,
+        "all_geometry_lines_point_to_bgo": true
+      }
+    },
+    {
+      "check": "all_bgo_source_cards_use_bgo_geometry",
+      "status": "PASS",
+      "evidence_path": "engineering/background_validation_20260624/06_bgo_matched_runs",
+      "blocking": true,
+      "details": {
+        "checked_source_cards": 146,
+        "bad": []
+      }
+    },
+    {
+      "check": "all_p2_sim_headers_use_bgo_geometry",
+      "status": "PASS",
+      "evidence_path": "engineering/background_validation_20260624/06_bgo_matched_runs/p2",
+      "blocking": true,
+      "details": {
+        "checked_sim_headers": 138,
+        "bad": []
+      }
+    },
+    {
+      "check": "p0_p1_p2_transport_stages_complete",
+      "status": "PASS",
+      "evidence_path": "engineering/background_validation_20260624/06_bgo_matched_runs",
+      "blocking": true,
+      "details": {
+        "stage_stats": {
+          "p0": {
+            "instant": {
+              "jobs": 8,
+              "failed": 0,
+              "missing_sim": 0,
+              "missing_dat": 0,
+              "events": 1188
+            },
+            "buildup": {
+              "jobs": 8,
+              "failed": 0,
+              "missing_sim": 0,
+              "missing_dat": 0,
+              "events": 1188
+            }
+          },
+          "p1": {
+            "instant": {
+              "jobs": 19,
+              "failed": 0,
+              "missing_sim": 0,
+              "missing_dat": 0,
+              "events": 1190129
+            },
+            "buildup": {
+              "jobs": 19,
+              "failed": 0,
+              "missing_sim": 0,
+              "missing_dat": 0,
+              "events": 1190129
+            }
+          },
+          "p2": {
+            "instant": {
+              "jobs": 68,
+              "failed": 0,
+              "missing_sim": 0,
+              "missing_dat": 0,
+              "events": 25210216
+            },
+            "buildup": {
+              "jobs": 68,
+              "failed": 0,
+              "missing_sim": 0,
+              "missing_dat": 0,
+              "events": 25210216
+            }
+          }
+        }
+      }
+    },
+    {
+      "check": "p2_run_matrix_matches_fix5_authority",
+      "status": "PASS",
+      "evidence_path": "engineering/background_validation_20260624/06_bgo_matched_runs/p2",
+      "blocking": true,
+      "details": {
+        "instant": {
+          "gamma_events": true,
+          "gamma_splits": true,
+          "non_gamma_replicas": true,
+          "farfield_radius_cm": true,
+          "farfield_area_cm2": true,
+          "gamma_prompt_time_s_with_farfield_area": true,
+          "flux_by_particle_cm2_s": true,
+          "base_events_by_particle": true,
+          "jobs": true,
+          "manifest_parity": {
+            "bgo_jobs": 68,
+            "fix5_jobs": 68,
+            "mismatches": []
+          }
+        },
+        "buildup": {
+          "gamma_events": true,
+          "gamma_splits": true,
+          "non_gamma_replicas": true,
+          "farfield_radius_cm": true,
+          "farfield_area_cm2": true,
+          "gamma_prompt_time_s_with_farfield_area": true,
+          "flux_by_particle_cm2_s": true,
+          "base_events_by_particle": true,
+          "jobs": true,
+          "manifest_parity": {
+            "bgo_jobs": 68,
+            "fix5_jobs": 68,
+            "mismatches": []
+          }
+        }
+      }
+    },
+    {
+      "check": "delayed_groundstate_and_division_audit",
+      "status": "PASS",
+      "evidence_path": "engineering/background_validation_20260624/06_bgo_matched_runs/p2/delay_fix/normalization_audit_groundstate_fix.json",
+      "blocking": true,
+      "details": {
+        "status": "PASS",
+        "problems": [],
+        "bad_division_tags": []
+      }
+    },
+    {
+      "check": "delayed_exactpos_m_sampling_inventory",
+      "status": "PASS",
+      "evidence_path": "engineering/background_validation_20260624/06_bgo_matched_runs/p2/delay_fix/bgo_p2_exactpos_m50000_s260613_delayed_source_manifest.json",
+      "blocking": true,
+      "details": {
+        "fixed_total_activity_Bq": 29.185189557290116,
+        "activity_slices": {
+          "w_element_activity_Bq": 2.1733367597985005,
+          "w_or_collimator_volume_activity_Bq": 2.1875322348469006,
+          "top_activity_volumes": [
+            {
+              "VN": "Vacuum_Jacket_Al_266mmClass_side_port_side_wall_above_side_port",
+              "activity_Bq": 2.6528324715320033
+            },
+            {
+              "VN": "ColdPlate_4K",
+              "activity_Bq": 2.432049979582587
+            },
+            {
+              "VN": "Window",
+              "activity_Bq": 2.3099617555039322
+            },
+            {
+              "VN": "Passive_W_Bottom_Plate_detector_bay",
+              "activity_Bq": 2.1875322348469006
+            },
+            {
+              "VN": "Outer_Al_Mechanical_Shell_detector_bay_side_wall_below_side_port",
+              "activity_Bq": 2.1307239956866626
+            },
+            {
+              "VN": "Outer_Al_Mechanical_Shell_detector_bay_bottom_cap",
+              "activity_Bq": 1.4577176672938892
+            },
+            {
+              "VN": "ColdPlate_Still_0p7K",
+              "activity_Bq": 1.3449000746598831
+            },
+            {
+              "VN": "Outer_Al_Mechanical_Shell_detector_bay_side_wall_above_side_port",
+              "activity_Bq": 1.2498044679597111
+            },
+            {
+              "VN": "Plate_300K_Top_Service_Lid",
+              "activity_Bq": 1.0631772225224998
+            },
+            {
+              "VN": "DR_MXC_Sinter_HEX_AgProxy",
+              "activity_Bq": 0.9033901191750001
+            },
+            {
+              "VN": "CsI_Bottom_Quadrant_00",
+              "activity_Bq": 0.8255417424148198
+            },
+            {
+              "VN": "CsI_Bottom_Quadrant_03",
+              "activity_Bq": 0.8131837694978226
+            },
+            {
+              "VN": "CsI_Bottom_Quadrant_01",
+              "activity_Bq": 0.784585697655981
+            },
+            {
+              "VN": "ColdPlate_CP_100mK_intercept",
+              "activity_Bq": 0.7603397037649547
+            },
+            {
+              "VN": "ColdPlate_MXC_50mK_SD_anchor",
+              "activity_Bq": 0.736246687619017
+            },
+            {
+              "VN": "CsI_Bottom_Quadrant_02",
+              "activity_Bq": 0.7291875788319095
+            },
+            {
+              "VN": "Outer_Al_Mechanical_Shell_detector_bay_top_annulus",
+              "activity_Bq": 0.695654447390138
+            },
+            {
+              "VN": "CsI_Side_Segment_07",
+              "activity_Bq": 0.4516891637813004
+            },
+            {
+              "VN": "CsI_Side_Segment_00",
+              "activity_Bq": 0.42217304298769126
+            },
+            {
+              "VN": "CsI_Side_Segment_06",
+              "activity_Bq": 0.4136647591908585
+            }
+          ],
+          "w_or_collimator_volumes": [
+            {
+              "VN": "Passive_W_Bottom_Plate_detector_bay",
+              "activity_Bq": 2.1875322348469006
+            }
+          ]
+        },
+        "sampling_audit_subset": {
+          "status": "PASS",
+          "parsed_pointsource_blocks": 50000,
+          "manifest_flux_relative_delta": 0.0,
+          "source_text_flux_relative_delta": 2.497882947306792e-10,
+          "matched_back_to_exact_table_fraction": 1.0,
+          "ambiguous_coordinate_key_fraction": 0.0,
+          "missed_nuclides_total_activity_fraction": 0.005557337716038056
+        }
+      }
+    },
+    {
+      "check": "delayed_transport_header_and_counts",
+      "status": "PASS",
+      "evidence_path": "engineering/background_validation_20260624/06_bgo_matched_runs/p2/delayed_transport_exactpos/DelayedDecayBgoP2ExactposM50000S260613.inc1.id1.sim.gz",
+      "blocking": true,
+      "details": {
+        "path": "engineering/background_validation_20260624/06_bgo_matched_runs/p2/delayed_transport_exactpos/DelayedDecayBgoP2ExactposM50000S260613.inc1.id1.sim.gz",
+        "exists": true,
+        "size_bytes": 1094600652,
+        "SE": 1000000,
+        "ID": 1000000,
+        "TS": 1,
+        "TE_s": 32318.644709,
+        "geometry": "  /home/ubuntu/TES_511_Balloon/engineering/background_validation_20260624/04_bgo_variant/geometry_bgo_same_envelope/DEMO2_DR_v3p5_minpatch_centerfinger_bgo_same_envelope_megalib_proxy.geo.setup",
+        "status": "PASS"
+      }
+    },
+    {
+      "check": "focused_signal_replay_bgo_geometry",
+      "status": "PASS",
+      "evidence_path": "engineering/background_validation_20260624/06_bgo_matched_runs/p2/step09_focus/step09_focus_summary.json",
+      "blocking": true,
+      "details": {
+        "status": "PASS_BGO_ENGINEERING_STEP09_FOCUS_TRANSPORT",
+        "problems": [],
+        "focused_transport": {
+          "path": "engineering/background_validation_20260624/06_bgo_matched_runs/p2/step09_focus/run/Opticsim_laue_f10m_a1_bgo_same_envelope_p2_focus.inc1.id1.sim.gz",
+          "exists": true,
+          "size_bytes": 24279927,
+          "SE": 37194,
+          "ID": 37194,
+          "TS": 1,
+          "TE_s": 3.7e-05,
+          "geometry": "  /home/ubuntu/TES_511_Balloon/engineering/background_validation_20260624/04_bgo_variant/geometry_bgo_same_envelope/DEMO2_DR_v3p5_minpatch_centerfinger_bgo_same_envelope_megalib_proxy.geo.setup"
+        }
+      }
+    },
+    {
+      "check": "step05_identical_selection_ingest",
+      "status": "PASS",
+      "evidence_path": "engineering/background_validation_20260624/06_bgo_matched_runs/p2/step05_ingest_exactpos_with_focus/bgo_engineering_step05_ingest_summary.json",
+      "blocking": true,
+      "details": {
+        "status": "PASS_BGO_ENGINEERING_STEP05_INGEST",
+        "inputs": {
+          "prompt_dir": "engineering/background_validation_20260624/06_bgo_matched_runs/p2/instant",
+          "prompt_files": 68,
+          "prompt_dat_files": 68,
+          "delayed_sim": "engineering/background_validation_20260624/06_bgo_matched_runs/p2/delayed_transport_exactpos/DelayedDecayBgoP2ExactposM50000S260613.inc1.id1.sim.gz",
+          "fixed_source": "engineering/background_validation_20260624/06_bgo_matched_runs/p2/delay_fix/activation_decay_day15_groundstate_fixed_exactpos_bgo_p2_exactpos_m50000_s260613.source",
+          "science_sim": "engineering/background_validation_20260624/06_bgo_matched_runs/p2/step09_focus/run/Opticsim_laue_f10m_a1_bgo_same_envelope_p2_focus.inc1.id1.sim.gz",
+          "step09_summary": "engineering/background_validation_20260624/06_bgo_matched_runs/p2/step09_focus/step09_focus_summary.json",
+          "science_stream": "included"
+        },
+        "normalization": {
+          "prompt_time_s": 184.2200984295893,
+          "prompt_rate_rule": "per-tag event rate = 1 / sum(TT_s for prompt dat files with that tag)",
+          "delayed_time_s": 32318.644709336,
+          "active_veto_threshold_keV": 50.0,
+          "coincidence_window_s": 1e-06,
+          "reject_policy": "keep",
+          "science_unit_injection_rate_s-1": 1.0,
+          "prompt_normalization_audit_json": "engineering/background_validation_20260624/06_bgo_matched_runs/p2/step05_ingest_exactpos_with_focus/prompt_normalization_audit.json"
+        }
+      }
+    },
+    {
+      "check": "w2_bgo_vs_fix5_comparison_with_uncertainty",
+      "status": "PASS",
+      "evidence_path": "engineering/background_validation_20260624/06_bgo_matched_runs/p2/step05_ingest_exactpos_with_focus/bgo_engineering_step05_ingest_summary.json",
+      "blocking": false,
+      "details": {
+        "window": "w2_510p58_511p42",
+        "bgo_background_cps": 0.037491894729074215,
+        "fix5_background_cps": 0.0392162265186315,
+        "bgo_simple_poisson_sigma_cps": 0.005185449247852125,
+        "fix5_simple_poisson_sigma_cps": 0.005008329321646361,
+        "bgo_minus_fix5_cps": -0.0017243317895572832,
+        "difference_z_simple_poisson": -0.23918563325025377,
+        "bgo_final_background_events": 158,
+        "fix5_final_background_events": 84,
+        "bgo_signal_cps": 0.0011805670050608003,
+        "fix5_signal_cps": 0.00118587480749719,
+        "signal_keep_vs_fix5": 0.9955241460541759,
+        "interpretation": "unresolved_difference",
+        "sigma_note": "Simple Poisson approximation from selected final events; not a paired covariance estimate."
+      }
+    },
+    {
+      "check": "selected_w_origin_decomposition",
+      "status": "WARN_NOT_AVAILABLE",
+      "evidence_path": "engineering/background_validation_20260624/06_bgo_matched_runs/p2/delay_fix/bgo_p2_exactpos_m50000_s260613_delayed_source_manifest.json",
+      "blocking": false,
+      "details": {
+        "available": "source-level W/collimator activity only",
+        "w_or_collimator_volume_activity_Bq": 2.1875322348469006,
+        "reason": "No BGO selected-W2 event-by-origin audit was generated; do not claim W-origin selected contribution is zero."
+      }
+    },
+    {
+      "check": "no_tracked_authority_outputs_modified",
+      "status": "PASS",
+      "evidence_path": "git status --porcelain=v1",
+      "blocking": true,
+      "details": {
+        "forbidden_tracked_modifications": [],
+        "dirty_entries_count": 28,
+        "note": "Large BGO products are untracked engineering artifacts; do not commit without a storage policy."
+      }
+    }
+  ],
+  "blocking_failures": [],
+  "nonblocking_warnings": [
+    {
+      "check": "selected_w_origin_decomposition",
+      "status": "WARN_NOT_AVAILABLE",
+      "evidence_path": "engineering/background_validation_20260624/06_bgo_matched_runs/p2/delay_fix/bgo_p2_exactpos_m50000_s260613_delayed_source_manifest.json",
+      "blocking": false,
+      "details": {
+        "available": "source-level W/collimator activity only",
+        "w_or_collimator_volume_activity_Bq": 2.1875322348469006,
+        "reason": "No BGO selected-W2 event-by-origin audit was generated; do not claim W-origin selected contribution is zero."
+      }
+    }
+  ],
+  "key_results": {
+    "window": "w2_510p58_511p42",
+    "bgo_background_cps": 0.037491894729074215,
+    "fix5_background_cps": 0.0392162265186315,
+    "bgo_simple_poisson_sigma_cps": 0.005185449247852125,
+    "fix5_simple_poisson_sigma_cps": 0.005008329321646361,
+    "bgo_minus_fix5_cps": -0.0017243317895572832,
+    "difference_z_simple_poisson": -0.23918563325025377,
+    "bgo_final_background_events": 158,
+    "fix5_final_background_events": 84,
+    "bgo_signal_cps": 0.0011805670050608003,
+    "fix5_signal_cps": 0.00118587480749719,
+    "signal_keep_vs_fix5": 0.9955241460541759,
+    "interpretation": "unresolved_difference",
+    "sigma_note": "Simple Poisson approximation from selected final events; not a paired covariance estimate."
+  }
+}

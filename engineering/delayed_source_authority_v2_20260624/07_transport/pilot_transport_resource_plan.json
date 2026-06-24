@@ -1,0 +1,63 @@
+{
+  "blocking_reasons": [
+    "pilot transport would create new Cosima simulation outputs",
+    "v2 exact-position EventList has 254704 weighted rows",
+    "G5 native oracle status is EXPLAINED_MODEL_DIFFERENCE; selected-rate promotion still requires pilot/full transport and Step05 ingestion"
+  ],
+  "candidate_inputs": {
+    "legacy_l0_source": "runs/step02_delay_fix_fix5_fullstat_v2/activation_decay_day15_groundstate_fixed_exactpos_m50000_s260613.source",
+    "legacy_l0_source_found": true,
+    "native_activation_sources_probe": "engineering/delayed_source_authority_v2_20260624/05_native_activation/native_activation_sources_probe.source",
+    "pilot_input_manifest": "engineering/delayed_source_authority_v2_20260624/07_transport/pilot_input_manifest.json",
+    "timing_authority": "engineering/delayed_source_authority_v2_20260624/06_time_constant/timing_authority.json",
+    "v2_eventlist_rows": 254704,
+    "v2_eventlist_source": "engineering/delayed_source_authority_v2_20260624/04_custom_source_v2/source_v2_eventlist.source"
+  },
+  "claim_boundary": "resource plan only; no pilot selected-rate authority",
+  "generated_at": "2026-06-24T06:38:12Z",
+  "prepared_pilot_inputs": {
+    "claim_boundary": "pilot input preparation only; no Cosima transport launched",
+    "generated_at": "2026-06-24T06:38:00Z",
+    "legacy_l0": {
+      "legacy_source": "runs/step02_delay_fix_fix5_fullstat_v2/activation_decay_day15_groundstate_fixed_exactpos_m50000_s260613.source",
+      "legacy_source_found": true,
+      "source": "engineering/delayed_source_authority_v2_20260624/07_transport/pilot_inputs/legacy_l0_pilot1000.source",
+      "triggers": 1000
+    },
+    "native_volume_activation": {
+      "activation_store": "engineering/delayed_source_authority_v2_20260624/04_custom_source_v2/source_v2_native_activity_store_total.dat",
+      "source": "engineering/delayed_source_authority_v2_20260624/07_transport/pilot_inputs/native_activation_sources_pilot1000.source",
+      "triggers": 1000
+    },
+    "status": "READY_NOT_RUN",
+    "v2_weighted_eventlist": {
+      "eventlist": "engineering/delayed_source_authority_v2_20260624/07_transport/pilot_inputs/v2_eventlist_pilot1000.dat",
+      "full_eventlist_rows": 254704,
+      "pilot_event_weight_Bq": "0.086999842066995796472549657847893265995051576885679999999999999999999999999991435",
+      "represented_total_activity_Bq": "86.999842066995796472549657847893265995051576885679999999999999999999999999991435",
+      "sample_size": 1000,
+      "sampling_method": "weighted_systematic_pps",
+      "source": "engineering/delayed_source_authority_v2_20260624/07_transport/pilot_inputs/v2_eventlist_pilot1000.source",
+      "weights": "engineering/delayed_source_authority_v2_20260624/07_transport/pilot_inputs/v2_event_weights_pilot1000.csv"
+    }
+  },
+  "promotion_allowed_after_this_gate": false,
+  "recommended_bounded_pilot": {
+    "legacy_triggers": 1000,
+    "native_triggers": 1000,
+    "outputs_dir": "engineering/delayed_source_authority_v2_20260624/07_transport/pilot_runs",
+    "selection": "existing Step05 selection only; no veto/W2/geometry changes",
+    "v2_eventlist_rows": "first deterministic 1000-row slice or stratified weighted subset; do not overwrite source-v2 authority"
+  },
+  "required_user_approval": {
+    "approve_cosima_pilot_transport": false,
+    "minimum_matrix": [
+      "legacy L0 delayed source",
+      "v2 weighted exact-position EventList source",
+      "native volume-level ActivationSources source"
+    ]
+  },
+  "status": "BLOCKED_RESOURCE_APPROVAL",
+  "wp05_status": "EXPLAINED_MODEL_DIFFERENCE",
+  "wp06_status": "TIME_CONSTANT_STABLE"
+}

@@ -1,0 +1,21 @@
+{
+  "raw_all_file_native_activator_verdict": "DO_NOT_USE_SINGLE_ALL_TAG_ACTIVATOR",
+  "reason": "single Activator LoadCountsFiles divides merged counts by total TT; this is not tag-aware across different production species/exposure normalizations",
+  "safe_native_plan": [
+    "run Activator per production_tag, merging only files that share that tag exposure semantics",
+    "sum resulting per-tag activity stores after Activator output",
+    "compare parent/daughter feeding deltas against the direct source-v2 inventory"
+  ],
+  "source_code_checks": {
+    "activator_accepts_multiple_isotope_files": true,
+    "activator_divides_by_total_time": true,
+    "activator_sums_loaded_counts": true,
+    "activator_sums_total_time": true,
+    "timeprofile_not_implemented": true
+  },
+  "source_code_evidence": {
+    "MCActivator.cc": "LoadCountsFiles sums counts and TotalTime then scales by 1/TotalTime around lines 154-188",
+    "MCParameterFile.cc": "Activator IsotopeProductionFile/ActivationMode parser around lines 629-745"
+  },
+  "status": "PASS"
+}

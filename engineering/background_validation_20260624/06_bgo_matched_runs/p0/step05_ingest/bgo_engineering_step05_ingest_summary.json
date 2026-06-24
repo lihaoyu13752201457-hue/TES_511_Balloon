@@ -1,0 +1,200 @@
+{
+  "status": "PASS_BGO_ENGINEERING_STEP05_INGEST",
+  "label": "bgo_p0",
+  "claim_level": "P0/P1 engineering ingest only; no CsI/BGO material conclusion",
+  "inputs": {
+    "prompt_dir": "engineering/background_validation_20260624/06_bgo_matched_runs/p0/instant",
+    "prompt_files": 8,
+    "prompt_dat_files": 8,
+    "delayed_sim": "engineering/background_validation_20260624/06_bgo_matched_runs/p0/delayed_transport/DelayedDecayBgoP0GroundStateFixed.inc1.id1.sim.gz",
+    "fixed_source": "engineering/background_validation_20260624/06_bgo_matched_runs/p0/delay_fix/activation_decay_day15_groundstate_fixed.source",
+    "science_stream": "not_run_in_this_ingest"
+  },
+  "normalization": {
+    "prompt_time_s": 0.01842200984295893,
+    "prompt_rate_rule": "per-tag event rate = 1 / sum(TT_s for prompt dat files with that tag)",
+    "delayed_time_s": 17.638261884,
+    "active_veto_threshold_keV": 50.0,
+    "coincidence_window_s": 1e-06,
+    "reject_policy": "keep",
+    "prompt_normalization_audit_json": "engineering/background_validation_20260624/06_bgo_matched_runs/p0/step05_ingest/prompt_normalization_audit.json"
+  },
+  "catalog": {
+    "events_kept": 1011,
+    "pixel_hits_kept": 4,
+    "by_stream_events": {
+      "prompt": 11,
+      "delayed": 1000,
+      "science": 0
+    },
+    "by_stream_tes_events": {
+      "prompt": 0,
+      "delayed": 3,
+      "science": 0
+    }
+  },
+  "windows": {
+    "broad_480_550": {
+      "window_keV": [
+        480.0,
+        550.0
+      ],
+      "by_stream": {
+        "prompt": {
+          "raw_events": 0,
+          "active_veto_pass_events": 0,
+          "side_compton_fov_pass_events": 0,
+          "raw_rate_s-1": 0.0,
+          "active_veto_pass_rate_s-1": 0.0,
+          "side_compton_fov_pass_rate_s-1": 0.0,
+          "active_veto_survival_fraction": null,
+          "side_compton_fov_survival_fraction_vs_active": null,
+          "side_compton_class_counts": {}
+        },
+        "delayed": {
+          "raw_events": 1,
+          "active_veto_pass_events": 0,
+          "side_compton_fov_pass_events": 0,
+          "raw_rate_s-1": 0.05669492870536858,
+          "active_veto_pass_rate_s-1": 0.0,
+          "side_compton_fov_pass_rate_s-1": 0.0,
+          "active_veto_survival_fraction": 0.0,
+          "side_compton_fov_survival_fraction_vs_active": null,
+          "side_compton_class_counts": {}
+        },
+        "science": {
+          "raw_events": 0,
+          "active_veto_pass_events": 0,
+          "side_compton_fov_pass_events": 0,
+          "raw_rate_s-1": 0.0,
+          "active_veto_pass_rate_s-1": 0.0,
+          "side_compton_fov_pass_rate_s-1": 0.0,
+          "active_veto_survival_fraction": null,
+          "side_compton_fov_survival_fraction_vs_active": null,
+          "side_compton_class_counts": {}
+        }
+      },
+      "total": {
+        "raw": {
+          "events": 1,
+          "rate_s-1": 0.05669492870536858
+        },
+        "active_veto_pass": {
+          "events": 0,
+          "rate_s-1": 0.0
+        },
+        "side_compton_fov_pass": {
+          "events": 0,
+          "rate_s-1": 0.0
+        }
+      }
+    },
+    "w2_510p58_511p42": {
+      "window_keV": [
+        510.58,
+        511.42
+      ],
+      "by_stream": {
+        "prompt": {
+          "raw_events": 0,
+          "active_veto_pass_events": 0,
+          "side_compton_fov_pass_events": 0,
+          "raw_rate_s-1": 0.0,
+          "active_veto_pass_rate_s-1": 0.0,
+          "side_compton_fov_pass_rate_s-1": 0.0,
+          "active_veto_survival_fraction": null,
+          "side_compton_fov_survival_fraction_vs_active": null,
+          "side_compton_class_counts": {}
+        },
+        "delayed": {
+          "raw_events": 0,
+          "active_veto_pass_events": 0,
+          "side_compton_fov_pass_events": 0,
+          "raw_rate_s-1": 0.0,
+          "active_veto_pass_rate_s-1": 0.0,
+          "side_compton_fov_pass_rate_s-1": 0.0,
+          "active_veto_survival_fraction": null,
+          "side_compton_fov_survival_fraction_vs_active": null,
+          "side_compton_class_counts": {}
+        },
+        "science": {
+          "raw_events": 0,
+          "active_veto_pass_events": 0,
+          "side_compton_fov_pass_events": 0,
+          "raw_rate_s-1": 0.0,
+          "active_veto_pass_rate_s-1": 0.0,
+          "side_compton_fov_pass_rate_s-1": 0.0,
+          "active_veto_survival_fraction": null,
+          "side_compton_fov_survival_fraction_vs_active": null,
+          "side_compton_class_counts": {}
+        }
+      },
+      "total": {
+        "raw": {
+          "events": 0,
+          "rate_s-1": 0.0
+        },
+        "active_veto_pass": {
+          "events": 0,
+          "rate_s-1": 0.0
+        },
+        "side_compton_fov_pass": {
+          "events": 0,
+          "rate_s-1": 0.0
+        }
+      }
+    }
+  },
+  "timeline": {
+    "obs_time_s": 17.638261884,
+    "n_event_instances": 12555,
+    "n_candidates_total": 12549,
+    "n_candidates_with_tes": 1,
+    "n_mixed_candidates": 1,
+    "windows": {
+      "broad_480_550": {
+        "counts": {
+          "raw": 0,
+          "active_veto_pass": 0,
+          "side_compton_fov_pass": 0
+        },
+        "rates_s-1": {
+          "raw": 0.0,
+          "active_veto_pass": 0.0,
+          "side_compton_fov_pass": 0.0
+        },
+        "side_compton_class_counts": {}
+      },
+      "w2_510p58_511p42": {
+        "counts": {
+          "raw": 0,
+          "active_veto_pass": 0,
+          "side_compton_fov_pass": 0
+        },
+        "rates_s-1": {
+          "raw": 0.0,
+          "active_veto_pass": 0.0,
+          "side_compton_fov_pass": 0.0
+        },
+        "side_compton_class_counts": {}
+      }
+    }
+  },
+  "timeline_draw_summary": {
+    "prompt": {
+      "lambda": 11367.789303944313,
+      "drawn": 11568,
+      "rate_hz": 644.4960041247743
+    },
+    "delayed": {
+      "lambda": 1000.0000000000003,
+      "drawn": 987,
+      "rate_hz": 56.694928705368596
+    },
+    "science": {
+      "lambda": 0.0,
+      "drawn": 0,
+      "rate_hz": 0.0
+    }
+  }
+}

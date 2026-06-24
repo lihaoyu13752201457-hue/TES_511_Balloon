@@ -1,0 +1,34 @@
+{
+  "claim_impact": [
+    "No v2 delayed selected-rate or sensitivity number may be used as manuscript authority.",
+    "Legacy fix5 delayed selected rates remain retained as legacy-reference numbers only.",
+    "Downstream delayed-dependent artifacts must be rebuilt only after a future promotion decision."
+  ],
+  "findings": [
+    "source-v2 construction and timing authority are closed, but selected-rate authority is not",
+    "v2 full-stat selected-rate convergence, sum_w2, and seed variance are missing",
+    "legacy L0 pilot comparator timed out; v2/native pilot rates are diagnostic only",
+    "no Step05-Step08, BGO, sensitivity, or manuscript number was replaced"
+  ],
+  "inputs": [
+    "engineering/delayed_source_authority_v2_20260624/04_custom_source_v2/source_v2_manifest.json",
+    "engineering/delayed_source_authority_v2_20260624/05_native_activation/tag_aware_native_vs_direct_comparison.json",
+    "engineering/delayed_source_authority_v2_20260624/06_time_constant/timing_authority.json",
+    "engineering/delayed_source_authority_v2_20260624/07_transport/summary.json",
+    "outputs/reports/fix5_fullstat_v2_exactpos_m50000_s260613/fix5_delayed_source_exactpos_summary.json",
+    "stepwise_maintenance/step05_veto_time_axis/outputs_fix5_fullstat_v2_exactpos_m50000_s260613_l1/step05_fix5_fullstat_v2_exactpos_m50000_s260613_l1_response_summary.json"
+  ],
+  "next_gate": "User decision: approve a v2 full-stat selected-rate convergence/resource plan, or accept NO_RATE_AUTHORITY endpoint.",
+  "outputs": [
+    "engineering/delayed_source_authority_v2_20260624/08_promotion/legacy_v2_comparison.csv",
+    "engineering/delayed_source_authority_v2_20260624/08_promotion/legacy_v2_comparison.md",
+    "engineering/delayed_source_authority_v2_20260624/08_promotion/affected_artifacts_manifest.json",
+    "engineering/delayed_source_authority_v2_20260624/08_promotion/stale_artifacts_manifest.md",
+    "engineering/delayed_source_authority_v2_20260624/08_promotion/promotion_decision.json",
+    "engineering/delayed_source_authority_v2_20260624/08_promotion/promotion_decision.md",
+    "engineering/delayed_source_authority_v2_20260624/08_promotion/manuscript_numbers_manifest.json",
+    "engineering/delayed_source_authority_v2_20260624/08_promotion/summary.md"
+  ],
+  "status": "NO_RATE_AUTHORITY",
+  "user_decision_required": true
+}

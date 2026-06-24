@@ -1,0 +1,31 @@
+{
+  "status": "TIME_CONSTANT_STABLE",
+  "inputs": [
+    "engineering/delayed_source_authority_v2_20260624/05_native_activation/native_activation_oracle_summary.json",
+    "engineering/delayed_source_authority_v2_20260624/05_native_activation/tag_aware_native_vs_direct_comparison.json"
+  ],
+  "outputs": [
+    "engineering/delayed_source_authority_v2_20260624/06_time_constant/timing_authority.json",
+    "engineering/delayed_source_authority_v2_20260624/06_time_constant/timing_authority.md",
+    "engineering/delayed_source_authority_v2_20260624/06_time_constant/detector_time_constant_audit.json",
+    "engineering/delayed_source_authority_v2_20260624/06_time_constant/static_lifetime_risk_summary.json",
+    "engineering/delayed_source_authority_v2_20260624/06_time_constant/static_lifetime_risk.csv",
+    "engineering/delayed_source_authority_v2_20260624/06_time_constant/summary.md",
+    "engineering/delayed_source_authority_v2_20260624/06_time_constant/time_constant_state_risk.csv",
+    "engineering/delayed_source_authority_v2_20260624/06_time_constant/time_constant_pilot_matrix.csv",
+    "engineering/delayed_source_authority_v2_20260624/06_time_constant/time_constant_pilot_results.csv",
+    "engineering/delayed_source_authority_v2_20260624/06_time_constant/time_constant_verdict.json",
+    "engineering/delayed_source_authority_v2_20260624/06_time_constant/time_constant_verdict.md"
+  ],
+  "findings": [
+    "Unique DetectorTimeConstant values: 1e-9.",
+    "Positive activity in 1 ns--5 us bins: 0 Bq.",
+    "WP05 native oracle status remains EXPLAINED_MODEL_DIFFERENCE."
+  ],
+  "claim_impact": [
+    "DetectorTimeConstant handling is stable for the audited delayed-source boundary.",
+    "Timing audit alone does not authorize v2 rate promotion."
+  ],
+  "next_gate": "G7 pilot transport/resource plan; no promotion until native limitation is resolved or accepted",
+  "user_decision_required": false
+}

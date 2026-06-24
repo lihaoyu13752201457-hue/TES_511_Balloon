@@ -1,0 +1,32 @@
+{
+  "status": "PASS",
+  "inputs": [
+    "runs/step02_buildup_fix5_fullstat_v2/run_manifest.csv",
+    "runs/step02_buildup_fix5_fullstat_v2/normalization.json",
+    "inputs/nubase/nubase_2020.txt",
+    "runs/step02_buildup_fix5_fullstat_v2/*.dat.inc1.dat"
+  ],
+  "outputs": [
+    "engineering/delayed_source_authority_v2_20260624/01_raw_inventory/dat_file_manifest.csv",
+    "engineering/delayed_source_authority_v2_20260624/01_raw_inventory/dat_exposure_by_tag.csv",
+    "engineering/delayed_source_authority_v2_20260624/01_raw_inventory/raw_inventory_all_states.csv",
+    "engineering/delayed_source_authority_v2_20260624/01_raw_inventory/raw_inventory_source_rows.csv",
+    "engineering/delayed_source_authority_v2_20260624/01_raw_inventory/raw_inventory_summary.json",
+    "engineering/delayed_source_authority_v2_20260624/01_raw_inventory/raw_inventory_summary.md",
+    "engineering/delayed_source_authority_v2_20260624/01_raw_inventory/activity_omission_ledger.csv",
+    "engineering/delayed_source_authority_v2_20260624/01_raw_inventory/duplicate_state_audit.csv",
+    "engineering/delayed_source_authority_v2_20260624/01_raw_inventory/inventory_closure.json"
+  ],
+  "findings": [
+    "Parsed 68 .dat files and 5401 raw RP rows.",
+    "Direct day-15 activity sum: 86.99984206699579647254965889 Bq.",
+    "Classification counts: {'EMITTED_CANDIDATE': 2036, 'STABLE': 37}.",
+    "5 duplicate NUBASE excitation-state rows exist globally but none match raw .dat keys."
+  ],
+  "claim_impact": [
+    "This is a direct-production inventory ledger, not a promoted delayed-rate authority.",
+    "Legacy delayed selected rates remain comparator-only until RPIP/source/native/timing/transport gates pass."
+  ],
+  "next_gate": "G2 RPIP alignment by production_tag/raw_volume/ZA/state",
+  "user_decision_required": false
+}

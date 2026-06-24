@@ -1,0 +1,42 @@
+{
+  "claim_boundary": "source-semantics only; no delayed-rate promotion",
+  "do_not_use_for_authority": [
+    "ParticleType-only excited delayed ions",
+    ".Particles Ion syntax"
+  ],
+  "eventlist_exact_position_boundary": "valid for current all-ground positive inventory; positive nonzero excitation must block or use hybrid/native until EventList excitation units are proven",
+  "fix5_geometry_used_for_probe": "outputs/geometry/DEMO2_DR_v3p5_user_cylmag_redesign_multiholeW_fix5_20260621_megalib_proxy/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup",
+  "generated_at": "2026-06-24T06:19:11Z",
+  "missing_required_checks": [],
+  "next_gate": "G4 build source-v2 EventList, weight ledger, and native isotope-store authority from raw inventory and RPIP alignment",
+  "source_code_checks": {
+    "activation_buildup_detector_time_constant_cut": true,
+    "activation_delayed_decay_detector_time_constant_cut": true,
+    "activation_source_sets_particle_excitation": true,
+    "activation_source_sets_volume_and_flux": true,
+    "activation_sources_parser": true,
+    "detector_time_constant_parser": true,
+    "eventlist_parser": true,
+    "eventlist_reads_exact_position": true,
+    "eventlist_reads_particle_excitation": true,
+    "geant4_ion_lookup_uses_excitation": true,
+    "isotope_store_loads_excitation_keV": true,
+    "no_particle_excitation_token_in_parameter_parser": true,
+    "ordinary_particle_type_parser_only_sets_za": true,
+    "source_particle_definition_uses_excitation": true
+  },
+  "source_files": {
+    "MCIsotopeStore.cc": "/home/ubuntu/MEGAlib_Install/megalib-main/src/cosima/src/MCIsotopeStore.cc",
+    "MCParameterFile.cc": "/home/ubuntu/MEGAlib_Install/megalib-main/src/cosima/src/MCParameterFile.cc",
+    "MCSource.cc": "/home/ubuntu/MEGAlib_Install/megalib-main/src/cosima/src/MCSource.cc",
+    "MCSteppingAction.cc": "/home/ubuntu/MEGAlib_Install/megalib-main/src/cosima/src/MCSteppingAction.cc"
+  },
+  "status": "PASS",
+  "strategy": "EVENTLIST_EXACT_POSITION_CUSTOM_SOURCE_WITH_NATIVE_ACTIVATION_SOURCES_ORACLE",
+  "syntax_probe": {
+    "log": "engineering/delayed_source_authority_v2_20260624/03_source_semantics/excited_ion_source_syntax_test.log",
+    "rejected_particles_ion_keyword": true,
+    "returncode": 255,
+    "status": "REJECTED_UNSUPPORTED_PARTICLES_ION"
+  }
+}

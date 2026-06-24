@@ -1,0 +1,216 @@
+{
+  "status": "PASS_BGO_ENGINEERING_STEP05_INGEST",
+  "label": "bgo_p1_exactpos_m5000_s260613",
+  "claim_level": "P0/P1 engineering ingest only; no CsI/BGO material conclusion",
+  "inputs": {
+    "prompt_dir": "engineering/background_validation_20260624/06_bgo_matched_runs/p1/instant",
+    "prompt_files": 19,
+    "prompt_dat_files": 19,
+    "delayed_sim": "engineering/background_validation_20260624/06_bgo_matched_runs/p1/delayed_transport_exactpos/DelayedDecayBgoP1ExactposM5000S260613.inc1.id1.sim.gz",
+    "fixed_source": "engineering/background_validation_20260624/06_bgo_matched_runs/p1/delay_fix/activation_decay_day15_groundstate_fixed_exactpos_bgo_p1_exactpos_m5000_s260613.source",
+    "science_stream": "not_run_in_this_ingest"
+  },
+  "normalization": {
+    "prompt_time_s": 18.422009842958932,
+    "prompt_rate_rule": "per-tag event rate = 1 / sum(TT_s for prompt dat files with that tag)",
+    "delayed_time_s": 3011.079529707,
+    "active_veto_threshold_keV": 50.0,
+    "coincidence_window_s": 1e-06,
+    "reject_policy": "keep",
+    "prompt_normalization_audit_json": "engineering/background_validation_20260624/06_bgo_matched_runs/p1/step05_ingest_exactpos/prompt_normalization_audit.json"
+  },
+  "catalog": {
+    "events_kept": 58110,
+    "pixel_hits_kept": 721,
+    "by_stream_events": {
+      "prompt": 14441,
+      "delayed": 43669,
+      "science": 0
+    },
+    "by_stream_tes_events": {
+      "prompt": 71,
+      "delayed": 424,
+      "science": 0
+    }
+  },
+  "windows": {
+    "broad_480_550": {
+      "window_keV": [
+        480.0,
+        550.0
+      ],
+      "by_stream": {
+        "prompt": {
+          "raw_events": 1,
+          "active_veto_pass_events": 0,
+          "side_compton_fov_pass_events": 0,
+          "raw_rate_s-1": 0.05438980082454938,
+          "active_veto_pass_rate_s-1": 0.0,
+          "side_compton_fov_pass_rate_s-1": 0.0,
+          "active_veto_survival_fraction": 0.0,
+          "side_compton_fov_survival_fraction_vs_active": null,
+          "side_compton_class_counts": {}
+        },
+        "delayed": {
+          "raw_events": 34,
+          "active_veto_pass_events": 15,
+          "side_compton_fov_pass_events": 13,
+          "raw_rate_s-1": 0.011291631345024105,
+          "active_veto_pass_rate_s-1": 0.004981602063981223,
+          "side_compton_fov_pass_rate_s-1": 0.004317388455450392,
+          "active_veto_survival_fraction": 0.44117647058823534,
+          "side_compton_fov_survival_fraction_vs_active": 0.8666666666666664,
+          "side_compton_class_counts": {
+            "keep": 6,
+            "single": 7,
+            "veto": 2
+          }
+        },
+        "science": {
+          "raw_events": 0,
+          "active_veto_pass_events": 0,
+          "side_compton_fov_pass_events": 0,
+          "raw_rate_s-1": 0.0,
+          "active_veto_pass_rate_s-1": 0.0,
+          "side_compton_fov_pass_rate_s-1": 0.0,
+          "active_veto_survival_fraction": null,
+          "side_compton_fov_survival_fraction_vs_active": null,
+          "side_compton_class_counts": {}
+        }
+      },
+      "total": {
+        "raw": {
+          "events": 35,
+          "rate_s-1": 0.06568143216957349
+        },
+        "active_veto_pass": {
+          "events": 15,
+          "rate_s-1": 0.004981602063981223
+        },
+        "side_compton_fov_pass": {
+          "events": 13,
+          "rate_s-1": 0.004317388455450392
+        }
+      }
+    },
+    "w2_510p58_511p42": {
+      "window_keV": [
+        510.58,
+        511.42
+      ],
+      "by_stream": {
+        "prompt": {
+          "raw_events": 1,
+          "active_veto_pass_events": 0,
+          "side_compton_fov_pass_events": 0,
+          "raw_rate_s-1": 0.05438980082454938,
+          "active_veto_pass_rate_s-1": 0.0,
+          "side_compton_fov_pass_rate_s-1": 0.0,
+          "active_veto_survival_fraction": 0.0,
+          "side_compton_fov_survival_fraction_vs_active": null,
+          "side_compton_class_counts": {}
+        },
+        "delayed": {
+          "raw_events": 26,
+          "active_veto_pass_events": 10,
+          "side_compton_fov_pass_events": 8,
+          "raw_rate_s-1": 0.008634776910900786,
+          "active_veto_pass_rate_s-1": 0.003321068042654148,
+          "side_compton_fov_pass_rate_s-1": 0.002656854434123318,
+          "active_veto_survival_fraction": 0.3846153846153846,
+          "side_compton_fov_survival_fraction_vs_active": 0.7999999999999999,
+          "side_compton_class_counts": {
+            "keep": 3,
+            "single": 5,
+            "veto": 2
+          }
+        },
+        "science": {
+          "raw_events": 0,
+          "active_veto_pass_events": 0,
+          "side_compton_fov_pass_events": 0,
+          "raw_rate_s-1": 0.0,
+          "active_veto_pass_rate_s-1": 0.0,
+          "side_compton_fov_pass_rate_s-1": 0.0,
+          "active_veto_survival_fraction": null,
+          "side_compton_fov_survival_fraction_vs_active": null,
+          "side_compton_class_counts": {}
+        }
+      },
+      "total": {
+        "raw": {
+          "events": 27,
+          "rate_s-1": 0.06302457773545017
+        },
+        "active_veto_pass": {
+          "events": 10,
+          "rate_s-1": 0.003321068042654148
+        },
+        "side_compton_fov_pass": {
+          "events": 8,
+          "rate_s-1": 0.002656854434123318
+        }
+      }
+    }
+  },
+  "timeline": {
+    "obs_time_s": 3011.079529707,
+    "n_event_instances": 2410985,
+    "n_candidates_total": 2409001,
+    "n_candidates_with_tes": 12218,
+    "n_mixed_candidates": 76,
+    "windows": {
+      "broad_480_550": {
+        "counts": {
+          "raw": 206,
+          "active_veto_pass": 14,
+          "side_compton_fov_pass": 14
+        },
+        "rates_s-1": {
+          "raw": 0.06841400167867547,
+          "active_veto_pass": 0.004649495259715808,
+          "side_compton_fov_pass": 0.004649495259715808
+        },
+        "side_compton_class_counts": {
+          "active_veto": 192,
+          "keep": 4,
+          "single": 10
+        }
+      },
+      "w2_510p58_511p42": {
+        "counts": {
+          "raw": 199,
+          "active_veto_pass": 10,
+          "side_compton_fov_pass": 10
+        },
+        "rates_s-1": {
+          "raw": 0.06608925404881756,
+          "active_veto_pass": 0.0033210680426541484,
+          "side_compton_fov_pass": 0.0033210680426541484
+        },
+        "side_compton_class_counts": {
+          "active_veto": 189,
+          "keep": 3,
+          "single": 7
+        }
+      }
+    }
+  },
+  "timeline_draw_summary": {
+    "prompt": {
+      "lambda": 2364477.1784780165,
+      "drawn": 2367370,
+      "rate_hz": 785.2589595028389
+    },
+    "delayed": {
+      "lambda": 43669.0,
+      "drawn": 43615,
+      "rate_hz": 14.5027720354664
+    },
+    "science": {
+      "lambda": 0.0,
+      "drawn": 0,
+      "rate_hz": 0.0
+    }
+  }
+}

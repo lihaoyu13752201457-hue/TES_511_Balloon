@@ -1,0 +1,14 @@
+# Native ActivationSources parse/smoke probe for source-v2 store.
+Version 1
+Geometry outputs/geometry/DEMO2_DR_v3p5_user_cylmag_redesign_multiholeW_fix5_20260621_megalib_proxy/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup
+PhysicsListEM LivermorePol
+PhysicsListRadioactiveDecay true
+DecayMode ActivationDelayedDecay
+StoreSimulationInfo all
+DetectorTimeConstant 1e-9
+Seed 51005
+
+Run NativeActivationProbe
+NativeActivationProbe.FileName engineering/delayed_source_authority_v2_20260624/05_native_activation/native_activation_sources_probe
+NativeActivationProbe.Triggers 1
+NativeActivationProbe.ActivationSources engineering/delayed_source_authority_v2_20260624/04_custom_source_v2/source_v2_native_activity_store_total.dat

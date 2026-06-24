@@ -1,0 +1,14 @@
+# G7 pilot-only native volume-level ActivationSources source.
+Version 1
+Geometry outputs/geometry/DEMO2_DR_v3p5_user_cylmag_redesign_multiholeW_fix5_20260621_megalib_proxy/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup
+PhysicsListEM LivermorePol
+PhysicsListRadioactiveDecay true
+DecayMode ActivationDelayedDecay
+StoreSimulationInfo all
+DetectorTimeConstant 1e-9
+Seed 51007
+
+Run NativeActivationPilot
+NativeActivationPilot.FileName engineering/delayed_source_authority_v2_20260624/07_transport/pilot_runs/native_activation_pilot1000
+NativeActivationPilot.Triggers 1000
+NativeActivationPilot.ActivationSources engineering/delayed_source_authority_v2_20260624/04_custom_source_v2/source_v2_native_activity_store_total.dat

@@ -84,6 +84,8 @@ def physics_source_text(text: str) -> str:
     for line in text.splitlines():
         if line.startswith("Geometry "):
             rows.append("Geometry <GEOMETRY_PATH>")
+        elif re.match(r"^#\s*geometry_setup\s*=", line):
+            rows.append("# geometry_setup=<GEOMETRY_PATH>")
         elif re.match(r"^#\s*source_dir_label\s*=", line):
             rows.append("# source_dir_label = <LABEL>")
         else:
@@ -109,6 +111,8 @@ def build_bgo_source_cards(bgo_setup: Path) -> list[dict[str, Any]]:
         for line in text.splitlines():
             if line.startswith("Geometry "):
                 out_lines.append(f"Geometry {bgo_setup.resolve()}")
+            elif re.match(r"^#\s*geometry_setup\s*=", line):
+                out_lines.append(f"# geometry_setup={rel(bgo_setup)}")
             elif re.match(r"^#\s*source_dir_label\s*=", line):
                 out_lines.append("# source_dir_label = fix5_bgo_same_envelope_resource_guard")
             else:

@@ -1,0 +1,485 @@
+{
+  "claim_boundary": "1000-trigger pilot transport and selected-rate diagnostic only; no promotion or final rate claim",
+  "findings": [
+    "Ran only the prepared 1000-trigger WP07 pilot matrix; no full-stat transport or promotion was launched.",
+    "v2_weighted_eventlist: W2 side-Compton/FoV pass 0 events, 0 cps (pilot_event_weight_Bq from weighted PPS ledger)",
+    "native_volume_activation: W2 side-Compton/FoV pass 1 events, 0.0869998 cps (sum(RP activity in native ActivationSources store)/Triggers)",
+    "legacy_l0: transport status TIMEOUT_PREVIOUS"
+  ],
+  "generated_at": "2026-06-24T07:00:17Z",
+  "input_validation": [
+    {
+      "meta": {
+        "detector_time_constant_s": "1e-9",
+        "exists": true,
+        "file_base": "engineering/delayed_source_authority_v2_20260624/07_transport/pilot_runs/legacy_l0_pilot1000",
+        "flux_sum_Bq": "85.4492025",
+        "geometry": "outputs/geometry/DEMO2_DR_v3p5_user_cylmag_redesign_multiholeW_fix5_20260621_megalib_proxy/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup",
+        "source": "engineering/delayed_source_authority_v2_20260624/07_transport/pilot_inputs/legacy_l0_pilot1000.source",
+        "triggers": 1000
+      },
+      "name": "legacy_l0",
+      "normalization": {
+        "activity_Bq": "85.4492025",
+        "event_rate_hz": 0.0854492025,
+        "rule": "sum(Source.Flux)/Triggers",
+        "status": "PASS",
+        "triggers": 1000
+      },
+      "status": "PASS"
+    },
+    {
+      "meta": {
+        "detector_time_constant_s": "1e-9",
+        "exists": true,
+        "file_base": "engineering/delayed_source_authority_v2_20260624/07_transport/pilot_runs/v2_eventlist_pilot1000",
+        "flux_sum_Bq": "0",
+        "geometry": "outputs/geometry/DEMO2_DR_v3p5_user_cylmag_redesign_multiholeW_fix5_20260621_megalib_proxy/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup",
+        "source": "engineering/delayed_source_authority_v2_20260624/07_transport/pilot_inputs/v2_eventlist_pilot1000.source",
+        "triggers": 1000
+      },
+      "name": "v2_weighted_eventlist",
+      "normalization": {
+        "activity_Bq": "86.999842066995796472549657847893265995051576885679999999999999999999999999991435",
+        "event_rate_hz": 0.08699984206699579,
+        "rule": "pilot_event_weight_Bq from weighted PPS ledger",
+        "status": "PASS",
+        "triggers": 1000
+      },
+      "status": "PASS"
+    },
+    {
+      "meta": {
+        "detector_time_constant_s": "1e-9",
+        "exists": true,
+        "file_base": "engineering/delayed_source_authority_v2_20260624/07_transport/pilot_runs/native_activation_pilot1000",
+        "flux_sum_Bq": "0",
+        "geometry": "outputs/geometry/DEMO2_DR_v3p5_user_cylmag_redesign_multiholeW_fix5_20260621_megalib_proxy/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup",
+        "source": "engineering/delayed_source_authority_v2_20260624/07_transport/pilot_inputs/native_activation_sources_pilot1000.source",
+        "triggers": 1000
+      },
+      "name": "native_volume_activation",
+      "normalization": {
+        "activity_Bq": "86.99984206699579647254965784789326599505157688568",
+        "event_rate_hz": 0.08699984206699579,
+        "rule": "sum(RP activity in native ActivationSources store)/Triggers",
+        "status": "PASS",
+        "triggers": 1000
+      },
+      "status": "PASS"
+    }
+  ],
+  "next_gate": "G8 promotion remains blocked until full-stat promotion criteria and downstream regeneration are explicitly released",
+  "outputs": [
+    "engineering/delayed_source_authority_v2_20260624/07_transport/pilot_transport_run_summary.json",
+    "engineering/delayed_source_authority_v2_20260624/07_transport/pilot_transport_run_summary.md",
+    "engineering/delayed_source_authority_v2_20260624/07_transport/pilot_selected_rate_diagnostics.csv",
+    "engineering/delayed_source_authority_v2_20260624/07_transport/summary.md",
+    "engineering/delayed_source_authority_v2_20260624/07_transport/pilot_runs/v2_eventlist_pilot1000.inc1.id1.sim.gz",
+    "engineering/delayed_source_authority_v2_20260624/07_transport/pilot_runs/v2_eventlist_pilot1000.log",
+    "engineering/delayed_source_authority_v2_20260624/07_transport/pilot_runs/native_activation_pilot1000.inc1.id1.sim.gz",
+    "engineering/delayed_source_authority_v2_20260624/07_transport/pilot_runs/native_activation_pilot1000.log",
+    "engineering/delayed_source_authority_v2_20260624/07_transport/pilot_runs/legacy_l0_pilot1000.log"
+  ],
+  "problems": [],
+  "reparse_only": true,
+  "runs": [
+    {
+      "meta": {
+        "detector_time_constant_s": "1e-9",
+        "exists": true,
+        "file_base": "engineering/delayed_source_authority_v2_20260624/07_transport/pilot_runs/v2_eventlist_pilot1000",
+        "flux_sum_Bq": "0",
+        "geometry": "outputs/geometry/DEMO2_DR_v3p5_user_cylmag_redesign_multiholeW_fix5_20260621_megalib_proxy/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup",
+        "source": "engineering/delayed_source_authority_v2_20260624/07_transport/pilot_inputs/v2_eventlist_pilot1000.source",
+        "triggers": 1000
+      },
+      "name": "v2_weighted_eventlist",
+      "normalization": {
+        "activity_Bq": "86.999842066995796472549657847893265995051576885679999999999999999999999999991435",
+        "event_rate_hz": 0.08699984206699579,
+        "rule": "pilot_event_weight_Bq from weighted PPS ledger",
+        "status": "PASS",
+        "triggers": 1000
+      },
+      "removed_previous_outputs": [],
+      "run": {
+        "log": "engineering/delayed_source_authority_v2_20260624/07_transport/pilot_runs/v2_eventlist_pilot1000.log",
+        "returncode": null,
+        "status": "PASS"
+      },
+      "sim_outputs": [
+        {
+          "ID": 1000,
+          "SE": 1000,
+          "TE_s": 1e-06,
+          "TS": 1,
+          "first_id": 1,
+          "last_id": 1000,
+          "path": "engineering/delayed_source_authority_v2_20260624/07_transport/pilot_runs/v2_eventlist_pilot1000.inc1.id1.sim.gz",
+          "sha256": "d6a93094d4a4f5de0f86c037dc937ed8df415da184af6a63711375d80a2f022c",
+          "size_bytes": 757837
+        }
+      ],
+      "status": "PASS"
+    },
+    {
+      "meta": {
+        "detector_time_constant_s": "1e-9",
+        "exists": true,
+        "file_base": "engineering/delayed_source_authority_v2_20260624/07_transport/pilot_runs/native_activation_pilot1000",
+        "flux_sum_Bq": "0",
+        "geometry": "outputs/geometry/DEMO2_DR_v3p5_user_cylmag_redesign_multiholeW_fix5_20260621_megalib_proxy/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup",
+        "source": "engineering/delayed_source_authority_v2_20260624/07_transport/pilot_inputs/native_activation_sources_pilot1000.source",
+        "triggers": 1000
+      },
+      "name": "native_volume_activation",
+      "normalization": {
+        "activity_Bq": "86.99984206699579647254965784789326599505157688568",
+        "event_rate_hz": 0.08699984206699579,
+        "rule": "sum(RP activity in native ActivationSources store)/Triggers",
+        "status": "PASS",
+        "triggers": 1000
+      },
+      "removed_previous_outputs": [],
+      "run": {
+        "log": "engineering/delayed_source_authority_v2_20260624/07_transport/pilot_runs/native_activation_pilot1000.log",
+        "returncode": null,
+        "status": "PASS"
+      },
+      "sim_outputs": [
+        {
+          "ID": 1000,
+          "SE": 1000,
+          "TE_s": 11.050192,
+          "TS": 1,
+          "first_id": 1,
+          "last_id": 1000,
+          "path": "engineering/delayed_source_authority_v2_20260624/07_transport/pilot_runs/native_activation_pilot1000.inc1.id1.sim.gz",
+          "sha256": "fa6e0de14092933dbda661bdf7ee3315aeb4abcdfa938368e9c42b3be86e7aeb",
+          "size_bytes": 823429
+        }
+      ],
+      "status": "PASS"
+    },
+    {
+      "meta": {
+        "detector_time_constant_s": "1e-9",
+        "exists": true,
+        "file_base": "engineering/delayed_source_authority_v2_20260624/07_transport/pilot_runs/legacy_l0_pilot1000",
+        "flux_sum_Bq": "85.4492025",
+        "geometry": "outputs/geometry/DEMO2_DR_v3p5_user_cylmag_redesign_multiholeW_fix5_20260621_megalib_proxy/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup",
+        "source": "engineering/delayed_source_authority_v2_20260624/07_transport/pilot_inputs/legacy_l0_pilot1000.source",
+        "triggers": 1000
+      },
+      "name": "legacy_l0",
+      "normalization": {
+        "activity_Bq": "85.4492025",
+        "event_rate_hz": 0.0854492025,
+        "rule": "sum(Source.Flux)/Triggers",
+        "status": "PASS",
+        "triggers": 1000
+      },
+      "removed_previous_outputs": [],
+      "run": {
+        "log": "engineering/delayed_source_authority_v2_20260624/07_transport/pilot_runs/legacy_l0_pilot1000.log",
+        "returncode": null,
+        "status": "TIMEOUT_PREVIOUS"
+      },
+      "sim_outputs": [],
+      "status": "PASS"
+    }
+  ],
+  "selection_csv_rows": 12,
+  "selection_diagnostics": [
+    {
+      "catalog": {
+        "generated_events_seen": 1000,
+        "kept_events": 840,
+        "pixel_hits_kept": 3,
+        "tes_events": 3
+      },
+      "event_weight_mapping": {
+        "mapped_events": 840,
+        "rule": "local_id - 1 -> pilot_event_id",
+        "status": "PASS_ONE_BASED"
+      },
+      "label": "source-v2 weighted exact-position EventList",
+      "name": "v2_weighted_eventlist",
+      "normalization": {
+        "activity_Bq": "86.999842066995796472549657847893265995051576885679999999999999999999999999991435",
+        "event_rate_hz": 0.08699984206699579,
+        "rule": "pilot_event_weight_Bq from weighted PPS ledger",
+        "status": "PASS",
+        "triggers": 1000
+      },
+      "status": "PASS",
+      "windows": {
+        "broad_480_550": {
+          "by_stream": {
+            "delayed": {
+              "active_veto_pass_events": 0,
+              "active_veto_pass_rate_s-1": 0.0,
+              "active_veto_survival_fraction": null,
+              "raw_events": 0,
+              "raw_rate_s-1": 0.0,
+              "side_compton_class_counts": {},
+              "side_compton_fov_pass_events": 0,
+              "side_compton_fov_pass_rate_s-1": 0.0,
+              "side_compton_fov_survival_fraction_vs_active": null
+            },
+            "prompt": {
+              "active_veto_pass_events": 0,
+              "active_veto_pass_rate_s-1": 0.0,
+              "active_veto_survival_fraction": null,
+              "raw_events": 0,
+              "raw_rate_s-1": 0.0,
+              "side_compton_class_counts": {},
+              "side_compton_fov_pass_events": 0,
+              "side_compton_fov_pass_rate_s-1": 0.0,
+              "side_compton_fov_survival_fraction_vs_active": null
+            },
+            "science": {
+              "active_veto_pass_events": 0,
+              "active_veto_pass_rate_s-1": 0.0,
+              "active_veto_survival_fraction": null,
+              "raw_events": 0,
+              "raw_rate_s-1": 0.0,
+              "side_compton_class_counts": {},
+              "side_compton_fov_pass_events": 0,
+              "side_compton_fov_pass_rate_s-1": 0.0,
+              "side_compton_fov_survival_fraction_vs_active": null
+            }
+          },
+          "total": {
+            "active_veto_pass": {
+              "events": 0,
+              "rate_s-1": 0.0
+            },
+            "raw": {
+              "events": 0,
+              "rate_s-1": 0.0
+            },
+            "side_compton_fov_pass": {
+              "events": 0,
+              "rate_s-1": 0.0
+            }
+          },
+          "window_keV": [
+            480.0,
+            550.0
+          ]
+        },
+        "w2_510p58_511p42": {
+          "by_stream": {
+            "delayed": {
+              "active_veto_pass_events": 0,
+              "active_veto_pass_rate_s-1": 0.0,
+              "active_veto_survival_fraction": null,
+              "raw_events": 0,
+              "raw_rate_s-1": 0.0,
+              "side_compton_class_counts": {},
+              "side_compton_fov_pass_events": 0,
+              "side_compton_fov_pass_rate_s-1": 0.0,
+              "side_compton_fov_survival_fraction_vs_active": null
+            },
+            "prompt": {
+              "active_veto_pass_events": 0,
+              "active_veto_pass_rate_s-1": 0.0,
+              "active_veto_survival_fraction": null,
+              "raw_events": 0,
+              "raw_rate_s-1": 0.0,
+              "side_compton_class_counts": {},
+              "side_compton_fov_pass_events": 0,
+              "side_compton_fov_pass_rate_s-1": 0.0,
+              "side_compton_fov_survival_fraction_vs_active": null
+            },
+            "science": {
+              "active_veto_pass_events": 0,
+              "active_veto_pass_rate_s-1": 0.0,
+              "active_veto_survival_fraction": null,
+              "raw_events": 0,
+              "raw_rate_s-1": 0.0,
+              "side_compton_class_counts": {},
+              "side_compton_fov_pass_events": 0,
+              "side_compton_fov_pass_rate_s-1": 0.0,
+              "side_compton_fov_survival_fraction_vs_active": null
+            }
+          },
+          "total": {
+            "active_veto_pass": {
+              "events": 0,
+              "rate_s-1": 0.0
+            },
+            "raw": {
+              "events": 0,
+              "rate_s-1": 0.0
+            },
+            "side_compton_fov_pass": {
+              "events": 0,
+              "rate_s-1": 0.0
+            }
+          },
+          "window_keV": [
+            510.58,
+            511.42
+          ]
+        }
+      }
+    },
+    {
+      "catalog": {
+        "generated_events_seen": 1000,
+        "kept_events": 832,
+        "pixel_hits_kept": 6,
+        "tes_events": 3
+      },
+      "event_weight_mapping": {
+        "mapped_events": 832,
+        "rule": "constant event rate",
+        "status": "NOT_NEEDED"
+      },
+      "label": "native volume-level ActivationSources",
+      "name": "native_volume_activation",
+      "normalization": {
+        "activity_Bq": "86.99984206699579647254965784789326599505157688568",
+        "event_rate_hz": 0.08699984206699579,
+        "rule": "sum(RP activity in native ActivationSources store)/Triggers",
+        "status": "PASS",
+        "triggers": 1000
+      },
+      "status": "PASS",
+      "windows": {
+        "broad_480_550": {
+          "by_stream": {
+            "delayed": {
+              "active_veto_pass_events": 1,
+              "active_veto_pass_rate_s-1": 0.08699984206699579,
+              "active_veto_survival_fraction": 0.3333333333333333,
+              "raw_events": 3,
+              "raw_rate_s-1": 0.2609995262009874,
+              "side_compton_class_counts": {
+                "single": 1
+              },
+              "side_compton_fov_pass_events": 1,
+              "side_compton_fov_pass_rate_s-1": 0.08699984206699579,
+              "side_compton_fov_survival_fraction_vs_active": 1.0
+            },
+            "prompt": {
+              "active_veto_pass_events": 0,
+              "active_veto_pass_rate_s-1": 0.0,
+              "active_veto_survival_fraction": null,
+              "raw_events": 0,
+              "raw_rate_s-1": 0.0,
+              "side_compton_class_counts": {},
+              "side_compton_fov_pass_events": 0,
+              "side_compton_fov_pass_rate_s-1": 0.0,
+              "side_compton_fov_survival_fraction_vs_active": null
+            },
+            "science": {
+              "active_veto_pass_events": 0,
+              "active_veto_pass_rate_s-1": 0.0,
+              "active_veto_survival_fraction": null,
+              "raw_events": 0,
+              "raw_rate_s-1": 0.0,
+              "side_compton_class_counts": {},
+              "side_compton_fov_pass_events": 0,
+              "side_compton_fov_pass_rate_s-1": 0.0,
+              "side_compton_fov_survival_fraction_vs_active": null
+            }
+          },
+          "total": {
+            "active_veto_pass": {
+              "events": 1,
+              "rate_s-1": 0.08699984206699579
+            },
+            "raw": {
+              "events": 3,
+              "rate_s-1": 0.2609995262009874
+            },
+            "side_compton_fov_pass": {
+              "events": 1,
+              "rate_s-1": 0.08699984206699579
+            }
+          },
+          "window_keV": [
+            480.0,
+            550.0
+          ]
+        },
+        "w2_510p58_511p42": {
+          "by_stream": {
+            "delayed": {
+              "active_veto_pass_events": 1,
+              "active_veto_pass_rate_s-1": 0.08699984206699579,
+              "active_veto_survival_fraction": 0.3333333333333333,
+              "raw_events": 3,
+              "raw_rate_s-1": 0.2609995262009874,
+              "side_compton_class_counts": {
+                "single": 1
+              },
+              "side_compton_fov_pass_events": 1,
+              "side_compton_fov_pass_rate_s-1": 0.08699984206699579,
+              "side_compton_fov_survival_fraction_vs_active": 1.0
+            },
+            "prompt": {
+              "active_veto_pass_events": 0,
+              "active_veto_pass_rate_s-1": 0.0,
+              "active_veto_survival_fraction": null,
+              "raw_events": 0,
+              "raw_rate_s-1": 0.0,
+              "side_compton_class_counts": {},
+              "side_compton_fov_pass_events": 0,
+              "side_compton_fov_pass_rate_s-1": 0.0,
+              "side_compton_fov_survival_fraction_vs_active": null
+            },
+            "science": {
+              "active_veto_pass_events": 0,
+              "active_veto_pass_rate_s-1": 0.0,
+              "active_veto_survival_fraction": null,
+              "raw_events": 0,
+              "raw_rate_s-1": 0.0,
+              "side_compton_class_counts": {},
+              "side_compton_fov_pass_events": 0,
+              "side_compton_fov_pass_rate_s-1": 0.0,
+              "side_compton_fov_survival_fraction_vs_active": null
+            }
+          },
+          "total": {
+            "active_veto_pass": {
+              "events": 1,
+              "rate_s-1": 0.08699984206699579
+            },
+            "raw": {
+              "events": 3,
+              "rate_s-1": 0.2609995262009874
+            },
+            "side_compton_fov_pass": {
+              "events": 1,
+              "rate_s-1": 0.08699984206699579
+            }
+          },
+          "window_keV": [
+            510.58,
+            511.42
+          ]
+        }
+      }
+    },
+    {
+      "name": "legacy_l0",
+      "reason": "transport did not produce a PASS SIM output",
+      "status": "NOT_PARSED"
+    }
+  ],
+  "status": "PARTIAL_PILOT_TRANSPORT_SOURCE_V2_NATIVE_SELECTION_DIAGNOSTIC_LEGACY_TIMEOUT_NOT_PROMOTION",
+  "timeout_s_by_name": {
+    "legacy_l0": 300,
+    "native_volume_activation": 600,
+    "v2_weighted_eventlist": 600
+  },
+  "transport_issues": [
+    "legacy_l0: transport status TIMEOUT_PREVIOUS"
+  ],
+  "user_decision_required": false
+}

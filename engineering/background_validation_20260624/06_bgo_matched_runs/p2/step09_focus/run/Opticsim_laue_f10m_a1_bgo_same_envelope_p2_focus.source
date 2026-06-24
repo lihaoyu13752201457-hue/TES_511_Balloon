@@ -1,0 +1,19 @@
+# Auto-generated BGO same-envelope focused EventList transport source.
+# Replays the current f10m A1 v3p5 Step09 EventList through BGO same-envelope geometry.
+# Engineering-only output for HARNESS_20260624.
+
+Version 1
+Geometry engineering/background_validation_20260624/04_bgo_variant/geometry_bgo_same_envelope/DEMO2_DR_v3p5_minpatch_centerfinger_bgo_same_envelope_megalib_proxy.geo.setup
+PhysicsListEM LivermorePol
+PhysicsListHD qgsp-bic-hp
+StoreSimulationInfo all
+DiscretizeHits true
+DetectorTimeConstant 1e-9
+Seed 260617
+
+Run Opticsim_laue_f10m_a1_bgo_same_envelope_p2_focus
+Opticsim_laue_f10m_a1_bgo_same_envelope_p2_focus.FileName engineering/background_validation_20260624/06_bgo_matched_runs/p2/step09_focus/run/Opticsim_laue_f10m_a1_bgo_same_envelope_p2_focus
+Opticsim_laue_f10m_a1_bgo_same_envelope_p2_focus.Triggers 37194
+Opticsim_laue_f10m_a1_bgo_same_envelope_p2_focus.Source Opticsim_laue_f10m_a1_bgo_same_envelope_p2_focus_EventList
+
+Opticsim_laue_f10m_a1_bgo_same_envelope_p2_focus_EventList.EventList stepwise_maintenance/step09_optics_bridge/outputs_f10m_a1_v3p5/eventlists/Opticsim_laue_f10m_a1_v3p5_centerfinger.eventlist.dat

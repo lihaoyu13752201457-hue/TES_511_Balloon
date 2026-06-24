@@ -1,0 +1,301 @@
+{
+  "status": "PASS_BGO_ENGINEERING_STEP05_INGEST",
+  "label": "bgo_p2_exactpos_m50000_s260613_with_focus",
+  "claim_level": "BGO engineering ingest; no manuscript-authority CsI/BGO material conclusion without completion audit",
+  "inputs": {
+    "prompt_dir": "engineering/background_validation_20260624/06_bgo_matched_runs/p2/instant",
+    "prompt_files": 68,
+    "prompt_dat_files": 68,
+    "delayed_sim": "engineering/background_validation_20260624/06_bgo_matched_runs/p2/delayed_transport_exactpos/DelayedDecayBgoP2ExactposM50000S260613.inc1.id1.sim.gz",
+    "fixed_source": "engineering/background_validation_20260624/06_bgo_matched_runs/p2/delay_fix/activation_decay_day15_groundstate_fixed_exactpos_bgo_p2_exactpos_m50000_s260613.source",
+    "science_sim": "engineering/background_validation_20260624/06_bgo_matched_runs/p2/step09_focus/run/Opticsim_laue_f10m_a1_bgo_same_envelope_p2_focus.inc1.id1.sim.gz",
+    "step09_summary": "engineering/background_validation_20260624/06_bgo_matched_runs/p2/step09_focus/step09_focus_summary.json",
+    "science_stream": "included"
+  },
+  "normalization": {
+    "prompt_time_s": 184.2200984295893,
+    "prompt_rate_rule": "per-tag event rate = 1 / sum(TT_s for prompt dat files with that tag)",
+    "delayed_time_s": 32318.644709336,
+    "active_veto_threshold_keV": 50.0,
+    "coincidence_window_s": 1e-06,
+    "reject_policy": "keep",
+    "science_unit_injection_rate_s-1": 1.0,
+    "prompt_normalization_audit_json": "engineering/background_validation_20260624/06_bgo_matched_runs/p2/step05_ingest_exactpos_with_focus/prompt_normalization_audit.json"
+  },
+  "science_physical_normalization": {
+    "reference_flux_ph_cm2_s": 0.0001,
+    "mission_days_for_direct_expectation": 20.0,
+    "optics_authority": "/home/ubuntu/TES_511_Balloon/stepwise_maintenance/step04_opticsim/optics_aeff_authority_f10m_a1.json",
+    "optics_design_name": "balloon511_f10m_ge111_511line_a1",
+    "optics_profile": "f10m_a1_v3p5",
+    "aeff_511_cm2": 20.084760000000003,
+    "aeff_seed_pstdev_cm2": 0.22144082550424163,
+    "atmospheric_transmission": {
+      "ledger": "config/science_511_onaxis_source/metadata/science_rate_ledger.csv",
+      "source_id": "science_511_onaxis_v0",
+      "flux_ph_cm2_s": 0.0001,
+      "mainline_A_opt_cm2_in_ledger": 15.29928,
+      "T_atm": 0.7390423888027,
+      "note": "Only scalar T_atm is inherited from this mainline ledger; v3p5/f10m A1 uses the f10m_a1 A_eff authority below. A dedicated 45 deg side-entry LOS atmosphere sidecar is available in reports/v3p5_boundary_closure_fullstat_v2_exactpos_m50000_s260613_20260613/v3p5_boundary_closure_summary.json."
+    },
+    "rate_to_v3p5_injection_plane_s-1": 0.0014843489008928919,
+    "unit_eventlist_injection_rate_s-1": 1.0,
+    "scale_from_unit_eventlist_rate": 0.0014843489008928919
+  },
+  "catalog": {
+    "events_kept": 1367921,
+    "pixel_hits_kept": 77331,
+    "by_stream_events": {
+      "prompt": 894957,
+      "delayed": 436136,
+      "science": 36828
+    },
+    "by_stream_tes_events": {
+      "prompt": 6134,
+      "delayed": 8672,
+      "science": 35672
+    }
+  },
+  "windows": {
+    "broad_480_550": {
+      "window_keV": [
+        480.0,
+        550.0
+      ],
+      "by_stream": {
+        "prompt": {
+          "raw_events": 212,
+          "active_veto_pass_events": 67,
+          "side_compton_fov_pass_events": 58,
+          "raw_rate_s-1": 0.15817580257421998,
+          "active_veto_pass_rate_s-1": 0.054972624653910264,
+          "side_compton_fov_pass_rate_s-1": 0.048864818711696824,
+          "active_veto_survival_fraction": 0.3475413037851713,
+          "side_compton_fov_survival_fraction_vs_active": 0.8888936815248281,
+          "side_compton_class_counts": {
+            "keep": 23,
+            "single": 35,
+            "veto": 9
+          }
+        },
+        "delayed": {
+          "raw_events": 383,
+          "active_veto_pass_events": 185,
+          "side_compton_fov_pass_events": 159,
+          "raw_rate_s-1": 0.011850744467925093,
+          "active_veto_pass_rate_s-1": 0.005724249938814992,
+          "side_compton_fov_pass_rate_s-1": 0.004919760758224784,
+          "active_veto_survival_fraction": 0.48302872062663177,
+          "side_compton_fov_survival_fraction_vs_active": 0.8594594594594607,
+          "side_compton_class_counts": {
+            "keep": 54,
+            "single": 105,
+            "veto": 26
+          }
+        },
+        "science": {
+          "raw_events": 30271,
+          "active_veto_pass_events": 30271,
+          "side_compton_fov_pass_events": 29643,
+          "raw_rate_s-1": 0.8138678281443245,
+          "active_veto_pass_rate_s-1": 0.8138678281443245,
+          "side_compton_fov_pass_rate_s-1": 0.7969833844171679,
+          "active_veto_survival_fraction": 1.0,
+          "side_compton_fov_survival_fraction_vs_active": 0.9792540715540332,
+          "side_compton_class_counts": {
+            "keep": 12192,
+            "single": 17451,
+            "veto": 628
+          }
+        }
+      },
+      "total": {
+        "raw": {
+          "events": 30866,
+          "rate_s-1": 0.9838943751864695
+        },
+        "active_veto_pass": {
+          "events": 30523,
+          "rate_s-1": 0.8745647027370497
+        },
+        "side_compton_fov_pass": {
+          "events": 29860,
+          "rate_s-1": 0.8507679638870895
+        }
+      },
+      "physical_reference_flux": {
+        "reference_flux_ph_cm2_s": 0.0001,
+        "rate_to_v3p5_injection_plane_s-1": 0.0014843489008928919,
+        "prompt_background_cps": 0.048864818711696824,
+        "delayed_background_cps": 0.004919760758224784,
+        "background_cps": 0.05378457946992161,
+        "signal_cps_at_reference_flux": 0.0011830014106895203,
+        "signal_to_background": 0.0219951782155534,
+        "mission_days": 20.0,
+        "source_counts_20d": 2044.226437671491,
+        "background_counts_20d": 92939.75332402454,
+        "Z20d_direct_s_over_sqrt_b": 6.705454854782806,
+        "T3_day_constant_rate_direct": 4.0032804828957875,
+        "T5_day_constant_rate_direct": 11.120223563599406,
+        "flux_3sigma_20d_ph_cm2_s": 4.473969424848469e-05,
+        "low_stat_final_background_events": 217,
+        "low_stat_background_relative_poisson_sigma_approx": 0.06788442333021306,
+        "low_stat_prompt_final_events": 58,
+        "low_stat_delayed_final_events": 159,
+        "science_unit_rate_final_events": 29643,
+        "claim_note": "Direct expectation only. It uses the current Step05 selected-event rates and does not replace a full Step06-Step08 mission-axis regeneration."
+      }
+    },
+    "w2_510p58_511p42": {
+      "window_keV": [
+        510.58,
+        511.42
+      ],
+      "by_stream": {
+        "prompt": {
+          "raw_events": 95,
+          "active_veto_pass_events": 45,
+          "side_compton_fov_pass_events": 43,
+          "raw_rate_s-1": 0.07398996556527603,
+          "active_veto_pass_rate_s-1": 0.03529087406150801,
+          "side_compton_fov_pass_rate_s-1": 0.03393357719954057,
+          "active_veto_survival_fraction": 0.47696838067012487,
+          "side_compton_fov_survival_fraction_vs_active": 0.9615397210167755,
+          "side_compton_class_counts": {
+            "keep": 14,
+            "single": 29,
+            "veto": 2
+          }
+        },
+        "delayed": {
+          "raw_events": 284,
+          "active_veto_pass_events": 127,
+          "side_compton_fov_pass_events": 115,
+          "raw_rate_s-1": 0.008787497203370041,
+          "active_veto_pass_rate_s-1": 0.00392962022826759,
+          "side_compton_fov_pass_rate_s-1": 0.003558317529533648,
+          "active_veto_survival_fraction": 0.44718309859154937,
+          "side_compton_fov_survival_fraction_vs_active": 0.905511811023623,
+          "side_compton_class_counts": {
+            "keep": 34,
+            "single": 81,
+            "veto": 12
+          }
+        },
+        "science": {
+          "raw_events": 30183,
+          "active_veto_pass_events": 30183,
+          "side_compton_fov_pass_events": 29582,
+          "raw_rate_s-1": 0.8115018551379256,
+          "active_veto_pass_rate_s-1": 0.8115018551379256,
+          "side_compton_fov_pass_rate_s-1": 0.7953433349468205,
+          "active_veto_survival_fraction": 1.0,
+          "side_compton_fov_survival_fraction_vs_active": 0.9800881290796819,
+          "side_compton_class_counts": {
+            "keep": 12156,
+            "single": 17426,
+            "veto": 601
+          }
+        }
+      },
+      "total": {
+        "raw": {
+          "events": 30562,
+          "rate_s-1": 0.8942793179065717
+        },
+        "active_veto_pass": {
+          "events": 30355,
+          "rate_s-1": 0.8507223494277012
+        },
+        "side_compton_fov_pass": {
+          "events": 29740,
+          "rate_s-1": 0.8328352296758947
+        }
+      },
+      "physical_reference_flux": {
+        "reference_flux_ph_cm2_s": 0.0001,
+        "rate_to_v3p5_injection_plane_s-1": 0.0014843489008928919,
+        "prompt_background_cps": 0.03393357719954057,
+        "delayed_background_cps": 0.003558317529533648,
+        "background_cps": 0.037491894729074215,
+        "signal_cps_at_reference_flux": 0.0011805670050608003,
+        "signal_to_background": 0.03148859276363256,
+        "mission_days": 20.0,
+        "source_counts_20d": 2040.019784745063,
+        "background_counts_20d": 64785.99409184024,
+        "Z20d_direct_s_over_sqrt_b": 8.014820785993326,
+        "T3_day_constant_rate_direct": 2.8021080219972005,
+        "T5_day_constant_rate_direct": 7.783633394436667,
+        "flux_3sigma_20d_ph_cm2_s": 3.743065603216968e-05,
+        "low_stat_final_background_events": 158,
+        "low_stat_background_relative_poisson_sigma_approx": 0.079555728417573,
+        "low_stat_prompt_final_events": 43,
+        "low_stat_delayed_final_events": 115,
+        "science_unit_rate_final_events": 29582,
+        "claim_note": "Direct expectation only. It uses the current Step05 selected-event rates and does not replace a full Step06-Step08 mission-axis regeneration."
+      }
+    }
+  },
+  "timeline": {
+    "obs_time_s": 32318.644709336,
+    "n_event_instances": 25546255,
+    "n_candidates_total": 25526199,
+    "n_candidates_with_tes": 178613,
+    "n_mixed_candidates": 706,
+    "windows": {
+      "broad_480_550": {
+        "counts": {
+          "raw": 32020,
+          "active_veto_pass": 28299,
+          "side_compton_fov_pass": 27488
+        },
+        "rates_s-1": {
+          "raw": 0.9907593677884107,
+          "active_veto_pass": 0.8756245892893265,
+          "side_compton_fov_pass": 0.850530715233224
+        },
+        "side_compton_class_counts": {
+          "active_veto": 3721,
+          "keep": 11111,
+          "single": 16377,
+          "veto": 811
+        }
+      },
+      "w2_510p58_511p42": {
+        "counts": {
+          "raw": 29042,
+          "active_veto_pass": 27543,
+          "side_compton_fov_pass": 26926
+        },
+        "rates_s-1": {
+          "raw": 0.89861441471927,
+          "active_veto_pass": 0.8522325192690879,
+          "side_compton_fov_pass": 0.8331413721758509
+        },
+        "side_compton_class_counts": {
+          "active_veto": 1499,
+          "keep": 10856,
+          "single": 16070,
+          "veto": 617
+        }
+      }
+    }
+  },
+  "timeline_draw_summary": {
+    "prompt": {
+      "lambda": 25068118.918250445,
+      "drawn": 25077537,
+      "rate_hz": 775.6550172108216
+    },
+    "delayed": {
+      "lambda": 436136.0000000003,
+      "drawn": 436633,
+      "rate_hz": 13.494872817919006
+    },
+    "science": {
+      "lambda": 32000.61965250918,
+      "drawn": 32085,
+      "rate_hz": 0.9901597031779321
+    }
+  }
+}

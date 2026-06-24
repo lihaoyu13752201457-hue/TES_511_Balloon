@@ -1,0 +1,63 @@
+{
+  "status": "EXPLAINED_MODEL_DIFFERENCE",
+  "inputs": [
+    "engineering/delayed_source_authority_v2_20260624/04_custom_source_v2/source_v2_native_activity_store_total.dat",
+    "engineering/delayed_source_authority_v2_20260624/04_custom_source_v2/source_v2_manifest.json",
+    "outputs/geometry/DEMO2_DR_v3p5_user_cylmag_redesign_multiholeW_fix5_20260621_megalib_proxy/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup"
+  ],
+  "outputs": [
+    "engineering/delayed_source_authority_v2_20260624/05_native_activation/native_activation_oracle_summary.json",
+    "engineering/delayed_source_authority_v2_20260624/05_native_activation/native_store_vs_custom_inventory.json",
+    "engineering/delayed_source_authority_v2_20260624/05_native_activation/native_store_vs_custom_inventory.csv",
+    "engineering/delayed_source_authority_v2_20260624/05_native_activation/native_activator_merge_audit.json",
+    "engineering/delayed_source_authority_v2_20260624/05_native_activation/native_activator_merge_audit.md",
+    "engineering/delayed_source_authority_v2_20260624/05_native_activation/native_activation_sources_probe.source",
+    "engineering/delayed_source_authority_v2_20260624/05_native_activation/native_activation_sources_probe.log",
+    "engineering/delayed_source_authority_v2_20260624/05_native_activation/synthetic_activator.source",
+    "engineering/delayed_source_authority_v2_20260624/05_native_activation/synthetic_activator_counts.dat",
+    "engineering/delayed_source_authority_v2_20260624/05_native_activation/synthetic_activator.log",
+    "engineering/delayed_source_authority_v2_20260624/05_native_activation/native_activation_sources_probe.inc1.id1.sim.gz",
+    "engineering/delayed_source_authority_v2_20260624/05_native_activation/synthetic_activator_output.dat",
+    "engineering/delayed_source_authority_v2_20260624/05_native_activation/tag_aware_native_vs_direct_comparison.json",
+    "engineering/delayed_source_authority_v2_20260624/05_native_activation/tag_aware_native_vs_direct_comparison.csv",
+    "engineering/delayed_source_authority_v2_20260624/05_native_activation/tag_aware_native_vs_direct_comparison.md",
+    "engineering/delayed_source_authority_v2_20260624/05_native_activation/tag_aware_activator/native_activator_alpha.source",
+    "engineering/delayed_source_authority_v2_20260624/05_native_activation/tag_aware_activator/native_activator_eplus.source",
+    "engineering/delayed_source_authority_v2_20260624/05_native_activation/tag_aware_activator/native_activator_muminus.source",
+    "engineering/delayed_source_authority_v2_20260624/05_native_activation/tag_aware_activator/native_activator_muplus.source",
+    "engineering/delayed_source_authority_v2_20260624/05_native_activation/tag_aware_activator/native_activator_n.source",
+    "engineering/delayed_source_authority_v2_20260624/05_native_activation/tag_aware_activator/native_activator_p.source",
+    "engineering/delayed_source_authority_v2_20260624/05_native_activation/tag_aware_activator/native_activator_alpha.log",
+    "engineering/delayed_source_authority_v2_20260624/05_native_activation/tag_aware_activator/native_activator_eplus.log",
+    "engineering/delayed_source_authority_v2_20260624/05_native_activation/tag_aware_activator/native_activator_muminus.log",
+    "engineering/delayed_source_authority_v2_20260624/05_native_activation/tag_aware_activator/native_activator_muplus.log",
+    "engineering/delayed_source_authority_v2_20260624/05_native_activation/tag_aware_activator/native_activator_n.log",
+    "engineering/delayed_source_authority_v2_20260624/05_native_activation/tag_aware_activator/native_activator_p.log",
+    "engineering/delayed_source_authority_v2_20260624/05_native_activation/tag_aware_activator/tag_aware_native_alpha.dat",
+    "engineering/delayed_source_authority_v2_20260624/05_native_activation/tag_aware_activator/tag_aware_native_eplus.dat",
+    "engineering/delayed_source_authority_v2_20260624/05_native_activation/tag_aware_activator/tag_aware_native_muminus.dat",
+    "engineering/delayed_source_authority_v2_20260624/05_native_activation/tag_aware_activator/tag_aware_native_muplus.dat",
+    "engineering/delayed_source_authority_v2_20260624/05_native_activation/tag_aware_activator/tag_aware_native_n.dat",
+    "engineering/delayed_source_authority_v2_20260624/05_native_activation/tag_aware_activator/tag_aware_native_p.dat",
+    "engineering/delayed_source_authority_v2_20260624/05_native_activation/summary.md",
+    "engineering/delayed_source_authority_v2_20260624/05_native_activation/native_input_policy.md",
+    "engineering/delayed_source_authority_v2_20260624/05_native_activation/native_activation_run_manifest.csv",
+    "engineering/delayed_source_authority_v2_20260624/05_native_activation/native_activation_inventory.csv",
+    "engineering/delayed_source_authority_v2_20260624/05_native_activation/native_activation_inventory.json",
+    "engineering/delayed_source_authority_v2_20260624/05_native_activation/custom_native_inventory_comparison.csv",
+    "engineering/delayed_source_authority_v2_20260624/05_native_activation/custom_native_inventory_comparison.md",
+    "engineering/delayed_source_authority_v2_20260624/05_native_activation/native_volume_delayed_source_manifest.json"
+  ],
+  "findings": [
+    "Native store serialization comparison: PASS.",
+    "ActivationSources probe: PASS.",
+    "Synthetic Activator probe: PASS.",
+    "Tag-aware native Activator oracle: EXPLAINED_MODEL_DIFFERENCE."
+  ],
+  "claim_impact": [
+    "Native activation oracle is usable as an explained-model diagnostic.",
+    "Native and custom models are not interchangeable selected-rate authorities without promotion evidence."
+  ],
+  "next_gate": "G6 DetectorTimeConstant and decay-chain boundary audit",
+  "user_decision_required": false
+}

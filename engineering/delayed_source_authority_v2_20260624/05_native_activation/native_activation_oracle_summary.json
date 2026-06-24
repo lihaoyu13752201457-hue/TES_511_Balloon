@@ -1,0 +1,197 @@
+{
+  "activation_sources_probe": {
+    "log": "engineering/delayed_source_authority_v2_20260624/05_native_activation/native_activation_sources_probe.log",
+    "returncode": 0,
+    "status": "PASS"
+  },
+  "activation_sources_probe_products": [
+    "engineering/delayed_source_authority_v2_20260624/05_native_activation/native_activation_sources_probe.inc1.id1.sim.gz"
+  ],
+  "claim_boundary": "native serialization/source compatibility plus tag-aware raw Activator inventory comparison; no selected-rate promotion",
+  "full_native_raw_oracle": "EXPLAINED_MODEL_DIFFERENCE",
+  "generated_at": "2026-06-24T06:35:29Z",
+  "merge_audit": {
+    "raw_all_file_native_activator_verdict": "DO_NOT_USE_SINGLE_ALL_TAG_ACTIVATOR",
+    "reason": "single Activator LoadCountsFiles divides merged counts by total TT; this is not tag-aware across different production species/exposure normalizations",
+    "safe_native_plan": [
+      "run Activator per production_tag, merging only files that share that tag exposure semantics",
+      "sum resulting per-tag activity stores after Activator output",
+      "compare parent/daughter feeding deltas against the direct source-v2 inventory"
+    ],
+    "source_code_checks": {
+      "activator_accepts_multiple_isotope_files": true,
+      "activator_divides_by_total_time": true,
+      "activator_sums_loaded_counts": true,
+      "activator_sums_total_time": true,
+      "timeprofile_not_implemented": true
+    },
+    "source_code_evidence": {
+      "MCActivator.cc": "LoadCountsFiles sums counts and TotalTime then scales by 1/TotalTime around lines 154-188",
+      "MCParameterFile.cc": "Activator IsotopeProductionFile/ActivationMode parser around lines 629-745"
+    },
+    "status": "PASS"
+  },
+  "native_store_comparison": {
+    "comparison_type": "serialization_oracle_custom_weight_ledger_vs_native_activation_store",
+    "csv": "engineering/delayed_source_authority_v2_20260624/05_native_activation/native_store_vs_custom_inventory.csv",
+    "custom_activity_by_tag_Bq": {
+      "alpha": "0.058104906254665448502886233575661241561600000000000000000000000000000000000000002",
+      "eplus": "0.0015681159072356937580233242957",
+      "muminus": "2.8953867958922916762317447509089665449445999999999999999999999999999999999999774",
+      "muplus": "0.00389692684781714736866985732503010417",
+      "n": "83.593028357185194234085595109895611025432376885679999999999999999999999999992704",
+      "p": "0.44785696490859227260273857189229707894299999999999999999999999999999999999999799"
+    },
+    "custom_total_Bq": "86.999842066995796472549657847893265995051576885679999999999999999999999999991435",
+    "key_count": 1456,
+    "max_key_relative_delta": "0.00000000000000000000000000000000000000000000000000000000000000000000000000011473576419037548678298042529824845898772174390365262878706336301153733683744981",
+    "mismatch_count": 0,
+    "native_store_total_Bq": "86.99984206699579647254965784789326599505157688568",
+    "status": "PASS",
+    "total_relative_delta": "0.000000000000000000000000000000000000000000000000000000000000000000000000000098448454577703340818425133503837184887633368451314571641376161041915174014738154"
+  },
+  "status": "EXPLAINED_MODEL_DIFFERENCE",
+  "synthetic_activator_output": "engineering/delayed_source_authority_v2_20260624/05_native_activation/synthetic_activator_output.dat",
+  "synthetic_activator_probe": {
+    "log": "engineering/delayed_source_authority_v2_20260624/05_native_activation/synthetic_activator.log",
+    "returncode": 0,
+    "status": "PASS"
+  },
+  "tag_aware_activator_run": {
+    "activation_time_s": "1296000",
+    "status": "PASS",
+    "tags": {
+      "alpha": {
+        "input_file_count": 8,
+        "input_files": [
+          "runs/step02_buildup_fix5_fullstat_v2/Background_alpha_fullsphere20_rep01_part01.dat.inc1.dat",
+          "runs/step02_buildup_fix5_fullstat_v2/Background_alpha_fullsphere20_rep02_part01.dat.inc1.dat",
+          "runs/step02_buildup_fix5_fullstat_v2/Background_alpha_fullsphere20_rep03_part01.dat.inc1.dat",
+          "runs/step02_buildup_fix5_fullstat_v2/Background_alpha_fullsphere20_rep04_part01.dat.inc1.dat",
+          "runs/step02_buildup_fix5_fullstat_v2/Background_alpha_fullsphere20_rep05_part01.dat.inc1.dat",
+          "runs/step02_buildup_fix5_fullstat_v2/Background_alpha_fullsphere20_rep06_part01.dat.inc1.dat",
+          "runs/step02_buildup_fix5_fullstat_v2/Background_alpha_fullsphere20_rep07_part01.dat.inc1.dat",
+          "runs/step02_buildup_fix5_fullstat_v2/Background_alpha_fullsphere20_rep08_part01.dat.inc1.dat"
+        ],
+        "log": "engineering/delayed_source_authority_v2_20260624/05_native_activation/tag_aware_activator/native_activator_alpha.log",
+        "output": "engineering/delayed_source_authority_v2_20260624/05_native_activation/tag_aware_activator/tag_aware_native_alpha.dat",
+        "returncode": 0,
+        "source": "engineering/delayed_source_authority_v2_20260624/05_native_activation/tag_aware_activator/native_activator_alpha.source",
+        "status": "PASS",
+        "tag": "alpha"
+      },
+      "eplus": {
+        "input_file_count": 4,
+        "input_files": [
+          "runs/step02_buildup_fix5_fullstat_v2/Background_eplus_fullsphere20_rep04_part01.dat.inc1.dat",
+          "runs/step02_buildup_fix5_fullstat_v2/Background_eplus_fullsphere20_rep06_part01.dat.inc1.dat",
+          "runs/step02_buildup_fix5_fullstat_v2/Background_eplus_fullsphere20_rep07_part01.dat.inc1.dat",
+          "runs/step02_buildup_fix5_fullstat_v2/Background_eplus_fullsphere20_rep08_part01.dat.inc1.dat"
+        ],
+        "log": "engineering/delayed_source_authority_v2_20260624/05_native_activation/tag_aware_activator/native_activator_eplus.log",
+        "output": "engineering/delayed_source_authority_v2_20260624/05_native_activation/tag_aware_activator/tag_aware_native_eplus.dat",
+        "returncode": 0,
+        "source": "engineering/delayed_source_authority_v2_20260624/05_native_activation/tag_aware_activator/native_activator_eplus.source",
+        "status": "PASS",
+        "tag": "eplus"
+      },
+      "muminus": {
+        "input_file_count": 8,
+        "input_files": [
+          "runs/step02_buildup_fix5_fullstat_v2/Background_muminus_fullsphere20_rep01_part01.dat.inc1.dat",
+          "runs/step02_buildup_fix5_fullstat_v2/Background_muminus_fullsphere20_rep02_part01.dat.inc1.dat",
+          "runs/step02_buildup_fix5_fullstat_v2/Background_muminus_fullsphere20_rep03_part01.dat.inc1.dat",
+          "runs/step02_buildup_fix5_fullstat_v2/Background_muminus_fullsphere20_rep04_part01.dat.inc1.dat",
+          "runs/step02_buildup_fix5_fullstat_v2/Background_muminus_fullsphere20_rep05_part01.dat.inc1.dat",
+          "runs/step02_buildup_fix5_fullstat_v2/Background_muminus_fullsphere20_rep06_part01.dat.inc1.dat",
+          "runs/step02_buildup_fix5_fullstat_v2/Background_muminus_fullsphere20_rep07_part01.dat.inc1.dat",
+          "runs/step02_buildup_fix5_fullstat_v2/Background_muminus_fullsphere20_rep08_part01.dat.inc1.dat"
+        ],
+        "log": "engineering/delayed_source_authority_v2_20260624/05_native_activation/tag_aware_activator/native_activator_muminus.log",
+        "output": "engineering/delayed_source_authority_v2_20260624/05_native_activation/tag_aware_activator/tag_aware_native_muminus.dat",
+        "returncode": 0,
+        "source": "engineering/delayed_source_authority_v2_20260624/05_native_activation/tag_aware_activator/native_activator_muminus.source",
+        "status": "PASS",
+        "tag": "muminus"
+      },
+      "muplus": {
+        "input_file_count": 7,
+        "input_files": [
+          "runs/step02_buildup_fix5_fullstat_v2/Background_muplus_fullsphere20_rep01_part01.dat.inc1.dat",
+          "runs/step02_buildup_fix5_fullstat_v2/Background_muplus_fullsphere20_rep02_part01.dat.inc1.dat",
+          "runs/step02_buildup_fix5_fullstat_v2/Background_muplus_fullsphere20_rep03_part01.dat.inc1.dat",
+          "runs/step02_buildup_fix5_fullstat_v2/Background_muplus_fullsphere20_rep04_part01.dat.inc1.dat",
+          "runs/step02_buildup_fix5_fullstat_v2/Background_muplus_fullsphere20_rep05_part01.dat.inc1.dat",
+          "runs/step02_buildup_fix5_fullstat_v2/Background_muplus_fullsphere20_rep07_part01.dat.inc1.dat",
+          "runs/step02_buildup_fix5_fullstat_v2/Background_muplus_fullsphere20_rep08_part01.dat.inc1.dat"
+        ],
+        "log": "engineering/delayed_source_authority_v2_20260624/05_native_activation/tag_aware_activator/native_activator_muplus.log",
+        "output": "engineering/delayed_source_authority_v2_20260624/05_native_activation/tag_aware_activator/tag_aware_native_muplus.dat",
+        "returncode": 0,
+        "source": "engineering/delayed_source_authority_v2_20260624/05_native_activation/tag_aware_activator/native_activator_muplus.source",
+        "status": "PASS",
+        "tag": "muplus"
+      },
+      "n": {
+        "input_file_count": 8,
+        "input_files": [
+          "runs/step02_buildup_fix5_fullstat_v2/Background_n_fullsphere20_rep01_part01.dat.inc1.dat",
+          "runs/step02_buildup_fix5_fullstat_v2/Background_n_fullsphere20_rep02_part01.dat.inc1.dat",
+          "runs/step02_buildup_fix5_fullstat_v2/Background_n_fullsphere20_rep03_part01.dat.inc1.dat",
+          "runs/step02_buildup_fix5_fullstat_v2/Background_n_fullsphere20_rep04_part01.dat.inc1.dat",
+          "runs/step02_buildup_fix5_fullstat_v2/Background_n_fullsphere20_rep05_part01.dat.inc1.dat",
+          "runs/step02_buildup_fix5_fullstat_v2/Background_n_fullsphere20_rep06_part01.dat.inc1.dat",
+          "runs/step02_buildup_fix5_fullstat_v2/Background_n_fullsphere20_rep07_part01.dat.inc1.dat",
+          "runs/step02_buildup_fix5_fullstat_v2/Background_n_fullsphere20_rep08_part01.dat.inc1.dat"
+        ],
+        "log": "engineering/delayed_source_authority_v2_20260624/05_native_activation/tag_aware_activator/native_activator_n.log",
+        "output": "engineering/delayed_source_authority_v2_20260624/05_native_activation/tag_aware_activator/tag_aware_native_n.dat",
+        "returncode": 0,
+        "source": "engineering/delayed_source_authority_v2_20260624/05_native_activation/tag_aware_activator/native_activator_n.source",
+        "status": "PASS",
+        "tag": "n"
+      },
+      "p": {
+        "input_file_count": 8,
+        "input_files": [
+          "runs/step02_buildup_fix5_fullstat_v2/Background_p_fullsphere20_rep01_part01.dat.inc1.dat",
+          "runs/step02_buildup_fix5_fullstat_v2/Background_p_fullsphere20_rep02_part01.dat.inc1.dat",
+          "runs/step02_buildup_fix5_fullstat_v2/Background_p_fullsphere20_rep03_part01.dat.inc1.dat",
+          "runs/step02_buildup_fix5_fullstat_v2/Background_p_fullsphere20_rep04_part01.dat.inc1.dat",
+          "runs/step02_buildup_fix5_fullstat_v2/Background_p_fullsphere20_rep05_part01.dat.inc1.dat",
+          "runs/step02_buildup_fix5_fullstat_v2/Background_p_fullsphere20_rep06_part01.dat.inc1.dat",
+          "runs/step02_buildup_fix5_fullstat_v2/Background_p_fullsphere20_rep07_part01.dat.inc1.dat",
+          "runs/step02_buildup_fix5_fullstat_v2/Background_p_fullsphere20_rep08_part01.dat.inc1.dat"
+        ],
+        "log": "engineering/delayed_source_authority_v2_20260624/05_native_activation/tag_aware_activator/native_activator_p.log",
+        "output": "engineering/delayed_source_authority_v2_20260624/05_native_activation/tag_aware_activator/tag_aware_native_p.dat",
+        "returncode": 0,
+        "source": "engineering/delayed_source_authority_v2_20260624/05_native_activation/tag_aware_activator/native_activator_p.source",
+        "status": "PASS",
+        "tag": "p"
+      }
+    },
+    "timeout_s_per_tag": 300
+  },
+  "tag_aware_native_comparison": {
+    "classification_policy": {
+      "direct_only": "DIRECT_PRODUCT_NOT_IN_NATIVE_OUTPUT",
+      "mismatch": "ACTIVITY_DIFFERENCE_DECAY_CHAIN_OR_HALF_LIFE_DATA",
+      "native_only": "PARENT_DAUGHTER_FEEDING_OR_NATIVE_DECAY_PRODUCT"
+    },
+    "csv": "engineering/delayed_source_authority_v2_20260624/05_native_activation/tag_aware_native_vs_direct_comparison.csv",
+    "direct_key_count": 2032,
+    "direct_missing_activity_Bq": "0",
+    "direct_only_key_count": 0,
+    "direct_total_Bq": "86.99984206699579647254965784789326599505157688568",
+    "key_count_union": 3690,
+    "max_direct_key_relative_delta": "5.9853200878689261127753119185203640992473428683611425963853418739566472109961053",
+    "mismatch_key_count": 868,
+    "native_extra_activity_Bq": "0.8645557503396813545264328461",
+    "native_key_count": 3690,
+    "native_only_key_count": 1424,
+    "status": "EXPLAINED_MODEL_DIFFERENCE",
+    "tag_native_total_Bq": "88.05469096172384620331311970190066",
+    "total_relative_delta": "0.012124721949676004316613733550184880876943031628511796604006993836262037205722237"
+  }
+}

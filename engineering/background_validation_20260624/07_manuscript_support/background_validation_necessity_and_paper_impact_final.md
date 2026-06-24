@@ -1,102 +1,138 @@
 # Background Validation Necessity and Paper Impact - Final
 
-Status: `PASS_LIMITED_SUPPORT_WITH_MATCHED_RUNS_BLOCKED`.
+Status: `PASS_SUPPORT_UPDATED_WITH_BGO_P2_UNRESOLVED_DIFFERENCE`.
 
 ## 1. Current Paper Claim Boundary
 
-The current engineering pass supports the fix5 normalization, eplus provenance, delayed convergence screen, and a material-only BGO same-envelope geometry. It does not support a CsI-vs-BGO performance conclusion because matched production runs are blocked by the resource guard.
+This engineering pass supports the fix5 source/response validation and a same-envelope BGO material-control run.  It does **not** support a paper claim that BGO is better or worse than the current fix5/CsI active-shield configuration, because the BGO-vs-fix5 W2 total-background difference is not statistically resolved in the present simulation.
 
 Allowed claims:
-- fix5 prompt source normalization and selected-rate reconstruction are audited against existing Step05 authority
-- final W2 prompt eplus survivors are traced to annihilation-photon lineage in existing SIM records
-- delayed selected-rate PI-02 pooled uncertainty meets the 10% minimum convergence screen
-- a material-only BGO same-envelope geometry is available and overlap-checked
+- fix5 prompt source normalization and selected-rate reconstruction are audited against existing Step05 authority;
+- final W2 prompt `eplus` survivors are traced to annihilation-photon lineage in existing SIM records;
+- delayed selected-rate PI-02 pooled uncertainty meets the 10% minimum convergence screen;
+- a material-only BGO same-envelope geometry was built and overlap-checked;
+- a staged BGO engineering run P0/P1/P2 was completed after explicit user approval, with source cards and SIM headers pointing to the BGO same-envelope geometry;
+- BGO P2 W2 selected total background is statistically consistent with the fix5 authority under a simple independent-sample Poisson check.
 
 Disallowed claims:
-- BGO improves or worsens CsI background
-- matched CsI/BGO prompt, delayed, or signal rates are known
-- material difference is statistically resolved
+- BGO improves or worsens the detector background in a statistically resolved way;
+- BGO should replace the current fix5/CsI authority;
+- W/collimator selected W2 delayed contribution is zero in BGO, because no BGO selected-W2 event-origin decomposition was generated.
 
 ## 2. Veto Authority
 
-The fixed Step05 active-veto authority for this harness is `shield_total_keV < 50 keV` with a `1 us` coincidence window. No 40/60/90 keV CsI threshold tests were run or used. BGO derivation preserves detector and volume names plus selection plumbing; material comparison remains blocked until matched runs use the same Step05 selection code.
+The fixed Step05 active-veto authority for this harness is `shield_total_keV < 50 keV` with a `1 us` coincidence window.  The BGO engineering ingest used the same Step05 parser/selection logic and records:
+
+- active veto threshold: `50.0 keV`;
+- coincidence window: `1.0e-6 s`;
+- prompt files: `68`;
+- delayed stream: BGO exact-position M=50000 delayed transport;
+- science stream: BGO focused EventList replay included.
+
+No `.det` trigger/noise threshold or 40/60/90 keV threshold test was used as rate authority.
 
 ## 3. Prompt Normalization Audit
 
-Prompt normalization status is `PASS`. The reconstructed final W2 prompt rate is `0.0366410230297` cps with `sum_w2=2.48623072039e-05`. The G1 audit verifies 60 cm source radius consistency, `pi R^2` area handling, source-card flux closure, unique seeds, split/replica completeness, and independent selected-rate reconstruction against Step05.
+Prompt normalization status is `PASS`.  The reconstructed fix5 final W2 prompt rate is `0.0366410230297 cps` with `sum_w2=2.48623072039e-05`.  The G1 audit verifies 60 cm source radius consistency, `pi R^2` area handling, source-card flux closure, unique seeds, split/replica completeness, and independent selected-rate reconstruction against Step05.
+
+The BGO P2 prompt run reused the fix5 source physics table and full-stat matrix:
+
+- `gamma_events=10000000`;
+- `gamma_splits=12`;
+- `non_gamma_replicas=8`;
+- `farfield_radius_cm=60.0`;
+- `farfield_area_cm2=11309.733552923255`.
+
+The BGO source-card manifest reports physics-source hash equality excluding geometry and identical flux sums for all 8 particle families.
 
 ## 4. eplus Survivor Physical Source
 
-The final W2 prompt `eplus` contribution is `0.0318897456148` cps. Existing SIM `IA`, `CC HIT`, and `HTsim` records classify `1.000` of selected eplus survivors into A-C. In this run all 47 survivors classify as class A, aperture-coupled annihilation-photon lineage.
+The final W2 prompt `eplus` contribution in fix5 is `0.0318897456148 cps`.  Existing SIM `IA`, `CC HIT`, and `HTsim` records classify `1.000` of selected eplus survivors into A-C.  In this run all 47 survivors classify as class A, aperture-coupled annihilation-photon lineage.
 
 | class | process summary | events | rate cps |
 |---|---|---:|---:|
-| A | gamma/phot/annihil/e+ | 25 | 0.0169626306462 |
-| A | gamma/compt/annihil/e+ | 20 | 0.0135701045169 |
-| A | e-/eIoni/compt/gamma | 2 | 0.00135701045169 |
+| A | gamma/phot/annihil/e+ | 25 | `0.0169626306462` |
+| A | gamma/compt/annihil/e+ | 20 | `0.0135701045169` |
+| A | e-/eIoni/compt/gamma | 2 | `0.00135701045169` |
 
-## 5. Delayed Convergence and Leading Isotope/Volume
+## 5. Delayed Convergence and BGO Delayed Normalization
 
-Delayed convergence status is `DELAYED_CONVERGED`. Four independent exact-position production-position samplings give 103 pooled selected W2 events, selected rate `0.00221278212897` cps, sigma `0.000218031901787` cps, and relative uncertainty `0.0985329`.
+Fix5 delayed convergence status is `DELAYED_CONVERGED`.  Four independent exact-position production-position samplings give 103 pooled selected W2 events, selected rate `0.00221278212897 cps`, sigma `0.000218031901787 cps`, and relative uncertainty `0.0985329`.
 
-| isotope | events | rate cps | fraction |
-|---|---:|---:|---:|
-| Cu-64 | 85 | 0.00730424978748 | 0.825 |
-| Cu-62 | 16 | 0.00137467483353 | 0.155 |
-| Na-24 | 1 | 8.59901732941e-05 | 0.010 |
-| W-187 | 1 | 8.59901732941e-05 | 0.010 |
+BGO P2 delayed source/transport checks:
 
-Top isotope/volume/production-family decomposition:
+- ground-state/division audit: `PASS`;
+- gamma division: `12`;
+- non-gamma division: `8`;
+- exact-position PointSources: `50000`;
+- fixed total activity: `29.1851895573 Bq`;
+- delayed transport: `SE=1000000`, `ID=1000000`, `TE=32318.644709 s`;
+- delayed SIM geometry: BGO same-envelope setup;
+- source-level W/collimator activity: `2.18753223485 Bq`.
 
-| isotope | source volume | family | events | rate cps |
-|---|---|---|---:|---:|
-| Cu-64 | ColdPlate_MXC_50mK_SD_anchor | n | 38 | 0.00326554486044 |
-| Cu-64 | Cu_SubstrateSupport_SolidDisk_L0_deepest | n | 13 | 0.00111670431365 |
-| Cu-64 | Cu_50mK_StillLike_Can_bottom_cap_2mm | n | 11 | 0.000945531210039 |
-| Cu-62 | ColdPlate_MXC_50mK_SD_anchor | n | 11 | 0.000945174138045 |
-| Cu-64 | ColdPlate_CP_100mK_intercept | n | 6 | 0.00051586377067 |
-| Cu-64 | Window | n | 6 | 0.000515486387583 |
-| Cu-64 | Cu_50mK_StillLike_Can_side_wall_above_side_port | n | 4 | 0.000343565415131 |
-| Cu-64 | ColdPlate_Still_0p7K | n | 3 | 0.000257820462886 |
+Boundary: no BGO selected-W2 event-origin decomposition was generated, so source-level W/collimator activity must not be translated into a selected W/collimator rate claim.
 
-## 6. CsI-BGO Comparison Status
+## 6. BGO Same-Envelope Geometry and P2 Simulation
 
-The BGO same-envelope geometry status is `PASS_BGO_SAME_ENVELOPE_GEOMETRY`. It changes `24` active-shield material lines from CsI to BGO while preserving geometry shape, position, mother, detector references, source radius, and selection plumbing. The BGO material authority is MEGAlib `BGO`, density `7.1` g/cm3, composition `Bi 4, Ge 3, O 12`.
+The BGO same-envelope geometry status is `PASS_BGO_SAME_ENVELOPE_GEOMETRY`.  It changes `24` active-shield material lines from CsI to BGO while preserving geometry shape, position, mother, detector references, source radius, and Step05 selection plumbing.  The BGO material authority is MEGAlib `BGO`, density `7.1 g/cm3`, composition `Bi 4, Ge 3, O 12`.
 
-Geometry diff status: `PASS` with `0` non-whitelisted diffs. Overlap status: `PASS`.
+Staged BGO run status:
 
-Matched CsI/BGO transport status is `BLOCKED_RESOURCE_APPROVAL`. Therefore no prompt, delayed, signal, total-background, ratio, uncertainty-on-difference, or material-preference comparison is available yet.
+| Stage | Instant | Buildup | Step05 |
+|---|---|---|---|
+| P0 smoke | PASS | PASS | PASS |
+| P1 pilot | PASS | PASS | PASS |
+| P2 production | PASS | PASS | PASS |
 
-## 7. Methods/Results/Discussion Help
+Focused signal replay also passed through BGO geometry: `37194/37194` events.
 
-Methods can cite the validated source normalization, fixed 50 keV/1 us veto authority, delayed convergence treatment, and material-only BGO derivation procedure. Results can cite fix5 prompt/delayed validation numbers and the blocked status of material comparison. Discussion should describe BGO as an engineering validation path prepared for future matched production, not as an evaluated design improvement.
+## 7. W2 BGO-vs-fix5 Result
 
-## 8. Candidate English Insertion
+Window: `510.58-511.42 keV`, final `side_compton_fov_pass`, active veto `<50 keV`.
 
-The background model was subjected to a separate engineering validation pass. The prompt source normalization was re-audited from the far-field source cards through the selected-event rate reconstruction, and the dominant prompt positron survivors in the 511 keV window were traced in the existing simulation records to annihilation-photon lineages. For delayed activation, four independent exact-position production-position samplings gave 103 pooled selected W2 events with a relative Monte Carlo uncertainty of about 9.9%. A material-only BGO same-envelope geometry was also derived and passed static geometry and overlap checks, but matched CsI/BGO production runs were not executed in this pass because they exceed the predefined resource guard.
+| Case | Prompt cps | Delayed cps | Total background cps | Signal cps at 1e-4 ph cm^-2 s^-1 | Final bkg events |
+|---|---:|---:|---:|---:|---:|
+| BGO P2 engineering | `0.0339335772` | `0.00355831753` | `0.0374918947` | `0.00118056701` | 158 |
+| fix5 current authority | `0.0366410230` | `0.00257520349` | `0.0392162265` | `0.00118587481` | 84 |
 
-## 9. Claims Not Supported
+Simple independent-sample Poisson approximation:
 
-- Do not claim a BGO/CsI background ratio or material preference.
+- BGO sigma: `0.00518544925 cps`;
+- fix5 sigma: `0.00500832932 cps`;
+- BGO - fix5: `-0.00172433179 cps`;
+- z-score: `-0.239`.
+
+Interpretation: the BGO P2 engineering run is provenance-clean, but the W2 total-background difference is far below 2 sigma.  The correct paper-facing statement is that no statistically resolved material preference is supported by this control run.
+
+## 8. Methods/Results/Discussion Help
+
+Methods can cite the validated source normalization, fixed 50 keV/1 us veto authority, delayed normalization closure, exact-position source sampling, and material-only BGO derivation procedure.
+
+Results can cite the BGO material-control run as an engineering cross-check showing no resolved W2 total-background difference relative to the current fix5 authority under matched source/statistics/selection.
+
+Discussion should frame BGO as a material-control branch that did not reveal a hidden large material-driven background effect.  It should not be used to claim a design improvement.
+
+## 9. Candidate English Insertion
+
+The background model was subjected to an engineering validation pass.  The prompt source normalization was audited from the far-field source cards through selected-event rate reconstruction, and the dominant prompt positron survivors in the 511 keV window were traced to annihilation-photon lineages in the simulation records.  A same-envelope BGO material-control geometry was then generated by replacing only the active-shield material assignments while preserving the detector segmentation, geometry envelope, source model, and Step05 selection.  In the full BGO engineering run, the final W2 background rate was `0.03749 cps`, compared with `0.03922 cps` for the current fix5 authority, while the reference-flux signal rate was unchanged within 1%.  The difference is not statistically resolved in the present Monte Carlo sample, so no material-preference claim is made from this control run.
+
+## 10. Claims Not Supported
+
+- Do not claim BGO improves sensitivity or total background.
 - Do not change headline sensitivity numbers from this document alone.
-- Do not cite targeted trace or matched-run results, because none were run here.
-- Do not describe non-significant or unrun material comparisons as design conclusions.
+- Do not claim selected W/collimator-origin delayed events are absent in BGO.
+- Do not describe the non-significant material-control difference as a design conclusion.
 
-## 10. Provenance Table
+## 11. Provenance Table
 
 | item | path |
 |---|---|
-| g1 | `01_prompt_source_audit/prompt_normalization_audit.json` |
-| g2 | `02_prompt_eplus_provenance/eplus_survivor_provenance.json` |
-| g2_process | `02_prompt_eplus_provenance/eplus_survivor_process_summary.csv` |
-| g3 | `03_delayed_convergence/delayed_selected_rate_convergence.json` |
-| g3_isotopes | `03_delayed_convergence/delayed_selected_isotope_summary.csv` |
-| g3_decomposition | `03_delayed_convergence/delayed_selected_decomposition.csv` |
-| g4 | `04_bgo_variant/bgo_geometry_manifest.json` |
-| g5 | `05_matched_runs_resource_guard/summary.json` |
-
-## Resource-Blocked Follow-Up
-
-Affected claim: No CsI/BGO material-comparison rate, ratio, uncertainty, or design preference can be claimed until matched CsI/BGO transport and identical Step05 selection are run.
-
-Minimal next action: Approve and run the staged P0 syntax/geometry smoke batch, then review P0 before any P1/P2 escalation.
+| G1 prompt normalization | `01_prompt_source_audit/prompt_normalization_audit.json` |
+| G2 eplus provenance | `02_prompt_eplus_provenance/eplus_survivor_provenance.json` |
+| G3 delayed convergence | `03_delayed_convergence/delayed_selected_rate_convergence.json` |
+| G4 BGO geometry | `04_bgo_variant/bgo_geometry_manifest.json` |
+| BGO user approval | `05_matched_runs_resource_guard/USER_APPROVAL_20260624.md` |
+| BGO P2 audit | `09_bgo_p2_completion_audit/bgo_p2_completion_audit.json` |
+| BGO P2 Step05 | `06_bgo_matched_runs/p2/step05_ingest_exactpos_with_focus/bgo_engineering_step05_ingest_summary.json` |
+| BGO P2 rates | `06_bgo_matched_runs/p2/step05_ingest_exactpos_with_focus/bgo_engineering_step05_ingest_rates.csv` |
+| BGO P2 focused signal | `06_bgo_matched_runs/p2/step09_focus/step09_focus_summary.json` |
