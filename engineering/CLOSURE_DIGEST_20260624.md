@@ -92,6 +92,15 @@ terminal: `PASS_BGO_P2_ENGINEERING_COMPLETE` · bgo_completion_audit: `PASS_BGO_
 
 native vs direct 分类(G5,样例): 多数 `MATCH`(δ~1e-7);少数 `PARENT_DAUGHTER_FEEDING`(native 有、direct 0,如 Cu-62 激发态被母核喂入);少数 `ACTIVITY_DIFFERENCE_DECAY_CHAIN_OR_HALF_LIFE_DATA`。→ +1.2% 是衰变链喂入,非 bug。
 
+**2026-06-24 增量工程更新（completion audit）**：已补可复现终态审计
+`engineering/delayed_source_authority_v2_20260624/00_manifest/completion_audit.{json,md}`，
+verdict = `COMPLETE_LEGAL_NO_RATE_AUTHORITY_ENDPOINT`，status = `PASS`。审计覆盖：
+74/74 harness-required artifacts present；50 个 JSON 全部可解析；11/11 `summary.json`
+满足 schema 且 gate status 无 mismatch；14 个 phase source card 与 3 个生成 SIM header 均指向 fix5
+`.geo.setup`；禁止路径（`runs/`、`outputs/`、`stepwise_maintenance/`、prompt config、old、manuscript source）
+无本工程修改；无活跃 `cosima`/WP07--WP10 进程。终态边界不变：`NO_RATE_AUTHORITY`，未提升 v2
+delayed selected-rate、下游 rate 或论文数字。
+
 ---
 
 # 4. 证据档案（逐事件 / 逐体积 / 逐能带）
@@ -257,5 +266,6 @@ source cards flux/geometry parity PASS；全部 BGO source cards 与 P2 SIM head
   - A/BGO 审计: `engineering/background_validation_20260624/09_bgo_p2_completion_audit/bgo_p2_completion_audit.json`（blocking failures=0; nonblocking warning=`selected_w_origin_decomposition`）
   - A/论文支持: `engineering/background_validation_20260624/07_manuscript_support/{background_validation_necessity_and_paper_impact_final.md,manuscript_numbers_manifest.json,manuscript_claim_boundary.md,manuscript_insertions_en.md,supplement_tables.md}`
   - B: `engineering/delayed_source_authority_v2_20260624/{05_native_activation,06_time_constant,07_transport,08_promotion}/`
+  - B/终态审计: `engineering/delayed_source_authority_v2_20260624/00_manifest/completion_audit.json` 与 `completion_audit.md`（required artifacts=74/74, JSON errors=0, summary schema issues=0, geometry mismatches=0, forbidden path entries=0, active processes=0）
   - 各工程根 `FINAL_STATUS.md`
 - 本文件为只读提取,所有数字可经上述指针复核。
