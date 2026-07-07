@@ -1,0 +1,323 @@
+{
+  "document_type": "geo_opt_s1_bpe_w5_neutron_plastic_audit",
+  "generated_at_utc": "2026-07-07T05:32:46Z",
+  "status": "PASS_POSTPROCESS_AUDIT_NOT_GEOMETRY_PROMOTION",
+  "activation": {
+    "inputs": {
+      "geo_groundstate_corrections": "runs/geometry_optimization_20260704/step02_delay_fix_geo_opt_s1_bpe_w5_fullstat_v1/groundstate_activity_corrections.csv",
+      "mass_groundstate_corrections": "runs/Mass_model_511_nearfield_migration_20260701/step02_delay_fix_candidate_Mass_model_511_fullstat_v1/groundstate_activity_corrections.csv",
+      "geo_inventory_raw": "runs/geometry_optimization_20260704/step02_decay_source_geo_opt_s1_bpe_w5_fullstat_v1/activation_inventory_day15.csv",
+      "mass_inventory_raw": "runs/Mass_model_511_nearfield_migration_20260701/step02_decay_source_candidate_Mass_model_511_fullstat_v1/activation_inventory_day15.csv"
+    },
+    "summary": {
+      "mass_fixed_total_activity_Bq": 141.83343806309037,
+      "geo_fixed_total_activity_Bq": 106.48226813815282,
+      "geo_internal_excluding_added_layers_Bq": 105.56481472207452,
+      "mass_internal_Bq": 141.83343806309037,
+      "geo_added_layers_Bq": 0.917453416078293,
+      "mass_CsI_Bq": 89.46492664506488,
+      "geo_CsI_Bq": 63.01977074482,
+      "common_internal_volume_names_count": 106,
+      "mass_common_internal_volume_names_Bq": 141.77035027630322,
+      "geo_common_internal_volume_names_Bq": 105.56481472207449
+    },
+    "tables": {
+      "category_comparison": "engineering/geometry_optimization_20260704/05_neutron_plastic_audit_20260707/activation_category_comparison_groundstate_fixed.csv",
+      "top_volume_comparison": "engineering/geometry_optimization_20260704/05_neutron_plastic_audit_20260707/activation_top_volume_comparison_groundstate_fixed.csv",
+      "top_nuclide_comparison": "engineering/geometry_optimization_20260704/05_neutron_plastic_audit_20260707/activation_top_nuclide_comparison_groundstate_fixed.csv"
+    }
+  },
+  "neutron_energy_depth": {
+    "inputs": {
+      "geo_buildup_dir": "runs/geometry_optimization_20260704/step02_buildup_geo_opt_s1_bpe_w5_fullstat_v1",
+      "mass_buildup_dir": "runs/Mass_model_511_nearfield_migration_20260701/step02_buildup_candidate_Mass_model_511_fullstat_v1",
+      "selection": "Background_n_fullsphere20*.sim.gz, CC IP RP rows only",
+      "depth_definition": "max(0, 27.9 cm - sqrt(x^2+y^2)); x/y from CC IP RP in cm",
+      "energy_definition": "event EC value from the same neutron SIM event, interpreted as primary neutron energy in keV"
+    },
+    "summary": {
+      "geo": {
+        "raw_rpip_points": 248128,
+        "weighted_rpip_points": 31016.0,
+        "weighted_internal_rpip_points": 30769.5,
+        "weighted_CsI_rpip_points": 23927.5,
+        "sample_size_for_quantiles": 5600,
+        "sample_median_depth_cm": 7.775551606239608,
+        "sample_median_primary_energy_keV": 2704.64,
+        "sample_p90_primary_energy_keV": 7725.11
+      },
+      "mass": {
+        "raw_rpip_points": 325500,
+        "weighted_rpip_points": 40687.5,
+        "weighted_internal_rpip_points": 40687.5,
+        "weighted_CsI_rpip_points": 32453.625,
+        "sample_size_for_quantiles": 5600,
+        "sample_median_depth_cm": 7.858443619731931,
+        "sample_median_primary_energy_keV": 3004.925,
+        "sample_p90_primary_energy_keV": 7581.411000000011
+      },
+      "geo_rpip_points_by_category": {
+        "cold_plates": 1938.0,
+        "csi": 23927.5,
+        "geoopt_bpe": 14.0,
+        "geoopt_plastic_skin": 9.0,
+        "geoopt_w_baffle": 223.5,
+        "other_internal": 598.25,
+        "outer_mechanics": 2143.875,
+        "passive_w_or_collimator": 1708.5,
+        "tes": 92.125,
+        "window": 361.25
+      },
+      "mass_rpip_points_by_category": {
+        "cold_plates": 2238.25,
+        "csi": 32453.625,
+        "other_internal": 708.75,
+        "outer_mechanics": 2865.625,
+        "passive_w_or_collimator": 1816.125,
+        "tes": 125.375,
+        "window": 479.75
+      }
+    },
+    "outputs": {
+      "plot": "engineering/geometry_optimization_20260704/05_neutron_plastic_audit_20260707/figures/neutron_energy_depth_hexbin.png",
+      "binned_csv": "engineering/geometry_optimization_20260704/05_neutron_plastic_audit_20260707/neutron_energy_depth_binned.csv",
+      "sample_points_csv": "engineering/geometry_optimization_20260704/05_neutron_plastic_audit_20260707/neutron_energy_depth_points_sample.csv"
+    }
+  },
+  "plastic_veto": {
+    "definition": {
+      "plastic_on": "GeoOpt_S1_PlasticFullWrap* counted as active-veto energy at 50 keV threshold",
+      "plastic_off": "same geometry and same SIM, but GeoOpt_S1_PlasticFullWrap* excluded from active-veto energy in post-processing",
+      "not_tested": "removing the plastic material from transport; this audit does not rerun Cosima"
+    },
+    "inputs": {
+      "plastic_on_catalog_outdir": "stepwise_maintenance/step05_veto_time_axis/outputs_geo_opt_s1_bpe_w5_fullstat_v1_l1",
+      "plastic_off_catalog_outdir": "engineering/geometry_optimization_20260704/05_neutron_plastic_audit_20260707/work/step05_plastic_off_catalog",
+      "prompt_dir": "runs/geometry_optimization_20260704/step02_instant_geo_opt_s1_bpe_w5_fullstat_v1",
+      "delayed_sim": "runs/geometry_optimization_20260704/step02_delayed_transport_geo_opt_s1_bpe_w5_fullstat_v1/DelayedDecayGeoOptS1BpeW5FullstatV1.inc1.id1.sim.gz"
+    },
+    "catalogs": {
+      "plastic_on_events_kept": 4949786,
+      "plastic_off_events_kept": 1484553,
+      "plastic_on_total_catalog_rate_s-1": 10752.583205310497,
+      "plastic_off_total_catalog_rate_s-1": 809.363127430297
+    },
+    "direct_summary": {
+      "w2_background_plastic_on_cps": 0.03538061615676972,
+      "w2_background_plastic_off_cps": 0.04849390249829967,
+      "w2_on_minus_off_cps": -0.013113286341529952,
+      "w2_relative_change_percent": -27.04110345004661,
+      "broad_background_plastic_on_cps": 0.06699275283457812,
+      "broad_background_plastic_off_cps": 0.08485727255625239,
+      "broad_on_minus_off_cps": -0.01786451972167427,
+      "broad_relative_change_percent": -21.05243214107757
+    },
+    "eplus_plastic_hits": {
+      "input_files": [
+        "runs/geometry_optimization_20260704/step02_instant_geo_opt_s1_bpe_w5_fullstat_v1/Background_eplus_fullsphere20_rep01_part01.inc1.id1.sim.gz",
+        "runs/geometry_optimization_20260704/step02_instant_geo_opt_s1_bpe_w5_fullstat_v1/Background_eplus_fullsphere20_rep02_part01.inc1.id1.sim.gz",
+        "runs/geometry_optimization_20260704/step02_instant_geo_opt_s1_bpe_w5_fullstat_v1/Background_eplus_fullsphere20_rep03_part01.inc1.id1.sim.gz",
+        "runs/geometry_optimization_20260704/step02_instant_geo_opt_s1_bpe_w5_fullstat_v1/Background_eplus_fullsphere20_rep04_part01.inc1.id1.sim.gz",
+        "runs/geometry_optimization_20260704/step02_instant_geo_opt_s1_bpe_w5_fullstat_v1/Background_eplus_fullsphere20_rep05_part01.inc1.id1.sim.gz",
+        "runs/geometry_optimization_20260704/step02_instant_geo_opt_s1_bpe_w5_fullstat_v1/Background_eplus_fullsphere20_rep06_part01.inc1.id1.sim.gz",
+        "runs/geometry_optimization_20260704/step02_instant_geo_opt_s1_bpe_w5_fullstat_v1/Background_eplus_fullsphere20_rep07_part01.inc1.id1.sim.gz",
+        "runs/geometry_optimization_20260704/step02_instant_geo_opt_s1_bpe_w5_fullstat_v1/Background_eplus_fullsphere20_rep08_part01.inc1.id1.sim.gz"
+      ],
+      "event_rate_s-1": 0.0006790382916483043,
+      "threshold_keV": 50.0,
+      "counts": {
+        "generated_events": 1949816,
+        "events_with_any_plastic_hit": 345248,
+        "events_with_plastic_edep_ge_50keV": 185810,
+        "events_with_sec_eplus_plastic_hit": 331474,
+        "events_with_sec_eplus_plastic_edep_ge_50keV": 141634,
+        "events_with_prim_eplus_plastic_hit": 345248
+      },
+      "rates": {
+        "generated_events_rate_s-1": 1323.9997256685301,
+        "events_with_any_plastic_hit_rate_s-1": 234.43661211499378,
+        "events_with_plastic_edep_ge_50keV_rate_s-1": 126.17210497117142,
+        "events_with_sec_eplus_plastic_hit_rate_s-1": 225.08353868583004,
+        "events_with_sec_eplus_plastic_edep_ge_50keV_rate_s-1": 96.17490939931594,
+        "events_with_prim_eplus_plastic_hit_rate_s-1": 234.43661211499378
+      },
+      "edep_sums_keV": {
+        "plastic_edep_keV": 69873561.44997084,
+        "plastic_sec_eplus_edep_keV": 46926506.88833244,
+        "plastic_prim_eplus_edep_keV": 69873561.44997084
+      },
+      "fractions": {
+        "any_plastic_hit_per_generated": 0.17706696426739754,
+        "sec_eplus_plastic_hit_per_generated": 0.17000270794782688,
+        "sec_eplus_plastic_ge50_per_generated": 0.07263967471802467
+      }
+    },
+    "eplus_w2_matched_plastic_only_veto": {
+      "counts": {
+        "tes_window_events": 62,
+        "survives_active_veto_with_plastic_events": 40,
+        "vetoed_only_when_plastic_is_active_events": 19,
+        "also_vetoed_without_plastic_events": 3
+      },
+      "rates": {
+        "tes_window_rate_s-1": 0.0421003740821948,
+        "survives_active_veto_with_plastic_rate_s-1": 0.027161531665932145,
+        "vetoed_only_when_plastic_is_active_rate_s-1": 0.012901727541317782,
+        "also_vetoed_without_plastic_rate_s-1": 0.002037114874944913
+      },
+      "examples_csv": "engineering/geometry_optimization_20260704/05_neutron_plastic_audit_20260707/plastic_only_veto_eplus_w2_examples.csv"
+    },
+    "timeline": {
+      "plastic_on": {
+        "model": {
+          "mode": "ADAPTIVE_BOUNDED_HIGH_RATE_POISSON_DRAW",
+          "full_obs_time_s": 9307.684386,
+          "timeline_obs_time_s": 465.00453933066007,
+          "total_catalog_rate_s-1": 10752.583205310497,
+          "full_interval_expected_instances": 100081650.80923435,
+          "max_timeline_draw_lambda": 5000000.0
+        },
+        "draw_summary": {
+          "prompt": {
+            "lambda": 4967400.727307956,
+            "drawn": 4971593,
+            "rate_hz": 10682.477926899735
+          },
+          "delayed": {
+            "lambda": 32140.806771176893,
+            "drawn": 32197,
+            "rate_hz": 69.11933981857732
+          },
+          "science": {
+            "lambda": 458.4659208956993,
+            "drawn": 454,
+            "rate_hz": 0.9859385922460614
+          }
+        },
+        "timeline": {
+          "obs_time_s": 465.00453933066007,
+          "n_event_instances": 5004244,
+          "n_candidates_total": 4950884,
+          "n_candidates_with_tes": 2500,
+          "n_mixed_candidates": 677,
+          "windows": {
+            "broad_480_550": {
+              "counts": {
+                "raw": 470,
+                "active_veto_pass": 408,
+                "side_compton_fov_pass": 397
+              },
+              "rates_s-1": {
+                "raw": 1.0107428212991867,
+                "active_veto_pass": 0.8774107895533366,
+                "side_compton_fov_pass": 0.8537551065016534
+              },
+              "side_compton_class_counts": {
+                "active_veto": 62,
+                "keep": 159,
+                "single": 238,
+                "veto": 11
+              }
+            },
+            "w2_510p58_511p42": {
+              "counts": {
+                "raw": 415,
+                "active_veto_pass": 390,
+                "side_compton_fov_pass": 383
+              },
+              "rates_s-1": {
+                "raw": 0.8924644060407713,
+                "active_veto_pass": 0.8387014900142188,
+                "side_compton_fov_pass": 0.823647873526784
+              },
+              "side_compton_class_counts": {
+                "active_veto": 25,
+                "keep": 155,
+                "single": 228,
+                "veto": 7
+              }
+            }
+          }
+        }
+      },
+      "plastic_off": {
+        "model": {
+          "mode": "ADAPTIVE_BOUNDED_HIGH_RATE_POISSON_DRAW",
+          "full_obs_time_s": 9307.684386,
+          "timeline_obs_time_s": 6177.696797079015,
+          "total_catalog_rate_s-1": 809.363127430297,
+          "full_interval_expected_instances": 7533296.543787105,
+          "max_timeline_draw_lambda": 5000000.0
+        },
+        "draw_summary": {
+          "prompt": {
+            "lambda": 4570778.842459279,
+            "drawn": 4574801,
+            "rate_hz": 739.883971745015
+          },
+          "delayed": {
+            "lambda": 423132.15489026206,
+            "drawn": 423071,
+            "rate_hz": 68.49351283966067
+          },
+          "science": {
+            "lambda": 6089.002650452136,
+            "drawn": 6064,
+            "rate_hz": 0.9856428456202615
+          }
+        },
+        "timeline": {
+          "obs_time_s": 6177.696797079015,
+          "n_event_instances": 5003936,
+          "n_candidates_total": 4999893,
+          "n_candidates_with_tes": 32758,
+          "n_mixed_candidates": 626,
+          "windows": {
+            "broad_480_550": {
+              "counts": {
+                "raw": 6360,
+                "active_veto_pass": 5637,
+                "side_compton_fov_pass": 5472
+              },
+              "rates_s-1": {
+                "raw": 1.0295098980913377,
+                "active_veto_pass": 0.9124759898649168,
+                "side_compton_fov_pass": 0.885767006659717
+              },
+              "side_compton_class_counts": {
+                "active_veto": 723,
+                "keep": 2195,
+                "single": 3277,
+                "veto": 165
+              }
+            },
+            "w2_510p58_511p42": {
+              "counts": {
+                "raw": 5659,
+                "active_veto_pass": 5364,
+                "side_compton_fov_pass": 5240
+              },
+              "rates_s-1": {
+                "raw": 0.9160371876256101,
+                "active_veto_pass": 0.8682847631072226,
+                "side_compton_fov_pass": 0.8482125575469512
+              },
+              "side_compton_class_counts": {
+                "active_veto": 295,
+                "keep": 2118,
+                "single": 3122,
+                "veto": 124
+              }
+            }
+          }
+        }
+      }
+    },
+    "tables": {
+      "direct_rate_comparison": "engineering/geometry_optimization_20260704/05_neutron_plastic_audit_20260707/plastic_veto_on_off_direct_rate_comparison.csv",
+      "prompt_by_tag_comparison": "engineering/geometry_optimization_20260704/05_neutron_plastic_audit_20260707/plastic_veto_on_off_prompt_by_tag_comparison.csv",
+      "timeline_rate_comparison": "engineering/geometry_optimization_20260704/05_neutron_plastic_audit_20260707/plastic_veto_on_off_timeline_rate_comparison.csv",
+      "eplus_w2_examples": "engineering/geometry_optimization_20260704/05_neutron_plastic_audit_20260707/plastic_only_veto_eplus_w2_examples.csv"
+    }
+  }
+}

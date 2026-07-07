@@ -1,0 +1,110 @@
+{
+  "document_type": "mass_model_511_vs_fix5_replacement_review",
+  "generated_at_utc": "2026-07-03T16:16:48Z",
+  "mass_label": "Mass_model_511_fullstat_v1",
+  "fix5_reference_label": "fix5_fullstat_v2_exactpos_m50000_s260613",
+  "decision": "USER_REVIEW_REQUIRED_MASS_MODEL_511_NOT_AUTO_REPLACEMENT",
+  "decision_reason": "Current-geometry full chain is closed with fix5-matched M statistics, but automatic replacement is not supported because Mass_model_511 Z20d is lower than fix5; Mass_model_511 20-day 3-sigma flux is higher than fix5.",
+  "claim_boundary": "Replacement/no-material-effect review over existing current-geometry Mass_model_511 full-stat Step05--Step08 outputs. This does not rerun Revan; Mass_model_511 P1/P2/P3 replay is tracked separately and is not applied to the manuscript here.",
+  "mass_metrics": {
+    "B_cps": 0.0480735487894033,
+    "B_sigma_cps": 0.005520162710878366,
+    "B_sigma_method": "quadrature of prompt_cps/sqrt(prompt_selected_events) and delayed_cps/sqrt(delayed_selected_events)",
+    "prompt_cps": 0.044088948071811976,
+    "prompt_sigma_cps": 0.0054685609724045925,
+    "prompt_selected_events": 65,
+    "delayed_cps": 0.003984600717591324,
+    "delayed_sigma_cps": 0.0007530187551882966,
+    "delayed_selected_events": 28,
+    "signal_cps": 0.0011847573754053184,
+    "Z20d": 7.038367535725279,
+    "F3_20d_ph_cm2_s": 4.2623520081505106e-05,
+    "w_activation_cps": 0.0,
+    "w_activation_selected_events": 0,
+    "w_activation_fraction_of_delayed_selected_rate": 0.0,
+    "w_activation_dominant_component": false
+  },
+  "fix5_reference_metrics": {
+    "B_cps": 0.0392162265186315,
+    "B_sigma_cps": 0.005008329321646361,
+    "prompt_cps": 0.036641023029691425,
+    "prompt_sigma_cps": 0.0049862116709061865,
+    "prompt_selected_events": 54,
+    "delayed_cps": 0.0025752034889400762,
+    "delayed_sigma_cps": 0.0004701656803528284,
+    "delayed_selected_events": 30,
+    "signal_cps": 0.00118587480749719,
+    "Z20d": 7.79950030715189,
+    "F3_20d_ph_cm2_s": 3.8464002588077305e-05,
+    "w_activation_cps": 0.0,
+    "w_activation_selected_events": 0,
+    "w_activation_fraction_of_delayed_selected_rate": 0.0,
+    "w_activation_dominant_component": false
+  },
+  "comparison_vs_fix5": {
+    "B_ratio_mass_over_fix5": 1.2258586064256773,
+    "B_delta_cps": 0.008857322270771802,
+    "B_delta_combined_sigma": 1.188334445475098,
+    "delayed_ratio_mass_over_fix5": 1.547295479640461,
+    "signal_ratio_mass_over_fix5": 0.9990577149587738,
+    "Z20d_ratio_mass_over_fix5": 0.9024126236999214,
+    "F3_ratio_mass_over_fix5": 1.108140526558646
+  },
+  "threshold_evaluation": {
+    "fix5_stat_match": {
+      "reference_label": "fix5_fullstat_v2_exactpos_m50000_s260613",
+      "m_pointsource_blocks_required": 50000,
+      "seed_required": 260613,
+      "delayed_transport_SE_required": 1000000,
+      "mass_m_pointsource_blocks": 50000,
+      "mass_seed": 260613,
+      "mass_delayed_transport_SE": 1000000,
+      "mass_delayed_transport_ID": 1000000,
+      "status": "PASS"
+    },
+    "background_change_vs_fix5": {
+      "delta_cps": 0.008857322270771802,
+      "combined_sigma_cps": 0.007453560152613964,
+      "delta_in_combined_sigma": 1.188334445475098,
+      "compatible_with_fix5_within_2sigma": true,
+      "mass_background_higher_than_fix5": true
+    },
+    "signal_change_vs_fix5": {
+      "signal_ratio_mass_over_fix5": 0.9990577149587738,
+      "signal_within_5pct_of_fix5": true
+    },
+    "significance_change_vs_fix5": {
+      "Z20d_ratio_mass_over_fix5": 0.9024126236999214,
+      "F3_ratio_mass_over_fix5": 1.108140526558646,
+      "mass_Z20d_not_worse_than_fix5": false,
+      "mass_F3_not_worse_than_fix5": false
+    },
+    "w_activation": {
+      "rate_decomposition_available": true,
+      "dominant_component": false,
+      "selected_rate_hz": 0.0,
+      "fraction_of_delayed_selected_rate": 0.0
+    }
+  },
+  "blocking_items": [
+    "Mass_model_511 Z20d is lower than fix5.",
+    "Mass_model_511 20-day 3-sigma flux is higher than fix5."
+  ],
+  "evidence": {
+    "mass_step05_summary": "stepwise_maintenance/step05_veto_time_axis/outputs_Mass_model_511_fullstat_v1_l1/step05_Mass_model_511_fullstat_v1_l1_response_summary.json",
+    "mass_step06_summary": "stepwise_maintenance/step06_mission_time_variation/outputs_Mass_model_511_fullstat_v1/step06_Mass_model_511_fullstat_v1_summary.json",
+    "mass_step07_summary": "stepwise_maintenance/step07_source_cases/outputs_Mass_model_511_fullstat_v1/source_case_summary.json",
+    "mass_step08_summary": "stepwise_maintenance/step08_significance/outputs_Mass_model_511_fullstat_v1/step08_Mass_model_511_fullstat_v1_time_dependent_summary.json",
+    "mass_delayed_source_summary": "engineering/Mass_model_511_nearfield_migration_20260701/03_detector_transport/delayed/candidate_Mass_model_511/fullstat_v1/F1/delayed_source_exactpos_summary.json",
+    "mass_delayed_transport_manifest": "engineering/Mass_model_511_nearfield_migration_20260701/03_detector_transport/delayed_transport_campaign_manifest_candidate_Mass_model_511_fullstat_v1.json",
+    "mass_w_activation_selected_w2_audit": "engineering/Mass_model_511_nearfield_migration_20260701/14_replacement_review_20260703/mass_model_511_w_activation_selected_w2_audit.json",
+    "mass_w_activation_selected_w2_events": "engineering/Mass_model_511_nearfield_migration_20260701/14_replacement_review_20260703/mass_model_511_w_activation_selected_w2_events.csv",
+    "mass_model_511_p1_p2_p3_replay": "engineering/Mass_model_511_nearfield_migration_20260701/15_p1_p2_p3_replay_20260703/README.md",
+    "fix5_promotion_decision": "outputs/reports/fix5_fullstat_v2_exactpos_m50000_s260613/fix5_promotion_decision.json",
+    "metrics_csv": "engineering/Mass_model_511_nearfield_migration_20260701/14_replacement_review_20260703/mass_model_511_vs_fix5_metrics.csv"
+  },
+  "pending_if_used_for_paper_authority": [
+    "Mass_model_511-specific P1/P2/P3 replay is completed separately but is not applied to the manuscript here.",
+    "User decision is required before replacing the paper-facing fix5 authority with Mass_model_511 values."
+  ]
+}

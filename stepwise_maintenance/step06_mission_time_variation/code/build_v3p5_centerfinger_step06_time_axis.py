@@ -52,11 +52,21 @@ STAGE_MAP = {
     "final": "side_compton_fov_pass_rate_s-1",
 }
 FIX5_FULLSTAT_LABEL = "fix5_fullstat_v2_exactpos_m50000_s260613"
+MASS_MODEL_511_LABEL = "Mass_model_511_fullstat_v1"
+MASS_MODEL_511_ALIASES = {"mass_model_511_fullstat_v1", MASS_MODEL_511_LABEL}
+GEO_OPT_S1_BPE_W5_LABEL = "geo_opt_s1_bpe_w5_fullstat_v1"
+GEO_OPT_S1_BPE_W5_ALIASES = {GEO_OPT_S1_BPE_W5_LABEL}
+GEO_OPT_S1_BPE_W5_ENGINEERING = ROOT / "engineering" / "geometry_optimization_20260704"
+GEO_OPT_S1_BPE_W5_RUNS = ROOT / "runs" / "geometry_optimization_20260704"
 
 
 def canonical_label(label: str) -> str:
     if label == "fix5_fullstat_v2":
         return FIX5_FULLSTAT_LABEL
+    if label in MASS_MODEL_511_ALIASES:
+        return MASS_MODEL_511_LABEL
+    if label in GEO_OPT_S1_BPE_W5_ALIASES:
+        return GEO_OPT_S1_BPE_W5_LABEL
     return label
 
 
@@ -68,6 +78,14 @@ def is_fix5_fullstat_label(label: str) -> bool:
     return canonical_label(label) == FIX5_FULLSTAT_LABEL
 
 
+def is_mass_model_511_label(label: str) -> bool:
+    return canonical_label(label) == MASS_MODEL_511_LABEL
+
+
+def is_geo_opt_s1_bpe_w5_label(label: str) -> bool:
+    return canonical_label(label) == GEO_OPT_S1_BPE_W5_LABEL
+
+
 def is_exactpos_label(label: str) -> bool:
     return label.startswith("fullstat_v2_exactpos")
 
@@ -77,6 +95,10 @@ def output_prefix(label: str) -> str:
         return "bgo_sample"
     if is_fix5_fullstat_label(label):
         return "fix5"
+    if is_mass_model_511_label(label):
+        return "Mass_model_511"
+    if is_geo_opt_s1_bpe_w5_label(label):
+        return "geo_opt_s1_bpe_w5"
     return "v3p5_centerfinger"
 
 
@@ -85,6 +107,10 @@ def step06_summary_filename(label: str) -> str:
         return "step06_bgo_sample_fullstat_v2_exactpos_summary.json"
     if is_fix5_fullstat_label(label):
         return f"step06_{FIX5_FULLSTAT_LABEL}_summary.json"
+    if is_mass_model_511_label(label):
+        return "step06_Mass_model_511_fullstat_v1_summary.json"
+    if is_geo_opt_s1_bpe_w5_label(label):
+        return f"step06_{GEO_OPT_S1_BPE_W5_LABEL}_summary.json"
     return f"step06_{output_prefix(label)}_{label}_summary.json"
 
 
@@ -117,6 +143,59 @@ def configure_paths(label: str) -> None:
         )
         STEP02 = ROOT / "outputs" / "reports" / FIX5_FULLSTAT_LABEL / "fix5_delayed_source_exactpos_summary.json"
         GROUNDSTATE = ROOT / "runs" / "step02_delay_fix_fix5_fullstat_v2" / "groundstate_activity_corrections.csv"
+        FIG = OUT / "figures"
+        return
+
+    if is_mass_model_511_label(label):
+        OUT = ROOT / "stepwise_maintenance" / "step06_mission_time_variation" / f"outputs_{MASS_MODEL_511_LABEL}"
+        STEP05 = (
+            ROOT
+            / "stepwise_maintenance"
+            / "step05_veto_time_axis"
+            / f"outputs_{MASS_MODEL_511_LABEL}_l1"
+            / f"step05_{MASS_MODEL_511_LABEL}_l1_response_summary.json"
+        )
+        STEP02 = (
+            ROOT
+            / "engineering"
+            / "Mass_model_511_nearfield_migration_20260701"
+            / "03_detector_transport"
+            / "delayed"
+            / "candidate_Mass_model_511"
+            / "fullstat_v1"
+            / "F1"
+            / "delayed_source_exactpos_summary.json"
+        )
+        GROUNDSTATE = (
+            ROOT
+            / "runs"
+            / "Mass_model_511_nearfield_migration_20260701"
+            / "step02_delay_fix_candidate_Mass_model_511_fullstat_v1"
+            / "groundstate_activity_corrections.csv"
+        )
+        FIG = OUT / "figures"
+        return
+
+    if is_geo_opt_s1_bpe_w5_label(label):
+        OUT = ROOT / "stepwise_maintenance" / "step06_mission_time_variation" / f"outputs_{GEO_OPT_S1_BPE_W5_LABEL}"
+        STEP05 = (
+            ROOT
+            / "stepwise_maintenance"
+            / "step05_veto_time_axis"
+            / f"outputs_{GEO_OPT_S1_BPE_W5_LABEL}_l1"
+            / f"step05_{GEO_OPT_S1_BPE_W5_LABEL}_l1_response_summary.json"
+        )
+        STEP02 = (
+            GEO_OPT_S1_BPE_W5_ENGINEERING
+            / "02_fullstat_prompt_delay_20260706"
+            / "delayed_source"
+            / "delayed_source_exactpos_summary.json"
+        )
+        GROUNDSTATE = (
+            GEO_OPT_S1_BPE_W5_RUNS
+            / f"step02_delay_fix_{GEO_OPT_S1_BPE_W5_LABEL}"
+            / "groundstate_activity_corrections.csv"
+        )
         FIG = OUT / "figures"
         return
 
@@ -346,7 +425,16 @@ def build_background_time_variation(
     prompt_event_rate = float(draw["prompt"]["rate_hz"])
     delayed_event_rate = float(draw["delayed"]["rate_hz"])
     label = str(step05.get("statistics_label", "1of10")).upper()
-    row_claim_prefix = "FIX5" if is_fix5_fullstat_label(str(step05.get("statistics_label", ""))) else "V3P5"
+    stats_label = str(step05.get("statistics_label", ""))
+    row_claim_prefix = (
+        "FIX5"
+        if is_fix5_fullstat_label(stats_label)
+        else "MASS_MODEL_511"
+        if is_mass_model_511_label(stats_label)
+        else "GEO_OPT_S1_BPE_W5"
+        if is_geo_opt_s1_bpe_w5_label(stats_label)
+        else "V3P5"
+    )
     rows: list[dict[str, Any]] = []
     for selection in step05["windows"]:
         rates = stage_rates(step05, selection)
@@ -381,27 +469,41 @@ def build_background_time_variation(
     return rows
 
 
-def plot_outputs(trajectory: list[dict[str, Any]], background: list[dict[str, Any]], totals: list[dict[str, Any]]) -> None:
+def plot_outputs(trajectory: list[dict[str, Any]], background: list[dict[str, Any]], totals: list[dict[str, Any]], label: str) -> None:
     FIG.mkdir(parents=True, exist_ok=True)
+    figure_prefix = (
+        "Mass_model_511"
+        if is_mass_model_511_label(label)
+        else "geo_opt_s1_bpe_w5"
+        if is_geo_opt_s1_bpe_w5_label(label)
+        else "v3p5"
+    )
+    title_prefix = (
+        "Mass_model_511"
+        if is_mass_model_511_label(label)
+        else "geo-opt S1/BPE/W5"
+        if is_geo_opt_s1_bpe_w5_label(label)
+        else "v3p5"
+    )
     days = [float(row["day_mid"]) for row in trajectory]
     plt.figure(figsize=(8, 4.5))
     plt.plot(days, [float(row["altitude_km"]) for row in trajectory], label="altitude")
     plt.xlabel("Mission day")
     plt.ylabel("Altitude (km)")
-    plt.title("v3p5 Step06 reference trajectory")
+    plt.title(f"{title_prefix} Step06 reference trajectory")
     plt.grid(alpha=0.25)
     plt.tight_layout()
-    plt.savefig(FIG / "v3p5_step06_trajectory.png", dpi=180)
+    plt.savefig(FIG / f"{figure_prefix}_step06_trajectory.png", dpi=180)
     plt.close()
 
     plt.figure(figsize=(8, 4.5))
     plt.plot(days, [float(row["T_atm_511"]) for row in trajectory], label="T_atm")
     plt.xlabel("Mission day")
     plt.ylabel("511 keV transmission")
-    plt.title("v3p5 Step06 atmospheric transmission")
+    plt.title(f"{title_prefix} Step06 atmospheric transmission")
     plt.grid(alpha=0.25)
     plt.tight_layout()
-    plt.savefig(FIG / "v3p5_step06_t_atm.png", dpi=180)
+    plt.savefig(FIG / f"{figure_prefix}_step06_t_atm.png", dpi=180)
     plt.close()
 
     w2 = [row for row in background if row["selection_id"] == "w2_510p58_511p42"]
@@ -410,21 +512,21 @@ def plot_outputs(trajectory: list[dict[str, Any]], background: list[dict[str, An
     plt.plot([float(row["day_mid"]) for row in w2], [float(row["science_final_cps_at_ref_flux"]) for row in w2], label="W2 science @ ref flux")
     plt.xlabel("Mission day")
     plt.ylabel("Rate (cps)")
-    plt.title("v3p5 Step06 W2 time-dependent rates")
+    plt.title(f"{title_prefix} Step06 W2 time-dependent rates")
     plt.legend()
     plt.grid(alpha=0.25)
     plt.tight_layout()
-    plt.savefig(FIG / "v3p5_step06_w2_rates.png", dpi=180)
+    plt.savefig(FIG / f"{figure_prefix}_step06_w2_rates.png", dpi=180)
     plt.close()
 
     plt.figure(figsize=(8, 4.5))
     plt.plot([float(row["day_mid"]) for row in totals], [float(row["activity_scale_to_day15"]) for row in totals])
     plt.xlabel("Mission day")
     plt.ylabel("Total delayed activity / day15")
-    plt.title("v3p5 Step06 delayed activity scale")
+    plt.title(f"{title_prefix} Step06 delayed activity scale")
     plt.grid(alpha=0.25)
     plt.tight_layout()
-    plt.savefig(FIG / "v3p5_step06_activity_scale.png", dpi=180)
+    plt.savefig(FIG / f"{figure_prefix}_step06_activity_scale.png", dpi=180)
     plt.close()
 
 
@@ -437,9 +539,16 @@ def markdown(summary: dict[str, Any]) -> str:
     elif is_fix5_fullstat_label(label):
         title = "# Step06 fix5 Mission Time Variation"
         intro = f"This is the fix5 `{label}` mission-axis fold. It does not run new Cosima transport; it reweights the fix5 Step05 direct response rates over a synthetic 20-day trajectory."
+    elif is_mass_model_511_label(label):
+        title = "# Step06 Mass_model_511 Mission Time Variation"
+        intro = f"This is the Mass_model_511 `{label}` mission-axis fold. It does not run new Cosima transport; it reweights the current-geometry Step05 direct response rates over a synthetic 20-day trajectory."
+    elif is_geo_opt_s1_bpe_w5_label(label):
+        title = "# Step06 geo-opt S1/BPE/W5 Mission Time Variation"
+        intro = f"This is the geo-opt `{label}` mission-axis fold. It does not run new Cosima transport; it reweights the geo-opt Step05 direct response rates over a synthetic 20-day trajectory."
     else:
         title = "# Step06 v3p5 Center-Finger Mission Time Variation"
         intro = f"This is the v3p5 `{label}` mission-axis fold. It does not run new Cosima transport; it reweights the v3p5 Step05 direct response rates over a synthetic 20-day trajectory."
+    method_caveats = summary.get("method_caveats", [])
     return "\n".join(
         [
             title,
@@ -462,6 +571,9 @@ def markdown(summary: dict[str, Any]) -> str:
             f"- background time variation: `{summary['outputs']['background_time_variation']}`",
             f"- total activity by time: `{summary['outputs']['total_activity_by_time']}`",
             f"- figures: `{summary['outputs']['figures']}`",
+            "",
+            "Method caveats:",
+            *[f"- {item}" for item in method_caveats],
             "",
             "Limitations:",
             *[f"- {item}" for item in summary.get("pending", [])],
@@ -502,6 +614,20 @@ def build_summary(
         pending = [
             "Run Step07/Step08 from this Step06 output and refresh the promotion decision artifact before any final replacement claim.",
             "Old new_geo_re prompt/delayed numbers remain blocked as pass/fail gates while benchmark alignment is NOT_ALIGNED.",
+        ]
+    elif is_mass_model_511_label(label):
+        status = f"PASS_MASS_MODEL_511_STEP06_TIME_AXIS_{label.upper()}_NOT_REPLACEMENT"
+        claim_level = f"MASS_MODEL_511_L1_MISSION_RATE_FOLD_{label.upper()}_NO_NEW_TRANSPORT_NOT_REPLACEMENT"
+        pending = [
+            "Run Step07/Step08 from this Step06 output before quoting a final 20-day threshold.",
+            "No no-material-effect/replacement decision against fix5 is made by this rate-level fold.",
+        ]
+    elif is_geo_opt_s1_bpe_w5_label(label):
+        status = f"PASS_GEO_OPT_S1_BPE_W5_STEP06_TIME_AXIS_{label.upper()}_NOT_PROMOTION"
+        claim_level = f"GEO_OPT_S1_BPE_W5_L1_MISSION_RATE_FOLD_{label.upper()}_NO_NEW_TRANSPORT_NOT_PROMOTION"
+        pending = [
+            "Run Step07/Step08 from this Step06 output before quoting final mission detection potential.",
+            "Compare against Mass_model_511/fix5 with the same selection and active-veto assumptions before making a geometry decision.",
         ]
     elif is_exactpos_label(str(label)):
         status = f"PASS_V3P5_STEP06_TIME_AXIS_{label.upper()}"
@@ -563,6 +689,12 @@ def build_summary(
             "background_time_variation": rel(OUT / "background_time_variation.csv"),
             "figures": rel(FIG),
         },
+        "method_caveats": [
+            "Step06 inherits the Step05 bounded high-rate Poisson timeline approximation; no new per-bin event transport or detector-response replay is performed.",
+            "The delayed mission-time fold is anchored to the geo-opt ground-state-corrected day-15 activity ledger and reuses the exact-position delayed transport summary.",
+        ]
+        if is_geo_opt_s1_bpe_w5_label(label)
+        else [],
         "pending": pending,
     }
     return summary
@@ -602,7 +734,7 @@ def main() -> int:
     write_csv(OUT / "activity_by_time_nuclide_volume.csv", activity_rows)
     write_csv(OUT / "total_activity_by_time.csv", total_rows)
     write_csv(OUT / "background_time_variation.csv", background_rows)
-    plot_outputs(trajectory, background_rows, total_rows)
+    plot_outputs(trajectory, background_rows, total_rows, args.label)
     summary = build_summary(step05, step02, trajectory, total_rows, background_rows, activity_audit, atmosphere_model)
     write_json(OUT / step06_summary_filename(args.label), summary)
     (OUT / "README.md").write_text(markdown(summary), encoding="utf-8")

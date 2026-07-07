@@ -1,0 +1,167 @@
+{
+  "document_type": "stage1_transport_postrun_review",
+  "review_role": "review_subagent",
+  "review_scope": "Mass_model_511 Stage-1 full-stat prompt/buildup transport evidence",
+  "checked_at_utc": "2026-07-02T15:13:59Z",
+  "status": "PASS_STAGE1_PROMPT_BUILDUP_TRANSPORT",
+  "stage1_prompt_buildup_transport_pass": true,
+  "full_stat_detector_background_pass": false,
+  "full_stat_detector_background_status": "NO_DELAYED_NOT_PREPARED",
+  "stage2_delayed_fullstat_entry": "YES_WITH_STAGE2_GATES",
+  "manifest": {
+    "path": "engineering/Mass_model_511_nearfield_migration_20260701/07_fullchain_execution_20260702/fullchain_execution_manifest.json",
+    "generated_at_utc": "2026-07-02T15:08:44Z",
+    "overall_status": "PASS_STAGE1_TRANSPORT_OUTPUTS_PRESENT_DELAYED_NOT_PREPARED",
+    "claim_boundary": "Stage-1 prompt/buildup transport output presence only. No delayed full-stat, no full-stat detector-rate, no replacement, no manuscript-readiness claim."
+  },
+  "run_dirs": {
+    "instant": "runs/Mass_model_511_nearfield_migration_20260701/step02_instant_candidate_Mass_model_511_fullstat_v1",
+    "buildup": "runs/Mass_model_511_nearfield_migration_20260701/step02_buildup_candidate_Mass_model_511_fullstat_v1"
+  },
+  "output_counts": {
+    "instant": {
+      "expected_sim": 68,
+      "observed_sim": 68,
+      "expected_dat": 68,
+      "observed_dat": 68,
+      "status": "PASS"
+    },
+    "buildup": {
+      "expected_sim": 68,
+      "observed_sim": 68,
+      "expected_dat": 68,
+      "observed_dat": 68,
+      "status": "PASS"
+    },
+    "combined": {
+      "expected_sim": 136,
+      "observed_sim": 136,
+      "expected_dat": 136,
+      "observed_dat": 136,
+      "status": "PASS"
+    }
+  },
+  "run_summaries": {
+    "instant": {
+      "run_summary_md": "runs/Mass_model_511_nearfield_migration_20260701/step02_instant_candidate_Mass_model_511_fullstat_v1/run_summary.md",
+      "run_summary_csv": "runs/Mass_model_511_nearfield_migration_20260701/step02_instant_candidate_Mass_model_511_fullstat_v1/run_summary.csv",
+      "jobs": 68,
+      "status_counts": {
+        "SKIP": 68
+      },
+      "pass_or_skip": 68,
+      "fail": 0,
+      "events_requested": 25210216,
+      "events_generated": 25210216,
+      "csv_sim_exists_true": 0,
+      "csv_dat_exists_true": 0,
+      "path_sim_exists": 68,
+      "path_dat_exists": 68,
+      "min_sim_size_bytes": 17830247,
+      "min_dat_size_bytes": 258,
+      "assessment": "PASS_WITH_SKIP_SUPPORTED_BY_OUTPUTS_LOGS_TRANSCRIPT"
+    },
+    "buildup": {
+      "run_summary_md": "runs/Mass_model_511_nearfield_migration_20260701/step02_buildup_candidate_Mass_model_511_fullstat_v1/run_summary.md",
+      "run_summary_csv": "runs/Mass_model_511_nearfield_migration_20260701/step02_buildup_candidate_Mass_model_511_fullstat_v1/run_summary.csv",
+      "jobs": 68,
+      "status_counts": {
+        "PASS": 68
+      },
+      "pass_or_skip": 68,
+      "fail": 0,
+      "events_requested": 25210216,
+      "events_generated": 25210216,
+      "csv_sim_exists_true": 68,
+      "csv_dat_exists_true": 68,
+      "path_sim_exists": 68,
+      "path_dat_exists": 68,
+      "min_sim_size_bytes": 17828272,
+      "min_dat_size_bytes": 258,
+      "assessment": "PASS"
+    }
+  },
+  "job_log_audit": {
+    "instant": {
+      "logs": 68,
+      "returncode_0": 68,
+      "missing_returncode": 0,
+      "current_failure_pattern_hits": 0,
+      "status": "PASS"
+    },
+    "buildup": {
+      "logs": 68,
+      "returncode_0": 68,
+      "missing_returncode": 0,
+      "current_failure_pattern_hits": 0,
+      "status": "PASS"
+    },
+    "failure_patterns_checked": [
+      "libSivan",
+      "shared libraries",
+      "returncode=127",
+      "Traceback",
+      "error while loading shared libraries",
+      "failed jobs",
+      "failures=[1-9]",
+      "FAIL"
+    ]
+  },
+  "recovery_transcript_assessment": {
+    "initial_failure_notes": "engineering/Mass_model_511_nearfield_migration_20260701/07_fullchain_execution_20260702/STAGE1_TRANSPORT_RECOVERY_NOTES.md records first libSivan failure with 0 outputs.",
+    "instant_success_transcript": "engineering/Mass_model_511_nearfield_migration_20260701/07_fullchain_execution_20260702/stage1_transport_20260702T135633Z_with_megalib_env.log records instant completed jobs=68 failures=0 before a script-path exit 127.",
+    "fixed_runner_transcript": "engineering/Mass_model_511_nearfield_migration_20260701/07_fullchain_execution_20260702/stage1_transport_20260702T143443Z_fixed_runner.log exits 0 and covers both instant and buildup.",
+    "assessment": "PASS_HISTORY_SUPERSEDED_BY_CURRENT_OUTPUTS_AND_FIXED_RUNNER"
+  },
+  "geometry_header_audit": {
+    "sim_files_scanned": 136,
+    "unique_geometry_lines": 1,
+    "mass_model_geometry_headers": 136,
+    "missing_mass_model_geometry_headers": 0,
+    "forbidden_geometry_header_hits": 0,
+    "geometry_line": "Geometry   /home/ubuntu/TES_511_Balloon/outputs/geometry/DEMO2_DR_v3p5_Mass_model_511_stage_diam_300_300_300_350_350_400_20260701_megalib_proxy/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup",
+    "note": "Broad SIM event text contains NF2_OuterSupport_* component names in some mu- records; these are volume names, not forbidden geometry-header or source-card provenance references.",
+    "status": "PASS"
+  },
+  "job_source_geometry_audit": {
+    "instant_job_sources": 68,
+    "instant_mass_model_geometry": 68,
+    "instant_forbidden_fix5_geometry": 0,
+    "buildup_job_sources": 68,
+    "buildup_mass_model_geometry": 68,
+    "buildup_forbidden_fix5_geometry": 0,
+    "status": "PASS"
+  },
+  "false_closure_audit": {
+    "status": "PASS_NO_FALSE_CLOSURE_FOUND",
+    "blocked_or_not_ready": [
+      "delayed_fullstat_source_transport",
+      "full_stat_step05_detector_response",
+      "no_material_effect_or_replacement_release",
+      "step06_step08_mission_axis_regeneration",
+      "p1_p2_p3_replay_on_mass_model_511"
+    ],
+    "notes": "Stage-1 review supports prompt/buildup transport output presence only."
+  },
+  "disk": {
+    "available_human": "19G",
+    "filesystem": "/home/ubuntu/TES_511_Balloon",
+    "status": "WARN_NON_BLOCKING_CHECK_BEFORE_STAGE2"
+  },
+  "stage2_delayed_entry_requirements": [
+    "delayed full-stat source construction",
+    "auditable delayed normalization including NUBASE ground-state correction where applicable",
+    "per-family TT division guard",
+    "M-sampling inventory audit",
+    "delayed run manifest and transport runner",
+    "68/68-equivalent delayed output completeness checks defined by the delayed plan",
+    "SIM geometry header audit against Mass_model_511",
+    "disk/runtime preflight before starting heavy Stage-2"
+  ],
+  "review_decision": {
+    "stage1_prompt_buildup_transport": "PASS",
+    "instant_skip_summary": "ACCEPTED_WITH_CSV_BOOLEAN_CAVEAT",
+    "full_stat_detector_background_campaign": "NOT_PASS_DELAYED_NOT_PREPARED",
+    "enter_stage2_delayed_fullstat": "YES"
+  }
+}

@@ -1,28 +1,42 @@
 # TES_511_Balloon
 
-Detector-coupled simulation workspace for a balloon-borne focused 511 keV TES Laue-lens telescope.
+Detector-coupled simulation workspace for the 511 keV TES balloon concept.
 
-Current paper-facing branch: fix5 multi-hole-W geometry.
+This checkout has been cleaned to keep only the active Mass_model_511 branch and
+the latest geometry-optimization work.
 
-Current geometry:
+## Current Retained Work
 
-- `outputs/geometry/DEMO2_DR_v3p5_user_cylmag_redesign_multiholeW_fix5_20260621_megalib_proxy/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup`
+- `engineering/Mass_model_511_nearfield_migration_20260701/`
+- `engineering/geometry_optimization_20260704/`
 
-Current fix5 entry points:
+## Current Generated Products
 
-- `AGENTS.md`: active task contract pointer.
-- `core_md/README.md`: compact fix5 authority index.
-- `core_md/fix5_benchmarks.json`: single machine-readable numeric authority.
-- `core_md/METHOD_FIX5_SIM_CLOSURE.md`: method and normalization contract.
-- `core_md/CONSTRAINTS_FIX5_SIM_CLOSURE.md`: gate contract.
-- `outputs/reports/fix5_fullstat_v2_exactpos_m50000_s260613/`: final fix5 closure and promotion artifacts.
-- `stepwise_maintenance/step05_veto_time_axis/outputs_fix5_fullstat_v2_exactpos_m50000_s260613_l1/`: detector-response/time-axis output.
-- `stepwise_maintenance/step06_mission_time_variation/outputs_fix5_fullstat_v2_exactpos_m50000_s260613/`: mission-time fold.
-- `stepwise_maintenance/step07_source_cases/outputs_fix5_fullstat_v2_exactpos_m50000_s260613/`: source-case ledger.
-- `stepwise_maintenance/step08_significance/outputs_fix5_fullstat_v2_exactpos_m50000_s260613/`: significance outputs.
-- `stepwise_maintenance/step09_optics_bridge/outputs_fix5_fullstat_v2_exactpos_m50000_s260613/`: fix5 focused-signal replay.
-- `core_md/balloon511_nima_latex_drafts/`: manuscript drafts.
+- `outputs/geometry/DEMO2_DR_v3p5_Mass_model_511_stage_diam_300_300_300_350_350_400_20260701_megalib_proxy/`
+- `outputs/reports/Mass_model_511_stage_diam_300_300_300_350_350_400_20260701/`
+- `runs/Mass_model_511_nearfield_migration_20260701/`
+- `runs/geometry_optimization_20260704/`
 
-Legacy v3p5, BGO, prompt511, new_geo_re, smoke, and old review assets live under `old/`.
+## Stepwise Products
 
-Large local transport products under `runs/` remain ignored unless explicitly promoted to a tracked summary.
+The retained stepwise products are the Mass_model_511 and geo-opt outputs under
+`stepwise_maintenance/`, plus the shared f10m A1 Step09 EventList bridge:
+
+- `stepwise_maintenance/step05_veto_time_axis/outputs_Mass_model_511_fullstat_v1_l1/`
+- `stepwise_maintenance/step05_veto_time_axis/outputs_geo_opt_s1_bpe_w5_fullstat_v1_l1/`
+- `stepwise_maintenance/step06_mission_time_variation/outputs_Mass_model_511_fullstat_v1/`
+- `stepwise_maintenance/step06_mission_time_variation/outputs_geo_opt_s1_bpe_w5_fullstat_v1/`
+- `stepwise_maintenance/step07_source_cases/outputs_Mass_model_511_fullstat_v1/`
+- `stepwise_maintenance/step07_source_cases/outputs_geo_opt_s1_bpe_w5_fullstat_v1/`
+- `stepwise_maintenance/step08_significance/outputs_Mass_model_511_fullstat_v1/`
+- `stepwise_maintenance/step08_significance/outputs_geo_opt_s1_bpe_w5_fullstat_v1/`
+- `stepwise_maintenance/step09_optics_bridge/outputs_f10m_a1_v3p5/`
+
+## Notes
+
+- `old/` is intentionally retained because current Mass/geo-opt wrappers still
+  import the Step05 parser and science-rate ledger from it.
+- Historical fix5 strings can still appear inside retained comparison artifacts,
+  but fix5 is no longer a top-level active branch or authority in this checkout.
+- New outputs should go into new dated directories and must not overwrite the
+  retained Mass_model_511 or geometry-optimization products.

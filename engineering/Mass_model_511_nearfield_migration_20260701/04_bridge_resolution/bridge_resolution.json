@@ -1,0 +1,17 @@
+{
+  "document_type": "Mass_model_511_bridge_resolution",
+  "generated_at_utc": "2026-07-07T15:02:28.172269+00:00",
+  "status": "OPTICS_BRIDGE_NOT_REQUIRED_DETECTOR_ONLY",
+  "old_blocker": "BLOCKED_OPTICS_BRIDGE in engineering/nearfield_mass_impact_20260625 applied to the independent OF1 optics-local mass model.",
+  "resolution": "The new Mass_model_511 migration is a detector MEGAlib geometry replacement. The support/feedthrough/cryostat masses are loaded directly by the detector .geo.setup, so detector prompt/buildup/delayed transport does not need an optics-to-detector transfer bridge.",
+  "not_claimed": [
+    "No OF1 optics local background or detector-coupled optics background result is promoted.",
+    "The previous OF1 bridge blocker remains true for the old OF1 optics campaign.",
+    "This resolution only removes the bridge blocker from this detector-only Mass_model_511 migration branch."
+  ],
+  "allowed_next_steps": [
+    "Run candidate_Mass_model_511 prompt and buildup with the migrated source cards.",
+    "Build geometry-specific delayed sources from the candidate_Mass_model_511 buildup output.",
+    "Use existing Step05/normalization authority unchanged."
+  ]
+}

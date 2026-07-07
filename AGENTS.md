@@ -1,79 +1,49 @@
-# AGENTS — repo entry pointer (auto-loaded each session)
+# AGENTS - repo entry pointer
 
-## Active task: fix5 simulation closure
+## Instruction Priority
 
-The active task is no longer to search for a minimally invasive prompt-511
-geometry refix.  The geometry candidate is fixed:
+This file is a repo-level pointer. It does not override a user-named harness,
+engineering brief, task file, or explicit mainline simulation request. If the
+user names a specific file under `engineering/`, that file governs the session.
 
-`outputs/geometry/DEMO2_DR_v3p5_user_cylmag_redesign_multiholeW_fix5_20260621_megalib_proxy/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup`
+## Active Retained Packages
 
-Before doing ANY fix5 prompt/delayed/signal simulation work, an agent MUST:
+The current workspace is scoped to:
 
-1. **Understand the method first (what the gates actually compute)**:
-   `core_md/METHOD_FIX5_SIM_CLOSURE.md`.  The gates below are meaningless
-   without this; a run can satisfy the contract's letter (produce a file named
-   `Step06`) while getting the physics normalization wrong.
-2. **Read once (task guide / "what changed")**:
-   `core_md/GUIDE_FIX5_SIM_CLOSURE_FOR_CODEX_20260621.md`
-3. **Obey every loop (enforced contract / gates)**:
-   `core_md/CONSTRAINTS_FIX5_SIM_CLOSURE.md`
-4. **Use the startup checklist for fresh conversations**:
-   `core_md/PRE_PROMPT_FIX5_SIM_CLOSURE_20260621.md`
-5. **If starting a brand-new chat / handoff**, use:
-   `core_md/PROMPT_NEW_CHAT_FIX5_SIM_CLOSURE_20260622.md`
+- `engineering/Mass_model_511_nearfield_migration_20260701/`
+- `engineering/geometry_optimization_20260704/`
 
-All numbers (geometry paths, benchmarks, gate thresholds, audit thresholds,
-validator scripts) come from one machine-readable authority:
-`core_md/fix5_benchmarks.json`.  The markdown contracts reference its keys; do
-not trust a number restated in prose if it disagrees with that file.
+If the user says to continue the current Mass_model_511 work without naming a
+different file, read:
 
-## Active objective
+1. `engineering/Mass_model_511_nearfield_migration_20260701/SESSION_BOOTSTRAP.md`
+2. `engineering/Mass_model_511_nearfield_migration_20260701/README.md`
 
-Use the fix5 geometry to run a staged validation:
+For the latest optimization review, start from:
 
-1. Build fix5-specific source cards and prove every source/SIM header uses the
-   fix5 `.geo.setup`.
-2. Run a 1/10-statistics test relative to the current project chain.
-3. Gate:
-   - prompt total close to old `new_geo_re` prompt total
-     `0.0323247092031 cps`, only after benchmark alignment confirms the old
-     selection/normalization is comparable;
-   - delayed total lower than old `new_geo_re` delayed total
-     `0.151456825339 cps` as a loose screen, while also checking delayed and
-     W/collimator activation against the current v3p5 delayed authority.
-4. If the 1/10 gate passes, complete a clean full-stat closure by default and
-   regenerate Step02--Step08 plus the fix5 signal replay.  Append/merge requires
-   a PASS merge verdict.
+1. `engineering/geometry_optimization_20260704/09_gpt_complement_ingress_veto_bpe_20260707/01_README_GPT_PARSE.md`
+2. `engineering/geometry_optimization_20260704/10_gpt_geometry_optimization_direction_20260707/01_README_AND_PROMPT.md`
+3. `engineering/geometry_optimization_20260704/11_expacs_atm511_line_gap_20260707/README.md`
 
-## Non-negotiable for this task
+## Current Status
 
-- Do not optimize or redesign geometry unless the user explicitly reopens
-  geometry design.
-- Do not overwrite current v3p5, BGO, or old `new_geo_re` authority outputs.
+- Mass_model_511 geometry migration exists and has current generated geometry
+  under `outputs/geometry/DEMO2_DR_v3p5_Mass_model_511_stage_diam_300_300_300_350_350_400_20260701_megalib_proxy/`.
+- The latest geo-opt branch adds the plastic scintillator/B-polyethylene/W-bottom
+  optimization work under `engineering/geometry_optimization_20260704/`.
+- The shared f10m A1 focused EventList bridge is retained at
+  `stepwise_maintenance/step09_optics_bridge/outputs_f10m_a1_v3p5/`.
+
+## Shared Safety Constraints
+
+- Do not reintroduce deleted fix5 authority outputs unless the user explicitly
+  asks to restore them.
+- Do not overwrite retained Mass_model_511 or geometry-optimization products.
+  New runs and reports go in new dated directories.
 - Any run whose source card or SIM header points to the wrong geometry is
   invalid.
-- 1/10 is a go/no-go screen, not a final publication-level rate claim.
-- The 1/10 screen target is old `new_geo_re` (a coarse "did W blow up prompt"
-  check that carries a side-coverage + source-surface normalization caveat); the
-  real full-stat promotion bar is the current v3p5 exact-position authority.  Do
-  not conflate the two.  See `fix5_benchmarks.json` -> decision_bar.
-- Required artifacts are defined in `fix5_benchmarks.json` ->
-  `required_artifacts`: source manifest, benchmark alignment, verification
-  verdict, and final promotion decision.  Missing blocking artifacts mean no
-  gate decision.
-- Full-stat results override the 1/10 prediction.
-- Delayed claims require auditable activation/source normalization: the NUBASE
-  ground-state correction + per-family TT division guard + M-sampling inventory
-  audit (see `METHOD_FIX5_SIM_CLOSURE.md` section 3), not just "looks reasonable".
-
-## Historical documents
-
-The previous Claude prompt-511 geometry-refix loop is retained for provenance:
-
-- `core_md/GUIDE_PROMPT511_REFIX_FOR_CODEX_20260620.md`
-- `core_md/CONSTRAINTS_PROMPT511.md`
-- `core_md/PRE_PROMPT_CODEX_PROMPT511.md`
-
-Those documents describe the baseline-only passive-shield optimization route.
-They are not the active pass/fail contract for the fix5 replacement simulation
-closure.
+- Delayed or activation claims still require auditable normalization: NUBASE
+  ground-state correction, per-family TT division guard, and source/inventory
+  provenance. Do not treat a visually plausible delayed source as valid.
+- Inspect the current worktree before making claims; do not rely on compressed
+  chat history as authority.

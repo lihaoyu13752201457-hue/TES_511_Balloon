@@ -1,0 +1,95 @@
+{
+  "document_type": "stage1_transport_review_checklist",
+  "review_role": "review_subagent",
+  "review_scope": "Mass_model_511 Stage-1 full-stat prompt/buildup transport evidence",
+  "checked_at_utc": "2026-07-02T13:55:05Z",
+  "status": "AWAITING_TRANSPORT_OUTPUTS",
+  "stage1_prompt_buildup_transport_pass": false,
+  "inputs_read": [
+    "engineering/Mass_model_511_nearfield_migration_20260701/12_review_20260702/post_execution_review_20260702.md",
+    "engineering/Mass_model_511_nearfield_migration_20260701/07_fullchain_execution_20260702/FULLCHAIN_EXECUTION_STATUS.md",
+    "engineering/Mass_model_511_nearfield_migration_20260701/07_fullchain_execution_20260702/fullchain_execution_manifest.json"
+  ],
+  "manifest_status_observed": "PASS_STAGE1_PREFLIGHT_NOT_RUN",
+  "claim_boundary_observed": "Execution preflight only. No full-stat detector-rate, no replacement, no manuscript-readiness claim.",
+  "run_dirs": {
+    "instant": "runs/Mass_model_511_nearfield_migration_20260701/step02_instant_candidate_Mass_model_511_fullstat_v1",
+    "buildup": "runs/Mass_model_511_nearfield_migration_20260701/step02_buildup_candidate_Mass_model_511_fullstat_v1"
+  },
+  "expected_outputs": {
+    "instant_sim": 68,
+    "instant_dat": 68,
+    "buildup_sim": 68,
+    "buildup_dat": 68
+  },
+  "observed_outputs": {
+    "instant_sim": 0,
+    "instant_dat": 0,
+    "buildup_sim": 0,
+    "buildup_dat": 0
+  },
+  "required_evidence": [
+    {
+      "id": "instant_sim_outputs",
+      "required": "68/68 instant .sim.gz outputs",
+      "observed": "0/68",
+      "status": "AWAITING_TRANSPORT_OUTPUTS"
+    },
+    {
+      "id": "instant_dat_outputs",
+      "required": "68/68 instant .dat outputs",
+      "observed": "0/68",
+      "status": "AWAITING_TRANSPORT_OUTPUTS"
+    },
+    {
+      "id": "buildup_sim_outputs",
+      "required": "68/68 buildup .sim.gz outputs",
+      "observed": "0/68",
+      "status": "AWAITING_TRANSPORT_OUTPUTS"
+    },
+    {
+      "id": "buildup_dat_outputs",
+      "required": "68/68 buildup .dat outputs",
+      "observed": "0/68",
+      "status": "AWAITING_TRANSPORT_OUTPUTS"
+    },
+    {
+      "id": "run_summary",
+      "required": "post-run summaries for instant and buildup with generated counts matching the 68-job manifests and requested events",
+      "observed": "no full-stat post-run summary found in Stage-1 fullstat run dirs",
+      "status": "AWAITING_TRANSPORT_OUTPUTS"
+    },
+    {
+      "id": "fail_zero",
+      "required": "FAIL=0 or equivalent no-failure status from runner logs/summaries",
+      "observed": "no post-run summary/log evidence available yet",
+      "status": "AWAITING_TRANSPORT_OUTPUTS"
+    },
+    {
+      "id": "mass_model_geometry_header",
+      "required": "sampled or complete SIM header audit points to the Mass_model_511 geometry path",
+      "observed": "no SIM headers exist yet; preflight job sources were Mass_model_511-clean",
+      "status": "AWAITING_TRANSPORT_OUTPUTS"
+    },
+    {
+      "id": "forbidden_fix5_zero",
+      "required": "forbidden old fix5 geometry count is 0 in post-run SIM/header evidence",
+      "observed": "preflight source/job-source audit reports forbidden fix5 count 0; no post-run SIM evidence yet",
+      "status": "AWAITING_TRANSPORT_OUTPUTS"
+    },
+    {
+      "id": "no_false_physics_closure",
+      "required": "no claim of full-stat detector-rate closure, replacement/no-effect closure, Step05 closure, or manuscript readiness from Stage-1 prompt/buildup transport alone",
+      "observed": "reviewed preflight materials preserve the no-closure claim boundary",
+      "status": "PASS_PRE_MC_CLAIM_BOUNDARY_ONLY"
+    }
+  ],
+  "postrun_review": {
+    "written": false,
+    "reason": "transport outputs are absent, so post-run review would be premature",
+    "postrun_files_expected_when_complete": [
+      "engineering/Mass_model_511_nearfield_migration_20260701/12_review_20260702/stage1_transport_postrun_review_20260702.md",
+      "engineering/Mass_model_511_nearfield_migration_20260701/12_review_20260702/stage1_transport_postrun_review_20260702.json"
+    ]
+  }
+}

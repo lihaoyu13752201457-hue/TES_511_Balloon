@@ -30,9 +30,17 @@ STEP07_RATES = ROOT / "stepwise_maintenance" / "step07_source_cases" / "outputs_
 SECONDS_PER_DAY = 86400.0
 FIX5_FULLSTAT_LABEL = "fix5_fullstat_v2_exactpos_m50000_s260613"
 FIX5_FULLSTAT_ALIASES = {"fix5_fullstat_v2", FIX5_FULLSTAT_LABEL}
+MASS_MODEL_511_LABEL = "Mass_model_511_fullstat_v1"
+MASS_MODEL_511_ALIASES = {"mass_model_511_fullstat_v1", MASS_MODEL_511_LABEL}
+GEO_OPT_S1_BPE_W5_LABEL = "geo_opt_s1_bpe_w5_fullstat_v1"
+GEO_OPT_S1_BPE_W5_ALIASES = {GEO_OPT_S1_BPE_W5_LABEL}
 
 
 def canonical_label(label: str) -> str:
+    if label in MASS_MODEL_511_ALIASES:
+        return MASS_MODEL_511_LABEL
+    if label in GEO_OPT_S1_BPE_W5_ALIASES:
+        return GEO_OPT_S1_BPE_W5_LABEL
     return FIX5_FULLSTAT_LABEL if label in FIX5_FULLSTAT_ALIASES else label
 
 
@@ -50,12 +58,24 @@ def is_fix5_fullstat_label(label: str) -> bool:
     return canonical_label(label) == FIX5_FULLSTAT_LABEL
 
 
+def is_mass_model_511_label(label: str) -> bool:
+    return canonical_label(label) == MASS_MODEL_511_LABEL
+
+
+def is_geo_opt_s1_bpe_w5_label(label: str) -> bool:
+    return canonical_label(label) == GEO_OPT_S1_BPE_W5_LABEL
+
+
 def output_prefix(label: str) -> str:
     label = canonical_label(label)
     if is_bgo_sample_label(label):
         return "bgo_sample"
     if is_fix5_fullstat_label(label):
         return "fix5"
+    if is_mass_model_511_label(label):
+        return "Mass_model_511"
+    if is_geo_opt_s1_bpe_w5_label(label):
+        return "geo_opt_s1_bpe_w5"
     return "v3p5_centerfinger"
 
 
@@ -65,6 +85,10 @@ def step06_summary_filename(label: str) -> str:
         return "step06_bgo_sample_fullstat_v2_exactpos_summary.json"
     if is_fix5_fullstat_label(label):
         return f"step06_{FIX5_FULLSTAT_LABEL}_summary.json"
+    if is_mass_model_511_label(label):
+        return "step06_Mass_model_511_fullstat_v1_summary.json"
+    if is_geo_opt_s1_bpe_w5_label(label):
+        return f"step06_{GEO_OPT_S1_BPE_W5_LABEL}_summary.json"
     return f"step06_{output_prefix(label)}_{label}_summary.json"
 
 
@@ -74,6 +98,10 @@ def step08_summary_filename(label: str) -> str:
         return "step08_bgo_sample_time_dependent_summary.json"
     if is_fix5_fullstat_label(label):
         return f"step08_{FIX5_FULLSTAT_LABEL}_time_dependent_summary.json"
+    if is_mass_model_511_label(label):
+        return "step08_Mass_model_511_fullstat_v1_time_dependent_summary.json"
+    if is_geo_opt_s1_bpe_w5_label(label):
+        return f"step08_{GEO_OPT_S1_BPE_W5_LABEL}_time_dependent_summary.json"
     return "step08_v3p5_centerfinger_time_dependent_summary.json"
 
 
@@ -83,6 +111,10 @@ def step08_report_filename(label: str) -> str:
         return "step08_bgo_sample_time_dependent.md"
     if is_fix5_fullstat_label(label):
         return f"step08_{FIX5_FULLSTAT_LABEL}_time_dependent.md"
+    if is_mass_model_511_label(label):
+        return "step08_Mass_model_511_fullstat_v1_time_dependent.md"
+    if is_geo_opt_s1_bpe_w5_label(label):
+        return f"step08_{GEO_OPT_S1_BPE_W5_LABEL}_time_dependent.md"
     return "step08_v3p5_centerfinger_time_dependent.md"
 
 
@@ -114,6 +146,50 @@ def configure_paths(label: str) -> None:
         return
 
     if is_fix5_fullstat_label(label):
+        OUT = ROOT / "stepwise_maintenance" / "step08_significance" / f"outputs_{label}"
+        FIG = OUT / "figures"
+        STEP05 = (
+            ROOT
+            / "stepwise_maintenance"
+            / "step05_veto_time_axis"
+            / f"outputs_{label}_l1"
+            / f"step05_{label}_l1_response_summary.json"
+        )
+        STEP06 = (
+            ROOT
+            / "stepwise_maintenance"
+            / "step06_mission_time_variation"
+            / f"outputs_{label}"
+            / step06_summary_filename(label)
+        )
+        STEP06_BG = ROOT / "stepwise_maintenance" / "step06_mission_time_variation" / f"outputs_{label}" / "background_time_variation.csv"
+        STEP07 = ROOT / "stepwise_maintenance" / "step07_source_cases" / f"outputs_{label}" / "source_case_summary.json"
+        STEP07_RATES = ROOT / "stepwise_maintenance" / "step07_source_cases" / f"outputs_{label}" / "source_case_rates.csv"
+        return
+
+    if is_mass_model_511_label(label):
+        OUT = ROOT / "stepwise_maintenance" / "step08_significance" / f"outputs_{label}"
+        FIG = OUT / "figures"
+        STEP05 = (
+            ROOT
+            / "stepwise_maintenance"
+            / "step05_veto_time_axis"
+            / f"outputs_{label}_l1"
+            / f"step05_{label}_l1_response_summary.json"
+        )
+        STEP06 = (
+            ROOT
+            / "stepwise_maintenance"
+            / "step06_mission_time_variation"
+            / f"outputs_{label}"
+            / step06_summary_filename(label)
+        )
+        STEP06_BG = ROOT / "stepwise_maintenance" / "step06_mission_time_variation" / f"outputs_{label}" / "background_time_variation.csv"
+        STEP07 = ROOT / "stepwise_maintenance" / "step07_source_cases" / f"outputs_{label}" / "source_case_summary.json"
+        STEP07_RATES = ROOT / "stepwise_maintenance" / "step07_source_cases" / f"outputs_{label}" / "source_case_rates.csv"
+        return
+
+    if is_geo_opt_s1_bpe_w5_label(label):
         OUT = ROOT / "stepwise_maintenance" / "step08_significance" / f"outputs_{label}"
         FIG = OUT / "figures"
         STEP05 = (
@@ -333,6 +409,10 @@ def fold_cases(cases: list[dict[str, str]], bg_rows: list[dict[str, str]], tau: 
             if is_bgo_sample_label(label)
             else f"FIX5_L1_COUNTING_TIME_DEP_WITH_ANALYTIC_ACCIDENTAL_{label.upper()}_SIGNAL_REPLAYED_NOT_FINAL_PROMOTION"
             if is_fix5_fullstat_label(label)
+            else f"MASS_MODEL_511_L1_COUNTING_TIME_DEP_WITH_ANALYTIC_ACCIDENTAL_{label.upper()}_SIGNAL_REPLAYED_NOT_REPLACEMENT"
+            if is_mass_model_511_label(label)
+            else f"GEO_OPT_S1_BPE_W5_L1_COUNTING_TIME_DEP_WITH_ANALYTIC_ACCIDENTAL_{label.upper()}_SIGNAL_REPLAYED_NOT_PROMOTION"
+            if is_geo_opt_s1_bpe_w5_label(label)
             else f"V3P5_L1_COUNTING_TIME_DEP_WITH_ANALYTIC_ACCIDENTAL_{label.upper()}"
         )
         summary.append(
@@ -377,6 +457,12 @@ def plot_examples(cumulative: list[dict[str, Any]], label: str) -> None:
     elif is_fix5_fullstat_label(label):
         title = "fix5 Step08 time-dependent examples"
         figure_name = "fix5_step08_cumulative_significance.png"
+    elif is_mass_model_511_label(label):
+        title = "Mass_model_511 Step08 time-dependent examples"
+        figure_name = "Mass_model_511_step08_cumulative_significance.png"
+    elif is_geo_opt_s1_bpe_w5_label(label):
+        title = "geo-opt S1/BPE/W5 Step08 time-dependent examples"
+        figure_name = "geo_opt_s1_bpe_w5_step08_cumulative_significance.png"
     else:
         title = "v3p5 Step08 low-stat time-dependent examples"
         figure_name = "v3p5_step08_cumulative_significance.png"
@@ -397,9 +483,16 @@ def markdown(summary: dict[str, Any]) -> str:
     elif is_fix5_fullstat_label(label):
         title = "# Step08 fix5 Full-Stat Time-Dependent Significance"
         intro = f"This folds fix5 Step07 source cases through the fix5 Step06 mission time axis and applies an analytic accidental live factor. Statistics label: `{label}`. The signal stream is the fix5 focused replay; promotion still requires the final fix5 promotion decision artifact."
+    elif is_mass_model_511_label(label):
+        title = "# Step08 Mass_model_511 Full-Stat Time-Dependent Significance"
+        intro = f"This folds Mass_model_511 Step07 source cases through the Mass_model_511 Step06 mission time axis and applies an analytic accidental live factor. Statistics label: `{label}`. The signal stream is the current-geometry focused replay; this is not a no-effect/replacement decision."
+    elif is_geo_opt_s1_bpe_w5_label(label):
+        title = "# Step08 geo-opt S1/BPE/W5 Full-Stat Time-Dependent Significance"
+        intro = f"This folds geo-opt Step07 source cases through the geo-opt Step06 mission time axis and applies an analytic accidental live factor. Statistics label: `{label}`. The signal stream is the geo-opt focused replay; this is not a promotion or replacement decision."
     else:
         title = "# Step08 v3p5 Center-Finger Time-Dependent Significance"
         intro = f"This folds v3p5 Step07 source cases through the v3p5 Step06 mission time axis and applies an analytic accidental live factor. Statistics label: `{label}`. It does not claim a profile-likelihood gain."
+    method_caveats = summary.get("method_caveats", [])
     return "\n".join(
         [
             title,
@@ -422,6 +515,9 @@ def markdown(summary: dict[str, Any]) -> str:
             f"- T3/T5 summary: `{summary['outputs']['t3_t5_summary']}`",
             f"- accidental live factors: `{summary['outputs']['accidental_veto_by_time']}`",
             f"- summary JSON: `{summary['outputs']['summary_json']}`",
+            "",
+            "Method caveats:",
+            *[f"- {item}" for item in method_caveats],
             "",
             "Limitations:",
             *[f"- {item}" for item in summary.get("pending", [])],
@@ -457,6 +553,18 @@ def build_summary(
             "old new_geo_re benchmark alignment is NOT_ALIGNED; its prompt/delayed rates remain historical context only",
             "no spatial/profile likelihood gain is applied",
         ]
+    elif is_mass_model_511_label(label):
+        pending = [
+            "no no-material-effect/replacement decision against fix5 is made by this time-dependent fold",
+            "Mass_model_511-specific P1/P2/P3 replay remains open if this branch becomes paper authority",
+            "no spatial/profile likelihood gain is applied",
+        ]
+    elif is_geo_opt_s1_bpe_w5_label(label):
+        pending = [
+            "no promotion/replacement decision is made by this time-dependent fold",
+            "compare against Mass_model_511/fix5 with identical selection and active-veto assumptions before making a geometry decision",
+            "no spatial/profile likelihood gain is applied",
+        ]
     elif is_exactpos_label(label):
         pending = [
             "exact-position delayed source uses sampled PointSource support; support-size stability remains a robustness check",
@@ -473,6 +581,10 @@ def build_summary(
         if is_bgo_sample_label(label)
         else f"PASS_FIX5_STEP08_TIME_DEPENDENT_{label.upper()}_SIGNAL_REPLAYED_NOT_PROMOTION"
         if is_fix5_fullstat_label(label)
+        else f"PASS_MASS_MODEL_511_STEP08_TIME_DEPENDENT_{label.upper()}_SIGNAL_REPLAYED_NOT_REPLACEMENT"
+        if is_mass_model_511_label(label)
+        else f"PASS_GEO_OPT_S1_BPE_W5_STEP08_TIME_DEPENDENT_{label.upper()}_SIGNAL_REPLAYED_NOT_PROMOTION"
+        if is_geo_opt_s1_bpe_w5_label(label)
         else f"PASS_V3P5_STEP08_TIME_DEPENDENT_{label.upper()}"
     )
     claim_level = (
@@ -480,6 +592,10 @@ def build_summary(
         if is_bgo_sample_label(label)
         else f"FIX5_L1_COUNTING_TIME_DEP_WITH_ANALYTIC_ACCIDENTAL_{label.upper()}_SIGNAL_REPLAYED_NOT_FINAL_PROMOTION"
         if is_fix5_fullstat_label(label)
+        else f"MASS_MODEL_511_L1_COUNTING_TIME_DEP_WITH_ANALYTIC_ACCIDENTAL_{label.upper()}_SIGNAL_REPLAYED_NOT_REPLACEMENT"
+        if is_mass_model_511_label(label)
+        else f"GEO_OPT_S1_BPE_W5_L1_COUNTING_TIME_DEP_WITH_ANALYTIC_ACCIDENTAL_{label.upper()}_SIGNAL_REPLAYED_NOT_PROMOTION"
+        if is_geo_opt_s1_bpe_w5_label(label)
         else f"V3P5_L1_COUNTING_TIME_DEP_WITH_ANALYTIC_ACCIDENTAL_{label.upper()}"
     )
     return {
@@ -514,6 +630,12 @@ def build_summary(
             "accidental_veto_by_time": rel(OUT / "accidental_veto_by_time.csv"),
             "figures": rel(FIG),
         },
+        "method_caveats": [
+            "Step08 inherits the Step05 bounded high-rate Poisson timeline approximation through Step06 event-rate folds; it applies only an analytic accidental live factor.",
+            "The time-dependent significance is a counting projection from Step06/Step07 rates, not new per-bin Cosima transport or a spatial/profile-likelihood analysis.",
+        ]
+        if is_geo_opt_s1_bpe_w5_label(label)
+        else [],
         "pending": pending,
     }
 

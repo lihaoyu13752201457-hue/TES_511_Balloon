@@ -1,0 +1,88 @@
+{
+  "status": "PASS_W2_ALL_PARTICLE_RAY_OVERLAY",
+  "scope": "Current geo-opt W2 background raw TES events; science focused signal excluded.",
+  "w2_window_keV": [
+    510.58,
+    511.42
+  ],
+  "active_threshold_keV": 50.0,
+  "xy_axis_view": {
+    "base_half_range_cm": 45.0,
+    "scale": 1.5,
+    "new_half_range_cm": 67.5
+  },
+  "particle_counts": {
+    "activation": 42,
+    "atm511": 108,
+    "eplus": 62,
+    "gamma": 1,
+    "muminus": 1,
+    "muplus": 8,
+    "n": 60,
+    "p": 1
+  },
+  "veto_counts": {
+    "active_veto": 55,
+    "compton_fov_veto": 22,
+    "pass": 169,
+    "plastic_skin_veto": 37
+  },
+  "outputs": {
+    "png": "engineering/geometry_optimization_20260704/08_ingress_veto_barrel_20260707/figures/w2_all_particle_rays_current_geo_opt_overlay.png",
+    "svg": "engineering/geometry_optimization_20260704/08_ingress_veto_barrel_20260707/figures/w2_all_particle_rays_current_geo_opt_overlay.svg",
+    "events_csv": "engineering/geometry_optimization_20260704/08_ingress_veto_barrel_20260707/w2_all_particle_ray_overlay_events.csv",
+    "plot_outputs": {
+      "combined_png": "engineering/geometry_optimization_20260704/08_ingress_veto_barrel_20260707/figures/w2_all_particle_rays_current_geo_opt_overlay.png",
+      "combined_svg": "engineering/geometry_optimization_20260704/08_ingress_veto_barrel_20260707/figures/w2_all_particle_rays_current_geo_opt_overlay.svg",
+      "by_particle_dir": "engineering/geometry_optimization_20260704/08_ingress_veto_barrel_20260707/figures/w2_particle_rays_current_geo_opt_by_particle",
+      "by_particle": {
+        "activation": {
+          "count": 42,
+          "png": "engineering/geometry_optimization_20260704/08_ingress_veto_barrel_20260707/figures/w2_particle_rays_current_geo_opt_by_particle/w2_particle_rays_current_geo_opt_activation.png",
+          "svg": "engineering/geometry_optimization_20260704/08_ingress_veto_barrel_20260707/figures/w2_particle_rays_current_geo_opt_by_particle/w2_particle_rays_current_geo_opt_activation.svg"
+        },
+        "atm511": {
+          "count": 108,
+          "png": "engineering/geometry_optimization_20260704/08_ingress_veto_barrel_20260707/figures/w2_particle_rays_current_geo_opt_by_particle/w2_particle_rays_current_geo_opt_atm511.png",
+          "svg": "engineering/geometry_optimization_20260704/08_ingress_veto_barrel_20260707/figures/w2_particle_rays_current_geo_opt_by_particle/w2_particle_rays_current_geo_opt_atm511.svg"
+        },
+        "eplus": {
+          "count": 62,
+          "png": "engineering/geometry_optimization_20260704/08_ingress_veto_barrel_20260707/figures/w2_particle_rays_current_geo_opt_by_particle/w2_particle_rays_current_geo_opt_eplus.png",
+          "svg": "engineering/geometry_optimization_20260704/08_ingress_veto_barrel_20260707/figures/w2_particle_rays_current_geo_opt_by_particle/w2_particle_rays_current_geo_opt_eplus.svg"
+        },
+        "gamma": {
+          "count": 1,
+          "png": "engineering/geometry_optimization_20260704/08_ingress_veto_barrel_20260707/figures/w2_particle_rays_current_geo_opt_by_particle/w2_particle_rays_current_geo_opt_gamma.png",
+          "svg": "engineering/geometry_optimization_20260704/08_ingress_veto_barrel_20260707/figures/w2_particle_rays_current_geo_opt_by_particle/w2_particle_rays_current_geo_opt_gamma.svg"
+        },
+        "muminus": {
+          "count": 1,
+          "png": "engineering/geometry_optimization_20260704/08_ingress_veto_barrel_20260707/figures/w2_particle_rays_current_geo_opt_by_particle/w2_particle_rays_current_geo_opt_muminus.png",
+          "svg": "engineering/geometry_optimization_20260704/08_ingress_veto_barrel_20260707/figures/w2_particle_rays_current_geo_opt_by_particle/w2_particle_rays_current_geo_opt_muminus.svg"
+        },
+        "muplus": {
+          "count": 8,
+          "png": "engineering/geometry_optimization_20260704/08_ingress_veto_barrel_20260707/figures/w2_particle_rays_current_geo_opt_by_particle/w2_particle_rays_current_geo_opt_muplus.png",
+          "svg": "engineering/geometry_optimization_20260704/08_ingress_veto_barrel_20260707/figures/w2_particle_rays_current_geo_opt_by_particle/w2_particle_rays_current_geo_opt_muplus.svg"
+        },
+        "n": {
+          "count": 60,
+          "png": "engineering/geometry_optimization_20260704/08_ingress_veto_barrel_20260707/figures/w2_particle_rays_current_geo_opt_by_particle/w2_particle_rays_current_geo_opt_n.png",
+          "svg": "engineering/geometry_optimization_20260704/08_ingress_veto_barrel_20260707/figures/w2_particle_rays_current_geo_opt_by_particle/w2_particle_rays_current_geo_opt_n.svg"
+        },
+        "p": {
+          "count": 1,
+          "png": "engineering/geometry_optimization_20260704/08_ingress_veto_barrel_20260707/figures/w2_particle_rays_current_geo_opt_by_particle/w2_particle_rays_current_geo_opt_p.png",
+          "svg": "engineering/geometry_optimization_20260704/08_ingress_veto_barrel_20260707/figures/w2_particle_rays_current_geo_opt_by_particle/w2_particle_rays_current_geo_opt_p.svg"
+        }
+      }
+    }
+  },
+  "notes": [
+    "Plastic skin veto is separated from non-plastic active veto by rescanning selected SIM hit volumes.",
+    "Veto class priority is plastic skin, then non-plastic active shield, then Compton/FoV, then pass.",
+    "Prompt/delayed rows come from Step05 event_catalog W2 background records; atmospheric 511 rows come from a scan of the P2 atmospheric-511 replay SIM.",
+    "Rays are drawn from IA INIT position to the energy-weighted TES hit centroid in the simulation/world coordinate projections."
+  ]
+}

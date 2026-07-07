@@ -22,11 +22,20 @@ TRANSIENT_FLUX_SCAN = [1.0e-4, 3.0e-4, 1.0e-3, 3.0e-3]
 TRANSIENT_DURATIONS_S = [3600.0, 21600.0, 86400.0, 259200.0]
 DIFFUSE_FOV_FLUX_PROXY = 6.26238e-7
 FIX5_FULLSTAT_LABEL = "fix5_fullstat_v2_exactpos_m50000_s260613"
+MASS_MODEL_511_LABEL = "Mass_model_511_fullstat_v1"
+MASS_MODEL_511_ALIASES = {"mass_model_511_fullstat_v1", MASS_MODEL_511_LABEL}
+GEO_OPT_S1_BPE_W5_LABEL = "geo_opt_s1_bpe_w5_fullstat_v1"
+GEO_OPT_S1_BPE_W5_ALIASES = {GEO_OPT_S1_BPE_W5_LABEL}
+GEO_OPT_S1_BPE_W5_ENGINEERING = ROOT / "engineering" / "geometry_optimization_20260704"
 
 
 def canonical_label(label: str) -> str:
     if label == "fix5_fullstat_v2":
         return FIX5_FULLSTAT_LABEL
+    if label in MASS_MODEL_511_ALIASES:
+        return MASS_MODEL_511_LABEL
+    if label in GEO_OPT_S1_BPE_W5_ALIASES:
+        return GEO_OPT_S1_BPE_W5_LABEL
     return label
 
 
@@ -38,11 +47,23 @@ def is_fix5_fullstat_label(label: str) -> bool:
     return canonical_label(label) == FIX5_FULLSTAT_LABEL
 
 
+def is_mass_model_511_label(label: str) -> bool:
+    return canonical_label(label) == MASS_MODEL_511_LABEL
+
+
+def is_geo_opt_s1_bpe_w5_label(label: str) -> bool:
+    return canonical_label(label) == GEO_OPT_S1_BPE_W5_LABEL
+
+
 def output_prefix(label: str) -> str:
     if is_bgo_sample_label(label):
         return "bgo_sample"
     if is_fix5_fullstat_label(label):
         return "fix5"
+    if is_mass_model_511_label(label):
+        return "Mass_model_511"
+    if is_geo_opt_s1_bpe_w5_label(label):
+        return "geo_opt_s1_bpe_w5"
     return "v3p5_centerfinger"
 
 
@@ -51,6 +72,10 @@ def step06_summary_filename(label: str) -> str:
         return "step06_bgo_sample_fullstat_v2_exactpos_summary.json"
     if is_fix5_fullstat_label(label):
         return f"step06_{FIX5_FULLSTAT_LABEL}_summary.json"
+    if is_mass_model_511_label(label):
+        return "step06_Mass_model_511_fullstat_v1_summary.json"
+    if is_geo_opt_s1_bpe_w5_label(label):
+        return f"step06_{GEO_OPT_S1_BPE_W5_LABEL}_summary.json"
     return f"step06_{output_prefix(label)}_{label}_summary.json"
 
 
@@ -59,6 +84,10 @@ def response_authority_filename(label: str) -> str:
         return "bgo_sample_response_authority.csv"
     if is_fix5_fullstat_label(label):
         return "fix5_response_authority.csv"
+    if is_mass_model_511_label(label):
+        return "Mass_model_511_response_authority.csv"
+    if is_geo_opt_s1_bpe_w5_label(label):
+        return "geo_opt_s1_bpe_w5_response_authority.csv"
     return "v3p5_response_authority.csv"
 
 
@@ -104,6 +133,44 @@ def configure_paths(label: str) -> None:
         STEP09 = ROOT / "stepwise_maintenance" / "step09_optics_bridge" / "outputs_f10m_a1_v3p5" / "step09_optics_bridge_summary.json"
         return
 
+    if is_mass_model_511_label(label):
+        OUT = ROOT / "stepwise_maintenance" / "step07_source_cases" / f"outputs_{MASS_MODEL_511_LABEL}"
+        STEP05 = (
+            ROOT
+            / "stepwise_maintenance"
+            / "step05_veto_time_axis"
+            / f"outputs_{MASS_MODEL_511_LABEL}_l1"
+            / f"step05_{MASS_MODEL_511_LABEL}_l1_response_summary.json"
+        )
+        STEP06 = (
+            ROOT
+            / "stepwise_maintenance"
+            / "step06_mission_time_variation"
+            / f"outputs_{MASS_MODEL_511_LABEL}"
+            / step06_summary_filename(label)
+        )
+        STEP09 = ROOT / "engineering" / "Mass_model_511_nearfield_migration_20260701" / "06_smoke_closure" / "signal_transport_manifest.json"
+        return
+
+    if is_geo_opt_s1_bpe_w5_label(label):
+        OUT = ROOT / "stepwise_maintenance" / "step07_source_cases" / f"outputs_{GEO_OPT_S1_BPE_W5_LABEL}"
+        STEP05 = (
+            ROOT
+            / "stepwise_maintenance"
+            / "step05_veto_time_axis"
+            / f"outputs_{GEO_OPT_S1_BPE_W5_LABEL}_l1"
+            / f"step05_{GEO_OPT_S1_BPE_W5_LABEL}_l1_response_summary.json"
+        )
+        STEP06 = (
+            ROOT
+            / "stepwise_maintenance"
+            / "step06_mission_time_variation"
+            / f"outputs_{GEO_OPT_S1_BPE_W5_LABEL}"
+            / step06_summary_filename(label)
+        )
+        STEP09 = GEO_OPT_S1_BPE_W5_ENGINEERING / "03_step05_detector_response_20260706" / "signal_transport_manifest.json"
+        return
+
     OUT = ROOT / "stepwise_maintenance" / "step07_source_cases" / f"outputs_v3p5_centerfinger_{label}"
     if label == "1of10":
         STEP05 = ROOT / "stepwise_maintenance" / "step05_veto_time_axis" / "outputs_v3p5_centerfinger_l1" / "step05_v3p5_centerfinger_l1_response_summary.json"
@@ -120,7 +187,13 @@ def configure_paths(label: str) -> None:
 
 def bridge_rows_written(step09: dict[str, Any]) -> int:
     bridge = step09.get("bridge") or step09.get("base_bridge") or {}
-    return int(bridge["rows_written"])
+    if "rows_written" in bridge:
+        return int(bridge["rows_written"])
+    if "rows_written" not in bridge and step09.get("headers", {}).get("candidate_Mass_model_511"):
+        return int(step09["headers"]["candidate_Mass_model_511"]["SE"])
+    if step09.get("header", {}).get("SE") is not None:
+        return int(step09["header"]["SE"])
+    raise KeyError("Unable to locate focused EventList row count in Step09/signal manifest")
 
 
 def rel(path: Path) -> str:
@@ -249,9 +322,16 @@ def markdown(summary: dict[str, Any]) -> str:
     elif is_fix5_fullstat_label(label):
         title = "# Step07 fix5 Source Cases"
         intro = f"This `{label}` source-case layer uses the current fix5 Step05 detector response, including the fix5 focused-signal replay. Promotion still requires the final fix5 promotion decision artifact."
+    elif is_mass_model_511_label(label):
+        title = "# Step07 Mass_model_511 Source Cases"
+        intro = f"This `{label}` source-case layer uses the current-geometry Mass_model_511 Step05 detector response, including the Mass_model_511 focused-signal replay. It is not a no-effect/replacement decision."
+    elif is_geo_opt_s1_bpe_w5_label(label):
+        title = "# Step07 geo-opt S1/BPE/W5 Source Cases"
+        intro = f"This `{label}` source-case layer uses the geo-opt Step05 detector response, including the geo-opt focused-signal transport manifest. It is not a promotion or replacement decision."
     else:
         title = "# Step07 v3p5 Center-Finger Source Cases"
         intro = f"This `{label}` source-case layer uses the v3p5 Step05 focused EventList detector response and does not change geometry, Step02 transport, or Step05 selection."
+    method_caveats = summary.get("method_caveats", [])
     return "\n".join(
         [
             title,
@@ -278,6 +358,9 @@ def markdown(summary: dict[str, Any]) -> str:
             f"- response authority: `{summary['outputs'].get('response_authority', summary['outputs']['v3p5_response_authority'])}`",
             f"- source-case rates: `{summary['outputs']['source_case_rates']}`",
             f"- summary JSON: `{summary['outputs']['summary_json']}`",
+            "",
+            "Method caveats:",
+            *[f"- {item}" for item in method_caveats],
             "",
             "Pending:",
             *[f"- {item}" for item in summary.get("pending", [])],
@@ -311,6 +394,20 @@ def build_summary(step05: dict[str, Any], step06: dict[str, Any], step09: dict[s
         pending = [
             "Run Step08 from this source-case output and refresh the promotion decision artifact before any final replacement claim.",
             "Old new_geo_re prompt/delayed numbers remain blocked as pass/fail gates while benchmark alignment is NOT_ALIGNED.",
+        ]
+    elif is_mass_model_511_label(label):
+        status = f"PASS_MASS_MODEL_511_STEP07_SOURCE_CASES_{label.upper()}_SIGNAL_REPLAYED_NOT_REPLACEMENT"
+        claim_level = f"MASS_MODEL_511_L1_SOURCE_CASE_RATE_FOLDING_{label.upper()}_SIGNAL_REPLAYED_NOT_REPLACEMENT"
+        pending = [
+            "Run Step08 from this source-case output before quoting a final 20-day threshold.",
+            "No no-material-effect/replacement decision against fix5 is made by this source-case fold.",
+        ]
+    elif is_geo_opt_s1_bpe_w5_label(label):
+        status = f"PASS_GEO_OPT_S1_BPE_W5_STEP07_SOURCE_CASES_{label.upper()}_SIGNAL_REPLAYED_NOT_PROMOTION"
+        claim_level = f"GEO_OPT_S1_BPE_W5_L1_SOURCE_CASE_RATE_FOLDING_{label.upper()}_SIGNAL_REPLAYED_NOT_PROMOTION"
+        pending = [
+            "Run Step08 from this source-case output before quoting final mission detection potential.",
+            "Compare against Mass_model_511/fix5 with the same selection and active-veto assumptions before making a geometry decision.",
         ]
     else:
         status = f"PASS_V3P5_STEP07_SOURCE_CASES_{label.upper()}"
@@ -354,6 +451,13 @@ def build_summary(step05: dict[str, Any], step06: dict[str, Any], step09: dict[s
             "v3p5_response_authority": rel(OUT / response_authority_filename(label)),
             "source_case_rates": rel(OUT / "source_case_rates.csv"),
         },
+        "method_caveats": [
+            "Step07 is a rate-level source-case fold from the geo-opt Step05 response; it does not rerun prompt, delayed, or focused Cosima transport.",
+            "It inherits the Step05 bounded high-rate Poisson timeline approximation through the selected geo-opt response summary.",
+            "The focused-signal provenance is the geo-opt signal_transport_manifest.json header, not the fix5 or Mass_model_511 Step09 summary.",
+        ]
+        if is_geo_opt_s1_bpe_w5_label(label)
+        else [],
         "pending": pending,
     }
 

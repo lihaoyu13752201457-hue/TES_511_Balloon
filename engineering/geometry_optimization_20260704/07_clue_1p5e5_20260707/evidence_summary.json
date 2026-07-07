@@ -1,0 +1,45 @@
+{
+  "component_cps": {
+    "atm511_harris": 0.008343517492480608,
+    "delayed": 0.00279339080718,
+    "eplus": 0.0237663402077,
+    "neutron": 0.0088208851419,
+    "sum": 0.04372413364926061
+  },
+  "current_geo_opt_with_harris": {
+    "F3_20d_ph_cm2_s": 4.084781471084379e-05,
+    "background_counts_without_atm511_20d": 60655.98413538436,
+    "background_cps": 0.043724133649250325,
+    "background_target_cps_for_1p5e5": 0.005896116774690034,
+    "required_total_background_reduction_fraction": 0.8651518902126691,
+    "signal_counts_20d_at_F0_1e_4": 2010.7920735805571
+  },
+  "files_in_this_clue_package": [
+    "README.md",
+    "evidence_summary.json",
+    "background_budget.csv",
+    "optimization_levers.csv",
+    "event_clues.csv",
+    "geoopt_added_geometry_manifest.json",
+    "geoopt_added_volumes.geo",
+    "geo_opt_s1_bottomw_b4c_2d_detail.png",
+    "geo_opt_s1_bottomw_b4c.wrl",
+    "neutron_energy_depth_hexbin.png"
+  ],
+  "hard_requirement_if_delayed_unchanged": {
+    "allowance_for_eplus_neutron_atm511_cps": 0.003102725967510034,
+    "example_package_F3": 1.4746029098389262e-05,
+    "example_package_that_meets_target": "atm511 90% rejection + residual e+ 95% rejection + residual neutron 90% rejection"
+  },
+  "status": "NO_VERIFIED_20D_1P5E_MINUS5_SCHEME_FOUND",
+  "target": {
+    "F3_20d_ph_cm2_s": 1.5e-05,
+    "fixed_signal_assumption": true
+  },
+  "why_current_mods_are_insufficient": [
+    "Plastic skin helps residual e+ but leaves 0.023766 cps, the largest term.",
+    "BPE/W/plastic stack reduces activation only at ~25% level; W2 neutron final rate remains 0.008821 cps.",
+    "Atmospheric 511 transfer is only ~6% lower than Mass and active veto has no effect on the W2 candidates.",
+    "Even perfect removal of e+ plus atm511 leaves neutron+delayed at projected F3 ~2.10e-5."
+  ]
+}

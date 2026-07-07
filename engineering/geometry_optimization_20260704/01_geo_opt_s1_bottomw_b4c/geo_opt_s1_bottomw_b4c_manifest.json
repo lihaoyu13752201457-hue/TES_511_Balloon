@@ -1,0 +1,249 @@
+{
+  "boundaries": [
+    "Mass_model_511 source geometry is copied, not modified.",
+    "No transport or background-rate validation is implied.",
+    "The full-wrap plastic skin, borated-PE envelope, and 5 mm W baffle are draft geometric proxies pending overlap and transport validation."
+  ],
+  "current_revision": {
+    "borated_polyethylene_cm": {
+      "bottom_z_max": -22.1,
+      "bottom_z_min": -23.1,
+      "r_inner": 26.4,
+      "r_outer": 27.4,
+      "side_z_max": 6.2,
+      "side_z_min": -22.1,
+      "signal_window_cut_side": "negative-x",
+      "signal_window_half_y": 2.4,
+      "signal_window_half_z": 2.4,
+      "signal_window_z_center": -5.2,
+      "top_service_opening_r_inner": 20.9,
+      "top_z_max": 7.2,
+      "top_z_min": 6.2
+    },
+    "layer_order_outside_to_inside": [
+      "active PlasticScintillator full-wrap skin",
+      "BoratedPolyethylene5wtB full envelope with signal-window cutout",
+      "5 mm W bottom baffle",
+      "unmodified Mass_model_511 detector"
+    ],
+    "plastic_cm": {
+      "bottom_nf2_rod_relief_centers": [
+        [
+          -19.5,
+          19.8
+        ],
+        [
+          -19.5,
+          -19.8
+        ]
+      ],
+      "bottom_nf2_rod_relief_half_widths": [
+        4.0,
+        4.0,
+        0.3
+      ],
+      "bottom_z_max": -23.1,
+      "bottom_z_min": -23.6,
+      "r_inner": 27.4,
+      "r_outer": 27.9,
+      "side_nf2_rod_relief_centers_local": [
+        [
+          -19.5,
+          19.8,
+          -14.9
+        ],
+        [
+          -19.5,
+          -19.8,
+          -14.9
+        ]
+      ],
+      "side_nf2_rod_relief_half_widths": [
+        4.0,
+        4.0,
+        0.75
+      ],
+      "side_z_max": 7.2,
+      "side_z_min": -23.1,
+      "top_service_opening_r_inner": 20.9,
+      "top_z_max": 7.7,
+      "top_z_min": 7.2
+    },
+    "w_bottom_baffle_cm": {
+      "r_inner": 0.0,
+      "r_outer": 6.0,
+      "thickness": 0.5,
+      "z_max": -21.55,
+      "z_min": -22.05
+    }
+  },
+  "det_file": "engineering/geometry_optimization_20260704/01_geo_opt_s1_bottomw_b4c/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.det",
+  "detail_png": "engineering/geometry_optimization_20260704/01_geo_opt_s1_bottomw_b4c/figures/geo_opt_s1_bottomw_b4c_2d_detail.png",
+  "detail_svg": "engineering/geometry_optimization_20260704/01_geo_opt_s1_bottomw_b4c/figures/geo_opt_s1_bottomw_b4c_2d_detail.svg",
+  "geometry_file": "engineering/geometry_optimization_20260704/01_geo_opt_s1_bottomw_b4c/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo",
+  "geometry_setup": "engineering/geometry_optimization_20260704/01_geo_opt_s1_bottomw_b4c/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup",
+  "historical_skin_geometry_from_r3_not_instantiated_as_segments": {
+    "phi_span_deg": 308.2406722798367,
+    "phi_start_deg": 157.7770784843292,
+    "r_inner_cm": 20.64666265394967,
+    "r_outer_cm": 37.09482454411801,
+    "s1_area_cm2": 14136.00785896898,
+    "s1_live_loss_fraction": 0.006183994735319942,
+    "s1_mass_kg": 7.280044047369025,
+    "s1_skin_rate_hz": 6203.19482720113,
+    "z_max_cm": 26.74886,
+    "z_min_cm": -31.28432
+  },
+  "materials_file": "engineering/geometry_optimization_20260704/01_geo_opt_s1_bottomw_b4c/geometry/Materials_DEMO2_DR_v3p5.geo",
+  "patch_volumes": [
+    {
+      "active_detector_entry": true,
+      "mass_kg": 2.710970935730698,
+      "material": "PlasticScintillator",
+      "name": "GeoOpt_S1_PlasticFullWrap_SideShell_5mm",
+      "position_cm": [
+        0.0,
+        0.0,
+        -7.950000000000001
+      ],
+      "role": "Full-azimuth active plastic scintillator outer side skin; covers the side-window azimuth as a charged-particle sentinel instead of using the earlier low-statistics segmented S1 sector proxy; includes two local NF2 outer-support rod relief cutouts near the lower edge",
+      "shape": "GeoOpt_S1_PlasticFullWrap_SideShell_5mm_ReliefStep02Shape",
+      "shape_defs": [
+        "Shape PCON GeoOpt_S1_PlasticFullWrap_SideShell_5mm_FullShellShape",
+        "GeoOpt_S1_PlasticFullWrap_SideShell_5mm_FullShellShape.Parameters 0 360 2 -15.15 27.4 27.9 15.15 27.4 27.9",
+        "Shape BRIK GeoOpt_S1_PlasticFullWrap_SideShell_5mm_NF2Rod03ReliefShape",
+        "GeoOpt_S1_PlasticFullWrap_SideShell_5mm_NF2Rod03ReliefShape.Parameters 4 4 0.75",
+        "Orientation GeoOpt_S1_PlasticFullWrap_SideShell_5mm_NF2Rod03ReliefOrientation",
+        "GeoOpt_S1_PlasticFullWrap_SideShell_5mm_NF2Rod03ReliefOrientation.Position -19.5 19.8 -14.9",
+        "Shape BRIK GeoOpt_S1_PlasticFullWrap_SideShell_5mm_NF2Rod04ReliefShape",
+        "GeoOpt_S1_PlasticFullWrap_SideShell_5mm_NF2Rod04ReliefShape.Parameters 4 4 0.75",
+        "Orientation GeoOpt_S1_PlasticFullWrap_SideShell_5mm_NF2Rod04ReliefOrientation",
+        "GeoOpt_S1_PlasticFullWrap_SideShell_5mm_NF2Rod04ReliefOrientation.Position -19.5 -19.8 -14.9",
+        "Shape Subtraction GeoOpt_S1_PlasticFullWrap_SideShell_5mm_ReliefStep01Shape",
+        "GeoOpt_S1_PlasticFullWrap_SideShell_5mm_ReliefStep01Shape.Parameters GeoOpt_S1_PlasticFullWrap_SideShell_5mm_FullShellShape GeoOpt_S1_PlasticFullWrap_SideShell_5mm_NF2Rod03ReliefShape GeoOpt_S1_PlasticFullWrap_SideShell_5mm_NF2Rod03ReliefOrientation",
+        "Shape Subtraction GeoOpt_S1_PlasticFullWrap_SideShell_5mm_ReliefStep02Shape",
+        "GeoOpt_S1_PlasticFullWrap_SideShell_5mm_ReliefStep02Shape.Parameters GeoOpt_S1_PlasticFullWrap_SideShell_5mm_ReliefStep01Shape GeoOpt_S1_PlasticFullWrap_SideShell_5mm_NF2Rod04ReliefShape GeoOpt_S1_PlasticFullWrap_SideShell_5mm_NF2Rod04ReliefOrientation"
+      ],
+      "volume_cm3": 2632.0106172142696
+    },
+    {
+      "active_detector_entry": true,
+      "mass_kg": 1.259405275802628,
+      "material": "PlasticScintillator",
+      "name": "GeoOpt_S1_PlasticFullWrap_BottomCap_5mm",
+      "position_cm": [
+        0.0,
+        0.0,
+        -23.35
+      ],
+      "role": "Active plastic scintillator bottom skin closing the outer charged-particle veto envelope; includes two local NF2 outer-support rod relief cutouts",
+      "shape": "GeoOpt_S1_PlasticFullWrap_BottomCap_5mm_ReliefStep02Shape",
+      "shape_defs": [
+        "Shape PCON GeoOpt_S1_PlasticFullWrap_BottomCap_5mm_FullDiskShape",
+        "GeoOpt_S1_PlasticFullWrap_BottomCap_5mm_FullDiskShape.Parameters 0 360 2 -0.25 0 27.9 0.25 0 27.9",
+        "Shape BRIK GeoOpt_S1_PlasticFullWrap_BottomCap_5mm_NF2Rod03ReliefShape",
+        "GeoOpt_S1_PlasticFullWrap_BottomCap_5mm_NF2Rod03ReliefShape.Parameters 4 4 0.3",
+        "Orientation GeoOpt_S1_PlasticFullWrap_BottomCap_5mm_NF2Rod03ReliefOrientation",
+        "GeoOpt_S1_PlasticFullWrap_BottomCap_5mm_NF2Rod03ReliefOrientation.Position -19.5 19.8 0",
+        "Shape BRIK GeoOpt_S1_PlasticFullWrap_BottomCap_5mm_NF2Rod04ReliefShape",
+        "GeoOpt_S1_PlasticFullWrap_BottomCap_5mm_NF2Rod04ReliefShape.Parameters 4 4 0.3",
+        "Orientation GeoOpt_S1_PlasticFullWrap_BottomCap_5mm_NF2Rod04ReliefOrientation",
+        "GeoOpt_S1_PlasticFullWrap_BottomCap_5mm_NF2Rod04ReliefOrientation.Position -19.5 -19.8 0",
+        "Shape Subtraction GeoOpt_S1_PlasticFullWrap_BottomCap_5mm_ReliefStep01Shape",
+        "GeoOpt_S1_PlasticFullWrap_BottomCap_5mm_ReliefStep01Shape.Parameters GeoOpt_S1_PlasticFullWrap_BottomCap_5mm_FullDiskShape GeoOpt_S1_PlasticFullWrap_BottomCap_5mm_NF2Rod03ReliefShape GeoOpt_S1_PlasticFullWrap_BottomCap_5mm_NF2Rod03ReliefOrientation",
+        "Shape Subtraction GeoOpt_S1_PlasticFullWrap_BottomCap_5mm_ReliefStep02Shape",
+        "GeoOpt_S1_PlasticFullWrap_BottomCap_5mm_ReliefStep02Shape.Parameters GeoOpt_S1_PlasticFullWrap_BottomCap_5mm_ReliefStep01Shape GeoOpt_S1_PlasticFullWrap_BottomCap_5mm_NF2Rod04ReliefShape GeoOpt_S1_PlasticFullWrap_BottomCap_5mm_NF2Rod04ReliefOrientation"
+      ],
+      "volume_cm3": 1222.7235687404154
+    },
+    {
+      "active_detector_entry": true,
+      "mass_kg": 0.5526815459901309,
+      "material": "PlasticScintillator",
+      "name": "GeoOpt_S1_PlasticFullWrap_TopCap_5mm",
+      "position_cm": [
+        0.0,
+        0.0,
+        7.45
+      ],
+      "role": "Active plastic scintillator top annulus skin; preserves the existing central service/support opening",
+      "shape": "PCON 0 360 2 -0.25 20.9 27.9 0.25 20.9 27.9",
+      "shape_defs": [],
+      "volume_cm3": 536.5840252331368
+    },
+    {
+      "active_detector_entry": false,
+      "mass_kg": 4.544040454856777,
+      "material": "BoratedPolyethylene5wtB",
+      "name": "GeoOpt_BPE5_FullWrap_SideShell_SignalWindowCut_10mm",
+      "position_cm": [
+        0.0,
+        0.0,
+        -7.950000000000001
+      ],
+      "role": "1 cm borated polyethylene inner side shell with a rectangular negative-x signal-window cutout; kept inside the plastic scintillator skin so the BPE does not become the first passive charged-particle stop",
+      "shape": "GeoOpt_BPE5_FullWrap_SideShell_SignalWindowCut_10mm_SubtractionShape",
+      "shape_defs": [
+        "Shape PCON GeoOpt_BPE5_FullWrap_SideShell_SignalWindowCut_10mm_FullShellShape",
+        "GeoOpt_BPE5_FullWrap_SideShell_SignalWindowCut_10mm_FullShellShape.Parameters 0 360 2 -14.15 26.4 27.4 14.15 26.4 27.4",
+        "Shape BRIK GeoOpt_BPE5_FullWrap_SideShell_SignalWindowCut_10mm_SignalWindowCutShape",
+        "GeoOpt_BPE5_FullWrap_SideShell_SignalWindowCut_10mm_SignalWindowCutShape.Parameters 13.701 2.4 2.4",
+        "Orientation GeoOpt_BPE5_FullWrap_SideShell_SignalWindowCut_10mm_SignalWindowCutOrientation",
+        "GeoOpt_BPE5_FullWrap_SideShell_SignalWindowCut_10mm_SignalWindowCutOrientation.Position -13.7 0 2.75",
+        "Shape Subtraction GeoOpt_BPE5_FullWrap_SideShell_SignalWindowCut_10mm_SubtractionShape",
+        "GeoOpt_BPE5_FullWrap_SideShell_SignalWindowCut_10mm_SubtractionShape.Parameters GeoOpt_BPE5_FullWrap_SideShell_SignalWindowCut_10mm_FullShellShape GeoOpt_BPE5_FullWrap_SideShell_SignalWindowCut_10mm_SignalWindowCutShape GeoOpt_BPE5_FullWrap_SideShell_SignalWindowCut_10mm_SignalWindowCutOrientation"
+      ],
+      "volume_cm3": 4783.200478796607
+    },
+    {
+      "active_detector_entry": false,
+      "mass_kg": 2.240652995578619,
+      "material": "BoratedPolyethylene5wtB",
+      "name": "GeoOpt_BPE5_FullWrap_BottomCap_10mm",
+      "position_cm": [
+        0.0,
+        0.0,
+        -22.6
+      ],
+      "role": "1 cm borated polyethylene bottom cap inside the plastic skin and outside the W bottom baffle",
+      "shape": "PCON 0 360 2 -0.5 0 27.4 0.5 0 27.4",
+      "shape_defs": [],
+      "volume_cm3": 2358.5821006090728
+    },
+    {
+      "active_detector_entry": false,
+      "mass_kg": 0.9369878629147897,
+      "material": "BoratedPolyethylene5wtB",
+      "name": "GeoOpt_BPE5_FullWrap_TopCap_10mm",
+      "position_cm": [
+        0.0,
+        0.0,
+        6.7
+      ],
+      "role": "1 cm borated polyethylene top annulus inside the plastic skin; preserves the existing central service/support opening",
+      "shape": "PCON 0 360 2 -0.5 20.9 27.4 0.5 20.9 27.4",
+      "shape_defs": [],
+      "volume_cm3": 986.3030135945155
+    },
+    {
+      "active_detector_entry": false,
+      "mass_kg": 1.091389287857094,
+      "material": "W",
+      "name": "GeoOpt_W_BottomBaffle_5mm_R60",
+      "position_cm": [
+        0.0,
+        0.0,
+        -21.8
+      ],
+      "role": "5 mm tungsten bottom baffle for lower-hemisphere atmospheric 511 keV photons; placed inward of the borated-polyethylene bottom layer and just outside the original Mass_model_511 bottom shell",
+      "shape": "PCON 0 360 2 -0.25 0 6 0.25 0 6",
+      "shape_defs": [],
+      "volume_cm3": 56.548667764616276
+    }
+  ],
+  "source_geometry_dir": "outputs/geometry/DEMO2_DR_v3p5_Mass_model_511_stage_diam_300_300_300_350_350_400_20260701_megalib_proxy",
+  "source_r3_metrics": "engineering/background_anatomy_20260704/r3_metrics.json",
+  "status": "DRAFT_ANALYTIC_PATCH_NOT_TRANSPORT_VALIDATED",
+  "total_added_mass_kg": 13.336128358730738,
+  "wrl": "engineering/geometry_optimization_20260704/01_geo_opt_s1_bottomw_b4c/figures/geo_opt_s1_bottomw_b4c.wrl"
+}

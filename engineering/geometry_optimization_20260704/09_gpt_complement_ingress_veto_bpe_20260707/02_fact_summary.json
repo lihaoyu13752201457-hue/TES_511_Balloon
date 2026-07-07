@@ -1,0 +1,695 @@
+{
+  "package": "09_gpt_complement_ingress_veto_bpe_20260707",
+  "status": "PASS_GPT_COMPLEMENT_PACKAGE_BUILT",
+  "created_for": "external GPT review",
+  "scope": "W2 510.58-511.42 keV raw TES background candidates and post-processing audits; no new transport run.",
+  "previous_10_file_package_reviewed": {
+    "path": "engineering/geometry_optimization_20260704/07_clue_1p5e5_20260707",
+    "files": [
+      "README.md",
+      "background_budget.csv",
+      "event_clues.csv",
+      "evidence_summary.json",
+      "geo_opt_s1_bottomw_b4c.wrl",
+      "geo_opt_s1_bottomw_b4c_2d_detail.png",
+      "geoopt_added_geometry_manifest.json",
+      "geoopt_added_volumes.geo",
+      "neutron_energy_depth_hexbin.png",
+      "optimization_levers.csv"
+    ],
+    "complement_strategy": "Previous package emphasized budget/levers/geometry images. This package emphasizes event-level trajectory, entry geometry, veto flags, and BPE/plastic audit tables."
+  },
+  "package_file_count": 10,
+  "package_files": [
+    {
+      "file": "01_README_GPT_PARSE.md",
+      "purpose": "human-readable instructions and previous-package comparison"
+    },
+    {
+      "file": "02_fact_summary.json",
+      "purpose": "machine-readable headline facts, source definitions, and caveats"
+    },
+    {
+      "file": "03_w2_particle_trajectories_enriched.csv",
+      "purpose": "one row per W2 raw TES background event with geometry path and veto class"
+    },
+    {
+      "file": "04_w2_entry_geometry_counts.csv",
+      "purpose": "counts by particle and envelope-entry class, including window vs wall proxy"
+    },
+    {
+      "file": "05_w2_theta_phi_binned_counts.csv",
+      "purpose": "theta/phi histograms by particle and entry class"
+    },
+    {
+      "file": "06_w2_veto_cutflow_by_particle.csv",
+      "purpose": "plastic skin, non-plastic active, Compton/FoV, and final-pass counts by particle"
+    },
+    {
+      "file": "07_w2_event_veto_flags.csv",
+      "purpose": "one row per event with explicit veto flags and deposited veto energies"
+    },
+    {
+      "file": "08_plastic_skin_veto_effect.csv",
+      "purpose": "plastic-skin veto on/off and positron-hit evidence"
+    },
+    {
+      "file": "09_bpe_neutron_activation_effect.csv",
+      "purpose": "BPE/shield-stack neutron activation and neutron RPIP effect summary"
+    },
+    {
+      "file": "10_w2_neutron_energy_depth_events.csv",
+      "purpose": "W2 neutron energy versus first-hit depth proxy event table"
+    }
+  ],
+  "w2_event_counts_by_particle": {
+    "activation": 42,
+    "atm511": 108,
+    "eplus": 62,
+    "gamma": 1,
+    "muminus": 1,
+    "muplus": 8,
+    "n": 60,
+    "p": 1
+  },
+  "veto_priority_definition": [
+    "plastic_skin_veto if GeoOpt_S1_PlasticFullWrap* edep >= 50 keV",
+    "non_plastic_active_veto if CsI/BGO/other active edep >= 50 keV and not plastic veto",
+    "compton_fov_veto if side_compton_fov_pass is false and no active veto",
+    "final_pass otherwise"
+  ],
+  "entry_definition": {
+    "frame": "local detector frame after rotate_y(world_direction, -45 deg)",
+    "theta_local_deg": "acos(dir_local_z), 0 deg is +local z",
+    "phi_local_deg": "atan2(dir_local_y, dir_local_x), 0..360 deg; side-window axis proxy is local phi=180 deg +/-15 deg"
+  },
+  "atm511_source_definition": {
+    "source_card": "runs/geometry_optimization_20260704/p2_atm511_unit_geo_opt_s1_bpe_w5_fullstat_v1/Atm511LowerUnit3M_GeoOptS1BpeW5.source",
+    "name": "Atm511LowerUnit3M_GeoOptS1BpeW5",
+    "particle_type": "gamma (MEGAlib ParticleType 1)",
+    "spectrum": "Mono 511 keV",
+    "beam_model": "FarFieldAreaSource",
+    "theta_deg_range": [
+      90.0,
+      180.0
+    ],
+    "phi_deg_range": [
+      0.0,
+      360.0
+    ],
+    "number_of_theta_bins": 10,
+    "flux_per_bin": [
+      0.1,
+      0.1,
+      0.1
+    ],
+    "total_declared_flux": 0.9999999999999999,
+    "interpretation": "Lower-hemisphere 511-keV line source, not a full-4pi isotropic source."
+  },
+  "entry_counts_by_source_family": {
+    "activation": {
+      "side_window": 2,
+      "side_wall": 19,
+      "top": 12,
+      "bottom": 7,
+      "envelope_miss": 2
+    },
+    "atm511": {
+      "side_wall": 83,
+      "top": 16,
+      "bottom": 9
+    },
+    "eplus": {
+      "side_window": 4,
+      "side_wall": 31,
+      "top": 14,
+      "envelope_miss": 13
+    },
+    "gamma": {
+      "side_wall": 1
+    },
+    "muminus": {
+      "side_wall": 1
+    },
+    "muplus": {
+      "side_wall": 4,
+      "top": 1,
+      "envelope_miss": 3
+    },
+    "n": {
+      "side_wall": 29,
+      "top": 13,
+      "bottom": 10,
+      "envelope_miss": 8
+    },
+    "p": {
+      "top": 1
+    }
+  },
+  "atm511_w2_conditional_diagnostics": {
+    "w2_raw_count": 108,
+    "theta_local_deg_min_max": [
+      18.484794472520004,
+      133.58219756207285
+    ],
+    "phi_local_deg_min_max": [
+      6.7435910719963115,
+      291.66187266300346
+    ],
+    "entry_class_counts": {
+      "bottom": 9,
+      "side_wall": 83,
+      "top": 16
+    },
+    "xz_start_quadrant_counts": {
+      "left_lower": 32,
+      "right_lower": 76
+    }
+  },
+  "veto_summary_source": "engineering/geometry_optimization_20260704/08_ingress_veto_barrel_20260707/veto_efficiency_summary.json",
+  "veto_efficiency_summary": {
+    "status": "PASS_FAST_VETO_EFFICIENCY_AUDIT_CURRENT_GEO_OPT",
+    "generated_at_utc": "2026-07-07T09:06:46Z",
+    "method": {
+      "active_threshold_keV": 50.0,
+      "active_volume_rule": "CsI/BGO/ACTIVE_SHIELD/CEBR3 plus GeoOpt_S1_PlasticFullWrap* for current geo-opt audit.",
+      "compton_fov_algorithm": "old/code/tools/build_v3p5_centerfinger_step05_l1_response.py",
+      "side_entry_bridge": "stepwise_maintenance/step09_optics_bridge/outputs_f10m_a1_v3p5/step09_optics_bridge_summary.json",
+      "atm511_cutflow_source": "engineering/geometry_optimization_20260704/06_atm511_replay_20260707/p2_geo_opt_s1_bpe_w5_atm511_transfer_summary.json"
+    },
+    "summaries": [
+      {
+        "family": "eplus",
+        "window": "w2_510p58_511p42",
+        "raw_events": 62,
+        "active_veto_pass_events": 40,
+        "side_compton_fov_pass_events": 35,
+        "raw_rate_s-1": 0.04210037408219486,
+        "active_veto_pass_rate_s-1": 0.027161531665932173,
+        "side_compton_fov_pass_rate_s-1": 0.023766340207690646,
+        "active_veto_rejection_fraction_vs_raw_rate": 0.35483870967741915,
+        "side_compton_fov_rejection_fraction_vs_active_rate": 0.12500000000000022,
+        "final_survival_fraction_vs_raw_rate": 0.5645161290322581,
+        "side_compton_class_counts": {
+          "keep": 12,
+          "single": 23,
+          "veto": 5
+        }
+      },
+      {
+        "family": "n",
+        "window": "w2_510p58_511p42",
+        "raw_events": 60,
+        "active_veto_pass_events": 13,
+        "side_compton_fov_pass_events": 13,
+        "raw_rate_s-1": 0.0407117775779885,
+        "active_veto_pass_rate_s-1": 0.008820885141897508,
+        "side_compton_fov_pass_rate_s-1": 0.008820885141897508,
+        "active_veto_rejection_fraction_vs_raw_rate": 0.7833333333333333,
+        "side_compton_fov_rejection_fraction_vs_active_rate": 0.0,
+        "final_survival_fraction_vs_raw_rate": 0.21666666666666665,
+        "side_compton_class_counts": {
+          "keep": 4,
+          "single": 9
+        }
+      },
+      {
+        "family": "atm511",
+        "window": "w2_510p58_511p42",
+        "generated_events": 3000000,
+        "observation_time_s": 265.314,
+        "raw_events": 108,
+        "active_veto_pass_events": 108,
+        "side_compton_fov_pass_events": 95,
+        "raw_rate_s-1_per_unit_flux": 0.4070648363825505,
+        "active_veto_pass_rate_s-1_per_unit_flux": 0.4070648363825505,
+        "side_compton_fov_pass_rate_s-1_per_unit_flux": 0.35806629126242867,
+        "active_veto_rejection_fraction_vs_raw_count": 0.0,
+        "side_compton_fov_rejection_fraction_vs_active_count": 0.12037037037037035,
+        "final_survival_fraction_vs_raw_count": 0.8796296296296297,
+        "side_compton_class_counts": {
+          "keep": 33,
+          "single": 62,
+          "veto": 13
+        },
+        "ingress_metadata_scope": "side_compton_fov_pass final candidates only"
+      }
+    ],
+    "csv_rows": [
+      {
+        "family": "eplus",
+        "window": "w2_510p58_511p42",
+        "raw_events": 62,
+        "active_veto_pass_events": 40,
+        "side_compton_fov_pass_events": 35,
+        "raw_rate": 0.04210037408219486,
+        "active_veto_pass_rate": 0.027161531665932173,
+        "side_compton_fov_pass_rate": 0.023766340207690646,
+        "active_veto_rejection_fraction_count": 0.3548387096774194,
+        "compton_fov_rejection_fraction_vs_active_count": 0.125,
+        "total_rejection_fraction_count": 0.4354838709677419,
+        "active_veto_rejection_fraction_rate": 0.35483870967741915,
+        "compton_fov_rejection_fraction_vs_active_rate": 0.12500000000000022,
+        "total_rejection_fraction_rate": 0.4354838709677419,
+        "final_survival_fraction_vs_raw_rate": 0.5645161290322581,
+        "side_compton_class_counts_json": "{\"keep\": 12, \"single\": 23, \"veto\": 5}",
+        "rate_units": "cps normalized by prompt TT"
+      },
+      {
+        "family": "n",
+        "window": "w2_510p58_511p42",
+        "raw_events": 60,
+        "active_veto_pass_events": 13,
+        "side_compton_fov_pass_events": 13,
+        "raw_rate": 0.0407117775779885,
+        "active_veto_pass_rate": 0.008820885141897508,
+        "side_compton_fov_pass_rate": 0.008820885141897508,
+        "active_veto_rejection_fraction_count": 0.7833333333333333,
+        "compton_fov_rejection_fraction_vs_active_count": 0.0,
+        "total_rejection_fraction_count": 0.7833333333333333,
+        "active_veto_rejection_fraction_rate": 0.7833333333333333,
+        "compton_fov_rejection_fraction_vs_active_rate": 0.0,
+        "total_rejection_fraction_rate": 0.7833333333333333,
+        "final_survival_fraction_vs_raw_rate": 0.21666666666666665,
+        "side_compton_class_counts_json": "{\"keep\": 4, \"single\": 9}",
+        "rate_units": "cps normalized by prompt TT"
+      },
+      {
+        "family": "atm511",
+        "window": "w2_510p58_511p42",
+        "raw_events": 108,
+        "active_veto_pass_events": 108,
+        "side_compton_fov_pass_events": 95,
+        "raw_rate": 0.4070648363825505,
+        "active_veto_pass_rate": 0.4070648363825505,
+        "side_compton_fov_pass_rate": 0.35806629126242867,
+        "active_veto_rejection_fraction_count": 0.0,
+        "compton_fov_rejection_fraction_vs_active_count": 0.12037037037037035,
+        "total_rejection_fraction_count": 0.12037037037037035,
+        "active_veto_rejection_fraction_rate": 0.0,
+        "compton_fov_rejection_fraction_vs_active_rate": 0.12037037037037035,
+        "total_rejection_fraction_rate": 0.12037037037037035,
+        "final_survival_fraction_vs_raw_rate": 0.8796296296296297,
+        "side_compton_class_counts_json": "{\"keep\": 33, \"single\": 62, \"veto\": 13}",
+        "rate_units": "cps per ph cm^-2 s^-1 lower-hemisphere flux"
+      }
+    ],
+    "by_ingress_region_rows": [
+      {
+        "family": "atm511",
+        "window": "w2_510p58_511p42",
+        "entry_region": "bottom",
+        "raw_events": 0,
+        "active_veto_pass_events": 0,
+        "side_compton_fov_pass_events": 8,
+        "raw_rate": 0.0,
+        "active_veto_pass_rate": 0.0,
+        "side_compton_fov_pass_rate": 0.03015295084315189,
+        "active_veto_rejection_fraction_count": "",
+        "compton_fov_rejection_fraction_vs_active_count": "",
+        "total_rejection_fraction_count": "",
+        "active_veto_rejection_fraction_rate": "",
+        "compton_fov_rejection_fraction_vs_active_rate": "",
+        "total_rejection_fraction_rate": ""
+      },
+      {
+        "family": "atm511",
+        "window": "w2_510p58_511p42",
+        "entry_region": "side_wall",
+        "raw_events": 0,
+        "active_veto_pass_events": 0,
+        "side_compton_fov_pass_events": 73,
+        "raw_rate": 0.0,
+        "active_veto_pass_rate": 0.0,
+        "side_compton_fov_pass_rate": 0.27514567644376114,
+        "active_veto_rejection_fraction_count": "",
+        "compton_fov_rejection_fraction_vs_active_count": "",
+        "total_rejection_fraction_count": "",
+        "active_veto_rejection_fraction_rate": "",
+        "compton_fov_rejection_fraction_vs_active_rate": "",
+        "total_rejection_fraction_rate": ""
+      },
+      {
+        "family": "atm511",
+        "window": "w2_510p58_511p42",
+        "entry_region": "top",
+        "raw_events": 0,
+        "active_veto_pass_events": 0,
+        "side_compton_fov_pass_events": 14,
+        "raw_rate": 0.0,
+        "active_veto_pass_rate": 0.0,
+        "side_compton_fov_pass_rate": 0.052767663975515806,
+        "active_veto_rejection_fraction_count": "",
+        "compton_fov_rejection_fraction_vs_active_count": "",
+        "total_rejection_fraction_count": "",
+        "active_veto_rejection_fraction_rate": "",
+        "compton_fov_rejection_fraction_vs_active_rate": "",
+        "total_rejection_fraction_rate": ""
+      },
+      {
+        "family": "eplus",
+        "window": "w2_510p58_511p42",
+        "entry_region": "side_wall",
+        "raw_events": 31,
+        "active_veto_pass_events": 13,
+        "side_compton_fov_pass_events": 12,
+        "raw_rate": 0.021050187041097422,
+        "active_veto_pass_rate": 0.008827497791427956,
+        "side_compton_fov_pass_rate": 0.008148459499779652,
+        "active_veto_rejection_fraction_count": 0.5806451612903225,
+        "compton_fov_rejection_fraction_vs_active_count": 0.07692307692307687,
+        "total_rejection_fraction_count": 0.6129032258064516,
+        "active_veto_rejection_fraction_rate": 0.5806451612903223,
+        "compton_fov_rejection_fraction_vs_active_rate": 0.07692307692307687,
+        "total_rejection_fraction_rate": 0.6129032258064514
+      },
+      {
+        "family": "eplus",
+        "window": "w2_510p58_511p42",
+        "entry_region": "side_window",
+        "raw_events": 4,
+        "active_veto_pass_events": 1,
+        "side_compton_fov_pass_events": 1,
+        "raw_rate": 0.0027161531665932173,
+        "active_veto_pass_rate": 0.0006790382916483043,
+        "side_compton_fov_pass_rate": 0.0006790382916483043,
+        "active_veto_rejection_fraction_count": 0.75,
+        "compton_fov_rejection_fraction_vs_active_count": 0.0,
+        "total_rejection_fraction_count": 0.75,
+        "active_veto_rejection_fraction_rate": 0.75,
+        "compton_fov_rejection_fraction_vs_active_rate": 0.0,
+        "total_rejection_fraction_rate": 0.75
+      },
+      {
+        "family": "eplus",
+        "window": "w2_510p58_511p42",
+        "entry_region": "top",
+        "raw_events": 14,
+        "active_veto_pass_events": 13,
+        "side_compton_fov_pass_events": 11,
+        "raw_rate": 0.00950653608307626,
+        "active_veto_pass_rate": 0.008827497791427956,
+        "side_compton_fov_pass_rate": 0.007469421208131348,
+        "active_veto_rejection_fraction_count": 0.0714285714285714,
+        "compton_fov_rejection_fraction_vs_active_count": 0.15384615384615385,
+        "total_rejection_fraction_count": 0.2142857142857143,
+        "active_veto_rejection_fraction_rate": 0.0714285714285714,
+        "compton_fov_rejection_fraction_vs_active_rate": 0.15384615384615385,
+        "total_rejection_fraction_rate": 0.2142857142857143
+      },
+      {
+        "family": "eplus",
+        "window": "w2_510p58_511p42",
+        "entry_region": "unknown",
+        "raw_events": 13,
+        "active_veto_pass_events": 13,
+        "side_compton_fov_pass_events": 11,
+        "raw_rate": 0.008827497791427956,
+        "active_veto_pass_rate": 0.008827497791427956,
+        "side_compton_fov_pass_rate": 0.007469421208131348,
+        "active_veto_rejection_fraction_count": 0.0,
+        "compton_fov_rejection_fraction_vs_active_count": 0.15384615384615385,
+        "total_rejection_fraction_count": 0.15384615384615385,
+        "active_veto_rejection_fraction_rate": 0.0,
+        "compton_fov_rejection_fraction_vs_active_rate": 0.15384615384615385,
+        "total_rejection_fraction_rate": 0.15384615384615385
+      },
+      {
+        "family": "n",
+        "window": "w2_510p58_511p42",
+        "entry_region": "bottom",
+        "raw_events": 10,
+        "active_veto_pass_events": 2,
+        "side_compton_fov_pass_events": 2,
+        "raw_rate": 0.006785296262998085,
+        "active_veto_pass_rate": 0.0013570592525996167,
+        "side_compton_fov_pass_rate": 0.0013570592525996167,
+        "active_veto_rejection_fraction_count": 0.8,
+        "compton_fov_rejection_fraction_vs_active_count": 0.0,
+        "total_rejection_fraction_count": 0.8,
+        "active_veto_rejection_fraction_rate": 0.8,
+        "compton_fov_rejection_fraction_vs_active_rate": 0.0,
+        "total_rejection_fraction_rate": 0.8
+      },
+      {
+        "family": "n",
+        "window": "w2_510p58_511p42",
+        "entry_region": "side_wall",
+        "raw_events": 29,
+        "active_veto_pass_events": 2,
+        "side_compton_fov_pass_events": 2,
+        "raw_rate": 0.019677359162694436,
+        "active_veto_pass_rate": 0.0013570592525996167,
+        "side_compton_fov_pass_rate": 0.0013570592525996167,
+        "active_veto_rejection_fraction_count": 0.9310344827586207,
+        "compton_fov_rejection_fraction_vs_active_count": 0.0,
+        "total_rejection_fraction_count": 0.9310344827586207,
+        "active_veto_rejection_fraction_rate": 0.9310344827586207,
+        "compton_fov_rejection_fraction_vs_active_rate": 0.0,
+        "total_rejection_fraction_rate": 0.9310344827586207
+      },
+      {
+        "family": "n",
+        "window": "w2_510p58_511p42",
+        "entry_region": "top",
+        "raw_events": 13,
+        "active_veto_pass_events": 6,
+        "side_compton_fov_pass_events": 6,
+        "raw_rate": 0.00882088514189751,
+        "active_veto_pass_rate": 0.00407117775779885,
+        "side_compton_fov_pass_rate": 0.00407117775779885,
+        "active_veto_rejection_fraction_count": 0.5384615384615384,
+        "compton_fov_rejection_fraction_vs_active_count": 0.0,
+        "total_rejection_fraction_count": 0.5384615384615384,
+        "active_veto_rejection_fraction_rate": 0.5384615384615385,
+        "compton_fov_rejection_fraction_vs_active_rate": 0.0,
+        "total_rejection_fraction_rate": 0.5384615384615385
+      },
+      {
+        "family": "n",
+        "window": "w2_510p58_511p42",
+        "entry_region": "unknown",
+        "raw_events": 8,
+        "active_veto_pass_events": 3,
+        "side_compton_fov_pass_events": 3,
+        "raw_rate": 0.0054282370103984675,
+        "active_veto_pass_rate": 0.002035588878899425,
+        "side_compton_fov_pass_rate": 0.002035588878899425,
+        "active_veto_rejection_fraction_count": 0.625,
+        "compton_fov_rejection_fraction_vs_active_count": 0.0,
+        "total_rejection_fraction_count": 0.625,
+        "active_veto_rejection_fraction_rate": 0.625,
+        "compton_fov_rejection_fraction_vs_active_rate": 0.0,
+        "total_rejection_fraction_rate": 0.625
+      }
+    ],
+    "side_compton_class_rows": [
+      {
+        "family": "eplus",
+        "window": "w2_510p58_511p42",
+        "side_compton_class": "keep",
+        "events": 12,
+        "rate": 0.008148459499779652,
+        "survives_reject_policy_keep": true
+      },
+      {
+        "family": "eplus",
+        "window": "w2_510p58_511p42",
+        "side_compton_class": "single",
+        "events": 23,
+        "rate": 0.015617880707911,
+        "survives_reject_policy_keep": true
+      },
+      {
+        "family": "eplus",
+        "window": "w2_510p58_511p42",
+        "side_compton_class": "veto",
+        "events": 5,
+        "rate": 0.0033951914582415216,
+        "survives_reject_policy_keep": false
+      },
+      {
+        "family": "n",
+        "window": "w2_510p58_511p42",
+        "side_compton_class": "keep",
+        "events": 4,
+        "rate": 0.0027141185051992333,
+        "survives_reject_policy_keep": true
+      },
+      {
+        "family": "n",
+        "window": "w2_510p58_511p42",
+        "side_compton_class": "single",
+        "events": 9,
+        "rate": 0.006106766636698276,
+        "survives_reject_policy_keep": true
+      }
+    ]
+  },
+  "bpe_effect_key_rows": [
+    {
+      "topic": "activation_total",
+      "metric": "fixed_total_activity",
+      "mass_model_value": 141.83343806309037,
+      "geo_opt_value": 106.48226813815282,
+      "geo_over_mass": 0.7507557427380936,
+      "relative_change_percent": -24.924425726190634,
+      "unit": "Bq",
+      "interpretation": "GeoOpt S1/BPE/W5 stack lowers fixed day-15 activation versus Mass_model_511"
+    },
+    {
+      "topic": "activation_internal",
+      "metric": "internal_activity_excluding_added_geoopt_layers",
+      "mass_model_value": 141.83343806309037,
+      "geo_opt_value": 105.56481472207452,
+      "geo_over_mass": 0.7442872157912238,
+      "relative_change_percent": -25.57127842087762,
+      "unit": "Bq",
+      "interpretation": "Internal activation is reduced, but this is stack-level evidence, not isolated BPE-only causality"
+    },
+    {
+      "topic": "activation_CsI",
+      "metric": "CsI_activity",
+      "mass_model_value": 89.46492664506488,
+      "geo_opt_value": 63.01977074482,
+      "geo_over_mass": 0.7044075606839648,
+      "relative_change_percent": -29.55924393160352,
+      "unit": "Bq",
+      "interpretation": "CsI activation reduction is consistent with neutron-shielding benefit"
+    },
+    {
+      "topic": "neutron_rpip",
+      "metric": "weighted_internal_rpip_points",
+      "mass_model_value": 40687.5,
+      "geo_opt_value": 30769.5,
+      "geo_over_mass": 0.7562396313364055,
+      "relative_change_percent": -24.376036866359453,
+      "unit": "weighted RPIP points",
+      "interpretation": "Neutron interaction proxy count in internal materials is lower in GeoOpt stack"
+    },
+    {
+      "topic": "neutron_rpip",
+      "metric": "weighted_CsI_rpip_points",
+      "mass_model_value": 32453.625,
+      "geo_opt_value": 23927.5,
+      "geo_over_mass": 0.7372828150938454,
+      "relative_change_percent": -26.27171849061546,
+      "unit": "weighted RPIP points",
+      "interpretation": "CsI neutron interaction proxy count is lower in GeoOpt stack"
+    },
+    {
+      "topic": "causality_caveat",
+      "metric": "BPE_only_AB_test",
+      "mass_model_value": "",
+      "geo_opt_value": "",
+      "geo_over_mass": "",
+      "relative_change_percent": "",
+      "unit": "",
+      "interpretation": "No otherwise-identical no-BPE transport was run; claim should be shield-stack effect, not pure BPE-only proof"
+    }
+  ],
+  "plastic_effect_key_rows": [
+    {
+      "topic": "w2_eplus_matched_plastic_only_veto",
+      "metric": "tes_window_events",
+      "value": 62,
+      "unit": "events",
+      "count_or_rate_context": "{\"also_vetoed_without_plastic_rate_s-1\": 0.002037114874944913, \"survives_active_veto_with_plastic_rate_s-1\": 0.027161531665932145, \"tes_window_rate_s-1\": 0.0421003740821948, \"vetoed_only_when_plastic_is_active_rate_s-1\": 0.012901727541317782}",
+      "interpretation": "W2 prompt e+ TES candidates; plastic-only veto means vetoed only if plastic is counted active"
+    },
+    {
+      "topic": "w2_eplus_matched_plastic_only_veto",
+      "metric": "survives_active_veto_with_plastic_events",
+      "value": 40,
+      "unit": "events",
+      "count_or_rate_context": "{\"also_vetoed_without_plastic_rate_s-1\": 0.002037114874944913, \"survives_active_veto_with_plastic_rate_s-1\": 0.027161531665932145, \"tes_window_rate_s-1\": 0.0421003740821948, \"vetoed_only_when_plastic_is_active_rate_s-1\": 0.012901727541317782}",
+      "interpretation": "W2 prompt e+ TES candidates; plastic-only veto means vetoed only if plastic is counted active"
+    },
+    {
+      "topic": "w2_eplus_matched_plastic_only_veto",
+      "metric": "vetoed_only_when_plastic_is_active_events",
+      "value": 19,
+      "unit": "events",
+      "count_or_rate_context": "{\"also_vetoed_without_plastic_rate_s-1\": 0.002037114874944913, \"survives_active_veto_with_plastic_rate_s-1\": 0.027161531665932145, \"tes_window_rate_s-1\": 0.0421003740821948, \"vetoed_only_when_plastic_is_active_rate_s-1\": 0.012901727541317782}",
+      "interpretation": "W2 prompt e+ TES candidates; plastic-only veto means vetoed only if plastic is counted active"
+    },
+    {
+      "topic": "w2_eplus_matched_plastic_only_veto",
+      "metric": "also_vetoed_without_plastic_events",
+      "value": 3,
+      "unit": "events",
+      "count_or_rate_context": "{\"also_vetoed_without_plastic_rate_s-1\": 0.002037114874944913, \"survives_active_veto_with_plastic_rate_s-1\": 0.027161531665932145, \"tes_window_rate_s-1\": 0.0421003740821948, \"vetoed_only_when_plastic_is_active_rate_s-1\": 0.012901727541317782}",
+      "interpretation": "W2 prompt e+ TES candidates; plastic-only veto means vetoed only if plastic is counted active"
+    },
+    {
+      "topic": "current_w2_event_level_plastic_veto",
+      "metric": "activation_plastic_skin_veto_events",
+      "value": 2,
+      "unit": "W2 raw TES events",
+      "count_or_rate_context": "raw=42, fraction=0.047619047619047616",
+      "interpretation": "event-level W2 priority veto classification in complement trajectory table"
+    },
+    {
+      "topic": "current_w2_event_level_plastic_veto",
+      "metric": "atm511_plastic_skin_veto_events",
+      "value": 0,
+      "unit": "W2 raw TES events",
+      "count_or_rate_context": "raw=108, fraction=0.0",
+      "interpretation": "event-level W2 priority veto classification in complement trajectory table"
+    },
+    {
+      "topic": "current_w2_event_level_plastic_veto",
+      "metric": "eplus_plastic_skin_veto_events",
+      "value": 22,
+      "unit": "W2 raw TES events",
+      "count_or_rate_context": "raw=62, fraction=0.3548387096774194",
+      "interpretation": "event-level W2 priority veto classification in complement trajectory table"
+    },
+    {
+      "topic": "current_w2_event_level_plastic_veto",
+      "metric": "gamma_plastic_skin_veto_events",
+      "value": 0,
+      "unit": "W2 raw TES events",
+      "count_or_rate_context": "raw=1, fraction=0.0",
+      "interpretation": "event-level W2 priority veto classification in complement trajectory table"
+    },
+    {
+      "topic": "current_w2_event_level_plastic_veto",
+      "metric": "muminus_plastic_skin_veto_events",
+      "value": 1,
+      "unit": "W2 raw TES events",
+      "count_or_rate_context": "raw=1, fraction=1.0",
+      "interpretation": "event-level W2 priority veto classification in complement trajectory table"
+    },
+    {
+      "topic": "current_w2_event_level_plastic_veto",
+      "metric": "muplus_plastic_skin_veto_events",
+      "value": 6,
+      "unit": "W2 raw TES events",
+      "count_or_rate_context": "raw=8, fraction=0.75",
+      "interpretation": "event-level W2 priority veto classification in complement trajectory table"
+    },
+    {
+      "topic": "current_w2_event_level_plastic_veto",
+      "metric": "n_plastic_skin_veto_events",
+      "value": 5,
+      "unit": "W2 raw TES events",
+      "count_or_rate_context": "raw=60, fraction=0.08333333333333333",
+      "interpretation": "event-level W2 priority veto classification in complement trajectory table"
+    },
+    {
+      "topic": "current_w2_event_level_plastic_veto",
+      "metric": "p_plastic_skin_veto_events",
+      "value": 1,
+      "unit": "W2 raw TES events",
+      "count_or_rate_context": "raw=1, fraction=1.0",
+      "interpretation": "event-level W2 priority veto classification in complement trajectory table"
+    }
+  ],
+  "major_caveats": [
+    "BPE effect is not isolated by a no-BPE A/B transport; current evidence is for the S1/BPE/W5 shield stack.",
+    "Plastic-off means post-processing veto accounting off; plastic material remains in transport.",
+    "Entry window is a proxy based on envelope crossing near local negative-X side-window axis, not a CAD boundary scorer.",
+    "Neutron depth table uses first-hit depth proxy, not continuous energy-loss-vs-depth scoring."
+  ]
+}

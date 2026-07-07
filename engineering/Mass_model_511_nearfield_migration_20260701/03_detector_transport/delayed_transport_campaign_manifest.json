@@ -1,0 +1,240 @@
+{
+  "document_type": "mass_model_511_g3_g4_delayed_transport_campaign_aggregate",
+  "generated_at_utc": "2026-07-03T15:11:04Z",
+  "status": "PASS_DELAYED_TRANSPORT_ALL_AVAILABLE",
+  "claim_boundary": "Delayed source/transport artifact only. Detector delayed-rate claims require Step05 response, W/collimator audit, mission fold, and verifier approval.",
+  "source_authority_edited": false,
+  "old_nearfield_engineering_edited": false,
+  "branch_stat_labels": [
+    "baseline_detector_smoke",
+    "candidate_Mass_model_511_fullstat_v1",
+    "candidate_Mass_model_511_smoke"
+  ],
+  "branch_manifests": {
+    "baseline_detector_smoke": "engineering/Mass_model_511_nearfield_migration_20260701/03_detector_transport/delayed_transport_campaign_manifest_baseline_detector_smoke.json",
+    "candidate_Mass_model_511_fullstat_v1": "engineering/Mass_model_511_nearfield_migration_20260701/03_detector_transport/delayed_transport_campaign_manifest_candidate_Mass_model_511_fullstat_v1.json",
+    "candidate_Mass_model_511_smoke": "engineering/Mass_model_511_nearfield_migration_20260701/03_detector_transport/delayed_transport_campaign_manifest_candidate_Mass_model_511_smoke.json"
+  },
+  "branch_payloads": {
+    "candidate_Mass_model_511_fullstat_v1": {
+      "document_type": "mass_model_511_g3_g4_delayed_transport_campaign",
+      "generated_at_utc": "2026-07-03T15:11:04Z",
+      "status": "PASS_DELAYED_TRANSPORT",
+      "claim_boundary": "Delayed source/transport artifact only. Detector delayed-rate claims require Step05 response, W/collimator audit, mission fold, and verifier approval.",
+      "source_authority_edited": false,
+      "old_nearfield_engineering_edited": false,
+      "branch": "candidate_Mass_model_511",
+      "stat_label": "fullstat_v1",
+      "geometry": "outputs/geometry/DEMO2_DR_v3p5_Mass_model_511_stage_diam_300_300_300_350_350_400_20260701_megalib_proxy/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup",
+      "m_pointsource_blocks": 50000,
+      "seed": 260613,
+      "stages": [
+        "F1"
+      ],
+      "raw_sources": [],
+      "fixed_sources": [],
+      "exactpos_sources": [],
+      "transports": [
+        {
+          "branch": "candidate_Mass_model_511",
+          "stage": "F1",
+          "status": "PASS_MASS_MODEL_511_CANDIDATE_MASS_MODEL_511_FULLSTAT_V1_EXACTPOS_DELAYED_TRANSPORT",
+          "source": "runs/Mass_model_511_nearfield_migration_20260701/step02_delay_exactpos_candidate_Mass_model_511_fullstat_v1/activation_decay_day15_groundstate_fixed_exactpos.source",
+          "transport_sim": "runs/Mass_model_511_nearfield_migration_20260701/step02_delayed_transport_candidate_Mass_model_511_fullstat_v1/DelayedDecayMassModel511CandidateFullstatV1.inc1.id1.sim.gz",
+          "SE": 1000000,
+          "ID": 1000000,
+          "TS": 1,
+          "TE_s": 7027.052893,
+          "geometry": "  /home/ubuntu/TES_511_Balloon/outputs/geometry/DEMO2_DR_v3p5_Mass_model_511_stage_diam_300_300_300_350_350_400_20260701_megalib_proxy/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup",
+          "log": "runs/Mass_model_511_nearfield_migration_20260701/step02_delayed_transport_candidate_Mass_model_511_fullstat_v1/cosima_candidate_Mass_model_511_F1.log"
+        }
+      ]
+    },
+    "baseline_detector_smoke": {
+      "document_type": "mass_model_511_g3_g4_delayed_transport_campaign",
+      "generated_at_utc": "2026-07-01T16:01:56Z",
+      "status": "PASS_DELAYED_TRANSPORT",
+      "claim_boundary": "Delayed source/transport artifact only. Detector delayed-rate claims require Step05 response, W/collimator audit, mission fold, and verifier approval.",
+      "source_authority_edited": false,
+      "old_nearfield_engineering_edited": false,
+      "branch": "baseline_detector",
+      "geometry": "outputs/geometry/DEMO2_DR_v3p5_user_cylmag_redesign_multiholeW_fix5_20260621_megalib_proxy/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup",
+      "m_pointsource_blocks": 50000,
+      "seed": 260613,
+      "stages": [
+        "S0",
+        "S1"
+      ],
+      "raw_sources": [
+        {
+          "branch": "baseline_detector",
+          "raw_source_dir": "runs/Mass_model_511_nearfield_migration_20260701/step02_decay_source_baseline_detector_smoke",
+          "raw_source": "runs/Mass_model_511_nearfield_migration_20260701/step02_decay_source_baseline_detector_smoke/activation_decay_day15.source",
+          "exists": true,
+          "log": "runs/Mass_model_511_nearfield_migration_20260701/step02_decay_source_baseline_detector_smoke/build_raw_source.log"
+        }
+      ],
+      "fixed_sources": [
+        {
+          "branch": "baseline_detector",
+          "fix_dir": "runs/Mass_model_511_nearfield_migration_20260701/step02_delay_fix_baseline_detector_smoke",
+          "fixed_source": "runs/Mass_model_511_nearfield_migration_20260701/step02_delay_fix_baseline_detector_smoke/activation_decay_day15_groundstate_fixed.source",
+          "source_fix_summary": "runs/Mass_model_511_nearfield_migration_20260701/step02_delay_fix_baseline_detector_smoke/source_fix_summary.json",
+          "normalization_audit": "runs/Mass_model_511_nearfield_migration_20260701/step02_delay_fix_baseline_detector_smoke/normalization_audit_groundstate_fix.json",
+          "normalization_status": "PASS",
+          "normalization_problems": [],
+          "log": "runs/Mass_model_511_nearfield_migration_20260701/step02_delay_fix_baseline_detector_smoke/build_fixed_source.log"
+        }
+      ],
+      "exactpos_sources": [
+        {
+          "branch": "baseline_detector",
+          "stage": "S0",
+          "source": "runs/Mass_model_511_nearfield_migration_20260701/step02_delay_exactpos_baseline_detector_S0_smoke/activation_decay_day15_groundstate_fixed_exactpos_S0.source",
+          "summary": "engineering/Mass_model_511_nearfield_migration_20260701/03_detector_transport/delayed/baseline_detector/S0/delayed_source_exactpos_summary.json",
+          "manifest": "runs/Mass_model_511_nearfield_migration_20260701/step02_delay_exactpos_baseline_detector_S0_smoke/baseline_detector_S0_exactpos_delayed_source_manifest.json",
+          "weighted_table": "runs/Mass_model_511_nearfield_migration_20260701/step02_delay_exactpos_baseline_detector_S0_smoke/exactpos_weighted_rpip_table_S0.csv",
+          "status": "PASS_MASS_MODEL_511_BASELINE_DETECTOR_S0_SMOKE_EXACTPOS_SOURCE_READY",
+          "n_pointsource_blocks": 50000,
+          "triggers": 100000,
+          "sampling_status": "PASS",
+          "sampling_problems": []
+        },
+        {
+          "branch": "baseline_detector",
+          "stage": "S1",
+          "source": "runs/Mass_model_511_nearfield_migration_20260701/step02_delay_exactpos_baseline_detector_S1_smoke/activation_decay_day15_groundstate_fixed_exactpos_S1.source",
+          "summary": "engineering/Mass_model_511_nearfield_migration_20260701/03_detector_transport/delayed/baseline_detector/S1/delayed_source_exactpos_summary.json",
+          "manifest": "runs/Mass_model_511_nearfield_migration_20260701/step02_delay_exactpos_baseline_detector_S1_smoke/baseline_detector_S1_exactpos_delayed_source_manifest.json",
+          "weighted_table": "runs/Mass_model_511_nearfield_migration_20260701/step02_delay_exactpos_baseline_detector_S1_smoke/exactpos_weighted_rpip_table_S1.csv",
+          "status": "PASS_MASS_MODEL_511_BASELINE_DETECTOR_S1_SMOKE_EXACTPOS_SOURCE_READY",
+          "n_pointsource_blocks": 50000,
+          "triggers": 1000000,
+          "sampling_status": "PASS",
+          "sampling_problems": []
+        }
+      ],
+      "transports": [
+        {
+          "branch": "baseline_detector",
+          "stage": "S0",
+          "status": "PASS_MASS_MODEL_511_BASELINE_DETECTOR_S0_SMOKE_EXACTPOS_DELAYED_TRANSPORT",
+          "source": "runs/Mass_model_511_nearfield_migration_20260701/step02_delay_exactpos_baseline_detector_S0_smoke/activation_decay_day15_groundstate_fixed_exactpos_S0.source",
+          "transport_sim": "runs/Mass_model_511_nearfield_migration_20260701/step02_delayed_transport_baseline_detector_S0_smoke/DelayedDecayMassModel511BaselineS0.inc1.id1.sim.gz",
+          "SE": 100000,
+          "ID": 100000,
+          "TS": 1,
+          "TE_s": 1211.50624,
+          "geometry": "  /home/ubuntu/TES_511_Balloon/outputs/geometry/DEMO2_DR_v3p5_user_cylmag_redesign_multiholeW_fix5_20260621_megalib_proxy/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup",
+          "log": "runs/Mass_model_511_nearfield_migration_20260701/step02_delayed_transport_baseline_detector_S0_smoke/cosima_baseline_detector_S0.log"
+        },
+        {
+          "branch": "baseline_detector",
+          "stage": "S1",
+          "status": "PASS_MASS_MODEL_511_BASELINE_DETECTOR_S1_SMOKE_EXACTPOS_DELAYED_TRANSPORT",
+          "source": "runs/Mass_model_511_nearfield_migration_20260701/step02_delay_exactpos_baseline_detector_S1_smoke/activation_decay_day15_groundstate_fixed_exactpos_S1.source",
+          "transport_sim": "runs/Mass_model_511_nearfield_migration_20260701/step02_delayed_transport_baseline_detector_S1_smoke/DelayedDecayMassModel511BaselineS1.inc1.id1.sim.gz",
+          "SE": 1000000,
+          "ID": 1000000,
+          "TS": 1,
+          "TE_s": 12051.496408,
+          "geometry": "  /home/ubuntu/TES_511_Balloon/outputs/geometry/DEMO2_DR_v3p5_user_cylmag_redesign_multiholeW_fix5_20260621_megalib_proxy/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup",
+          "log": "runs/Mass_model_511_nearfield_migration_20260701/step02_delayed_transport_baseline_detector_S1_smoke/cosima_baseline_detector_S1.log"
+        }
+      ]
+    },
+    "candidate_Mass_model_511_smoke": {
+      "document_type": "mass_model_511_g3_g4_delayed_transport_campaign",
+      "generated_at_utc": "2026-07-01T15:04:01Z",
+      "status": "PASS_DELAYED_TRANSPORT",
+      "claim_boundary": "Delayed source/transport artifact only. Detector delayed-rate claims require Step05 response, W/collimator audit, mission fold, and verifier approval.",
+      "source_authority_edited": false,
+      "old_nearfield_engineering_edited": false,
+      "branch": "candidate_Mass_model_511",
+      "geometry": "outputs/geometry/DEMO2_DR_v3p5_Mass_model_511_stage_diam_300_300_300_350_350_400_20260701_megalib_proxy/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup",
+      "m_pointsource_blocks": 50000,
+      "seed": 260613,
+      "stages": [
+        "S0",
+        "S1"
+      ],
+      "raw_sources": [
+        {
+          "branch": "candidate_Mass_model_511",
+          "raw_source_dir": "runs/Mass_model_511_nearfield_migration_20260701/step02_decay_source_candidate_Mass_model_511_smoke",
+          "raw_source": "runs/Mass_model_511_nearfield_migration_20260701/step02_decay_source_candidate_Mass_model_511_smoke/activation_decay_day15.source",
+          "exists": true,
+          "log": "runs/Mass_model_511_nearfield_migration_20260701/step02_decay_source_candidate_Mass_model_511_smoke/build_raw_source.log"
+        }
+      ],
+      "fixed_sources": [
+        {
+          "branch": "candidate_Mass_model_511",
+          "fix_dir": "runs/Mass_model_511_nearfield_migration_20260701/step02_delay_fix_candidate_Mass_model_511_smoke",
+          "fixed_source": "runs/Mass_model_511_nearfield_migration_20260701/step02_delay_fix_candidate_Mass_model_511_smoke/activation_decay_day15_groundstate_fixed.source",
+          "source_fix_summary": "runs/Mass_model_511_nearfield_migration_20260701/step02_delay_fix_candidate_Mass_model_511_smoke/source_fix_summary.json",
+          "normalization_audit": "runs/Mass_model_511_nearfield_migration_20260701/step02_delay_fix_candidate_Mass_model_511_smoke/normalization_audit_groundstate_fix.json",
+          "normalization_status": "PASS",
+          "normalization_problems": [],
+          "log": "runs/Mass_model_511_nearfield_migration_20260701/step02_delay_fix_candidate_Mass_model_511_smoke/build_fixed_source.log"
+        }
+      ],
+      "exactpos_sources": [
+        {
+          "branch": "candidate_Mass_model_511",
+          "stage": "S0",
+          "source": "runs/Mass_model_511_nearfield_migration_20260701/step02_delay_exactpos_candidate_Mass_model_511_S0_smoke/activation_decay_day15_groundstate_fixed_exactpos_S0.source",
+          "summary": "engineering/Mass_model_511_nearfield_migration_20260701/03_detector_transport/delayed/candidate_Mass_model_511/S0/delayed_source_exactpos_summary.json",
+          "manifest": "runs/Mass_model_511_nearfield_migration_20260701/step02_delay_exactpos_candidate_Mass_model_511_S0_smoke/candidate_Mass_model_511_S0_exactpos_delayed_source_manifest.json",
+          "weighted_table": "runs/Mass_model_511_nearfield_migration_20260701/step02_delay_exactpos_candidate_Mass_model_511_S0_smoke/exactpos_weighted_rpip_table_S0.csv",
+          "status": "PASS_MASS_MODEL_511_CANDIDATE_MASS_MODEL_511_S0_SMOKE_EXACTPOS_DELAYED_TRANSPORT",
+          "n_pointsource_blocks": 50000,
+          "triggers": 100000,
+          "sampling_status": "PASS",
+          "sampling_problems": []
+        },
+        {
+          "branch": "candidate_Mass_model_511",
+          "stage": "S1",
+          "source": "runs/Mass_model_511_nearfield_migration_20260701/step02_delay_exactpos_candidate_Mass_model_511_S1_smoke/activation_decay_day15_groundstate_fixed_exactpos_S1.source",
+          "summary": "engineering/Mass_model_511_nearfield_migration_20260701/03_detector_transport/delayed/candidate_Mass_model_511/S1/delayed_source_exactpos_summary.json",
+          "manifest": "runs/Mass_model_511_nearfield_migration_20260701/step02_delay_exactpos_candidate_Mass_model_511_S1_smoke/candidate_Mass_model_511_S1_exactpos_delayed_source_manifest.json",
+          "weighted_table": "runs/Mass_model_511_nearfield_migration_20260701/step02_delay_exactpos_candidate_Mass_model_511_S1_smoke/exactpos_weighted_rpip_table_S1.csv",
+          "status": "PASS_MASS_MODEL_511_CANDIDATE_MASS_MODEL_511_S1_SMOKE_EXACTPOS_DELAYED_TRANSPORT",
+          "n_pointsource_blocks": 50000,
+          "triggers": 1000000,
+          "sampling_status": "PASS",
+          "sampling_problems": []
+        }
+      ],
+      "transports": [
+        {
+          "branch": "candidate_Mass_model_511",
+          "stage": "S0",
+          "status": "PASS_MASS_MODEL_511_CANDIDATE_MASS_MODEL_511_S0_SMOKE_EXACTPOS_DELAYED_TRANSPORT",
+          "source": "runs/Mass_model_511_nearfield_migration_20260701/step02_delay_exactpos_candidate_Mass_model_511_S0_smoke/activation_decay_day15_groundstate_fixed_exactpos_S0.source",
+          "transport_sim": "runs/Mass_model_511_nearfield_migration_20260701/step02_delayed_transport_candidate_Mass_model_511_S0_smoke/DelayedDecayMassModel511CandidateS0.inc1.id1.sim.gz",
+          "SE": 100000,
+          "ID": 100000,
+          "TS": 1,
+          "TE_s": 739.607401,
+          "geometry": "  /home/ubuntu/TES_511_Balloon/outputs/geometry/DEMO2_DR_v3p5_Mass_model_511_stage_diam_300_300_300_350_350_400_20260701_megalib_proxy/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup",
+          "log": "runs/Mass_model_511_nearfield_migration_20260701/step02_delayed_transport_candidate_Mass_model_511_S0_smoke/cosima_candidate_Mass_model_511_S0.log"
+        },
+        {
+          "branch": "candidate_Mass_model_511",
+          "stage": "S1",
+          "status": "PASS_MASS_MODEL_511_CANDIDATE_MASS_MODEL_511_S1_SMOKE_EXACTPOS_DELAYED_TRANSPORT",
+          "source": "runs/Mass_model_511_nearfield_migration_20260701/step02_delay_exactpos_candidate_Mass_model_511_S1_smoke/activation_decay_day15_groundstate_fixed_exactpos_S1.source",
+          "transport_sim": "runs/Mass_model_511_nearfield_migration_20260701/step02_delayed_transport_candidate_Mass_model_511_S1_smoke/DelayedDecayMassModel511CandidateS1.inc1.id1.sim.gz",
+          "SE": 1000000,
+          "ID": 1000000,
+          "TS": 1,
+          "TE_s": 7371.163696,
+          "geometry": "  /home/ubuntu/TES_511_Balloon/outputs/geometry/DEMO2_DR_v3p5_Mass_model_511_stage_diam_300_300_300_350_350_400_20260701_megalib_proxy/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup",
+          "log": "runs/Mass_model_511_nearfield_migration_20260701/step02_delayed_transport_candidate_Mass_model_511_S1_smoke/cosima_candidate_Mass_model_511_S1.log"
+        }
+      ]
+    }
+  }
+}

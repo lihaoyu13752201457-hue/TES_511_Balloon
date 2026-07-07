@@ -1,0 +1,133 @@
+{
+  "package": "10_gpt_geometry_optimization_direction_20260707",
+  "status": "PASS_GPT_GEOMETRY_OPTIMIZATION_PACKAGE_BUILT",
+  "goal": "Ask GPT Pro for next geometry optimization directions, not another data-summary pass.",
+  "scope": "W2 510.58-511.42 keV raw TES background candidates and post-processing audits; no new transport run.",
+  "read_order": [
+    "01_README_AND_PROMPT.md",
+    "02_fact_summary.json",
+    "03_geometry_2d_detail.png",
+    "04_geometry_3d_wrl.wrl",
+    "05_geoopt_added_geometry_manifest.json",
+    "06_geoopt_added_volumes.geo",
+    "07_w2_particle_trajectories_enriched.csv",
+    "08_w2_event_veto_flags.csv",
+    "09_w2_entry_angle_veto_summary.csv",
+    "10_plastic_bpe_neutron_effects.csv"
+  ],
+  "why_this_regrouping": "The previous complement package was very data-heavy. This regrouping adds CAD-like geometry context and keeps the event-level particle/veto evidence needed for optimization reasoning.",
+  "w2_event_counts_by_particle": {
+    "activation": 42,
+    "atm511": 108,
+    "eplus": 62,
+    "gamma": 1,
+    "muminus": 1,
+    "muplus": 8,
+    "n": 60,
+    "p": 1
+  },
+  "veto_priority_counts": {
+    "compton_fov_veto": 22,
+    "final_pass": 169,
+    "non_plastic_active_veto": 55,
+    "plastic_skin_veto": 37
+  },
+  "entry_counts_by_source_family": {
+    "activation": {
+      "side_window": 2,
+      "side_wall": 19,
+      "top": 12,
+      "bottom": 7,
+      "envelope_miss": 2
+    },
+    "atm511": {
+      "side_wall": 83,
+      "top": 16,
+      "bottom": 9
+    },
+    "eplus": {
+      "side_window": 4,
+      "side_wall": 31,
+      "top": 14,
+      "envelope_miss": 13
+    },
+    "gamma": {
+      "side_wall": 1
+    },
+    "muminus": {
+      "side_wall": 1
+    },
+    "muplus": {
+      "side_wall": 4,
+      "top": 1,
+      "envelope_miss": 3
+    },
+    "n": {
+      "side_wall": 29,
+      "top": 13,
+      "bottom": 10,
+      "envelope_miss": 8
+    },
+    "p": {
+      "top": 1
+    }
+  },
+  "atm511_source_definition": {
+    "source_card": "runs/geometry_optimization_20260704/p2_atm511_unit_geo_opt_s1_bpe_w5_fullstat_v1/Atm511LowerUnit3M_GeoOptS1BpeW5.source",
+    "name": "Atm511LowerUnit3M_GeoOptS1BpeW5",
+    "particle_type": "gamma (MEGAlib ParticleType 1)",
+    "spectrum": "Mono 511 keV",
+    "beam_model": "FarFieldAreaSource",
+    "theta_deg_range": [
+      90.0,
+      180.0
+    ],
+    "phi_deg_range": [
+      0.0,
+      360.0
+    ],
+    "number_of_theta_bins": 10,
+    "flux_per_bin": [
+      0.1,
+      0.1,
+      0.1
+    ],
+    "total_declared_flux": 0.9999999999999999,
+    "interpretation": "Lower-hemisphere 511-keV line source, not a full-4pi isotropic source."
+  },
+  "veto_priority_definition": [
+    "plastic_skin_veto if GeoOpt_S1_PlasticFullWrap* edep >= 50 keV",
+    "non_plastic_active_veto if CsI/BGO/other active edep >= 50 keV and not plastic veto",
+    "compton_fov_veto if side_compton_fov_pass is false and no active veto",
+    "final_pass otherwise"
+  ],
+  "entry_definition": {
+    "frame": "local detector frame after rotate_y(world_direction, -45 deg)",
+    "theta_local_deg": "acos(dir_local_z), 0 deg is +local z",
+    "phi_local_deg": "atan2(dir_local_y, dir_local_x), 0..360 deg; side-window axis proxy is local phi=180 deg +/-15 deg"
+  },
+  "included_geometry_files": {
+    "2d_png": "03_geometry_2d_detail.png",
+    "wrl": "04_geometry_3d_wrl.wrl",
+    "added_geometry_manifest": "05_geoopt_added_geometry_manifest.json",
+    "added_volumes_geo": "06_geoopt_added_volumes.geo"
+  },
+  "included_data_files": {
+    "trajectory_events": "07_w2_particle_trajectories_enriched.csv",
+    "veto_flags": "08_w2_event_veto_flags.csv",
+    "entry_angle_veto_summary": "09_w2_entry_angle_veto_summary.csv",
+    "plastic_bpe_neutron_effects": "10_plastic_bpe_neutron_effects.csv"
+  },
+  "row_counts": {
+    "trajectory_events": 283,
+    "veto_flags": 283,
+    "entry_angle_veto_summary": 265,
+    "plastic_bpe_neutron_effects": 128
+  },
+  "major_caveats": [
+    "BPE effect is not isolated by a no-BPE A/B transport; current evidence is for the S1/BPE/W5 shield stack.",
+    "Plastic-off means post-processing veto accounting off; plastic material remains in transport.",
+    "Entry window is a proxy based on envelope crossing near local negative-X side-window axis, not a CAD boundary scorer.",
+    "Neutron depth table uses first-hit depth proxy, not continuous energy-loss-vs-depth scoring."
+  ]
+}

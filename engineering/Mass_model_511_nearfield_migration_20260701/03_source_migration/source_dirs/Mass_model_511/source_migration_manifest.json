@@ -1,0 +1,94 @@
+{
+  "status": "PASS_MASS_MODEL_511_GEOMETRY_SOURCE_COPY_PREPARED_NO_AUTHORITY_EDIT",
+  "label": "Mass_model_511_nearfield_migration_20260701",
+  "source_dir": "engineering/Mass_model_511_nearfield_migration_20260701/03_source_migration/source_dirs/Mass_model_511",
+  "template_source_dir": "config/megalib_sources_fullsphere20_v3p5_centerfinger_tilt45",
+  "base_source_dir": "config/megalib_sources_fullsphere20",
+  "geometry_setup": "outputs/geometry/DEMO2_DR_v3p5_Mass_model_511_stage_diam_300_300_300_350_350_400_20260701_megalib_proxy/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup",
+  "baseline_geometry_setup_forbidden_in_fix5_cards": "outputs/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup",
+  "geometry_status_evidence": {
+    "side_window_material_path_audit": "outputs/reports/user_redesign_multiholeW_fix5_20260621/side_window_material_path_audit_fix5.json",
+    "det_reference_check": "outputs/reports/user_redesign_multiholeW_fix5_20260621/geometry_det_reference_check.json",
+    "overlap_log": "outputs/reports/user_redesign_multiholeW_fix5_20260621/cosima_overlap_fix5_20260621.log"
+  },
+  "change_scope": "Package-local source copy; changed only geometry_setup comments and MEGAlib Geometry lines.",
+  "farfield_radius_cm": 60.0,
+  "farfield_area_cm2": 11309.733552923255,
+  "source_surface": "20 equal-mu FarFieldAreaSource theta bins, phi 0-360 deg, global zenith frame.",
+  "pointing_policy": {
+    "megalib_length_unit": "cm",
+    "zenith_frame": "FarFieldAreaSource theta/phi bins remain in global zenith coordinates",
+    "implementation": "whole detector mass model is tilted through InstrumentFrame.Rotation 0 45 0",
+    "side_window_local_look_axis": "-x",
+    "side_window_look_elevation_deg": 45.0
+  },
+  "sources": [
+    {
+      "source": "engineering/Mass_model_511_nearfield_migration_20260701/03_source_migration/source_dirs/Mass_model_511/Background_alpha_fullsphere20.source",
+      "template_source": "config/megalib_sources_fullsphere20_v3p5_centerfinger_tilt45/Background_alpha_fullsphere20.source",
+      "particle": "alpha",
+      "total_flux_cm2_s": 0.01148709645023,
+      "authority_source": "legacy top-level source authority removed in cleaned checkout; package-local copy retained",
+      "geometry_setup": "outputs/geometry/DEMO2_DR_v3p5_Mass_model_511_stage_diam_300_300_300_350_350_400_20260701_megalib_proxy/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup"
+    },
+    {
+      "source": "engineering/Mass_model_511_nearfield_migration_20260701/03_source_migration/source_dirs/Mass_model_511/Background_eminus_fullsphere20.source",
+      "template_source": "config/megalib_sources_fullsphere20_v3p5_centerfinger_tilt45/Background_eminus_fullsphere20.source",
+      "particle": "eminus",
+      "total_flux_cm2_s": 0.1990020445721,
+      "authority_source": "legacy top-level source authority removed in cleaned checkout; package-local copy retained",
+      "geometry_setup": "outputs/geometry/DEMO2_DR_v3p5_Mass_model_511_stage_diam_300_300_300_350_350_400_20260701_megalib_proxy/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup"
+    },
+    {
+      "source": "engineering/Mass_model_511_nearfield_migration_20260701/03_source_migration/source_dirs/Mass_model_511/Background_eplus_fullsphere20.source",
+      "template_source": "config/megalib_sources_fullsphere20_v3p5_centerfinger_tilt45/Background_eplus_fullsphere20.source",
+      "particle": "eplus",
+      "total_flux_cm2_s": 0.1169805457228,
+      "authority_source": "legacy top-level source authority removed in cleaned checkout; package-local copy retained",
+      "geometry_setup": "outputs/geometry/DEMO2_DR_v3p5_Mass_model_511_stage_diam_300_300_300_350_350_400_20260701_megalib_proxy/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup"
+    },
+    {
+      "source": "engineering/Mass_model_511_nearfield_migration_20260701/03_source_migration/source_dirs/Mass_model_511/Background_gamma_fullsphere20.source",
+      "template_source": "config/megalib_sources_fullsphere20_v3p5_centerfinger_tilt45/Background_gamma_fullsphere20.source",
+      "particle": "gamma",
+      "total_flux_cm2_s": 4.799661577785,
+      "authority_source": "legacy top-level source authority removed in cleaned checkout; package-local copy retained",
+      "geometry_setup": "outputs/geometry/DEMO2_DR_v3p5_Mass_model_511_stage_diam_300_300_300_350_350_400_20260701_megalib_proxy/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup"
+    },
+    {
+      "source": "engineering/Mass_model_511_nearfield_migration_20260701/03_source_migration/source_dirs/Mass_model_511/Background_muminus_fullsphere20.source",
+      "template_source": "config/megalib_sources_fullsphere20_v3p5_centerfinger_tilt45/Background_muminus_fullsphere20.source",
+      "particle": "muminus",
+      "total_flux_cm2_s": 0.004968930022375,
+      "authority_source": "legacy top-level source authority removed in cleaned checkout; package-local copy retained",
+      "geometry_setup": "outputs/geometry/DEMO2_DR_v3p5_Mass_model_511_stage_diam_300_300_300_350_350_400_20260701_megalib_proxy/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup"
+    },
+    {
+      "source": "engineering/Mass_model_511_nearfield_migration_20260701/03_source_migration/source_dirs/Mass_model_511/Background_muplus_fullsphere20.source",
+      "template_source": "config/megalib_sources_fullsphere20_v3p5_centerfinger_tilt45/Background_muplus_fullsphere20.source",
+      "particle": "muplus",
+      "total_flux_cm2_s": 0.005570011766062,
+      "authority_source": "legacy top-level source authority removed in cleaned checkout; package-local copy retained",
+      "geometry_setup": "outputs/geometry/DEMO2_DR_v3p5_Mass_model_511_stage_diam_300_300_300_350_350_400_20260701_megalib_proxy/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup"
+    },
+    {
+      "source": "engineering/Mass_model_511_nearfield_migration_20260701/03_source_migration/source_dirs/Mass_model_511/Background_n_fullsphere20.source",
+      "template_source": "config/megalib_sources_fullsphere20_v3p5_centerfinger_tilt45/Background_n_fullsphere20.source",
+      "particle": "n",
+      "total_flux_cm2_s": 0.4622391822296,
+      "authority_source": "legacy top-level source authority removed in cleaned checkout; package-local copy retained",
+      "geometry_setup": "outputs/geometry/DEMO2_DR_v3p5_Mass_model_511_stage_diam_300_300_300_350_350_400_20260701_megalib_proxy/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup"
+    },
+    {
+      "source": "engineering/Mass_model_511_nearfield_migration_20260701/03_source_migration/source_dirs/Mass_model_511/Background_p_fullsphere20.source",
+      "template_source": "config/megalib_sources_fullsphere20_v3p5_centerfinger_tilt45/Background_p_fullsphere20.source",
+      "particle": "p",
+      "total_flux_cm2_s": 0.1123007216313,
+      "authority_source": "legacy top-level source authority removed in cleaned checkout; package-local copy retained",
+      "geometry_setup": "outputs/geometry/DEMO2_DR_v3p5_Mass_model_511_stage_diam_300_300_300_350_350_400_20260701_megalib_proxy/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup"
+    }
+  ],
+  "authority_source_dir": "package-local cleaned checkout source copy",
+  "old_nearfield_candidate_setup_replaced": "engineering/nearfield_mass_impact_20260625/01_geometry/fixed_candidates/detector_NF2_overlapfix_minimal/DEMO2_DR_fix5_NF2_closedcycle.geo.setup",
+  "new_candidate_setup": "outputs/geometry/DEMO2_DR_v3p5_Mass_model_511_stage_diam_300_300_300_350_350_400_20260701_megalib_proxy/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup"
+}

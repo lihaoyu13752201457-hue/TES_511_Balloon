@@ -1,0 +1,145 @@
+{
+  "review_role": "review_subagent",
+  "generated_local_date": "2026-07-02",
+  "scope": "engineering/Mass_model_511_nearfield_migration_20260701",
+  "status": "OPEN_ITEMS_NOT_CLOSED",
+  "overall_conclusion": "The current Mass_model_511 package is closed only at smoke-matrix detector-response level. None of the six unfinished TODO items are closed as manuscript-ready physics results.",
+  "boundary_conclusion": {
+    "detector_only_vs_optics": "PASS_AS_DETECTOR_ONLY_BOUNDARY",
+    "optics_caveat": "05_optics_migration is a parallel optics geometry migration and smoke verification record, not a detector-coupled optics background/full-chain closure.",
+    "p1_p2_p3_misattribution": "NO_CURRENT_FALSE_CLOSURE_FOUND_IN_REVIEWED_FILES; P1/P2/P3 are fix5-derived carry-forward inputs and must be replayed before Mass_model_511 claims."
+  },
+  "reviewed_sources": [
+    "engineering/Mass_model_511_nearfield_migration_20260701/HARNESS_MASS_MODEL_511_NEARFIELD_MIGRATION.md",
+    "engineering/Mass_model_511_nearfield_migration_20260701/00_manifest/FINAL_STATUS.md",
+    "engineering/Mass_model_511_nearfield_migration_20260701/06_smoke_closure/CONCLUSION.md",
+    "engineering/Mass_model_511_nearfield_migration_20260701/11_manuscript_support/TODO_AND_RECENT_UPDATES_20260702.md",
+    "core_md/README.md",
+    "engineering/Mass_model_511_nearfield_migration_20260701/04_bridge_resolution/bridge_resolution.json",
+    "engineering/Mass_model_511_nearfield_migration_20260701/05_optics_migration/optics_migration.md",
+    "engineering/paper_review_p1_p2_p3_data_check_20260702/outputs/p1_linewidth_sensitivity_summary.json",
+    "engineering/paper_review_p1_p2_p3_data_check_20260702/outputs/p2_atm511_transfer_summary.json",
+    "engineering/paper_review_p1_p2_p3_data_check_20260702/outputs/paper_data_sufficiency_summary_20260702.md"
+  ],
+  "items": [
+    {
+      "todo_id": 1,
+      "todo": "Full-stat detector background campaign",
+      "required_evidence": [
+        "Full-stat candidate Mass_model_511 prompt instant, buildup, and delayed transports at publication statistics",
+        "Run manifests with event counts, seeds, return codes, log-error scans",
+        "SIM headers proving active Mass_model_511 geometry for every run",
+        "No reuse of smoke-only transport as full-stat"
+      ],
+      "current_evidence": [
+        "transport_gate.json reports PASS_G3_G4_DETECTOR_TRANSPORT_SMOKE",
+        "candidate prompt/buildup are smoke-labeled with about 2.52M events each",
+        "delayed S0/S1 smoke transports use 100k/1M triggers",
+        "mass_model_511_smoke_closure.json has fullstat_status NOT_RUN"
+      ],
+      "status": "OPEN",
+      "gaps": [
+        "No full-stat Mass_model_511 background transport manifests found",
+        "Need non-smoke run directories and geometry-header proof"
+      ]
+    },
+    {
+      "todo_id": 2,
+      "todo": "Full-stat Step05 detector-response release",
+      "required_evidence": [
+        "Regenerated Step05 W2 prompt/delayed/background rates from full-stat transports",
+        "Unchanged Step05 normalization and cuts",
+        "Rate uncertainties and selected/effective counts",
+        "Prompt family and delayed isotope/volume decomposition",
+        "Prompt 1/sum(TT) audit",
+        "Delayed ground-state correction, per-family TT division guard, exact-position M-sampling inventory audit, and W/collimator delayed-origin checks"
+      ],
+      "current_evidence": [
+        "06_smoke_closure contains only smoke Step05 closure rows",
+        "METHOD_FIX5_SIM_CLOSURE requires Step05 provenance and delayed normalization before downstream gates"
+      ],
+      "status": "OPEN",
+      "gaps": [
+        "No publication-stat Step05 release manifest/audit bundle found",
+        "Need uncertainties, decomposition, and delayed-normalization evidence"
+      ]
+    },
+    {
+      "todo_id": 3,
+      "todo": "No-material-effect / replacement release",
+      "required_evidence": [
+        "Formal Mass_model_511 versus current paper authority pass/fail decision",
+        "Decision JSON/MD with total background, delayed/W activation red flags, signal keep, Z20d/F3, and uncertainty treatment",
+        "Comparison against current paper authority, not old new_geo_re or smoke baseline only"
+      ],
+      "current_evidence": [
+        "Smoke comparison exists but states it is not no-effect/replacement closure",
+        "FINAL_STATUS says no-effect release remains not claimed"
+      ],
+      "status": "OPEN",
+      "gaps": [
+        "Requires full-stat Step05 and Step08 inputs first",
+        "Smoke proxy cannot close this item"
+      ]
+    },
+    {
+      "todo_id": 4,
+      "todo": "Step06--Step08 mission-axis regeneration",
+      "required_evidence": [
+        "Mass_model_511 Step06 mission-time fold from validated full-stat Step05 rates",
+        "81-bin day 0--20 trajectory products",
+        "Source-case rates",
+        "Step07/Step08 Z20d, T3, F3(20d), live-time factor",
+        "Provenance tying products to Mass_model_511 full-stat Step05"
+      ],
+      "current_evidence": [
+        "No Mass_model_511 Step06--Step08 products found in package",
+        "CONCLUSION.md says downstream mission-axis regeneration is required"
+      ],
+      "status": "OPEN",
+      "gaps": [
+        "Need regenerated mission-axis outputs after full-stat Step05",
+        "Reject outputs that point to fix5 full-stat authority or smoke Step05"
+      ]
+    },
+    {
+      "todo_id": 5,
+      "todo": "Optics integration decision",
+      "required_evidence": [
+        "Explicit manuscript-scope decision: detector-only claims only, or coupled optics-to-detector/full-chain path",
+        "If coupled, geometry coupling provenance, transfer/coupling method, rates, uncertainties, and boundary update"
+      ],
+      "current_evidence": [
+        "bridge_resolution.json says detector-only bridge not required and does not promote OF1 optics-local background",
+        "05_optics_migration/optics_migration.md says optics geometry is migrated and smoke verified but not coupled into detector background chain"
+      ],
+      "status": "OPEN_FOR_MANUSCRIPT_SCOPE_DECISION",
+      "gaps": [
+        "Need explicit decision before manuscript optics claims",
+        "Do not cite OPTICS_BRIDGE_NOT_REQUIRED_DETECTOR_ONLY as optics-background closure"
+      ]
+    },
+    {
+      "todo_id": 6,
+      "todo": "P1/P2/P3 replay on Mass_model_511",
+      "required_evidence": [
+        "P1 line-width/window table regenerated from Mass_model_511 full-stat background and signal",
+        "P2 atmospheric 511-keV transfer rerun or validly reweighted on Mass_model_511 candidate geometry",
+        "P2 atmospheric-line component included in Mass_model_511 background table",
+        "P3 science-case geometry framing re-evaluated with Mass_model_511 Step06--Step08 products"
+      ],
+      "current_evidence": [
+        "P1 summary input is fix5_fullstat_v2_exactpos_m50000_s260613/fix5_promotion_decision.json",
+        "P2 summary input is fix5_fullstat_v2_exactpos_m50000_s260613/fix5_promotion_decision.json",
+        "P3 summary declares fix5 promotion decision as primary authority",
+        "TODO file labels all three as fix5-derived carry-forward updates"
+      ],
+      "status": "OPEN_BLOCKED_BY_TODO_2_AND_TODO_4",
+      "gaps": [
+        "Need Mass_model_511-specific replay products",
+        "Reject closure if fix5-derived numbers are presented as Mass_model_511 results"
+      ]
+    }
+  ],
+  "future_review_rule": "Move a TODO to CLOSED only when all required evidence is present and the listed false-closure tests pass."
+}

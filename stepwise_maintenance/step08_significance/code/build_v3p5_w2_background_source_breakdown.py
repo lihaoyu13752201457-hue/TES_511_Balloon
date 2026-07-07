@@ -26,7 +26,7 @@ import numpy as np
 
 
 ROOT = Path(__file__).resolve().parents[3]
-STEP05_SCRIPT = ROOT / "code" / "tools" / "build_v3p5_centerfinger_step05_l1_response.py"
+STEP05_SCRIPT = ROOT / "old" / "code" / "tools" / "build_v3p5_centerfinger_step05_l1_response.py"
 W2 = (510.58, 511.42)
 
 CC_HIT_FIELD_RE = re.compile(r"\b(?P<key>[A-Za-z_][A-Za-z0-9_]*)=(?P<value>\S+)")
