@@ -1,0 +1,120 @@
+{
+  "artifact": "05_deep_sampling_axis_collapse_audit",
+  "date": "2026-06-23",
+  "status": "PROBABLE_OLD_DELAYED_SOURCE_PLACEMENT_BUG",
+  "main_finding": "Old new_geo_re delayed RadialProfileBeam source blocks are emitted with x_cm=0 and y_cm=0; sampled old SIM IA INIT positions for dominant I-128 are all at r=0, while current fix5 exact-position PointSource I-128 starts at real CsI coordinates.",
+  "not_main_causes": {
+    "half_life_bug": "not_supported",
+    "TE_normalization_bug": "not_supported",
+    "fixed_activity_alone": "insufficient"
+  },
+  "activity": {
+    "old_total_fixed_activity_Bq": 624.2710918319826,
+    "current_total_fixed_activity_Bq": 85.44920253876245,
+    "total_activity_ratio_old_over_current": 7.30575679215723,
+    "old_i128_activity_Bq": 533.27573379,
+    "current_i128_activity_Bq": 65.53339484535951,
+    "i128_activity_ratio_old_over_current": 8.137465410549563
+  },
+  "sim_sample": {
+    "sample_events_per_case": 20000,
+    "old": {
+      "sim": "/home/ubuntu/codex_tes_511_sim/new_geo_re/runs/step02_delayed_transport_equiv2602_aligned/DelayedDecayRPIPGroundStateFixed.inc1.id1.sim.gz",
+      "i128_events": 16856,
+      "i128_mean_start_radius_cm": 0.0,
+      "i128_r_lt_0p001_fraction": 1.0,
+      "i128_any_tes_events": 2970,
+      "i128_any_tes_fraction": 0.17619838633127669,
+      "i128_any_csi_events": 5586,
+      "i128_any_csi_fraction": 0.3313953488372093,
+      "i128_any_passive_or_w_events": 6782,
+      "i128_any_passive_or_w_fraction": 0.40234931181775035,
+      "i128_top_first_cc_volumes": [
+        ["Passive_Bottom_W_Shield", 6289],
+        ["ADR_SaltPill_Proxy", 1036],
+        ["Thermal_4K_Al_Shield", 1007],
+        ["Thermal_60K_Al_Shield", 990],
+        ["Substrate_L1", 918],
+        ["Win_60K_Al_Shield", 911],
+        ["Substrate_L3", 906],
+        ["Win_50mK_Al_Shield", 886],
+        ["Cryoperm_Inner_Mag_Shield", 881],
+        ["Substrate_L5", 856]
+      ]
+    },
+    "current": {
+      "sim": "runs/step02_delayed_transport_fix5_fullstat_v2_exactpos_m50000_s260613/DelayedDecayFix5FullstatV2ExactposM50000S260613.inc1.id1.sim.gz",
+      "i128_events": 15322,
+      "i128_mean_start_radius_cm": 14.78431518348516,
+      "i128_r_lt_0p001_fraction": 0.0,
+      "i128_any_tes_events": 6,
+      "i128_any_tes_fraction": 0.0003915937867119175,
+      "i128_any_csi_events": 15322,
+      "i128_any_csi_fraction": 1.0,
+      "i128_any_passive_or_w_events": 82,
+      "i128_any_passive_or_w_fraction": 0.00535178175172954,
+      "i128_top_first_cc_volumes": [
+        ["CsI_Bottom_Quadrant_00", 1861],
+        ["CsI_Bottom_Quadrant_03", 1800],
+        ["CsI_Bottom_Quadrant_01", 1638],
+        ["CsI_Bottom_Quadrant_02", 1581],
+        ["CsI_Side_Segment_00", 1049],
+        ["CsI_Side_Segment_01", 1000],
+        ["CsI_Side_Segment_06", 970],
+        ["CsI_Side_Segment_07", 949],
+        ["CsI_Side_Segment_05", 806],
+        ["CsI_Side_Segment_02", 782]
+      ]
+    },
+    "old_over_current_i128_any_tes_fraction_ratio": 449.9514333665217
+  },
+  "rate_decomposition": {
+    "old_delayed_catalog_rate_per_Bq": 0.4494826292865338,
+    "current_delayed_catalog_rate_per_Bq": 0.8319506827619357,
+    "old_over_current_catalog_rate_per_Bq": 0.5402755699344189,
+    "old_delayed_tes_fraction": 0.2731603094638359,
+    "current_delayed_tes_fraction": 0.002677012468574989,
+    "old_over_current_tes_fraction": 102.03923689949899,
+    "old_over_current_broad_480_550_raw_per_catalog_event": 125.05040367122642,
+    "old_over_current_broad_480_550_final_cps_per_Bq": 99.64966448119739,
+    "old_over_current_w2_final_cps_per_Bq": 8.085186871482254
+  },
+  "evidence": [
+    {
+      "claim": "Old builder writes axisymmetric source entries at x_cm=0.0 and y_cm=0.0.",
+      "references": [
+        "/home/ubuntu/codex_tes_511_sim/new_geo_re/stepwise_maintenance/step02_raw_background_simulation/source_snapshots/makedecaysourcewithplot_rpip.py:945-960",
+        "/home/ubuntu/codex_tes_511_sim/new_geo_re/stepwise_maintenance/step02_raw_background_simulation/source_snapshots/makedecaysourcewithplot_rpip.py:1002-1020"
+      ]
+    },
+    {
+      "claim": "Old source card contains CsI/I-128 RadialProfileBeam blocks centered at x=0,y=0.",
+      "references": [
+        "/home/ubuntu/codex_tes_511_sim/new_geo_re/runs/step02_delay_fix_equiv2602_aligned/activation_decay_day15_groundstate_fixed.source:5986-5988",
+        "/home/ubuntu/codex_tes_511_sim/new_geo_re/runs/step02_delay_fix_equiv2602_aligned/activation_decay_day15_groundstate_fixed.source:5990-5992"
+      ]
+    },
+    {
+      "claim": "Current exact-position builder writes PointSource at true RPIP x,y,z coordinates.",
+      "references": [
+        "code/tools/build_fix5_1of10_exactpos_delayed_source.py:413-438",
+        "code/tools/build_fix5_1of10_exactpos_delayed_source.py:482-487",
+        "runs/step02_delay_fix_fix5_fullstat_v2/activation_decay_day15_groundstate_fixed_exactpos_m50000_s260613.source:50018-50020"
+      ]
+    },
+    {
+      "claim": "Old project itself documented exact PointSource as the intended correction to radial smearing.",
+      "references": [
+        "/home/ubuntu/codex_tes_511_sim/new_geo_re/tests/realpos_delayed_smoke/README.md:5-19",
+        "/home/ubuntu/codex_tes_511_sim/new_geo_re/tests/realpos_delayed_smoke/README.md:56-61",
+        "/home/ubuntu/codex_tes_511_sim/new_geo_re/tests/realpos_delayed_smoke/README.md:63-78"
+      ]
+    }
+  ],
+  "corrected_interpretation": [
+    "Current fix5 delayed processing is not shown to be suppressed by O(10-100).",
+    "Old new_geo_re delayed processing has a concrete probable source-placement inflation mechanism.",
+    "The old delayed benchmark must be treated as invalid/report-only for fix5 delayed gating until old inventory is rebuilt with exact-position source sampling and rescored."
+  ],
+  "required_next_check": "Rebuild old new_geo_re delayed source from old fixed inventory/RPIP using exact-position PointSource sampling, verify emitted I-128 IA INIT positions no longer collapse to r=0, then run current hard W2 Step05 selection and compare selected_cps_per_Bq."
+}

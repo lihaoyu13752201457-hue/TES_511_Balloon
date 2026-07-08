@@ -1,0 +1,187 @@
+{
+  "artifact": "03_supervisor_delay_processing_comparison",
+  "date": "2026-06-23",
+  "role": "supervisor_comparison_auditor",
+  "scope": "Compare current-fix5 delayed chain versus old new_geo_re delayed chain for delayed processing only. No code, source cards, geometry, authority outputs, or old outputs were modified.",
+  "verdict": "UNRESOLVED_COMPARABILITY",
+  "discrepancy_classification": "Most likely methodological/source-inventory mismatch: old fixed activity is higher, old source uses radial-profile z/r compression, and old W2 is a Gaussian probability table; current fix5 uses exact-position M=50000 PointSource sampling and hard W2 selected-event Step05 counting. No O(10-100) processing bug is proven on either side.",
+  "current_fixed_activity_Bq": 85.44920253876245,
+  "old_fixed_activity_Bq": 624.2710918319826,
+  "activity_ratio_old_over_current": 7.30575679215723,
+  "current_selected_delayed_cps": 0.0025752034889400762,
+  "current_selected_delayed_context": {
+    "label": "fix5_fullstat_v2_exactpos_m50000_s260613 production sample",
+    "selected_events": 30,
+    "TE_s": 11649.564832,
+    "formula": "30 / 11649.564832",
+    "pi02_combined_selected_delayed_cps": 0.0022127821289687215,
+    "pi02_combined_selected_events": 103,
+    "v3p5_current_authority_w2_delayed_cps_from_benchmarks": 0.0038976372073461713
+  },
+  "old_selected_delayed_cps": 0.15211317269106375,
+  "old_selected_delayed_context": {
+    "inspected_step09_w2_both_veto_delayed_cps": 0.15211317269106375,
+    "fix5_benchmarks_restatement_delayed_total_cps": 0.151456825339,
+    "benchmark_minus_inspected_relative": -0.004315695021931564,
+    "old_uncertainty_cps": 0.009671642969996412,
+    "old_N_eff": 247.36208744053428,
+    "old_weighted_event_count": 344
+  },
+  "selected_cps_ratio_old_over_current": 59.06840890219195,
+  "selected_cps_ratio_old_over_current_pi02": 68.74295065007456,
+  "selected_cps_per_Bq": {
+    "current_production": 3.01372442624246e-05,
+    "current_pi02_combined": 2.589587805649718e-05,
+    "old_inspected": 0.00024366525165320926,
+    "old_over_current_production": 8.085186871482254,
+    "old_over_current_pi02": 9.409422268733405
+  },
+  "fixed_activity_alone_assessment": {
+    "explains_O10_to_O100_difference": false,
+    "activity_ratio": 7.30575679215723,
+    "selected_cps_ratio": 59.06840890219195,
+    "activity_fraction_of_production_gap": 0.12368297924283726,
+    "residual_ratio_after_activity": 8.085186871482254,
+    "conclusion": "Fixed activity alone cannot explain the old/current delayed W2 selected-rate gap."
+  },
+  "current_suppression_assessment": {
+    "current_delayed_processing_suppressing_by_O10_to_O100": false,
+    "conclusion": "Not supported. Current division, NUBASE correction, exact-position sampling, geometry provenance, and selected-events/TE rate conversion pass the audited checks. The TE/source-flux mismatch is about +0.46% in the direction of raising the current TE-based rate."
+  },
+  "old_inflation_assessment": {
+    "old_delayed_processing_proven_inflated_by_O10_to_O100": false,
+    "conclusion": "Not proven. Old code contains non-gamma divide-by-8, NUBASE ground-state correction audit passes, and delayed events are rated as 1/TE. Old audit gaps and radial-profile compression remain comparability blockers."
+  },
+  "key_processing_differences": [
+    {
+      "name": "fixed_activity_inventory",
+      "current": "85.44920253876245 Bq fixed ground-state activity",
+      "old": "624.2710918319826 Bq fixed ground-state activity",
+      "impact": "7.3058x old/current activity ratio; material/source inventory or source-normalization difference is real but not enough to explain 59-69x selected cps gap."
+    },
+    {
+      "name": "source_position_sampling",
+      "current": "M=50000 equal-flux PointSource blocks sampled from exact RPIP positions; activity conservation audit PASS.",
+      "old": "True RPIP positions compressed into z-bin plus radial-profile RadialProfileBeam source blocks.",
+      "impact": "Can change detector acceptance, especially thin passive shells; plausible methodological mismatch but not a proven O(10-100) inflation."
+    },
+    {
+      "name": "selection_definition",
+      "current": "Hard W2 event count [510.58, 511.42) keV followed by active veto and side Compton/FoV keep; selected cps is selected event rate sum.",
+      "old": "Detector-coupled Gaussian window probability over W2, adding rate_hz * probability into veto-class tables.",
+      "impact": "Old 0.1521 cps and current 0.002575 cps are not strict apples-to-apples selected-event definitions."
+    },
+    {
+      "name": "per_family_TT_division",
+      "current": "Machine-readable PASS audit; non-gamma divisions equal 8 and gamma division equals 12 auto.",
+      "old": "Implementation contains non-gamma divide-by-8 for RP yields and RPIP weights, but lacks current-style raw/scaled RP total and TT division audit artifact.",
+      "impact": "Old audit weakness; no direct evidence of missing divide."
+    },
+    {
+      "name": "NUBASE_ground_state_correction",
+      "current": "Archived NUBASE2020 ground-state audit PASS with zero line/unit mismatches.",
+      "old": "Local NUBASE2020 ground-state correction and half-life unit audit PASS; W-180 removal verified.",
+      "impact": "No half-life correction evidence for O(10-100) discrepancy."
+    },
+    {
+      "name": "TE_source_flux_interpretation",
+      "current": "Step05 uses SIM TE_s=11649.564832; 1e6/TE is about 0.46% above fixed activity.",
+      "old": "Step05/Step09 use log observation time TE=1584.61 s; 1e6/TE is about 1.1% above fixed activity.",
+      "impact": "Percent-level, not O(10-100)."
+    }
+  ],
+  "bug_status_current": "NO_BUG_FOUND_FOR_O10_TO_O100_SUPPRESSION",
+  "bug_status_old": "NO_PROVEN_O10_TO_O100_INFLATION_BUG_WITH_AUDIT_GAPS",
+  "comparability_status": "NOT_COMPARABLE_AS_A_GATE",
+  "comparability_reason": "The old benchmark selection definition is marked UNVERIFIED in fix5_benchmarks.json, and the inspected old value is a Gaussian-probability W2 table from a radial-profile source, while the current value is a hard W2 selected-event Step05 rate from exact-position PointSource sampling.",
+  "recommended_next_checks": [
+    "Replay old fixed inventory/RPIP through exact-position PointSource sampling and score with the current hard W2 Step05 selection; report selected events, TE_s, cps, activity, and cps/Bq.",
+    "Optionally run the inverse cross-over: current fix5 inventory through old radial-profile compression and old Gaussian W2 Step09 table.",
+    "For each cross-over artifact, emit a per-family division audit with files, division, TT, rp_raw_total, rp_scaled_total, fixed activity, and source flux conservation.",
+    "Do not use old 0.151456825339 cps or inspected 0.15211317269106375 cps as a fix5 delayed gate until source sampling and W2 selection are aligned."
+  ],
+  "evidence": [
+    {
+      "claim": "Current fixed activity and per-family division audit pass.",
+      "references": [
+        "runs/step02_delay_fix_fix5_fullstat_v2/source_fix_summary.json:7",
+        "runs/step02_delay_fix_fix5_fullstat_v2/source_fix_summary.json:10-13",
+        "runs/step02_delay_fix_fix5_fullstat_v2/source_fix_summary.json:64-68",
+        "runs/step02_delay_fix_fix5_fullstat_v2/normalization_audit_groundstate_fix.json:1-3",
+        "runs/step02_delay_fix_fix5_fullstat_v2/normalization_audit_groundstate_fix.json:77-92",
+        "runs/step02_delay_fix_fix5_fullstat_v2/normalization_audit_groundstate_fix.json:113-128"
+      ]
+    },
+    {
+      "claim": "Current exact-position source and delayed transport provenance pass.",
+      "references": [
+        "outputs/reports/fix5_fullstat_v2_exactpos_m50000_s260613/fix5_delayed_source_exactpos_summary.json:2-8",
+        "outputs/reports/fix5_fullstat_v2_exactpos_m50000_s260613/fix5_delayed_source_exactpos_summary.json:361-377",
+        "outputs/reports/fix5_fullstat_v2_exactpos_m50000_s260613/fix5_delayed_source_exactpos_summary.json:523-532"
+      ]
+    },
+    {
+      "claim": "Current W2 delayed cps is selected events divided by TE_s.",
+      "references": [
+        "stepwise_maintenance/step05_veto_time_axis/outputs_fix5_fullstat_v2_exactpos_m50000_s260613_l1/step05_fix5_fullstat_v2_exactpos_m50000_s260613_l1_rates.csv:11-16",
+        "old/code/tools/build_v3p5_centerfinger_step05_l1_response.py:436-441",
+        "old/code/tools/build_v3p5_centerfinger_step05_l1_response.py:561-570",
+        "old/code/tools/build_v3p5_centerfinger_step05_l1_response.py:829-866"
+      ]
+    },
+    {
+      "claim": "Current PI-02 convergence gives a lower but consistent current delayed estimate.",
+      "references": [
+        "outputs/reports/fix5_immediate_fixes_20260623/delayed_selected_rate_convergence.json:12-24",
+        "outputs/reports/fix5_immediate_fixes_20260623/delayed_selected_rate_convergence.json:56-67",
+        "outputs/reports/fix5_immediate_fixes_20260623/delayed_selected_rate_convergence.json:99-110",
+        "outputs/reports/fix5_immediate_fixes_20260623/delayed_selected_rate_convergence.json:142-153"
+      ]
+    },
+    {
+      "claim": "Old fixed source activity is 624.2710918319826 Bq and uses old geometry/source inventory.",
+      "references": [
+        "/home/ubuntu/codex_tes_511_sim/new_geo_re/runs/step02_delay_fix_equiv2602_aligned/source_fix_summary.json:7-12",
+        "/home/ubuntu/codex_tes_511_sim/new_geo_re/stepwise_maintenance/step03_delay_source/outputs/delay_source_audit.json:1-10",
+        "/home/ubuntu/codex_tes_511_sim/new_geo_re/stepwise_maintenance/step03_delay_source/outputs/delay_source_audit.json:27-34"
+      ]
+    },
+    {
+      "claim": "Old non-gamma divide exists but old lacks current-style audit guard.",
+      "references": [
+        "/home/ubuntu/codex_tes_511_sim/new_geo_re/stepwise_maintenance/step02_raw_background_simulation/source_snapshots/makedecaysourcewithplot_rpip.py:140-181",
+        "/home/ubuntu/codex_tes_511_sim/new_geo_re/stepwise_maintenance/step02_raw_background_simulation/source_snapshots/makedecaysourcewithplot_rpip.py:203-205"
+      ]
+    },
+    {
+      "claim": "Old source uses radial-profile compression.",
+      "references": [
+        "/home/ubuntu/codex_tes_511_sim/new_geo_re/stepwise_maintenance/step02_raw_background_simulation/source_snapshots/makedecaysourcewithplot_rpip.py:269-330",
+        "/home/ubuntu/codex_tes_511_sim/new_geo_re/stepwise_maintenance/step02_raw_background_simulation/source_snapshots/makedecaysourcewithplot_rpip.py:745-756",
+        "/home/ubuntu/codex_tes_511_sim/new_geo_re/tests/realpos_delayed_smoke/README.md:5-19",
+        "/home/ubuntu/codex_tes_511_sim/new_geo_re/tests/realpos_delayed_smoke/README.md:63-78"
+      ]
+    },
+    {
+      "claim": "Old delayed rate uses TE and Step09 Gaussian W2 probability.",
+      "references": [
+        "/home/ubuntu/codex_tes_511_sim/new_geo_re/runs/step02_delayed_transport_equiv2602_aligned/cosima_delayed_transport_1m.log:4126876-4126878",
+        "/home/ubuntu/codex_tes_511_sim/new_geo_re/runs/step02_delayed_transport_equiv2602_aligned/cosima_delayed_transport_1m.log:4132849-4132852",
+        "/home/ubuntu/codex_tes_511_sim/new_geo_re/outputs/reports/day15_complete_report/complete_day15_summary.json:7-10",
+        "/home/ubuntu/codex_tes_511_sim/new_geo_re/outputs/reports/day15_complete_report/complete_day15_summary.json:123-133",
+        "/home/ubuntu/codex_tes_511_sim/new_geo_re/stepwise_maintenance/step09_optics_bridge/code/build_detector_coupled_focus_response.py:117-119",
+        "/home/ubuntu/codex_tes_511_sim/new_geo_re/stepwise_maintenance/step09_optics_bridge/code/build_detector_coupled_focus_response.py:147-151",
+        "/home/ubuntu/codex_tes_511_sim/new_geo_re/stepwise_maintenance/step09_optics_bridge/code/build_detector_coupled_focus_response.py:364-409",
+        "/home/ubuntu/codex_tes_511_sim/new_geo_re/stepwise_maintenance/step09_optics_bridge/outputs/non_xray_background_w1_w2_veto_table.csv:6-9",
+        "/home/ubuntu/codex_tes_511_sim/new_geo_re/stepwise_maintenance/step08_significance/outputs/headline_statistical_uncertainty_by_stream.csv:1-5"
+      ]
+    },
+    {
+      "claim": "Benchmark identity and selection equivalence are not verified.",
+      "references": [
+        "core_md/fix5_benchmarks.json:84-96",
+        "core_md/fix5_benchmarks.json:99-112"
+      ]
+    }
+  ]
+}
