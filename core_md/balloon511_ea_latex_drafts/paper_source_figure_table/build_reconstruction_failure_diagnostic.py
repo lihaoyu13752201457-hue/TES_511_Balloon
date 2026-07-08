@@ -1,0 +1,308 @@
+#!/usr/bin/env python3
+"""Build the EA reconstruction-boundary diagnostic sidecar.
+
+This is a replay of the existing Step05 event catalog. It does not rerun
+MEGAlib/Cosima transport. The purpose is to make the manuscript's
+single-site-only diagnostic percentages auditable.
+"""
+
+from __future__ import annotations
+
+import collections
+import importlib.util
+import json
+import math
+import pickle
+import sys
+from datetime import datetime, timezone
+from pathlib import Path
+from typing import Any
+
+import numpy as np
+
+
+ROOT = Path(__file__).resolve().parents[3]
+LABEL = "fix5_fullstat_v2_exactpos_m50000_s260613"
+W2_LO_KEV = 510.58
+W2_HI_KEV = 511.42
+OUT_DIR = ROOT / "core_md" / "balloon511_ea_latex_drafts" / "paper_source_figure_table"
+OUT_JSON = OUT_DIR / "reconstruction_failure_diagnostic_20260702.json"
+OUT_MD = OUT_DIR / "reconstruction_failure_diagnostic_20260702.md"
+STEP05_SCRIPT = ROOT / "old" / "code" / "tools" / "build_v3p5_centerfinger_step05_l1_response.py"
+STEP05_SUMMARY = (
+    ROOT
+    / "stepwise_maintenance"
+    / "step05_veto_time_axis"
+    / f"outputs_{LABEL}_l1"
+    / f"step05_{LABEL}_l1_response_summary.json"
+)
+CATALOG = (
+    ROOT
+    / "stepwise_maintenance"
+    / "step05_veto_time_axis"
+    / f"outputs_{LABEL}_l1"
+    / "work"
+    / "event_catalog.pkl"
+)
+
+
+def rel(path: Path) -> str:
+    try:
+        return path.relative_to(ROOT).as_posix()
+    except ValueError:
+        return str(path)
+
+
+def now_utc() -> str:
+    return datetime.now(timezone.utc).replace(microsecond=0).isoformat().replace("+00:00", "Z")
+
+
+def load_json(path: Path) -> Any:
+    return json.loads(path.read_text(encoding="utf-8"))
+
+
+def write_json(path: Path, payload: Any) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(json.dumps(payload, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+
+
+def load_step05_module():
+    old_tools = ROOT / "old" / "code" / "tools"
+    if str(old_tools) not in sys.path:
+        sys.path.insert(0, str(old_tools))
+    spec = importlib.util.spec_from_file_location("ea_step05_side_entry", STEP05_SCRIPT)
+    if spec is None or spec.loader is None:
+        raise RuntimeError(f"cannot load {STEP05_SCRIPT}")
+    mod = importlib.util.module_from_spec(spec)
+    sys.modules[spec.name] = mod
+    spec.loader.exec_module(mod)
+    mod.ROOT = ROOT
+    mod.TOOLS = old_tools
+    mod.configure_paths(LABEL)
+    return mod
+
+
+def class_tallies(step05, cat: dict[str, Any]) -> dict[str, dict[str, dict[str, float | int]]]:
+    disk = step05.side_entry_disk()
+    stream = np.asarray(cat["stream"], dtype=object)
+    energy = np.asarray(cat["tes_total_keV"], dtype=float)
+    bgo = np.asarray(cat["bgo_total_keV"], dtype=float)
+    mask = (energy >= W2_LO_KEV) & (energy < W2_HI_KEV) & (bgo < float(step05.ACTIVE_VETO_THRESHOLD_KEV))
+    counts: dict[str, collections.Counter[str]] = collections.defaultdict(collections.Counter)
+    rates: dict[str, collections.defaultdict[str, float]] = collections.defaultdict(lambda: collections.defaultdict(float))
+    for idx in np.flatnonzero(mask):
+        keep, cls = step05.side_keep_from_hits(step05.event_hits(cat, int(idx)), disk, "keep")
+        stream_name = str(stream[idx])
+        counts[stream_name][cls] += 1
+        rates[stream_name][cls] += float(cat["rate_hz"][idx])
+        if keep and cls not in ("single", "keep", "reject_kept"):
+            raise AssertionError(f"unexpected kept class {cls}")
+
+    streams = sorted(set(counts) | set(rates))
+    return {
+        stream_name: {
+            cls: {
+                "events": int(counts[stream_name].get(cls, 0)),
+                "rate_cps": float(rates[stream_name].get(cls, 0.0)),
+            }
+            for cls in sorted(set(counts[stream_name]) | set(rates[stream_name]))
+        }
+        for stream_name in streams
+    }
+
+
+def sum_rate(tallies: dict[str, dict[str, dict[str, float | int]]], streams: list[str], classes: list[str]) -> float:
+    return math.fsum(float(tallies.get(stream, {}).get(cls, {}).get("rate_cps", 0.0)) for stream in streams for cls in classes)
+
+
+def sum_events(tallies: dict[str, dict[str, dict[str, float | int]]], streams: list[str], classes: list[str]) -> int:
+    return sum(int(tallies.get(stream, {}).get(cls, {}).get("events", 0)) for stream in streams for cls in classes)
+
+
+def alternative(
+    name: str,
+    classes: list[str],
+    tallies: dict[str, dict[str, dict[str, float | int]]],
+    baseline_signal: float,
+    baseline_background: float,
+) -> dict[str, Any]:
+    signal = sum_rate(tallies, ["science"], classes)
+    background = sum_rate(tallies, ["prompt", "delayed"], classes)
+    signal_ratio = signal / baseline_signal if baseline_signal > 0 else None
+    background_ratio = background / baseline_background if baseline_background > 0 else None
+    s_over_sqrt_b_ratio = (
+        (signal / math.sqrt(background)) / (baseline_signal / math.sqrt(baseline_background))
+        if signal > 0 and background > 0 and baseline_signal > 0 and baseline_background > 0
+        else None
+    )
+    return {
+        "name": name,
+        "retained_classes": classes,
+        "signal_rate_cps": signal,
+        "background_rate_cps": background,
+        "signal_events": sum_events(tallies, ["science"], classes),
+        "background_events": sum_events(tallies, ["prompt", "delayed"], classes),
+        "signal_retention_fraction_vs_baseline": signal_ratio,
+        "background_retention_fraction_vs_baseline": background_ratio,
+        "s_over_sqrt_b_fraction_vs_baseline": s_over_sqrt_b_ratio,
+    }
+
+
+def build() -> dict[str, Any]:
+    step05 = load_step05_module()
+    summary = load_json(STEP05_SUMMARY)
+    with CATALOG.open("rb") as handle:
+        cat = pickle.load(handle)
+
+    tallies = class_tallies(step05, cat)
+    baseline_classes = ["single", "keep", "reject_kept"]
+    baseline_signal = sum_rate(tallies, ["science"], baseline_classes)
+    baseline_background = sum_rate(tallies, ["prompt", "delayed"], baseline_classes)
+    expected = summary["windows"]["w2_510p58_511p42"]["by_stream"]
+    expected_signal = float(expected["science"]["side_compton_fov_pass_rate_s-1"])
+    expected_background = float(expected["prompt"]["side_compton_fov_pass_rate_s-1"]) + float(
+        expected["delayed"]["side_compton_fov_pass_rate_s-1"]
+    )
+    signal_delta = baseline_signal - expected_signal
+    background_delta = baseline_background - expected_background
+    matches_summary = abs(signal_delta) <= 1.0e-12 and abs(background_delta) <= 1.0e-12
+
+    alternatives = {
+        "single_site_only": alternative("single_site_only", ["single"], tallies, baseline_signal, baseline_background),
+        "drop_reject_kept_only": alternative(
+            "drop_reject_kept_only", ["single", "keep"], tallies, baseline_signal, baseline_background
+        ),
+    }
+    payload = {
+        "status": "PASS_EA_RECONSTRUCTION_FAILURE_DIAGNOSTIC" if matches_summary else "FAIL_EA_RECONSTRUCTION_FAILURE_DIAGNOSTIC",
+        "generated_at_utc": now_utc(),
+        "label": LABEL,
+        "purpose": "Auditable sidecar for the manuscript diagnostic alternative near the Compton/FoV reconstruction boundary.",
+        "inputs": {
+            "step05_script": rel(STEP05_SCRIPT),
+            "step05_summary": rel(STEP05_SUMMARY),
+            "event_catalog": rel(CATALOG),
+        },
+        "selection": {
+            "window_keV": [W2_LO_KEV, W2_HI_KEV],
+            "active_veto_threshold_keV": float(step05.ACTIVE_VETO_THRESHOLD_KEV),
+            "baseline_reject_policy": "keep",
+            "side_entry_disk": {
+                "center_cm": [float(x) for x in step05.side_entry_disk()["center_cm"]],
+                "normal": [float(x) for x in step05.side_entry_disk()["normal"]],
+                "radius_cm": float(step05.side_entry_disk()["radius_cm"]),
+            },
+            "class_semantics": {
+                "single": "single TES hit retained as calorimetric line candidate",
+                "keep": "multi-hit event with a valid side-entry Compton/FoV consistency solution",
+                "reject_kept": "multi-hit event with no valid reconstruction solution, retained only because reject_policy=keep",
+                "veto": "active-veto-pass TES event rejected by side-entry Compton/FoV consistency",
+            },
+        },
+        "baseline": {
+            "retained_classes": baseline_classes,
+            "signal_rate_cps": baseline_signal,
+            "background_rate_cps": baseline_background,
+            "signal_events": sum_events(tallies, ["science"], baseline_classes),
+            "background_events": sum_events(tallies, ["prompt", "delayed"], baseline_classes),
+            "s_over_sqrt_b": baseline_signal / math.sqrt(baseline_background),
+        },
+        "alternatives": alternatives,
+        "class_tallies": tallies,
+        "summary_consistency": {
+            "matches_step05_summary": matches_summary,
+            "expected_signal_rate_cps": expected_signal,
+            "recomputed_signal_rate_cps": baseline_signal,
+            "signal_rate_delta_cps": signal_delta,
+            "expected_background_rate_cps": expected_background,
+            "recomputed_background_rate_cps": baseline_background,
+            "background_rate_delta_cps": background_delta,
+        },
+        "manuscript_recommendation": {
+            "status": "USE_SINGLE_SITE_ONLY_VALUES",
+            "english": (
+                "Use the single-site-only diagnostic if quoting the 59-68% retention sentence. "
+                "Do not describe those values as only dropping the reject_kept/unreconstructed class."
+            ),
+            "rounded_values": {
+                "signal_retention_percent": 59.4,
+                "background_retention_percent": 68.2,
+                "s_over_sqrt_b_fraction": 0.720,
+            },
+        },
+    }
+    write_json(OUT_JSON, payload)
+    write_markdown(OUT_MD, payload)
+    return payload
+
+
+def pct(value: float | None) -> str:
+    return "n/a" if value is None else f"{100.0 * value:.1f}%"
+
+
+def write_markdown(path: Path, payload: dict[str, Any]) -> None:
+    alt = payload["alternatives"]["single_site_only"]
+    drop = payload["alternatives"]["drop_reject_kept_only"]
+    lines = [
+        "# Reconstruction-Failure Diagnostic Sidecar 20260702",
+        "",
+        f"Status: `{payload['status']}`",
+        "",
+        "This sidecar replays the existing Step05 event catalog and does not rerun transport.",
+        "",
+        "## Manuscript Values",
+        "",
+        "| diagnostic | signal retention | background retention | S/sqrt(B) fraction |",
+        "|---|---:|---:|---:|",
+        (
+            "| single-site-only | "
+            f"{pct(alt['signal_retention_fraction_vs_baseline'])} | "
+            f"{pct(alt['background_retention_fraction_vs_baseline'])} | "
+            f"{alt['s_over_sqrt_b_fraction_vs_baseline']:.3f} |"
+        ),
+        (
+            "| drop reject_kept only | "
+            f"{pct(drop['signal_retention_fraction_vs_baseline'])} | "
+            f"{pct(drop['background_retention_fraction_vs_baseline'])} | "
+            f"{drop['s_over_sqrt_b_fraction_vs_baseline']:.3f} |"
+        ),
+        "",
+        "The manuscript sentence should describe the quoted 59.4%, 68.2%, and 0.720 values as a single-site-only diagnostic, not as merely dropping the unreconstructed/reject_kept class.",
+        "",
+        "## Inputs",
+        "",
+        f"- Step05 script: `{payload['inputs']['step05_script']}`",
+        f"- Step05 summary: `{payload['inputs']['step05_summary']}`",
+        f"- Event catalog: `{payload['inputs']['event_catalog']}`",
+        "",
+        "## Consistency",
+        "",
+        f"- Matches Step05 summary: `{payload['summary_consistency']['matches_step05_summary']}`",
+        f"- Recomputed baseline signal: `{payload['baseline']['signal_rate_cps']:.16g} cps`",
+        f"- Recomputed baseline background: `{payload['baseline']['background_rate_cps']:.16g} cps`",
+    ]
+    path.write_text("\n".join(lines) + "\n", encoding="utf-8")
+
+
+def main() -> int:
+    payload = build()
+    alt = payload["alternatives"]["single_site_only"]
+    print(
+        json.dumps(
+            {
+                "status": payload["status"],
+                "single_site_only_signal_retention": alt["signal_retention_fraction_vs_baseline"],
+                "single_site_only_background_retention": alt["background_retention_fraction_vs_baseline"],
+                "single_site_only_s_sqrt_b_fraction": alt["s_over_sqrt_b_fraction_vs_baseline"],
+                "out_json": rel(OUT_JSON),
+                "out_md": rel(OUT_MD),
+            },
+            indent=2,
+            ensure_ascii=False,
+        )
+    )
+    return 0 if payload["status"].startswith("PASS") else 1
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

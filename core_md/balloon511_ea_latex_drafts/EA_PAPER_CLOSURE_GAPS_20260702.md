@@ -1,0 +1,89 @@
+# EA Paper Closure Gaps 20260702
+
+This note records what is still not closed for
+`core_md/balloon511_ea_latex_drafts` after the 2026-07-02 evidence pass. It is
+scoped to the EA manuscript package, not to a new geometry optimization or a
+new full-stat transport campaign.
+
+## Closed for Current EA Selected-Rate Claim
+
+- Primary W2 selected-rate values are traceable through the NIM-A evidence
+  manifest and fix5 full-stat authority outputs:
+  - selected background: `0.0392162265186315 cps`;
+  - selected signal at `1e-4 ph cm^-2 s^-1`: `0.00118587480749719 cps`;
+  - prompt background: `0.036641023029691425 cps`;
+  - delayed background: `0.0025752034889400762 cps`;
+  - `Z20d = 7.79950030715189`;
+  - `F3_20d = 3.8464002588077305e-05 ph cm^-2 s^-1`.
+- Background split in the EA text is closed for the current selected-rate
+  claim: prompt `93.43%`, delayed `6.57%`.
+- The reconstruction-boundary diagnostic sentence in the EA text is now backed
+  by `paper_source_figure_table/reconstruction_failure_diagnostic_20260702.json`
+  and `.md`. The current sidecar values are:
+  - single-site-only signal retention: `59.4%`;
+  - single-site-only background retention: `68.2%`;
+  - single-site-only `S/sqrt(B)` fraction: `0.720`.
+- EA English and Chinese PDFs were rebuilt with `latexmk -xelatex` after this
+  update.
+
+## Still Not Closed
+
+1. NIM-A source-of-truth synchronization.
+   The EA README says the EA copy is governed by the NIM-A draft and evidence
+   manifest. The EA TeX files now use the corrected single-site-only diagnostic
+   values, but `core_md/balloon511_nima_latex_drafts/balloon511_nima_draft_en.tex`
+   and `balloon511_nima_draft_zh.tex` still contain the stale
+   `59.2% / 66.8% / 0.724` wording. This is a repo-level source-of-truth
+   inconsistency until NIM-A is synchronized or EA is explicitly promoted as
+   the active manuscript source.
+
+2. Full flight-performance validation remains open by manuscript design.
+   The current claim is a detector-coupled selected-rate study. It is not a
+   finalized flight-performance claim because these blocks remain unclosed:
+   Revan/Mimrec or equivalent multi-hit reconstruction cross-check; optics
+   self-background with explicit lens tiles/support hardware at final
+   statistics; final cryostat/DR geometry and detector-response update,
+   including TES saturation and pile-up; and a spatial-spectral likelihood with
+   background nuisance profiling.
+
+3. Event-level diagnostics listed in the limitations are still open.
+   The EA text explicitly states that selected delayed state/metastable labels,
+   merged four-sampling per-event decomposition, post-veto energy-window
+   staging, multi-pixel residual distributions, and veto-threshold stability
+   scans are not closed by current outputs.
+
+4. Systematic uncertainty envelope is not closed.
+   The tabulated thresholds remain statistical selected-rate thresholds. They
+   do not include an envelope for atmospheric-flux normalization, activation
+   cross sections or physics-list choices, material/geometry tolerances,
+   detector energy response, veto threshold calibration, reconstruction
+   efficiency, or background-estimation nuisances.
+
+5. Upstream optics background is only bounded, not fully modeled.
+   The archived Ge-proxy delayed calculation gives a corrected 95% zero-count
+   upper rate of `6.376e-05 cps`, but prompt self-background from upstream
+   optics is not folded into the primary budget, and explicit lens support
+   hardware is not modeled.
+
+6. Figure audit warnings remain.
+   Current figure hashes/provenance are recorded, but some exact renderers are
+   unrecovered and the figure audit keeps visual/provenance warnings. These do
+   not invalidate the selected-rate numbers, but they are not a fully
+   reproducible figure-generation closure.
+
+## Background Composition Snapshot
+
+Using total selected background `0.0392162265186315 cps` as denominator:
+
+| component | rate cps | fraction of selected background |
+|---|---:|---:|
+| prompt total | `0.036641023029691425` | `93.43%` |
+| delayed total | `0.0025752034889400762` | `6.57%` |
+| prompt e+ incident family | `0.031890` | `81.32%` |
+| prompt neutron incident family | `0.0047513` | `12.12%` |
+| delayed MXC cold plate / Cu-64, Cu-62 | `0.0011159` | `2.85%` |
+| delayed Ta/Cu substrate support / Cu-64 | `0.00051504` | `1.31%` |
+| delayed other Cu/window/cold-stage volumes | `0.00094424` | `2.41%` |
+| delayed Cu-64 nuclide | `0.0020602` | `5.25%` |
+| delayed Cu-62 nuclide | `0.00051504` | `1.31%` |
+
