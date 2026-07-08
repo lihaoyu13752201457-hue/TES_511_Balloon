@@ -1,0 +1,61 @@
+{
+  "call_id": "call_CLVFZaQFTFtF03vsupoiD7zA",
+  "cmd": "nl -ba core_md/balloon511_ea_latex_drafts/balloon511_ea_draft_zh.tex | sed -n '184,230p'",
+  "call_log": "/home/ubuntu/.codex/sessions/2026/06/28/rollout-2026-06-28T20-40-23-019f0e3e-c8af-7003-b6cd-d523b87873df.jsonl",
+  "call_line": 2340,
+  "output_log": "/home/ubuntu/.codex/sessions/2026/06/28/rollout-2026-06-28T20-40-23-019f0e3e-c8af-7003-b6cd-d523b87873df.jsonl",
+  "output_line": 2343,
+  "source_path": "core_md/balloon511_ea_latex_drafts/balloon511_ea_draft_zh.tex",
+  "range": [
+    184,
+    230
+  ]
+}
+
+\subsection{瞬发大气与延迟活化源模型}
+\label{sec:background}
+
+在第~\ref{sec:optics} 节定义了聚焦信号之后，本底一侧还需要两层源：入射到
+载荷上的瞬发大气粒子场，以及该粒子场在仪器中积累起来的延迟放射性群体。两者分开
+构建，使源的产生过程不吸收本属于探测器选择的假设：本节定义的都是入射粒子或衰变
+核素，veto、拓扑筛选和线窗都推迟到第~\ref{sec:selection} 节才施加。
+
+\subsubsection{瞬发大气源}
+\label{subsec:prompt_source}
+
+瞬发大气粒子场由 EXPACS/PARMA 给出。PARMA3.0 是由 PHITS 大气级联计算参数化得到、
+并针对陆地宇宙线测量验证过的解析模型，EXPACS 是其公开表格与软件接口
+\cite{Sato2015EXPACS,Sato2016PARMA4}。底层的粒子输运物理由 PHITS 提供：一次宇宙线
+与大气核作用，次级强子、轻子、光子和中子在大气柱中继续输运，最终通量按海拔、
+地磁截止刚度、太阳调制、能量和方向参数化。本文中 EXPACS/PARMA 给出随粒子种类、
+动能、天顶角、地理位置、海拔、截止刚度和太阳活动变化的入射微分通量，且只用于构造
+外部辐射场；探测器响应、反符合、拓扑选择和任务时间计数都在下游施加。参考源定义
+采用纬度 $34^\circ$、经度 $100^\circ$、海拔 $38\,\mathrm{km}$、垂直截止刚度
+$R_c=11.6\,\mathrm{GV}$，以及 2025-08-31 对应的太阳条件 $W=118.3$。
+
+瞬发源包含光子、中子、电子、正电子、质子、$\alpha$ 粒子以及正负 $\mu$ 子。对每个
+粒子族，EXPACS/PARMA 微分谱被转换为 MEGAlib 远场面积源，覆盖完整天顶角范围
+$\theta=0^\circ$--$180^\circ$ 和完整方位角范围 $\phi=0^\circ$--$360^\circ$。天顶角
+依赖用 20 个等 $\mu$ 微分分箱表示，其中 $\mu=\cos\theta$，每箱立体角
+$\Delta\Omega=0.6283185307\,\mathrm{sr}$：前 10 箱为下行粒子，后 10 箱为上行或反照
+成分。瞬发输运和活化产生输运都保留这两个半球，因此源构建阶段没有丢弃上行反照
+粒子。图~\ref{fig:expacs_fullsphere_flux} 给出由源定义实际采用的全空间通量场。
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\linewidth]{paper_source_figure_table/fig_expacs_fullsphere_flux.png}
+\caption{用于生成瞬发和活化产生输运输入的 EXPACS/PARMA 全空间大气通量场。左：八类输运粒子族的能量和立体角积分通量，并按下行、上行半球分开。右：MEGAlib 远场源使用的 20 个等 $\mu$ 微分天顶角分箱的积分通量。该图直接由源定义输入表生成，环境参数为纬度 $34^\circ$、经度 $100^\circ$、海拔 $38\,\mathrm{km}$、$R_c=11.6\,\mathrm{GV}$、$W=118.3$。}
+\label{fig:expacs_fullsphere_flux}
+\end{figure}
+
+积分源面通量约为 $4.80$、$0.462$、$0.199$、$0.117$、$0.112$、$0.0115$、$0.0050$
+和 $0.0056\,\mathrm{cm^{-2}\,s^{-1}}$，分别对应 $\gamma$、$n$、$e^-$、$e^+$、$p$、
+$\alpha$、$\mu^-$ 和 $\mu^+$；非光子成分合计约 $0.91\,\mathrm{cm^{-2}\,s^{-1}}$，
+占全空间源面积分通量的 16\%。若严格按通量比例分配蒙特卡洛计数，这些少数粒子族的
+探测器命中和活化统计将很差，因此非光子粒子族采用复制样本生成，再在率归一化中
+去权重。随后所有粒子经 Geant4/MEGAlib 在探测器/低温系统质量模型中输运
+\cite{Agostinelli2003,Allison2016,Zoglauer2006}；瞬发流和活化产生流各生成
+25{,}210{,}216 个入射一次粒子。每个粒子种类用自身输运曝光归一：
+\begin{equation}
+  r_{\mathrm{event},j}=\left(\sum_i \mathcal{T}_{ij}\right)^{-1},
+\end{equation}

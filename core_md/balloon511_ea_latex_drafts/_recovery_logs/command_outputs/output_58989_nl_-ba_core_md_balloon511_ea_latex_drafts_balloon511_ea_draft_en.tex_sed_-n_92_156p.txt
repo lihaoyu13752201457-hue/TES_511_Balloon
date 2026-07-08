@@ -1,0 +1,74 @@
+{
+  "call_id": "call_6n139Ibtevom4NwlyoW0BSwx",
+  "cmd": "nl -ba core_md/balloon511_ea_latex_drafts/balloon511_ea_draft_en.tex | sed -n '92,156p'",
+  "call_log": "/home/ubuntu/.codex/sessions/2026/06/28/rollout-2026-06-28T20-40-23-019f0e3e-c8af-7003-b6cd-d523b87873df.jsonl",
+  "call_line": 1900,
+  "output_log": "/home/ubuntu/.codex/sessions/2026/06/28/rollout-2026-06-28T20-40-23-019f0e3e-c8af-7003-b6cd-d523b87873df.jsonl",
+  "output_line": 1903
+}
+
+    92	\section{Simulation framework}
+    93	\label{sec:framework}
+    94	
+    95	This section describes the end-to-end simulation chain, from source generation to flight-performance assessment. The signal and background do not share a single geometry; each starts from its own mass model. The signal stream focuses 511 keV photons onto the focal plane in the 10 m upstream Laue-optics model and records the photons that cross the Be entrance aperture, whereas the background stream transports the prompt atmospheric particles and the production-position-sampled delayed-activation decays directly in the detector/cryostat mass model of Section~\ref{sec:geometry}. The two streams meet only inside the detector model: the focused photons are replayed into the same detector/cryostat model and, together with the background, pass through one common detector response and veto, after which the chain proceeds to detailed background analysis, the mission-time and trajectory fold, and the flight-performance assessment with design-optimization guidance. Because the focused signal and both background streams pass through this same detector response and veto before any background decomposition or sensitivity statement is made, the downstream results rest on a consistent event selection.
+    96	
+    97	Detector-coupled Monte Carlo transport through a detailed mass model is an established technique for predicting the response and background of gamma-ray spectrometers \cite{Sturner2003}. Figure~\ref{fig:workflow} expands the chain into its computational layers: geometry definition, prompt and buildup transport, delayed-source construction, focused-optics transport, detector-coupled signal replay, veto mechanisms, detailed background analysis, time and flight-trajectory variation, and flight-performance assessment with design-optimization guidance, each described layer by layer below. The present manuscript uses production-position-sampled delayed decays as the primary delayed-source representation: delayed decays are sampled from recorded radioactive-production positions instead of being redistributed into an axisymmetric radial profile.
+    98	
+    99	\begin{figure}[t]
+   100	\centering
+   101	\begin{tikzpicture}[
+   102	  box/.style={rectangle, rounded corners=2pt, draw=black!55, line width=0.4pt,
+   103	              align=center, font=\scriptsize, text width=30mm, minimum height=8mm, inner sep=2pt},
+   104	  bg/.style={box, fill=blue!8},
+   105	  sig/.style={box, fill=green!12},
+   106	  shr/.style={box, fill=black!6},
+   107	  flow/.style={-{Latex[length=2mm]}, draw=black!60, line width=0.5pt}
+   108	]
+   109	\node[shr] (geo)    at (0,0)        {Geometry / mass model};
+   110	\node[bg]  (prompt) at (-3.1,-1.35) {Prompt \& activation transport};
+   111	\node[bg]  (delay)  at (-3.1,-2.7)  {Delayed activity source};
+   112	\node[bg]  (decay)  at (-3.1,-4.05) {Production-position decay transport};
+   113	\node[sig] (optics) at (3.1,-1.35)  {Laue optics (signal only)};
+   114	\node[sig] (couple) at (3.1,-2.7)   {Optics--detector coupling};
+   115	\node[shr] (sel)    at (0,-5.4)     {Veto mechanisms: scintillator veto $+$ Compton-kinematic veto};
+   116	\node[shr] (detail) at (0,-6.75)    {Detailed background analysis};
+   117	\node[shr] (fold)   at (0,-8.1)     {Time and flight-trajectory variation};
+   118	\node[shr] (out)    at (0,-9.45)    {Flight-performance assessment and design-optimization guidance};
+   119	\draw[flow] (geo) -- (prompt);
+   120	\draw[flow] (geo) -- (optics);
+   121	\draw[flow] (prompt) -- (delay);
+   122	\draw[flow] (delay) -- (decay);
+   123	\draw[flow] (optics) -- (couple);
+   124	\draw[flow] (decay) -- (sel);
+   125	\draw[flow] (couple) -- (sel);
+   126	\draw[flow] (sel) -- (detail);
+   127	\draw[flow] (detail) -- (fold);
+   128	\draw[flow] (fold) -- (out);
+   129	\end{tikzpicture}
+   130	\caption{Simulation chain used in this work. Blue nodes are the prompt and
+   131	delayed background streams, green nodes the focused-signal optics, and grey
+   132	nodes the shared geometry, veto mechanisms, detailed background analysis,
+   133	time/trajectory variation, and final flight-performance assessment. The focused
+   134	signal and all background streams are evaluated under the same detector response
+   135	and veto definitions before background decomposition, mission-time variation,
+   136	and design-optimization judgments are made.}
+   137	\label{fig:workflow}
+   138	\end{figure}
+   139	
+   140	The primary rate calculation combines prompt and activation-buildup transport, a fixed day-15 radionuclide population, sampled equal-activity point sources at recorded production positions, and downstream propagation through the detector response, veto mechanisms, detailed background analysis, and flight-performance assessment.
+   141	
+   142	Each layer has a defined input, a physical or statistical operation, an output consumed by later layers, and an interpretation boundary. Geometry definition fixes the mass model and coordinate policy but does not produce a rate. Prompt transport and activation transport define direct atmospheric backgrounds and isotope-production histories. The delayed-source layer converts those histories into a fixed day-15 radioactive population and transports sampled production-position decays. The optical Monte Carlo is signal-only: it supplies the Laue-lens effective area and tracked focused phase space, while the optics-detector coupling and detector-response layers convert that phase space into a detector-coupled point-source response. The scintillator veto and Compton-kinematic veto jointly define the detector-level retained events; the calculation then proceeds to detailed background analysis, time/trajectory folding, and flight-performance assessment with design-optimization guidance.
+   143	
+   144	The numerical hierarchy used below follows the same logic. Day-15 selected
+   145	rates are quoted after the focused signal stream has been scaled by the 10 m
+   146	Ge(111) effective area and the reference atmospheric transmission.
+   147	Mission-mean rates are quoted from the time-dependent fold, and the primary
+   148	$Z$, net $3\sigma$ exposure, and flux thresholds are quoted from the cumulative
+   149	significance calculation. Production-position sampling checks are interpreted
+   150	only after the sampled source has been transported through the same detector
+   151	selection and significance chain. This separation avoids mixing unit-injection
+   152	rates, day-15 direct expectations, and mission-folded sensitivities in a single
+   153	result.
+   154	
+   155	\FloatBarrier
+   156	

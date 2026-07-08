@@ -1,0 +1,49 @@
+{
+  "call_id": "call_5MvjLMb4UTFTSKHGU2mGcPq5",
+  "cmd": "tail -40 core_md/balloon511_ea_latex_drafts/_recovery_logs/fragments/core_md_balloon511_ea_latex_drafts_AOO.md__L1_260.txt",
+  "call_log": "/home/ubuntu/.codex/sessions/2026/07/07/rollout-2026-07-07T22-24-21-019f3cf7-3376-7f00-b377-ae00d8780a8d.jsonl",
+  "call_line": 1301,
+  "output_log": "/home/ubuntu/.codex/sessions/2026/07/07/rollout-2026-07-07T22-24-21-019f3cf7-3376-7f00-b377-ae00d8780a8d.jsonl",
+  "output_line": 1305
+}
+
+Production-position decay transport & Delayed decay particles emitted from sampled production locations & Equal-activity sampled point sources from the weighted production table; reference transports use $10^6$ delayed decays per source sampling. \\
+\hline
+\end{tabular}
+\end{table}
+
+This production-position representation does not place one point source at
+every production row; it is a statistically sampled approximation whose
+adequacy is evaluated downstream in Section~\ref{subsec:convergence}.
+Source-inventory checks verify activity conservation and source serialization;
+the selected-rate behavior is evaluated separately after detector transport
+and event selection.
+```
+
+
+\subsubsection{参考点源构建}
+\label{subsec:pointsource}
+
+聚焦信号流由一个参考天体点源定义。作为目标类别的具体例子，我们取 INTEGRAL/SPI
+曾观测到的微类星体 V404 Cygni 的 511 keV 发射事件 \cite{Siegert2016V404}；V404
+Cygni 是银盘上的瞬变点源，在这里只作为源类别的参考，而不是预言的目标流量。参考
+流量本身取 $\fzero=10^{-4}\phcms$，即第~\ref{sec:requirements} 节论证的大气层外
+流量尺度。
+
+在光学计算中，源是单色 511 keV 远场束：光子平行于光轴入射（等效于无穷远处的点源），
+并在式~(\ref{eq:laue_aeff}) 的入射采样面 $A_{\mathrm{inc}}$ 上均匀抽样。三个独立
+随机种子各 $5\times10^{4}$ 个一次光子，共输运 $1.5\times10^{5}$ 个光子，其中
+37{,}256 个发生衍射并穿过焦平面；37{,}194 个（99.8\%）落在半径
+$r=1.898\,\mathrm{cm}$ 的 Be 入射窗内，聚焦光斑半径 $r_{90}=1.03\,\mathrm{cm}$、
+$r_{99}=1.25\,\mathrm{cm}$。窗内穿越记录构成事例表，按记录的位置与方向经 Be 孔径
+重放进入探测器/低温系统模型。
+
+归一化把这次重放与参考流量联系起来。在探测器入射面上，聚焦流携带的率为
+$\fzero\,\aeff(511\keV)\,T$，其中 $T=0.739$ 是第 15 天轨迹锚点处的参考 511 keV
+大气透过率（第~\ref{sec:mission_time} 节）；在参考流量下数值为
+$1.48\times10^{-3}\cps$。等价地说，生成计算对应观测时间
+$N_{\mathrm{fp}}/[\fzero\,\aeff\,T]$，每个重放事例携带该曝光的倒数作为率权重；
+在第~\ref{sec:selection} 节的中间 cut-flow 记账中，同一样本先以单位重放形式出现，
+再施加这一标度。经过共同的探测器响应和事例选择后，存活信号率为
+$1.19\times10^{-3}\cps$，对应选后有效面积
+$S_{\wii}/\fzero=11.9\,\mathrm{cm^2}$。由于光学计算中只有源光子，重放流是纯信号；

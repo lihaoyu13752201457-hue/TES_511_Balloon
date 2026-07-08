@@ -93,7 +93,7 @@ GeoOpt_BPE5_FullWrap_TopCap_10mm.Visibility 1
 GeoOpt_BPE5_FullWrap_TopCap_10mm.Shape PCON 0 360 2 -0.5 20.9 27.4 0.5 20.9 27.4
 GeoOpt_BPE5_FullWrap_TopCap_10mm.Position 0 0 6.7
 GeoOpt_BPE5_FullWrap_TopCap_10mm.Mother InstrumentFrame
-// Volume GeoOpt_W_BottomBaffle_5mm_R60; role=5 mm tungsten bottom baffle for lower-hemisphere atmospheric 511 keV photons; placed inward of the borated-polyethylene bottom layer and just outside the original Mass_model_511 bottom shell; volume_cm3=56.5486678; mass_kg=1.09138929
+// Volume GeoOpt_W_BottomBaffle_5mm_R60; role=5 mm tungsten local bottom gamma baffle retained in S1; placed inward of the borated-polyethylene bottom layer and just outside the original Mass_model_511 bottom shell. The 2026-07-08 4pi atmospheric-511 sidecar shows bottom is not the primary residual atmospheric-511 path; volume_cm3=56.5486678; mass_kg=1.09138929
 Volume GeoOpt_W_BottomBaffle_5mm_R60
 GeoOpt_W_BottomBaffle_5mm_R60.Material W
 GeoOpt_W_BottomBaffle_5mm_R60.Visibility 1

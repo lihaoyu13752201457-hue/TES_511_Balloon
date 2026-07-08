@@ -1,0 +1,319 @@
+{
+  "call_id": "call_y64dDenbqYi9OXow0bFrIRw0",
+  "cmd": "python3 - <<'PY'\nimport json\nfrom pathlib import Path\npaths=[\nPath('stepwise_maintenance/step05_veto_time_axis/outputs_Mass_model_511_fullstat_v1_l1/step05_Mass_model_511_fullstat_v1_l1_response_summary.json'),\nPath('stepwise_maintenance/step05_veto_time_axis/outputs_Mass_model_511_fullstat_v1_l1/prompt_normalization_audit.csv'),\nPath('stepwise_maintenance/step05_veto_time_axis/outputs_Mass_model_511_fullstat_v1_l1/response_summary.json'),\nPath('core_md/balloon511_ea_latex_drafts/paper_source_figure_table/fig_selection_veto_time_axis_summary.json'),\n]\nfor p in paths:\n print('\\n===',p, p.exists())\n if not p.exists(): continue\n if p.suffix=='.json':\n  j=json.loads(p.read_text())\n  for key in ['normalization','checks','outputs','windows']:\n   if key in j:\n    print(key, json.dumps(j[key], indent=2)[:5000])\n  print('top keys', list(j.keys()))\n else:\n  print(p.read_text().splitlines()[:8])\nPY",
+  "call_log": "/home/ubuntu/.codex/sessions/2026/07/04/rollout-2026-07-04T00-44-52-019f28de-6877-7392-9010-bb42ce05cdb9.jsonl",
+  "call_line": 456,
+  "output_log": "/home/ubuntu/.codex/sessions/2026/07/04/rollout-2026-07-04T00-44-52-019f28de-6877-7392-9010-bb42ce05cdb9.jsonl",
+  "output_line": 459
+}
+
+
+=== stepwise_maintenance/step05_veto_time_axis/outputs_Mass_model_511_fullstat_v1_l1/step05_Mass_model_511_fullstat_v1_l1_response_summary.json True
+normalization {
+  "prompt_time_s": 184.2200984295893,
+  "prompt_rate_rule": "per-tag event rate = 1 / sum(TT_s for prompt dat files with that tag)",
+  "prompt_cache_rates_refreshed": false,
+  "prompt_normalization_audit_csv": "stepwise_maintenance/step05_veto_time_axis/outputs_Mass_model_511_fullstat_v1_l1/prompt_normalization_audit.csv",
+  "prompt_normalization_audit_json": "stepwise_maintenance/step05_veto_time_axis/outputs_Mass_model_511_fullstat_v1_l1/prompt_normalization_audit.json",
+  "prompt_normalization_audit": {
+    "status": "PASS",
+    "problems": [],
+    "prompt_dir": "runs/Mass_model_511_nearfield_migration_20260701/step02_instant_candidate_Mass_model_511_fullstat_v1",
+    "prompt_norm": "runs/Mass_model_511_nearfield_migration_20260701/step02_instant_candidate_Mass_model_511_fullstat_v1/normalization.json",
+    "normalization_json": {
+      "non_gamma_replicas": 8,
+      "gamma_splits": 12,
+      "gamma_prompt_time_s_with_farfield_area": 184.2200984295893,
+      "non_gamma_combined_norm_factor": null
+    },
+    "rows": [
+      {
+        "tag": "alpha",
+        "files": 8,
+        "tt_files": 8,
+        "tt_line_count": 8,
+        "tt_sum_s": 1478.291,
+        "tt_mean_s": 184.786375,
+        "tt_min_s": 183.514,
+        "tt_max_s": 186.134,
+        "rate_hz_per_event": 0.0006764568004540379,
+        "rate_times_tt_sum": 1.0,
+        "expected_files_from_normalization": 8,
+        "warnings": []
+      },
+      {
+        "tag": "eminus",
+        "files": 8,
+        "tt_files": 8,
+        "tt_line_count": 8,
+        "tt_sum_s": 1472.612,
+        "tt_mean_s": 184.0765,
+        "tt_min_s": 183.831,
+        "tt_max_s": 184.432,
+        "rate_hz_per_event": 0.0006790654972253383,
+        "rate_times_tt_sum": 1.0,
+        "expected_files_from_normalization": 8,
+        "warnings": []
+      },
+      {
+        "tag": "eplus",
+        "files": 8,
+        "tt_files": 8,
+        "tt_line_count": 8,
+        "tt_sum_s": 1473.9640000000002,
+        "tt_mean_s": 184.24550000000002,
+        "tt_min_s": 184.002,
+        "tt_max_s": 184.725,
+        "rate_hz_per_event": 0.0006784426213937381,
+        "rate_times_tt_sum": 1.0,
+        "expected_files_from_normalization": 8,
+        "warnings": []
+      },
+      {
+        "tag": "gamma",
+        "files": 12,
+        "tt_files": 12,
+        "tt_line_count": 12,
+        "tt_sum_s": 184.18179999999998,
+        "tt_mean_s": 15.348483333333332,
+        "tt_min_s": 15.3345,
+        "tt_max_s": 15.3622,
+        "rate_hz_per_event": 0.005429418107543742,
+        "rate_times_tt_sum": 0.9999999999999999,
+        "expected_files_from_normalization": 12,
+        "warnings": []
+      },
+      {
+        "tag": "muminus",
+        "files": 8,
+        "tt_files": 8,
+        "tt_line_count": 8,
+        "tt_sum_s": 1472.903,
+        "tt_mean_s": 184.112875,
+        "tt_min_s": 183.139,
+        "tt_max_s": 185.05,
+        "rate_hz_per_event": 0.0006789313349215801,
+        "rate_times_tt_sum": 1.0,
+        "expected_files_from_normalization": 8,
+        "warnings": []
+      },
+      {
+        "tag": "muplus",
+        "files": 8,
+        "tt_files": 8,
+        "tt_line_count": 8,
+        "tt_sum_s": 1482.469,
+        "tt_mean_s": 185.308625,
+        "tt_min_s": 183.124,
+        "tt_max_s": 187.212,
+        "rate_hz_per_event": 0.0006745503615927213,
+        "rate_times_tt_sum": 0.9999999999999999,
+        "expected_files_from_normalization": 8,
+        "warnings": []
+      },
+      {
+        "tag": "n",
+        "files": 8,
+        "tt_files": 8,
+        "tt_line_count": 8,
+        "tt_sum_s": 1474.2099999999996,
+        "tt_mean_s": 184.27624999999995,
+        "tt_min_s": 183.939,
+        "tt_max_s": 184.524,
+        "rate_hz_per_event": 0.0006783294103282438,
+        "rate_times_tt_sum": 1.0,
+        "expected_files_from_normalization": 8,
+        "warnings": []
+      },
+      {
+        "tag": "p",
+        "files": 8,
+        "tt_files": 8,
+        "tt_line_count": 8,
+        "tt_sum_s": 1474.262,
+        "tt_mean_s": 184.28275,
+        "tt_min_s": 183.844,
+        "tt_max_s": 184.826,
+        "rate_hz_per_event": 0.0006783054843711633,
+        "rate_times_tt_sum": 1.0,
+        "expected_files_from_normalization": 8,
+        "warnings": []
+      }
+    ]
+  },
+  "delayed_time_s": 7027.052893,
+  "science_unit_injection_rate_s-1": 1.0,
+  "active_veto_threshold_keV": 50.0,
+  "active_veto_match": "Mass_model_511 current geometry; volume name starts with CsI_ plus legacy BGO/ACTIVE_SHIELD/CEBR3 tokens",
+  "reject_policy": "keep",
+  "coincidence_window_s": 1e-06,
+  "rng_seed": 260512,
+  "side_entry_disk": {
+    "center_cm": [
+      -12.94005409571382,
+      0.0,
+      5.586143571373725
+    ],
+    "normal": [
+      0.7071067811865476,
+      0.0,
+      -0.7071067811865475
+    ],
+    "radius_cm": 1.898,
+    "local_center_cm": [
+      -13.1,
+      0.0,
+      -5.2
+    ],
+    "rotation_y_deg": 45.0,
+    "side_window_look_elevation_deg": 44.99999999999999
+  }
+}
+windows {
+  "broad_480_550": {
+    "window_keV": [
+      480.0,
+      550.0
+    ],
+    "by_stream": {
+      "prompt": {
+        "raw_events": 318,
+        "active_veto_pass_events": 108,
+        "side_compton_fov_pass_events": 92,
+        "raw_rate_s-1": 0.22992026073076466,
+        "active_veto_pass_rate_s-1": 0.07325552054670129,
+        "side_compton_fov_pass_rate_s-1": 0.06240108200152845,
+        "active_veto_survival_fraction": 0.3186127238803156,
+        "side_compton_fov_survival_fraction_vs_active": 0.8518277057596908,
+        "side_compton_class_counts": {
+          "keep": 31,
+          "reject_kept": 1,
+          "single": 60,
+          "veto": 16
+        }
+      },
+      "delayed": {
+        "raw_events": 74,
+        "active_veto_pass_events": 45,
+        "side_compton_fov_pass_events": 43,
+        "raw_rate_s-1": 0.01053073046791993,
+        "active_veto_pass_rate_s-1": 0.006403822581843204,
+        "side_compton_fov_pass_rate_s-1": 0.006119208244872396,
+        "active_veto_survival_fraction": 0.6081081081081083,
+        "side_compton_fov_survival_fraction_vs_active": 0.9555555555555557,
+        "side_compton_class_counts": {
+          "keep": 15,
+          "single": 28,
+          "veto": 2
+        }
+      },
+      "science": {
+        "raw_events": 30364,
+        "active_veto_pass_events": 30364,
+        "side_compton_fov_pass_events": 29732,
+        "raw_rate_s-1": 0.8163682314351779,
+        "active_veto_pass_rate_s-1": 0.8163682314351779,
+        "side_compton_fov_pass_rate_s-1": 0.7993762434804615,
+        "active_veto_survival_fraction": 1.0,
+        "side_compton_fov_survival_fraction_vs_active": 0.9791858780138414,
+        "side_compton_class_counts": {
+          "keep": 12134,
+          "single": 17598,
+          "veto": 632
+        }
+      }
+    },
+    "total": {
+      "raw": {
+        "events": 30756,
+        "rate_s-1": 1.0568192226338624
+      },
+      "active_veto_pass": {
+        "events": 30517,
+        "rate_s-1": 0.8960275745637224
+      },
+      "side_compton_fov_pass": {
+        "events": 29867,
+        "rate_s-1": 0.8678965337268624
+      }
+    },
+    "physical_reference_flux": {
+      "reference_flux_ph_cm2_s": 0.0001,
+      "rate_to_v3p5_injection_plane_s-1": 0.0014843489008928919,
+      "prompt_background_cps": 0.06240108200152845,
+      "delayed_background_cps": 0.006119208244872396,
+      "background_cps": 0.06852029024640084,
+      "signal_cps_at_reference_flux": 0.0011865532484101118,
+      "signal_to_background": 0.017316815853278406,
+      "mission_days": 20.0,
+      "source_counts_20d": 2050.3640132526734,
+      "background_counts_20d": 118403.06154578066,
+      "Z20d_direct_s_over_sqrt_b": 5.95867233951368,
+      "T3_day_constant_rate_direct": 5.069597683152027,
+      "T5_day_constant_rate_direct": 14.082215786533407,
+      "flux_3sigma_20d_ph_cm2_s": 5.03467858117677e-05,
+      "low_stat_final_background_events": 135,
+      "low_stat_background_relative_poisson_sigma_approx": 0.08606629658238704,
+      "low_stat_prompt_final_events": 92,
+      "low_stat_delayed_final_events": 43,
+      "science_unit_rate_final_events": 29732,
+      "claim_note": "Direct expectation only. It uses the current Step05 selected-event rates and does not replace a full Step06-Step08 mission-axis regeneration."
+    }
+  },
+  "w2_510p58_511p42": {
+    "window_keV": [
+      510.58,
+      511.42
+    ],
+    "by_stream": {
+      "prompt": {
+        "raw_events": 153,
+        "active_veto_pass_events": 71,
+        "side_compton_fov_pass_events": 65,
+        "raw_rate_s-1": 0.1180156922864968,
+        "active_veto_pass_rate_s-1": 0.048160092513702304,
+        "side_compton_fov_pass_rate_s-1": 0.044088948071811976,
+        "active_veto_survival_fraction": 0.4080821082402168,
+        "side_compton_fov_survival_fraction_vs_active": 0.9154664322803777,
+        "side_compton_class_counts": {
+          "keep": 22,
+          "single": 43,
+          "veto": 6
+        }
+      },
+      "delayed": {
+        "raw_events": 43,
+        "active_veto_pass_events": 28,
+        "side_compton_fov_pass_events": 28,
+        "raw_rate_s-1": 0.006119208244872394,
+        "active_veto_pass_rate_s-1": 0.003984600717591325,
+        "side_compton_fov_pass_rate_s-1": 0.003984600717591324,
+        "active_veto_survival_fraction": 0.6511627906976742,
+        "side_compton_fov_survival_fraction_vs_active": 0.9999999999999996,
+        "side_compton_class_counts": {
+          "keep": 8,
+          "single": 20
+        }
+      },
+      "science": {
+        "raw_events": 30305,
+        "active_veto_pass_events": 30305,
+        "side_compton_fov_pass_events": 29687,
+        "raw_rate_s-1": 0.814781954078615,
+        "active_veto_pass_rate_s-1": 0.814781954078615,
+        "side_compton_fov_pass_rate_s-1": 0.7981663709203692,
+        "active_veto_survival_fraction": 1.0,
+        "side_compton_fov_survival_fraction_vs_active": 0.9796073255242438,
+        "side_compton_class_counts": {
+          "keep": 12098,
+          "single": 17589,
+   
+top keys ['status', 'statistics_label', 'generated_at_utc', 'claim_level', 'preflight', 'inputs', 'normalization', 'science_physical_normalization', 'catalog', 'windows', 'timeline', 'timeline_draw_summary', 'downstream_status', 'pending']
+
+=== stepwise_maintenance/step05_veto_time_axis/outputs_Mass_model_511_fullstat_v1_l1/prompt_normalization_audit.csv True
+['tag,files,tt_files,tt_line_count,tt_sum_s,tt_mean_s,tt_min_s,tt_max_s,rate_hz_per_event,rate_times_tt_sum,expected_files_from_normalization,warnings', 'alpha,8,8,8,1478.291,184.786375,183.514,186.134,0.0006764568004540379,1.0,8,', 'eminus,8,8,8,1472.612,184.0765,183.831,184.432,0.0006790654972253383,1.0,8,', 'eplus,8,8,8,1473.9640000000002,184.24550000000002,184.002,184.725,0.0006784426213937381,1.0,8,', 'gamma,12,12,12,184.18179999999998,15.348483333333332,15.3345,15.3622,0.005429418107543742,0.9999999999999999,12,', 'muminus,8,8,8,1472.903,184.112875,183.139,185.05,0.0006789313349215801,1.0,8,', 'muplus,8,8,8,1482.469,185.308625,183.124,187.212,0.0006745503615927213,0.9999999999999999,8,', 'n,8,8,8,1474.2099999999996,184.27624999999995,183.939,184.524,0.0006783294103282438,1.0,8,']
+
+=== stepwise_maintenance/step05_veto_time_axis/outputs_Mass_model_511_fullstat_v1_l1/response_summary.json False
+
+=== core_md/balloon511_ea_latex_drafts/paper_source_figure_table/fig_selection_veto_time_axis_summary.json True
+top keys ['status', 'inputs', 'figures', 'w2_physical_rates_cps', 'w2_survival_fraction', 'w2_compton_class_counts', 'poisson_timeline', 'time_fold_reference_case']

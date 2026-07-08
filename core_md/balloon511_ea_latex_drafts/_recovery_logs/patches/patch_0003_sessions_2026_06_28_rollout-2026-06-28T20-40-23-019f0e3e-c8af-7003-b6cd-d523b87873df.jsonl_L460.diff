@@ -1,0 +1,55 @@
+*** Begin Patch
+*** Update File: core_md/balloon511_ea_latex_drafts/balloon511_ea_draft_en.tex
+@@
+ of the baseline value. The baseline selection therefore treats ambiguous
+ multi-hit events as a reconstruction-model boundary that must be validated, not
+ as a sensitivity gain from aggressive event rejection.
+ 
++\added{To connect this selection chain explicitly to the finite Monte Carlo
++evidence package, Table~\ref{tab:phase2_cutflow} gives the current Phase 2
++$\wii$ cut-flow obtained by lightweight replay of the Step05 event catalogues.
++The table is not a new Geant4/MEGAlib transport. It replays the current
++authority event catalogues with the same TES energy window, CsI veto, and
++Compton-kinematic/field-of-view consistency checks; uncertainties are Monte
++Carlo quadrature sums over event weights. The current Step05 records first fix
++the energy window and then report raw, active-shield, and topology stages, so
++the raw stage should be read as the pre-veto sample inside the line window, not
++as an all-energy incident sample.}
++
++\begin{table}[t]
++\centering
++\caption{\added{Phase 2 evidence-package $\wii$ line-window cut-flow.}}
++\label{tab:phase2_cutflow}
++\footnotesize
++\resizebox{\linewidth}{!}{%
++{\color{red}
++\begin{tabular}{llccc}
++\toprule
++Stream & Stage & Events & Rate / $\cps$ & Statistical uncertainty / $\cps$ \\
++\midrule
++Prompt background & Line-window pre-veto & 161 & $1.1877\times10^{-1}$ & $1.15\times10^{-2}$ \\
++Prompt background & After CsI veto & 60 & $4.0712\times10^{-2}$ & $5.26\times10^{-3}$ \\
++Prompt background & Topology/FOV selected & 54 & $3.6641\times10^{-2}$ & $4.99\times10^{-3}$ \\
++Delayed activation & Line-window pre-veto & 54 & $4.6354\times10^{-3}$ & $6.31\times10^{-4}$ \\
++Delayed activation & After CsI veto & 33 & $2.8327\times10^{-3}$ & $4.93\times10^{-4}$ \\
++Delayed activation & Topology/FOV selected & 30 & $2.5752\times10^{-3}$ & $4.70\times10^{-4}$ \\
++Focused signal & Line-window pre-veto & 30323 & $8.1527\times10^{-1}$ & $4.68\times10^{-3}$ \\
++Focused signal & After CsI veto & 30323 & $8.1527\times10^{-1}$ & $4.68\times10^{-3}$ \\
++Focused signal & Topology/FOV selected & 29715 & $7.9892\times10^{-1}$ & $4.63\times10^{-3}$ \\
++\bottomrule
++\end{tabular}
++}}
++\vspace{0.5ex}
++\begin{minipage}{0.94\linewidth}
++\footnotesize\color{red}
++The focused-signal rows are Step05 unit-replay rates used to show veto survival
++behavior; the point-source signal rate in Table~\ref{tab:primary_sensitivity}
++is scaled separately by the Laue effective area, reference flux, and atmospheric
++transmission.
++\end{minipage}
++\end{table}
++
+ The detector-level time-axis construction used to validate this veto bookkeeping
+ is a Poisson superposition of independent streams. For stream $k$ with
+ event-catalogue rates $r_{kj}$ and total rate $R_k=\sum_j r_{kj}$, a validation
+*** End Patch

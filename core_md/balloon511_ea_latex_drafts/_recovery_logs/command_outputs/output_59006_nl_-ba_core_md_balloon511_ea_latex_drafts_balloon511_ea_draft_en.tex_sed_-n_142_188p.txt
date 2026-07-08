@@ -1,0 +1,56 @@
+{
+  "call_id": "call_shq9Bm8JsuWmfuGNQVUoPh5M",
+  "cmd": "nl -ba core_md/balloon511_ea_latex_drafts/balloon511_ea_draft_en.tex | sed -n '142,188p'",
+  "call_log": "/home/ubuntu/.codex/sessions/2026/06/28/rollout-2026-06-28T20-40-23-019f0e3e-c8af-7003-b6cd-d523b87873df.jsonl",
+  "call_line": 2004,
+  "output_log": "/home/ubuntu/.codex/sessions/2026/06/28/rollout-2026-06-28T20-40-23-019f0e3e-c8af-7003-b6cd-d523b87873df.jsonl",
+  "output_line": 2007
+}
+
+   142	\subsection{Laue optics and detector-coupled signal replay}
+   143	\label{sec:optics}
+   144	
+   145	The signal model follows the standard Laue-lens approach in which mosaic crystals diffract incident gamma rays in transmission and concentrate them onto a small focal detector \cite{Barriere2009Laue,Barriere2011LauePrototype}. This is the same optical principle adopted in earlier focused gamma-ray telescope studies, where detector response must be evaluated together with the focused phase space rather than from lens effective area alone \cite{Weidenspointner2006MAX}. For the present 511 keV TES concept \cite{Shirazi2023}, the baseline optical configuration is a single-energy Ge(111) Laue ring with focal length $10\,\mathrm{m}$, 25 square tiles of 18 mm side length, 30 arcsec mosaic FWHM, and active Ge mass $0.441\,\mathrm{kg}$. External XOP/CRYSTAL rocking-curve maps \cite{SanchezDelRio2011XOP} set the Ge(111) diffraction probability and angular response. The effective-area normalization is the ring geometric area multiplied by the simulated fraction of diffracted photons that emerge through the detector entrance aperture, giving $\aeff(511\keV)=20.1\,\mathrm{cm^2}$.
+   146	
+   147	The optical simulation is used as a source generator rather than as a standalone effective-area calculation. During transport, gamma rays that cross the nominal focal plane are recorded with their energy, position, direction, and production history. Only tracked diffracted photons that fall within the Be entrance-window aperture are passed downstream; analytic spot projections are retained only as diagnostics. This preserves the attenuation and scattering that occur while the diffracted photon exits the Ge crystal.
+   148	
+   149	Figure~\ref{fig:optics} shows the two levels of the optics-detector coupling: the radial optical constraint from the configured Laue ring to the focal plane (panel a), and the transverse distribution injected into the detector model (panel b).
+   150	
+   151	\begin{figure}[tbp]
+   152	\centering
+   153	\begin{minipage}[t]{0.62\linewidth}
+   154	\centering
+   155	\includegraphics[width=\linewidth]{paper_source_figure_table/fig_optics_laue_transport_schematic.png}\\[0.3ex]
+   156	{\footnotesize (a)}
+   157	\end{minipage}\hfill
+   158	\begin{minipage}[t]{0.36\linewidth}
+   159	\centering
+   160	\includegraphics[width=\linewidth]{paper_source_figure_table/fig_optics_focal_crossings_xy.png}\\[0.3ex]
+   161	{\footnotesize (b)}
+   162	\end{minipage}
+   163	\caption{Laue-lens optics coupling. (a) Simulation-derived radial--$z$ view of the 511 keV signal source: the diffracted fan terminates on tracked focal-plane crossings that satisfy the Be entrance-aperture gate. (b) Tracked transverse focal-plane positions $(x_{\rm fp},y_{\rm fp})$ accepted by the Be entrance aperture and used for detector replay; the red circle marks the Be-window aperture.}
+   164	\label{fig:optics}
+   165	\end{figure}
+   166	
+   167	The accepted focal-plane photons are transformed into the local side-entry detector coordinate system and replayed through the detector/cryostat mass model. This keeps the simulated entrance position and direction distribution, rather than replacing the optical calculation with an analytic focal spot. The focal-plane crossing table used here is therefore a transported optical-signal input: it records gamma rays from the 511 keV source simulation that cross the focal plane, not particles produced by atmospheric or cosmic-ray interactions in the upstream lens hardware.
+   168	
+   169	An auxiliary upstream-hardware calculation was run to test that this boundary can be treated by the same Geant4/MEGAlib background machinery when needed. The calculation places an equal-volume and equal-mass Ge proxy for the active Laue crystals at the 10 m upstream lens position. The proxy corresponds to 25 square Ge tiles of 18 mm side length and about 10.2 mm thickness, giving active Ge volume $82.8\,\mathrm{cm^3}$ and mass $0.441\,\mathrm{kg}$. The atmospheric far-field source surface is derived from the combined detector-plus-lens enclosing radius: the 10 m lens center plus the active-crystal volume bound gives about $1009\,\mathrm{cm}$, and the transport source surface is rounded upward to a radius of $1060\,\mathrm{cm}$ inside a $2500\,\mathrm{cm}$ world half-size. Production prompt and activation-production transports were run for the proxy with the same eight EXPACS/PARMA particle families ($\gamma$, $n$, $e^\pm$, $p$, $\alpha$, and $\mu^\pm$) used in the detector-background chain. These runs define the full-particle transport and isotope-production boundary for the upstream mass proxy. The delayed component from the active-Ge proxy is isolated from the combined isotope-production records and replayed as a recorded-position decay source through the same detector-level selection; its selected-rate consequence is reported in Section~\ref{subsec:upstream_optics_background}.
+   170	
+   171	For the focused point-source response, $\fzero=10^{-4}\phcms$ denotes the reference incident 511 keV photon flux. The quoted line-window signal response, $1.19\times10^{-3}\cps$, is the selected $\wii$ signal rate at that flux after detector transport, the reference atmospheric-transmission factor, and detector-level event selection. The corresponding selected effective area is $A_{\mathrm{sel}}=S_{\wii}/\fzero=11.9\,\mathrm{cm^2}$. This reference normalization should be read as the baseline pointing case, not as a universal atmospheric transmission for all balloon pointings. Low-elevation or long-slant observations, including Galactic-center observations from northern mid-latitude balloon trajectories, should use a slant-column transmission model; such slant-column calculations remain boundary checks rather than replacements for the quoted reference-exposure result.
+   172	
+   173	\subsection{Prompt atmospheric and delayed-activation source model}
+   174	\label{sec:background}
+   175	
+   176	\subsubsection{Prompt atmospheric source}
+   177	\label{subsec:prompt_source}
+   178	
+   179	The background source model is separated into prompt atmospheric transport and delayed activation so that source generation does not absorb assumptions that belong to detector selection. The prompt atmospheric field is derived from EXPACS/PARMA. PARMA3.0 is an analytical model parameterized from PHITS atmospheric-shower calculations and benchmarked for terrestrial cosmic-ray fields, and EXPACS is its public tabulation/software interface \cite{Sato2015EXPACS,Sato2016PARMA4}. PHITS supplies the underlying particle-transport calculation for cosmic-ray interactions in the atmosphere: primary cosmic rays interact with air nuclei, secondary hadrons, leptons, photons, and neutrons are transported through the atmospheric column, and the resulting particle fluences are parameterized by altitude, geomagnetic cutoff, solar modulation, energy, and direction. In this work EXPACS/PARMA provides the differential incident particle flux as a function of particle species, kinetic energy, zenith angle, geographic position, altitude, geomagnetic cutoff rigidity, and solar modulation. It is used only to construct the external radiation fields; detector response, vetoing, topology selection, and mission-time counting are applied later. The reference source definitions use latitude $34^\circ$, longitude $100^\circ$, altitude $38\,\mathrm{km}$, vertical cutoff rigidity $R_c=11.6\,\mathrm{GV}$, and the 2025-08-31 solar condition corresponding to $W=118.3$.
+   180	
+   181	The prompt source includes photons, neutrons, electrons, positrons, protons, alpha particles, negative muons, and positive muons. For each particle family, the EXPACS/PARMA differential spectrum is converted into a MEGAlib far-field area source over the full zenith range $\theta=0^\circ$--$180^\circ$ and full azimuth range $\phi=0^\circ$--$360^\circ$. The zenith dependence is represented by 20 differential equal-$\mu$ angular bins, where $\mu=\cos\theta$ and each bin subtends $\Delta\Omega=0.6283185307\,\mathrm{sr}$. The first ten bins cover down-going particles ($0^\circ\leq\theta\leq90^\circ$), and the last ten bins cover up-going or albedo-like particles ($90^\circ\leq\theta\leq180^\circ$). Both hemispheres are retained in both the prompt transport and the activation-production transport, so upward albedo particles are not discarded at source construction.
+   182	
+   183	Figure~\ref{fig:expacs_fullsphere_flux} shows the resulting full-sphere flux field.
+   184	
+   185	\begin{figure}[t]
+   186	\centering
+   187	\includegraphics[width=\linewidth]{paper_source_figure_table/fig_expacs_fullsphere_flux.png}
+   188	\caption{EXPACS/PARMA full-sphere atmospheric flux field used to generate the prompt and activation-production transport inputs. Left: energy- and solid-angle-integrated fluxes for the eight transported particle families, separated into down-going and up-going hemispheres. Right: bin-integrated flux in the 20 equal-$\mu$ differential zenith bins used by the MEGAlib far-field source. The plot is generated from the source-definition inputs for latitude $34^\circ$, longitude $100^\circ$, altitude $38\,\mathrm{km}$, $R_c=11.6\,\mathrm{GV}$, and $W=118.3$.}

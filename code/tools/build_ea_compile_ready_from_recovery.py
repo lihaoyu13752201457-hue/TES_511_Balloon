@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 from __future__ import annotations
 
+import re
 from pathlib import Path
 
 
@@ -24,14 +25,42 @@ def extract_between(text: str, start: str, end: str) -> str:
 
 def extract_bibliography(path: Path) -> str:
     text = path.read_text(encoding="utf-8", errors="replace")
-    start = text.index(r"\begin{thebibliography}")
+    start = text.rindex(r"\begin{thebibliography}")
     end = text.index(r"\end{thebibliography}", start) + len(r"\end{thebibliography}")
     return text[start:end]
+
+
+def extract_bibitem(text: str, key: str) -> str:
+    pattern = re.compile(
+        rf"\\bibitem(?:\[[^\]]*\])?\{{{re.escape(key)}\}}.*?(?=\n\\bibitem|\n\\end\{{thebibliography\}})",
+        re.S,
+    )
+    match = pattern.search(text)
+    if not match:
+        raise ValueError(f"missing bibitem {key}")
+    return match.group(0).strip()
+
+
+def append_missing_bibitems(bibliography: str, source_text: str, keys: list[str]) -> str:
+    missing = [extract_bibitem(source_text, key) for key in keys if "{" + key + "}" not in bibliography]
+    if not missing:
+        return bibliography
+    return bibliography.replace(
+        r"\end{thebibliography}",
+        "\n\n" + "\n\n".join(missing) + "\n\n" + r"\end{thebibliography}",
+    )
 
 
 def lines_1based(text: str, start: int, end: int) -> list[str]:
     lines = text.splitlines()
     return lines[start - 1 : end]
+
+
+def line_number_of(text: str, marker: str, start: int = 1) -> int:
+    for idx, line in enumerate(text.splitlines(), start=1):
+        if idx >= start and marker in line:
+            return idx
+    raise ValueError(f"missing marker after line {start}: {marker}")
 
 
 def drop_unmatched_equation_ends(lines: list[str]) -> list[str]:
@@ -65,7 +94,8 @@ def build_en():
     keywords = extract_between(src, r"\keywords{", "}\n\n\\maketitle")
 
     body = []
-    body.extend(drop_unmatched_equation_ends(lines_1based(src, 62, 529)))
+    results_line = line_number_of(src, r"\section{Results}", start=62)
+    body.extend(drop_unmatched_equation_ends(lines_1based(src, 62, results_line - 1)))
     body.append("")
     body.append(r"\section{Results}")
     body.append(r"\label{sec:results}")
@@ -101,7 +131,9 @@ def build_en():
         "from this compile-ready reading copy; see the raw partial source and recovery manifest."
     )
     body.append("")
-    body.extend(lines_1based(src, 687, 714))
+    discussion_start = line_number_of(src, r"\section{Discussion and conclusions}", start=results_line)
+    discussion_end = line_number_of(src, "archive; they will either", start=discussion_start) - 1
+    body.extend(lines_1based(src, discussion_start, discussion_end))
     body.append("")
     body.append(r"\section*{Data and software availability}")
     body.append(
@@ -120,7 +152,7 @@ def build_en():
     body.append("")
     body.append(r"\textbf{Ethics approval and consent to participate} Not applicable.")
     body.append("")
-    body.extend(lines_1based(src, 843, 959))
+    body.append(extract_bibliography(src_path))
 
     preamble = r"""\documentclass[11pt]{article}
 \usepackage[a4paper,top=2.4cm,bottom=2.5cm,left=2.0cm,right=2.0cm]{geometry}
@@ -185,7 +217,8 @@ def build_zh():
     src_path = PARTIAL / "balloon511_ea_draft_zh.recovered_partial.tex"
     src = src_path.read_text(encoding="utf-8", errors="replace")
     body = []
-    body.extend(lines_1based(src, 1, 392))
+    appendix_line = line_number_of(src, r"\appendix")
+    body.extend(lines_1based(src, 1, appendix_line - 1))
     body.insert(22, r"\graphicspath{{../}}")
     body.append("")
     body.append(r"\clearpage")
@@ -195,7 +228,19 @@ def build_zh():
         "本文件只生成可阅读 PDF，缺失正文请继续从恢复片段或人工补稿。"
     )
     body.append("")
-    body.append(extract_bibliography(NIMA / "balloon511_nima_draft_zh.tex"))
+    bibliography = extract_bibliography(NIMA / "balloon511_nima_draft_zh.tex")
+    bibliography = append_missing_bibitems(
+        bibliography,
+        src,
+        [
+            "Guan2023BraggReflection",
+            "Reiazi2025G4BraggReflection",
+            "Xie2026AlMn",
+            "Vavagiakis2017AlMnMagnetic",
+            "NISTXCOM",
+        ],
+    )
+    body.append(bibliography)
     body.append(r"\end{document}")
     write(OUT / "balloon511_ea_draft_zh.compile_ready.tex", "\n".join(body) + "\n")
 

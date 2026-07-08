@@ -9,6 +9,9 @@ User-reviewed revision implemented here:
 - active plastic scintillator is full-wrap rather than segmented by the low-statistics e+ sample;
 - borated polyethylene is a full inner envelope with only the signal-window region cut out;
 - the bottom W baffle is 5 mm thick and placed inward of the borated polyethylene.
+  After the 2026-07-08 atmospheric-511 4pi sidecar replay, this W disk is treated
+  as a retained local gamma baffle, not as the primary atmospheric-511 mitigation
+  path.
 
 ## Source
 
@@ -25,7 +28,7 @@ User-reviewed revision implemented here:
 | `GeoOpt_BPE5_FullWrap_SideShell_SignalWindowCut_10mm` | BoratedPolyethylene5wtB | 4.544 | 1 cm borated polyethylene inner side shell with a rectangular negative-x signal-window cutout; kept inside the plastic scintillator skin so the BPE does not become the first passive charged-particle stop |
 | `GeoOpt_BPE5_FullWrap_BottomCap_10mm` | BoratedPolyethylene5wtB | 2.241 | 1 cm borated polyethylene bottom cap inside the plastic skin and outside the W bottom baffle |
 | `GeoOpt_BPE5_FullWrap_TopCap_10mm` | BoratedPolyethylene5wtB | 0.937 | 1 cm borated polyethylene top annulus inside the plastic skin; preserves the existing central service/support opening |
-| `GeoOpt_W_BottomBaffle_5mm_R60` | W | 1.091 | 5 mm tungsten bottom baffle for lower-hemisphere atmospheric 511 keV photons; placed inward of the borated-polyethylene bottom layer and just outside the original Mass_model_511 bottom shell |
+| `GeoOpt_W_BottomBaffle_5mm_R60` | W | 1.091 | 5 mm tungsten local bottom gamma baffle retained in S1; placed inward of the borated-polyethylene bottom layer and just outside the original Mass_model_511 bottom shell. The 2026-07-08 4pi atmospheric-511 sidecar shows bottom is not the primary residual atmospheric-511 path. |
 
 ## Geometry Choices
 

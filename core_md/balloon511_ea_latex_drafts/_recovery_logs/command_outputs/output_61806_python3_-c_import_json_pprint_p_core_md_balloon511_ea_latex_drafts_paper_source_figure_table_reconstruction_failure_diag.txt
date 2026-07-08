@@ -1,0 +1,44 @@
+{
+  "call_id": "call_EHkijVo5rTe3hAvJktAQYplu",
+  "cmd": "python3 -c \"import json,pprint; p='core_md/balloon511_ea_latex_drafts/paper_source_figure_table/reconstruction_failure_diagnostic_20260702.json'; d=json.load(open(p)); pprint.pp({k:d[k] for k in ['status','summary_consistency','manuscript_recommendation']}); pprint.pp(d['alternatives'])\"",
+  "call_log": "/home/ubuntu/.codex/sessions/2026/07/01/rollout-2026-07-01T22-08-25-019f1e02-73cd-7511-ac67-a36d2a3c1926.jsonl",
+  "call_line": 2630,
+  "output_log": "/home/ubuntu/.codex/sessions/2026/07/01/rollout-2026-07-01T22-08-25-019f1e02-73cd-7511-ac67-a36d2a3c1926.jsonl",
+  "output_line": 2634
+}
+
+{'status': 'PASS_EA_RECONSTRUCTION_FAILURE_DIAGNOSTIC',
+ 'summary_consistency': {'matches_step05_summary': True,
+                         'expected_signal_rate_cps': 0.7989191805133156,
+                         'recomputed_signal_rate_cps': 0.7989191805127599,
+                         'signal_rate_delta_cps': -5.556666238248908e-13,
+                         'expected_background_rate_cps': 0.0392162265186315,
+                         'recomputed_background_rate_cps': 0.03921622651863149,
+                         'background_rate_delta_cps': -6.938893903907228e-18},
+ 'manuscript_recommendation': {'status': 'USE_SINGLE_SITE_ONLY_VALUES',
+                               'english': 'Use the single-site-only diagnostic '
+                                          'if quoting the 59-68% retention '
+                                          'sentence. Do not describe those '
+                                          'values as only dropping the '
+                                          'reject_kept/unreconstructed class.',
+                               'rounded_values': {'signal_retention_percent': 59.4,
+                                                  'background_retention_percent': 68.2,
+                                                  's_over_sqrt_b_fraction': 0.72}}}
+{'single_site_only': {'name': 'single_site_only',
+                      'retained_classes': ['single'],
+                      'signal_rate_cps': 0.47488842286375677,
+                      'background_rate_cps': 0.02673665032826168,
+                      'signal_events': 17663,
+                      'background_events': 56,
+                      'signal_retention_fraction_vs_baseline': 0.5944135958270088,
+                      'background_retention_fraction_vs_baseline': 0.6817751910821708,
+                      's_over_sqrt_b_fraction_vs_baseline': 0.7198933096572097},
+ 'drop_reject_kept_only': {'name': 'drop_reject_kept_only',
+                           'retained_classes': ['single', 'keep'],
+                           'signal_rate_cps': 0.798892294455869,
+                           'background_rate_cps': 0.03921622651863149,
+                           'signal_events': 29714,
+                           'background_events': 84,
+                           'signal_retention_fraction_vs_baseline': 0.9999663469628133,
+                           'background_retention_fraction_vs_baseline': 1.0,
+                           's_over_sqrt_b_fraction_vs_baseline': 0.9999663469628133}}

@@ -1,0 +1,14 @@
+{
+  "call_id": "call_rJZiQc7AOW3n9oDp2eOrMDiK",
+  "cmd": "python3 - <<'PY'\nfrom pathlib import Path\nimport re\np=Path('core_md/balloon511_ea_latex_drafts/balloon511_ea_draft_en.tex')\ntext=p.read_text()\nlabels=re.findall(r'\\\\label\\{([^}]+)\\}', text)\nrefs=re.findall(r'\\\\ref\\{([^}]+)\\}', text)\nfor name in ['subsec:pointsource','sec:background','sec:selection']:\n    print(name, 'labels', labels.count(name), 'refs', refs.count(name))\nprint('contains_chinese_reference_pointsource', '参考点源构建' in text)\nprint('contains_code_fence', '```' in text)\nPY",
+  "call_log": "/home/ubuntu/.codex/sessions/2026/07/01/rollout-2026-07-01T22-08-25-019f1e02-73cd-7511-ac67-a36d2a3c1926.jsonl",
+  "call_line": 7115,
+  "output_log": "/home/ubuntu/.codex/sessions/2026/07/01/rollout-2026-07-01T22-08-25-019f1e02-73cd-7511-ac67-a36d2a3c1926.jsonl",
+  "output_line": 7118
+}
+
+subsec:pointsource labels 1 refs 1
+sec:background labels 1 refs 1
+sec:selection labels 1 refs 3
+contains_chinese_reference_pointsource False
+contains_code_fence False

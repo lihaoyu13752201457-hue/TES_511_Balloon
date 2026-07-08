@@ -1,0 +1,175 @@
+{
+  "call_id": "call_nIujHgUsfSh4zjWxjarfK0EV",
+  "cmd": "nl -ba core_md/balloon511_ea_latex_drafts/balloon511_ea_draft_en.tex | sed -n '260,420p'",
+  "call_log": "/home/ubuntu/.codex/sessions/2026/07/01/rollout-2026-07-01T22-08-25-019f1e02-73cd-7511-ac67-a36d2a3c1926.jsonl",
+  "call_line": 7086,
+  "output_log": "/home/ubuntu/.codex/sessions/2026/07/01/rollout-2026-07-01T22-08-25-019f1e02-73cd-7511-ac67-a36d2a3c1926.jsonl",
+  "output_line": 7089,
+  "source_path": "core_md/balloon511_ea_latex_drafts/balloon511_ea_draft_en.tex",
+  "range": [
+    260,
+    420
+  ]
+}
+
+carry about $82.5\,\mathrm{Bq}$, $\mu^-$-induced products $2.75\,\mathrm{Bq}$,
+proton-induced products $0.15\,\mathrm{Bq}$, and $\alpha$-induced products
+$0.022\,\mathrm{Bq}$, with smaller $\mu^+$ and $e^+$ terms. The
+neutron-induced activity remains dominated by the CsI shield, whereas the
+$\mu^-$ component is qualitatively different: Cu/support material, Al shells,
+and W-bearing passive material account for 32\%, 29\%, and 21\% of the
+$\mu^-$-induced activity, respectively
+(Figure~\ref{fig:position_sampling_necessity} in Appendix~\ref{app:delayed}).
+A volume-integrated or axisymmetric radial source could preserve the total
+activity, but it would erase these incident-family, material, nuclide, and
+coordinate correlations; the production-position construction keeps them in
+the source before detector transport.
+
+The delayed-decay source is therefore launched from sampled production
+positions rather than from an axisymmetric profile. Let row $j$ of the
+weighted production table carry activity weight $w_j$, with total activity
+$A=\sum_j w_j$. The construction draws $M$ production positions with
+replacement using probabilities $p_j=w_j/A$ and assigns each sampled point
+source the flux $A/M$. The expected activity assigned to row $j$ is then
+\begin{equation}
+  \mathbb{E}\!\left[N_j\frac{A}{M}\right] = M p_j \frac{A}{M} = w_j ,
+\end{equation}
+so the estimator preserves the total activity and is unbiased for the weighted
+spatial distribution. Here $M$ is the number of equal-activity sampled point
+sources, a sampling size rather than the number of physical production rows.
+The reference delayed source preserves the fixed total activity at the
+source-definition level and is replayed through the same detector/cryostat
+geometry as the prompt stream; the nominal calculation transported $10^{6}$
+delayed decays, and the corresponding Cosima live time is a transport record
+for the generated decay sequence, not a physical balloon exposure.
+
+Table~\ref{tab:background_source_model} collects the source layers used by the
+current detector-coupled calculation. It belongs to the source-model section
+because it defines the incident and delayed radioactive populations before any
+detector veto or topology selection is applied.
+
+\begin{table}[t]
+\centering
+\caption{Background-source layers used by the current detector-coupled chain. The table defines the source construction only; vetoes, topology selections, and the hard line window are applied later in Section~\ref{sec:selection}.}
+\label{tab:background_source_model}
+\begin{tabular}{p{0.22\linewidth}p{0.34\linewidth}p{0.34\linewidth}}
+\hline
+Layer & Physical role & Current implementation \\
+\hline
+Prompt atmospheric transport & Direct detector hits from atmospheric secondaries & EXPACS/PARMA full-sphere source definitions at $34^\circ$ latitude, $100^\circ$ longitude, $38\,\mathrm{km}$ altitude, $R_c=11.6\,\mathrm{GV}$, and $W=118.3$; $\gamma$, $n$, $e^\pm$, $p$, $\alpha$, and $\mu^\pm$ over 20 equal-$\mu$ differential zenith bins including both down-going and up-going hemispheres; 25,210,216 generated primaries. \\
+Activation production & Radioisotope production and production-position history & Same atmospheric fields transported as a buildup stream, again retaining both hemispheres and all eight particle families; 25,210,216 generated primaries. \\
+Fixed delayed population & Radioactive activity after continuous exposure to the adopted day-15 state & Production--decay buildup with NUBASE-checked ground-state half-lives; total fixed activity $85.45\,\mathrm{Bq}$. \\
+Production-position decay transport & Delayed decay particles emitted from sampled production locations & Equal-activity sampled point sources from the weighted production table; reference transports use $10^6$ delayed decays per source sampling. \\
+\hline
+\end{tabular}
+\end{table}
+
+This production-position representation does not place one point source at
+every production row; it is a statistically sampled approximation whose
+adequacy is evaluated downstream in Section~\ref{subsec:convergence}.
+Source-inventory checks verify activity conservation and source serialization;
+the selected-rate behavior is evaluated separately after detector transport
+and event selection.
+
+\subsection{Detector event selection and veto definition}
+\label{sec:selection}
+
+The analysis window is
+\begin{equation}
+  \wii = [510.79,511.21]\keV,
+\end{equation}
+corresponding to $511\keV\pm210\,\mathrm{eV}$. This window is matched to a sub-keV TES response assumption and is narrow enough to suppress continuum background while retaining most of the line response.
+The quoted flux thresholds therefore apply to a line whose intrinsic width remains small compared with this analysis window after detector response; broader source lines would require convolving the source line profile with the detector response and re-optimizing or widening the analysis window.
+
+The detector selection has two explicitly separated veto layers. First, an
+active anticoincidence gate is applied on a common detector time axis. For a
+candidate group $c$, formed from event instances separated by no more than
+$\tau=1\,\mu\mathrm{s}$, the TES energy and active-shield energy are
+\begin{equation}
+  E_{\mathrm{TES}}^{(c)}=\sum_{j\in c}E_{\mathrm{TES},j},\qquad
+  E_{\mathrm{sh}}^{(c)}=\sum_{j\in c}E_{\mathrm{sh},j}.
+\end{equation}
+A candidate enters the hard line window if $E_{\mathrm{TES}}^{(c)}\in\wii$,
+and it passes the active shield if
+\begin{equation}
+  E_{\mathrm{sh}}^{(c)} < E_{\mathrm{veto}}, \qquad E_{\mathrm{veto}}=50\keV
+\end{equation}
+for the baseline CsI configuration. The shield sum is evaluated from the CsI
+active-shield volumes in post-processing. Native detector trigger/veto blocks
+are present in the geometry description, but the quantitative rate definition is
+this common post-processing definition, so prompt, delayed, and focused-signal
+streams use the same coincidence window and threshold.
+
+The second layer is a topology/field-of-view consistency test on the TES hits
+that survive the active-shield gate. Baseline event classes are kept explicit:
+single-site events, valid reconstructed multi-site events, and unreconstructed
+multi-site events. Single-pixel TES events are retained as calorimetric line
+candidates. For a two-hit event, both possible first-scatter orders are tested
+under the assumptions of a single Compton scatter followed by full absorption
+in the measured TES hits. For an assumed order with first deposited energy
+$E_1$ and remaining scattered-photon energy $E_{\mathrm{sc}}$, the kinematic
+angle is computed from
+\begin{equation}
+  \cos\theta_C =
+  1 - m_ec^2\left(\frac{1}{E_{\mathrm{sc}}}
+  - \frac{1}{E_1+E_{\mathrm{sc}}}\right).
+\end{equation}
+The event is kept if either order gives a physically valid first-scatter cone
+that intersects the side Be-window disk. For higher multiplicities the current
+implementation enumerates candidate hit orders up to six TES hits, selects the
+best sequence using the unweighted Compton sequence residual
+\begin{equation}
+  Q = \sum_{i=1}^{n-2}
+  \left(\cos\theta_{C,i} -
+  \hat{\mathbf u}_{i-1,i}\cdot\hat{\mathbf u}_{i,i+1}\right)^2,
+\end{equation}
+and then applies the same first-cone intersection test to the first reconstructed
+scatter. If no valid sequence is found, the event is classified as
+unreconstructed. Such events are retained in the baseline selected-rate
+definition but are not called field-of-view passing. The line-window result
+therefore does not gain sensitivity from rejecting ambiguous reconstruction
+failures. This policy is not a conservative lower bound on the net sensitivity:
+in the current $\wii$ sample, a single-site-only diagnostic alternative that
+vetoes all multi-site candidates would retain $59.4\%$ of the focused signal
+and $68.2\%$ of the selected background, reducing the simple $S/\sqrt{B}$
+figure to $0.720$ of the baseline value. The baseline selection therefore treats ambiguous
+multi-hit events as a reconstruction-model boundary that must be validated, not
+as a sensitivity gain from aggressive event rejection.
+
+\added{To connect this selection chain explicitly to the finite Monte Carlo
+sample, Table~\ref{tab:phase2_cutflow} gives the current event-level
+$\wii$ cut-flow obtained by lightweight replay of the simulated event catalogues.
+The table is not a new Geant4/MEGAlib transport. It replays the current
+event catalogues with the same TES energy window, CsI veto, and
+Compton-kinematic/field-of-view consistency checks; uncertainties are Monte
+Carlo quadrature sums over event weights. The current event-selection records first fix
+the energy window and then report raw, active-shield, and topology stages, so
+the raw stage should be read as the pre-veto sample inside the line window, not
+as an all-energy incident sample.}
+
+\begin{table}[t]
+\centering
+\caption{\added{event-level $\wii$ line-window cut-flow.}}
+\label{tab:phase2_cutflow}
+\footnotesize
+{
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{p{0.20\linewidth}p{0.24\linewidth}p{0.08\linewidth}p{0.16\linewidth}p{0.20\linewidth}}
+\toprule
+Stream & Stage & Events & Rate / $\cps$ & Statistical uncertainty / $\cps$ \\
+\midrule
+Prompt background & Line-window pre-veto & 161 & $1.1877\times10^{-1}$ & $1.15\times10^{-2}$ \\
+Prompt background & After CsI veto & 60 & $4.0712\times10^{-2}$ & $5.26\times10^{-3}$ \\
+Prompt background & Topology/FOV selected & 54 & $3.6641\times10^{-2}$ & $4.99\times10^{-3}$ \\
+Delayed activation & Line-window pre-veto & 54 & $4.6354\times10^{-3}$ & $6.31\times10^{-4}$ \\
+Delayed activation & After CsI veto & 33 & $2.8327\times10^{-3}$ & $4.93\times10^{-4}$ \\
+Delayed activation & Topology/FOV selected & 30 & $2.5752\times10^{-3}$ & $4.70\times10^{-4}$ \\
+Focused signal & Line-window pre-veto & 30323 & $8.1527\times10^{-1}$ & $4.68\times10^{-3}$ \\
+Focused signal & After CsI veto & 30323 & $8.1527\times10^{-1}$ & $4.68\times10^{-3}$ \\
+Focused signal & Topology/FOV selected & 29715 & $7.9892\times10^{-1}$ & $4.63\times10^{-3}$ \\
+\bottomrule
+\end{tabular}
+\par}
+\vspace{0.5ex}
+\begin{minipage}{0.94\linewidth}
+\footnotesize

@@ -1,0 +1,85 @@
+{
+  "call_id": "call_FcNxXgq98azsSlbD458bHhLr",
+  "cmd": "nl -ba core_md/balloon511_ea_latex_drafts/balloon511_ea_draft_en.tex | sed -n '360,430p'",
+  "call_log": "/home/ubuntu/.codex/sessions/2026/06/28/rollout-2026-06-28T20-40-23-019f0e3e-c8af-7003-b6cd-d523b87873df.jsonl",
+  "call_line": 2394,
+  "output_log": "/home/ubuntu/.codex/sessions/2026/06/28/rollout-2026-06-28T20-40-23-019f0e3e-c8af-7003-b6cd-d523b87873df.jsonl",
+  "output_line": 2397,
+  "source_path": "core_md/balloon511_ea_latex_drafts/balloon511_ea_draft_en.tex",
+  "range": [
+    360,
+    430
+  ]
+}
+
+  - \frac{1}{E_1+E_{\mathrm{sc}}}\right).
+\end{equation}
+The event is kept if either order gives a physically valid first-scatter cone
+that intersects the side Be-window disk. For higher multiplicities the current
+implementation enumerates candidate hit orders up to six TES hits, selects the
+best sequence using the unweighted Compton sequence residual
+\begin{equation}
+  Q = \sum_{i=1}^{n-2}
+  \left(\cos\theta_{C,i} -
+  \hat{\mathbf u}_{i-1,i}\cdot\hat{\mathbf u}_{i,i+1}\right)^2,
+\end{equation}
+and then applies the same first-cone intersection test to the first reconstructed
+scatter. If no valid sequence is found, the event is classified as
+unreconstructed. Such events are retained in the baseline selected-rate
+definition but are not called field-of-view passing. The line-window result
+therefore does not gain sensitivity from rejecting ambiguous reconstruction
+failures. This policy is not a conservative lower bound on the net sensitivity:
+in the current $\wii$ sample, a single-site-only diagnostic alternative that
+vetoes all multi-site candidates would retain $59.4\%$ of the focused signal
+and $68.2\%$ of the selected background, reducing the simple $S/\sqrt{B}$
+figure to $0.720$ of the baseline value. The baseline selection therefore treats ambiguous
+multi-hit events as a reconstruction-model boundary that must be validated, not
+as a sensitivity gain from aggressive event rejection.
+
+\added{To connect this selection chain explicitly to the finite Monte Carlo
+sample, Table~\ref{tab:phase2_cutflow} gives the current event-level
+$\wii$ cut-flow obtained by lightweight replay of the simulated event catalogues.
+The table is not a new Geant4/MEGAlib transport. It replays the current
+event catalogues with the same TES energy window, CsI veto, and
+Compton-kinematic/field-of-view consistency checks; uncertainties are Monte
+Carlo quadrature sums over event weights. The current event-selection records first fix
+the energy window and then report raw, active-shield, and topology stages, so
+the raw stage should be read as the pre-veto sample inside the line window, not
+as an all-energy incident sample.}
+
+\begin{table}[t]
+\centering
+\caption{\added{event-level $\wii$ line-window cut-flow.}}
+\label{tab:phase2_cutflow}
+\footnotesize
+{
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{p{0.20\linewidth}p{0.24\linewidth}p{0.08\linewidth}p{0.16\linewidth}p{0.20\linewidth}}
+\toprule
+Stream & Stage & Events & Rate / $\cps$ & Statistical uncertainty / $\cps$ \\
+\midrule
+Prompt background & Line-window pre-veto & 161 & $1.1877\times10^{-1}$ & $1.15\times10^{-2}$ \\
+Prompt background & After CsI veto & 60 & $4.0712\times10^{-2}$ & $5.26\times10^{-3}$ \\
+Prompt background & Topology/FOV selected & 54 & $3.6641\times10^{-2}$ & $4.99\times10^{-3}$ \\
+Delayed activation & Line-window pre-veto & 54 & $4.6354\times10^{-3}$ & $6.31\times10^{-4}$ \\
+Delayed activation & After CsI veto & 33 & $2.8327\times10^{-3}$ & $4.93\times10^{-4}$ \\
+Delayed activation & Topology/FOV selected & 30 & $2.5752\times10^{-3}$ & $4.70\times10^{-4}$ \\
+Focused signal & Line-window pre-veto & 30323 & $8.1527\times10^{-1}$ & $4.68\times10^{-3}$ \\
+Focused signal & After CsI veto & 30323 & $8.1527\times10^{-1}$ & $4.68\times10^{-3}$ \\
+Focused signal & Topology/FOV selected & 29715 & $7.9892\times10^{-1}$ & $4.63\times10^{-3}$ \\
+\bottomrule
+\end{tabular}
+\par}
+\vspace{0.5ex}
+\begin{minipage}{0.94\linewidth}
+\footnotesize
+The focused-signal rows are unit-replay rates used to show veto survival
+behavior; the point-source signal rate in Table~\ref{tab:primary_sensitivity}
+is scaled separately by the Laue effective area, reference flux, and atmospheric
+transmission.
+\end{minipage}
+\end{table}
+
+The detector-level time-axis construction used to validate this veto bookkeeping
+is a Poisson superposition of independent streams. For stream $k$ with
+event-catalogue rates $r_{kj}$ and total rate $R_k=\sum_j r_{kj}$, a validation

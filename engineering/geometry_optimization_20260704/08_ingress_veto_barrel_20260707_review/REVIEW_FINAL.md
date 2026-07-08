@@ -4,6 +4,13 @@ Status: `PASS_WITH_LIMITATIONS`
 
 Date: 2026-07-07
 
+2026-07-08 atmospheric-511 supersession: the original review validated the
+2026-07-07 lower-hemisphere unit-transfer replay. Current downstream
+geometry-optimization conclusions must instead use
+`engineering/geometry_optimization_20260704/12_atm511_sidecar_replay_20260708/`
+with the EXPACS-like 4pi sidecar replay. The older atmospheric rows below are
+retained only as review provenance where explicitly marked.
+
 Review scope:
 
 - Execution branch: `engineering/geometry_optimization_20260704/08_ingress_veto_barrel_20260707/`
@@ -24,7 +31,7 @@ This review did not modify the original `511_Mass`, `Mass_model_511`, fix5 autho
 | Detector map cleanup | `PASS` | `.det` contains TES and CsI detector volumes only; no stale detector entries for removed passive internals were found. |
 | Source/SIM geometry provenance | `PASS` | Loadcheck and smoke source cards and SIM headers point to the new barrel geometry. |
 | Loadcheck run | `PASS_LOAD_ONLY` | 1-event loadcheck completed and wrote SIM/log. It is not physics performance evidence. |
-| Atmospheric 511 replay integration | `PASS` | Replayed 3M P2 run is complete; W2 raw/active/final is `108/108/95`, active veto rejection is `0%`, and side Compton/FoV rejection is `13/108 = 12.037%`. |
+| Atmospheric 511 replay integration | `PASS_SUPERSEDED_BY_20260708_SIDECAR` | The 2026-07-07 lower-hemisphere replay was internally consistent, but current conclusions use the 2026-07-08 4pi sidecar replay: W2 raw/active/final `114/114/107`, active veto rejection `0%`, side Compton/FoV rejection `7/114 = 6.14%`, final nominal rate `0.0207913135058 cps`. |
 | Smoke e+ transport and analysis | `PASS_SMOKE_ONLY` | 200k e+ smoke completed and `barrel_eplus_smoke_summary.*` reports W2 and broad raw/active/final all `0/0/0`. This is smoke-only, not full-stat/20-day performance. |
 | 2M e+ extension | `PASS_POSITRON_ONLY_LIMIT` | 2M e+ extension completed and `barrel_eplus_2M_summary.*` reports W2 and broad raw/active/final all `0/0/0`, with zero-count 95% upper rate `0.00351839721692 cps`. |
 | e+ suppression/performance claim | `PASS_WITH_LIMITATIONS` | 2M e+ extension shows zero TES-window candidates and gives a 95% upper rate for the e+ component. It still cannot be promoted to all-particle or 20-day performance. |
@@ -55,7 +62,7 @@ Main W2 veto rows reproduce the expected current geo-opt authority values:
 | --- | ---: | ---: | ---: | ---: | ---: | ---: |
 | `eplus` | 62 | 40 | 35 | 0.0421003740822 cps | 0.0271615316659 cps | 0.0237663402077 cps |
 | `n` | 60 | 13 | 13 | 0.0407117775780 cps | 0.0088208851419 cps | 0.0088208851419 cps |
-| `atm511` | 108 | 108 | 95 | 0.407064836383 | 0.407064836383 | 0.358066291262 |
+| `atm511` | 114 | 114 | 107 | 0.0221514928940 cps | 0.0221514928940 cps | 0.0207913135058 cps |
 
 Denominator formulas were checked and match:
 
@@ -63,11 +70,11 @@ Denominator formulas were checked and match:
 - Compton/FoV rejection: `1 - side_compton_fov_pass / active_veto_pass`
 - total rejection: `1 - side_compton_fov_pass / raw`
 
-Atmospheric 511 handling is mostly correct:
+Atmospheric 511 handling after the 2026-07-08 sidecar replacement is:
 
-- `veto_efficiency_summary.*` uses full P2 replay cutflow: raw `108`, active `108`, final `95`.
-- `ingress_summary.*` states that atmospheric ingress rows are only the `95` final W2 candidates.
-- `build_ingress_veto_audit_fast.py` explicitly sets atmospheric event rows to `stage_raw=False`, `stage_active_veto_pass=False`, `stage_side_compton_fov_pass=True` and gets the cutflow from the P2 summary.
+- `veto_efficiency_summary.*` uses the 4pi sidecar cutflow: raw `114`, active `114`, final `107`.
+- `ingress_summary.*` states that atmospheric ingress rows are only the `107` final W2 candidates.
+- `build_ingress_veto_audit_fast.py` explicitly sets atmospheric event rows to `stage_raw=False`, `stage_active_veto_pass=False`, `stage_side_compton_fov_pass=True` and gets the cutflow from the sidecar summary.
 
 Weak point:
 
@@ -78,6 +85,29 @@ Second weak point:
 - For prompt `eplus` and `n`, `first_recorded_volume` and `first_recorded_material` are populated, but `first_recorded_x_cm/y_cm/z_cm` are blank in `ingress_summary.csv`. `ingress_summary.json` has `entry_local_x_cm/y_cm/z_cm` proxy coordinates for most prompt rows, but those fields are not exported to the CSV stage table. Either export the proxy coordinates or explicitly state that first-hit coordinates are unavailable for prompt e+/n.
 
 ### Atmospheric 511 Replay Integration
+
+2026-07-08 replacement for current conclusions:
+
+- Summary:
+  `engineering/geometry_optimization_20260704/12_atm511_sidecar_replay_20260708/p2_geo_opt_s1_bpe_w5_atm511_sidecar_summary.json`
+- Source:
+  `runs/geometry_optimization_20260704/p2_atm511_sidecar_s1_nominal_geo_opt_s1_bpe_w5_20260708/Atm511SidecarS1Nominal3M_GeoOptS1BpeW5.source`
+- SIM:
+  `runs/geometry_optimization_20260704/p2_atm511_sidecar_s1_nominal_geo_opt_s1_bpe_w5_20260708/Atm511SidecarS1Nominal3M_GeoOptS1BpeW5.inc1.id1.sim.gz`
+- Source model: EXPACS-like semi-empirical 4pi atmospheric 511-keV sidecar,
+  20 equal-mu bins, Step06 day-15 environment.
+- W2 cutflow: raw `114`, active `114`, final `107`.
+- Active veto rejection: `0%`.
+- Side Compton/FoV rejection: `7/114 = 6.14%`.
+- Final nominal atmospheric-511 rate: `0.0207913135058 cps`.
+- Sidecar-included W2 background: `0.0561719296626 cps`.
+- Sidecar-included `F3(20d)`: `4.62986036016e-05 ph cm^-2 s^-1`.
+- Final atmospheric entry proxy: side_wall `74`, top `24`, bottom `7`,
+  side_window `2`.
+
+The older evidence block below describes the superseded 2026-07-07
+lower-hemisphere replay and must not be used for current atmospheric-511
+geometry-optimization conclusions.
 
 Files checked:
 

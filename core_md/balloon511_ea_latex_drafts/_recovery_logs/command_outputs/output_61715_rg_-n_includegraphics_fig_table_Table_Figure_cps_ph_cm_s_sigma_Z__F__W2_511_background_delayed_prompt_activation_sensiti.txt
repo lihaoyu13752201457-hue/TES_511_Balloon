@@ -1,0 +1,146 @@
+{
+  "call_id": "call_SPS8fO6flYTSykkzeN4WBQRj",
+  "cmd": "rg -n \"includegraphics|fig:|table|Table|Figure|cps|ph|cm|s\\^|sigma|Z_|F_|W2|511|background|delayed|prompt|activation|sensitivity|significance|TODO|FIXME|placeholder|TBD|not run|smoke|full-stat|fullstat\" core_md/balloon511_ea_latex_drafts/balloon511_ea_draft_zh.tex",
+  "call_log": "/home/ubuntu/.codex/sessions/2026/07/01/rollout-2026-07-01T22-08-25-019f1e02-73cd-7511-ac67-a36d2a3c1926.jsonl",
+  "call_line": 2273,
+  "output_log": "/home/ubuntu/.codex/sessions/2026/07/01/rollout-2026-07-01T22-08-25-019f1e02-73cd-7511-ac67-a36d2a3c1926.jsonl",
+  "output_line": 2277
+}
+
+5:% only the journal FORMAT changed -- text, figures, tables, and references
+6:% are carried over verbatim from balloon511_nima_draft_zh.tex.
+11:\usepackage[a4paper,top=2.4cm,bottom=2.5cm,left=2.0cm,right=2.0cm]{geometry}
+17:\usepackage{graphicx}
+44:\newcommand{\cms}{\,\mathrm{cm^{-2}\,s^{-1}}}
+45:\newcommand{\phcms}{\,\mathrm{ph\,cm^{-2}\,s^{-1}}}
+46:\newcommand{\cps}{\,\mathrm{s^{-1}}}
+47:\newcommand{\wii}{W_{511}}
+49:\newcommand{\fzero}{F_{0}}
+50:\newcommand{\fthree}{F_{3\sigma}}
+59:{\LARGE\bfseries 气球载 511 keV Laue 透镜 TES 望远镜本底和未分辨线灵敏度的探测器耦合 Monte Carlo 估计 \par}
+69:\noindent\textbf{Abstract}\hspace{0.7em}银河系 511 keV 湮灭辐射主要由延展的核球和银盘成分主导，而任何紧凑或点状贡献的强度仍不确定。指向式聚焦观测可以探测这一互补的观测域，但前提是气球高度上的大气和仪器诱发本底得到良好控制。本文给出一种气球载望远镜的探测器耦合 Monte Carlo 估计，该望远镜由 10 m Ge(111) Laue 透镜与过渡边缘传感器（transition-edge sensor, TES）微量热计焦平面构成。信号链中，Laue 光学先生成单色轴上 511 keV 点源在焦面的聚焦相空间，随后将通过 Be 入射孔径的光子在探测器/低温系统质量模型中重放；本底链中，瞬发大气粒子/光子和延迟活化衰变在同一探测器/低温系统模型中输运，其中延迟衰变以活化计算所记录的放射性核素产生位置为初始点生成。三类探测器层事例随后用同一 $510.58$--$511.42\keV$ 能窗、CsI 反符合 veto 和拓扑/视场一致性选择进行分析。对入射点源流量 $10^{-4}\phcms$，第 15 天的选后信号率和本底率分别为 $1.19\times10^{-3}\cps$ 和 $3.92\times10^{-2}\cps$，瞬发大气事例占选后本底的 93.4\%。在连续在源曝光假设下，将这些率折叠到所采用的合成 20 d 轨迹，得到诊断性计数显著度 $Z_{20\mathrm{d}}=7.80$，以及相应的 $3\sigma$ 流量阈值 $3.85\times10^{-5}\phcms$。该阈值给出参考模型下谱学未分辨 511 keV 点源的飞行灵敏度估计；选后本底由瞬发大气成分主导，为屏蔽、准直和材料选择等设计优化指明了方向。
+72:\noindent\textbf{Keywords}\hspace{0.7em}伽马射线仪器 $\cdot$ 511 keV 湮灭线 $\cdot$ 过渡边缘传感器微量热计 $\cdot$ Laue 透镜 $\cdot$ 气球载望远镜 $\cdot$ Monte Carlo 本底模拟 $\cdot$ 活化本底
+81:银河系中心区域的 511 keV 湮灭辐射是研究银河系正电子来源的关键观测窗口。其谱学特征由接近 511 keV 的双光子谱线和位于低能侧的正电子素连续谱组成：正电子与电子直接湮灭，或先形成对位正电子素后衰变，会产生两个约 511 keV 光子；形成正交正电子素的部分则通过三光子衰变形成连续谱。正电子在星际介质中减速、形成正电子素并最终湮灭，因此谱线强度、谱线轮廓和正电子素连续谱共同携带湮灭介质的信息 \cite{Prantzos2011,Jean2006}。以 INTEGRAL/SPI 为代表的观测测量了银河系 511 keV 辐射的总通量；在近似稳态下，这一通量对应的正电子湮灭率约为几 $\times10^{43}\,\mathrm{e^+\,s^{-1}}$ \cite{Prantzos2011,Kierans2020}。这个量级把银河系中心的谱学问题连接到全银河正电子供给问题：候选供给通道包括恒星爆发中合成的 $\beta^+$ 放射性核素、产生正负电子对的致密天体以及非标准粒子过程，但现有数据尚无法唯一确定哪一类来源占主导 \cite{Prantzos2011,Siegert2016AA}。
+83:过去的宽视场观测已经建立了 511 keV 辐射的弥散形态。INTEGRAL/SPI 显示出明亮的中心核球成分和较弱的银盘成分，20 年数据分析进一步重建出中心、宽核球与银盘结构，但额外关联结构的证据仍较边际 \cite{Siegert2016AA,Yoneda2025}。COSI 2016 年气球飞行独立探测到核球信号，并给出辐射比单一点源更延展的迹象 \cite{Kierans2020,Siegert2020COSI}。谱学测量还约束了湮灭介质的物理状态和运动学：SPI 谱线可分解为约 $1.3\keV$ FWHM 的窄成分和约 $5.4\keV$ 的宽成分，并已在银河系内区搜寻其中心能量与线宽的变化 \cite{Jean2006,Siegert2019Kinematics}。然而，511 keV 天图记录的是正电子减速并湮灭后的位置，不一定是正电子最初产生的位置；正电子在热化之前可在磁化的多相星际介质中传播。因此，现有弥散形态和谱学约束仍不能单独判定主导来源，或还原湮灭前的输运历史 \cite{Prantzos2011}。
+85:宽视场康普顿和编码孔径仪器适合测量核球和银盘的总体弥散发射；但对中心区域是否存在未分辨中央增强、点源或可测的谱线运动学结构，仍需要互补的观测方式，即利用聚焦光学的指向性探测系统。这种系统更有利于捕捉潜在银河系中心点源形态及其谱线结构。探测到点状或窄集中的 511 keV 特征，将表明部分湮灭在空间上是局域的；未探测到信号则会限制紧凑湮灭成分，但不能排除正电子逃逸并以弥散形式湮灭的来源族。基于 INTEGRAL/IBIS 编码孔径数据的紧凑源搜索未发现银河系 511 keV 点源，并在银河中心约 10 Ms 曝光下给出约 $1.6\times10^{-4}\phcms$ 的 $2\sigma$ 点源上限 \cite{DeCesare2011}。这一非探测上限给出了已有紧凑源搜索的通量尺度，也为新一代小视场 511 keV 指向仪器的灵敏度目标提供了比较基准。
+87:Laue 光学提供了实现这种指向式观测的一条路径：它利用透射式 Bragg 衍射，将来自已知方向的光子汇聚到小焦平面上 \cite{Barriere2009Laue,Barriere2011LauePrototype}。把天区中较大收集面积对应的通量聚焦到相对较小的探测器灵敏面积上，在探测器相关本底占主导时，聚焦能够提高点源灵敏度 \cite{Weidenspointner2006MAX}。与之匹配的焦平面需要同时具备窄能量响应和足够的 511 keV 探测效率。利用超导体陡峭电阻转变边缘对粒子沉积能量引起的微小温度变化高度敏感这一特性研发的过渡边缘传感器（transition-edge sensor, TES）微量热计，可在 511 keV 处提供亚 keV 能量分辨率 \cite{Shirazi2023}；同时阵列化 TES 微量热计提供覆盖焦斑所需的主动面积，厚吸收体和多层吸收体布置则提高 511 keV 光子的探测效率。Laue 聚焦与 TES 阵列的组合因此一方面压缩入射相空间，另一方面保留高能量判别能力：前者把来自目标方向的光子集中到小焦平面；在本文关注的未分辨 511 keV 线情形下，高能量分辨率也可以在更小的能量窗口中筛除邻近 511 keV 的本底，并辅助解析 511 keV 的精细谱线结构和线宽。这一组合以较小视场换取集中束流和高分辨谱学能力，因此是对核球和银盘宽视场测量的补充，而不是替代。
+89:不过，聚焦和高能量分辨率并不能单独决定实际灵敏度，因为 MeV 线谱仪通常受本地仪器本底限制。无论卫星还是气球平台，宇宙线及其次级粒子都可能在探测器和周围材料中产生局域湮灭辐射、连续谱瞬发本底，以及伴随粒子活化产生不稳定核素而形成的延迟本底 \cite{Sturner2003,Gehrels1985}。由于待观测的 511 keV 天体信号与大气和仪器湮灭特征位于同一能量，灵敏度无法仅由透镜有效面积和探测器能量分辨率推断；它还取决于周围的质量分布、主动屏蔽与事例选择、辐射环境，以及残余本底建模的准确度。近期对 2016 年 COSI 气球飞行的自下而上模拟表明，要把这样的本底估计对照飞行与标定数据加以验证，需要达到何种程度的载荷与探测器响应建模，包括活化谱线和反符合响应 \cite{Gallego2025Balloon,Beechert2022,Ciabattoni2025ACS}。
+91:本文围绕这一概念建立一条端到端的探测器耦合 Monte Carlo 链，用它估计气球高度上的飞行本底与点源探测性能，并为设计方案的优化提供方向性指导。计算以 EXPACS/PARMA 大气宇宙线场为输入，在气球高度输运瞬发粒子并跟踪其活化产物，从而同时得到瞬发大气本底和随飞行时间积累的延迟活化本底；聚焦 511 keV 参考信号则由 10 m Ge(111) Laue 光学模型给出。信号与两类本底都注入同一个典型气球载 TES 焦平面质量模型（含稀释制冷机冷端、被动屏蔽和主动反符合屏蔽），在统一的窄能窗、反符合 veto 和拓扑/视场选择下处理，再沿一条参考飞行轨迹折叠，给出选后信号率、本底组成与计数显著度。结果表明选后本底由瞬发大气成分主导，因此屏蔽几何、侧入射准直与屏蔽材料是设计优化最直接的方向；延迟活化与上游光学硬件本底作为次级成分一并纳入同一评估框架。本文由此估计了该气球平台的飞行本底与探测性能，并给出设计优化的方向。
+98:本文模拟的仪器面向既有观测尚未探测到的银河系中心 511 keV 点源或未分辨中央增强成分。现有 INTEGRAL/SPI 测量已经建立了以弥散核球和银盘为主的 511 keV 天图，并把叠加在弥散成分之上的点状 511 keV 源限制到约 $10^{-4}\phcms$ 的通量量级；基于 INTEGRAL/IBIS 的紧凑源搜索也未发现银河系 511 keV 点源，但在银河中心约 10 Ms 曝光下给出约 $1.6\times10^{-4}\phcms$ 的上限 \cite{Knodlseder2005AllSky,DeCesare2011}。若取气球飞行海拔处 511 keV 光子的典型大气透过率 $T\simeq0.739$，该上限对应的载荷上方光子流量尺度约为 $1.2\times10^{-4}\phcms$。本文因此采用 $\fzero=10^{-4}\phcms$ 作为参考点源光子通量尺度。和 INTEGRAL 的宽视场谱学/编码孔径搜索相比，本文模拟的方案引入 Laue 光学聚焦以提高点源响应，并采用高能量分辨率、多层厚吸收体 TES 微量热计阵列作为焦平面，以增强对 511 keV 窄线的谱学判别能力 \cite{Shirazi2023,Caputo2017}。
+102:这一目标对仪器和模拟提出四方面要求：其一，望远镜须将 511 keV 光子汇聚到小焦平面，从而在不牺牲收集面积的前提下压低探测器相关本底。其二，焦平面须具备亚 keV 能量响应，使线窗本底随窄谱窗、而非宽 MeV 连续谱缩放。其三，探测器与屏蔽模型须能抑制大气、活化和侧向入射本底，并显式计入 TES 吸收体附近的被动材料。其四，模拟链须一致处理瞬发本底、延迟活化、聚焦信号、反符合 veto、事例拓扑与任务时间变化，使信号与本底在同一套探测器选择下评估。
+104:探测器质量模型是一个工程化 Geant4/MEGAlib 代理质量模型，包含安装在小型稀释制冷机（DR）冷端的气球载 TES 多层阵列 \cite{Shirazi2023,Gottardi2021TESReview}。探测器模型还包含典型 DR 制冷机结构、主动屏蔽层、被动屏蔽层、磁屏蔽层、侧入射窗口、准直结构、铜导热结构和其他低温服务质量代理。图~\ref{fig:mass_model} 给出本文使用的二维质量模型示意图。
+106:TES 探测器概念采用本实验室研发的 AlMn 薄膜耦合吸收体结构；AlMn 合金的优势包括相变温度可通过成分和退火工艺调节、便于阵列制备，以及相对较低的磁场敏感性 \cite{Xie2026AlMn,Vavagiakis2017AlMnMagnetic}。在本文概念设计中，TES 温度计膜为约 $200\,\mathrm{nm}$ 量级 AlMn 薄膜，而 $\gamma$ 射线吸收体为 mm 量级金属体。吸收体采用 $1.5\times1.5\times3.0\,\mathrm{mm^3}$ Ta 像素；Ta 的高原子序数提高 511 keV 光子的相互作用概率，$3.0\,\mathrm{mm}$ 厚度在 511 keV 处对应约 $49\%$ 的单层相互作用概率，6 层阵列可提供接近归一的几何相互作用概率。当前几何中相邻 Ta 阵列层中心距为 $12\,\mathrm{mm}$，这一间距用于保留后文康普顿运动学 veto 所需的多层命中拓扑。选择 Ta 还考虑了该体积可提供足够高的饱和能量、低温低比热（本文采用 $10^{-2}\,\mathrm{J\,K^{-1}\,m^{-3}}$ 的量级估计）和较高的光电--康普顿相互作用比；按 NIST XCOM 在 511 keV 附近的截面估算，该比例约为 0.731 \cite{NISTXCOM}。根据实验室经验，以及将当前 Ta 吸收体热容 $67.5\,\mathrm{pJ/K}$ 带入，在 511 keV 处约取 $\Delta E_{\mathrm{FWHM}}\simeq420\,\mathrm{eV}$ 作为当前模拟能力分辨率。
+108:由于 TES 薄膜与 Ta 吸收体在尺寸和质量上相差悬殊，且 TES 膜层本身不贡献显著的 511 keV 相互作用，本文在输运几何中用 Ta 吸收体代表 TES 像素的主要敏感体积。显式敏感体积为 6 层、每层 376 个 Ta 吸收体像素，总计 2256 个像素，1.5mm长宽 3 mm厚度。每层 Ta 像素下方放置 Si 衬底代理，用 Si 代表衬底；这样也保留了硅在中子输运中可能贡献的弹性散射贡献。TES 膜层、布线和读出细节不作为显式相互作用体积逐层建出，而是通过假设能量响应和服务质量代理进入模型。本文在当前稿件中以 TES 能量分辨率作为 511 keV 线窗宽度，取 W511 = 511 keV ± 420 eV，即 510.58–511.42 keV。
+110:TES 阵列安装在必要的铜支架和热连接结构上。铜提供决定性的热导通路；铜热指从样品盒底部孔穿出连接 50 mK 冷盘。TES 近场样品盒同时承担磁屏蔽和局部被动屏蔽代理功能，当前主线几何由 2 mm Nb 内层和 2 mm MuMetal 外层构成，MuMetal 在材料表中按 Ni:Fe = 4:1 近似。样品盒入射窗口采用薄 Al窗覆盖；后端端盖保留冷指穿出孔。W–Nb 双层样品盒作为对比的被动屏蔽 + 磁屏蔽材料设计；X-ray 窗口开在制冷机侧面，在每一层制冷机内部的热屏蔽外壳中嵌入 300 µm 厚度的 Al 窗，在真空外壳放置 25 µm 厚度 Be 窗，Be 窗外侧放置 x 厚度 W 准直器，准直器开口严格对准 TES 像素。侧面窗通过布尔算法严格定义。质量模型还引入闪烁体主动屏蔽，包络在制冷机外部侧壁、底部和顶部。采用分段 CsI 主动屏蔽，侧屏蔽径向厚度为 4 cm，底部和顶部屏蔽分别作为轴向端部体积加入几何。CsI 体积一方面作为输运和活化材料进入模拟，另一方面在后处理中读取沉积能量并施加主动 veto；计数阈值为 50 keV。BGO 主动屏蔽作为材料对照方案处理；BGO 阈值 70 keV。考虑 DR 的物理布置和侧入射光路，制冷机仪器框架整体旋转为 45 度，使局部侧窗在天顶参考源坐标中向上倾斜 45◦。
+114:\includegraphics[width=0.62\linewidth]{paper_source_figure_table/fig_mass_model_xz_overview.png}
+115:\caption{探测器/低温系统代理质量模型的二维整体示意图，显示 DR 塔、探测器舱、主动屏蔽和 511 keV 侧入射束线的 X--Z 视图。}
+116:\label{fig:mass_model}
+124:本节描述从源构建到飞行性能评估的整条模拟链条。聚焦信号和探测器本底从两套质量模型出发，聚焦信号分支在10m上游的Laue光学模型里实现，把511 keV光子聚焦到焦平面上，\textcolor{red}{同时也考虑瞬时本底和活化本底对该质量模型影响}，并从焦平面切片作为聚焦信号一并输出。探测器本底分支则在第二节的探测器/低温系统质量模型中直接模拟瞬发大气宇宙线以及活化核素造成的延时本底。瞬发大气宇宙线均采用megalib定义的远场定义，根据expacs库输出的天顶角通量，全立体角输入，活化核素则记录核素产生的真实位置，然后按照产率抽样产生活化本底。聚焦信号，瞬时本底，活化本底归一化叠加构建总谱，经过探测器响应，反符合，基于不同像素反演的康普顿轨迹的事例拣选后的有效谱，进行后处理统计分析，评估飞行性能。
+139:\node[bg]  (prompt) at (-3.1,-1.35) {瞬发与活化输运};
+148:\draw[flow] (geo) -- (prompt);
+150:\draw[flow] (prompt) -- (delay);
+160:\label{fig:workflow}
+168:本文模拟采用了基于mosaic Ge(111)晶体的laue透镜系统 \cite{Barriere2009Laue,Barriere2011LauePrototype}，通过光学设计，实现10m的焦距，\textcolor{red}{多环系统实现450keV-550keV的探测能段}，511keV下20cm**2的有效面积；有效面积按
+185:\label{sec:background}
+188:\label{subsec:prompt_source}
+192:瞬发源包含光子、中子、电子、正电子、质子、$\alpha$ 粒子、负 $\mu$ 子和正 $\mu$ 子。对每个粒子族，EXPACS/PARMA 微分谱被转换为 MEGAlib 远场面积源，覆盖完整天顶角范围 $\theta=0^\circ$--$180^\circ$ 和完整方位角范围 $\phi=0^\circ$--$360^\circ$。天顶角依赖用 20 个等 $\mu$ 微分角度分箱表示，其中 $\mu=\cos\theta$，每个分箱的立体角为 $\Delta\Omega=0.6283185307\,\mathrm{sr}$。前 10 个分箱表示下行粒子（$0^\circ\leq\theta\leq90^\circ$），后 10 个分箱表示上行或反照成分（$90^\circ\leq\theta\leq180^\circ$）。瞬发输运和活化产生输运都保留这两个半球，因此源构建阶段没有丢弃上行反照粒子。
+194:图~\ref{fig:expacs_fullsphere_flux} 给出由源定义实际采用的全空间通量场。
+198:\includegraphics[width=\linewidth]{paper_source_figure_table/fig_expacs_fullsphere_flux.png}
+200:\label{fig:expacs_fullsphere_flux}
+203:积分源面通量约为 $4.80$、$0.462$、$0.199$、$0.117$、$0.112$、$0.0115$、$0.0050$ 和 $0.0056\,\mathrm{cm^{-2}\,s^{-1}}$，分别对应 $\gamma$、$n$、$e^-$、$e^+$、$p$、$\alpha$、$\mu^-$ 和 $\mu^+$。非光子成分合计约为 $0.91\,\mathrm{cm^{-2}\,s^{-1}}$，约占全空间源面积分通量的 16\%。如果完全按流量比例分配模拟计数，这些低通量粒子的探测器命中和活化统计会较差；因此非光子粒子族采用复制输运样本提高 Monte Carlo 统计，再在率归一化时去权重。所有这些粒子随后通过 Geant4/MEGAlib 在探测器/低温系统质量模型中输运 \cite{Agostinelli2003,Allison2016,Zoglauer2006}。瞬发流和活化产生流各生成约 $2.52\times10^7$ 个入射一次粒子。每个粒子种类用自身输运曝光归一化：
+210:\label{subsec:delayed_source}
+221:图~\ref{fig:delayed_position_distribution}（附录~\ref{app:delayed}）给出放射性产生位置与固定第 15 天活度群体匹配后的延迟源位置分布。
+223:% 图 fig:delayed_position_distribution 已移至附录~\ref{app:delayed}。
+234:图~\ref{fig:position_sampling_necessity}（附录~\ref{app:delayed}）给出这一检验结果。
+236:% 图 fig:position_sampling_necessity 已移至附录~\ref{app:delayed}。
+238:在固定第 15 天表中，中子诱发产物贡献约 $82.5\,\mathrm{Bq}$，$\mu^-$ 诱发产物贡献 $2.75\,\mathrm{Bq}$，质子诱发产物贡献 $0.15\,\mathrm{Bq}$，$\alpha$ 诱发产物贡献 $0.022\,\mathrm{Bq}$，另有更小的 $\mu^+$ 和 $e^+$ 贡献。中子诱发活度仍主要产生在 CsI 主动屏蔽中；$\mu^-$ 成分则明显不同，其中 Cu/支撑材料、Al 壳层和含 W 被动材料分别占 $\mu^-$ 诱发活度的 32\%、29\% 和 21\%。因此，体积积分源或轴对称径向源可以保持总活度，但会抹掉入射粒子族、材料、核素和坐标之间的相关性。产生位置构造在进入探测器输运之前保留了这些相关性。
+246:表~\ref{tab:background_source_model} 汇总了当前探测器耦合计算中的源层级。它放在源模型部分，是因为这里定义的是入射粒子场和延迟放射性群体；探测器 veto 和拓扑选择只在后续选择部分施加。
+248:\begin{table}[t]
+251:\label{tab:background_source_model}
+256:瞬发大气输运 & 大气次级粒子造成的直接探测器命中 & EXPACS/PARMA 全空间源定义，环境为纬度 $34^\circ$、经度 $100^\circ$、海拔 $38\,\mathrm{km}$、$R_c=11.6\,\mathrm{GV}$、$W=118.3$；$\gamma$、$n$、$e^\pm$、$p$、$\alpha$ 和 $\mu^\pm$ 覆盖 20 个等 $\mu$ 微分天顶角分箱，并同时包含下行和上行半球；生成 25,210,216 个入射一次粒子。 \\
+262:\end{table}
+271:  \wii = [510.58,511.42]\keV,
+273:即 $511\keV\pm420\,\mathrm{eV}$。该线窗匹配亚 keV TES 响应假设，在保留主要线响应的同时抑制连续谱本底。
+317:\added{为把这一选择链路和有限 Monte Carlo 统计显式对应起来，表~\ref{tab:phase2_cutflow} 给出当前 事例级 证据包从 事例选择 事例目录轻量解析得到的 $\wii$ cut-flow。该表不来自新的 Geant4/MEGAlib 输运，而是对当前事例目录按相同 TES 能窗、CsI veto 和康普顿运动学/视场一致性检验重放；不确定度为按事例权重做的 Monte Carlo 二次和。当前 事例选择 记录先固定能窗再记录 raw、主动屏蔽和拓扑阶段，因此表中的 raw 阶段应理解为线窗内预 veto 样本，而不是全能段入射样本。}
+319:\begin{table}[t]
+322:\label{tab:phase2_cutflow}
+328:流 & 阶段 & 事例数 & 率 / $\cps$ & 统计不确定度 / $\cps$ \\
+345:聚焦信号行是 事例选择 事例目录中的单位重放率，用于说明 veto 保留行为；表~\ref{tab:primary_sensitivity} 中的点源信号率另按 Laue 有效面积、参考通量和大气透过率缩放。
+347:\end{table}
+360:图~\ref{fig:selection_time_axis} 汇总这些 veto 层之后的选后率，并预览
+365:\includegraphics[width=\linewidth]{paper_source_figure_table/fig_selection_veto_time_axis.png}
+367:A 面板给出 $\wii$ 中瞬发本底、延迟活化以及按 $\fzero=10^{-4}\phcms$
+372:\label{fig:selection_time_axis}
+384:  \varphi_i &= \varphi_0+\Delta\varphi\sin\!\left[\frac{2\pi(t_i-15)}{7}\right],\\
+388:$\varphi_0=34^\circ$、$\Delta\varphi=0.25^\circ$、$\ell_0=100^\circ$、
+393:大气深度和 511 keV 透过缩放写为
+396:       & X_{38}&=3.87\,\mathrm{g\,cm^{-2}},\quad H=6.8\,\mathrm{km},\\
+403:  R_{c,i} &= 11.0 -0.08(\varphi_i-\varphi_0)+0.03(\ell_i-\ell_0),\\
+405:  \exp\!\left[\frac{X(h_i)-X(h_0)}{30\,\mathrm{g\,cm^{-2}}}\right]
+425:  P_a(t_i)=\sum_g w_g(h_i,\varphi_i,\ell_i,R_{c,i})P_a^{(g)},\qquad
+440:缩放，$f_{\mathrm{atm},i}$ 是 511 keV 大气透过缩放，$L_i$ 是偶然
+454:用于比较不同分析变体的 $3\sigma$ 流量阈值按
+474:表~\ref{tab:primary_sensitivity} 给出主要未分辨线结果。对 $\fzero=10^{-4}\phcms$，第 15 天选后率为
+476:  B_{\wii}=3.92\times10^{-2}\cps,\qquad
+477:  S_{\wii}=1.19\times10^{-3}\cps .
+481:  \bar{B}_{\wii}=3.94\times10^{-2}\cps,\qquad
+482:  \bar{S}_{\wii}=1.18\times10^{-3}\cps .
+484:对应 20 d 诊断计数显著度为 $Z_{20\mathrm{d}}=7.80$，净 $3\sigma$ 在源曝光为 $2.51\,\mathrm{d}$。20 d $3\sigma$ 流量阈值为 $3.85\times10^{-5}\phcms$。图~\ref{fig:results_significance} 给出该显著度如何随任务时间累积，以及 20 d 显著度如何随参考流量变化。
+488:\includegraphics[width=\linewidth]{paper_source_figure_table/fig_results_significance.png}
+489:\caption{$\wii$ 线窗点源情形的累积计数显著度及相应流量阈值，来自第~\ref{sec:framework}~节的任务时间折叠。(a) 若干参考流量 $F_0$ 下累积显著度 $Z$ 随任务时间的变化；粗线为参考 $F_0=10^{-4}\phcms$ 情形，20 d 达到 $Z_{20\mathrm{d}}=7.80$。(b) 20 d 累积显著度随 $F_0$ 的变化；$Z=3$ 交点定义 $3\sigma$ 流量阈值 $\fthree(20\,\mathrm{d})\approx3.85\times10^{-5}\phcms$。虚线标出 $Z=3$。}
+490:\label{fig:results_significance}
+493:\begin{table}[t]
+496:\label{tab:primary_sensitivity}
+503:第 15 天选后本底 & $3.92\times10^{-2}\cps$ & 瞬发 + 延迟 & 探测器层选择 \\
+504:第 15 天 $\fzero$ 下选后信号 & $1.19\times10^{-3}\cps$ & 聚焦点源 & $\fzero=10^{-4}\phcms$ \\
+505:瞬发本底成分 & $3.66\times10^{-2}\cps$ & 选后本底的 93.4\% & 主导成分 \\
+506:延迟活化成分 & $2.6(5)\times10^{-3}\cps$ & 选后本底的 6.6\% & 单次参考估计；四次独立采样检查给出 $2.21(22)\times10^{-3}\cps$ \\
+508:净 $3\sigma$ 曝光 & 2.51 d & 参考曝光 & 不是经过的飞行时间 \\
+509:$\fthree(20\,\mathrm{d})$ & $3.85\times10^{-5}\phcms$ & 未分辨线阈值 & 仅针对参考模型 \\
+516:本底率和信号率为第 15 天选后率。显著度、净曝光和流量阈值使用任务时间折叠。延迟行保留主要闭合计算使用的单一源采样全统计估计；独立收敛 screen 从 103 个选后延迟事例得到 $2.21(22)\times10^{-3}\cps$，与该估计在采样不确定度内一致；这里仍不包含源模型和活化系统误差。
+518:\end{table}
+522:\added{除主线窗外，事例级 证据包还从同一 事例选择 事例目录生成了 $480$--$550\keV$、$0.5\keV$ 分箱的 stream/stage 谱表，作为线窗附近连续谱和 veto 行为的检查。该谱表显示，宽窗最终选后率为：瞬发本底 $6.31(83)\times10^{-2}\cps$，延迟活化 $3.18(52)\times10^{-3}\cps$，聚焦信号单位重放率 $8.003(46)\times10^{-1}\cps$。这些宽窗数字只用于谱形和 cut-flow 支撑，不替代表~\ref{tab:primary_sensitivity} 的 $\wii$ 灵敏度结果。}
+527:\rewritten{选后 $\wii$ 本底由瞬发大气事例主导。表~\ref{tab:primary_sensitivity} 中的选后流分解对应 93.4\% 瞬发和 6.6\% 延迟活化。事例级 证据包进一步把选后事例按入射粒子族、产生体积和选后核素分解，如表~\ref{tab:phase2_bg_decomp} 所示。瞬发选后线窗主要来自正电子入射族，少量来自中子诱发链；延迟选后事例则不由源清单中活度最大的 CsI/I-128 项直接主导，而由通过探测器选择后的 Cu-64 和 Cu-62 贡献主导。这一区分说明源活度清单、输运通过率和最终选后率不能互相替代。当前主要延迟估计已由独立选后率收敛 screen 支持，而不只依赖源清单检查。}
+529:\begin{table}[t]
+532:\label{tab:phase2_bg_decomp}
+538:类别 & 来源 & 事例数 & 率 / $\cps$ & 解释 \\
+554:分解来自当前 事例选择 事例目录和 W-activation selected-event audit 的轻量解析；四个独立延迟采样合并后的逐事例体积/核素分解当前未记录，因此本表描述 promoted seed 的 selected-event 分解。
+556:\end{table}
+565:因此本文进行了一个最低选后率收敛检查，包含四个相互独立的产生位置源采样。每个源采样均通过同一探测器/低温系统几何输运 $10^6$ 个延迟衰变，并使用指向同一参考几何的 source card 和 SIM header。四个运行总共产生 103 个选后延迟事例，合并选后率为 $2.21\times10^{-3}\cps$，Poisson 统计不确定度为 $0.22\times10^{-3}\cps$（相对不确定度 9.85\%）。逐运行比较满足 $2\sigma$ 一致性要求；相对合并率的最大偏差为 1.82 个标准差。这一结果闭合了本文延迟成分所需的最低选后率收敛 screen，但活化截面、大气场系统误差以及详细 source/configuration provenance 仍属于单独的可复现性不确定度。
+567:\added{事例级 活化物理检查还把源清单和选后事例分开核对。固定第 15 天活度清单中，CsI 主动屏蔽中的 $^{128}$I 是最大的源活度族；但通过探测器输运和 $\wii$ 选择后，30 个 参考 延迟选后事例全部归入 Cu-64 或 Cu-62 相关体积。W/准直器来源的固定活度为 $0.986\,\mathrm{Bq}$，约占固定延迟源的 1.15\%，但当前 $\wii$ 选后延迟事例中 W/准直器来源为零。因此，本文只把 W/准直器延迟项作为当前选后样本中的零事例审计结果，而不声称其在所有能段或所有几何变体中均可忽略。当前输出还未记录 selected delayed state/metastable label，也未记录四个独立采样合并后的逐事例体积/核素分解；这些项保留为补充审计限制，而不是从核数据记忆中补写。}
+570:\label{subsec:upstream_optics_background}
+576:$6.38\times10^{-5}\cps$。该上限约为选后 $\wii$ 本底率
+577:$3.92\times10^{-2}\cps$ 的 $0.16\%$，因此隔离的 Ge 代理延迟分量在当前精度
+585:主要结果是，参考产生位置延迟源计算对所建模的聚焦式 TES 线谱仪，在未分辨线情形下给出 $3.85\times10^{-5}\phcms$ 的 20 d 诊断 $3\sigma$ 点源阈值。该阈值没有把聚焦光斑空间分析作为主要结果使用，而是来自光学集中、亚 keV 能窗以及探测器耦合 veto/拓扑选择三者的组合。
+587:该计算应作为指向式、窄线、紧凑源估计来和现有 511 keV 仪器比较，而不是作为全天成像预测。INTEGRAL/SPI 和 COSI 提供弥散 511 keV 天图以及更广泛的银河系弥散辐射的参照测量 \cite{Siegert2016AA,Kierans2020,Siegert2020COSI,Yoneda2025,Karwin2023}。COSI 的同行评议标定和模拟研究为探测器响应、事例重建和气球本底验证提供更直接的技术比较 \cite{Beechert2022,Sleator2019,Gallego2025Balloon,Gallego2025,Ciabattoni2025ACS}。本文考虑的 TES Laue 透镜概念与其互补：它以天空覆盖换取集中束流和亚 keV 线窗。因此，相关比较对象是紧凑 511 keV 目标、未分辨中央增强搜索和已知或受限位置瞬变的后随观测。相同的聚焦孔径不能替代完整弥散核球和银盘光度测量，因为它只采样很小的立体角。
+596:\rewritten{选后率结果有五个直接边界。第一，探测器/低温系统模型是工程代理，不是最终飞行 CAD；第二，主动屏蔽的定量拒绝在统一探测器层后处理选择中施加，而不是依赖生产阶段触发/反符合过滤；第三，任务时间计算是率级折叠，不是在每个轨迹时间点重新输运粒子；第四，自定义康普顿/视场 veto 是探测器层拓扑和运动学一致性检查，尚不是完整 Revan/Mimrec 重建，且保留重建拒绝类是基准接受策略，而不是灵敏度保守下界；第五，事例级分析 已把 cut-flow、宽窗谱表、veto 行为和 activation selected-event 分解做成可追踪证据，但 selected delayed state/metastable label、四采样合并后的逐事例分解、post-veto energy-window stage、multi-pixel residual distribution 和 veto 阈值稳定性扫描仍未由当前输出闭合。}
+598:更一般地，表中 $3\sigma$ 流量阈值是基于参考源场、质量模型和探测器响应假设的统计选后率阈值；它们尚未包含大气通量归一化、活化截面或物理列表选择、材料和几何公差、探测器能量响应、veto 阈值标定、重建效率系统误差或本底估计扰动参数的系统误差包络。投稿级飞行灵敏度应以可剖面化本底扰动参数的空间--谱似然取代诊断性 $S/\sqrt{B}$ 指标 \cite{Cowan2011}。
+600:第~\ref{subsec:upstream_optics_background} 节的上游 Laue 透镜计算应理解为等体积、等质量有效 Ge 代理体的边界计算，而不是最终光学硬件本底预算。它已经对该代理体完成全粒子瞬发输运和活化产生输运；隔离出的 Ge 代理延迟成分在当前输运中选出零个 $\wii$ 事例。瞬发自本底贡献仍未纳入主要探测器本底预算，因为它需要先从普通探测器/低温系统瞬发本底中做来源隔离或显式扣除，且明确透镜支撑结构尚未建模。
+609:本文给出了气球载指向式 511 keV TES Laue 透镜望远镜的探测器耦合本底和灵敏度研究。参考计算把 Ge(111) Laue 光学响应与 TES 焦平面质量模型、瞬发大气输运、延迟活化、主动屏蔽 veto、拓扑/视场选择、任务时间率折叠和计数显著度评估结合起来。在主要 $510.58$--$511.42\keV$ 未分辨线窗中，第 15 天选后率为 $B\simeq3.92\times10^{-2}\cps$，对 $10^{-4}\phcms$ 参考点源有 $S\simeq1.19\times10^{-3}\cps$；任务时间折叠后得到 $Z_{20\mathrm{d}}\simeq7.80$ 和 $\fthree(20\mathrm{d})\simeq3.85\times10^{-5}\phcms$。该结果为继续评估聚焦式 TES 谱学作为 511 keV 紧凑源和未分辨中央增强搜索的互补技术提供了探测器耦合选后率依据，同时指出瞬发大气本底抑制、延迟活化系统误差验证和重建验证是下一阶段的主要验证任务。
+615:\label{app:delayed}
+617:本附录汇集第~\ref{subsec:delayed_source} 节引用的延迟源构建诊断图。它们记录的是固定第 15 天活度在探测器输运之前于空间、材料和核素上的分布，并不是探测器计数结果。
+621:\includegraphics[width=\linewidth]{paper_source_figure_table/fig_delayed_position_rpip_distribution.png}
+623:\label{fig:delayed_position_distribution}
+628:\includegraphics[width=\linewidth]{paper_source_figure_table/fig_position_sampling_necessity.png}
+630:\label{fig:position_sampling_necessity}
+643:\begin{thebibliography}{99}
+646:N. Prantzos, C. Boehm, A.M. Bykov, R. Diehl, K. Ferriere, N. Guessoum, P. Jean, J. Knoedlseder, A. Marcowith, I.V. Moskalenko, A. Strong, G. Weidenspointner, The 511 keV emission from positron annihilation in the Galaxy, Rev. Mod. Phys. 83 (2011) 1001--1056, doi:10.1103/RevModPhys.83.1001.
+649:P. Jean, J. Knoedlseder, V. Lonjou, M. Allain, J.-P. Roques, G.K. Skinner, B.J. Teegarden, G. Vedrenne, P. von Ballmoos, B. Cordier, P. Caraveo, R. Diehl, P. Durouchoux, P. Leleux, R. Schanne, G. Weidenspointner, Spectral analysis of the Galactic $e^+e^-$ annihilation emission, Astron. Astrophys. 445 (2006) 579--589, doi:10.1051/0004-6361:20053765.
+652:T. Siegert, R. Diehl, G. Khachatryan, M.G.H. Krause, F. Guglielmetti, J. Greiner, A.W. Strong, X. Zhang, Gamma-ray spectroscopy of positron annihilation in the Milky Way, Astron. Astrophys. 586 (2016) A84, doi:10.1051/0004-6361/201527510.
+655:T. Siegert, R. Diehl, G. Khachatryan, M.G.H. Krause, F. Guglielmetti, J. Greiner, A.W. Strong, X. Zhang, Constraints on positron annihilation kinematics in the inner Galaxy, Astron. Astrophys. 627 (2019) A126, doi:10.1051/0004-6361/201833856.
+661:C.A. Kierans, S.E. Boggs, A. Zoglauer, A.W. Lowell, C. Sleator, J. Beechert, T.J. Brandt, P. Jean, H. Lazar, J. Roberts, T. Siegert, J.A. Tomsick, P. von Ballmoos, Detection of the 511 keV Galactic positron annihilation line with COSI, Astrophys. J. 895 (2020) 44, doi:10.3847/1538-4357/ab89a9.
+664:T. Siegert, S.E. Boggs, J.A. Tomsick, A.C. Zoglauer, C.A. Kierans, C.C. Sleator, J. Beechert, T.J. Brandt, P. Jean, H. Lazar, A.W. Lowell, J.M. Roberts, P. von Ballmoos, Imaging the 511 keV positron annihilation sky with COSI, Astrophys. J. 897 (2020) 45, doi:10.3847/1538-4357/ab9607.
+667:J. Knoedlseder, P. Jean, V. Lonjou, G. Weidenspointner, N. Guessoum, R. Diehl, W. Gillard, M.J. Harris, G.K. Skinner, P. von Ballmoos, G. Vedrenne, P. Caraveo, B. Cordier, V. Schoenfelder, B.J. Teegarden, The all-sky distribution of 511 keV electron-positron annihilation emission, Astron. Astrophys. 441 (2005) 513--532, doi:10.1051/0004-6361:20042063.
+670:G. De Cesare, Searching for the 511 keV annihilation line from galactic compact objects with the IBIS gamma ray telescope, Astron. Astrophys. 531 (2011) A56, doi:10.1051/0004-6361/201116516.
+673:F. Shirazi, E. Gau, M.A. Hossen, D. Becker, D. Schmidt, D. Swetz, D. Bennett, D. Braun, F. Kislat, J. Gard, J. Mates, J. Weber, N.R. Cavero, S. Chun, L. Lisalda, A. West, B. Dev, F. Ferrer, R. Bose, J. Ullom, H. Krawczynski, The 511-CAM Mission: A pointed 511 keV gamma-ray telescope with a focal plane detector made of stacked transition edge sensor microcalorimeter arrays, J. Astron. Telesc. Instrum. Syst. 9 (2023) 024006, doi:10.1117/1.JATIS.9.2.024006.
+682:G. Weidenspointner, C.B. Wunderer, N. Barriere, A. Zoglauer, P. von Ballmoos, Monte Carlo study of detector concepts for the MAX Laue Lens gamma-ray telescope, arXiv:astro-ph/0603152, 2006.
+688:F. Guan, M. Asai, D.A. Bartkoski, M. Kleckner, Z. Harel, M. Salehpour, Adding the X-ray Bragg reflection physical process in crystal to the Geant4 Monte Carlo simulation toolkit, part I: reflection from a crystal slab, Precision Radiation Oncology 7(1) (2023) 59-66.
+697:L. Gottardi, K. Nagayoshi, A review of X-ray microcalorimeters based on superconducting transition edge sensors for astrophysics and particle physics, Applied Sciences 11 (2021) 3793, doi:10.3390/app11093793.
+703:E.M. Vavagiakis, S.W. Henderson, K. Zheng, H.-M. Cho, N.F. Cothard, B. Dober, S.M. Duff, P.A. Gallardo, G. Hilton, J. Hubmayr, K.D. Irwin, B.J. Koopman, D. Li, F. Nati, M.D. Niemack, C.D. Reintsema, S. Simon, J.R. Stevens, A. Suzuki, B. Westbrook, Magnetic sensitivity of AlMn TESes and shielding considerations for next-generation CMB surveys, arXiv:1710.08456, 2017.
+712:N. Gehrels, Instrumental background in balloon-borne gamma-ray spectrometers and techniques for its reduction, Nucl. Instrum. Methods Phys. Res. A 239 (1985) 324--349, doi:10.1016/0168-9002(85)90732-6.
+721:F.G. Kondev, M. Wang, W.J. Huang, S. Naimi, G. Audi, The NUBASE2020 evaluation of nuclear physics properties, Chinese Phys. C 45 (2021) 030001, doi:10.1088/1674-1137/abddae.
+724:S.J. Sturner, C.R. Shrader, G. Weidenspointner, B.J. Teegarden, D. Attie, B. Cordier, R. Diehl, C. Ferguson, P. Jean, A. von Kienlin, P. Paul, F. Sanchez, S. Schanne, P. Sizun, G. Skinner, C.B. Wunderer, Monte Carlo simulations and generation of the SPI response, Astron. Astrophys. 411 (2003) L81--L84, doi:10.1051/0004-6361:20031171.
+742:S. Gallego, U. Oberlack, J. Lommler, C.M. Karwin, A. Zoglauer, P. Jean, P. von Ballmoos, C. Kierans, C.C. Sleator, J.A. Tomsick, S.E. Boggs, Bottom-up background simulations of the 2016 COSI balloon flight, arXiv:2503.02493, 2025.
+745:S. Gallego, U. Oberlack, J. Lommler, C.M. Karwin, F. Fenu, V. Fioretti, A. Zoglauer, et al., Pre-flight background estimates for COSI, arXiv:2510.25304, 2025.
+757:G. Cowan, K. Cranmer, E. Gross, O. Vitells, Asymptotic formulae for likelihood-based tests of new physics, Eur. Phys. J. C 71 (2011) 1554, doi:10.1140/epjc/s10052-011-1554-0.
+759:\end{thebibliography}

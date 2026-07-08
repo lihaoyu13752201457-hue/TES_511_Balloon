@@ -1,0 +1,75 @@
+*** Begin Patch
+*** Update File: core_md/balloon511_ea_latex_drafts/balloon511_ea_draft_en.tex
+@@
+ The line-window result uses the narrow energy window, active-shield veto,
+ topology/field-of-view consistency selection, and mission-time fold. Spatial
+ gates, 45$^\circ$ line-of-sight folds, and fixed-template annular likelihoods
+ are not used to improve the quoted threshold.
+ 
++\added{In addition to the primary line window, the Phase 2 evidence package
++generates $480$--$550\keV$ stream/stage spectra with $0.5\keV$ bins from the
++same Step05 event catalogues as a check of the nearby continuum and veto
++behavior. The broad-window final selected rates are
++$6.31(83)\times10^{-2}\cps$ for prompt background,
++$3.18(52)\times10^{-3}\cps$ for delayed activation, and
++$8.003(46)\times10^{-1}\cps$ for the focused-signal unit replay. These
++broad-window values support the spectral-shape and cut-flow checks but do not
++replace the $\wii$ sensitivity authority in Table~\ref{tab:primary_sensitivity}.}
++
+ \subsection{Background composition}
+ \label{subsec:bgcomp}
+ 
+-The selected $\wii$ background is dominated by prompt atmospheric events.
+-The selected stream split in Table~\ref{tab:primary_sensitivity} corresponds
+-to 93.4\% prompt and 6.6\% delayed activation. The delayed component remains
+-important despite its smaller rate because its source distribution is spatially
+-and materially structured. The primary delayed reference estimate is now supported by an
+-independent selected-rate convergence check rather than by source-inventory
+-checks alone.
++\rewritten{The selected $\wii$ background is dominated by prompt atmospheric
++events. The selected stream split in Table~\ref{tab:primary_sensitivity}
++corresponds to 93.4\% prompt and 6.6\% delayed activation. The Phase 2 evidence
++package further decomposes selected events by incident particle family,
++production volume, and selected delayed nuclide, as summarized in
++Table~\ref{tab:phase2_bg_decomp}. The prompt selected line-window sample is
++mostly from the incident positron family, with a smaller neutron-induced
++contribution. The delayed selected sample is not dominated directly by the
++largest source-activity term in the inventory, CsI/$^{128}$I, but by Cu-64 and
++Cu-62 after detector transport and event selection. This distinction is
++important: source activity, transport survival, and final selected rate are not
++interchangeable. The primary delayed authority is now supported by an
++independent selected-rate convergence screen rather than by source-inventory
++checks alone.}
++
++\begin{table}[t]
++\centering
++\caption{\added{Phase 2 evidence-package decomposition of the selected $\wii$ background.}}
++\label{tab:phase2_bg_decomp}
++\footnotesize
++\resizebox{\linewidth}{!}{%
++{\color{red}
++\begin{tabular}{llccc}
++\toprule
++Category & Source & Events & Rate / $\cps$ & Interpretation \\
++\midrule
++Prompt incident family & $e^+$ & 47 & $3.1890\times10^{-2}$ & Main prompt selected term \\
++Prompt incident family & $n$ & 7 & $4.7513\times10^{-3}$ & Secondary prompt selected term \\
++Delayed production volume & MXC cold plate / Cu-64, Cu-62 & 13 & $1.1159\times10^{-3}$ & Largest selected delayed volume term \\
++Delayed production volume & Ta/Cu substrate support / Cu-64 & 6 & $5.1504\times10^{-4}$ & Second-largest selected delayed volume term \\
++Delayed production volume & Other Cu/window/cold-stage volumes & 11 & $9.4424\times10^{-4}$ & Remaining selected delayed volume terms \\
++Delayed nuclide & Cu-64 & 24 & $2.0602\times10^{-3}$ & Main selected delayed nuclide \\
++Delayed nuclide & Cu-62 & 6 & $5.1504\times10^{-4}$ & Secondary selected delayed nuclide \\
++W/collimator delayed & W or collimator origin & 0 & $0$ & No selected W/collimator delayed event in the current $\wii$ sample \\
++\bottomrule
++\end{tabular}
++}}
++\vspace{0.5ex}
++\begin{minipage}{0.94\linewidth}
++\footnotesize\color{red}
++The decomposition is a lightweight parse of the current Step05 event catalogues
++and the W-activation selected-event audit. Per-event volume/nuclide
++decomposition for the merged four independent delayed samplings is not yet
++recorded, so this table reports the promoted-seed selected-event decomposition.
++\end{minipage}
++\end{table}
+*** End Patch

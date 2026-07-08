@@ -76,7 +76,9 @@ Current geo-opt S1/BPE/W5 W2, without atmospheric 511:
 | prompt n | 0.0407117775780 | 0.0088208851419 | 0.0088208851419 |
 | delayed | 0.00451240053468 | 0.00322314323906 | 0.00279339080718 |
 
-Atmospheric 511 current geo-opt W2 replay:
+Atmospheric 511 current geo-opt W2 replay at planning time
+(superseded on 2026-07-08 by the 4pi sidecar replay in
+`engineering/geometry_optimization_20260704/12_atm511_sidecar_replay_20260708/`):
 
 | stage | events | transfer cps/(ph cm^-2 s^-1) |
 |---|---:|---:|
@@ -84,7 +86,9 @@ Atmospheric 511 current geo-opt W2 replay:
 | active pass | 108 | 0.407064836383 |
 | final side/FoV pass | 95 | 0.358066291262 |
 
-Harris Rc~11--13 GV atmospheric 511 adds `0.00834351749248 cps`.
+The superseding 2026-07-08 sidecar W2 cutflow is `114/114/107`, with final
+nominal atmospheric-511 rate `0.0207913135058 cps` and sidecar-included
+`F3(20d) = 4.62986036016e-05 ph cm^-2 s^-1`.
 
 ## Interpretation Gates
 

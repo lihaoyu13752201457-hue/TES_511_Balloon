@@ -1,0 +1,254 @@
+{
+  "call_id": "call_BGrHoD45Oo6kJHz8xHnMC5Cx",
+  "cmd": "sed -n '1,240p' core_md/balloon511_ea_latex_drafts/balloon511_ea_draft_en.tex",
+  "call_log": "/home/ubuntu/.codex/sessions/2026/06/28/rollout-2026-06-28T20-40-23-019f0e3e-c8af-7003-b6cd-d523b87873df.jsonl",
+  "call_line": 344,
+  "output_log": "/home/ubuntu/.codex/sessions/2026/06/28/rollout-2026-06-28T20-40-23-019f0e3e-c8af-7003-b6cd-d523b87873df.jsonl",
+  "output_line": 348,
+  "source_path": "core_md/balloon511_ea_latex_drafts/balloon511_ea_draft_en.tex",
+  "range": [
+    1,
+    240
+  ]
+}
+
+% =====================================================================
+% Experimental Astronomy (Springer) journal layout -- EMULATED.
+% Compile with XeLaTeX (e.g. latexmk -pdfxe).
+% Auto-generated from the NIM-A elsarticle source by build_ea_format.py;
+% only the journal FORMAT changed -- text, figures, tables, and references
+% are carried over verbatim from balloon511_nima_draft_en.tex.
+% For submission, replace this emulated preamble with the official Springer
+% Nature class (sn-jnl.cls); the structure is already aligned to it.
+% =====================================================================
+\documentclass[11pt]{article}
+\usepackage[a4paper,top=2.4cm,bottom=2.5cm,left=2.0cm,right=2.0cm]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{fontspec}
+\setmainfont{TeX Gyre Termes}
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage[section]{placeins}
+\renewcommand{\topfraction}{0.92}
+\renewcommand{\bottomfraction}{0.8}
+\renewcommand{\textfraction}{0.07}
+\renewcommand{\floatpagefraction}{0.75}
+\usepackage{xcolor}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning}
+\usepackage{caption}
+\captionsetup{font=small,labelfont=bf}
+\usepackage{titlesec}
+\titleformat{\section}{\normalfont\large\bfseries}{\thesection}{0.6em}{}
+\titleformat{\subsection}{\normalfont\normalsize\bfseries}{\thesubsection}{0.5em}{}
+\titlespacing*{\section}{0pt}{1.3ex plus .2ex minus .2ex}{0.6ex}
+\titlespacing*{\subsection}{0pt}{1.0ex plus .2ex minus .2ex}{0.5ex}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small\itshape Experimental Astronomy}
+\fancyhead[R]{\small\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+\usepackage{hyperref}
+\hypersetup{hidelinks}
+\setlength{\emergencystretch}{3em}
+\newcommand{\keV}{\,\mathrm{keV}}
+\newcommand{\MeV}{\,\mathrm{MeV}}
+\newcommand{\cms}{\,\mathrm{cm^{-2}\,s^{-1}}}
+\newcommand{\phcms}{\,\mathrm{ph\,cm^{-2}\,s^{-1}}}
+\newcommand{\cps}{\,\mathrm{s^{-1}}}
+\newcommand{\wii}{W_{511}}
+\newcommand{\aeff}{A_{\mathrm{eff}}}
+\newcommand{\fzero}{F_{0}}
+\newcommand{\fthree}{F_{3\sigma}}
+\newcommand{\added}[1]{{\color{red}#1}}
+\newcommand{\rewritten}[1]{{\color{green!50!black}#1}}
+
+\begin{document}
+\thispagestyle{fancy}
+\begin{flushleft}
+{\LARGE\bfseries Detector-coupled Monte Carlo estimate of background and unresolved-line sensitivity for a balloon-borne 511 keV Laue-lens TES telescope \par}
+\vspace{1.1em}
+{\large Authors omitted for review\par}
+\vspace{0.3em}
+{\normalsize\itshape Affiliations omitted for review\par}
+\end{flushleft}
+\vspace{0.7em}
+\noindent\rule{\textwidth}{0.4pt}
+\vspace{0.5em}
+
+\noindent\textbf{Abstract}\hspace{0.7em}The Galactic 511 keV annihilation emission is dominated by extended bulge and disk components, whereas the strength of any compact or point-like contribution remains uncertain. Pointed focusing observations can probe this complementary regime, but only when the atmospheric and instrument-induced backgrounds at balloon altitude are well controlled. We present a detector-coupled Monte Carlo estimate for a balloon-borne telescope that combines a 10 m Ge(111) Laue lens with a transition-edge sensor (TES) microcalorimeter focal plane. In the signal chain, the Laue optics first generate the focused focal-plane phase space for a monochromatic on-axis 511 keV point source, and photons passing the Be entrance aperture are then replayed through the detector/cryostat mass model. In the background chain, prompt atmospheric particles and photons and delayed activation decays are transported through the same detector/cryostat model; the delayed decays are seeded from the radionuclide-production positions recorded during the activation calculation. The resulting detector-level event streams are analyzed with the same $510.58$--$511.42\keV$ energy window, CsI anticoincidence veto, and topology/field-of-view consistency selection. For an incident point-source flux of $10^{-4}\phcms$, the selected day-15 signal and background rates are $1.19\times10^{-3}\cps$ and $3.92\times10^{-2}\cps$, respectively, and prompt atmospheric events account for 93.4\% of the selected background. Folding these rates through the adopted synthetic 20 d trajectory under continuous on-source exposure yields a diagnostic counting significance of $Z_{20\mathrm{d}}=7.80$ and a corresponding $3\sigma$ flux threshold of $3.85\times10^{-5}\phcms$. This threshold provides a flight-sensitivity estimate for a spectrally unresolved 511 keV point source under the reference model; the selected background is dominated by the prompt atmospheric component, which points to the shielding, collimation, and material choices most relevant to design optimization.
+
+\vspace{0.7em}
+\noindent\textbf{Keywords}\hspace{0.7em}Gamma-ray instrumentation $\cdot$ 511 keV annihilation line $\cdot$ transition-edge sensors $\cdot$ Laue lens $\cdot$ balloon-borne telescope $\cdot$ Monte Carlo background simulation $\cdot$ activation background
+
+\vspace{0.3em}
+\noindent\rule{\textwidth}{0.4pt}
+\vspace{1.0em}
+
+\section{Introduction}
+\label{sec:intro}
+
+The 511 keV annihilation emission from the Galactic-center region is a key observational window on the origin of Galactic positrons. Spectroscopically, it consists of a two-photon line near 511 keV and a positronium continuum on its low-energy side: direct electron--positron annihilation, or para-positronium decay, produces two photons near 511 keV, whereas ortho-positronium decay produces a three-photon continuum. After slowing in the interstellar medium, positrons form positronium or annihilate directly, so the line strength, line profile, and positronium continuum together encode the annihilation medium \cite{Prantzos2011,Jean2006}. Observations led by INTEGRAL/SPI measure the total Galactic 511 keV flux; in approximate steady state, this flux corresponds to a positron annihilation rate of order a few $\times10^{43}\,\mathrm{e^+\,s^{-1}}$ \cite{Prantzos2011,Kierans2020}. This scale links Galactic-center spectroscopy to the Galaxy-wide positron-supply problem: candidate supply channels include $\beta^+$ radioactive nuclei synthesized in stellar explosions, pair-producing compact objects, and non-standard particle processes, but present data do not uniquely identify which class dominates \cite{Prantzos2011,Siegert2016AA}.
+
+Past wide-field observations have established the diffuse morphology of this emission. INTEGRAL/SPI reveals a bright central bulge together with a fainter Galactic disk, and a 20-year analysis recovers central, broad-bulge, and disk structures while finding only marginal evidence for additional associations \cite{Siegert2016AA,Yoneda2025}. The 2016 COSI balloon flight independently detected the bulge signal and found indications of emission more extended than a point source \cite{Kierans2020,Siegert2020COSI}. Spectroscopy also constrains the physical state and kinematics of the annihilation medium: the SPI line resolves into a narrow component of $\sim 1.3\keV$ FWHM and a broader $\sim 5.4\keV$ component, and centroid and width variations have been searched for across the inner Galaxy \cite{Jean2006,Siegert2019Kinematics}. Nevertheless, the 511 keV sky records where positrons annihilate after slowing, not necessarily where they were first produced; before thermalization, positrons can propagate through the magnetized, multiphase interstellar medium. Existing diffuse-morphology and spectroscopy constraints therefore do not by themselves identify the dominant source class or reconstruct the transport history before annihilation \cite{Prantzos2011}.
+
+This motivates narrow-field, high-resolution pointed observations. Wide-field Compton and coded-mask instruments are well suited to measuring the overall diffuse bulge and disk, and they can also be searched for point sources; however, a complementary technique is needed to test whether the central region contains an unresolved central enhancement, point sources, or measurable line-kinematic structure. Detecting a point-like or narrowly concentrated 511 keV feature would show that some annihilation is spatially localized; a non-detection would instead limit the compact component without excluding source populations whose positrons escape and annihilate diffusely. Compact-source searches based on INTEGRAL/IBIS coded-mask data have found no Galactic 511 keV point sources and give a $2\sigma$ point-source upper limit of about $1.6\times10^{-4}\phcms$ for a $\sim 10$ Ms Galactic-center exposure \cite{DeCesare2011}. This non-detection limit sets the flux scale reached by existing compact-source searches and provides a comparison target for new narrow-field 511 keV pointing instruments.
+
+Laue optics provide one route to such pointed observations by using Bragg diffraction in transmission to concentrate photons from a known direction onto a small focal plane \cite{Barriere2009Laue,Barriere2011LauePrototype}. By decoupling collecting area from active detector area, focusing can improve point-source sensitivity whenever detector-associated background dominates \cite{Weidenspointner2006MAX}. A compatible focal plane must combine a narrow energy response with adequate 511 keV detection efficiency. Transition-edge sensor (TES) microcalorimeters read the deposited energy in $\gamma$-ray absorbers with superconducting transition thermometers and can provide sub-keV energy resolution at 511 keV \cite{Shirazi2023}. Arranging TES microcalorimeters in arrays gives the active area needed to cover the focused spot, while thick absorbers and multiple absorber layers increase the interaction probability for 511 keV photons. The Laue-optics/TES-array combination therefore concentrates the incident phase space while preserving high spectral discrimination: the optics focus photons from the target direction onto a small focal plane, and, for the unresolved 511 keV line considered here, the TES response makes a narrow line-window cut a useful background-rejection tool. The combination trades sky coverage for a concentrated beam and high-resolution spectroscopy, making it complementary to wide-field measurements of the bulge and disk rather than a replacement for them. Continuum studies or broader astrophysical line profiles would require the corresponding energy band, optical configuration, and background model, and therefore a different sensitivity definition.
+
+In practice, focusing and a narrow line window do not by themselves determine the achievable sensitivity, because MeV line instruments are often limited by local instrumental backgrounds. Spaceborne and balloon-borne instruments alike can suffer activation products, local annihilation radiation, and continuum backgrounds induced by cosmic rays and secondary particles \cite{Sturner2003,Gehrels1985}. For a balloon payload, the residual atmosphere also provides a strong photon and particle field that varies with altitude, latitude, and geomagnetic cutoff; in the present 511 keV case, atmospheric photons and particles can directly produce prompt detector events and secondary annihilation radiation, and can also generate radioactive nuclei in the detector, shield, and surrounding structure whose decays form a time-dependent delayed component. Because the celestial signal sits at the same energy as atmospheric and instrumental annihilation features, sensitivity cannot be inferred from the lens effective area and detector energy resolution alone; it also depends on the surrounding mass distribution, the active shielding and event selection, the radiation environment, and the accuracy with which the residual background is modeled. Recent bottom-up simulations of the 2016 COSI balloon flight illustrate the level of payload and detector-response modeling---including activation lines and anticoincidence response---needed to validate such a background estimate against flight and calibration data \cite{Gallego2025Balloon,Beechert2022,Ciabattoni2025ACS}.
+
+In this work we develop an end-to-end detector-coupled Monte Carlo chain for this concept and use it to estimate the in-flight background and point-source performance at balloon altitude and to provide directional guidance for design optimization. The chain takes the EXPACS/PARMA atmospheric cosmic-ray field as input and, at balloon altitude, transports the prompt particles while tracking their activation products, yielding both the prompt atmospheric background and the delayed activation background that builds up over the flight; the focused 511 keV reference signal is provided by a 10 m Ge(111) Laue-optics model. The signal and both backgrounds are injected into the same representative balloon-borne TES focal-plane mass model (a dilution-refrigerator cold end, passive shielding, and an active anticoincidence shield), processed with a common narrow energy window, anticoincidence veto, and topology/field-of-view selection, and folded along a reference flight trajectory to give the selected signal rate, the background composition, and the counting significance. The selected background is dominated by the prompt atmospheric component, so the shield geometry, side-entry collimation, and shield material are the most direct directions for design optimization; the delayed activation and the upstream optics-hardware background enter the same evaluation as secondary components. This work thereby estimates the in-flight background and detection performance of the balloon platform and indicates directions for design optimization.
+
+Sections~2--8 set out the science requirements, simulation chain, mass model, optics coupling, background sources, event selection, and mission-time fold. Section~9 presents the selected-rate and sensitivity results, and Sections~10 and 11 cover the limitations and conclusions.
+
+\section{Science and instrument requirements}
+\label{sec:requirements}
+
+The simulated instrument is aimed at 511 keV point-source or unresolved-central-excess components from the Galactic-center region that have not been detected by previous instruments. Existing INTEGRAL/SPI measurements have established a 511 keV sky dominated by diffuse bulge and disk emission and limit point-like 511 keV sources superposed on that diffuse emission to fluxes of order $10^{-4}\phcms$; an independent INTEGRAL/IBIS compact-source search also found no Galactic 511 keV point sources and gives an upper limit of about $1.6\times10^{-4}\phcms$ for a $\sim10$ Ms Galactic-center exposure \cite{Knodlseder2005AllSky,DeCesare2011}. For a representative 511 keV atmospheric transmission of $T\simeq0.739$ at balloon altitude, this limit corresponds to an above-payload photon-flux scale of about $1.2\times10^{-4}\phcms$. The simulation therefore adopts $\fzero=10^{-4}\phcms$ as the reference point-source photon-flux scale. Compared with the wide-field spectroscopic and coded-mask searches performed by INTEGRAL, the modeled payload adds Laue focusing to improve the point-source response and uses a high-energy-resolution, multilayer thick-absorber TES microcalorimeter array as the focal-plane detector to sharpen the 511 keV line measurement \cite{Shirazi2023,Caputo2017}.
+
+This work first considers a balloon payload as an early test platform, with the expectation that the approach can later be extended to a satellite observing platform.
+
+This goal imposes four requirements on the instrument and the simulation: first, the telescope must concentrate 511 keV photons onto a small focal plane, so that detector-associated background is reduced without sacrificing collecting area. Second, the focal-plane response must support a sub-keV energy window, so that the line-window background scales with a narrow spectral interval rather than a broad MeV-band continuum. Third, the detector and shield model must suppress atmospheric, activation, and side-entry backgrounds while explicitly accounting for the passive material near the TES absorbers. Fourth, the simulation chain must treat prompt background, delayed activation, focused signal, vetoes, event topology, and mission-time variation consistently, so that signal and background are evaluated under the same detector selection.
+
+\section{Simulation workflow}
+\label{sec:workflow}
+
+Detector-coupled Monte Carlo transport through a detailed mass model is an established technique for predicting the response and background of gamma-ray spectrometers \cite{Sturner2003}, and Figure~\ref{fig:workflow} summarizes the chain used here. The calculation is divided into geometry definition, prompt and buildup transport, delayed-source construction, focused-optics transport, detector-coupled signal replay, veto mechanisms, detailed background analysis, time and flight-trajectory variation, and flight-performance assessment with design-optimization guidance. The present manuscript uses production-position-sampled delayed decays as the primary delayed-source representation: delayed decays are sampled from recorded radioactive-production positions instead of being redistributed into an axisymmetric radial profile.
+
+\begin{figure}[t]
+\centering
+\begin{tikzpicture}[
+  box/.style={rectangle, rounded corners=2pt, draw=black!55, line width=0.4pt,
+              align=center, font=\scriptsize, text width=30mm, minimum height=8mm, inner sep=2pt},
+  bg/.style={box, fill=blue!8},
+  sig/.style={box, fill=green!12},
+  shr/.style={box, fill=black!6},
+  flow/.style={-{Latex[length=2mm]}, draw=black!60, line width=0.5pt}
+]
+\node[shr] (geo)    at (0,0)        {Geometry / mass model};
+\node[bg]  (prompt) at (-3.1,-1.35) {Prompt \& activation transport};
+\node[bg]  (delay)  at (-3.1,-2.7)  {Delayed activity source};
+\node[bg]  (decay)  at (-3.1,-4.05) {Production-position decay transport};
+\node[sig] (optics) at (3.1,-1.35)  {Laue optics (signal only)};
+\node[sig] (couple) at (3.1,-2.7)   {Optics--detector coupling};
+\node[shr] (sel)    at (0,-5.4)     {Veto mechanisms: scintillator veto $+$ Compton-kinematic veto};
+\node[shr] (detail) at (0,-6.75)    {Detailed background analysis};
+\node[shr] (fold)   at (0,-8.1)     {Time and flight-trajectory variation};
+\node[shr] (out)    at (0,-9.45)    {Flight-performance assessment and design-optimization guidance};
+\draw[flow] (geo) -- (prompt);
+\draw[flow] (geo) -- (optics);
+\draw[flow] (prompt) -- (delay);
+\draw[flow] (delay) -- (decay);
+\draw[flow] (optics) -- (couple);
+\draw[flow] (decay) -- (sel);
+\draw[flow] (couple) -- (sel);
+\draw[flow] (sel) -- (detail);
+\draw[flow] (detail) -- (fold);
+\draw[flow] (fold) -- (out);
+\end{tikzpicture}
+\caption{Simulation chain used in this work. Blue nodes are the prompt and
+delayed background streams, green nodes the focused-signal optics, and grey
+nodes the shared geometry, veto mechanisms, detailed background analysis,
+time/trajectory variation, and final flight-performance assessment. The focused
+signal and all background streams are evaluated under the same detector response
+and veto definitions before background decomposition, mission-time variation,
+and design-optimization judgments are made.}
+\label{fig:workflow}
+\end{figure}
+
+The primary rate calculation combines prompt and activation-buildup transport, a fixed day-15 radionuclide population, sampled equal-activity point sources at recorded production positions, and downstream propagation through the detector response, veto mechanisms, detailed background analysis, and flight-performance assessment.
+
+Each layer has a defined input, a physical or statistical operation, an output consumed by later layers, and an interpretation boundary. Geometry definition fixes the mass model and coordinate policy but does not produce a rate. Prompt transport and activation transport define direct atmospheric backgrounds and isotope-production histories. The delayed-source layer converts those histories into a fixed day-15 radioactive population and transports sampled production-position decays. The optical Monte Carlo is signal-only: it supplies the Laue-lens effective area and tracked focused phase space, while the optics-detector coupling and detector-response layers convert that phase space into a detector-coupled point-source response. The scintillator veto and Compton-kinematic veto jointly define the detector-level retained events; the calculation then proceeds to detailed background analysis, time/trajectory folding, and flight-performance assessment with design-optimization guidance.
+
+The numerical hierarchy used below follows the same logic. Day-15 selected
+rates are quoted after the focused signal stream has been scaled by the 10 m
+Ge(111) effective area and the reference atmospheric transmission.
+Mission-mean rates are quoted from the time-dependent fold, and the primary
+$Z$, net $3\sigma$ exposure, and flux thresholds are quoted from the cumulative
+significance calculation. Production-position sampling checks are interpreted
+only after the sampled source has been transported through the same detector
+selection and significance chain. This separation avoids mixing unit-injection
+rates, day-15 direct expectations, and mission-folded sensitivities in a single
+result.
+
+\FloatBarrier
+
+\section{Detector and cryostat mass model}
+\label{sec:geometry}
+
+The detector model is an engineering Geant4/MEGAlib proxy mass model for a balloon-borne TES focal-plane assembly mounted at the cold end of a compact dilution-refrigerator (DR) stack \cite{Shirazi2023,Gottardi2021TESReview}. It is not a final flight CAD model and does not attempt to reproduce the microfabricated TES layers, detailed wiring, readout layout, or every cryogenic service component, nor does it include the full gondola, optical bench, lens support structure, electronics, pressure vessels, or diffuse celestial fields. Instead, the model preserves the detector/cryostat material columns and local apertures that are first-order for 511 keV transmission, scattering, activation, active-shield vetoing, and event topology. The baseline detector/cryostat geometry therefore contains the TES absorber stack, substrate and window proxies, the side Be entrance window, passive shield/collimator material, cryogenic service-mass proxies, and a segmented CsI active anticoincidence shield. Figure~\ref{fig:mass_model} shows two-dimensional views of the proxy mass model, and Table~\ref{tab:geometry} lists the detector and analysis parameters fixed before the rate calculation.
+
+The DR and service hardware are represented at proxy-mass level. The model keeps the physical order of the main temperature stages: the TES module is placed at the 50 mK/MXC end, followed by cold-plate and heat-exchanger proxies for the CP, still, 4 K, 60 K, and 300 K service regions. Al shells and windows represent staged radiation shields and the vacuum jacket. Support structures, capillaries, cable bundles, readout boxes, and other services are not laid out as flight-ready parts; they are included as local service-mass proxies where they can contribute scattering or activation. This simplification keeps the detector bay, beam aperture, and upper service tower in their correct spatial relationship without treating the model as a mechanical design.
+
+The TES focal plane is represented by the gamma-ray absorber array plus a parameterized calorimeter response, rather than by a full microfabricated TES/readout layout \cite{Zhang2022TESGamma}. In the present detector concept the TES thermometer film is an AlMn layer of order $200\,\mathrm{nm}$ thickness, whereas the gamma-ray absorber is a millimetre-scale metal structure. For the non-thermal detector-background simulation in this paper, 511 keV stopping, Compton scattering, and activation are therefore governed mainly by the absorber and nearby support mass. The explicit sensitive volume is six layers of 376 Ta absorber pixels, or $2256$ pixels in total. Each pixel is a $1.5\times1.5\times3.0\,\mathrm{mm^3}$ absorber in the side-entry coordinate system, with the $3.0\,\mathrm{mm}$ depth aligned to the focused beam. TES-film, wiring, and readout details enter through the assumed energy response and through service-mass proxies rather than as explicit interaction volumes. The selected-rate model treats the reconstructed summed TES energy with a single Gaussian event-energy response proxy, $\sigma=0.14\keV$, and does not model independent per-pixel smearing. Gain drift, non-Gaussian tails, pile-up, saturation, and response-parameter scans are not included, so the quoted thresholds should be read within this idealized response envelope. The analysis window is fixed separately as $\wii=510.58$--$511.42\keV$. The detector efficiency is not imposed as a standalone scalar in this mass-model section; it is generated by Geant4 transport through the absorber/shield geometry and by the downstream event-selection and signal-normalization chain.
+
+The local side-entry geometry points the Be window $45^\circ$ upward in the zenith-frame source coordinates, with an instrument-frame rotation of $0,45,0$ degrees. The side aperture passes through the CsI shield and passive package and is bounded by a 2 cm-thick W square-bore sleeve. This sleeve is an aperture and leakage-suppression proxy, not a pixel-matched 376-hole collimator. The outer package uses an Al mechanical shell, Cu/W graded passive liners in the detector bay, a W bottom plate, and segmented side, bottom, and top CsI volumes. Low-Z Al foils and a $150\,\mu\mathrm{m}$ Be vacuum window are placed on the side beam line to retain a transparent 511 keV entrance path while keeping cryogenic-window material in the transport model.
+
+The CsI scintillator volumes are used as the mass-model proxy for the active anticoincidence layer. They enter the simulation as materials for transport and activation, and as shield volumes whose deposited energy is evaluated in post-processing. Candidate events are grouped on a common Poisson time axis and vetoed if the summed CsI shield energy in the coincidence window exceeds the analysis threshold. For the baseline CsI configuration the analysis veto threshold is $50\keV$ and the coincidence window is $1\,\mu\mathrm{s}$. This keeps the veto definition common to prompt, delayed, and focused-science streams and prevents production-time trigger flags from becoming the quantitative rate definition. The geometry-definition stage fixes the material and coordinate choices before rate calculations are made; it does not by itself define a sensitivity.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.62\linewidth]{paper_source_figure_table/fig_mass_model_xz_overview.png}
+
+\vspace{0.6ex}
+\includegraphics[width=0.88\linewidth]{paper_source_figure_table/fig_mass_model_detector_bay_detail.png}
+\caption{Two-dimensional views of the detector/cryostat proxy mass model. Top: X--Z overview of the DR tower, detector bay, active shield, and side-entry beam path. Bottom: detector-bay detail showing the TES absorber stack, open beam region, and off-axis Cu thermal links.}
+\label{fig:mass_model}
+\end{figure}
+
+\begin{table}[t]
+\centering
+\caption{Key detector and analysis parameters used for the reference calculation.}
+\label{tab:geometry}
+\begin{tabular}{p{0.36\linewidth}p{0.56\linewidth}}
+\toprule
+Parameter & Value or policy \\
+\midrule
+Detector concept & TES microcalorimeter focal plane \\
+TES pixel copies & $6\times376=2256$ \\
+TES absorber proxy & Ta pixels, $1.5\times1.5\times3.0\,\mathrm{mm^3}$ each \\
+TES energy-response proxy & Single Gaussian event-energy proxy, $\sigma=0.14\keV$; independent per-pixel smearing not modeled \\
+Detector efficiency & Geant4 transport plus downstream selected-rate normalization; no standalone scalar efficiency is imposed here \\
+Active shield & Segmented CsI, post-processing veto \\
+CsI veto threshold & $50\keV$ summed shield energy \\
+Entrance-window stack & staged Al foils plus $150\,\mu\mathrm{m}$ Be side window \\
+Passive shielding/collimation & Cu/W proxy liners, W bottom plate, and 2 cm W side sleeve \\
+DR/service proxies & MXC/CP/still/4 K/60 K/300 K stage order plus local structural, cabling, and readout service-mass proxies \\
+Pointing & Local side window tilted $45^\circ$ upward \\
+Detector trigger/veto definition & Common detector-level post-processing selection \\
+Coincidence window & $1\,\mu\mathrm{s}$ \\
+Line window $\wii$ & $510.58$--$511.42\keV$ \\
+Reference point-source flux $\fzero$ & $10^{-4}\phcms$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\FloatBarrier
+
+\section{Laue optics and detector-coupled signal replay}
+\label{sec:optics}
+
+The signal model follows the standard Laue-lens approach in which mosaic crystals diffract incident gamma rays in transmission and concentrate them onto a small focal detector \cite{Barriere2009Laue,Barriere2011LauePrototype}. This is the same optical principle adopted in earlier focused gamma-ray telescope studies, where detector response must be evaluated together with the focused phase space rather than from lens effective area alone \cite{Weidenspointner2006MAX}. For the present 511 keV TES concept \cite{Shirazi2023}, the baseline optical configuration is a single-energy Ge(111) Laue ring with focal length $10\,\mathrm{m}$, 25 square tiles of 18 mm side length, 30 arcsec mosaic FWHM, and active Ge mass $0.441\,\mathrm{kg}$. External XOP/CRYSTAL rocking-curve maps \cite{SanchezDelRio2011XOP} set the Ge(111) diffraction probability and angular response. The effective-area normalization is the ring geometric area multiplied by the simulated fraction of diffracted photons that emerge through the detector entrance aperture, giving $\aeff(511\keV)=20.1\,\mathrm{cm^2}$.
+
+The optical simulation is used as a source generator rather than as a standalone effective-area calculation. During transport, gamma rays that cross the nominal focal plane are recorded with their energy, position, direction, and production history. Only tracked diffracted photons that fall within the Be entrance-window aperture are passed downstream; analytic spot projections are retained only as diagnostics. This preserves the attenuation and scattering that occur while the diffracted photon exits the Ge crystal.
+
+Figure~\ref{fig:optics} shows the two levels of the optics-detector coupling: the radial optical constraint from the configured Laue ring to the focal plane (panel a), and the transverse distribution injected into the detector model (panel b).
+
+\begin{figure}[tbp]
+\centering
+\begin{minipage}[t]{0.62\linewidth}
+\centering
+\includegraphics[width=\linewidth]{paper_source_figure_table/fig_optics_laue_transport_schematic.png}\\[0.3ex]
+{\footnotesize (a)}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.36\linewidth}
+\centering
+\includegraphics[width=\linewidth]{paper_source_figure_table/fig_optics_focal_crossings_xy.png}\\[0.3ex]
+{\footnotesize (b)}
+\end{minipage}
+\caption{Laue-lens optics coupling. (a) Simulation-derived radial--$z$ view of the 511 keV signal source: the diffracted fan terminates on tracked focal-plane crossings that satisfy the Be entrance-aperture gate. (b) Tracked transverse focal-plane positions $(x_{\rm fp},y_{\rm fp})$ accepted by the Be entrance aperture and used for detector replay; the red circle marks the Be-window aperture.}
+\label{fig:optics}
+\end{figure}
+

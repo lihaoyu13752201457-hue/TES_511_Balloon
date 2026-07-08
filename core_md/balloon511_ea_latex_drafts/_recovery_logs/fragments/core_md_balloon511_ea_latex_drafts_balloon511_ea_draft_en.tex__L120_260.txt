@@ -1,0 +1,155 @@
+{
+  "call_id": "call_wFNQMp296gEoiPLbsmclCoZi",
+  "cmd": "nl -ba core_md/balloon511_ea_latex_drafts/balloon511_ea_draft_en.tex | sed -n '120,260p'",
+  "call_log": "/home/ubuntu/.codex/sessions/2026/07/01/rollout-2026-07-01T22-08-25-019f1e02-73cd-7511-ac67-a36d2a3c1926.jsonl",
+  "call_line": 7085,
+  "output_log": "/home/ubuntu/.codex/sessions/2026/07/01/rollout-2026-07-01T22-08-25-019f1e02-73cd-7511-ac67-a36d2a3c1926.jsonl",
+  "output_line": 7088,
+  "source_path": "core_md/balloon511_ea_latex_drafts/balloon511_ea_draft_en.tex",
+  "range": [
+    120,
+    260
+  ]
+}
+
+\draw[flow] (geo) -- (optics);
+\draw[flow] (prompt) -- (delay);
+\draw[flow] (delay) -- (decay);
+\draw[flow] (optics) -- (couple);
+\draw[flow] (decay) -- (sel);
+\draw[flow] (couple) -- (sel);
+\draw[flow] (sel) -- (detail);
+\draw[flow] (detail) -- (fold);
+\draw[flow] (fold) -- (out);
+\end{tikzpicture}
+\caption{Simulation chain used in this work. Blue nodes are the prompt and
+delayed background streams, green nodes the focused-signal optics, and grey
+nodes the shared geometry, veto mechanisms, detailed background analysis,
+time/trajectory variation, and final flight-performance assessment. The focused
+signal and all background streams are evaluated under the same detector response
+and veto definitions before background decomposition, mission-time variation,
+and design-optimization judgments are made.}
+\label{fig:workflow}
+\end{figure}
+
+\FloatBarrier
+
+\subsection{Laue optics and detector-coupled signal replay}
+\label{sec:optics}
+
+This simulation adopts a laue-lens system based on mosaic Ge(111) crystals \cite{Barriere2009Laue,Barriere2011LauePrototype}. Through optical design, it realizes a 10 m focal length, \textcolor{red}{a multi-ring system realizes the 450keV-550keV detection band}, and an effective area of 20cm**2 at 511keV; the effective area is calculated as
+\begin{equation}
+  A_{\mathrm{eff}}(E)=A_{\mathrm{inc}}\frac{N_{\mathrm{fp}}(E)}{N_{\mathrm{inc}}(E)}
+  \label{eq:laue_aeff}
+\end{equation}
+where $A_{\mathrm{inc}}$ is the Monte Carlo incident sampling area, $N_{\mathrm{inc}}(E)$ is the number of incident photons, and $N_{\mathrm{fp}}(E)$ is the number of photons satisfying the focusing/focal-plane interception condition.
+The mosaic system is adopted to make the Monte Carlo calculation convenient while satisfying the expected focusing performance; other candidate schemes are also possible for actual engineering adaptation.
+
+In this simulation, the laue optical branch gives the focusing-performance simulation and \textcolor{red}{also realizes particle transport of itself as mass}.
+
+For this purpose, the diffraction probability of photons by the crystal is no longer superposed onto photons as an efficiency parameter, but is defined as a discrete process at the Geant4 application layer \cite{Agostinelli2003,Allison2016}. The process takes the diffraction probability $R(|\Delta\theta|)$ according to the angular deviation of the current photon relative to the crystal plane, and converts it into a finite equivalent diffraction mean free path $\lambda_{\mathrm{diff}}$, so that the accumulated diffraction probability when the photon crosses a crystal path $\ell$ reproduces this value: $1-\exp(-\ell/\lambda_{\mathrm{diff}})=R(|\Delta\theta|)$, namely $\lambda_{\mathrm{diff}}=-\,\ell/\ln[1-R(|\Delta\theta|)]$; to avoid double counting with standard photoelectric absorption, $R$ is first normalized by the unabsorbed fraction ($R/(1-A)$) and then converted into a mean free path. After this mean free path is returned to Geant4, the diffraction process and the standard electromagnetic processes (photoelectric absorption and Compton scattering) each sample interaction lengths in the same competition framework, and the shortest one decides which process occurs first, rather than forcibly intercepting photons at the crystal boundary. Photons not selected to undergo diffraction still continue transport according to the standard electromagnetic physics, and may be absorbed, scattered, or directly transmitted.
+
+The diffraction probability is preferentially given by interpolation in an external XOP/CRYSTAL rocking-curve map as a function of angular deviation: this curve is calculated offline once in the preprocessing stage by the CRYSTAL/diff\_pat module of the XOP toolkit (called through xoppylib, with DABAX crystallographic data as input) \cite{SanchezDelRio2011XOP}, and gives the Ge(111) reflectivity/transmissivity/absorption curves as a function of angular deviation; during transport, the angular deviation is calculated in real time for every step inside the crystal, and the current diffraction probability is obtained by interpolation on that curve, namely ``offline library tabulation, probability used by angle during transport''. The mosaic orientation is implemented by applying a Gaussian angular perturbation to the ideal Bragg-plane normal, with the perturbation width given by the 30 arcsec mosaic FWHM; after diffraction occurs, the outgoing direction is mirror-reflected according to the perturbed plane normal, and the photon energy is unchanged. This split in which the ``process class only handles the transport interface, and the independent model class handles probability and direction decisions'' follows the idea of existing crystal Bragg-reflection extensions in Geant4 \cite{Guan2023BraggReflection,Reiazi2025G4BraggReflection}, and extends it to the energy band needed here.
+
+Here the signal photons use as reference the point source of the V404 source once detected by SPI \cite{Siegert2016V404}. V404 is a transient point source in the Galactic disk and is used here only as a reference. It is constructed using the megalib far-field source mode \cite{Zoglauer2006}; \textcolor{red}{the detailed construction method is given in Section 3.2.3 on point-source construction}. In addition to signal introduction, we also introduce the prompt cosmic-ray background component, also constructed in the far-field source mode, and introduce the activation-background construction. \textcolor{red}{The transport of the above three sources is simulated separately; in the three simulations, the particle flux, species, and energy crossing the plane where the focal plane is located are all intercepted as outputs; the three simulation outputs are normalized by equivalent observation time as the total output, and this total output can be separately input into the detector mass model as a parallel-beam source.}
+
+\subsection{Prompt atmospheric and delayed-activation source model}
+\label{sec:background}
+
+With the focused signal defined in Section~\ref{sec:optics}, the
+background side of the calculation requires two further source layers: the
+prompt atmospheric field incident on the payload, and the delayed radioactive
+population that this field builds up in the instrument. The two are
+constructed separately, so that source generation does not absorb assumptions
+that belong to detector selection: everything in this section defines incident
+particles or decaying nuclei, while vetoes, topology cuts, and the hard line
+window are applied only in Section~\ref{sec:selection}.
+
+\subsubsection{Prompt atmospheric source}
+\label{subsec:prompt_source}
+
+The background source model is divided into two lines, prompt atmospheric transport and delayed activation, in which the prompt atmospheric particle field is given by EXPACS/PARMA. PARMA3.0 is an analytical model parameterized from PHITS atmospheric-shower calculations and validated against terrestrial cosmic-ray fields, and EXPACS is its public tabulation/software interface \cite{Sato2015EXPACS,Sato2016PARMA4}. PHITS provides the underlying particle-transport physics: primary cosmic rays interact with atmospheric nuclei, the produced secondary hadrons, leptons, photons, and neutrons continue to transport in the atmospheric column, and the final flux is then parameterized by altitude, geomagnetic cutoff rigidity, solar modulation, energy, and direction. In this work, EXPACS/PARMA gives the incident differential flux varying with particle species, kinetic energy, zenith angle, geographic position, altitude, geomagnetic cutoff rigidity, and solar modulation. It is used only to construct the external radiation field; detector response, anticoincidence, topology selection, and mission-time counting are applied in later steps. The reference source definition in this work uses latitude $34^\circ$, longitude $100^\circ$, altitude $38\,\mathrm{km}$, vertical cutoff rigidity $R_c = 11.6\,\mathrm{GV}$, and the solar modulation condition $W = 118.3$ corresponding to 2025-08-31.
+
+The prompt source includes photons, neutrons, electrons, positrons, protons, $\alpha$ particles, negative $\mu$ particles, and positive $\mu$ particles. For each particle family, the EXPACS/PARMA differential spectrum is converted into a MEGAlib far-field area source, covering the full zenith range $\theta = 0^\circ$--$180^\circ$ and the full azimuth range $\phi = 0^\circ$--$360^\circ$. The zenith-angle dependence is represented by 20 equal-$\mu$ differential angular bins, where $\mu = \cos\theta$, and the solid angle of each bin is $\Delta\Omega = 0.6283185307\,\mathrm{sr}$. The first 10 bins represent down-going particles ($0^\circ \leq \theta \leq 90^\circ$), and the last 10 bins represent up-going or albedo components ($90^\circ \leq \theta \leq 180^\circ$). Both the prompt transport and activation-production transport retain these two hemispheres, so upward albedo particles are not discarded during source construction. It is worth mentioning that the discrete energy spectrum output by expacs skips over the 511keV point, and an atmospheric 511keV background is additionally introduced in the source in the simulation.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\linewidth]{paper_source_figure_table/fig_expacs_fullsphere_flux.png}
+\caption{EXPACS/PARMA full-sphere atmospheric flux field used to generate the prompt and activation-production transport inputs. Left: energy- and solid-angle-integrated fluxes for the eight transported particle families, separated into down-going and up-going hemispheres. Right: bin-integrated flux in the 20 equal-$\mu$ differential zenith bins used by the MEGAlib far-field source. The plot is generated from the source-definition inputs for latitude $34^\circ$, longitude $100^\circ$, altitude $38\,\mathrm{km}$, $R_c=11.6\,\mathrm{GV}$, and $W=118.3$.}
+\label{fig:expacs_fullsphere_flux}
+\end{figure}
+
+The integrated source-plane fluxes are approximately $4.80$, $0.462$, $0.199$,
+$0.117$, $0.112$, $0.0115$, $0.0050$, and $0.0056\,\mathrm{cm^{-2}\,s^{-1}}$
+for $\gamma$, $n$, $e^-$, $e^+$, $p$, $\alpha$, $\mu^-$, and $\mu^+$,
+respectively; the non-photon families together carry about
+$0.91\,\mathrm{cm^{-2}\,s^{-1}}$, or 16\% of the total. If Monte Carlo counts
+were allocated strictly in proportion to flux, the detector and activation
+statistics of these minority families would be poor, so the non-photon
+families are generated with replicated samples and de-weighted in the rate
+normalization. All particles are then transported through the
+detector/cryostat mass model with Geant4/MEGAlib
+\cite{Agostinelli2003,Allison2016,Zoglauer2006}; the prompt run and the
+activation-production run each generated 25,210,216 incident primaries. Each
+particle species is normalized with its own transported exposure,
+\begin{equation}
+  r_{\mathrm{event},j}=\left(\sum_i \mathcal{T}_{ij}\right)^{-1},
+\end{equation}
+where $\mathcal{T}_{ij}$ is the transported exposure of subsample $i$ for
+species $j$. This per-species normalization is required because the photon and
+non-photon streams have different sampling and exposure structures; the
+normalization check enforces $r_{\mathrm{event},j}\sum_i\mathcal{T}_{ij}=1$
+for every species, so over-sampling changes the Monte Carlo variance but not
+the expected physical rate.
+
+\subsubsection{Delayed activation source}
+\label{subsec:delayed_source}
+
+The activation-production stream is not counted as an immediate detector
+background. It records instead the isotope, the material volume, and the
+production position of every radioactive product. These records are converted
+into a fixed day-15 radioactive population using production--decay buildup,
+with ground-state half-lives checked against NUBASE2020
+\cite{Kondev2021NUBASE}. For isotope $k$,
+\begin{equation}
+  A_k(t_{\mathrm{flight}}) = P_k\left[1-\exp\left(-\lambda_k t_{\mathrm{flight}}\right)\right],
+  \qquad \lambda_k = \frac{\ln 2}{t_{1/2,k}},
+\end{equation}
+where $P_k$ is the production rate inferred from the activation-production
+transport and $t_{\mathrm{flight}}=15\,\mathrm{d}$ for the reference state.
+The resulting fixed delayed activity used by the reference construction is
+$85.45\,\mathrm{Bq}$.
+
+The position information does not come from the aggregate isotope store alone.
+The standard store records volume names and isotope counts; the
+production-position construction adds a custom hook in the Geant4/MEGAlib
+stepping-action layer. At the moment an isotope is stored during activation
+buildup, the hook writes a production-position record containing the logical
+volume, the pre-step position $(x,y,z)$, the isotope identifier $1000Z+A$, the
+excitation energy, time, process, and track-ancestry metadata. The fixed
+day-15 population is then joined to these records by volume, isotope, and
+excitation state, which gives the delayed source access to the simulated
+production coordinates rather than only to volume-integrated activities.
+Figure~\ref{fig:delayed_position_distribution} in Appendix~\ref{app:delayed}
+shows the resulting position distribution: the activity-weighted map is
+dominated by CsI-shield activation and $^{128}$I, with smaller contributions
+from Cu, Al, W, Mg, and Cs isotopes. It is a source-construction diagnostic,
+not a detector-count map; detector response is applied only after the delayed
+decays are transported through the common geometry and event selection.
+
+Whether the production positions are worth preserving can be tested from the
+same table. Delayed decays are emitted locally, so downstream attenuation,
+active-shield veto probability, and event topology all depend on where the
+isotope was produced, and different incident families---with their different
+energy-loss, stopping, and capture histories---need not deposit their
+activation in the same materials. To quantify this, the weighted production
+rows are grouped by incident particle family and material category, and the
+activity-normalized category distributions of two families $a$ and $b$ are
+compared with the total-variation distance
+\begin{equation}
+  D_{\mathrm{TV}}(a,b) =
+  \frac{1}{2}\sum_c \left| f_{a,c} - f_{b,c} \right| ,
+\end{equation}
+where $f_{a,c}$ is the fraction of delayed activity from family $a$ produced
+in material category $c$. In the fixed day-15 table, neutron-induced products
+carry about $82.5\,\mathrm{Bq}$, $\mu^-$-induced products $2.75\,\mathrm{Bq}$,

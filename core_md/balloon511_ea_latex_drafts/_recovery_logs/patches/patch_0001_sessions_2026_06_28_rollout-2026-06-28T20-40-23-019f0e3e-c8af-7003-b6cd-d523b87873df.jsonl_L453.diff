@@ -1,0 +1,93 @@
+*** Begin Patch
+*** Update File: core_md/balloon511_ea_latex_drafts/balloon511_ea_draft_en.tex
+@@
+-% =====================================================================
+-% Experimental Astronomy (Springer) journal layout -- EMULATED.
+-% Compile with XeLaTeX (e.g. latexmk -pdfxe).
+-% Auto-generated from the NIM-A elsarticle source by build_ea_format.py;
+-% only the journal FORMAT changed -- text, figures, tables, and references
+-% are carried over verbatim from balloon511_nima_draft_en.tex.
+-% For submission, replace this emulated preamble with the official Springer
+-% Nature class (sn-jnl.cls); the structure is already aligned to it.
+-% =====================================================================
+-\documentclass[11pt]{article}
+-\usepackage[a4paper,top=2.4cm,bottom=2.5cm,left=2.0cm,right=2.0cm]{geometry}
+-\usepackage{amsmath,amssymb}
+-\usepackage{fontspec}
+-\setmainfont{TeX Gyre Termes}
++% =====================================================================
++% Experimental Astronomy / Springer Nature layout.
++% Uses the official Springer Nature sn-jnl.cls template package.
++% Compile with pdfLaTeX for Springer submission-system compatibility.
++% =====================================================================
++\documentclass[pdflatex,sn-mathphys-num]{sn-jnl}
++\usepackage{amsmath,amssymb,amsfonts}
+ \usepackage{booktabs}
+ \usepackage{graphicx}
+ \usepackage[section]{placeins}
+@@
+ \renewcommand{\floatpagefraction}{0.75}
+ \usepackage{xcolor}
+ \usepackage{tikz}
+ \usetikzlibrary{arrows.meta,positioning}
+-\usepackage{caption}
+-\captionsetup{font=small,labelfont=bf}
+-\usepackage{titlesec}
+-\titleformat{\section}{\normalfont\large\bfseries}{\thesection}{0.6em}{}
+-\titleformat{\subsection}{\normalfont\normalsize\bfseries}{\thesubsection}{0.5em}{}
+-\titlespacing*{\section}{0pt}{1.3ex plus .2ex minus .2ex}{0.6ex}
+-\titlespacing*{\subsection}{0pt}{1.0ex plus .2ex minus .2ex}{0.5ex}
+-\usepackage{fancyhdr}
+-\pagestyle{fancy}
+-\fancyhf{}
+-\fancyhead[L]{\small\itshape Experimental Astronomy}
+-\fancyhead[R]{\small\thepage}
+-\renewcommand{\headrulewidth}{0.4pt}
+-\usepackage{hyperref}
+-\hypersetup{hidelinks}
+ \setlength{\emergencystretch}{3em}
+ \newcommand{\keV}{\,\mathrm{keV}}
+ \newcommand{\MeV}{\,\mathrm{MeV}}
+@@
+ \newcommand{\fthree}{F_{3\sigma}}
+ \newcommand{\added}[1]{{\color{red}#1}}
+ \newcommand{\rewritten}[1]{{\color{green!50!black}#1}}
++\raggedbottom
+ 
+ \begin{document}
+-\thispagestyle{fancy}
+-\begin{flushleft}
+-{\LARGE\bfseries Detector-coupled Monte Carlo estimate of background and unresolved-line sensitivity for a balloon-borne 511 keV Laue-lens TES telescope \par}
+-\vspace{1.1em}
+-{\large Authors omitted for review\par}
+-\vspace{0.3em}
+-{\normalsize\itshape Affiliations omitted for review\par}
+-\end{flushleft}
+-\vspace{0.7em}
+-\noindent\rule{\textwidth}{0.4pt}
+-\vspace{0.5em}
+-
+-\noindent\textbf{Abstract}\hspace{0.7em}The Galactic 511 keV annihilation emission is dominated by extended bulge and disk components, whereas the strength of any compact or point-like contribution remains uncertain. Pointed focusing observations can probe this complementary regime, but only when the atmospheric and instrument-induced backgrounds at balloon altitude are well controlled. We present a detector-coupled Monte Carlo estimate for a balloon-borne telescope that combines a 10 m Ge(111) Laue lens with a transition-edge sensor (TES) microcalorimeter focal plane. In the signal chain, the Laue optics first generate the focused focal-plane phase space for a monochromatic on-axis 511 keV point source, and photons passing the Be entrance aperture are then replayed through the detector/cryostat mass model. In the background chain, prompt atmospheric particles and photons and delayed activation decays are transported through the same detector/cryostat model; the delayed decays are seeded from the radionuclide-production positions recorded during the activation calculation. The resulting detector-level event streams are analyzed with the same $510.58$--$511.42\keV$ energy window, CsI anticoincidence veto, and topology/field-of-view consistency selection. For an incident point-source flux of $10^{-4}\phcms$, the selected day-15 signal and background rates are $1.19\times10^{-3}\cps$ and $3.92\times10^{-2}\cps$, respectively, and prompt atmospheric events account for 93.4\% of the selected background. Folding these rates through the adopted synthetic 20 d trajectory under continuous on-source exposure yields a diagnostic counting significance of $Z_{20\mathrm{d}}=7.80$ and a corresponding $3\sigma$ flux threshold of $3.85\times10^{-5}\phcms$. This threshold provides a flight-sensitivity estimate for a spectrally unresolved 511 keV point source under the reference model; the selected background is dominated by the prompt atmospheric component, which points to the shielding, collimation, and material choices most relevant to design optimization.
+-
+-\vspace{0.7em}
+-\noindent\textbf{Keywords}\hspace{0.7em}Gamma-ray instrumentation $\cdot$ 511 keV annihilation line $\cdot$ transition-edge sensors $\cdot$ Laue lens $\cdot$ balloon-borne telescope $\cdot$ Monte Carlo background simulation $\cdot$ activation background
+-
+-\vspace{0.3em}
+-\noindent\rule{\textwidth}{0.4pt}
+-\vspace{1.0em}
++
++\title[Detector-coupled Monte Carlo estimate for a balloon-borne 511 keV TES telescope]{Detector-coupled Monte Carlo estimate of background and unresolved-line sensitivity for a balloon-borne 511 keV Laue-lens TES telescope}
++
++\author*[1]{\fnm{Authors} \sur{omitted for review}}
++
++\affil*[1]{\orgname{Affiliations omitted for review}}
++
++\abstract{The Galactic 511 keV annihilation emission is dominated by extended bulge and disk components, whereas the strength of any compact or point-like contribution remains uncertain. Pointed focusing observations can probe this complementary regime, but only when the atmospheric and instrument-induced backgrounds at balloon altitude are well controlled. We present a detector-coupled Monte Carlo estimate for a balloon-borne telescope that combines a 10 m Ge(111) Laue lens with a transition-edge sensor (TES) microcalorimeter focal plane. In the signal chain, the Laue optics first generate the focused focal-plane phase space for a monochromatic on-axis 511 keV point source, and photons passing the Be entrance aperture are then replayed through the detector/cryostat mass model. In the background chain, prompt atmospheric particles and photons and delayed activation decays are transported through the same detector/cryostat model; the delayed decays are seeded from the radionuclide-production positions recorded during the activation calculation. The resulting detector-level event streams are analyzed with the same $510.58$--$511.42\keV$ energy window, CsI anticoincidence veto, and topology/field-of-view consistency selection. For an incident point-source flux of $10^{-4}\phcms$, the selected day-15 signal and background rates are $1.19\times10^{-3}\cps$ and $3.92\times10^{-2}\cps$, respectively, and prompt atmospheric events account for 93.4\% of the selected background. Folding these rates through the adopted synthetic 20 d trajectory under continuous on-source exposure yields a diagnostic counting significance of $Z_{20\mathrm{d}}=7.80$ and a corresponding $3\sigma$ flux threshold of $3.85\times10^{-5}\phcms$. This threshold provides a flight-sensitivity estimate for a spectrally unresolved 511 keV point source under the reference model; the selected background is dominated by the prompt atmospheric component, which points to the shielding, collimation, and material choices most relevant to design optimization.}
++
++\keywords{Gamma-ray instrumentation, 511 keV annihilation line, transition-edge sensors, Laue lens, balloon-borne telescope, activation background}
++
++\maketitle
+ 
+ \section{Introduction}
+ \label{sec:intro}
+*** End Patch

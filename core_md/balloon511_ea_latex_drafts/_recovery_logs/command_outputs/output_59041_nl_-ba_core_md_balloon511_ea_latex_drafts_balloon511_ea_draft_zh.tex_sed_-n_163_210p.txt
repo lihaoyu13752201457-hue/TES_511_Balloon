@@ -1,0 +1,57 @@
+{
+  "call_id": "call_FJWK1amzBKMAZMrdIuJvHJXa",
+  "cmd": "nl -ba core_md/balloon511_ea_latex_drafts/balloon511_ea_draft_zh.tex | sed -n '163,210p'",
+  "call_log": "/home/ubuntu/.codex/sessions/2026/06/28/rollout-2026-06-28T20-40-23-019f0e3e-c8af-7003-b6cd-d523b87873df.jsonl",
+  "call_line": 2249,
+  "output_log": "/home/ubuntu/.codex/sessions/2026/06/28/rollout-2026-06-28T20-40-23-019f0e3e-c8af-7003-b6cd-d523b87873df.jsonl",
+  "output_line": 2252
+}
+
+   163	\FloatBarrier
+   164	
+   165	\subsection{Laue 光学与探测器耦合信号重放}
+   166	\label{sec:optics}
+   167	
+   168	本文模拟采用了基于mosaic Ge(111)晶体的laue透镜系统 \cite{Barriere2009Laue,Barriere2011LauePrototype}，通过光学设计，实现10m的焦距，\textcolor{red}{多环系统实现450keV-550keV的探测能段}，511keV下20cm**2的有效面积；有效面积按
+   169	\begin{equation}
+   170	  A_{\mathrm{eff}}(E)=A_{\mathrm{inc}}\frac{N_{\mathrm{fp}}(E)}{N_{\mathrm{inc}}(E)}
+   171	  \label{eq:laue_aeff}
+   172	\end{equation}
+   173	计算，其中 $A_{\mathrm{inc}}$ 为蒙特卡洛入射采样面积，$N_{\mathrm{inc}}(E)$ 为入射光子数，$N_{\mathrm{fp}}(E)$ 为满足聚焦/焦面截取条件的光子数。
+   174	采用mosaic系统是为了在满足预期设计的聚焦性能前提下便于蒙特卡洛计算，实际工程适配时也有其他候选方案。
+   175	
+   176	在本模拟中，laue光学分支除了给出了聚焦性能模拟，\textcolor{red}{也实现了本身作为质量的粒子输运模拟}。
+   177	
+   178	为此,晶体对光子的衍射概率不再作为一个效率参数叠加给光子,而是在 Geant4 应用层定义为一个离散过程 \cite{Agostinelli2003,Allison2016}。该过程按当前光子相对晶面的角偏差取衍射概率 $R(|\Delta\theta|)$,并把它转换为一个有限的等效衍射平均自由程 $\lambda_{\mathrm{diff}}$,使光子穿过晶体路径 $\ell$ 时累计的衍射概率复现该值:$1-\exp(-\ell/\lambda_{\mathrm{diff}})=R(|\Delta\theta|)$,即 $\lambda_{\mathrm{diff}}=-\,\ell/\ln[1-R(|\Delta\theta|)]$;为避免与标准光电吸收重复计数,$R$ 先按未吸收份额归一($R/(1-A)$)再转成自由程。该自由程交回 Geant4 后,衍射过程与标准电磁过程(光电吸收、康普顿散射)在同一竞争框架下各自抽样相互作用长度,由最短者决定谁先发生,而不是在晶体边界强制拦截光子。未被抽中发生衍射的光子仍按标准电磁物理继续输运,可能被吸收、散射或直接透射。
+   179	
+   180	衍射概率优先由外部 XOP/CRYSTAL rocking-curve map 按角偏差插值给出:该曲线由 XOP 工具包的 CRYSTAL/diff_pat 模块(经 xoppylib 调用,以 DABAX 晶体学数据为输入)在预处理阶段一次性离线计算 \cite{SanchezDelRio2011XOP},给出 Ge(111) 反射率/透射率/吸收随角偏差的曲线;输运过程中对晶体内每一步实时计算角偏差,在该曲线上插值取当前衍射概率,即“库离线建表、概率随输运按角取用”。mosaic 取向通过对理想 Bragg 晶面法线施加高斯角扰动实现,扰动宽度由 30 角秒 mosaic FWHM 给出;衍射发生后,出射方向按扰动后的晶面法线镜面反射,光子能量不变。这种“过程类只负责输运接口、独立模型类负责概率与方向判定”的拆分方式,借鉴了 Geant4 中已有的晶体 Bragg 反射扩展工作的思路 \cite{Guan2023BraggReflection,Reiazi2025G4BraggReflection}，扩展到我们所需能段。
+   181	
+   182	这里我们采用的信号光子以一个SPI曾经探测到过的V404天体的点源作为参考 \cite{Siegert2016V404}，V404是银河系盘面的瞬态点源，这里只做参考，以megalib的远场源方式构建 \cite{Zoglauer2006}，\textcolor{red}{详细构建方式见3.2.3点源构建部分}。除了信号引入，我们还引入了宇宙线瞬时本底成分，也是以远场源方式构建，也引入了活化本底的构建。\textcolor{red}{将上述三种源的输运分别模拟，三次模拟中，均截取穿过焦平面所在平面的粒子通量，种类，能量作为输出，把三次模拟输出以等效观测时间为基准归一化作为总输出，该总输出可以单独作为一个平行束源输入到探测器的质量模型中。}
+   183	
+   184	\subsection{瞬发大气与延迟活化源模型}
+   185	\label{sec:background}
+   186	
+   187	\subsubsection{瞬发大气源}
+   188	\label{subsec:prompt_source}
+   189	
+   190	本底源模型被分为瞬发大气输运和延迟活化两条线，以避免把源产生过程和探测器选择假设混在一起。瞬发大气粒子场由 EXPACS/PARMA 给出。PARMA3.0 是由 PHITS 大气级联计算参数化得到、并针对陆地宇宙线场验证的解析模型，EXPACS 是其公开表格/软件接口 \cite{Sato2015EXPACS,Sato2016PARMA4}。PHITS 提供其底层粒子输运物理：一次宇宙线与大气核相互作用，产生的次级强子、轻子、光子和中子在大气柱中继续输运，最终通量再按海拔、地磁截止刚度、太阳调制、能量和方向参数化。在本文中，EXPACS/PARMA 给出随粒子种类、动能、天顶角、地理位置、海拔、地磁截止刚度和太阳调制变化的入射微分通量。它只用于构造外部辐射场；探测器响应、反符合、拓扑选择和任务时间计数均在后续步骤施加。本文参考源定义采用纬度 $34^\circ$、经度 $100^\circ$、海拔 $38\,\mathrm{km}$、垂直截止刚度 $R_c=11.6\,\mathrm{GV}$，以及 2025-08-31 对应的太阳调制条件 $W=118.3$。
+   191	
+   192	瞬发源包含光子、中子、电子、正电子、质子、$\alpha$ 粒子、负 $\mu$ 子和正 $\mu$ 子。对每个粒子族，EXPACS/PARMA 微分谱被转换为 MEGAlib 远场面积源，覆盖完整天顶角范围 $\theta=0^\circ$--$180^\circ$ 和完整方位角范围 $\phi=0^\circ$--$360^\circ$。天顶角依赖用 20 个等 $\mu$ 微分角度分箱表示，其中 $\mu=\cos\theta$，每个分箱的立体角为 $\Delta\Omega=0.6283185307\,\mathrm{sr}$。前 10 个分箱表示下行粒子（$0^\circ\leq\theta\leq90^\circ$），后 10 个分箱表示上行或反照成分（$90^\circ\leq\theta\leq180^\circ$）。瞬发输运和活化产生输运都保留这两个半球，因此源构建阶段没有丢弃上行反照粒子。
+   193	
+   194	图~\ref{fig:expacs_fullsphere_flux} 给出由源定义实际采用的全空间通量场。
+   195	
+   196	\begin{figure}[t]
+   197	\centering
+   198	\includegraphics[width=\linewidth]{paper_source_figure_table/fig_expacs_fullsphere_flux.png}
+   199	\caption{用于生成瞬发和活化产生输运输入的 EXPACS/PARMA 全空间大气通量场。左：八类输运粒子族的能量和立体角积分通量，并按下行、上行半球分开。右：MEGAlib 远场源使用的 20 个等 $\mu$ 微分天顶角分箱的积分通量。该图直接由源定义输入表生成，环境参数为纬度 $34^\circ$、经度 $100^\circ$、海拔 $38\,\mathrm{km}$、$R_c=11.6\,\mathrm{GV}$、$W=118.3$。}
+   200	\label{fig:expacs_fullsphere_flux}
+   201	\end{figure}
+   202	
+   203	积分源面通量约为 $4.80$、$0.462$、$0.199$、$0.117$、$0.112$、$0.0115$、$0.0050$ 和 $0.0056\,\mathrm{cm^{-2}\,s^{-1}}$，分别对应 $\gamma$、$n$、$e^-$、$e^+$、$p$、$\alpha$、$\mu^-$ 和 $\mu^+$。非光子成分合计约为 $0.91\,\mathrm{cm^{-2}\,s^{-1}}$，约占全空间源面积分通量的 16\%。如果完全按流量比例分配模拟计数，这些低通量粒子的探测器命中和活化统计会较差；因此非光子粒子族采用复制输运样本提高 Monte Carlo 统计，再在率归一化时去权重。所有这些粒子随后通过 Geant4/MEGAlib 在探测器/低温系统质量模型中输运 \cite{Agostinelli2003,Allison2016,Zoglauer2006}。瞬发流和活化产生流各生成约 $2.52\times10^7$ 个入射一次粒子。每个粒子种类用自身输运曝光归一化：
+   204	\begin{equation}
+   205	  r_{\mathrm{event},j}=\left(\sum_i \mathcal{T}_{ij}\right)^{-1},
+   206	\end{equation}
+   207	其中 $\mathcal{T}_{ij}$ 为第 $j$ 个粒子种类在第 $i$ 个输运子样本中的曝光。由于光子和非光子大气流的采样与曝光结构不同，这种按粒子种类归一化是必要的。归一化检查要求每个粒子种类满足 $r_{\mathrm{event},j}\sum_i\mathcal{T}_{ij}=1$，因此过采样只改变 Monte Carlo 方差，不改变物理期望率。
+   208	
+   209	\subsubsection{延迟活化源}
+   210	\label{subsec:delayed_source}

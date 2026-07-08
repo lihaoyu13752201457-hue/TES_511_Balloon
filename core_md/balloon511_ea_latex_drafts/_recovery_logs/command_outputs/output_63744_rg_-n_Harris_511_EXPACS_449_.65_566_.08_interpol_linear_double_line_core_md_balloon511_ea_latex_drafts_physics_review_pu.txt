@@ -1,0 +1,112 @@
+{
+  "call_id": "call_IeneXGgsXpCaUIJI1zuLyqKt",
+  "cmd": "rg -n \"Harris|511|EXPACS|449\\.65|566\\.08|interpol|linear|double|line\" core_md/balloon511_ea_latex_drafts/physics_review_publishability_20260702.md engineering/Mass_model_511_nearfield_migration_20260701/15_p1_p2_p3_replay_20260703/build_mass_model_511_p1_p2_p3_replay.py",
+  "call_log": "/home/ubuntu/.codex/sessions/2026/07/04/rollout-2026-07-04T00-44-52-019f28de-6877-7392-9010-bb42ce05cdb9.jsonl",
+  "call_line": 143,
+  "output_log": "/home/ubuntu/.codex/sessions/2026/07/04/rollout-2026-07-04T00-44-52-019f28de-6877-7392-9010-bb42ce05cdb9.jsonl",
+  "output_line": 147
+}
+
+engineering/Mass_model_511_nearfield_migration_20260701/15_p1_p2_p3_replay_20260703/build_mass_model_511_p1_p2_p3_replay.py:2:"""Build Mass_model_511-specific P1/P2/P3 replay products."""
+engineering/Mass_model_511_nearfield_migration_20260701/15_p1_p2_p3_replay_20260703/build_mass_model_511_p1_p2_p3_replay.py:28:    / "stepwise_maintenance/step05_veto_time_axis/outputs_Mass_model_511_fullstat_v1_l1"
+engineering/Mass_model_511_nearfield_migration_20260701/15_p1_p2_p3_replay_20260703/build_mass_model_511_p1_p2_p3_replay.py:29:    / "step05_Mass_model_511_fullstat_v1_l1_response_summary.json"
+engineering/Mass_model_511_nearfield_migration_20260701/15_p1_p2_p3_replay_20260703/build_mass_model_511_p1_p2_p3_replay.py:33:    / "stepwise_maintenance/step08_significance/outputs_Mass_model_511_fullstat_v1"
+engineering/Mass_model_511_nearfield_migration_20260701/15_p1_p2_p3_replay_20260703/build_mass_model_511_p1_p2_p3_replay.py:34:    / "step08_Mass_model_511_fullstat_v1_time_dependent_summary.json"
+engineering/Mass_model_511_nearfield_migration_20260701/15_p1_p2_p3_replay_20260703/build_mass_model_511_p1_p2_p3_replay.py:38:    / "stepwise_maintenance/step05_veto_time_axis/outputs_Mass_model_511_fullstat_v1_l1/work/event_catalog.pkl"
+engineering/Mass_model_511_nearfield_migration_20260701/15_p1_p2_p3_replay_20260703/build_mass_model_511_p1_p2_p3_replay.py:40:P2_DIR = ROOT / "runs/Mass_model_511_nearfield_migration_20260701/p2_atm511_unit_Mass_model_511_fullstat_v1"
+engineering/Mass_model_511_nearfield_migration_20260701/15_p1_p2_p3_replay_20260703/build_mass_model_511_p1_p2_p3_replay.py:41:P2_SOURCE = P2_DIR / "Atm511LowerUnit3M_MassModel511.source"
+engineering/Mass_model_511_nearfield_migration_20260701/15_p1_p2_p3_replay_20260703/build_mass_model_511_p1_p2_p3_replay.py:42:P2_LOG = P2_DIR / "cosima_Atm511LowerUnit3M_MassModel511.log"
+engineering/Mass_model_511_nearfield_migration_20260701/15_p1_p2_p3_replay_20260703/build_mass_model_511_p1_p2_p3_replay.py:43:P2_SIM = P2_DIR / "Atm511LowerUnit3M_MassModel511.inc1.id1.sim.gz"
+engineering/Mass_model_511_nearfield_migration_20260701/15_p1_p2_p3_replay_20260703/build_mass_model_511_p1_p2_p3_replay.py:45:W2_CENTER_KEV = 511.0
+engineering/Mass_model_511_nearfield_migration_20260701/15_p1_p2_p3_replay_20260703/build_mass_model_511_p1_p2_p3_replay.py:78:    with path.open("w", encoding="utf-8", newline="") as handle:
+engineering/Mass_model_511_nearfield_migration_20260701/15_p1_p2_p3_replay_20260703/build_mass_model_511_p1_p2_p3_replay.py:79:        writer = csv.DictWriter(handle, fieldnames=fields, lineterminator="\n")
+engineering/Mass_model_511_nearfield_migration_20260701/15_p1_p2_p3_replay_20260703/build_mass_model_511_p1_p2_p3_replay.py:85:    spec = importlib.util.spec_from_file_location("mass_model_511_p123_step05", STEP05_SCRIPT)
+engineering/Mass_model_511_nearfield_migration_20260701/15_p1_p2_p3_replay_20260703/build_mass_model_511_p1_p2_p3_replay.py:194:    spectra_csv = OUT / "p1_mass_model_511_spectra_480_550_by_stream_stage.csv"
+engineering/Mass_model_511_nearfield_migration_20260701/15_p1_p2_p3_replay_20260703/build_mass_model_511_p1_p2_p3_replay.py:197:    w2 = mass_step05["windows"]["w2_510p58_511p42"]
+engineering/Mass_model_511_nearfield_migration_20260701/15_p1_p2_p3_replay_20260703/build_mass_model_511_p1_p2_p3_replay.py:203:    line_total_cps = (b_current - cont["continuum_density_cps_per_keV"] * W2_WIDTH_KEV) / acc_current
+engineering/Mass_model_511_nearfield_migration_20260701/15_p1_p2_p3_replay_20260703/build_mass_model_511_p1_p2_p3_replay.py:211:        b_fixed = line_total_cps * gaussian_acceptance(W2_HALF_KEV, bkg_sigma) + cont["continuum_density_cps_per_keV"] * W2_WIDTH_KEV
+engineering/Mass_model_511_nearfield_migration_20260701/15_p1_p2_p3_replay_20260703/build_mass_model_511_p1_p2_p3_replay.py:226:                    "mode": "fixed_mass_model_511_w2",
+engineering/Mass_model_511_nearfield_migration_20260701/15_p1_p2_p3_replay_20260703/build_mass_model_511_p1_p2_p3_replay.py:238:                b_scan = line_total_cps * gaussian_acceptance(float(half), bkg_sigma) + cont["continuum_density_cps_per_keV"] * (2.0 * float(half))
+engineering/Mass_model_511_nearfield_migration_20260701/15_p1_p2_p3_replay_20260703/build_mass_model_511_p1_p2_p3_replay.py:248:                    "mode": "mass_model_511_optimized_window_scan",
+engineering/Mass_model_511_nearfield_migration_20260701/15_p1_p2_p3_replay_20260703/build_mass_model_511_p1_p2_p3_replay.py:255:    fixed_csv = OUT / "p1_mass_model_511_fixed_w2_linewidth_scan.csv"
+engineering/Mass_model_511_nearfield_migration_20260701/15_p1_p2_p3_replay_20260703/build_mass_model_511_p1_p2_p3_replay.py:256:    opt_csv = OUT / "p1_mass_model_511_optimized_window_linewidth_scan.csv"
+engineering/Mass_model_511_nearfield_migration_20260701/15_p1_p2_p3_replay_20260703/build_mass_model_511_p1_p2_p3_replay.py:260:        "status": "PASS_MASS_MODEL_511_P1_LINEWIDTH_REPLAY",
+engineering/Mass_model_511_nearfield_migration_20260701/15_p1_p2_p3_replay_20260703/build_mass_model_511_p1_p2_p3_replay.py:271:            "line_widths_checked_fwhm_keV": source_fwhms,
+engineering/Mass_model_511_nearfield_migration_20260701/15_p1_p2_p3_replay_20260703/build_mass_model_511_p1_p2_p3_replay.py:272:            "background_line_widths_checked_fwhm_keV": bkg_fwhms,
+engineering/Mass_model_511_nearfield_migration_20260701/15_p1_p2_p3_replay_20260703/build_mass_model_511_p1_p2_p3_replay.py:274:            "model": "Mass_model_511 final-selected sideband continuum plus analytic Gaussian line-width/window convolution.",
+engineering/Mass_model_511_nearfield_migration_20260701/15_p1_p2_p3_replay_20260703/build_mass_model_511_p1_p2_p3_replay.py:284:        "calibrated_total_line_rate_cps": line_total_cps,
+engineering/Mass_model_511_nearfield_migration_20260701/15_p1_p2_p3_replay_20260703/build_mass_model_511_p1_p2_p3_replay.py:290:    write_json(OUT / "p1_mass_model_511_linewidth_sensitivity_summary.json", payload)
+engineering/Mass_model_511_nearfield_migration_20260701/15_p1_p2_p3_replay_20260703/build_mass_model_511_p1_p2_p3_replay.py:295:    for line in P2_LOG.read_text(encoding="utf-8", errors="ignore").splitlines():
+engineering/Mass_model_511_nearfield_migration_20260701/15_p1_p2_p3_replay_20260703/build_mass_model_511_p1_p2_p3_replay.py:296:        if "Observation time:" in line:
+engineering/Mass_model_511_nearfield_migration_20260701/15_p1_p2_p3_replay_20260703/build_mass_model_511_p1_p2_p3_replay.py:297:            nums = re.findall(r"[-+]?\d+(?:\.\d+)?(?:[eE][-+]?\d+)?", line)
+engineering/Mass_model_511_nearfield_migration_20260701/15_p1_p2_p3_replay_20260703/build_mass_model_511_p1_p2_p3_replay.py:363:            line = raw.strip()
+engineering/Mass_model_511_nearfield_migration_20260701/15_p1_p2_p3_replay_20260703/build_mass_model_511_p1_p2_p3_replay.py:364:            if not line:
+engineering/Mass_model_511_nearfield_migration_20260701/15_p1_p2_p3_replay_20260703/build_mass_model_511_p1_p2_p3_replay.py:366:            if line == "SE":
+engineering/Mass_model_511_nearfield_migration_20260701/15_p1_p2_p3_replay_20260703/build_mass_model_511_p1_p2_p3_replay.py:369:            match_id = id_re.match(line)
+engineering/Mass_model_511_nearfield_migration_20260701/15_p1_p2_p3_replay_20260703/build_mass_model_511_p1_p2_p3_replay.py:374:            if not line.startswith("CC HIT "):
+engineering/Mass_model_511_nearfield_migration_20260701/15_p1_p2_p3_replay_20260703/build_mass_model_511_p1_p2_p3_replay.py:376:            match_hit = cc_re.match(line)
+engineering/Mass_model_511_nearfield_migration_20260701/15_p1_p2_p3_replay_20260703/build_mass_model_511_p1_p2_p3_replay.py:460:            line = raw.strip()
+engineering/Mass_model_511_nearfield_migration_20260701/15_p1_p2_p3_replay_20260703/build_mass_model_511_p1_p2_p3_replay.py:461:            if line.startswith("Geometry"):
+engineering/Mass_model_511_nearfield_migration_20260701/15_p1_p2_p3_replay_20260703/build_mass_model_511_p1_p2_p3_replay.py:462:                header["geometry"] = line.split(None, 1)[1] if len(line.split(None, 1)) > 1 else ""
+engineering/Mass_model_511_nearfield_migration_20260701/15_p1_p2_p3_replay_20260703/build_mass_model_511_p1_p2_p3_replay.py:463:            elif line.startswith("Seed"):
+engineering/Mass_model_511_nearfield_migration_20260701/15_p1_p2_p3_replay_20260703/build_mass_model_511_p1_p2_p3_replay.py:464:                header["seed"] = int(line.split()[1])
+engineering/Mass_model_511_nearfield_migration_20260701/15_p1_p2_p3_replay_20260703/build_mass_model_511_p1_p2_p3_replay.py:465:            elif line == "SE":
+engineering/Mass_model_511_nearfield_migration_20260701/15_p1_p2_p3_replay_20260703/build_mass_model_511_p1_p2_p3_replay.py:475:    w2 = summarize_p2_window(cat, step05, 510.58, 511.42)
+engineering/Mass_model_511_nearfield_migration_20260701/15_p1_p2_p3_replay_20260703/build_mass_model_511_p1_p2_p3_replay.py:478:    b_current = float(mass_step05["windows"]["w2_510p58_511p42"]["physical_reference_flux"]["background_cps"])
+engineering/Mass_model_511_nearfield_migration_20260701/15_p1_p2_p3_replay_20260703/build_mass_model_511_p1_p2_p3_replay.py:482:        ("Harris_Rc_11_13_total_disk_no_alt_scale", 4.38e-2 * 0.532, "Harris 2003 Table 2 normalized to <7 GV; no payload-altitude rescaling"),
+engineering/Mass_model_511_nearfield_migration_20260701/15_p1_p2_p3_replay_20260703/build_mass_model_511_p1_p2_p3_replay.py:496:                "atm511_flux_ph_cm2_s": flux,
+engineering/Mass_model_511_nearfield_migration_20260701/15_p1_p2_p3_replay_20260703/build_mass_model_511_p1_p2_p3_replay.py:497:                "atm511_added_cps": r_atm,
+engineering/Mass_model_511_nearfield_migration_20260701/15_p1_p2_p3_replay_20260703/build_mass_model_511_p1_p2_p3_replay.py:505:    scenario_csv = OUT / "p2_mass_model_511_atm511_flux_scenarios.csv"
+engineering/Mass_model_511_nearfield_migration_20260701/15_p1_p2_p3_replay_20260703/build_mass_model_511_p1_p2_p3_replay.py:509:        "status": "PASS_MASS_MODEL_511_P2_ATM511_TRANSFER_REPLAY",
+engineering/Mass_model_511_nearfield_migration_20260701/15_p1_p2_p3_replay_20260703/build_mass_model_511_p1_p2_p3_replay.py:532:            "w2_510p58_511p42": w2,
+engineering/Mass_model_511_nearfield_migration_20260701/15_p1_p2_p3_replay_20260703/build_mass_model_511_p1_p2_p3_replay.py:538:            "limitation": "Detector-response transfer for an idealized lower-hemisphere mono-line field; dominant uncertainty remains atmospheric-line normalization and angular model.",
+engineering/Mass_model_511_nearfield_migration_20260701/15_p1_p2_p3_replay_20260703/build_mass_model_511_p1_p2_p3_replay.py:539:            "use_in_paper": "Mass_model_511-specific P2 correction table if the Mass_model_511 branch is adopted as paper authority.",
+engineering/Mass_model_511_nearfield_migration_20260701/15_p1_p2_p3_replay_20260703/build_mass_model_511_p1_p2_p3_replay.py:542:    write_json(OUT / "p2_mass_model_511_atm511_transfer_summary.json", payload)
+engineering/Mass_model_511_nearfield_migration_20260701/15_p1_p2_p3_replay_20260703/build_mass_model_511_p1_p2_p3_replay.py:547:    harris = next(row for row in p2["scenario_rows"] if row["scenario"] == "Harris_Rc_11_13_total_disk_no_alt_scale")
+engineering/Mass_model_511_nearfield_migration_20260701/15_p1_p2_p3_replay_20260703/build_mass_model_511_p1_p2_p3_replay.py:553:    opt_lines = "\n".join(
+engineering/Mass_model_511_nearfield_migration_20260701/15_p1_p2_p3_replay_20260703/build_mass_model_511_p1_p2_p3_replay.py:557:    text = f"""# Mass_model_511 P1/P2/P3 Replay - 2026-07-03
+engineering/Mass_model_511_nearfield_migration_20260701/15_p1_p2_p3_replay_20260703/build_mass_model_511_p1_p2_p3_replay.py:559:Status: `PASS_MASS_MODEL_511_P1_P2_P3_REPLAY_NOT_PAPER_APPLIED`
+engineering/Mass_model_511_nearfield_migration_20260701/15_p1_p2_p3_replay_20260703/build_mass_model_511_p1_p2_p3_replay.py:561:This replay is specific to the current Mass_model_511 geometry branch. It does
+engineering/Mass_model_511_nearfield_migration_20260701/15_p1_p2_p3_replay_20260703/build_mass_model_511_p1_p2_p3_replay.py:567:Current Mass_model_511 W2 authority used here:
+engineering/Mass_model_511_nearfield_migration_20260701/15_p1_p2_p3_replay_20260703/build_mass_model_511_p1_p2_p3_replay.py:573:Mass_model_511 final-selected sideband continuum density:
+engineering/Mass_model_511_nearfield_migration_20260701/15_p1_p2_p3_replay_20260703/build_mass_model_511_p1_p2_p3_replay.py:577:{opt_lines}
+engineering/Mass_model_511_nearfield_migration_20260701/15_p1_p2_p3_replay_20260703/build_mass_model_511_p1_p2_p3_replay.py:579:## P2 Atmospheric 511-keV Line
+engineering/Mass_model_511_nearfield_migration_20260701/15_p1_p2_p3_replay_20260703/build_mass_model_511_p1_p2_p3_replay.py:586:`{p2['windows']['w2_510p58_511p42']['final_rate_per_unit_flux_cps_per_ph_cm2_s']:.6g} cps / (ph cm^-2 s^-1)`,
+engineering/Mass_model_511_nearfield_migration_20260701/15_p1_p2_p3_replay_20260703/build_mass_model_511_p1_p2_p3_replay.py:587:from `{p2['windows']['w2_510p58_511p42']['side_compton_fov_pass_events']}` final events.
+engineering/Mass_model_511_nearfield_migration_20260701/15_p1_p2_p3_replay_20260703/build_mass_model_511_p1_p2_p3_replay.py:589:Harris Rc~11-13 GV scenario:
+engineering/Mass_model_511_nearfield_migration_20260701/15_p1_p2_p3_replay_20260703/build_mass_model_511_p1_p2_p3_replay.py:590:`F_atm={harris['atm511_flux_ph_cm2_s']:.6g} ph cm^-2 s^-1`,
+engineering/Mass_model_511_nearfield_migration_20260701/15_p1_p2_p3_replay_20260703/build_mass_model_511_p1_p2_p3_replay.py:591:added background `{harris['atm511_added_cps']:.6g} cps`,
+engineering/Mass_model_511_nearfield_migration_20260701/15_p1_p2_p3_replay_20260703/build_mass_model_511_p1_p2_p3_replay.py:596:No new transport is required. The Mass_model_511 Step06--Step08 current-geometry
+engineering/Mass_model_511_nearfield_migration_20260701/15_p1_p2_p3_replay_20260703/build_mass_model_511_p1_p2_p3_replay.py:603:- `p1_mass_model_511_linewidth_sensitivity_summary.json`
+engineering/Mass_model_511_nearfield_migration_20260701/15_p1_p2_p3_replay_20260703/build_mass_model_511_p1_p2_p3_replay.py:604:- `p1_mass_model_511_fixed_w2_linewidth_scan.csv`
+engineering/Mass_model_511_nearfield_migration_20260701/15_p1_p2_p3_replay_20260703/build_mass_model_511_p1_p2_p3_replay.py:605:- `p1_mass_model_511_optimized_window_linewidth_scan.csv`
+engineering/Mass_model_511_nearfield_migration_20260701/15_p1_p2_p3_replay_20260703/build_mass_model_511_p1_p2_p3_replay.py:606:- `p1_mass_model_511_spectra_480_550_by_stream_stage.csv`
+engineering/Mass_model_511_nearfield_migration_20260701/15_p1_p2_p3_replay_20260703/build_mass_model_511_p1_p2_p3_replay.py:607:- `p2_mass_model_511_atm511_transfer_summary.json`
+engineering/Mass_model_511_nearfield_migration_20260701/15_p1_p2_p3_replay_20260703/build_mass_model_511_p1_p2_p3_replay.py:608:- `p2_mass_model_511_atm511_flux_scenarios.csv`
+engineering/Mass_model_511_nearfield_migration_20260701/15_p1_p2_p3_replay_20260703/build_mass_model_511_p1_p2_p3_replay.py:628:                "p2_final_events": p2["windows"]["w2_510p58_511p42"]["side_compton_fov_pass_events"],
+engineering/Mass_model_511_nearfield_migration_20260701/15_p1_p2_p3_replay_20260703/build_mass_model_511_p1_p2_p3_replay.py:629:                "p2_transfer": p2["windows"]["w2_510p58_511p42"]["final_rate_per_unit_flux_cps_per_ph_cm2_s"],
+core_md/balloon511_ea_latex_drafts/physics_review_publishability_20260702.md:3:- 审查对象:TES_511_Balloon 全链(fix5 multiholeW 权威态)+ EA 稿
+core_md/balloon511_ea_latex_drafts/physics_review_publishability_20260702.md:4:  `balloon511_ea_draft_en/zh.tex`(论文尚未写完,评估的是整体逻辑与物理)。
+core_md/balloon511_ea_latex_drafts/physics_review_publishability_20260702.md:17:但存在 **2 个有数据证据的物理完整性缺口**(P1 线宽现实性、P2 大气 511 线缺失)
+core_md/balloon511_ea_latex_drafts/physics_review_publishability_20260702.md:29:| 1 | 大气透过率链精确自洽 | T15=0.739 对应第 15 天锚点 h0=38.75 km,X=3.87·exp(−0.75/6.8)=3.47 g/cm²;−ln(0.739)/3.47=**0.0872 cm²/g** = 标准空气 511 keV 总衰减系数。注意 T=0.739 属于 38.75 km 锚点(38 km 处应为 ~0.714),论文口径正确 |
+core_md/balloon511_ea_latex_drafts/physics_review_publishability_20260702.md:30:| 2 | Laue 几何 | d(Ge111)=3.2666 Å → θ_B=3.713 mrad;f=10 m 环半径 f·tan2θ_B=74.3 mm,与多波段设计表 511 环 74.278 mm 吻合;ΔE/E=cotθ_B·Δθ(30″)=0.0392 → 20 keV 通带 ✓ |
+core_md/balloon511_ea_latex_drafts/physics_review_publishability_20260702.md:31:| 3 | 衍射效率量级 | 出射衍射效率 ~25%(37256/150000)在 511 keV 厚 Ge mosaic 晶体文献范围(~20–30%,Barrière 等) |
+core_md/balloon511_ea_latex_drafts/physics_review_publishability_20260702.md:33:| 5 | 本底组成"物理嗅探"通过 | 源清单活度以 CsI/¹²⁸I 最大,但 W511 选后延迟事例 30/30 全为 **Cu-64/Cu-62(β⁺ 核素)**;±0.42 keV 窗内本底理应由真 511 光子(β⁺ 湮灭)主导而非 ¹²⁸I(β⁻,γ 443/527 keV 均在窗外)。瞬发选后 54 中 47 来自入射 e⁺ 族,同理。模拟自发选出正确物理,是全链最强的内证 |
+core_md/balloon511_ea_latex_drafts/physics_review_publishability_20260702.md:41:### P1|511 线宽现实性:模拟本底是 δ 线,真实源与本底都是 keV 级宽 [实锤发现+估算]
+core_md/balloon511_ea_latex_drafts/physics_review_publishability_20260702.md:45:- 瞬发 final_selected:**54/54 个事例全部落在 510.75 bin(510.5–511.0 keV)**,
+core_md/balloon511_ea_latex_drafts/physics_review_publishability_20260702.md:47:- 即事例目录里的本底 511 完全单色(且看不出 σ=0.14 keV 高斯展宽的痕迹,
+core_md/balloon511_ea_latex_drafts/physics_review_publishability_20260702.md:51:恰好 511.000 keV,无束缚电子 Doppler 展宽、无 acollinearity、无正电子素 3γ。
+core_md/balloon511_ea_latex_drafts/physics_review_publishability_20260702.md:56:  **已知天体几乎没有亚 keV 宽的 511 线源**,而主结果窗只有 ±0.42 keV。
+core_md/balloon511_ea_latex_drafts/physics_review_publishability_20260702.md:59:**影响估算 [估算,非权威数]**(假设:本底 W511 全为湮灭线成分,连续谱取
+core_md/balloon511_ea_latex_drafts/physics_review_publishability_20260702.md:75:(信号按源宽卷积、本底 511 按材料 Doppler 宽度、连续谱不动),重扫窗宽,
+core_md/balloon511_ea_latex_drafts/physics_review_publishability_20260702.md:78:### P2|光子输入缺大气 511 keV 湮灭线 [实锤发现]
+core_md/balloon511_ea_latex_drafts/physics_review_publishability_20260702.md:81:能量格点从 **449.65 keV 直接跳到 566.08 keV**,标注 `IP LIN`(线性插值)。
+core_md/balloon511_ea_latex_drafts/physics_review_publishability_20260702.md:82:EXPACS/PARMA 光子场是光滑连续谱参数化,**不含大气湮灭线**
+core_md/balloon511_ea_latex_drafts/physics_review_publishability_20260702.md:85:**为什么重要**:这是 511 仪器的招牌本底通道;虽然要穿 4 cm CsI+被动屏蔽或
+core_md/balloon511_ea_latex_drafts/physics_review_publishability_20260702.md:88:的通道**已经建模**(即选后瞬发的主项),缺的是**天光里现成的 511 线光子**。
+core_md/balloon511_ea_latex_drafts/physics_review_publishability_20260702.md:90:**修复路径**:一次小输运——按 Ling 模型(或文献气球测量)构造 511 单能线源
+core_md/balloon511_ea_latex_drafts/physics_review_publishability_20260702.md:104:(zh 旧稿 ~line 223),EA 稿 §2 重写时被删,建议以一句话恢复。
+core_md/balloon511_ea_latex_drafts/physics_review_publishability_20260702.md:155:| 2 | P2 大气 511 线补算或解析上限 | 一次小输运+现有选择链 | **必做** |
+core_md/balloon511_ea_latex_drafts/physics_review_publishability_20260702.md:200:  → 449.65 与 566.08 keV 相邻格点,`IP LIN`。
+core_md/balloon511_ea_latex_drafts/physics_review_publishability_20260702.md:202:  空气 μ(511 keV)≈0.0866–0.0872 cm²/g(XCOM)。
+core_md/balloon511_ea_latex_drafts/physics_review_publishability_20260702.md:204:  多波段:`engineering/Mass_model_511_nearfield_migration_20260701/05_optics_migration/optics_migration.md`。

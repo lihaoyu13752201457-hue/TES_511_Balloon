@@ -1,0 +1,42 @@
+{
+  "call_id": "call_aw18HuOpPlqGBdsRKArv5wjV",
+  "cmd": "rg -n \"section\\{|simulation framework|source construction|flight-performance|flight performance|Simulation\" core_md/balloon511_ea_latex_drafts/balloon511_ea_draft_en.tex",
+  "call_log": "/home/ubuntu/.codex/sessions/2026/06/28/rollout-2026-06-28T20-40-23-019f0e3e-c8af-7003-b6cd-d523b87873df.jsonl",
+  "call_line": 1894,
+  "output_log": "/home/ubuntu/.codex/sessions/2026/06/28/rollout-2026-06-28T20-40-23-019f0e3e-c8af-7003-b6cd-d523b87873df.jsonl",
+  "output_line": 1896
+}
+
+46:\section{Introduction}
+61:\subsection{Science and instrument requirements}
+70:The remainder of this paper is organized as follows. Section~\ref{sec:geometry} describes the detector and cryostat mass model; Section~\ref{sec:framework} the simulation framework---the workflow, optics coupling, background sources, event selection, and mission-time fold; Section~\ref{sec:results} the selected-rate and sensitivity results together with the normalization, convergence, and boundary checks; and Section~\ref{sec:discussion} the discussion and conclusions.
+72:\section{Detector and cryostat mass model}
+92:\section{Simulation framework}
+95:This section describes the end-to-end simulation chain, from source generation to flight-performance assessment. The signal and background do not share a single geometry; each starts from its own mass model. The signal stream focuses 511 keV photons onto the focal plane in the 10 m upstream Laue-optics model and records the photons that cross the Be entrance aperture, whereas the background stream transports the prompt atmospheric particles and the production-position-sampled delayed-activation decays directly in the detector/cryostat mass model of Section~\ref{sec:geometry}. The two streams meet only inside the detector model: the focused photons are replayed into the same detector/cryostat model and, together with the background, pass through one common detector response and veto, after which the chain proceeds to detailed background analysis, the mission-time and trajectory fold, and the flight-performance assessment with design-optimization guidance. Because the focused signal and both background streams pass through this same detector response and veto before any background decomposition or sensitivity statement is made, the downstream results rest on a consistent event selection.
+97:Detector-coupled Monte Carlo transport through a detailed mass model is an established technique for predicting the response and background of gamma-ray spectrometers \cite{Sturner2003}. Figure~\ref{fig:workflow} expands the chain into its computational layers: geometry definition, prompt and buildup transport, delayed-source construction, focused-optics transport, detector-coupled signal replay, veto mechanisms, detailed background analysis, time and flight-trajectory variation, and flight-performance assessment with design-optimization guidance, each described layer by layer below. The present manuscript uses production-position-sampled delayed decays as the primary delayed-source representation: delayed decays are sampled from recorded radioactive-production positions instead of being redistributed into an axisymmetric radial profile.
+130:\caption{Simulation chain used in this work. Blue nodes are the prompt and
+133:time/trajectory variation, and final flight-performance assessment. The focused
+140:The primary rate calculation combines prompt and activation-buildup transport, a fixed day-15 radionuclide population, sampled equal-activity point sources at recorded production positions, and downstream propagation through the detector response, veto mechanisms, detailed background analysis, and flight-performance assessment.
+142:Each layer has a defined input, a physical or statistical operation, an output consumed by later layers, and an interpretation boundary. Geometry definition fixes the mass model and coordinate policy but does not produce a rate. Prompt transport and activation transport define direct atmospheric backgrounds and isotope-production histories. The delayed-source layer converts those histories into a fixed day-15 radioactive population and transports sampled production-position decays. The optical Monte Carlo is signal-only: it supplies the Laue-lens effective area and tracked focused phase space, while the optics-detector coupling and detector-response layers convert that phase space into a detector-coupled point-source response. The scintillator veto and Compton-kinematic veto jointly define the detector-level retained events; the calculation then proceeds to detailed background analysis, time/trajectory folding, and flight-performance assessment with design-optimization guidance.
+157:\subsection{Laue optics and detector-coupled signal replay}
+178:\caption{Laue-lens optics coupling. (a) Simulation-derived radial--$z$ view of the 511 keV signal source: the diffracted fan terminates on tracked focal-plane crossings that satisfy the Be entrance-aperture gate. (b) Tracked transverse focal-plane positions $(x_{\rm fp},y_{\rm fp})$ accepted by the Be entrance aperture and used for detector replay; the red circle marks the Be-window aperture.}
+188:\subsection{Prompt atmospheric and delayed-activation source model}
+191:\subsubsection{Prompt atmospheric source}
+196:The prompt source includes photons, neutrons, electrons, positrons, protons, alpha particles, negative muons, and positive muons. For each particle family, the EXPACS/PARMA differential spectrum is converted into a MEGAlib far-field area source over the full zenith range $\theta=0^\circ$--$180^\circ$ and full azimuth range $\phi=0^\circ$--$360^\circ$. The zenith dependence is represented by 20 differential equal-$\mu$ angular bins, where $\mu=\cos\theta$ and each bin subtends $\Delta\Omega=0.6283185307\,\mathrm{sr}$. The first ten bins cover down-going particles ($0^\circ\leq\theta\leq90^\circ$), and the last ten bins cover up-going or albedo-like particles ($90^\circ\leq\theta\leq180^\circ$). Both hemispheres are retained in both the prompt transport and the activation-production transport, so upward albedo particles are not discarded at source construction.
+213:\subsubsection{Delayed activation source}
+221:where $P_k$ is the production rate inferred from the activation-production transport and $t_{\mathrm{flight}}=15\,\mathrm{d}$ for the reference day-15 state. The resulting fixed delayed activity used by the reference delayed-source construction is $85.45\,\mathrm{Bq}$.
+254:\caption{Background-source layers used by the current detector-coupled chain. The table defines the source construction only; vetoes, topology selections, and the hard line window are applied later in Section~\ref{sec:selection}.}
+270:\subsection{Detector event selection and veto definition}
+410:\subsection{Mission-time trajectory fold and significance calculation}
+528:\section{Results}
+531:\subsection{Primary unresolved-line sensitivity}
+600:\subsection{Background composition}
+650:\subsection{Delayed-source normalization and selected-rate convergence checks}
+693:\subsection{Upstream optics mass-proxy boundary}
+710:\section{Discussion and conclusions}
+721:\subsection{Limitations and future validation}
+732:\rewritten{Before this rate study can support a flight-performance statement, four validation blocks remain: a Revan/Mimrec or equivalent reconstruction cross-check of the retained multi-hit subset, including residual distributions and threshold stability; optics self-background transport with explicit lens tiles and support hardware at final statistics; a final cryostat/DR geometry and detector-response update, including TES saturation and pile-up constraints; and a spatial-spectral likelihood that profiles background nuisance parameters. The event-level tables added here should be read as manuscript support evidence and audit entry points before those validations, not as a complete systematic-uncertainty envelope.}
+734:\subsection{Conclusions}
+744:\section{Delayed-source construction diagnostics}
+747:This appendix collects the delayed-source construction diagnostics referenced in Section~\ref{subsec:delayed_source}. They document how the fixed day-15 activity is distributed in space, material, and nuclide before detector transport; they are not detector-count results.
+870:R. Caputo, F. Kislat, J. Racusin, on behalf of the AMEGO Team, AMEGO: Simulations of the instrument performance, Proc. 35th International Cosmic Ray Conference, PoS(ICRC2017) 783 (2018), doi:10.22323/1.301.0783.

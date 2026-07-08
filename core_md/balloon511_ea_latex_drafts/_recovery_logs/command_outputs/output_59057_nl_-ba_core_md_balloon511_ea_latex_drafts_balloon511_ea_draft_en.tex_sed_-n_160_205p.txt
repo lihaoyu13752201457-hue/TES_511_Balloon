@@ -1,0 +1,55 @@
+{
+  "call_id": "call_qp3dTFEfHHzvcoveswu9wuqj",
+  "cmd": "nl -ba core_md/balloon511_ea_latex_drafts/balloon511_ea_draft_en.tex | sed -n '160,205p'",
+  "call_log": "/home/ubuntu/.codex/sessions/2026/06/28/rollout-2026-06-28T20-40-23-019f0e3e-c8af-7003-b6cd-d523b87873df.jsonl",
+  "call_line": 2341,
+  "output_log": "/home/ubuntu/.codex/sessions/2026/06/28/rollout-2026-06-28T20-40-23-019f0e3e-c8af-7003-b6cd-d523b87873df.jsonl",
+  "output_line": 2344
+}
+
+   160	
+   161	\subsection{Prompt atmospheric and delayed-activation source model}
+   162	\label{sec:background}
+   163	
+   164	With the focused signal defined in Section~\ref{sec:optics}, the
+   165	background side of the calculation requires two further source layers: the
+   166	prompt atmospheric field incident on the payload, and the delayed radioactive
+   167	population that this field builds up in the instrument. The two are
+   168	constructed separately, so that source generation does not absorb assumptions
+   169	that belong to detector selection: everything in this section defines incident
+   170	particles or decaying nuclei, while vetoes, topology cuts, and the hard line
+   171	window are applied only in Section~\ref{sec:selection}.
+   172	
+   173	\subsubsection{Prompt atmospheric source}
+   174	\label{subsec:prompt_source}
+   175	
+   176	The prompt atmospheric field is derived from EXPACS/PARMA. PARMA3.0 is an
+   177	analytical model parameterized from PHITS atmospheric-shower calculations and
+   178	benchmarked against terrestrial cosmic-ray measurements, and EXPACS is its
+   179	public tabulation and software interface
+   180	\cite{Sato2015EXPACS,Sato2016PARMA4}. PHITS supplies the underlying
+   181	particle-transport physics: primary cosmic rays interact with air nuclei, the
+   182	secondary hadrons, leptons, photons, and neutrons are transported through the
+   183	atmospheric column, and the resulting fluences are parameterized by altitude,
+   184	geomagnetic cutoff, solar modulation, energy, and direction. In this work
+   185	EXPACS/PARMA provides the differential incident flux as a function of particle
+   186	species, kinetic energy, zenith angle, geographic position, altitude, cutoff
+   187	rigidity, and solar activity, and is used only to construct the external
+   188	radiation fields; detector response, vetoing, topology selection, and
+   189	mission-time counting are applied downstream. The reference source definitions
+   190	use latitude $34^\circ$, longitude $100^\circ$, altitude $38\,\mathrm{km}$,
+   191	vertical cutoff rigidity $R_c=11.6\,\mathrm{GV}$, and the 2025-08-31 solar
+   192	condition corresponding to $W=118.3$.
+   193	
+   194	The prompt source includes photons, neutrons, electrons, positrons, protons,
+   195	alpha particles, and negative and positive muons. For each particle family the
+   196	EXPACS/PARMA differential spectrum is converted into a MEGAlib far-field area
+   197	source covering the full zenith range $\theta=0^\circ$--$180^\circ$ and full
+   198	azimuth range $\phi=0^\circ$--$360^\circ$. The zenith dependence is represented
+   199	by 20 differential equal-$\mu$ angular bins, where $\mu=\cos\theta$ and each
+   200	bin subtends $\Delta\Omega=0.6283185307\,\mathrm{sr}$: the first ten bins cover
+   201	down-going particles, the last ten up-going or albedo-like particles. Both
+   202	hemispheres are retained in the prompt transport and in the
+   203	activation-production transport, so upward albedo particles are not discarded
+   204	at source construction. Figure~\ref{fig:expacs_fullsphere_flux} shows the
+   205	resulting full-sphere flux field.

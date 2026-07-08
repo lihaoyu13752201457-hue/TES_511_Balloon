@@ -1,0 +1,380 @@
+{
+  "call_id": "call_o5TsVhe0NUYAC2KB7A8iCJMs",
+  "cmd": "sed -n '320,690p' core_md/balloon511_ea_latex_drafts/balloon511_ea_draft_en.tex",
+  "call_log": "/home/ubuntu/.codex/sessions/2026/06/28/rollout-2026-06-28T20-40-23-019f0e3e-c8af-7003-b6cd-d523b87873df.jsonl",
+  "call_line": 391,
+  "output_log": "/home/ubuntu/.codex/sessions/2026/06/28/rollout-2026-06-28T20-40-23-019f0e3e-c8af-7003-b6cd-d523b87873df.jsonl",
+  "output_line": 395
+}
+
+Activation production & Radioisotope production and production-position history & Same atmospheric fields transported as a buildup stream, again retaining both hemispheres and all eight particle families; 25,210,216 generated primaries. \\
+Fixed delayed population & Radioactive activity after continuous exposure to the adopted day-15 state & Production--decay buildup with NUBASE-checked ground-state half-lives; total fixed activity $85.45\,\mathrm{Bq}$. \\
+Production-position decay transport & Delayed decay particles emitted from sampled production locations & Equal-activity sampled point sources from the weighted production table; reference transports use $10^6$ delayed decays per source sampling. \\
+\hline
+\end{tabular}
+\end{table}
+
+This production-position representation does not place one point source at every production row; it is a statistically sampled approximation whose adequacy is evaluated downstream in Section~\ref{subsec:convergence}. Source-inventory checks verify activity conservation and source serialization; the selected-rate behavior is evaluated separately after detector transport and event selection.
+
+\section{Detector event selection and veto definition}
+\label{sec:selection}
+
+The analysis window is
+\begin{equation}
+  \wii = [510.58,511.42]\keV,
+\end{equation}
+corresponding to $511\keV\pm420\,\mathrm{eV}$. This window is matched to a sub-keV TES response assumption and is narrow enough to suppress continuum background while retaining most of the line response.
+The quoted flux thresholds therefore apply to a line whose intrinsic width remains small compared with this analysis window after detector response; broader source lines would require convolving the source line profile with the detector response and re-optimizing or widening the analysis window.
+
+The detector selection has two explicitly separated veto layers. First, an
+active anticoincidence gate is applied on a common detector time axis. For a
+candidate group $c$, formed from event instances separated by no more than
+$\tau=1\,\mu\mathrm{s}$, the TES energy and active-shield energy are
+\begin{equation}
+  E_{\mathrm{TES}}^{(c)}=\sum_{j\in c}E_{\mathrm{TES},j},\qquad
+  E_{\mathrm{sh}}^{(c)}=\sum_{j\in c}E_{\mathrm{sh},j}.
+\end{equation}
+A candidate enters the hard line window if $E_{\mathrm{TES}}^{(c)}\in\wii$,
+and it passes the active shield if
+\begin{equation}
+  E_{\mathrm{sh}}^{(c)} < E_{\mathrm{veto}}, \qquad E_{\mathrm{veto}}=50\keV
+\end{equation}
+for the baseline CsI configuration. The shield sum is evaluated from the CsI
+active-shield volumes in post-processing. Native detector trigger/veto blocks
+are present in the geometry description, but the quantitative rate definition is
+this common post-processing definition, so prompt, delayed, and focused-signal
+streams use the same coincidence window and threshold.
+
+The second layer is a topology/field-of-view consistency test on the TES hits
+that survive the active-shield gate. Baseline event classes are kept explicit:
+single-site events, valid reconstructed multi-site events, and unreconstructed
+multi-site events. Single-pixel TES events are retained as calorimetric line
+candidates. For a two-hit event, both possible first-scatter orders are tested
+under the assumptions of a single Compton scatter followed by full absorption
+in the measured TES hits. For an assumed order with first deposited energy
+$E_1$ and remaining scattered-photon energy $E_{\mathrm{sc}}$, the kinematic
+angle is computed from
+\begin{equation}
+  \cos\theta_C =
+  1 - m_ec^2\left(\frac{1}{E_{\mathrm{sc}}}
+  - \frac{1}{E_1+E_{\mathrm{sc}}}\right).
+\end{equation}
+The event is kept if either order gives a physically valid first-scatter cone
+that intersects the side Be-window disk. For higher multiplicities the current
+implementation enumerates candidate hit orders up to six TES hits, selects the
+best sequence using the unweighted Compton sequence residual
+\begin{equation}
+  Q = \sum_{i=1}^{n-2}
+  \left(\cos\theta_{C,i} -
+  \hat{\mathbf u}_{i-1,i}\cdot\hat{\mathbf u}_{i,i+1}\right)^2,
+\end{equation}
+and then applies the same first-cone intersection test to the first reconstructed
+scatter. If no valid sequence is found, the event is classified as
+unreconstructed. Such events are retained in the baseline selected-rate
+definition but are not called field-of-view passing. The line-window result
+therefore does not gain sensitivity from rejecting ambiguous reconstruction
+failures. This policy is not a conservative lower bound on the net sensitivity:
+in the current $\wii$ sample, a diagnostic alternative that discards the
+unreconstructed class would retain $59.2\%$ of the focused signal and $66.8\%$
+of the selected background, reducing the simple $S/\sqrt{B}$ figure to $0.724$
+of the baseline value. The baseline selection therefore treats ambiguous
+multi-hit events as a reconstruction-model boundary that must be validated, not
+as a sensitivity gain from aggressive event rejection.
+
+The detector-level time-axis construction used to validate this veto bookkeeping
+is a Poisson superposition of independent streams. For stream $k$ with
+event-catalogue rates $r_{kj}$ and total rate $R_k=\sum_j r_{kj}$, a validation
+draw uses
+\begin{equation}
+  N_k\sim \mathrm{Pois}(R_k T),
+\end{equation}
+selects event records with probabilities $r_{kj}/R_k$, assigns uniform times in
+$[0,T]$, sorts all streams together, and forms $\tau$-coincidence candidate
+groups. This draw tests the grouping and accidental-coincidence bookkeeping;
+the mission-time calculation below uses the corresponding expectation values
+instead of adding a new random draw to every mission bin.
+
+Figure~\ref{fig:selection_time_axis} summarizes the selected rates after these
+veto layers and previews the mission-time fold defined in
+Section~\ref{sec:mission_time}.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\linewidth]{paper_source_figure_table/fig_selection_veto_time_axis.png}
+\caption{Detector-selection and mission-time fold diagnostics for the reference
+calculation. Panel A shows the $\wii$ pre-veto, active-veto-pass, and
+topology/field-of-view selected rates for prompt background, delayed activation,
+and the focused signal scaled to $\fzero=10^{-4}\phcms$. Panel B shows the
+corresponding survival fractions. Panel C separates single-site, reconstructed
+multi-site, and unreconstructed retained classes after the active-shield gate.
+Panel D shows the mission-time rate fold for the reference point-source case,
+including the analytic accidental live factor.}
+\label{fig:selection_time_axis}
+\end{figure}
+
+\section{Mission-time trajectory fold and significance calculation}
+\label{sec:mission_time}
+
+After detector selection is fixed, the selected day-15 rates are folded through
+a reference mission-time trajectory. This layer is a rate-level correction: no
+new Geant4/MEGAlib transport is run in each mission-time bin. The time grid has
+81 points from 0 to 20 d with 0.25 d spacing; endpoint points carry half-widths
+in the count integration. The trajectory is a synthetic reference profile, not
+balloon telemetry. For time-grid point $t_i$ in days,
+\begin{align}
+  h_i &= h_0+\Delta h\sin\!\left[\frac{2\pi(t_i-15)}{5}\right],\\
+  \varphi_i &= \varphi_0+\Delta\varphi\sin\!\left[\frac{2\pi(t_i-15)}{7}\right],\\
+  \ell_i &= \ell_0+\Delta\ell\sin\!\left[\frac{2\pi(t_i-15)}{9}\right],
+\end{align}
+where $h_0=38.75\,\mathrm{km}$, $\Delta h=2.5\,\mathrm{km}$,
+$\varphi_0=34^\circ$, $\Delta\varphi=0.25^\circ$, $\ell_0=100^\circ$,
+and $\Delta\ell=0.25^\circ$. The resulting ranges are
+$36.25$--$41.25\,\mathrm{km}$ in altitude, $33.75^\circ$--$34.25^\circ$ in
+latitude, and $99.75^\circ$--$100.25^\circ$ in longitude.
+
+The atmospheric depth and the 511 keV transmission scale are
+\begin{align}
+  X(h_i) &= X_{38}\exp\!\left[-\frac{h_i-38\,\mathrm{km}}{H}\right],
+       & X_{38}&=3.87\,\mathrm{g\,cm^{-2}},\quad H=6.8\,\mathrm{km},\\
+  T_i &= \exp[-\mu_{\mathrm{eff}} X(h_i)],
+       & \mu_{\mathrm{eff}}&=-\frac{\ln T_{15}}{X(h_0)},
+\end{align}
+with $T_{15}=0.739$. Thus the focused-science scale is
+$f_{\mathrm{atm},i}=T_i/T_{15}$. The prompt atmospheric source scale is
+\begin{align}
+  R_{c,i} &= 11.0 -0.08(\varphi_i-\varphi_0)+0.03(\ell_i-\ell_0),\\
+  f_{\mathrm{p},i} &=
+  \exp\!\left[\frac{X(h_i)-X(h_0)}{30\,\mathrm{g\,cm^{-2}}}\right]
+  \left(\frac{11.0}{R_{c,i}}\right)^{0.2}.
+\end{align}
+The trajectory rigidity model is centered on a rounded value, and $f_{\mathrm{p},i}$ enters only through the day-15--anchored ratio $(11.0/R_{c,i})^{0.2}$, so this central value affects the mission-time variation but not the absolute prompt rate, which is fixed by the $R_c=11.6\,\mathrm{GV}$ source definition. The same scalar production driver is used for delayed activation before
+isotope-by-isotope decay buildup is solved. For a delayed-production element
+$a$ with decay constant $\lambda_a$ and fixed day-15 activity $A_{a,15}$,
+\begin{align}
+  P_{a,15} &= \frac{A_{a,15}}{1-\exp(-\lambda_a t_{15})},\\
+  \frac{dN_a}{dt} &= P_{a,15}f_{\mathrm{p}}(t)-\lambda_a N_a,\qquad
+  A_a(t)=\lambda_a N_a(t).
+\end{align}
+The numerical fold anchors the solution back to $A_{a,15}$ at day 15 and sums
+the activity over the nuclide/material/position production elements.
+
+This delayed-activity treatment assumes that the normalized activation-product
+distribution is unchanged over the small trajectory range, and that the
+trajectory changes only the scalar production driver. The verification
+described here checks the internal implementation of that model but does not
+prove physical invariance of the production distribution. If dedicated activation transports at the trajectory center and
+extrema show material or nuclide redistribution, the scalar driver should be
+replaced by interpolation over production vectors,
+\begin{equation}
+  P_a(t_i)=\sum_g w_g(h_i,\varphi_i,\ell_i,R_{c,i})P_a^{(g)},\qquad
+  \sum_g w_g=1,
+\end{equation}
+followed by the same decay ODE.
+
+Implementation checks recomputed the trajectory formula at the center point and
+at the two altitude extrema. The reference atmospheric transmission is
+$T=0.739$ at the day-15 anchor, and the high- and low-altitude probes give
+$T=0.811$ and $0.646$, respectively. Reconstructing the $\wii$ prompt,
+delayed, background, and signal rates from the day-15 rates and these scales
+reproduces the mission-fold summary. Reweighting the particle families with local PARMA spectra at the same trajectory probes shifts the normalized nuclide--volume activity distribution by less than $6\times10^{-3}$ in total-variation distance. This supports using a scalar delayed
+production/activity fold for the present small trajectory range at the
+particle-family reweighting layer. It is not a full proof of distribution
+invariance: same-particle energy/angle-dependent activation cross sections and
+position-transport shifts would require dedicated low-, reference-, and
+high-altitude activation-production transports.
+
+In the mission-time fold, the selected day-15 rates are folded over the
+trajectory grid as
+\begin{align}
+  B_i &= L_i\left(B_{\mathrm{p},15} f_{\mathrm{p},i}
+        + B_{\mathrm{d},15} f_{\mathrm{d},i}\right),\\
+  S_i &= L_i S_{15} f_{\mathrm{atm},i},\\
+  L_i &= \exp[-(R_{\mathrm{p},i}+R_{\mathrm{d},i})\tau],
+\end{align}
+where $f_{\mathrm{p},i}$ is the prompt atmospheric scale,
+$f_{\mathrm{d},i}$ is the delayed-activity scale, $f_{\mathrm{atm},i}$ is the
+511 keV atmospheric transmission scale, and $L_i$ is the accidental
+coincidence live factor. Here $R_{\mathrm{p},i}$ and $R_{\mathrm{d},i}$ are the
+prompt and delayed event rates entering the coincidence grouping at that mission point. The factor $L_i$ assumes a one-sided $\tau$ gate; a symmetric $\pm\tau$ condition would instead give $\exp[-2(R_{\mathrm{p},i}+R_{\mathrm{d},i})\tau]$, but for the present rates both forms remain very close to unity, so the folded counts are insensitive to this choice.
+
+The time-dependent significance is computed as a cumulative counting statistic. For a reference flux $\fzero$, the cumulative significance is
+\begin{equation}
+  Z(t_m) = \frac{N_s(t_m)}{\sqrt{N_b(t_m)}},
+\end{equation}
+where
+\begin{equation}
+  N_s(t_m)=\sum_{i\leq m}S_i\Delta t_i,\qquad
+  N_b(t_m)=\sum_{i\leq m}B_i\Delta t_i
+\end{equation}
+are the time-integrated selected signal and background counts after
+mission-time scaling and live-factor corrections. For comparison among
+analysis variants, the $3\sigma$ flux threshold is scaled as
+\begin{equation}
+  \fthree(t_m) = \fzero \frac{3}{Z(t_m)}.
+\end{equation}
+This Gaussian counting convention is used consistently for the line-window
+results and secondary comparisons, but it is a diagnostic selected-rate metric,
+not a final flight discovery likelihood. For the present 20 d reference case,
+the signal-to-background ratio is about 3\%; a 1\% Gaussian uncertainty on the
+background normalization alone would reduce the approximate significance from
+about 7.8 to about 2.8. A flight analysis would therefore require off-source
+or control-band background constraints and nuisance-parameter profiling.
+For the primary 20 d line-window result, the folded counts are about
+$6.8\times10^4$ background counts and $2.0\times10^3$ signal counts at
+$\fzero$, so this approximation is used only in the high-count selected-rate
+regime. The isolated upstream Ge-proxy result with zero selected events is
+reported separately with a Poisson zero-count upper limit.
+The detector-selection summary also records a day-15 direct expectation. The primary
+result does not use that constant-rate direct value; it uses the
+mission-time fold and the final cumulative significance. The distinction is
+small for the present line-window case, but keeping it explicit is necessary
+for comparing analysis configurations.
+
+\section{Results}
+\label{sec:results}
+
+\subsection{Primary unresolved-line sensitivity}
+\label{subsec:primary}
+
+Table~\ref{tab:primary_sensitivity} gives the primary unresolved-line result. At $\fzero=10^{-4}\phcms$, the selected day-15 rates are
+\begin{equation}
+  B_{\wii}=3.92\times10^{-2}\cps,\qquad
+  S_{\wii}=1.19\times10^{-3}\cps .
+\end{equation}
+The mission-time fold gives mean selected rates
+\begin{equation}
+  \bar{B}_{\wii}=3.94\times10^{-2}\cps,\qquad
+  \bar{S}_{\wii}=1.18\times10^{-3}\cps .
+\end{equation}
+The resulting 20 d diagnostic counting significance is $Z_{20\mathrm{d}}=7.80$, with a net $3\sigma$ on-source exposure of $2.51\,\mathrm{d}$. The 20 d $3\sigma$ flux threshold is $3.85\times10^{-5}\phcms$.
+
+\begin{table}[t]
+\centering
+\caption{Primary unresolved-line selected-rate result and background composition.}
+\label{tab:primary_sensitivity}
+\footnotesize
+\resizebox{\linewidth}{!}{%
+\begin{tabular}{lccc}
+\toprule
+Quantity & Value & Interpretation & Note \\
+\midrule
+Day-15 selected background & $3.92\times10^{-2}\cps$ & Prompt + delayed & Detector-level selection \\
+Day-15 selected signal at $\fzero$ & $1.19\times10^{-3}\cps$ & Focused point source & $\fzero=10^{-4}\phcms$ \\
+Prompt background component & $3.66\times10^{-2}\cps$ & 93.4\% of selected background & Dominant component \\
+Delayed activation component & $2.6(5)\times10^{-3}\cps$ & 6.6\% of selected background & Reference estimate; independent convergence check gives $2.21(22)\times10^{-3}\cps$ \\
+20 d diagnostic $Z$ & 7.80 & Counting metric & No background nuisance parameters \\
+Net $3\sigma$ exposure & 2.51 d & Reference exposure & Not elapsed flight time \\
+$\fthree(20\,\mathrm{d})$ & $3.85\times10^{-5}\phcms$ & Unresolved-line threshold & Reference model only \\
+\bottomrule
+\end{tabular}
+}
+\vspace{0.5ex}
+\begin{minipage}{0.94\linewidth}
+\footnotesize
+The background and signal rates are selected day-15 rates. The significance,
+net exposure, and flux threshold use the mission-time fold. The delayed row
+keeps the single-sampling reference estimate used by the primary rate
+calculation. An independent four-sampling selected-rate convergence check gives
+$2.21(22)\times10^{-3}\cps$ from 103 selected delayed events and is consistent
+with the reference value within sampling uncertainty; source-model and
+activation-systematic uncertainties are not included.
+\end{minipage}
+\end{table}
+
+The line-window result uses the narrow energy window, active-shield veto,
+topology/field-of-view consistency selection, and mission-time fold. Spatial
+gates, 45$^\circ$ line-of-sight folds, and fixed-template annular likelihoods
+are not used to improve the quoted threshold.
+
+\subsection{Background composition}
+\label{subsec:bgcomp}
+
+The selected $\wii$ background is dominated by prompt atmospheric events.
+The selected stream split in Table~\ref{tab:primary_sensitivity} corresponds
+to 93.4\% prompt and 6.6\% delayed activation. The delayed component remains
+important despite its smaller rate because its source distribution is spatially
+and materially structured. The primary delayed reference estimate is now supported by an
+independent selected-rate convergence check rather than by source-inventory
+checks alone.
+
+\subsection{Delayed-source normalization and selected-rate convergence checks}
+\label{subsec:convergence}
+
+The source-construction audit for the reference delayed calculation
+documents the delayed-source normalization used in the primary rate result.
+
+The fixed source contains 251,681 weighted production-position rows and
+preserves a total delayed activity of $85.45\,\mathrm{Bq}$ after the NUBASE
+ground-state correction. The raw delayed activity before this correction is
+$87.48\,\mathrm{Bq}$. Source serialization preserves the activity at better
+than $10^{-9}$ relative precision. These checks verify source normalization and
+bookkeeping, but the selected delayed rate must be checked after transport
+through the detector geometry and the common event selection.
+
+A minimum selected-rate convergence check was therefore run with four
+independent production-position samplings. Each sampling transported
+$10^6$ delayed decays through the same detector/cryostat geometry and used a
+source definition and simulation header pointing to the same reference geometry. The four
+runs produced 103 selected delayed events in total, giving a combined selected
+rate of $2.21\times10^{-3}\cps$ with a Poisson statistical uncertainty of
+$0.22\times10^{-3}\cps$ (9.85\% relative). The run-to-run comparison satisfied a
+$2\sigma$ consistency criterion; the largest deviation from the combined rate was
+1.82 standard deviations. This closes the minimum selected-rate convergence
+check for the delayed component used here, while leaving activation cross
+sections, atmospheric-field systematics, and detailed source/configuration
+provenance as separate reproducibility uncertainties.
+
+\subsection{Upstream optics mass-proxy boundary}
+\label{subsec:upstream_optics_background}
+
+The upstream active-Ge proxy produces two isolated day-15 radioactive components,
+$^{70}$Ga and $^{73}$Ga, with total activity $0.425674\,\mathrm{Bq}$.
+A 20,000-decay delayed replay through the detector geometry and detector-level
+selection produced no selected $\wii$ events. The corresponding direct selected
+rate is zero, with a 95\% zero-count upper rate of $6.38\times10^{-5}\cps$.
+This is about $0.16\%$ of the selected $\wii$ background rate,
+$3.92\times10^{-2}\cps$, so the isolated delayed Ge-proxy component does not change the
+quoted line-window sensitivity at the current precision. The prompt
+self-background from upstream hardware is still not folded into the primary
+budget because the combined prompt simulation also contains the ordinary
+detector/cryostat atmospheric prompt background and needs source separation
+or subtraction. Explicit lens-tile supports remain a separate design-level
+systematic.
+
+\section{Discussion}
+\label{sec:discussion}
+
+The main result is that the reference production-position delayed-source calculation gives a 20 d diagnostic $3\sigma$ point-source threshold of $3.85\times10^{-5}\phcms$ for an unresolved line in the modeled focused TES line spectrometer. This threshold is obtained without using the focused-spot spatial analysis as the primary result. It follows from three combined effects: optical concentration, a sub-keV energy window, and a detector-coupled veto/topology selection that suppresses prompt and delayed backgrounds in the same selection space as the signal.
+
+This calculation should be compared with existing 511 keV instruments as a pointed, narrow-line, compact-source estimate, not as an all-sky imaging forecast. INTEGRAL/SPI and COSI provide the reference measurements for mapping the diffuse 511 keV sky and the broader Galactic diffuse emission \cite{Siegert2016AA,Kierans2020,Siegert2020COSI,Yoneda2025,Karwin2023}. Peer-reviewed COSI calibration and simulation studies provide the more relevant technical comparison for detector response, event reconstruction, and balloon-background validation \cite{Beechert2022,Sleator2019,Gallego2025Balloon,Gallego2025,Ciabattoni2025ACS}. The TES Laue-lens concept considered here is complementary: it trades sky coverage for a concentrated beam and a sub-keV line window. The relevant comparison class is compact 511 keV targets, unresolved-central-excess searches, and transient follow-up observations with known or constrained source positions. The same focused aperture is not a substitute for measuring the full diffuse bulge and disk luminosity, because it samples only a small solid angle.
+
+The production-position delayed-source treatment addresses a specific approximation in radial-profile compression. Although delayed activation contributes only about 6.6\% of the selected line-window background in the present calculation, it is spatially and materially structured. Preserving sampled production positions prevents artificial azimuthal or radial redistribution from becoming an unquantified systematic. The delayed component has passed a minimum selected-rate convergence check using four independent production-position samplings, but this should not be read as a complete delayed-background systematic envelope.
+
+The background composition indicates the first engineering parameters to test, rather than a completed optimization. The selected line-window rate remains dominated by prompt atmospheric streams, so shield geometry, side-entry collimation, material near the focal plane, topology selection, and multi-pixel reconstruction are the most direct handles on the present background. Delayed activation is smaller but remains spatially and materially structured, so source-position preservation is retained in the rate calculation. The dominance of iodine activation in the CsI shield also motivates a future shield-material trade study.
+
+The selected-rate result has four immediate boundaries. First, the detector/cryostat model is an engineering proxy, not a final flight CAD model. Second, quantitative active-shield rejection is applied in the common detector-level post-processing selection rather than by production-time trigger/veto filtering. Third, the mission-time calculation is a rate-level fold, not a new particle transport at each trajectory time bin. Fourth, the custom topology/field-of-view selection is not yet a full Revan/Mimrec reconstruction, and the retained unreconstructed class is a baseline acceptance choice rather than a conservative sensitivity bound.
+
+More generally, the tabulated $3\sigma$ flux thresholds are statistical selected-rate thresholds for the reference source, mass, and response model. They do not include a systematic-uncertainty envelope for atmospheric-flux normalization, activation cross sections or physics-list choices, material and geometry tolerances, detector energy-response uncertainty, veto-threshold calibration, reconstruction-efficiency systematics, or background-estimation nuisance parameters. A publication-level flight sensitivity should replace the diagnostic $S/\sqrt{B}$ metric with a spatial-spectral likelihood, following standard profile-likelihood practice \cite{Cowan2011}.
+
+The upstream Laue-lens calculation in Section~\ref{subsec:upstream_optics_background} should be read as a boundary calculation for an equal-volume/equal-mass active-Ge proxy, not as a finalized optics-background budget. It completes full-particle prompt and activation-production transport for the proxy, and the isolated Ge-proxy delayed component gives zero selected $\wii$ events in the present transport. The prompt self-background contribution is still not part of the primary detector-background budget because it needs source separation or subtraction from the ordinary detector/cryostat prompt background, and explicit lens support hardware is not yet modeled.
+
+Spatial analyses such as $r_{90}$ and multi-annulus likelihood estimates are diagnostic cross-checks, but they are not yet a finalized nuisance-profile likelihood. The quoted sensitivity therefore remains the line-window selected-rate result, not a spatially optimized likelihood result.
+
+Before this rate study can support a flight-performance statement, four validation blocks remain: a Revan/Mimrec cross-check of the retained multi-hit subset; optics self-background transport with explicit lens tiles and support hardware; a final cryostat/DR geometry and detector-response update, including TES saturation and pile-up constraints; and a spatial-spectral likelihood that profiles background nuisance parameters.
+
+\section{Conclusions}
+\label{sec:conclusions}
+
+We have presented a detector-coupled background and sensitivity study for a balloon-borne pointed 511 keV TES Laue-lens telescope. The reference calculation couples a Ge(111) Laue optical response to a TES focal-plane mass model, prompt atmospheric transport, delayed activation, active-shield vetoing, topology/field-of-view selection, mission-time rate folding, and counting-significance evaluation. In the primary $510.58$--$511.42\keV$ unresolved-line window, the day-15 selected rates are $B\simeq3.92\times10^{-2}\cps$ and $S\simeq1.19\times10^{-3}\cps$ at $10^{-4}\phcms$; the mission-time fold gives $Z_{20\mathrm{d}}\simeq7.80$ and $\fthree(20\mathrm{d})\simeq3.85\times10^{-5}\phcms$. The result provides a detector-coupled selected-rate basis for continued evaluation of focused TES spectroscopy as a complementary 511 keV technique for compact-source and unresolved-central-excess searches, while identifying prompt atmospheric background suppression, delayed-activation systematic validation, and reconstruction validation as the main next validation tasks.
+
+\appendix
+\setcounter{figure}{0}
+
+\section{Delayed-source construction diagnostics}
+\label{app:delayed}
+
+This appendix collects the delayed-source construction diagnostics referenced in Section~\ref{subsec:delayed_source}. They document how the fixed day-15 activity is distributed in space, material, and nuclide before detector transport; they are not detector-count results.
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=\linewidth]{paper_source_figure_table/fig_delayed_position_rpip_distribution.png}

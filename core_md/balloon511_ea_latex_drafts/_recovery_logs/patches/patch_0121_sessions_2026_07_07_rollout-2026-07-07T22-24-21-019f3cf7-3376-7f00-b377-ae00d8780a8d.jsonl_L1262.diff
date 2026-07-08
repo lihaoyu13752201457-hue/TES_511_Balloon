@@ -1,0 +1,10 @@
+*** Begin Patch
+*** Update File: code/tools/recover_ea_from_codex_logs.py
+@@
+ def extract_ea_path(text: str):
+     match = re.search(r"(core_md/balloon511_ea_latex_drafts/[^\s'\"|;]+)", text)
+-    return match.group(1).rstrip(":,")
++    if not match:
++        return None
++    return match.group(1).rstrip(":,")
+*** End Patch

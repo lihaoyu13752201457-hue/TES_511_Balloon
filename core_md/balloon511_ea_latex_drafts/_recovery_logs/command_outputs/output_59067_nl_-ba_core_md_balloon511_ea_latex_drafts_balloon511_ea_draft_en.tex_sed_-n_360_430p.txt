@@ -1,0 +1,80 @@
+{
+  "call_id": "call_FcNxXgq98azsSlbD458bHhLr",
+  "cmd": "nl -ba core_md/balloon511_ea_latex_drafts/balloon511_ea_draft_en.tex | sed -n '360,430p'",
+  "call_log": "/home/ubuntu/.codex/sessions/2026/06/28/rollout-2026-06-28T20-40-23-019f0e3e-c8af-7003-b6cd-d523b87873df.jsonl",
+  "call_line": 2394,
+  "output_log": "/home/ubuntu/.codex/sessions/2026/06/28/rollout-2026-06-28T20-40-23-019f0e3e-c8af-7003-b6cd-d523b87873df.jsonl",
+  "output_line": 2397
+}
+
+   360	  - \frac{1}{E_1+E_{\mathrm{sc}}}\right).
+   361	\end{equation}
+   362	The event is kept if either order gives a physically valid first-scatter cone
+   363	that intersects the side Be-window disk. For higher multiplicities the current
+   364	implementation enumerates candidate hit orders up to six TES hits, selects the
+   365	best sequence using the unweighted Compton sequence residual
+   366	\begin{equation}
+   367	  Q = \sum_{i=1}^{n-2}
+   368	  \left(\cos\theta_{C,i} -
+   369	  \hat{\mathbf u}_{i-1,i}\cdot\hat{\mathbf u}_{i,i+1}\right)^2,
+   370	\end{equation}
+   371	and then applies the same first-cone intersection test to the first reconstructed
+   372	scatter. If no valid sequence is found, the event is classified as
+   373	unreconstructed. Such events are retained in the baseline selected-rate
+   374	definition but are not called field-of-view passing. The line-window result
+   375	therefore does not gain sensitivity from rejecting ambiguous reconstruction
+   376	failures. This policy is not a conservative lower bound on the net sensitivity:
+   377	in the current $\wii$ sample, a single-site-only diagnostic alternative that
+   378	vetoes all multi-site candidates would retain $59.4\%$ of the focused signal
+   379	and $68.2\%$ of the selected background, reducing the simple $S/\sqrt{B}$
+   380	figure to $0.720$ of the baseline value. The baseline selection therefore treats ambiguous
+   381	multi-hit events as a reconstruction-model boundary that must be validated, not
+   382	as a sensitivity gain from aggressive event rejection.
+   383	
+   384	\added{To connect this selection chain explicitly to the finite Monte Carlo
+   385	sample, Table~\ref{tab:phase2_cutflow} gives the current event-level
+   386	$\wii$ cut-flow obtained by lightweight replay of the simulated event catalogues.
+   387	The table is not a new Geant4/MEGAlib transport. It replays the current
+   388	event catalogues with the same TES energy window, CsI veto, and
+   389	Compton-kinematic/field-of-view consistency checks; uncertainties are Monte
+   390	Carlo quadrature sums over event weights. The current event-selection records first fix
+   391	the energy window and then report raw, active-shield, and topology stages, so
+   392	the raw stage should be read as the pre-veto sample inside the line window, not
+   393	as an all-energy incident sample.}
+   394	
+   395	\begin{table}[t]
+   396	\centering
+   397	\caption{\added{event-level $\wii$ line-window cut-flow.}}
+   398	\label{tab:phase2_cutflow}
+   399	\footnotesize
+   400	{
+   401	\setlength{\tabcolsep}{3pt}
+   402	\begin{tabular}{p{0.20\linewidth}p{0.24\linewidth}p{0.08\linewidth}p{0.16\linewidth}p{0.20\linewidth}}
+   403	\toprule
+   404	Stream & Stage & Events & Rate / $\cps$ & Statistical uncertainty / $\cps$ \\
+   405	\midrule
+   406	Prompt background & Line-window pre-veto & 161 & $1.1877\times10^{-1}$ & $1.15\times10^{-2}$ \\
+   407	Prompt background & After CsI veto & 60 & $4.0712\times10^{-2}$ & $5.26\times10^{-3}$ \\
+   408	Prompt background & Topology/FOV selected & 54 & $3.6641\times10^{-2}$ & $4.99\times10^{-3}$ \\
+   409	Delayed activation & Line-window pre-veto & 54 & $4.6354\times10^{-3}$ & $6.31\times10^{-4}$ \\
+   410	Delayed activation & After CsI veto & 33 & $2.8327\times10^{-3}$ & $4.93\times10^{-4}$ \\
+   411	Delayed activation & Topology/FOV selected & 30 & $2.5752\times10^{-3}$ & $4.70\times10^{-4}$ \\
+   412	Focused signal & Line-window pre-veto & 30323 & $8.1527\times10^{-1}$ & $4.68\times10^{-3}$ \\
+   413	Focused signal & After CsI veto & 30323 & $8.1527\times10^{-1}$ & $4.68\times10^{-3}$ \\
+   414	Focused signal & Topology/FOV selected & 29715 & $7.9892\times10^{-1}$ & $4.63\times10^{-3}$ \\
+   415	\bottomrule
+   416	\end{tabular}
+   417	\par}
+   418	\vspace{0.5ex}
+   419	\begin{minipage}{0.94\linewidth}
+   420	\footnotesize
+   421	The focused-signal rows are unit-replay rates used to show veto survival
+   422	behavior; the point-source signal rate in Table~\ref{tab:primary_sensitivity}
+   423	is scaled separately by the Laue effective area, reference flux, and atmospheric
+   424	transmission.
+   425	\end{minipage}
+   426	\end{table}
+   427	
+   428	The detector-level time-axis construction used to validate this veto bookkeeping
+   429	is a Poisson superposition of independent streams. For stream $k$ with
+   430	event-catalogue rates $r_{kj}$ and total rate $R_k=\sum_j r_{kj}$, a validation

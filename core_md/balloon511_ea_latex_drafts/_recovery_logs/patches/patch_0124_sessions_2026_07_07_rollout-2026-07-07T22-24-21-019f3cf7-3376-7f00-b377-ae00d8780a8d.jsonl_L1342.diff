@@ -1,0 +1,169 @@
+*** Begin Patch
+*** Update File: code/tools/recover_ea_from_codex_logs.py
+@@
+ def collect_predelete_file_lists(outputs):
+@@
+     return lists
++
++
++def read_fragment(fragment_path: Path):
++    text = fragment_path.read_text(encoding="utf-8", errors="replace")
++    head, sep, body = text.partition("\n\n")
++    if not sep:
++        return {}, text
++    try:
++        meta = json.loads(head)
++    except json.JSONDecodeError:
++        meta = {}
++    return meta, body
++
++
++def restore_complete_markdown_fragments():
++    restored = []
++    partial = []
++    candidates = {
++        EA_DIR / "README.md": RECOVERY_DIR / "fragments" / "core_md_balloon511_ea_latex_drafts_README.md__L1_260.txt",
++        EA_DIR / "physics_review_publishability_20260702.md": RECOVERY_DIR / "fragments" / "core_md_balloon511_ea_latex_drafts_physics_review_publishability_20260702.md__L1_280.txt",
++        EA_DIR
++        / "paper_source_figure_table"
++        / "README.md": RECOVERY_DIR
++        / "fragments"
++        / "core_md_balloon511_ea_latex_drafts_paper_source_figure_table_README.md__L1_260.txt",
++        EA_DIR
++        / "paper_source_figure_table"
++        / "reconstruction_failure_diagnostic_20260702.md": RECOVERY_DIR
++        / "fragments"
++        / "core_md_balloon511_ea_latex_drafts_paper_source_figure_table_reconstruction_failure_diagnostic_20260702.md__L1_80.txt",
++    }
++
++    for out_path, fragment_path in candidates.items():
++        if not fragment_path.exists():
++            continue
++        meta, body = read_fragment(fragment_path)
++        end = (meta.get("range") or [None, None])[1]
++        body_lines = body.splitlines()
++        if end and len(body_lines) >= end:
++            partial.append(str(out_path.relative_to(ROOT)))
++            continue
++        write_text(out_path, body)
++        restored.append(str(out_path.relative_to(ROOT)))
++
++    aoo_fragment = RECOVERY_DIR / "fragments" / "core_md_balloon511_ea_latex_drafts_AOO.md__L1_260.txt"
++    if aoo_fragment.exists():
++        meta, body = read_fragment(aoo_fragment)
++        partial_header = (
++            "<!-- RECOVERED PARTIAL 20260708: reconstructed from Codex log fragment "
++            f"{aoo_fragment.relative_to(ROOT)}. The original file may have continued after "
++            f"line {(meta.get('range') or ['', ''])[1]}. -->\n\n"
++        )
++        out_path = EA_DIR / "_recovered_partial" / "AOO.md"
++        write_text(out_path, partial_header + body)
++        partial.append(str(out_path.relative_to(ROOT)))
++
++    return restored, partial
++
++
++def assemble_partial_tex_fragments():
++    partial_dir = EA_DIR / "_recovered_partial"
++    reports = []
++    tex_paths = [
++        "core_md/balloon511_ea_latex_drafts/balloon511_ea_draft_en.tex",
++        "core_md/balloon511_ea_latex_drafts/balloon511_ea_draft_zh.tex",
++    ]
++    fragments = sorted((RECOVERY_DIR / "fragments").glob("*.txt"))
++
++    for source_path in tex_paths:
++        by_line = {}
++        source_fragments = []
++        for frag in fragments:
++            meta, body = read_fragment(frag)
++            if meta.get("source_path") != source_path:
++                continue
++            rng = meta.get("range")
++            if not rng or len(rng) != 2:
++                continue
++            start, end = int(rng[0]), int(rng[1])
++            order_key = (meta.get("output_log", ""), int(meta.get("output_line") or 0))
++            source_fragments.append({"range": [start, end], "fragment": str(frag.relative_to(ROOT))})
++            for offset, line in enumerate(body.splitlines(), start):
++                if offset > end:
++                    break
++                old = by_line.get(offset)
++                if old is None or order_key >= old[0]:
++                    by_line[offset] = (order_key, line)
++
++        if not by_line:
++            continue
++
++        out_lines = [
++            "% RECOVERED PARTIAL 20260708",
++            "% Reconstructed from Codex log sed/nl fragments.",
++            "% Gaps below mark original line ranges not present in recovered logs.",
++            "",
++        ]
++        missing_ranges = []
++        last = max(by_line)
++        line_no = 1
++        while line_no <= last:
++            if line_no in by_line:
++                out_lines.append(by_line[line_no][1])
++                line_no += 1
++                continue
++            gap_start = line_no
++            while line_no <= last and line_no not in by_line:
++                line_no += 1
++            gap_end = line_no - 1
++            missing_ranges.append([gap_start, gap_end])
++            out_lines.append(f"% [RECOVERY GAP: original lines {gap_start}-{gap_end} not found in logs]")
++
++        base = Path(source_path).name.replace(".tex", ".recovered_partial.tex")
++        out_path = partial_dir / base
++        write_text(out_path, "\n".join(out_lines) + "\n")
++        reports.append(
++            {
++                "source_path": source_path,
++                "partial_path": str(out_path.relative_to(ROOT)),
++                "covered_lines": len(by_line),
++                "last_recovered_line": last,
++                "missing_ranges": missing_ranges,
++                "source_fragments": source_fragments,
++            }
++        )
++
++    if reports:
++        write_text(partial_dir / "tex_fragment_coverage_20260708.json", json.dumps(reports, ensure_ascii=False, indent=2))
++    return reports
+@@
+     outputs = parse_exec_calls_and_outputs()
+     command_outputs, fragments, by_path = save_command_evidence(outputs)
+     file_lists = collect_predelete_file_lists(outputs)
++    restored_markdown, partial_markdown = restore_complete_markdown_fragments()
++    tex_partial_reports = assemble_partial_tex_fragments()
+ 
+     manifest = {
+@@
+         "saved_file_list_evidence": file_lists,
+         "fragments_by_original_path": by_path,
++        "restored_complete_markdown_from_fragments": restored_markdown,
++        "restored_partial_markdown_from_fragments": partial_markdown,
++        "assembled_partial_tex_reports": tex_partial_reports,
+         "note": "Files restored from Add File patches are exact patch payloads. Fragments and update patches are evidence for partial/manual reconstruction.",
+     }
+@@
+             f"- Command outputs: {len(command_outputs)}",
+             f"- Text fragments: {len(fragments)}",
+             f"- File-list/status evidence files: {len(file_lists)}",
++            f"- Complete markdown files restored from fragments: {len(restored_markdown)}",
++            f"- Partial markdown files saved: {len(partial_markdown)}",
++            f"- Partial TeX assemblies: {len(tex_partial_reports)}",
+             "",
+             "See `_recovery_logs/recovery_manifest_20260708.json` for the full index.",
+         ]
+@@
+         "fragments": len(fragments),
+         "file_lists": len(file_lists),
++        "restored_markdown": len(restored_markdown),
++        "partial_markdown": len(partial_markdown),
++        "partial_tex": len(tex_partial_reports),
+     }, ensure_ascii=False, indent=2))
+*** End Patch

@@ -1,0 +1,45 @@
+{
+  "call_id": "call_LDHZlh9g8t45BsqpbDguC0Wi",
+  "cmd": "sed -n '680,710p' core_md/balloon511_ea_latex_drafts/balloon511_ea_draft_en.tex",
+  "call_log": "/home/ubuntu/.codex/sessions/2026/07/01/rollout-2026-07-01T22-08-25-019f1e02-73cd-7511-ac67-a36d2a3c1926.jsonl",
+  "call_line": 2300,
+  "output_log": "/home/ubuntu/.codex/sessions/2026/07/01/rollout-2026-07-01T22-08-25-019f1e02-73cd-7511-ac67-a36d2a3c1926.jsonl",
+  "output_line": 2304,
+  "source_path": "core_md/balloon511_ea_latex_drafts/balloon511_ea_draft_en.tex",
+  "range": [
+    680,
+    710
+  ]
+}
+
+or subtraction. Explicit lens-tile supports remain a separate design-level
+systematic.
+
+\section{Discussion and conclusions}
+\label{sec:discussion}
+
+The main result is that the reference production-position delayed-source calculation gives a 20 d diagnostic $3\sigma$ point-source threshold of $3.85\times10^{-5}\phcms$ for an unresolved line in the modeled focused TES line spectrometer. This threshold is obtained without using the focused-spot spatial analysis as the primary result. It follows from three combined effects: optical concentration, a sub-keV energy window, and a detector-coupled veto/topology selection that suppresses prompt and delayed backgrounds in the same selection space as the signal.
+
+This calculation should be compared with existing 511 keV instruments as a pointed, narrow-line, compact-source estimate, not as an all-sky imaging forecast. INTEGRAL/SPI and COSI provide the reference measurements for mapping the diffuse 511 keV sky and the broader Galactic diffuse emission \cite{Siegert2016AA,Kierans2020,Siegert2020COSI,Yoneda2025,Karwin2023}. Peer-reviewed COSI calibration and simulation studies provide the more relevant technical comparison for detector response, event reconstruction, and balloon-background validation \cite{Beechert2022,Sleator2019,Gallego2025Balloon,Gallego2025,Ciabattoni2025ACS}. The TES Laue-lens concept considered here is complementary: it trades sky coverage for a concentrated beam and a sub-keV line window. The relevant comparison class is compact 511 keV targets, unresolved-central-excess searches, and transient follow-up observations with known or constrained source positions. The same focused aperture is not a substitute for measuring the full diffuse bulge and disk luminosity, because it samples only a small solid angle.
+
+The production-position delayed-source treatment addresses a specific approximation in radial-profile compression. Although delayed activation contributes only about 6.6\% of the selected line-window background in the present calculation, it is spatially and materially structured. Preserving sampled production positions prevents artificial azimuthal or radial redistribution from becoming an unquantified systematic. The delayed component has passed a minimum selected-rate convergence check using four independent production-position samplings, but this should not be read as a complete delayed-background systematic envelope.
+
+The background composition indicates the first engineering parameters to test, rather than a completed optimization. The selected line-window rate remains dominated by prompt atmospheric streams, so shield geometry, side-entry collimation, material near the focal plane, topology selection, and multi-pixel reconstruction are the most direct handles on the present background. Delayed activation is smaller but remains spatially and materially structured, so source-position preservation is retained in the rate calculation. The dominance of iodine activation in the CsI shield also motivates a future shield-material trade study.
+
+\subsection{Limitations and future validation}
+\label{subsec:limitations}
+
+\rewritten{The selected-rate result has five immediate boundaries. First, the detector/cryostat model is an engineering proxy, not a final flight CAD model. Second, quantitative active-shield rejection is applied in the common detector-level post-processing selection rather than by production-time trigger/veto filtering. Third, the mission-time calculation is a rate-level fold, not a new particle transport at each trajectory time bin. Fourth, the custom Compton/field-of-view veto is a detector-level topology and kinematic consistency check, not yet a full Revan/Mimrec reconstruction, and the retained reconstruction-failure class is a baseline acceptance choice rather than a conservative sensitivity bound. Fifth, the event-level analysis has made the cut-flow, broad-window spectra, veto behavior, and activation selected-event decomposition traceable, but selected delayed state/metastable labels, the merged four-sampling per-event decomposition, post-veto energy-window staging, multi-pixel residual distributions, and veto-threshold stability scans are still not closed by the current outputs.}
+
+More generally, the tabulated $3\sigma$ flux thresholds are statistical selected-rate thresholds for the reference source, mass, and response model. They do not include a systematic-uncertainty envelope for atmospheric-flux normalization, activation cross sections or physics-list choices, material and geometry tolerances, detector energy-response uncertainty, veto-threshold calibration, reconstruction-efficiency systematics, or background-estimation nuisance parameters. A publication-level flight sensitivity should replace the diagnostic $S/\sqrt{B}$ metric with a spatial-spectral likelihood, following standard profile-likelihood practice \cite{Cowan2011}.
+
+The upstream Laue-lens calculation in Section~\ref{subsec:upstream_optics_background} should be read as a boundary calculation for an equal-volume/equal-mass active-Ge proxy, not as a finalized optics-background budget. It completes full-particle prompt and activation-production transport for the proxy, and the isolated Ge-proxy delayed component gives zero selected $\wii$ events in the present transport. The prompt self-background contribution is still not part of the primary detector-background budget because it needs source separation or subtraction from the ordinary detector/cryostat prompt background, and explicit lens support hardware is not yet modeled.
+
+Spatial analyses such as $r_{90}$ and multi-annulus likelihood estimates are diagnostic cross-checks, but they are not yet a finalized nuisance-profile likelihood. The quoted sensitivity therefore remains the line-window selected-rate result, not a spatially optimized likelihood result.
+
+\rewritten{Before this rate study can support a flight-performance statement, four validation blocks remain: a Revan/Mimrec or equivalent reconstruction cross-check of the retained multi-hit subset, including residual distributions and threshold stability; optics self-background transport with explicit lens tiles and support hardware at final statistics; a final cryostat/DR geometry and detector-response update, including TES saturation and pile-up constraints; and a spatial-spectral likelihood that profiles background nuisance parameters. The event-level tables added here should be read as manuscript support evidence and audit entry points before those validations, not as a complete systematic-uncertainty envelope.}
+
+\subsection{Conclusions}
+\label{sec:conclusions}
+
+We have presented a detector-coupled background and sensitivity study for a balloon-borne pointed 511 keV TES Laue-lens telescope. The reference calculation couples a Ge(111) Laue optical response to a TES focal-plane mass model, prompt atmospheric transport, delayed activation, active-shield vetoing, topology/field-of-view selection, mission-time rate folding, and counting-significance evaluation. In the primary $510.58$--$511.42\keV$ unresolved-line window, the day-15 selected rates are $B\simeq3.92\times10^{-2}\cps$ and $S\simeq1.19\times10^{-3}\cps$ at $10^{-4}\phcms$; the mission-time fold gives $Z_{20\mathrm{d}}\simeq7.80$ and $\fthree(20\mathrm{d})\simeq3.85\times10^{-5}\phcms$. The result provides a detector-coupled selected-rate basis for continued evaluation of focused TES spectroscopy as a complementary 511 keV technique for compact-source and unresolved-central-excess searches, while identifying prompt atmospheric background suppression, delayed-activation systematic validation, and reconstruction validation as the main next validation tasks.

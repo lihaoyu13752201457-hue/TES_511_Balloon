@@ -1,0 +1,6 @@
+*** Begin Patch
+*** Update File: core_md/balloon511_ea_latex_drafts/balloon511_ea_draft_zh.tex
+@@
+-衍射概率优先由外部 XOP/CRYSTAL rocking-curve map 按角偏差插值给出:该曲线由 XOP 工具包的 CRYSTAL/diff_pat 模块(经 xoppylib 调用,以 DABAX 晶体学数据为输入)在预处理阶段一次性离线计算 \cite{SanchezDelRio2011XOP},给出 Ge(111) 反射率/透射率/吸收随角偏差的曲线;输运过程中对晶体内每一步实时计算角偏差,在该曲线上插值取当前衍射概率,即“库离线建表、概率随输运按角取用”。mosaic 取向通过对理想 Bragg 晶面法线施加高斯角扰动实现,扰动宽度由 30 角秒 mosaic FWHM 给出;衍射发生后,出射方向按扰动后的晶面法线镜面反射,光子能量不变。这种“过程类只负责输运接口、独立模型类负责概率与方向判定”的拆分方式,借鉴了 Geant4 中已有的晶体 Bragg 反射扩展工作的思路 \cite{Guan2023BraggReflection,Reiazi2025G4BraggReflection}，扩展到我们所需能段。
++衍射概率优先由外部 XOP/CRYSTAL rocking-curve map 按角偏差插值给出:该曲线由 XOP 工具包的 CRYSTAL/diff\_pat 模块(经 xoppylib 调用,以 DABAX 晶体学数据为输入)在预处理阶段一次性离线计算 \cite{SanchezDelRio2011XOP},给出 Ge(111) 反射率/透射率/吸收随角偏差的曲线;输运过程中对晶体内每一步实时计算角偏差,在该曲线上插值取当前衍射概率,即“库离线建表、概率随输运按角取用”。mosaic 取向通过对理想 Bragg 晶面法线施加高斯角扰动实现,扰动宽度由 30 角秒 mosaic FWHM 给出;衍射发生后,出射方向按扰动后的晶面法线镜面反射,光子能量不变。这种“过程类只负责输运接口、独立模型类负责概率与方向判定”的拆分方式,借鉴了 Geant4 中已有的晶体 Bragg 反射扩展工作的思路 \cite{Guan2023BraggReflection,Reiazi2025G4BraggReflection}，扩展到我们所需能段。
+*** End Patch

@@ -4,6 +4,14 @@ Status: `PRECHECK_ONLY_WAITING_FOR_XHGIH_EXEC_OUTPUTS`
 
 Date: 2026-07-07
 
+2026-07-08 atmospheric-511 note: sections 2.5, 2.6, and the atmospheric
+normalization gate below describe the original precheck baseline for the
+2026-07-07 lower-hemisphere replay. Current downstream geometry-optimization
+conclusions supersede those atmospheric-511 values with the 4pi sidecar replay
+in `engineering/geometry_optimization_20260704/12_atm511_sidecar_replay_20260708/`.
+The prompt e+, neutron, plastic, and activation baseline values remain useful
+for the same S1/BPE/W5 branch.
+
 Role boundary: this file is an independent review checklist and baseline evidence digest. It does not implement the new geometry, does not launch transport, and does not modify the original `511_Mass` / `Mass_model_511` geometry.
 
 ## 1. Files Read For Current Baseline
@@ -136,7 +144,7 @@ Review interpretation rules:
 - Source-bin ingress and first-recorded-volume ingress are different quantities. The former is source angular direction; the latter is where the event first deposits or records an interaction. Both must be preserved.
 - If the SIM format does not record pure boundary crossings, EXEC must state that `first_recorded_volume` is a first recorded interaction/deposit proxy, not an exact geometrical entry surface.
 - For e+ and neutron, counts must be rate-weighted because full-sphere source cards have unequal flux/spectrum bins.
-- For atmospheric 511, the unit transfer normalization must remain `1.0 ph cm^-2 s^-1` over lower hemisphere bins unless explicitly documented otherwise.
+- For atmospheric 511, the unit transfer normalization must remain `1.0 ph cm^-2 s^-1` over lower hemisphere bins unless explicitly documented otherwise. The 2026-07-08 sidecar replay is that documented replacement: it uses a physical 4pi nominal line flux and also reports transfer per total 4pi line flux.
 - Do not infer "from a gap" unless the geometry has an actual documented opening and the first recorded location supports that classification.
 
 ## 4. Veto Performance Checklist
@@ -252,4 +260,3 @@ When XHGIH-EXEC provides paths, review should fill:
 - `BARREL_GEOMETRY_PASS` / `BARREL_GEOMETRY_FAIL`: Does geometry retain only allowed volumes and add only barrel/window/supports?
 - `EPLUS_RUN_PASS` / `EPLUS_RUN_FAIL`: Does the e+ run source card and SIM header point to the new barrel geometry?
 - `CLAIM_BOUNDARY_PASS` / `CLAIM_BOUNDARY_FAIL`: Are claims limited to what the e+ hypothesis run can prove?
-

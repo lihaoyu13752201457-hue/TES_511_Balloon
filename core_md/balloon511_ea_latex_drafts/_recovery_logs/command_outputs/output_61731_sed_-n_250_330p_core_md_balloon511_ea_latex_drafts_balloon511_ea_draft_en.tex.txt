@@ -1,0 +1,90 @@
+{
+  "call_id": "call_F2BysPEJILDa5rMrEnRrHbwm",
+  "cmd": "sed -n '250,330p' core_md/balloon511_ea_latex_drafts/balloon511_ea_draft_en.tex",
+  "call_log": "/home/ubuntu/.codex/sessions/2026/07/01/rollout-2026-07-01T22-08-25-019f1e02-73cd-7511-ac67-a36d2a3c1926.jsonl",
+  "call_line": 2324,
+  "output_log": "/home/ubuntu/.codex/sessions/2026/07/01/rollout-2026-07-01T22-08-25-019f1e02-73cd-7511-ac67-a36d2a3c1926.jsonl",
+  "output_line": 2328
+}
+
+corresponding to $511\keV\pm420\,\mathrm{eV}$. This window is matched to a sub-keV TES response assumption and is narrow enough to suppress continuum background while retaining most of the line response.
+The quoted flux thresholds therefore apply to a line whose intrinsic width remains small compared with this analysis window after detector response; broader source lines would require convolving the source line profile with the detector response and re-optimizing or widening the analysis window.
+
+The detector selection has two explicitly separated veto layers. First, an
+active anticoincidence gate is applied on a common detector time axis. For a
+candidate group $c$, formed from event instances separated by no more than
+$\tau=1\,\mu\mathrm{s}$, the TES energy and active-shield energy are
+\begin{equation}
+  E_{\mathrm{TES}}^{(c)}=\sum_{j\in c}E_{\mathrm{TES},j},\qquad
+  E_{\mathrm{sh}}^{(c)}=\sum_{j\in c}E_{\mathrm{sh},j}.
+\end{equation}
+A candidate enters the hard line window if $E_{\mathrm{TES}}^{(c)}\in\wii$,
+and it passes the active shield if
+\begin{equation}
+  E_{\mathrm{sh}}^{(c)} < E_{\mathrm{veto}}, \qquad E_{\mathrm{veto}}=50\keV
+\end{equation}
+for the baseline CsI configuration. The shield sum is evaluated from the CsI
+active-shield volumes in post-processing. Native detector trigger/veto blocks
+are present in the geometry description, but the quantitative rate definition is
+this common post-processing definition, so prompt, delayed, and focused-signal
+streams use the same coincidence window and threshold.
+
+The second layer is a topology/field-of-view consistency test on the TES hits
+that survive the active-shield gate. Baseline event classes are kept explicit:
+single-site events, valid reconstructed multi-site events, and unreconstructed
+multi-site events. Single-pixel TES events are retained as calorimetric line
+candidates. For a two-hit event, both possible first-scatter orders are tested
+under the assumptions of a single Compton scatter followed by full absorption
+in the measured TES hits. For an assumed order with first deposited energy
+$E_1$ and remaining scattered-photon energy $E_{\mathrm{sc}}$, the kinematic
+angle is computed from
+\begin{equation}
+  \cos\theta_C =
+  1 - m_ec^2\left(\frac{1}{E_{\mathrm{sc}}}
+  - \frac{1}{E_1+E_{\mathrm{sc}}}\right).
+\end{equation}
+The event is kept if either order gives a physically valid first-scatter cone
+that intersects the side Be-window disk. For higher multiplicities the current
+implementation enumerates candidate hit orders up to six TES hits, selects the
+best sequence using the unweighted Compton sequence residual
+\begin{equation}
+  Q = \sum_{i=1}^{n-2}
+  \left(\cos\theta_{C,i} -
+  \hat{\mathbf u}_{i-1,i}\cdot\hat{\mathbf u}_{i,i+1}\right)^2,
+\end{equation}
+and then applies the same first-cone intersection test to the first reconstructed
+scatter. If no valid sequence is found, the event is classified as
+unreconstructed. Such events are retained in the baseline selected-rate
+definition but are not called field-of-view passing. The line-window result
+therefore does not gain sensitivity from rejecting ambiguous reconstruction
+failures. This policy is not a conservative lower bound on the net sensitivity:
+in the current $\wii$ sample, a diagnostic alternative that discards the
+unreconstructed class would retain $59.2\%$ of the focused signal and $66.8\%$
+of the selected background, reducing the simple $S/\sqrt{B}$ figure to $0.724$
+of the baseline value. The baseline selection therefore treats ambiguous
+multi-hit events as a reconstruction-model boundary that must be validated, not
+as a sensitivity gain from aggressive event rejection.
+
+\added{To connect this selection chain explicitly to the finite Monte Carlo
+sample, Table~\ref{tab:phase2_cutflow} gives the current event-level
+$\wii$ cut-flow obtained by lightweight replay of the simulated event catalogues.
+The table is not a new Geant4/MEGAlib transport. It replays the current
+event catalogues with the same TES energy window, CsI veto, and
+Compton-kinematic/field-of-view consistency checks; uncertainties are Monte
+Carlo quadrature sums over event weights. The current event-selection records first fix
+the energy window and then report raw, active-shield, and topology stages, so
+the raw stage should be read as the pre-veto sample inside the line window, not
+as an all-energy incident sample.}
+
+\begin{table}[t]
+\centering
+\caption{\added{event-level $\wii$ line-window cut-flow.}}
+\label{tab:phase2_cutflow}
+\footnotesize
+{
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{p{0.20\linewidth}p{0.24\linewidth}p{0.08\linewidth}p{0.16\linewidth}p{0.20\linewidth}}
+\toprule
+Stream & Stage & Events & Rate / $\cps$ & Statistical uncertainty / $\cps$ \\
+\midrule
+Prompt background & Line-window pre-veto & 161 & $1.1877\times10^{-1}$ & $1.15\times10^{-2}$ \\

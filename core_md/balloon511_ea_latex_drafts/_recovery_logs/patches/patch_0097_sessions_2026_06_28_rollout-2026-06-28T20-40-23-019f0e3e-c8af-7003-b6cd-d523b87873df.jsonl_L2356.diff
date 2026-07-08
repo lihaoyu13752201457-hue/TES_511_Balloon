@@ -1,0 +1,37 @@
+*** Begin Patch
+*** Update File: core_md/balloon511_ea_latex_drafts/balloon511_ea_draft_en.tex
+@@
+-The prompt atmospheric field is derived from EXPACS/PARMA. PARMA3.0 is an
+-analytical model parameterized from PHITS atmospheric-shower calculations and
+-benchmarked against terrestrial cosmic-ray measurements, and EXPACS is its
+-public tabulation and software interface
+-\cite{Sato2015EXPACS,Sato2016PARMA4}. PHITS supplies the underlying
+-particle-transport physics: primary cosmic rays interact with air nuclei, the
+-secondary hadrons, leptons, photons, and neutrons are transported through the
+-atmospheric column, and the resulting fluences are parameterized by altitude,
+-geomagnetic cutoff, solar modulation, energy, and direction. In this work
+-EXPACS/PARMA provides the differential incident flux as a function of particle
+-species, kinetic energy, zenith angle, geographic position, altitude, cutoff
+-rigidity, and solar activity, and is used only to construct the external
+-radiation fields; detector response, vetoing, topology selection, and
+-mission-time counting are applied downstream. The reference source definitions
+-use latitude $34^\circ$, longitude $100^\circ$, altitude $38\,\mathrm{km}$,
+-vertical cutoff rigidity $R_c=11.6\,\mathrm{GV}$, and the 2025-08-31 solar
+-condition corresponding to $W=118.3$.
+-
+-The prompt source includes photons, neutrons, electrons, positrons, protons,
+-alpha particles, and negative and positive muons. For each particle family the
+-EXPACS/PARMA differential spectrum is converted into a MEGAlib far-field area
+-source covering the full zenith range $\theta=0^\circ$--$180^\circ$ and full
+-azimuth range $\phi=0^\circ$--$360^\circ$. The zenith dependence is represented
+-by 20 differential equal-$\mu$ angular bins, where $\mu=\cos\theta$ and each
+-bin subtends $\Delta\Omega=0.6283185307\,\mathrm{sr}$: the first ten bins cover
+-down-going particles, the last ten up-going or albedo-like particles. Both
+-hemispheres are retained in the prompt transport and in the
+-activation-production transport, so upward albedo particles are not discarded
+-at source construction. Figure~\ref{fig:expacs_fullsphere_flux} shows the
+-resulting full-sphere flux field.
++The background source model is divided into two lines, prompt atmospheric transport and delayed activation, in which the prompt atmospheric particle field is given by EXPACS/PARMA. PARMA3.0 is an analytical model parameterized from PHITS atmospheric-shower calculations and validated against terrestrial cosmic-ray fields, and EXPACS is its public tabulation/software interface \cite{Sato2015EXPACS,Sato2016PARMA4}. PHITS provides the underlying particle-transport physics: primary cosmic rays interact with atmospheric nuclei, the produced secondary hadrons, leptons, photons, and neutrons continue to transport in the atmospheric column, and the final flux is then parameterized by altitude, geomagnetic cutoff rigidity, solar modulation, energy, and direction. In this work, EXPACS/PARMA gives the incident differential flux varying with particle species, kinetic energy, zenith angle, geographic position, altitude, geomagnetic cutoff rigidity, and solar modulation. It is used only to construct the external radiation field; detector response, anticoincidence, topology selection, and mission-time counting are applied in later steps. The reference source definition in this work uses latitude $34^\circ$, longitude $100^\circ$, altitude $38\,\mathrm{km}$, vertical cutoff rigidity $R_c = 11.6\,\mathrm{GV}$, and the solar modulation condition $W = 118.3$ corresponding to 2025-08-31.
++
++The prompt source includes photons, neutrons, electrons, positrons, protons, $\alpha$ particles, negative $\mu$ particles, and positive $\mu$ particles. For each particle family, the EXPACS/PARMA differential spectrum is converted into a MEGAlib far-field area source, covering the full zenith range $\theta = 0^\circ$--$180^\circ$ and the full azimuth range $\phi = 0^\circ$--$360^\circ$. The zenith-angle dependence is represented by 20 equal-$\mu$ differential angular bins, where $\mu = \cos\theta$, and the solid angle of each bin is $\Delta\Omega = 0.6283185307\,\mathrm{sr}$. The first 10 bins represent down-going particles ($0^\circ \leq \theta \leq 90^\circ$), and the last 10 bins represent up-going or albedo components ($90^\circ \leq \theta \leq 180^\circ$). Both the prompt transport and activation-production transport retain these two hemispheres, so upward albedo particles are not discarded during source construction. It is worth mentioning that the discrete energy spectrum output by expacs skips over the 511keV point, and an atmospheric 511keV background is additionally introduced in the source in the simulation.
+*** End Patch

@@ -1,0 +1,65 @@
+{
+  "call_id": "call_OuLslGKLJeyXrBLxg5HR0a5C",
+  "cmd": "sed -n '120,175p' core_md/balloon511_ea_latex_drafts/balloon511_ea_draft_zh.tex",
+  "call_log": "/home/ubuntu/.codex/sessions/2026/06/28/rollout-2026-06-28T20-40-23-019f0e3e-c8af-7003-b6cd-d523b87873df.jsonl",
+  "call_line": 833,
+  "output_log": "/home/ubuntu/.codex/sessions/2026/06/28/rollout-2026-06-28T20-40-23-019f0e3e-c8af-7003-b6cd-d523b87873df.jsonl",
+  "output_line": 836
+}
+
+\includegraphics[width=0.88\linewidth]{paper_source_figure_table/fig_mass_model_detector_bay_detail.png}
+\caption{探测器/低温系统代理质量模型的二维示意图。上：DR 塔、探测器舱、主动屏蔽和 511 keV 侧入射束线的 X--Z 视图。下：探测器舱细节，显示 TES 吸收体堆栈、开放中心束区和离轴 Cu 热连接。}
+\label{fig:mass_model}
+\end{figure}
+
+\begin{table}[t]
+\centering
+\caption{参考计算采用的主要探测器和分析参数。}
+\label{tab:geometry}
+\begin{tabular}{p{0.36\linewidth}p{0.56\linewidth}}
+\toprule
+参数 & 数值或策略 \\
+\midrule
+探测器概念 & TES 微量热计焦平面 \\
+TES 像素数 & $6\times376=2256$ \\
+TES 吸收体代理 & Ta 像素，每个 $1.5\times1.5\times3.0\,\mathrm{mm^3}$ \\
+TES 能量响应代理 & 单一 Gaussian 事例能量代理，$\sigma=0.14\keV$；不模拟独立逐像素展宽 \\
+探测效率处理 & Geant4 输运加后续选后率归一化；此处不强加独立标量效率 \\
+主动屏蔽 & 分段 CsI，后处理 veto \\
+CsI veto 阈值 & 屏蔽总能量 $50\keV$ \\
+入射窗堆栈 & 多级 Al 薄箔和 $150\,\mu\mathrm{m}$ Be 侧窗口 \\
+被动屏蔽/准直 & Cu/W 代理衬层、W 底板和 2 cm W 侧套筒 \\
+DR/服务质量代理 & MXC/CP/still/4 K/60 K/300 K 温区顺序，以及局部结构、线束和读出服务质量代理 \\
+指向 & 局部侧窗口向上倾斜 $45^\circ$ \\
+触发/veto 定量定义 & 统一探测器层后处理选择 \\
+coincidence 窗 & $1\,\mu\mathrm{s}$ \\
+线窗 $\wii$ & $510.58$--$511.42\keV$ \\
+参考点源流量 $\fzero$ & $10^{-4}\phcms$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\FloatBarrier
+
+\section{模拟框架}
+\label{sec:framework}
+
+本节描述应用于第~\ref{sec:geometry}~节质量模型的端到端模拟链：模拟流程与数值层级、Laue 光学信号重放、瞬发与延迟本底源模型、探测器事例选择，以及任务时间折叠。聚焦信号与两路本底流在做任何本底分解或灵敏度陈述之前，都通过同一套探测器响应和 veto 定义。
+
+\subsection{模拟流程}
+\label{sec:workflow}
+
+通过详细质量模型的探测器耦合 Monte Carlo 输运，是预测伽马射线谱仪响应和本底的成熟方法 \cite{Sturner2003}；图~\ref{fig:workflow} 总结了本文采用的链路。计算分为几何定义、瞬发与活化积累输运、延迟源构建、聚焦光学输运、探测器耦合信号重放、veto 机制、本底细节分析、时间/飞行轨迹变化以及飞行性能评估与设计优化意见。本文以产生位置采样延迟衰变作为主要延迟源表示：延迟衰变从记录到的放射性产生位置采样，而不是重新分配到轴对称径向分布。
+
+\begin{figure}[t]
+\centering
+\begin{tikzpicture}[
+  box/.style={rectangle, rounded corners=2pt, draw=black!55, line width=0.4pt,
+              align=center, font=\scriptsize, text width=30mm, minimum height=8mm, inner sep=2pt},
+  bg/.style={box, fill=blue!8},
+  sig/.style={box, fill=green!12},
+  shr/.style={box, fill=black!6},
+  flow/.style={-{Latex[length=2mm]}, draw=black!60, line width=0.5pt}
+]
+\node[shr] (geo)    at (0,0)        {几何 / 质量模型};
+\node[bg]  (prompt) at (-3.1,-1.35) {瞬发与活化输运};

@@ -29,15 +29,15 @@ from matplotlib.patches import Patch
 ROOT = Path(__file__).resolve().parents[3]
 WORK = Path(__file__).resolve().parent
 RAY_EVENTS = WORK / "w2_all_particle_ray_overlay_events.csv"
-DEPTH_PROXY = WORK / "html_conclusion_report_20260707/data/neutron_energy_depth_proxy.csv"
+DEPTH_PROXY = WORK / "html_conclusion_report_20260708/data/neutron_energy_depth_proxy.csv"
 ATM511_SOURCE = (
     ROOT
-    / "runs/geometry_optimization_20260704/p2_atm511_unit_geo_opt_s1_bpe_w5_fullstat_v1"
-    / "Atm511LowerUnit3M_GeoOptS1BpeW5.source"
+    / "runs/geometry_optimization_20260704/p2_atm511_sidecar_s1_nominal_geo_opt_s1_bpe_w5_20260708"
+    / "Atm511SidecarS1Nominal3M_GeoOptS1BpeW5.source"
 )
 
-OUT = WORK / "figures/w2_angle_depth_audit_20260707"
-DATA_OUT = WORK / "angle_depth_audit_20260707"
+OUT = WORK / "figures/w2_angle_depth_audit_20260708"
+DATA_OUT = WORK / "angle_depth_audit_20260708"
 ANGLE_EVENTS_CSV = DATA_OUT / "w2_incident_angle_events.csv"
 ENTRY_COUNTS_CSV = DATA_OUT / "w2_entry_class_counts.csv"
 NEUTRON_DEPTH_CSV = DATA_OUT / "w2_neutron_energy_depth_with_entry.csv"
@@ -604,7 +604,7 @@ def parse_atm511_source_definition() -> dict[str, Any]:
     phi_max = max(b[3] for b in beams) if beams else None
     return {
         "source_card": rel(ATM511_SOURCE),
-        "name": "Atm511LowerUnit3M_GeoOptS1BpeW5",
+        "name": "Atm511SidecarS1Nominal3M_GeoOptS1BpeW5",
         "particle_type": "gamma (MEGAlib ParticleType 1)",
         "spectrum": "Mono 511 keV",
         "beam_model": "FarFieldAreaSource",
@@ -613,7 +613,7 @@ def parse_atm511_source_definition() -> dict[str, Any]:
         "number_of_theta_bins": len(beams),
         "flux_per_bin": fluxes[:3],
         "total_declared_flux": sum(fluxes),
-        "interpretation": "Lower-hemisphere 511-keV line source, not a full-4pi isotropic source.",
+        "interpretation": "EXPACS-like 4pi atmospheric 511-keV sidecar with upward albedo and downward residual-atmosphere components.",
     }
 
 

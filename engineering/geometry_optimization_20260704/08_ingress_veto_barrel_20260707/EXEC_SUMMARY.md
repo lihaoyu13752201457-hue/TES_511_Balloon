@@ -2,6 +2,12 @@
 
 Generated: 2026-07-07
 
+2026-07-08 update: downstream atmospheric-511 interpretation now uses the
+4pi EXPACS-like sidecar replay in
+`engineering/geometry_optimization_20260704/12_atm511_sidecar_replay_20260708/`.
+The 2026-07-07 lower-hemisphere replay is retained as provenance only and is
+not the current geometry-optimization conclusion.
+
 Scope: XHGIH execution branch plus parent integration. No original `511_Mass`,
 `Mass_model_511`, fix5 authority geometry, or paper-facing authority outputs
 were modified.
@@ -37,7 +43,7 @@ W2 current geo-opt cutflow:
 | --- | ---: | ---: | ---: | ---: | ---: | ---: |
 | `eplus` | 62 | 40 | 35 | 0.354839 | 0.125000 | 0.564516 |
 | `n` | 60 | 13 | 13 | 0.783333 | 0.000000 | 0.216667 |
-| `atm511` | 108 | 108 | 95 | 0.000000 | 0.120370 | 0.879630 |
+| `atm511` | 114 | 114 | 107 | 0.000000 | 0.061404 | 0.938596 |
 
 Definitions:
 
@@ -47,34 +53,42 @@ Definitions:
 
 Ingress caveat: prompt `eplus` and `n` use `IA INIT` ray/envelope-intersection
 proxies, not a Geant4 boundary-crossing scorer. Atmospheric 511 raw/active/final
-cutflow comes from the full P2 replay; atmospheric ingress-region rows are only
-for the 95 final W2 candidates.
+cutflow comes from the full 2026-07-08 4pi sidecar replay; atmospheric
+ingress-region rows are only for the 107 final W2 candidates.
 
 ## Atmospheric 511 Replay
 
-Replay script:
+Current replay script:
 
-- `engineering/geometry_optimization_20260704/06_atm511_replay_20260707/build_geo_opt_atm511_replay.py`
+- `engineering/geometry_optimization_20260704/12_atm511_sidecar_replay_20260708/build_geo_opt_atm511_sidecar_replay.py`
 
-Replay outputs:
+Current replay outputs:
 
-- `engineering/geometry_optimization_20260704/06_atm511_replay_20260707/p2_geo_opt_s1_bpe_w5_atm511_transfer_summary.json`
-- `engineering/geometry_optimization_20260704/06_atm511_replay_20260707/p2_geo_opt_s1_bpe_w5_atm511_flux_scenarios.csv`
+- `engineering/geometry_optimization_20260704/12_atm511_sidecar_replay_20260708/p2_geo_opt_s1_bpe_w5_atm511_sidecar_summary.json`
+- `engineering/geometry_optimization_20260704/12_atm511_sidecar_replay_20260708/atm511_sidecar_s1_nominal_bin_fluxes.csv`
+- `engineering/geometry_optimization_20260704/12_atm511_sidecar_replay_20260708/atm511_sidecar_systematic_scenarios.csv`
 
-Status: `PASS_GEO_OPT_S1_BPE_W5_P2_ATM511_TRANSFER_REPLAY`
+Status: `PASS_GEO_OPT_S1_BPE_W5_ATM511_4PI_SIDECAR_REPLAY`
 
 Evidence:
 
 - generated events: `3000000`
-- observation time: `265.314 s`
+- observation time: `5146.38 s`
 - geometry header: `engineering/geometry_optimization_20260704/01_geo_opt_s1_bottomw_b4c/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup`
-- W2 raw/active/final: `108/108/95`
-- broad 480-550 raw/active/final: `135/135/117`
-- W2 final transfer: `0.358066291262 cps/(ph cm^-2 s^-1)`
-- Harris Rc~11-13 added W2 background: `0.00834351749248 cps`
+- source model: EXPACS-like semi-empirical atmospheric 511-keV line sidecar,
+  20 equal-mu bins over `theta=0..180 deg`
+- nominal 4pi line flux: `0.0515558541132 ph cm^-2 s^-1`
+- W2 raw/active/final: `114/114/107`
+- broad 480-550 raw/active/final: `146/146/135`
+- W2 final nominal rate: `0.0207913135058 cps`
+- W2 final transfer: `0.403277452453 cps/(ph cm^-2 s^-1 4pi line flux)`
+- sidecar-included W2 background: `0.0561719296626 cps`
+- sidecar-included W2 `F3(20d)`: `4.62986036016e-05 ph cm^-2 s^-1`
 
-This replay shows no active anticoincidence rejection of atmospheric 511 W2
-candidates; the W2 rejection is from side Compton/FoV only.
+This replay still shows no active anticoincidence rejection of atmospheric 511
+W2 candidates; the W2 rejection is from side Compton/FoV only. The final
+candidate entry proxy distribution is side-wall dominated: side_wall `74`,
+top `24`, bottom `7`, side_window `2`.
 
 ## W-Barrel Hypothesis Geometry
 

@@ -1,0 +1,130 @@
+{
+  "call_id": "call_w93lrui6yUXuL35mA4P4ZlAZ",
+  "cmd": "sed -n '140,260p' core_md/balloon511_ea_latex_drafts/balloon511_ea_draft_zh.tex",
+  "call_log": "/home/ubuntu/.codex/sessions/2026/06/28/rollout-2026-06-28T20-40-23-019f0e3e-c8af-7003-b6cd-d523b87873df.jsonl",
+  "call_line": 1109,
+  "output_log": "/home/ubuntu/.codex/sessions/2026/06/28/rollout-2026-06-28T20-40-23-019f0e3e-c8af-7003-b6cd-d523b87873df.jsonl",
+  "output_line": 1113
+}
+
+              align=center, font=\scriptsize, text width=30mm, minimum height=8mm, inner sep=2pt},
+  bg/.style={box, fill=blue!8},
+  sig/.style={box, fill=green!12},
+  shr/.style={box, fill=black!6},
+  flow/.style={-{Latex[length=2mm]}, draw=black!60, line width=0.5pt}
+]
+\node[shr] (geo)    at (0,0)        {几何 / 质量模型};
+\node[bg]  (prompt) at (-3.1,-1.35) {瞬发与活化输运};
+\node[bg]  (delay)  at (-3.1,-2.7)  {延迟活度源};
+\node[bg]  (decay)  at (-3.1,-4.05) {产生位置衰变输运};
+\node[sig] (optics) at (3.1,-1.35)  {Laue 光学（仅信号）};
+\node[sig] (couple) at (3.1,-2.7)   {光学--探测器耦合};
+\node[shr] (sel)    at (0,-5.4)     {veto 机制：闪烁体 veto $+$ 康普顿运动学 veto};
+\node[shr] (detail) at (0,-6.75)    {本底细节分析};
+\node[shr] (fold)   at (0,-8.1)     {时间/飞行轨迹变化};
+\node[shr] (out)    at (0,-9.45)    {飞行性能评估，设计优化意见};
+\draw[flow] (geo) -- (prompt);
+\draw[flow] (geo) -- (optics);
+\draw[flow] (prompt) -- (delay);
+\draw[flow] (delay) -- (decay);
+\draw[flow] (optics) -- (couple);
+\draw[flow] (decay) -- (sel);
+\draw[flow] (couple) -- (sel);
+\draw[flow] (sel) -- (detail);
+\draw[flow] (detail) -- (fold);
+\draw[flow] (fold) -- (out);
+\end{tikzpicture}
+\caption{本文采用的模拟链。蓝色节点为瞬发与延迟本底流，绿色节点为聚焦信号光学，灰色节点为共享的几何、veto 机制、本底细节分析、时间/飞行轨迹变化以及最终飞行性能评估。聚焦信号和全部本底流先在同一探测器响应与 veto 定义下评估，再用于本底分解、任务时间变化和设计优化判断。}
+\label{fig:workflow}
+\end{figure}
+
+主要率级计算结合瞬发和活化积累输运、固定第 15 天放射性核素群体、记录产生位置上的等活度点源采样点，以及下游探测器响应、veto 机制、本底细节分析和飞行性能评估。
+
+每一层都有明确输入、物理或统计操作、传递给后续层级的输出，以及解释边界。几何定义固定质量模型和坐标策略，但不产生率。瞬发输运和活化输运分别定义直接大气本底与同位素产生历史。延迟源层把这些产生历史转换为固定第 15 天放射性核素群体，并输运采样的产生位置衰变。光学 Monte Carlo 只负责信号：它提供 Laue 透镜有效面积和真实追踪的聚焦相空间；光学-探测器耦合与探测器响应层再把该相空间转化为探测器耦合点源响应。闪烁体 veto 和康普顿运动学 veto 共同定义探测器层保留事例；随后进行本底细节分析、时间/飞行轨迹变化折叠，并把结果用于飞行性能评估和设计优化判断。
+
+下文数值引用遵循同样的层级。第 15 天选后率是在聚焦信号流按 10 m
+Ge(111) 有效面积和参考大气透过率缩放后引用；任务平均率来自时间相
+关折叠；主要 $Z$、$T_{3\sigma}$ 和流量阈值来自累积显著度计算。
+产生位置抽样检查只在采样源完成输运并通过同一探测器
+选择和显著度链路后引用。这样可避免把单位注入率、第 15 天直接期望
+和任务时间折叠后的灵敏度混成一个结果。
+
+\FloatBarrier
+
+\subsection{Laue 光学与探测器耦合信号重放}
+\label{sec:optics}
+
+信号模型采用标准 Laue 透镜思路：入射 $\gamma$ 射线在 mosaic 晶体中以透射 Laue 几何发生 Bragg 衍射，并被集中到小面积焦平面探测器上 \cite{Barriere2009Laue,Barriere2011LauePrototype}。早期聚焦式 $\gamma$ 射线望远镜研究已经指出，探测器响应需要和聚焦相空间一起评估，而不能只用孤立的透镜有效面积代替 \cite{Weidenspointner2006MAX}。针对本文的 511 keV TES 概念 \cite{Shirazi2023}，基准光学构型为单能 Ge(111) Laue 环：焦距 $10\,\mathrm{m}$，25 个方形晶片，晶片边长 18 mm，mosaic FWHM 为 30 arcsec，有效 Ge 质量 $0.441\,\mathrm{kg}$。Ge(111) 衍射概率和角响应由外部 XOP/CRYSTAL rocking-curve map 给出 \cite{SanchezDelRio2011XOP}。有效面积归一化定义为环几何面积乘以模拟得到的、能够经探测器入口孔径出射的衍射光子比例，得到 $\aeff(511\keV)=20.1\,\mathrm{cm^2}$。
+
+光学模拟在本文中作为聚焦信号源生成器，而不只是一个孤立有效面积计算。在输运过程中，穿过标称焦面的 $\gamma$ 光子会连同其能量、位置、方向和产生历史一起记录。只有经过真实追踪、发生 Laue 衍射并落入 Be 入射孔径的光子才传递给后续探测器模拟；解析光斑投影只作为诊断量保留。这样保留了衍射光子离开 Ge 晶体时的吸收和散射效应。
+
+图~\ref{fig:optics} 给出光学-探测器耦合的两个层次：由 Laue 环配置到焦面的径向光学约束（a），以及注入探测器模型的横向分布（b）。
+
+\begin{figure}[tbp]
+\centering
+\begin{minipage}[t]{0.62\linewidth}
+\centering
+\includegraphics[width=\linewidth]{paper_source_figure_table/fig_optics_laue_transport_schematic.png}\\[0.3ex]
+{\footnotesize (a)}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.36\linewidth}
+\centering
+\includegraphics[width=\linewidth]{paper_source_figure_table/fig_optics_focal_crossings_xy.png}\\[0.3ex]
+{\footnotesize (b)}
+\end{minipage}
+\caption{Laue 透镜光学耦合。(a) 511 keV 信号源的模拟导出径向--$z$ 视图：红色衍射扇束终止于真实追踪且满足 Be 入射孔径门的焦面穿越点。(b) 通过 Be 入射孔径筛选、并用于后续探测器重放的真实追踪焦面横向位置 $(x_{\rm fp},y_{\rm fp})$；红色圆为 Be 窗孔径。}
+\label{fig:optics}
+\end{figure}
+
+通过 Be 入射孔径的焦面光子被转换到局部侧入射探测器坐标系，并在探测器/低温系统质量模型中重放。这样保留了探测器入口平面的模拟位置和方向分布，避免用解析光斑替代光学计算。因此，这里的焦面穿越表是输运得到的光学信号输入：它记录 511 keV 源模拟中穿过焦面的 $\gamma$ 光子，而不是由大气或宇宙线与上游透镜硬件相互作用产生的粒子。
+
+为了检验这一边界能否在需要时由同一 Geant4/MEGAlib 本底链处理，本文还运行了一个辅助的上游硬件计算。该计算在 10 m 上游透镜位置放置一个与 Laue 有效晶体等体积、等质量的 Ge 代理体。该代理体对应 25 个方形 Ge 晶片，边长 18 mm、厚度约 10.2 mm，总有效 Ge 体积为 $82.8\,\mathrm{cm^3}$，质量为 $0.441\,\mathrm{kg}$。大气远场源面由探测器加上游透镜的组合包络确定：10 m 透镜中心距离加有效晶体体积包络给出约 $1009\,\mathrm{cm}$，输运源面半径向上取整为 $1060\,\mathrm{cm}$，世界体半尺寸为 $2500\,\mathrm{cm}$。该质量代理使用与探测器本底链相同的八类 EXPACS/PARMA 粒子族（$\gamma$、$n$、$e^\pm$、$p$、$\alpha$ 和 $\mu^\pm$）完成瞬发输运和活化产生输运。该计算定义了上游质量代理的全粒子输运和同位素产生边界。有效 Ge 代理体产生的延迟成分随后从组合几何同位素产生记录中隔离出来，并按记录产生位置转换为衰变源，在同一探测器层选择下重放；其选后率结果在第~\ref{subsec:upstream_optics_background} 节给出。
+
+对于聚焦点源响应，$\fzero=10^{-4}\phcms$ 表示参考入射 511 keV 光子流量。线窗信号响应 $1.19\times10^{-3}\cps$ 指该流量下经过探测器输运、参考大气透过因子和探测器层事例选择后的 $\wii$ 选后信号率。相应选后有效面积为 $A_{\mathrm{sel}}=S_{\wii}/\fzero=11.9\,\mathrm{cm^2}$。该参考归一化应理解为基准指向情形，而不是所有气球指向通用的大气透过率。低仰角或长斜程观测，包括北半球中纬度气球轨迹上的银河中心观测，应使用斜程大气透过模型；这类斜程计算仍是边界检查，不替代本文给出的参考曝光结果。
+
+\subsection{瞬发大气与延迟活化源模型}
+\label{sec:background}
+
+\subsubsection{瞬发大气源}
+\label{subsec:prompt_source}
+
+本底源模型被分为瞬发大气输运和延迟活化两条线，以避免把源产生过程和探测器选择假设混在一起。瞬发大气粒子场由 EXPACS/PARMA 给出。PARMA3.0 是由 PHITS 大气级联计算参数化得到、并针对陆地宇宙线场验证的解析模型，EXPACS 是其公开表格/软件接口 \cite{Sato2015EXPACS,Sato2016PARMA4}。PHITS 提供其底层粒子输运物理：一次宇宙线与大气核相互作用，产生的次级强子、轻子、光子和中子在大气柱中继续输运，最终通量再按海拔、地磁截止刚度、太阳调制、能量和方向参数化。在本文中，EXPACS/PARMA 给出随粒子种类、动能、天顶角、地理位置、海拔、地磁截止刚度和太阳调制变化的入射微分通量。它只用于构造外部辐射场；探测器响应、反符合、拓扑选择和任务时间计数均在后续步骤施加。本文参考源定义采用纬度 $34^\circ$、经度 $100^\circ$、海拔 $38\,\mathrm{km}$、垂直截止刚度 $R_c=11.6\,\mathrm{GV}$，以及 2025-08-31 对应的太阳调制条件 $W=118.3$。
+
+瞬发源包含光子、中子、电子、正电子、质子、$\alpha$ 粒子、负 $\mu$ 子和正 $\mu$ 子。对每个粒子族，EXPACS/PARMA 微分谱被转换为 MEGAlib 远场面积源，覆盖完整天顶角范围 $\theta=0^\circ$--$180^\circ$ 和完整方位角范围 $\phi=0^\circ$--$360^\circ$。天顶角依赖用 20 个等 $\mu$ 微分角度分箱表示，其中 $\mu=\cos\theta$，每个分箱的立体角为 $\Delta\Omega=0.6283185307\,\mathrm{sr}$。前 10 个分箱表示下行粒子（$0^\circ\leq\theta\leq90^\circ$），后 10 个分箱表示上行或反照成分（$90^\circ\leq\theta\leq180^\circ$）。瞬发输运和活化产生输运都保留这两个半球，因此源构建阶段没有丢弃上行反照粒子。
+
+图~\ref{fig:expacs_fullsphere_flux} 给出由源定义实际采用的全空间通量场。
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\linewidth]{paper_source_figure_table/fig_expacs_fullsphere_flux.png}
+\caption{用于生成瞬发和活化产生输运输入的 EXPACS/PARMA 全空间大气通量场。左：八类输运粒子族的能量和立体角积分通量，并按下行、上行半球分开。右：MEGAlib 远场源使用的 20 个等 $\mu$ 微分天顶角分箱的积分通量。该图直接由源定义输入表生成，环境参数为纬度 $34^\circ$、经度 $100^\circ$、海拔 $38\,\mathrm{km}$、$R_c=11.6\,\mathrm{GV}$、$W=118.3$。}
+\label{fig:expacs_fullsphere_flux}
+\end{figure}
+
+积分源面通量约为 $4.80$、$0.462$、$0.199$、$0.117$、$0.112$、$0.0115$、$0.0050$ 和 $0.0056\,\mathrm{cm^{-2}\,s^{-1}}$，分别对应 $\gamma$、$n$、$e^-$、$e^+$、$p$、$\alpha$、$\mu^-$ 和 $\mu^+$。非光子成分合计约为 $0.91\,\mathrm{cm^{-2}\,s^{-1}}$，约占全空间源面积分通量的 16\%。如果完全按流量比例分配模拟计数，这些低通量粒子的探测器命中和活化统计会较差；因此非光子粒子族采用复制输运样本提高 Monte Carlo 统计，再在率归一化时去权重。所有这些粒子随后通过 Geant4/MEGAlib 在探测器/低温系统质量模型中输运 \cite{Agostinelli2003,Allison2016,Zoglauer2006}。瞬发流和活化产生流各生成约 $2.52\times10^7$ 个入射一次粒子。每个粒子种类用自身输运曝光归一化：
+\begin{equation}
+  r_{\mathrm{event},j}=\left(\sum_i \mathcal{T}_{ij}\right)^{-1},
+\end{equation}
+其中 $\mathcal{T}_{ij}$ 为第 $j$ 个粒子种类在第 $i$ 个输运子样本中的曝光。由于光子和非光子大气流的采样与曝光结构不同，这种按粒子种类归一化是必要的。归一化检查要求每个粒子种类满足 $r_{\mathrm{event},j}\sum_i\mathcal{T}_{ij}=1$，因此过采样只改变 Monte Carlo 方差，不改变物理期望率。
+
+\subsubsection{延迟活化源}
+\label{subsec:delayed_source}
+
+活化产生流不作为瞬时探测器本底直接计数，而是记录放射性产物的核素、材料体积和产生位置。这些记录通过产生--衰变积累方程转换为固定第 15 天放射性群体，并使用 NUBASE2020 校验过的基态半衰期修正 \cite{Kondev2021NUBASE}。对核素 $k$，
+\begin{equation}
+  A_k(t_{\mathrm{flight}}) = P_k\left[1-\exp\left(-\lambda_k t_{\mathrm{flight}}\right)\right],
+  \qquad \lambda_k = \frac{\ln 2}{t_{1/2,k}},
+\end{equation}
+其中 $P_k$ 是由活化产生输运推得的产生率，参考第 15 天状态取 $t_{\mathrm{flight}}=15\,\mathrm{d}$。参考延迟源构建使用的固定延迟总活度为 $85.45\,\mathrm{Bq}$。
+
+位置信息并不是只来自聚合后的同位素存储文件。标准同位素存储可记录产生体积和核素计数；产生位置采样构建还在 Geant4/MEGAlib 的 stepping-action 层加入了自定义记录钩子。在活化积累模式中，每当一个延迟核素被存入同位素清单时，该钩子在同一位置写出产生位置记录，包括逻辑体名称、pre-step 位置 $(x,y,z)$、核素编号 $1000Z+A$、激发能、时间、过程以及 track ancestry 信息。固定第 15 天放射性群体随后按体积、核素和激发态与这些位置记录匹配。因此，延迟源可使用模拟产生坐标，而不是只有体积积分活度。
+
+图~\ref{fig:delayed_position_distribution}（附录~\ref{app:delayed}）给出放射性产生位置与固定第 15 天活度群体匹配后的延迟源位置分布。
+
+% 图 fig:delayed_position_distribution 已移至附录~\ref{app:delayed}。
+
+活度加权分布主要来自 CsI 主动屏蔽活化和 $^{128}$I，较小贡献来自 Cu、Al、W、Mg 和 Cs 等核素。该图是源构建诊断图，不是探测器计数图；探测器响应只有在延迟衰变通过同一几何和同一事例选择输运后才施加。
+
+是否需要保留产生位置信息，也可以直接用同一张产生位置表检验。延迟衰变是在局部材料中发射的，因此下游衰减、主动屏蔽 veto 概率和事例拓扑都取决于核素产生位置。带电强子和缪子相对中子有不同的能量损失、停止和俘获历史，因此它们产生的活化核素不应被假定为共享同一个材料或坐标分布。为量化这一点，我们按入射粒子族和材料类别对加权产生行分组。对两个入射粒子族 $a$ 和 $b$，使用活度归一化材料分布的 total-variation 距离
+\begin{equation}
+  D_{\mathrm{TV}}(a,b) =

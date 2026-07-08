@@ -2,6 +2,12 @@
 
 Date: 2026-07-07
 
+2026-07-08 update: atmospheric-511 rows and conclusions below use the
+EXPACS-like 4pi sidecar replay from
+`engineering/geometry_optimization_20260704/12_atm511_sidecar_replay_20260708/`.
+The earlier 2026-07-07 lower-hemisphere replay is superseded for downstream
+geometry-optimization conclusions.
+
 Status: `COMPLETE_FOR_REQUESTED_HYPOTHESIS_WITH_LIMITATIONS`
 
 Scope: user-requested ingress/veto statistics, W-barrel hypothesis geometry, and
@@ -26,7 +32,7 @@ W2 window: `510.58-511.42 keV`.
 | --- | ---: | ---: | ---: | ---: | ---: | ---: |
 | `eplus` | 62 | 40 | 35 | 35.48% | 12.50% | 56.45% |
 | `n` | 60 | 13 | 13 | 78.33% | 0.00% | 21.67% |
-| `atm511` | 108 | 108 | 95 | 0.00% | 12.04% | 87.96% |
+| `atm511` | 114 | 114 | 107 | 0.00% | 6.14% | 93.86% |
 
 Denominators:
 
@@ -36,12 +42,15 @@ Denominators:
 
 Atmospheric 511 replay:
 
-- input: `3,000,000` lower-hemisphere mono-511 events
-- observation time: `265.314 s`
-- W2 final transfer: `0.358066291262 cps/(ph cm^-2 s^-1)`
-- Harris Rc~11-13 added background: `0.00834351749248 cps`
-- Harris-included W2 background: `0.0437241336493 cps`
-- Harris-included `F3(20d)`: `4.08478147108e-05 ph cm^-2 s^-1`
+- input: `3,000,000` mono-511 events in 20 equal-mu bins over `theta=0..180 deg`
+- environment: Step06 day-15 proxy, lat `34 deg`, lon `100 deg`, alt `38.75 km`,
+  Rc `11 GV`, depth `3.46147 g cm^-2`
+- nominal 4pi line flux: `0.0515558541132 ph cm^-2 s^-1`
+- observation time: `5146.38 s`
+- W2 final nominal atmospheric-511 rate: `0.0207913135058 cps`
+- W2 final transfer: `0.403277452453 cps/(ph cm^-2 s^-1 4pi line flux)`
+- sidecar-included W2 background: `0.0561719296626 cps`
+- sidecar-included `F3(20d)`: `4.62986036016e-05 ph cm^-2 s^-1`
 
 ## Where Final W2 Candidates Enter
 
@@ -52,15 +61,18 @@ These are final W2 `side_compton_fov_pass` candidate entry proxies from
 | --- | ---: | --- | --- |
 | `eplus` | 35 | side 13, top 11, current-envelope miss 11 | GeoOpt plastic active 17, outer mechanics 11, TES 7 |
 | `n` | 13 | top 6, current-envelope miss 3, side 2, bottom 2 | other 4, GeoOpt plastic active 2, G10 passive 2, CsI active 2 |
-| `atm511` | 95 | side 73, top 14, bottom 8 | TES 95 |
+| `atm511` | 107 | side_wall 74, top 24, bottom 7, side_window 2 | TES 107 |
 
 Dominant atmospheric 511 final entry sectors:
 
-- `side_phi00_000deg`: 16
 - `side_phi07_315deg`: 16
-- `side_phi01_045deg`: 16
-- `side_phi02_090deg`: 12
-- `side_phi06_270deg`: 10
+- `side_phi00_000deg`: 16
+- `side_phi01_045deg`: 13
+- `side_phi06_270deg`: 11
+- `side_phi02_090deg`: 10
+- `top_phi00_000deg`: 8
+- `top_phi01_045deg`: 6
+- `top_phi07_315deg`: 5
 
 Atmospheric ingress-region rows are final-candidate-only. They must not be read
 as atmospheric raw/active per-region veto efficiencies.
@@ -142,5 +154,6 @@ Important limitations:
 - The simplified barrel geometry removes many internal passive materials, so the
   e+ reduction is a combined effect of simplification plus external shielding,
   not a pure W-barrel-only attribution.
-- Atmospheric 511 has no active-veto rejection in the replay; its W2 rejection
-  is only side Compton/FoV.
+- Atmospheric 511 has no active-veto rejection in the 4pi sidecar replay; its
+  W2 rejection is only side Compton/FoV, and the residual final candidates are
+  dominated by side_wall plus top entry proxies.

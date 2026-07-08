@@ -2,6 +2,11 @@
 
 Status: `PASS_GEO_OPT_S1_BPE_W5_P2_ATM511_TRANSFER_REPLAY`
 
+Superseded for downstream conclusions: the 2026-07-08 4pi atmospheric-511
+sidecar replay replaces this lower-hemisphere-only replay for current
+geometry-optimization interpretation. Keep this directory only as provenance
+for the 2026-07-07 lower-hemisphere unit-transfer test.
+
 Scope: lower-hemisphere mono-511 P2 replay for the geo-opt S1/BPE/W5 geometry. This is not a geometry promotion.
 
 ## Result

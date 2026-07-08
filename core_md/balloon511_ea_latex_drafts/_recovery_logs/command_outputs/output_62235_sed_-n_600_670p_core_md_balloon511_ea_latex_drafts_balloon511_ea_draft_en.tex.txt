@@ -1,0 +1,80 @@
+{
+  "call_id": "call_lUnlNkp9nqYCx9BaQ1K5OmQC",
+  "cmd": "sed -n '600,670p' core_md/balloon511_ea_latex_drafts/balloon511_ea_draft_en.tex",
+  "call_log": "/home/ubuntu/.codex/sessions/2026/07/01/rollout-2026-07-01T22-08-25-019f1e02-73cd-7511-ac67-a36d2a3c1926.jsonl",
+  "call_line": 4983,
+  "output_log": "/home/ubuntu/.codex/sessions/2026/07/01/rollout-2026-07-01T22-08-25-019f1e02-73cd-7511-ac67-a36d2a3c1926.jsonl",
+  "output_line": 4987
+}
+
+mission-time fold and the final cumulative significance. The distinction is
+small for the present line-window case, but keeping it explicit is necessary
+for comparing analysis configurations.
+
+\section{Results}
+\label{sec:results}
+
+\subsection{Primary unresolved-line sensitivity}
+\label{subsec:primary}
+
+Table~\ref{tab:primary_sensitivity} gives the primary unresolved-line result. At $\fzero=10^{-4}\phcms$, the selected day-15 rates are
+\begin{equation}
+  B_{\wii}=3.92\times10^{-2}\cps,\qquad
+  S_{\wii}=1.19\times10^{-3}\cps .
+\end{equation}
+The mission-time fold gives mean selected rates
+\begin{equation}
+  \bar{B}_{\wii}=3.94\times10^{-2}\cps,\qquad
+  \bar{S}_{\wii}=1.18\times10^{-3}\cps .
+\end{equation}
+The resulting 20 d diagnostic counting significance is $Z_{20\mathrm{d}}=7.80$, with a net $3\sigma$ on-source exposure of $2.51\,\mathrm{d}$. The 20 d $3\sigma$ flux threshold is $3.85\times10^{-5}\phcms$. Figure~\ref{fig:results_significance} shows how this significance accumulates over the mission and how the 20 d significance scales with the reference flux.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\linewidth]{paper_source_figure_table/fig_results_significance.png}
+\caption{Cumulative counting significance and the resulting flux threshold for the $\wii$ line-window point-source case, obtained from the mission-time fold of Section~\ref{sec:framework}. (a) Cumulative significance $Z$ versus mission elapsed time for several reference fluxes $F_0$; the bold curve is the reference $F_0=10^{-4}\phcms$ case, which reaches $Z_{20\mathrm{d}}=7.80$. (b) The 20 d cumulative significance versus $F_0$; the $Z=3$ crossing defines the $3\sigma$ flux threshold $\fthree(20\,\mathrm{d})\approx3.85\times10^{-5}\phcms$. Dashed lines mark $Z=3$.}
+\label{fig:results_significance}
+\end{figure}
+
+\begin{table}[t]
+\centering
+\caption{Primary unresolved-line selected-rate result and background composition.}
+\label{tab:primary_sensitivity}
+\footnotesize
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{p{0.23\linewidth}p{0.18\linewidth}p{0.23\linewidth}p{0.26\linewidth}}
+\toprule
+Quantity & Value & Interpretation & Note \\
+\midrule
+Day-15 selected background & $3.92\times10^{-2}\cps$ & Prompt + delayed & Detector-level selection \\
+Day-15 selected signal at $\fzero$ & $1.19\times10^{-3}\cps$ & Focused point source & $\fzero=10^{-4}\phcms$ \\
+Prompt background component & $3.66\times10^{-2}\cps$ & 93.4\% of selected background & Dominant component \\
+Delayed activation component & $2.6(5)\times10^{-3}\cps$ & 6.6\% of selected background & Reference estimate; independent convergence check gives $2.21(22)\times10^{-3}\cps$ \\
+20 d diagnostic $Z$ & 7.80 & Counting metric & No background nuisance parameters \\
+Net $3\sigma$ exposure & 2.51 d & Reference exposure & Not elapsed flight time \\
+$\fthree(20\,\mathrm{d})$ & $3.85\times10^{-5}\phcms$ & Unresolved-line threshold & Reference model only \\
+\bottomrule
+\end{tabular}
+\vspace{0.5ex}
+\begin{minipage}{0.94\linewidth}
+\footnotesize
+The background and signal rates are selected day-15 rates. The significance,
+net exposure, and flux threshold use the mission-time fold. The delayed row
+keeps the single-sampling reference estimate used by the primary rate
+calculation. An independent four-sampling selected-rate convergence check gives
+$2.21(22)\times10^{-3}\cps$ from 103 selected delayed events and is consistent
+with the reference value within sampling uncertainty; source-model and
+activation-systematic uncertainties are not included.
+\end{minipage}
+\end{table}
+
+The line-window result uses the narrow energy window, active-shield veto,
+topology/field-of-view consistency selection, and mission-time fold. Spatial
+gates, 45$^\circ$ line-of-sight folds, and fixed-template annular likelihoods
+are not used to improve the quoted threshold.
+
+\added{In addition to the primary line window, the event-level analysis
+generates $480$--$550\keV$ stream/stage spectra with $0.5\keV$ bins from the
+same simulated event catalogues as a check of the nearby continuum and veto
+behavior. The broad-window final selected rates are
+$6.31(83)\times10^{-2}\cps$ for prompt background,

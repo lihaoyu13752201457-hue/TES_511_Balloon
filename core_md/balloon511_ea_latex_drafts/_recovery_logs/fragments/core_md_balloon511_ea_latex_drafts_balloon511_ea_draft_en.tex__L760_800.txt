@@ -1,0 +1,55 @@
+{
+  "call_id": "call_VyRDXJSPHUtYymgfYfV5f2Df",
+  "cmd": "sed -n '760,800p' core_md/balloon511_ea_latex_drafts/balloon511_ea_draft_en.tex",
+  "call_log": "/home/ubuntu/.codex/sessions/2026/06/28/rollout-2026-06-28T20-40-23-019f0e3e-c8af-7003-b6cd-d523b87873df.jsonl",
+  "call_line": 492,
+  "output_log": "/home/ubuntu/.codex/sessions/2026/06/28/rollout-2026-06-28T20-40-23-019f0e3e-c8af-7003-b6cd-d523b87873df.jsonl",
+  "output_line": 493,
+  "source_path": "core_md/balloon511_ea_latex_drafts/balloon511_ea_draft_en.tex",
+  "range": [
+    760,
+    800
+  ]
+}
+
+\appendix
+\setcounter{figure}{0}
+
+\section{Delayed-source construction diagnostics}
+\label{app:delayed}
+
+This appendix collects the delayed-source construction diagnostics referenced in Section~\ref{subsec:delayed_source}. They document how the fixed day-15 activity is distributed in space, material, and nuclide before detector transport; they are not detector-count results.
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=\linewidth]{paper_source_figure_table/fig_delayed_position_rpip_distribution.png}
+\caption{Production-position-sampled delayed-source distribution constructed from recorded radioactive-isotope production positions. Left: activity-weighted X--Z map of the recorded production positions overlaid on the detector/cryostat proxy geometry. Top middle: activity-weighted X--Y footprint sampled from the same distribution, with the Be aperture and shield envelope shown for scale. Right and bottom: leading production volumes and nuclides after fixed day-15 activity weighting. The activity weights in the matched production-position table sum to $85.45\,\mathrm{Bq}$.}
+\label{fig:delayed_position_distribution}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=\linewidth]{paper_source_figure_table/fig_position_sampling_necessity.png}
+\caption{Production-position sampling diagnostic. The upper panels compare the day-15 weighted production table by incident particle family: material fractions, nuclide mix, and total activity. The lower panels show the recorded X--Z production-position maps for neutron-, proton-, and $\mu^-$-induced products. The distributions are not exchangeable: neutron-induced activity is dominated by CsI and $^{128}$I, while $\mu^-$-induced activity is concentrated in Al/Cu/W-bearing service and shield material and is dominated by Mg/Na/Ne products.}
+\label{fig:position_sampling_necessity}
+\end{figure}
+
+\section*{Data and software availability}
+Before publication, a versioned public repository or institutional archive will
+provide the geometry and source definitions, random seeds, analysis and
+figure-generation scripts, LaTeX source, and derived validation products needed
+to reproduce the tables and figures in this paper. The archive will include
+machine-readable summaries and human-readable validation reports for the rate
+calculations, convergence checks, figure source tracing, and bibliography
+verification. Full raw transport outputs, compressed Cosima event files, and
+large intermediate event lists are substantially larger than the manuscript
+archive; they will either be deposited as a separate large-data package or
+represented in the archive by generation commands, configuration files,
+checksums or summary metadata, and derived validation products.
+
+\FloatBarrier
+\begin{thebibliography}{99}
+
+\bibitem{Prantzos2011}
+N. Prantzos, C. Boehm, A.M. Bykov, R. Diehl, K. Ferriere, N. Guessoum, P. Jean, J. Knoedlseder, A. Marcowith, I.V. Moskalenko, A. Strong, G. Weidenspointner, The 511 keV emission from positron annihilation in the Galaxy, Rev. Mod. Phys. 83 (2011) 1001--1056, doi:10.1103/RevModPhys.83.1001.
+

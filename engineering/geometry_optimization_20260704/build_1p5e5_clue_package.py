@@ -18,7 +18,7 @@ STEP08_SUMMARY = ROOT / "stepwise_maintenance/step08_significance/outputs_geo_op
 PLASTIC_TAG = ROOT / "engineering/geometry_optimization_20260704/05_neutron_plastic_audit_20260707/plastic_veto_on_off_prompt_by_tag_comparison.csv"
 PLASTIC_DIRECT = ROOT / "engineering/geometry_optimization_20260704/05_neutron_plastic_audit_20260707/plastic_veto_on_off_direct_rate_comparison.csv"
 NP_AUDIT = ROOT / "engineering/geometry_optimization_20260704/05_neutron_plastic_audit_20260707/geo_opt_neutron_plastic_audit_summary.json"
-ATM_SUMMARY = ROOT / "engineering/geometry_optimization_20260704/06_atm511_replay_20260707/p2_geo_opt_s1_bpe_w5_atm511_transfer_summary.json"
+ATM_SUMMARY = ROOT / "engineering/geometry_optimization_20260704/12_atm511_sidecar_replay_20260708/p2_geo_opt_s1_bpe_w5_atm511_sidecar_summary.json"
 GEOM_MANIFEST = ROOT / "engineering/geometry_optimization_20260704/01_geo_opt_s1_bottomw_b4c/geo_opt_s1_bottomw_b4c_manifest.json"
 GEOM_GEO = ROOT / "engineering/geometry_optimization_20260704/01_geo_opt_s1_bottomw_b4c/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo"
 GEOM_MAT = ROOT / "engineering/geometry_optimization_20260704/01_geo_opt_s1_bottomw_b4c/geometry/Materials_DEMO2_DR_v3p5.geo"
@@ -79,16 +79,16 @@ def main() -> None:
     manifest = json.loads(GEOM_MANIFEST.read_text())
 
     checks = step08["checks"]
-    harris = next(r for r in atm["scenario_rows"] if r["scenario"] == "Harris_Rc_11_13_total_disk_no_alt_scale")
-    current_f3 = float(harris["F3_20d_new_ph_cm2_s"])
-    current_total = float(harris["background_new_cps"])
+    sidecar = atm["sidecar_included_nominal"]
+    current_f3 = float(sidecar["F3_20d_new_ph_cm2_s"])
+    current_total = float(sidecar["background_new_cps"])
     no_atm_total = rate(step05, window="w2_510p58_511p42", stream="prompt", stage="side_compton_fov_pass") + rate(
         step05, window="w2_510p58_511p42", stream="delayed", stage="side_compton_fov_pass"
     )
     eplus = plastic_rate(plastic_tag, window="w2_510p58_511p42", tag="eplus", stage="side_compton_fov_pass")
     neutron = plastic_rate(plastic_tag, window="w2_510p58_511p42", tag="n", stage="side_compton_fov_pass")
     delayed = rate(step05, window="w2_510p58_511p42", stream="delayed", stage="side_compton_fov_pass")
-    atm511 = float(harris["atm511_added_cps"])
+    atm511 = float(sidecar["atm511_added_cps"])
     target_total = current_total * (TARGET_F3 / current_f3) ** 2
 
     components = [
@@ -109,11 +109,11 @@ def main() -> None:
             "needed_for_1p5e5": "roughly >=88-90% additional rejection if atm511 is reduced ~90% and e+ ~95%",
         },
         {
-            "component": "atmospheric_511_harris",
+            "component": "atmospheric_511_sidecar_s1_nominal",
             "current_cps": atm511,
             "fraction_of_current_total": atm511 / current_total,
-            "evidence": "p2_geo_opt_s1_bpe_w5_atm511_transfer_summary.json Harris scenario",
-            "tested_suppression": "geo-opt transfer 0.358066 vs Mass 0.381079 cps/(ph cm^-2 s^-1), only ~6% lower; active veto kills 0/108 W2 raw candidates",
+            "evidence": "p2_geo_opt_s1_bpe_w5_atm511_sidecar_summary.json S1 nominal 4pi sidecar replay",
+            "tested_suppression": "4pi sidecar includes upward albedo plus downward residual-atmosphere bins; active veto is not the primary handle for neutral 511 photons",
             "needed_for_1p5e5": "approximately >=90% rejection, likely via physical FoV/collimator/profile reconstruction, not scintillator skin",
         },
         {
@@ -121,7 +121,7 @@ def main() -> None:
             "current_cps": delayed,
             "fraction_of_current_total": delayed / current_total,
             "evidence": "step05_geo_opt_s1_bpe_w5_fullstat_v1_l1_rates.csv w2/delayed/side_compton_fov_pass",
-            "tested_suppression": "internal activation -25.6% and CsI activity -29.6% vs Mass; W2 delayed is now 6.4% of total with atm511",
+            "tested_suppression": "internal activation -25.6% and CsI activity -29.6% vs Mass; delayed is a smaller term than e+/n/ATM511 in the current sidecar baseline",
             "needed_for_1p5e5": "not the first lever, but if prompt+atm are solved it becomes the floor",
         },
         {
@@ -135,7 +135,7 @@ def main() -> None:
     ]
 
     scenario_defs = [
-        ("current_with_harris_atm511", eplus, neutron, delayed, atm511, "baseline after replay"),
+        ("current_with_s1_4pi_atm511_sidecar", eplus, neutron, delayed, atm511, "baseline after sidecar replay"),
         ("remove_atm511_only", eplus, neutron, delayed, 0.0, "tests value of perfect atmospheric line rejection alone"),
         ("remove_eplus_only", 0.0, neutron, delayed, atm511, "tests value of perfect residual e+ rejection alone"),
         ("remove_eplus_and_atm511", 0.0, neutron, delayed, 0.0, "still above 1.5e-5 because neutron+delayed remain"),
@@ -163,9 +163,9 @@ def main() -> None:
     lever_rows = [
         {
             "lever": "A. Physical atmospheric-511 FoV gate",
-            "targets": "atmospheric_511_harris",
-            "current_evidence": "full transport: transfer only 6% below Mass; active veto 108->108 before side/FoV; r3 analytic corrected-axis collimator rejected 101/101 but was not physically modeled",
-            "needed_effect": ">=90% of Harris atmospheric line term",
+            "targets": "atmospheric_511_sidecar_s1_nominal",
+            "current_evidence": "full 4pi sidecar transport: neutral 511 photons mostly need angular/FoV control; r3 analytic corrected-axis collimator rejected 101/101 but was not physically modeled",
+            "needed_effect": ">=90% of the S1 nominal atmospheric line term",
             "why_it_may_work": "511 photons are neutral and not caught by plastic; only angular acceptance, coded aperture/profile likelihood, or a real detector-side collimator can reject them",
             "main_risk": "signal throughput/shadowing; current r3 axis result is axis-dependent and unvalidated",
             "next_validation": "build physical collimator/FoV geometry and replay both optics signal and atm511 unit flux",
@@ -260,7 +260,7 @@ def main() -> None:
             "topic": "atm511_w2_raw_active_final",
             "count_or_rate": f"{atm['windows']['w2_510p58_511p42']['raw_events']} raw / {atm['windows']['w2_510p58_511p42']['active_veto_pass_events']} active-pass / {atm['windows']['w2_510p58_511p42']['side_compton_fov_pass_events']} final",
             "value_cps": atm511,
-            "clue": "neutral 511 background is not killed by active veto; 13/108 rejected by side/FoV only",
+            "clue": "neutral 511 background is mainly controlled by geometry/FoV, not active veto",
         },
         {
             "topic": "activation_internal_reduction",
@@ -279,7 +279,7 @@ def main() -> None:
     summary = {
         "status": "NO_VERIFIED_20D_1P5E_MINUS5_SCHEME_FOUND",
         "target": {"F3_20d_ph_cm2_s": TARGET_F3, "fixed_signal_assumption": True},
-        "current_geo_opt_with_harris": {
+        "current_geo_opt_with_s1_4pi_atm511_sidecar": {
             "F3_20d_ph_cm2_s": current_f3,
             "background_cps": current_total,
             "background_target_cps_for_1p5e5": target_total,
@@ -291,7 +291,7 @@ def main() -> None:
             "eplus": eplus,
             "neutron": neutron,
             "delayed": delayed,
-            "atm511_harris": atm511,
+            "atm511_sidecar_s1_nominal": atm511,
             "sum": eplus + neutron + delayed + atm511,
         },
         "hard_requirement_if_delayed_unchanged": {
@@ -302,8 +302,8 @@ def main() -> None:
         "why_current_mods_are_insufficient": [
             "Plastic skin helps residual e+ but leaves 0.023766 cps, the largest term.",
             "BPE/W/plastic stack reduces activation only at ~25% level; W2 neutron final rate remains 0.008821 cps.",
-            "Atmospheric 511 transfer is only ~6% lower than Mass and active veto has no effect on the W2 candidates.",
-            "Even perfect removal of e+ plus atm511 leaves neutron+delayed at projected F3 ~2.10e-5.",
+            "Atmospheric 511 is now modeled as a 4pi sidecar at the Step06 day-15 environment; active veto is still not the primary handle.",
+            f"Even perfect removal of e+ plus atm511 leaves neutron+delayed at projected F3 ~{f3_from_total(current_f3, current_total, neutron + delayed):.3g}.",
         ],
         "files_in_this_clue_package": [
             "README.md",
@@ -381,12 +381,12 @@ def main() -> None:
 Status: `NO_VERIFIED_20D_1P5E_MINUS5_SCHEME_FOUND`
 
 This package is a compact handoff for external review. It uses the current
-geo-opt S1/BPE/W5 branch plus the atmospheric-511 replay, without promoting the
+geo-opt S1/BPE/W5 branch plus the atmospheric-511 4pi sidecar replay, without promoting the
 geometry or modifying the original Mass/511 geometry.
 
 ## Bottom line
 
-Current Harris-included W2 performance is `{current_f3:.12g} ph cm^-2 s^-1`
+Current S1 nominal 4pi ATM511-sidecar-included W2 performance is `{current_f3:.12g} ph cm^-2 s^-1`
 at 20 days. At fixed signal acceptance, the requested `1.5e-5` requires total
 background to fall from `{current_total:.12g} cps` to `{target_total:.12g} cps`,
 an `{(1 - target_total / current_total) * 100:.2f}%` reduction.
@@ -396,7 +396,7 @@ Current W2 components:
 - residual prompt e+: `{eplus:.12g} cps`
 - residual prompt neutron: `{neutron:.12g} cps`
 - delayed activation: `{delayed:.12g} cps`
-- Harris atmospheric 511: `{atm511:.12g} cps`
+- S1 nominal 4pi atmospheric 511 sidecar: `{atm511:.12g} cps`
 
 The algebraic package that barely reaches the target is approximately:
 atmospheric 511 rejection >=90%, residual e+ rejection >=95%, and residual
@@ -409,9 +409,9 @@ does not validate any of those three high-efficiency rejections.
    prompt e+ from `0.0359890` to `{eplus:.7g} cps`, leaving the dominant term.
 2. The BPE/plastic/W stack reduces internal activation by about 25%, not by an
    order of magnitude. W2 neutron residual remains `{neutron:.7g} cps`.
-3. Atmospheric 511 is essentially neutral to the active skin: W2 candidates are
-   108 raw -> 108 active-veto pass -> 95 final. The geo-opt transfer is only
-   about 6% below Mass.
+3. Atmospheric 511 is modeled with the EXPACS-like 4pi sidecar at the Step06
+   day-15 environment. It remains a geometry/FoV problem more than an active
+   veto problem.
 4. Perfectly removing e+ plus atmospheric 511 still leaves neutron+delayed at
    projected F3 ~`{f3_from_total(current_f3, current_total, neutron + delayed):.3g}`,
    so all three non-delayed components need simultaneous suppression.

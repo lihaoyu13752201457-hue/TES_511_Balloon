@@ -1,0 +1,55 @@
+{
+  "call_id": "call_DIaWs5vP2JghJokpPYNp9p7h",
+  "cmd": "nl -ba core_md/balloon511_ea_latex_drafts/balloon511_ea_draft_en.tex | sed -n '365,410p'",
+  "call_log": "/home/ubuntu/.codex/sessions/2026/06/28/rollout-2026-06-28T20-40-23-019f0e3e-c8af-7003-b6cd-d523b87873df.jsonl",
+  "call_line": 507,
+  "output_log": "/home/ubuntu/.codex/sessions/2026/06/28/rollout-2026-06-28T20-40-23-019f0e3e-c8af-7003-b6cd-d523b87873df.jsonl",
+  "output_line": 508
+}
+
+   365	\added{To connect this selection chain explicitly to the finite Monte Carlo
+   366	evidence package, Table~\ref{tab:phase2_cutflow} gives the current Phase 2
+   367	$\wii$ cut-flow obtained by lightweight replay of the Step05 event catalogues.
+   368	The table is not a new Geant4/MEGAlib transport. It replays the current
+   369	authority event catalogues with the same TES energy window, CsI veto, and
+   370	Compton-kinematic/field-of-view consistency checks; uncertainties are Monte
+   371	Carlo quadrature sums over event weights. The current Step05 records first fix
+   372	the energy window and then report raw, active-shield, and topology stages, so
+   373	the raw stage should be read as the pre-veto sample inside the line window, not
+   374	as an all-energy incident sample.}
+   375	
+   376	\begin{table}[t]
+   377	\centering
+   378	\caption{\added{Phase 2 evidence-package $\wii$ line-window cut-flow.}}
+   379	\label{tab:phase2_cutflow}
+   380	\footnotesize
+   381	\resizebox{\linewidth}{!}{%
+   382	{\color{red}
+   383	\begin{tabular}{llccc}
+   384	\toprule
+   385	Stream & Stage & Events & Rate / $\cps$ & Statistical uncertainty / $\cps$ \\
+   386	\midrule
+   387	Prompt background & Line-window pre-veto & 161 & $1.1877\times10^{-1}$ & $1.15\times10^{-2}$ \\
+   388	Prompt background & After CsI veto & 60 & $4.0712\times10^{-2}$ & $5.26\times10^{-3}$ \\
+   389	Prompt background & Topology/FOV selected & 54 & $3.6641\times10^{-2}$ & $4.99\times10^{-3}$ \\
+   390	Delayed activation & Line-window pre-veto & 54 & $4.6354\times10^{-3}$ & $6.31\times10^{-4}$ \\
+   391	Delayed activation & After CsI veto & 33 & $2.8327\times10^{-3}$ & $4.93\times10^{-4}$ \\
+   392	Delayed activation & Topology/FOV selected & 30 & $2.5752\times10^{-3}$ & $4.70\times10^{-4}$ \\
+   393	Focused signal & Line-window pre-veto & 30323 & $8.1527\times10^{-1}$ & $4.68\times10^{-3}$ \\
+   394	Focused signal & After CsI veto & 30323 & $8.1527\times10^{-1}$ & $4.68\times10^{-3}$ \\
+   395	Focused signal & Topology/FOV selected & 29715 & $7.9892\times10^{-1}$ & $4.63\times10^{-3}$ \\
+   396	\bottomrule
+   397	\end{tabular}
+   398	}}
+   399	\vspace{0.5ex}
+   400	\begin{minipage}{0.94\linewidth}
+   401	\footnotesize\color{red}
+   402	The focused-signal rows are Step05 unit-replay rates used to show veto survival
+   403	behavior; the point-source signal rate in Table~\ref{tab:primary_sensitivity}
+   404	is scaled separately by the Laue effective area, reference flux, and atmospheric
+   405	transmission.
+   406	\end{minipage}
+   407	\end{table}
+   408	
+   409	The detector-level time-axis construction used to validate this veto bookkeeping
+   410	is a Poisson superposition of independent streams. For stream $k$ with

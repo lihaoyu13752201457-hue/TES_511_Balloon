@@ -1,0 +1,11 @@
+{
+  "call_id": "call_HbgpbQNYsfzV3sxCCGKP2ZaJ",
+  "cmd": "python3 - <<'PY'\nfrom pathlib import Path\ntex = Path('core_md/balloon511_ea_latex_drafts/balloon511_ea_draft_en.tex')\naoo = Path('core_md/balloon511_ea_latex_drafts/AOO.md')\ntext = tex.read_text()\naoo_text = aoo.read_text()\nstart_marker = '\\\\subsection{Prompt atmospheric and delayed-activation source model}'\nend_marker = '\\\\subsection{Detector event selection and veto definition}'\naoo_start = '\\\\subsubsection{Reference point-source construction}'\naoo_end = '```'\nstart = text.index(start_marker)\nend = text.index(end_marker, start)\nblock_start = aoo_text.index(aoo_start)\nblock_end = aoo_text.index(aoo_end, block_start)\nreplacement = aoo_text[block_start:block_end].rstrip() + '\\n\\n'\nnew_text = text[:start] + replacement + text[end:]\nif new_text == text:\n    raise SystemExit('no change')\ntex.write_text(new_text)\nprint('replaced_chars', end-start, 'with', len(replacement))\nprint('tex', tex)\nPY",
+  "call_log": "/home/ubuntu/.codex/sessions/2026/07/01/rollout-2026-07-01T22-08-25-019f1e02-73cd-7511-ac67-a36d2a3c1926.jsonl",
+  "call_line": 7095,
+  "output_log": "/home/ubuntu/.codex/sessions/2026/07/01/rollout-2026-07-01T22-08-25-019f1e02-73cd-7511-ac67-a36d2a3c1926.jsonl",
+  "output_line": 7096
+}
+
+replaced_chars 12654 with 14696
+tex core_md/balloon511_ea_latex_drafts/balloon511_ea_draft_en.tex

@@ -1,0 +1,250 @@
+{
+  "call_id": "call_UDMTUaSN5GHjTVh0LltPuxRd",
+  "cmd": "rg -n \"Step05|step05|detector.response|selected W2|promotion_decision|F3|Step06|Step08|mission\" code tools engineering scripts core_md -g '*.py' -g '*.md' -g '*.json'",
+  "call_log": "/home/ubuntu/.codex/sessions/2026/07/01/rollout-2026-07-01T22-08-25-019f1e02-73cd-7511-ac67-a36d2a3c1926.jsonl",
+  "call_line": 5597,
+  "output_log": "/home/ubuntu/.codex/sessions/2026/07/01/rollout-2026-07-01T22-08-25-019f1e02-73cd-7511-ac67-a36d2a3c1926.jsonl",
+  "output_line": 5601
+}
+
+Warning: truncated output (original token count: 160673)
+Total output lines: 2722
+
+rg: tools: No such file or directory (os error 2)
+rg: scripts: No such file or directory (os error 2)
+core_md/GUIDE_FIX5_SIM_CLOSURE_FOR_CODEX_20260621.md:69:- current exact-position M=50000 Step05 selected background/signal:
+core_md/GUIDE_FIX5_SIM_CLOSURE_FOR_CODEX_20260621.md:83:  evaluate total B, delayed/W activation, signal keep, `Z20d`, and `F3(20d)`.
+core_md/GUIDE_FIX5_SIM_CLOSURE_FOR_CODEX_20260621.md:105:- Step05--Step08 summaries;
+core_md/GUIDE_FIX5_SIM_CLOSURE_FOR_CODEX_20260621.md:129:- Step05--Step08 read fix5 outputs, not baseline — confirm via the
+core_md/GUIDE_FIX5_SIM_CLOSURE_FOR_CODEX_20260621.md:136:  `fix5_benchmarks.json` -> `required_artifacts.promotion_decision`.
+core_md/GUIDE_FIX5_SIM_CLOSURE_FOR_CODEX_20260621.md:144:Cost model (gate at the right boundary): Step02 transport + Step05 detector
+core_md/GUIDE_FIX5_SIM_CLOSURE_FOR_CODEX_20260621.md:145:response are the expensive parts; Step06/07/08 are cheap rate-level folds that
+core_md/GUIDE_FIX5_SIM_CLOSURE_FOR_CODEX_20260621.md:146:depend on Step05.  The 1/10 screen exists to avoid paying full-stat
+core_md/GUIDE_FIX5_SIM_CLOSURE_FOR_CODEX_20260621.md:147:Step02+Step05 before the geometry is shown to be in the right ballpark.  Never
+core_md/GUIDE_FIX5_SIM_CLOSURE_FOR_CODEX_20260621.md:148:regenerate Step06/07/08 from a Step05 that has not passed provenance (C1) and
+core_md/GUIDE_FIX5_SIM_CLOSURE_FOR_CODEX_20260621.md:164:   (common time axis), 10 (mission fold), 11 (significance)
+core_md/GUIDE_FIX5_SIM_CLOSURE_FOR_CODEX_20260621.md:201:Run Step05 detector response for the fix5 1/10 label.  Regenerate Step06,
+core_md/GUIDE_FIX5_SIM_CLOSURE_FOR_CODEX_20260621.md:202:Step07, and Step08 only after Step05 passes basic provenance and normalization
+core_md/GUIDE_FIX5_SIM_CLOSURE_FOR_CODEX_20260621.md:236:- Step05 L1 response;
+core_md/GUIDE_FIX5_SIM_CLOSURE_FOR_CODEX_20260621.md:237:- Step06 mission-time variation;
+core_md/GUIDE_FIX5_SIM_CLOSURE_FOR_CODEX_20260621.md:239:- Step08 significance;
+core_md/GUIDE_FIX5_SIM_CLOSURE_FOR_CODEX_20260621.md:242:- `fix5_promotion_decision.json` with total B, sigma, prompt, delayed, W
+core_md/GUIDE_FIX5_SIM_CLOSURE_FOR_CODEX_20260621.md:243:  activation, signal keep, `Z20d`, `F3(20d)`, and final decision.
+core_md/GUIDE_FIX5_SIM_CLOSURE_FOR_CODEX_20260621.md:264:- `stepwise_maintenance/step05_veto_time_axis/outputs_fix5_1of10_l1/`
+core_md/GUIDE_FIX5_SIM_CLOSURE_FOR_CODEX_20260621.md:271:  transport, Step05--Step09, promotion, and final closure artifacts;
+core_md/README.md:35:- `stepwise_maintenance/step05_veto_time_axis/outputs_fix5_fullstat_v2_exactpos_m50000_s260613_l1/`
+core_md/README.md:36:- `stepwise_maintenance/step06_mission_time_variation/outputs_fix5_fullstat_v2_exactpos_m50000_s260613/`
+core_md/workflow.md:18:`fix5_fullstat_v2_exactpos_m50000_s260613`.  The Step05--Step08 scripts below
+core_md/workflow.md:30:python3 code/tools/build_fix5_promotion_decision.py
+core_md/workflow.md:40:## Step05--Step08 Rebuild Commands
+core_md/workflow.md:46:python3 old/code/tools/build_v3p5_centerfinger_step05_l1_response.py --label fix5_fullstat_v2 --workers 8
+core_md/workflow.md:47:python3 stepwise_maintenance/step06_mission_time_variation/code/build_v3p5_centerfinger_step06_time_axis.py --label fix5_fullstat_v2
+core_md/workflow.md:52:Do not use the generic `build_step06_mission_time_variation.py` or
+core_md/workflow.md:117:- Step05:
+core_md/workflow.md:118:  `stepwise_maintenance/step05_veto_time_axis/outputs_fix5_fullstat_v2_exactpos_m50000_s260613_l1/`
+core_md/workflow.md:119:- Step06:
+core_md/workflow.md:120:  `stepwise_maintenance/step06_mission_time_variation/outputs_fix5_fullstat_v2_exactpos_m50000_s260613/`
+core_md/workflow.md:123:- Step08:
+core_md/METHOD_FIX5_SIM_CLOSURE.md:4:stated. AGENTS / GUIDE / CONSTRAINTS / PRE_PROMPT reference `Step05`, `Step06`,
+core_md/METHOD_FIX5_SIM_CLOSURE.md:5:`Step08`, and "delayed normalization" as *labels*. If you only read those, you
+core_md/METHOD_FIX5_SIM_CLOSURE.md:6:can satisfy the letter of the contract (produce a file named `Step06`) while
+core_md/METHOD_FIX5_SIM_CLOSURE.md:37:adding offsetting W self-emission?* (memory: "pending MC confirmation of W
+core_md/METHOD_FIX5_SIM_CLOSURE.md:38:self-emission"). The 1/10 screen is the cheap first look at that trade.
+core_md/METHOD_FIX5_SIM_CLOSURE.md:48:- **Step05 (detector response + time axis, EXPENSIVE-ish).** Parses the prompt,
+core_md/METHOD_FIX5_SIM_CLOSURE.md:56:- **Step06 (mission-time fold, CHEAP).** Analytic trajectory correction over
+core_md/METHOD_FIX5_SIM_CLOSURE.md:59:  511 transmission + prompt/delayed driver scaling + per-nuclide delayed-activity
+core_md/METHOD_FIX5_SIM_CLOSURE.md:60:  ODEs, closing to the Step05 day-15 point. This is what turns the day-15
+core_md/METHOD_FIX5_SIM_CLOSURE.md:61:  baseline into the 20-day mission-mean.
+core_md/METHOD_FIX5_SIM_CLOSURE.md:62:- **Step07/Step08 (significance, CHEAP).** Fold source/background over Step06,
+core_md/METHOD_FIX5_SIM_CLOSURE.md:64:  significance), `T3` (time to 3 sigma), `F3(20d)` (20-day 3-sigma flux). This
+core_md/METHOD_FIX5_SIM_CLOSURE.md:67:**Cost model — gate at the right boundary.** Step02 transport + Step05 response
+core_md/METHOD_FIX5_SIM_CLOSURE.md:68:are the expensive parts; Step06/07/08 are cheap rate-level folds that depend on
+core_md/METHOD_FIX5_SIM_CLOSURE.md:69:Step05. The 1/10 screen exists to avoid paying full-stat Step02+Step05 before
+core_md/METHOD_FIX5_SIM_CLOSURE.md:70:knowing the geometry is in the right ballpark. Never regenerate Step06/07/08
+core_md/METHOD_FIX5_SIM_CLOSURE.md:71:from a Step05 that has not passed provenance + normalization.
+core_md/METHOD_FIX5_SIM_CLOSURE.md:94:5. **Cosima delayed transport** -> Step05 replay.
+core_md/METHOD_FIX5_SIM_CLOSURE.md:132:  v3p5_current_authority** (B=0.0630, Z20d=6.13, F3(20d)=4.89e-5), not against
+core_md/METHOD_FIX5_SIM_CLOSURE.md:134:  `required_artifacts.promotion_decision` and must satisfy
+core_md/METHOD_FIX5_SIM_CLOSURE.md:136:  activation red flag, signal keep, and held/improved Z20d/F3.
+core_md/METHOD_FIX5_SIM_CLOSURE.md:168:- `fix5_promotion_decision.json` separates a coarse 1/10 screen from the final
+core_md/PROJECT_REVIEW_HANDOFF_20260627.md:26:- `F3_20d = 3.8464002588077305e-05 ph cm^-2 s^-1`
+core_md/PROJECT_REVIEW_HANDOFF_20260627.md:104:   submission.
+core_md/fix5_benchmarks.json:15:    "headline_metric": "W2 line-window selected TOTAL background B_cps after active-shield + Compton/FoV veto + Poisson time-axis merge, and the resulting Z20d / F3(20d). Prompt alone is a diagnostic, not the headline.",
+core_md/fix5_benchmarks.json:17:    "promotion_bar_v3p5": "The real promotion decision at full statistics is against v3p5.benchmarks below: fix5 should LOWER total selected background B (mainly by cutting side-port prompt e+ 511) without the W redesign adding offsetting prompt fluorescence/secondaries or delayed W-activation, and should hold or improve Z20d / F3(20d), with auditable normalization."
+core_md/fix5_benchmarks.json:64:    "promotion_decision": {
+core_md/fix5_benchmarks.json:65:      "path_template": "outputs/reports/fix5_<label>/fix5_promotion_decision.json",
+core_md/fix5_benchmarks.json:76:        "F3_20d_ph_cm2_s",
+core_md/fix5_benchmarks.json:102:      "selection": "W2 line-window, active-shield 50 keV (CsI) + custom Compton/FoV veto + common Poisson time-axis, day-15 baseline folded over the 20-day mission (Step06).",
+core_md/fix5_benchmarks.json:103:      "step05_background_cps": 0.06298036183985109,
+core_md/fix5_benchmarks.json:104:      "step05_signal_cps": 0.0011811656293957314,
+core_md/fix5_benchmarks.json:110:      "step08_F3_20d_ph_cm2_s": 4.893649027323553e-05,
+core_md/fix5_benchmarks.json:111:      "step08_F3_1Ms_ph_cm2_s": 6.35099e-05,
+core_md/fix5_benchmarks.json:156:      "meaningful_bar_v3p5": "Compare DELAYED_total_1of10 against benchmarks.v3p5_current_authority.w2_delayed_cps and watch the W/collimator activation subcomponent, since fix5 ADDS tungsten. If delayed exceeds v3p5 by more than its own 1 sigma, mark YELLOW even if it passes the loose old-new_geo_re bar; if it clearly exceeds v3p5 at full statistics, promotion fails unless the total B/Z/F3 trade is explicitly approved by the user.",
+core_md/fix5_benchmarks.json:165:    "decisive_background_pass": "B_fix5_cps + sigma_fix5_cps < benchmarks.v3p5_current_authority.step05_background_cps",
+core_md/fix5_benchmarks.json:166:    "compatible_background_pass": "B_fix5_cps <= benchmarks.v3p5_current_authority.step05_background_cps and the difference is within 1 sigma; mark PASS_WITH_STAT_LIMIT, not decisive PASS.",
+core_md/fix5_benchmarks.json:170:    "max_F3_20d_vs_v3p5": "benchmarks.v3p5_current_authority.step08_F3_20d_ph_cm2_s",
+core_md/fix5_benchmarks.json:171:    "automatic_pass_rule": "PASS only if decisive_background_pass or compatible_background_pass is true, signal_keep_fraction_vs_v3p5 >= 0.95, Z20d >= v3p5 Z20d, F3_20d <= v3p5 F3_20d, and no delayed_red_flag. Otherwise report as FAIL or USER_REVIEW_REQUIRED; do not claim replacement."
+core_md/fix5_benchmarks.json:216:    "exactpos_closure_validator_note": "Label-parametrized (--label) but its path templates hardcode the 'v3p5_centerfinger_{label}' prefix and 'step05_v3p5_centerfinger_l1_response_summary.json'. For fix5 either (a) use a label that keeps the v3p5_centerfinger_<label> directory mold, or (b) add a path-prefix argument. Path wiring is a Builder task; do NOT silently let it read v3p5 outputs.",
+core_md/CONSTRAINTS_FIX5_SIM_CLOSURE.md:8:specific method (Poisson common-time-axis merge, analytic 81-bin mission fold,
+core_md/CONSTRAINTS_FIX5_SIM_CLOSURE.md:27:   Step02--Step08/Step09 project chain.  Append/merge is allowed only with the
+core_md/CONSTRAINTS_FIX5_SIM_CLOSURE.md:60:- current exact-position M=50000 Step05 background/signal:
+core_md/CONSTRAINTS_FIX5_SIM_CLOSURE.md:62:- current exact-position W2 delayed: `~0.0039 cps`; Step08 `Z20d = 6.13039`.
+core_md/CONSTRAINTS_FIX5_SIM_CLOSURE.md:171:- Step05, Step06, Step07, Step08 outputs regenerated for the fix5 label;
+core_md/CONSTRAINTS_FIX5_SIM_CLOSURE.md:173:- `fix5_benchmarks.json` -> `required_artifacts.promotion_decision` with the
+core_md/CONSTRAINTS_FIX5_SIM_CLOSURE.md:175:  `F3(20d)`;
+core_md/CONSTRAINTS_FIX5_SIM_CLOSURE.md:178:  `Z20d` held/improved, `F3(20d)` held/improved, and no unresolved delayed red
+core_md/balloon511_ea_latex_drafts/physics_review_publishability_20260702.md:19:(Z20d=7.80 / F3σ=3.85e-5)能否顶住审稿。三者均可在**不重跑主输运链**或
+core_md/balloon511_ea_latex_drafts/physics_review_publishability_20260702.md:70:温和(F3σ 恶化到 ~5e-5 量级,仍优于 IBIS 1.6e-4 约 3 倍)。
+core_md/balloon511_ea_latex_drafts/physics_review_publishability_20260702.md:127:  "discards the unreconstructed class" 按 step05 类别计数实际等价于
+core_md/balloon511_ea_latex_drafts/restructure_ea_en.py:69:mission    = find("Mission-time trajectory fold and significance calculation")
+core_md/balloon511_ea_latex_drafts/restructure_ea_en.py:77:               "and mission-time fold. Section~9 presents the selected-rate and "
+core_md/balloon511_ea_latex_drafts/restructure_ea_en.py:84:               "selection, and mission-time fold. Section~\\ref{sec:results} presents "
+core_md/balloon511_ea_latex_drafts/restructure_ea_en.py:102:mission_s   = demote(mission)
+core_md/balloon511_ea_latex_drafts/restructure_ea_en.py:109:             "mission-time fold. The focused signal and both background streams pass "
+core_md/balloon511_ea_latex_drafts/restructure_ea_en.py:110:             "through the same detector response and veto definitions before any "
+core_md/balloon511_ea_latex_drafts/restructure_ea_en.py:112:             + workflow_s + optics_s + source_s + selection_s + mission_s)
+core_md/balloon511_ea_latex_drafts/README.md:56:The English draft is on the **official `sn-jnl.cls`** (submission-ready class).
+core_md/balloon511_ea_latex_drafts/README.md:68:  evidence tables) is preserved; accept it into black before submission.
+core_md/balloon511_ea_latex_drafts/paper_source_figure_table/README.md:27:  current detector-selection, mission-time, and significance products for the
+core_md/balloon511_ea_latex_drafts/paper_source_figure_table/README.md:30:  class counts, and the mission-time fold with accidental live factor.
+core_md/balloon511_ea_latex_drafts/paper_source_figure_table/README.md:32:  the same Step05 event catalog for the single-site-only diagnostic quoted in
+core_md/balloon511_ea_latex_drafts/paper_source_figure_table/README.md:53:  detector-response summary, background time-variation CSV, and
+core_md/balloon511_ea_latex_drafts/paper_source_figure_table/build_reconstruction_failure_diagnostic.py:4:This is a replay of the existing Step05 event catalog. It does not rerun
+core_md/balloon511_ea_latex_drafts/paper_source_figure_table/build_reconstruction_failure_diagnostic.py:31:STEP05_SCRIPT = ROOT / "old" / "code" / "tools" / "build_v3p5_centerfinger_step05_l1_response.py"
+core_md/balloon511_ea_latex_drafts/paper_source_figure_table/build_reconstruction_failure_diagnostic.py:35:    / "step05_veto_time_axis"
+core_md/balloon511_ea_latex_drafts/paper_source_figure_table/build_reconstruction_failure_diagnostic.py:37:    / f"step05_{LABEL}_l1_response_summary.json"
+core_md/balloon511_ea_latex_drafts/paper_source_figure_table/build_reconstruction_failure_diagnostic.py:42:    / "step05_veto_time_axis"
+core_md/balloon511_ea_latex_drafts/paper_source_figure_table/build_reconstruction_failure_diagnostic.py:69:def load_step05_module():
+core_md/balloon511_ea_latex_drafts/paper_source_figure_table/build_reconstruction_failure_diagnostic.py:73:    spec = importlib.util.spec_from_file_location("ea_step05_side_entry", STEP05_SCRIPT)
+core_md/balloon511_ea_latex_drafts/paper_source_figure_table/build_reconstruction_failure_diagnostic.py:85:def class_tallies(step05, cat: dict[str, Any]) -> dict[str, dict[str, dict[str, float | int]]]:
+core_md/balloon511_ea_latex_drafts/paper_source_figure_table/build_reconstruction_failure_diagnostic.py:86:    disk = step05.side_entry_disk()
+core_md/balloon511_ea_latex_drafts/paper_source_figure_table/build_reconstruction_failure_diagnostic.py:90:    mask = (energy >= W2_LO_KEV) & (energy < W2_HI_KEV) & (bgo < float(step05.ACTIVE_VETO_THRESHOLD_KEV))
+core_md/balloon511_ea_latex_drafts/paper_source_figure_table/build_reconstruction_failure_diagnostic.py:94:        keep, cls = step05.side_keep_from_hits(step05.event_hits(cat, int(idx)), disk, "keep")
+core_md/balloon511_ea_latex_drafts/paper_source_figure_table/build_reconstruction_failure_diagnostic.py:152:    step05 = load_step05_module()
+core_md/balloon511_ea_latex_drafts/paper_source_figure_table/build_reconstruction_failure_diagnostic.py:157:    tallies = class_tallies(step05, cat)
+core_md/balloon511_ea_latex_drafts/paper_source_figure_table/build_reconstruction_failure_diagnostic.py:182:            "step05_script": rel(STEP05_SCRIPT),
+core_md/balloon511_ea_latex_drafts/paper_source_figure_table/build_reconstruction_failure_diagnostic.py:183:            "step05_summary": rel(STEP05_SUMMARY),
+core_md/balloon511_ea_latex_drafts/paper_source_figure_table/build_reconstruction_failure_diagnostic.py:188:            "active_veto_threshold_keV": float(step05.ACTIVE_VETO_THRESHOLD_KEV),
+core_md/balloon511_ea_latex_drafts/paper_source_figure_table/build_reconstruction_failure_diagnostic.py:191:                "center_cm": [float(x) for x in step05.side_entry_disk()["center_cm"]],
+core_md/balloon511_ea_latex_drafts/paper_source_figure_table/build_reconstruction_failure_diagnostic.py:192:                "normal": [float(x) for x in step05.side_entry_disk()["normal"]],
+core_md/balloon511_ea_latex_drafts/paper_source_figure_table/build_reconstruction_failure_diagnostic.py:193:                "radius_cm": float(step05.side_entry_disk()["radius_cm"]),
+core_md/balloon511_ea_latex_drafts/paper_source_figure_table/build_reconstruction_failure_diagnostic.py:213:            "matches_step05_summary": matches_summary,
+core_md/balloon511_ea_latex_drafts/paper_source_figure_table/build_reconstruction_failure_diagnostic.py:251:        "This sidecar replays the existing Step05 event catalog and does not rerun transport.",
+core_md/balloon511_ea_latex_drafts/paper_source_figure_table/build_reconstruction_failure_diagnostic.py:274:        f"- Step05 script: `{payload['inputs']['step05_script']}`",
+core_md/balloon511_ea_latex_drafts/paper_source_figure_table/build_reconstruction_failure_diagnostic.py:275:        f"- Step05 summary: `{payload['inputs']['step05_summary']}`",
+core_md/balloon511_ea_latex_drafts/paper_source_figure_table/build_reconstruction_failure_diagnostic.py:280:        f"- Matches Step05 summary: `{payload['summary_consistency']['matches_step05_summary']}`",
+core_md/balloon511_ea_latex_drafts/paper_source_figure_table/reconstruction_failure_diagnostic_20260702.md:5:This sidecar replays the existing Step05 event catalog and does not rerun transport.
+core_md/balloon511_ea_latex_drafts/paper_source_figure_table/reconstruction_failure_diagnostic_20260702.md:18:- Step05 script: `old/code/tools/build_v3p5_centerfinger_step05_l1_response.py`
+core_md/balloon511_ea_latex_drafts/paper_source_figure_table/reconstruction_failure_diagnostic_20260702.md:19:- Step05 summary: `stepwise_maintenance/step05_veto_time_axis/outputs_fix5_fullstat_v2_exactpos_m50000_s260613_l1/step05_fix5_fullstat_v2_exactpos_m50000_s260613_l1_response_summary.json`
+core_md/balloon511_ea_latex_drafts/paper_source_figure_table/reconstruction_failure_diagnostic_20260702.md:20:- Event catalog: `stepwise_maintenance/step05_veto_time_axis/outputs_fix5_fullstat_v2_exactpos_m50000_s260613_l1/work/event_catalog.pkl`
+core_md/balloon511_ea_latex_drafts/paper_source_figure_table/reconstruction_failure_diagnostic_20260702.md:24:- Matches Step05 summary: `True`
+core_md/balloon511_ea_latex_drafts/paper_source_figure_table/fig_selection_veto_time_axis_summary.json:4:    "step05_summary": "stepwise_maintenance/step05_veto_time_axis/outputs_fix5_fullstat_v2_exactpos_m50000_s260613_l1/step05_fix5_fullstat_v2_exactpos_m50000_s260613_l1_response_summary.json",
+core_md/balloon511_ea_latex_drafts/paper_source_figure_table/fig_selection_veto_time_axis_summary.json:5:    "step06_background_time_variation": "stepwise_maintenance/step06_mission_time_variation/outputs_fix5_fullstat_v2_exactpos_m50000_s260613/background_time_variation.csv",
+core_md/balloon511_ea_latex_drafts/paper_source_figure_table/reconstruction_failure_diagnostic_20260702.json:7:    "step05_script": "old/code/tools/build_v3p5_centerfinger_step05_l1_response.py",
+core_md/balloon511_ea_latex_drafts/paper_source_figure_table/reconstruction_failure_diagnostic_20260702.json:8:    "step05_summary": "stepwise_maintenance/step05_veto_time_axis/outputs_fix5_fullstat_v2_exactpos_m50000_s260613_l1/step05_fix5_fullstat_v2_exactpos_m50000_s260613_l1_response_summary.json",
+core_md/balloon511_ea_latex_drafts/paper_source_figure_table/reconstruction_failure_diagnostic_20260702.json:9:    "event_catalog": "stepwise_maintenance/step05_veto_time_axis/outputs_fix5_fullstat_v2_exactpos_m50000_s260613_l1/work/event_catalog.pkl"
+core_md/balloon511_ea_latex_drafts/paper_source_figure_table/reconstruction_failure_diagnostic_20260702.json:128:    "matches_step05_summary": true,
+core_md/balloon511_ea_latex_drafts/paper_source_figure_table/build_selection_time_axis_figure.py:4:The script reads the current detector-selection, mission-time, and significance
+core_md/balloon511_ea_latex_drafts/paper_source_figure_table/build_selection_time_axis_figure.py:32:    / "step05_veto_time_axis"
+core_md/balloon511_ea_latex_drafts/paper_source_figure_table/build_selection_time_axis_figure.py:34:    / "step05_fix5_fullstat_v2_exactpos_m50000_s260613_l1_response_summary.json"
+core_md/balloon511_ea_latex_drafts/paper_source_figure_table/build_selection_time_axis_figure.py:39:    / "step06_mission_time_variation"
+core_md/balloon511_ea_l…150673 tokens truncated…idation_20260626/scripts/run_curve_verifier.py:328:        "decision_boundary": "Low-stat smoke screen only; this does not authorize targeted/full escalation, Step06/07/08 authority rewrite, manuscript edits, CURVE_VALIDATED_FULL, or MODEL_CORRECTION_REQUIRED promotion.",
+engineering/trajectory_transport_validation_20260626/scripts/run_curve_verifier.py:481:            "- It does not launch Cosima, authorize G7, authorize targeted/full escalation, rewrite Step06/07/08, or edit manuscript source.",
+engineering/delayed_source_authority_v2_20260624/10_manuscript_support/manuscript_changes_required.md:8:3. WP09 downstream rebuild or explicit retained-number manifest for every delayed-dependent Step05-Step08 and BGO artifact.
+engineering/delayed_source_authority_v2_20260624/work_packets/WP05_native_activation_oracle.md:18:  Step05 ingestion remain later gates.
+engineering/trajectory_transport_validation_20260626/scripts/run_g9_full4_prompt_activation.py:684:        "Boundary: this runner excludes M1 and does not authorize full delayed replay, Step06--Step08 rewrite, or manuscript edits.",
+engineering/delayed_source_authority_v2_20260624/08_promotion/affected_artifacts_manifest.json:4:    "Step05 delayed stream and combined background",
+engineering/delayed_source_authority_v2_20260624/08_promotion/affected_artifacts_manifest.json:5:    "Step06 delayed mission-time fold",
+engineering/delayed_source_authority_v2_20260624/08_promotion/affected_artifacts_manifest.json:7:    "Step08 significance/sensitivity tables",
+engineering/delayed_source_authority_v2_20260624/08_promotion/affected_artifacts_manifest.json:13:    "Step05 delayed stream and combined background",
+engineering/delayed_source_authority_v2_20260624/08_promotion/affected_artifacts_manifest.json:14:    "Step06 delayed mission-time fold",
+engineering/delayed_source_authority_v2_20260624/08_promotion/affected_artifacts_manifest.json:16:    "Step08 significance/sensitivity tables",
+engineering/delayed_source_authority_v2_20260624/08_promotion/affected_artifacts_manifest.json:22:      "path": "stepwise_maintenance/step05_veto_time_axis/outputs_fix5_fullstat_v2_exactpos_m50000_s260613_l1/step05_fix5_fullstat_v2_exactpos_m50000_s260613_l1_response_summary.json",
+engineering/delayed_source_authority_v2_20260624/08_promotion/affected_artifacts_manifest.json:23:      "role": "current legacy Step05 selected-rate authority",
+engineering/delayed_source_authority_v2_20260624/08_promotion/affected_artifacts_manifest.json:27:      "path": "outputs/reports/fix5_fullstat_v2_exactpos_m50000_s260613/fix5_promotion_decision.json",
+engineering/delayed_source_authority_v2_20260624/08_promotion/affected_artifacts_manifest.json:42:    "Step05 selection definitions: W2, 50 keV active-veto, 1 us coincidence, side-entry FoV/topology"
+engineering/delayed_source_authority_v2_20260624/work_packets/WP10_manuscript_support_no_rate_authority.md:8:- `engineering/delayed_source_authority_v2_20260624/08_promotion/promotion_decision.json`
+engineering/delayed_source_authority_v2_20260624/08_promotion/promotion_decision.json:17:      "evidence": "stepwise_maintenance/step05_veto_time_axis/outputs_fix5_fullstat_v2_exactpos_m50000_s260613_l1/step05_fix5_fullstat_v2_exactpos_m50000_s260613_l1_response_summary.json",
+engineering/trajectory_transport_validation_20260626/scripts/run_g11_full4_curve_verifier.py:420:            "- It does not include delayed full replay and does not rewrite Step06/07/08.",
+engineering/trajectory_transport_validation_20260626/scripts/build_transport_authorization_audit.py:100:            all(phrase in approval_text for phrase in ["G7 delayed replay", "Targeted statistics", "Full-stat runs", "Step06/07/08 authority rewrites", "Manuscript source edits"]),
+engineering/delayed_source_authority_v2_20260624/05_native_activation/custom_native_inventory_comparison.md:16:- Selected-rate promotion still requires transport and Step05 ingestion.
+engineering/delayed_source_authority_v2_20260624/10_manuscript_support/supplement_tables.md:12:| downstream sensitivity update | not available | future Step05-Step08 rebuild |
+engineering/delayed_source_authority_v2_20260624/05_native_activation/tag_aware_native_vs_direct_comparison.md:16:- Selected-rate promotion still requires transport and Step05 ingestion.
+engineering/trajectory_transport_validation_20260626/scripts/build_g3_g4_gatekeeper_contract.py:88:                    "position distribution change does not imply >20% detector-response upper bound",
+engineering/trajectory_transport_validation_20260626/scripts/build_g3_g4_gatekeeper_contract.py:210:            "- No `04_`, `05_`, targeted, full-stat, Step06/07/08, or manuscript output was created.",
+engineering/trajectory_transport_validation_20260626/FINAL_STATUS.md:47:| G11 Step06-08 support | NOT_RUN | no authority rewrite | not authorized | Do not rewrite Step06/07/08. |
+engineering/trajectory_transport_validation_20260626/FINAL_STATUS.md:90:- current Step05 authority
+engineering/trajectory_transport_validation_20260626/FINAL_STATUS.md:91:- current Step06/07/08 outputs
+engineering/trajectory_transport_validation_20260626/FINAL_STATUS.md:103:- Request explicit approval for full-stat/full delayed replay if the project wants to decide between final curve validation and a real Step06 correction.
+engineering/trajectory_transport_validation_20260626/FINAL_STATUS.md:105:- Do not generate manuscript support or Step06/07/08 rewrite artifacts from this low-stat smoke alone.
+engineering/trajectory_transport_validation_20260626/scripts/build_authority_immutability_audit.py:22:    "step05": ["stepwise_maintenance/step05_veto_time_axis/"],
+engineering/trajectory_transport_validation_20260626/scripts/build_authority_immutability_audit.py:23:    "step06": ["stepwise_maintenance/step06_mission_time_variation/"],
+engineering/trajectory_transport_validation_20260626/scripts/build_authority_immutability_audit.py:295:            "- It does not modify trajectory, geometry, Step05/06/07/08, source templates, or manuscript sources.",
+engineering/trajectory_transport_validation_20260626/scripts/run_g10_full4_stripped_extraction.py:197:            "- It does not launch Cosima, authorize delayed full replay, rewrite Step06/07/08, or edit manuscript source.",
+engineering/trajectory_transport_validation_20260626/scripts/build_harness_b_state_sentinel.py:177:            "Step06/07/08 authority rewrites",
+engineering/trajectory_transport_validation_20260626/06_history_model/history_model_manifest.json:19:  "step06_activity_authority": "stepwise_maintenance/step06_mission_time_variation/outputs_fix5_fullstat_v2_exactpos_m50000_s260613/activity_by_time_nuclide_volume.csv",
+engineering/trajectory_transport_validation_20260626/scripts/run_history_model.py:26:    / "step06_mission_time_variation"
+engineering/trajectory_transport_validation_20260626/scripts/run_history_model.py:564:            "- It does not launch transport, authorize G7, authorize targeted/full escalation, rewrite Step06/07/08, or edit manuscript source.",
+engineering/trajectory_transport_validation_20260626/scripts/build_g3_g4_freeze_plan.py:171:            "rule": "Activation rates are derived from buildup DAT/RPIP outputs before history-model or delayed detector-response comparison.",
+engineering/trajectory_transport_validation_20260626/scripts/build_g3_g4_freeze_plan.py:268:            "Activation extraction may not read delayed history or detector-response comparisons before production rates are frozen.",
+engineering/trajectory_transport_validation_20260626/scripts/build_g3_g4_freeze_plan.py:275:            "Step06/07/08 authority rewrites",
+engineering/trajectory_transport_validation_20260626/scripts/build_g3_g4_freeze_plan.py:313:            "- No `04_`, `05_`, targeted, full-stat, Step06/07/08, or manuscript output was created.",
+engineering/trajectory_transport_validation_20260626/scripts/build_g3_g4_freeze_plan.py:315:            "- G7 delayed replay, targeted/full runs, Step06/07/08 rewrites, and manuscript edits remain unauthorized.",
+engineering/trajectory_transport_validation_20260626/scripts/build_harness_b_traceability.py:144:        "Lock trajectory, Step05/06/07/08, source driver, geometry, delayed and manuscript authorities.",
+engineering/trajectory_transport_validation_20260626/scripts/build_harness_b_traceability.py:158:        "Recompute locked hashes and prove trajectory, geometry, Step05/06/07/08, source-template, source-driver and manuscript-hash authorities still match the WP00 lock.",
+engineering/trajectory_transport_validation_20260626/scripts/build_harness_b_traceability.py:167:        "Protected authorities match; generated handoff files may be refreshed, but do not edit trajectory, detector geometry, Step05/06/07/08 outputs, source templates, or manuscript sources.",
+engineering/trajectory_transport_validation_20260626/scripts/build_harness_b_traceability.py:173:        "Freeze REF plus four off-reference validation points from current Step06 trajectory before transport.",
+engineering/trajectory_transport_validation_20260626/scripts/build_harness_b_traceability.py:265:        "Do not execute transport unless the user explicitly supplies token G3_G4_PROMPT_ACTIVATION_SMOKE_ONLY; G7, targeted/full, Step06/07/08 rewrites and manuscript source edits remain separately unauthorized.",
+engineering/trajectory_transport_validation_20260626/scripts/build_harness_b_traceability.py:424:        "Pre-register the G5 production interpolation, mission-history Bateman/ODE integration, position-basis policy, planned outputs and required tests before consuming activation outputs.",
+engineering/trajectory_transport_validation_20260626/scripts/build_harness_b_traceability.py:568:        "Pre-register G7/G10 gatekeeper inputs, escalation authorization boundaries, correction routes, Step06/07/08 support outputs, mandatory manuscript-support files and no-runtime-output boundaries.",
+engineering/trajectory_transport_validation_20260626/scripts/build_harness_b_traceability.py:582:        "After G3/G4/G5/G7 evidence exists, use this contract for escalation/correction/manuscript-support decisions; it does not authorize targeted/full, Step06/07/08 rewrites, or manuscript source edits.",
+engineering/trajectory_transport_validation_20260626/scripts/build_harness_b_traceability.py:608:        "Prepare Step06/07/08 support and manuscript support only after validated/correction decision.",
+engineering/trajectory_transport_validation_20260626/scripts/build_harness_b_traceability.py:622:        "Provide a guarded support packager that refuses until G10 evidence exists and can later write Step06/07/08 support artifacts plus the six mandatory manuscript-support files without editing manuscript source or authority outputs.",
+engineering/trajectory_transport_validation_20260626/scripts/build_harness_b_traceability.py:671:        "Do not modify trajectory, geometry, Step05, Step06/07/08 outputs, or manuscript source.",
+engineering/trajectory_transport_validation_20260626/scripts/run_g3_g4_stripped_extraction.py:33:STEP05_CODE = ROOT / "old" / "code" / "tools" / "build_v3p5_centerfinger_step05_l1_response.py"
+engineering/trajectory_transport_validation_20260626/scripts/run_g3_g4_stripped_extraction.py:239:def load_step05():
+engineering/trajectory_transport_validation_20260626/scripts/run_g3_g4_stripped_extraction.py:243:    spec = importlib.util.spec_from_file_location("trajectory_wp04_step05_l1", STEP05_CODE)
+engineering/trajectory_transport_validation_20260626/scripts/run_g3_g4_stripped_extraction.py:264:    mod = load_step05()
+engineering/trajectory_transport_validation_20260626/scripts/run_g3_g4_stripped_extraction.py:269:    mod = load_step05()
+engineering/trajectory_transport_validation_20260626/scripts/run_g3_g4_stripped_extraction.py:309:    load_step05()
+engineering/trajectory_transport_validation_20260626/scripts/run_g3_g4_stripped_extraction.py:1065:                "step05_selector": rel(STEP05_CODE),
+engineering/trajectory_transport_validation_20260626/scripts/run_g3_g4_stripped_extraction.py:1178:            "scope": "instantaneous production from buildup DAT and RPIP; history-integrated inventory and detector response are WP06/WP07",
+engineering/trajectory_transport_validation_20260626/scripts/run_support_packager.py:203:            "# Step06 Correction Request\n\n"
+engineering/trajectory_transport_validation_20260626/scripts/run_support_packager.py:204:            "No Step06 correction is requested by the G10 gatekeeper decision. "
+engineering/trajectory_transport_validation_20260626/scripts/run_support_packager.py:211:            "# Step06 Correction Request\n\n"
+engineering/trajectory_transport_validation_20260626/scripts/run_support_packager.py:214:            "then rebuild Step06 and rerun Step07/Step08 after user approval.\n"
+engineering/trajectory_transport_validation_20260626/scripts/run_support_packager.py:217:        recompute_text = "# Significance / Flux Threshold Recompute Request\n\nRecompute Step08 significance and flux threshold after a corrected Step06 and Step07 rerun are available.\n"
+engineering/trajectory_transport_validation_20260626/scripts/run_support_packager.py:230:                "stage": "Step08",
+engineering/trajectory_transport_validation_20260626/scripts/run_support_packager.py:356:            "- It does not launch transport, authorize G7, authorize targeted/full escalation, rewrite Step06/07/08 authority outputs, or edit manuscript source.",
+engineering/trajectory_transport_validation_20260626/scripts/build_wp00_wp02_artifacts.py:29:STEP05_DIR = ROOT / "stepwise_maintenance" / "step05_veto_time_axis" / "outputs_fix5_fullstat_v2_exactpos_m50000_s260613_l1"
+engineering/trajectory_transport_validation_20260626/scripts/build_wp00_wp02_artifacts.py:30:STEP06_DIR = ROOT / "stepwise_maintenance" / "step06_mission_time_variation" / "outputs_fix5_fullstat_v2_exactpos_m50000_s260613"
+engineering/trajectory_transport_validation_20260626/scripts/build_wp00_wp02_artifacts.py:81:    ROOT / "old" / "code" / "tools" / "build_v3p5_centerfinger_step05_l1_response.py",
+engineering/trajectory_transport_validation_20260626/scripts/build_wp00_wp02_artifacts.py:82:    STEP05_DIR / "step05_fix5_fullstat_v2_exactpos_m50000_s260613_l1_response_summary.json",
+engineering/trajectory_transport_validation_20260626/scripts/build_wp00_wp02_artifacts.py:83:    STEP05_DIR / "step05_fix5_fullstat_v2_exactpos_m50000_s260613_l1_response_summary.md",
+engineering/trajectory_transport_validation_20260626/scripts/build_wp00_wp02_artifacts.py:84:    STEP05_DIR / "step05_fix5_fullstat_v2_exactpos_m50000_s260613_l1_rates.csv",
+engineering/trajectory_transport_validation_20260626/scripts/build_wp00_wp02_artifacts.py:85:    STEP05_DIR / "step05_fix5_fullstat_v2_exactpos_m50000_s260613_l1_timeline_rates.csv",
+engineering/trajectory_transport_validation_20260626/scripts/build_wp00_wp02_artifacts.py:88:    ROOT / "stepwise_maintenance" / "step06_mission_time_variation" / "README.md",
+engineering/trajectory_transport_validation_20260626/scripts/build_wp00_wp02_artifacts.py:89:    ROOT / "stepwise_maintenance" / "step06_mission_time_variation" / "code" / "build_step06_mission_time_variation.py",
+engineering/trajectory_transport_validation_20260626/scripts/build_wp00_wp02_artifacts.py:90:    ROOT / "stepwise_maintenance" / "step06_mission_time_variation" / "code" / "build_v3p5_centerfinger_step06_time_axis.py",
+engineering/trajectory_transport_validation_20260626/scripts/build_wp00_wp02_artifacts.py:97:    STEP06_DIR / "atmosphere_transmission_511_by_time.csv",
+engineering/trajectory_transport_validation_20260626/scripts/build_wp00_wp02_artifacts.py:110:    ROOT / "outputs" / "reports" / "fix5_fullstat_v2_exactpos_m50000_s260613" / "fix5_promotion_decision.json",
+engineering/trajectory_transport_validation_20260626/scripts/build_wp00_wp02_artifacts.py:869:No transport, delayed replay, full-stat, Step06/07/08 authority rewrite, or manuscript edit was run by this source audit.
+engineering/trajectory_transport_validation_20260626/scripts/build_wp00_wp02_artifacts.py:1244:- Keep instantaneous production separate from history-integrated inventory and detector response.
+engineering/trajectory_transport_validation_20260626/scripts/build_wp00_wp02_artifacts.py:1268:- Keep delayed production, activity history, and detector response as distinct checks.
+engineering/trajectory_transport_validation_20260626/scripts/build_wp00_wp02_artifacts.py:1288:- Use mission-start-to-time history-aware production, not constant irradiation at a single point.
+engineering/trajectory_transport_validation_20260626/scripts/build_wp00_wp02_artifacts.py:1534:        "frozen trajectory does not match current Step06 trajectory_profile.csv",
+engineering/trajectory_transport_validation_20260626/scripts/build_wp00_wp02_artifacts.py:1694:            "- Targeted/full escalation and Step06/07/08 authority rewrites remain unauthorized.",
+engineering/trajectory_transport_validation_20260626/scripts/build_wp00_wp02_artifacts.py:1737:            "step05_cuts": "frozen current Step05 50 keV active shield veto, 1 us coincidence, W2/topology/FoV",
+engineering/trajectory_transport_validation_20260626/scripts/build_wp00_wp02_artifacts.py:1824:    step05_hash = file_info(STEP05_DIR / "step05_fix5_fullstat_v2_exactpos_m50000_s260613_l1_response_summary.json").get("sha256", "MISSING")
+engineering/trajectory_transport_validation_20260626/scripts/build_wp00_wp02_artifacts.py:1841:        ("G0 authority", "PASS", "authority_manifest.json; hashes.sha256", "", "Authority locked; do not modify trajectory/geometry/Step05/Step06-08."),
+engineering/trajectory_transport_validation_20260626/scripts/build_wp00_wp02_artifacts.py:1858:        ("G11 Step06-08 support", "NOT_AUTHORIZED", "", "Authority rewrite forbidden in this phase.", "Only after validated/corrected decision and user approval."),
+engineering/trajectory_transport_validation_20260626/scripts/build_wp00_wp02_artifacts.py:1875:step05_hash: {step05_hash}
+engineering/trajectory_transport_validation_20260626/scripts/build_wp00_wp02_artifacts.py:1910:- current Step05 authority
+engineering/trajectory_transport_validation_20260626/scripts/build_wp00_wp02_artifacts.py:1911:- current Step06/07/08 outputs
+engineering/trajectory_transport_validation_20260626/scripts/build_wp00_wp02_artifacts.py:2006:        "selection_policy": "Use the harness section-3 pre-registered current-profile points when their day_mid rows exist; re-read all values from current Step06 CSV. Literal fallback rules are recorded for profile-change audit.",
+engineering/trajectory_transport_validation_20260626/scripts/build_wp00_wp02_artifacts.py:2135:- Froze REF plus four off-reference points from current Step06 trajectory CSV, not from the hard-coded table.
+engineering/trajectory_transport_validation_20260626/scripts/build_wp00_wp02_artifacts.py:2139:- Did not modify synthetic trajectory, geometry, Step05 cuts, W2, detector response, Step06/07/08 outputs, or manuscript sources.
+engineering/trajectory_transport_validation_20260626/scripts/build_wp00_wp02_artifacts.py:2166:- Full-stat and Step06/07/08 authority rewrites: NOT_AUTHORIZED
+engineering/trajectory_transport_validation_20260626/scripts/build_g3_g4_postrun_extraction_guard.py:139:                "evidence": "activation extraction may not read delayed history or detector-response comparison before activation_production_manifest.json exists",
+engineering/trajectory_transport_validation_20260626/scripts/build_curve_decision_contract.py:174:        "promotion_rule": "If corrected, rebuild Step06 and rerun Step07/Step08; mark old curve STALE and do not mix old/new partial products.",
+engineering/trajectory_transport_validation_20260626/scripts/build_curve_decision_contract.py:357:            "- It does not launch transport, authorize G7, authorize targeted/full runs, rewrite Step06/07/08, edit manuscript source, or create `09_` through `12_` runtime outputs.",

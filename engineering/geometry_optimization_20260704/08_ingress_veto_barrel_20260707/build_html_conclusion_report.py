@@ -29,7 +29,7 @@ from matplotlib.patches import Patch
 
 ROOT = Path(__file__).resolve().parents[3]
 WORK = Path(__file__).resolve().parent
-OUT = WORK / "html_conclusion_report_20260707"
+OUT = WORK / "html_conclusion_report_20260708"
 CHART_DIR = OUT / "charts"
 DATA_DIR = OUT / "data"
 
@@ -40,8 +40,8 @@ BARREL_JSON = WORK / "barrel_eplus_2M_summary.json"
 GEOM_MANIFEST = WORK / "barrel_hypothesis_geometry_manifest.json"
 ATM511_JSON = (
     ROOT
-    / "engineering/geometry_optimization_20260704/06_atm511_replay_20260707"
-    / "p2_geo_opt_s1_bpe_w5_atm511_transfer_summary.json"
+    / "engineering/geometry_optimization_20260704/12_atm511_sidecar_replay_20260708"
+    / "p2_geo_opt_s1_bpe_w5_atm511_sidecar_summary.json"
 )
 REVIEW_FINAL = (
     ROOT
@@ -495,7 +495,12 @@ def write_report(
     eplus_final_rate = next(r["side_compton_fov_pass_rate_s-1"] for r in load_json(VETO_JSON)["summaries"] if r["family"] == "eplus")
     upper = float(barrel_w2["final_zero_count_95cl_upper_rate_s-1"])
     upper_share = upper / float(eplus_final_rate)
-    harris = next(row for row in atm511["scenario_rows"] if row["scenario"] == "Harris_Rc_11_13_total_disk_no_alt_scale")
+    atm_stage = next(r for r in stage_rows if r["family"] == "atm511")
+    atm_w2 = atm511["windows"]["w2_510p58_511p42"]
+    atm_sidecar = atm511["sidecar_included_nominal"]
+    atm_active_label = pct(atm_stage["active_rejection"])
+    atm_compton_label = pct(atm_stage["compton_rejection"])
+    atm_final_count = int(atm_stage["final"])
     neutron_depth_plotted = sum(1 for r in depth_rows if r.get("plotted"))
     neutron_depth_missing = sum(1 for r in depth_rows if r.get("status") == "missing coordinate")
     neutron_depth_negative = sum(1 for r in depth_rows if r.get("depth_projection_cm") is not None and float(r["depth_projection_cm"]) < 0)
@@ -517,7 +522,7 @@ def write_report(
     html_parts = [
         "<!doctype html><html lang='zh-CN'><head><meta charset='utf-8'>",
         "<meta name='viewport' content='width=device-width, initial-scale=1'>",
-        "<title>TES 511 几何优化：入射、veto 与 W 桶假设结论</title>",
+        "<title>TES 511 几何优化：入射、veto 与 ATM511 sidecar 结论</title>",
         "<style>",
         """
         :root {
@@ -563,12 +568,12 @@ def write_report(
         """,
         "</style></head><body><main>",
         "<header>",
-        "<h1>TES 511 几何优化结论：入射方向、veto 效率与外置 W 桶假设</h1>",
-        "<p class='summary'><strong>结论先行。</strong> 当前几何中，active veto 对中子有效、对大气 511 无效；Compton/FoV 对 e+ 和大气 511 只提供约 12% 的条件拒绝。外置 W 桶简化假设在 2M 正电子输运中没有产生 W2 或 480-550 keV TES 候选，给出 e+ 分量 95% 上限 0.00352 cps，但这不是总本底或 20 天灵敏度闭合。</p>",
+        "<h1>TES 511 几何优化结论：入射方向、veto 效率与 ATM511 sidecar</h1>",
+        f"<p class='summary'><strong>结论先行。</strong> 当前几何中，active veto 对中子有效、对大气 511 sidecar 的主动拒绝为 {atm_active_label}；Compton/FoV 对 e+ 和大气 511 只提供有限的条件拒绝。外置 W 桶简化假设在 2M 正电子输运中没有产生 W2 或 480-550 keV TES 候选，给出 e+ 分量 95% 上限 {upper:.4g} cps，但这不是总本底或 20 天灵敏度闭合。</p>",
         "<div class='metrics'>",
-        metric_card("e+ 当前 W2 final", "0.02377 cps", "当前 geo-opt e+ final rate"),
-        metric_card("W 桶 2M e+ 上限", "0.00352 cps", "0 count, 95% upper rate"),
-        metric_card("大气 511 active veto", "0%", "W2 108/108 active pass"),
+        metric_card("e+ 当前 W2 final", f"{float(eplus_final_rate):.5g} cps", "当前 geo-opt e+ final rate"),
+        metric_card("W 桶 2M e+ 上限", f"{upper:.4g} cps", "0 count, 95% upper rate"),
+        metric_card("大气 511 sidecar final", f"{atm_w2['final_rate_cps']:.5g} cps", f"W2 {atm_stage['raw']}/{atm_stage['active']}/{atm_stage['final']}"),
         metric_card("Review verdict", "PASS_WITH_LIMITATIONS", "技术复核通过但有限制"),
         "</div>",
         "</header>",
@@ -577,8 +582,8 @@ def write_report(
     html_parts.extend(
         [
             "<section><h2>技术摘要：三个结论决定下一步怎么跑</h2>",
-            "<p><strong>第一，当前主动 veto 的强弱高度依赖粒子类型。</strong> 中子 W2 raw 候选从 60 个降到 13 个，active rejection 为 78.33%；e+ 只有 35.48%；大气 511 完全没有 active veto rejection，因为它是外部 511 光子场，不伴随可被 CsI/塑闪捕获的带电粒子能量沉积。</p>",
-            "<p><strong>第二，Compton/FoV 不是强屏蔽。</strong> 它对 e+ active-pass 候选拒绝 12.50%，对大气 511 拒绝 12.04%，对当前中子样本为 0%。因此它是几何/运动学一致性过滤，不应被期待替代物理屏蔽。</p>",
+            f"<p><strong>第一，当前主动 veto 的强弱高度依赖粒子类型。</strong> 中子 W2 raw 候选从 60 个降到 13 个，active rejection 为 78.33%；e+ 只有 35.48%；大气 511 sidecar 的 active rejection 为 {atm_active_label}，因为它是外部 511 光子场，不一定伴随可被 CsI/塑闪捕获的带电粒子能量沉积。</p>",
+            f"<p><strong>第二，Compton/FoV 不是强屏蔽。</strong> 它对 e+ active-pass 候选拒绝 12.50%，对大气 511 sidecar 拒绝 {atm_compton_label}，对当前中子样本为 0%。因此它是几何/运动学一致性过滤，不应被期待替代物理屏蔽。</p>",
             "<p><strong>第三，W 桶假设强烈压低 e+ 分量，但证据边界必须清楚。</strong> 2M e+ only run 没有 W2 TES-window 候选，95% 上限约为当前 e+ final rate 的 14.8%。不过这个几何同时移除了许多内部被动材料，所以不能把下降纯归因于外层 W 桶，也不能外推为总本底闭合。</p>",
         ]
     )
@@ -589,10 +594,10 @@ def write_report(
             "<h3>W2 cutflow 说明：中子靠 active veto，大气 511 只能靠 Compton/FoV</h3>",
             "<p>下面两张图用同一组 W2 候选数。active rejection 的分母是 raw TES-window 候选；Compton/FoV rejection 的分母是 active-pass 候选。这个分母定义避免把最终候选当作 veto 分母。</p>",
             f"<figure><img src='{img_data_uri(chart_paths['veto_cutflow'])}' alt='W2 veto cutflow'><figcaption>W2 事件数 cutflow：raw → active pass → final pass。</figcaption></figure>",
-            f"<figure><img src='{img_data_uri(chart_paths['veto_rejection'])}' alt='Veto rejection fractions'><figcaption>active veto 与 Compton/FoV 条件拒绝率。大气 511 的 active rejection 为 0。</figcaption></figure>",
+            f"<figure><img src='{img_data_uri(chart_paths['veto_rejection'])}' alt='Veto rejection fractions'><figcaption>active veto 与 Compton/FoV 条件拒绝率。大气 511 sidecar 的 active rejection 为 {atm_active_label}。</figcaption></figure>",
             make_table(["family", "raw", "active pass", "final pass", "active rejection", "Compton/FoV rejection", "final survival"], veto_table),
             "<h3>入射方向：大气 511 final 候选主要来自侧面，e+ 和 n 更分散</h3>",
-            f"<figure><img src='{img_data_uri(chart_paths['entry_surface'])}' alt='Final entry surface share'><figcaption>final W2 候选的入口面 proxy。atm511 的 region 数据只覆盖 95 个 final 候选，不能读成 raw/active 的分区效率。</figcaption></figure>",
+            f"<figure><img src='{img_data_uri(chart_paths['entry_surface'])}' alt='Final entry surface share'><figcaption>final W2 候选的入口面 proxy。atm511 的 region 数据只覆盖 {atm_final_count} 个 final 候选，不能读成 raw/active 的分区效率。</figcaption></figure>",
             f"<figure><img src='{img_data_uri(chart_paths['direction_polar'])}' alt='e+ and neutron ingress direction sectors'><figcaption>正电子和中子 final W2 候选的 45° 方位扇区图。低统计下只用于看形状，不用于优化具体开孔。</figcaption></figure>",
             "<h3>中子能量-深度图：W2 raw neutron 候选没有单一能量/深度族群</h3>",
             f"<figure><img src='{img_data_uri(chart_paths['neutron_depth'])}' alt='Neutron energy versus first-hit depth proxy'><figcaption>中子初始能量与 first-hit 深度 proxy。可绘制 {neutron_depth_plotted}/60 个 raw 中子候选；{neutron_depth_missing} 个缺坐标，{neutron_depth_negative} 个投影为负值未纳入散点。</figcaption></figure>",
@@ -610,7 +615,7 @@ def write_report(
     html_parts.extend(
         [
             "<section><h2>Scope, data, and metric definitions</h2>",
-            "<p><strong>W2 窗口</strong>定义为 TES 总能量 <code>510.58-511.42 keV</code>。当前几何统计来自 <code>geo_opt_s1_bpe_w5_fullstat_v1</code> 的 Step05/审计输出；大气 511 来自 3M lower-hemisphere mono-511 replay；W 桶假设只跑 e+。</p>",
+            f"<p><strong>W2 窗口</strong>定义为 TES 总能量 <code>510.58-511.42 keV</code>。当前几何统计来自 <code>geo_opt_s1_bpe_w5_fullstat_v1</code> 的 Step05/审计输出；大气 511 来自 3M EXPACS-like 4pi sidecar replay，nominal flux 为 <code>{atm511['model']['phi_4pi_ph_cm2_s']:.6g} ph cm^-2 s^-1</code>；W 桶假设只跑 e+。</p>",
             "<ul>",
             "<li><strong>raw：</strong>TES 能窗候选。</li>",
             "<li><strong>active pass：</strong>active veto 能量低于 50 keV 后保留的候选。当前几何 active 体包括 CsI/BGO/legacy active token 和 GeoOpt plastic skin；W 桶假设分析只把 CsI 计入 active veto。</li>",
@@ -622,7 +627,7 @@ def write_report(
             "<p>本地环境缺少 <code>seaborn</code> 和 <code>pandas</code>，图表采用 Matplotlib-only fallback，但沿用 Data Visualization 模板的配色、标题、字幕和 PNG 静态输出规则；所有图均以 <code>data:image/png;base64</code> 内嵌在 HTML 中。</p>",
             "<h2>Limitations and uncertainty</h2>",
             "<ul>",
-            "<li>大气 511 的入射区域只对 95 个 final 候选有 metadata；不能当作大气 511 raw/active 分区 veto 效率。</li>",
+            f"<li>大气 511 的入射区域只对 {atm_final_count} 个 final 候选有 metadata；不能当作大气 511 raw/active 分区 veto 效率。</li>",
             "<li>中子能量-深度图是 first-hit projection proxy；负投影和缺坐标点未绘制，图中已标注数量。</li>",
             "<li>W 桶几何是 stress-test：W 质量约 797 kg，不是可直接飞行设计。</li>",
             "<li>W 桶 run 是 positron-only；它不包含中子、gamma、muon、delayed activation 或 atmospheric 511 的合成闭合。</li>",
@@ -636,7 +641,8 @@ def write_report(
             "</ol>",
             "<h2>Further questions</h2>",
             "<ul>",
-            "<li>大气 511 的绝对归一化和角分布是否采用 Harris 场景，还是需要按飞行高度/方位重新取 EXPACS/PARMA？</li>",
+            "<li>大气 511 sidecar 的 S2/S3/S4/S5 系统情景是否需要分别 transport，而不是只用 S1 nominal detector transfer 缩放？</li>",
+            "<li>downward residual-atmosphere 角分布仍是 slab-kernel systematic；若要发表为最终预算，需要把该项作为模型误差传播。</li>",
             "<li>当前 active skin 对 e+ 的作用，是捕获正电子本身，还是主要标记伴随二次粒子？需要专门的 hit-time/parentage 审计。</li>",
             "<li>中子活化降低是否真的来自含硼聚乙烯，还是因为几何简化改变了产生核素的位置分布？需要 activation inventory 对比。</li>",
             "</ul>",

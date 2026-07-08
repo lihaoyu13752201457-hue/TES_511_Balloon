@@ -18,7 +18,7 @@
   "why_this_regrouping": "The previous complement package was very data-heavy. This regrouping adds CAD-like geometry context and keeps the event-level particle/veto evidence needed for optimization reasoning.",
   "w2_event_counts_by_particle": {
     "activation": 42,
-    "atm511": 108,
+    "atm511": 114,
     "eplus": 62,
     "gamma": 1,
     "muminus": 1,
@@ -27,8 +27,8 @@
     "p": 1
   },
   "veto_priority_counts": {
-    "compton_fov_veto": 22,
-    "final_pass": 169,
+    "compton_fov_veto": 16,
+    "final_pass": 181,
     "non_plastic_active_veto": 55,
     "plastic_skin_veto": 37
   },
@@ -41,9 +41,10 @@
       "envelope_miss": 2
     },
     "atm511": {
-      "side_wall": 83,
-      "top": 16,
-      "bottom": 9
+      "side_window": 2,
+      "side_wall": 80,
+      "top": 25,
+      "bottom": 7
     },
     "eplus": {
       "side_window": 4,
@@ -73,27 +74,27 @@
     }
   },
   "atm511_source_definition": {
-    "source_card": "runs/geometry_optimization_20260704/p2_atm511_unit_geo_opt_s1_bpe_w5_fullstat_v1/Atm511LowerUnit3M_GeoOptS1BpeW5.source",
-    "name": "Atm511LowerUnit3M_GeoOptS1BpeW5",
+    "source_card": "runs/geometry_optimization_20260704/p2_atm511_sidecar_s1_nominal_geo_opt_s1_bpe_w5_20260708/Atm511SidecarS1Nominal3M_GeoOptS1BpeW5.source",
+    "name": "Atm511SidecarS1Nominal3M_GeoOptS1BpeW5",
     "particle_type": "gamma (MEGAlib ParticleType 1)",
     "spectrum": "Mono 511 keV",
     "beam_model": "FarFieldAreaSource",
     "theta_deg_range": [
-      90.0,
+      0.0,
       180.0
     ],
     "phi_deg_range": [
       0.0,
       360.0
     ],
-    "number_of_theta_bins": 10,
+    "number_of_theta_bins": 20,
     "flux_per_bin": [
-      0.1,
-      0.1,
-      0.1
+      0.0004319337401899,
+      0.0004743906443078,
+      0.0005259683059061
     ],
-    "total_declared_flux": 0.9999999999999999,
-    "interpretation": "Lower-hemisphere 511-keV line source, not a full-4pi isotropic source."
+    "total_declared_flux": 0.051555854113024394,
+    "interpretation": "EXPACS-like 4pi atmospheric 511-keV sidecar with upward albedo and downward residual-atmosphere components."
   },
   "veto_priority_definition": [
     "plastic_skin_veto if GeoOpt_S1_PlasticFullWrap* edep >= 50 keV",
@@ -119,9 +120,9 @@
     "plastic_bpe_neutron_effects": "10_plastic_bpe_neutron_effects.csv"
   },
   "row_counts": {
-    "trajectory_events": 283,
-    "veto_flags": 283,
-    "entry_angle_veto_summary": 265,
+    "trajectory_events": 289,
+    "veto_flags": 289,
+    "entry_angle_veto_summary": 279,
     "plastic_bpe_neutron_effects": 128
   },
   "major_caveats": [

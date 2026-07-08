@@ -449,8 +449,9 @@ def build_patch_volumes(skin: dict[str, float]) -> list[PatchVolume]:
             shape=pcon_line(0.0, 360.0, w_planes),
             position=(0.0, 0.0, w_z),
             role=(
-                "5 mm tungsten bottom baffle for lower-hemisphere atmospheric 511 keV photons; "
-                "placed inward of the borated-polyethylene bottom layer and just outside the original Mass_model_511 bottom shell"
+                "5 mm local tungsten bottom gamma baffle retained in the S1 geometry; "
+                "placed inward of the borated-polyethylene bottom layer and just outside the original Mass_model_511 bottom shell. "
+                "It is not treated as the primary ATM511 sidecar mitigation path."
             ),
             volume_cm3=w_vol,
             mass_kg=w_vol * W_DENSITY_G_CM3 / 1000.0,

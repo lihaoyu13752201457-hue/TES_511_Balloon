@@ -64,7 +64,7 @@
   ],
   "w2_event_counts_by_particle": {
     "activation": 42,
-    "atm511": 108,
+    "atm511": 114,
     "eplus": 62,
     "gamma": 1,
     "muminus": 1,
@@ -84,27 +84,27 @@
     "phi_local_deg": "atan2(dir_local_y, dir_local_x), 0..360 deg; side-window axis proxy is local phi=180 deg +/-15 deg"
   },
   "atm511_source_definition": {
-    "source_card": "runs/geometry_optimization_20260704/p2_atm511_unit_geo_opt_s1_bpe_w5_fullstat_v1/Atm511LowerUnit3M_GeoOptS1BpeW5.source",
-    "name": "Atm511LowerUnit3M_GeoOptS1BpeW5",
+    "source_card": "runs/geometry_optimization_20260704/p2_atm511_sidecar_s1_nominal_geo_opt_s1_bpe_w5_20260708/Atm511SidecarS1Nominal3M_GeoOptS1BpeW5.source",
+    "name": "Atm511SidecarS1Nominal3M_GeoOptS1BpeW5",
     "particle_type": "gamma (MEGAlib ParticleType 1)",
     "spectrum": "Mono 511 keV",
     "beam_model": "FarFieldAreaSource",
     "theta_deg_range": [
-      90.0,
+      0.0,
       180.0
     ],
     "phi_deg_range": [
       0.0,
       360.0
     ],
-    "number_of_theta_bins": 10,
+    "number_of_theta_bins": 20,
     "flux_per_bin": [
-      0.1,
-      0.1,
-      0.1
+      0.0004319337401899,
+      0.0004743906443078,
+      0.0005259683059061
     ],
-    "total_declared_flux": 0.9999999999999999,
-    "interpretation": "Lower-hemisphere 511-keV line source, not a full-4pi isotropic source."
+    "total_declared_flux": 0.051555854113024394,
+    "interpretation": "EXPACS-like 4pi atmospheric 511-keV sidecar with upward albedo and downward residual-atmosphere components."
   },
   "entry_counts_by_source_family": {
     "activation": {
@@ -115,9 +115,10 @@
       "envelope_miss": 2
     },
     "atm511": {
-      "side_wall": 83,
-      "top": 16,
-      "bottom": 9
+      "side_window": 2,
+      "side_wall": 80,
+      "top": 25,
+      "bottom": 7
     },
     "eplus": {
       "side_window": 4,
@@ -147,35 +148,38 @@
     }
   },
   "atm511_w2_conditional_diagnostics": {
-    "w2_raw_count": 108,
+    "w2_raw_count": 114,
     "theta_local_deg_min_max": [
-      18.484794472520004,
-      133.58219756207285
+      18.23852375016873,
+      150.96451372941868
     ],
     "phi_local_deg_min_max": [
-      6.7435910719963115,
-      291.66187266300346
+      9.26076443389323,
+      358.037723516867
     ],
     "entry_class_counts": {
-      "bottom": 9,
-      "side_wall": 83,
-      "top": 16
+      "bottom": 7,
+      "side_wall": 80,
+      "side_window": 2,
+      "top": 25
     },
     "xz_start_quadrant_counts": {
-      "left_lower": 32,
-      "right_lower": 76
+      "left_lower": 22,
+      "left_upper": 14,
+      "right_lower": 69,
+      "right_upper": 9
     }
   },
   "veto_summary_source": "engineering/geometry_optimization_20260704/08_ingress_veto_barrel_20260707/veto_efficiency_summary.json",
   "veto_efficiency_summary": {
     "status": "PASS_FAST_VETO_EFFICIENCY_AUDIT_CURRENT_GEO_OPT",
-    "generated_at_utc": "2026-07-07T09:06:46Z",
+    "generated_at_utc": "2026-07-07T16:53:30Z",
     "method": {
       "active_threshold_keV": 50.0,
       "active_volume_rule": "CsI/BGO/ACTIVE_SHIELD/CEBR3 plus GeoOpt_S1_PlasticFullWrap* for current geo-opt audit.",
       "compton_fov_algorithm": "old/code/tools/build_v3p5_centerfinger_step05_l1_response.py",
       "side_entry_bridge": "stepwise_maintenance/step09_optics_bridge/outputs_f10m_a1_v3p5/step09_optics_bridge_summary.json",
-      "atm511_cutflow_source": "engineering/geometry_optimization_20260704/06_atm511_replay_20260707/p2_geo_opt_s1_bpe_w5_atm511_transfer_summary.json"
+      "atm511_cutflow_source": "engineering/geometry_optimization_20260704/12_atm511_sidecar_replay_20260708/p2_geo_opt_s1_bpe_w5_atm511_sidecar_summary.json"
     },
     "summaries": [
       {
@@ -217,20 +221,21 @@
         "family": "atm511",
         "window": "w2_510p58_511p42",
         "generated_events": 3000000,
-        "observation_time_s": 265.314,
-        "raw_events": 108,
-        "active_veto_pass_events": 108,
-        "side_compton_fov_pass_events": 95,
-        "raw_rate_s-1_per_unit_flux": 0.4070648363825505,
-        "active_veto_pass_rate_s-1_per_unit_flux": 0.4070648363825505,
-        "side_compton_fov_pass_rate_s-1_per_unit_flux": 0.35806629126242867,
+        "observation_time_s": 5146.38,
+        "raw_events": 114,
+        "active_veto_pass_events": 114,
+        "side_compton_fov_pass_events": 107,
+        "raw_rate_s-1": 0.022151492894034255,
+        "active_veto_pass_rate_s-1": 0.022151492894034255,
+        "side_compton_fov_pass_rate_s-1": 0.02079131350580408,
+        "rate_units": "cps for physical S1 nominal ATM511 sidecar flux; transfer fields are per total 4pi line flux",
         "active_veto_rejection_fraction_vs_raw_count": 0.0,
-        "side_compton_fov_rejection_fraction_vs_active_count": 0.12037037037037035,
-        "final_survival_fraction_vs_raw_count": 0.8796296296296297,
+        "side_compton_fov_rejection_fraction_vs_active_count": 0.06140350877192979,
+        "final_survival_fraction_vs_raw_count": 0.9385964912280702,
         "side_compton_class_counts": {
-          "keep": 33,
-          "single": 62,
-          "veto": 13
+          "keep": 36,
+          "single": 71,
+          "veto": 7
         },
         "ingress_metadata_scope": "side_compton_fov_pass final candidates only"
       }
@@ -277,21 +282,21 @@
       {
         "family": "atm511",
         "window": "w2_510p58_511p42",
-        "raw_events": 108,
-        "active_veto_pass_events": 108,
-        "side_compton_fov_pass_events": 95,
-        "raw_rate": 0.4070648363825505,
-        "active_veto_pass_rate": 0.4070648363825505,
-        "side_compton_fov_pass_rate": 0.35806629126242867,
+        "raw_events": 114,
+        "active_veto_pass_events": 114,
+        "side_compton_fov_pass_events": 107,
+        "raw_rate": 0.022151492894034255,
+        "active_veto_pass_rate": 0.022151492894034255,
+        "side_compton_fov_pass_rate": 0.02079131350580408,
         "active_veto_rejection_fraction_count": 0.0,
-        "compton_fov_rejection_fraction_vs_active_count": 0.12037037037037035,
-        "total_rejection_fraction_count": 0.12037037037037035,
+        "compton_fov_rejection_fraction_vs_active_count": 0.06140350877192979,
+        "total_rejection_fraction_count": 0.06140350877192979,
         "active_veto_rejection_fraction_rate": 0.0,
-        "compton_fov_rejection_fraction_vs_active_rate": 0.12037037037037035,
-        "total_rejection_fraction_rate": 0.12037037037037035,
-        "final_survival_fraction_vs_raw_rate": 0.8796296296296297,
-        "side_compton_class_counts_json": "{\"keep\": 33, \"single\": 62, \"veto\": 13}",
-        "rate_units": "cps per ph cm^-2 s^-1 lower-hemisphere flux"
+        "compton_fov_rejection_fraction_vs_active_rate": 0.06140350877192979,
+        "total_rejection_fraction_rate": 0.06140350877192979,
+        "final_survival_fraction_vs_raw_rate": 0.9385964912280702,
+        "side_compton_class_counts_json": "{\"keep\": 36, \"single\": 71, \"veto\": 7}",
+        "rate_units": "cps for physical S1 nominal ATM511 sidecar flux; transfer fields are per total 4pi line flux"
       }
     ],
     "by_ingress_region_rows": [
@@ -301,10 +306,10 @@
         "entry_region": "bottom",
         "raw_events": 0,
         "active_veto_pass_events": 0,
-        "side_compton_fov_pass_events": 8,
+        "side_compton_fov_pass_events": 7,
         "raw_rate": 0.0,
         "active_veto_pass_rate": 0.0,
-        "side_compton_fov_pass_rate": 0.03015295084315189,
+        "side_compton_fov_pass_rate": 0.0013601793882301735,
         "active_veto_rejection_fraction_count": "",
         "compton_fov_rejection_fraction_vs_active_count": "",
         "total_rejection_fraction_count": "",
@@ -318,10 +323,27 @@
         "entry_region": "side_wall",
         "raw_events": 0,
         "active_veto_pass_events": 0,
-        "side_compton_fov_pass_events": 73,
+        "side_compton_fov_pass_events": 74,
         "raw_rate": 0.0,
         "active_veto_pass_rate": 0.0,
-        "side_compton_fov_pass_rate": 0.27514567644376114,
+        "side_compton_fov_pass_rate": 0.0143790392470047,
+        "active_veto_rejection_fraction_count": "",
+        "compton_fov_rejection_fraction_vs_active_count": "",
+        "total_rejection_fraction_count": "",
+        "active_veto_rejection_fraction_rate": "",
+        "compton_fov_rejection_fraction_vs_active_rate": "",
+        "total_rejection_fraction_rate": ""
+      },
+      {
+        "family": "atm511",
+        "window": "w2_510p58_511p42",
+        "entry_region": "side_window",
+        "raw_events": 0,
+        "active_veto_pass_events": 0,
+        "side_compton_fov_pass_events": 2,
+        "raw_rate": 0.0,
+        "active_veto_pass_rate": 0.0,
+        "side_compton_fov_pass_rate": 0.00038862268235147814,
         "active_veto_rejection_fraction_count": "",
         "compton_fov_rejection_fraction_vs_active_count": "",
         "total_rejection_fraction_count": "",
@@ -335,10 +357,10 @@
         "entry_region": "top",
         "raw_events": 0,
         "active_veto_pass_events": 0,
-        "side_compton_fov_pass_events": 14,
+        "side_compton_fov_pass_events": 24,
         "raw_rate": 0.0,
         "active_veto_pass_rate": 0.0,
-        "side_compton_fov_pass_rate": 0.052767663975515806,
+        "side_compton_fov_pass_rate": 0.004663472188217737,
         "active_veto_rejection_fraction_count": "",
         "compton_fov_rejection_fraction_vs_active_count": "",
         "total_rejection_fraction_count": "",
@@ -634,7 +656,7 @@
       "metric": "atm511_plastic_skin_veto_events",
       "value": 0,
       "unit": "W2 raw TES events",
-      "count_or_rate_context": "raw=108, fraction=0.0",
+      "count_or_rate_context": "raw=114, fraction=0.0",
       "interpretation": "event-level W2 priority veto classification in complement trajectory table"
     },
     {

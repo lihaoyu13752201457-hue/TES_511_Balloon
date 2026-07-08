@@ -1,0 +1,58 @@
+{
+  "call_id": "call_Uqaguug2xtKd50r57xxeixvc",
+  "cmd": "nl -ba core_md/balloon511_ea_latex_drafts/physics_review_publishability_20260702.md | sed -n '145,193p'",
+  "call_log": "/home/ubuntu/.codex/sessions/2026/07/01/rollout-2026-07-01T22-08-25-019f1e02-73cd-7511-ac67-a36d2a3c1926.jsonl",
+  "call_line": 3776,
+  "output_log": "/home/ubuntu/.codex/sessions/2026/07/01/rollout-2026-07-01T22-08-25-019f1e02-73cd-7511-ac67-a36d2a3c1926.jsonl",
+  "output_line": 3780
+}
+
+   145	   四采样收敛;
+   146	3. 衍射作为 Geant4 离散过程,有先例引用(Guan 2023、Reiazi 2025)且扩展合理;
+   147	4. 本底分解通过物理嗅探(§1.5),诚实机制到位(1% 本底系统误差 → Z≈2.8 的
+   148	   声明、诊断 Z vs 似然的区分、W/上游零事例只报上限)。
+   149	
+   150	**投稿前清单**(按性价比排序):
+   151	
+   152	| # | 项 | 工作量 | 必要性 |
+   153	|---|---|---|---|
+   154	| 1 | P1 线宽敏感度研究(源宽 0/1.3/2.5 keV × 窗宽扫描,含本底 Doppler) | 分析级,数天 | **必做** |
+   155	| 2 | P2 大气 511 线补算或解析上限 | 一次小输运+现有选择链 | **必做** |
+   156	| 3 | P3 科学案例几何重述(北天瞬变主案例+占空比+斜程一句) | 纯文本 | 必做 |
+   157	| 4 | 外部锚点对比一图/一段(宽带焦面率或 CsI 屏蔽率 vs 已发表气球测量/COSI 量级) | 1–2 天 | 强烈建议,免疫"纯模拟无验证" |
+   158	| 5 | S1 τ 敏感度一段 + S2 σ/FWHM 口径统一 | 半天 | 建议 |
+   159	| 6 | 3.2/3.3 重写落稿(`rewrite_sec32_sec33_20260702.md`) | 现成 | 建议 |
+   160	
+   161	**底线判断**:骨架已是可发表级;风险集中于 P1 一个物理点,而 P1
+   162	(a)不重跑输运即可量化,(b)粗算结果大概率是"Z 7.8→6–7,概念成立,
+   163	仍显著优于 IBIS 上限"。与其被审稿人逼着做,不如自己写成论文的一节。
+   164	按清单补强后投 EA,预期正面。
+   165	
+   166	---
+   167	
+   168	## 4.1 更新(2026-07-02 晚):Revan 原生重建 smoke 已完成
+   169	
+   170	`engineering/revan_compton_crosscheck_smoke_20260702/`(README 有全部数字与命令):
+   171	信号流 37,065 事件 revan 重建。窗内单点与自定义链一致到 +0.2%;2 点
+   172	"≥1 运动学有效序"=100%;不可定序仅 0.16%;revan 自己的 KN 选序只有 78.4%
+   173	与"指向源更优的次序"一致 → **自定义"2 点穷举双序 + 保留歧义事例"的 veto
+   174	设计被验证是正确策略**(但论据应从"同 Ta 材料无需 KN"改为"veto 而非成像 +
+   175	穷举双序")。新增物理量:窗内 CO |ARM| 中位数 ≈24°(mm 杠杆臂+像素量化),
+   176	解释了 FoV veto 只削 10–14% 本底、并封死成像级判别的可能。论文 §5.1 的
+   177	full reconstruction(Mimrec/似然)承诺仍未闭,本 smoke 是其第一块证据。
+   178	顺带产出:S2 已量化、S6 新发现(见上)。踩坑记录:重放 sim 的 1 ns 人工
+   179	时间戳会被 revan 默认 1 μs 符合窗合并(必须 -C CoincidenceAlgorithm=0)、
+   180	默认 UseComptelTypeEvents=false 会整类丢弃 2 点事例。
+   181	
+   182	## 5. 复核路径备忘(供后续会话/harness 直接取证)
+   183	
+   184	- P1 谱形:`engineering/paper_phase2_background_veto_activation_20260628/05_spectra_480_550_by_stream_stage.csv`
+   185	  → prompt/final_selected 在 507–515 keV 各 bin 的 events 列(54 全在 510.75 bin)。
+   186	- P2 输入谱:`expacs_fullsphere_20bin_sources/cosima_spectra_dp_2602units/gamma_bin*_pdf.dat`
+   187	  → 449.65 与 566.08 keV 相邻格点,`IP LIN`。
+   188	- 透过率:EA/NIM 稿 §3 任务折叠公式(X38=3.87、H=6.8、h0=38.75、T15=0.739);
+   189	  空气 μ(511 keV)≈0.0866–0.0872 cm²/g(XCOM)。
+   190	- 单环光学权威:`stepwise_maintenance/step04_opticsim/optics_aeff_authority_f10m_a1.json`;
+   191	  多波段:`engineering/Mass_model_511_nearfield_migration_20260701/05_optics_migration/optics_migration.md`。
+   192	- 本底分解:`engineering/paper_phase2_background_veto_activation_20260628/04_*.csv`。
+   193	- 数值核对总表:同目录 `rewrite_sec32_sec33_20260702.md` §1。

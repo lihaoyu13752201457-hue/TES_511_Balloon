@@ -39,18 +39,18 @@ STEP05_CACHE = (
 )
 P2_ATM511_SIM = (
     ROOT
-    / "runs/geometry_optimization_20260704/p2_atm511_unit_geo_opt_s1_bpe_w5_fullstat_v1"
-    / "Atm511LowerUnit3M_GeoOptS1BpeW5.inc1.id1.sim.gz"
+    / "runs/geometry_optimization_20260704/p2_atm511_sidecar_s1_nominal_geo_opt_s1_bpe_w5_20260708"
+    / "Atm511SidecarS1Nominal3M_GeoOptS1BpeW5.inc1.id1.sim.gz"
 )
 P2_ATM511_LOG = (
     ROOT
-    / "runs/geometry_optimization_20260704/p2_atm511_unit_geo_opt_s1_bpe_w5_fullstat_v1"
-    / "cosima_Atm511LowerUnit3M_GeoOptS1BpeW5.log"
+    / "runs/geometry_optimization_20260704/p2_atm511_sidecar_s1_nominal_geo_opt_s1_bpe_w5_20260708"
+    / "cosima_Atm511SidecarS1Nominal3M_GeoOptS1BpeW5.log"
 )
 P2_ATM511_SUMMARY = (
     ROOT
-    / "engineering/geometry_optimization_20260704/06_atm511_replay_20260707"
-    / "p2_geo_opt_s1_bpe_w5_atm511_transfer_summary.json"
+    / "engineering/geometry_optimization_20260704/12_atm511_sidecar_replay_20260708"
+    / "p2_geo_opt_s1_bpe_w5_atm511_sidecar_summary.json"
 )
 CURRENT_GEO = (
     ROOT
@@ -59,6 +59,7 @@ CURRENT_GEO = (
 )
 
 ACTIVE_VETO_THRESHOLD_KEV = 50.0
+ATM511_RATE_UNITS = "cps for physical S1 nominal ATM511 4pi sidecar flux"
 WINDOWS = {
     "w2_510p58_511p42": (510.58, 511.42),
     "broad_480_550": (480.0, 550.0),
@@ -626,7 +627,8 @@ def parse_atm511_window(step05: Any, disk: dict[str, Any], window_name: str, emi
                 "stage_side_compton_fov_pass": bool(keep),
                 "tes_total_keV": float(tes_total),
                 "active_veto_keV": float(active_total),
-                "rate_s-1_per_unit_flux": 1.0 / obs_time_s,
+                "rate_s-1": 1.0 / obs_time_s,
+                "rate_units": ATM511_RATE_UNITS,
                 "side_compton_class": cls,
                 "first_hit_volume": None if first_hit is None else first_hit.get("volume"),
                 "first_hit_category": "none" if first_hit is None else first_hit.get("category"),
@@ -706,9 +708,10 @@ def parse_atm511_window(step05: Any, disk: dict[str, Any], window_name: str, emi
         "raw_events": raw,
         "active_veto_pass_events": len(active),
         "side_compton_fov_pass_events": len(final),
-        "raw_rate_s-1_per_unit_flux": raw / obs,
-        "active_veto_pass_rate_s-1_per_unit_flux": len(active) / obs,
-        "side_compton_fov_pass_rate_s-1_per_unit_flux": len(final) / obs,
+        "raw_rate_s-1": raw / obs,
+        "active_veto_pass_rate_s-1": len(active) / obs,
+        "side_compton_fov_pass_rate_s-1": len(final) / obs,
+        "rate_units": ATM511_RATE_UNITS,
         "active_veto_rejection_fraction_vs_raw_count": 1.0 - len(active) / raw if raw else None,
         "side_compton_fov_rejection_fraction_vs_active_count": 1.0 - len(final) / len(active) if active else None,
         "final_survival_fraction_vs_raw_count": len(final) / raw if raw else None,
@@ -790,6 +793,9 @@ def build_ingress_event_stage_rows(event_rows: list[dict[str, Any]], material_ma
         }
         base.update(source_angle_bins(event))
         rate = event.get("rate_s-1", event.get("rate_s-1_per_unit_flux", 0.0))
+        rate_units = event.get("rate_units") or (
+            "cps normalized by prompt TT" if event["family"] in ("eplus", "n") else ATM511_RATE_UNITS
+        )
         for stage_name, stage_key in stages:
             if not bool(event.get(stage_key)):
                 continue
@@ -799,9 +805,7 @@ def build_ingress_event_stage_rows(event_rows: list[dict[str, Any]], material_ma
                     "stage": stage_name,
                     "event_count": 1,
                     "rate_or_transfer": rate,
-                    "rate_units": "cps normalized by prompt TT"
-                    if event["family"] in ("eplus", "n")
-                    else "cps per ph cm^-2 s^-1 lower-hemisphere flux",
+                    "rate_units": rate_units,
                 }
             )
             rows.append(row)
@@ -835,7 +839,8 @@ def build_veto_rows(summaries: list[dict[str, Any]]) -> list[dict[str, Any]]:
                 "total_rejection_fraction_rate": 1.0 - final_rate / raw_rate if raw_rate else "",
                 "final_survival_fraction_vs_raw_rate": final_rate / raw_rate if raw_rate else "",
                 "side_compton_class_counts_json": json.dumps(s.get("side_compton_class_counts", {}), sort_keys=True),
-                "rate_units": "cps normalized by prompt TT" if s["family"] in ("eplus", "n") else "cps per ph cm^-2 s^-1 lower-hemisphere flux",
+                "rate_units": s.get("rate_units")
+                or ("cps normalized by prompt TT" if s["family"] in ("eplus", "n") else ATM511_RATE_UNITS),
             }
         )
     return rows

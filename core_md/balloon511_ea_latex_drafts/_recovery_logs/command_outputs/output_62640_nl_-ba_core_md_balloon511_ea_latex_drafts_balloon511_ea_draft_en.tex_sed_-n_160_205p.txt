@@ -1,0 +1,55 @@
+{
+  "call_id": "call_mNKdUTTx5s6ECPWlc7Bm98BI",
+  "cmd": "nl -ba core_md/balloon511_ea_latex_drafts/balloon511_ea_draft_en.tex | sed -n '160,205p'",
+  "call_log": "/home/ubuntu/.codex/sessions/2026/07/01/rollout-2026-07-01T22-08-25-019f1e02-73cd-7511-ac67-a36d2a3c1926.jsonl",
+  "call_line": 7131,
+  "output_log": "/home/ubuntu/.codex/sessions/2026/07/01/rollout-2026-07-01T22-08-25-019f1e02-73cd-7511-ac67-a36d2a3c1926.jsonl",
+  "output_line": 7133
+}
+
+   160	
+   161	\subsubsection{Reference point-source construction}
+   162	\label{subsec:pointsource}
+   163	
+   164	The focused signal stream is defined by a reference astrophysical point
+   165	source. As a concrete example of the target class we take the 511\keV{}
+   166	emission episode of the microquasar V404 Cygni observed with INTEGRAL/SPI
+   167	\cite{Siegert2016V404}; V404 Cygni is a transient point source in the Galactic
+   168	disk and serves here only as a reference for the source class, not as a
+   169	predicted target flux. The reference flux scale itself,
+   170	$\fzero=10^{-4}\phcms$, is the above-atmosphere value motivated in
+   171	Section~\ref{sec:requirements}.
+   172	
+   173	In the optics run, the source is a monochromatic 511\keV{} far-field beam:
+   174	photons arrive parallel to the optical axis, as from a point source at
+   175	astronomical distance, and are sampled uniformly over the incident aperture
+   176	$A_{\mathrm{inc}}$ of Eq.~(\ref{eq:laue_aeff}). Three independent seeds of
+   177	$5\times10^{4}$ primaries each give $1.5\times10^{5}$ transported photons, of
+   178	which 37,256 are diffracted and cross the focal plane; 37,194 of these
+   179	(99.8\%) fall within the $r=1.898\,\mathrm{cm}$ Be entrance window, with
+   180	focused-spot radii $r_{90}=1.03\,\mathrm{cm}$ and $r_{99}=1.25\,\mathrm{cm}$.
+   181	The within-window crossings form the event list that is replayed through the
+   182	Be aperture into the detector/cryostat model with the recorded positions and
+   183	directions.
+   184	
+   185	The normalization ties this replay to the reference flux. At the detector
+   186	entrance the focused stream carries the rate
+   187	$\fzero\,\aeff(511\keV)\,T$, where $T=0.739$ is the reference 511\keV{}
+   188	atmospheric transmission at the day-15 trajectory anchor
+   189	(Section~\ref{sec:mission_time}); numerically this is
+   190	$1.48\times10^{-3}\cps$ at the reference flux. Equivalently, the generating
+   191	run corresponds to an observation time $N_{\mathrm{fp}}/[\fzero\,\aeff\,T]$,
+   192	and each replayed event carries the inverse of that exposure as its rate
+   193	weight; in the intermediate cut-flow bookkeeping of
+   194	Section~\ref{sec:selection} the same sample appears as a unit replay before
+   195	this scale is applied. After the common detector response and event selection,
+   196	the surviving signal rate is $1.19\times10^{-3}\cps$, corresponding to a
+   197	selected effective area of $S_{\wii}/\fzero=11.9\,\mathrm{cm^2}$. Because the
+   198	optics run contains only source photons, the replayed stream is signal-pure;
+   199	all backgrounds enter through the streams of Section~\ref{sec:background} and
+   200	the boundary terms of Section~\ref{subsec:upstream_optics_background}.
+   201	
+   202	\subsection{Prompt atmospheric and delayed-activation source model}
+   203	\label{sec:background}
+   204	
+   205	With the focused signal defined in Section~\ref{subsec:pointsource}, the

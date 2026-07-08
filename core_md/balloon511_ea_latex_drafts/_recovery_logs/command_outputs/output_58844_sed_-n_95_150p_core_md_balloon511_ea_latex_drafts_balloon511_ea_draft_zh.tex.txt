@@ -1,0 +1,65 @@
+{
+  "call_id": "call_sO7XjlT8dX4jborD3egdrpoL",
+  "cmd": "sed -n '95,150p' core_md/balloon511_ea_latex_drafts/balloon511_ea_draft_zh.tex",
+  "call_log": "/home/ubuntu/.codex/sessions/2026/06/28/rollout-2026-06-28T20-40-23-019f0e3e-c8af-7003-b6cd-d523b87873df.jsonl",
+  "call_line": 1056,
+  "output_log": "/home/ubuntu/.codex/sessions/2026/06/28/rollout-2026-06-28T20-40-23-019f0e3e-c8af-7003-b6cd-d523b87873df.jsonl",
+  "output_line": 1060
+}
+
+
+本文模拟的仪器面向既有观测尚未探测到的银河系中心 511 keV 点源或未分辨中央增强成分。现有 INTEGRAL/SPI 测量已经建立了以弥散核球和银盘为主的 511 keV 天图，并把叠加在弥散成分之上的点状 511 keV 源限制到约 $10^{-4}\phcms$ 的通量量级；基于 INTEGRAL/IBIS 的紧凑源搜索也未发现银河系 511 keV 点源，但在银河中心约 10 Ms 曝光下给出约 $1.6\times10^{-4}\phcms$ 的上限 \cite{Knodlseder2005AllSky,DeCesare2011}。若取气球飞行海拔处 511 keV 光子的典型大气透过率 $T\simeq0.739$，该上限对应的载荷上方光子流量尺度约为 $1.2\times10^{-4}\phcms$。本文因此采用 $\fzero=10^{-4}\phcms$ 作为参考点源光子通量尺度。和 INTEGRAL 的宽视场谱学/编码孔径搜索相比，本文模拟的方案引入 Laue 光学聚焦以提高点源响应，并采用高能量分辨率、多层厚吸收体 TES 微量热计阵列作为焦平面，以增强对 511 keV 窄线的谱学判别能力 \cite{Shirazi2023,Caputo2017}。
+
+本工作首先考虑早期测试用的气球载荷平台，并期望后续拓展到卫星观测平台。
+
+这一目标对仪器和模拟提出四方面要求：其一，望远镜须将 511 keV 光子汇聚到小焦平面，从而在不牺牲收集面积的前提下压低探测器相关本底。其二，焦平面须具备亚 keV 能量响应，使线窗本底随窄谱窗、而非宽 MeV 连续谱缩放。其三，探测器与屏蔽模型须能抑制大气、活化和侧向入射本底，并显式计入 TES 吸收体附近的被动材料。其四，模拟链须一致处理瞬发本底、延迟活化、聚焦信号、反符合 veto、事例拓扑与任务时间变化，使信号与本底在同一套探测器选择下评估。
+
+探测器质量模型是一个工程化 Geant4/MEGAlib 代理质量模型，用来表示安装在小型稀释制冷机（DR）冷端的气球载 TES 焦平面组件 \cite{Shirazi2023,Gottardi2021TESReview}。它不是最终飞行 CAD，而是保留对 511 keV 透射、散射、活化、主动屏蔽 veto 和事例拓扑一阶敏感的局部质量分布。模型包含典型 DR 制冷机结构、TES 探测器阵列、主动屏蔽层、被动屏蔽层、侧入射窗口、准直结构、铜导热结构和低温服务质量代理。图~\ref{fig:mass_model} 给出本文使用的二维质量模型示意图。
+
+TES 探测器概念采用本实验室研发的 AlMn 薄膜耦合吸收体结构。AlMn TES 的能量分辨能力已在实验中达到 $10^{-3}$ 量级相对能量分辨率；AlMn 合金的优势包括相变温度可通过成分和退火工艺调节、便于阵列制备，以及相对较低的磁场敏感性 \cite{Xie2026AlMn,Vavagiakis2017AlMnMagnetic}。在本文概念设计中，TES 温度计膜为约 $200\,\mathrm{nm}$ 量级 AlMn 薄膜，而 $\gamma$ 射线吸收体为 mm 量级金属体。吸收体采用 $1.5\times1.5\times3.0\,\mathrm{mm^3}$ Ta 像素；Ta 的高原子序数提高 511 keV 光子的相互作用概率，$3.0\,\mathrm{mm}$ 厚度在 511 keV 处对应约 $49\%$ 的单层相互作用概率。以 $\alpha\simeq50$、$\beta\simeq1$ 的典型 TES 参数估算，该吸收体体积仍可提供足够的饱和能量，并在 $100\,\mathrm{mK}$ 工作温度附近给出亚 keV 量级能量分辨率；本文采用的理论响应估计约为 $420\,\mathrm{eV}$。
+
+由于 TES 薄膜与 Ta 吸收体在尺寸和质量上相差悬殊，且 TES 膜层本身不贡献显著的 511 keV 相互作用，本文在输运几何中用 Ta 吸收体代表 TES 像素的主要敏感体积。显式敏感体积为 6 层、每层 376 个 Ta 吸收体像素，总计 2256 个像素，$3.0\,\mathrm{mm}$ 深度沿聚焦束方向。每层 Ta 像素下方放置 Si 衬底代理，用单层 Si 代表实际 SiO$_2$--SiN$_x$--Si 多层衬底中占主要厚度和质量的硅层；这样也保留了硅在中子输运中可能贡献的弹性散射材料柱。TES 膜层、布线和读出细节不作为显式相互作用体积逐层建出，而是通过假设能量响应和服务质量代理进入模型。选后率模型对重建求和 TES 能量采用单一 Gaussian 事例能量响应代理，$\sigma=0.14\keV$，不模拟独立逐像素展宽；分析线窗另行固定为 $\wii=510.58$--$511.42\keV$。
+
+TES 阵列安装在必要的铜支架和热连接结构上。铜提供决定性的热导通路；当前几何使用开口支撑环、离轴铜热指、垂直铜 stem 和 MXC 夹持垫，将探测器支撑结构连接到 50 mK 冷盘。TES 近场样品盒同时承担磁屏蔽和局部被动屏蔽代理功能，当前主线几何由 $2\,\mathrm{mm}$ Nb 内层和 $2\,\mathrm{mm}$ MuMetal 外层构成，MuMetal 在材料表中按 Ni:Fe = 4:1 近似。入射侧不放置实心 MuMetal/Nb 端盖，而由薄 Al 磁屏蔽窗保持开放光路；后端端盖保留冷指穿出孔。W--Nb 双层样品盒作为可替换的材料设计思路未作为本文基准几何使用；在当前主线质量模型中，W 主要出现在底部被动屏蔽板和侧窗多孔准直器。
+
+侧入射窗口开在制冷机侧面，并通过 MEGAlib 的 Boolean subtraction 体积严格定义。50 mK Cu can、still、4 K、60 K 热屏、真空外壳、CsI 侧屏蔽、Kapton flex 和外层 Al 机械壳均使用同一侧口中心和 $3.796\,\mathrm{cm}\times3.796\,\mathrm{cm}$ 投影孔径。束线上放置多级薄窗：磁屏蔽窗、50 mK 窗、still 窗、4 K 窗和 60 K 窗均为 $25\,\mu\mathrm{m}$ Al 代理窗，真空外壳窗为 $150\,\mu\mathrm{m}$ Be，外层另有 $30\,\mu\mathrm{m}$ Al 滤窗。Be 窗外侧放置 W 多孔准直器；当前 fix5 几何中该准直器沿束向深度为约 $8\,\mathrm{mm}$，其开口覆盖 TES 焦斑区域并与侧入射束线对准。
+
+质量模型还引入闪烁体主动屏蔽，包络在制冷机外部侧壁、底部和顶部。本文基准率级计算采用分段 CsI 主动屏蔽，侧屏蔽径向厚度为 $4\,\mathrm{cm}$，底部和顶部屏蔽分别作为轴向端部体积加入几何。CsI 体积一方面作为输运和活化材料进入 Geant4，另一方面在后处理中读取沉积能量并施加主动 veto；基准分析阈值为 $50\keV$，coincidence 窗为 $1\,\mu\mathrm{s}$。BGO 主动屏蔽作为材料对照方案处理；历史材料设计分支采用 BGO 设计阈值 $70\keV$，而当前 same-envelope 工程对照可使用与 CsI 主线相同的 $50\keV$ veto 定义以隔离材料替换效应。考虑 DR 的物理布置和侧入射光路，仪器框架整体旋转为 $0,45,0$ 度，使局部侧窗在天顶参考源坐标中向上倾斜 $45^\circ$。几何闭合阶段只固定这些材料、坐标和选择定义；灵敏度仍由后续信号、本底和任务时间折叠共同决定。
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.62\linewidth]{paper_source_figure_table/fig_mass_model_xz_overview.png}
+
+\vspace{0.6ex}
+\includegraphics[width=0.88\linewidth]{paper_source_figure_table/fig_mass_model_detector_bay_detail.png}
+\caption{探测器/低温系统代理质量模型的二维示意图。上：DR 塔、探测器舱、主动屏蔽和 511 keV 侧入射束线的 X--Z 视图。下：探测器舱细节，显示 TES 吸收体堆栈、开放中心束区和离轴 Cu 热连接。}
+\label{fig:mass_model}
+\end{figure}
+
+\FloatBarrier
+
+\section{模拟框架}
+\label{sec:framework}
+
+本节描述应用于第~\ref{sec:geometry}~节质量模型的端到端模拟链：模拟流程与数值层级、Laue 光学信号重放、瞬发与延迟本底源模型、探测器事例选择，以及任务时间折叠。聚焦信号与两路本底流在做任何本底分解或灵敏度陈述之前，都通过同一套探测器响应和 veto 定义。
+
+\subsection{模拟流程}
+\label{sec:workflow}
+
+通过详细质量模型的探测器耦合 Monte Carlo 输运，是预测伽马射线谱仪响应和本底的成熟方法 \cite{Sturner2003}；图~\ref{fig:workflow} 总结了本文采用的链路。计算分为几何定义、瞬发与活化积累输运、延迟源构建、聚焦光学输运、探测器耦合信号重放、veto 机制、本底细节分析、时间/飞行轨迹变化以及飞行性能评估与设计优化意见。本文以产生位置采样延迟衰变作为主要延迟源表示：延迟衰变从记录到的放射性产生位置采样，而不是重新分配到轴对称径向分布。
+
+\begin{figure}[t]
+\centering
+\begin{tikzpicture}[
+  box/.style={rectangle, rounded corners=2pt, draw=black!55, line width=0.4pt,
+              align=center, font=\scriptsize, text width=30mm, minimum height=8mm, inner sep=2pt},
+  bg/.style={box, fill=blue!8},
+  sig/.style={box, fill=green!12},
+  shr/.style={box, fill=black!6},
+  flow/.style={-{Latex[length=2mm]}, draw=black!60, line width=0.5pt}
+]
+\node[shr] (geo)    at (0,0)        {几何 / 质量模型};
+\node[bg]  (prompt) at (-3.1,-1.35) {瞬发与活化输运};
+\node[bg]  (delay)  at (-3.1,-2.7)  {延迟活度源};
+\node[bg]  (decay)  at (-3.1,-4.05) {产生位置衰变输运};
+\node[sig] (optics) at (3.1,-1.35)  {Laue 光学（仅信号）};

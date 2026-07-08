@@ -1,0 +1,115 @@
+{
+  "call_id": "call_otYTOZmr2CQlVVoHqZhInEgH",
+  "cmd": "rg -n \"Sanchez|Guan|Reiazi|V404|bibliography|bibitem|3\\.2\\.3|点源\" core_md/balloon511_ea_latex_drafts/balloon511_ea_draft_zh.tex core_md/balloon511_ea_latex_drafts/balloon511_ea_draft_en.tex",
+  "call_log": "/home/ubuntu/.codex/sessions/2026/06/28/rollout-2026-06-28T20-40-23-019f0e3e-c8af-7003-b6cd-d523b87873df.jsonl",
+  "call_line": 2145,
+  "output_log": "/home/ubuntu/.codex/sessions/2026/06/28/rollout-2026-06-28T20-40-23-019f0e3e-c8af-7003-b6cd-d523b87873df.jsonl",
+  "output_line": 2148
+}
+
+core_md/balloon511_ea_latex_drafts/balloon511_ea_draft_zh.tex:69:\noindent\textbf{Abstract}\hspace{0.7em}银河系 511 keV 湮灭辐射主要由延展的核球和银盘成分主导，而任何紧凑或点状贡献的强度仍不确定。指向式聚焦观测可以探测这一互补的观测域，但前提是气球高度上的大气和仪器诱发本底得到良好控制。本文给出一种气球载望远镜的探测器耦合 Monte Carlo 估计，该望远镜由 10 m Ge(111) Laue 透镜与过渡边缘传感器（transition-edge sensor, TES）微量热计焦平面构成。信号链中，Laue 光学先生成单色轴上 511 keV 点源在焦面的聚焦相空间，随后将通过 Be 入射孔径的光子在探测器/低温系统质量模型中重放；本底链中，瞬发大气粒子/光子和延迟活化衰变在同一探测器/低温系统模型中输运，其中延迟衰变以活化计算所记录的放射性核素产生位置为初始点生成。三类探测器层事例随后用同一 $510.58$--$511.42\keV$ 能窗、CsI 反符合 veto 和拓扑/视场一致性选择进行分析。对入射点源流量 $10^{-4}\phcms$，第 15 天的选后信号率和本底率分别为 $1.19\times10^{-3}\cps$ 和 $3.92\times10^{-2}\cps$，瞬发大气事例占选后本底的 93.4\%。在连续在源曝光假设下，将这些率折叠到所采用的合成 20 d 轨迹，得到诊断性计数显著度 $Z_{20\mathrm{d}}=7.80$，以及相应的 $3\sigma$ 流量阈值 $3.85\times10^{-5}\phcms$。该阈值给出参考模型下谱学未分辨 511 keV 点源的飞行灵敏度估计；选后本底由瞬发大气成分主导，为屏蔽、准直和材料选择等设计优化指明了方向。
+core_md/balloon511_ea_latex_drafts/balloon511_ea_draft_zh.tex:83:过去的宽视场观测已经建立了 511 keV 辐射的弥散形态。INTEGRAL/SPI 显示出明亮的中心核球成分和较弱的银盘成分，20 年数据分析进一步重建出中心、宽核球与银盘结构，但额外关联结构的证据仍较边际 \cite{Siegert2016AA,Yoneda2025}。COSI 2016 年气球飞行独立探测到核球信号，并给出辐射比单一点源更延展的迹象 \cite{Kierans2020,Siegert2020COSI}。谱学测量还约束了湮灭介质的物理状态和运动学：SPI 谱线可分解为约 $1.3\keV$ FWHM 的窄成分和约 $5.4\keV$ 的宽成分，并已在银河系内区搜寻其中心能量与线宽的变化 \cite{Jean2006,Siegert2019Kinematics}。然而，511 keV 天图记录的是正电子减速并湮灭后的位置，不一定是正电子最初产生的位置；正电子在热化之前可在磁化的多相星际介质中传播。因此，现有弥散形态和谱学约束仍不能单独判定主导来源，或还原湮灭前的输运历史 \cite{Prantzos2011}。
+core_md/balloon511_ea_latex_drafts/balloon511_ea_draft_zh.tex:85:宽视场康普顿和编码孔径仪器适合测量核球和银盘的总体弥散发射；但对中心区域是否存在未分辨中央增强、点源或可测的谱线运动学结构，仍需要互补的观测方式，即利用聚焦光学的指向性探测系统。这种系统更有利于捕捉潜在银河系中心点源形态及其谱线结构。探测到点状或窄集中的 511 keV 特征，将表明部分湮灭在空间上是局域的；未探测到信号则会限制紧凑湮灭成分，但不能排除正电子逃逸并以弥散形式湮灭的来源族。基于 INTEGRAL/IBIS 编码孔径数据的紧凑源搜索未发现银河系 511 keV 点源，并在银河中心约 10 Ms 曝光下给出约 $1.6\times10^{-4}\phcms$ 的 $2\sigma$ 点源上限 \cite{DeCesare2011}。这一非探测上限给出了已有紧凑源搜索的通量尺度，也为新一代小视场 511 keV 指向仪器的灵敏度目标提供了比较基准。
+core_md/balloon511_ea_latex_drafts/balloon511_ea_draft_zh.tex:87:Laue 光学提供了实现这种指向式观测的一条路径：它利用透射式 Bragg 衍射，将来自已知方向的光子汇聚到小焦平面上 \cite{Barriere2009Laue,Barriere2011LauePrototype}。把天区中较大收集面积对应的通量聚焦到相对较小的探测器灵敏面积上，在探测器相关本底占主导时，聚焦能够提高点源灵敏度 \cite{Weidenspointner2006MAX}。与之匹配的焦平面需要同时具备窄能量响应和足够的 511 keV 探测效率。利用超导体陡峭电阻转变边缘对粒子沉积能量引起的微小温度变化高度敏感这一特性研发的过渡边缘传感器（transition-edge sensor, TES）微量热计，可在 511 keV 处提供亚 keV 能量分辨率 \cite{Shirazi2023}；同时阵列化 TES 微量热计提供覆盖焦斑所需的主动面积，厚吸收体和多层吸收体布置则提高 511 keV 光子的探测效率。Laue 聚焦与 TES 阵列的组合因此一方面压缩入射相空间，另一方面保留高能量判别能力：前者把来自目标方向的光子集中到小焦平面；在本文关注的未分辨 511 keV 线情形下，高能量分辨率也可以在更小的能量窗口中筛除邻近 511 keV 的本底，并辅助解析 511 keV 的精细谱线结构和线宽。这一组合以较小视场换取集中束流和高分辨谱学能力，因此是对核球和银盘宽视场测量的补充，而不是替代。
+core_md/balloon511_ea_latex_drafts/balloon511_ea_draft_zh.tex:91:本文围绕这一概念建立一条端到端的探测器耦合 Monte Carlo 链，用它估计气球高度上的飞行本底与点源探测性能，并为设计方案的优化提供方向性指导。计算以 EXPACS/PARMA 大气宇宙线场为输入，在气球高度输运瞬发粒子并跟踪其活化产物，从而同时得到瞬发大气本底和随飞行时间积累的延迟活化本底；聚焦 511 keV 参考信号则由 10 m Ge(111) Laue 光学模型给出。信号与两类本底都注入同一个典型气球载 TES 焦平面质量模型（含稀释制冷机冷端、被动屏蔽和主动反符合屏蔽），在统一的窄能窗、反符合 veto 和拓扑/视场选择下处理，再沿一条参考飞行轨迹折叠，给出选后信号率、本底组成与计数显著度。结果表明选后本底由瞬发大气成分主导，因此屏蔽几何、侧入射准直与屏蔽材料是设计优化最直接的方向；延迟活化与上游光学硬件本底作为次级成分一并纳入同一评估框架。本文由此估计了该气球平台的飞行本底与探测性能，并给出设计优化的方向。
+core_md/balloon511_ea_latex_drafts/balloon511_ea_draft_zh.tex:98:本文模拟的仪器面向既有观测尚未探测到的银河系中心 511 keV 点源或未分辨中央增强成分。现有 INTEGRAL/SPI 测量已经建立了以弥散核球和银盘为主的 511 keV 天图，并把叠加在弥散成分之上的点状 511 keV 源限制到约 $10^{-4}\phcms$ 的通量量级；基于 INTEGRAL/IBIS 的紧凑源搜索也未发现银河系 511 keV 点源，但在银河中心约 10 Ms 曝光下给出约 $1.6\times10^{-4}\phcms$ 的上限 \cite{Knodlseder2005AllSky,DeCesare2011}。若取气球飞行海拔处 511 keV 光子的典型大气透过率 $T\simeq0.739$，该上限对应的载荷上方光子流量尺度约为 $1.2\times10^{-4}\phcms$。本文因此采用 $\fzero=10^{-4}\phcms$ 作为参考点源光子通量尺度。和 INTEGRAL 的宽视场谱学/编码孔径搜索相比，本文模拟的方案引入 Laue 光学聚焦以提高点源响应，并采用高能量分辨率、多层厚吸收体 TES 微量热计阵列作为焦平面，以增强对 511 keV 窄线的谱学判别能力 \cite{Shirazi2023,Caputo2017}。
+core_md/balloon511_ea_latex_drafts/balloon511_ea_draft_zh.tex:174:为了生成聚焦信号，晶片对 511 keV 光子的衍射概率不是作为外加标量效率强加给光子，而是在 Geant4 中通过一个应用层自定义的离散过程实现。该过程为光子给出有限的等效衍射平均自由程，并与标准 Geant4 电磁过程（光电吸收、康普顿散射）在同一竞争框架下由输运机制决定谁先发生，而不是在晶体边界强制拦截光子。未被抽中发生衍射的光子仍按标准电磁物理继续输运，可能被吸收、散射或直接透射。衍射概率优先由外部 XOP/CRYSTAL rocking-curve map 按角偏差插值给出 \cite{SanchezDelRio2011XOP}；当没有外部曲线可用时，退化为内部 Darwin-Hamilton 闭式近似。mosaic 取向通过对理想 Bragg 晶面法线施加高斯角扰动实现，扰动宽度由 30 角秒 mosaic FWHM 给出；衍射发生后，出射方向按扰动后的晶面法线做镜面反射，光子能量不变。这种“过程类只负责输运接口、独立模型类负责概率与方向判定”的拆分方式，参考了 Geant4 中已有的晶体 Bragg 反射扩展工作 \cite{Guan2023BraggReflection,Reiazi2025G4BraggReflection}；本文将同一过程/模型拆分思路移用于 511 keV 天文 Laue 透镜的聚焦信号生成，而非对其源码的移植。
+core_md/balloon511_ea_latex_drafts/balloon511_ea_draft_zh.tex:200:对于聚焦点源响应，$\fzero=10^{-4}\phcms$ 表示参考入射 511 keV 光子流量。线窗信号响应 $1.19\times10^{-3}\cps$ 指该流量下经过探测器输运、参考大气透过因子和探测器层事例选择后的 $\wii$ 选后信号率。相应选后有效面积为 $A_{\mathrm{sel}}=S_{\wii}/\fzero=11.9\,\mathrm{cm^2}$。该参考归一化应理解为基准指向情形，而不是所有气球指向通用的大气透过率。低仰角或长斜程观测，包括北半球中纬度气球轨迹上的银河中心观测，应使用斜程大气透过模型；这类斜程计算仍是边界检查，不替代本文给出的参考曝光结果。
+core_md/balloon511_ea_latex_drafts/balloon511_ea_draft_zh.tex:258:延迟衰变源随后从采样的产生位置发射，而不是从轴对称径向分布发射。设加权产生表中第 $j$ 行的活度权重为 $w_j$，总活度为 $A=\sum_j w_j$。产生位置近似以 $p_j=w_j/A$ 为概率有放回抽取 $M$ 个产生位置，并给每个采样点源相同通量 $A/M$。因此第 $j$ 行获得的期望活度为
+core_md/balloon511_ea_latex_drafts/balloon511_ea_draft_zh.tex:262:所以该估计保持总活度，并且对加权空间分布无偏。这里的 $M$ 表示用于近似加权产生位置分布的等活度点源采样点数；它是采样规模，不是物理放射性产生行的数量。参考延迟源在源定义层面保持总固定活度，并在与瞬发流相同的探测器/低温系统几何中重放。名义延迟计算输运 $10^6$ 个延迟衰变；相应 Cosima live time 是生成衰变序列的输运记录，不作为物理气球曝光时间使用。
+core_md/balloon511_ea_latex_drafts/balloon511_ea_draft_zh.tex:277:产生位置衰变输运 & 延迟衰变粒子从采样产生位置发射 & 从加权产生表得到等活度采样点源；参考输运对每个源采样输运 $10^6$ 个延迟衰变。 \\
+core_md/balloon511_ea_latex_drafts/balloon511_ea_draft_zh.tex:282:该产生位置表示并非对每条产生行都建立一个采样点源，而是一种统计采样近似。源清单检查用于核对活度守恒和源序列化；选后率行为则在探测器输运和事例选择之后另行检验。
+core_md/balloon511_ea_latex_drafts/balloon511_ea_draft_zh.tex:363:聚焦信号行是 事例选择 事例目录中的单位重放率，用于说明 veto 保留行为；表~\ref{tab:primary_sensitivity} 中的点源信号率另按 Laue 有效面积、参考通量和大气透过率缩放。
+core_md/balloon511_ea_latex_drafts/balloon511_ea_draft_zh.tex:388:D 面板给出参考点源情形的任务时间率折叠，并显示解析
+core_md/balloon511_ea_latex_drafts/balloon511_ea_draft_zh.tex:507:\caption{$\wii$ 线窗点源情形的累积计数显著度及相应流量阈值，来自第~\ref{sec:framework}~节的任务时间折叠。(a) 若干参考流量 $F_0$ 下累积显著度 $Z$ 随任务时间的变化；粗线为参考 $F_0=10^{-4}\phcms$ 情形，20 d 达到 $Z_{20\mathrm{d}}=7.80$。(b) 20 d 累积显著度随 $F_0$ 的变化；$Z=3$ 交点定义 $3\sigma$ 流量阈值 $\fthree(20\,\mathrm{d})\approx3.85\times10^{-5}\phcms$。虚线标出 $Z=3$。}
+core_md/balloon511_ea_latex_drafts/balloon511_ea_draft_zh.tex:522:第 15 天 $\fzero$ 下选后信号 & $1.19\times10^{-3}\cps$ & 聚焦点源 & $\fzero=10^{-4}\phcms$ \\
+core_md/balloon511_ea_latex_drafts/balloon511_ea_draft_zh.tex:603:主要结果是，参考产生位置延迟源计算对所建模的聚焦式 TES 线谱仪，在未分辨线情形下给出 $3.85\times10^{-5}\phcms$ 的 20 d 诊断 $3\sigma$ 点源阈值。该阈值没有把聚焦光斑空间分析作为主要结果使用，而是来自光学集中、亚 keV 能窗以及探测器耦合 veto/拓扑选择三者的组合。
+core_md/balloon511_ea_latex_drafts/balloon511_ea_draft_zh.tex:627:本文给出了气球载指向式 511 keV TES Laue 透镜望远镜的探测器耦合本底和灵敏度研究。参考计算把 Ge(111) Laue 光学响应与 TES 焦平面质量模型、瞬发大气输运、延迟活化、主动屏蔽 veto、拓扑/视场选择、任务时间率折叠和计数显著度评估结合起来。在主要 $510.58$--$511.42\keV$ 未分辨线窗中，第 15 天选后率为 $B\simeq3.92\times10^{-2}\cps$，对 $10^{-4}\phcms$ 参考点源有 $S\simeq1.19\times10^{-3}\cps$；任务时间折叠后得到 $Z_{20\mathrm{d}}\simeq7.80$ 和 $\fthree(20\mathrm{d})\simeq3.85\times10^{-5}\phcms$。该结果为继续评估聚焦式 TES 谱学作为 511 keV 紧凑源和未分辨中央增强搜索的互补技术提供了探测器耦合选后率依据，同时指出瞬发大气本底抑制、延迟活化系统误差验证和重建验证是下一阶段的主要验证任务。
+core_md/balloon511_ea_latex_drafts/balloon511_ea_draft_zh.tex:661:\begin{thebibliography}{99}
+core_md/balloon511_ea_latex_drafts/balloon511_ea_draft_zh.tex:663:\bibitem{Prantzos2011}
+core_md/balloon511_ea_latex_drafts/balloon511_ea_draft_zh.tex:666:\bibitem{Jean2006}
+core_md/balloon511_ea_latex_drafts/balloon511_ea_draft_zh.tex:669:\bibitem{Siegert2016AA}
+core_md/balloon511_ea_latex_drafts/balloon511_ea_draft_zh.tex:672:\bibitem{Siegert2019Kinematics}
+core_md/balloon511_ea_latex_drafts/balloon511_ea_draft_zh.tex:675:\bibitem{Yoneda2025}
+core_md/balloon511_ea_latex_drafts/balloon511_ea_draft_zh.tex:678:\bibitem{Kierans2020}
+core_md/balloon511_ea_latex_drafts/balloon511_ea_draft_zh.tex:681:\bibitem{Siegert2020COSI}
+core_md/balloon511_ea_latex_drafts/balloon511_ea_draft_zh.tex:684:\bibitem{Knodlseder2005AllSky}
+core_md/balloon511_ea_latex_drafts/balloon511_ea_draft_zh.tex:687:\bibitem{DeCesare2011}
+core_md/balloon511_ea_latex_drafts/balloon511_ea_draft_zh.tex:690:\bibitem{Shirazi2023}
+core_md/balloon511_ea_latex_drafts/balloon511_ea_draft_zh.tex:693:\bibitem{Barriere2009Laue}
+core_md/balloon511_ea_latex_drafts/balloon511_ea_draft_zh.tex:696:\bibitem{Barriere2011LauePrototype}
+core_md/balloon511_ea_latex_drafts/balloon511_ea_draft_zh.tex:699:\bibitem{Weidenspointner2006MAX}
+core_md/balloon511_ea_latex_drafts/balloon511_ea_draft_zh.tex:702:\bibitem{SanchezDelRio2011XOP}
+core_md/balloon511_ea_latex_drafts/balloon511_ea_draft_zh.tex:703:M. Sanchez del Rio, R.J. Dejus, XOP v2.4: recent developments of the x-ray optics software toolkit, Proc. SPIE 8141 (2011) 814115, doi:10.1117/12.893911.
+core_md/balloon511_ea_latex_drafts/balloon511_ea_draft_zh.tex:705:\bibitem{Guan2023BraggReflection}
+core_md/balloon511_ea_latex_drafts/balloon511_ea_draft_zh.tex:706:F. Guan, M. Asai, D.A. Bartkoski, M. Kleckner, Z. Harel, M. Salehpour, Adding the X-ray Bragg reflection physical process in crystal to the Geant4 Monte Carlo simulation toolkit, part I: reflection from a crystal slab, Precision Radiation Oncology 7(1) (2023) 59-66.
+core_md/balloon511_ea_latex_drafts/balloon511_ea_draft_zh.tex:708:\bibitem{Reiazi2025G4BraggReflection}
+core_md/balloon511_ea_latex_drafts/balloon511_ea_draft_zh.tex:709:R. Reiazi, D. Lee, D. Bartkoski, M. Kleckner, M. Salehpour, G4BraggReflection for accurate modeling of Bragg reflection in perfect and mosaic crystals, J. Phys. D: Appl. Phys. 58 (2025) 295102, doi:10.1088/1361-6463/aded1d.
+core_md/balloon511_ea_latex_drafts/balloon511_ea_draft_zh.tex:711:\bibitem{Gottardi2021TESReview}
+core_md/balloon511_ea_latex_drafts/balloon511_ea_draft_zh.tex:714:\bibitem{Xie2026AlMn}
+core_md/balloon511_ea_latex_drafts/balloon511_ea_draft_zh.tex:717:\bibitem{Vavagiakis2017AlMnMagnetic}
+core_md/balloon511_ea_latex_drafts/balloon511_ea_draft_zh.tex:720:\bibitem{NISTXCOM}
+core_md/balloon511_ea_latex_drafts/balloon511_ea_draft_zh.tex:723:\bibitem{Zhang2022TESGamma}
+core_md/balloon511_ea_latex_drafts/balloon511_ea_draft_zh.tex:726:\bibitem{Gehrels1985}
+core_md/balloon511_ea_latex_drafts/balloon511_ea_draft_zh.tex:729:\bibitem{Sato2015EXPACS}
+core_md/balloon511_ea_latex_drafts/balloon511_ea_draft_zh.tex:732:\bibitem{Sato2016PARMA4}
+core_md/balloon511_ea_latex_drafts/balloon511_ea_draft_zh.tex:735:\bibitem{Kondev2021NUBASE}
+core_md/balloon511_ea_latex_drafts/balloon511_ea_draft_zh.tex:738:\bibitem{Sturner2003}
+core_md/balloon511_ea_latex_drafts/balloon511_ea_draft_zh.tex:739:S.J. Sturner, C.R. Shrader, G. Weidenspointner, B.J. Teegarden, D. Attie, B. Cordier, R. Diehl, C. Ferguson, P. Jean, A. von Kienlin, P. Paul, F. Sanchez, S. Schanne, P. Sizun, G. Skinner, C.B. Wunderer, Monte Carlo simulations and generation of the SPI response, Astron. Astrophys. 411 (2003) L81--L84, doi:10.1051/0004-6361:20031171.
+core_md/balloon511_ea_latex_drafts/balloon511_ea_draft_zh.tex:741:\bibitem{Agostinelli2003}
+core_md/balloon511_ea_latex_drafts/balloon511_ea_draft_zh.tex:744:\bibitem{Allison2016}
+core_md/balloon511_ea_latex_drafts/balloon511_ea_draft_zh.tex:747:\bibitem{Zoglauer2006}
+core_md/balloon511_ea_latex_drafts/balloon511_ea_draft_zh.tex:750:\bibitem{Caputo2017}
+core_md/balloon511_ea_latex_drafts/balloon511_ea_draft_zh.tex:753:\bibitem{Karwin2023}
+core_md/balloon511_ea_latex_drafts/balloon511_ea_draft_zh.tex:756:\bibitem{Gallego2025Balloon}
+core_md/balloon511_ea_latex_drafts/balloon511_ea_draft_zh.tex:759:\bibitem{Gallego2025}
+core_md/balloon511_ea_latex_drafts/balloon511_ea_draft_zh.tex:762:\bibitem{Beechert2022}
+core_md/balloon511_ea_latex_drafts/balloon511_ea_draft_zh.tex:765:\bibitem{Sleator2019}
+core_md/balloon511_ea_latex_drafts/balloon511_ea_draft_zh.tex:768:\bibitem{Ciabattoni2025ACS}
+core_md/balloon511_ea_latex_drafts/balloon511_ea_draft_zh.tex:771:\bibitem{Cowan2011}
+core_md/balloon511_ea_latex_drafts/balloon511_ea_draft_zh.tex:774:\end{thebibliography}
+core_md/balloon511_ea_latex_drafts/balloon511_ea_draft_en.tex:151:To generate the focused signal, the diffraction probability for 511 keV photons in each tile is not imposed as an external scalar efficiency. Instead, it is implemented in Geant4 as an application-level discrete process. This process assigns photons a finite effective diffraction mean free path and lets that process compete with standard Geant4 electromagnetic interactions, including photoelectric absorption and Compton scattering, in the same transport framework. Photons that are not selected for diffraction continue under the standard electromagnetic physics and may be absorbed, scattered, or transmitted. The diffraction probability is preferably interpolated from external XOP/CRYSTAL rocking-curve maps as a function of angular offset \cite{SanchezDelRio2011XOP}; when no external curve is available, the model falls back to an internal Darwin--Hamilton closed-form approximation. Mosaicity is represented by applying a Gaussian angular perturbation to the ideal Bragg-plane normal, with width set by the 30 arcsec mosaic FWHM. After diffraction, the outgoing direction is specularly reflected about the perturbed plane normal and the photon energy is unchanged. This separation between a transport-interface process and an independent probability/direction model follows the structure of existing Geant4 Bragg-reflection extensions \cite{Guan2023BraggReflection,Reiazi2025G4BraggReflection}; here the same process/model separation is applied to 511 keV astronomical Laue-lens signal generation rather than by porting that source code.
+core_md/balloon511_ea_latex_drafts/balloon511_ea_draft_en.tex:760:calculations, convergence checks, figure source tracing, and bibliography
+core_md/balloon511_ea_latex_drafts/balloon511_ea_draft_en.tex:777:\begin{thebibliography}{99}
+core_md/balloon511_ea_latex_drafts/balloon511_ea_draft_en.tex:779:\bibitem[Prantzos et~al.(2011)]{Prantzos2011}
+core_md/balloon511_ea_latex_drafts/balloon511_ea_draft_en.tex:782:\bibitem[Jean et~al.(2006)]{Jean2006}
+core_md/balloon511_ea_latex_drafts/balloon511_ea_draft_en.tex:785:\bibitem[Siegert et~al.(2016)]{Siegert2016AA}
+core_md/balloon511_ea_latex_drafts/balloon511_ea_draft_en.tex:788:\bibitem[Siegert et~al.(2019)]{Siegert2019Kinematics}
+core_md/balloon511_ea_latex_drafts/balloon511_ea_draft_en.tex:791:\bibitem[Yoneda et~al.(2025)]{Yoneda2025}
+core_md/balloon511_ea_latex_drafts/balloon511_ea_draft_en.tex:794:\bibitem[Kierans et~al.(2020)]{Kierans2020}
+core_md/balloon511_ea_latex_drafts/balloon511_ea_draft_en.tex:797:\bibitem[Siegert et~al.(2020)]{Siegert2020COSI}
+core_md/balloon511_ea_latex_drafts/balloon511_ea_draft_en.tex:800:\bibitem[Knoedlseder et~al.(2005)]{Knodlseder2005AllSky}
+core_md/balloon511_ea_latex_drafts/balloon511_ea_draft_en.tex:803:\bibitem[De Cesare(2011)]{DeCesare2011}
+core_md/balloon511_ea_latex_drafts/balloon511_ea_draft_en.tex:806:\bibitem[Shirazi et~al.(2023)]{Shirazi2023}
+core_md/balloon511_ea_latex_drafts/balloon511_ea_draft_en.tex:809:\bibitem[Barriere et~al.(2009)]{Barriere2009Laue}
+core_md/balloon511_ea_latex_drafts/balloon511_ea_draft_en.tex:812:\bibitem[Barriere et~al.(2011)]{Barriere2011LauePrototype}
+core_md/balloon511_ea_latex_drafts/balloon511_ea_draft_en.tex:815:\bibitem[Weidenspointner et~al.(2006)]{Weidenspointner2006MAX}
+core_md/balloon511_ea_latex_drafts/balloon511_ea_draft_en.tex:818:\bibitem[Sanchez del Rio \& Dejus(2011)]{SanchezDelRio2011XOP}
+core_md/balloon511_ea_latex_drafts/balloon511_ea_draft_en.tex:819:M. Sanchez del Rio, R.J. Dejus, XOP v2.4: recent developments of the x-ray optics software toolkit, Proc. SPIE 8141 (2011) 814115, doi:10.1117/12.893911.
+core_md/balloon511_ea_latex_drafts/balloon511_ea_draft_en.tex:821:\bibitem[Guan et~al.(2023)]{Guan2023BraggReflection}
+core_md/balloon511_ea_latex_drafts/balloon511_ea_draft_en.tex:822:F. Guan, M. Asai, D.A. Bartkoski, M. Kleckner, Z. Harel, M. Salehpour, Adding the X-ray Bragg reflection physical process in crystal to the Geant4 Monte Carlo simulation toolkit, part I: reflection from a crystal slab, Precision Radiation Oncology 7(1) (2023) 59--66.
+core_md/balloon511_ea_latex_drafts/balloon511_ea_draft_en.tex:824:\bibitem[Reiazi et~al.(2025)]{Reiazi2025G4BraggReflection}
+core_md/balloon511_ea_latex_drafts/balloon511_ea_draft_en.tex:825:R. Reiazi, D. Lee, D. Bartkoski, M. Kleckner, M. Salehpour, G4BraggReflection for accurate modeling of Bragg reflection in perfect and mosaic crystals, J. Phys. D: Appl. Phys. 58 (2025) 295102, doi:10.1088/1361-6463/aded1d.
+core_md/balloon511_ea_latex_drafts/balloon511_ea_draft_en.tex:827:\bibitem[Gottardi \& Nagayoshi(2021)]{Gottardi2021TESReview}
+core_md/balloon511_ea_latex_drafts/balloon511_ea_draft_en.tex:830:\bibitem[Xie et~al.(2026)]{Xie2026AlMn}
+core_md/balloon511_ea_latex_drafts/balloon511_ea_draft_en.tex:833:\bibitem[Vavagiakis et~al.(2017)]{Vavagiakis2017AlMnMagnetic}
+core_md/balloon511_ea_latex_drafts/balloon511_ea_draft_en.tex:836:\bibitem[Hubbell \& Seltzer]{NISTXCOM}
+core_md/balloon511_ea_latex_drafts/balloon511_ea_draft_en.tex:839:\bibitem[Zhang et~al.(2022)]{Zhang2022TESGamma}
+core_md/balloon511_ea_latex_drafts/balloon511_ea_draft_en.tex:842:\bibitem[Gehrels(1985)]{Gehrels1985}
+core_md/balloon511_ea_latex_drafts/balloon511_ea_draft_en.tex:845:\bibitem[Sato(2015)]{Sato2015EXPACS}
+core_md/balloon511_ea_latex_drafts/balloon511_ea_draft_en.tex:848:\bibitem[Sato(2016)]{Sato2016PARMA4}
+core_md/balloon511_ea_latex_drafts/balloon511_ea_draft_en.tex:851:\bibitem[Kondev et~al.(2021)]{Kondev2021NUBASE}
+core_md/balloon511_ea_latex_drafts/balloon511_ea_draft_en.tex:854:\bibitem[Sturner et~al.(2003)]{Sturner2003}
+core_md/balloon511_ea_latex_drafts/balloon511_ea_draft_en.tex:855:S.J. Sturner, C.R. Shrader, G. Weidenspointner, B.J. Teegarden, D. Attie, B. Cordier, R. Diehl, C. Ferguson, P. Jean, A. von Kienlin, P. Paul, F. Sanchez, S. Schanne, P. Sizun, G. Skinner, C.B. Wunderer, Monte Carlo simulations and generation of the SPI response, Astron. Astrophys. 411 (2003) L81--L84, doi:10.1051/0004-6361:20031171.
+core_md/balloon511_ea_latex_drafts/balloon511_ea_draft_en.tex:857:\bibitem[Agostinelli et~al.(2003)]{Agostinelli2003}
+core_md/balloon511_ea_latex_drafts/balloon511_ea_draft_en.tex:860:\bibitem[Allison et~al.(2016)]{Allison2016}
+core_md/balloon511_ea_latex_drafts/balloon511_ea_draft_en.tex:863:\bibitem[Zoglauer et~al.(2006)]{Zoglauer2006}
+core_md/balloon511_ea_latex_drafts/balloon511_ea_draft_en.tex:866:\bibitem[Caputo et~al.(2017)]{Caputo2017}
+core_md/balloon511_ea_latex_drafts/balloon511_ea_draft_en.tex:869:\bibitem[Karwin et~al.(2023)]{Karwin2023}
+core_md/balloon511_ea_latex_drafts/balloon511_ea_draft_en.tex:872:\bibitem[Gallego et~al.(2025a)]{Gallego2025Balloon}
+core_md/balloon511_ea_latex_drafts/balloon511_ea_draft_en.tex:875:\bibitem[Gallego et~al.(2025b)]{Gallego2025}
+core_md/balloon511_ea_latex_drafts/balloon511_ea_draft_en.tex:878:\bibitem[Beechert et~al.(2022)]{Beechert2022}
+core_md/balloon511_ea_latex_drafts/balloon511_ea_draft_en.tex:881:\bibitem[Sleator et~al.(2019)]{Sleator2019}
+core_md/balloon511_ea_latex_drafts/balloon511_ea_draft_en.tex:884:\bibitem[Ciabattoni et~al.(2025)]{Ciabattoni2025ACS}
+core_md/balloon511_ea_latex_drafts/balloon511_ea_draft_en.tex:887:\bibitem[Cowan et~al.(2011)]{Cowan2011}
+core_md/balloon511_ea_latex_drafts/balloon511_ea_draft_en.tex:890:\end{thebibliography}

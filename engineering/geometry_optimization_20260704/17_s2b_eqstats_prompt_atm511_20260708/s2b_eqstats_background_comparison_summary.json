@@ -1,0 +1,1856 @@
+{
+  "status": "PASS_PROMPT_ONLY_ATM_PENDING",
+  "inputs": {
+    "s1_prompt_dir": "runs/geometry_optimization_20260704/step02_instant_geo_opt_s1_bpe_w5_fullstat_v1",
+    "s2b_prompt_dir": "runs/geometry_optimization_20260704/s2b_cryo_shell_45deg_eqstats_prompt_eplus_n_20260708",
+    "s1_atm_summary": "engineering/geometry_optimization_20260704/12_atm511_sidecar_replay_20260708/p2_geo_opt_s1_bpe_w5_atm511_sidecar_summary.json",
+    "s2b_atm_summary": "engineering/geometry_optimization_20260704/17_s2b_eqstats_prompt_atm511_20260708/s2b_atm511_sidecar_3m_summary.json"
+  },
+  "normalization": {
+    "active_veto_threshold_keV": 50.0,
+    "active_veto_rule": "legacy active tokens + GeoOpt_S1_PlasticFullWrap* + GeoOpt_S2B_CryoShell_Plastic*"
+  },
+  "prompt_cases": {
+    "eplus": {
+      "s1": {
+        "prompt_dir": "runs/geometry_optimization_20260704/step02_instant_geo_opt_s1_bpe_w5_fullstat_v1",
+        "sim_files": [
+          "runs/geometry_optimization_20260704/step02_instant_geo_opt_s1_bpe_w5_fullstat_v1/Background_eplus_fullsphere20_rep01_part01.inc1.id1.sim.gz",
+          "runs/geometry_optimization_20260704/step02_instant_geo_opt_s1_bpe_w5_fullstat_v1/Background_eplus_fullsphere20_rep02_part01.inc1.id1.sim.gz",
+          "runs/geometry_optimization_20260704/step02_instant_geo_opt_s1_bpe_w5_fullstat_v1/Background_eplus_fullsphere20_rep03_part01.inc1.id1.sim.gz",
+          "runs/geometry_optimization_20260704/step02_instant_geo_opt_s1_bpe_w5_fullstat_v1/Background_eplus_fullsphere20_rep04_part01.inc1.id1.sim.gz",
+          "runs/geometry_optimization_20260704/step02_instant_geo_opt_s1_bpe_w5_fullstat_v1/Background_eplus_fullsphere20_rep05_part01.inc1.id1.sim.gz",
+          "runs/geometry_optimization_20260704/step02_instant_geo_opt_s1_bpe_w5_fullstat_v1/Background_eplus_fullsphere20_rep06_part01.inc1.id1.sim.gz",
+          "runs/geometry_optimization_20260704/step02_instant_geo_opt_s1_bpe_w5_fullstat_v1/Background_eplus_fullsphere20_rep07_part01.inc1.id1.sim.gz",
+          "runs/geometry_optimization_20260704/step02_instant_geo_opt_s1_bpe_w5_fullstat_v1/Background_eplus_fullsphere20_rep08_part01.inc1.id1.sim.gz"
+        ],
+        "rate_per_event_s-1": 0.0006790382916483043,
+        "summary": {
+          "generated_events_seen": 1949816,
+          "tes_events_kept": 401,
+          "window_keV": [
+            510.58,
+            511.42
+          ],
+          "raw_events": 62,
+          "active_veto_pass_events": 40,
+          "side_compton_fov_pass_events": 35,
+          "raw_rate_s-1": 0.04210037408219486,
+          "active_veto_pass_rate_s-1": 0.027161531665932173,
+          "side_compton_fov_pass_rate_s-1": 0.023766340207690653,
+          "active_veto_survival_fraction": 0.6451612903225808,
+          "side_compton_fov_survival_fraction_vs_active": 0.8750000000000001,
+          "side_compton_class_counts": {
+            "keep": 12,
+            "single": 23,
+            "veto": 5
+          },
+          "selected_examples": [
+            {
+              "source_file": "runs/geometry_optimization_20260704/step02_instant_geo_opt_s1_bpe_w5_fullstat_v1/Background_eplus_fullsphere20_rep01_part01.inc1.id1.sim.gz",
+              "local_id": 12403,
+              "tes_total_keV": 510.99896,
+              "active_veto_keV": 0.0,
+              "side_compton_class": "keep",
+              "rate_s-1": 0.0006790382916483043
+            },
+            {
+              "source_file": "runs/geometry_optimization_20260704/step02_instant_geo_opt_s1_bpe_w5_fullstat_v1/Background_eplus_fullsphere20_rep01_part01.inc1.id1.sim.gz",
+              "local_id": 34023,
+              "tes_total_keV": 510.9989,
+              "active_veto_keV": 10.45103344,
+              "side_compton_class": "single",
+              "rate_s-1": 0.0006790382916483043
+            },
+            {
+              "source_file": "runs/geometry_optimization_20260704/step02_instant_geo_opt_s1_bpe_w5_fullstat_v1/Background_eplus_fullsphere20_rep01_part01.inc1.id1.sim.gz",
+              "local_id": 211256,
+              "tes_total_keV": 510.998959,
+              "active_veto_keV": 0.0,
+              "side_compton_class": "single",
+              "rate_s-1": 0.0006790382916483043
+            },
+            {
+              "source_file": "runs/geometry_optimization_20260704/step02_instant_geo_opt_s1_bpe_w5_fullstat_v1/Background_eplus_fullsphere20_rep02_part01.inc1.id1.sim.gz",
+              "local_id": 36753,
+              "tes_total_keV": 510.99888,
+              "active_veto_keV": 0.0,
+              "side_compton_class": "single",
+              "rate_s-1": 0.0006790382916483043
+            },
+            {
+              "source_file": "runs/geometry_optimization_20260704/step02_instant_geo_opt_s1_bpe_w5_fullstat_v1/Background_eplus_fullsphere20_rep02_part01.inc1.id1.sim.gz",
+              "local_id": 90474,
+              "tes_total_keV": 510.9989,
+              "active_veto_keV": 0.0,
+              "side_compton_class": "single",
+              "rate_s-1": 0.0006790382916483043
+            },
+            {
+              "source_file": "runs/geometry_optimization_20260704/step02_instant_geo_opt_s1_bpe_w5_fullstat_v1/Background_eplus_fullsphere20_rep02_part01.inc1.id1.sim.gz",
+              "local_id": 192957,
+              "tes_total_keV": 510.998868,
+              "active_veto_keV": 0.0,
+              "side_compton_class": "keep",
+              "rate_s-1": 0.0006790382916483043
+            },
+            {
+              "source_file": "runs/geometry_optimization_20260704/step02_instant_geo_opt_s1_bpe_w5_fullstat_v1/Background_eplus_fullsphere20_rep03_part01.inc1.id1.sim.gz",
+              "local_id": 136894,
+              "tes_total_keV": 510.99892000000006,
+              "active_veto_keV": 0.0,
+              "side_compton_class": "keep",
+              "rate_s-1": 0.0006790382916483043
+            },
+            {
+              "source_file": "runs/geometry_optimization_20260704/step02_instant_geo_opt_s1_bpe_w5_fullstat_v1/Background_eplus_fullsphere20_rep03_part01.inc1.id1.sim.gz",
+              "local_id": 183364,
+              "tes_total_keV": 510.99894,
+              "active_veto_keV": 0.0,
+              "side_compton_class": "single",
+              "rate_s-1": 0.0006790382916483043
+            },
+            {
+              "source_file": "runs/geometry_optimization_20260704/step02_instant_geo_opt_s1_bpe_w5_fullstat_v1/Background_eplus_fullsphere20_rep03_part01.inc1.id1.sim.gz",
+              "local_id": 231882,
+              "tes_total_keV": 510.99898200000007,
+              "active_veto_keV": 0.0,
+              "side_compton_class": "single",
+              "rate_s-1": 0.0006790382916483043
+            },
+            {
+              "source_file": "runs/geometry_optimization_20260704/step02_instant_geo_opt_s1_bpe_w5_fullstat_v1/Background_eplus_fullsphere20_rep04_part01.inc1.id1.sim.gz",
+              "local_id": 64214,
+              "tes_total_keV": 510.999,
+              "active_veto_keV": 0.0,
+              "side_compton_class": "single",
+              "rate_s-1": 0.0006790382916483043
+            },
+            {
+              "source_file": "runs/geometry_optimization_20260704/step02_instant_geo_opt_s1_bpe_w5_fullstat_v1/Background_eplus_fullsphere20_rep04_part01.inc1.id1.sim.gz",
+              "local_id": 235494,
+              "tes_total_keV": 510.99889999999994,
+              "active_veto_keV": 0.0,
+              "side_compton_class": "single",
+              "rate_s-1": 0.0006790382916483043
+            },
+            {
+              "source_file": "runs/geometry_optimization_20260704/step02_instant_geo_opt_s1_bpe_w5_fullstat_v1/Background_eplus_fullsphere20_rep04_part01.inc1.id1.sim.gz",
+              "local_id": 238305,
+              "tes_total_keV": 510.999,
+              "active_veto_keV": 0.0,
+              "side_compton_class": "single",
+              "rate_s-1": 0.0006790382916483043
+            },
+            {
+              "source_file": "runs/geometry_optimization_20260704/step02_instant_geo_opt_s1_bpe_w5_fullstat_v1/Background_eplus_fullsphere20_rep05_part01.inc1.id1.sim.gz",
+              "local_id": 31997,
+              "tes_total_keV": 510.99893299999997,
+              "active_veto_keV": 0.0,
+              "side_compton_class": "single",
+              "rate_s-1": 0.0006790382916483043
+            },
+            {
+              "source_file": "runs/geometry_optimization_20260704/step02_instant_geo_opt_s1_bpe_w5_fullstat_v1/Background_eplus_fullsphere20_rep05_part01.inc1.id1.sim.gz",
+              "local_id": 55140,
+              "tes_total_keV": 510.9989,
+              "active_veto_keV": 0.0,
+              "side_compton_class": "single",
+              "rate_s-1": 0.0006790382916483043
+            },
+            {
+              "source_file": "runs/geometry_optimization_20260704/step02_instant_geo_opt_s1_bpe_w5_fullstat_v1/Background_eplus_fullsphere20_rep05_part01.inc1.id1.sim.gz",
+              "local_id": 67424,
+              "tes_total_keV": 510.9989,
+              "active_veto_keV": 4.26576295,
+              "side_compton_class": "single",
+              "rate_s-1": 0.0006790382916483043
+            },
+            {
+              "source_file": "runs/geometry_optimization_20260704/step02_instant_geo_opt_s1_bpe_w5_fullstat_v1/Background_eplus_fullsphere20_rep05_part01.inc1.id1.sim.gz",
+              "local_id": 113054,
+              "tes_total_keV": 510.9989532108,
+              "active_veto_keV": 0.0,
+              "side_compton_class": "keep",
+              "rate_s-1": 0.0006790382916483043
+            },
+            {
+              "source_file": "runs/geometry_optimization_20260704/step02_instant_geo_opt_s1_bpe_w5_fullstat_v1/Background_eplus_fullsphere20_rep05_part01.inc1.id1.sim.gz",
+              "local_id": 143314,
+              "tes_total_keV": 510.99892,
+              "active_veto_keV": 0.0,
+              "side_compton_class": "single",
+              "rate_s-1": 0.0006790382916483043
+            },
+            {
+              "source_file": "runs/geometry_optimization_20260704/step02_instant_geo_opt_s1_bpe_w5_fullstat_v1/Background_eplus_fullsphere20_rep06_part01.inc1.id1.sim.gz",
+              "local_id": 19036,
+              "tes_total_keV": 510.99888400000003,
+              "active_veto_keV": 3.5523303000000004,
+              "side_compton_class": "keep",
+              "rate_s-1": 0.0006790382916483043
+            },
+            {
+              "source_file": "runs/geometry_optimization_20260704/step02_instant_geo_opt_s1_bpe_w5_fullstat_v1/Background_eplus_fullsphere20_rep06_part01.inc1.id1.sim.gz",
+              "local_id": 36215,
+              "tes_total_keV": 510.99895300000003,
+              "active_veto_keV": 33.88231068,
+              "side_compton_class": "keep",
+              "rate_s-1": 0.0006790382916483043
+            },
+            {
+              "source_file": "runs/geometry_optimization_20260704/step02_instant_geo_opt_s1_bpe_w5_fullstat_v1/Background_eplus_fullsphere20_rep06_part01.inc1.id1.sim.gz",
+              "local_id": 70159,
+              "tes_total_keV": 510.99886000000004,
+              "active_veto_keV": 8.178310250000001,
+              "side_compton_class": "single",
+              "rate_s-1": 0.0006790382916483043
+            }
+          ]
+        },
+        "files": [
+          {
+            "path": "runs/geometry_optimization_20260704/step02_instant_geo_opt_s1_bpe_w5_fullstat_v1/Background_eplus_fullsphere20_rep01_part01.inc1.id1.sim.gz",
+            "generated_events_seen": 243727,
+            "tes_events_kept": 53,
+            "raw_events": 7,
+            "active_veto_pass_events": 4,
+            "side_compton_fov_pass_events": 3,
+            "raw_rate_s-1": 0.00475326804153813,
+            "active_veto_pass_rate_s-1": 0.0027161531665932173,
+            "side_compton_fov_pass_rate_s-1": 0.002037114874944913,
+            "side_compton_class_counts": {
+              "keep": 1,
+              "single": 2,
+              "veto": 1
+            },
+            "selected_examples": [
+              {
+                "source_file": "runs/geometry_optimization_20260704/step02_instant_geo_opt_s1_bpe_w5_fullstat_v1/Background_eplus_fullsphere20_rep01_part01.inc1.id1.sim.gz",
+                "local_id": 12403,
+                "tes_total_keV": 510.99896,
+                "active_veto_keV": 0.0,
+                "side_compton_class": "keep",
+                "rate_s-1": 0.0006790382916483043
+              },
+              {
+                "source_file": "runs/geometry_optimization_20260704/step02_instant_geo_opt_s1_bpe_w5_fullstat_v1/Background_eplus_fullsphere20_rep01_part01.inc1.id1.sim.gz",
+                "local_id": 34023,
+                "tes_total_keV": 510.9989,
+                "active_veto_keV": 10.45103344,
+                "side_compton_class": "single",
+                "rate_s-1": 0.0006790382916483043
+              },
+              {
+                "source_file": "runs/geometry_optimization_20260704/step02_instant_geo_opt_s1_bpe_w5_fullstat_v1/Background_eplus_fullsphere20_rep01_part01.inc1.id1.sim.gz",
+                "local_id": 211256,
+                "tes_total_keV": 510.998959,
+                "active_veto_keV": 0.0,
+                "side_compton_class": "single",
+                "rate_s-1": 0.0006790382916483043
+              }
+            ]
+          },
+          {
+            "path": "runs/geometry_optimization_20260704/step02_instant_geo_opt_s1_bpe_w5_fullstat_v1/Background_eplus_fullsphere20_rep02_part01.inc1.id1.sim.gz",
+            "generated_events_seen": 243727,
+            "tes_events_kept": 49,
+            "raw_events": 6,
+            "active_veto_pass_events": 4,
+            "side_compton_fov_pass_events": 3,
+            "raw_rate_s-1": 0.004074229749889826,
+            "active_veto_pass_rate_s-1": 0.0027161531665932173,
+            "side_compton_fov_pass_rate_s-1": 0.002037114874944913,
+            "side_compton_class_counts": {
+              "keep": 1,
+              "single": 2,
+              "veto": 1
+            },
+            "selected_examples": [
+              {
+                "source_file": "runs/geometry_optimization_20260704/step02_instant_geo_opt_s1_bpe_w5_fullstat_v1/Background_eplus_fullsphere20_rep02_part01.inc1.id1.sim.gz",
+                "local_id": 36753,
+                "tes_total_keV": 510.99888,
+                "active_veto_keV": 0.0,
+                "side_compton_class": "single",
+                "rate_s-1": 0.0006790382916483043
+              },
+              {
+                "source_file": "runs/geometry_optimization_20260704/step02_instant_geo_opt_s1_bpe_w5_fullstat_v1/Background_eplus_fullsphere20_rep02_part01.inc1.id1.sim.gz",
+                "local_id": 90474,
+                "tes_total_keV": 510.9989,
+                "active_veto_keV": 0.0,
+                "side_compton_class": "single",
+                "rate_s-1": 0.0006790382916483043
+              },
+              {
+                "source_file": "runs/geometry_optimization_20260704/step02_instant_geo_opt_s1_bpe_w5_fullstat_v1/Background_eplus_fullsphere20_rep02_part01.inc1.id1.sim.gz",
+                "local_id": 192957,
+                "tes_total_keV": 510.998868,
+                "active_veto_keV": 0.0,
+                "side_compton_class": "keep",
+                "rate_s-1": 0.0006790382916483043
+              }
+            ]
+          },
+          {
+            "path": "runs/geometry_optimization_20260704/step02_instant_geo_opt_s1_bpe_w5_fullstat_v1/Background_eplus_fullsphere20_rep03_part01.inc1.id1.sim.gz",
+            "generated_events_seen": 243727,
+            "tes_events_kept": 52,
+            "raw_events": 7,
+            "active_veto_pass_events": 3,
+            "side_compton_fov_pass_events": 3,
+            "raw_rate_s-1": 0.00475326804153813,
+            "active_veto_pass_rate_s-1": 0.002037114874944913,
+            "side_compton_fov_pass_rate_s-1": 0.002037114874944913,
+            "side_compton_class_counts": {
+              "keep": 1,
+              "single": 2
+            },
+            "selected_examples": [
+              {
+                "source_file": "runs/geometry_optimization_20260704/step02_instant_geo_opt_s1_bpe_w5_fullstat_v1/Background_eplus_fullsphere20_rep03_part01.inc1.id1.sim.gz",
+                "local_id": 136894,
+                "tes_total_keV": 510.99892000000006,
+                "active_veto_keV": 0.0,
+                "side_compton_class": "keep",
+                "rate_s-1": 0.0006790382916483043
+              },
+              {
+                "source_file": "runs/geometry_optimization_20260704/step02_instant_geo_opt_s1_bpe_w5_fullstat_v1/Background_eplus_fullsphere20_rep03_part01.inc1.id1.sim.gz",
+                "local_id": 183364,
+                "tes_total_keV": 510.99894,
+                "active_veto_keV": 0.0,
+                "side_compton_class": "single",
+                "rate_s-1": 0.0006790382916483043
+              },
+              {
+                "source_file": "runs/geometry_optimization_20260704/step02_instant_geo_opt_s1_bpe_w5_fullstat_v1/Background_eplus_fullsphere20_rep03_part01.inc1.id1.sim.gz",
+                "local_id": 231882,
+                "tes_total_keV": 510.99898200000007,
+                "active_veto_keV": 0.0,
+                "side_compton_class": "single",
+                "rate_s-1": 0.0006790382916483043
+              }
+            ]
+          },
+          {
+            "path": "runs/geometry_optimization_20260704/step02_instant_geo_opt_s1_bpe_w5_fullstat_v1/Background_eplus_fullsphere20_rep04_part01.inc1.id1.sim.gz",
+            "generated_events_seen": 243727,
+            "tes_events_kept": 43,
+            "raw_events": 5,
+            "active_veto_pass_events": 3,
+            "side_compton_fov_pass_events": 3,
+            "raw_rate_s-1": 0.0033951914582415216,
+            "active_veto_pass_rate_s-1": 0.002037114874944913,
+            "side_compton_fov_pass_rate_s-1": 0.002037114874944913,
+            "side_compton_class_counts": {
+              "single": 3
+            },
+            "selected_examples": [
+              {
+                "source_file": "runs/geometry_optimization_20260704/step02_instant_geo_opt_s1_bpe_w5_fullstat_v1/Background_eplus_fullsphere20_rep04_part01.inc1.id1.sim.gz",
+                "local_id": 64214,
+                "tes_total_keV": 510.999,
+                "active_veto_keV": 0.0,
+                "side_compton_class": "single",
+                "rate_s-1": 0.0006790382916483043
+              },
+              {
+                "source_file": "runs/geometry_optimization_20260704/step02_instant_geo_opt_s1_bpe_w5_fullstat_v1/Background_eplus_fullsphere20_rep04_part01.inc1.id1.sim.gz",
+                "local_id": 235494,
+                "tes_total_keV": 510.99889999999994,
+                "active_veto_keV": 0.0,
+                "side_compton_class": "single",
+                "rate_s-1": 0.0006790382916483043
+              },
+              {
+                "source_file": "runs/geometry_optimization_20260704/step02_instant_geo_opt_s1_bpe_w5_fullstat_v1/Background_eplus_fullsphere20_rep04_part01.inc1.id1.sim.gz",
+                "local_id": 238305,
+                "tes_total_keV": 510.999,
+                "active_veto_keV": 0.0,
+                "side_compton_class": "single",
+                "rate_s-1": 0.0006790382916483043
+              }
+            ]
+          },
+          {
+            "path": "runs/geometry_optimization_20260704/step02_instant_geo_opt_s1_bpe_w5_fullstat_v1/Background_eplus_fullsphere20_rep05_part01.inc1.id1.sim.gz",
+            "generated_events_seen": 243727,
+            "tes_events_kept": 55,
+            "raw_events": 10,
+            "active_veto_pass_events": 7,
+            "side_compton_fov_pass_events": 5,
+            "raw_rate_s-1": 0.006790382916483043,
+            "active_veto_pass_rate_s-1": 0.00475326804153813,
+            "side_compton_fov_pass_rate_s-1": 0.0033951914582415216,
+            "side_compton_class_counts": {
+              "keep": 1,
+              "single": 4,
+              "veto": 2
+            },
+            "selected_examples": [
+              {
+                "source_file": "runs/geometry_optimization_20260704/step02_instant_geo_opt_s1_bpe_w5_fullstat_v1/Background_eplus_fullsphere20_rep05_part01.inc1.id1.sim.gz",
+                "local_id": 31997,
+                "tes_total_keV": 510.99893299999997,
+                "active_veto_keV": 0.0,
+                "side_compton_class": "single",
+                "rate_s-1": 0.0006790382916483043
+              },
+              {
+                "source_file": "runs/geometry_optimization_20260704/step02_instant_geo_opt_s1_bpe_w5_fullstat_v1/Background_eplus_fullsphere20_rep05_part01.inc1.id1.sim.gz",
+                "local_id": 55140,
+                "tes_total_keV": 510.9989,
+                "active_veto_keV": 0.0,
+                "side_compton_class": "single",
+                "rate_s-1": 0.0006790382916483043
+              },
+              {
+                "source_file": "runs/geometry_optimization_20260704/step02_instant_geo_opt_s1_bpe_w5_fullstat_v1/Background_eplus_fullsphere20_rep05_part01.inc1.id1.sim.gz",
+                "local_id": 67424,
+                "tes_total_keV": 510.9989,
+                "active_veto_keV": 4.26576295,
+                "side_compton_class": "single",
+                "rate_s-1": 0.0006790382916483043
+              },
+              {
+                "source_file": "runs/geometry_optimization_20260704/step02_instant_geo_opt_s1_bpe_w5_fullstat_v1/Background_eplus_fullsphere20_rep05_part01.inc1.id1.sim.gz",
+                "local_id": 113054,
+                "tes_total_keV": 510.9989532108,
+                "active_veto_keV": 0.0,
+                "side_compton_class": "keep",
+                "rate_s-1": 0.0006790382916483043
+              },
+              {
+                "source_file": "runs/geometry_optimization_20260704/step02_instant_geo_opt_s1_bpe_w5_fullstat_v1/Background_eplus_fullsphere20_rep05_part01.inc1.id1.sim.gz",
+                "local_id": 143314,
+                "tes_total_keV": 510.99892,
+                "active_veto_keV": 0.0,
+                "side_compton_class": "single",
+                "rate_s-1": 0.0006790382916483043
+              }
+            ]
+          },
+          {
+            "path": "runs/geometry_optimization_20260704/step02_instant_geo_opt_s1_bpe_w5_fullstat_v1/Background_eplus_fullsphere20_rep06_part01.inc1.id1.sim.gz",
+            "generated_events_seen": 243727,
+            "tes_events_kept": 55,
+            "raw_events": 11,
+            "active_veto_pass_events": 8,
+            "side_compton_fov_pass_events": 8,
+            "raw_rate_s-1": 0.007469421208131348,
+            "active_veto_pass_rate_s-1": 0.005432306333186435,
+            "side_compton_fov_pass_rate_s-1": 0.005432306333186435,
+            "side_compton_class_counts": {
+              "keep": 4,
+              "single": 4
+            },
+            "selected_examples": [
+              {
+                "source_file": "runs/geometry_optimization_20260704/step02_instant_geo_opt_s1_bpe_w5_fullstat_v1/Background_eplus_fullsphere20_rep06_part01.inc1.id1.sim.gz",
+                "local_id": 19036,
+                "tes_total_keV": 510.99888400000003,
+                "active_veto_keV": 3.5523303000000004,
+                "side_compton_class": "keep",
+                "rate_s-1": 0.0006790382916483043
+              },
+              {
+                "source_file": "runs/geometry_optimization_20260704/step02_instant_geo_opt_s1_bpe_w5_fullstat_v1/Background_eplus_fullsphere20_rep06_part01.inc1.id1.sim.gz",
+                "local_id": 36215,
+                "tes_total_keV": 510.99895300000003,
+                "active_veto_keV": 33.88231068,
+                "side_compton_class": "keep",
+                "rate_s-1": 0.0006790382916483043
+              },
+              {
+                "source_file": "runs/geometry_optimization_20260704/step02_instant_geo_opt_s1_bpe_w5_fullstat_v1/Background_eplus_fullsphere20_rep06_part01.inc1.id1.sim.gz",
+                "local_id": 70159,
+                "tes_total_keV": 510.99886000000004,
+                "active_veto_keV": 8.178310250000001,
+                "side_compton_class": "single",
+                "rate_s-1": 0.0006790382916483043
+              },
+              {
+                "source_file": "runs/geometry_optimization_20260704/step02_instant_geo_opt_s1_bpe_w5_fullstat_v1/Background_eplus_fullsphere20_rep06_part01.inc1.id1.sim.gz",
+                "local_id": 120181,
+                "tes_total_keV": 510.99892,
+                "active_veto_keV": 15.958251559999999,
+                "side_compton_class": "single",
+                "rate_s-1": 0.0006790382916483043
+              },
+              {
+                "source_file": "runs/geometry_optimization_20260704/step02_instant_geo_opt_s1_bpe_w5_fullstat_v1/Background_eplus_fullsphere20_rep06_part01.inc1.id1.sim.gz",
+                "local_id": 128882,
+                "tes_total_keV": 510.99896,
+                "active_veto_keV": 11.933693819999998,
+                "side_compton_class": "single",
+                "rate_s-1": 0.0006790382916483043
+              },
+              {
+                "source_file": "runs/geometry_optimization_20260704/step02_instant_geo_opt_s1_bpe_w5_fullstat_v1/Background_eplus_fullsphere20_rep06_part01.inc1.id1.sim.gz",
+                "local_id": 131723,
+                "tes_total_keV": 510.9988953999999,
+                "active_veto_keV": 14.582484999999998,
+                "side_compton_class": "single",
+                "rate_s-1": 0.0006790382916483043
+              },
+              {
+                "source_file": "runs/geometry_optimization_20260704/step02_instant_geo_opt_s1_bpe_w5_fullstat_v1/Background_eplus_fullsphere20_rep06_part01.inc1.id1.sim.gz",
+                "local_id": 156362,
+                "tes_total_keV": 510.99889500000006,
+                "active_veto_keV": 45.621403169999994,
+                "side_compton_class": "keep",
+                "rate_s-1": 0.0006790382916483043
+              },
+              {
+                "source_file": "runs/geometry_optimization_20260704/step02_instant_geo_opt_s1_bpe_w5_fullstat_v1/Background_eplus_fullsphere20_rep06_part01.inc1.id1.sim.gz",
+                "local_id": 163455,
+                "tes_total_keV": 510.99890000000005,
+                "active_veto_keV": 0.0,
+                "side_compton_class": "keep",
+                "rate_s-1": 0.0006790382916483043
+              }
+            ]
+          },
+          {
+            "path": "runs/geometry_optimization_20260704/step02_instant_geo_opt_s1_bpe_w5_fullstat_v1/Background_eplus_fullsphere20_rep07_part01.inc1.id1.sim.gz",
+            "generated_events_seen": 243727,
+            "tes_events_kept": 45,
+            "raw_events": 6,
+            "active_veto_pass_events": 3,
+            "side_compton_fov_pass_events": 3,
+            "raw_rate_s-1": 0.004074229749889826,
+            "active_veto_pass_rate_s-1": 0.002037114874944913,
+            "side_compton_fov_pass_rate_s-1": 0.002037114874944913,
+            "side_compton_class_counts": {
+              "keep": 1,
+              "single": 2
+            },
+            "selected_examples": [
+              {
+                "source_file": "runs/geometry_optimization_20260704/step02_instant_geo_opt_s1_bpe_w5_fullstat_v1/Background_eplus_fullsphere20_rep07_part01.inc1.id1.sim.gz",
+                "local_id": 106227,
+                "tes_total_keV": 510.99890000000005,
+                "active_veto_keV": 13.14675642,
+                "side_compton_class": "keep",
+                "rate_s-1": 0.0006790382916483043
+              },
+              {
+                "source_file": "runs/geometry_optimization_20260704/step02_instant_geo_opt_s1_bpe_w5_fullstat_v1/Background_eplus_fullsphere20_rep07_part01.inc1.id1.sim.gz",
+                "local_id": 197516,
+                "tes_total_keV": 510.99891,
+                "active_veto_keV": 14.504205980000002,
+                "side_compton_class": "single",
+                "rate_s-1": 0.0006790382916483043
+              },
+              {
+                "source_file": "runs/geometry_optimization_20260704/step02_instant_geo_opt_s1_bpe_w5_fullstat_v1/Background_eplus_fullsphere20_rep07_part01.inc1.id1.sim.gz",
+                "local_id": 202853,
+                "tes_total_keV": 510.998843,
+                "active_veto_keV": 6.002913899999999,
+                "side_compton_class": "single",
+                "rate_s-1": 0.0006790382916483043
+              }
+            ]
+          },
+          {
+            "path": "runs/geometry_optimization_20260704/step02_instant_geo_opt_s1_bpe_w5_fullstat_v1/Background_eplus_fullsphere20_rep08_part01.inc1.id1.sim.gz",
+            "generated_events_seen": 243727,
+            "tes_events_kept": 49,
+            "raw_events": 10,
+            "active_veto_pass_events": 8,
+            "side_compton_fov_pass_events": 7,
+            "raw_rate_s-1": 0.006790382916483043,
+            "active_veto_pass_rate_s-1": 0.005432306333186435,
+            "side_compton_fov_pass_rate_s-1": 0.00475326804153813,
+            "side_compton_class_counts": {
+              "keep": 3,
+              "single": 4,
+              "veto": 1
+            },
+            "selected_examples": [
+              {
+                "source_file": "runs/geometry_optimization_20260704/step02_instant_geo_opt_s1_bpe_w5_fullstat_v1/Background_eplus_fullsphere20_rep08_part01.inc1.id1.sim.gz",
+                "local_id": 9911,
+                "tes_total_keV": 510.99888,
+                "active_veto_keV": 1.23070945,
+                "side_compton_class": "keep",
+                "rate_s-1": 0.0006790382916483043
+              },
+              {
+                "source_file": "runs/geometry_optimization_20260704/step02_instant_geo_opt_s1_bpe_w5_fullstat_v1/Background_eplus_fullsphere20_rep08_part01.inc1.id1.sim.gz",
+                "local_id": 41264,
+                "tes_total_keV": 510.99886,
+                "active_veto_keV": 0.0,
+                "side_compton_class": "single",
+                "rate_s-1": 0.0006790382916483043
+              },
+              {
+                "source_file": "runs/geometry_optimization_20260704/step02_instant_geo_opt_s1_bpe_w5_fullstat_v1/Background_eplus_fullsphere20_rep08_part01.inc1.id1.sim.gz",
+                "local_id": 51896,
+                "tes_total_keV": 510.998865,
+                "active_veto_keV": 28.90073623,
+                "side_compton_class": "keep",
+                "rate_s-1": 0.0006790382916483043
+              },
+              {
+                "source_file": "runs/geometry_optimization_20260704/step02_instant_geo_opt_s1_bpe_w5_fullstat_v1/Background_eplus_fullsphere20_rep08_part01.inc1.id1.sim.gz",
+                "local_id": 69124,
+                "tes_total_keV": 510.99893399999996,
+                "active_veto_keV": 1.90121827,
+                "side_compton_class": "keep",
+                "rate_s-1": 0.0006790382916483043
+              },
+              {
+                "source_file": "runs/geometry_optimization_20260704/step02_instant_geo_opt_s1_bpe_w5_fullstat_v1/Background_eplus_fullsphere20_rep08_part01.inc1.id1.sim.gz",
+                "local_id": 80763,
+                "tes_total_keV": 510.99888999999996,
+                "active_veto_keV": 48.59154108,
+                "side_compton_class": "single",
+                "rate_s-1": 0.0006790382916483043
+              },
+              {
+                "source_file": "runs/geometry_optimization_20260704/step02_instant_geo_opt_s1_bpe_w5_fullstat_v1/Background_eplus_fullsphere20_rep08_part01.inc1.id1.sim.gz",
+                "local_id": 154485,
+                "tes_total_keV": 510.9989,
+                "active_veto_keV": 10.26199435,
+                "side_compton_class": "single",
+                "rate_s-1": 0.0006790382916483043
+              },
+              {
+                "source_file": "runs/geometry_optimization_20260704/step02_instant_geo_opt_s1_bpe_w5_fullstat_v1/Background_eplus_fullsphere20_rep08_part01.inc1.id1.sim.gz",
+                "local_id": 182558,
+                "tes_total_keV": 510.99884099999997,
+                "active_veto_keV": 0.0,
+                "side_compton_class": "single",
+                "rate_s-1": 0.0006790382916483043
+              }
+            ]
+          }
+        ]
+      },
+      "s2b": {
+        "prompt_dir": "runs/geometry_optimization_20260704/s2b_cryo_shell_45deg_eqstats_prompt_eplus_n_20260708",
+        "sim_files": [
+          "runs/geometry_optimization_20260704/s2b_cryo_shell_45deg_eqstats_prompt_eplus_n_20260708/Background_eplus_fullsphere20_rep01_part01.inc1.id1.sim.gz",
+          "runs/geometry_optimization_20260704/s2b_cryo_shell_45deg_eqstats_prompt_eplus_n_20260708/Background_eplus_fullsphere20_rep02_part01.inc1.id1.sim.gz",
+          "runs/geometry_optimization_20260704/s2b_cryo_shell_45deg_eqstats_prompt_eplus_n_20260708/Background_eplus_fullsphere20_rep03_part01.inc1.id1.sim.gz",
+          "runs/geometry_optimization_20260704/s2b_cryo_shell_45deg_eqstats_prompt_eplus_n_20260708/Background_eplus_fullsphere20_rep04_part01.inc1.id1.sim.gz",
+          "runs/geometry_optimization_20260704/s2b_cryo_shell_45deg_eqstats_prompt_eplus_n_20260708/Background_eplus_fullsphere20_rep05_part01.inc1.id1.sim.gz",
+          "runs/geometry_optimization_20260704/s2b_cryo_shell_45deg_eqstats_prompt_eplus_n_20260708/Background_eplus_fullsphere20_rep06_part01.inc1.id1.sim.gz",
+          "runs/geometry_optimization_20260704/s2b_cryo_shell_45deg_eqstats_prompt_eplus_n_20260708/Background_eplus_fullsphere20_rep07_part01.inc1.id1.sim.gz",
+          "runs/geometry_optimization_20260704/s2b_cryo_shell_45deg_eqstats_prompt_eplus_n_20260708/Background_eplus_fullsphere20_rep08_part01.inc1.id1.sim.gz"
+        ],
+        "rate_per_event_s-1": 0.0006781251737695757,
+        "summary": {
+          "generated_events_seen": 1949816,
+          "tes_events_kept": 373,
+          "window_keV": [
+            510.58,
+            511.42
+          ],
+          "raw_events": 52,
+          "active_veto_pass_events": 28,
+          "side_compton_fov_pass_events": 27,
+          "raw_rate_s-1": 0.035262509036017936,
+          "active_veto_pass_rate_s-1": 0.018987504865548118,
+          "side_compton_fov_pass_rate_s-1": 0.01830937969177854,
+          "active_veto_survival_fraction": 0.5384615384615384,
+          "side_compton_fov_survival_fraction_vs_active": 0.9642857142857142,
+          "side_compton_class_counts": {
+            "keep": 7,
+            "single": 20,
+            "veto": 1
+          },
+          "selected_examples": [
+            {
+              "source_file": "runs/geometry_optimization_20260704/s2b_cryo_shell_45deg_eqstats_prompt_eplus_n_20260708/Background_eplus_fullsphere20_rep01_part01.inc1.id1.sim.gz",
+              "local_id": 21698,
+              "tes_total_keV": 510.999,
+              "active_veto_keV": 19.8805822,
+              "side_compton_class": "single",
+              "rate_s-1": 0.0006781251737695757
+            },
+            {
+              "source_file": "runs/geometry_optimization_20260704/s2b_cryo_shell_45deg_eqstats_prompt_eplus_n_20260708/Background_eplus_fullsphere20_rep02_part01.inc1.id1.sim.gz",
+              "local_id": 65575,
+              "tes_total_keV": 510.99884,
+              "active_veto_keV": 22.99612943,
+              "side_compton_class": "single",
+              "rate_s-1": 0.0006781251737695757
+            },
+            {
+              "source_file": "runs/geometry_optimization_20260704/s2b_cryo_shell_45deg_eqstats_prompt_eplus_n_20260708/Background_eplus_fullsphere20_rep02_part01.inc1.id1.sim.gz",
+              "local_id": 101740,
+              "tes_total_keV": 510.99894900000004,
+              "active_veto_keV": 14.46889201,
+              "side_compton_class": "single",
+              "rate_s-1": 0.0006781251737695757
+            },
+            {
+              "source_file": "runs/geometry_optimization_20260704/s2b_cryo_shell_45deg_eqstats_prompt_eplus_n_20260708/Background_eplus_fullsphere20_rep02_part01.inc1.id1.sim.gz",
+              "local_id": 134175,
+              "tes_total_keV": 510.99887,
+              "active_veto_keV": 0.0,
+              "side_compton_class": "single",
+              "rate_s-1": 0.0006781251737695757
+            },
+            {
+              "source_file": "runs/geometry_optimization_20260704/s2b_cryo_shell_45deg_eqstats_prompt_eplus_n_20260708/Background_eplus_fullsphere20_rep02_part01.inc1.id1.sim.gz",
+              "local_id": 141050,
+              "tes_total_keV": 510.998962,
+              "active_veto_keV": 0.0,
+              "side_compton_class": "keep",
+              "rate_s-1": 0.0006781251737695757
+            },
+            {
+              "source_file": "runs/geometry_optimization_20260704/s2b_cryo_shell_45deg_eqstats_prompt_eplus_n_20260708/Background_eplus_fullsphere20_rep02_part01.inc1.id1.sim.gz",
+              "local_id": 163237,
+              "tes_total_keV": 510.99886000000004,
+              "active_veto_keV": 14.36701188,
+              "side_compton_class": "single",
+              "rate_s-1": 0.0006781251737695757
+            },
+            {
+              "source_file": "runs/geometry_optimization_20260704/s2b_cryo_shell_45deg_eqstats_prompt_eplus_n_20260708/Background_eplus_fullsphere20_rep03_part01.inc1.id1.sim.gz",
+              "local_id": 52617,
+              "tes_total_keV": 510.99890000000005,
+              "active_veto_keV": 1.9094091,
+              "side_compton_class": "single",
+              "rate_s-1": 0.0006781251737695757
+            },
+            {
+              "source_file": "runs/geometry_optimization_20260704/s2b_cryo_shell_45deg_eqstats_prompt_eplus_n_20260708/Background_eplus_fullsphere20_rep03_part01.inc1.id1.sim.gz",
+              "local_id": 58569,
+              "tes_total_keV": 510.998929,
+              "active_veto_keV": 0.0,
+              "side_compton_class": "keep",
+              "rate_s-1": 0.0006781251737695757
+            },
+            {
+              "source_file": "runs/geometry_optimization_20260704/s2b_cryo_shell_45deg_eqstats_prompt_eplus_n_20260708/Background_eplus_fullsphere20_rep03_part01.inc1.id1.sim.gz",
+              "local_id": 121067,
+              "tes_total_keV": 510.99885,
+              "active_veto_keV": 23.00716791,
+              "side_compton_class": "single",
+              "rate_s-1": 0.0006781251737695757
+            },
+            {
+              "source_file": "runs/geometry_optimization_20260704/s2b_cryo_shell_45deg_eqstats_prompt_eplus_n_20260708/Background_eplus_fullsphere20_rep03_part01.inc1.id1.sim.gz",
+              "local_id": 133419,
+              "tes_total_keV": 510.9989321,
+              "active_veto_keV": 23.011677889999998,
+              "side_compton_class": "single",
+              "rate_s-1": 0.0006781251737695757
+            },
+            {
+              "source_file": "runs/geometry_optimization_20260704/s2b_cryo_shell_45deg_eqstats_prompt_eplus_n_20260708/Background_eplus_fullsphere20_rep03_part01.inc1.id1.sim.gz",
+              "local_id": 134659,
+              "tes_total_keV": 510.99895,
+              "active_veto_keV": 0.0,
+              "side_compton_class": "single",
+              "rate_s-1": 0.0006781251737695757
+            },
+            {
+              "source_file": "runs/geometry_optimization_20260704/s2b_cryo_shell_45deg_eqstats_prompt_eplus_n_20260708/Background_eplus_fullsphere20_rep03_part01.inc1.id1.sim.gz",
+              "local_id": 196637,
+              "tes_total_keV": 510.998889,
+              "active_veto_keV": 0.0,
+              "side_compton_class": "single",
+              "rate_s-1": 0.0006781251737695757
+            },
+            {
+              "source_file": "runs/geometry_optimization_20260704/s2b_cryo_shell_45deg_eqstats_prompt_eplus_n_20260708/Background_eplus_fullsphere20_rep04_part01.inc1.id1.sim.gz",
+              "local_id": 85941,
+              "tes_total_keV": 510.998871,
+              "active_veto_keV": 6.324038099999999,
+              "side_compton_class": "single",
+              "rate_s-1": 0.0006781251737695757
+            },
+            {
+              "source_file": "runs/geometry_optimization_20260704/s2b_cryo_shell_45deg_eqstats_prompt_eplus_n_20260708/Background_eplus_fullsphere20_rep04_part01.inc1.id1.sim.gz",
+              "local_id": 106820,
+              "tes_total_keV": 510.99884000000003,
+              "active_veto_keV": 43.45310307,
+              "side_compton_class": "single",
+              "rate_s-1": 0.0006781251737695757
+            },
+            {
+              "source_file": "runs/geometry_optimization_20260704/s2b_cryo_shell_45deg_eqstats_prompt_eplus_n_20260708/Background_eplus_fullsphere20_rep04_part01.inc1.id1.sim.gz",
+              "local_id": 182736,
+              "tes_total_keV": 510.99888,
+              "active_veto_keV": 33.23930861,
+              "side_compton_class": "single",
+              "rate_s-1": 0.0006781251737695757
+            },
+            {
+              "source_file": "runs/geometry_optimization_20260704/s2b_cryo_shell_45deg_eqstats_prompt_eplus_n_20260708/Background_eplus_fullsphere20_rep04_part01.inc1.id1.sim.gz",
+              "local_id": 196554,
+              "tes_total_keV": 510.9989,
+              "active_veto_keV": 43.45693426,
+              "side_compton_class": "keep",
+              "rate_s-1": 0.0006781251737695757
+            },
+            {
+              "source_file": "runs/geometry_optimization_20260704/s2b_cryo_shell_45deg_eqstats_prompt_eplus_n_20260708/Background_eplus_fullsphere20_rep05_part01.inc1.id1.sim.gz",
+              "local_id": 4082,
+              "tes_total_keV": 510.998972,
+              "active_veto_keV": 21.136227909999995,
+              "side_compton_class": "single",
+              "rate_s-1": 0.0006781251737695757
+            },
+            {
+              "source_file": "runs/geometry_optimization_20260704/s2b_cryo_shell_45deg_eqstats_prompt_eplus_n_20260708/Background_eplus_fullsphere20_rep05_part01.inc1.id1.sim.gz",
+              "local_id": 216984,
+              "tes_total_keV": 510.9989,
+              "active_veto_keV": 0.0,
+              "side_compton_class": "single",
+              "rate_s-1": 0.0006781251737695757
+            },
+            {
+              "source_file": "runs/geometry_optimization_20260704/s2b_cryo_shell_45deg_eqstats_prompt_eplus_n_20260708/Background_eplus_fullsphere20_rep06_part01.inc1.id1.sim.gz",
+              "local_id": 54714,
+              "tes_total_keV": 510.99890000000005,
+              "active_veto_keV": 25.24522459,
+              "side_compton_class": "keep",
+              "rate_s-1": 0.0006781251737695757
+            },
+            {
+              "source_file": "runs/geometry_optimization_20260704/s2b_cryo_shell_45deg_eqstats_prompt_eplus_n_20260708/Background_eplus_fullsphere20_rep06_part01.inc1.id1.sim.gz",
+              "local_id": 140660,
+              "tes_total_keV": 510.9989,
+              "active_veto_keV": 0.0,
+              "side_compton_class": "single",
+              "rate_s-1": 0.0006781251737695757
+            }
+          ]
+        },
+        "files": [
+          {
+            "path": "runs/geometry_optimization_20260704/s2b_cryo_shell_45deg_eqstats_prompt_eplus_n_20260708/Background_eplus_fullsphere20_rep01_part01.inc1.id1.sim.gz",
+            "generated_events_seen": 243727,
+            "tes_events_kept": 49,
+            "raw_events": 6,
+            "active_veto_pass_events": 1,
+            "side_compton_fov_pass_events": 1,
+            "raw_rate_s-1": 0.004068751042617454,
+            "active_veto_pass_rate_s-1": 0.0006781251737695757,
+            "side_compton_fov_pass_rate_s-1": 0.0006781251737695757,
+            "side_compton_class_counts": {
+              "single": 1
+            },
+            "selected_examples": [
+              {
+                "source_file": "runs/geometry_optimization_20260704/s2b_cryo_shell_45deg_eqstats_prompt_eplus_n_20260708/Background_eplus_fullsphere20_rep01_part01.inc1.id1.sim.gz",
+                "local_id": 21698,
+                "tes_total_keV": 510.999,
+                "active_veto_keV": 19.8805822,
+                "side_compton_class": "single",
+                "rate_s-1": 0.0006781251737695757
+              }
+            ]
+          },
+          {
+            "path": "runs/geometry_optimization_20260704/s2b_cryo_shell_45deg_eqstats_prompt_eplus_n_20260708/Background_eplus_fullsphere20_rep02_part01.inc1.id1.sim.gz",
+            "generated_events_seen": 243727,
+            "tes_events_kept": 48,
+            "raw_events": 8,
+            "active_veto_pass_events": 5,
+            "side_compton_fov_pass_events": 5,
+            "raw_rate_s-1": 0.005425001390156605,
+            "active_veto_pass_rate_s-1": 0.0033906258688478786,
+            "side_compton_fov_pass_rate_s-1": 0.0033906258688478786,
+            "side_compton_class_counts": {
+              "keep": 1,
+              "single": 4
+            },
+            "selected_examples": [
+              {
+                "source_file": "runs/geometry_optimization_20260704/s2b_cryo_shell_45deg_eqstats_prompt_eplus_n_20260708/Background_eplus_fullsphere20_rep02_part01.inc1.id1.sim.gz",
+                "local_id": 65575,
+                "tes_total_keV": 510.99884,
+                "active_veto_keV": 22.99612943,
+                "side_compton_class": "single",
+                "rate_s-1": 0.0006781251737695757
+              },
+              {
+                "source_file": "runs/geometry_optimization_20260704/s2b_cryo_shell_45deg_eqstats_prompt_eplus_n_20260708/Background_eplus_fullsphere20_rep02_part01.inc1.id1.sim.gz",
+                "local_id": 101740,
+                "tes_total_keV": 510.99894900000004,
+                "active_veto_keV": 14.46889201,
+                "side_compton_class": "single",
+                "rate_s-1": 0.0006781251737695757
+              },
+              {
+                "source_file": "runs/geometry_optimization_20260704/s2b_cryo_shell_45deg_eqstats_prompt_eplus_n_20260708/Background_eplus_fullsphere20_rep02_part01.inc1.id1.sim.gz",
+                "local_id": 134175,
+                "tes_total_keV": 510.99887,
+                "active_veto_keV": 0.0,
+                "side_compton_class": "single",
+                "rate_s-1": 0.0006781251737695757
+              },
+              {
+                "source_file": "runs/geometry_optimization_20260704/s2b_cryo_shell_45deg_eqstats_prompt_eplus_n_20260708/Background_eplus_fullsphere20_rep02_part01.inc1.id1.sim.gz",
+                "local_id": 141050,
+                "tes_total_keV": 510.998962,
+                "active_veto_keV": 0.0,
+                "side_compton_class": "keep",
+                "rate_s-1": 0.0006781251737695757
+              },
+              {
+                "source_file": "runs/geometry_optimization_20260704/s2b_cryo_shell_45deg_eqstats_prompt_eplus_n_20260708/Background_eplus_fullsphere20_rep02_part01.inc1.id1.sim.gz",
+                "local_id": 163237,
+                "tes_total_keV": 510.99886000000004,
+                "active_veto_keV": 14.36701188,
+                "side_compton_class": "single",
+                "rate_s-1": 0.0006781251737695757
+              }
+            ]
+          },
+          {
+            "path": "runs/geometry_optimization_20260704/s2b_cryo_shell_45deg_eqstats_prompt_eplus_n_20260708/Background_eplus_fullsphere20_rep03_part01.inc1.id1.sim.gz",
+            "generated_events_seen": 243727,
+            "tes_events_kept": 48,
+            "raw_events": 7,
+            "active_veto_pass_events": 6,
+            "side_compton_fov_pass_events": 6,
+            "raw_rate_s-1": 0.0047468762163870295,
+            "active_veto_pass_rate_s-1": 0.0040687510426174545,
+            "side_compton_fov_pass_rate_s-1": 0.0040687510426174545,
+            "side_compton_class_counts": {
+              "keep": 1,
+              "single": 5
+            },
+            "selected_examples": [
+              {
+                "source_file": "runs/geometry_optimization_20260704/s2b_cryo_shell_45deg_eqstats_prompt_eplus_n_20260708/Background_eplus_fullsphere20_rep03_part01.inc1.id1.sim.gz",
+                "local_id": 52617,
+                "tes_total_keV": 510.99890000000005,
+                "active_veto_keV": 1.9094091,
+                "side_compton_class": "single",
+                "rate_s-1": 0.0006781251737695757
+              },
+              {
+                "source_file": "runs/geometry_optimization_20260704/s2b_cryo_shell_45deg_eqstats_prompt_eplus_n_20260708/Background_eplus_fullsphere20_rep03_part01.inc1.id1.sim.gz",
+                "local_id": 58569,
+                "tes_total_keV": 510.998929,
+                "active_veto_keV": 0.0,
+                "side_compton_class": "keep",
+                "rate_s-1": 0.0006781251737695757
+              },
+              {
+                "source_file": "runs/geometry_optimization_20260704/s2b_cryo_shell_45deg_eqstats_prompt_eplus_n_20260708/Background_eplus_fullsphere20_rep03_part01.inc1.id1.sim.gz",
+                "local_id": 121067,
+                "tes_total_keV": 510.99885,
+                "active_veto_keV": 23.00716791,
+                "side_compton_class": "single",
+                "rate_s-1": 0.0006781251737695757
+              },
+              {
+                "source_file": "runs/geometry_optimization_20260704/s2b_cryo_shell_45deg_eqstats_prompt_eplus_n_20260708/Background_eplus_fullsphere20_rep03_part01.inc1.id1.sim.gz",
+                "local_id": 133419,
+                "tes_total_keV": 510.9989321,
+                "active_veto_keV": 23.011677889999998,
+                "side_compton_class": "single",
+                "rate_s-1": 0.0006781251737695757
+              },
+              {
+                "source_file": "runs/geometry_optimization_20260704/s2b_cryo_shell_45deg_eqstats_prompt_eplus_n_20260708/Background_eplus_fullsphere20_rep03_part01.inc1.id1.sim.gz",
+                "local_id": 134659,
+                "tes_total_keV": 510.99895,
+                "active_veto_keV": 0.0,
+                "side_compton_class": "single",
+                "rate_s-1": 0.0006781251737695757
+              },
+              {
+                "source_file": "runs/geometry_optimization_20260704/s2b_cryo_shell_45deg_eqstats_prompt_eplus_n_20260708/Background_eplus_fullsphere20_rep03_part01.inc1.id1.sim.gz",
+                "local_id": 196637,
+                "tes_total_keV": 510.998889,
+                "active_veto_keV": 0.0,
+                "side_compton_class": "single",
+                "rate_s-1": 0.0006781251737695757
+              }
+            ]
+          },
+          {
+            "path": "runs/geometry_optimization_20260704/s2b_cryo_shell_45deg_eqstats_prompt_eplus_n_20260708/Background_eplus_fullsphere20_rep04_part01.inc1.id1.sim.gz",
+            "generated_events_seen": 243727,
+            "tes_events_kept": 57,
+            "raw_events": 8,
+            "active_veto_pass_events": 5,
+            "side_compton_fov_pass_events": 4,
+            "raw_rate_s-1": 0.005425001390156605,
+            "active_veto_pass_rate_s-1": 0.0033906258688478786,
+            "side_compton_fov_pass_rate_s-1": 0.0027125006950783027,
+            "side_compton_class_counts": {
+              "keep": 1,
+              "single": 3,
+              "veto": 1
+            },
+            "selected_examples": [
+              {
+                "source_file": "runs/geometry_optimization_20260704/s2b_cryo_shell_45deg_eqstats_prompt_eplus_n_20260708/Background_eplus_fullsphere20_rep04_part01.inc1.id1.sim.gz",
+                "local_id": 85941,
+                "tes_total_keV": 510.998871,
+                "active_veto_keV": 6.324038099999999,
+                "side_compton_class": "single",
+                "rate_s-1": 0.0006781251737695757
+              },
+              {
+                "source_file": "runs/geometry_optimization_20260704/s2b_cryo_shell_45deg_eqstats_prompt_eplus_n_20260708/Background_eplus_fullsphere20_rep04_part01.inc1.id1.sim.gz",
+                "local_id": 106820,
+                "tes_total_keV": 510.99884000000003,
+                "active_veto_keV": 43.45310307,
+                "side_compton_class": "single",
+                "rate_s-1": 0.0006781251737695757
+              },
+              {
+                "source_file": "runs/geometry_optimization_20260704/s2b_cryo_shell_45deg_eqstats_prompt_eplus_n_20260708/Background_eplus_fullsphere20_rep04_part01.inc1.id1.sim.gz",
+                "local_id": 182736,
+                "tes_total_keV": 510.99888,
+                "active_veto_keV": 33.23930861,
+                "side_compton_class": "single",
+                "rate_s-1": 0.0006781251737695757
+              },
+              {
+                "source_file": "runs/geometry_optimization_20260704/s2b_cryo_shell_45deg_eqstats_prompt_eplus_n_20260708/Background_eplus_fullsphere20_rep04_part01.inc1.id1.sim.gz",
+                "local_id": 196554,
+                "tes_total_keV": 510.9989,
+                "active_veto_keV": 43.45693426,
+                "side_compton_class": "keep",
+                "rate_s-1": 0.0006781251737695757
+              }
+            ]
+          },
+          {
+            "path": "runs/geometry_optimization_20260704/s2b_cryo_shell_45deg_eqstats_prompt_eplus_n_20260708/Background_eplus_fullsphere20_rep05_part01.inc1.id1.sim.gz",
+            "generated_events_seen": 243727,
+            "tes_events_kept": 48,
+            "raw_events": 4,
+            "active_veto_pass_events": 2,
+            "side_compton_fov_pass_events": 2,
+            "raw_rate_s-1": 0.0027125006950783027,
+            "active_veto_pass_rate_s-1": 0.0013562503475391514,
+            "side_compton_fov_pass_rate_s-1": 0.0013562503475391514,
+            "side_compton_class_counts": {
+              "single": 2
+            },
+            "selected_examples": [
+              {
+                "source_file": "runs/geometry_optimization_20260704/s2b_cryo_shell_45deg_eqstats_prompt_eplus_n_20260708/Background_eplus_fullsphere20_rep05_part01.inc1.id1.sim.gz",
+                "local_id": 4082,
+                "tes_total_keV": 510.998972,
+                "active_veto_keV": 21.136227909999995,
+                "side_compton_class": "single",
+                "rate_s-1": 0.0006781251737695757
+              },
+              {
+                "source_file": "runs/geometry_optimization_20260704/s2b_cryo_shell_45deg_eqstats_prompt_eplus_n_20260708/Background_eplus_fullsphere20_rep05_part01.inc1.id1.sim.gz",
+                "local_id": 216984,
+                "tes_total_keV": 510.9989,
+                "active_veto_keV": 0.0,
+                "side_compton_class": "single",
+                "rate_s-1": 0.0006781251737695757
+              }
+            ]
+          },
+          {
+            "path": "runs/geometry_optimization_20260704/s2b_cryo_shell_45deg_eqstats_prompt_eplus_n_20260708/Background_eplus_fullsphere20_rep06_part01.inc1.id1.sim.gz",
+            "generated_events_seen": 243727,
+            "tes_events_kept": 34,
+            "raw_events": 6,
+            "active_veto_pass_events": 3,
+            "side_compton_fov_pass_events": 3,
+            "raw_rate_s-1": 0.004068751042617454,
+            "active_veto_pass_rate_s-1": 0.002034375521308727,
+            "side_compton_fov_pass_rate_s-1": 0.002034375521308727,
+            "side_compton_class_counts": {
+              "keep": 1,
+              "single": 2
+            },
+            "selected_examples": [
+              {
+                "source_file": "runs/geometry_optimization_20260704/s2b_cryo_shell_45deg_eqstats_prompt_eplus_n_20260708/Background_eplus_fullsphere20_rep06_part01.inc1.id1.sim.gz",
+                "local_id": 54714,
+                "tes_total_keV": 510.99890000000005,
+                "active_veto_keV": 25.24522459,
+                "side_compton_class": "keep",
+                "rate_s-1": 0.0006781251737695757
+              },
+              {
+                "source_file": "runs/geometry_optimization_20260704/s2b_cryo_shell_45deg_eqstats_prompt_eplus_n_20260708/Background_eplus_fullsphere20_rep06_part01.inc1.id1.sim.gz",
+                "local_id": 140660,
+                "tes_total_keV": 510.9989,
+                "active_veto_keV": 0.0,
+                "side_compton_class": "single",
+                "rate_s-1": 0.0006781251737695757
+              },
+              {
+                "source_file": "runs/geometry_optimization_20260704/s2b_cryo_shell_45deg_eqstats_prompt_eplus_n_20260708/Background_eplus_fullsphere20_rep06_part01.inc1.id1.sim.gz",
+                "local_id": 164322,
+                "tes_total_keV": 510.99891999999994,
+                "active_veto_keV": 3.4211995665000003,
+                "side_compton_class": "single",
+                "rate_s-1": 0.0006781251737695757
+              }
+            ]
+          },
+          {
+            "path": "runs/geometry_optimization_20260704/s2b_cryo_shell_45deg_eqstats_prompt_eplus_n_20260708/Background_eplus_fullsphere20_rep07_part01.inc1.id1.sim.gz",
+            "generated_events_seen": 243727,
+            "tes_events_kept": 43,
+            "raw_events": 5,
+            "active_veto_pass_events": 4,
+            "side_compton_fov_pass_events": 4,
+            "raw_rate_s-1": 0.0033906258688478786,
+            "active_veto_pass_rate_s-1": 0.0027125006950783027,
+            "side_compton_fov_pass_rate_s-1": 0.0027125006950783027,
+            "side_compton_class_counts": {
+              "keep": 2,
+              "single": 2
+            },
+            "selected_examples": [
+              {
+                "source_file": "runs/geometry_optimization_20260704/s2b_cryo_shell_45deg_eqstats_prompt_eplus_n_20260708/Background_eplus_fullsphere20_rep07_part01.inc1.id1.sim.gz",
+                "local_id": 42641,
+                "tes_total_keV": 510.998965912,
+                "active_veto_keV": 3.4407491400000003,
+                "side_compton_class": "keep",
+                "rate_s-1": 0.0006781251737695757
+              },
+              {
+                "source_file": "runs/geometry_optimization_20260704/s2b_cryo_shell_45deg_eqstats_prompt_eplus_n_20260708/Background_eplus_fullsphere20_rep07_part01.inc1.id1.sim.gz",
+                "local_id": 49233,
+                "tes_total_keV": 510.99892,
+                "active_veto_keV": 31.324486630000003,
+                "side_compton_class": "single",
+                "rate_s-1": 0.0006781251737695757
+              },
+              {
+                "source_file": "runs/geometry_optimization_20260704/s2b_cryo_shell_45deg_eqstats_prompt_eplus_n_20260708/Background_eplus_fullsphere20_rep07_part01.inc1.id1.sim.gz",
+                "local_id": 141844,
+                "tes_total_keV": 510.99893,
+                "active_veto_keV": 26.744481280000002,
+                "side_compton_class": "keep",
+                "rate_s-1": 0.0006781251737695757
+              },
+              {
+                "source_file": "runs/geometry_optimization_20260704/s2b_cryo_shell_45deg_eqstats_prompt_eplus_n_20260708/Background_eplus_fullsphere20_rep07_part01.inc1.id1.sim.gz",
+                "local_id": 217889,
+                "tes_total_keV": 510.9989,
+                "active_veto_keV": 11.14626616,
+                "side_compton_class": "single",
+                "rate_s-1": 0.0006781251737695757
+              }
+            ]
+          },
+          {
+            "path": "runs/geometry_optimization_20260704/s2b_cryo_shell_45deg_eqstats_prompt_eplus_n_20260708/Background_eplus_fullsphere20_rep08_part01.inc1.id1.sim.gz",
+            "generated_events_seen": 243727,
+            "tes_events_kept": 46,
+            "raw_events": 8,
+            "active_veto_pass_events": 2,
+            "side_compton_fov_pass_events": 2,
+            "raw_rate_s-1": 0.005425001390156605,
+            "active_veto_pass_rate_s-1": 0.0013562503475391514,
+            "side_compton_fov_pass_rate_s-1": 0.0013562503475391514,
+            "side_compton_class_counts": {
+              "keep": 1,
+              "single": 1
+            },
+            "selected_examples": [
+              {
+                "source_file": "runs/geometry_optimization_20260704/s2b_cryo_shell_45deg_eqstats_prompt_eplus_n_20260708/Background_eplus_fullsphere20_rep08_part01.inc1.id1.sim.gz",
+                "local_id": 87565,
+                "tes_total_keV": 510.998903,
+                "active_veto_keV": 9.0731132,
+                "side_compton_class": "keep",
+                "rate_s-1": 0.0006781251737695757
+              },
+              {
+                "source_file": "runs/geometry_optimization_20260704/s2b_cryo_shell_45deg_eqstats_prompt_eplus_n_20260708/Background_eplus_fullsphere20_rep08_part01.inc1.id1.sim.gz",
+                "local_id": 155182,
+                "tes_total_keV": 510.99896,
+                "active_veto_keV": 0.0,
+                "side_compton_class": "single",
+                "rate_s-1": 0.0006781251737695757
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "n": {
+      "s1": {
+        "prompt_dir": "runs/geometry_optimization_20260704/step02_instant_geo_opt_s1_bpe_w5_fullstat_v1",
+        "sim_files": [
+          "runs/geometry_optimization_20260704/step02_instant_geo_opt_s1_bpe_w5_fullstat_v1/Background_n_fullsphere20_rep01_part01.inc1.id1.sim.gz",
+          "runs/geometry_optimization_20260704/step02_instant_geo_opt_s1_bpe_w5_fullstat_v1/Background_n_fullsphere20_rep02_part01.inc1.id1.sim.gz",
+          "runs/geometry_optimization_20260704/step02_instant_geo_opt_s1_bpe_w5_fullstat_v1/Background_n_fullsphere20_rep03_part01.inc1.id1.sim.gz",
+          "runs/geometry_optimization_20260704/step02_instant_geo_opt_s1_bpe_w5_fullstat_v1/Background_n_fullsphere20_rep04_part01.inc1.id1.sim.gz",
+          "runs/geometry_optimization_20260704/step02_instant_geo_opt_s1_bpe_w5_fullstat_v1/Background_n_fullsphere20_rep05_part01.inc1.id1.sim.gz",
+          "runs/geometry_optimization_20260704/step02_instant_geo_opt_s1_bpe_w5_fullstat_v1/Background_n_fullsphere20_rep06_part01.inc1.id1.sim.gz",
+          "runs/geometry_optimization_20260704/step02_instant_geo_opt_s1_bpe_w5_fullstat_v1/Background_n_fullsphere20_rep07_part01.inc1.id1.sim.gz",
+          "runs/geometry_optimization_20260704/step02_instant_geo_opt_s1_bpe_w5_fullstat_v1/Background_n_fullsphere20_rep08_part01.inc1.id1.sim.gz"
+        ],
+        "rate_per_event_s-1": 0.0006785296262998083,
+        "summary": {
+          "generated_events_seen": 7704528,
+          "tes_events_kept": 5052,
+          "window_keV": [
+            510.58,
+            511.42
+          ],
+          "raw_events": 60,
+          "active_veto_pass_events": 13,
+          "side_compton_fov_pass_events": 13,
+          "raw_rate_s-1": 0.0407117775779885,
+          "active_veto_pass_rate_s-1": 0.008820885141897508,
+          "side_compton_fov_pass_rate_s-1": 0.008820885141897508,
+          "active_veto_survival_fraction": 0.21666666666666665,
+          "side_compton_fov_survival_fraction_vs_active": 1.0,
+          "side_compton_class_counts": {
+            "keep": 4,
+            "single": 9
+          },
+          "selected_examples": [
+            {
+              "source_file": "runs/geometry_optimization_20260704/step02_instant_geo_opt_s1_bpe_w5_fullstat_v1/Background_n_fullsphere20_rep01_part01.inc1.id1.sim.gz",
+              "local_id": 737005,
+              "tes_total_keV": 510.99891,
+              "active_veto_keV": 0.0020770475,
+              "side_compton_class": "single",
+              "rate_s-1": 0.0006785296262998083
+            },
+            {
+              "source_file": "runs/geometry_optimization_20260704/step02_instant_geo_opt_s1_bpe_w5_fullstat_v1/Background_n_fullsphere20_rep01_part01.inc1.id1.sim.gz",
+              "local_id": 745151,
+              "tes_total_keV": 510.99894000000006,
+              "active_veto_keV": 0.0,
+              "side_compton_class": "keep",
+              "rate_s-1": 0.0006785296262998083
+            },
+            {
+              "source_file": "runs/geometry_optimization_20260704/step02_instant_geo_opt_s1_bpe_w5_fullstat_v1/Background_n_fullsphere20_rep02_part01.inc1.id1.sim.gz",
+              "local_id": 10145,
+              "tes_total_keV": 510.998922,
+              "active_veto_keV": 0.0,
+              "side_compton_class": "keep",
+              "rate_s-1": 0.0006785296262998083
+            },
+            {
+              "source_file": "runs/geometry_optimization_20260704/step02_instant_geo_opt_s1_bpe_w5_fullstat_v1/Background_n_fullsphere20_rep04_part01.inc1.id1.sim.gz",
+              "local_id": 191496,
+              "tes_total_keV": 510.9989268,
+              "active_veto_keV": 0.0,
+              "side_compton_class": "keep",
+              "rate_s-1": 0.0006785296262998083
+            },
+            {
+              "source_file": "runs/geometry_optimization_20260704/step02_instant_geo_opt_s1_bpe_w5_fullstat_v1/Background_n_fullsphere20_rep05_part01.inc1.id1.sim.gz",
+              "local_id": 610192,
+              "tes_total_keV": 510.9988701,
+              "active_veto_keV": 0.137549,
+              "side_compton_class": "single",
+              "rate_s-1": 0.0006785296262998083
+            },
+            {
+              "source_file": "runs/geometry_optimization_20260704/step02_instant_geo_opt_s1_bpe_w5_fullstat_v1/Background_n_fullsphere20_rep05_part01.inc1.id1.sim.gz",
+              "local_id": 813973,
+              "tes_total_keV": 510.99890000000005,
+              "active_veto_keV": 2.108466,
+              "side_compton_class": "single",
+              "rate_s-1": 0.0006785296262998083
+            },
+            {
+              "source_file": "runs/geometry_optimization_20260704/step02_instant_geo_opt_s1_bpe_w5_fullstat_v1/Background_n_fullsphere20_rep06_part01.inc1.id1.sim.gz",
+              "local_id": 251935,
+              "tes_total_keV": 510.998876,
+              "active_veto_keV": 11.679722987000002,
+              "side_compton_class": "single",
+              "rate_s-1": 0.0006785296262998083
+            },
+            {
+              "source_file": "runs/geometry_optimization_20260704/step02_instant_geo_opt_s1_bpe_w5_fullstat_v1/Background_n_fullsphere20_rep06_part01.inc1.id1.sim.gz",
+              "local_id": 634987,
+              "tes_total_keV": 510.998891,
+              "active_veto_keV": 0.0,
+              "side_compton_class": "single",
+              "rate_s-1": 0.0006785296262998083
+            },
+            {
+              "source_file": "runs/geometry_optimization_20260704/step02_instant_geo_opt_s1_bpe_w5_fullstat_v1/Background_n_fullsphere20_rep07_part01.inc1.id1.sim.gz",
+              "local_id": 329030,
+              "tes_total_keV": 510.99887,
+              "active_veto_keV": 0.01107629,
+              "side_compton_class": "keep",
+              "rate_s-1": 0.0006785296262998083
+            },
+            {
+              "source_file": "runs/geometry_optimization_20260704/step02_instant_geo_opt_s1_bpe_w5_fullstat_v1/Background_n_fullsphere20_rep07_part01.inc1.id1.sim.gz",
+              "local_id": 361381,
+              "tes_total_keV": 510.99890999999997,
+              "active_veto_keV": 0.0023371828,
+              "side_compton_class": "single",
+              "rate_s-1": 0.0006785296262998083
+            },
+            {
+              "source_file": "runs/geometry_optimization_20260704/step02_instant_geo_opt_s1_bpe_w5_fullstat_v1/Background_n_fullsphere20_rep07_part01.inc1.id1.sim.gz",
+              "local_id": 928441,
+              "tes_total_keV": 510.998873,
+              "active_veto_keV": 0.0,
+              "side_compton_class": "single",
+              "rate_s-1": 0.0006785296262998083
+            },
+            {
+              "source_file": "runs/geometry_optimization_20260704/step02_instant_geo_opt_s1_bpe_w5_fullstat_v1/Background_n_fullsphere20_rep08_part01.inc1.id1.sim.gz",
+              "local_id": 357387,
+              "tes_total_keV": 510.99891,
+              "active_veto_keV": 0.0,
+              "side_compton_class": "single",
+              "rate_s-1": 0.0006785296262998083
+            },
+            {
+              "source_file": "runs/geometry_optimization_20260704/step02_instant_geo_opt_s1_bpe_w5_fullstat_v1/Background_n_fullsphere20_rep08_part01.inc1.id1.sim.gz",
+              "local_id": 821539,
+              "tes_total_keV": 510.9989,
+              "active_veto_keV": 0.0,
+              "side_compton_class": "single",
+              "rate_s-1": 0.0006785296262998083
+            }
+          ]
+        },
+        "files": [
+          {
+            "path": "runs/geometry_optimization_20260704/step02_instant_geo_opt_s1_bpe_w5_fullstat_v1/Background_n_fullsphere20_rep01_part01.inc1.id1.sim.gz",
+            "generated_events_seen": 963066,
+            "tes_events_kept": 629,
+            "raw_events": 8,
+            "active_veto_pass_events": 2,
+            "side_compton_fov_pass_events": 2,
+            "raw_rate_s-1": 0.005428237010398467,
+            "active_veto_pass_rate_s-1": 0.0013570592525996167,
+            "side_compton_fov_pass_rate_s-1": 0.0013570592525996167,
+            "side_compton_class_counts": {
+              "keep": 1,
+              "single": 1
+            },
+            "selected_examples": [
+              {
+                "source_file": "runs/geometry_optimization_20260704/step02_instant_geo_opt_s1_bpe_w5_fullstat_v1/Background_n_fullsphere20_rep01_part01.inc1.id1.sim.gz",
+                "local_id": 737005,
+                "tes_total_keV": 510.99891,
+                "active_veto_keV": 0.0020770475,
+                "side_compton_class": "single",
+                "rate_s-1": 0.0006785296262998083
+              },
+              {
+                "source_file": "runs/geometry_optimization_20260704/step02_instant_geo_opt_s1_bpe_w5_fullstat_v1/Background_n_fullsphere20_rep01_part01.inc1.id1.sim.gz",
+                "local_id": 745151,
+                "tes_total_keV": 510.99894000000006,
+                "active_veto_keV": 0.0,
+                "side_compton_class": "keep",
+                "rate_s-1": 0.0006785296262998083
+              }
+            ]
+          },
+          {
+            "path": "runs/geometry_optimization_20260704/step02_instant_geo_opt_s1_bpe_w5_fullstat_v1/Background_n_fullsphere20_rep02_part01.inc1.id1.sim.gz",
+            "generated_events_seen": 963066,
+            "tes_events_kept": 636,
+            "raw_events": 4,
+            "active_veto_pass_events": 1,
+            "side_compton_fov_pass_events": 1,
+            "raw_rate_s-1": 0.0027141185051992333,
+            "active_veto_pass_rate_s-1": 0.0006785296262998083,
+            "side_compton_fov_pass_rate_s-1": 0.0006785296262998083,
+            "side_compton_class_counts": {
+              "keep": 1
+            },
+            "selected_examples": [
+              {
+                "source_file": "runs/geometry_optimization_20260704/step02_instant_geo_opt_s1_bpe_w5_fullstat_v1/Background_n_fullsphere20_rep02_part01.inc1.id1.sim.gz",
+                "local_id": 10145,
+                "tes_total_keV": 510.998922,
+                "active_veto_keV": 0.0,
+                "side_compton_class": "keep",
+                "rate_s-1": 0.0006785296262998083
+              }
+            ]
+          },
+          {
+            "path": "runs/geometry_optimization_20260704/step02_instant_geo_opt_s1_bpe_w5_fullstat_v1/Background_n_fullsphere20_rep03_part01.inc1.id1.sim.gz",
+            "generated_events_seen": 963066,
+            "tes_events_kept": 609,
+            "raw_events": 6,
+            "active_veto_pass_events": 0,
+            "side_compton_fov_pass_events": 0,
+            "raw_rate_s-1": 0.00407117775779885,
+            "active_veto_pass_rate_s-1": 0.0,
+            "side_compton_fov_pass_rate_s-1": 0.0,
+            "side_compton_class_counts": {},
+            "selected_examples": []
+          },
+          {
+            "path": "runs/geometry_optimization_20260704/step02_instant_geo_opt_s1_bpe_w5_fullstat_v1/Background_n_fullsphere20_rep04_part01.inc1.id1.sim.gz",
+            "generated_events_seen": 963066,
+            "tes_events_kept": 641,
+            "raw_events": 8,
+            "active_veto_pass_events": 1,
+            "side_compton_fov_pass_events": 1,
+            "raw_rate_s-1": 0.005428237010398467,
+            "active_veto_pass_rate_s-1": 0.0006785296262998083,
+            "side_compton_fov_pass_rate_s-1": 0.0006785296262998083,
+            "side_compton_class_counts": {
+              "keep": 1
+            },
+            "selected_examples": [
+              {
+                "source_file": "runs/geometry_optimization_20260704/step02_instant_geo_opt_s1_bpe_w5_fullstat_v1/Background_n_fullsphere20_rep04_part01.inc1.id1.sim.gz",
+                "local_id": 191496,
+                "tes_total_keV": 510.9989268,
+                "active_veto_keV": 0.0,
+                "side_compton_class": "keep",
+                "rate_s-1": 0.0006785296262998083
+              }
+            ]
+          },
+          {
+            "path": "runs/geometry_optimization_20260704/step02_instant_geo_opt_s1_bpe_w5_fullstat_v1/Background_n_fullsphere20_rep05_part01.inc1.id1.sim.gz",
+            "generated_events_seen": 963066,
+            "tes_events_kept": 627,
+            "raw_events": 10,
+            "active_veto_pass_events": 2,
+            "side_compton_fov_pass_events": 2,
+            "raw_rate_s-1": 0.006785296262998083,
+            "active_veto_pass_rate_s-1": 0.0013570592525996167,
+            "side_compton_fov_pass_rate_s-1": 0.0013570592525996167,
+            "side_compton_class_counts": {
+              "single": 2
+            },
+            "selected_examples": [
+              {
+                "source_file": "runs/geometry_optimization_20260704/step02_instant_geo_opt_s1_bpe_w5_fullstat_v1/Background_n_fullsphere20_rep05_part01.inc1.id1.sim.gz",
+                "local_id": 610192,
+                "tes_total_keV": 510.9988701,
+                "active_veto_keV": 0.137549,
+                "side_compton_class": "single",
+                "rate_s-1": 0.0006785296262998083
+              },
+              {
+                "source_file": "runs/geometry_optimization_20260704/step02_instant_geo_opt_s1_bpe_w5_fullstat_v1/Background_n_fullsphere20_rep05_part01.inc1.id1.sim.gz",
+                "local_id": 813973,
+                "tes_total_keV": 510.99890000000005,
+                "active_veto_keV": 2.108466,
+                "side_compton_class": "single",
+                "rate_s-1": 0.0006785296262998083
+              }
+            ]
+          },
+          {
+            "path": "runs/geometry_optimization_20260704/step02_instant_geo_opt_s1_bpe_w5_fullstat_v1/Background_n_fullsphere20_rep06_part01.inc1.id1.sim.gz",
+            "generated_events_seen": 963066,
+            "tes_events_kept": 641,
+            "raw_events": 8,
+            "active_veto_pass_events": 2,
+            "side_compton_fov_pass_events": 2,
+            "raw_rate_s-1": 0.005428237010398467,
+            "active_veto_pass_rate_s-1": 0.0013570592525996167,
+            "side_compton_fov_pass_rate_s-1": 0.0013570592525996167,
+            "side_compton_class_counts": {
+              "single": 2
+            },
+            "selected_examples": [
+              {
+                "source_file": "runs/geometry_optimization_20260704/step02_instant_geo_opt_s1_bpe_w5_fullstat_v1/Background_n_fullsphere20_rep06_part01.inc1.id1.sim.gz",
+                "local_id": 251935,
+                "tes_total_keV": 510.998876,
+                "active_veto_keV": 11.679722987000002,
+                "side_compton_class": "single",
+                "rate_s-1": 0.0006785296262998083
+              },
+              {
+                "source_file": "runs/geometry_optimization_20260704/step02_instant_geo_opt_s1_bpe_w5_fullstat_v1/Background_n_fullsphere20_rep06_part01.inc1.id1.sim.gz",
+                "local_id": 634987,
+                "tes_total_keV": 510.998891,
+                "active_veto_keV": 0.0,
+                "side_compton_class": "single",
+                "rate_s-1": 0.0006785296262998083
+              }
+            ]
+          },
+          {
+            "path": "runs/geometry_optimization_20260704/step02_instant_geo_opt_s1_bpe_w5_fullstat_v1/Background_n_fullsphere20_rep07_part01.inc1.id1.sim.gz",
+            "generated_events_seen": 963066,
+            "tes_events_kept": 663,
+            "raw_events": 8,
+            "active_veto_pass_events": 3,
+            "side_compton_fov_pass_events": 3,
+            "raw_rate_s-1": 0.005428237010398467,
+            "active_veto_pass_rate_s-1": 0.002035588878899425,
+            "side_compton_fov_pass_rate_s-1": 0.002035588878899425,
+            "side_compton_class_counts": {
+              "keep": 1,
+              "single": 2
+            },
+            "selected_examples": [
+              {
+                "source_file": "runs/geometry_optimization_20260704/step02_instant_geo_opt_s1_bpe_w5_fullstat_v1/Background_n_fullsphere20_rep07_part01.inc1.id1.sim.gz",
+                "local_id": 329030,
+                "tes_total_keV": 510.99887,
+                "active_veto_keV": 0.01107629,
+                "side_compton_class": "keep",
+                "rate_s-1": 0.0006785296262998083
+              },
+              {
+                "source_file": "runs/geometry_optimization_20260704/step02_instant_geo_opt_s1_bpe_w5_fullstat_v1/Background_n_fullsphere20_rep07_part01.inc1.id1.sim.gz",
+                "local_id": 361381,
+                "tes_total_keV": 510.99890999999997,
+                "active_veto_keV": 0.0023371828,
+                "side_compton_class": "single",
+                "rate_s-1": 0.0006785296262998083
+              },
+              {
+                "source_file": "runs/geometry_optimization_20260704/step02_instant_geo_opt_s1_bpe_w5_fullstat_v1/Background_n_fullsphere20_rep07_part01.inc1.id1.sim.gz",
+                "local_id": 928441,
+                "tes_total_keV": 510.998873,
+                "active_veto_keV": 0.0,
+                "side_compton_class": "single",
+                "rate_s-1": 0.0006785296262998083
+              }
+            ]
+          },
+          {
+            "path": "runs/geometry_optimization_20260704/step02_instant_geo_opt_s1_bpe_w5_fullstat_v1/Background_n_fullsphere20_rep08_part01.inc1.id1.sim.gz",
+            "generated_events_seen": 963066,
+            "tes_events_kept": 606,
+            "raw_events": 8,
+            "active_veto_pass_events": 2,
+            "side_compton_fov_pass_events": 2,
+            "raw_rate_s-1": 0.005428237010398467,
+            "active_veto_pass_rate_s-1": 0.0013570592525996167,
+            "side_compton_fov_pass_rate_s-1": 0.0013570592525996167,
+            "side_compton_class_counts": {
+              "single": 2
+            },
+            "selected_examples": [
+              {
+                "source_file": "runs/geometry_optimization_20260704/step02_instant_geo_opt_s1_bpe_w5_fullstat_v1/Background_n_fullsphere20_rep08_part01.inc1.id1.sim.gz",
+                "local_id": 357387,
+                "tes_total_keV": 510.99891,
+                "active_veto_keV": 0.0,
+                "side_compton_class": "single",
+                "rate_s-1": 0.0006785296262998083
+              },
+              {
+                "source_file": "runs/geometry_optimization_20260704/step02_instant_geo_opt_s1_bpe_w5_fullstat_v1/Background_n_fullsphere20_rep08_part01.inc1.id1.sim.gz",
+                "local_id": 821539,
+                "tes_total_keV": 510.9989,
+                "active_veto_keV": 0.0,
+                "side_compton_class": "single",
+                "rate_s-1": 0.0006785296262998083
+              }
+            ]
+          }
+        ]
+      },
+      "s2b": {
+        "prompt_dir": "runs/geometry_optimization_20260704/s2b_cryo_shell_45deg_eqstats_prompt_eplus_n_20260708",
+        "sim_files": [
+          "runs/geometry_optimization_20260704/s2b_cryo_shell_45deg_eqstats_prompt_eplus_n_20260708/Background_n_fullsphere20_rep01_part01.inc1.id1.sim.gz",
+          "runs/geometry_optimization_20260704/s2b_cryo_shell_45deg_eqstats_prompt_eplus_n_20260708/Background_n_fullsphere20_rep02_part01.inc1.id1.sim.gz",
+          "runs/geometry_optimization_20260704/s2b_cryo_shell_45deg_eqstats_prompt_eplus_n_20260708/Background_n_fullsphere20_rep03_part01.inc1.id1.sim.gz",
+          "runs/geometry_optimization_20260704/s2b_cryo_shell_45deg_eqstats_prompt_eplus_n_20260708/Background_n_fullsphere20_rep04_part01.inc1.id1.sim.gz",
+          "runs/geometry_optimization_20260704/s2b_cryo_shell_45deg_eqstats_prompt_eplus_n_20260708/Background_n_fullsphere20_rep05_part01.inc1.id1.sim.gz",
+          "runs/geometry_optimization_20260704/s2b_cryo_shell_45deg_eqstats_prompt_eplus_n_20260708/Background_n_fullsphere20_rep06_part01.inc1.id1.sim.gz",
+          "runs/geometry_optimization_20260704/s2b_cryo_shell_45deg_eqstats_prompt_eplus_n_20260708/Background_n_fullsphere20_rep07_part01.inc1.id1.sim.gz",
+          "runs/geometry_optimization_20260704/s2b_cryo_shell_45deg_eqstats_prompt_eplus_n_20260708/Background_n_fullsphere20_rep08_part01.inc1.id1.sim.gz"
+        ],
+        "rate_per_event_s-1": 0.0006783965960772396,
+        "summary": {
+          "generated_events_seen": 7704528,
+          "tes_events_kept": 2916,
+          "window_keV": [
+            510.58,
+            511.42
+          ],
+          "raw_events": 42,
+          "active_veto_pass_events": 5,
+          "side_compton_fov_pass_events": 5,
+          "raw_rate_s-1": 0.028492657035244062,
+          "active_veto_pass_rate_s-1": 0.003391982980386198,
+          "side_compton_fov_pass_rate_s-1": 0.003391982980386198,
+          "active_veto_survival_fraction": 0.11904761904761905,
+          "side_compton_fov_survival_fraction_vs_active": 1.0,
+          "side_compton_class_counts": {
+            "single": 5
+          },
+          "selected_examples": [
+            {
+              "source_file": "runs/geometry_optimization_20260704/s2b_cryo_shell_45deg_eqstats_prompt_eplus_n_20260708/Background_n_fullsphere20_rep03_part01.inc1.id1.sim.gz",
+              "local_id": 630269,
+              "tes_total_keV": 511.11163200000004,
+              "active_veto_keV": 5.899441899999999,
+              "side_compton_class": "single",
+              "rate_s-1": 0.0006783965960772396
+            },
+            {
+              "source_file": "runs/geometry_optimization_20260704/s2b_cryo_shell_45deg_eqstats_prompt_eplus_n_20260708/Background_n_fullsphere20_rep04_part01.inc1.id1.sim.gz",
+              "local_id": 943920,
+              "tes_total_keV": 510.99891999999994,
+              "active_veto_keV": 0.0,
+              "side_compton_class": "single",
+              "rate_s-1": 0.0006783965960772396
+            },
+            {
+              "source_file": "runs/geometry_optimization_20260704/s2b_cryo_shell_45deg_eqstats_prompt_eplus_n_20260708/Background_n_fullsphere20_rep06_part01.inc1.id1.sim.gz",
+              "local_id": 362967,
+              "tes_total_keV": 510.99885,
+              "active_veto_keV": 0.0,
+              "side_compton_class": "single",
+              "rate_s-1": 0.0006783965960772396
+            },
+            {
+              "source_file": "runs/geometry_optimization_20260704/s2b_cryo_shell_45deg_eqstats_prompt_eplus_n_20260708/Background_n_fullsphere20_rep07_part01.inc1.id1.sim.gz",
+              "local_id": 605579,
+              "tes_total_keV": 510.999,
+              "active_veto_keV": 46.572605456,
+              "side_compton_class": "single",
+              "rate_s-1": 0.0006783965960772396
+            },
+            {
+              "source_file": "runs/geometry_optimization_20260704/s2b_cryo_shell_45deg_eqstats_prompt_eplus_n_20260708/Background_n_fullsphere20_rep07_part01.inc1.id1.sim.gz",
+              "local_id": 849775,
+              "tes_total_keV": 510.99886,
+              "active_veto_keV": 0.0,
+              "side_compton_class": "single",
+              "rate_s-1": 0.0006783965960772396
+            }
+          ]
+        },
+        "files": [
+          {
+            "path": "runs/geometry_optimization_20260704/s2b_cryo_shell_45deg_eqstats_prompt_eplus_n_20260708/Background_n_fullsphere20_rep01_part01.inc1.id1.sim.gz",
+            "generated_events_seen": 963066,
+            "tes_events_kept": 369,
+            "raw_events": 5,
+            "active_veto_pass_events": 0,
+            "side_compton_fov_pass_events": 0,
+            "raw_rate_s-1": 0.003391982980386198,
+            "active_veto_pass_rate_s-1": 0.0,
+            "side_compton_fov_pass_rate_s-1": 0.0,
+            "side_compton_class_counts": {},
+            "selected_examples": []
+          },
+          {
+            "path": "runs/geometry_optimization_20260704/s2b_cryo_shell_45deg_eqstats_prompt_eplus_n_20260708/Background_n_fullsphere20_rep02_part01.inc1.id1.sim.gz",
+            "generated_events_seen": 963066,
+            "tes_events_kept": 391,
+            "raw_events": 6,
+            "active_veto_pass_events": 0,
+            "side_compton_fov_pass_events": 0,
+            "raw_rate_s-1": 0.004070379576463438,
+            "active_veto_pass_rate_s-1": 0.0,
+            "side_compton_fov_pass_rate_s-1": 0.0,
+            "side_compton_class_counts": {},
+            "selected_examples": []
+          },
+          {
+            "path": "runs/geometry_optimization_20260704/s2b_cryo_shell_45deg_eqstats_prompt_eplus_n_20260708/Background_n_fullsphere20_rep03_part01.inc1.id1.sim.gz",
+            "generated_events_seen": 963066,
+            "tes_events_kept": 383,
+            "raw_events": 3,
+            "active_veto_pass_events": 1,
+            "side_compton_fov_pass_events": 1,
+            "raw_rate_s-1": 0.002035189788231719,
+            "active_veto_pass_rate_s-1": 0.0006783965960772396,
+            "side_compton_fov_pass_rate_s-1": 0.0006783965960772396,
+            "side_compton_class_counts": {
+              "single": 1
+            },
+            "selected_examples": [
+              {
+                "source_file": "runs/geometry_optimization_20260704/s2b_cryo_shell_45deg_eqstats_prompt_eplus_n_20260708/Background_n_fullsphere20_rep03_part01.inc1.id1.sim.gz",
+                "local_id": 630269,
+                "tes_total_keV": 511.11163200000004,
+                "active_veto_keV": 5.899441899999999,
+                "side_compton_class": "single",
+                "rate_s-1": 0.0006783965960772396
+              }
+            ]
+          },
+          {
+            "path": "runs/geometry_optimization_20260704/s2b_cryo_shell_45deg_eqstats_prompt_eplus_n_20260708/Background_n_fullsphere20_rep04_part01.inc1.id1.sim.gz",
+            "generated_events_seen": 963066,
+            "tes_events_kept": 352,
+            "raw_events": 7,
+            "active_veto_pass_events": 1,
+            "side_compton_fov_pass_events": 1,
+            "raw_rate_s-1": 0.004748776172540678,
+            "active_veto_pass_rate_s-1": 0.0006783965960772396,
+            "side_compton_fov_pass_rate_s-1": 0.0006783965960772396,
+            "side_compton_class_counts": {
+              "single": 1
+            },
+            "selected_examples": [
+              {
+                "source_file": "runs/geometry_optimization_20260704/s2b_cryo_shell_45deg_eqstats_prompt_eplus_n_20260708/Background_n_fullsphere20_rep04_part01.inc1.id1.sim.gz",
+                "local_id": 943920,
+                "tes_total_keV": 510.99891999999994,
+                "active_veto_keV": 0.0,
+                "side_compton_class": "single",
+                "rate_s-1": 0.0006783965960772396
+              }
+            ]
+          },
+          {
+            "path": "runs/geometry_optimization_20260704/s2b_cryo_shell_45deg_eqstats_prompt_eplus_n_20260708/Background_n_fullsphere20_rep05_part01.inc1.id1.sim.gz",
+            "generated_events_seen": 963066,
+            "tes_events_kept": 357,
+            "raw_events": 3,
+            "active_veto_pass_events": 0,
+            "side_compton_fov_pass_events": 0,
+            "raw_rate_s-1": 0.002035189788231719,
+            "active_veto_pass_rate_s-1": 0.0,
+            "side_compton_fov_pass_rate_s-1": 0.0,
+            "side_compton_class_counts": {},
+            "selected_examples": []
+          },
+          {
+            "path": "runs/geometry_optimization_20260704/s2b_cryo_shell_45deg_eqstats_prompt_eplus_n_20260708/Background_n_fullsphere20_rep06_part01.inc1.id1.sim.gz",
+            "generated_events_seen": 963066,
+            "tes_events_kept": 370,
+            "raw_events": 7,
+            "active_veto_pass_events": 1,
+            "side_compton_fov_pass_events": 1,
+            "raw_rate_s-1": 0.004748776172540678,
+            "active_veto_pass_rate_s-1": 0.0006783965960772396,
+            "side_compton_fov_pass_rate_s-1": 0.0006783965960772396,
+            "side_compton_class_counts": {
+              "single": 1
+            },
+            "selected_examples": [
+              {
+                "source_file": "runs/geometry_optimization_20260704/s2b_cryo_shell_45deg_eqstats_prompt_eplus_n_20260708/Background_n_fullsphere20_rep06_part01.inc1.id1.sim.gz",
+                "local_id": 362967,
+                "tes_total_keV": 510.99885,
+                "active_veto_keV": 0.0,
+                "side_compton_class": "single",
+                "rate_s-1": 0.0006783965960772396
+              }
+            ]
+          },
+          {
+            "path": "runs/geometry_optimization_20260704/s2b_cryo_shell_45deg_eqstats_prompt_eplus_n_20260708/Background_n_fullsphere20_rep07_part01.inc1.id1.sim.gz",
+            "generated_events_seen": 963066,
+            "tes_events_kept": 331,
+            "raw_events": 6,
+            "active_veto_pass_events": 2,
+            "side_compton_fov_pass_events": 2,
+            "raw_rate_s-1": 0.004070379576463438,
+            "active_veto_pass_rate_s-1": 0.0013567931921544792,
+            "side_compton_fov_pass_rate_s-1": 0.0013567931921544792,
+            "side_compton_class_counts": {
+              "single": 2
+            },
+            "selected_examples": [
+              {
+                "source_file": "runs/geometry_optimization_20260704/s2b_cryo_shell_45deg_eqstats_prompt_eplus_n_20260708/Background_n_fullsphere20_rep07_part01.inc1.id1.sim.gz",
+                "local_id": 605579,
+                "tes_total_keV": 510.999,
+                "active_veto_keV": 46.572605456,
+                "side_compton_class": "single",
+                "rate_s-1": 0.0006783965960772396
+              },
+              {
+                "source_file": "runs/geometry_optimization_20260704/s2b_cryo_shell_45deg_eqstats_prompt_eplus_n_20260708/Background_n_fullsphere20_rep07_part01.inc1.id1.sim.gz",
+                "local_id": 849775,
+                "tes_total_keV": 510.99886,
+                "active_veto_keV": 0.0,
+                "side_compton_class": "single",
+                "rate_s-1": 0.0006783965960772396
+              }
+            ]
+          },
+          {
+            "path": "runs/geometry_optimization_20260704/s2b_cryo_shell_45deg_eqstats_prompt_eplus_n_20260708/Background_n_fullsphere20_rep08_part01.inc1.id1.sim.gz",
+            "generated_events_seen": 963066,
+            "tes_events_kept": 363,
+            "raw_events": 5,
+            "active_veto_pass_events": 0,
+            "side_compton_fov_pass_events": 0,
+            "raw_rate_s-1": 0.003391982980386198,
+            "active_veto_pass_rate_s-1": 0.0,
+            "side_compton_fov_pass_rate_s-1": 0.0,
+            "side_compton_class_counts": {},
+            "selected_examples": []
+          }
+        ]
+      }
+    }
+  },
+  "atm511_case": null,
+  "comparison_rows": [
+    {
+      "component": "eplus",
+      "stage": "raw",
+      "s1_events": 62,
+      "s2b_events": 52,
+      "s1_rate_cps": 0.04210037408219486,
+      "s2b_rate_cps": 0.035262509036017936,
+      "s2b_over_s1_ratio": 0.8375818458803481,
+      "counting_only_1sigma": 0.1575005826671149
+    },
+    {
+      "component": "eplus",
+      "stage": "active_veto_pass",
+      "s1_events": 40,
+      "s2b_events": 28,
+      "s1_rate_cps": 0.027161531665932173,
+      "s2b_rate_cps": 0.018987504865548118,
+      "s2b_over_s1_ratio": 0.6990586944462903,
+      "counting_only_1sigma": 0.17224994288591405
+    },
+    {
+      "component": "eplus",
+      "stage": "side_compton_fov_pass",
+      "s1_events": 35,
+      "s2b_events": 27,
+      "s1_rate_cps": 0.023766340207690653,
+      "s2b_rate_cps": 0.01830937969177854,
+      "s2b_over_s1_ratio": 0.7703912142877484,
+      "counting_only_1sigma": 0.19732915758454186
+    },
+    {
+      "component": "n",
+      "stage": "raw",
+      "s1_events": 60,
+      "s2b_events": 42,
+      "s1_rate_cps": 0.0407117775779885,
+      "s2b_rate_cps": 0.028492657035244062,
+      "s2b_over_s1_ratio": 0.6998627603686136,
+      "counting_only_1sigma": 0.14080325700510507
+    },
+    {
+      "component": "n",
+      "stage": "active_veto_pass",
+      "s1_events": 13,
+      "s2b_events": 5,
+      "s1_rate_cps": 0.008820885141897508,
+      "s2b_rate_cps": 0.003391982980386198,
+      "s2b_over_s1_ratio": 0.38453997822451297,
+      "counting_only_1sigma": 0.20235832298757572
+    },
+    {
+      "component": "n",
+      "stage": "side_compton_fov_pass",
+      "s1_events": 13,
+      "s2b_events": 5,
+      "s1_rate_cps": 0.008820885141897508,
+      "s2b_rate_cps": 0.003391982980386198,
+      "s2b_over_s1_ratio": 0.38453997822451297,
+      "counting_only_1sigma": 0.20235832298757572
+    }
+  ]
+}

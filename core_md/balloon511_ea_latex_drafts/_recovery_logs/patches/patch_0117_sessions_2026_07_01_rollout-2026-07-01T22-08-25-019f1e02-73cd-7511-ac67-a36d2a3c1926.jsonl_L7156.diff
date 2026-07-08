@@ -1,0 +1,29 @@
+*** Begin Patch
+*** Update File: engineering/Mass_model_511_nearfield_migration_20260701/11_manuscript_support/TODO_AND_RECENT_UPDATES_20260702.md
+@@
+ Current-geometry `.sim.gz` locator completed:
+ `engineering/Mass_model_511_nearfield_migration_20260701/11_manuscript_support/CURRENT_GEOMETRY_SIM_GZ_LOCATOR_20260703.md`
+ (`.csv` and `.json` sidecars). Result: 1354 workspace `.sim.gz` files were
+ header-scanned; 275 match the current Mass_model_511 geometry. The matching
+ files include 68 full-stat prompt/instant and 68 full-stat buildup detector
+ transport files, plus smoke prompt/buildup, 2 smoke delayed S0/S1 files, and 1
+ smoke signal/focus file. No current-geometry full-stat delayed `.sim.gz` was
+ located.
++
++EA manuscript patch completed on 2026-07-03:
++`core_md/balloon511_ea_latex_drafts/AOO.md` was applied to the English EA draft
++by replacing the 3.2 source-model block in
++`core_md/balloon511_ea_latex_drafts/balloon511_ea_draft_en.tex` only. The
++replacement adds `\label{subsec:pointsource}` and retargets the 3.2 text to the
++AOO reference point-source / prompt / delayed source construction. Three
++AOO-local `511\keV{}` text-mode occurrences were converted to `$511\keV$` so
++the file compiles. Verification: `latexmk -xelatex -interaction=nonstopmode
++-halt-on-error balloon511_ea_draft_en.tex` completed successfully in
++`core_md/balloon511_ea_latex_drafts/`. Boundary: the neighboring red-text
++sentence in the preceding optics subsection still hard-codes "Section 3.2.3";
++it was not changed because it is outside the requested 3.2 replacement scope.
+ 
+ Before launching any additional simulation, locate and certify the already
+ completed full-simulation products, if present. The required action is an
+ evidence-mapping audit, not a rerun by default:
+*** End Patch

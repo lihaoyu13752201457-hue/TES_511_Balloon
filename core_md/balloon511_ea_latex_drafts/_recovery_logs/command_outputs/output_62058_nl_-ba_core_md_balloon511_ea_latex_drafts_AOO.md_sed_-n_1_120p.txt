@@ -1,0 +1,129 @@
+{
+  "call_id": "call_BkUZqnfeMjxxEDf8nKxfhmgd",
+  "cmd": "nl -ba core_md/balloon511_ea_latex_drafts/AOO.md | sed -n '1,120p'",
+  "call_log": "/home/ubuntu/.codex/sessions/2026/07/01/rollout-2026-07-01T22-08-25-019f1e02-73cd-7511-ac67-a36d2a3c1926.jsonl",
+  "call_line": 4107,
+  "output_log": "/home/ubuntu/.codex/sessions/2026/07/01/rollout-2026-07-01T22-08-25-019f1e02-73cd-7511-ac67-a36d2a3c1926.jsonl",
+  "output_line": 4111
+}
+
+     1	# EA 稿第 3 节(3.2 / 3.3)重写提案 — 2026-07-02
+     2	
+     3	状态:**提案稿,未落入 tex**。本文件只提供替换文本与依据;论文源文件
+     4	`balloon511_ea_draft_en.tex` / `balloon511_ea_draft_zh.tex` 未做任何修改。
+     5	
+     6	-
+     7	\subsubsection{Reference point-source construction}
+     8	\label{subsec:pointsource}
+     9	
+    10	The focused signal stream is defined by a reference astrophysical point
+    11	source. As a concrete example of the target class we take the 511\keV{}
+    12	emission episode of the microquasar V404 Cygni observed with INTEGRAL/SPI
+    13	\cite{Siegert2016V404}; V404 Cygni is a transient point source in the Galactic
+    14	disk and serves here only as a reference for the source class, not as a
+    15	predicted target flux. The reference flux scale itself,
+    16	$\fzero=10^{-4}\phcms$, is the above-atmosphere value motivated in
+    17	Section~\ref{sec:requirements}.
+    18	
+    19	In the optics run, the source is a monochromatic 511\keV{} far-field beam:
+    20	photons arrive parallel to the optical axis, as from a point source at
+    21	astronomical distance, and are sampled uniformly over the incident aperture
+    22	$A_{\mathrm{inc}}$ of Eq.~(\ref{eq:laue_aeff}). Three independent seeds of
+    23	$5\times10^{4}$ primaries each give $1.5\times10^{5}$ transported photons, of
+    24	which 37,256 are diffracted and cross the focal plane; 37,194 of these
+    25	(99.8\%) fall within the $r=1.898\,\mathrm{cm}$ Be entrance window, with
+    26	focused-spot radii $r_{90}=1.03\,\mathrm{cm}$ and $r_{99}=1.25\,\mathrm{cm}$.
+    27	The within-window crossings form the event list that is replayed through the
+    28	Be aperture into the detector/cryostat model with the recorded positions and
+    29	directions.
+    30	
+    31	The normalization ties this replay to the reference flux. At the detector
+    32	entrance the focused stream carries the rate
+    33	$\fzero\,\aeff(511\keV)\,T$, where $T=0.739$ is the reference 511\keV{}
+    34	atmospheric transmission at the day-15 trajectory anchor
+    35	(Section~\ref{sec:mission_time}); numerically this is
+    36	$1.48\times10^{-3}\cps$ at the reference flux. Equivalently, the generating
+    37	run corresponds to an observation time $N_{\mathrm{fp}}/[\fzero\,\aeff\,T]$,
+    38	and each replayed event carries the inverse of that exposure as its rate
+    39	weight; in the intermediate cut-flow bookkeeping of
+    40	Section~\ref{sec:selection} the same sample appears as a unit replay before
+    41	this scale is applied. After the common detector response and event selection,
+    42	the surviving signal rate is $1.19\times10^{-3}\cps$, corresponding to a
+    43	selected effective area of $S_{\wii}/\fzero=11.9\,\mathrm{cm^2}$. Because the
+    44	optics run contains only source photons, the replayed stream is signal-pure;
+    45	all backgrounds enter through the streams of Section~\ref{sec:background} and
+    46	the boundary terms of Section~\ref{subsec:upstream_optics_background}.
+    47	
+    48	\subsection{Prompt atmospheric and delayed-activation source model}
+    49	\label{sec:background}
+    50	
+    51	With the focused signal defined in Section~\ref{subsec:pointsource}, the
+    52	background side of the calculation requires two further source layers: the
+    53	prompt atmospheric field incident on the payload, and the delayed radioactive
+    54	population that this field builds up in the instrument. The two are
+    55	constructed separately, so that source generation does not absorb assumptions
+    56	that belong to detector selection: everything in this section defines incident
+    57	particles or decaying nuclei, while vetoes, topology cuts, and the hard line
+    58	window are applied only in Section~\ref{sec:selection}.
+    59	
+    60	\subsubsection{Prompt atmospheric source}
+    61	\label{subsec:prompt_source}
+    62	
+    63	The prompt atmospheric field is derived from EXPACS/PARMA. PARMA3.0 is an
+    64	analytical model parameterized from PHITS atmospheric-shower calculations and
+    65	benchmarked against terrestrial cosmic-ray measurements, and EXPACS is its
+    66	public tabulation and software interface
+    67	\cite{Sato2015EXPACS,Sato2016PARMA4}. PHITS supplies the underlying
+    68	particle-transport physics: primary cosmic rays interact with air nuclei, the
+    69	secondary hadrons, leptons, photons, and neutrons are transported through the
+    70	atmospheric column, and the resulting fluences are parameterized by altitude,
+    71	geomagnetic cutoff, solar modulation, energy, and direction. In this work
+    72	EXPACS/PARMA provides the differential incident flux as a function of particle
+    73	species, kinetic energy, zenith angle, geographic position, altitude, cutoff
+    74	rigidity, and solar activity, and is used only to construct the external
+    75	radiation fields; detector response, vetoing, topology selection, and
+    76	mission-time counting are applied downstream. The reference source definitions
+    77	use latitude $34^\circ$, longitude $100^\circ$, altitude $38\,\mathrm{km}$,
+    78	vertical cutoff rigidity $R_c=11.6\,\mathrm{GV}$, and the 2025-08-31 solar
+    79	condition corresponding to $W=118.3$.
+    80	
+    81	The prompt source includes photons, neutrons, electrons, positrons, protons,
+    82	alpha particles, and negative and positive muons. For each particle family the
+    83	EXPACS/PARMA differential spectrum is converted into a MEGAlib far-field area
+    84	source covering the full zenith range $\theta=0^\circ$--$180^\circ$ and full
+    85	azimuth range $\phi=0^\circ$--$360^\circ$. The zenith dependence is represented
+    86	by 20 differential equal-$\mu$ angular bins, where $\mu=\cos\theta$ and each
+    87	bin subtends $\Delta\Omega=0.6283185307\,\mathrm{sr}$: the first ten bins cover
+    88	down-going particles, the last ten up-going or albedo-like particles. Both
+    89	hemispheres are retained in the prompt transport and in the
+    90	activation-production transport, so upward albedo particles are not discarded
+    91	at source construction. Figure~\ref{fig:expacs_fullsphere_flux} shows the
+    92	resulting full-sphere flux field.
+    93	
+    94	\begin{figure}[t]
+    95	\centering
+    96	\includegraphics[width=\linewidth]{paper_source_figure_table/fig_expacs_fullsphere_flux.png}
+    97	\caption{EXPACS/PARMA full-sphere atmospheric flux field used to generate the prompt and activation-production transport inputs. Left: energy- and solid-angle-integrated fluxes for the eight transported particle families, separated into down-going and up-going hemispheres. Right: bin-integrated flux in the 20 equal-$\mu$ differential zenith bins used by the MEGAlib far-field source. The plot is generated from the source-definition inputs for latitude $34^\circ$, longitude $100^\circ$, altitude $38\,\mathrm{km}$, $R_c=11.6\,\mathrm{GV}$, and $W=118.3$.}
+    98	\label{fig:expacs_fullsphere_flux}
+    99	\end{figure}
+   100	
+   101	The integrated source-plane fluxes are approximately $4.80$, $0.462$, $0.199$,
+   102	$0.117$, $0.112$, $0.0115$, $0.0050$, and $0.0056\,\mathrm{cm^{-2}\,s^{-1}}$
+   103	for $\gamma$, $n$, $e^-$, $e^+$, $p$, $\alpha$, $\mu^-$, and $\mu^+$,
+   104	respectively; the non-photon families together carry about
+   105	$0.91\,\mathrm{cm^{-2}\,s^{-1}}$, or 16\% of the total. If Monte Carlo counts
+   106	were allocated strictly in proportion to flux, the detector and activation
+   107	statistics of these minority families would be poor, so the non-photon
+   108	families are generated with replicated samples and de-weighted in the rate
+   109	normalization. All particles are then transported through the
+   110	detector/cryostat mass model with Geant4/MEGAlib
+   111	\cite{Agostinelli2003,Allison2016,Zoglauer2006}; the prompt run and the
+   112	activation-production run each generated 25,210,216 incident primaries. Each
+   113	particle species is normalized with its own transported exposure,
+   114	\begin{equation}
+   115	  r_{\mathrm{event},j}=\left(\sum_i \mathcal{T}_{ij}\right)^{-1},
+   116	\end{equation}
+   117	where $\mathcal{T}_{ij}$ is the transported exposure of subsample $i$ for
+   118	species $j$. This per-species normalization is required because the photon and
+   119	non-photon streams have different sampling and exposure structures; the
+   120	normalization check enforces $r_{\mathrm{event},j}\sum_i\mathcal{T}_{ij}=1$

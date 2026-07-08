@@ -1,0 +1,69 @@
+{
+  "call_id": "call_bdd5nrWwzfDM8KTbCVOFobqc",
+  "cmd": "nl -ba core_md/balloon511_ea_latex_drafts/balloon511_ea_draft_zh.tex | sed -n '121,175p'",
+  "call_log": "/home/ubuntu/.codex/sessions/2026/06/28/rollout-2026-06-28T20-40-23-019f0e3e-c8af-7003-b6cd-d523b87873df.jsonl",
+  "call_line": 1899,
+  "output_log": "/home/ubuntu/.codex/sessions/2026/06/28/rollout-2026-06-28T20-40-23-019f0e3e-c8af-7003-b6cd-d523b87873df.jsonl",
+  "output_line": 1902,
+  "source_path": "core_md/balloon511_ea_latex_drafts/balloon511_ea_draft_zh.tex",
+  "range": [
+    121,
+    175
+  ]
+}
+
+\section{模拟框架}
+\label{sec:framework}
+
+本节描述从源生成到飞行性能评估的整条端到端模拟链。信号与本底并不共用同一几何，而是各自在独立的质量模型中起步：信号支在 10 m 上游的 Laue 光学模型里把 511 keV 光子聚焦到焦平面，记录穿过 Be 入射孔径的光子；本底支则在第~\ref{sec:geometry}~节的探测器/低温系统质量模型中直接输运瞬发大气粒子，以及活化产物按记录产生位置生成的延迟衰变。两支在探测器模型里才汇合：聚焦光子被重放进同一探测器/低温系统模型，与本底一道经过同一套探测器响应与 veto，随后依次进入详细本底分析、任务时间与轨迹折叠，以及飞行性能评估与设计优化建议。正因为聚焦信号与两路本底在任何本底分解或灵敏度陈述之前都通过了这同一套响应和 veto，后续结果才落在一致的事例选择之上。
+
+通过详细质量模型的探测器耦合 Monte Carlo 输运，是预测伽马射线谱仪响应和本底的成熟方法 \cite{Sturner2003}；图~\ref{fig:workflow} 把这条链路按计算层级展开：几何定义、瞬发与活化积累输运、延迟源构建、聚焦光学输运、探测器耦合信号重放、veto 机制、本底细节分析、时间/飞行轨迹变化，以及飞行性能评估与设计优化意见——下文逐层说明各层的输入、操作与输出。本文以产生位置采样延迟衰变作为主要延迟源表示：延迟衰变从记录到的放射性产生位置采样，而不是重新分配到轴对称径向分布。
+
+\begin{figure}[t]
+\centering
+\begin{tikzpicture}[
+  box/.style={rectangle, rounded corners=2pt, draw=black!55, line width=0.4pt,
+              align=center, font=\scriptsize, text width=30mm, minimum height=8mm, inner sep=2pt},
+  bg/.style={box, fill=blue!8},
+  sig/.style={box, fill=green!12},
+  shr/.style={box, fill=black!6},
+  flow/.style={-{Latex[length=2mm]}, draw=black!60, line width=0.5pt}
+]
+\node[shr] (geo)    at (0,0)        {几何 / 质量模型};
+\node[bg]  (prompt) at (-3.1,-1.35) {瞬发与活化输运};
+\node[bg]  (delay)  at (-3.1,-2.7)  {延迟活度源};
+\node[bg]  (decay)  at (-3.1,-4.05) {产生位置衰变输运};
+\node[sig] (optics) at (3.1,-1.35)  {Laue 光学（仅信号）};
+\node[sig] (couple) at (3.1,-2.7)   {光学--探测器耦合};
+\node[shr] (sel)    at (0,-5.4)     {veto 机制：闪烁体 veto $+$ 康普顿运动学 veto};
+\node[shr] (detail) at (0,-6.75)    {本底细节分析};
+\node[shr] (fold)   at (0,-8.1)     {时间/飞行轨迹变化};
+\node[shr] (out)    at (0,-9.45)    {飞行性能评估，设计优化意见};
+\draw[flow] (geo) -- (prompt);
+\draw[flow] (geo) -- (optics);
+\draw[flow] (prompt) -- (delay);
+\draw[flow] (delay) -- (decay);
+\draw[flow] (optics) -- (couple);
+\draw[flow] (decay) -- (sel);
+\draw[flow] (couple) -- (sel);
+\draw[flow] (sel) -- (detail);
+\draw[flow] (detail) -- (fold);
+\draw[flow] (fold) -- (out);
+\end{tikzpicture}
+\caption{本文采用的模拟链。蓝色节点为瞬发与延迟本底流，绿色节点为聚焦信号光学，灰色节点为共享的几何、veto 机制、本底细节分析、时间/飞行轨迹变化以及最终飞行性能评估。聚焦信号和全部本底流先在同一探测器响应与 veto 定义下评估，再用于本底分解、任务时间变化和设计优化判断。}
+\label{fig:workflow}
+\end{figure}
+
+主要率级计算结合瞬发和活化积累输运、固定第 15 天放射性核素群体、记录产生位置上的等活度点源采样点，以及下游探测器响应、veto 机制、本底细节分析和飞行性能评估。
+
+每一层都有明确输入、物理或统计操作、传递给后续层级的输出，以及解释边界。几何定义固定质量模型和坐标策略，但不产生率。瞬发输运和活化输运分别定义直接大气本底与同位素产生历史。延迟源层把这些产生历史转换为固定第 15 天放射性核素群体，并输运采样的产生位置衰变。光学 Monte Carlo 只负责信号：它提供 Laue 透镜有效面积和真实追踪的聚焦相空间；光学-探测器耦合与探测器响应层再把该相空间转化为探测器耦合点源响应。闪烁体 veto 和康普顿运动学 veto 共同定义探测器层保留事例；随后进行本底细节分析、时间/飞行轨迹变化折叠，并把结果用于飞行性能评估和设计优化判断。
+
+下文数值引用遵循同样的层级。第 15 天选后率是在聚焦信号流按 10 m
+Ge(111) 有效面积和参考大气透过率缩放后引用；任务平均率来自时间相
+关折叠；主要 $Z$、$T_{3\sigma}$ 和流量阈值来自累积显著度计算。
+产生位置抽样检查只在采样源完成输运并通过同一探测器
+选择和显著度链路后引用。这样可避免把单位注入率、第 15 天直接期望
+和任务时间折叠后的灵敏度混成一个结果。
+
+\FloatBarrier
+

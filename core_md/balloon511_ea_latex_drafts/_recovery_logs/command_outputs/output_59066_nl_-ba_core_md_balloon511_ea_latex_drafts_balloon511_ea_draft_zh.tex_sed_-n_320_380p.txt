@@ -1,0 +1,70 @@
+{
+  "call_id": "call_nbFIDrBAMyA7VglGCocRPULO",
+  "cmd": "nl -ba core_md/balloon511_ea_latex_drafts/balloon511_ea_draft_zh.tex | sed -n '320,380p'",
+  "call_log": "/home/ubuntu/.codex/sessions/2026/06/28/rollout-2026-06-28T20-40-23-019f0e3e-c8af-7003-b6cd-d523b87873df.jsonl",
+  "call_line": 2393,
+  "output_log": "/home/ubuntu/.codex/sessions/2026/06/28/rollout-2026-06-28T20-40-23-019f0e3e-c8af-7003-b6cd-d523b87873df.jsonl",
+  "output_line": 2396
+}
+
+   320	则通过主动屏蔽。基准 CsI 配置中的屏蔽能量由 CsI 主动屏蔽体积
+   321	在后处理中读取。几何描述中存在探测器触发和 veto 标记，但定量率
+   322	定义采用这里的统一后处理定义，因此瞬发、延迟和聚焦信号流使用相同的
+   323	coincidence 窗和阈值。
+   324	
+   325	第二层是对主动屏蔽通过后的 TES 命中施加拓扑/视场一致性检验。基准事例类别保持显式区分：单点事例、有效重建的多点事例和未重建的多点事例。
+   326	单像素 TES 事例作为量热线候选保留。双命中事例测试两个可能的第一散射顺序。对一个
+   327	假定顺序，若第一沉积能量为 $E_1$、剩余散射光子能量为
+   328	$E_{\mathrm{sc}}$，则运动学散射角由
+   329	\begin{equation}
+   330	  \cos\theta_C =
+   331	  1 - m_ec^2\left(\frac{1}{E_{\mathrm{sc}}}
+   332	  - \frac{1}{E_1+E_{\mathrm{sc}}}\right)
+   333	\end{equation}
+   334	给出。若任一顺序给出物理有效的第一散射锥并与侧入射 Be 窗圆盘相交，
+   335	则该事例保留。对更高多重度事例，当前实现枚举最多六个 TES 命中的候选
+   336	顺序，并用常用的康普顿序列残差
+   337	\begin{equation}
+   338	  Q = \sum_{i=1}^{n-2}
+   339	  \left(\cos\theta_{C,i} -
+   340	  \hat{\mathbf u}_{i-1,i}\cdot\hat{\mathbf u}_{i,i+1}\right)^2
+   341	\end{equation}
+   342	选择最佳顺序，然后对第一散射锥施加同一窗口相交检验。若没有有效顺序，
+   343	该事例被归为未重建类。此类事例在基准选后率定义中保留，但不称为通过视场的事例。因此本文线窗结果没有从剔除歧义重建失败事例中获得灵敏度增益。
+   344	该策略并不是净灵敏度的保守下界。诊断性替代选择表明，如果采用
+   345	single-site-only 口径并把所有多命中候选作为 veto 丢弃，在当前 $\wii$
+   346	样本中会保留 $59.4\%$ 的聚焦信号和 $68.2\%$ 的选后本底，并把简单
+   347	$S/\sqrt{B}$ 降低到基准值的 $0.720$。因此，基准选择把歧义多命中事例视为一个需要后续重建验证的
+   348	模型边界，而不是把激进事例拒绝作为灵敏度增益来源。
+   349	
+   350	\added{为把这一选择链路和有限 Monte Carlo 统计显式对应起来，表~\ref{tab:phase2_cutflow} 给出当前 事例级 证据包从 事例选择 事例目录轻量解析得到的 $\wii$ cut-flow。该表不来自新的 Geant4/MEGAlib 输运，而是对当前事例目录按相同 TES 能窗、CsI veto 和康普顿运动学/视场一致性检验重放；不确定度为按事例权重做的 Monte Carlo 二次和。当前 事例选择 记录先固定能窗再记录 raw、主动屏蔽和拓扑阶段，因此表中的 raw 阶段应理解为线窗内预 veto 样本，而不是全能段入射样本。}
+   351	
+   352	\begin{table}[t]
+   353	\centering
+   354	\caption{\added{事例级 证据包给出的 $\wii$ 线窗 cut-flow。}}
+   355	\label{tab:phase2_cutflow}
+   356	\footnotesize
+   357	\resizebox{\linewidth}{!}{%
+   358	{
+   359	\begin{tabular}{llccc}
+   360	\toprule
+   361	流 & 阶段 & 事例数 & 率 / $\cps$ & 统计不确定度 / $\cps$ \\
+   362	\midrule
+   363	瞬发本底 & 线窗预 veto & 161 & $1.1877\times10^{-1}$ & $1.15\times10^{-2}$ \\
+   364	瞬发本底 & CsI veto 后 & 60 & $4.0712\times10^{-2}$ & $5.26\times10^{-3}$ \\
+   365	瞬发本底 & 拓扑/视场选后 & 54 & $3.6641\times10^{-2}$ & $4.99\times10^{-3}$ \\
+   366	延迟活化 & 线窗预 veto & 54 & $4.6354\times10^{-3}$ & $6.31\times10^{-4}$ \\
+   367	延迟活化 & CsI veto 后 & 33 & $2.8327\times10^{-3}$ & $4.93\times10^{-4}$ \\
+   368	延迟活化 & 拓扑/视场选后 & 30 & $2.5752\times10^{-3}$ & $4.70\times10^{-4}$ \\
+   369	聚焦信号 & 线窗预 veto & 30323 & $8.1527\times10^{-1}$ & $4.68\times10^{-3}$ \\
+   370	聚焦信号 & CsI veto 后 & 30323 & $8.1527\times10^{-1}$ & $4.68\times10^{-3}$ \\
+   371	聚焦信号 & 拓扑/视场选后 & 29715 & $7.9892\times10^{-1}$ & $4.63\times10^{-3}$ \\
+   372	\bottomrule
+   373	\end{tabular}
+   374	}}
+   375	\vspace{0.5ex}
+   376	\begin{minipage}{0.94\linewidth}
+   377	\footnotesize
+   378	聚焦信号行是 事例选择 事例目录中的单位重放率，用于说明 veto 保留行为；表~\ref{tab:primary_sensitivity} 中的点源信号率另按 Laue 有效面积、参考通量和大气透过率缩放。
+   379	\end{minipage}
+   380	\end{table}

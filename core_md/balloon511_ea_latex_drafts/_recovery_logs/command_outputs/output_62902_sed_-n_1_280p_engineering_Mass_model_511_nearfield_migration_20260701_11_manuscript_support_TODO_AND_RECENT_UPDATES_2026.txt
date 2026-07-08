@@ -1,0 +1,240 @@
+{
+  "call_id": "call_esvvGQkh8zCXU5Xpk0PshF50",
+  "cmd": "sed -n '1,280p' engineering/Mass_model_511_nearfield_migration_20260701/11_manuscript_support/TODO_AND_RECENT_UPDATES_20260702.md",
+  "call_log": "/home/ubuntu/.codex/sessions/2026/07/01/rollout-2026-07-01T22-08-25-019f1e02-73cd-7511-ac67-a36d2a3c1926.jsonl",
+  "call_line": 8558,
+  "output_log": "/home/ubuntu/.codex/sessions/2026/07/01/rollout-2026-07-01T22-08-25-019f1e02-73cd-7511-ac67-a36d2a3c1926.jsonl",
+  "output_line": 8562
+}
+
+# TODO And Recent Updates - 2026-07-02
+
+Status: `OPEN_ENGINEERING_TODO_UPDATED_20260703`
+
+This file records what remains unfinished for the
+`Mass_model_511_nearfield_migration_20260701` engineering package and the latest
+three paper-data updates that must be carried forward when this branch is moved
+from smoke closure to manuscript-ready full-chain closure.
+
+Cleanup note: the accidental 2026-07-02 Stage-2 full-stat delayed rerun artifacts
+created during TODO bookkeeping were removed. No source/transport product from
+that accidental rerun is retained as evidence.
+
+Important boundary: the three recent paper-data updates listed below were
+derived against the current paper `fix5_fullstat_v2_exactpos_m50000_s260613`
+authority, not against a completed Mass_model_511 full-stat chain. They are
+inputs to the next manuscript/full-chain pass, not claims that the
+Mass_model_511 branch has already replaced fix5.
+
+## 2026-07-03 Update
+
+Mass_model_511 current-geometry full-stat delayed transport, Step05
+selected-rate extraction, and Step06--Step08 rate-level 20-day fold have now
+been completed and recorded in:
+
+- `engineering/Mass_model_511_nearfield_migration_20260701/13_fullstat_closure_20260703/FULLSTAT_DELAYED_STEP05_STATUS.md`
+- `engineering/Mass_model_511_nearfield_migration_20260701/11_manuscript_support/FULLCHAIN_PRODUCT_LOCATOR_20260703_ADDENDUM.md`
+- `engineering/Mass_model_511_nearfield_migration_20260701/11_manuscript_support/CURRENT_GEOMETRY_SIM_GZ_LOCATOR_20260703_ADDENDUM_AFTER_DELAYED.md`
+
+The delayed exact-position sampling is constrained to match the fix5 publication
+authority: `M=50000`, `seed=260613`, and delayed transport
+`SE=ID=1000000`. This is a hard comparability requirement, not an optional
+smoke setting.
+
+Step05 W2 selected-rate result for the current geometry:
+
+- prompt: `0.0440889480718 cps`
+- delayed: `0.00398460071759 cps`
+- total background: `0.04807354878939 cps`
+- prompt/delayed composition: `91.7114% / 8.2886%`
+- signal at reference flux: `0.00118476 cps`
+- direct 20 d 3-sigma flux from Step05 selected rates: `4.22351e-05 ph cm^-2 s^-1`
+
+Step08 W2 time-dependent result:
+
+- `Z20d = 7.038367535725279` at `1e-4 ph cm^-2 s^-1`
+- `T3 = 3.272692839458616 day`
+- `T5 = 10.081784420495984 day`
+- 20 d 3-sigma flux: `4.2623520081505106e-05 ph cm^-2 s^-1`
+
+Boundary: this is still not a no-effect/replacement release and does not include
+Mass_model_511-specific P1/P2/P3 replay.
+
+## Previous Locator Context
+
+Locator completed before the 2026-07-03 delayed/Step05 completion:
+`engineering/Mass_model_511_nearfield_migration_20260701/11_manuscript_support/FULLCHAIN_PRODUCT_LOCATOR_20260702.md`
+(`.json` sidecar). Result: the complete publication full-chain located in the
+workspace is `fix5_fullstat_v2_exactpos_m50000_s260613`; Mass_model_511 has
+certified full-stat prompt/buildup transport only, not a located full Mass_model
+delayed/Step05/Step06--Step08 chain. This statement is superseded for delayed
+and Step05 by the 2026-07-03 addenda above.
+
+Current-geometry `.sim.gz` locator completed:
+`engineering/Mass_model_511_nearfield_migration_20260701/11_manuscript_support/CURRENT_GEOMETRY_SIM_GZ_LOCATOR_20260703.md`
+(`.csv` and `.json` sidecars). Result: 1354 workspace `.sim.gz` files were
+header-scanned; 275 match the current Mass_model_511 geometry. The matching
+files include 68 full-stat prompt/instant and 68 full-stat buildup detector
+transport files, plus smoke prompt/buildup, 2 smoke delayed S0/S1 files, and 1
+smoke signal/focus file. No current-geometry full-stat delayed `.sim.gz` was
+located at that time. This statement is superseded by
+`CURRENT_GEOMETRY_SIM_GZ_LOCATOR_20260703_ADDENDUM_AFTER_DELAYED.md`.
+
+EA manuscript patch completed on 2026-07-03:
+`core_md/balloon511_ea_latex_drafts/AOO.md` was applied to the English EA draft
+by replacing the 3.2 source-model block in
+`core_md/balloon511_ea_latex_drafts/balloon511_ea_draft_en.tex` only. The
+replacement adds `\label{subsec:pointsource}` and retargets the 3.2 text to the
+AOO reference point-source / prompt / delayed source construction. Three
+AOO-local `511\keV{}` text-mode occurrences were converted to `$511\keV$` so
+the file compiles. Verification: `latexmk -xelatex -interaction=nonstopmode
+-halt-on-error balloon511_ea_draft_en.tex` completed successfully in
+`core_md/balloon511_ea_latex_drafts/`. Boundary: the neighboring red-text
+sentence in the preceding optics subsection still hard-codes "Section 3.2.3";
+it was not changed because it is outside the requested 3.2 replacement scope.
+
+Before launching any additional simulation, locate and certify the already
+completed full-simulation products, if present. The required action remains an
+evidence-mapping audit, not a rerun by default:
+
+- identify the existing complete prompt, buildup, delayed, Step05, Step06--Step08
+  and P1/P2/P3 replay products;
+- verify their geometry headers, source-card provenance, normalization guards,
+  statistics labels, and manifest status;
+- map accepted products into this engineering package with paths and claim
+  boundaries;
+- run only genuinely missing or invalid pieces after that audit says they are
+  absent or unusable.
+
+## Unfinished Mass_model_511 Work
+
+The package now has current-geometry full-stat delayed transport, Step05
+selected-rate extraction, and Step06--Step08 time-dependent significance. The
+following work remains open before this branch can be cited as a
+manuscript-ready physics result:
+
+1. Full-stat detector background campaign evidence mapping:
+   prompt, buildup, delayed, and Step05 are now located/certified for the
+   current geometry. Keep the product locator addendum current and do not mix in
+   smoke or non-current-geometry SIM files.
+
+2. Full-stat Step05 detector-response release:
+   completed for selected W2 prompt/delayed/background rates with unchanged
+   Step05 normalization and cuts. Detailed family/isotope decomposition remains
+   optional supporting analysis unless required by the replacement review.
+
+3. No-material-effect / replacement release:
+   compare candidate Mass_model_511 against the current paper authority with a
+   formal pass/fail decision. Current smoke comparison is not sufficient for a
+   no-effect or replacement claim.
+
+4. Step06--Step08 mission-axis regeneration:
+   completed for the current geometry at rate-level counting significance:
+   `stepwise_maintenance/step08_significance/outputs_Mass_model_511_fullstat_v1/step08_Mass_model_511_fullstat_v1_time_dependent_summary.json`.
+
+5. Optics integration decision:
+   the `05_optics_migration/` multiband unified optics geometry is migrated and
+   smoke-verified, but it is a parallel optics-geometry record. If manuscript
+   claims need the new optics, build an explicit optics-to-detector/full-chain
+   coupling path and do not treat current `G5 =
+   OPTICS_BRIDGE_NOT_REQUIRED_DETECTOR_ONLY` as an optics-background closure.
+
+6. P1/P2/P3 replay on Mass_model_511:
+   once full-stat Mass_model_511 Step05/Step08 products exist, repeat the
+   line-width sensitivity, atmospheric 511-keV line correction, and science-case
+   geometry framing against the Mass_model_511 authority instead of the current
+   fix5 paper authority.
+
+## Latest Three Paper-Data Updates To Carry Forward
+
+### 1. P1 line-width sensitivity package
+
+Location:
+`engineering/paper_review_p1_p2_p3_data_check_20260702/outputs/p1_linewidth_sensitivity_summary.json`
+
+Current fix5 conclusion:
+
+- The existing headline `F3 = 3.8464e-5 ph cm^-2 s^-1` is an unresolved-line /
+  narrow-line selected-rate threshold.
+- If the current narrow W2 window is held fixed while only the source line is
+  broadened, sensitivity degrades strongly.
+- If the background annihilation line is also modeled with a realistic material
+  width and the line window is re-optimized, representative thresholds remain
+  about `3.41e-5--3.97e-5 ph cm^-2 s^-1` for the checked 1.3--5.36 keV source
+  FWHM cases.
+
+Carry-forward task:
+add a line-width/window-width sensitivity table to the manuscript workflow. For
+Mass_model_511, regenerate the same table from Mass_model_511 full-stat
+background and signal authority when available.
+
+### 2. P2 atmospheric 511-keV line transfer
+
+Locations:
+
+- source:
+  `runs/p2_atm511_unit_20260702/Atm511LowerUnit3M.source`
+- sim:
+  `runs/p2_atm511_unit_20260702/Atm511LowerUnit3M.inc1.id1.sim.gz`
+- summary:
+  `engineering/paper_review_p1_p2_p3_data_check_20260702/outputs/p2_atm511_transfer_summary.json`
+
+Current fix5 conclusion:
+
+- Treat atmospheric 511 keV as a separate mono-line source, not an interpolation
+  inside the EXPACS/PARMA continuum.
+- High-stat transfer: 3,000,000 generated events, 100 W2 final events,
+  unit final transfer `0.376789751 cps / (ph cm^-2 s^-1)`.
+- Harris/SMM Rc=11--13 GV scenario gives an added background
+  `0.00877980 cps`, moving the fixed-W2 unresolved-line threshold from
+  `3.8464e-5` to `4.25524e-5 ph cm^-2 s^-1`.
+
+Carry-forward task:
+using the now available Mass_model_511 full-stat chain, rerun or reweight the P2
+atmospheric-line transfer on the Mass_model_511 candidate geometry and include
+the atmospheric-line component in the background table.
+
+### 3. Paper data sufficiency / P3 geometry framing
+
+Location:
+`engineering/paper_review_p1_p2_p3_data_check_20260702/outputs/paper_data_sufficiency_summary_20260702.md`
+
+Current fix5 conclusion:
+
+- Baseline background composition is prompt `93.433%` and delayed `6.567%`.
+- After adding the Harris-normalized atmospheric 511-keV line component, the
+  composition becomes prompt `76.342%`, delayed `5.365%`, atmospheric line
+  `18.293%`.
+- Science-case geometry needs text correction: from 34 deg N, the Galactic
+  center reaches only about 27 deg elevation and should not be tied to the
+  45-degree / `T=0.739` reference geometry. V404 Cygni / northern near-zenith
+  transient framing is geometrically consistent with the current reference
+  trajectory.
+
+Carry-forward task:
+keep the manuscript headline as an unresolved-line selected-rate threshold,
+include the P2 atmospheric-line correction or table, and reframe the science
+case before claiming manuscript readiness. Re-evaluate the exact P1/P2/P3
+numbers against the now regenerated Mass_model_511 Step06--Step08 products.
+
+## Citation Boundary
+
+Allowed to cite now inside engineering notes:
+
+- `PASS_SMOKE_MATRIX_CLOSURE` for the Mass_model_511 smoke matrix.
+- `PASS_FULLSTAT_STEP08_CURRENT_GEOMETRY_NOT_REPLACEMENT` for the
+  current-geometry Mass_model_511 delayed/Step05/Step06--Step08 rate-level
+  chain.
+- Current Step08 W2 result: `Z20d = 7.038367535725279` at
+  `1e-4 ph cm^-2 s^-1`, with 20 d 3-sigma flux
+  `4.2623520081505106e-05 ph cm^-2 s^-1`.
+- `OPTICS_GEOMETRY_MIGRATED_AND_MC_SMOKE_VERIFIED_IN_REPO` for the parallel
+  multiband optics geometry migration.
+- P1/P2/P3 fix5-derived update files as manuscript-revision inputs.
+
+Not allowed yet:
+
+- Mass_model_511 no-effect/replacement claim.
+- Mass_model_511-specific P1/P2/P3 replacement numbers.
+- A claim that the migrated multiband optics is coupled into the detector
+  background/full-chain rate model.

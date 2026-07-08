@@ -61,7 +61,8 @@ def main() -> int:
     active = int(w2["active_veto_pass_events"])
     final_ids = [int(x) for x in w2["final_event_ids"]]
     final = int(w2["side_compton_fov_pass_events"])
-    obs = raw / float(w2["raw_rate_per_unit_flux_cps_per_ph_cm2_s"])
+    obs = float(p2["normalization"]["observation_time_s"])
+    rate_units = str(p2["normalization"].get("rate_units") or m.ATM511_RATE_UNITS)
     atm_summary = {
         "family": "atm511",
         "window": "w2_510p58_511p42",
@@ -70,9 +71,10 @@ def main() -> int:
         "raw_events": raw,
         "active_veto_pass_events": active,
         "side_compton_fov_pass_events": final,
-        "raw_rate_s-1_per_unit_flux": float(w2["raw_rate_per_unit_flux_cps_per_ph_cm2_s"]),
-        "active_veto_pass_rate_s-1_per_unit_flux": float(w2["active_rate_per_unit_flux_cps_per_ph_cm2_s"]),
-        "side_compton_fov_pass_rate_s-1_per_unit_flux": float(w2["final_rate_per_unit_flux_cps_per_ph_cm2_s"]),
+        "raw_rate_s-1": float(w2["raw_rate_cps"]),
+        "active_veto_pass_rate_s-1": float(w2["active_rate_cps"]),
+        "side_compton_fov_pass_rate_s-1": float(w2["final_rate_cps"]),
+        "rate_units": rate_units,
         "active_veto_rejection_fraction_vs_raw_count": 1.0 - active / raw if raw else None,
         "side_compton_fov_rejection_fraction_vs_active_count": 1.0 - final / active if active else None,
         "final_survival_fraction_vs_raw_count": final / raw if raw else None,
@@ -85,7 +87,8 @@ def main() -> int:
     targets = {str(m.P2_ATM511_SIM): set(final_ids)}
     atm_metadata = m.collect_selected_event_metadata(targets)
     final_energy = {int(eid): float(en) for eid, en in zip(final_ids, w2["final_energies_keV"])}
-    final_bgo = {int(eid): float(en) for eid, en in zip(final_ids, w2["final_bgo_keV"])}
+    final_active_key = "final_active_veto_keV" if "final_active_veto_keV" in w2 else "final_bgo_keV"
+    final_bgo = {int(eid): float(en) for eid, en in zip(final_ids, w2[final_active_key])}
     for eid in final_ids:
         meta = atm_metadata[(m.rel(m.P2_ATM511_SIM), eid)]
         init = meta.get("init") or {}
@@ -101,7 +104,8 @@ def main() -> int:
             "stage_side_compton_fov_pass": True,
             "tes_total_keV": final_energy.get(eid),
             "active_veto_keV": final_bgo.get(eid),
-            "rate_s-1_per_unit_flux": float(w2["final_rate_per_unit_flux_cps_per_ph_cm2_s"]) / max(1, final),
+            "rate_s-1": float(w2["final_rate_cps"]) / max(1, final),
+            "rate_units": rate_units,
             "side_compton_class": "final_pass_from_p2_replay",
             "entry_surface_proxy": meta.get("entry_surface_proxy"),
             "entry_region_proxy": meta.get("entry_region_proxy"),
@@ -188,7 +192,7 @@ def main() -> int:
                 "active_threshold_keV": m.ACTIVE_VETO_THRESHOLD_KEV,
                 "entry_proxy": "IA INIT ray intersection with current geo-opt outer envelope in instrument-local coordinates.",
                 "entry_proxy_limits": "Not a Geant4 boundary scorer; outer envelope proxy ignores local cutouts and support reliefs.",
-                "atm511_ingress_scope": "final W2 side_compton_fov_pass candidates only; atm511 raw/active cutflow is from P2 replay summary.",
+                "atm511_ingress_scope": "final W2 side_compton_fov_pass candidates only; atm511 raw/active cutflow is from the 4pi sidecar replay summary.",
             },
             "aggregate_rows": ingress_rows,
             "event_stage_rows": ingress_event_stage_rows,
@@ -289,10 +293,10 @@ def main() -> int:
     with (WORK / "ingress_summary.md").open("a", encoding="utf-8") as handle:
         handle.write(
             "\n## Fast Audit Caveat\n\n"
-            "Atmospheric 511 ingress rows are extracted only for the 95 final W2 "
+            f"Atmospheric 511 ingress rows are extracted only for the {len(final_ids)} final W2 "
             "side_compton_fov_pass candidates listed in the P2 replay summary. "
             "The atmospheric raw/active/final veto cutflow is still the full P2 "
-            "3M replay cutflow from `p2_geo_opt_s1_bpe_w5_atm511_transfer_summary.json`.\n"
+            "3M replay cutflow from `p2_geo_opt_s1_bpe_w5_atm511_sidecar_summary.json`.\n"
         )
     with (WORK / "veto_efficiency_summary.md").open("a", encoding="utf-8") as handle:
         handle.write(

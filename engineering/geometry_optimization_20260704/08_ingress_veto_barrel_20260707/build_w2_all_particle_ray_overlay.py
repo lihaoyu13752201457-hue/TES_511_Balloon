@@ -44,8 +44,8 @@ STEP05_CACHE = (
 )
 P2_ATM511_SIM = (
     ROOT
-    / "runs/geometry_optimization_20260704/p2_atm511_unit_geo_opt_s1_bpe_w5_fullstat_v1"
-    / "Atm511LowerUnit3M_GeoOptS1BpeW5.inc1.id1.sim.gz"
+    / "runs/geometry_optimization_20260704/p2_atm511_sidecar_s1_nominal_geo_opt_s1_bpe_w5_20260708"
+    / "Atm511SidecarS1Nominal3M_GeoOptS1BpeW5.inc1.id1.sim.gz"
 )
 
 W2_MIN = 510.58
@@ -376,7 +376,7 @@ def atm511_rows(helper: Any, step05: Any, disk: dict[str, Any]) -> list[dict[str
                 "init_energy_keV": init_rec.get("init_energy_keV"),
                 "first_hit_volume": None if first_hit is None else first_hit.get("volume"),
                 "first_hit_category": None if first_hit is None else first_hit.get("category"),
-                "source_scope": "atm511_p2_replay",
+                "source_scope": "atm511_expacs_like_4pi_sidecar_s1_nominal_replay",
             }
             row["veto_class"] = classify_veto(row)
             rows.append(row)
@@ -696,7 +696,7 @@ def main() -> int:
         "notes": [
             "Plastic skin veto is separated from non-plastic active veto by rescanning selected SIM hit volumes.",
             "Veto class priority is plastic skin, then non-plastic active shield, then Compton/FoV, then pass.",
-            "Prompt/delayed rows come from Step05 event_catalog W2 background records; atmospheric 511 rows come from a scan of the P2 atmospheric-511 replay SIM.",
+            "Prompt/delayed rows come from Step05 event_catalog W2 background records; atmospheric 511 rows come from a scan of the EXPACS-like 4pi ATM511 sidecar replay SIM.",
             "Rays are drawn from IA INIT position to the energy-weighted TES hit centroid in the simulation/world coordinate projections.",
         ],
     }
