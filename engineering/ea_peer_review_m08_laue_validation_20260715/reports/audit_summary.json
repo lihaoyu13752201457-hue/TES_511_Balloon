@@ -1,0 +1,137 @@
+{
+  "m08_status": "PARTIAL_PASS",
+  "mosaic_outgoing": {
+    "analytic_direct_gaussian_point_d90_cm": 0.2650684557302781,
+    "current_mainline_model_pass": false,
+    "current_mainline_outgoing_model": "gaussian_plane",
+    "footprint18mm_d90_cm": {
+      "gaussian_outgoing": 2.03494,
+      "gaussian_plane": 2.06506,
+      "ideal_plane": 2.00591
+    },
+    "footprint18mm_within_be_fraction": {
+      "gaussian_outgoing": 0.998726418849001,
+      "gaussian_plane": 0.9982280927835051,
+      "ideal_plane": 0.9991999359948796
+    },
+    "gaussian_outgoing_vs_analytic_relative": 0.002578746187805297,
+    "gaussian_outgoing_vs_scaled_heart_relative": -0.006079801182012937,
+    "gaussian_plane_over_gaussian_outgoing_d90_ratio": 1.5285905656401457,
+    "gaussian_plane_vs_scaled_heart_relative": 0.5192970389123529,
+    "geant4_gaussian_outgoing_point_d90_cm": 0.265752,
+    "geant4_gaussian_plane_point_d90_cm": 0.406226,
+    "geant4_ideal_plane_point_d90_cm": 0.00684445,
+    "heart_equivalent_candidate": "gaussian_outgoing",
+    "heart_equivalent_candidate_pass": true,
+    "heart_guan_f8p3m_d90_cm": 0.22192341021172157,
+    "heart_guan_scaled_to_f10m_d90_cm": 0.26737760266472477,
+    "heart_native_f8p3m_d90_cm": 0.21941501207548417,
+    "heart_native_scaled_to_f10m_d90_cm": 0.2643554362355231,
+    "interpretation": "Perturbing the plane normal and then reflecting broadens the point-source kernel beyond both the direct 30-arcsec outgoing Gaussian and the retained HEART 2.1.3 oracle; the direct-outgoing implementation matches both independent references.",
+    "status": "CORRECTION_REQUIRED"
+  },
+  "rta": {
+    "all_configured_step_limits_respected": true,
+    "all_rta_closure": true,
+    "angles_per_energy": 13,
+    "by_energy": {
+      "480": {
+        "max_abs_delta_A": 0.025718056555180835,
+        "max_abs_delta_R": 0.013326203598528041,
+        "max_abs_delta_T": 0.02181631375618709,
+        "peak_delta_R": -0.013326203598528041,
+        "peak_geant4_R": 0.2507,
+        "peak_xop_R": 0.264026203598528,
+        "points": 13,
+        "points_passed": 12
+      },
+      "500": {
+        "max_abs_delta_A": 0.026940825336476515,
+        "max_abs_delta_R": 0.01732363120374178,
+        "max_abs_delta_T": 0.02613266141410231,
+        "peak_delta_R": -0.01732363120374178,
+        "peak_geant4_R": 0.24265,
+        "peak_xop_R": 0.2599736312037418,
+        "points": 13,
+        "points_passed": 11
+      },
+      "511": {
+        "max_abs_delta_A": 0.029767730322933506,
+        "max_abs_delta_R": 0.0102944249858066,
+        "max_abs_delta_T": 0.029767730314973706,
+        "peak_delta_R": -0.007931224997188457,
+        "peak_geant4_R": 0.24955,
+        "peak_xop_R": 0.25748122499718845,
+        "points": 13,
+        "points_passed": 5
+      },
+      "530": {
+        "max_abs_delta_A": 0.033089826234458,
+        "max_abs_delta_R": 0.013465347756595636,
+        "max_abs_delta_T": 0.033089826226950114,
+        "peak_delta_R": -0.013465347756595636,
+        "peak_geant4_R": 0.23935,
+        "peak_xop_R": 0.25281534775659564,
+        "points": 13,
+        "points_passed": 0
+      },
+      "550": {
+        "max_abs_delta_A": 0.03753546408535918,
+        "max_abs_delta_R": 0.01230724410645978,
+        "max_abs_delta_T": 0.032535464078287335,
+        "peak_delta_R": -0.01230724410645978,
+        "peak_geant4_R": 0.2352,
+        "peak_xop_R": 0.24750724410645977,
+        "points": 13,
+        "points_passed": 1
+      }
+    },
+    "component_metrics": {
+      "A": {
+        "max_abs_delta": 0.03753546408535918,
+        "mean_delta": 0.02487345742995853,
+        "points_passed": 29,
+        "points_total": 65,
+        "rms_delta": 0.02553456632345972
+      },
+      "R": {
+        "max_abs_delta": 0.01732363120374178,
+        "mean_delta": -0.004329831054257614,
+        "points_passed": 65,
+        "points_total": 65,
+        "rms_delta": 0.006323216130340088
+      },
+      "T": {
+        "max_abs_delta": 0.033089826226950114,
+        "mean_delta": -0.020543626375700938,
+        "points_passed": 47,
+        "points_total": 65,
+        "rms_delta": 0.02162915145705167
+      }
+    },
+    "energies": 5,
+    "max_rta_closure_error": 0.0,
+    "points": 65,
+    "points_all_components_passed": 29,
+    "reference_scope": "raw XOP/CRYSTAL angle-energy curves rescaled to the fixed 10.218801 mm tile using the Darwin-Hamilton slab form",
+    "status": "PARTIAL_PASS",
+    "tolerance_rule": "abs(delta) <= max(component floor, 4 binomial SE); floors R/T/A=0.020/0.025/0.025"
+  },
+  "software": {
+    "geant4": "11.4.0",
+    "heart_reference": "2.1.3 retained oracle",
+    "xop_reference": "CRYSTAL diff_pat v1.8; xoppylib 1.0.55; DABAX 1.0.12"
+  },
+  "step_convergence": {
+    "all_finite_step_limits_respected": true,
+    "gates": {
+      "max_abs_rta_fraction_delta": 0.01,
+      "max_abs_spot_d90_delta_cm": 0.02
+    },
+    "levels": 4,
+    "max_abs_rta_fraction_delta_vs_0p2mm": 0.0,
+    "max_abs_spot_d90_delta_cm_vs_0p2mm": 0.0,
+    "reference_level_mm": 0.2,
+    "status": "PASS"
+  }
+}
