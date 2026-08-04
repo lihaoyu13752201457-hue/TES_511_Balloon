@@ -1,0 +1,328 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <title>S3c 主线与轻量化设计复核</title>
+  <style>
+    :root {
+      --surface: #fff;
+      --bg: #f7f7f7;
+      --surface-tertiary: #f3f3f3;
+      --text: #0d0d0d;
+      --secondary: #5d5d5d;
+      --muted: #8f8f8f;
+      --border: rgba(13, 13, 13, 0.08);
+      --border-strong: rgba(13, 13, 13, 0.14);
+      --grid: #e9e9e9;
+      --blue: #0169cc;
+      --blue-dark: #003f7a;
+      --green: #00692a;
+      --purple: #8046d9;
+      --warning: #e25507;
+      --warning-bg: #fff5f0;
+      --positive: #00692a;
+      --positive-bg: #edfaf2;
+      --ds-bg: var(--bg);
+      --ds-surface: var(--surface);
+      --ds-surface-secondary: var(--bg);
+      --ds-surface-tertiary: var(--surface-tertiary);
+      --ds-border-subtle: var(--border);
+      --ds-border: var(--border-strong);
+      --ds-border-strong: var(--border-strong);
+      --ds-text-primary: var(--text);
+      --ds-text: var(--text);
+      --ds-text-secondary: var(--secondary);
+      --ds-text-muted: var(--secondary);
+      --ds-text-tertiary: var(--muted);
+      --ds-blue: var(--blue-dark);
+      --ds-blue-500: var(--blue);
+      --ds-purple: var(--purple);
+      --ds-green: var(--green);
+      --ds-orange: var(--warning);
+      --ds-neutral: var(--muted);
+      --ds-font: "System Sans Variable", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+      --ds-radius-sm: 8px;
+      --ds-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+      --ds-chart-body-height: 320px;
+    }
+
+    * { box-sizing: border-box; }
+    html, body { max-width: 100%; overflow-x: clip; }
+    body { margin: 0; background: var(--bg); color: var(--text); font: 14px/1.55 var(--ds-font); }
+    .shell { width: min(1140px, calc(100% - 32px)); margin: 18px auto 56px; overflow: hidden; border: 1px solid var(--border); border-radius: 24px; background: var(--surface); box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05); }
+    .topbar { display: flex; min-height: 48px; align-items: center; justify-content: space-between; padding: 8px 16px; border-bottom: 1px solid var(--border); font-weight: 500; }
+    .brand { display: flex; align-items: center; gap: 9px; }
+    .mark { width: 18px; height: 18px; border-radius: 6px; background: linear-gradient(145deg, var(--blue), var(--purple)); }
+    .meta { overflow: hidden; max-width: 45%; color: var(--muted); font-size: 12px; text-overflow: ellipsis; white-space: nowrap; }
+    main { padding: 48px; }
+    .reading { width: min(800px, 100%); margin: 0 auto; }
+    .wide { width: 100%; margin: 28px auto 46px; }
+    .kicker { margin-bottom: 12px; color: var(--blue); font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; }
+    h1 { max-width: 760px; margin: 0; font-size: 36px; font-weight: 500; letter-spacing: -2px; line-height: 42px; }
+    h2 { margin: 0 0 10px; font-size: 24px; font-weight: 500; letter-spacing: -0.7px; line-height: 31px; }
+    h3 { margin: 0; font-size: 14px; font-weight: 600; line-height: 22px; }
+    p, li { line-height: 22px; }
+    .deck { max-width: 750px; margin: 16px 0 30px; color: var(--secondary); font-size: 16px; line-height: 25px; }
+    .summary { display: grid; grid-template-columns: 145px 1fr; gap: 24px; margin-bottom: 26px; padding: 24px 0; border-top: 1px solid var(--border-strong); border-bottom: 1px solid var(--border-strong); }
+    .summary-label { color: var(--muted); font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; }
+    .summary-body { display: grid; gap: 12px; }
+    .summary-body p { margin: 0; color: var(--secondary); }
+    .summary-body strong { color: var(--text); }
+    .metrics { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 46px; }
+    .metric { min-height: 126px; padding: 16px 20px; border: 1px solid var(--border); border-radius: 24px; }
+    .metric-label { color: var(--secondary); font-size: 12px; }
+    .metric-value { margin: 8px 0 5px; font-size: 26px; font-weight: 500; font-variant-numeric: tabular-nums; letter-spacing: -1px; line-height: 34px; }
+    .metric-note { margin-top: 7px; color: var(--muted); font-size: 11px; }
+    .pill { display: inline-flex; padding: 2px 7px; border-radius: 999px; background: var(--positive-bg); color: var(--positive); font-size: 12px; font-weight: 600; }
+    .pill.warn { background: var(--warning-bg); color: var(--warning); }
+    .narrative { margin: 44px 0 20px; }
+    .narrative p { max-width: 730px; margin: 0; color: var(--secondary); }
+    .card { overflow: hidden; border: 1px solid var(--border); border-radius: 24px; background: var(--surface); }
+    figure.card { margin: 0; }
+    .card-head { padding: 16px 20px 14px; border-bottom: 1px solid var(--border); }
+    .card-head p { margin: 2px 0 0; color: var(--muted); font-size: 12px; }
+    .chart-wrap { padding: 16px 24px 16px 96px; }
+    [data-recharts-chart] { min-height: 320px; }
+    [data-recharts-live] { display: none; width: 100%; min-height: 320px; }
+    [data-recharts-ready="true"] [data-recharts-fallback] { display: none; }
+    [data-recharts-ready="true"] [data-recharts-live] { display: block; }
+    .chart-fallback { width: 100%; min-height: 320px; }
+    .chart-fallback svg { display: block; width: 100%; height: auto; min-height: 320px; overflow: visible; }
+    .chart-note { padding: 12px 20px 15px; border-top: 1px solid var(--border); color: var(--muted); font-size: 11px; line-height: 17px; }
+    .table-card { margin: 12px 0 46px; }
+    .table-scroll { overflow-x: auto; }
+    table { width: 100%; border-collapse: collapse; font-size: 12px; }
+    th { padding: 11px 14px; border-bottom: 1px solid var(--border); color: var(--muted); font-weight: 600; text-align: right; white-space: nowrap; }
+    td { padding: 13px 14px; border-bottom: 1px solid var(--border); font-variant-numeric: tabular-nums; text-align: right; white-space: nowrap; }
+    th:first-child, td:first-child { text-align: left; }
+    tbody tr:last-child td { border-bottom: 0; }
+    td.positive { color: var(--positive); }
+    td.negative { color: var(--warning); font-weight: 600; }
+    .caveat { margin: 46px 0 0; padding: 16px 18px; border-radius: 14px; background: var(--surface-tertiary); color: var(--secondary); font-size: 12px; line-height: 19px; }
+    .caveat strong { color: var(--text); }
+    .source-tooltip { position: relative; display: inline-block; padding: 0; border: 0; appearance: none; background: none; color: inherit; font: inherit; line-height: inherit; cursor: help; text-decoration: underline dotted; text-underline-offset: 0.18em; }
+    .source-tooltip:focus-visible { outline: 2px solid var(--purple); outline-offset: 3px; border-radius: 3px; }
+    .source-tooltip-content { position: fixed; z-index: 1000; top: var(--source-tooltip-top, 8px); left: var(--source-tooltip-left, 8px); display: none; width: max-content; max-width: min(360px, calc(100vw - 16px)); padding: 8px 10px; border-radius: 8px; background: #171411; color: #fff; font-family: ui-sans-serif, system-ui, sans-serif; font-size: 12px; font-style: normal; font-weight: 400; line-height: 1.4; overflow-wrap: anywhere; white-space: normal; text-align: left; text-decoration: none; box-shadow: 0 8px 24px rgba(23, 20, 17, 0.2); opacity: 0; visibility: hidden; pointer-events: none; }
+    .source-tooltip-content, .source-tooltip-content * { color: #fff !important; font-style: normal !important; text-decoration: none !important; }
+    .source-tooltip-heading { display: none; }
+    html:not([data-source-tooltips-ready]) .source-tooltip-content { position: absolute; top: auto; bottom: calc(100% + 8px); left: 50%; max-width: min(360px, 80vw); transform: translateX(-50%); }
+    html:not([data-source-tooltips-ready]) .source-figure > .source-tooltip .source-tooltip-content { top: calc(100% + 8px); bottom: auto; }
+    .source-tooltip:hover .source-tooltip-content, .source-tooltip:focus .source-tooltip-content, .source-tooltip:focus-within .source-tooltip-content { display: block; opacity: 1; visibility: visible; }
+    .source-figure { position: relative; }
+    .source-figure > .source-tooltip { position: absolute; top: 10px; right: 10px; z-index: 2; padding: 4px 7px; border: 1px solid var(--border-strong); border-radius: 999px; background: var(--surface); color: var(--secondary); font-size: 11px; font-weight: 600; line-height: 1; letter-spacing: 0.01em; text-decoration: none; touch-action: manipulation; }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --surface: #212121;
+        --bg: #171717;
+        --surface-tertiary: #303030;
+        --text: #fff;
+        --secondary: #cdcdcd;
+        --muted: #afafaf;
+        --border: rgba(255, 255, 255, 0.07);
+        --border-strong: rgba(255, 255, 255, 0.16);
+        --grid: #3a3a3a;
+        --blue: #48aaff;
+        --blue-dark: #48aaff;
+        --green: #62c887;
+        --purple: #b58cff;
+        --warning: #ff9e6c;
+        --warning-bg: #4a2206;
+        --positive: #7bd99b;
+        --positive-bg: #143b22;
+      }
+    }
+
+    @media (max-width: 800px) {
+      .shell { width: 100%; margin: 0; border: 0; border-radius: 0; }
+      main { padding: 32px 18px; }
+      .metrics { grid-template-columns: 1fr 1fr; }
+      .summary { grid-template-columns: 1fr; gap: 10px; }
+      .chart-fallback svg { min-width: 720px; }
+      .chart-wrap { overflow-x: auto; padding: 16px 18px; }
+    }
+
+    @media (max-width: 600px) {
+      .source-tooltip:hover .source-tooltip-content, .source-tooltip:focus .source-tooltip-content, .source-tooltip:focus-within .source-tooltip-content { display: none; opacity: 0; visibility: hidden; }
+      .source-tooltip[data-source-tooltip-open] .source-tooltip-content, html:not([data-source-tooltips-ready]) .source-tooltip:focus .source-tooltip-content { position: fixed; top: auto; right: 16px; bottom: calc(16px + env(safe-area-inset-bottom, 0px)); left: 16px; display: block; width: auto; max-width: none; max-height: min(40vh, 280px); padding: 14px 16px; overflow-y: auto; border-radius: 14px; font-size: 14px; line-height: 1.45; transform: none; opacity: 1; visibility: visible; pointer-events: auto; }
+      .source-tooltip-heading { display: block; margin-bottom: 6px; font-weight: 600; }
+    }
+
+    @media (max-width: 520px) {
+      h1 { font-size: 32px; line-height: 38px; }
+      .metrics { grid-template-columns: 1fr; }
+    }
+  </style>
+  <style data-s3c-report-responsive-overrides="true">
+    .chart-wrap { padding-left: 132px; }
+    @media (max-width: 800px) {
+      .chart-wrap { overflow-x: auto; padding: 16px 24px 16px 132px; }
+      [data-recharts-chart] { min-width: 720px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <header class="topbar">
+      <div class="brand"><span class="mark" aria-hidden="true"></span>S3c Mainline Analytics</div>
+      <div class="meta">Local retained artifacts · 2026-07-10</div>
+    </header>
+    
+    <main data-report-audience="technical">
+      <article class="reading">
+        <div class="kicker">S3c MAINLINE / MASS &amp; BACKGROUND REVIEW</div>
+        <header data-contract-section="title"><h1>S3c 主线与轻量化设计复核</h1></header>
+        <p class="deck">把 S3c 定义为设计族：C0 保留为性能基线，LW1 作为首个轻量化晋级点；先移除外层 W，再减薄 Al，最后才评估 BGO 分区减薄。</p>
+        <section class="summary" data-contract-section="technical-summary">
+          <div class="summary-label">技术摘要</div>
+          <div class="summary-body">
+            <p><strong>决策：</strong>S3c 可以成为主线，但不应把当前 C0 的重型构型冻结为唯一方案。首选 S3c-LW1：保持全包覆 <span class="source-tooltip" tabindex="0" aria-describedby="number-source-tooltip-41">40 mm<span class="source-tooltip-content" id="number-source-tooltip-41" role="tooltip"><span class="source-tooltip-heading">数据来源</span>Source: S3c design-point bookkeeping<br>Dataset: s3c_lightweight_candidates.csv</span></span> BGO，采用 <span class="source-tooltip" tabindex="0" aria-describedby="number-source-tooltip-42">8 mm<span class="source-tooltip-content" id="number-source-tooltip-42" role="tooltip"><span class="source-tooltip-heading">数据来源</span>Source: S3c design-point bookkeeping<br>Dataset: s3c_lightweight_candidates.csv</span></span> Al，移除外层 W。</p>
+            <p><strong>收益：</strong>LW1 的预开孔质量为 <span class="source-tooltip" tabindex="0" aria-describedby="number-source-tooltip-43">356.6 kg<span class="source-tooltip-content" id="number-source-tooltip-43" role="tooltip"><span class="source-tooltip-heading">数据来源</span>Source: S3c design-point bookkeeping<br>Dataset: s3c_lightweight_candidates.csv</span></span>，比 C0 减少 <span class="source-tooltip" tabindex="0" aria-describedby="number-source-tooltip-44">34.6 kg<span class="source-tooltip-content" id="number-source-tooltip-44" role="tooltip"><span class="source-tooltip-heading">数据来源</span>Source: S3c design-point bookkeeping<br>Dataset: s3c_lightweight_candidates.csv</span></span>（<span class="source-tooltip" tabindex="0" aria-describedby="number-source-tooltip-45">8.9%<span class="source-tooltip-content" id="number-source-tooltip-45" role="tooltip"><span class="source-tooltip-heading">数据来源</span>Source: S3c design-point bookkeeping<br>Dataset: s3c_lightweight_candidates.csv</span></span>）；它已有历史同统计筛选与 neutron-only 延迟输运，不只是几何猜想。</p>
+            <p><strong>代价：</strong>历史估算的二十日 F3 比 C0 高 <span class="source-tooltip" tabindex="0" aria-describedby="number-source-tooltip-46">11.8%<span class="source-tooltip-content" id="number-source-tooltip-46" role="tooltip"><span class="source-tooltip-heading">数据来源</span>Source: S3c design-point bookkeeping<br>Dataset: s3c_lightweight_candidates.csv</span></span>，但中子延迟活度低 <span class="source-tooltip" tabindex="0" aria-describedby="number-source-tooltip-47">45.9%<span class="source-tooltip-content" id="number-source-tooltip-47" role="tooltip"><span class="source-tooltip-heading">数据来源</span>Source: S3c design-point bookkeeping<br>Dataset: s3c_lightweight_candidates.csv</span></span>。因此应以匹配统计量复跑确认，而不是直接宣布优于 C0。</p>
+          </div>
+        </section>
+        <section class="metrics" aria-label="关键基线指标">
+          <div class="metric"><div class="metric-label">C0 预开孔质量</div><div class="metric-value"><span class="source-tooltip" tabindex="0" aria-describedby="number-source-tooltip-48">391.2 kg<span class="source-tooltip-content" id="number-source-tooltip-48" role="tooltip"><span class="source-tooltip-heading">数据来源</span>Source: S3c design-point bookkeeping<br>Dataset: s3c_lightweight_candidates.csv</span></span></div><div class="metric-note">BGO40 + W2 + Al3</div></div>
+          <div class="metric"><div class="metric-label">LW1 减重</div><div class="metric-value"><span class="source-tooltip" tabindex="0" aria-describedby="number-source-tooltip-49">34.6 kg<span class="source-tooltip-content" id="number-source-tooltip-49" role="tooltip"><span class="source-tooltip-heading">数据来源</span>Source: S3c design-point bookkeeping<br>Dataset: s3c_lightweight_candidates.csv</span></span></div><div class="metric-note">保持 BGO40；无外层 W</div></div>
+          <div class="metric"><div class="metric-label">W2 主导子集</div><div class="metric-value"><span class="source-tooltip" tabindex="0" aria-describedby="number-source-tooltip-50">0.003884<span class="source-tooltip-content" id="number-source-tooltip-50" role="tooltip"><span class="source-tooltip-heading">数据来源</span>Source: S3c retained prompt and atmospheric transport<br>Dataset: dominant_background_summary.json + s3c_atm511_sidecar_3m_summary.json</span></span></div><div class="metric-note">cps；e+ + n + atm511</div></div>
+          <div class="metric"><div class="metric-label">中子延迟活度</div><div class="metric-value"><span class="source-tooltip" tabindex="0" aria-describedby="number-source-tooltip-51">57.82 Bq<span class="source-tooltip-content" id="number-source-tooltip-51" role="tooltip"><span class="source-tooltip-heading">数据来源</span>Source: S3c neutron-only delayed chain<br>Dataset: exactpos_weighted_rpip_table_m50000_s260613.csv</span></span></div><div class="metric-note">源侧，neutron-only</div></div>
+        </section>
+      </article>
+
+      <section data-contract-section="key-findings">
+        <article class="reading">
+          <section class="narrative">
+            <h2>当前本底不是由单一粒子族控制</h2>
+            <p>S3c W2 实测主导子集由 e+、中子和大气 511 keV 近似三分。加上沿用 S3 的未重跑余项后，估算总本底为 <span class="source-tooltip" tabindex="0" aria-describedby="number-source-tooltip-52">0.005051 cps<span class="source-tooltip-content" id="number-source-tooltip-52" role="tooltip"><span class="source-tooltip-heading">数据来源</span>Source: S3c retained local analysis<br>Dataset: s3c_mainline_analysis_summary.json</span></span>。这最后一项是占位假设，因此不能把它当作 S3c 全 prompt-family 的闭合测量。</p>
+          </section>
+        </article>
+        
+      <div class="wide">
+        <figure class="card source-figure">
+          <div class="card-head"><h3>W2 本底组成项计数率（×10⁻³ cps）</h3><p>前三项为 S3c 实测筛选；最后一项沿用 S3 余项，尚不是 S3c 全族闭合</p></div>
+          <div class="chart-wrap">
+            <div data-recharts-chart="s3c-background-components">
+              <div class="chart-fallback" data-recharts-fallback><svg viewBox="0 0 960 320" role="img" aria-label="S3c W2 本底各组成项的计数率"><line x1="292" y1="34" x2="292" y2="286" stroke="var(--border-strong)" /><text x="14" y="68" fill="currentColor" font-size="13">宇宙线 e+</text><rect x="292" y="52" width="505" height="22" rx="5" fill="var(--surface-tertiary)" /><rect x="292" y="52" width="505.00" height="22" rx="5" fill="var(--blue)" /><text x="815" y="68" fill="currentColor" font-size="13" font-variant-numeric="tabular-nums">1.360 ×10⁻³ cps</text><text x="14" y="115" fill="currentColor" font-size="13">宇宙线中子</text><rect x="292" y="99" width="505" height="22" rx="5" fill="var(--surface-tertiary)" /><rect x="292" y="99" width="503.79" height="22" rx="5" fill="var(--blue)" /><text x="815" y="115" fill="currentColor" font-size="13" font-variant-numeric="tabular-nums">1.357 ×10⁻³ cps</text><text x="14" y="162" fill="currentColor" font-size="13">大气 511 keV</text><rect x="292" y="146" width="505" height="22" rx="5" fill="var(--surface-tertiary)" /><rect x="292" y="146" width="433.30" height="22" rx="5" fill="var(--blue)" /><text x="815" y="162" fill="currentColor" font-size="13" font-variant-numeric="tabular-nums">1.167 ×10⁻³ cps</text><text x="14" y="209" fill="currentColor" font-size="13">沿用 S3 的其余项</text><rect x="292" y="193" width="505" height="22" rx="5" fill="var(--surface-tertiary)" /><rect x="292" y="193" width="433.50" height="22" rx="5" fill="var(--blue)" /><text x="815" y="209" fill="currentColor" font-size="13" font-variant-numeric="tabular-nums">1.167 ×10⁻³ cps</text></svg></div>
+              <div data-recharts-live aria-hidden="true"></div>
+            </div>
+          </div>
+          <figcaption class="chart-note">相同审阅行同时驱动静态 SVG 与交互图；显示值按 10⁻³ cps 缩放。e+、中子仅各留下 2 个事件，大气 511 keV 留下 6 个事件。</figcaption>
+          <button type="button" class="source-tooltip" aria-describedby="chart-source-tooltip-background">Source
+            <span class="source-tooltip-content" id="chart-source-tooltip-background" role="tooltip">
+              <span class="source-tooltip-heading">数据来源</span>
+              Source: S3c retained prompt and atmospheric transport<br>Dataset: dominant_background_summary.json + s3c_atm511_sidecar_3m_summary.json
+            </span>
+          </button>
+        </figure>
+      </div>
+        <article class="reading">
+          <section class="narrative">
+            <h2>轻量化优先级应从外层 W 开始，而不是直接削薄侧面 BGO</h2>
+            <p>最终入选的 <span class="source-tooltip" tabindex="0" aria-describedby="number-source-tooltip-53">10<span class="source-tooltip-content" id="number-source-tooltip-53" role="tooltip"><span class="source-tooltip-heading">数据来源</span>Source: S3c retained local analysis<br>Dataset: s3c_mainline_analysis_summary.json</span></span> 个事件中，有 <span class="source-tooltip" tabindex="0" aria-describedby="number-source-tooltip-54">8<span class="source-tooltip-content" id="number-source-tooltip-54" role="tooltip"><span class="source-tooltip-heading">数据来源</span>Source: S3c retained local analysis<br>Dataset: s3c_mainline_analysis_summary.json</span></span> 个从侧面进入；这只是低统计方向性代理，但足以说明第一轮不宜削弱侧面 BGO。与此同时，窗口组件贡献 <span class="source-tooltip" tabindex="0" aria-describedby="number-source-tooltip-55">55.0%<span class="source-tooltip-content" id="number-source-tooltip-55" role="tooltip"><span class="source-tooltip-heading">数据来源</span>Source: S3c neutron-only delayed chain<br>Dataset: exactpos_weighted_rpip_table_m50000_s260613.csv</span></span> 的 neutron-only 活度，而 S3c 外层 W 壳直接占 <span class="source-tooltip" tabindex="0" aria-describedby="number-source-tooltip-56">12.4%<span class="source-tooltip-content" id="number-source-tooltip-56" role="tooltip"><span class="source-tooltip-heading">数据来源</span>Source: S3c neutron-only delayed chain<br>Dataset: exactpos_weighted_rpip_table_m50000_s260613.csv</span></span>。所以“去 W”是高价值候选，但不能把 W 壳自身活度直接从总活度中相减；它还会改变整个中子场。</p>
+          </section>
+        </article>
+        
+      <div class="wide">
+        <figure class="card source-figure">
+          <div class="card-head"><h3>中子延迟活度按体积类别分布</h3><p>源侧加权活度；不是经过探测器 W2 选择后的计数率</p></div>
+          <div class="chart-wrap">
+            <div data-recharts-chart="s3c-activation-volume-classes">
+              <div class="chart-fallback" data-recharts-fallback><svg viewBox="0 0 960 462" role="img" aria-label="S3c 中子延迟活度按体积类别分布"><line x1="292" y1="34" x2="292" y2="428" stroke="var(--border-strong)" /><text x="14" y="68" fill="currentColor" font-size="13">窗口组件</text><rect x="292" y="52" width="505" height="22" rx="5" fill="var(--surface-tertiary)" /><rect x="292" y="52" width="505.00" height="22" rx="5" fill="var(--blue)" /><text x="815" y="68" fill="currentColor" font-size="13" font-variant-numeric="tabular-nums">31.82 Bq</text><text x="14" y="115" fill="currentColor" font-size="13">低温恒温器/冷结构</text><rect x="292" y="99" width="505" height="22" rx="5" fill="var(--surface-tertiary)" /><rect x="292" y="99" width="129.26" height="22" rx="5" fill="var(--blue)" /><text x="815" y="115" fill="currentColor" font-size="13" font-variant-numeric="tabular-nums">8.15 Bq</text><text x="14" y="162" fill="currentColor" font-size="13">S3c 外层 W 壳</text><rect x="292" y="146" width="505" height="22" rx="5" fill="var(--surface-tertiary)" /><rect x="292" y="146" width="113.55" height="22" rx="5" fill="var(--blue)" /><text x="815" y="162" fill="currentColor" font-size="13" font-variant-numeric="tabular-nums">7.16 Bq</text><text x="14" y="209" fill="currentColor" font-size="13">NF2 支撑</text><rect x="292" y="193" width="505" height="22" rx="5" fill="var(--surface-tertiary)" /><rect x="292" y="193" width="110.49" height="22" rx="5" fill="var(--blue)" /><text x="815" y="209" fill="currentColor" font-size="13" font-variant-numeric="tabular-nums">6.96 Bq</text><text x="14" y="256" fill="currentColor" font-size="13">S3c BGO 主动壳</text><rect x="292" y="240" width="505" height="22" rx="5" fill="var(--surface-tertiary)" /><rect x="292" y="240" width="23.46" height="22" rx="5" fill="var(--blue)" /><text x="815" y="256" fill="currentColor" font-size="13" font-variant-numeric="tabular-nums">1.48 Bq</text><text x="14" y="303" fill="currentColor" font-size="13">保留的被动 W/准直器</text><rect x="292" y="287" width="505" height="22" rx="5" fill="var(--surface-tertiary)" /><rect x="292" y="287" width="17.01" height="22" rx="5" fill="var(--blue)" /><text x="815" y="303" fill="currentColor" font-size="13" font-variant-numeric="tabular-nums">1.07 Bq</text><text x="14" y="350" fill="currentColor" font-size="13">其他</text><rect x="292" y="334" width="505" height="22" rx="5" fill="var(--surface-tertiary)" /><rect x="292" y="334" width="16.69" height="22" rx="5" fill="var(--blue)" /><text x="815" y="350" fill="currentColor" font-size="13" font-variant-numeric="tabular-nums">1.05 Bq</text><text x="14" y="397" fill="currentColor" font-size="13">S3c Al 机械壳</text><rect x="292" y="381" width="505" height="22" rx="5" fill="var(--surface-tertiary)" /><rect x="292" y="381" width="2.20" height="22" rx="5" fill="var(--blue)" /><text x="815" y="397" fill="currentColor" font-size="13" font-variant-numeric="tabular-nums">0.14 Bq</text></svg></div>
+              <div data-recharts-live aria-hidden="true"></div>
+            </div>
+          </div>
+          <figcaption class="chart-note">总和与 8 路、TT 除数 8、M=50000、SE=ID=1000000 的 clean neutron-only 延迟链相符。</figcaption>
+          <button type="button" class="source-tooltip" aria-describedby="chart-source-tooltip-activation">Source
+            <span class="source-tooltip-content" id="chart-source-tooltip-activation" role="tooltip">
+              <span class="source-tooltip-heading">数据来源</span>
+              Source: S3c neutron-only delayed chain<br>Dataset: exactpos_weighted_rpip_table_m50000_s260613.csv
+            </span>
+          </button>
+        </figure>
+      </div>
+        <article class="reading">
+          <section class="narrative">
+            <h2>LW1 是唯一可以立即晋级的轻量化点</h2>
+            <p>C0 的质量账由 BGO <span class="source-tooltip" tabindex="0" aria-describedby="number-source-tooltip-57">325.35 kg<span class="source-tooltip-content" id="number-source-tooltip-57" role="tooltip"><span class="source-tooltip-heading">数据来源</span>Source: Frozen S3/S3a/S3b/S3c conclusion snapshot<br>Dataset: historical_design_points.json</span></span>、W <span class="source-tooltip" tabindex="0" aria-describedby="number-source-tooltip-58">53.88 kg<span class="source-tooltip-content" id="number-source-tooltip-58" role="tooltip"><span class="source-tooltip-heading">数据来源</span>Source: Frozen S3/S3a/S3b/S3c conclusion snapshot<br>Dataset: historical_design_points.json</span></span>、Al <span class="source-tooltip" tabindex="0" aria-describedby="number-source-tooltip-59">11.39 kg<span class="source-tooltip-content" id="number-source-tooltip-59" role="tooltip"><span class="source-tooltip-heading">数据来源</span>Source: Frozen S3/S3a/S3b/S3c conclusion snapshot<br>Dataset: historical_design_points.json</span></span> 和 Kapton <span class="source-tooltip" tabindex="0" aria-describedby="number-source-tooltip-60">0.58 kg<span class="source-tooltip-content" id="number-source-tooltip-60" role="tooltip"><span class="source-tooltip-heading">数据来源</span>Source: Frozen S3/S3a/S3b/S3c conclusion snapshot<br>Dataset: historical_design_points.json</span></span> 构成；BGO 占 <span class="source-tooltip" tabindex="0" aria-describedby="number-source-tooltip-61">83.2%<span class="source-tooltip-content" id="number-source-tooltip-61" role="tooltip"><span class="source-tooltip-heading">数据来源</span>Source: Frozen S3/S3a/S3b/S3c conclusion snapshot<br>Dataset: historical_design_points.json</span></span>，是最终的大头，但 W 是第一轮最容易移除且已有对照证据的 <span class="source-tooltip" tabindex="0" aria-describedby="number-source-tooltip-62">53.88 kg<span class="source-tooltip-content" id="number-source-tooltip-62" role="tooltip"><span class="source-tooltip-heading">数据来源</span>Source: Frozen S3/S3a/S3b/S3c conclusion snapshot<br>Dataset: historical_design_points.json</span></span>。LW2 与 LW3 延续“保留 BGO40、无 W、减薄 Al”的可解释路径；LW4 才开始做侧厚、底中、顶薄的分区假设。LW5/LW6 虽然质量更低，但没有相应 veto、信号接受度或延迟闭合证据，应只放在探索队列。</p>
+          </section>
+        </article>
+        
+      <div class="wide">
+        <figure class="card source-figure">
+          <div class="card-head"><h3>S3c 设计族预开孔质量</h3><p>C0/LW1 有输运证据；LW2–LW6 目前只是质量模型或方向性假设</p></div>
+          <div class="chart-wrap">
+            <div data-recharts-chart="s3c-lightweight-mass">
+              <div class="chart-fallback" data-recharts-fallback><svg viewBox="0 0 960 415" role="img" aria-label="S3c 轻量化候选的预开孔质量"><line x1="292" y1="34" x2="292" y2="381" stroke="var(--border-strong)" /><text x="14" y="68" fill="currentColor" font-size="13">S3c-C0</text><rect x="292" y="52" width="505" height="22" rx="5" fill="var(--surface-tertiary)" /><rect x="292" y="52" width="505.00" height="22" rx="5" fill="var(--blue)" /><text x="815" y="68" fill="currentColor" font-size="13" font-variant-numeric="tabular-nums">391.2 kg</text><text x="14" y="115" fill="currentColor" font-size="13">S3c-LW1</text><rect x="292" y="99" width="505" height="22" rx="5" fill="var(--surface-tertiary)" /><rect x="292" y="99" width="460.30" height="22" rx="5" fill="var(--blue)" /><text x="815" y="115" fill="currentColor" font-size="13" font-variant-numeric="tabular-nums">356.6 kg</text><text x="14" y="162" fill="currentColor" font-size="13">S3c-LW2</text><rect x="292" y="146" width="505" height="22" rx="5" fill="var(--surface-tertiary)" /><rect x="292" y="146" width="445.47" height="22" rx="5" fill="var(--blue)" /><text x="815" y="162" fill="currentColor" font-size="13" font-variant-numeric="tabular-nums">345.1 kg</text><text x="14" y="209" fill="currentColor" font-size="13">S3c-LW3</text><rect x="292" y="193" width="505" height="22" rx="5" fill="var(--surface-tertiary)" /><rect x="292" y="193" width="435.45" height="22" rx="5" fill="var(--blue)" /><text x="815" y="209" fill="currentColor" font-size="13" font-variant-numeric="tabular-nums">337.3 kg</text><text x="14" y="256" fill="currentColor" font-size="13">S3c-LW4 graded</text><rect x="292" y="240" width="505" height="22" rx="5" fill="var(--surface-tertiary)" /><rect x="292" y="240" width="409.91" height="22" rx="5" fill="var(--blue)" /><text x="815" y="256" fill="currentColor" font-size="13" font-variant-numeric="tabular-nums">317.5 kg</text><text x="14" y="303" fill="currentColor" font-size="13">S3c-LW5 uniform30</text><rect x="292" y="287" width="505" height="22" rx="5" fill="var(--surface-tertiary)" /><rect x="292" y="287" width="326.67" height="22" rx="5" fill="var(--blue)" /><text x="815" y="303" fill="currentColor" font-size="13" font-variant-numeric="tabular-nums">253.1 kg</text><text x="14" y="350" fill="currentColor" font-size="13">S3c-LW6 uniform20</text><rect x="292" y="334" width="505" height="22" rx="5" fill="var(--surface-tertiary)" /><rect x="292" y="334" width="217.30" height="22" rx="5" fill="var(--blue)" /><text x="815" y="350" fill="currentColor" font-size="13" font-variant-numeric="tabular-nums">168.3 kg</text></svg></div>
+              <div data-recharts-live aria-hidden="true"></div>
+            </div>
+          </div>
+          <figcaption class="chart-note">所有质量均为预开孔 bookkeeping，不替代结构、装配、热学或气球载荷工程审查。</figcaption>
+          <button type="button" class="source-tooltip" aria-describedby="chart-source-tooltip-mass">Source
+            <span class="source-tooltip-content" id="chart-source-tooltip-mass" role="tooltip">
+              <span class="source-tooltip-heading">数据来源</span>
+              Source: S3c design-point bookkeeping<br>Dataset: s3c_lightweight_candidates.csv
+            </span>
+          </button>
+        </figure>
+      </div>
+        <article class="reading">
+          <section class="card table-card">
+            <div class="card-head"><h3>候选设计证据表</h3><p>空白表示尚未完成对应输运；不能解读为零本底或零活度。</p></div>
+            <div class="table-scroll"><table><thead><tr><th>构型</th><th>机械壳</th><th>质量 kg</th><th>减重 kg</th><th>减重率</th><th>W2 主导子集 cps</th><th>中子延迟活度 Bq</th><th>证据等级</th></tr></thead><tbody><tr><td>S3c-C0 current</td><td>W2 + Al3</td><td><span class="source-tooltip" tabindex="0" aria-describedby="number-source-tooltip-1">391.2<span class="source-tooltip-content" id="number-source-tooltip-1" role="tooltip"><span class="source-tooltip-heading">数据来源</span>Source: S3c design-point bookkeeping<br>Dataset: s3c_lightweight_candidates.csv</span></span></td><td><span class="source-tooltip" tabindex="0" aria-describedby="number-source-tooltip-2">0.0<span class="source-tooltip-content" id="number-source-tooltip-2" role="tooltip"><span class="source-tooltip-heading">数据来源</span>Source: S3c design-point bookkeeping<br>Dataset: s3c_lightweight_candidates.csv</span></span></td><td><span class="source-tooltip" tabindex="0" aria-describedby="number-source-tooltip-3">0.0%<span class="source-tooltip-content" id="number-source-tooltip-3" role="tooltip"><span class="source-tooltip-heading">数据来源</span>Source: S3c design-point bookkeeping<br>Dataset: s3c_lightweight_candidates.csv</span></span></td><td><span class="source-tooltip" tabindex="0" aria-describedby="number-source-tooltip-4">0.003884<span class="source-tooltip-content" id="number-source-tooltip-4" role="tooltip"><span class="source-tooltip-heading">数据来源</span>Source: S3c design-point bookkeeping<br>Dataset: s3c_lightweight_candidates.csv</span></span></td><td><span class="source-tooltip" tabindex="0" aria-describedby="number-source-tooltip-5">57.82<span class="source-tooltip-content" id="number-source-tooltip-5" role="tooltip"><span class="source-tooltip-heading">数据来源</span>Source: S3c design-point bookkeeping<br>Dataset: s3c_lightweight_candidates.csv</span></span></td><td>measured screening + neutron-only delayed transport</td></tr><tr><td>S3c-LW1 retained</td><td>Al8, no W</td><td><span class="source-tooltip" tabindex="0" aria-describedby="number-source-tooltip-6">356.6<span class="source-tooltip-content" id="number-source-tooltip-6" role="tooltip"><span class="source-tooltip-heading">数据来源</span>Source: S3c design-point bookkeeping<br>Dataset: s3c_lightweight_candidates.csv</span></span></td><td><span class="source-tooltip" tabindex="0" aria-describedby="number-source-tooltip-7">34.6<span class="source-tooltip-content" id="number-source-tooltip-7" role="tooltip"><span class="source-tooltip-heading">数据来源</span>Source: S3c design-point bookkeeping<br>Dataset: s3c_lightweight_candidates.csv</span></span></td><td><span class="source-tooltip" tabindex="0" aria-describedby="number-source-tooltip-8">8.9%<span class="source-tooltip-content" id="number-source-tooltip-8" role="tooltip"><span class="source-tooltip-heading">数据来源</span>Source: S3c design-point bookkeeping<br>Dataset: s3c_lightweight_candidates.csv</span></span></td><td><span class="source-tooltip" tabindex="0" aria-describedby="number-source-tooltip-9">0.005140<span class="source-tooltip-content" id="number-source-tooltip-9" role="tooltip"><span class="source-tooltip-heading">数据来源</span>Source: S3c design-point bookkeeping<br>Dataset: s3c_lightweight_candidates.csv</span></span></td><td><span class="source-tooltip" tabindex="0" aria-describedby="number-source-tooltip-10">31.31<span class="source-tooltip-content" id="number-source-tooltip-10" role="tooltip"><span class="source-tooltip-heading">数据来源</span>Source: S3c design-point bookkeeping<br>Dataset: s3c_lightweight_candidates.csv</span></span></td><td>historical equal-stat screen + neutron-only delayed transport</td></tr><tr><td>S3c-LW2</td><td>Al5, no W</td><td><span class="source-tooltip" tabindex="0" aria-describedby="number-source-tooltip-11">345.1<span class="source-tooltip-content" id="number-source-tooltip-11" role="tooltip"><span class="source-tooltip-heading">数据来源</span>Source: S3c design-point bookkeeping<br>Dataset: s3c_lightweight_candidates.csv</span></span></td><td><span class="source-tooltip" tabindex="0" aria-describedby="number-source-tooltip-12">46.1<span class="source-tooltip-content" id="number-source-tooltip-12" role="tooltip"><span class="source-tooltip-heading">数据来源</span>Source: S3c design-point bookkeeping<br>Dataset: s3c_lightweight_candidates.csv</span></span></td><td><span class="source-tooltip" tabindex="0" aria-describedby="number-source-tooltip-13">11.8%<span class="source-tooltip-content" id="number-source-tooltip-13" role="tooltip"><span class="source-tooltip-heading">数据来源</span>Source: S3c design-point bookkeeping<br>Dataset: s3c_lightweight_candidates.csv</span></span></td><td>—</td><td>—</td><td>mass interpolation only; transport and structure untested</td></tr><tr><td>S3c-LW3</td><td>Al3, no W</td><td><span class="source-tooltip" tabindex="0" aria-describedby="number-source-tooltip-14">337.3<span class="source-tooltip-content" id="number-source-tooltip-14" role="tooltip"><span class="source-tooltip-heading">数据来源</span>Source: S3c design-point bookkeeping<br>Dataset: s3c_lightweight_candidates.csv</span></span></td><td><span class="source-tooltip" tabindex="0" aria-describedby="number-source-tooltip-15">53.9<span class="source-tooltip-content" id="number-source-tooltip-15" role="tooltip"><span class="source-tooltip-heading">数据来源</span>Source: S3c design-point bookkeeping<br>Dataset: s3c_lightweight_candidates.csv</span></span></td><td><span class="source-tooltip" tabindex="0" aria-describedby="number-source-tooltip-16">13.8%<span class="source-tooltip-content" id="number-source-tooltip-16" role="tooltip"><span class="source-tooltip-heading">数据来源</span>Source: S3c design-point bookkeeping<br>Dataset: s3c_lightweight_candidates.csv</span></span></td><td>—</td><td>—</td><td>mass bookkeeping only; transport and structure untested</td></tr><tr><td>S3c-LW4 graded</td><td>Al5, no W</td><td><span class="source-tooltip" tabindex="0" aria-describedby="number-source-tooltip-17">317.5<span class="source-tooltip-content" id="number-source-tooltip-17" role="tooltip"><span class="source-tooltip-heading">数据来源</span>Source: S3c design-point bookkeeping<br>Dataset: s3c_lightweight_candidates.csv</span></span></td><td><span class="source-tooltip" tabindex="0" aria-describedby="number-source-tooltip-18">73.7<span class="source-tooltip-content" id="number-source-tooltip-18" role="tooltip"><span class="source-tooltip-heading">数据来源</span>Source: S3c design-point bookkeeping<br>Dataset: s3c_lightweight_candidates.csv</span></span></td><td><span class="source-tooltip" tabindex="0" aria-describedby="number-source-tooltip-19">18.8%<span class="source-tooltip-content" id="number-source-tooltip-19" role="tooltip"><span class="source-tooltip-heading">数据来源</span>Source: S3c design-point bookkeeping<br>Dataset: s3c_lightweight_candidates.csv</span></span></td><td>—</td><td>—</td><td>directional hypothesis; no S3c transport</td></tr><tr><td>S3c-LW5 uniform30</td><td>Al5, no W</td><td><span class="source-tooltip" tabindex="0" aria-describedby="number-source-tooltip-20">253.1<span class="source-tooltip-content" id="number-source-tooltip-20" role="tooltip"><span class="source-tooltip-heading">数据来源</span>Source: S3c design-point bookkeeping<br>Dataset: s3c_lightweight_candidates.csv</span></span></td><td><span class="source-tooltip" tabindex="0" aria-describedby="number-source-tooltip-21">138.1<span class="source-tooltip-content" id="number-source-tooltip-21" role="tooltip"><span class="source-tooltip-heading">数据来源</span>Source: S3c design-point bookkeeping<br>Dataset: s3c_lightweight_candidates.csv</span></span></td><td><span class="source-tooltip" tabindex="0" aria-describedby="number-source-tooltip-22">35.3%<span class="source-tooltip-content" id="number-source-tooltip-22" role="tooltip"><span class="source-tooltip-heading">数据来源</span>Source: S3c design-point bookkeeping<br>Dataset: s3c_lightweight_candidates.csv</span></span></td><td>—</td><td>—</td><td>pre-relief geometric mass model only</td></tr><tr><td>S3c-LW6 uniform20</td><td>Al5, no W</td><td><span class="source-tooltip" tabindex="0" aria-describedby="number-source-tooltip-23">168.3<span class="source-tooltip-content" id="number-source-tooltip-23" role="tooltip"><span class="source-tooltip-heading">数据来源</span>Source: S3c design-point bookkeeping<br>Dataset: s3c_lightweight_candidates.csv</span></span></td><td><span class="source-tooltip" tabindex="0" aria-describedby="number-source-tooltip-24">222.9<span class="source-tooltip-content" id="number-source-tooltip-24" role="tooltip"><span class="source-tooltip-heading">数据来源</span>Source: S3c design-point bookkeeping<br>Dataset: s3c_lightweight_candidates.csv</span></span></td><td><span class="source-tooltip" tabindex="0" aria-describedby="number-source-tooltip-25">57.0%<span class="source-tooltip-content" id="number-source-tooltip-25" role="tooltip"><span class="source-tooltip-heading">数据来源</span>Source: S3c design-point bookkeeping<br>Dataset: s3c_lightweight_candidates.csv</span></span></td><td>—</td><td>—</td><td>pre-relief geometric mass model only</td></tr></tbody></table></div>
+          </section>
+        </article>
+      </section>
+
+      <article class="reading">
+        <section class="narrative" data-contract-section="scope-data-and-metric-definitions">
+          <h2>范围、数据和指标定义</h2>
+          <ul>
+            <li><strong>C0：</strong>当前 S3c 基线，侧/底/顶均为 <span class="source-tooltip" tabindex="0" aria-describedby="number-source-tooltip-63">40 mm<span class="source-tooltip-content" id="number-source-tooltip-63" role="tooltip"><span class="source-tooltip-heading">数据来源</span>Source: S3c design-point bookkeeping<br>Dataset: s3c_lightweight_candidates.csv</span></span> BGO，外层 <span class="source-tooltip" tabindex="0" aria-describedby="number-source-tooltip-64">2 mm<span class="source-tooltip-content" id="number-source-tooltip-64" role="tooltip"><span class="source-tooltip-heading">数据来源</span>Source: S3c design-point bookkeeping<br>Dataset: s3c_lightweight_candidates.csv</span></span> W 与 <span class="source-tooltip" tabindex="0" aria-describedby="number-source-tooltip-65">3 mm<span class="source-tooltip-content" id="number-source-tooltip-65" role="tooltip"><span class="source-tooltip-heading">数据来源</span>Source: S3c design-point bookkeeping<br>Dataset: s3c_lightweight_candidates.csv</span></span> Al；质量为开孔前材料体积账。</li>
+            <li><strong>W2：</strong><span class="source-tooltip" tabindex="0" aria-describedby="number-source-tooltip-66">510.58–511.42 keV<span class="source-tooltip-content" id="number-source-tooltip-66" role="tooltip"><span class="source-tooltip-heading">数据来源</span>Source: S3c retained prompt and atmospheric transport<br>Dataset: dominant_background_summary.json + s3c_atm511_sidecar_3m_summary.json</span></span> 的最终筛选窗。主导子集只含 e+、中子、大气 511 keV；“估算总本底”还加了沿用 S3 的非主导余项。</li>
+            <li><strong>延迟活度：</strong>clean neutron-only exact-position RPIP 的源侧 Bq；它不是探测器响应后的 W2 cps。</li>
+            <li><strong>方向分布：</strong>从入选 SIM 事件的 IA INIT 初始方向推断外表面交点，只用来排序设计假设。</li>
+          </ul>
+        </section>
+
+        <section class="narrative" data-contract-section="methodology">
+          <h2>方法</h2>
+          <p>本复核只读取保留的 S3c prompt、atm511 与 clean neutron-only 延迟产物，并用冻结的 S3/S3a/S3b 结论 JSON 做设计点比较。脚本重新汇总 W2 组成、扫描最终事件入射面、按体积与核素聚合加权活度，再用解析材料体积建立 LW2–LW6 的预开孔质量模型。所有 source card 与 SIM header 均由独立验证器核对到 S3c 几何。</p>
+        </section>
+
+        <section class="narrative" data-contract-section="limitations-uncertainty-and-robustness-checks">
+          <h2>局限、不确定度与稳健性检查</h2>
+          <ul>
+            <li>e+ 和中子在最终窗内各只有 <span class="source-tooltip" tabindex="0" aria-describedby="number-source-tooltip-67">2<span class="source-tooltip-content" id="number-source-tooltip-67" role="tooltip"><span class="source-tooltip-heading">数据来源</span>Source: S3c retained prompt and atmospheric transport<br>Dataset: dominant_background_summary.json + s3c_atm511_sidecar_3m_summary.json</span></span> 个事件，对应纯计数相对一西格玛约 <span class="source-tooltip" tabindex="0" aria-describedby="number-source-tooltip-68">70.7%<span class="source-tooltip-content" id="number-source-tooltip-68" role="tooltip"><span class="source-tooltip-heading">数据来源</span>Source: S3c retained local analysis<br>Dataset: s3c_mainline_analysis_summary.json</span></span>；atm511 有 <span class="source-tooltip" tabindex="0" aria-describedby="number-source-tooltip-69">6<span class="source-tooltip-content" id="number-source-tooltip-69" role="tooltip"><span class="source-tooltip-heading">数据来源</span>Source: S3c retained prompt and atmospheric transport<br>Dataset: dominant_background_summary.json + s3c_atm511_sidecar_3m_summary.json</span></span> 个事件，约 <span class="source-tooltip" tabindex="0" aria-describedby="number-source-tooltip-70">40.8%<span class="source-tooltip-content" id="number-source-tooltip-70" role="tooltip"><span class="source-tooltip-heading">数据来源</span>Source: S3c retained local analysis<br>Dataset: s3c_mainline_analysis_summary.json</span></span>。图中的相近占比不代表精确排序。</li>
+            <li>S3c “总本底”仍含沿用 S3 的余项；在全 prompt-family 重跑前，它只能作为决策代理。</li>
+            <li>LW2–LW6 的质量不包含开孔、紧固、容差、支撑、热连接与结构裕度；也没有证明薄 Al 能承载 BGO。</li>
+            <li>延迟链通过 NUBASE 基态校正、逐族 TT 除数、<span class="source-tooltip" tabindex="0" aria-describedby="number-source-tooltip-71">8<span class="source-tooltip-content" id="number-source-tooltip-71" role="tooltip"><span class="source-tooltip-heading">数据来源</span>Source: S3c neutron-only delayed chain<br>Dataset: exactpos_weighted_rpip_table_m50000_s260613.csv</span></span> 路源文件、<span class="source-tooltip" tabindex="0" aria-describedby="number-source-tooltip-72">M=50000<span class="source-tooltip-content" id="number-source-tooltip-72" role="tooltip"><span class="source-tooltip-heading">数据来源</span>Source: S3c neutron-only delayed chain<br>Dataset: exactpos_weighted_rpip_table_m50000_s260613.csv</span></span> 和 <span class="source-tooltip" tabindex="0" aria-describedby="number-source-tooltip-73">SE=ID=1000000<span class="source-tooltip-content" id="number-source-tooltip-73" role="tooltip"><span class="source-tooltip-heading">数据来源</span>Source: S3c neutron-only delayed chain<br>Dataset: exactpos_weighted_rpip_table_m50000_s260613.csv</span></span> 审计；但目前只覆盖 neutron-only。</li>
+          </ul>
+          <div class="caveat"><strong>解释边界。</strong> 这份报告支持“下一批模拟怎么排”，不支持直接冻结飞行机械设计。任何晋级构型都必须同时通过 prompt、本底延迟、信号接受度与结构质量审计。</div>
+        </section>
+
+        <section class="narrative" data-contract-section="recommended-next-steps">
+          <h2>建议的主线试验顺序</h2>
+          <p>先把历史 BGO40/Al8/no-W 点按 S3c-LW1 命名重建，再以相同统计量并排筛 C0、LW1、LW2、LW3。只有通过本底门槛的候选才能进入信号与延迟链；分区 BGO 的 LW4 放在第二轮。</p>
+        </section>
+        <section class="card table-card">
+          <div class="card-head"><h3>晋级矩阵</h3><p>顺序和门槛均固化在可机读 CSV 中。</p></div>
+          <div class="table-scroll"><table><thead><tr><th>顺序</th><th>候选</th><th>阶段</th><th>试验</th><th>统计量</th><th>晋级门槛</th></tr></thead><tbody><tr><td><span class="source-tooltip" tabindex="0" aria-describedby="number-source-tooltip-26">1<span class="source-tooltip-content" id="number-source-tooltip-26" role="tooltip"><span class="source-tooltip-heading">数据来源</span>Source: S3c lightweight decision program<br>Dataset: s3c_lightweight_run_matrix.csv</span></span></td><td>S3c-LW1 retained</td><td>consolidation</td><td>rebuild under S3c naming + cosima overlap</td><td><span class="source-tooltip" tabindex="0" aria-describedby="number-source-tooltip-27">geometry only<span class="source-tooltip-content" id="number-source-tooltip-27" role="tooltip"><span class="source-tooltip-heading">数据来源</span>Source: S3c lightweight decision program<br>Dataset: s3c_lightweight_run_matrix.csv</span></span></td><td><span class="source-tooltip" tabindex="0" aria-describedby="number-source-tooltip-28">exact geometry parity with retained BGO40/Al8 design point<span class="source-tooltip-content" id="number-source-tooltip-28" role="tooltip"><span class="source-tooltip-heading">数据来源</span>Source: S3c lightweight decision program<br>Dataset: s3c_lightweight_run_matrix.csv</span></span></td></tr><tr><td><span class="source-tooltip" tabindex="0" aria-describedby="number-source-tooltip-29">2<span class="source-tooltip-content" id="number-source-tooltip-29" role="tooltip"><span class="source-tooltip-heading">数据来源</span>Source: S3c lightweight decision program<br>Dataset: s3c_lightweight_run_matrix.csv</span></span></td><td>S3c-C0/LW1/LW2/LW3</td><td>fast screen</td><td>prompt eplus+n and matched 4pi atm511</td><td><span class="source-tooltip" tabindex="0" aria-describedby="number-source-tooltip-30">same-stat screen; preserve 16 prompt jobs and 3M atm511<span class="source-tooltip-content" id="number-source-tooltip-30" role="tooltip"><span class="source-tooltip-heading">数据来源</span>Source: S3c lightweight decision program<br>Dataset: s3c_lightweight_run_matrix.csv</span></span></td><td><span class="source-tooltip" tabindex="0" aria-describedby="number-source-tooltip-31">dominant W2 subset &lt;= 0.0052 cps with correct geometry headers<span class="source-tooltip-content" id="number-source-tooltip-31" role="tooltip"><span class="source-tooltip-heading">数据来源</span>Source: S3c lightweight decision program<br>Dataset: s3c_lightweight_run_matrix.csv</span></span></td></tr><tr><td><span class="source-tooltip" tabindex="0" aria-describedby="number-source-tooltip-32">3<span class="source-tooltip-content" id="number-source-tooltip-32" role="tooltip"><span class="source-tooltip-heading">数据来源</span>Source: S3c lightweight decision program<br>Dataset: s3c_lightweight_run_matrix.csv</span></span></td><td>screen survivors</td><td>signal guardrail</td><td>focused f10m A1 signal response</td><td><span class="source-tooltip" tabindex="0" aria-describedby="number-source-tooltip-33">matched retained bridge statistics<span class="source-tooltip-content" id="number-source-tooltip-33" role="tooltip"><span class="source-tooltip-heading">数据来源</span>Source: S3c lightweight decision program<br>Dataset: s3c_lightweight_run_matrix.csv</span></span></td><td><span class="source-tooltip" tabindex="0" aria-describedby="number-source-tooltip-34">final W2 signal acceptance loss &lt;= 2% versus S3c-C0<span class="source-tooltip-content" id="number-source-tooltip-34" role="tooltip"><span class="source-tooltip-heading">数据来源</span>Source: S3c lightweight decision program<br>Dataset: s3c_lightweight_run_matrix.csv</span></span></td></tr><tr><td><span class="source-tooltip" tabindex="0" aria-describedby="number-source-tooltip-35">4<span class="source-tooltip-content" id="number-source-tooltip-35" role="tooltip"><span class="source-tooltip-heading">数据来源</span>Source: S3c lightweight decision program<br>Dataset: s3c_lightweight_run_matrix.csv</span></span></td><td>best two</td><td>delayed guardrail</td><td>clean neutron-only delayed chain</td><td><span class="source-tooltip" tabindex="0" aria-describedby="number-source-tooltip-36">8 files, TT division 8, M=50000, SE=ID=1000000<span class="source-tooltip-content" id="number-source-tooltip-36" role="tooltip"><span class="source-tooltip-heading">数据来源</span>Source: S3c lightweight decision program<br>Dataset: s3c_lightweight_run_matrix.csv</span></span></td><td><span class="source-tooltip" tabindex="0" aria-describedby="number-source-tooltip-37">NUBASE/TT/sampling PASS and activity &lt;= 57.8243 Bq<span class="source-tooltip-content" id="number-source-tooltip-37" role="tooltip"><span class="source-tooltip-heading">数据来源</span>Source: S3c lightweight decision program<br>Dataset: s3c_lightweight_run_matrix.csv</span></span></td></tr><tr><td><span class="source-tooltip" tabindex="0" aria-describedby="number-source-tooltip-38">5<span class="source-tooltip-content" id="number-source-tooltip-38" role="tooltip"><span class="source-tooltip-heading">数据来源</span>Source: S3c lightweight decision program<br>Dataset: s3c_lightweight_run_matrix.csv</span></span></td><td>winner</td><td>full closure</td><td>all prompt families + delayed Step05 + Step06-Step08</td><td><span class="source-tooltip" tabindex="0" aria-describedby="number-source-tooltip-39">publication-matched<span class="source-tooltip-content" id="number-source-tooltip-39" role="tooltip"><span class="source-tooltip-heading">数据来源</span>Source: S3c lightweight decision program<br>Dataset: s3c_lightweight_run_matrix.csv</span></span></td><td><span class="source-tooltip" tabindex="0" aria-describedby="number-source-tooltip-40">validated S3c-native 20d F3 and structural mass audit<span class="source-tooltip-content" id="number-source-tooltip-40" role="tooltip"><span class="source-tooltip-heading">数据来源</span>Source: S3c lightweight decision program<br>Dataset: s3c_lightweight_run_matrix.csv</span></span></td></tr></tbody></table></div>
+        </section>
+
+        <section class="narrative" data-contract-section="further-questions">
+          <h2>待回答问题</h2>
+          <ul>
+            <li>LW1 的 prompt 优势/劣势在统一 S3c 源卡与更高统计量下是否仍成立？</li>
+            <li>去除外层 W 后，窗口 W-187 和 Al-28 的活度变化来自材料减少，还是中子谱场变化？</li>
+            <li>Al5 是否能满足 BGO 安装、冲击、热收缩和气球飞行载荷；若不能，最轻可制造厚度是多少？</li>
+            <li>在保持侧面 BGO40 的前提下，顶/底分区减薄对 f10m A1 最终 W2 信号接受度的影响有多大？</li>
+          </ul>
+        </section>
+      </article>
+    </main>
+  </div>
+  <!-- DATA_ANALYTICS_HTML_REPORT_RUNTIME -->
+</body>
+</html>

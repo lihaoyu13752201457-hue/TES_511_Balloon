@@ -1,0 +1,326 @@
+{
+  "status": "PASS_S3C_ATM511_KNOB0_EVENT_REPLAY",
+  "as_of": "2026-07-10",
+  "question": "How much atmospheric-511 background benefit does the frozen Knob0 fluorescence/lever-arm policy provide on the retained S3c 3M transport?",
+  "inputs": {
+    "sim": "runs/geometry_optimization_20260704/s3c_bgo_w2mm_al3mm_shell_atm511_sidecar_3m_20260709/Atm511SidecarS3cBgoW2mmAl3mmShell3M.inc1.id1.sim.gz",
+    "log": "runs/geometry_optimization_20260704/s3c_bgo_w2mm_al3mm_shell_atm511_sidecar_3m_20260709/cosima_Atm511SidecarS3cBgoW2mmAl3mmShell3M.log",
+    "source": "runs/geometry_optimization_20260704/s3c_bgo_w2mm_al3mm_shell_atm511_sidecar_3m_20260709/Atm511SidecarS3cBgoW2mmAl3mmShell3M.source",
+    "current_atm511_summary": "engineering/geometry_optimization_20260704/32_s3c_dominant_backgrounds_20260709/s3c_atm511_sidecar_3m_summary.json",
+    "s3c_mainline_summary": "engineering/geometry_optimization_20260704/40_s3c_mainline_lightweight_review_20260710/data/s3c_mainline_analysis_summary.json",
+    "knob0_brief": "engineering/compton_veto_knob0_20260710/KNOB0_FLUORESCENCE_ARM_STRATIFICATION_BRIEF.md",
+    "step05_authority": "old/code/tools/build_v3p5_centerfinger_step05_l1_response.py"
+  },
+  "definitions": {
+    "w2_keV": [
+      510.58,
+      511.42
+    ],
+    "active_veto_threshold_keV": 50.0,
+    "k_lines_keV": {
+      "Kalpha2": 56.277,
+      "Kalpha1": 57.532,
+      "Kbeta3": 64.949,
+      "Kbeta1": 65.223,
+      "Kbeta2": 66.99
+    },
+    "k_tag_half_width_keV": 0.534,
+    "short_arm_boundary_mm": 8.0,
+    "long_arm_boundary_mm": 20.0,
+    "position_sigma_mm": 0.87,
+    "doppler_sigma_deg": 3.0,
+    "k_values": [
+      2.0,
+      2.5,
+      3.0
+    ],
+    "literal_brief": "S0/S1 are retained calorimetrically; S2 uses current 81-OR; S3 uses centroid cone-to-window residual <= delta(L).",
+    "monotonic_frozen": "Never resurrect an event rejected by the current selection; only S3 current survivors can be newly rejected by the frozen tight criterion."
+  },
+  "normalization": {
+    "generated_events": 3000000,
+    "observation_time_s": 5141.9,
+    "event_rate_weight_cps": 0.00019448063945234253,
+    "current_atm511_final_rate_cps": 0.001166883836714055,
+    "s3c_estimated_total_background_proxy_cps": 0.005050984927709305
+  },
+  "data_quality": {
+    "sim_header": {
+      "geometry": "/home/ubuntu/TES_511_Balloon/engineering/geometry_optimization_20260704/29_geoopt_s3c_bgo_w2mm_al3mm_shell_20260709/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup",
+      "seed": 26070917
+    },
+    "last_event_id": 3000000,
+    "duplicate_event_ids": 0,
+    "nonmonotonic_event_ids": 0,
+    "profile": {
+      "events_with_tes_or_active": 1074498,
+      "events_with_active_veto": 1074477,
+      "events_with_tes": 42,
+      "all_energy_active_multihit": 6,
+      "diagnostic_430_550_active_multihit": 6,
+      "w2_active_multihit": 5,
+      "w2_raw": 8,
+      "w2_active": 8
+    },
+    "w2_event_count": 8,
+    "w2_current_final_event_ids": [
+      426168,
+      513083,
+      754641,
+      1549617,
+      2291363,
+      2547196
+    ],
+    "per_hit_energy_position_available": true,
+    "truth_initial_direction_available": true,
+    "aggregation_note": "CC HIT deposits are summed by TP pixel; K tagging is applied to aggregated per-pixel energy, matching the current event catalog grain."
+  },
+  "g1": {
+    "tag_counts": {
+      "all_energy": {
+        "Kalpha1": 1
+      },
+      "diagnostic_430_550": {
+        "Kalpha1": 1
+      },
+      "w2": {
+        "Kalpha1": 1
+      }
+    },
+    "lever_strata": {
+      "all_energy": {
+        "S1_short": 3,
+        "S2_medium": 1,
+        "S3_long": 1
+      },
+      "diagnostic_430_550": {
+        "S1_short": 3,
+        "S2_medium": 1,
+        "S3_long": 1
+      },
+      "w2": {
+        "S1_short": 2,
+        "S2_medium": 1,
+        "S3_long": 1
+      }
+    },
+    "w2_stratum_counts": {
+      "S1_short": 2,
+      "S2_medium": 1,
+      "S3_long": 1,
+      "single": 3,
+      "S0_fluorescence": 1
+    },
+    "w2_fluorescence_tagged_events": 1,
+    "w2_fluorescence_truth_supported_events": 1,
+    "w2_multihit_events": 5,
+    "w2_fluorescence_fraction_of_multihit": 0.2,
+    "w2_fluorescence_fraction_wilson95": [
+      0.036224108632430085,
+      0.6244653702374747
+    ],
+    "w2_long_arm_events": 1,
+    "w2_long_arm_fraction_of_multihit": 0.2,
+    "w2_long_arm_fraction_wilson95": [
+      0.036224108632430085,
+      0.6244653702374747
+    ],
+    "long_event_minimum_k_to_pass": 7.374175753286074e-05
+  },
+  "policy_yields": [
+    {
+      "policy": "current",
+      "k": "",
+      "active_w2_events": 8,
+      "current_final_events": 6,
+      "new_final_events": 6,
+      "current_kept_to_rejected": 0,
+      "current_rejected_to_kept": 0,
+      "net_event_change": 0,
+      "new_atm511_rate_cps": 0.001166883836714055,
+      "atm511_rate_change_fraction": 0.0,
+      "current_kept_rejection_fraction": 0.0,
+      "rejection_fraction_wilson95_low": 0.0,
+      "rejection_fraction_wilson95_high": 0.39033428790216534,
+      "atm_component_sqrtB_gain_signal_unchanged": 1.0,
+      "s3c_total_proxy_background_cps": 0.005050984927709305,
+      "s3c_total_proxy_sqrtB_gain_signal_unchanged": 1.0
+    },
+    {
+      "policy": "literal_brief",
+      "k": 2.0,
+      "active_w2_events": 8,
+      "current_final_events": 6,
+      "new_final_events": 7,
+      "current_kept_to_rejected": 0,
+      "current_rejected_to_kept": 1,
+      "net_event_change": 1,
+      "new_atm511_rate_cps": 0.0013613644761663977,
+      "atm511_rate_change_fraction": 0.16666666666666674,
+      "current_kept_rejection_fraction": 0.0,
+      "rejection_fraction_wilson95_low": 0.0,
+      "rejection_fraction_wilson95_high": 0.39033428790216534,
+      "atm_component_sqrtB_gain_signal_unchanged": 0.9258200997725514,
+      "s3c_total_proxy_background_cps": 0.005245465567161647,
+      "s3c_total_proxy_sqrtB_gain_signal_unchanged": 0.9812869336330848
+    },
+    {
+      "policy": "monotonic_frozen",
+      "k": 2.0,
+      "active_w2_events": 8,
+      "current_final_events": 6,
+      "new_final_events": 6,
+      "current_kept_to_rejected": 0,
+      "current_rejected_to_kept": 0,
+      "net_event_change": 0,
+      "new_atm511_rate_cps": 0.001166883836714055,
+      "atm511_rate_change_fraction": 0.0,
+      "current_kept_rejection_fraction": 0.0,
+      "rejection_fraction_wilson95_low": 0.0,
+      "rejection_fraction_wilson95_high": 0.39033428790216534,
+      "atm_component_sqrtB_gain_signal_unchanged": 1.0,
+      "s3c_total_proxy_background_cps": 0.005050984927709305,
+      "s3c_total_proxy_sqrtB_gain_signal_unchanged": 1.0
+    },
+    {
+      "policy": "literal_brief",
+      "k": 2.5,
+      "active_w2_events": 8,
+      "current_final_events": 6,
+      "new_final_events": 7,
+      "current_kept_to_rejected": 0,
+      "current_rejected_to_kept": 1,
+      "net_event_change": 1,
+      "new_atm511_rate_cps": 0.0013613644761663977,
+      "atm511_rate_change_fraction": 0.16666666666666674,
+      "current_kept_rejection_fraction": 0.0,
+      "rejection_fraction_wilson95_low": 0.0,
+      "rejection_fraction_wilson95_high": 0.39033428790216534,
+      "atm_component_sqrtB_gain_signal_unchanged": 0.9258200997725514,
+      "s3c_total_proxy_background_cps": 0.005245465567161647,
+      "s3c_total_proxy_sqrtB_gain_signal_unchanged": 0.9812869336330848
+    },
+    {
+      "policy": "monotonic_frozen",
+      "k": 2.5,
+      "active_w2_events": 8,
+      "current_final_events": 6,
+      "new_final_events": 6,
+      "current_kept_to_rejected": 0,
+      "current_rejected_to_kept": 0,
+      "net_event_change": 0,
+      "new_atm511_rate_cps": 0.001166883836714055,
+      "atm511_rate_change_fraction": 0.0,
+      "current_kept_rejection_fraction": 0.0,
+      "rejection_fraction_wilson95_low": 0.0,
+      "rejection_fraction_wilson95_high": 0.39033428790216534,
+      "atm_component_sqrtB_gain_signal_unchanged": 1.0,
+      "s3c_total_proxy_background_cps": 0.005050984927709305,
+      "s3c_total_proxy_sqrtB_gain_signal_unchanged": 1.0
+    },
+    {
+      "policy": "literal_brief",
+      "k": 3.0,
+      "active_w2_events": 8,
+      "current_final_events": 6,
+      "new_final_events": 7,
+      "current_kept_to_rejected": 0,
+      "current_rejected_to_kept": 1,
+      "net_event_change": 1,
+      "new_atm511_rate_cps": 0.0013613644761663977,
+      "atm511_rate_change_fraction": 0.16666666666666674,
+      "current_kept_rejection_fraction": 0.0,
+      "rejection_fraction_wilson95_low": 0.0,
+      "rejection_fraction_wilson95_high": 0.39033428790216534,
+      "atm_component_sqrtB_gain_signal_unchanged": 0.9258200997725514,
+      "s3c_total_proxy_background_cps": 0.005245465567161647,
+      "s3c_total_proxy_sqrtB_gain_signal_unchanged": 0.9812869336330848
+    },
+    {
+      "policy": "monotonic_frozen",
+      "k": 3.0,
+      "active_w2_events": 8,
+      "current_final_events": 6,
+      "new_final_events": 6,
+      "current_kept_to_rejected": 0,
+      "current_rejected_to_kept": 0,
+      "net_event_change": 0,
+      "new_atm511_rate_cps": 0.001166883836714055,
+      "atm511_rate_change_fraction": 0.0,
+      "current_kept_rejection_fraction": 0.0,
+      "rejection_fraction_wilson95_low": 0.0,
+      "rejection_fraction_wilson95_high": 0.39033428790216534,
+      "atm_component_sqrtB_gain_signal_unchanged": 1.0,
+      "s3c_total_proxy_background_cps": 0.005050984927709305,
+      "s3c_total_proxy_sqrtB_gain_signal_unchanged": 1.0
+    }
+  ],
+  "decision": {
+    "observed_result": "NO_ATM511_BENEFIT_AND_LITERAL_POLICY_IS_HARMFUL_IN_SAMPLE",
+    "literal_k2p5": {
+      "policy": "literal_brief",
+      "k": 2.5,
+      "active_w2_events": 8,
+      "current_final_events": 6,
+      "new_final_events": 7,
+      "current_kept_to_rejected": 0,
+      "current_rejected_to_kept": 1,
+      "net_event_change": 1,
+      "new_atm511_rate_cps": 0.0013613644761663977,
+      "atm511_rate_change_fraction": 0.16666666666666674,
+      "current_kept_rejection_fraction": 0.0,
+      "rejection_fraction_wilson95_low": 0.0,
+      "rejection_fraction_wilson95_high": 0.39033428790216534,
+      "atm_component_sqrtB_gain_signal_unchanged": 0.9258200997725514,
+      "s3c_total_proxy_background_cps": 0.005245465567161647,
+      "s3c_total_proxy_sqrtB_gain_signal_unchanged": 0.9812869336330848
+    },
+    "monotonic_k2p5": {
+      "policy": "monotonic_frozen",
+      "k": 2.5,
+      "active_w2_events": 8,
+      "current_final_events": 6,
+      "new_final_events": 6,
+      "current_kept_to_rejected": 0,
+      "current_rejected_to_kept": 0,
+      "net_event_change": 0,
+      "new_atm511_rate_cps": 0.001166883836714055,
+      "atm511_rate_change_fraction": 0.0,
+      "current_kept_rejection_fraction": 0.0,
+      "rejection_fraction_wilson95_low": 0.0,
+      "rejection_fraction_wilson95_high": 0.39033428790216534,
+      "atm_component_sqrtB_gain_signal_unchanged": 1.0,
+      "s3c_total_proxy_background_cps": 0.005050984927709305,
+      "s3c_total_proxy_sqrtB_gain_signal_unchanged": 1.0
+    },
+    "interpretation": "The literal S0/S1 calorimetric-retain rule resurrects one current short-arm veto, while the only long-arm survivor intersects the side-window disk and passes every frozen k. The monotonic policy therefore changes no event.",
+    "promotion_recommendation": "DO_NOT_PROMOTE_LITERAL_KNOB0_FOR_ATM511; retain current selection.",
+    "additional_statistics_if_zero_rejections_persist": {
+      "current_final_events_required_for_wilson95_upper_le_10pct": 35,
+      "approx_total_generated_atm511_events_required": 17500000,
+      "current_final_events_required_for_wilson95_upper_le_5pct": 73,
+      "approx_total_generated_atm511_events_required_for_5pct": 36500000,
+      "scaling_note": "Linear yield scaling from 6 current final events in 3M generated events; not a guarantee."
+    }
+  },
+  "validation": {
+    "generated_events_match_3m": true,
+    "event_ids_unique_and_monotonic": true,
+    "sim_geometry_matches_s3c": true,
+    "source_geometry_matches_s3c": true,
+    "w2_raw_count_reproduced": true,
+    "w2_active_count_reproduced": true,
+    "w2_final_count_reproduced": true,
+    "w2_final_ids_reproduced": true,
+    "event_weight_reproduced": true,
+    "all_w2_events_have_init": true,
+    "all_w2_events_have_pixel_hits": true
+  },
+  "claim_boundary": [
+    "This is a replay of the retained S3c atmospheric-511 transport, not a new transport.",
+    "Only eight active-veto-pass W2 events are available; exact event transitions control the estimate and uncertainty is large.",
+    "The atmospheric-only sqrt(B) gains assume unchanged signal acceptance and are not measured sensitivity gains.",
+    "The S3c-total proxy uses the retained non-dominant S3 residual and is not a full S3c prompt-family closure.",
+    "Pixel aggregation can dilute or shift a fluorescence-line hit when another deposit lands in the same pixel."
+  ]
+}
