@@ -1,0 +1,212 @@
+{
+  "status": "PASS_MASS_ACTIVATION_MATERIAL_FAMILY_AUDIT",
+  "scope": "Retained Mass_model_511 all-family day-15 activation only. This analysis does not extend the final S3d neutron-induced delayed transport.",
+  "inputs": {
+    "weighted_exact_position_table": "runs/Mass_model_511_nearfield_migration_20260701/step02_delay_exactpos_candidate_Mass_model_511_fullstat_v1/exactpos_weighted_rpip_table.csv",
+    "delayed_source_summary": "engineering/Mass_model_511_nearfield_migration_20260701/03_detector_transport/delayed/candidate_Mass_model_511/fullstat_v1/F1/delayed_source_exactpos_summary.json",
+    "reference_category_crosscheck": "engineering/geometry_optimization_20260704/05_neutron_plastic_audit_20260707/activation_category_comparison_groundstate_fixed.csv"
+  },
+  "checks": {
+    "weighted_rows": 380872,
+    "total_activity_Bq": 141.83343805805436,
+    "retained_total_activity_Bq": 141.83343806308812,
+    "absolute_activity_delta_Bq": 5.033768957218854e-09,
+    "category_crosscheck_count": 10
+  },
+  "incident_families": [
+    {
+      "incident_family": "n",
+      "activity_Bq": 133.67231348113341,
+      "fraction": 0.9424597987000747,
+      "percent": 94.24597987000747
+    },
+    {
+      "incident_family": "muminus",
+      "activity_Bq": 7.632663429907381,
+      "fraction": 0.05381427351978331,
+      "percent": 5.38142735197833
+    },
+    {
+      "incident_family": "p",
+      "activity_Bq": 0.43370069270757744,
+      "fraction": 0.0030578169622459397,
+      "percent": 0.305781696224594
+    },
+    {
+      "incident_family": "alpha",
+      "activity_Bq": 0.08250655381704154,
+      "fraction": 0.0005817144035052615,
+      "percent": 0.05817144035052615
+    },
+    {
+      "incident_family": "muplus",
+      "activity_Bq": 0.0067934880042912005,
+      "fraction": 4.7897647390529543e-05,
+      "percent": 0.004789764739052954
+    },
+    {
+      "incident_family": "eplus",
+      "activity_Bq": 0.004553637330328943,
+      "fraction": 3.210552738956435e-05,
+      "percent": 0.0032105527389564353
+    },
+    {
+      "incident_family": "gamma",
+      "activity_Bq": 0.0009067751832367999,
+      "fraction": 6.393239814617231e-06,
+      "percent": 0.0006393239814617231
+    }
+  ],
+  "material_categories": [
+    {
+      "category": "csi",
+      "activity_Bq": 89.4649266414073,
+      "fraction": 0.6307745752083376,
+      "percent": 63.07745752083377
+    },
+    {
+      "category": "outer_mechanics",
+      "activity_Bq": 22.280315354133663,
+      "fraction": 0.1570878888588601,
+      "percent": 15.708788885886012
+    },
+    {
+      "category": "cold_plates",
+      "activity_Bq": 13.378798855364227,
+      "fraction": 0.09432753685268563,
+      "percent": 9.432753685268564
+    },
+    {
+      "category": "passive_w_or_collimator",
+      "activity_Bq": 8.052383303461378,
+      "fraction": 0.05677351838686606,
+      "percent": 5.677351838686606
+    },
+    {
+      "category": "window",
+      "activity_Bq": 4.923123847289394,
+      "fraction": 0.034710600791290784,
+      "percent": 3.4710600791290784
+    },
+    {
+      "category": "other_internal",
+      "activity_Bq": 3.648374819858395,
+      "fraction": 0.025722952709960153,
+      "percent": 2.5722952709960154
+    },
+    {
+      "category": "tes",
+      "activity_Bq": 0.08551523653999939,
+      "fraction": 0.0006029271919996527,
+      "percent": 0.06029271919996527
+    }
+  ],
+  "pairwise_material_total_variation": [
+    {
+      "family_a": "gamma",
+      "family_b": "muminus",
+      "total_variation_distance": 0.9871074899032908
+    },
+    {
+      "family_a": "eplus",
+      "family_b": "muminus",
+      "total_variation_distance": 0.9646708555711402
+    },
+    {
+      "family_a": "muminus",
+      "family_b": "muplus",
+      "total_variation_distance": 0.9308466166508506
+    },
+    {
+      "family_a": "muminus",
+      "family_b": "n",
+      "total_variation_distance": 0.8227558340884576
+    },
+    {
+      "family_a": "alpha",
+      "family_b": "gamma",
+      "total_variation_distance": 0.7492558579460723
+    },
+    {
+      "family_a": "gamma",
+      "family_b": "p",
+      "total_variation_distance": 0.7215824129178358
+    },
+    {
+      "family_a": "eplus",
+      "family_b": "gamma",
+      "total_variation_distance": 0.7058472970843925
+    },
+    {
+      "family_a": "gamma",
+      "family_b": "muplus",
+      "total_variation_distance": 0.7058472970843925
+    },
+    {
+      "family_a": "alpha",
+      "family_b": "muplus",
+      "total_variation_distance": 0.6510241340733763
+    },
+    {
+      "family_a": "gamma",
+      "family_b": "n",
+      "total_variation_distance": 0.6460452552718893
+    },
+    {
+      "family_a": "muplus",
+      "family_b": "p",
+      "total_variation_distance": 0.6398916080236793
+    },
+    {
+      "family_a": "alpha",
+      "family_b": "eplus",
+      "total_variation_distance": 0.6334567292413528
+    },
+    {
+      "family_a": "eplus",
+      "family_b": "p",
+      "total_variation_distance": 0.573914318896619
+    },
+    {
+      "family_a": "alpha",
+      "family_b": "n",
+      "total_variation_distance": 0.4866473252709011
+    },
+    {
+      "family_a": "n",
+      "family_b": "p",
+      "total_variation_distance": 0.4563355552797469
+    },
+    {
+      "family_a": "muminus",
+      "family_b": "p",
+      "total_variation_distance": 0.4291893395304949
+    },
+    {
+      "family_a": "alpha",
+      "family_b": "muminus",
+      "total_variation_distance": 0.3514486993888868
+    },
+    {
+      "family_a": "muplus",
+      "family_b": "n",
+      "total_variation_distance": 0.2760074920398967
+    },
+    {
+      "family_a": "eplus",
+      "family_b": "muplus",
+      "total_variation_distance": 0.25042266123334667
+    },
+    {
+      "family_a": "eplus",
+      "family_b": "n",
+      "total_variation_distance": 0.19750604792228732
+    },
+    {
+      "family_a": "alpha",
+      "family_b": "p",
+      "total_variation_distance": 0.07774064014160803
+    }
+  ],
+  "problems": []
+}

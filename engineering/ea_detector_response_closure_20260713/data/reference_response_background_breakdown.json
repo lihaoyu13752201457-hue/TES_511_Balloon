@@ -1,0 +1,321 @@
+{
+  "status": "PASS_REFERENCE_RESPONSE_BACKGROUND_BREAKDOWN",
+  "response_seed": 26071301,
+  "response_model": {
+    "distribution": "independent Gaussian per aggregated TES pixel readout",
+    "fwhm_keV": 0.42,
+    "sigma_keV": 0.178357578060484,
+    "post_noise_hit_threshold_keV": 0.3,
+    "ordering": [
+      "aggregate Cosima deposits by TES pixel",
+      "apply independent Gaussian energy response",
+      "discard measured TES hits below 0.3 keV",
+      "sum surviving TES hits into event energy",
+      "apply W2/broad window and 50-keV active-veto selection",
+      "evaluate side-entry Compton/FoV topology with measured hit energies"
+    ]
+  },
+  "selection": {
+    "window_keV": [
+      510.58,
+      511.42
+    ],
+    "active_veto_threshold_keV": 50.0,
+    "side_compton_fov_reject_policy": "keep"
+  },
+  "reference_baseline": {
+    "prompt": {
+      "events": 63,
+      "rate_cps": 0.04273206282902456,
+      "mc_sigma_cps": 0.005383736562431113
+    },
+    "delayed": {
+      "events": 26,
+      "rate_cps": 0.0036999863806205166,
+      "mc_sigma_cps": 0.0007256270290312137
+    },
+    "total": {
+      "events": 89,
+      "rate_cps": 0.046432049209645075,
+      "mc_sigma_cps": 0.00543241695370654
+    },
+    "prompt_fraction": 0.9203139546153837,
+    "delayed_fraction": 0.07968604538461634,
+    "signal_cps_at_reference_flux": 0.0011171527338467153,
+    "mission": {
+      "Z20d": 6.75286710805973,
+      "F3_20d_ph_cm2_s": 4.442557438187135e-05
+    }
+  },
+  "prompt_particles": [
+    {
+      "particle": "eplus",
+      "events": 43,
+      "rate_cps": 0.029173032719930735,
+      "mc_sigma_cps": 0.004448845782055735,
+      "fraction_of_prompt": 0.6826965699422254
+    },
+    {
+      "particle": "n",
+      "events": 18,
+      "rate_cps": 0.012209929385908388,
+      "mc_sigma_cps": 0.0028779079555282397,
+      "fraction_of_prompt": 0.2857322716846502
+    },
+    {
+      "particle": "muplus",
+      "events": 2,
+      "rate_cps": 0.0013491007231854425,
+      "mc_sigma_cps": 0.0009539582698681018,
+      "fraction_of_prompt": 0.03157115837312454
+    }
+  ],
+  "delayed_inventory": {
+    "total_activity_Bq": 141.83343806308812,
+    "top_activity_volumes": [
+      {
+        "VN": "CsI_Bottom_Quadrant_03",
+        "activity_Bq": 8.297637320501503
+      },
+      {
+        "VN": "CsI_Bottom_Quadrant_00",
+        "activity_Bq": 8.1188825875257
+      },
+      {
+        "VN": "CsI_Bottom_Quadrant_01",
+        "activity_Bq": 7.5235493186905
+      },
+      {
+        "VN": "CsI_Bottom_Quadrant_02",
+        "activity_Bq": 7.492493679279101
+      },
+      {
+        "VN": "CsI_Side_Segment_07",
+        "activity_Bq": 7.241834609838401
+      },
+      {
+        "VN": "CsI_Side_Segment_00",
+        "activity_Bq": 7.190979355644699
+      },
+      {
+        "VN": "CsI_Side_Segment_01",
+        "activity_Bq": 6.592209404899
+      },
+      {
+        "VN": "CsI_Side_Segment_06",
+        "activity_Bq": 6.5900824561182
+      },
+      {
+        "VN": "NF2_OuterSupport_Al_BaseMountAnnulus",
+        "activity_Bq": 6.205188584986679
+      },
+      {
+        "VN": "CsI_Side_Segment_05",
+        "activity_Bq": 5.924983957218598
+      },
+      {
+        "VN": "CsI_Side_Segment_02",
+        "activity_Bq": 5.842222323214201
+      },
+      {
+        "VN": "ColdPlate_4K",
+        "activity_Bq": 5.346678294566311
+      },
+      {
+        "VN": "NF2_OuterSupport_Al_TopMountAnnulus",
+        "activity_Bq": 4.923850597956968
+      },
+      {
+        "VN": "Window",
+        "activity_Bq": 4.923123847290106
+      },
+      {
+        "VN": "Vacuum_Jacket_Al_266mmClass_side_port_side_wall_above_side_port",
+        "activity_Bq": 3.617512813717873
+      },
+      {
+        "VN": "ColdPlate_Still_0p7K",
+        "activity_Bq": 3.009511758661021
+      },
+      {
+        "VN": "CsI_Side_Segment_03_below_side_port",
+        "activity_Bq": 2.591869333924601
+      },
+      {
+        "VN": "CsI_Side_Segment_04_below_side_port",
+        "activity_Bq": 2.5879070160041997
+      },
+      {
+        "VN": "Outer_Al_Mechanical_Shell_detector_bay_side_wall_below_side_port",
+        "activity_Bq": 2.4824105190027455
+      },
+      {
+        "VN": "ColdPlate_CP_100mK_intercept",
+        "activity_Bq": 2.477172386313265
+      }
+    ],
+    "top_drawn_species": [
+      {
+        "VN": "CsI_Bottom_Quadrant_03",
+        "ZA": 53128,
+        "drawn": 2841
+      },
+      {
+        "VN": "CsI_Bottom_Quadrant_00",
+        "ZA": 53128,
+        "drawn": 2814
+      },
+      {
+        "VN": "CsI_Bottom_Quadrant_02",
+        "ZA": 53128,
+        "drawn": 2515
+      },
+      {
+        "VN": "CsI_Bottom_Quadrant_01",
+        "ZA": 53128,
+        "drawn": 2483
+      },
+      {
+        "VN": "CsI_Side_Segment_00",
+        "ZA": 53128,
+        "drawn": 2432
+      },
+      {
+        "VN": "CsI_Side_Segment_07",
+        "ZA": 53128,
+        "drawn": 2432
+      },
+      {
+        "VN": "CsI_Side_Segment_01",
+        "ZA": 53128,
+        "drawn": 2277
+      },
+      {
+        "VN": "CsI_Side_Segment_06",
+        "ZA": 53128,
+        "drawn": 2251
+      },
+      {
+        "VN": "CsI_Side_Segment_05",
+        "ZA": 53128,
+        "drawn": 2073
+      },
+      {
+        "VN": "CsI_Side_Segment_02",
+        "ZA": 53128,
+        "drawn": 1976
+      },
+      {
+        "VN": "NF2_OuterSupport_Al_BaseMountAnnulus",
+        "ZA": 13028,
+        "drawn": 1604
+      },
+      {
+        "VN": "ColdPlate_4K",
+        "ZA": 29064,
+        "drawn": 1489
+      },
+      {
+        "VN": "NF2_OuterSupport_Al_TopMountAnnulus",
+        "ZA": 13028,
+        "drawn": 971
+      },
+      {
+        "VN": "CsI_Side_Segment_03_below_side_port",
+        "ZA": 53128,
+        "drawn": 907
+      },
+      {
+        "VN": "CsI_Side_Segment_04_below_side_port",
+        "ZA": 53128,
+        "drawn": 880
+      },
+      {
+        "VN": "ColdPlate_Still_0p7K",
+        "ZA": 29064,
+        "drawn": 815
+      },
+      {
+        "VN": "Vacuum_Jacket_Al_266mmClass_side_port_side_wall_above_side_port",
+        "ZA": 13028,
+        "drawn": 786
+      },
+      {
+        "VN": "Window",
+        "ZA": 53128,
+        "drawn": 716
+      },
+      {
+        "VN": "ColdPlate_CP_100mK_intercept",
+        "ZA": 29064,
+        "drawn": 702
+      },
+      {
+        "VN": "Window",
+        "ZA": 13028,
+        "drawn": 692
+      }
+    ],
+    "sampling_status": "PASS"
+  },
+  "delayed_selected_nuclides": [
+    {
+      "ZA": 29064,
+      "nuclide": "Cu-64",
+      "events": 24,
+      "rate_cps": 0.003415372043649708,
+      "fraction_of_delayed": 0.9230769230769231
+    },
+    {
+      "ZA": 29061,
+      "nuclide": "Cu-61",
+      "events": 2,
+      "rate_cps": 0.000284614336970809,
+      "fraction_of_delayed": 0.07692307692307693
+    }
+  ],
+  "delayed_selected_source_volumes": [
+    {
+      "source_volume": "ColdPlate_MXC_50mK_SD_anchor",
+      "events": 15,
+      "rate_cps": 0.0021346075272810675,
+      "fraction_of_delayed": 0.5769230769230769
+    },
+    {
+      "source_volume": "Cu_50mK_StillLike_Can_bottom_cap_2mm",
+      "events": 4,
+      "rate_cps": 0.000569228673941618,
+      "fraction_of_delayed": 0.15384615384615385
+    },
+    {
+      "source_volume": "ColdPlate_CP_100mK_intercept",
+      "events": 2,
+      "rate_cps": 0.000284614336970809,
+      "fraction_of_delayed": 0.07692307692307693
+    },
+    {
+      "source_volume": "ColdPlate_Still_0p7K",
+      "events": 2,
+      "rate_cps": 0.000284614336970809,
+      "fraction_of_delayed": 0.07692307692307693
+    },
+    {
+      "source_volume": "Cu_SubstrateSupport_SolidDisk_L0_deepest",
+      "events": 2,
+      "rate_cps": 0.000284614336970809,
+      "fraction_of_delayed": 0.07692307692307693
+    },
+    {
+      "source_volume": "DR_Continuous_HEX_CuNi_MXC_to_CP",
+      "events": 1,
+      "rate_cps": 0.0001423071684854045,
+      "fraction_of_delayed": 0.038461538461538464
+    }
+  ],
+  "inputs": {
+    "energy_response_closure": "engineering/ea_detector_response_closure_20260713/data/o8_energy_response_closure_summary.json",
+    "legacy_inventory_authority": "engineering/geometry_optimization_20260704/42_geoopt_s3d_lightweight_20260712/data/reference_baseline_background_breakdown.json",
+    "delayed_event_provenance": "engineering/Mass_model_511_nearfield_migration_20260701/14_replacement_review_20260703/mass_model_511_w_activation_selected_w2_events.csv"
+  },
+  "claim_boundary": "Response-convolved reference-geometry detector-selected rates and origin breakdown. The atmospheric-511 sidecar is not part of this reference branch."
+}

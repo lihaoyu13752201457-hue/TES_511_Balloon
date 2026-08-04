@@ -1,0 +1,594 @@
+{
+  "status": "PASS_S3D_O8_ALL8_FAMILY_NUCLIDE_MISSION_CLOSURE",
+  "generated_at_utc": "2026-07-13T22:49:11Z",
+  "claim": "The final S3d-O8 mission fold uses all-eight prompt families and every positive activation family, retaining family/source-parent-nuclide lineage, transported daughter evidence, and per-family normalization.",
+  "upstream_gate": {
+    "status": "PASS_READY_FOR_S3D_O8_ALL8_FAMILY_NUCLIDE_MISSION",
+    "family_set": [
+      "alpha",
+      "eminus",
+      "eplus",
+      "gamma",
+      "muminus",
+      "muplus",
+      "n",
+      "p"
+    ],
+    "positive_families": [
+      "alpha",
+      "eplus",
+      "gamma",
+      "muminus",
+      "muplus",
+      "n",
+      "p"
+    ],
+    "audited_zero_families": [
+      "eminus"
+    ],
+    "selected_delayed_events": 78,
+    "time_authority": {
+      "status": "PASS_ALL8_PARMA_81BIN_AND_RETAINED_THREE_FAMILY_PARITY",
+      "bins": 81,
+      "day15_index": 60,
+      "max_abs_eplus_n_gamma_scale_delta": 1.000000082740371e-11,
+      "targeted_direct_transport_audit": "engineering/trajectory_transport_validation_20260709/11_analytic_agreement_20260709/analytic_agreement_summary.json",
+      "targeted_direct_transport_status": "PASS_ANALYTIC_AGREEMENT_AUDIT_BUILT"
+    },
+    "hashes": {
+      "campaign": "60dddf5d1f2a4e256fb32c933a3a50afa17e3b7ae079262813cb05c70535cae3",
+      "components": "09f12aa81ec462cf7f345609629bba47644a1d8c3a7594b727b0be3adc52b663",
+      "step05": "58010df1d559baeeb28350fb86864ffc216730939251eea83570eab969124c7b",
+      "response": "8c86ba7f4ebca3b5e4c9dfe084651751eddc031ed9b7d8203220073763beaf43",
+      "response_replicas": "fbbd347f4cb9a962c872da6da1560764a3419a125ce9c3deea06444bdda314b1",
+      "response_validation": "ed359c2a984bda1db429dba2e7c2b5c98705c21b61020cd084e7e17c1448ba15",
+      "only_n_regression": "a69fd9c12fcb498e8ad67740a8e84ba956087c8deef81c8727224da49918d904",
+      "base_step06": "7db55a31eafc2929add31a8b43e6c43198c914c294cb7ff699c9b592f9ed59ec",
+      "all8_scales": "399295fa96d62b9f08b32d384328299e9d2a51b9d1f7c246bb8fd0e52e23acfa"
+    },
+    "problems": []
+  },
+  "input_authorities": {
+    "mission_implementation": "engineering/ea_s3d_o8_all8_family_nuclide_mission_fold_20260713/code/build_s3d_o8_all8_family_nuclide_mission_fold.py",
+    "mission_implementation_sha256": "987b26bfef7f3d5039a7a1fb0926a77308de1c47b2491d422abac9a75f7808a8",
+    "campaign": "engineering/geometry_optimization_20260704/44_s3d_o8_all8_activation_20260713/data/s3d_o8_all8_activation_campaign.json",
+    "campaign_sha256": "60dddf5d1f2a4e256fb32c933a3a50afa17e3b7ae079262813cb05c70535cae3",
+    "components": "engineering/geometry_optimization_20260704/44_s3d_o8_all8_activation_20260713/data/s3d_o8_all8_delayed_components.json",
+    "components_sha256": "09f12aa81ec462cf7f345609629bba47644a1d8c3a7594b727b0be3adc52b663",
+    "step05": "engineering/geometry_optimization_20260704/44_s3d_o8_all8_activation_20260713/fullchain/step05/step05_s3d_o8_all8_activation_l1_response_summary.json",
+    "step05_sha256": "58010df1d559baeeb28350fb86864ffc216730939251eea83570eab969124c7b",
+    "response": "engineering/ea_s3d_o8_all8_detector_response_closure_20260713/data/s3d_o8_all8_energy_response_summary.json",
+    "response_sha256": "8c86ba7f4ebca3b5e4c9dfe084651751eddc031ed9b7d8203220073763beaf43",
+    "response_replicas": "engineering/ea_s3d_o8_all8_detector_response_closure_20260713/data/s3d_o8_all8_energy_response_replicas.csv",
+    "response_replicas_sha256": "fbbd347f4cb9a962c872da6da1560764a3419a125ce9c3deea06444bdda314b1",
+    "response_validation": "engineering/ea_s3d_o8_all8_detector_response_closure_20260713/data/s3d_o8_all8_energy_response_validation.json",
+    "response_validation_sha256": "ed359c2a984bda1db429dba2e7c2b5c98705c21b61020cd084e7e17c1448ba15",
+    "only_n_generalized_regression": "engineering/ea_s3d_o8_all8_family_nuclide_mission_fold_20260713/data/s3d_o8_all8_only_n_generalized_mission_regression.json",
+    "only_n_generalized_regression_sha256": "a69fd9c12fcb498e8ad67740a8e84ba956087c8deef81c8727224da49918d904",
+    "only_n_regression_implementation": "engineering/ea_s3d_o8_all8_family_nuclide_mission_fold_20260713/code/validate_only_n_generalized_regression.py",
+    "only_n_regression_implementation_sha256": "ab04e28ad40534de272b7d6da95d250e705cdeecf506e6ad0e97297622eabbc7",
+    "base_step06_time_atmosphere_signal": "engineering/geometry_optimization_20260704/43_geoopt_s3d_o8_fallback_20260712/fullchain/step06/background_time_variation.csv",
+    "base_step06_time_atmosphere_signal_sha256": "7db55a31eafc2929add31a8b43e6c43198c914c294cb7ff699c9b592f9ed59ec",
+    "all8_parma_scales": "engineering/ea_s3d_family_nuclide_mission_fold_20260713/data/live_parma_all8_scales_81bins.csv",
+    "all8_parma_scales_sha256": "399295fa96d62b9f08b32d384328299e9d2a51b9d1f7c246bb8fd0e52e23acfa",
+    "retained_three_family_curve": "engineering/trajectory_transport_validation_20260709/11_analytic_agreement_20260709/claude_source_response_curve_by_time.csv",
+    "retained_three_family_curve_sha256": "8e88868e11e723e7124e030e6c6f89bed6c9acb0ad064deafb35c557dcba6388",
+    "targeted_transport_audit": "engineering/trajectory_transport_validation_20260709/11_analytic_agreement_20260709/analytic_agreement_summary.json",
+    "targeted_transport_audit_sha256": "5d11245e5571020159d27481b7b936fbe6125d3ae8a14b39a5cdb08b8fd388e8"
+  },
+  "time_authority": {
+    "status": "PASS_ALL8_PARMA_81BIN_AND_RETAINED_THREE_FAMILY_PARITY",
+    "bins": 81,
+    "day15_index": 60,
+    "max_abs_eplus_n_gamma_scale_delta": 1.000000082740371e-11,
+    "targeted_direct_transport_audit": "engineering/trajectory_transport_validation_20260709/11_analytic_agreement_20260709/analytic_agreement_summary.json",
+    "targeted_direct_transport_status": "PASS_ANALYTIC_AGREEMENT_AUDIT_BUILT"
+  },
+  "only_n_generalized_regression": {
+    "status": "PASS_S3D_O8_ALL8_ONLY_N_GENERALIZED_MISSION_REGRESSION",
+    "authority": "engineering/ea_s3d_o8_all8_family_nuclide_mission_fold_20260713/data/s3d_o8_all8_only_n_generalized_mission_regression.json",
+    "authority_sha256": "a69fd9c12fcb498e8ad67740a8e84ba956087c8deef81c8727224da49918d904"
+  },
+  "selected_delayed_lineage": {
+    "authority": "engineering/ea_s3d_o8_all8_family_nuclide_mission_fold_20260713/data/s3d_o8_all8_selected_family_nuclides_primary_seed.json",
+    "status": "PASS_S3D_O8_ALL8_PRIMARY_SEED_FAMILY_NUCLIDE_LINEAGE",
+    "selected_events": 78,
+    "by_family_nuclide": [
+      {
+        "incident_family": "alpha",
+        "ZA": 27058,
+        "nuclide": "Co-58",
+        "selected_events": 1,
+        "event_weight_cps": 3.481826869560595e-07,
+        "day15_selected_rate_cps": 3.481826869560595e-07
+      },
+      {
+        "incident_family": "muminus",
+        "ZA": 7016,
+        "nuclide": "N-16",
+        "selected_events": 1,
+        "event_weight_cps": 4.209086361009783e-06,
+        "day15_selected_rate_cps": 4.209086361009783e-06
+      },
+      {
+        "incident_family": "muminus",
+        "ZA": 11024,
+        "nuclide": "Na-24",
+        "selected_events": 1,
+        "event_weight_cps": 4.209086361009783e-06,
+        "day15_selected_rate_cps": 4.209086361009783e-06
+      },
+      {
+        "incident_family": "muminus",
+        "ZA": 29062,
+        "nuclide": "Cu-62",
+        "selected_events": 1,
+        "event_weight_cps": 4.209086361009783e-06,
+        "day15_selected_rate_cps": 4.209086361009783e-06
+      },
+      {
+        "incident_family": "muminus",
+        "ZA": 29064,
+        "nuclide": "Cu-64",
+        "selected_events": 2,
+        "event_weight_cps": 4.209086361009783e-06,
+        "day15_selected_rate_cps": 8.418172722019567e-06
+      },
+      {
+        "incident_family": "n",
+        "ZA": 25050,
+        "nuclide": "Mn-50",
+        "selected_events": 1,
+        "event_weight_cps": 3.280388530771176e-05,
+        "day15_selected_rate_cps": 3.280388530771176e-05
+      },
+      {
+        "incident_family": "n",
+        "ZA": 29060,
+        "nuclide": "Cu-60",
+        "selected_events": 1,
+        "event_weight_cps": 3.280388530771176e-05,
+        "day15_selected_rate_cps": 3.280388530771176e-05
+      },
+      {
+        "incident_family": "n",
+        "ZA": 29061,
+        "nuclide": "Cu-61",
+        "selected_events": 2,
+        "event_weight_cps": 3.280388530771176e-05,
+        "day15_selected_rate_cps": 6.560777061542352e-05
+      },
+      {
+        "incident_family": "n",
+        "ZA": 29062,
+        "nuclide": "Cu-62",
+        "selected_events": 7,
+        "event_weight_cps": 3.280388530771176e-05,
+        "day15_selected_rate_cps": 0.0002296271971539823
+      },
+      {
+        "incident_family": "n",
+        "ZA": 29064,
+        "nuclide": "Cu-64",
+        "selected_events": 48,
+        "event_weight_cps": 3.280388530771176e-05,
+        "day15_selected_rate_cps": 0.0015745864947701645
+      },
+      {
+        "incident_family": "n",
+        "ZA": 73182,
+        "nuclide": "Ta-182",
+        "selected_events": 1,
+        "event_weight_cps": 3.280388530771176e-05,
+        "day15_selected_rate_cps": 3.280388530771176e-05
+      },
+      {
+        "incident_family": "p",
+        "ZA": 29061,
+        "nuclide": "Cu-61",
+        "selected_events": 3,
+        "event_weight_cps": 2.2453284093421305e-06,
+        "day15_selected_rate_cps": 6.735985228026392e-06
+      },
+      {
+        "incident_family": "p",
+        "ZA": 29062,
+        "nuclide": "Cu-62",
+        "selected_events": 4,
+        "event_weight_cps": 2.2453284093421305e-06,
+        "day15_selected_rate_cps": 8.981313637368522e-06
+      },
+      {
+        "incident_family": "p",
+        "ZA": 29064,
+        "nuclide": "Cu-64",
+        "selected_events": 3,
+        "event_weight_cps": 2.2453284093421305e-06,
+        "day15_selected_rate_cps": 6.735985228026392e-06
+      },
+      {
+        "incident_family": "p",
+        "ZA": 30063,
+        "nuclide": "Zn-63",
+        "selected_events": 1,
+        "event_weight_cps": 2.2453284093421305e-06,
+        "day15_selected_rate_cps": 2.2453284093421305e-06
+      },
+      {
+        "incident_family": "p",
+        "ZA": 39086,
+        "nuclide": "Y-86",
+        "selected_events": 1,
+        "event_weight_cps": 2.2453284093421305e-06,
+        "day15_selected_rate_cps": 2.2453284093421305e-06
+      }
+    ]
+  },
+  "family_inventory_audits": [
+    {
+      "status": "PASS_FAMILY_NUBASE_GROUNDSTATE_INVENTORY",
+      "family": "alpha",
+      "fixed_summary": "runs/geometry_optimization_20260704/step02_delay_fix_s3d_o8_all8_activation_m50000_20260713/alpha/source_fix_summary.json",
+      "fixed_summary_size_bytes": 13940,
+      "fixed_summary_sha256": "4ac8cc0ad8acb3a99be133d10b6c09c217da90e7fa5bae49c4e3efba8dbff784",
+      "fixed_source": {
+        "path": "runs/geometry_optimization_20260704/step02_delay_fix_s3d_o8_all8_activation_m50000_20260713/alpha/activation_decay_day15_groundstate_fixed.source",
+        "size_bytes": 285652,
+        "sha256": "e5ec6fa8962f891550eab6ed86fcdc75b61a3e6f8f8f16e5a7b723c684bde74a"
+      },
+      "groundstate_corrections": "runs/geometry_optimization_20260704/step02_delay_fix_s3d_o8_all8_activation_m50000_20260713/alpha/groundstate_activity_corrections.csv",
+      "groundstate_corrections_sha256": "5737a16f0e568cfacaf1e961275c05cbba287bd3bb2ff8e3d83f8f786a0e2422",
+      "groundstate_corrections_artifact": {
+        "path": "runs/geometry_optimization_20260704/step02_delay_fix_s3d_o8_all8_activation_m50000_20260713/alpha/groundstate_activity_corrections.csv",
+        "size_bytes": 36647,
+        "sha256": "5737a16f0e568cfacaf1e961275c05cbba287bd3bb2ff8e3d83f8f786a0e2422"
+      },
+      "inventory_artifact": {
+        "path": "runs/geometry_optimization_20260704/step02_decay_source_s3d_o8_all8_activation_m50000_20260713/alpha/activation_inventory_day15.csv",
+        "size_bytes": 21052,
+        "sha256": "f42818c973d27472ff3e827852ac4797e4ff919578ebca22f7238d314bc53868"
+      },
+      "source_provenance_verified": true,
+      "nuclides": 118,
+      "day15_activity_Bq": 0.2515905022764697,
+      "division": 8.0,
+      "tt_count": 8
+    },
+    {
+      "family": "eminus",
+      "status": "PASS_ZERO_PRODUCTION",
+      "nuclides": 0,
+      "day15_activity_Bq": 0.0
+    },
+    {
+      "status": "PASS_FAMILY_NUBASE_GROUNDSTATE_INVENTORY",
+      "family": "eplus",
+      "fixed_summary": "runs/geometry_optimization_20260704/step02_delay_fix_s3d_o8_all8_activation_m50000_20260713/eplus/source_fix_summary.json",
+      "fixed_summary_size_bytes": 2551,
+      "fixed_summary_sha256": "f4123fcbbfeb4b5b9457d86b13f00784838e50c868078718f6074c97995b18dc",
+      "fixed_source": {
+        "path": "runs/geometry_optimization_20260704/step02_delay_fix_s3d_o8_all8_activation_m50000_20260713/eplus/activation_decay_day15_groundstate_fixed.source",
+        "size_bytes": 5754,
+        "sha256": "681778deba764c1d5a5a88953a3164bf24324df4c67baca79fdda387eab01e9f"
+      },
+      "groundstate_corrections": "runs/geometry_optimization_20260704/step02_delay_fix_s3d_o8_all8_activation_m50000_20260713/eplus/groundstate_activity_corrections.csv",
+      "groundstate_corrections_sha256": "668c3327bc979da8b178b0fe7c0cead6203094fa2ea72465566e0c5cc7f98eda",
+      "groundstate_corrections_artifact": {
+        "path": "runs/geometry_optimization_20260704/step02_delay_fix_s3d_o8_all8_activation_m50000_20260713/eplus/groundstate_activity_corrections.csv",
+        "size_bytes": 1029,
+        "sha256": "668c3327bc979da8b178b0fe7c0cead6203094fa2ea72465566e0c5cc7f98eda"
+      },
+      "inventory_artifact": {
+        "path": "runs/geometry_optimization_20260704/step02_decay_source_s3d_o8_all8_activation_m50000_20260713/eplus/activation_inventory_day15.csv",
+        "size_bytes": 561,
+        "sha256": "b0d777fcb41c12abe05196c8ac18fa5ae8f64aee7285fd3a37af0cccece78476"
+      },
+      "source_provenance_verified": true,
+      "nuclides": 5,
+      "day15_activity_Bq": 0.001909400776570383,
+      "division": 8.0,
+      "tt_count": 8
+    },
+    {
+      "status": "PASS_FAMILY_NUBASE_GROUNDSTATE_INVENTORY",
+      "family": "gamma",
+      "fixed_summary": "runs/geometry_optimization_20260704/step02_delay_fix_s3d_o8_all8_activation_m50000_20260713/gamma/source_fix_summary.json",
+      "fixed_summary_size_bytes": 3099,
+      "fixed_summary_sha256": "2a7689463b5ec7c83f4bbf2f5cd2a40e39a64ce5786272147ef8f71e43414526",
+      "fixed_source": {
+        "path": "runs/geometry_optimization_20260704/step02_delay_fix_s3d_o8_all8_activation_m50000_20260713/gamma/activation_decay_day15_groundstate_fixed.source",
+        "size_bytes": 2320,
+        "sha256": "ea8d77f8c7643e343e9b3da840746f11cad71516b35f7f0092e1efeb79904296"
+      },
+      "groundstate_corrections": "runs/geometry_optimization_20260704/step02_delay_fix_s3d_o8_all8_activation_m50000_20260713/gamma/groundstate_activity_corrections.csv",
+      "groundstate_corrections_sha256": "dd4fc7e125f20b75d5458143ed02053c90c17e23b3bb03ff7955dfb656457a53",
+      "groundstate_corrections_artifact": {
+        "path": "runs/geometry_optimization_20260704/step02_delay_fix_s3d_o8_all8_activation_m50000_20260713/gamma/groundstate_activity_corrections.csv",
+        "size_bytes": 720,
+        "sha256": "dd4fc7e125f20b75d5458143ed02053c90c17e23b3bb03ff7955dfb656457a53"
+      },
+      "inventory_artifact": {
+        "path": "runs/geometry_optimization_20260704/step02_decay_source_s3d_o8_all8_activation_m50000_20260713/gamma/activation_inventory_day15.csv",
+        "size_bytes": 382,
+        "sha256": "a59924eda73b41d0ba09f50ebb75caedc5687fcda9df610dda6b9dd0dee04e93"
+      },
+      "source_provenance_verified": true,
+      "nuclides": 3,
+      "day15_activity_Bq": 0.005426799257161888,
+      "division": 12.0,
+      "tt_count": 12
+    },
+    {
+      "status": "PASS_FAMILY_NUBASE_GROUNDSTATE_INVENTORY",
+      "family": "muminus",
+      "fixed_summary": "runs/geometry_optimization_20260704/step02_delay_fix_s3d_o8_all8_activation_m50000_20260713/muminus/source_fix_summary.json",
+      "fixed_summary_size_bytes": 16688,
+      "fixed_summary_sha256": "8c8d57057a2a87eaa0266d24cc2410904874166760a764beed4af1f74bca0d47",
+      "fixed_source": {
+        "path": "runs/geometry_optimization_20260704/step02_delay_fix_s3d_o8_all8_activation_m50000_20260713/muminus/activation_decay_day15_groundstate_fixed.source",
+        "size_bytes": 647513,
+        "sha256": "4e5acf1b885a5206eac24eaeb78ce966d1fb2f6adb237b51d134015895656009"
+      },
+      "groundstate_corrections": "runs/geometry_optimization_20260704/step02_delay_fix_s3d_o8_all8_activation_m50000_20260713/muminus/groundstate_activity_corrections.csv",
+      "groundstate_corrections_sha256": "a2cc8255a62ae5c646277e3cdedc7235fa75150d4c1afa7a53acee6d91a7b44e",
+      "groundstate_corrections_artifact": {
+        "path": "runs/geometry_optimization_20260704/step02_delay_fix_s3d_o8_all8_activation_m50000_20260713/muminus/groundstate_activity_corrections.csv",
+        "size_bytes": 39866,
+        "sha256": "a2cc8255a62ae5c646277e3cdedc7235fa75150d4c1afa7a53acee6d91a7b44e"
+      },
+      "inventory_artifact": {
+        "path": "runs/geometry_optimization_20260704/step02_decay_source_s3d_o8_all8_activation_m50000_20260713/muminus/activation_inventory_day15.csv",
+        "size_bytes": 22312,
+        "sha256": "fc663e750aad9c2e33fc0989b8d61fe9f80451830173e6a1010681c1d5599c17"
+      },
+      "source_provenance_verified": true,
+      "nuclides": 83,
+      "day15_activity_Bq": 3.9424028918235132,
+      "division": 8.0,
+      "tt_count": 8
+    },
+    {
+      "status": "PASS_FAMILY_NUBASE_GROUNDSTATE_INVENTORY",
+      "family": "muplus",
+      "fixed_summary": "runs/geometry_optimization_20260704/step02_delay_fix_s3d_o8_all8_activation_m50000_20260713/muplus/source_fix_summary.json",
+      "fixed_summary_size_bytes": 2647,
+      "fixed_summary_sha256": "d89eda2389b6c96379cbf0da028a302a4a9c0709fe232d906d46d700784eab20",
+      "fixed_source": {
+        "path": "runs/geometry_optimization_20260704/step02_delay_fix_s3d_o8_all8_activation_m50000_20260713/muplus/activation_decay_day15_groundstate_fixed.source",
+        "size_bytes": 5159,
+        "sha256": "85ef47febef723d6ba7ba619205dff265b03f0f1698f69e5c0e08113ce40ac36"
+      },
+      "groundstate_corrections": "runs/geometry_optimization_20260704/step02_delay_fix_s3d_o8_all8_activation_m50000_20260713/muplus/groundstate_activity_corrections.csv",
+      "groundstate_corrections_sha256": "d9d777ea8a5497c4293344791bfd56acf678614f63a6e9a8fa4bc9c687c1353d",
+      "groundstate_corrections_artifact": {
+        "path": "runs/geometry_optimization_20260704/step02_delay_fix_s3d_o8_all8_activation_m50000_20260713/muplus/groundstate_activity_corrections.csv",
+        "size_bytes": 690,
+        "sha256": "d9d777ea8a5497c4293344791bfd56acf678614f63a6e9a8fa4bc9c687c1353d"
+      },
+      "inventory_artifact": {
+        "path": "runs/geometry_optimization_20260704/step02_decay_source_s3d_o8_all8_activation_m50000_20260713/muplus/activation_inventory_day15.csv",
+        "size_bytes": 361,
+        "sha256": "4be6d5ad9f9e06261e431aa0d8072fec82ec863012df57d972145376563c5e9b"
+      },
+      "source_provenance_verified": true,
+      "nuclides": 3,
+      "day15_activity_Bq": 0.0005519391501331986,
+      "division": 8.0,
+      "tt_count": 8
+    },
+    {
+      "status": "PASS_FAMILY_NUBASE_GROUNDSTATE_INVENTORY",
+      "family": "n",
+      "fixed_summary": "runs/geometry_optimization_20260704/step02_delay_fix_s3d_o8_all8_activation_m50000_20260713/n/source_fix_summary.json",
+      "fixed_summary_size_bytes": 16873,
+      "fixed_summary_sha256": "06790b010f6289d8cfac3daad1727afeee6cfafe5e9e22cf678d87334b33e411",
+      "fixed_source": {
+        "path": "runs/geometry_optimization_20260704/step02_delay_fix_s3d_o8_all8_activation_m50000_20260713/n/activation_decay_day15_groundstate_fixed.source",
+        "size_bytes": 7132735,
+        "sha256": "35df4e41468648c24f2cb41c598fc2d844b63a5e06875a13cb620ce2997cd2b6"
+      },
+      "groundstate_corrections": "runs/geometry_optimization_20260704/step02_delay_fix_s3d_o8_all8_activation_m50000_20260713/n/groundstate_activity_corrections.csv",
+      "groundstate_corrections_sha256": "67193cdd4eebae3b0c8ba48632cf9b86db95117d0ab45739f722665c080b651f",
+      "groundstate_corrections_artifact": {
+        "path": "runs/geometry_optimization_20260704/step02_delay_fix_s3d_o8_all8_activation_m50000_20260713/n/groundstate_activity_corrections.csv",
+        "size_bytes": 278928,
+        "sha256": "67193cdd4eebae3b0c8ba48632cf9b86db95117d0ab45739f722665c080b651f"
+      },
+      "inventory_artifact": {
+        "path": "runs/geometry_optimization_20260704/step02_decay_source_s3d_o8_all8_activation_m50000_20260713/n/activation_inventory_day15.csv",
+        "size_bytes": 160311,
+        "sha256": "11dfe07cc3a38829f77ea6764a25eb9e7a4fd8cd909db1606d80578dc96ac795"
+      },
+      "source_provenance_verified": true,
+      "nuclides": 326,
+      "day15_activity_Bq": 30.559753115361033,
+      "division": 8.0,
+      "tt_count": 8
+    },
+    {
+      "status": "PASS_FAMILY_NUBASE_GROUNDSTATE_INVENTORY",
+      "family": "p",
+      "fixed_summary": "runs/geometry_optimization_20260704/step02_delay_fix_s3d_o8_all8_activation_m50000_20260713/p/source_fix_summary.json",
+      "fixed_summary_size_bytes": 16746,
+      "fixed_summary_sha256": "bc784370eee57389ef22ce62cf85c1ebf10a61257928505630e27361a027d524",
+      "fixed_source": {
+        "path": "runs/geometry_optimization_20260704/step02_delay_fix_s3d_o8_all8_activation_m50000_20260713/p/activation_decay_day15_groundstate_fixed.source",
+        "size_bytes": 1387303,
+        "sha256": "1a65835f6e095b18c62da64f2f018c148a732942c8ff9d756f97105019a11655"
+      },
+      "groundstate_corrections": "runs/geometry_optimization_20260704/step02_delay_fix_s3d_o8_all8_activation_m50000_20260713/p/groundstate_activity_corrections.csv",
+      "groundstate_corrections_sha256": "da61938b60453c47e82f300a81bdad56131f5b56cce16a5cc246d661fd0c98cc",
+      "groundstate_corrections_artifact": {
+        "path": "runs/geometry_optimization_20260704/step02_delay_fix_s3d_o8_all8_activation_m50000_20260713/p/groundstate_activity_corrections.csv",
+        "size_bytes": 93349,
+        "sha256": "da61938b60453c47e82f300a81bdad56131f5b56cce16a5cc246d661fd0c98cc"
+      },
+      "inventory_artifact": {
+        "path": "runs/geometry_optimization_20260704/step02_decay_source_s3d_o8_all8_activation_m50000_20260713/p/activation_inventory_day15.csv",
+        "size_bytes": 53482,
+        "sha256": "13412980ea6ab26afd991353d0d985cefa0f3ed1135bd52b5145fde84c689eb2"
+      },
+      "source_provenance_verified": true,
+      "nuclides": 199,
+      "day15_activity_Bq": 1.6908806588947134,
+      "division": 8.0,
+      "tt_count": 8
+    }
+  ],
+  "activity_integration": {
+    "status": "PASS_ALL8_FAMILY_BY_NUCLIDE_ACTIVITY_INTEGRATION",
+    "long_life_integrator_regression": {
+      "status": "PASS_LONG_LIFE_EXPM1_INVENTORY_REGRESSION",
+      "half_life_s": 1e+30,
+      "dt_s": 43200.0,
+      "lambda_dt": 2.9943958200189636e-26,
+      "stable_one_minus_exp_neg": 2.9943958200189636e-26,
+      "naive_one_minus_exp_neg": 0.0,
+      "stable_inventory_number": 86400.00000000001,
+      "expected_no_decay_inventory_number": 86400.0
+    },
+    "day15_anchor": "each family/nuclide curve is anchored to its NUBASE-corrected day-15 inventory",
+    "families": [
+      {
+        "family": "alpha",
+        "status": "PASS_FAMILY_NUCLIDE_ACTIVITY_DRIVER",
+        "driver": "live-PARMA scale_alpha",
+        "nuclides": 118,
+        "day15_activity_Bq": 0.25159050227646973,
+        "selected_nuclides": 1
+      },
+      {
+        "family": "eminus",
+        "status": "PASS_ZERO_PRODUCTION",
+        "nuclides": 0,
+        "day15_activity_Bq": 0.0
+      },
+      {
+        "family": "eplus",
+        "status": "PASS_FAMILY_NUCLIDE_ACTIVITY_DRIVER",
+        "driver": "live-PARMA scale_eplus",
+        "nuclides": 5,
+        "day15_activity_Bq": 0.001909400776570383,
+        "selected_nuclides": 0
+      },
+      {
+        "family": "gamma",
+        "status": "PASS_FAMILY_NUCLIDE_ACTIVITY_DRIVER",
+        "driver": "live-PARMA scale_gamma",
+        "nuclides": 3,
+        "day15_activity_Bq": 0.005426799257161888,
+        "selected_nuclides": 0
+      },
+      {
+        "family": "muminus",
+        "status": "PASS_FAMILY_NUCLIDE_ACTIVITY_DRIVER",
+        "driver": "live-PARMA scale_muminus",
+        "nuclides": 83,
+        "day15_activity_Bq": 3.9424028918235137,
+        "selected_nuclides": 4
+      },
+      {
+        "family": "muplus",
+        "status": "PASS_FAMILY_NUCLIDE_ACTIVITY_DRIVER",
+        "driver": "live-PARMA scale_muplus",
+        "nuclides": 3,
+        "day15_activity_Bq": 0.0005519391501331986,
+        "selected_nuclides": 0
+      },
+      {
+        "family": "n",
+        "status": "PASS_FAMILY_NUCLIDE_ACTIVITY_DRIVER",
+        "driver": "live-PARMA scale_n",
+        "nuclides": 326,
+        "day15_activity_Bq": 30.559753115361023,
+        "selected_nuclides": 6
+      },
+      {
+        "family": "p",
+        "status": "PASS_FAMILY_NUCLIDE_ACTIVITY_DRIVER",
+        "driver": "live-PARMA scale_p",
+        "nuclides": 199,
+        "day15_activity_Bq": 1.6908806588947136,
+        "selected_nuclides": 5
+      }
+    ]
+  },
+  "mission_closure": {
+    "status": "PASS_MISSION_DAY15_AND_COMPONENT_CLOSURE",
+    "day15_index": 60,
+    "delayed_family_sum_cps": 0.0020165706738668157,
+    "time_bins": 81,
+    "elapsed_days": 20.0
+  },
+  "mission": {
+    "status": "PASS_S3D_O8_ALL8_W2_FAMILY_NUCLIDE_MISSION_FOLD",
+    "reference_flux_ph_cm2_s": 0.0001,
+    "day15_selected_rates_cps": {
+      "prompt": 0.003393031514121508,
+      "delayed": 0.0020165706738668153,
+      "delayed_by_incident_family": {
+        "alpha": 3.481826869560595e-07,
+        "eminus": 0.0,
+        "eplus": 0.0,
+        "gamma": 0.0,
+        "muminus": 2.1045431805048917e-05,
+        "muplus": 0.0,
+        "n": 0.0019682331184627056,
+        "p": 2.6943940912105566e-05
+      },
+      "atm511": 0.0015552613519498118,
+      "background": 0.006964863539938135,
+      "signal": 0.0011178311747596364,
+      "background_componentwise_transport_counting_endpoint_cps": 0.049072219679332736,
+      "signal_transport_counting_lower_endpoint_cps": 0.0011112770455776314
+    },
+    "source_counts_20d": 1872.3651996677047,
+    "background_counts_20d": 11789.0822455626,
+    "source_transport_counting_lower_endpoint_counts_20d": 1861.387045120216,
+    "background_componentwise_transport_counting_upper_endpoint_counts_20d": 83798.34065348787,
+    "Z20d": 17.24449822173267,
+    "Z20d_componentwise_transport_counting_endpoint_conditional": 6.4301185138734525,
+    "flux_3sigma_20d_ph_cm2_s": 1.739685296391634e-05,
+    "flux_3sigma_20d_componentwise_transport_counting_endpoint_conditional_ph_cm2_s": 4.6655438675465785e-05,
+    "T3_day": 0.441684512566792,
+    "T5_day": 1.1404222051825614,
+    "T3_day_componentwise_transport_counting_endpoint_conditional": 4.220936367221546,
+    "T5_day_componentwise_transport_counting_endpoint_conditional": 11.642221907596884,
+    "accidental_loss_min": 0.020148386446825706,
+    "accidental_loss_max": 0.02834588592877063,
+    "model": {
+      "prompt": "sum of eight response-selected day15 family rates times matching live-PARMA family scales",
+      "delayed_central": "sum over incident family and exact-source parent nuclide of activity times the same family/nuclide selected response",
+      "delayed_finite_count": "componentwise (not joint-coverage) sum of transported-family Garwood upper counts times that family's 1/TE; the selected family/nuclide response curve supplies the time scale, with total family activity used when that positive transported family has zero selected W2 events",
+      "conditional_componentwise_transport_counting_endpoint": "This endpoint combines componentwise transported-count Garwood upper endpoints and a focused-signal Clopper-Pearson lower endpoint. It is conditional on the transported samples and selected nuclide mixture, is not a full 95% coverage statement, and excludes buildup-yield, exact-position M sampling, finite-buildup zero-family, and nuclide-mixture uncertainty. Zero-observation families receive no fictitious transport exposure.",
+      "coincidence": "family-resolved prompt occupancy plus family activity-scaled delayed occupancy plus atmospheric-line occupancy"
+    }
+  },
+  "comparison_to_retained_neutron_only_mission": {
+    "retained_authority": "engineering/ea_s3d_family_nuclide_mission_fold_20260713/data/s3d_family_nuclide_mission_summary.json",
+    "retained_authority_sha256": "f7b6c8409d184ce876d748a729d81e74000669149caa23faa2cbfb86249e2440",
+    "retained_status": "PASS_S3D_EXISTING_DATA_FAMILY_NUCLIDE_MISSION_CLOSURE",
+    "retained_Z20d": 18.574005327523444,
+    "all8_Z20d": 17.24449822173267,
+    "boundary": "comparison only; the retained neutron-only fold is not added to the all-eight-family delayed rate"
+  },
+  "outputs": {
+    "selected_lineage": "engineering/ea_s3d_o8_all8_family_nuclide_mission_fold_20260713/data/s3d_o8_all8_selected_family_nuclides_primary_seed.json",
+    "selected_lineage_size_bytes": 121143,
+    "selected_lineage_sha256": "21c8d1738e1d10425211a721d3f9ea423120007e2ac4cff5a5150a1b809ad202",
+    "activity_timeline": "engineering/ea_s3d_o8_all8_family_nuclide_mission_fold_20260713/outputs/family_nuclide_activity_by_time.csv",
+    "activity_timeline_size_bytes": 7612719,
+    "activity_timeline_sha256": "33d6dad8739e6e0f8931345ba6997e63e33073f645e4268bf4570101231decf5",
+    "mission_timeline": "engineering/ea_s3d_o8_all8_family_nuclide_mission_fold_20260713/outputs/w2_all8_family_nuclide_mission_timeline.csv",
+    "mission_timeline_size_bytes": 79364,
+    "mission_timeline_sha256": "695027a801bbfdc0ef7e5c1d97bd2780c412da0ecef8c995e65d2fbfa46cf8ce",
+    "summary": "engineering/ea_s3d_o8_all8_family_nuclide_mission_fold_20260713/data/s3d_o8_all8_family_nuclide_mission_summary.json",
+    "validation": "engineering/ea_s3d_o8_all8_family_nuclide_mission_fold_20260713/data/s3d_o8_all8_family_nuclide_mission_validation.json"
+  },
+  "scope": {
+    "new_monte_carlo_transport": false,
+    "paper_sync_authorized_only_after_validation_pass": true,
+    "finite_buildup_zero_family_uncertainty_in_conditional_transport_counting_endpoint": false,
+    "zero_family_boundary": "PASS_ZERO_PRODUCTION is a finite-buildup zero observation, not a physical-zero claim; the conditional componentwise endpoint is not full 95% coverage and excludes buildup-yield, exact-position M sampling, finite-buildup zero-family, and nuclide-mixture uncertainty"
+  }
+}
