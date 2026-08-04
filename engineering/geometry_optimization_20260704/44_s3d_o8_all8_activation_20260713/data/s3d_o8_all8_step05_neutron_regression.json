@@ -1,0 +1,654 @@
+{
+  "status": "PASS_S3D_O8_NEUTRON_ONLY_STEP05_REGRESSION",
+  "generated_at_utc": "2026-07-13T19:46:27Z",
+  "script": "engineering/geometry_optimization_20260704/44_s3d_o8_all8_activation_20260713/code/run_s3d_o8_all8_step05.py",
+  "script_sha256": "ad300404813ab41e96fa876ab34f3545f480d7e8ab038cda7f5242ecd701e1af",
+  "base_catalog": "engineering/geometry_optimization_20260704/43_geoopt_s3d_o8_fallback_20260712/fullchain/step05/work/event_catalog.pkl",
+  "base_catalog_sha256": "6ed8d9d765ebc814786cb144765f02dfa437dc26a6df9a0a91c03ad983f4e403",
+  "base_step05": "engineering/geometry_optimization_20260704/43_geoopt_s3d_o8_fallback_20260712/fullchain/step05/step05_s3d_o8_fullchain_l1_response_summary.json",
+  "base_step05_sha256": "ee2559b92509ca719930351145451c5b6056a9650e50633f5575b4fc2fb13fe7",
+  "raw_neutron_parse": {
+    "family": "n",
+    "generated_events_seen": 1000000,
+    "detector_records_kept": 472495,
+    "pixel_hits_kept": 6580,
+    "local_id_min": 2,
+    "local_id_max": 999999,
+    "event_weight_hz": 3.107674507861205e-05,
+    "SE": 1000000,
+    "ID": 1000000,
+    "cache": "engineering/geometry_optimization_20260704/44_s3d_o8_all8_activation_20260713/fullchain/step05/work/regression_file_catalogs/n/dec9e4e5188f0922a2803f817fe9583ee7e99aace74e895456a16a4dda4f862d/delayed_DelayedDecayS3dO8NeutronM50000.inc1.id1.sim.gz.868938cf0dfc.pkl",
+    "cache_sha256": "0621d3671a3f82a1f3ce38127d78ab1fa5efdc646db99dd7dd729fbb4aba80d4",
+    "cache_fingerprint": "dec9e4e5188f0922a2803f817fe9583ee7e99aace74e895456a16a4dda4f862d",
+    "raw_sim_parse_completed": true,
+    "parsed_this_run": true,
+    "sim_sha256": "a8286c947ae1463a2d8e48cc0d2de3aeeab57aae8aefd9bf4990042e08ca5f5e",
+    "sim_size_bytes": 910935364,
+    "parser_sha256": "126afcf5b6bfa9445078a7106553d9992d4330ceefe3f104b411f1e6f1b1a5df",
+    "script_sha256": "ad300404813ab41e96fa876ab34f3545f480d7e8ab038cda7f5242ecd701e1af",
+    "active_veto_predicate_sha256": "98e3af697956630ca1196964c54d0095785933c32e9bb2fbb24b3370d6bb8e7e",
+    "cache_dependencies": {
+      "adr_implementation": {
+        "path": "old/code/tools/make_complete_day15_report_ADR.py",
+        "sha256": "126afcf5b6bfa9445078a7106553d9992d4330ceefe3f104b411f1e6f1b1a5df"
+      },
+      "step05_harness": {
+        "path": "engineering/geometry_optimization_20260704/44_s3d_o8_all8_activation_20260713/code/run_s3d_o8_all8_step05.py",
+        "sha256": "ad300404813ab41e96fa876ab34f3545f480d7e8ab038cda7f5242ecd701e1af"
+      },
+      "active_veto_predicate": {
+        "callable": "is_s3d_active_veto_volume",
+        "sha256": "98e3af697956630ca1196964c54d0095785933c32e9bb2fbb24b3370d6bb8e7e"
+      }
+    }
+  },
+  "reparsed_from_raw_sim_this_run": true,
+  "reparsed_from_sim": true,
+  "raw_sim_parse_completed": true,
+  "dependency_hashes": {
+    "adr_implementation": {
+      "path": "old/code/tools/make_complete_day15_report_ADR.py",
+      "sha256": "126afcf5b6bfa9445078a7106553d9992d4330ceefe3f104b411f1e6f1b1a5df"
+    },
+    "selection_implementation": {
+      "path": "old/code/tools/build_v3p5_centerfinger_step05_l1_response.py",
+      "sha256": "0c1e69e4a73bd8653e999b1d8d2aff404a37a44457e40f134388c819ad4b91ab"
+    },
+    "bridge_summary": {
+      "path": "stepwise_maintenance/step09_optics_bridge/outputs_f10m_a1_v3p5/step09_optics_bridge_summary.json",
+      "sha256": "8d147e21928b4830a215ab034f29379383b4368b4177f8a16a2f45769df73a25"
+    },
+    "aeff_authority": {
+      "path": "stepwise_maintenance/step04_opticsim/optics_aeff_authority_f10m_a1.json",
+      "sha256": "41078096711959d25e26ef79bd0f62b7c7d0ed70b4098c87147e4a9e8ff383b5"
+    },
+    "science_ledger": {
+      "path": "old/config/science_511_onaxis_source/metadata/science_rate_ledger.csv",
+      "sha256": "b8dcdd949af186ffa59a7d211c788fb89a461a1d924ecfcf3322a5601c21eb19"
+    },
+    "boundary_summary": {
+      "path": "old/reports/v3p5_boundary_closure_fullstat_v2_exactpos_20260613/v3p5_boundary_closure_summary.json",
+      "sha256": "13e254c2e75a3e9fce03d7bbcd8265da16ddd9437d32d448389b331c9760d13a"
+    },
+    "atm511_authority": {
+      "path": "engineering/geometry_optimization_20260704/43_geoopt_s3d_o8_fallback_20260712/data/s3d_o8_atm511_replay_summary.json",
+      "sha256": "b2c4e6ab26ca0f1210fc828086b574435a52100712cbc2f9a9209d324b31ec80"
+    },
+    "step05_harness": {
+      "path": "engineering/geometry_optimization_20260704/44_s3d_o8_all8_activation_20260713/code/run_s3d_o8_all8_step05.py",
+      "sha256": "ad300404813ab41e96fa876ab34f3545f480d7e8ab038cda7f5242ecd701e1af"
+    },
+    "active_veto_predicate": {
+      "callable": "is_s3d_active_veto_volume",
+      "sha256": "98e3af697956630ca1196964c54d0095785933c32e9bb2fbb24b3370d6bb8e7e"
+    }
+  },
+  "old_neutron_TE_s": 32178.402129,
+  "parser_field_identity": {
+    "stream": true,
+    "tag": true,
+    "source_file": true,
+    "local_id": true,
+    "rate_hz": true,
+    "tes_total_keV": true,
+    "bgo_total_keV": true,
+    "pix_count": true,
+    "pix_start": true,
+    "pix_uid": true,
+    "pix_layer": true,
+    "pix_e": true,
+    "pix_x": true,
+    "pix_y": true,
+    "pix_z": true,
+    "n_generated_events_seen": true
+  },
+  "catalog_structure": {
+    "retained_base": {
+      "status": "PASS_COMPACT_CUMULATIVE_CATALOG_SCHEMA",
+      "label": "retained package-43 base catalog",
+      "event_fields": {
+        "stream": 10044782,
+        "tag": 10044782,
+        "source_file": 10044782,
+        "local_id": 10044782,
+        "rate_hz": 10044782,
+        "tes_total_keV": 10044782,
+        "bgo_total_keV": 10044782,
+        "pix_count": 10044782,
+        "pix_start": 10044782
+      },
+      "pixel_fields": {
+        "pix_uid": 65487,
+        "pix_layer": 65487,
+        "pix_e": 65487,
+        "pix_x": 65487,
+        "pix_y": 65487,
+        "pix_z": 65487
+      },
+      "events": 10044782,
+      "pixels": 65487,
+      "sum_pix_count": 65487,
+      "n_kept_events": 10044782
+    },
+    "raw_sim_replacement": {
+      "status": "PASS_COMPACT_CUMULATIVE_CATALOG_SCHEMA",
+      "label": "raw-SIM reparsed neutron delayed catalog",
+      "event_fields": {
+        "stream": 472495,
+        "tag": 472495,
+        "source_file": 472495,
+        "local_id": 472495,
+        "rate_hz": 472495,
+        "tes_total_keV": 472495,
+        "bgo_total_keV": 472495,
+        "pix_count": 472495,
+        "pix_start": 472495
+      },
+      "pixel_fields": {
+        "pix_uid": 6580,
+        "pix_layer": 6580,
+        "pix_e": 6580,
+        "pix_x": 6580,
+        "pix_y": 6580,
+        "pix_z": 6580
+      },
+      "events": 472495,
+      "pixels": 6580,
+      "sum_pix_count": 6580,
+      "n_kept_events": 472495
+    },
+    "full_spliced": {
+      "status": "PASS_COMPACT_CUMULATIVE_CATALOG_SCHEMA",
+      "label": "neutron-regression full spliced catalog",
+      "event_fields": {
+        "stream": 10044782,
+        "tag": 10044782,
+        "source_file": 10044782,
+        "local_id": 10044782,
+        "rate_hz": 10044782,
+        "tes_total_keV": 10044782,
+        "bgo_total_keV": 10044782,
+        "pix_count": 10044782,
+        "pix_start": 10044782
+      },
+      "pixel_fields": {
+        "pix_uid": 65487,
+        "pix_layer": 65487,
+        "pix_e": 65487,
+        "pix_x": 65487,
+        "pix_y": 65487,
+        "pix_z": 65487
+      },
+      "events": 10044782,
+      "pixels": 65487,
+      "sum_pix_count": 65487,
+      "n_kept_events": 10044782
+    }
+  },
+  "retained_prompt_science_identity": {
+    "status": "PASS_RETAINED_PROMPT_SCIENCE_ARRAY_IDENTITY",
+    "prompt_events": 9535401,
+    "science_events": 36886,
+    "prompt_pixels": 5889,
+    "science_pixels": 53018,
+    "checks": 28
+  },
+  "lineage": {
+    "status": "PASS_FAMILY_LOCAL_ID_LINEAGE",
+    "lineage_key": [
+      "tag_as_incident_family",
+      "local_id"
+    ],
+    "strong_lineage_key": [
+      "tag_as_incident_family",
+      "source_file",
+      "local_id"
+    ],
+    "families": [
+      {
+        "family": "n",
+        "status": "PASS",
+        "kept_events": 472495,
+        "local_id_min": 2,
+        "local_id_max": 999999,
+        "source_file": "runs/geometry_optimization_20260704/step02_delayed_transport_s3d_o8_neutron_delayed_m50000_20260712/DelayedDecayS3dO8NeutronM50000.inc1.id1.sim.gz",
+        "event_weight_hz": 3.107674507861205e-05
+      }
+    ],
+    "problems": []
+  },
+  "synthetic_multi_family_regression": {
+    "status": "PASS_SYNTHETIC_MULTI_FAMILY_SPLICE_LINEAGE_GARWOOD",
+    "actual_adr_merge_one_catalog_into_calls": 2,
+    "positive_families": {
+      "gamma": {
+        "TE_s": 10.0
+      },
+      "n": {
+        "TE_s": 20.0
+      }
+    },
+    "cross_family_reused_local_id": 1,
+    "zero_observed_family_checked": "alpha",
+    "retained_identity": {
+      "status": "PASS_RETAINED_PROMPT_SCIENCE_ARRAY_IDENTITY",
+      "prompt_events": 2,
+      "science_events": 1,
+      "prompt_pixels": 1,
+      "science_pixels": 2,
+      "checks": 28
+    },
+    "catalog_structure": {
+      "base": {
+        "status": "PASS_COMPACT_CUMULATIVE_CATALOG_SCHEMA",
+        "label": "synthetic retained base",
+        "event_fields": {
+          "stream": 4,
+          "tag": 4,
+          "source_file": 4,
+          "local_id": 4,
+          "rate_hz": 4,
+          "tes_total_keV": 4,
+          "bgo_total_keV": 4,
+          "pix_count": 4,
+          "pix_start": 4
+        },
+        "pixel_fields": {
+          "pix_uid": 4,
+          "pix_layer": 4,
+          "pix_e": 4,
+          "pix_x": 4,
+          "pix_y": 4,
+          "pix_z": 4
+        },
+        "events": 4,
+        "pixels": 4,
+        "sum_pix_count": 4,
+        "n_kept_events": 4
+      },
+      "gamma_component": {
+        "status": "PASS_COMPACT_CUMULATIVE_CATALOG_SCHEMA",
+        "label": "synthetic gamma component",
+        "event_fields": {
+          "stream": 2,
+          "tag": 2,
+          "source_file": 2,
+          "local_id": 2,
+          "rate_hz": 2,
+          "tes_total_keV": 2,
+          "bgo_total_keV": 2,
+          "pix_count": 2,
+          "pix_start": 2
+        },
+        "pixel_fields": {
+          "pix_uid": 1,
+          "pix_layer": 1,
+          "pix_e": 1,
+          "pix_x": 1,
+          "pix_y": 1,
+          "pix_z": 1
+        },
+        "events": 2,
+        "pixels": 1,
+        "sum_pix_count": 1,
+        "n_kept_events": 2
+      },
+      "neutron_component": {
+        "status": "PASS_COMPACT_CUMULATIVE_CATALOG_SCHEMA",
+        "label": "synthetic neutron component",
+        "event_fields": {
+          "stream": 1,
+          "tag": 1,
+          "source_file": 1,
+          "local_id": 1,
+          "rate_hz": 1,
+          "tes_total_keV": 1,
+          "bgo_total_keV": 1,
+          "pix_count": 1,
+          "pix_start": 1
+        },
+        "pixel_fields": {
+          "pix_uid": 2,
+          "pix_layer": 2,
+          "pix_e": 2,
+          "pix_x": 2,
+          "pix_y": 2,
+          "pix_z": 2
+        },
+        "events": 1,
+        "pixels": 2,
+        "sum_pix_count": 2,
+        "n_kept_events": 1
+      },
+      "merged_delayed": {
+        "status": "PASS_COMPACT_CUMULATIVE_CATALOG_SCHEMA",
+        "label": "synthetic ADR merged delayed",
+        "event_fields": {
+          "stream": 3,
+          "tag": 3,
+          "source_file": 3,
+          "local_id": 3,
+          "rate_hz": 3,
+          "tes_total_keV": 3,
+          "bgo_total_keV": 3,
+          "pix_count": 3,
+          "pix_start": 3
+        },
+        "pixel_fields": {
+          "pix_uid": 3,
+          "pix_layer": 3,
+          "pix_e": 3,
+          "pix_x": 3,
+          "pix_y": 3,
+          "pix_z": 3
+        },
+        "events": 3,
+        "pixels": 3,
+        "sum_pix_count": 3,
+        "n_kept_events": 3
+      },
+      "full_spliced": {
+        "status": "PASS_COMPACT_CUMULATIVE_CATALOG_SCHEMA",
+        "label": "synthetic full spliced catalog",
+        "event_fields": {
+          "stream": 6,
+          "tag": 6,
+          "source_file": 6,
+          "local_id": 6,
+          "rate_hz": 6,
+          "tes_total_keV": 6,
+          "bgo_total_keV": 6,
+          "pix_count": 6,
+          "pix_start": 6
+        },
+        "pixel_fields": {
+          "pix_uid": 6,
+          "pix_layer": 6,
+          "pix_e": 6,
+          "pix_x": 6,
+          "pix_y": 6,
+          "pix_z": 6
+        },
+        "events": 6,
+        "pixels": 6,
+        "sum_pix_count": 6,
+        "n_kept_events": 6
+      }
+    },
+    "expected_merged_delayed_pix_start": [
+      0,
+      1,
+      1
+    ],
+    "observed_merged_delayed_pix_start": [
+      0,
+      1,
+      1
+    ],
+    "expected_pix_start": [
+      0,
+      1,
+      1,
+      2,
+      2,
+      4
+    ],
+    "observed_pix_start": [
+      0,
+      1,
+      1,
+      2,
+      2,
+      4
+    ],
+    "family_final_rates_cps": {
+      "gamma": 0.1,
+      "n": 0.05,
+      "sum": 0.15000000000000002,
+      "stream_sum": 0.15000000000000002
+    },
+    "family_garwood_upper_ratio_gamma_over_n": 2.0,
+    "delayed_family_stage_closure": {
+      "status": "PASS_DELAYED_INCIDENT_FAMILY_ALL_STAGE_CLOSURE",
+      "label": "synthetic central delayed",
+      "stages": [
+        {
+          "stage": "raw",
+          "family_event_sum": 2,
+          "stream_events": 2,
+          "family_rate_sum_cps": 0.15000000000000002,
+          "stream_rate_cps": 0.15
+        },
+        {
+          "stage": "active_veto_pass",
+          "family_event_sum": 2,
+          "stream_events": 2,
+          "family_rate_sum_cps": 0.15000000000000002,
+          "stream_rate_cps": 0.15
+        },
+        {
+          "stage": "side_compton_fov_pass",
+          "family_event_sum": 2,
+          "stream_events": 2,
+          "family_rate_sum_cps": 0.15000000000000002,
+          "stream_rate_cps": 0.15
+        }
+      ]
+    },
+    "lineage": {
+      "status": "PASS_FAMILY_LOCAL_ID_LINEAGE",
+      "lineage_key": [
+        "tag_as_incident_family",
+        "local_id"
+      ],
+      "strong_lineage_key": [
+        "tag_as_incident_family",
+        "source_file",
+        "local_id"
+      ],
+      "families": [
+        {
+          "family": "alpha",
+          "status": "PASS_ZERO_PRODUCTION",
+          "kept_events": 0
+        },
+        {
+          "family": "eminus",
+          "status": "PASS_ZERO_PRODUCTION",
+          "kept_events": 0
+        },
+        {
+          "family": "eplus",
+          "status": "PASS_ZERO_PRODUCTION",
+          "kept_events": 0
+        },
+        {
+          "family": "gamma",
+          "status": "PASS",
+          "kept_events": 2,
+          "local_id_min": 1,
+          "local_id_max": 2,
+          "source_file": "/tmp/synthetic_gamma.sim",
+          "event_weight_hz": 0.1
+        },
+        {
+          "family": "muminus",
+          "status": "PASS_ZERO_PRODUCTION",
+          "kept_events": 0
+        },
+        {
+          "family": "muplus",
+          "status": "PASS_ZERO_PRODUCTION",
+          "kept_events": 0
+        },
+        {
+          "family": "n",
+          "status": "PASS",
+          "kept_events": 1,
+          "local_id_min": 1,
+          "local_id_max": 1,
+          "source_file": "/tmp/synthetic_n.sim",
+          "event_weight_hz": 0.05
+        },
+        {
+          "family": "p",
+          "status": "PASS_ZERO_PRODUCTION",
+          "kept_events": 0
+        }
+      ],
+      "problems": []
+    }
+  },
+  "neutron_only_physics_algebra_regression": {
+    "status": "PASS_NEUTRON_ONLY_ATMOSPHERE_AND_PHYSICAL_ALGEBRA_REGRESSION",
+    "windows": {
+      "broad_480_550": {
+        "algebra_status": "PASS_ALL_STREAM_FAMILY_AND_PHYSICAL_ALGEBRA_CLOSURE",
+        "signal_to_background": 0.06773717739939639,
+        "low_stat_prompt_final_events": 12,
+        "low_stat_delayed_final_events": 47,
+        "low_stat_atm511_final_events": 16,
+        "low_stat_final_background_events": 75,
+        "low_stat_background_relative_poisson_sigma_approx": 0.11547005383792514
+      },
+      "w2_510p58_511p42": {
+        "algebra_status": "PASS_ALL_STREAM_FAMILY_AND_PHYSICAL_ALGEBRA_CLOSURE",
+        "signal_to_background": 0.1934474505372144,
+        "low_stat_prompt_final_events": 5,
+        "low_stat_delayed_final_events": 31,
+        "low_stat_atm511_final_events": 9,
+        "low_stat_final_background_events": 45,
+        "low_stat_background_relative_poisson_sigma_approx": 0.14907119849998599
+      }
+    }
+  },
+  "selection_checks": [
+    {
+      "window": "broad_480_550",
+      "stream": "prompt",
+      "stage": "raw",
+      "events": 108,
+      "rate_cps": 0.07801191817112904
+    },
+    {
+      "window": "broad_480_550",
+      "stream": "prompt",
+      "stage": "active_veto_pass",
+      "events": 17,
+      "rate_cps": 0.016283135666085066
+    },
+    {
+      "window": "broad_480_550",
+      "stream": "prompt",
+      "stage": "side_compton_fov_pass",
+      "events": 12,
+      "rate_cps": 0.012890505300524881
+    },
+    {
+      "window": "broad_480_550",
+      "stream": "delayed",
+      "stage": "raw",
+      "events": 176,
+      "rate_cps": 0.005469507133835719
+    },
+    {
+      "window": "broad_480_550",
+      "stream": "delayed",
+      "stage": "active_veto_pass",
+      "events": 54,
+      "rate_cps": 0.00167814423424505
+    },
+    {
+      "window": "broad_480_550",
+      "stream": "delayed",
+      "stage": "side_compton_fov_pass",
+      "events": 47,
+      "rate_cps": 0.0014606070186947656
+    },
+    {
+      "window": "broad_480_550",
+      "stream": "science",
+      "stage": "raw",
+      "events": 30303,
+      "rate_cps": 0.8147281819648331
+    },
+    {
+      "window": "broad_480_550",
+      "stream": "science",
+      "stage": "active_veto_pass",
+      "events": 30303,
+      "rate_cps": 0.8147281819648331
+    },
+    {
+      "window": "broad_480_550",
+      "stream": "science",
+      "stage": "side_compton_fov_pass",
+      "events": 29638,
+      "rate_cps": 0.7968489541327132
+    },
+    {
+      "window": "w2_510p58_511p42",
+      "stream": "prompt",
+      "stage": "raw",
+      "events": 44,
+      "rate_cps": 0.029848697231495004
+    },
+    {
+      "window": "w2_510p58_511p42",
+      "stream": "prompt",
+      "stage": "active_veto_pass",
+      "events": 6,
+      "rate_cps": 0.004071878506082602
+    },
+    {
+      "window": "w2_510p58_511p42",
+      "stream": "prompt",
+      "stage": "side_compton_fov_pass",
+      "events": 5,
+      "rate_cps": 0.003393031514121508
+    },
+    {
+      "window": "w2_510p58_511p42",
+      "stream": "delayed",
+      "stage": "raw",
+      "events": 131,
+      "rate_cps": 0.004071053605298178
+    },
+    {
+      "window": "w2_510p58_511p42",
+      "stream": "delayed",
+      "stage": "active_veto_pass",
+      "events": 35,
+      "rate_cps": 0.0010876860777514214
+    },
+    {
+      "window": "w2_510p58_511p42",
+      "stream": "delayed",
+      "stage": "side_compton_fov_pass",
+      "events": 31,
+      "rate_cps": 0.000963379097436974
+    },
+    {
+      "window": "w2_510p58_511p42",
+      "stream": "science",
+      "stage": "raw",
+      "events": 30252,
+      "rate_cps": 0.8133569930633974
+    },
+    {
+      "window": "w2_510p58_511p42",
+      "stream": "science",
+      "stage": "active_veto_pass",
+      "events": 30252,
+      "rate_cps": 0.8133569930633974
+    },
+    {
+      "window": "w2_510p58_511p42",
+      "stream": "science",
+      "stage": "side_compton_fov_pass",
+      "events": 29598,
+      "rate_cps": 0.7957735118570756
+    }
+  ],
+  "claim": "Replacing the retained activation-tagged neutron block with the same events tagged as incident family n reproduces package-43 Step05 exactly."
+}

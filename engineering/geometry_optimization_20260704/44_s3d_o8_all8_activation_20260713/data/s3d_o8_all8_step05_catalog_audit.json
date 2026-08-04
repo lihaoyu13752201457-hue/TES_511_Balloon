@@ -1,0 +1,515 @@
+{
+  "status": "PASS_S3D_O8_ALL8_STEP05_CATALOG",
+  "generated_at_utc": "2026-07-13T21:48:14Z",
+  "event_catalog": "engineering/geometry_optimization_20260704/44_s3d_o8_all8_activation_20260713/fullchain/step05/work/event_catalog.pkl",
+  "event_catalog_size_bytes": 739063211,
+  "event_catalog_sha256": "752b40019d6bbb72f9ce096fde933cf155dec5832a5daf03e4ee0e16f299b278",
+  "base_catalog": "engineering/geometry_optimization_20260704/43_geoopt_s3d_o8_fallback_20260712/fullchain/step05/work/event_catalog.pkl",
+  "base_catalog_sha256": "6ed8d9d765ebc814786cb144765f02dfa437dc26a6df9a0a91c03ad983f4e403",
+  "components": "engineering/geometry_optimization_20260704/44_s3d_o8_all8_activation_20260713/data/s3d_o8_all8_delayed_components.json",
+  "components_sha256": "09f12aa81ec462cf7f345609629bba47644a1d8c3a7594b727b0be3adc52b663",
+  "component_authority_fingerprint": "5b779082b275f769cb160f3ff80ad00d44b8ad6e47815f488a4bd63fe8f7f26b",
+  "script_sha256": "ad300404813ab41e96fa876ab34f3545f480d7e8ab038cda7f5242ecd701e1af",
+  "dependency_hashes": {
+    "adr_implementation": {
+      "path": "old/code/tools/make_complete_day15_report_ADR.py",
+      "sha256": "126afcf5b6bfa9445078a7106553d9992d4330ceefe3f104b411f1e6f1b1a5df"
+    },
+    "selection_implementation": {
+      "path": "old/code/tools/build_v3p5_centerfinger_step05_l1_response.py",
+      "sha256": "0c1e69e4a73bd8653e999b1d8d2aff404a37a44457e40f134388c819ad4b91ab"
+    },
+    "bridge_summary": {
+      "path": "stepwise_maintenance/step09_optics_bridge/outputs_f10m_a1_v3p5/step09_optics_bridge_summary.json",
+      "sha256": "8d147e21928b4830a215ab034f29379383b4368b4177f8a16a2f45769df73a25"
+    },
+    "aeff_authority": {
+      "path": "stepwise_maintenance/step04_opticsim/optics_aeff_authority_f10m_a1.json",
+      "sha256": "41078096711959d25e26ef79bd0f62b7c7d0ed70b4098c87147e4a9e8ff383b5"
+    },
+    "science_ledger": {
+      "path": "old/config/science_511_onaxis_source/metadata/science_rate_ledger.csv",
+      "sha256": "b8dcdd949af186ffa59a7d211c788fb89a461a1d924ecfcf3322a5601c21eb19"
+    },
+    "boundary_summary": {
+      "path": "old/reports/v3p5_boundary_closure_fullstat_v2_exactpos_20260613/v3p5_boundary_closure_summary.json",
+      "sha256": "13e254c2e75a3e9fce03d7bbcd8265da16ddd9437d32d448389b331c9760d13a"
+    },
+    "atm511_authority": {
+      "path": "engineering/geometry_optimization_20260704/43_geoopt_s3d_o8_fallback_20260712/data/s3d_o8_atm511_replay_summary.json",
+      "sha256": "b2c4e6ab26ca0f1210fc828086b574435a52100712cbc2f9a9209d324b31ec80"
+    },
+    "step05_harness": {
+      "path": "engineering/geometry_optimization_20260704/44_s3d_o8_all8_activation_20260713/code/run_s3d_o8_all8_step05.py",
+      "sha256": "ad300404813ab41e96fa876ab34f3545f480d7e8ab038cda7f5242ecd701e1af"
+    },
+    "active_veto_predicate": {
+      "callable": "is_s3d_active_veto_volume",
+      "sha256": "98e3af697956630ca1196964c54d0095785933c32e9bb2fbb24b3370d6bb8e7e"
+    }
+  },
+  "events_kept": 14698295,
+  "pixel_hits_kept": 84030,
+  "generated_events_seen": 32247410,
+  "by_stream_events": {
+    "prompt": 9535401,
+    "delayed": 5126008,
+    "science": 36886
+  },
+  "delayed_by_family": {
+    "alpha": {
+      "events": 830689,
+      "detector_record_rate_hz": 0.28923152804484203
+    },
+    "eminus": {
+      "events": 0,
+      "detector_record_rate_hz": 0.0
+    },
+    "eplus": {
+      "events": 700490,
+      "detector_record_rate_hz": 0.0015060950305610824
+    },
+    "gamma": {
+      "events": 1000000,
+      "detector_record_rate_hz": 0.005463903231534367
+    },
+    "muminus": {
+      "events": 229735,
+      "detector_record_rate_hz": 0.9669744551465828
+    },
+    "muplus": {
+      "events": 1000000,
+      "detector_record_rate_hz": 0.0007942867573817317
+    },
+    "n": {
+      "events": 483544,
+      "detector_record_rate_hz": 15.86212191723218
+    },
+    "p": {
+      "events": 881550,
+      "detector_record_rate_hz": 1.9793692592555532
+    }
+  },
+  "parse_audit": [
+    {
+      "family": "alpha",
+      "generated_events_seen": 1000000,
+      "detector_records_kept": 830689,
+      "pixel_hits_kept": 6644,
+      "local_id_min": 1,
+      "local_id_max": 999999,
+      "event_weight_hz": 3.481826869560595e-07,
+      "SE": 1000000,
+      "ID": 1000000,
+      "cache": "engineering/geometry_optimization_20260704/44_s3d_o8_all8_activation_20260713/fullchain/step05/work/file_catalogs/alpha/7834c93a9239e2f9e88954ffda56916301f2492c4f63119ef004f0853d3d5c26/delayed_DelayedDecayS3dO8AlphaM50000.inc1.id1.sim.gz.8cba381d7030.pkl",
+      "cache_sha256": "1832e116797f4622d4e1db92a7bf94682f2874113f6cc7ea41c187ad8af4890c",
+      "cache_fingerprint": "7834c93a9239e2f9e88954ffda56916301f2492c4f63119ef004f0853d3d5c26",
+      "raw_sim_parse_completed": true,
+      "parsed_this_run": true,
+      "sim_sha256": "bfc62760023309b3597c00d3a61643a7c337fb3d5094af7cad3beebd4fac4672",
+      "sim_size_bytes": 1233929551,
+      "parser_sha256": "126afcf5b6bfa9445078a7106553d9992d4330ceefe3f104b411f1e6f1b1a5df",
+      "script_sha256": "ad300404813ab41e96fa876ab34f3545f480d7e8ab038cda7f5242ecd701e1af",
+      "active_veto_predicate_sha256": "98e3af697956630ca1196964c54d0095785933c32e9bb2fbb24b3370d6bb8e7e",
+      "cache_dependencies": {
+        "adr_implementation": {
+          "path": "old/code/tools/make_complete_day15_report_ADR.py",
+          "sha256": "126afcf5b6bfa9445078a7106553d9992d4330ceefe3f104b411f1e6f1b1a5df"
+        },
+        "step05_harness": {
+          "path": "engineering/geometry_optimization_20260704/44_s3d_o8_all8_activation_20260713/code/run_s3d_o8_all8_step05.py",
+          "sha256": "ad300404813ab41e96fa876ab34f3545f480d7e8ab038cda7f5242ecd701e1af"
+        },
+        "active_veto_predicate": {
+          "callable": "is_s3d_active_veto_volume",
+          "sha256": "98e3af697956630ca1196964c54d0095785933c32e9bb2fbb24b3370d6bb8e7e"
+        }
+      }
+    },
+    {
+      "family": "eplus",
+      "generated_events_seen": 1000000,
+      "detector_records_kept": 700490,
+      "pixel_hits_kept": 1677,
+      "local_id_min": 1,
+      "local_id_max": 1000000,
+      "event_weight_hz": 2.1500592878714673e-09,
+      "SE": 1000000,
+      "ID": 1000000,
+      "cache": "engineering/geometry_optimization_20260704/44_s3d_o8_all8_activation_20260713/fullchain/step05/work/file_catalogs/eplus/b7656a1aa44b2b38e13ddc216488e6e28a308fa83ba5ae8b763ee7b92deb8e63/delayed_DelayedDecayS3dO8EPlusM50000.inc1.id1.sim.gz.128b61797a10.pkl",
+      "cache_sha256": "fb235471bc07dd66d278e840fcee9263bdcf7a514bfcd8fb3f49b633c74d1eb9",
+      "cache_fingerprint": "b7656a1aa44b2b38e13ddc216488e6e28a308fa83ba5ae8b763ee7b92deb8e63",
+      "raw_sim_parse_completed": true,
+      "parsed_this_run": true,
+      "sim_sha256": "40f0f3b9d753e6302edf836ea217cced04a80ba6efed5320495c466fef206ca9",
+      "sim_size_bytes": 1603699945,
+      "parser_sha256": "126afcf5b6bfa9445078a7106553d9992d4330ceefe3f104b411f1e6f1b1a5df",
+      "script_sha256": "ad300404813ab41e96fa876ab34f3545f480d7e8ab038cda7f5242ecd701e1af",
+      "active_veto_predicate_sha256": "98e3af697956630ca1196964c54d0095785933c32e9bb2fbb24b3370d6bb8e7e",
+      "cache_dependencies": {
+        "adr_implementation": {
+          "path": "old/code/tools/make_complete_day15_report_ADR.py",
+          "sha256": "126afcf5b6bfa9445078a7106553d9992d4330ceefe3f104b411f1e6f1b1a5df"
+        },
+        "step05_harness": {
+          "path": "engineering/geometry_optimization_20260704/44_s3d_o8_all8_activation_20260713/code/run_s3d_o8_all8_step05.py",
+          "sha256": "ad300404813ab41e96fa876ab34f3545f480d7e8ab038cda7f5242ecd701e1af"
+        },
+        "active_veto_predicate": {
+          "callable": "is_s3d_active_veto_volume",
+          "sha256": "98e3af697956630ca1196964c54d0095785933c32e9bb2fbb24b3370d6bb8e7e"
+        }
+      }
+    },
+    {
+      "family": "gamma",
+      "generated_events_seen": 1000000,
+      "detector_records_kept": 1000000,
+      "pixel_hits_kept": 0,
+      "local_id_min": 1,
+      "local_id_max": 1000000,
+      "event_weight_hz": 5.463903231534376e-09,
+      "SE": 1000000,
+      "ID": 1000000,
+      "cache": "engineering/geometry_optimization_20260704/44_s3d_o8_all8_activation_20260713/fullchain/step05/work/file_catalogs/gamma/3b80a8b0cd06b7fd86a053cdc7733668be896ef301c3c87807f1e1758508312a/delayed_DelayedDecayS3dO8GammaM50000.inc1.id1.sim.gz.68cebe82fd39.pkl",
+      "cache_sha256": "9155810b4af261025805c4143d83db24464e15dfa5e37679ab18fed967448ef7",
+      "cache_fingerprint": "3b80a8b0cd06b7fd86a053cdc7733668be896ef301c3c87807f1e1758508312a",
+      "raw_sim_parse_completed": true,
+      "parsed_this_run": true,
+      "sim_sha256": "54bb3cc8c98e280cbe017b30f74ed2617df6586178402ea05bc709ba4b945d2e",
+      "sim_size_bytes": 379952459,
+      "parser_sha256": "126afcf5b6bfa9445078a7106553d9992d4330ceefe3f104b411f1e6f1b1a5df",
+      "script_sha256": "ad300404813ab41e96fa876ab34f3545f480d7e8ab038cda7f5242ecd701e1af",
+      "active_veto_predicate_sha256": "98e3af697956630ca1196964c54d0095785933c32e9bb2fbb24b3370d6bb8e7e",
+      "cache_dependencies": {
+        "adr_implementation": {
+          "path": "old/code/tools/make_complete_day15_report_ADR.py",
+          "sha256": "126afcf5b6bfa9445078a7106553d9992d4330ceefe3f104b411f1e6f1b1a5df"
+        },
+        "step05_harness": {
+          "path": "engineering/geometry_optimization_20260704/44_s3d_o8_all8_activation_20260713/code/run_s3d_o8_all8_step05.py",
+          "sha256": "ad300404813ab41e96fa876ab34f3545f480d7e8ab038cda7f5242ecd701e1af"
+        },
+        "active_veto_predicate": {
+          "callable": "is_s3d_active_veto_volume",
+          "sha256": "98e3af697956630ca1196964c54d0095785933c32e9bb2fbb24b3370d6bb8e7e"
+        }
+      }
+    },
+    {
+      "family": "muminus",
+      "generated_events_seen": 1000000,
+      "detector_records_kept": 229735,
+      "pixel_hits_kept": 163,
+      "local_id_min": 1,
+      "local_id_max": 999996,
+      "event_weight_hz": 4.209086361009783e-06,
+      "SE": 1000000,
+      "ID": 1000000,
+      "cache": "engineering/geometry_optimization_20260704/44_s3d_o8_all8_activation_20260713/fullchain/step05/work/file_catalogs/muminus/60e368ecc0c1d86248bd3ec7f4803c39202f25f7d2067ea69807148a972a7a81/delayed_DelayedDecayS3dO8MuMinusM50000.inc1.id1.sim.gz.3b80964d08c6.pkl",
+      "cache_sha256": "5ad86d4913e1f38c8e2e14f3e4248cf7a59f24d63af8ae128415c38824b0e44b",
+      "cache_fingerprint": "60e368ecc0c1d86248bd3ec7f4803c39202f25f7d2067ea69807148a972a7a81",
+      "raw_sim_parse_completed": true,
+      "parsed_this_run": true,
+      "sim_sha256": "f97d06cb0fd119af0ccd93edcbee2e42fc47ee7054d0d59ac3bb7853637f12e7",
+      "sim_size_bytes": 558750972,
+      "parser_sha256": "126afcf5b6bfa9445078a7106553d9992d4330ceefe3f104b411f1e6f1b1a5df",
+      "script_sha256": "ad300404813ab41e96fa876ab34f3545f480d7e8ab038cda7f5242ecd701e1af",
+      "active_veto_predicate_sha256": "98e3af697956630ca1196964c54d0095785933c32e9bb2fbb24b3370d6bb8e7e",
+      "cache_dependencies": {
+        "adr_implementation": {
+          "path": "old/code/tools/make_complete_day15_report_ADR.py",
+          "sha256": "126afcf5b6bfa9445078a7106553d9992d4330ceefe3f104b411f1e6f1b1a5df"
+        },
+        "step05_harness": {
+          "path": "engineering/geometry_optimization_20260704/44_s3d_o8_all8_activation_20260713/code/run_s3d_o8_all8_step05.py",
+          "sha256": "ad300404813ab41e96fa876ab34f3545f480d7e8ab038cda7f5242ecd701e1af"
+        },
+        "active_veto_predicate": {
+          "callable": "is_s3d_active_veto_volume",
+          "sha256": "98e3af697956630ca1196964c54d0095785933c32e9bb2fbb24b3370d6bb8e7e"
+        }
+      }
+    },
+    {
+      "family": "muplus",
+      "generated_events_seen": 1000000,
+      "detector_records_kept": 1000000,
+      "pixel_hits_kept": 8704,
+      "local_id_min": 1,
+      "local_id_max": 1000000,
+      "event_weight_hz": 7.942867573817325e-10,
+      "SE": 1000000,
+      "ID": 1000000,
+      "cache": "engineering/geometry_optimization_20260704/44_s3d_o8_all8_activation_20260713/fullchain/step05/work/file_catalogs/muplus/2ec27bc96b86ba0f1d80e553fca72b5b666c8f3f1f09b0bcb642c4babd68be65/delayed_DelayedDecayS3dO8MuPlusM50000.inc1.id1.sim.gz.987bd2a3c809.pkl",
+      "cache_sha256": "46b250a765b7bee5ea5b246485c008ba5627c98007a56e4527a9d73c1b4d8e56",
+      "cache_fingerprint": "2ec27bc96b86ba0f1d80e553fca72b5b666c8f3f1f09b0bcb642c4babd68be65",
+      "raw_sim_parse_completed": true,
+      "parsed_this_run": true,
+      "sim_sha256": "38dc24b968b1fe65a016c0d1054e67a0fb98bfc5d9b20ed8f3d2e4265f387fae",
+      "sim_size_bytes": 2741401329,
+      "parser_sha256": "126afcf5b6bfa9445078a7106553d9992d4330ceefe3f104b411f1e6f1b1a5df",
+      "script_sha256": "ad300404813ab41e96fa876ab34f3545f480d7e8ab038cda7f5242ecd701e1af",
+      "active_veto_predicate_sha256": "98e3af697956630ca1196964c54d0095785933c32e9bb2fbb24b3370d6bb8e7e",
+      "cache_dependencies": {
+        "adr_implementation": {
+          "path": "old/code/tools/make_complete_day15_report_ADR.py",
+          "sha256": "126afcf5b6bfa9445078a7106553d9992d4330ceefe3f104b411f1e6f1b1a5df"
+        },
+        "step05_harness": {
+          "path": "engineering/geometry_optimization_20260704/44_s3d_o8_all8_activation_20260713/code/run_s3d_o8_all8_step05.py",
+          "sha256": "ad300404813ab41e96fa876ab34f3545f480d7e8ab038cda7f5242ecd701e1af"
+        },
+        "active_veto_predicate": {
+          "callable": "is_s3d_active_veto_volume",
+          "sha256": "98e3af697956630ca1196964c54d0095785933c32e9bb2fbb24b3370d6bb8e7e"
+        }
+      }
+    },
+    {
+      "family": "n",
+      "generated_events_seen": 1000000,
+      "detector_records_kept": 483544,
+      "pixel_hits_kept": 6681,
+      "local_id_min": 2,
+      "local_id_max": 1000000,
+      "event_weight_hz": 3.280388530771176e-05,
+      "SE": 1000000,
+      "ID": 1000000,
+      "cache": "engineering/geometry_optimization_20260704/44_s3d_o8_all8_activation_20260713/fullchain/step05/work/file_catalogs/n/743d826db3c6f225c4d2b427bdd20b34b33c94d2c67566ac949376be51f617da/delayed_DelayedDecayS3dO8NM50000.inc1.id1.sim.gz.247a372aee9c.pkl",
+      "cache_sha256": "8b78ff66d8a20625045adc478fc67bac28fd2b34f4254f8a2b75b0693d023b7f",
+      "cache_fingerprint": "743d826db3c6f225c4d2b427bdd20b34b33c94d2c67566ac949376be51f617da",
+      "raw_sim_parse_completed": true,
+      "parsed_this_run": true,
+      "sim_sha256": "60443f8587266aec37b939eb97b503afcb4088a43ce7b2d75723d02999e4dc9c",
+      "sim_size_bytes": 929573699,
+      "parser_sha256": "126afcf5b6bfa9445078a7106553d9992d4330ceefe3f104b411f1e6f1b1a5df",
+      "script_sha256": "ad300404813ab41e96fa876ab34f3545f480d7e8ab038cda7f5242ecd701e1af",
+      "active_veto_predicate_sha256": "98e3af697956630ca1196964c54d0095785933c32e9bb2fbb24b3370d6bb8e7e",
+      "cache_dependencies": {
+        "adr_implementation": {
+          "path": "old/code/tools/make_complete_day15_report_ADR.py",
+          "sha256": "126afcf5b6bfa9445078a7106553d9992d4330ceefe3f104b411f1e6f1b1a5df"
+        },
+        "step05_harness": {
+          "path": "engineering/geometry_optimization_20260704/44_s3d_o8_all8_activation_20260713/code/run_s3d_o8_all8_step05.py",
+          "sha256": "ad300404813ab41e96fa876ab34f3545f480d7e8ab038cda7f5242ecd701e1af"
+        },
+        "active_veto_predicate": {
+          "callable": "is_s3d_active_veto_volume",
+          "sha256": "98e3af697956630ca1196964c54d0095785933c32e9bb2fbb24b3370d6bb8e7e"
+        }
+      }
+    },
+    {
+      "family": "p",
+      "generated_events_seen": 1000000,
+      "detector_records_kept": 881550,
+      "pixel_hits_kept": 1254,
+      "local_id_min": 1,
+      "local_id_max": 1000000,
+      "event_weight_hz": 2.2453284093421305e-06,
+      "SE": 1000000,
+      "ID": 1000000,
+      "cache": "engineering/geometry_optimization_20260704/44_s3d_o8_all8_activation_20260713/fullchain/step05/work/file_catalogs/p/62be854c28278ff3ba6d403d0d17f3b5e24fecd4b637bb86cb39872b8e39fb04/delayed_DelayedDecayS3dO8PM50000.inc1.id1.sim.gz.ba577f08eb8d.pkl",
+      "cache_sha256": "dd82574f3459ef1689e458c16b35200d98626d992a0f187eb9061d9317268302",
+      "cache_fingerprint": "62be854c28278ff3ba6d403d0d17f3b5e24fecd4b637bb86cb39872b8e39fb04",
+      "raw_sim_parse_completed": true,
+      "parsed_this_run": true,
+      "sim_sha256": "b385864ba8058c2d7de8430d0889de7ebee417f996bcbd7e72dda559dabb89a5",
+      "sim_size_bytes": 1276958314,
+      "parser_sha256": "126afcf5b6bfa9445078a7106553d9992d4330ceefe3f104b411f1e6f1b1a5df",
+      "script_sha256": "ad300404813ab41e96fa876ab34f3545f480d7e8ab038cda7f5242ecd701e1af",
+      "active_veto_predicate_sha256": "98e3af697956630ca1196964c54d0095785933c32e9bb2fbb24b3370d6bb8e7e",
+      "cache_dependencies": {
+        "adr_implementation": {
+          "path": "old/code/tools/make_complete_day15_report_ADR.py",
+          "sha256": "126afcf5b6bfa9445078a7106553d9992d4330ceefe3f104b411f1e6f1b1a5df"
+        },
+        "step05_harness": {
+          "path": "engineering/geometry_optimization_20260704/44_s3d_o8_all8_activation_20260713/code/run_s3d_o8_all8_step05.py",
+          "sha256": "ad300404813ab41e96fa876ab34f3545f480d7e8ab038cda7f5242ecd701e1af"
+        },
+        "active_veto_predicate": {
+          "callable": "is_s3d_active_veto_volume",
+          "sha256": "98e3af697956630ca1196964c54d0095785933c32e9bb2fbb24b3370d6bb8e7e"
+        }
+      }
+    }
+  ],
+  "catalog_structure": {
+    "retained_base": {
+      "status": "PASS_COMPACT_CUMULATIVE_CATALOG_SCHEMA",
+      "label": "retained package-43 base catalog",
+      "event_fields": {
+        "stream": 10044782,
+        "tag": 10044782,
+        "source_file": 10044782,
+        "local_id": 10044782,
+        "rate_hz": 10044782,
+        "tes_total_keV": 10044782,
+        "bgo_total_keV": 10044782,
+        "pix_count": 10044782,
+        "pix_start": 10044782
+      },
+      "pixel_fields": {
+        "pix_uid": 65487,
+        "pix_layer": 65487,
+        "pix_e": 65487,
+        "pix_x": 65487,
+        "pix_y": 65487,
+        "pix_z": 65487
+      },
+      "events": 10044782,
+      "pixels": 65487,
+      "sum_pix_count": 65487,
+      "n_kept_events": 10044782
+    },
+    "merged_delayed": {
+      "status": "PASS_COMPACT_CUMULATIVE_CATALOG_SCHEMA",
+      "label": "package44 all-positive-family merged delayed catalog",
+      "event_fields": {
+        "stream": 5126008,
+        "tag": 5126008,
+        "source_file": 5126008,
+        "local_id": 5126008,
+        "rate_hz": 5126008,
+        "tes_total_keV": 5126008,
+        "bgo_total_keV": 5126008,
+        "pix_count": 5126008,
+        "pix_start": 5126008
+      },
+      "pixel_fields": {
+        "pix_uid": 25123,
+        "pix_layer": 25123,
+        "pix_e": 25123,
+        "pix_x": 25123,
+        "pix_y": 25123,
+        "pix_z": 25123
+      },
+      "events": 5126008,
+      "pixels": 25123,
+      "sum_pix_count": 25123,
+      "n_kept_events": 5126008
+    },
+    "full_spliced": {
+      "status": "PASS_COMPACT_CUMULATIVE_CATALOG_SCHEMA",
+      "label": "package44 full spliced catalog",
+      "event_fields": {
+        "stream": 14698295,
+        "tag": 14698295,
+        "source_file": 14698295,
+        "local_id": 14698295,
+        "rate_hz": 14698295,
+        "tes_total_keV": 14698295,
+        "bgo_total_keV": 14698295,
+        "pix_count": 14698295,
+        "pix_start": 14698295
+      },
+      "pixel_fields": {
+        "pix_uid": 84030,
+        "pix_layer": 84030,
+        "pix_e": 84030,
+        "pix_x": 84030,
+        "pix_y": 84030,
+        "pix_z": 84030
+      },
+      "events": 14698295,
+      "pixels": 84030,
+      "sum_pix_count": 84030,
+      "n_kept_events": 14698295
+    }
+  },
+  "retained_prompt_science_identity": {
+    "status": "PASS_RETAINED_PROMPT_SCIENCE_ARRAY_IDENTITY",
+    "prompt_events": 9535401,
+    "science_events": 36886,
+    "prompt_pixels": 5889,
+    "science_pixels": 53018,
+    "checks": 28
+  },
+  "lineage": {
+    "status": "PASS_FAMILY_LOCAL_ID_LINEAGE",
+    "lineage_key": [
+      "tag_as_incident_family",
+      "local_id"
+    ],
+    "strong_lineage_key": [
+      "tag_as_incident_family",
+      "source_file",
+      "local_id"
+    ],
+    "families": [
+      {
+        "family": "alpha",
+        "status": "PASS",
+        "kept_events": 830689,
+        "local_id_min": 1,
+        "local_id_max": 999999,
+        "source_file": "runs/geometry_optimization_20260704/step02_delayed_transport_s3d_o8_all8_activation_m50000_20260713/alpha/DelayedDecayS3dO8AlphaM50000.inc1.id1.sim.gz",
+        "event_weight_hz": 3.481826869560595e-07
+      },
+      {
+        "family": "eminus",
+        "status": "PASS_ZERO_PRODUCTION",
+        "kept_events": 0
+      },
+      {
+        "family": "eplus",
+        "status": "PASS",
+        "kept_events": 700490,
+        "local_id_min": 1,
+        "local_id_max": 1000000,
+        "source_file": "runs/geometry_optimization_20260704/step02_delayed_transport_s3d_o8_all8_activation_m50000_20260713/eplus/DelayedDecayS3dO8EPlusM50000.inc1.id1.sim.gz",
+        "event_weight_hz": 2.1500592878714673e-09
+      },
+      {
+        "family": "gamma",
+        "status": "PASS",
+        "kept_events": 1000000,
+        "local_id_min": 1,
+        "local_id_max": 1000000,
+        "source_file": "runs/geometry_optimization_20260704/step02_delayed_transport_s3d_o8_all8_activation_m50000_20260713/gamma/DelayedDecayS3dO8GammaM50000.inc1.id1.sim.gz",
+        "event_weight_hz": 5.463903231534376e-09
+      },
+      {
+        "family": "muminus",
+        "status": "PASS",
+        "kept_events": 229735,
+        "local_id_min": 1,
+        "local_id_max": 999996,
+        "source_file": "runs/geometry_optimization_20260704/step02_delayed_transport_s3d_o8_all8_activation_m50000_20260713/muminus/DelayedDecayS3dO8MuMinusM50000.inc1.id1.sim.gz",
+        "event_weight_hz": 4.209086361009783e-06
+      },
+      {
+        "family": "muplus",
+        "status": "PASS",
+        "kept_events": 1000000,
+        "local_id_min": 1,
+        "local_id_max": 1000000,
+        "source_file": "runs/geometry_optimization_20260704/step02_delayed_transport_s3d_o8_all8_activation_m50000_20260713/muplus/DelayedDecayS3dO8MuPlusM50000.inc1.id1.sim.gz",
+        "event_weight_hz": 7.942867573817325e-10
+      },
+      {
+        "family": "n",
+        "status": "PASS",
+        "kept_events": 483544,
+        "local_id_min": 2,
+        "local_id_max": 1000000,
+        "source_file": "runs/geometry_optimization_20260704/step02_delayed_transport_s3d_o8_all8_activation_m50000_20260713/n/DelayedDecayS3dO8NM50000.inc1.id1.sim.gz",
+        "event_weight_hz": 3.280388530771176e-05
+      },
+      {
+        "family": "p",
+        "status": "PASS",
+        "kept_events": 881550,
+        "local_id_min": 1,
+        "local_id_max": 1000000,
+        "source_file": "runs/geometry_optimization_20260704/step02_delayed_transport_s3d_o8_all8_activation_m50000_20260713/p/DelayedDecayS3dO8PM50000.inc1.id1.sim.gz",
+        "event_weight_hz": 2.2453284093421305e-06
+      }
+    ],
+    "problems": []
+  },
+  "timeline_policy": "not built here; no single delayed TE is valid for all families"
+}

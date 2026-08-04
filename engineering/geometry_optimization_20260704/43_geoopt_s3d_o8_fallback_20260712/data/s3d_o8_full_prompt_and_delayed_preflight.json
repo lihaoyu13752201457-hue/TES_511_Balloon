@@ -1,0 +1,113 @@
+{
+  "status": "PASS_O8_FULL_PROMPT_DELAYED_PREFLIGHT",
+  "generated_at_utc": "2026-07-12T13:33:51Z",
+  "production_launched": false,
+  "geometry_setup": "engineering/geometry_optimization_20260704/43_geoopt_s3d_o8_fallback_20260712/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup",
+  "screening_promotion": {
+    "status": "PASS_SCREENING_PROMOTION_GATE",
+    "authority": "engineering/geometry_optimization_20260704/43_geoopt_s3d_o8_fallback_20260712/data/s3d_o8_screening_analysis.json",
+    "authority_exists": true,
+    "authority_sha256": "b4e1c5151358618c04b75d585f08c2c50913fbdd6c709bb9a6a544789046730b",
+    "authority_status": "PASS_O8_SCREENING_PROMOTION_GATES",
+    "expected_status": "PASS_O8_SCREENING_PROMOTION_GATES",
+    "gate_evidence": {
+      "dominant_subset": {
+        "evaluation_status": "PASS",
+        "promotion_gate_pass": true
+      },
+      "signal": {
+        "evaluation_status": "PASS",
+        "promotion_gate_pass": true
+      }
+    },
+    "all_required_gates_evaluated": true,
+    "any_evaluated_gate_failed": false,
+    "decision_so_far": "PASS_ALL_COMPLETED_GATES",
+    "problems": [],
+    "pending": [],
+    "historical_substitution_allowed": false
+  },
+  "geometry": {
+    "status": "PASS",
+    "authority": {
+      "status": "PASS",
+      "checks": {
+        "manifest_status": "S3D_O8_FALLBACK_GEOMETRY_VALIDATED_COSIMA_OVERLAP_PASS",
+        "static_diff_status": "PASS",
+        "overlap_status": "PASS",
+        "overlap_hash_match": true,
+        "independent_validation_status": "PASS",
+        "generated_geometry_matches": true
+      },
+      "o8_geometry_hashes": {
+        "DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup": "86a9e56e54dc86834dfe2a9b03a5f71373fb40f2ef24e3889fa66f216058fbec",
+        "DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo": "ff4e8402df702501e0112fe377d837a74c39100317146b09e9569b7bd615c37c",
+        "DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.det": "dd2c1d68cd474f8b0c7489f2cbbfc924eb69beb14d3ce360d9437c319a33d6cb",
+        "Intro_DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo": "f4ea834bf385f68a85690e018fd52d692e94e19dd93959e35e6f91efd3dbfd52",
+        "Materials_DEMO2_DR_v3p5.geo": "751cd83f08631085496ee86efa4418e4f001a639b15573554b93e73ff95678bf"
+      },
+      "heavy_control_geometry_hashes": {
+        "DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup": "86a9e56e54dc86834dfe2a9b03a5f71373fb40f2ef24e3889fa66f216058fbec",
+        "DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo": "010fc59398ff2710ef1a4cf95219a506d39e56ac170f36bf722ffa567e279410",
+        "DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.det": "fc01ff4a212880a28ab3d5f76844e522cd8082b4061b223ee6af9302bfc7ac19",
+        "Intro_DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo": "f4ea834bf385f68a85690e018fd52d692e94e19dd93959e35e6f91efd3dbfd52",
+        "Materials_DEMO2_DR_v3p5.geo": "751cd83f08631085496ee86efa4418e4f001a639b15573554b93e73ff95678bf"
+      },
+      "shared_helper": "engineering/geometry_optimization_20260704/42_geoopt_s3d_lightweight_20260712/code/_s3d_replay_common.py",
+      "shared_helper_sha256": "495f6e051028f125932b0687ee47a35eb9afb2f3765522afe77729eb010f86ea"
+    }
+  },
+  "path_binding_audit": {
+    "status": "PASS",
+    "shared_algorithm_authority": "engineering/geometry_optimization_20260704/42_geoopt_s3d_lightweight_20260712/code/run_s3d_delayed_activation.py",
+    "shared_algorithm_sha256": "c91daa9d3476c03d5e1300629fbbfc012a528d9238b4943491a371e35a5faa52",
+    "mutable_bindings": {
+      "package": "engineering/geometry_optimization_20260704/43_geoopt_s3d_o8_fallback_20260712",
+      "geometry": "engineering/geometry_optimization_20260704/43_geoopt_s3d_o8_fallback_20260712/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup",
+      "source_cards": "engineering/geometry_optimization_20260704/43_geoopt_s3d_o8_fallback_20260712/config/full_prompt_all8/source_cards",
+      "full_prompt": "runs/geometry_optimization_20260704/s3d_o8_fullstat_prompt_all8_20260712",
+      "instant": "runs/geometry_optimization_20260704/step02_instant_s3d_o8_neutron_delayed_m50000_20260712",
+      "buildup": "runs/geometry_optimization_20260704/step02_buildup_s3d_o8_neutron_delayed_m50000_20260712",
+      "raw": "runs/geometry_optimization_20260704/step02_decay_source_s3d_o8_neutron_delayed_m50000_20260712",
+      "fix": "runs/geometry_optimization_20260704/step02_delay_fix_s3d_o8_neutron_delayed_m50000_20260712",
+      "exact": "runs/geometry_optimization_20260704/step02_delay_exactpos_s3d_o8_neutron_delayed_m50000_20260712",
+      "delayed_transport": "runs/geometry_optimization_20260704/step02_delayed_transport_s3d_o8_neutron_delayed_m50000_20260712",
+      "delayed_report": "engineering/geometry_optimization_20260704/43_geoopt_s3d_o8_fallback_20260712/fullchain/delayed_source",
+      "campaign_manifest": "engineering/geometry_optimization_20260704/43_geoopt_s3d_o8_fallback_20260712/data/s3d_o8_delayed_activation_campaign.json"
+    },
+    "problems": []
+  },
+  "source_cards": {
+    "manifest": "engineering/geometry_optimization_20260704/43_geoopt_s3d_o8_fallback_20260712/config/full_prompt_all8/source_cards/source_migration_manifest.json",
+    "status": "PASS_S3D_O8_ALL8_SOURCE_CARDS"
+  },
+  "prepared_jobs": {
+    "audit": "engineering/geometry_optimization_20260704/43_geoopt_s3d_o8_fallback_20260712/data/s3d_o8_full_prompt_and_delayed_job_preflight.json",
+    "status": "PASS_S3D_O8_FULL_PROMPT_DELAYED_JOB_PREFLIGHT"
+  },
+  "failed_gates": [],
+  "heavy_confirmation_contract": {
+    "flag": "--allow-heavy-run",
+    "stage_tokens": {
+      "run-full-prompt": "RUN_O8_FULL_PROMPT_ALL8",
+      "run-buildup": "RUN_O8_NEUTRON_BUILDUP",
+      "prepare-delay": "BUILD_O8_DELAYED_SOURCE_M50000",
+      "run-delay": "RUN_O8_DELAYED_TRANSPORT_1M",
+      "all": "RUN_O8_FULLCHAIN_TRANSPORT_ALL"
+    },
+    "both_required_after_screening_pass": true
+  },
+  "statistics": {
+    "prompt_jobs": 68,
+    "gamma_events": 10000000,
+    "gamma_splits": 12,
+    "non_gamma_replicas": 8,
+    "neutron_buildup_jobs": 8,
+    "neutron_tt_division": 8,
+    "n_sample": 2000000,
+    "raw_triggers": 1000000,
+    "exact_position_blocks": 50000,
+    "seed": 260613
+  },
+  "claim_boundary": "Preparation and audit only. PENDING_SCREENING_GATE is not a transport result and cannot be replaced by historical O9 evidence."
+}

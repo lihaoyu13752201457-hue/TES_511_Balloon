@@ -1,0 +1,107 @@
+{
+  "status": "PASS_S3D_O8_STEP08_FULLCHAIN_TIME_DEPENDENT",
+  "generated_at_utc": "2026-07-12T13:48:52Z",
+  "claim_level": "S3D_O8_ALL8_PROMPT_NEUTRON_DELAYED_ATM511_MATCHED_SIGNAL_COUNTING_PROJECTION",
+  "inputs": {
+    "step05_summary": "engineering/geometry_optimization_20260704/43_geoopt_s3d_o8_fallback_20260712/fullchain/step05/step05_s3d_o8_fullchain_l1_response_summary.json",
+    "step06_summary": "engineering/geometry_optimization_20260704/43_geoopt_s3d_o8_fallback_20260712/fullchain/step06/step06_s3d_o8_fullchain_summary.json",
+    "step06_background_time_variation": "engineering/geometry_optimization_20260704/43_geoopt_s3d_o8_fallback_20260712/fullchain/step06/background_time_variation.csv",
+    "step07_summary": "engineering/geometry_optimization_20260704/43_geoopt_s3d_o8_fallback_20260712/fullchain/step07/source_case_summary.json",
+    "step07_source_case_rates": "engineering/geometry_optimization_20260704/43_geoopt_s3d_o8_fallback_20260712/fullchain/step07/source_case_rates.csv"
+  },
+  "checks": {
+    "A_reference_w2_Z20d_time_dependent": 19.255804314048326,
+    "A_reference_w2_Z20d_conservative95": 6.878336760171688,
+    "A_reference_w2_flux_3sigma_20d_ph_cm2_s": 1.557971794411782e-05,
+    "A_reference_w2_flux_3sigma_20d_conservative95_ph_cm2_s": 4.361519513512621e-05,
+    "A_reference_w2_T3_day": 0.4079336356091022,
+    "A_reference_w2_T5_day": 1.0391543113579944,
+    "A_reference_w2_T3_day_conservative95": 3.48209532560706,
+    "A_reference_w2_T5_day_conservative95": 10.516002121067823,
+    "accidental_loss_min": 0.022797831178672068,
+    "accidental_loss_max": 0.025006175334862824,
+    "atm511_occupancy_included": true
+  },
+  "comparison_to_heavy_control_screening_context": {
+    "authority": "engineering/geometry_optimization_20260704/40_s3c_mainline_lightweight_review_20260710/data/s3c_mainline_analysis_summary.json",
+    "scope": "retained heavy-control screening estimate, not a matched all-eight-family Step05-Step08 closure",
+    "estimated_f3_20d_ph_cm2_s": 1.35976e-05,
+    "estimated_background_cps": 0.005050984927709305,
+    "o8_central_over_heavy_control_screening_estimate": 1.1457696905422883,
+    "o8_conservative95_over_heavy_control_screening_estimate": 3.2075656832916257,
+    "central_within_1p05_context_gate": false,
+    "conservative95_within_1p10_context_gate": false,
+    "promotion_status": "PENDING_MATCHED_S3C_C0_FULLCHAIN; screening estimate is context, not a like-for-like authority"
+  },
+  "comparisons": {
+    "mass_reduction_direct_heavy_control": {
+      "status": "PASS_MATCHED_HEAVY_CONTROL_DIRECT_COMPARISON",
+      "manuscript_display_names": {
+        "optimized": "lightweight optimized active-shield configuration",
+        "control": "otherwise-identical heavy active-shield control"
+      },
+      "authority": "engineering/geometry_optimization_20260704/43_geoopt_s3d_o8_fallback_20260712/data/s3d_o8_screening_analysis.json",
+      "scope": "final W2 prompt eplus + neutron + atmospheric-511 matched subset",
+      "excluded_from_direct_proxy": "all other prompt families and delayed activation; those are evaluated only in the optimized full chain because no matched heavy-control all-eight/delayed replay is part of this screening campaign",
+      "heavy_control_matched_background_cps": 0.0038835593099640093,
+      "optimized_matched_background_cps": 0.004463791209742272,
+      "optimized_over_heavy_control_background": 1.1494072456392175,
+      "optimized_over_heavy_control_signal_acceptance": 0.9964650035349965,
+      "optimized_over_heavy_control_F3_screening_proxy": 1.0759074497395673,
+      "performance_preservation_fraction_screening_proxy": 0.929447974583742,
+      "signal": {
+        "ratio_counting_95": {
+          "high": 1.0037149971106811,
+          "level": 0.95,
+          "low": 0.989267377819709
+        },
+        "relative_signal_loss": 0.003534996465003548,
+        "promotion_gate_pass": true,
+        "authority": "engineering/geometry_optimization_20260704/43_geoopt_s3d_o8_fallback_20260712/data/s3d_o8_signal_replay_summary.json"
+      },
+      "causal_interpretation": "This matched screening proxy isolates the active-shield mass delta for the preregistered dominant subset and focused-signal acceptance. It does not replace the optimized all-eight prompt plus delayed full-chain result."
+    },
+    "whole_optimization_vs_reference_detector": {
+      "status": "PASS_FULLCHAIN_REFERENCE_COMPARISON",
+      "manuscript_display_names": {
+        "optimized": "lightweight optimized active-shield configuration",
+        "baseline": "reference detector baseline"
+      },
+      "reference_authority": {
+        "status": "PASS_REFERENCE_DETECTOR_BASELINE_AUTHORITY",
+        "manuscript_display_name": "reference detector baseline",
+        "step05_authority": "stepwise_maintenance/step05_veto_time_axis/outputs_Mass_model_511_fullstat_v1_l1/step05_Mass_model_511_fullstat_v1_l1_response_summary.json",
+        "step08_authority": "stepwise_maintenance/step08_significance/outputs_Mass_model_511_fullstat_v1/step08_Mass_model_511_fullstat_v1_time_dependent_summary.json",
+        "step05_w2_prompt_background_cps": 0.044088948071811976,
+        "step05_w2_delayed_background_cps": 0.003984600717591324,
+        "step05_w2_background_cps": 0.0480735487894033,
+        "step05_w2_signal_cps_at_reference_flux": 0.0011847573754053184,
+        "step08_Z20d": 7.038367535725279,
+        "step08_F3_20d_ph_cm2_s": 4.2623520081505106e-05,
+        "scope_note": "This is the paper's original reference detector result. It does not isolate the mass-reduction step; differences include the complete optimization stack and the reference chain's historical background scope."
+      },
+      "optimized_F3_20d_ph_cm2_s": 1.557971794411782e-05,
+      "optimized_F3_conservative95_20d_ph_cm2_s": 4.361519513512621e-05,
+      "reference_F3_20d_ph_cm2_s": 4.2623520081505106e-05,
+      "optimized_over_reference_F3": 0.3655192699787848,
+      "optimized_conservative95_over_reference_F3": 1.0232659116779848,
+      "central_sensitivity_improvement_fraction": 0.6344807300212152,
+      "optimized_over_reference_Z20d": 2.7358338728845712,
+      "causal_interpretation": "This is the net outcome of the complete optimized detector relative to the paper reference detector. It is not an estimate of the isolated causal effect of removing shield mass.",
+      "scope_warning": "The historical reference chain predates the explicit atmospheric-511 sidecar merge; report component scope alongside the numerical ratio."
+    }
+  },
+  "uncertainty_method": "Garwood 95% upper per independently normalized background component plus Clopper-Pearson 95% lower focused-signal acceptance; propagated through the same mission fold",
+  "outputs": {
+    "summary_json": "engineering/geometry_optimization_20260704/43_geoopt_s3d_o8_fallback_20260712/fullchain/step08/step08_s3d_o8_fullchain_time_dependent_summary.json",
+    "cumulative_significance": "engineering/geometry_optimization_20260704/43_geoopt_s3d_o8_fallback_20260712/fullchain/step08/cumulative_significance_by_case.csv",
+    "t3_t5_summary": "engineering/geometry_optimization_20260704/43_geoopt_s3d_o8_fallback_20260712/fullchain/step08/t3_t5_summary.csv",
+    "accidental_veto_by_time": "engineering/geometry_optimization_20260704/43_geoopt_s3d_o8_fallback_20260712/fullchain/step08/accidental_veto_by_time.csv"
+  },
+  "method_caveats": [
+    "Atmospheric detector occupancy is included in the accidental live factor in every time bin.",
+    "The atmospheric day-15 angular transfer is held fixed while phi_4pi is scaled with depth/Rc.",
+    "The S3c comparator is a retained screening estimate; a matched S3c all-eight-family closure remains required for a strict promotion gate.",
+    "No spatial/profile likelihood gain is claimed."
+  ]
+}

@@ -133,6 +133,16 @@ def canon_vn(vn: str) -> str:
     return n
 
 
+def canon_exc(vn: str, za: int, exc_keV: float) -> float:
+    """Return the default excitation-energy key used for DAT/SIM matching.
+
+    Campaign wrappers may replace this function when a retained DAT authority
+    has a coarser printed precision than the SIM ``CC IP RP`` records.
+    """
+    value = float(exc_keV)
+    return 0.0 if abs(value) < 1.0e-6 else value
+
+
 # -------------------------
 # Parse RP from .dat
 # -------------------------
@@ -285,9 +295,7 @@ def parse_rp_from_dat(dat_files: list[str], non_gamma_div: float, gamma_div: str
                 m = RP_RE.match(line)
                 if m and cur_vn is not None:
                     za = int(m.group(1))
-                    exc = float(m.group(2))
-                    if abs(exc) < 1e-6:
-                        exc = 0.0
+                    exc = canon_exc(cur_vn, za, float(m.group(2)))
                     val = float(m.group(3))
                     audit[tag]["rp_raw_total"] = float(audit[tag]["rp_raw_total"]) + val
                     audit[tag]["rp_scaled_total"] = float(audit[tag]["rp_scaled_total"]) + val / div
@@ -355,9 +363,7 @@ def _parse_one_sim_for_rpip(fp: str, div_by_tag: dict[str, float], want_proc: st
 
             vn = canon_vn(m.group("vn"))
             za = int(m.group("za"))
-            exc = float(m.group("exc"))
-            if abs(exc) < 1e-6:
-                exc = 0.0
+            exc = canon_exc(vn, za, float(m.group("exc")))
 
             # emitter wrote cm -> mm
             x_mm = float(m.group("x")) * 10.0

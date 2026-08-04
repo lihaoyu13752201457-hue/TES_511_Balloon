@@ -1,0 +1,102 @@
+{
+  "base_authority": "engineering/geometry_optimization_20260704/29_geoopt_s3c_bgo_w2mm_al3mm_shell_20260709/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup",
+  "decision_evidence": {
+    "exists": true,
+    "path": "engineering/geometry_optimization_20260704/43_geoopt_s3d_o8_fallback_20260712/data/o8_fallback_decision_evidence.json",
+    "sha256": "2b69ad64fc593771f269a0c432c5f49321242f8bcd96d245f5cb200dfb3e434e",
+    "status": "PASS_REPRODUCED_O9_GATE_FAILURE_AND_ENTRY_DIRECTIONS"
+  },
+  "design_decision": "O8 is the preregistered, data-driven fallback after O9 exceeded the dominant W2 gate. O9 atmospheric final-W2 survivors are 17/18 side entries (C0: 5/6) and their event count is 3x C0, so O8 restores the side BGO to 40 mm while retaining bottom/top mass reductions.",
+  "generated_geometry": "engineering/geometry_optimization_20260704/43_geoopt_s3d_o8_fallback_20260712/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup",
+  "mass_ledger": "engineering/geometry_optimization_20260704/43_geoopt_s3d_o8_fallback_20260712/data/s3d_o8_mass_ledger.json",
+  "new_bgo_volumes": [
+    {
+      "mass_kg_pre_relief": 42.67384140295581,
+      "name": "BGO_S3D_O8_FullWrap_BottomCap_30mm",
+      "r_inner_cm": 0.0,
+      "r_outer_cm": 25.2,
+      "trigger_threshold_keV": 80.0,
+      "z_max_cm": -19.4,
+      "z_min_cm": -22.4
+    },
+    {
+      "mass_kg_pre_relief": 4.440263910571477,
+      "name": "BGO_S3D_O8_FullWrap_TopAnnulus_10mm",
+      "r_inner_cm": 20.9,
+      "r_outer_cm": 25.2,
+      "trigger_threshold_keV": 80.0,
+      "z_max_cm": 41.9,
+      "z_min_cm": 40.9
+    }
+  ],
+  "overlap_source": "engineering/geometry_optimization_20260704/43_geoopt_s3d_o8_fallback_20260712/geometry/overlap_check_s3d_o8.source",
+  "overlap_validation": {
+    "hash_match": true,
+    "hashes": {
+      "det": true,
+      "geo": true,
+      "setup": true,
+      "source": true
+    },
+    "reported_status": "PASS",
+    "status": "PASS",
+    "summary": "engineering/geometry_optimization_20260704/43_geoopt_s3d_o8_fallback_20260712/data/cosima_overlap_s3d_o8_summary.json"
+  },
+  "physical_changes": [
+    "BGO bottom 40 to 30 mm, cavity-side z fixed at -19.4 cm",
+    "BGO top annulus 40 to 10 mm, cavity-side z fixed at 40.9 cm",
+    "remove exactly three outer 2 mm W mechanical-shell volumes and scorers"
+  ],
+  "production_boundary": "No prompt, atmospheric, focused-signal, buildup, activation, or delayed production is launched by this package.",
+  "retained_bgo_volumes": [
+    {
+      "mass_kg_pre_relief_independent": 250.68865864230725,
+      "name": "BGO_S3C_FullWrap_SideShell_WindowCut_40mm",
+      "r_inner_cm": 21.2,
+      "r_outer_cm": 25.2,
+      "retained_geo_and_det_blocks_byte_identical": true,
+      "z_max_cm": 40.9,
+      "z_min_cm": -19.4
+    }
+  ],
+  "shared_builder_authority": {
+    "path": "engineering/geometry_optimization_20260704/42_geoopt_s3d_lightweight_20260712/code/build_s3d_geometry.py",
+    "reused_functions": [
+      "copy_core_geometry",
+      "shape_defs via retained _s3c_base_recipe",
+      "strip_named_geo_lines",
+      "static_diff_audit",
+      "overlap_validation_state"
+    ],
+    "sha256": "6845dead695213ce987cec0224aa725f0b90783f79e5553c31d3ad888cb78a04"
+  },
+  "static_diff_audit": "engineering/geometry_optimization_20260704/43_geoopt_s3d_o8_fallback_20260712/data/s3c_to_s3d_o8_static_diff_summary.json",
+  "static_diff_status": "PASS",
+  "status": "S3D_O8_FALLBACK_GEOMETRY_VALIDATED_COSIMA_OVERLAP_PASS",
+  "structural_model_boundary": {
+    "bgo_to_retained_kapton_clearance_cm": {
+      "bottom": 1.17,
+      "side": 0.17,
+      "top": 3.17
+    },
+    "interpretation": "Byte-identical external Kapton/Al creates deliberate asymmetric service/vacuum gaps. This is a minimal-delta transport geometry, not a support/manufacturing or structural qualification.",
+    "retained_kapton_to_al_clearance_cm": {
+      "bottom": 0.3,
+      "side": 0.3,
+      "top": 0.3
+    }
+  },
+  "threshold_boundary": {
+    "frozen_screening_active_veto_keV": 50.0,
+    "native_bgo_trigger_keV": 80.0,
+    "note": "Future C0/O8 transport must freeze the same effective selection."
+  },
+  "unchanged": [
+    "BGO side40 volume ID, full geometry block, and detector scorer block",
+    "Al3 and Kapton IDs, placements, shapes, materials, and scorers",
+    "side window, pump-line relief, top service opening, and NF2 relief scheme",
+    "TES/cryostat/BPE/plastic geometry, InstrumentFrame, materials, response, and thresholds",
+    "source sphere center and radius"
+  ],
+  "variant": "s3d_o8_side40_bottom30_top10_no_outer_w2_al3"
+}

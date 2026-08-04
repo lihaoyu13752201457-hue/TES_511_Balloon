@@ -1,0 +1,133 @@
+{
+  "status": "PENDING_PRODUCTION_INPUTS",
+  "generated_at_utc": "2026-07-12T09:07:34Z",
+  "deep_SE_ID_audit": false,
+  "geometry_setup": "engineering/geometry_optimization_20260704/42_geoopt_s3d_lightweight_20260712/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup",
+  "gates": {
+    "geometry": {
+      "status": "PASS",
+      "problems": [],
+      "missing": [],
+      "authority": {
+        "status": "PASS",
+        "checks": {
+          "manifest_status": "S3D_O9_GEOMETRY_VALIDATED_COSIMA_OVERLAP_PASS",
+          "static_diff_status": "PASS",
+          "overlap_status": "PASS",
+          "independent_validation_status": "PASS",
+          "generated_geometry_matches": true
+        },
+        "s3d_geometry_hashes": {
+          "DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup": "86a9e56e54dc86834dfe2a9b03a5f71373fb40f2ef24e3889fa66f216058fbec",
+          "DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo": "dfefbb64202205c9da28248efdc6acfd8538013119f7c3f72a485a01ac257578",
+          "DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.det": "a9c692341adcb73ce7b1560cf64f52b4272c1014ed74fa02cdab83b94708c079",
+          "Intro_DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo": "f4ea834bf385f68a85690e018fd52d692e94e19dd93959e35e6f91efd3dbfd52",
+          "Materials_DEMO2_DR_v3p5.geo": "751cd83f08631085496ee86efa4418e4f001a639b15573554b93e73ff95678bf"
+        },
+        "s3c_geometry_hashes": {
+          "DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup": "86a9e56e54dc86834dfe2a9b03a5f71373fb40f2ef24e3889fa66f216058fbec",
+          "DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo": "010fc59398ff2710ef1a4cf95219a506d39e56ac170f36bf722ffa567e279410",
+          "DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.det": "fc01ff4a212880a28ab3d5f76844e522cd8082b4061b223ee6af9302bfc7ac19",
+          "Intro_DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo": "f4ea834bf385f68a85690e018fd52d692e94e19dd93959e35e6f91efd3dbfd52",
+          "Materials_DEMO2_DR_v3p5.geo": "751cd83f08631085496ee86efa4418e4f001a639b15573554b93e73ff95678bf"
+        }
+      }
+    },
+    "prompt_all8": {
+      "status": "PENDING_PRODUCTION",
+      "problems": [],
+      "missing": [
+        "runs/geometry_optimization_20260704/s3d_o9_fullstat_prompt_all8_20260712/run_summary.json"
+      ],
+      "expected_jobs": 68
+    },
+    "neutron_delayed": {
+      "status": "PENDING_PRODUCTION",
+      "problems": [],
+      "missing": [
+        "engineering/geometry_optimization_20260704/42_geoopt_s3d_lightweight_20260712/fullchain/delayed_source/delayed_source_exactpos_summary.json",
+        "runs/geometry_optimization_20260704/step02_delayed_transport_s3d_o9_neutron_delayed_m50000_20260712/DelayedDecayS3dO9NeutronM50000.inc1.id1.sim.gz",
+        "runs/geometry_optimization_20260704/step02_delay_fix_s3d_o9_neutron_delayed_m50000_20260712/normalization_audit_groundstate_fix.json",
+        "runs/geometry_optimization_20260704/step02_delay_fix_s3d_o9_neutron_delayed_m50000_20260712/activation_decay_day15_groundstate_fixed.source",
+        "runs/geometry_optimization_20260704/step02_delay_fix_s3d_o9_neutron_delayed_m50000_20260712/groundstate_activity_corrections.csv"
+      ],
+      "scope": "neutron-only activation"
+    },
+    "focused_signal": {
+      "status": "PASS",
+      "problems": [],
+      "missing": [],
+      "deep_count_audit": false,
+      "header": {
+        "status": "PRESENT",
+        "exists": true,
+        "geometry": "/home/ubuntu/TES_511_Balloon/engineering/geometry_optimization_20260704/42_geoopt_s3d_lightweight_20260712/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup",
+        "seed": 260616
+      },
+      "eventlist": "stepwise_maintenance/step09_optics_bridge/outputs_f10m_a1_v3p5/eventlists/Opticsim_laue_f10m_a1_v3p5_centerfinger.eventlist.dat",
+      "eventlist_rows": 37194,
+      "eventlist_sha256": "ee538d20d818baab94a5c3ebe01392a3ae9f278a231aa5b8938cdf23870f62b5",
+      "manifest": "engineering/geometry_optimization_20260704/42_geoopt_s3d_lightweight_20260712/data/s3d_signal_replay_manifest.json"
+    },
+    "atm511_sidecar": {
+      "status": "PENDING_PRODUCTION",
+      "problems": [],
+      "missing": [
+        "atm511: atmospheric transport log has no completion-time record yet: runs/geometry_optimization_20260704/s3d_o9_atm511_sidecar_3m_20260712/cosima_Atm511SidecarS3dO9_3M.log"
+      ],
+      "expected_events": 3000000,
+      "analyzer_summary": "engineering/geometry_optimization_20260704/42_geoopt_s3d_lightweight_20260712/data/s3d_atm511_replay_summary.json",
+      "analyzer_status": "PENDING_S3D_ATM511_INPUTS"
+    },
+    "selection_policy": {
+      "status": "PASS",
+      "problems": [],
+      "missing": [],
+      "selection_contract": {
+        "energy_windows_keV": {
+          "w2_510p58_511p42": [
+            510.58,
+            511.42
+          ],
+          "broad_480_550": [
+            480.0,
+            550.0
+          ],
+          "interval_policy": "lower-inclusive, upper-exclusive"
+        },
+        "active_veto_threshold_keV": 50.0,
+        "active_veto_acceptance": "summed matched active energy < 50 keV",
+        "active_veto_volume_rule": "BGO/CsI active scintillator + ActiveShield/CEBR3 + GeoOpt_S2B_CryoShell_Plastic*; W/Al mechanical shell excluded",
+        "side_compton_fov": {
+          "implementation": "old/code/tools/build_v3p5_centerfinger_step05_l1_response.py::side_keep_from_hits",
+          "reject_policy": "keep",
+          "knob0_policy": "frozen current monotonic policy; literal S0/S1-retain rule is not promoted"
+        }
+      },
+      "analysis_veto_threshold_keV": 50.0,
+      "native_BGO_detector_thresholds_keV": [
+        80.0,
+        80.0,
+        80.0
+      ],
+      "systematic_disclosure": "Cosima native BGO detector blocks use 80 keV, while postprocessing sums matched active deposits and applies <50 keV; both are frozen across comparison branches."
+    },
+    "comparison_authorities": {
+      "status": "PENDING_PRODUCTION",
+      "problems": [],
+      "missing": [
+        "matched screening status=PENDING_S3D_SCREENING_INPUTS"
+      ]
+    }
+  },
+  "failed_gates": [],
+  "pending_gates": [
+    "prompt_all8",
+    "neutron_delayed",
+    "atm511_sidecar",
+    "comparison_authorities"
+  ],
+  "production_launched": false,
+  "claim_boundary": "PENDING is not zero and is not transport evidence. No Step05--Step08 result summary is created until every present input passes and no input is missing.",
+  "output_scope": "engineering/geometry_optimization_20260704/42_geoopt_s3d_lightweight_20260712/fullchain"
+}
