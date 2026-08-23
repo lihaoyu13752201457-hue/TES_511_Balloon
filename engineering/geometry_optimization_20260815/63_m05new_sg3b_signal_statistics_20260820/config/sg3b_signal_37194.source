@@ -1,0 +1,18 @@
+# Candidate-own SG3B transport of the frozen Step09 37,194-ray EventList.
+# Signal-only gate: non-additive to background, no atmospheric TT or activation.
+
+Version 1
+Geometry /home/ubuntu/.codex/worktrees/4f50/TES_511_Balloon/engineering/geometry_optimization_20260815/55_geoopt_sg3b_bi_halfcylinder_al_harness_20260816/geometry/DEMO2_DR_v3p5_SG3B.geo.setup
+PhysicsListEM LivermorePol
+PhysicsListHD qgsp-bic-hp
+StoreSimulationInfo all
+DiscretizeHits true
+DetectorTimeConstant 1e-9
+Seed 1058253892
+
+Run M05NEW_SG3B_Signal37194
+M05NEW_SG3B_Signal37194.FileName /home/ubuntu/TES_511_Balloon/runs/m05new_sg3b_signal_20260820/M05NEW_SG3B_Signal37194
+M05NEW_SG3B_Signal37194.Triggers 37194
+M05NEW_SG3B_Signal37194.Source M05NEW_SG3B_Signal37194_PhaseSpace
+
+M05NEW_SG3B_Signal37194_PhaseSpace.EventList /home/ubuntu/TES_511_Balloon/stepwise_maintenance/step09_optics_bridge/outputs_f10m_a1_v3p5/eventlists/Opticsim_laue_f10m_a1_v3p5_centerfinger.eventlist.dat

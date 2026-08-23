@@ -1,0 +1,20 @@
+# Auto-generated for SH3 OptV3 signal transport smoke test, design intent B.
+# Beam re-pointed to the chimney focal plane (local z=-2.8):
+#   EventList translated world +(-21.566757, 0, +24.960869)
+#   (local dx=-32.9  -> injection at x=-46,  dz=+2.4 -> beam line z=-2.8)
+
+Version 1
+Geometry /home/ubuntu/.codex/worktrees/e3cf/TES_511_Balloon/engineering/geometry_optimization_20260815/sh3/assembly_opt_v3/geometry/SH3_Assembly_OptV3_60cm.geo.setup
+PhysicsListEM LivermorePol
+PhysicsListHD qgsp-bic-hp
+StoreSimulationInfo all
+DiscretizeHits true
+DetectorTimeConstant 1e-9
+Seed 83718195
+
+Run SH3_OptV3_Signal37194_focal_z2p8_smoke1000
+SH3_OptV3_Signal37194_focal_z2p8_smoke1000.FileName /mnt/data/TES_Balloon_511_data/SH3/sh3_optv3_signal_37194_focal_z2p8_v1/smoke/SH3_OptV3_Signal37194_focal_z2p8_smoke1000
+SH3_OptV3_Signal37194_focal_z2p8_smoke1000.Triggers 1000
+SH3_OptV3_Signal37194_focal_z2p8_smoke1000.Source SH3_OptV3_Signal37194_focal_z2p8_smoke1000_PhaseSpace
+
+SH3_OptV3_Signal37194_focal_z2p8_smoke1000_PhaseSpace.EventList /home/ubuntu/TES_511_Balloon/DEEPSEEK_CODE/outputs/eventlists/Opticsim_laue_f10m_a1_v3p5_centerfinger_optv3_focal_z2p8.eventlist.dat

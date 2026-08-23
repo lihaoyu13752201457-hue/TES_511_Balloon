@@ -1,0 +1,19 @@
+# Auto-generated for SH3 OptV3 stage-3 full-envelope signal gate.
+# Replays the frozen 37,194-ray Step09 optics-bridge EventList on OptV3 60cm setup.
+# Non-additive to any background campaign; no atmospheric TT, no activation.
+
+Version 1
+Geometry /home/ubuntu/.codex/worktrees/e3cf/TES_511_Balloon/engineering/geometry_optimization_20260815/sh3/assembly_opt_v3/geometry/SH3_Assembly_OptV3_60cm.geo.setup
+PhysicsListEM LivermorePol
+PhysicsListHD qgsp-bic-hp
+StoreSimulationInfo all
+DiscretizeHits true
+DetectorTimeConstant 1e-9
+Seed 83718194
+
+Run SH3_OptV3_Signal37194_smoke1000
+SH3_OptV3_Signal37194_smoke1000.FileName /mnt/data/TES_Balloon_511_data/SH3/sh3_optv3_signal_37194_v1/smoke/SH3_OptV3_Signal37194_smoke1000
+SH3_OptV3_Signal37194_smoke1000.Triggers 1000
+SH3_OptV3_Signal37194_smoke1000.Source SH3_OptV3_Signal37194_smoke1000_PhaseSpace
+
+SH3_OptV3_Signal37194_smoke1000_PhaseSpace.EventList /home/ubuntu/.codex/worktrees/e3cf/TES_511_Balloon/stepwise_maintenance/step09_optics_bridge/outputs_f10m_a1_v3p5/eventlists/Opticsim_laue_f10m_a1_v3p5_centerfinger.eventlist.dat

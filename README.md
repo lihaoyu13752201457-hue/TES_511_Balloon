@@ -9,6 +9,7 @@ the latest geometry-optimization work.
 
 - `engineering/Mass_model_511_nearfield_migration_20260701/`
 - `engineering/geometry_optimization_20260704/`
+- `engineering/particle_source_unit_repair_20260811/`
 
 ## Current Generated Products
 
@@ -16,6 +17,25 @@ the latest geometry-optimization work.
 - `outputs/reports/Mass_model_511_stage_diam_300_300_300_350_350_400_20260701/`
 - `runs/Mass_model_511_nearfield_migration_20260701/`
 - `runs/geometry_optimization_20260704/`
+- `runs/particle_source_unit_repair_20260811/`
+
+## Particle-source authority
+
+The earlier retained eight-family continuum cards used an energy axis smaller
+than intended by a factor of 1,000.  The new non-overwriting repair package
+provides package-owned correct-keV spectra and cards for Mass_model_511,
+S3c-C0, and S3d-O8.  Its static gate passes 160 spectra and 480/480 corrected
+card references with zero legacy references.
+
+Small-stat, full-eight-family instant and buildup campaigns have also passed
+for the Mass_model_511 reference geometry and the S3d-O8 optimization-line
+candidate geometry:
+32 jobs and 4,752 validated primary events.  Their batch-0000 ledger is
+merge-eligible under the frozen source/geometry/transport contract and
+disjoint-seed rule.  This is source-transport evidence, not a replacement for
+the pending matched full-stat prompt, activation, delayed, response, and
+sensitivity rerun.  Older broadband simulation rates and geometry rankings
+remain historical until that chain is repeated with the corrected source.
 
 ## Stepwise Products
 

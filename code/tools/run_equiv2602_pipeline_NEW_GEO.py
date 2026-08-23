@@ -19,6 +19,7 @@ from __future__ import annotations
 
 import argparse
 import csv
+import hashlib
 import json
 import math
 import os
@@ -40,6 +41,8 @@ OBS_RE = re.compile(r"Observation time:\s+([-+0-9.eE]+) sec")
 DEFAULT_EVENT_LIMIT_WITHOUT_CONFIRMATION = 5_000_000
 DEFAULT_GB_LIMIT_WITHOUT_CONFIRMATION = 100.0
 DEFAULT_CPU_DAY_LIMIT_WITHOUT_CONFIRMATION = 7.0
+DEFAULT_SEED_BASE = 1_000_003
+DEFAULT_SEED_STRIDE = 7_919
 
 
 def rel(path: Path) -> str:
@@ -47,6 +50,14 @@ def rel(path: Path) -> str:
         return path.relative_to(ROOT).as_posix()
     except ValueError:
         return str(path)
+
+
+def sha256_file(path: Path) -> str:
+    digest = hashlib.sha256()
+    with path.open("rb") as handle:
+        for chunk in iter(lambda: handle.read(1024 * 1024), b""):
+            digest.update(chunk)
+    return digest.hexdigest()
 
 
 def split_events(total: int, pieces: int) -> list[int]:
@@ -388,7 +399,7 @@ def build_jobs(args: argparse.Namespace) -> tuple[list[dict[str, Any]], dict[str
         job_name = f"Background_{tag}_fullsphere20_rep{rep:02d}_part{part:02d}"
         sim_prefix = outdir / job_name
         iso_prefix = outdir / f"{job_name}.dat"
-        seed = 1000003 + ordinal * 7919
+        seed = args.seed_base + ordinal * args.seed_stride
         jobs.append(
             {
                 "job_name": job_name,
@@ -448,15 +459,24 @@ def build_jobs(args: argparse.Namespace) -> tuple[list[dict[str, Any]], dict[str
         "selected_particles": sorted(selected),
         "jobs": len(jobs),
         "store_isotopes": not args.disable_isotope_store,
+        "seed_base": args.seed_base,
+        "seed_stride": args.seed_stride,
+        "seed_policy": (
+            "seed = seed_base + one_based_job_ordinal * seed_stride; "
+            "campaigns intended for later aggregation must use disjoint seed ranges"
+        ),
     }
     if source_manifest is not None:
         normalization["source_migration_manifest"] = {
             "path": rel(source_manifest_path),
+            "sha256": sha256_file(source_manifest_path),
             "status": source_manifest.get("status"),
             "geometry_setup": source_manifest.get("geometry_setup"),
             "geometry_status": source_manifest.get("geometry_status"),
             "farfield_radius_cm": source_manifest.get("farfield_radius_cm"),
             "pointing_policy": source_manifest.get("pointing_policy"),
+            "source_contract_manifest_path": source_manifest.get("source_contract_manifest_path"),
+            "source_contract_manifest_sha256": source_manifest.get("source_contract_manifest_sha256"),
         }
         manifest_radius = source_manifest.get("farfield_radius_cm")
         if manifest_radius is not None and abs(float(manifest_radius) - args.farfield_radius_cm) > 1.0e-9:
@@ -554,6 +574,8 @@ def main() -> int:
     ap.add_argument("--particles", default="")
     ap.add_argument("--max-jobs", type=int, default=None)
     ap.add_argument("--farfield-radius-cm", type=float, default=35.0)
+    ap.add_argument("--seed-base", type=int, default=DEFAULT_SEED_BASE)
+    ap.add_argument("--seed-stride", type=int, default=DEFAULT_SEED_STRIDE)
     ap.add_argument("--cosima", default=default_cosima)
     ap.add_argument("--dry-run", action="store_true")
     ap.add_argument(
@@ -573,6 +595,10 @@ def main() -> int:
     ap.add_argument("--max-estimated-gb-without-confirmation", type=float, default=DEFAULT_GB_LIMIT_WITHOUT_CONFIRMATION)
     ap.add_argument("--max-estimated-cpu-days-without-confirmation", type=float, default=DEFAULT_CPU_DAY_LIMIT_WITHOUT_CONFIRMATION)
     args = ap.parse_args()
+    if args.seed_base <= 0:
+        raise SystemExit("--seed-base must be positive")
+    if args.seed_stride <= 0:
+        raise SystemExit("--seed-stride must be positive")
     if args.disable_isotope_store and args.mode != "instant":
         raise SystemExit("--disable-isotope-store is only supported with --mode instant")
 

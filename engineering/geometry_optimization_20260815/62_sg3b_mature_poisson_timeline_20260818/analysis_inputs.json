@@ -1,0 +1,29 @@
+{
+  "schema_version": 1,
+  "profile_id": "SG3B_MATURE_COMMON_POISSON_TIMELINE_20260818_V1",
+  "candidate": "SG3B",
+  "package58": "engineering/geometry_optimization_20260815/58_sg3b_m05_common_time_response_20260817",
+  "package58_config": "engineering/geometry_optimization_20260815/58_sg3b_m05_common_time_response_20260817/analysis_inputs.json",
+  "package58_code": "engineering/geometry_optimization_20260815/58_sg3b_m05_common_time_response_20260817/code/analyze_sg3b_common_time.py",
+  "mature_method_sources": [
+    "old/code/tools/make_complete_day15_report_ADR.py",
+    "old/code/tools/build_v3p5_centerfinger_step05_l1_response.py"
+  ],
+  "timeline": {
+    "anchor_time_bin_ids": [0, 20, 40, 60, 80],
+    "exposure_s_per_anchor": 20000.0,
+    "coincidence_window_s": 1e-6,
+    "plastic_threshold_keV": 50.0,
+    "bgo_threshold_keV": 50.0,
+    "seed": 2026081801,
+    "chunk_events": 1000000,
+    "signal_probe_trials_per_anchor": 2000000
+  },
+  "explicit_exclusions": {
+    "cosima_transport": true,
+    "large_SIM_hashes": true,
+    "parma_mono511_from_broadband_sum": true,
+    "superseded_delayed_v1": true,
+    "paper_edit": true
+  }
+}

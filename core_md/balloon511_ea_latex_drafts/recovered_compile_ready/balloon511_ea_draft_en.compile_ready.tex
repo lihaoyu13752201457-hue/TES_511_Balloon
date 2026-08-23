@@ -43,13 +43,13 @@
 {\large Authors omitted for review\par}
 \end{center}
 \begin{abstract}
-The Galactic 511 keV annihilation signal is dominated by diffuse bulge and disk emission, while compact or point-like contributions remain poorly constrained. We present a detector-coupled Monte Carlo estimate for a balloon-borne pointed telescope combining a 10 m Ge(111) Laue lens with a transition-edge sensor microcalorimeter focal plane. The signal chain transports focused 511 keV photons through the Be aperture into the detector/cryostat mass model. The background chain transports prompt atmospheric particles and photons and production-position-sampled delayed activation decays through the same model. Prompt, delayed, and signal streams are analyzed with a common $510.79$--$511.21\keV$ window, CsI anticoincidence veto, and topology/field-of-view consistency selection. For a reference point-source flux of $10^{-4}\phcms$, the selected day-15 signal and background rates are $1.19\times10^{-3}\cps$ and $3.92\times10^{-2}\cps$, respectively; prompt atmospheric events account for 93.4\% of the selected background. Folding these rates through the adopted synthetic 20 d trajectory gives $Z_{20\mathrm{d}}=7.80$ and a corresponding $3\sigma$ flux threshold of $3.85\times10^{-5}\phcms$. The result is a selected-rate flight-sensitivity estimate for a spectrally unresolved compact 511 keV source under the reference geometry and response model. Prompt atmospheric events dominate the selected background, while the delayed component is smaller but materially structured, identifying shielding, side-entry collimation, local materials, and activation validation as the main next engineering and analysis targets.
+The Galactic 511 keV annihilation signal is dominated by diffuse bulge and disk emission, while compact or point-like contributions remain poorly constrained. We present a detector-coupled Monte Carlo estimate for a balloon-borne pointed telescope combining a 10 m Ge(111) Laue lens with a transition-edge sensor microcalorimeter focal plane. The signal chain transports focused 511 keV photons through the Be aperture into the detector/cryostat mass model. The background chain transports prompt atmospheric particles and photons and production-position-sampled delayed activation decays through the same model. Prompt, delayed, and signal streams are analyzed with a common $510.58$--$511.42\keV$ window, CsI anticoincidence veto, and topology/field-of-view consistency selection. For a reference point-source flux of $10^{-4}\phcms$, the selected day-15 signal and background rates are $1.18\times10^{-3}\cps$ and $4.81\times10^{-2}\cps$, respectively; prompt atmospheric events account for 91.7\% of the selected background. Folding these rates through the adopted synthetic 20 d trajectory gives $Z_{20\mathrm{d}}=7.04$ and a corresponding $3\sigma$ flux threshold of $4.26\times10^{-5}\phcms$. The result is a selected-rate flight-sensitivity estimate for a spectrally unresolved compact 511 keV source under the reference geometry and response model. Prompt atmospheric events dominate the selected background, while the delayed component is smaller but materially structured, identifying shielding, side-entry collimation, local materials, and activation validation as the main next engineering and analysis targets.
 \end{abstract}
 \noindent\textbf{Keywords}\hspace{0.7em}Gamma-ray instrumentation, 511 keV annihilation line, transition-edge sensors, Laue lens, balloon-borne telescope, activation background
 \vspace{1em}
 
 
-In this work we develop an end-to-end detector-coupled Monte Carlo chain for this concept and use it to estimate the in-flight background and point-source performance at balloon altitude and to provide directional guidance for design optimization. The chain takes the EXPACS/PARMA atmospheric cosmic-ray field as input and, at balloon altitude, transports the prompt particles while tracking their activation products, yielding both the prompt atmospheric background and the delayed activation background that builds up over the flight; the focused 511 keV reference signal is provided by a 10 m Ge(111) Laue-optics model. The signal and both backgrounds are injected into the same representative balloon-borne TES focal-plane mass model (a dilution-refrigerator cold end, passive shielding, and an active anticoincidence shield), processed with a common narrow energy window, anticoincidence veto, and topology/field-of-view selection, and folded along a reference flight trajectory to give the selected signal rate, the background composition, and the counting significance. The selected background is dominated by the prompt atmospheric component, so the shield geometry, side-entry collimation, and shield material are the most direct directions for design optimization; the delayed activation and the upstream optics-hardware background enter the same evaluation as secondary components. This work thereby estimates the in-flight background and detection performance of the balloon platform and indicates directions for design optimization.
+In this work we develop an end-to-end detector-coupled Monte Carlo chain for this concept and use it to estimate the in-flight background and point-source performance at balloon altitude and to provide directional guidance for design optimization. The chain takes the EXPACS/PARMA atmospheric cosmic-ray field as input and, at balloon altitude, transports the prompt particles while tracking their activation products, yielding both the prompt atmospheric background and the delayed activation background that builds up over the flight; the focused 511 keV reference signal is provided by a 10 m Ge(111) Laue-optics model. The signal and both backgrounds are injected into the same representative balloon-borne TES focal-plane mass model (a dilution-refrigerator cold end, passive shielding, and an active anticoincidence shield), processed with a common narrow energy window, anticoincidence veto, and topology/field-of-view selection, and folded along a reference flight trajectory to give the selected signal rate, the background composition, and the counting significance. The selected background is dominated by the prompt atmospheric component, so the shield geometry, side-entry collimation, and shield material are the most direct directions for design optimization; delayed activation enters the same evaluation as a secondary component, whereas upstream optics-hardware background remains outside the primary detector-background budget. This work thereby estimates the in-flight background and detection performance of the balloon platform and indicates directions for design optimization.
 
 \subsection{Science and instrument requirements}
 \label{sec:requirements}
@@ -69,7 +69,7 @@ The detector mass model is an engineering Geant4/MEGAlib proxy mass model that c
 
 The TES detector concept uses an absorber-coupled AlMn film structure developed in our laboratory; the advantages of AlMn alloy include transition-temperature tunability through composition and annealing, suitability for array fabrication, and relatively low magnetic-field sensitivity \cite{Xie2026AlMn,Vavagiakis2017AlMnMagnetic}. In the present concept, the TES thermometer film is an AlMn film of order $200\,\mathrm{nm}$ thickness, whereas the $\gamma$-ray absorber is a millimetre-scale metal body. The absorber uses $1.5\times1.5\times3.0\,\mathrm{mm^3}$ Ta pixels; the high atomic number of Ta increases the interaction probability for 511 keV photons, and a $3.0\,\mathrm{mm}$ thickness corresponds to about a $49\%$ single-layer detection efficiency at 511 keV, so the six-layer array can provide near-unity detection efficiency. In the current geometry, the center-to-center spacing between adjacent Ta array layers is $12\,\mathrm{mm}$; this spacing is designed with the efficiency of the subsequent Compton-based kinematic-track veto mechanism in mind. The choice of Ta also considers its low-temperature low-specific-heat properties as a superconductor (this paper uses an order-of-magnitude estimate of $10^{-2}\,\mathrm{J\,K^{-1}\,m^{-3}}$) and a relatively high photoelectric-to-Compton interaction ratio; based on NIST XCOM cross sections near 511 keV, this ratio is about 0.731 \cite{NISTXCOM}. Based on laboratory experience and by substituting the current Ta absorber heat capacity of $67.5\,\mathrm{pJ/K}$, the simulation adopts $\Delta E_{\mathrm{FWHM}}\simeq420\,\mathrm{eV}$ at 511 keV as the current simulated energy resolution.
 
-Because the TES film and Ta absorber differ greatly in size and mass, and because the TES film itself does not contribute significant 511 keV interactions, the transport geometry uses the Ta absorber to represent the main sensitive volume of a TES pixel. The explicit sensitive volume has six layers, 376 Ta absorber pixels per layer, and 2256 pixels in total, with 1.5 mm length and width and 3 mm thickness. A Si substrate proxy is placed below each Ta pixel, using Si to represent the SiO2-SiNx-Si substrate because this simulation does not model detailed thermal conduction. TES-film, wiring, and readout details are not built layer by layer as explicit interaction volumes; instead, they enter the model through the assumed energy response and service-mass proxies. In the current manuscript, the TES energy resolution is used as the 511 keV line-window width, with W511 = 511 keV $\pm$ 210 eV, i.e. 510.79--511.21 keV.
+Because the TES film and Ta absorber differ greatly in size and mass, and because the TES film itself does not contribute significant 511 keV interactions, the transport geometry uses the Ta absorber to represent the main sensitive volume of a TES pixel. The explicit sensitive volume has six layers, 376 Ta absorber pixels per layer, and 2256 pixels in total, with 1.5 mm length and width and 3 mm thickness. A Si substrate proxy is placed below each Ta pixel, using Si to represent the SiO2-SiNx-Si substrate because this simulation does not model detailed thermal conduction. TES-film, wiring, and readout details are not built layer by layer as explicit interaction volumes; instead, they enter the model through the assumed energy response and service-mass proxies. In the current manuscript, the 511 keV line window is W511 = 511 keV $\pm$ 420 eV, i.e. 510.58--511.42 keV.
 
 The TES array is mounted on the required copper support and thermal-link structures. Copper provides the decisive thermal-conduction path; a copper thermal finger exits through the bottom hole of the sample box and connects to the 50 mK cold plate. The near-field TES sample box serves as both magnetic shielding and local passive shielding. The current mainline geometry consists of a 2 mm Nb inner layer and a 2 mm MuMetal outer layer, with MuMetal represented in the material table as Ni:Fe = 4:1. The sample-box entrance window is covered by a thin Al window; the rear end cap retains the hole for the cold finger. A W--Nb double-layer sample box is treated as a comparison passive-shielding + magnetic-shielding material design; the X-ray window is opened on the side of the cryostat, with a 300 $\mu$m thick Al window embedded in the thermal-shield shell inside each cryostat layer, a 25 $\mu$m thick Be window placed in the vacuum shell, and an $x$-thick W collimator placed outside the Be window, with the collimator opening strictly aligned to the TES pixels. The side window is strictly defined through Boolean operations. The mass model also introduces scintillator active shielding, wrapped around the outer side wall, bottom, and top of the cryostat. Segmented CsI active shielding is used, with a radial side-shield thickness of 4 cm; the bottom and top shields are included in the geometry as axial end volumes. CsI volumes enter the simulation as transport and activation materials, and their deposited energies are read in post-processing to apply the active veto; the counting threshold is 50 keV. BGO active shielding is treated as a material-comparison case; the BGO threshold is 70 keV. Considering the physical layout of the DR and the side-entry optical path, the cryostat instrument frame is rotated as a whole by 45 degrees, so that the local side window is tilted $45^\circ$ upward in the zenith-frame source coordinates.
 
@@ -85,7 +85,7 @@ The TES array is mounted on the required copper support and thermal-link structu
 \section{Simulation framework}
 \label{sec:framework}
 
-Detector-coupled Monte Carlo transport through detailed mass models is a mature method for predicting the response and background of gamma-ray spectrometers \cite{Sturner2003}. This section describes the full end-to-end simulation chain from source generation to flight-performance assessment. The focusing optics and detector system start from independent mass models: the optics-branch mass model takes the target point source, prompt background, and delayed-background source as inputs, and records all particles transported through it that reach the focal-plane plane as the focused-source input to the detector branch; the detector branch then directly transports, in the detector/cryostat mass model of Section~\ref{sec:geometry}, prompt atmospheric particles, delayed decays generated from activation products according to recorded production positions, and the focused sources described above. The focused source, prompt source, and delayed source are simulated stepwise and normalized onto one time axis through Poisson-statistics-based time-axis sampling and renormalization, then the background is further suppressed by scintillator-based active veto and Compton-kinematics-based veto. The chain subsequently enters detailed background-analysis statistics, analysis of signal and background intensity variation caused by mission flight-time trajectory changes, and the overall flight-performance assessment and design-optimization recommendations. Because the focused signal and the two background streams all pass through the same response and veto definitions before any background decomposition or sensitivity statement, the subsequent results rest on a consistent event selection.
+Detector-coupled Monte Carlo transport through detailed mass models is a mature method for predicting the response and background of gamma-ray spectrometers \cite{Sturner2003}. This section describes the full end-to-end simulation chain from source generation to flight-performance assessment. The focusing optics and detector system start from independent mass models: the optics-branch mass model takes the target point source and records focused photons reaching the focal-plane plane as the focused-source input to the detector branch; the detector branch then directly transports, in the detector/cryostat mass model of Section~\ref{sec:geometry}, prompt atmospheric particles, delayed decays generated from activation products according to recorded production positions, and the focused sources described above. The focused source, prompt source, and delayed source are simulated stepwise and normalized onto one time axis through Poisson-statistics-based time-axis sampling and renormalization, then the background is further suppressed by scintillator-based active veto and Compton-kinematics-based veto. The chain subsequently enters detailed background-analysis statistics, analysis of signal and background intensity variation caused by mission flight-time trajectory changes, and the overall flight-performance assessment and design-optimization recommendations. Because the focused signal and the two background streams all pass through the same response and veto definitions before any background decomposition or sensitivity statement, the subsequent results rest on a consistent event selection.
 
 Figure~\ref{fig:workflow} expands this chain by computational layer: geometry definition, prompt and activation-accumulation transport, delayed-source construction, focused-optics transport, detector-coupled signal replay, veto mechanisms, detailed background analysis, time/flight-trajectory variation, and flight-performance assessment with design-optimization recommendations. The following subsections describe each layer's inputs, operations, and outputs.
 
@@ -137,7 +137,7 @@ and design-optimization judgments are made.}
 \subsection{Laue optics and detector-coupled signal replay}
 \label{sec:optics}
 
-This simulation adopts a laue-lens system based on mosaic Ge(111) crystals \cite{Barriere2009Laue,Barriere2011LauePrototype}. Through optical design, it realizes a 10 m focal length, \textcolor{red}{a multi-ring system realizes the 450keV-550keV detection band}, and an effective area of 20cm**2 at 511keV; the effective area is calculated as
+This simulation adopts a laue-lens system based on mosaic Ge(111) crystals \cite{Barriere2009Laue,Barriere2011LauePrototype}. Through optical design, it realizes a 10 m focal length, a 511\keV{} single-ring reference response, and an effective area of $20.1\,\mathrm{cm^2}$ at 511\keV; the effective area is calculated as
 \begin{equation}
   A_{\mathrm{eff}}(E)=A_{\mathrm{inc}}\frac{N_{\mathrm{fp}}(E)}{N_{\mathrm{inc}}(E)}
   \label{eq:laue_aeff}
@@ -145,13 +145,13 @@ This simulation adopts a laue-lens system based on mosaic Ge(111) crystals \cite
 where $A_{\mathrm{inc}}$ is the Monte Carlo incident sampling area, $N_{\mathrm{inc}}(E)$ is the number of incident photons, and $N_{\mathrm{fp}}(E)$ is the number of photons satisfying the focusing/focal-plane interception condition.
 The mosaic system is adopted to make the Monte Carlo calculation convenient while satisfying the expected focusing performance; other candidate schemes are also possible for actual engineering adaptation.
 
-In this simulation, the laue optical branch gives the focusing-performance simulation and \textcolor{red}{also realizes particle transport of itself as mass}.
+In this simulation, the laue optical branch gives the focusing-performance simulation and transports the focused signal through the Ge crystal mass.
 
 For this purpose, the diffraction probability of photons by the crystal is no longer superposed onto photons as an efficiency parameter, but is defined as a discrete process at the Geant4 application layer \cite{Agostinelli2003,Allison2016}. The process takes the diffraction probability $R(|\Delta\theta|)$ according to the angular deviation of the current photon relative to the crystal plane, and converts it into a finite equivalent diffraction mean free path $\lambda_{\mathrm{diff}}$, so that the accumulated diffraction probability when the photon crosses a crystal path $\ell$ reproduces this value: $1-\exp(-\ell/\lambda_{\mathrm{diff}})=R(|\Delta\theta|)$, namely $\lambda_{\mathrm{diff}}=-\,\ell/\ln[1-R(|\Delta\theta|)]$; to avoid double counting with standard photoelectric absorption, $R$ is first normalized by the unabsorbed fraction ($R/(1-A)$) and then converted into a mean free path. After this mean free path is returned to Geant4, the diffraction process and the standard electromagnetic processes (photoelectric absorption and Compton scattering) each sample interaction lengths in the same competition framework, and the shortest one decides which process occurs first, rather than forcibly intercepting photons at the crystal boundary. Photons not selected to undergo diffraction still continue transport according to the standard electromagnetic physics, and may be absorbed, scattered, or directly transmitted.
 
 The diffraction probability is preferentially given by interpolation in an external XOP/CRYSTAL rocking-curve map as a function of angular deviation: this curve is calculated offline once in the preprocessing stage by the CRYSTAL/diff\_pat module of the XOP toolkit (called through xoppylib, with DABAX crystallographic data as input) \cite{SanchezDelRio2011XOP}, and gives the Ge(111) reflectivity/transmissivity/absorption curves as a function of angular deviation; during transport, the angular deviation is calculated in real time for every step inside the crystal, and the current diffraction probability is obtained by interpolation on that curve, namely ``offline library tabulation, probability used by angle during transport''. The mosaic orientation is implemented by applying a Gaussian angular perturbation to the ideal Bragg-plane normal, with the perturbation width given by the 30 arcsec mosaic FWHM; after diffraction occurs, the outgoing direction is mirror-reflected according to the perturbed plane normal, and the photon energy is unchanged. This split in which the ``process class only handles the transport interface, and the independent model class handles probability and direction decisions'' follows the idea of existing crystal Bragg-reflection extensions in Geant4 \cite{Guan2023BraggReflection,Reiazi2025G4BraggReflection}, and extends it to the energy band needed here.
 
-Here the reference signal is a monochromatic 511\keV{} point source whose flux scale is set by the INTEGRAL/SPI upper limit on a compact 511\keV{} source superposed on the Galactic-centre diffuse emission ($\fzero=10^{-4}\phcms$ above the atmosphere, Section~\ref{sec:requirements}) \cite{Siegert2016AA,DeCesare2011}, rather than by any single observed object. It is constructed as a MEGAlib far-field source \cite{Zoglauer2006}, with the detailed construction given in Section~\ref{subsec:pointsource}. In addition to the signal we construct the prompt cosmic-ray background and the activation background as far-field sources. The transport of these three sources is simulated separately; in each run the particle flux, species, and energy crossing the focal plane are intercepted as outputs, normalized to a common equivalent observation time, and injected into the detector mass model as a parallel-beam source.
+Here the reference signal is a monochromatic 511\keV{} point source whose flux scale is set by the INTEGRAL/SPI upper limit on a compact 511\keV{} source superposed on the Galactic-centre diffuse emission ($\fzero=10^{-4}\phcms$ above the atmosphere, Section~\ref{sec:requirements}) \cite{Siegert2016AA,DeCesare2011}, rather than by any single observed object. It is constructed as a MEGAlib far-field source \cite{Zoglauer2006}, with the detailed construction given in Section~\ref{subsec:pointsource}. The signal is transported through the optics branch and injected into the detector mass model as a parallel-beam source; prompt cosmic-ray background and activation decays are transported directly in the detector/cryostat mass model. Optics-mass prompt and delayed background are not included in the primary detector-background budget.
 
 \subsection{Source construction}
 \label{sec:background}
@@ -246,7 +246,7 @@ against NUBASE2020 \cite{Kondev2021NUBASE}. For isotope $k$,
 where $P_k$ is the production rate inferred from the activation-production
 transport and $t_{\mathrm{flight}}=15\,\mathrm{d}$ for the reference state.
 The fixed delayed total activity used by the reference delayed-source
-construction is $85.45\,\mathrm{Bq}$.
+construction is $141.83\,\mathrm{Bq}$.
 
 The position information does not come from the aggregate isotope store alone.
 The standard store records volume names and isotope counts; the
@@ -258,11 +258,11 @@ identifier $1000Z+A$, excitation energy, time, process, and track-ancestry
 information. The fixed day-15 population is then matched to these records by
 volume, isotope, and excitation state, so the delayed source can use the
 simulated production coordinates rather than only volume-integrated activities.
-Figure~\ref{fig:delayed_position_distribution} in Appendix~\ref{app:delayed}
-shows the resulting position distribution: the activity-weighted map is
-dominated by CsI-shield activation and $^{128}$I, with smaller contributions
-from Cu, Al, W, Mg, and Cs isotopes. It is a source-construction diagnostic,
-not a detector-count map; detector response is applied only after the delayed
+The current Mass\_model\_511 source-level inventory is dominated by CsI-shield
+activation and $^{128}$I, with smaller contributions from Cu, Al, W, Mg, and
+Cs isotopes. A Mass-specific appendix position-distribution figure remains to
+be regenerated. It is a source-construction diagnostic, not a detector-count
+map; detector response is applied only after the delayed
 decays are transported through the common geometry and event selection.
 
 Whether the production positions are worth preserving can be tested from the
@@ -280,14 +280,11 @@ compared with the total-variation distance
 \end{equation}
 where $f_{a,c}$ is the fraction of delayed activity from family $a$ produced
 in material category $c$. In the fixed day-15 table, neutron-induced products
-carry about $82.5\,\mathrm{Bq}$, $\mu^-$-induced products $2.75\,\mathrm{Bq}$,
-proton-induced products $0.15\,\mathrm{Bq}$, and $\alpha$-induced products
-$0.022\,\mathrm{Bq}$, with smaller $\mu^+$ and $e^+$ terms. The
-neutron-induced activity remains dominated by the CsI shield, whereas the
-$\mu^-$ component is qualitatively different: Cu/support material, Al shells,
-and W-bearing passive material account for 32\%, 29\%, and 21\% of the
-$\mu^-$-induced activity, respectively
-(Figure~\ref{fig:position_sampling_necessity} in Appendix~\ref{app:delayed}).
+carry about $133.67\,\mathrm{Bq}$, $\mu^-$-induced products $7.63\,\mathrm{Bq}$,
+proton-induced products $0.434\,\mathrm{Bq}$, and $\alpha$-induced products
+$0.0825\,\mathrm{Bq}$, with smaller $\mu^+$, $e^+$, and $\gamma$ terms. The
+neutron-induced activity remains dominated by the CsI shield. The corresponding
+Mass\_model\_511 material-category fractions have not yet been regenerated.
 A volume-integrated or axisymmetric radial source could preserve the total
 activity, but it would erase these incident-family, material, nuclide, and
 coordinate correlations; the production-position construction keeps them in
@@ -328,7 +325,7 @@ Layer & Physical role & Current implementation \\
 \hline
 Prompt atmospheric transport & Direct detector hits from atmospheric secondaries & EXPACS/PARMA full-sphere source definitions at $34^\circ$ latitude, $100^\circ$ longitude, $38\,\mathrm{km}$ altitude, $R_c=11.6\,\mathrm{GV}$, and $W=118.3$; $\gamma$, $n$, $e^\pm$, $p$, $\alpha$, and $\mu^\pm$ over 20 equal-$\mu$ differential zenith bins including both down-going and up-going hemispheres; 25,210,216 generated primaries. \\
 Activation production & Radioisotope production and production-position history & Same atmospheric field transported as a BUILDUP activation-production stream, again retaining both hemispheres and all eight particle families; 25,210,216 generated primaries. \\
-Fixed delayed population & Radioactive activity at the adopted day-15 state after continuous exposure & Production--decay accumulation with NUBASE-checked ground-state half-lives; total fixed activity $85.45\,\mathrm{Bq}$. \\
+Fixed delayed population & Radioactive activity at the adopted day-15 state after continuous exposure & Production--decay accumulation with NUBASE-checked ground-state half-lives; total fixed activity $141.83\,\mathrm{Bq}$. \\
 Production-position decay transport & Delayed decay particles emitted from sampled production positions & Equal-activity sampled point sources from the weighted production table; reference transport uses $10^6$ delayed decays per source sampling. \\
 \hline
 \end{tabular}
@@ -336,10 +333,9 @@ Production-position decay transport & Delayed decay particles emitted from sampl
 
 This production-position representation does not create one sampled point source
 for every production row. It is a statistical sampling approximation whose
-adequacy is evaluated separately at the selected-rate level in
-Section~\ref{subsec:convergence}. Source-list checks verify activity
-conservation and source serialization; selected-rate behavior is tested
-separately after detector transport and event selection.
+adequacy remains to be evaluated at the selected-rate level. Source-list checks
+verify activity conservation and source serialization; selected-rate behavior
+remains to be tested after detector transport and event selection.
 
 \subsubsection{Reference point-source construction}
 \label{subsec:pointsource}
@@ -377,8 +373,8 @@ $N_{\mathrm{fp}}/[\fzero\,\aeff\,T]$, and each replayed event carries the invers
 of that exposure as its rate weight; in the intermediate cut-flow bookkeeping of
 Section~\ref{sec:selection} the same sample appears as a unit replay before this
 scale is applied. After the common detector response and event selection, the
-surviving signal rate is $1.19\times10^{-3}\cps$, corresponding to a selected
-effective area of $S_{\wii}/\fzero=11.9\,\mathrm{cm^2}$. Because the optics run
+surviving signal rate is $1.185\times10^{-3}\cps$, corresponding to a selected
+effective area of $S_{\wii}/\fzero=11.85\,\mathrm{cm^2}$. Because the optics run
 contains only source photons, the replayed stream is signal-pure; all
 backgrounds enter through the streams of Section~\ref{sec:background}.
 
@@ -388,7 +384,9 @@ jitter during flight, reduces and shifts the focused response through the finite
 angular acceptance (field of view) of the Laue lens
 \cite{Barriere2009Laue,Weidenspointner2006MAX}; this off-axis dependence is
 treated as a pointing systematic on the signal effective area rather than as a
-change to the on-axis reference construction.
+change to the on-axis reference construction. The current $45^\circ$
+side-entry response is a north-sky/near-zenith reference, not a simulated
+low-elevation Galactic-centre observation.
 
 \subsection{Detector event selection and veto definitions}
 \label{sec:selection}
@@ -414,12 +412,12 @@ records are selected with probabilities $r_{kj}/R_k$ with replacement, each is
 assigned a uniform random time in the reference window $[0,T]$, and all streams
 are merged and time-ordered into a single detector time axis carrying the three
 physical rates. Event instances separated by no more than $\tau=1\,\mu\mathrm{s}$
-are grouped into a coincidence candidate group $c$. In the baseline (Figure~\ref{fig:s33_poisson}) the full-band detector rates superposed on this axis are about $676\,\mathrm{Hz}$ (prompt), $71\,\mathrm{Hz}$ (delayed activation), and $0.99\,\mathrm{Hz}$ (focused signal), so the coincidence axis is strongly prompt-dominated; over the reference exposure the $\simeq8.7\times10^{6}$ event instances yield only 1134 mixed-stream coincidences, giving an accidental live factor $\simeq0.9992$ (the line window and shield threshold below then act on the resulting candidate groups). The normalized summed-energy spectrum of the three streams is shown in Figure~\ref{fig:s33_spec_norm}: the window is line-dominated, with a starved continuum.
+are grouped into a coincidence candidate group $c$. In the baseline (Figure~\ref{fig:s33_poisson}) the full-band detector rates superposed on this axis are about $928\,\mathrm{s^{-1}}$ (prompt), $97.1\,\mathrm{s^{-1}}$ (delayed activation), and $0.987\,\mathrm{s^{-1}}$ (focused signal), so the coincidence axis is strongly prompt-dominated; over the reference exposure the $7{,}215{,}233$ event instances yield 1275 mixed-stream coincidences, giving an accidental live factor $\simeq0.9990$ (the line window and shield threshold below then act on the resulting candidate groups). The normalized summed-energy spectrum of the three streams is shown in Figure~\ref{fig:s33_spec_norm}: the window is line-dominated, with a starved continuum.
 
 \begin{figure}[t]
 \centering
 \includegraphics[width=\linewidth]{paper_source_figure_table/fig_s33_poisson_normalization.png}
-\caption{Schematic of the rate normalization. (a) The prompt, delayed, and focused-signal streams are drawn as independent homogeneous-Poisson processes at their full-band coincidence-axis rates and merged, time-ordered, onto one axis; (b) events within $\tau=1\,\mu\mathrm{s}$ form one candidate group, with the accidental-coincidence bookkeeping over the reference exposure annotated (baseline values). Tick positions in (a) are an illustrative Poisson realization.}
+\caption{Rate normalization on a common coincidence time axis. (a)~Full-band detector event rates ($928$, $97.1$, and $0.987\,\mathrm{s^{-1}}$). (b)~Independent Poisson draws of the three streams are merged and time-ordered; color marks stream identity and hatched bands mark each event's temporal footprint. (c)~Events with $\Delta t\le\tau=1\,\mu\mathrm{s}$ form one candidate group; the box gives the reference-exposure accidental bookkeeping. Tick positions are schematic.}
 \label{fig:s33_poisson}
 \end{figure}
 
@@ -463,18 +461,16 @@ each candidate group $c$ the TES and active-shield energy sums are
 \end{equation}
 The group enters the hard line window if $E_{\mathrm{TES}}^{(c)}$ falls in
 \begin{equation}
-  \wii = [510.79,511.21]\keV \quad (511\keV\pm210\,\mathrm{eV}),
+  \wii = [510.58,511.42]\keV \quad (511\keV\pm420\,\mathrm{eV}),
 \end{equation}
-whose full width equals the TES energy resolution
-$\Delta E_{\mathrm{FWHM}}\simeq420\,\mathrm{eV}$ adopted in the mass model
-(Section~\ref{sec:geometry}), retaining most of the line response while
+which is the current Mass\_model\_511 selection window, retaining most of the line response while
 suppressing continuum background. The group passes the active shield if
 \begin{equation}
   E_{\mathrm{sh}}^{(c)} < E_{\mathrm{veto}}, \qquad E_{\mathrm{veto}}=50\keV,
 \end{equation}
 where for the baseline CsI configuration the shield sum is read from the CsI
 active-shield volumes in post-processing. This layer is the dominant source of
-rate-level background suppression. In the baseline it reduces the prompt background from 161 to 60 events ($0.1188\to0.0407\cps$, $34.3\%$ surviving) and the delayed activation from 54 to 33 events ($61.1\%$), while retaining all 30323 focused-signal events (zero shield deposit, $100\%$); see Table~\ref{tab:phase2_cutflow}. Its effect on the background spectrum is shown in Figure~\ref{fig:s33_spec_anti}.
+rate-level background suppression. In the baseline it reduces the prompt background from 153 to 71 events ($0.1180\to0.0482\cps$, $40.8\%$ surviving) and the delayed activation from 43 to 28 events ($65.1\%$), while retaining all 30305 focused-signal events (zero shield deposit, $100\%$); see Table~\ref{tab:phase2_cutflow}. Its effect on the background spectrum is shown in Figure~\ref{fig:s33_spec_anti}.
 
 \begin{figure}[t]
 \centering
@@ -546,7 +542,7 @@ minimizes the Compton sequence residual
 \end{equation}
 (ties broken by the longest first-scatter lever arm), and the same 81-trajectory
 cone--disk test is applied to its first two points. Events with no valid order
-are classified as unreconstructed. In the baseline, among the events passing the active shield the topology test sorts the prompt stream into 37 single-pixel, 17 field-of-view-consistent reconstructed multi-hit, and 6 vetoed events, the delayed stream into 19, 11, and 3, and the focused signal into 17663 single-pixel, 12051 reconstructed multi-hit, 608 vetoed, and 1 retained unreconstructed event, giving 54, 30, and 29715 selected events respectively. A re-derivation on the surviving Mass\_model\_511 catalogues (Figure~\ref{fig:s33_compton_mult}) resolves the selected focused-signal groups by TES multiplicity into 17598 single-pixel, 9794 two-hit, and 2340 $\geq$3-hit groups (with 370 two-hit and 262 $\geq$3-hit groups Compton-vetoed), while the prompt and delayed multi-hit counts are small (two-/$\geq$3-hit: 25/7 and 12/3).
+are classified as unreconstructed. In the baseline, events that pass the active shield are sorted by the topology test into single-site, field-of-view-consistent reconstructed multi-hit, and vetoed classes: the prompt stream comprises 43 single-site, 22 reconstructed multi-hit, and 6 vetoed events (71 total); the delayed stream 20, 8, and 0 (28 total); and the focused signal 17589 single-site, 12098 reconstructed multi-hit, and 618 vetoed events (30305 total), giving 65, 28, and 29687 selected events, respectively. Reclassifying the current Mass\_model\_511 detector geometry in the $480$--$550\,\keV$ broad band by TES hit multiplicity (Figure~\ref{fig:s33_compton_mult}; shape diagnostic only; absolute selected rates remain those in Table~\ref{tab:phase2_cutflow}) resolves the selected focused-signal groups into 17598 single-site, 9794 two-hit, and 2340 $\geq$3-hit events (with 370 two-hit and 262 $\geq$3-hit events Compton-vetoed); multi-hit counts in the prompt and delayed streams remain small (two-/$\geq$3-hit: 25/7 and 12/3).
 
 \begin{figure}[t]
 \centering
@@ -557,14 +553,14 @@ are classified as unreconstructed. In the baseline, among the events passing the
 
 Unreconstructed events are retained in the baseline selected-rate definition but
 are not counted as field-of-view passing, so the line-window result does not gain
-sensitivity from rejecting ambiguous reconstruction failures. This policy is not
-a conservative lower bound on the net sensitivity: in the current $\wii$ sample,
-a single-site-only diagnostic alternative that vetoes all multi-site candidates
-would retain $59.4\%$ of the focused signal ($17663/29715$) and about $66.7\%$ of
-the selected background, reducing the simple $S/\sqrt{B}$ figure to about $0.73$
-of the baseline value. The baseline selection therefore treats ambiguous
+sensitivity by discarding ambiguous reconstruction failures. This policy is also
+not a conservative lower bound on the net sensitivity: a single-site-only
+alternative that vetoes all multi-hit candidates would retain $59.2\%$ of the
+focused signal ($17589/29687$) and about $66.6\%$ of the selected background in
+the present $\wii$ sample, reducing the simple $S/\sqrt{B}$ figure to about
+$0.73$ of the baseline value. The baseline selection therefore treats ambiguous
 multi-hit events as a reconstruction-model boundary to be validated, not as a
-sensitivity gain from aggressive event rejection.
+source of sensitivity gain from aggressive event rejection.
 
 \added{To connect this selection chain explicitly to the finite Monte Carlo
 sample, Table~\ref{tab:phase2_cutflow} gives the current event-level
@@ -588,15 +584,15 @@ as an all-energy incident sample.}
 \toprule
 Stream & Stage & Events & Rate / $\cps$ & Statistical uncertainty / $\cps$ \\
 \midrule
-Prompt background & Line-window pre-veto & 161 & $1.1877\times10^{-1}$ & $1.15\times10^{-2}$ \\
-Prompt background & After CsI veto & 60 & $4.0712\times10^{-2}$ & $5.26\times10^{-3}$ \\
-Prompt background & Topology/FOV selected & 54 & $3.6641\times10^{-2}$ & $4.99\times10^{-3}$ \\
-Delayed activation & Line-window pre-veto & 54 & $4.6354\times10^{-3}$ & $6.31\times10^{-4}$ \\
-Delayed activation & After CsI veto & 33 & $2.8327\times10^{-3}$ & $4.93\times10^{-4}$ \\
-Delayed activation & Topology/FOV selected & 30 & $2.5752\times10^{-3}$ & $4.70\times10^{-4}$ \\
-Focused signal & Line-window pre-veto & 30323 & $8.1527\times10^{-1}$ & $4.68\times10^{-3}$ \\
-Focused signal & After CsI veto & 30323 & $8.1527\times10^{-1}$ & $4.68\times10^{-3}$ \\
-Focused signal & Topology/FOV selected & 29715 & $7.9892\times10^{-1}$ & $4.63\times10^{-3}$ \\
+Prompt background & Line-window pre-veto & 153 & $1.1802\times10^{-1}$ & $1.25\times10^{-2}$ \\
+Prompt background & After CsI veto & 71 & $4.8160\times10^{-2}$ & $5.72\times10^{-3}$ \\
+Prompt background & Topology/FOV selected & 65 & $4.4089\times10^{-2}$ & $5.47\times10^{-3}$ \\
+Delayed activation & Line-window pre-veto & 43 & $6.1192\times10^{-3}$ & $9.33\times10^{-4}$ \\
+Delayed activation & After CsI veto & 28 & $3.9846\times10^{-3}$ & $7.53\times10^{-4}$ \\
+Delayed activation & Topology/FOV selected & 28 & $3.9846\times10^{-3}$ & $7.53\times10^{-4}$ \\
+Focused signal & Line-window pre-veto & 30305 & $8.1478\times10^{-1}$ & $4.68\times10^{-3}$ \\
+Focused signal & After CsI veto & 30305 & $8.1478\times10^{-1}$ & $4.68\times10^{-3}$ \\
+Focused signal & Topology/FOV selected & 29687 & $7.9817\times10^{-1}$ & $4.63\times10^{-3}$ \\
 \bottomrule
 \end{tabular}
 \par}
@@ -610,8 +606,8 @@ transmission.
 \end{minipage}
 \end{table}
 
-To cross-check the reconstruction layer with a native tool and to substantiate
-the exhaustive two-order strategy, the focused-signal replay stream was
+As a retained reference-geometry cross-check that has not been rerun for
+Mass\_model\_511, the focused-signal replay stream was
 reconstructed with the MEGAlib revan Compton event reconstructor (37,065 events
 processed, reading the existing simulation without re-running transport)
 \cite{Zoglauer2006}. The class-level results agree with the custom chain:
@@ -741,12 +737,12 @@ analysis variants, the $3\sigma$ flux threshold is scaled as
 This Gaussian counting convention is used consistently for the line-window
 results and secondary comparisons, but it is a diagnostic selected-rate metric,
 not a final flight discovery likelihood. For the present 20 d reference case,
-the signal-to-background ratio is about 3\%; a 1\% Gaussian uncertainty on the
+the signal-to-background ratio is about 2.4\%; a 1\% Gaussian uncertainty on the
 background normalization alone would reduce the approximate significance from
-about 7.8 to about 2.8. A flight analysis would therefore require off-source
+about 7.0 to about 2.3. A flight analysis would therefore require off-source
 or control-band background constraints and nuisance-parameter profiling.
 For the primary 20 d line-window result, the folded counts are about
-$6.8\times10^4$ background counts and $2.0\times10^3$ signal counts at
+$8.3\times10^4$ background counts and $2.0\times10^3$ signal counts at
 $\fzero$, so this approximation is used only in the high-count selected-rate
 regime. The isolated upstream Ge-proxy result with zero selected events is
 reported separately with a Poisson zero-count upper limit.
@@ -770,11 +766,11 @@ The recovered log fragments around the original detailed results tables are stru
 \toprule
 Quantity & Value & Note \\
 \midrule
-Day-15 selected background & $3.92\times10^{-2}\cps$ & Prompt + delayed \\
-Day-15 selected signal at $\fzero$ & $1.19\times10^{-3}\cps$ & $\fzero=10^{-4}\phcms$ \\
-Prompt background fraction & $93.4\%$ & Dominant component \\
-20 d diagnostic $Z$ & $7.80$ & Counting metric \\
-$\fthree(20\,\mathrm{d})$ & $3.85\times10^{-5}\phcms$ & Reference model only \\
+Day-15 selected background & $4.81\times10^{-2}\cps$ & Prompt + delayed \\
+Day-15 selected signal at $\fzero$ & $1.18\times10^{-3}\cps$ & $\fzero=10^{-4}\phcms$ \\
+Prompt background fraction & $91.7\%$ & Dominant component \\
+20 d diagnostic $Z$ & $7.04$ & Counting metric \\
+$\fthree(20\,\mathrm{d})$ & $4.26\times10^{-5}\phcms$ & Reference model only \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -786,11 +782,11 @@ The original recovered log fragments become structurally inconsistent after this
 \section{Discussion and conclusions}
 \label{sec:discussion}
 
-The main result is that the reference production-position delayed-source calculation gives a 20 d diagnostic $3\sigma$ point-source threshold of $3.85\times10^{-5}\phcms$ for an unresolved line in the modeled focused TES line spectrometer. This threshold is obtained without using the focused-spot spatial analysis as the primary result. It follows from three combined effects: optical concentration, a sub-keV energy window, and a detector-coupled veto/topology selection that suppresses prompt and delayed backgrounds in the same selection space as the signal.
+The main result is that the reference production-position delayed-source calculation gives a 20 d diagnostic $3\sigma$ point-source threshold of $4.26\times10^{-5}\phcms$ for an unresolved line in the modeled focused TES line spectrometer. This threshold is obtained without using the focused-spot spatial analysis as the primary result. It follows from three combined effects: optical concentration, a sub-keV energy window, and a detector-coupled veto/topology selection that suppresses prompt and delayed backgrounds in the same selection space as the signal.
 
 This calculation should be compared with existing 511 keV instruments as a pointed, narrow-line, compact-source estimate, not as an all-sky imaging forecast. INTEGRAL/SPI and COSI provide the reference measurements for mapping the diffuse 511 keV sky and the broader Galactic diffuse emission \cite{Siegert2016AA,Kierans2020,Siegert2020COSI,Yoneda2025,Karwin2023}. Peer-reviewed COSI calibration and simulation studies provide the more relevant technical comparison for detector response, event reconstruction, and balloon-background validation \cite{Beechert2022,Sleator2019,Gallego2025Balloon,Gallego2025,Ciabattoni2025ACS}. The TES Laue-lens concept considered here is complementary: it trades sky coverage for a concentrated beam and a sub-keV line window. The relevant comparison class is compact 511 keV targets, unresolved-central-excess searches, and transient follow-up observations with known or constrained source positions. The same focused aperture is not a substitute for measuring the full diffuse bulge and disk luminosity, because it samples only a small solid angle.
 
-The production-position delayed-source treatment addresses a specific approximation in radial-profile compression. Although delayed activation contributes only about 6.6\% of the selected line-window background in the present calculation, it is spatially and materially structured. Preserving sampled production positions prevents artificial azimuthal or radial redistribution from becoming an unquantified systematic. The delayed component has passed a minimum selected-rate convergence check using four independent production-position samplings, but this should not be read as a complete delayed-background systematic envelope.
+The production-position delayed-source treatment addresses a specific approximation in radial-profile compression. Although delayed activation contributes only about 8.3\% of the selected line-window background in the present calculation, it is spatially and materially structured. Preserving sampled production positions prevents artificial azimuthal or radial redistribution from becoming an unquantified systematic. The current Mass\_model\_511 result uses one full-stat production-position sampling; a same-statistics multi-seed selected-rate convergence check remains open.
 
 The background composition indicates the first engineering parameters to test, rather than a completed optimization. The selected line-window rate remains dominated by prompt atmospheric streams, so shield geometry, side-entry collimation, material near the focal plane, topology selection, and multi-pixel reconstruction are the most direct handles on the present background. Delayed activation is smaller but remains spatially and materially structured, so source-position preservation is retained in the rate calculation. The dominance of iodine activation in the CsI shield also motivates a future shield-material trade study.
 
@@ -801,7 +797,7 @@ The background composition indicates the first engineering parameters to test, r
 
 More generally, the tabulated $3\sigma$ flux thresholds are statistical selected-rate thresholds for the reference source, mass, and response model. They do not include a systematic-uncertainty envelope for atmospheric-flux normalization, activation cross sections or physics-list choices, material and geometry tolerances, detector energy-response uncertainty, veto-threshold calibration, reconstruction-efficiency systematics, or background-estimation nuisance parameters. A publication-level flight sensitivity should replace the diagnostic $S/\sqrt{B}$ metric with a spatial-spectral likelihood, following standard profile-likelihood practice \cite{Cowan2011}.
 
-The upstream Laue-lens calculation in Section~\ref{subsec:upstream_optics_background} should be read as a boundary calculation for an equal-volume/equal-mass active-Ge proxy, not as a finalized optics-background budget. It completes full-particle prompt and activation-production transport for the proxy, and the isolated Ge-proxy delayed component gives zero selected $\wii$ events in the present transport. The prompt self-background contribution is still not part of the primary detector-background budget because it needs source separation or subtraction from the ordinary detector/cryostat prompt background, and explicit lens support hardware is not yet modeled.
+The retained upstream Laue-lens calculation should be read as a boundary calculation for an equal-volume/equal-mass active-Ge proxy, not as a finalized optics-background budget. It completes full-particle prompt and activation-production transport for the proxy, and the isolated Ge-proxy delayed component gives zero selected $\wii$ events in the retained transport. The prompt self-background contribution is still not part of the primary detector-background budget because it needs source separation or subtraction from the ordinary detector/cryostat prompt background, and explicit lens support hardware is not yet modeled.
 
 Spatial analyses such as $r_{90}$ and multi-annulus likelihood estimates are diagnostic cross-checks, but they are not yet a finalized nuisance-profile likelihood. The quoted sensitivity therefore remains the line-window selected-rate result, not a spatially optimized likelihood result.
 
@@ -810,7 +806,7 @@ Spatial analyses such as $r_{90}$ and multi-annulus likelihood estimates are dia
 \subsection{Conclusions}
 \label{sec:conclusions}
 
-We have presented a detector-coupled background and sensitivity study for a balloon-borne pointed 511 keV TES Laue-lens telescope. The reference calculation couples a Ge(111) Laue optical response to a TES focal-plane mass model, prompt atmospheric transport, delayed activation, active-shield vetoing, topology/field-of-view selection, mission-time rate folding, and counting-significance evaluation. In the primary $510.79$--$511.21\keV$ unresolved-line window, the day-15 selected rates are $B\simeq3.92\times10^{-2}\cps$ and $S\simeq1.19\times10^{-3}\cps$ at $10^{-4}\phcms$; the mission-time fold gives $Z_{20\mathrm{d}}\simeq7.80$ and $\fthree(20\mathrm{d})\simeq3.85\times10^{-5}\phcms$. The result provides a detector-coupled selected-rate basis for continued evaluation of focused TES spectroscopy as a complementary 511 keV technique for compact-source and unresolved-central-excess searches, while identifying prompt atmospheric background suppression, delayed-activation systematic validation, and reconstruction validation as the main next validation tasks.
+We have presented a detector-coupled background and sensitivity study for a balloon-borne pointed 511 keV TES Laue-lens telescope. The reference calculation couples a Ge(111) Laue optical response to a TES focal-plane mass model, prompt atmospheric transport, delayed activation, active-shield vetoing, topology/field-of-view selection, mission-time rate folding, and counting-significance evaluation. In the primary $510.58$--$511.42\keV$ unresolved-line window, the day-15 selected rates are $B\simeq4.81\times10^{-2}\cps$ and $S\simeq1.18\times10^{-3}\cps$ at $10^{-4}\phcms$; the mission-time fold gives $Z_{20\mathrm{d}}\simeq7.04$ and $\fthree(20\mathrm{d})\simeq4.26\times10^{-5}\phcms$. The result provides a detector-coupled selected-rate basis for continued evaluation of focused TES spectroscopy as a complementary 511 keV technique for compact-source and unresolved-central-excess searches, while identifying prompt atmospheric background suppression, delayed-activation systematic validation, and reconstruction validation as the main next validation tasks.
 
 \section*{Data and software availability}
 Before publication, a versioned public repository or institutional archive should provide the geometry and source definitions, random seeds, analysis and figure-generation scripts, LaTeX source, and derived validation products needed to reproduce the tables and figures in this paper. This compile-ready recovery copy is not the original final manuscript.

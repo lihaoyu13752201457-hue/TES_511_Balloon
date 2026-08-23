@@ -12,6 +12,9 @@ Active-veto volumes include legacy active volumes plus `GeoOpt_S1_PlasticFullWra
 | n | raw | 60 | 42 | 0.0407118 | 0.0284927 | 0.699863 +/- 0.141 |
 | n | active_veto_pass | 13 | 5 | 0.00882089 | 0.00339198 | 0.38454 +/- 0.202 |
 | n | side_compton_fov_pass | 13 | 5 | 0.00882089 | 0.00339198 | 0.38454 +/- 0.202 |
+| atm511 | raw | 114 | 116 | 0.0221515 | 0.0225708 | 1.01893 +/- 0.134 |
+| atm511 | active_veto_pass | 114 | 116 | 0.0221515 | 0.0225708 | 1.01893 +/- 0.134 |
+| atm511 | side_compton_fov_pass | 107 | 108 | 0.0207913 | 0.0210142 | 1.01072 +/- 0.138 |
 
 Scope notes:
 
