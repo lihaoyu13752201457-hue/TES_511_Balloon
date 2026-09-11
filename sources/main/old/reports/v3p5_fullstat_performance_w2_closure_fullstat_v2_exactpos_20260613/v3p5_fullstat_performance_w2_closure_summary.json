@@ -1,0 +1,338 @@
+{
+  "status": "PASS_V3P5_FULLSTAT_PERFORMANCE_W2_CLOSURE",
+  "statistics_label": "fullstat_v2_exactpos",
+  "authority_role": "CURRENT_EXACT_POSITION_RATE_AUTHORITY",
+  "claim_level": "full-stat v3p5 center-finger L1 rate-level closure with external 1 Ms benchmark markers",
+  "problems": [],
+  "headline": {
+    "step02_instant_generated": 25210216,
+    "step02_buildup_generated": 25210216,
+    "step02_delayed_SE": 1000000,
+    "step02_delayed_TE_s": 11530.473845,
+    "fixed_source_activity_Bq": 85.63669586527698,
+    "w2_step05_background_cps": 0.06246506611510684,
+    "w2_step05_signal_cps_at_1e_4": 0.0011811656293957314,
+    "w2_step05_final_background_events": 126,
+    "w2_step06_mission_mean_background_cps": 0.06268353697712095,
+    "w2_step06_mission_mean_signal_cps_at_1e_4": 0.0011728072724834458,
+    "w2_step07_response_cps_per_ph_cm2_s": 11.811656293957313,
+    "w2_step08_Z20d_at_1e_4": 6.155222219143131,
+    "w2_step08_T3_day": 4.7375820700676305,
+    "w2_step08_flux_3sigma_20d_ph_cm2_s": 4.8739101419763696e-05,
+    "w2_flux_3sigma_1Ms_ph_cm2_s": 6.325641871496743e-05,
+    "w2_top_background_component": {
+      "component": "prompt:eplus",
+      "stream": "prompt",
+      "tag": "eplus",
+      "primary": "eplus",
+      "source_volume": "",
+      "events": 80,
+      "rate_hz": 0.05433774850180646,
+      "fraction": 0.8698901943315988
+    },
+    "w2_stream_split": [
+      {
+        "stream": "prompt",
+        "events": "87",
+        "rate_hz": "0.05908272463250492",
+        "fraction": "0.9458522708297603"
+      },
+      {
+        "stream": "delayed",
+        "events": "39",
+        "rate_hz": "0.003382341482601921",
+        "fraction": "0.05414772917023968"
+      }
+    ],
+    "w2_delayed_top_nuclide": {
+      "primary": "Cu64",
+      "events": "29",
+      "rate_hz": "0.002515074435780916",
+      "fraction": "0.7435897435897435"
+    }
+  },
+  "performance_1Ms": {
+    "v3p5_W2": {
+      "case_id": "v3p5_W2",
+      "label": "v3p5 W2",
+      "family": "v3p5_centerfinger_fullstat_v2_exactpos",
+      "exposure_s": "1000000.0",
+      "exposure_Ms": "1.0",
+      "exposure_day": "11.574074074074074",
+      "Z_at_reference_flux": "4.74260171685969",
+      "flux_3sigma_ph_cm2_s": "6.325641871496743e-05",
+      "method": "v3p5_time_dependent_cumulative_interpolation",
+      "source": "v3p5 Step08 cumulative_significance_by_case.csv",
+      "native_exposure_s": "",
+      "native_flux_3sigma_ph_cm2_s": ""
+    },
+    "DEMO2_W2_spot_r90": {
+      "case_id": "DEMO2_W2_spot_r90",
+      "label": "DEMO2 legacy W2 spot_r90",
+      "family": "DEMO2_legacy_pre_fix",
+      "exposure_s": "1000000.0",
+      "exposure_Ms": "1.0",
+      "exposure_day": "11.574074074074074",
+      "Z_at_reference_flux": "3.4291920381891843",
+      "flux_3sigma_ph_cm2_s": "8.748416439180168e-05",
+      "method": "legacy_pre_fix_documented_20d_Z_sqrt_exposure_scaling",
+      "source": "core_md/README.md focused-spot detector-coupled spatial sidecar",
+      "native_exposure_s": "",
+      "native_flux_3sigma_ph_cm2_s": ""
+    },
+    "DEMO2_W2_line": {
+      "case_id": "DEMO2_W2_line",
+      "label": "DEMO2 legacy W2 line",
+      "family": "DEMO2_legacy_pre_fix",
+      "exposure_s": "1000000.0",
+      "exposure_Ms": "1.0",
+      "exposure_day": "11.574074074074074",
+      "Z_at_reference_flux": "2.0809085409567136",
+      "flux_3sigma_ph_cm2_s": "0.0001441677969479969",
+      "method": "legacy_pre_fix_documented_20d_Z_sqrt_exposure_scaling",
+      "source": "core_md/VALIDATION.md line_window_sensitivity line_pm_3sigma_Z20d_time",
+      "native_exposure_s": "",
+      "native_flux_3sigma_ph_cm2_s": ""
+    },
+    "511CAM": {
+      "case_id": "511CAM_Fig11_digitized_511keV",
+      "label": "511-CAM Fig.11",
+      "family": "external_1Ms",
+      "exposure_s": "1000000.0",
+      "exposure_Ms": "1.0",
+      "exposure_day": "11.574074074074074",
+      "Z_at_reference_flux": "",
+      "flux_3sigma_ph_cm2_s": "2.7e-06",
+      "method": "digitized_from_511CAM_Fig11_right_panel_at_511keV",
+      "source": "511-CAM paper Fig.11, local rendered PDF /tmp/511cam_page16-16.png",
+      "native_exposure_s": "",
+      "native_flux_3sigma_ph_cm2_s": ""
+    },
+    "SPI": {
+      "case_id": "SPI_511keV_1Ms_public",
+      "label": "INTEGRAL/SPI",
+      "family": "external_1Ms",
+      "exposure_s": "1000000.0",
+      "exposure_Ms": "1.0",
+      "exposure_day": "11.574074074074074",
+      "Z_at_reference_flux": "",
+      "flux_3sigma_ph_cm2_s": "5e-05",
+      "method": "published_3sigma_1e6s_511keV_narrow_line",
+      "source": "SPI 511 keV line sensitivity public value; see arXiv:astro-ph/0310793 and SPI instrument sensitivity references",
+      "native_exposure_s": "",
+      "native_flux_3sigma_ph_cm2_s": ""
+    },
+    "COSI": {
+      "case_id": "COSI_SMEX_scaled_to_1Ms",
+      "label": "COSI scaled to 1 Ms",
+      "family": "external_1Ms_scaled",
+      "exposure_s": "1000000.0",
+      "exposure_Ms": "1.0",
+      "exposure_day": "11.574074074074074",
+      "Z_at_reference_flux": "",
+      "flux_3sigma_ph_cm2_s": "9.53340904398841e-05",
+      "method": "sqrt_time_scaled_from_published_2yr_3sigma_narrow_line_point_source_sensitivity",
+      "source": "Tomsick et al. 2023 COSI mission paper, arXiv:2308.12362",
+      "native_exposure_s": "63115200.0",
+      "native_flux_3sigma_ph_cm2_s": "1.2e-05"
+    }
+  },
+  "boundary_closure": {
+    "status": "PASS_V3P5_BOUNDARY_CLOSURE_SIDECARS",
+    "base_label": "fullstat_v2_exactpos",
+    "authority_role": "CURRENT_EXACT_POSITION_RATE_AUTHORITY",
+    "report": "outputs/reports/v3p5_boundary_closure_fullstat_v2_exactpos_20260613/v3p5_boundary_closure_report.md",
+    "w2_45deg_Z20d": 5.424684878511089,
+    "w2_45deg_flux_3sigma_20d": 5.5302751536480204e-05,
+    "spot_r90_45deg_Z20d": 7.205134130838121,
+    "spot_r90_45deg_flux_3sigma_20d": 4.163697643267929e-05,
+    "annular_likelihood_Z20d": 8.4578119213188,
+    "annular_likelihood_flux_3sigma_20d": 3.547016684585036e-05,
+    "exact_position_status": "PASS_EXACT_RPIP_POINTSOURCE_PRODUCTION_TRANSPORT",
+    "exact_position_feasibility_status": "EXACT_RPIP_POINTSOURCE_SMOKE_VALIDATED_AND_PROMOTED_TO_V3P5_RUN"
+  },
+  "exactpos_convergence": {
+    "status": "PASS_EXACTPOS_TRANSPORT_CONVERGENCE",
+    "authority_recommendation": "PROMOTE_EXACTPOS_TO_CURRENT_RATE_AUTHORITY",
+    "summary_json": "outputs/reports/v3p5_exactpos_convergence_20260614/v3p5_exactpos_convergence_summary.json"
+  },
+  "external_benchmarks": {
+    "511CAM": {
+      "source": "511-CAM paper Fig.11; local rendered /tmp/511cam_page16-16.png; figure-derived digitization",
+      "url": "https://arxiv.org/abs/2206.14652"
+    },
+    "SPI": {
+      "source": "published SPI 3sigma 1e6 s 511 keV narrow-line sensitivity marker",
+      "url": "https://arxiv.org/abs/astro-ph/0310793"
+    },
+    "COSI": {
+      "source": "Tomsick et al. 2023 COSI mission paper; 2-year narrow-line sensitivity sqrt-time scaled to 1 Ms",
+      "url": "https://arxiv.org/abs/2308.12362"
+    }
+  },
+  "inputs": {
+    "step02": "stepwise_maintenance/step02_raw_background_simulation/outputs_v3p5_centerfinger_fullstat_v2_exactpos/step02_v3p5_centerfinger_fullstat_v2_exactpos_summary.json",
+    "step05": "stepwise_maintenance/step05_veto_time_axis/outputs_v3p5_centerfinger_fullstat_v2_exactpos_l1/step05_v3p5_centerfinger_l1_response_summary.json",
+    "step06": "stepwise_maintenance/step06_mission_time_variation/outputs_v3p5_centerfinger_fullstat_v2_exactpos/step06_v3p5_centerfinger_fullstat_v2_exactpos_summary.json",
+    "step07": "stepwise_maintenance/step07_source_cases/outputs_v3p5_centerfinger_fullstat_v2_exactpos/source_case_summary.json",
+    "step08": "stepwise_maintenance/step08_significance/outputs_v3p5_centerfinger_fullstat_v2_exactpos/step08_v3p5_centerfinger_time_dependent_summary.json",
+    "performance": "stepwise_maintenance/step08_significance/outputs/performance_curve_comparison_1Ms_fullstat_v2_exactpos/performance_curve_comparison_1Ms_summary.json",
+    "w2_breakdown": "stepwise_maintenance/step08_significance/outputs_v3p5_centerfinger_fullstat_v2_exactpos/w2_background_source_breakdown/w2_background_source_breakdown_summary.json"
+  },
+  "chart_map": [
+    {
+      "section": "1 Ms performance comparison",
+      "artifact": "assets/performance_curve_comparison_1Ms.png",
+      "family": "uncertainty and benchmark / log exposure curve",
+      "supported_claim": "v3p5 W2 full-stat sensitivity is compared against legacy pre-fix DEMO2, 511-CAM, SPI, and COSI 1 Ms markers."
+    },
+    {
+      "section": "W2 background source mix",
+      "artifact": "assets/w2_background_source_breakdown.png",
+      "family": "composition / ranked bars",
+      "supported_claim": "W2 final background is decomposed by selected-event stream, delayed nuclide, and source-volume metadata."
+    }
+  ],
+  "outputs": {
+    "report_markdown": "outputs/reports/v3p5_fullstat_performance_w2_closure_fullstat_v2_exactpos_20260613/v3p5_fullstat_performance_w2_closure_report.md",
+    "report_html": "outputs/reports/v3p5_fullstat_performance_w2_closure_fullstat_v2_exactpos_20260613/report.html",
+    "summary_json": "outputs/reports/v3p5_fullstat_performance_w2_closure_fullstat_v2_exactpos_20260613/v3p5_fullstat_performance_w2_closure_summary.json"
+  },
+  "limitations": [
+    "The exact-position M/seed convergence report passes and promotes fullstat_v2_exactpos to the current rate authority; fullstat_v2 remains the conservative radial-profile baseline cross-check.",
+    "This is an L1 rate-level full-stat closure; boundary sidecars close the 45 deg LOS normalization and fixed-template annular spatial-likelihood checks, but they are not a nuisance-profile publication analysis.",
+    "The exact-RPIP PointSource delayed transport is included for this label; convergence across M/seed supports using sampled_equal_flux_pointsource_blocks is recorded in the exactpos convergence report.",
+    "511-CAM is figure-derived from Fig.11; COSI is sqrt-time scaled from a published 2-year sensitivity and is a benchmark marker, not an observing-strategy equivalence.",
+    "Flux limits use Gaussian S/sqrt(B)=3 scaling for comparison consistency."
+  ],
+  "copied_artifacts": [
+    {
+      "source": "stepwise_maintenance/step02_raw_background_simulation/outputs_v3p5_centerfinger_fullstat_v2_exactpos/step02_v3p5_centerfinger_fullstat_v2_exactpos_summary.json",
+      "report_copy": "outputs/reports/v3p5_fullstat_performance_w2_closure_fullstat_v2_exactpos_20260613/summaries/step02_v3p5_centerfinger_fullstat_v2_exactpos_summary.json"
+    },
+    {
+      "source": "stepwise_maintenance/step02_raw_background_simulation/outputs_v3p5_centerfinger_fullstat_v2_exactpos/step02_v3p5_centerfinger_fullstat_v2_exactpos_summary.md",
+      "report_copy": "outputs/reports/v3p5_fullstat_performance_w2_closure_fullstat_v2_exactpos_20260613/summaries/step02_v3p5_centerfinger_fullstat_v2_exactpos_summary.md"
+    },
+    {
+      "source": "stepwise_maintenance/step05_veto_time_axis/outputs_v3p5_centerfinger_fullstat_v2_exactpos_l1/step05_v3p5_centerfinger_l1_response_summary.json",
+      "report_copy": "outputs/reports/v3p5_fullstat_performance_w2_closure_fullstat_v2_exactpos_20260613/summaries/step05_v3p5_centerfinger_l1_response_summary.json"
+    },
+    {
+      "source": "stepwise_maintenance/step05_veto_time_axis/outputs_v3p5_centerfinger_fullstat_v2_exactpos_l1/step05_v3p5_centerfinger_l1_response_summary.md",
+      "report_copy": "outputs/reports/v3p5_fullstat_performance_w2_closure_fullstat_v2_exactpos_20260613/summaries/step05_v3p5_centerfinger_l1_response_summary.md"
+    },
+    {
+      "source": "stepwise_maintenance/step06_mission_time_variation/outputs_v3p5_centerfinger_fullstat_v2_exactpos/step06_v3p5_centerfinger_fullstat_v2_exactpos_summary.json",
+      "report_copy": "outputs/reports/v3p5_fullstat_performance_w2_closure_fullstat_v2_exactpos_20260613/summaries/step06_v3p5_centerfinger_fullstat_v2_exactpos_summary.json"
+    },
+    {
+      "source": "stepwise_maintenance/step06_mission_time_variation/outputs_v3p5_centerfinger_fullstat_v2_exactpos/README.md",
+      "report_copy": "outputs/reports/v3p5_fullstat_performance_w2_closure_fullstat_v2_exactpos_20260613/summaries/README.md"
+    },
+    {
+      "source": "stepwise_maintenance/step07_source_cases/outputs_v3p5_centerfinger_fullstat_v2_exactpos/source_case_summary.json",
+      "report_copy": "outputs/reports/v3p5_fullstat_performance_w2_closure_fullstat_v2_exactpos_20260613/summaries/source_case_summary.json"
+    },
+    {
+      "source": "stepwise_maintenance/step07_source_cases/outputs_v3p5_centerfinger_fullstat_v2_exactpos/README.md",
+      "report_copy": "outputs/reports/v3p5_fullstat_performance_w2_closure_fullstat_v2_exactpos_20260613/summaries/README.md"
+    },
+    {
+      "source": "stepwise_maintenance/step08_significance/outputs_v3p5_centerfinger_fullstat_v2_exactpos/step08_v3p5_centerfinger_time_dependent_summary.json",
+      "report_copy": "outputs/reports/v3p5_fullstat_performance_w2_closure_fullstat_v2_exactpos_20260613/summaries/step08_v3p5_centerfinger_time_dependent_summary.json"
+    },
+    {
+      "source": "stepwise_maintenance/step08_significance/outputs_v3p5_centerfinger_fullstat_v2_exactpos/step08_v3p5_centerfinger_time_dependent.md",
+      "report_copy": "outputs/reports/v3p5_fullstat_performance_w2_closure_fullstat_v2_exactpos_20260613/summaries/step08_v3p5_centerfinger_time_dependent.md"
+    },
+    {
+      "source": "stepwise_maintenance/step08_significance/outputs/performance_curve_comparison_1Ms_fullstat_v2_exactpos/performance_curve_comparison_1Ms_summary.json",
+      "report_copy": "outputs/reports/v3p5_fullstat_performance_w2_closure_fullstat_v2_exactpos_20260613/summaries/performance_curve_comparison_1Ms_summary.json"
+    },
+    {
+      "source": "stepwise_maintenance/step08_significance/outputs/performance_curve_comparison_1Ms_fullstat_v2_exactpos/performance_curve_comparison_1Ms.md",
+      "report_copy": "outputs/reports/v3p5_fullstat_performance_w2_closure_fullstat_v2_exactpos_20260613/summaries/performance_curve_comparison_1Ms.md"
+    },
+    {
+      "source": "stepwise_maintenance/step08_significance/outputs_v3p5_centerfinger_fullstat_v2_exactpos/w2_background_source_breakdown/w2_background_source_breakdown_summary.json",
+      "report_copy": "outputs/reports/v3p5_fullstat_performance_w2_closure_fullstat_v2_exactpos_20260613/summaries/w2_background_source_breakdown_summary.json"
+    },
+    {
+      "source": "stepwise_maintenance/step08_significance/outputs_v3p5_centerfinger_fullstat_v2_exactpos/w2_background_source_breakdown/w2_background_source_breakdown.md",
+      "report_copy": "outputs/reports/v3p5_fullstat_performance_w2_closure_fullstat_v2_exactpos_20260613/summaries/w2_background_source_breakdown.md"
+    },
+    {
+      "source": "outputs/reports/v3p5_boundary_closure_fullstat_v2_exactpos_20260613/v3p5_boundary_closure_summary.json",
+      "report_copy": "outputs/reports/v3p5_fullstat_performance_w2_closure_fullstat_v2_exactpos_20260613/summaries/v3p5_boundary_closure_summary.json"
+    },
+    {
+      "source": "outputs/reports/v3p5_boundary_closure_fullstat_v2_exactpos_20260613/v3p5_boundary_closure_report.md",
+      "report_copy": "outputs/reports/v3p5_fullstat_performance_w2_closure_fullstat_v2_exactpos_20260613/summaries/v3p5_boundary_closure_report.md"
+    },
+    {
+      "source": "stepwise_maintenance/step08_significance/outputs/performance_curve_comparison_1Ms_fullstat_v2_exactpos/performance_curve_comparison_1Ms.png",
+      "report_copy": "outputs/reports/v3p5_fullstat_performance_w2_closure_fullstat_v2_exactpos_20260613/assets/performance_curve_comparison_1Ms.png"
+    },
+    {
+      "source": "stepwise_maintenance/step08_significance/outputs_v3p5_centerfinger_fullstat_v2_exactpos/w2_background_source_breakdown/w2_background_source_breakdown.png",
+      "report_copy": "outputs/reports/v3p5_fullstat_performance_w2_closure_fullstat_v2_exactpos_20260613/assets/w2_background_source_breakdown.png"
+    },
+    {
+      "source": "stepwise_maintenance/step08_significance/outputs/performance_curve_comparison_1Ms_fullstat_v2_exactpos/performance_curve_comparison_1Ms.csv",
+      "report_copy": "outputs/reports/v3p5_fullstat_performance_w2_closure_fullstat_v2_exactpos_20260613/tables/performance_curve_comparison_1Ms.csv"
+    },
+    {
+      "source": "stepwise_maintenance/step08_significance/outputs/performance_curve_comparison_1Ms_fullstat_v2_exactpos/cam511_fig11_digitized_points.csv",
+      "report_copy": "outputs/reports/v3p5_fullstat_performance_w2_closure_fullstat_v2_exactpos_20260613/tables/cam511_fig11_digitized_points.csv"
+    },
+    {
+      "source": "stepwise_maintenance/step08_significance/outputs_v3p5_centerfinger_fullstat_v2_exactpos/w2_background_source_breakdown/w2_background_components.csv",
+      "report_copy": "outputs/reports/v3p5_fullstat_performance_w2_closure_fullstat_v2_exactpos_20260613/tables/w2_background_components.csv"
+    },
+    {
+      "source": "stepwise_maintenance/step08_significance/outputs_v3p5_centerfinger_fullstat_v2_exactpos/w2_background_source_breakdown/w2_background_streams.csv",
+      "report_copy": "outputs/reports/v3p5_fullstat_performance_w2_closure_fullstat_v2_exactpos_20260613/tables/w2_background_streams.csv"
+    },
+    {
+      "source": "stepwise_maintenance/step08_significance/outputs_v3p5_centerfinger_fullstat_v2_exactpos/w2_background_source_breakdown/w2_delayed_nuclides.csv",
+      "report_copy": "outputs/reports/v3p5_fullstat_performance_w2_closure_fullstat_v2_exactpos_20260613/tables/w2_delayed_nuclides.csv"
+    },
+    {
+      "source": "stepwise_maintenance/step08_significance/outputs_v3p5_centerfinger_fullstat_v2_exactpos/w2_background_source_breakdown/w2_delayed_source_volumes.csv",
+      "report_copy": "outputs/reports/v3p5_fullstat_performance_w2_closure_fullstat_v2_exactpos_20260613/tables/w2_delayed_source_volumes.csv"
+    },
+    {
+      "source": "stepwise_maintenance/step08_significance/outputs_v3p5_centerfinger_fullstat_v2_exactpos/w2_background_source_breakdown/w2_background_selected_events.csv",
+      "report_copy": "outputs/reports/v3p5_fullstat_performance_w2_closure_fullstat_v2_exactpos_20260613/tables/w2_background_selected_events.csv"
+    },
+    {
+      "source": "stepwise_maintenance/step05_veto_time_axis/outputs_v3p5_centerfinger_fullstat_v2_exactpos_l1/step05_v3p5_centerfinger_l1_rates.csv",
+      "report_copy": "outputs/reports/v3p5_fullstat_performance_w2_closure_fullstat_v2_exactpos_20260613/tables/step05_v3p5_centerfinger_l1_rates.csv"
+    },
+    {
+      "source": "stepwise_maintenance/step06_mission_time_variation/outputs_v3p5_centerfinger_fullstat_v2_exactpos/background_time_variation.csv",
+      "report_copy": "outputs/reports/v3p5_fullstat_performance_w2_closure_fullstat_v2_exactpos_20260613/tables/background_time_variation.csv"
+    },
+    {
+      "source": "stepwise_maintenance/step07_source_cases/outputs_v3p5_centerfinger_fullstat_v2_exactpos/source_case_rates.csv",
+      "report_copy": "outputs/reports/v3p5_fullstat_performance_w2_closure_fullstat_v2_exactpos_20260613/tables/source_case_rates.csv"
+    },
+    {
+      "source": "stepwise_maintenance/step08_significance/outputs_v3p5_centerfinger_fullstat_v2_exactpos/cumulative_significance_by_case.csv",
+      "report_copy": "outputs/reports/v3p5_fullstat_performance_w2_closure_fullstat_v2_exactpos_20260613/tables/cumulative_significance_by_case.csv"
+    },
+    {
+      "source": "stepwise_maintenance/step08_significance/outputs_v3p5_centerfinger_fullstat_v2_exactpos/t3_t5_summary.csv",
+      "report_copy": "outputs/reports/v3p5_fullstat_performance_w2_closure_fullstat_v2_exactpos_20260613/tables/t3_t5_summary.csv"
+    },
+    {
+      "source": "outputs/reports/v3p5_boundary_closure_fullstat_v2_exactpos_20260613/v3p5_45deg_los_time_curve.csv",
+      "report_copy": "outputs/reports/v3p5_fullstat_performance_w2_closure_fullstat_v2_exactpos_20260613/tables/v3p5_45deg_los_time_curve.csv"
+    },
+    {
+      "source": "outputs/reports/v3p5_boundary_closure_fullstat_v2_exactpos_20260613/v3p5_spatial_annular_likelihood.csv",
+      "report_copy": "outputs/reports/v3p5_fullstat_performance_w2_closure_fullstat_v2_exactpos_20260613/tables/v3p5_spatial_annular_likelihood.csv"
+    }
+  ]
+}

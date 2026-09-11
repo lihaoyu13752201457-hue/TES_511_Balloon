@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "status": "PASS__ROOT_CAUSE_IDENTIFIED_AND_FAIL_CLOSED_GATE_CORRECTED",
+  "recorded_at": "2026-08-15T23:11:07+08:00",
+  "failed_stage": "outputs/03_delayed",
+  "failed_command": "python3 -B code/analyze_delayed_stage.py --workers 6",
+  "failure": "se3_delayed_gamma: 7030 INIT/source parent-ZA mismatches",
+  "published_output_from_failed_attempt": false,
+  "temporary_cache_retained": false,
+  "production_transport_rerun_required": false,
+  "sim_hashes_computed": 0,
+  "payload_opening_bound": "The failed ProcessPool execution may have opened up to all seven delayed SIM payloads before the gamma future raised; no result from that attempt is used as authority.",
+  "root_cause": "The analyzer incorrectly required IA INIT field 15 to equal the sampled source-parent ZA. Field 15 is the transported or daughter ZA and is not a parent-lineage identifier.",
+  "frozen_authority": "/home/ubuntu/.codex/worktrees/c528/TES_511_Balloon/engineering/m04_validation_geometry_handoff_20260810/01_m_sampling_validation_20260810/README.md:65",
+  "correct_lineage_authority": "The sampled source parent is assigned only by the strict exact-position cKDTree mapping with the retained nearest-distance, nearest-gap, and distance-ratio gates.",
+  "correction": "Keep sim_initial_ZA and source_parent_ZA separately; classify and report their relation without rejecting daughter-chain differences. No position-lineage tolerance was relaxed.",
+  "recovery_scan_policy": "A clean authoritative rerun is necessary because the failed work directory was intentionally deleted. Each of seven delayed SIMs will be scanned exactly once in the successful execution; this recovery audit preserves the earlier nonpublished access.",
+  "corrected_code": "/home/ubuntu/.codex/worktrees/c528/TES_511_Balloon/engineering/geometry_optimization_20260815/47_se3_plan1_transport_20260815/code/analyze_delayed_stage.py",
+  "corrected_self_test": "PASS__SE3_DELAYED_ANALYZER_SELF_TEST"
+}

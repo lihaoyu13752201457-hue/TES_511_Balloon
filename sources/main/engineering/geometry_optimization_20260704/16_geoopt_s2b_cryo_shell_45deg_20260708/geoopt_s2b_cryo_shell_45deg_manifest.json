@@ -1,0 +1,154 @@
+{
+  "status": "DRAFT_S2B_CRYO_SHELL_45DEG_NOT_TRANSPORT_VALIDATED",
+  "created": "2026-07-08",
+  "branch": "16_geoopt_s2b_cryo_shell_45deg_20260708",
+  "geometry": "engineering/geometry_optimization_20260704/16_geoopt_s2b_cryo_shell_45deg_20260708/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo",
+  "setup": "engineering/geometry_optimization_20260704/16_geoopt_s2b_cryo_shell_45deg_20260708/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup",
+  "detector": "engineering/geometry_optimization_20260704/16_geoopt_s2b_cryo_shell_45deg_20260708/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.det",
+  "basis_geometry": "outputs/geometry/DEMO2_DR_v3p5_Mass_model_511_stage_diam_300_300_300_350_350_400_20260701_megalib_proxy",
+  "original_s1_geometry_for_visual_comparison": "engineering/geometry_optimization_20260704/01_geo_opt_s1_bottomw_b4c/geometry",
+  "coordinate_policy": {
+    "mother": "InstrumentFrame",
+    "instrument_frame_rotation_deg": [
+      0.0,
+      45.0,
+      0.0
+    ],
+    "excluded_envelope": "NF2_OuterSupport_* support cage and rods"
+  },
+  "dimensions_cm": {
+    "bpe": {
+      "side_r_inner": 27.0,
+      "side_r_outer": 29.0,
+      "side_z_min": -24.5,
+      "side_z_max": 46.0,
+      "bottom_z_min": -26.5,
+      "bottom_z_max": -24.5,
+      "top_z_min": 46.0,
+      "top_z_max": 48.0
+    },
+    "plastic": {
+      "side_r_inner": 29.0,
+      "side_r_outer": 30.0,
+      "side_z_min": -26.5,
+      "side_z_max": 48.0,
+      "bottom_z_min": -27.5,
+      "bottom_z_max": -26.5,
+      "top_z_min": 48.0,
+      "top_z_max": 49.0
+    }
+  },
+  "source_visuals": {
+    "source_card": "runs/geometry_optimization_20260704/step02_buildup_geo_opt_s1_bpe_w5_fullstat_v1/job_sources/Background_n_fullsphere20_rep01_part01.source",
+    "n_prompt_ray_samples": 1000,
+    "source_radius_cm": 60.0,
+    "debug_source_radius_cm": 65.0,
+    "source_center_cm": [
+      5.0,
+      0.0,
+      9.0
+    ],
+    "original_wrl": "engineering/geometry_optimization_20260704/16_geoopt_s2b_cryo_shell_45deg_20260708/figures/source_1000_prompt_rays_original_s1_R60.wrl",
+    "new_wrl": "engineering/geometry_optimization_20260704/16_geoopt_s2b_cryo_shell_45deg_20260708/figures/source_1000_prompt_rays_s2b_cryo_shell_R60.wrl",
+    "original_r65_wrl": "engineering/geometry_optimization_20260704/16_geoopt_s2b_cryo_shell_45deg_20260708/figures/source_1000_prompt_rays_original_s1_R65_full_geometry_coverage.wrl",
+    "new_r65_wrl": "engineering/geometry_optimization_20260704/16_geoopt_s2b_cryo_shell_45deg_20260708/figures/source_1000_prompt_rays_s2b_cryo_shell_R65_full_geometry_coverage.wrl",
+    "comparison_png": "engineering/geometry_optimization_20260704/16_geoopt_s2b_cryo_shell_45deg_20260708/figures/source_1000_prompt_rays_original_vs_s2b.png",
+    "coverage_notes": "engineering/geometry_optimization_20260704/16_geoopt_s2b_cryo_shell_45deg_20260708/figures/source_radius_coverage_notes.txt"
+  },
+  "mass_kg": {
+    "plastic": 20.047649403875024,
+    "bpe": 33.60561661544999,
+    "total": 53.65326601932502
+  },
+  "volumes": [
+    {
+      "name": "GeoOpt_S2B_CryoShell_BPE5_SideShell_20mm",
+      "material": "BoratedPolyethylene5wtB",
+      "position_cm": [
+        0.0,
+        0.0,
+        10.75
+      ],
+      "shape": "GeoOpt_S2B_CryoShell_BPE5_SideShell_20mm_NF2ReliefStep08Shape",
+      "role": "20 mm BPE side shell following InstrumentFrame; sized to the cryostat/outer-Al body, with NF2 support reliefs",
+      "volume_cm3": 24806.01559274498,
+      "mass_kg": 23.56571481310773,
+      "active": false
+    },
+    {
+      "name": "GeoOpt_S2B_CryoShell_BPE5_BottomCap_20mm",
+      "material": "BoratedPolyethylene5wtB",
+      "position_cm": [
+        0.0,
+        0.0,
+        -25.5
+      ],
+      "shape": "GeoOpt_S2B_CryoShell_BPE5_BottomCap_20mm_NF2ReliefStep08Shape",
+      "role": "20 mm BPE bottom cap below the cryostat body, with NF2 support reliefs",
+      "volume_cm3": 5284.158843338032,
+      "mass_kg": 5.019950901171129,
+      "active": false
+    },
+    {
+      "name": "GeoOpt_S2B_CryoShell_BPE5_TopCap_20mm",
+      "material": "BoratedPolyethylene5wtB",
+      "position_cm": [
+        0.0,
+        0.0,
+        47.0
+      ],
+      "shape": "GeoOpt_S2B_CryoShell_BPE5_TopCap_20mm_NF2ReliefStep08Shape",
+      "role": "20 mm BPE top cap above the 300K top-service sleeves, with NF2 support reliefs",
+      "volume_cm3": 5284.158843338032,
+      "mass_kg": 5.019950901171129,
+      "active": false
+    },
+    {
+      "name": "GeoOpt_S2B_CryoShell_Plastic_SideSkin_10mm",
+      "material": "PlasticScintillator",
+      "position_cm": [
+        0.0,
+        0.0,
+        10.75
+      ],
+      "shape": "GeoOpt_S2B_CryoShell_Plastic_SideSkin_10mm_NF2ReliefStep08Shape",
+      "role": "10 mm active plastic side skin outside the BPE cryostat shell, with NF2 support reliefs",
+      "volume_cm3": 13808.870508853928,
+      "mass_kg": 14.223136624119546,
+      "active": true
+    },
+    {
+      "name": "GeoOpt_S2B_CryoShell_Plastic_BottomCap_10mm",
+      "material": "PlasticScintillator",
+      "position_cm": [
+        0.0,
+        0.0,
+        -27.0
+      ],
+      "shape": "GeoOpt_S2B_CryoShell_Plastic_BottomCap_10mm_NF2ReliefStep08Shape",
+      "role": "10 mm active plastic bottom cap outside the BPE bottom cap, with NF2 support reliefs",
+      "volume_cm3": 2827.433388230814,
+      "mass_kg": 2.9122563898777387,
+      "active": true
+    },
+    {
+      "name": "GeoOpt_S2B_CryoShell_Plastic_TopCap_10mm",
+      "material": "PlasticScintillator",
+      "position_cm": [
+        0.0,
+        0.0,
+        48.5
+      ],
+      "shape": "GeoOpt_S2B_CryoShell_Plastic_TopCap_10mm_NF2ReliefStep08Shape",
+      "role": "10 mm active plastic top cap closing the cryostat-following shell, with NF2 support reliefs",
+      "volume_cm3": 2827.433388230814,
+      "mass_kg": 2.9122563898777387,
+      "active": true
+    }
+  ],
+  "notes": [
+    "InstrumentFrame-local shell is r<=30 cm and z=-27.5..49 cm. It is not sized from NF2 support radii.  The production source sphere is shifted-center R60: SurroundingSphere 60 5.0 0.0 9.0 60.",
+    "Transport performance is not claimed by this geometry-review branch.",
+    "Active veto post-processing must include GeoOpt_S2B_CryoShell_Plastic* volumes."
+  ]
+}

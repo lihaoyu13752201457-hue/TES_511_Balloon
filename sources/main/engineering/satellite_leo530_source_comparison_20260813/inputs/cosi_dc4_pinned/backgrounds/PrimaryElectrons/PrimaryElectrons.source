@@ -1,0 +1,23 @@
+PhysicsListHD   qgsp-bic-hp
+
+DecayMode	Buildup
+#PreTriggerMode              EveryEventWithHits
+
+DefaultRangeCut 0.005
+
+Region Spacecraft
+Spacecraft.Volume SCbody
+Spacecraft.RangeCut 1.
+
+Region Pipebody
+Pipebody.Volume PIPbody
+Pipebody.RangeCut 1.
+
+DetectorTimeConstant 0.000002
+
+DataChallenge.Source PrimaryElectron
+PrimaryElectron.ParticleType  3
+PrimaryElectron.Beam   FarFieldEarthOccultation false
+PrimaryElectron.Spectrum File PrimaryElectrons_Spec_530.0km_0.0deg_12.600cutoff_520.0solarmod_fluxdividedby1000.dat
+PrimaryElectron.Flux		      0.0006419376852490416e-3
+PrimaryElectron.LightCurve File false PrimaryElectrons_LightCurve.dat

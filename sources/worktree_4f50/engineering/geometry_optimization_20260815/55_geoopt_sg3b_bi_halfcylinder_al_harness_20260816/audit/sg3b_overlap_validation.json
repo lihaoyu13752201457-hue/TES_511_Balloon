@@ -1,0 +1,193 @@
+{
+  "bad_lines": [],
+  "bad_patterns": [
+    "Overlap is detected",
+    "Overlap with volume",
+    "overlapping by",
+    "CheckOverlaps()",
+    "GeomVol1002",
+    "GeomVol1003",
+    "G4Exception",
+    "*** Error",
+    "*** Fatal",
+    "Fatal Exception",
+    "COSIMA-ERROR:",
+    "error while loading shared libraries",
+    "Unable to initalize detector",
+    "Unable to initialize detector",
+    "Segmentation fault",
+    "Aborted",
+    "Killed"
+  ],
+  "check_for_overlaps": {
+    "samples": 10000,
+    "tolerance_cm": 0.0001
+  },
+  "checks": {
+    "beam_on_command_absent": true,
+    "cosima_returncode_zero": true,
+    "exact_overlap_directive": true,
+    "geant4_kernel_constructed": true,
+    "generated_particle_summary_absent": true,
+    "geometry_stage12_complete": true,
+    "idle_exit_seen": true,
+    "initialized_sim_event_payload_absent": true,
+    "interactive_mode_started": true,
+    "overlap_bad_pattern_absent": true,
+    "parameter_file_match": true,
+    "static_validation_pass_and_current": true,
+    "transport_output_marker_absent": true
+  },
+  "command": [
+    "/home/ubuntu/MEGAlib_Install/megalib-main/bin/cosima",
+    "-i",
+    "-u",
+    "/tmp/sg3_overlap_e_q6un3a/sg3_construct_overlap_no_transport.source"
+  ],
+  "evidence_role": {
+    "classification": "COMPOSITE_OVERLAP_EVIDENCE_COMPONENT",
+    "standalone_sufficiency": false,
+    "statement": "This is a real Cosima/Geant4 construct/load audit with 10,000 overlap samples per placement. It is combined with byte-reversible SF3 fidelity, static clearance checks, and the frozen-bank native navigator audit."
+  },
+  "files": {
+    "cosima": {
+      "path": "/home/ubuntu/MEGAlib_Install/megalib-main/bin/cosima",
+      "sha256": "3fb7613de58ebb365f2a55c3336e54d2aabea2a4ddb282003a5d25eac6f1c74a"
+    },
+    "det": {
+      "path": "/home/ubuntu/.codex/worktrees/4f50/TES_511_Balloon/engineering/geometry_optimization_20260815/55_geoopt_sg3b_bi_halfcylinder_al_harness_20260816/geometry/DEMO2_DR_v3p5_SG3B.det",
+      "sha256": "0a4e6cb6b17949d5593f46faae87d80b383f5c9c08cb5b3240b91131e8515e21"
+    },
+    "geo": {
+      "path": "/home/ubuntu/.codex/worktrees/4f50/TES_511_Balloon/engineering/geometry_optimization_20260815/55_geoopt_sg3b_bi_halfcylinder_al_harness_20260816/geometry/DEMO2_DR_v3p5_SG3B.geo",
+      "sha256": "5f0482e307bf8701204f1d6df1b74396b7105d853dccb885e4df401146f552d9"
+    },
+    "setup": {
+      "path": "/home/ubuntu/.codex/worktrees/4f50/TES_511_Balloon/engineering/geometry_optimization_20260815/55_geoopt_sg3b_bi_halfcylinder_al_harness_20260816/geometry/DEMO2_DR_v3p5_SG3B.geo.setup",
+      "sha256": "49324ca4baebd8e6323b4a478b168dff8798e2bd7f0d0775e2f179769aad0469"
+    },
+    "static_validation": {
+      "path": "/home/ubuntu/.codex/worktrees/4f50/TES_511_Balloon/engineering/geometry_optimization_20260815/55_geoopt_sg3b_bi_halfcylinder_al_harness_20260816/audit/sg3b_geometry_validation.json",
+      "sha256": "6a65cfc51342483a652698494796403dcfb7aabebe280c0235cb2e82d01992be"
+    }
+  },
+  "finished_at_utc": "2026-08-16T10:44:30.077845+00:00",
+  "generated_particles": null,
+  "initialized_output_artifacts": [
+    {
+      "event_record_line_count": 0,
+      "event_record_line_head": [],
+      "head": [
+        "# You can delete me."
+      ],
+      "path": "/tmp/sg3_overlap_e_q6un3a/parser_init_empty.inc1.id1.sim",
+      "sha256": "591f66cb6424c0d5199568557d5355749631ad517f9e03afac02b8596280af6b",
+      "size_bytes": 21
+    }
+  ],
+  "initialized_output_note": "Cosima creates an empty SIM container while constructing its mandatory Run object, before any event loop. The container is temporary and is accepted only when it contains no event records.",
+  "log": {
+    "line_count": 450,
+    "path": "/home/ubuntu/.codex/worktrees/4f50/TES_511_Balloon/engineering/geometry_optimization_20260815/55_geoopt_sg3b_bi_halfcylinder_al_harness_20260816/audit/sg3b_overlap_cosima.log",
+    "sha256": "69bb1f7c6dbd490801e63475acaee0acc4c308c1079848d4665c91560c207450",
+    "tail": [
+      "Adding scintillator for DR_Capillary_CuNi_4K_60K_SDSD",
+      "Adding scintillator for DR_Still_PumpLine_SS_to_300K_top_SDSD",
+      "Adding scintillator for PreCool_FlexLink_Cu_remote_interface_SDSD",
+      "Adding scintillator for SQUID_uMUX_Box_Al_relocated_offbeam_minimal_SDSD",
+      "Adding scintillator for SG3B_Al_Bundle_bay_to_MXC_SDSD",
+      "Adding scintillator for SG3B_Al_Bundle_MXC_CP_SDSD",
+      "Adding scintillator for SG3B_Al_Bundle_CP_Still_SDSD",
+      "Adding scintillator for SG3B_Al_Bundle_Still_4K_SDSD",
+      "Adding scintillator for SG3B_Al_Bundle_4K_60K_SDSD",
+      "Adding scintillator for G10_Support_Ring_MXC_CP_SDSD",
+      "Adding scintillator for G10_Support_Ring_CP_Still_SDSD",
+      "Adding scintillator for G10_Support_Ring_Still_4K_SDSD",
+      "Adding scintillator for G10_Support_Ring_4K_60K_SDSD",
+      "Adding scintillator for G10_Support_Ring_60K_Top_SDSD",
+      "Adding scintillator for Passive_W_Bottom_Plate_detector_bay_SDSD",
+      "Adding scintillator for SE3_Al_Shield_Inner_Cylinder_2mm_SDSD",
+      "Adding scintillator for SG3A_Al_50mK_StillLike_Can_bottom_cap_2mm_SDSD",
+      "Adding scintillator for SG3A_Al_50mK_StillLike_Can_side_wall_below_side_port_SDSD",
+      "Adding scintillator for SG3A_Al_50mK_StillLike_Can_side_wall_above_side_port_SDSD",
+      "Adding scintillator for SG3A_Al_50mK_StillLike_Can_side_wall_rectcut_window_band_SDSD",
+      "Adding scintillator for Still_Shield_Al_side_window_side_wall_rectcut_window_band_SDSD",
+      "Adding scintillator for Shield_4K_Al_side_window_side_wall_rectcut_window_band_SDSD",
+      "Adding scintillator for Shield_60K_Al_side_window_side_wall_rectcut_window_band_SDSD",
+      "Adding scintillator for Vacuum_Jacket_Al_266mmClass_side_port_side_wall_rectcut_window_band_SDSD",
+      "Adding scintillator for SE3_Al_Shield_Inner_Back_ColdFingerCap_2mm_SDSD",
+      "Adding scintillator for Win_MagShield_Al_foil_side_SDSD",
+      "Adding scintillator for GeoOpt_S2B_CryoShell_Plastic_SideSkin_10mm_SDSD",
+      "Adding scintillator for GeoOpt_S2B_CryoShell_Plastic_BottomCap_10mm_SDSD",
+      "Adding scintillator for GeoOpt_S2B_CryoShell_Plastic_TopCap_10mm_SDSD",
+      "Adding scintillator for BGO_S3C_FullWrap_SideShell_WindowCut_40mm_SDSD",
+      "Adding scintillator for ActiveShield_S3C_BGO_Kapton_SideWrap_WindowCut_0p3mm_SDSD",
+      "Adding scintillator for ActiveShield_S3C_BGO_Kapton_BottomCap_0p3mm_SDSD",
+      "Adding scintillator for ActiveShield_S3C_BGO_Kapton_TopAnnulus_0p3mm_SDSD",
+      "Adding scintillator for Outer_Al_S3C_BGO_Mechanical_SideShell_WindowCut_3mm_SDSD",
+      "Adding scintillator for Outer_Al_S3C_BGO_Mechanical_BottomCap_3mm_SDSD",
+      "Adding scintillator for Outer_Al_S3C_BGO_Mechanical_TopAnnulus_3mm_SDSD",
+      "Adding scintillator for BGO_S3D_O8_FullWrap_BottomCap_30mm_SDSD",
+      "Adding scintillator for BGO_S3D_O8_FullWrap_TopAnnulus_10mm_SDSD",
+      "Visualization Manager instantiating with verbosity \"warnings (3)\"...",
+      "Visualization Manager initialising...",
+      "Registering graphics systems...",
+      "",
+      "You have successfully registered the following graphics systems.",
+      "Current available graphics systems are:",
+      "ASCIITree (ATree)",
+      "DAWNFILE (DAWNFILE)",
+      "G4HepRep (HepRepXML)",
+      "G4HepRepFile (HepRepFile)",
+      "RayTracer (RayTracer)",
+      "VRML1FILE (VRML1FILE)",
+      "VRML2FILE (VRML2FILE)",
+      "gMocrenFile (gMocrenFile)",
+      "",
+      "Registering model factories...",
+      "",
+      "You have successfully registered the following model factories.",
+      "Registered model factories:",
+      "  generic",
+      "  drawByCharge",
+      "  drawByParticleID",
+      "  drawByOriginVolume",
+      "  drawByAttribute",
+      "",
+      "Registered filter factories:",
+      "  chargeFilter",
+      "  particleFilter",
+      "  originVolumeFilter",
+      "  attributeFilter",
+      "",
+      "You have successfully registered the following user vis actions.",
+      "Run Duration User Vis Actions: none",
+      "End of Event User Vis Actions: none",
+      "End of Run User Vis Actions: none",
+      "",
+      "Some /vis commands (optionally) take a string to specify colour.",
+      "Available colours:",
+      "  black, blue, brown, cyan, gray, green, grey, magenta, red, white, yellow",
+      "",
+      "Idle> Graphics systems deleted.",
+      "Visualization Manager deleting..."
+    ]
+  },
+  "model_identity": "SG3B",
+  "physics_status": "GEOMETRY GENERATED/VALIDATED \u2014 PHYSICS UNKNOWN",
+  "returncode": 0,
+  "source_card": {
+    "beam_on_command_present": false,
+    "cosima_parser_scaffold_run_declared": true,
+    "ephemeral_path": "/tmp/sg3_overlap_e_q6un3a/sg3_construct_overlap_no_transport.source",
+    "scaffold_executed": false,
+    "sha256": "9527fa3e7c40695256903961ed53f93e1e784da6822d886e0d6a0a5f65fcb239",
+    "text": "Version 1\nGeometry /home/ubuntu/.codex/worktrees/4f50/TES_511_Balloon/engineering/geometry_optimization_20260815/55_geoopt_sg3b_bi_halfcylinder_al_harness_20260816/geometry/DEMO2_DR_v3p5_SG3B.geo.setup\nCheckForOverlaps 10000 0.0001\nPhysicsListEM LivermorePol\nStoreSimulationInfo init-only\n\n# Parser-only placeholder. Interactive mode exits before StartBeam.\nRun GeometryConstructOnly\nGeometryConstructOnly.FileName /tmp/sg3_overlap_e_q6un3a/parser_init_empty\nGeometryConstructOnly.NEvents 1\nGeometryConstructOnly.Source GeometryConstructOnlySource\nGeometryConstructOnlySource.ParticleType 1\nGeometryConstructOnlySource.Beam PointSource 0 0 0\nGeometryConstructOnlySource.Spectrum Mono 511\nGeometryConstructOnlySource.Flux 1.0\n"
+  },
+  "started_at_utc": "2026-08-16T10:41:15.801160+00:00",
+  "status": "PASS",
+  "timed_out": false,
+  "timeout_seconds": 300,
+  "transport_launched": false,
+  "transport_output_markers": []
+}

@@ -1,0 +1,449 @@
+{
+  "commands": [
+    {
+      "cmd": [
+        "python3",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests"
+      ],
+      "duration_s": 11.822,
+      "must_contain": null,
+      "name": "python_unittest",
+      "ok": true,
+      "required": true,
+      "returncode": 0,
+      "stdout_tail": "...........................\n----------------------------------------------------------------------\nRan 27 tests in 8.949s\n\nOK\n"
+    },
+    {
+      "cmd": [
+        "cmake",
+        "--build",
+        "/tmp/opticsim-build"
+      ],
+      "duration_s": 1.054,
+      "must_contain": null,
+      "name": "cmake_build",
+      "ok": true,
+      "required": true,
+      "returncode": 0,
+      "stdout_tail": "Consolidate compiler generated dependencies of target gamma_optics_geant4\n[ 20%] Built target gamma_optics_geant4\nConsolidate compiler generated dependencies of target channel_two_wall_demo\n[ 33%] Built target channel_two_wall_demo\nConsolidate compiler generated dependencies of target channel_two_wall_table_demo\n[ 46%] Built target channel_two_wall_table_demo\nConsolidate compiler generated dependencies of target channel_single_curved_demo\n[ 60%] Built target channel_single_curved_demo\nConsolidate compiler generated dependencies of target detector_only_demo\n[ 73%] Built target detector_only_demo\nConsolidate compiler generated dependencies of target laue_one_ring_demo\n[ 86%] Built target laue_one_ring_demo\nConsolidate compiler generated dependencies of target channel_4ring_effective_demo\n[100%] Built target channel_4ring_effective_demo\n"
+    },
+    {
+      "cmd": [
+        "python3",
+        "analysis/freeze_baseline.py",
+        "--out",
+        "reports/baseline"
+      ],
+      "duration_s": 0.203,
+      "must_contain": "baseline_metrics.json",
+      "name": "baseline_freeze",
+      "ok": true,
+      "required": true,
+      "returncode": 0,
+      "stdout_tail": "/home/ubuntu/opticsim/reports/baseline/baseline_metrics.json\n"
+    },
+    {
+      "cmd": [
+        "python3",
+        "analysis/compare_to_baseline.py",
+        "--baseline",
+        "reports/baseline/baseline_metrics.json",
+        "--current",
+        "reports/baseline/baseline_metrics.json"
+      ],
+      "duration_s": 0.143,
+      "must_contain": "\"ok\": true",
+      "name": "baseline_self_compare",
+      "ok": true,
+      "required": true,
+      "returncode": 0,
+      "stdout_tail": "{\n  \"ok\": true,\n  \"n\": 9\n}\n"
+    },
+    {
+      "cmd": [
+        "timeout",
+        "10s",
+        "/tmp/opticsim-build/channel_two_wall_demo",
+        "1",
+        "1",
+        "0",
+        "0"
+      ],
+      "duration_s": 0.121,
+      "must_contain": "reflect=2 absorb=0 leak=0",
+      "name": "two_wall_reflect",
+      "ok": true,
+      "required": true,
+      "returncode": 0,
+      "stdout_tail": "\n*************************************************************\n Geant4 version Name: geant4-10-02-patch-03    (27-January-2017)\n                      Copyright : Geant4 Collaboration\n                      Reference : NIM A 506 (2003), 250-303\n                            WWW : http://cern.ch/geant4\n*************************************************************\n\nCHANNEL_TWO_WALL_SUMMARY events=1 boundary=2 reflect=2 absorb=0 leak=0\n"
+    },
+    {
+      "cmd": [
+        "timeout",
+        "10s",
+        "/tmp/opticsim-build/channel_two_wall_demo",
+        "1",
+        "0",
+        "1",
+        "0"
+      ],
+      "duration_s": 0.115,
+      "must_contain": "reflect=0 absorb=1 leak=0",
+      "name": "two_wall_absorb",
+      "ok": true,
+      "required": true,
+      "returncode": 0,
+      "stdout_tail": "\n*************************************************************\n Geant4 version Name: geant4-10-02-patch-03    (27-January-2017)\n                      Copyright : Geant4 Collaboration\n                      Reference : NIM A 506 (2003), 250-303\n                            WWW : http://cern.ch/geant4\n*************************************************************\n\nCHANNEL_TWO_WALL_SUMMARY events=1 boundary=1 reflect=0 absorb=1 leak=0\n"
+    },
+    {
+      "cmd": [
+        "timeout",
+        "10s",
+        "/tmp/opticsim-build/channel_two_wall_demo",
+        "1",
+        "0",
+        "0",
+        "1"
+      ],
+      "duration_s": 0.117,
+      "must_contain": "reflect=0 absorb=0 leak=1",
+      "name": "two_wall_leak",
+      "ok": true,
+      "required": true,
+      "returncode": 0,
+      "stdout_tail": "\n*************************************************************\n Geant4 version Name: geant4-10-02-patch-03    (27-January-2017)\n                      Copyright : Geant4 Collaboration\n                      Reference : NIM A 506 (2003), 250-303\n                            WWW : http://cern.ch/geant4\n*************************************************************\n\nCHANNEL_TWO_WALL_SUMMARY events=1 boundary=1 reflect=0 absorb=0 leak=1\n"
+    },
+    {
+      "cmd": [
+        "timeout",
+        "10s",
+        "/tmp/opticsim-build/channel_two_wall_table_demo",
+        "--n",
+        "3",
+        "--R",
+        "1",
+        "--A",
+        "0",
+        "--T",
+        "0",
+        "--out",
+        "runs/geant4_channel_two_wall_table_reflect_audit"
+      ],
+      "duration_s": 0.122,
+      "must_contain": "reflect=6 absorb=0 leak=0",
+      "name": "two_wall_table_reflect",
+      "ok": true,
+      "required": true,
+      "returncode": 0,
+      "stdout_tail": "\n*************************************************************\n Geant4 version Name: geant4-10-02-patch-03    (27-January-2017)\n                      Copyright : Geant4 Collaboration\n                      Reference : NIM A 506 (2003), 250-303\n                            WWW : http://cern.ch/geant4\n*************************************************************\n\nCHANNEL_TWO_WALL_TABLE_SUMMARY events=3 boundary=6 reflect=6 absorb=0 leak=0\n"
+    },
+    {
+      "cmd": [
+        "timeout",
+        "10s",
+        "/tmp/opticsim-build/channel_two_wall_table_demo",
+        "--n",
+        "3",
+        "--R",
+        "0",
+        "--A",
+        "1",
+        "--T",
+        "0",
+        "--out",
+        "runs/geant4_channel_two_wall_table_absorb_audit"
+      ],
+      "duration_s": 0.12,
+      "must_contain": "reflect=0 absorb=3 leak=0",
+      "name": "two_wall_table_absorb",
+      "ok": true,
+      "required": true,
+      "returncode": 0,
+      "stdout_tail": "\n*************************************************************\n Geant4 version Name: geant4-10-02-patch-03    (27-January-2017)\n                      Copyright : Geant4 Collaboration\n                      Reference : NIM A 506 (2003), 250-303\n                            WWW : http://cern.ch/geant4\n*************************************************************\n\nCHANNEL_TWO_WALL_TABLE_SUMMARY events=3 boundary=3 reflect=0 absorb=3 leak=0\n"
+    },
+    {
+      "cmd": [
+        "timeout",
+        "10s",
+        "/tmp/opticsim-build/channel_two_wall_table_demo",
+        "--n",
+        "3",
+        "--R",
+        "0",
+        "--A",
+        "0",
+        "--T",
+        "1",
+        "--out",
+        "runs/geant4_channel_two_wall_table_leak_audit"
+      ],
+      "duration_s": 0.12,
+      "must_contain": "reflect=0 absorb=0 leak=3",
+      "name": "two_wall_table_leak",
+      "ok": true,
+      "required": true,
+      "returncode": 0,
+      "stdout_tail": "\n*************************************************************\n Geant4 version Name: geant4-10-02-patch-03    (27-January-2017)\n                      Copyright : Geant4 Collaboration\n                      Reference : NIM A 506 (2003), 250-303\n                            WWW : http://cern.ch/geant4\n*************************************************************\n\nCHANNEL_TWO_WALL_TABLE_SUMMARY events=3 boundary=3 reflect=0 absorb=0 leak=3\n"
+    },
+    {
+      "cmd": [
+        "timeout",
+        "10s",
+        "/tmp/opticsim-build/channel_two_wall_table_demo",
+        "--n",
+        "1000",
+        "--energy-keV",
+        "511",
+        "--theta-rad",
+        "1.5e-4",
+        "--reflectivity-table",
+        "data/reflectivity/WSi_511keV_parratt_grid.csv",
+        "--out",
+        "runs/geant4_channel_two_wall_table",
+        "--seed",
+        "20260517"
+      ],
+      "duration_s": 0.762,
+      "must_contain": "CHANNEL_TWO_WALL_TABLE_SUMMARY events=1000",
+      "name": "two_wall_table_wsi",
+      "ok": true,
+      "required": true,
+      "returncode": 0,
+      "stdout_tail": "\n*************************************************************\n Geant4 version Name: geant4-10-02-patch-03    (27-January-2017)\n                      Copyright : Geant4 Collaboration\n                      Reference : NIM A 506 (2003), 250-303\n                            WWW : http://cern.ch/geant4\n*************************************************************\n\nCHANNEL_TWO_WALL_TABLE_SUMMARY events=1000 boundary=1845 reflect=1556 absorb=251 leak=38\n"
+    },
+    {
+      "cmd": [
+        "timeout",
+        "10s",
+        "/tmp/opticsim-build/channel_single_curved_demo",
+        "--n",
+        "20",
+        "--R",
+        "1",
+        "--A",
+        "0",
+        "--T",
+        "0",
+        "--segments",
+        "64",
+        "--bend-angle-rad",
+        "0.003833333333",
+        "--out",
+        "runs/geant4_channel_single_curved_bend12m_constant",
+        "--seed",
+        "20260517"
+      ],
+      "duration_s": 0.127,
+      "must_contain": "CHANNEL_SINGLE_CURVED_SUMMARY events=20",
+      "name": "single_curved_constant",
+      "ok": true,
+      "required": true,
+      "returncode": 0,
+      "stdout_tail": "\n*************************************************************\n Geant4 version Name: geant4-10-02-patch-03    (27-January-2017)\n                      Copyright : Geant4 Collaboration\n                      Reference : NIM A 506 (2003), 250-303\n                            WWW : http://cern.ch/geant4\n*************************************************************\n\nCHANNEL_SINGLE_CURVED_SUMMARY events=20 boundary=20 reflect=20 absorb=0 leak=0\n"
+    },
+    {
+      "cmd": [
+        "timeout",
+        "10s",
+        "/tmp/opticsim-build/channel_single_curved_demo",
+        "--n",
+        "200",
+        "--segments",
+        "64",
+        "--bend-angle-rad",
+        "0.003833333333",
+        "--reflectivity-table",
+        "data/reflectivity/WSi_511keV_parratt_grid.csv",
+        "--out",
+        "runs/geant4_channel_single_curved_bend12m_table",
+        "--seed",
+        "20260517"
+      ],
+      "duration_s": 0.204,
+      "must_contain": "CHANNEL_SINGLE_CURVED_SUMMARY events=200",
+      "name": "single_curved_table",
+      "ok": true,
+      "required": true,
+      "returncode": 0,
+      "stdout_tail": "\n*************************************************************\n Geant4 version Name: geant4-10-02-patch-03    (27-January-2017)\n                      Copyright : Geant4 Collaboration\n                      Reference : NIM A 506 (2003), 250-303\n                            WWW : http://cern.ch/geant4\n*************************************************************\n\nCHANNEL_SINGLE_CURVED_SUMMARY events=200 boundary=200 reflect=0 absorb=16 leak=184\n"
+    },
+    {
+      "cmd": [
+        "python3",
+        "analysis/scan_single_curved_geometry.py",
+        "--out",
+        "runs/geant4_channel_single_curved_scan"
+      ],
+      "duration_s": 8.228,
+      "must_contain": "geant4_channel_single_curved_scan",
+      "name": "single_curved_scan",
+      "ok": true,
+      "required": true,
+      "returncode": 0,
+      "stdout_tail": "{\n  \"bend_angle_46mm_to_12m_rad\": 0.003833333333333333,\n  \"best_table_survival\": {\n    \"bend_angle_rad\": 0.0001,\n    \"mean_grazing_angle_rad\": 0,\n    \"n_boundary\": 0,\n    \"survival_fraction\": 1\n  },\n  \"best_table_survival_with_boundary\": {\n    \"bend_angle_rad\": 0.0003,\n    \"mean_grazing_angle_rad\": 9.6093751125e-05,\n    \"n_boundary\": 200,\n    \"survival_fraction\": 0.995\n  },\n  \"closest_to_12m_bend\": {\n    \"bend_angle_rad\": 0.00383333333333,\n    \"mean_grazing_angle_rad\": 0.00365338541779,\n    \"segments\": 64,\n    \"spot_d90_cm\": 13.3261344923\n  },\n  \"closest_to_target_theta\": {\n    \"bend_angle_rad\": 0.0003,\n    \"mean_grazing_angle_rad\": 9.6093751125e-05,\n    \"segments\": 64,\n    \"spot_d90_cm\": 0.462154537191\n  },\n  \"n_rows\": 32,\n  \"system\": \"geant4_channel_single_curved_scan\",\n  \"target_grazing_rad\": 0.00015,\n  \"warning\": \"Diagnostic scan only; it exposes geometry/angle tension and is not a final focusing channel design.\"\n}\n"
+    },
+    {
+      "cmd": [
+        "python3",
+        "analysis/scan_single_curved_gap.py",
+        "--out",
+        "runs/geant4_channel_single_curved_gap_scan"
+      ],
+      "duration_s": 7.722,
+      "must_contain": "geant4_channel_single_curved_gap_scan",
+      "name": "single_curved_gap_scan",
+      "ok": true,
+      "required": true,
+      "returncode": 0,
+      "stdout_tail": "{\n  \"bend_angle_46mm_to_12m_rad\": 0.003833333333333333,\n  \"best_table_survival_12m_bend\": {\n    \"half_gap_mm\": 0.001,\n    \"mean_grazing_angle_rad\": 0.00321914062612,\n    \"n_absorb\": 19,\n    \"n_boundary\": 200,\n    \"n_leak\": 181,\n    \"n_reflect\": 0,\n    \"survival_fraction\": 0\n  },\n  \"best_table_survival_low_bend\": {\n    \"half_gap_mm\": 0.001,\n    \"mean_grazing_angle_rad\": 9.7265626125e-05,\n    \"n_absorb\": 0,\n    \"n_boundary\": 200,\n    \"n_leak\": 1,\n    \"n_reflect\": 199,\n    \"survival_fraction\": 0.995\n  },\n  \"low_survival_bend_angle_rad\": 0.0003,\n  \"min_constant_theta_12m_bend\": {\n    \"half_gap_mm\": 5e-05,\n    \"max_boundary_per_event\": 20,\n    \"mean_grazing_angle_rad\": 0.00299003906362,\n    \"spot_d90_cm\": 9.83370861616\n  },\n  \"min_constant_theta_low_bend\": {\n    \"half_gap_mm\": 0.001,\n    \"max_boundary_per_event\": 1,\n    \"mean_grazing_angle_rad\": 9.7265626125e-05,\n    \"spot_d90_cm\": 0.467800383957\n  },\n  \"n_rows\": 20,\n  \"system\": \"geant4_channel_single_curved_gap_scan\",\n  \"target_grazing_rad\": 0.00015,\n  \"warning\": \"Diagnostic gap scan only; it tests whether shrinking the channel gap rescues the simple 12 m curved-wall interpretation.\"\n}\n"
+    },
+    {
+      "cmd": [
+        "python3",
+        "analysis/estimate_channel_geometry_constraints.py",
+        "--out",
+        "runs/channel_geometry_constraints"
+      ],
+      "duration_s": 2.584,
+      "must_contain": "channel_geometry_constraints",
+      "name": "channel_geometry_constraints",
+      "ok": true,
+      "required": true,
+      "returncode": 0,
+      "stdout_tail": "{\n  \"conclusion\": \"The configured focusing deflections require roughly 6-13 small-angle reflections at theta~1.5e-4 rad, while the current calibrated effective model uses 1-3 bounce bookkeeping. This explains why direct wall-by-wall Geant4 geometry cannot be forced to match the effective throughput without revisiting the channel geometry/reflection-count model.\",\n  \"max_bounce_ratio_config_to_effective\": 6.380495569956425,\n  \"max_required_bounces_from_config_bend\": 12.874118253340162,\n  \"n_rings\": 4,\n  \"system\": \"channel_geometry_constraints\",\n  \"target_theta_source\": \"runs/channel_4ring_calibrated_v2/ring_theta_calibration.json\",\n  \"warning\": \"Analytic paraxial/specular estimate only; it is a consistency diagnostic for the current effective bounce assumptions.\",\n  \"worst_ring_configured_bend_rad\": 0.0019198621771937625,\n  \"worst_ring_effective_model_bounces\": 1.0,\n  \"worst_ring_id\": 0,\n  \"worst_ring_required_bounces_from_config_bend\": 6.380495569956425\n}\n"
+    },
+    {
+      "cmd": [
+        "python3",
+        "analysis/reconcile_channel_bounce_path.py",
+        "--out",
+        "runs/channel_bounce_path_reconciliation"
+      ],
+      "duration_s": 3.02,
+      "must_contain": "channel_bounce_path_reconciliation",
+      "name": "channel_bounce_path_reconciliation",
+      "ok": true,
+      "required": true,
+      "returncode": 0,
+      "stdout_tail": "{\n  \"all_literature_theta_below_calibrated_theta\": true,\n  \"conclusion\": \"The next missing physics input is the actual many-bounce channel path. The current 1-3 bounce effective bookkeeping is too shallow, the calibrated-theta deflection estimate needs 6-13 bounces, and the 17-38-reflection literature clue would imply smaller local grazing angles that remain below the current calibrated theta scale. This supports recovering the original IDL/channel geometry before building four-ring wall-by-wall Geant4.\",\n  \"effective_model_bounce_range\": [\n    1.0,\n    3.0\n  ],\n  \"half_gap_range_if_literature_reflections_um\": [\n    0.0069801083312100096,\n    0.15279179956905375\n  ],\n  \"literature_reflection_range\": [\n    17,\n    38\n  ],\n  \"n_rings\": 4,\n  \"required_bounce_range_at_calibrated_theta\": [\n    6.380495569956425,\n    12.874118253340162\n  ],\n  \"system\": \"channel_bounce_path_reconciliation\",\n  \"theta_range_if_literature_reflections_rad\": [\n    2.5261344436760032e-05,\n    0.00011293306924669192\n  ],\n  \"warning\": \"Diagnostic bridge only. The 17-38 reflection range comes from the Shirazi/Bloser soft-gamma concentrator lineage, not directly from the 511-CAM four-ring configuration.\"\n}\n"
+    },
+    {
+      "cmd": [
+        "python3",
+        "analysis/validate_io_contract.py",
+        "--out",
+        "runs/io_contract_validation"
+      ],
+      "duration_s": 15.259,
+      "must_contain": "\"ok\": true",
+      "name": "io_contract_python_detector",
+      "ok": true,
+      "required": true,
+      "returncode": 0,
+      "stdout_tail": "{\n  \"n_tables\": 6,\n  \"ok\": true,\n  \"results\": [\n    {\n      \"errors\": [],\n      \"extra_columns\": [],\n      \"n_rows\": 79942,\n      \"ok\": true,\n      \"path\": \"runs/channel_4ring_calibrated_v2/phase_space.csv\",\n      \"table\": \"phase_space\",\n      \"warnings\": []\n    },\n    {\n      \"errors\": [],\n      \"extra_columns\": [],\n      \"n_rows\": 100000,\n      \"ok\": true,\n      \"path\": \"runs/channel_4ring_calibrated_v2/optics_history.csv\",\n      \"table\": \"optics_history\",\n      \"warnings\": []\n    },\n    {\n      \"errors\": [],\n      \"extra_columns\": [],\n      \"n_rows\": 66886,\n      \"ok\": true,\n      \"path\": \"runs/detector_only_4ring_calibrated_v2/hits.csv\",\n      \"table\": \"hits\",\n      \"warnings\": []\n    },\n    {\n      \"errors\": [],\n      \"extra_columns\": [\n        \"status\",\n        \"x_det_mm\",\n        \"y_det_mm\",\n        \"in_line_window\",\n        \"selected_signal\"\n      ],\n      \"n_rows\": 79942,\n      \"ok\": true,\n      \"path\": \"runs/detector_only_4ring_calibrated_v2/event_summary.csv\",\n      \"table\": \"event_summary\",\n      \"warnings\": []\n    },\n    {\n      \"errors\": [],\n      \"extra_columns\": [],\n      \"n_rows\": 79942,\n      \"ok\": true,\n      \"path\": \"runs/detector_only_4ring_calibrated_v2/hits.csv + runs/detector_only_4ring_calibrated_v2/event_summary.csv\",\n      \"table\": \"detector_crosslinks\",\n      \"warnings\": []\n    },\n    {\n      \"errors\": [],\n      \"extra_columns\": [],\n      \"n_rows\": 79942,\n      \"ok\": true,\n      \"path\": \"runs/channel_4ring_calibrated_v2/phase_space.csv + runs/detector_only_4ring_calibrated_v2/event_summary.csv\",\n      \"table\": \"source_detector_event_ids\",\n      \"warnings\": []\n    }\n  ]\n}\n"
+    },
+    {
+      "cmd": [
+        "python3",
+        "analysis/validate_io_contract.py",
+        "--phase-space",
+        "runs/channel_4ring_calibrated_v2/phase_space.csv",
+        "--optics-history",
+        "runs/channel_4ring_calibrated_v2/optics_history.csv",
+        "--hits",
+        "runs/geant4_detector_only_1k/hits.csv",
+        "--event-summary",
+        "runs/geant4_detector_only_1k/event_summary.csv",
+        "--out",
+        "runs/io_contract_validation_geant4_detector_1k"
+      ],
+      "duration_s": 7.5,
+      "must_contain": "\"ok\": true",
+      "name": "io_contract_g4_detector",
+      "ok": true,
+      "required": true,
+      "returncode": 0,
+      "stdout_tail": "{\n  \"n_tables\": 6,\n  \"ok\": true,\n  \"results\": [\n    {\n      \"errors\": [],\n      \"extra_columns\": [],\n      \"n_rows\": 79942,\n      \"ok\": true,\n      \"path\": \"runs/channel_4ring_calibrated_v2/phase_space.csv\",\n      \"table\": \"phase_space\",\n      \"warnings\": []\n    },\n    {\n      \"errors\": [],\n      \"extra_columns\": [],\n      \"n_rows\": 100000,\n      \"ok\": true,\n      \"path\": \"runs/channel_4ring_calibrated_v2/optics_history.csv\",\n      \"table\": \"optics_history\",\n      \"warnings\": []\n    },\n    {\n      \"errors\": [],\n      \"extra_columns\": [],\n      \"n_rows\": 6256,\n      \"ok\": true,\n      \"path\": \"runs/geant4_detector_only_1k/hits.csv\",\n      \"table\": \"hits\",\n      \"warnings\": []\n    },\n    {\n      \"errors\": [],\n      \"extra_columns\": [],\n      \"n_rows\": 1000,\n      \"ok\": true,\n      \"path\": \"runs/geant4_detector_only_1k/event_summary.csv\",\n      \"table\": \"event_summary\",\n      \"warnings\": []\n    },\n    {\n      \"errors\": [],\n      \"extra_columns\": [],\n      \"n_rows\": 1000,\n      \"ok\": true,\n      \"path\": \"runs/geant4_detector_only_1k/hits.csv + runs/geant4_detector_only_1k/event_summary.csv\",\n      \"table\": \"detector_crosslinks\",\n      \"warnings\": []\n    },\n    {\n      \"errors\": [],\n      \"extra_columns\": [],\n      \"n_rows\": 1000,\n      \"ok\": true,\n      \"path\": \"runs/channel_4ring_calibrated_v2/phase_space.csv + runs/geant4_detector_only_1k/event_summary.csv\",\n      \"table\": \"source_detector_event_ids\",\n      \"warnings\": [\n        \"event_summary has 1000 rows for 79942 phase-space photons; treating as an allowed subset run\"\n      ]\n    }\n  ]\n}\n"
+    },
+    {
+      "cmd": [
+        "python3",
+        "analysis/validate_io_contract.py",
+        "--phase-space",
+        "runs/geant4_laue_one_ring/phase_space.csv",
+        "--optics-history",
+        "runs/geant4_laue_one_ring/optics_history.csv",
+        "--hits",
+        "none",
+        "--event-summary",
+        "none",
+        "--out",
+        "runs/io_contract_validation_geant4_laue_one_ring"
+      ],
+      "duration_s": 0.292,
+      "must_contain": "\"ok\": true",
+      "name": "io_contract_g4_laue",
+      "ok": true,
+      "required": true,
+      "returncode": 0,
+      "stdout_tail": "{\n  \"n_tables\": 2,\n  \"ok\": true,\n  \"results\": [\n    {\n      \"errors\": [],\n      \"extra_columns\": [],\n      \"n_rows\": 2000,\n      \"ok\": true,\n      \"path\": \"runs/geant4_laue_one_ring/phase_space.csv\",\n      \"table\": \"phase_space\",\n      \"warnings\": []\n    },\n    {\n      \"errors\": [],\n      \"extra_columns\": [],\n      \"n_rows\": 2000,\n      \"ok\": true,\n      \"path\": \"runs/geant4_laue_one_ring/optics_history.csv\",\n      \"table\": \"optics_history\",\n      \"warnings\": []\n    }\n  ]\n}\n"
+    },
+    {
+      "cmd": [
+        "python3",
+        "analysis/validate_io_contract.py",
+        "--phase-space",
+        "runs/geant4_channel_4ring_effective/phase_space.csv",
+        "--optics-history",
+        "runs/geant4_channel_4ring_effective/optics_history.csv",
+        "--hits",
+        "none",
+        "--event-summary",
+        "none",
+        "--out",
+        "runs/io_contract_validation_geant4_channel_4ring_effective"
+      ],
+      "duration_s": 1.211,
+      "must_contain": "\"ok\": true",
+      "name": "io_contract_g4_channel",
+      "ok": true,
+      "required": true,
+      "returncode": 0,
+      "stdout_tail": "{\n  \"n_tables\": 2,\n  \"ok\": true,\n  \"results\": [\n    {\n      \"errors\": [],\n      \"extra_columns\": [],\n      \"n_rows\": 15943,\n      \"ok\": true,\n      \"path\": \"runs/geant4_channel_4ring_effective/phase_space.csv\",\n      \"table\": \"phase_space\",\n      \"warnings\": []\n    },\n    {\n      \"errors\": [],\n      \"extra_columns\": [],\n      \"n_rows\": 20000,\n      \"ok\": true,\n      \"path\": \"runs/geant4_channel_4ring_effective/optics_history.csv\",\n      \"table\": \"optics_history\",\n      \"warnings\": []\n    }\n  ]\n}\n"
+    },
+    {
+      "cmd": [
+        "python3",
+        "analysis/crosscheck_wsi_parratt.py",
+        "--out",
+        "runs/wsi_parratt_crosscheck"
+      ],
+      "duration_s": 8.444,
+      "must_contain": "\"status\": \"PASS\"",
+      "name": "wsi_parratt_crosscheck",
+      "ok": true,
+      "required": true,
+      "returncode": 0,
+      "stdout_tail": "{\n  \"energy_keV\": 511.0,\n  \"manual_source\": \"manual_parratt_recursion_chantler_plus_stack_attenuation\",\n  \"max_abs_delta_R\": 0.0,\n  \"mean_abs_delta_R\": 0.0,\n  \"n_rows\": 240,\n  \"reference_source\": \"xraydb_multilayer_reflectivity_chantler_plus_stack_attenuation\",\n  \"reference_table\": \"data/reflectivity/WSi_511keV_parratt_grid.csv\",\n  \"status\": \"PASS\"\n}\n"
+    },
+    {
+      "cmd": [
+        "pdfinfo",
+        "reports/opticsim_progress_report.pdf"
+      ],
+      "duration_s": 0.03,
+      "must_contain": "Pages:",
+      "name": "pdfinfo_progress_report",
+      "ok": true,
+      "required": true,
+      "returncode": 0,
+      "stdout_tail": "Creator:         Matplotlib v3.10.8, https://matplotlib.org\nProducer:        Matplotlib pdf backend v3.10.8\nCreationDate:    Mon May 18 00:11:10 2026 CST\nCustom Metadata: no\nMetadata Stream: no\nTagged:          no\nUserProperties:  no\nSuspects:        no\nForm:            none\nJavaScript:      no\nPages:           18\nEncrypted:       no\nPage size:       856.08 x 609.84 pts\nPage rot:        0\nFile size:       1639783 bytes\nOptimized:       no\nPDF version:     1.4\n"
+    }
+  ],
+  "duration_s": 69.321,
+  "ok": true
+}

@@ -1,0 +1,120 @@
+224-        longitude = LON_REF_DEG + lon_offset
+225-        depth = vertical_depth_g_cm2(altitude)
+226-        rc = 11.0 - 0.08 * lat_offset + 0.03 * lon_offset
+227:        prompt_scale = math.exp((depth - depth_ref) / PROMPT_ATTEN_DEPTH_G_CM2) * (11.0 / rc) ** 0.2
+228-        t_atm = math.exp(-mu_eff * depth)
+229-        rows.append(
+230-            {
+231-                "time_bin_id": idx,
+232-                "time_mid_s": day * SECONDS_PER_DAY,
+233-                "day_mid": day,
+234-                "dt_s": dt_s,
+235-                "altitude_km": altitude,
+--
+240-                "longitude_offset_deg": lon_offset,
+241-                "Rc_GV": rc,
+242-                "depth_g_cm2": depth,
+243:                "T_atm_511": t_atm,
+244-                "science_atm_scale_to_day15": t_atm / t_ref,
+245:                "prompt_scale_to_day15": prompt_scale,
+246:                "delayed_production_scale_to_day15": prompt_scale,
+247-            }
+248-        )
+249-    return rows, {"depth_ref_g_cm2": depth_ref, "mu_eff_cm2_g": mu_eff}
+250-
+251-
+252-def integrate_activity(trajectory: list[dict[str, Any]]) -> tuple[list[dict[str, Any]], list[dict[str, Any]], dict[str, Any]]:
+253-    correction_rows = read_csv(GROUNDSTATE)
+254-    days = [float(row["day_mid"]) for row in trajectory]
+--
+352-        rates = stage_rates(step05, selection)
+353-        for trow in trajectory:
+354-            idx = int(trow["time_bin_id"])
+355:            prompt_scale = float(trow["prompt_scale_to_day15"])
+356-            delayed_scale = activity_scale[idx]
+357-            science_scale = float(trow["science_atm_scale_to_day15"])
+358-            out: dict[str, Any] = {
+359-                "selection_id": selection,
+360-                "time_bin_id": idx,
+361-                "time_mid_s": trow["time_mid_s"],
+362-                "day_mid": trow["day_mid"],
+363-                "dt_s": trow["dt_s"],
+364:                "prompt_scale_to_day15": prompt_scale,
+365-                "delayed_activity_scale_to_day15": delayed_scale,
+366-                "science_atm_scale_to_day15": science_scale,
+367:                "T_atm_511": trow["T_atm_511"],
+368:                "prompt_event_rate_hz": prompt_event_rate * prompt_scale,
+369-                "delayed_event_rate_hz": delayed_event_rate * delayed_scale,
+370-            }
+371-            for stage in ("raw", "active", "final"):
+372:                prompt = rates["prompt"][stage] * prompt_scale
+373-                delayed = rates["delayed"][stage] * delayed_scale
+374-                science = rates["science_physical"][stage] * science_scale
+375-                out[f"prompt_{stage}_cps"] = prompt
+376-                out[f"delayed_{stage}_cps"] = delayed
+377-                out[f"background_{stage}_cps"] = prompt + delayed
+378-                out[f"science_{stage}_cps_at_ref_flux"] = science
+379-            out["claim_level"] = f"{row_claim_prefix}_L1_RATE_FOLD_{label}_NO_NEW_TRANSPORT"
+380-            rows.append(out)
+--
+395-    plt.close()
+396-
+397-    plt.figure(figsize=(8, 4.5))
+398:    plt.plot(days, [float(row["T_atm_511"]) for row in trajectory], label="T_atm")
+399-    plt.xlabel("Mission day")
+400:    plt.ylabel("511 keV transmission")
+401:    plt.title("v3p5 Step06 atmospheric transmission")
+402-    plt.grid(alpha=0.25)
+403-    plt.tight_layout()
+404-    plt.savefig(FIG / "v3p5_step06_t_atm.png", dpi=180)
+405-    plt.close()
+406-
+407-    w2 = [row for row in background if row["selection_id"] == "w2_510p58_511p42"]
+408-    plt.figure(figsize=(8, 4.5))
+409-    plt.plot([float(row["day_mid"]) for row in w2], [float(row["background_final_cps"]) for row in w2], label="W2 background")
+--
+449-            f"Claim level: {summary['claim_level']}.",
+450-            "",
+451-            intro,
+452:            "The 511-keV atmosphere factor is a relative Beer-Lambert time fold anchored to the inherited Step05 scalar T_atm; it is not a new absolute 45 deg side-entry line-of-sight atmosphere calculation.",
+453-            "",
+454-            "Key checks:",
+455:            f"- T_atm day-15 closure: `{c['T_day15']:.12g}` vs reference `{c['T_ref']:.12g}`.",
+456-            f"- W2 day-15 background/signal: `{c['w2_day15_background_final_cps']:.6g}` / `{c['w2_day15_science_final_cps_at_ref_flux']:.6g}` cps.",
+457-            f"- W2 mission-mean background/signal: `{c['w2_dt_weighted_background_final_cps']:.6g}` / `{c['w2_dt_weighted_science_final_cps_at_ref_flux']:.6g}` cps.",
+458-            f"- delayed activity scale range: `{c['activity_scale_min']:.6g}` to `{c['activity_scale_max']:.6g}`.",
+459-            "",
+460-            "Outputs:",
+461-            f"- summary JSON: `{summary['outputs']['summary_json']}`",
+462-            f"- background time variation: `{summary['outputs']['background_time_variation']}`",
+463-            f"- total activity by time: `{summary['outputs']['total_activity_by_time']}`",
+--
+482-) -> dict[str, Any]:
+483-    label = canonical_label(str(step05.get("statistics_label", "1of10")))
+484-    prefix = output_prefix(label)
+485:    t_ref = float(step05["science_physical_normalization"]["atmospheric_transmission"]["T_atm"])
+486-    day15 = min(trajectory, key=lambda row: abs(float(row["day_mid"]) - DAY15))
+487-    w2_rows = [row for row in background if row["selection_id"] == "w2_510p58_511p42"]
+488-    w2_day15 = min(w2_rows, key=lambda row: abs(float(row["day_mid"]) - DAY15))
+489-    total_dt = sum(float(row["dt_s"]) for row in w2_rows)
+490-    mean_b = sum(float(row["background_final_cps"]) * float(row["dt_s"]) for row in w2_rows) / total_dt
+491-    mean_s = sum(float(row["science_final_cps_at_ref_flux"]) * float(row["dt_s"]) for row in w2_rows) / total_dt
+492-    if is_bgo_sample_label(label):
+493-        status = "PASS_BGO_SAMPLE_STEP06_TIME_AXIS_FULLSTAT_V2_EXACTPOS"
+--
+543-        "atmosphere_model": atmosphere_model,
+544-        "checks": {
+545-            "T_ref": t_ref,
+546:            "T_day15": float(day15["T_atm_511"]),
+547:            "T_day15_abs_error": abs(float(day15["T_atm_511"]) - t_ref),
+548-            "activity_scale_min": activity_audit["activity_scale_min"],
+549-            "activity_scale_max": activity_audit["activity_scale_max"],
+550-            "w2_day15_background_final_cps": float(w2_day15["background_final_cps"]),
+551-            "w2_day15_science_final_cps_at_ref_flux": float(w2_day15["science_final_cps_at_ref_flux"]),
+552-            "w2_dt_weighted_background_final_cps": mean_b,
+553-            "w2_dt_weighted_science_final_cps_at_ref_flux": mean_s,
+554-            "step02_fixed_source_activity_Bq": fixed_source_activity_bq(step02),
+555-        },
+--
+557-            "summary_json": rel(OUT / step06_summary_filename(label)),
+558-            "readme": rel(OUT / "README.md"),

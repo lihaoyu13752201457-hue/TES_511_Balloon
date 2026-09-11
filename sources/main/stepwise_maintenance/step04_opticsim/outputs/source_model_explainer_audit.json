@@ -1,0 +1,91 @@
+{
+  "status": "PASS",
+  "purpose": "Step04 source-model explainer documentation; no transport run",
+  "outputs": {
+    "html": {
+      "path": "stepwise_maintenance/step04_opticsim/SOURCE_MODEL_EXPLAINER.html",
+      "exists": true,
+      "size_bytes": 11110
+    },
+    "source_sky_svg": {
+      "path": "stepwise_maintenance/step04_opticsim/outputs/source_model_sky_to_detector.svg",
+      "exists": true,
+      "size_bytes": 5158
+    },
+    "pipeline_svg": {
+      "path": "stepwise_maintenance/step04_opticsim/outputs/source_model_pipeline.svg",
+      "exists": true,
+      "size_bytes": 5030
+    },
+    "source_model_wrl": {
+      "path": "stepwise_maintenance/step04_opticsim/outputs/source_model_smoke.wrl",
+      "exists": true,
+      "size_bytes": 6006
+    },
+    "current_laue_wrl": {
+      "path": "stepwise_maintenance/step04_opticsim/outputs/opticsim_laue_bfull_xopmap_real/laue_multiring_scene.wrl",
+      "exists": true,
+      "size_bytes": 41735
+    },
+    "current_laue_png": {
+      "path": "stepwise_maintenance/step04_opticsim/outputs/laue_bfull_xopmap_real_2d_schematic.png",
+      "exists": true,
+      "size_bytes": 130024
+    }
+  },
+  "inputs": {
+    "source_cases": {
+      "path": "stepwise_maintenance/step07_source_cases/outputs/configs/source_cases_511_ABC.yaml",
+      "exists": true,
+      "size_bytes": 2910
+    },
+    "literature_anchors": {
+      "path": "stepwise_maintenance/step07_source_cases/outputs/configs/literature_flux_anchors.yaml",
+      "exists": true,
+      "size_bytes": 1940
+    },
+    "flight_profile": {
+      "path": "particle_sources/configs/astro_source_cases/flight_profile_phase2_reference.csv",
+      "exists": false,
+      "size_bytes": null
+    },
+    "science_summary": {
+      "path": "outputs/reports/science_511_ADR_100k/science_511_100k_summary.json",
+      "exists": true,
+      "size_bytes": 1276
+    },
+    "science_ledger": {
+      "path": "config/science_511_onaxis_source/metadata/science_rate_ledger.csv",
+      "exists": true,
+      "size_bytes": 963
+    },
+    "laue_summary": {
+      "path": "stepwise_maintenance/step04_opticsim/outputs/opticsim_laue_bfull_xopmap_real/summary.json",
+      "exists": true,
+      "size_bytes": 4354
+    }
+  },
+  "facts": {
+    "A_eff_cm2": 13.556159999999998,
+    "ledger_T_atm": 0.7390423888027,
+    "T_atm_min": 0.0,
+    "T_atm_max": 0.0,
+    "T_atm_range_text": "profile not present",
+    "science_beam": "HomogeneousBeam 0 0 16.051 0 0 -1 1.8",
+    "n_primaries": 50000,
+    "n_diffracted": 15963,
+    "n_absorbed": 0,
+    "n_transmitted": 0,
+    "diffracted_focal_rows": 12566,
+    "within_be_rows": 12552,
+    "energy_min_keV": 511.0,
+    "energy_max_keV": 511.0
+  },
+  "external_references": [
+    "https://arxiv.org/abs/1603.01169",
+    "https://arxiv.org/abs/1512.00325",
+    "https://arxiv.org/abs/2206.14652",
+    "https://www.sciencedirect.com/science/article/abs/pii/S1387647303003129",
+    "https://www.nist.gov/pml/xcom-photon-cross-sections-database"
+  ]
+}

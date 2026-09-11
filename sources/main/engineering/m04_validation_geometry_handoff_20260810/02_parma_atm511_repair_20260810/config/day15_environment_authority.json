@@ -1,0 +1,39 @@
+{
+  "authority": {
+    "altitude_km": 38.75,
+    "atmospheric_depth_g_cm2": 3.4614689720143224,
+    "cutoff_rigidity_GV": 11.6,
+    "date": "2025-08-31",
+    "latitude_deg": 34.0,
+    "line_energy_MeV": 0.51099895,
+    "line_energy_keV": 510.99895,
+    "local_geometry_g": 0.15,
+    "longitude_deg": 100.0,
+    "solar_modulation_MV": 114.6
+  },
+  "authority_status": "FROZEN_EXPLICIT_DAY15_TUPLE_FOR_MODULAR_511_REPAIR",
+  "field_provenance": {
+    "atmospheric_depth_g_cm2": "retained mission trajectory day-15 depth; passed explicitly to PARMA",
+    "cutoff_rigidity_GV": "official PARMA getrcpp(34,100)",
+    "date_latitude_longitude_altitude": "stepwise_maintenance/step06_mission_time_variation/outputs_geo_opt_s1_bpe_w5_fullstat_v1/trajectory_profile.csv; day_mid=15",
+    "local_geometry_g": "official main-generator.cpp default water fraction; g=0,0.15,10 were numerically identical for this photon-line angular distribution",
+    "solar_modulation_MV": "official PARMA getHPcpp(2025,8,31)"
+  },
+  "official_derived_cross_check": {
+    "atmospheric_depth": 3.5011956169999996,
+    "cutoff_rigidity": 11.6,
+    "solar_modulation": 114.6
+  },
+  "resolved_conflict": {
+    "absolute_difference_g_cm2": 0.03972664498567724,
+    "official_getdcpp_depth_g_cm2": 3.5011956169999996,
+    "policy": "Keep the retained flight-trajectory depth so this replacement remains a single modular atmospheric-511 correction. Do not import the legacy 38-km W=118.3 table row or the 38-km X=3.8651 scenario.",
+    "selected_mission_depth_g_cm2": 3.4614689720143224
+  },
+  "scope": {
+    "continuum_changed": false,
+    "only_physical_component_changed": "atmospheric annihilation 511-keV line",
+    "other_particles_changed": false,
+    "transport_launched": false
+  }
+}

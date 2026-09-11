@@ -1,0 +1,44 @@
+{
+  "schema": "o8-parma511-line-external-raw-cleanup-v1",
+  "status": "EXACT_NEW_CAMPAIGN_RAW_FILES_REMOVED_AFTER_COMPACT_CLOSURE",
+  "removed_at_utc": "2026-08-10T15:37:48Z",
+  "scope": "atmospheric annihilation 510.99895-keV mono module only",
+  "campaign_id": "o8_parma511_line_nominal_180m_20260810",
+  "removed_batch_indices": [
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23,
+    24,
+    25,
+    26,
+    27,
+    28,
+    29
+  ],
+  "removed_raw_file_count": 15,
+  "removed_raw_bytes": 12153576230,
+  "source_cleanup_authority": {
+    "path": "engineering/m04_validation_geometry_handoff_20260810/02_parma_atm511_repair_20260810/transport/campaigns/o8_parma511_line_nominal_180m_20260810/aggregate/wave_0000_0029_62aacd9f976e/campaign_aggregate_receipt.json",
+    "sha256": "41528bb2c5dcde926dfdce510efac4b55e9d2d57bd12ca02cb4b45e19eb38655",
+    "cleanup_eligible_entries": 30,
+    "removed_entries_subset": 15,
+    "all_batch_checks_true": true,
+    "raw_files_read_during_aggregate": false
+  },
+  "post_cleanup_check": {
+    "campaign_raw_directory_regular_files": 0,
+    "retained_compact_batches": 30,
+    "retained_campaign_aggregate": true,
+    "retained_source_cards": true,
+    "retained_compressed_logs": true,
+    "retained_raw_sha256_in_provenance": true
+  },
+  "recovery": "The removed raw SIM files are not locally recoverable. They are reproducible by rerunning only the exact line-only source cards with the recorded O8 geometry, transport seeds, and Cosima environment. No retained or other-module raw file was removed.",
+  "destructive_scope_boundary": "Only the 15 exact cleanup-eligible paths for batches 15-29, cryptographically bound by source_cleanup_authority, were removed; no glob, retained product, smoke raw, continuum, prompt, delayed, signal, or other-particle artifact was targeted."
+}

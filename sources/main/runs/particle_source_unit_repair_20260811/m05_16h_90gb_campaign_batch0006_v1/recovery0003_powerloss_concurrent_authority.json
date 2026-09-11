@@ -1,0 +1,204 @@
+{
+  "authorization": {
+    "instructions": [
+      "continue after the computer unexpectedly powered off",
+      "use parallel cores after checking live memory",
+      "consider one additional core when memory permits"
+    ],
+    "scope": "recovery, process concurrency, and scheduling only",
+    "source": "direct user instructions in controlling Codex thread"
+  },
+  "concurrency": {
+    "active_declared_caps_in_disk_gate": true,
+    "heavy_o8_families": [
+      "alpha",
+      "eplus",
+      "neutron",
+      "proton"
+    ],
+    "historical_heavy_o8_active_set_max": 3,
+    "historical_heavy_o8_rss_bytes": 5347234283,
+    "launch_formula": "sum(class_rss_upper)+2GiB < current MemAvailable",
+    "mechanism": "independent single-thread Cosima worker processes",
+    "one_heavy_o8_at_a_time": true,
+    "stage10_max_light_workers": 4,
+    "stage20_max_workers": 2
+  },
+  "controller": {
+    "path": "engineering/particle_source_unit_repair_20260811/m05_16h_90gb_campaign_batch0006_20260812/code/resume_m05_campaign_batch0006_recovery0003_powerloss_concurrent.py",
+    "sha256": "fa2e50c0b38fdb1348f0f1379e362e5678a12a170fcc719a4a22160ac72e08fb"
+  },
+  "created_at": "2026-08-12T13:21:12.116185+00:00",
+  "frozen_clock": {
+    "deadline": "2026-08-13T03:18:34.874118+00:00",
+    "stage10_hard_end_s": 43200,
+    "stage10_stop_launch_s": 41700,
+    "stage20_hard_end_s": 57600,
+    "stage20_stop_launch_s": 55800,
+    "t0": "2026-08-12T11:18:34.874118+00:00"
+  },
+  "global_contract": "runs/particle_source_unit_repair_20260811/m05_16h_90gb_campaign_batch0006_v1/global_contract.json",
+  "global_contract_sha256": "4586fb62a16c0145401a997f70a878bfaebd94529fe04c45da51a1abcf102275",
+  "interrupted_attempts": [
+    {
+      "archive_path": "runs/particle_source_unit_repair_20260811/m05_16h_90gb_campaign_batch0006_v1/failed_attempts/s10_eplus_instant_S3d_O8_shard0001/attempt01",
+      "attempt": 1,
+      "files": [
+        {
+          "bytes": 122028032,
+          "name": "s10_eplus_instant_S3d_O8_shard0001.inc1.id1.sim.gz",
+          "sha256": "90860bcbf176314bf31c2d4e18b3951729c9a0ef69d36e767ca80dedda1cd415"
+        },
+        {
+          "bytes": 901120,
+          "name": "s10_eplus_instant_S3d_O8_shard0001.log",
+          "sha256": "272844b6eee94da15c1e0886006835b75d6c183ee7081139c45b4442babf2690"
+        },
+        {
+          "bytes": 8721,
+          "name": "s10_eplus_instant_S3d_O8_shard0001.source",
+          "sha256": "884552eaac044351260a6fb6147bb07f2f22c6cd074b3b1492ac4766db1e85ff"
+        }
+      ],
+      "job": {
+        "events": 2500,
+        "family": "eplus",
+        "geometry": "S3d_O8",
+        "job_id": "s10_eplus_instant_S3d_O8_shard0001",
+        "matched_seed_key": "stage10_seven_family|instant|eplus|1",
+        "mode": "instant",
+        "seed": 1327469451,
+        "shard_ordinal": 1,
+        "source_tag": "eplus",
+        "stage": "stage10_seven_family"
+      },
+      "partial_path": "runs/particle_source_unit_repair_20260811/m05_16h_90gb_campaign_batch0006_v1/stage10_seven_family/S3d_O8/instant/eplus/shard0001/.attempt01.partial"
+    }
+  ],
+  "interruption_rule": "archive without deletion; publish FAIL interruption receipt; exact same frozen seed/events/source job retries at next unused attempt ordinal",
+  "mem_available_bytes_at_authorization": 8945979392,
+  "planned_events": 6149560,
+  "planned_jobs": 638,
+  "planned_jobs_sha256": "d1d1abb26be31ebadf8932af57b61c744866b8293b437bd43e1b9c58805dc0ea",
+  "publication_namespace": {
+    "final": "runs/particle_source_unit_repair_20260811/m05_16h_90gb_campaign_batch0006_v1/final_umbrella.recovery0003.json",
+    "stage00": "immutable recovery0001 smoke",
+    "stage10": "runs/particle_source_unit_repair_20260811/m05_16h_90gb_campaign_batch0006_v1/seven_family_ledger.recovery0003.json",
+    "stage20": "runs/particle_source_unit_repair_20260811/m05_16h_90gb_campaign_batch0006_v1/proton_ledger.recovery0003.json"
+  },
+  "recovery0001_smoke_decision_sha256": "cd6a25b2ea58ec7217bc545640a6ca3dbb7f3ec160cdf1abc32ce43c1b36be21",
+  "recovery0001_smoke_ledger_sha256": "a98053b01edde18ba87ae803c065af27764d682f8ed0548d5218184132d300d9",
+  "recovery0001_smoke_validation_sha256": "1d387ecc885af6f0aa3d52ab4c98d60e1b71a30849919aa1d7e87fa718be05a1",
+  "recovery0002_final_guard_sha256": "f746e3af240e7566e300839a86e81bca49086a0fd51de83c5e4c5cfe4be2f2ab",
+  "recovery0002_scheduling_authority_sha256": "2684bdc6adec90145421a6fa6ceaf2106ef1d799e859c4a711cfbe279f0d56f1",
+  "recovery_id": "batch0006_recovery0003_powerloss_concurrent",
+  "rss_evidence_at_authorization": {
+    "classes": {
+      "Mass_model_511/alpha": {
+        "max_bytes": 886341632,
+        "n": 7,
+        "p95_upper_bytes": 886341632
+      },
+      "Mass_model_511/eminus": {
+        "max_bytes": 631398400,
+        "n": 7,
+        "p95_upper_bytes": 631398400
+      },
+      "Mass_model_511/eplus": {
+        "max_bytes": 1024794624,
+        "n": 7,
+        "p95_upper_bytes": 1024794624
+      },
+      "Mass_model_511/gamma": {
+        "max_bytes": 1241182208,
+        "n": 8,
+        "p95_upper_bytes": 1241182208
+      },
+      "Mass_model_511/muminus": {
+        "max_bytes": 619720704,
+        "n": 7,
+        "p95_upper_bytes": 619720704
+      },
+      "Mass_model_511/muplus": {
+        "max_bytes": 621121536,
+        "n": 7,
+        "p95_upper_bytes": 621121536
+      },
+      "Mass_model_511/neutron": {
+        "max_bytes": 1163853824,
+        "n": 7,
+        "p95_upper_bytes": 1163853824
+      },
+      "Mass_model_511/proton": {
+        "max_bytes": 826474496,
+        "n": 8,
+        "p95_upper_bytes": 826474496
+      },
+      "S3d_O8/alpha": {
+        "max_bytes": 859959296,
+        "n": 6,
+        "p95_upper_bytes": 859959296
+      },
+      "S3d_O8/eminus": {
+        "max_bytes": 668770304,
+        "n": 6,
+        "p95_upper_bytes": 668770304
+      },
+      "S3d_O8/eplus": {
+        "max_bytes": 774172672,
+        "n": 6,
+        "p95_upper_bytes": 774172672
+      },
+      "S3d_O8/gamma": {
+        "max_bytes": 761044992,
+        "n": 8,
+        "p95_upper_bytes": 761044992
+      },
+      "S3d_O8/muminus": {
+        "max_bytes": 628412416,
+        "n": 6,
+        "p95_upper_bytes": 628412416
+      },
+      "S3d_O8/muplus": {
+        "max_bytes": 631410688,
+        "n": 6,
+        "p95_upper_bytes": 631410688
+      },
+      "S3d_O8/neutron": {
+        "max_bytes": 2096963584,
+        "n": 7,
+        "p95_upper_bytes": 2096963584
+      },
+      "S3d_O8/proton": {
+        "max_bytes": 833064960,
+        "n": 8,
+        "p95_upper_bytes": 833064960
+      }
+    },
+    "complete_pass_receipts": 111,
+    "geometry": {
+      "Mass_model_511": {
+        "max_bytes": 1241182208,
+        "n": 58,
+        "p95_upper_bytes": 1139351552
+      },
+      "S3d_O8": {
+        "max_bytes": 2096963584,
+        "n": 53,
+        "p95_upper_bytes": 859959296
+      }
+    }
+  },
+  "schema_version": 1,
+  "seed_registry": "runs/particle_source_unit_repair_20260811/m05_16h_90gb_campaign_batch0006_v1/seed_registry.json",
+  "seed_registry_sha256": "bb4020cfbd5195660ea5d599eef013e2b58d905592f2799fae3c5686b8caa0ec",
+  "status": "PASS__POWERLOSS_RECOVERY__USER_AUTHORIZED_RESOURCE_GATED_CONCURRENCY",
+  "unchanged": {
+    "failed_and_canonical_artifacts": true,
+    "jobs_seeds_events": true,
+    "physics_cut_detector_veto": true,
+    "sources_spectra_geometries": true,
+    "t0_stage_deadlines_campaign_deadline": true,
+    "validation_and_merge_domains": true
+  }
+}

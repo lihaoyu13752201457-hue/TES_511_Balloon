@@ -1,0 +1,24 @@
+#10% of the thickness of one strip 
+DefaultRangeCut 0.005 
+
+# put high value range cut for spacecraft part
+Region Spacecraft
+Spacecraft.Volume SCbody
+Spacecraft.RangeCut 1.
+
+Region Pipebody
+Pipebody.Volume PIPbody
+Pipebody.RangeCut 1.
+
+PhysicsListHD                      qgsp-bic-hp
+DecayMode                          BuildUp
+#PreTriggerMode              EveryEventWithHits
+
+DetectorTimeConstant 0.000002
+
+DataChallenge.Source SAAproton
+SAAproton.ParticleType	       4
+SAAproton.Beam FarFieldFileZenithDependent TrappedProtonsSpenvis.beam.dat
+SAAproton.Spectrum  File SAAproton_4MeVto2000_fluxdivided1000.spectrum.dat
+SAAproton.Flux	  0.059614805836099995
+SAAproton.LightCurve File false SAAproton_4MeVto2000.dat

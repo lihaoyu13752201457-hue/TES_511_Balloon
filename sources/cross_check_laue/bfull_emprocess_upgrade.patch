@@ -1,0 +1,113 @@
+--- a/geant4_app/src/laue_multiring_bfull_demo.cc
++++ b/geant4_app/src/laue_multiring_bfull_demo.cc
+@@ -31,7 +31,8 @@
+ #include "G4SystemOfUnits.hh"
+ #include "G4ThreeVector.hh"
+ #include "G4Track.hh"
+-#include "G4VDiscreteProcess.hh"
++#include "G4VEmModel.hh"
++#include "G4VEmProcess.hh"
+ #include "G4VModularPhysicsList.hh"
+ #include "G4VPhysicalVolume.hh"
+ #include "G4VUserDetectorConstruction.hh"
+@@ -898,12 +899,14 @@
+     const double n = static_cast<double>(opt_.nEvents);
+     summary << "{\n";
+     summary << "  \"system\": \"geant4_laue_bfull_process\",\n";
+-    summary << "  \"model\": \"bfull_fixed_tile_orientation_standard_em_competing_laue_mfp_v2\",\n";
+-    summary << "  \"warning\": \"B-FULL stage-1: standard Geant4 EM physics is enabled, the Laue process is non-forced with a finite equivalent diffraction mean free path, and each tile uses a fixed design lattice-plane normal. This is still an application-level G4VDiscreteProcess, not a Geant4 toolkit EM-category patch.\",\n";
++    summary << "  \"model\": \"bfull_fixed_tile_orientation_geant4_emprocess_competing_laue_mfp_v3\",\n";
++    summary << "  \"warning\": \"B-FULL: standard Geant4 EM physics is enabled; the Laue process derives from G4VEmProcess with process type fElectromagnetic, is non-forced, and uses a finite equivalent diffraction mean free path. The tile geometry/lattice-plane evaluation remains application-level code, not a Geant4 toolkit source patch.\",\n";
+     summary << "  \"geant4_bottom_code_modified\": false,\n";
+     summary << "  \"model_process_split\": true,\n";
+-    summary << "  \"registered_process\": \"BFullLaueBraggProcess added to gamma G4ProcessManager as a non-forced finite-MFP discrete process\",\n";
+-    summary << "  \"registered_in_geant4_em_category\": false,\n";
++    summary << "  \"registered_process\": \"BFullLaueBraggProcess derives from G4VEmProcess(fElectromagnetic) and is added to the gamma G4ProcessManager as a non-forced finite-MFP post-step process\",\n";
++    summary << "  \"registered_in_geant4_em_category\": true,\n";
++    summary << "  \"geant4_process_base_class\": \"G4VEmProcess\",\n";
++    summary << "  \"geant4_em_model_role\": \"bookkeeping only; the step/volume/tile-dependent Laue interaction is evaluated in the process because G4VEmModel::SampleSecondaries does not expose the required G4Step physical volume copy number\",\n";
+     summary << "  \"standard_geant4_em_enabled\": true,\n";
+     summary << "  \"uses_external_efficiency_table_for_physics\": false,\n";
+     summary << "  \"uses_external_rocking_curve_for_laue_mfp\": " << (rockingCurves_.HasAny() ? "true" : "false") << ",\n";
+@@ -1153,19 +1156,71 @@
+   }
+ };
+ 
+-class GuanStyleLaueBraggProcess : public G4VDiscreteProcess {
++class BFullLaueEmBookkeepingModel : public G4VEmModel {
++ public:
++  BFullLaueEmBookkeepingModel() : G4VEmModel("BFullLaueEmBookkeepingModel") {}
++
++  void Initialise(const G4ParticleDefinition*, const G4DataVector&) override {}
++
++  void SampleSecondaries(
++      std::vector<G4DynamicParticle*>*,
++      const G4MaterialCutsCouple*,
++      const G4DynamicParticle*,
++      G4double = 0.0,
++      G4double = DBL_MAX) override {}
++
++  G4double CrossSectionPerVolume(
++      const G4Material*,
++      const G4ParticleDefinition*,
++      G4double,
++      G4double = 0.0,
++      G4double = DBL_MAX) override {
++    return 0.0;
++  }
++};
++
++class GuanStyleLaueBraggProcess : public G4VEmProcess {
+  public:
+   GuanStyleLaueBraggProcess(
+       MultiRingRunState* state,
+       const Options& opt,
+       const std::vector<RingSpec>& rings,
+       const RockingCurveLibrary& rockingCurves)
+-      : G4VDiscreteProcess("BFullLaueBraggProcess"), state_(state), opt_(opt), rings_(rings), rockingCurves_(rockingCurves) {}
++      : G4VEmProcess("BFullLaueBraggProcess", fElectromagnetic),
++        state_(state),
++        opt_(opt),
++        rings_(rings),
++        rockingCurves_(rockingCurves) {
++    SetBuildTableFlag(false);
++    SetSecondaryParticle(G4Gamma::GammaDefinition());
++    SetProcessSubType(9001);
++  }
+ 
+   G4bool IsApplicable(const G4ParticleDefinition& particle) override {
+     return &particle == G4Gamma::GammaDefinition();
+   }
+ 
++  void PrintInfo() override {}
++
++  void ProcessDescription(std::ostream& out) const override {
++    out << "B-FULL Laue Bragg process: custom G4VEmProcess with finite equivalent diffraction mean free path; "
++        << "tile-dependent geometry and lattice-plane evaluation are performed in PostStepDoIt.";
++  }
++
++  void InitialiseProcess(const G4ParticleDefinition*) override {
++    if (isInitialised_) return;
++    isInitialised_ = true;
++    if (!EmModel(1)) SetEmModel(new BFullLaueEmBookkeepingModel(), 1);
++    AddEmModel(1, EmModel(1));
++  }
++
++  G4double PostStepGetPhysicalInteractionLength(
++      const G4Track& track,
++      G4double previousStepSize,
++      G4ForceCondition* condition) override {
++    return G4VDiscreteProcess::PostStepGetPhysicalInteractionLength(track, previousStepSize, condition);
++  }
++
+   G4double GetMeanFreePath(const G4Track& track, G4double, G4ForceCondition* condition) override {
+     if (condition) *condition = NotForced;
+     if (track.GetDefinition() != G4Gamma::GammaDefinition()) return DBL_MAX;
+@@ -1229,6 +1284,7 @@
+   std::vector<RingSpec> rings_;
+   RockingCurveLibrary rockingCurves_;
+   GuanDarwinDynamicalModel model_;
++  bool isInitialised_ = false;
+ };
+ 
+ class MultiRingDetectorConstruction : public G4VUserDetectorConstruction {

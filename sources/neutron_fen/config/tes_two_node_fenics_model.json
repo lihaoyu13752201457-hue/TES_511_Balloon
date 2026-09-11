@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "model": "two thermal nodes per pixel: mushroom Ta absorber and directly Si-connected TES, linearized around the voltage-biased operating point",
+  "temperature": {
+    "Tc_K": 0.1,
+    "Tbath_K": 0.05,
+    "transition_alpha_at_bias": 100.0,
+    "transition_beta": 0.0,
+    "operating_resistance_fraction_Rn": 0.3
+  },
+  "electrical": {
+    "Rn_ohm_assumption": 0.01,
+    "Rshunt_ohm": 0.00031,
+    "series_inductance_H": 1e-06,
+    "parasitic_series_resistance_ohm": 0.0
+  },
+  "thermal": {
+    "Ta_pixel_dimensions_mm": [1.5, 1.5, 3.0],
+    "Ta_density_kg_m3": 16654.0,
+    "Ta_specific_heat_J_kg_K": 5.99e-07,
+    "TES_heat_capacity_J_K": 4e-14,
+    "bath_power_exponent_n": 3.0,
+    "G_TES_to_bath_at_Tc_W_K": 8e-10,
+    "G_absorber_to_bath_at_Tc_W_K": 2e-10,
+    "G_absorber_to_TES_W_K": 1e-06,
+    "absorber_to_bath_direct_link": true
+  },
+  "input_partition": {
+    "photon_511": {
+      "absorber_fraction": 1.0,
+      "TES_fraction": 0.0
+    },
+    "direct_TP_mass_model_deposit": {
+      "absorber_fraction": 1.0,
+      "TES_fraction": 0.0,
+      "reason": "TP_L... is an unresolved Ta/TES pixel proxy; direct gamma/electron deposition is conservatively assigned to the bulk Ta absorber"
+    },
+    "G4CMP_Si_phonon_sensor_energy": {
+      "absorber_fraction": 0.2,
+      "TES_fraction": 0.8,
+      "rule": "ballistic interception proportional to the user-specified absorber-post versus direct-TES Si contact perimeter"
+    },
+    "interface_transfer": "instantaneous source after G4CMP surface absorption; no additional interface time constant or bottleneck"
+  },
+  "linear_response": {
+    "normalization_energy_keV_per_event": 1.0,
+    "purpose": "compare optimal-filter pulse templates below saturation without reintroducing the nonlinear one-node artifact",
+    "noise_weighting": "none; the reported residual is an unweighted time-domain L2 shape difference, not a detection significance"
+  },
+  "scope": {
+    "events": ["photon_511", "candidate_C"],
+    "candidate_C_input": "five-run mean tuned-C G4CMP sensor arrival stream plus direct TP deposits",
+    "no_interpixel_thermal_conductance": true,
+    "no_common_bath_dynamics": true
+  }
+}

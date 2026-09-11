@@ -1,0 +1,1972 @@
+{
+  "analysis_date": "2026-08-10",
+  "baseline_source_replay": {
+    "m": 50000,
+    "source_seed": 260613,
+    "status": "PASS_ALL_SEVEN_SOURCE_CARDS_EXACT_BLOCKWISE_REPLAY",
+    "triggers_per_positive_family": 1000000
+  },
+  "builder_semantics": {
+    "TE_meaning": "SIM_rate_normalization_authority_event_weight_equals_1_div_TE",
+    "activity_distribution_key": [
+      "VN",
+      "ZA"
+    ],
+    "exc_keV_recorded_but_not_distribution_key": true,
+    "m_meaning": "finite_resampled_spatial_support_not_transport_count",
+    "pointsource_flux": "equal_A_div_M",
+    "same_current_source_and_transport_seed": 260613,
+    "sampling": "with_replacement_using_random.Random(seed)_and_activity_weights",
+    "triggers_meaning": "Cosima_requested_pretrigger_records"
+  },
+  "claim_boundary": {
+    "allowed": [
+      "PASS_SOURCE_LAYER_REPLAY",
+      "CONDITIONAL_OFFLINE_FINITE_M_VARIANCE_ESTIMATE",
+      "CONDITIONAL_OFFLINE_FINITE_M_VARIANCE_ESTIMATE__NOT_HANDOFF_TRANSPORT_PASS"
+    ],
+    "forbidden": [
+      "PASS_M50000_CONDITIONAL_ON_FIXED_BUILDUP",
+      "PASS_M_SAMPLING",
+      "transport_backed_convergence"
+    ]
+  },
+  "conditional_existing_event_reweight": {
+    "csv": "data/conditional_selected_rate_reweight.csv",
+    "formula_hajek_within_retained_support": "truncated_rate_div_candidate_fraction_on_retained_row_support_computed_per_family_then_summed",
+    "formula_truncated": "sum_selected_event[(1_div_TE_family)*(g_candidate_row_div_g_retained_row)]",
+    "limitations": [
+      "rows absent from the retained M=50000 draw have no transport outcome",
+      "hypothetical source-draw reweight table uses primary-response events; all 64 retained response seeds are analyzed separately in the raw-cluster output",
+      "the same selected physical events are reused for every candidate draw",
+      "candidate importance ESS and unseen-support fraction must be read with each rate"
+    ],
+    "status": "CONDITIONAL_DIAGNOSTIC_NOT_UNBIASED_FOR_UNOBSERVED_RETAINED_ROW_SUPPORT"
+  },
+  "input_hash_audit": {
+    "csv": "data/input_hash_audit.csv",
+    "files": 44,
+    "status": "PASS_ALL_FROZEN_INPUT_HASHES"
+  },
+  "missing_identification": [
+    "no independent source-seed transport realizations for a direct between-realization cross-check; the reported estimator instead uses the single iid M-block probability sample",
+    "no row-specific q attribution for target rows outside the retained M-block sample; this is distinct from aggregate Var_p(q) estimation",
+    "only 60 primary-response neutron W511 events and 78 all-family events",
+    "BUILDUP yield uncertainty is not addressed by source-table resampling",
+    "source seed and transport seed were not separated in the retained baseline",
+    "rare-pair 95% upper remains a Poisson approximation rather than independent-source-seed empirical coverage"
+  ],
+  "neutron_key_distinction": {
+    "current_unique_rows": 30951,
+    "eligible_weighted_table_rows": 58672,
+    "individual_position_target_mass_coverage": 0.6520605487939629,
+    "individual_position_target_mass_unseen": 0.3479394512060371,
+    "manifest_vn_za_group_activity_unseen": 0.005150170332880401,
+    "sampling_interpretation": "the_M50000_rows_are_an_iid_probability_sample_from_p; unseen_target_rows_limit_row_level_attribution_but_do_not_by_themselves_block_an_aggregate_Var_p(q)_estimate_from_K_over_M",
+    "vn_za_group_target_mass_unseen": 0.005150170332880122,
+    "warning": "the_about_0p515_percent_group_miss_is_not_a_bound_on_the_about_34p79_percent_individual_position_mass_unseen_or_on_W511_rate"
+  },
+  "preexisting_frozen_selection_blocker": {
+    "actual_frozen_veto_scope": "BGO plus plastic plus Kapton volumes captured by the stored name predicate",
+    "impact": "all response replay and finite-M selected indicators exactly reproduce the frozen predicate; they do not validate its physical correctness",
+    "predicate": "ACTIVE_SHIELD substring matching also classifies passive ActiveShield_S3C_BGO_Kapton_* volumes as active veto",
+    "rerun_performed": false,
+    "status": "NOT_REPAIRED_IN_WP1_OFFLINE_M_ANALYSIS"
+  },
+  "raw_cluster_finite_m_analysis": {
+    "all_family_primary_exact_position": {
+      "families": 7,
+      "family_dependence_warning": "the retained families reuse source seed 260613; RSS assumes independent source realizations, while the arithmetic sum is the reported perfect-positive-correlation sensitivity bound",
+      "h_yield_debiased_source_sd_cps_independent_family_rss": 5.2922686059655e-05,
+      "h_yield_debiased_source_sd_cps_perfect_positive_correlation_sum": 5.668650449503064e-05,
+      "h_yield_naive_bootstrap_sd_cps_independent_family_rss": 0.00020652136517647552,
+      "h_yield_poisson_pair_upper_source_sd_cps_independent_family_rss": 0.0001177459218073295,
+      "h_yield_poisson_pair_upper_source_sd_cps_perfect_positive_correlation_sum": 0.00014228636349985604,
+      "q_selection_probability_diagnostic_sd_cps_independent_family_rss": 5.019314909679845e-05,
+      "h_yield_debiased_source_cv_independent_family_rss": 0.026243903447318636,
+      "h_yield_debiased_source_cv_perfect_positive_correlation_sum": 0.028110348538557834,
+      "h_yield_naive_bootstrap_cv_independent_family_rss": 0.10241216330914231,
+      "h_yield_poisson_pair_upper_source_cv_independent_family_rss": 0.05838918681761312,
+      "h_yield_poisson_pair_upper_source_cv_perfect_positive_correlation_sum": 0.07055858013992586,
+      "q_selection_probability_diagnostic_cv_independent_family_rss": 0.02489034961544494,
+      "selected_rate_cps": 0.002016570673866816
+    },
+    "identification_boundary": [
+      "target rows absent from the M50000 probability sample cannot receive row-specific q attribution, but their absence alone is not an aggregate source-variance blocker",
+      "vn_za result assumes constant q within each group and therefore suppresses within-group spatial heterogeneity",
+      "naive row variance contains finite-transport noise; sparse debiasing can be negative and is then reported both raw and clipped",
+      "raw transport trial share differs materially from K/M because per-block event-generation intensity varies; h, not q alone, is therefore the rate authority",
+      "the repeated-pair upper is a declared rare-pair Poisson approximation and its CV uses the point mean",
+      "bootstrap conditions on fitted qhat and is not a transport confidence interval"
+    ],
+    "neutron_primary_exact_position": {
+      "clusters": 30951,
+      "clusters_with_at_least_two_trials": 30951,
+      "clusters_with_selected": 58,
+      "clusters_with_trials": 30951,
+      "conditional_support_lt2_trial_mass": 0.0,
+      "conditional_support_zero_trial_mass": 0.0,
+      "conditional_target_mean_selection_probability": 6.284790590586416e-05,
+      "conditional_target_predicted_rate_cps": 0.002061655497165829,
+      "current_selected_rate_cps": 0.001968233118462706,
+      "debiased_between_cluster_q_variance_clipped": 1.1659903334113734e-07,
+      "debiased_between_cluster_q_variance_raw": 1.1659903334113734e-07,
+      "debiased_finite_m_source_cv": 0.024298063418426472,
+      "debiased_finite_m_source_sd_cps": 5.009423601708287e-05,
+      "exact_repeated_success_pairs": 2,
+      "exact_unordered_trial_pair_exposure": 21565164,
+      "family": "n",
+      "finite_m_selected_rate_cv_h_yield": 0.026853090992360468,
+      "finite_m_selected_rate_cv_h_yield_poisson_pair_upper": 0.05914104432001701,
+      "finite_m_selected_rate_sd_cps_h_yield": 5.2853143024256437e-05,
+      "finite_m_selected_rate_sd_cps_h_yield_poisson_pair_upper": 0.00011640336209112818,
+      "generated_trials": 999993,
+      "generated_trials_expected": 1000000,
+      "h_yield_max_weighted_pair_coefficient": 1.1522610640118415e-07,
+      "h_yield_second_moment_poisson_one_sided_95_upper": 7.254397857537185e-07,
+      "identified_trial_fraction": 0.999993,
+      "max_k_over_m_per_trial_pair_coefficient": 2.0000000000000003e-06,
+      "naive_between_cluster_q_variance": 2.243600901531938e-06,
+      "naive_finite_m_source_cv": 0.10658522079648367,
+      "naive_finite_m_source_sd_cps": 0.00021974200637170417,
+      "per_block_selected_yield_mean_h": 6.440605429959694e-05,
+      "per_block_selected_yield_mean_squared_factorial": 4.0790041666019195e-09,
+      "per_block_selected_yield_second_factorial": 1.5363480853491222e-07,
+      "per_block_selected_yield_variance_debiased_clipped": 1.4955879554422118e-07,
+      "per_block_selected_yield_variance_debiased_raw": 1.4955879554422118e-07,
+      "poisson_q2_one_sided_95_upper_conservative": 1.2591587243743982e-05,
+      "poisson_repeated_pair_mean_one_sided_95_upper": 6.29579362187199,
+      "poisson_upper_finite_m_source_cv_using_point_mean": 0.25250176938203434,
+      "poisson_upper_finite_m_source_sd_cps": 0.0005205716608905694,
+      "poisson_variance_one_sided_95_upper_no_mu2_subtraction": 1.2591587243743982e-05,
+      "replica_index": 0,
+      "resolution": "exact_position_row",
+      "response_seed": 26071301,
+      "selected_events": 60,
+      "source_activity_Bq": 30.55975311431278,
+      "target_mass_covered_by_retained_source": 0.6520605487939629,
+      "target_mass_missing_from_retained_source": 0.3479394512060371,
+      "transport_counting_rse_observed": 0.12909944487358055,
+      "unassigned_known_zero_selected_trials": 7,
+      "warning": "PRIMARY_RATE_METRIC_is_per_block_h_yield_with_Sj_Poisson_factorial_moment; q_selection_probability_is_diagnostic_because_raw_trial_share_is_not_K_over_M; naive_q_variance_contains_transport_Bernoulli_noise; Poisson_pair_upper_is_a_declared_rare_pair_approximation_and_its_CV_uses_the_point_mean"
+    },
+    "neutron_primary_nearest_all_mapping_sensitivity": {
+      "clusters": 30951,
+      "clusters_with_at_least_two_trials": 30951,
+      "clusters_with_selected": 58,
+      "clusters_with_trials": 30951,
+      "conditional_support_lt2_trial_mass": 0.0,
+      "conditional_support_zero_trial_mass": 0.0,
+      "conditional_target_mean_selection_probability": 6.276251827600987e-05,
+      "conditional_target_predicted_rate_cps": 0.0020588544511493914,
+      "current_selected_rate_cps": 0.001968233118462706,
+      "debiased_between_cluster_q_variance_clipped": 1.16609601013095e-07,
+      "debiased_between_cluster_q_variance_raw": 1.16609601013095e-07,
+      "debiased_finite_m_source_cv": 0.024332223204397846,
+      "debiased_finite_m_source_sd_cps": 5.009650605073501e-05,
+      "exact_repeated_success_pairs": 2,
+      "exact_unordered_trial_pair_exposure": 21565392,
+      "family": "n",
+      "finite_m_selected_rate_cv_h_yield": 0.026853090992360468,
+      "finite_m_selected_rate_cv_h_yield_poisson_pair_upper": 0.05914104432001701,
+      "finite_m_selected_rate_sd_cps_h_yield": 5.2853143024256437e-05,
+      "finite_m_selected_rate_sd_cps_h_yield_poisson_pair_upper": 0.00011640336209112818,
+      "generated_trials": 1000000,
+      "generated_trials_expected": 1000000,
+      "h_yield_max_weighted_pair_coefficient": 1.1522610640118415e-07,
+      "h_yield_second_moment_poisson_one_sided_95_upper": 7.254397857537185e-07,
+      "identified_trial_fraction": 1.0,
+      "max_k_over_m_per_trial_pair_coefficient": 2.0000000000000003e-06,
+      "naive_between_cluster_q_variance": 2.236677995306022e-06,
+      "naive_finite_m_source_cv": 0.106565436834919,
+      "naive_finite_m_source_sd_cps": 0.0002194027239662523,
+      "per_block_selected_yield_mean_h": 6.440605429959694e-05,
+      "per_block_selected_yield_mean_squared_factorial": 4.0790041666019195e-09,
+      "per_block_selected_yield_second_factorial": 1.5363480853491222e-07,
+      "per_block_selected_yield_variance_debiased_clipped": 1.4955879554422118e-07,
+      "per_block_selected_yield_variance_debiased_raw": 1.4955879554422118e-07,
+      "poisson_q2_one_sided_95_upper_conservative": 1.2591587243743982e-05,
+      "poisson_repeated_pair_mean_one_sided_95_upper": 6.29579362187199,
+      "poisson_upper_finite_m_source_cv_using_point_mean": 0.2528452949162828,
+      "poisson_upper_finite_m_source_sd_cps": 0.0005205716608905694,
+      "poisson_variance_one_sided_95_upper_no_mu2_subtraction": 1.2591587243743982e-05,
+      "replica_index": 0,
+      "resolution": "exact_position_row_nearest_all_mapping_sensitivity",
+      "response_seed": 26071301,
+      "selected_events": 60,
+      "source_activity_Bq": 30.55975311431278,
+      "target_mass_covered_by_retained_source": 0.6520605487939629,
+      "target_mass_missing_from_retained_source": 0.3479394512060371,
+      "transport_counting_rse_observed": 0.12909944487358055,
+      "unassigned_known_zero_selected_trials": 0,
+      "warning": "PRIMARY_RATE_METRIC_is_per_block_h_yield_with_Sj_Poisson_factorial_moment; q_selection_probability_is_diagnostic_because_raw_trial_share_is_not_K_over_M; naive_q_variance_contains_transport_Bernoulli_noise; Poisson_pair_upper_is_a_declared_rare_pair_approximation_and_its_CV_uses_the_point_mean"
+    },
+    "neutron_primary_vn_za_constant_q_model": {
+      "clusters": 856,
+      "clusters_with_at_least_two_trials": 856,
+      "clusters_with_selected": 23,
+      "clusters_with_trials": 856,
+      "conditional_support_lt2_trial_mass": 0.0,
+      "conditional_support_zero_trial_mass": 0.0,
+      "conditional_target_mean_selection_probability": 6.304471805815962e-05,
+      "conditional_target_predicted_rate_cps": 0.002068111700436893,
+      "current_selected_rate_cps": 0.001968233118462706,
+      "debiased_between_cluster_q_variance_clipped": 9.749612425206225e-08,
+      "debiased_between_cluster_q_variance_raw": 9.749612425206225e-08,
+      "debiased_finite_m_source_cv": 0.022149298026924464,
+      "debiased_finite_m_source_sd_cps": 4.580722240594627e-05,
+      "exact_repeated_success_pairs": 223,
+      "exact_unordered_trial_pair_exposure": 20563121944,
+      "family": "n",
+      "finite_m_selected_rate_cv_h_yield": 0.021499313867215923,
+      "finite_m_selected_rate_cv_h_yield_poisson_pair_upper": 0.3720612149693182,
+      "finite_m_selected_rate_sd_cps_h_yield": 4.231566157767889e-05,
+      "finite_m_selected_rate_sd_cps_h_yield_poisson_pair_upper": 0.0007323032053980843,
+      "generated_trials": 999993,
+      "generated_trials_expected": 1000000,
+      "h_yield_max_weighted_pair_coefficient": 1.1522610640118415e-07,
+      "h_yield_second_moment_poisson_one_sided_95_upper": 2.8711256023000225e-05,
+      "identified_trial_fraction": 0.999993,
+      "max_k_over_m_per_trial_pair_coefficient": 5.555555555555556e-07,
+      "naive_between_cluster_q_variance": 5.341584817414754e-07,
+      "naive_finite_m_source_cv": 0.051844340630349345,
+      "naive_finite_m_source_sd_cps": 0.00010721988745906128,
+      "per_block_selected_yield_mean_h": 6.440605429959694e-05,
+      "per_block_selected_yield_mean_squared_factorial": 4.0790041666019195e-09,
+      "per_block_selected_yield_second_factorial": 9.994484946442602e-08,
+      "per_block_selected_yield_variance_debiased_clipped": 9.586776265307715e-08,
+      "per_block_selected_yield_variance_debiased_raw": 9.586776265307715e-08,
+      "poisson_q2_one_sided_95_upper_conservative": 0.00013842954768444524,
+      "poisson_repeated_pair_mean_one_sided_95_upper": 249.1731858320014,
+      "poisson_upper_finite_m_source_cv_using_point_mean": 0.8346044402279962,
+      "poisson_upper_finite_m_source_sd_cps": 0.0017260552080721023,
+      "poisson_variance_one_sided_95_upper_no_mu2_subtraction": 0.00013842954768444524,
+      "replica_index": 0,
+      "resolution": "vn_za_group_constant_q_model",
+      "response_seed": 26071301,
+      "selected_events": 60,
+      "source_activity_Bq": 30.55975311431278,
+      "target_mass_covered_by_retained_source": 0.9948498296671199,
+      "target_mass_missing_from_retained_source": 0.005150170332880122,
+      "transport_counting_rse_observed": 0.12909944487358055,
+      "unassigned_known_zero_selected_trials": 7,
+      "warning": "PRIMARY_RATE_METRIC_is_per_block_h_yield_with_Sj_Poisson_factorial_moment; q_selection_probability_is_diagnostic_because_raw_trial_share_is_not_K_over_M; naive_q_variance_contains_transport_Bernoulli_noise; Poisson_pair_upper_is_a_declared_rare_pair_approximation_and_its_CV_uses_the_point_mean"
+    },
+    "neutron_ranges_across_64_response_seeds": {
+      "exact_position_row": {
+        "debiased_finite_m_source_cv": {
+          "max": 0.026477391948989903,
+          "median": 0.024090877816905474,
+          "min": 0.012038351543696773
+        },
+        "exact_repeated_success_pairs": {
+          "max": 2.0,
+          "median": 2.0,
+          "min": 1.0
+        },
+        "finite_m_selected_rate_cv_h_yield": {
+          "max": 0.029358534952542262,
+          "median": 0.026853090992360468,
+          "min": 0.012629107889888134
+        },
+        "finite_m_selected_rate_cv_h_yield_poisson_pair_upper": {
+          "max": 0.06451750289456401,
+          "median": 0.05914104432001701,
+          "min": 0.049680899115613686
+        },
+        "poisson_upper_finite_m_source_cv_using_point_mean": {
+          "max": 0.27444270241358093,
+          "median": 0.2504187120920497,
+          "min": 0.21238034699459662
+        }
+      },
+      "vn_za_group_constant_q_model": {
+        "debiased_finite_m_source_cv": {
+          "max": 0.023559174245945714,
+          "median": 0.021753804059238463,
+          "min": 0.01819730966777365
+        },
+        "exact_repeated_success_pairs": {
+          "max": 260.0,
+          "median": 240.5,
+          "min": 190.0
+        },
+        "finite_m_selected_rate_cv_h_yield": {
+          "max": 0.02306101154173796,
+          "median": 0.02121402834082569,
+          "min": 0.01752461636280253
+        },
+        "finite_m_selected_rate_cv_h_yield_poisson_pair_upper": {
+          "max": 0.4001344769597166,
+          "median": 0.3814733745555295,
+          "min": 0.36028996877592684
+        },
+        "poisson_upper_finite_m_source_cv_using_point_mean": {
+          "max": 0.9018389324835672,
+          "median": 0.8549395735453906,
+          "min": 0.8072880114605813
+        }
+      }
+    },
+    "poisson_bootstrap": "Poissonized M-block multiplicities use fixed hhat=S/(T*A*K/M) for the primary rate-yield diagnostic and fixed qhat=S/n separately; transport outcomes are not resampled",
+    "poisson_bootstrap_primary_seed_csv": "data/cluster_poisson_bootstrap_primary_seed.csv",
+    "poisson_pair_upper": "the exact same-row repeated-success-pair count is converted to a one-sided 95% rare-Poisson mean upper; max[2*(K/M)/(T*A*K/M)^2] gives a conservative h^2 upper before conversion to rate CV",
+    "primary_rate_debiased_moment": "E_p(h^2)=sum[(K/M)*Sj*(Sj-1)/(T*A*K/M)^2]; mu_h^2=S_total*(S_total-1)/(T*A)^2; multiply their difference by M/(M-1) then clip at zero",
+    "primary_rate_variance_formula": "Sj~Poisson(T*A*(Kj/M)*hj); Var_rate_at_M=A^2*Var_p(h)/M, with per-block selected yield h as the primary rate variable",
+    "q_selection_probability_diagnostic": "E_p(q^2) uses sum[(K/M)*s*(s-1)/(n*(n-1))] and removes Binomial transport noise, but raw n share is measurably not K/M, so q alone is not the selected-rate M variance",
+    "response_seed_lineage_csv": "data/response_seed_selected_lineage.csv",
+    "row_clusters_csv": "data/raw_sim_source_row_clusters.csv",
+    "status": "CONDITIONAL_SINGLE_M_SAMPLE_K_OVER_M_FACTORIAL_MOMENT_ESTIMATE",
+    "variance_by_response_seed_csv": "data/cluster_source_variance_by_response_seed.csv"
+  },
+  "retained_response_seed_ensemble": {
+    "authority_status": "PASS_S3D_O8_ALL8_EVENT_LEVEL_420EV_FWHM_ENERGY_RESPONSE_CLOSURE",
+    "event_level_replay": {
+      "per_seed": [
+        {
+          "replica_index": 0,
+          "response_seed": 26071301,
+          "selected_delayed_events": 78,
+          "selected_delayed_rate_cps": 0.002016570673866816
+        },
+        {
+          "replica_index": 1,
+          "response_seed": 26079220,
+          "selected_delayed_events": 79,
+          "selected_delayed_rate_cps": 0.002018816002276158
+        },
+        {
+          "replica_index": 2,
+          "response_seed": 26087139,
+          "selected_delayed_events": 80,
+          "selected_delayed_rate_cps": 0.00205161988758387
+        },
+        {
+          "replica_index": 3,
+          "response_seed": 26095058,
+          "selected_delayed_events": 82,
+          "selected_delayed_rate_cps": 0.0021172276581992934
+        },
+        {
+          "replica_index": 4,
+          "response_seed": 26102977,
+          "selected_delayed_events": 78,
+          "selected_delayed_rate_cps": 0.002045165472813518
+        },
+        {
+          "replica_index": 5,
+          "response_seed": 26110896,
+          "selected_delayed_events": 76,
+          "selected_delayed_rate_cps": 0.001920404346353023
+        },
+        {
+          "replica_index": 6,
+          "response_seed": 26118815,
+          "selected_delayed_events": 78,
+          "selected_delayed_rate_cps": 0.0020146069159151484
+        },
+        {
+          "replica_index": 7,
+          "response_seed": 26126734,
+          "selected_delayed_events": 77,
+          "selected_delayed_rate_cps": 0.0019818030306074366
+        },
+        {
+          "replica_index": 8,
+          "response_seed": 26134653,
+          "selected_delayed_events": 79,
+          "selected_delayed_rate_cps": 0.00204741080122286
+        },
+        {
+          "replica_index": 9,
+          "response_seed": 26142572,
+          "selected_delayed_events": 75,
+          "selected_delayed_rate_cps": 0.0019467538168903829
+        },
+        {
+          "replica_index": 10,
+          "response_seed": 26150491,
+          "selected_delayed_events": 79,
+          "selected_delayed_rate_cps": 0.002049374559174528
+        },
+        {
+          "replica_index": 11,
+          "response_seed": 26158410,
+          "selected_delayed_events": 77,
+          "selected_delayed_rate_cps": 0.0020123615875058064
+        },
+        {
+          "replica_index": 12,
+          "response_seed": 26166329,
+          "selected_delayed_events": 82,
+          "selected_delayed_rate_cps": 0.0021172276581992934
+        },
+        {
+          "replica_index": 13,
+          "response_seed": 26174248,
+          "selected_delayed_events": 77,
+          "selected_delayed_rate_cps": 0.0019818030306074366
+        },
+        {
+          "replica_index": 14,
+          "response_seed": 26182167,
+          "selected_delayed_events": 78,
+          "selected_delayed_rate_cps": 0.0020146069159151484
+        },
+        {
+          "replica_index": 15,
+          "response_seed": 26190086,
+          "selected_delayed_events": 77,
+          "selected_delayed_rate_cps": 0.001953208231660735
+        },
+        {
+          "replica_index": 16,
+          "response_seed": 26198005,
+          "selected_delayed_events": 79,
+          "selected_delayed_rate_cps": 0.00204741080122286
+        },
+        {
+          "replica_index": 17,
+          "response_seed": 26205924,
+          "selected_delayed_events": 80,
+          "selected_delayed_rate_cps": 0.00205161988758387
+        },
+        {
+          "replica_index": 18,
+          "response_seed": 26213843,
+          "selected_delayed_events": 77,
+          "selected_delayed_rate_cps": 0.0019837667885591044
+        },
+        {
+          "replica_index": 19,
+          "response_seed": 26221762,
+          "selected_delayed_events": 78,
+          "selected_delayed_rate_cps": 0.002045165472813518
+        },
+        {
+          "replica_index": 20,
+          "response_seed": 26229681,
+          "selected_delayed_events": 79,
+          "selected_delayed_rate_cps": 0.002018816002276158
+        },
+        {
+          "replica_index": 21,
+          "response_seed": 26237600,
+          "selected_delayed_events": 73,
+          "selected_delayed_rate_cps": 0.001913601748895715
+        },
+        {
+          "replica_index": 22,
+          "response_seed": 26245519,
+          "selected_delayed_events": 78,
+          "selected_delayed_rate_cps": 0.0020146069159151484
+        },
+        {
+          "replica_index": 23,
+          "response_seed": 26253438,
+          "selected_delayed_events": 75,
+          "selected_delayed_rate_cps": 0.0019773123737887523
+        },
+        {
+          "replica_index": 24,
+          "response_seed": 26261357,
+          "selected_delayed_events": 76,
+          "selected_delayed_rate_cps": 0.001948999145299725
+        },
+        {
+          "replica_index": 25,
+          "response_seed": 26269276,
+          "selected_delayed_events": 79,
+          "selected_delayed_rate_cps": 0.002076005600169562
+        },
+        {
+          "replica_index": 26,
+          "response_seed": 26277195,
+          "selected_delayed_events": 77,
+          "selected_delayed_rate_cps": 0.0019837667885591044
+        },
+        {
+          "replica_index": 27,
+          "response_seed": 26285114,
+          "selected_delayed_events": 79,
+          "selected_delayed_rate_cps": 0.00207796935812123
+        },
+        {
+          "replica_index": 28,
+          "response_seed": 26293033,
+          "selected_delayed_events": 76,
+          "selected_delayed_rate_cps": 0.002010116259096464
+        },
+        {
+          "replica_index": 29,
+          "response_seed": 26300952,
+          "selected_delayed_events": 77,
+          "selected_delayed_rate_cps": 0.0019818030306074366
+        },
+        {
+          "replica_index": 30,
+          "response_seed": 26308871,
+          "selected_delayed_events": 79,
+          "selected_delayed_rate_cps": 0.002018816002276158
+        },
+        {
+          "replica_index": 31,
+          "response_seed": 26316790,
+          "selected_delayed_events": 76,
+          "selected_delayed_rate_cps": 0.0019528600489737786
+        },
+        {
+          "replica_index": 32,
+          "response_seed": 26324709,
+          "selected_delayed_events": 73,
+          "selected_delayed_rate_cps": 0.0018505874893765897
+        },
+        {
+          "replica_index": 33,
+          "response_seed": 26332628,
+          "selected_delayed_events": 76,
+          "selected_delayed_rate_cps": 0.002013977162770518
+        },
+        {
+          "replica_index": 34,
+          "response_seed": 26340547,
+          "selected_delayed_events": 79,
+          "selected_delayed_rate_cps": 0.00204741080122286
+        },
+        {
+          "replica_index": 35,
+          "response_seed": 26348466,
+          "selected_delayed_events": 79,
+          "selected_delayed_rate_cps": 0.0020799331160728978
+        },
+        {
+          "replica_index": 36,
+          "response_seed": 26356385,
+          "selected_delayed_events": 74,
+          "selected_delayed_rate_cps": 0.001913949931582671
+        },
+        {
+          "replica_index": 37,
+          "response_seed": 26364304,
+          "selected_delayed_events": 78,
+          "selected_delayed_rate_cps": 0.0019860121169684468
+        },
+        {
+          "replica_index": 38,
+          "response_seed": 26372223,
+          "selected_delayed_events": 75,
+          "selected_delayed_rate_cps": 0.0019447900589387153
+        },
+        {
+          "replica_index": 39,
+          "response_seed": 26380142,
+          "selected_delayed_events": 78,
+          "selected_delayed_rate_cps": 0.0019860121169684468
+        },
+        {
+          "replica_index": 40,
+          "response_seed": 26388061,
+          "selected_delayed_events": 80,
+          "selected_delayed_rate_cps": 0.002080214686530572
+        },
+        {
+          "replica_index": 41,
+          "response_seed": 26395980,
+          "selected_delayed_events": 73,
+          "selected_delayed_rate_cps": 0.0018505874893765897
+        },
+        {
+          "replica_index": 42,
+          "response_seed": 26403899,
+          "selected_delayed_events": 79,
+          "selected_delayed_rate_cps": 0.002049374559174528
+        },
+        {
+          "replica_index": 43,
+          "response_seed": 26411818,
+          "selected_delayed_events": 77,
+          "selected_delayed_rate_cps": 0.0020123615875058064
+        },
+        {
+          "replica_index": 44,
+          "response_seed": 26419737,
+          "selected_delayed_events": 77,
+          "selected_delayed_rate_cps": 0.0019818030306074366
+        },
+        {
+          "replica_index": 45,
+          "response_seed": 26427656,
+          "selected_delayed_events": 77,
+          "selected_delayed_rate_cps": 0.0019837667885591044
+        },
+        {
+          "replica_index": 46,
+          "response_seed": 26435575,
+          "selected_delayed_events": 78,
+          "selected_delayed_rate_cps": 0.002016570673866816
+        },
+        {
+          "replica_index": 47,
+          "response_seed": 26443494,
+          "selected_delayed_events": 79,
+          "selected_delayed_rate_cps": 0.002049374559174528
+        },
+        {
+          "replica_index": 48,
+          "response_seed": 26451413,
+          "selected_delayed_events": 77,
+          "selected_delayed_rate_cps": 0.0019837667885591044
+        },
+        {
+          "replica_index": 49,
+          "response_seed": 26459332,
+          "selected_delayed_events": 80,
+          "selected_delayed_rate_cps": 0.002080214686530572
+        },
+        {
+          "replica_index": 50,
+          "response_seed": 26467251,
+          "selected_delayed_events": 77,
+          "selected_delayed_rate_cps": 0.0019818030306074366
+        },
+        {
+          "replica_index": 51,
+          "response_seed": 26475170,
+          "selected_delayed_events": 75,
+          "selected_delayed_rate_cps": 0.0019467538168903829
+        },
+        {
+          "replica_index": 52,
+          "response_seed": 26483089,
+          "selected_delayed_events": 80,
+          "selected_delayed_rate_cps": 0.00205161988758387
+        },
+        {
+          "replica_index": 53,
+          "response_seed": 26491008,
+          "selected_delayed_events": 79,
+          "selected_delayed_rate_cps": 0.00207796935812123
+        },
+        {
+          "replica_index": 54,
+          "response_seed": 26498927,
+          "selected_delayed_events": 77,
+          "selected_delayed_rate_cps": 0.002044817290126562
+        },
+        {
+          "replica_index": 55,
+          "response_seed": 26506846,
+          "selected_delayed_events": 79,
+          "selected_delayed_rate_cps": 0.002018816002276158
+        },
+        {
+          "replica_index": 56,
+          "response_seed": 26514765,
+          "selected_delayed_events": 80,
+          "selected_delayed_rate_cps": 0.002108809485477274
+        },
+        {
+          "replica_index": 57,
+          "response_seed": 26522684,
+          "selected_delayed_events": 79,
+          "selected_delayed_rate_cps": 0.00204741080122286
+        },
+        {
+          "replica_index": 58,
+          "response_seed": 26530603,
+          "selected_delayed_events": 78,
+          "selected_delayed_rate_cps": 0.0020146069159151484
+        },
+        {
+          "replica_index": 59,
+          "response_seed": 26538522,
+          "selected_delayed_events": 74,
+          "selected_delayed_rate_cps": 0.001913949931582671
+        },
+        {
+          "replica_index": 60,
+          "response_seed": 26546441,
+          "selected_delayed_events": 76,
+          "selected_delayed_rate_cps": 0.001977593944246427
+        },
+        {
+          "replica_index": 61,
+          "response_seed": 26554360,
+          "selected_delayed_events": 79,
+          "selected_delayed_rate_cps": 0.00207796935812123
+        },
+        {
+          "replica_index": 62,
+          "response_seed": 26562279,
+          "selected_delayed_events": 75,
+          "selected_delayed_rate_cps": 0.0019506147205644365
+        },
+        {
+          "replica_index": 63,
+          "response_seed": 26570198,
+          "selected_delayed_events": 79,
+          "selected_delayed_rate_cps": 0.002018816002276158
+        }
+      ],
+      "replicas": 64,
+      "selected_event_occurrences": 4966,
+      "status": "PASS_EXACT_EVENT_LEVEL_REPLAY_OF_ALL_64_RETAINED_RESPONSE_SEEDS",
+      "transport_launched": false,
+      "unique_family_local_ids": 82
+    },
+    "event_level_selected_lineage_csv": "data/response_seed_selected_lineage.csv",
+    "replicas": 64,
+    "summary_csv": "data/response_seed_ensemble_summary.csv",
+    "warning": "64_response_seeds_are_analysis_only_replicas_of_the_same_transport_events_not_64_independent_transport_samples"
+  },
+  "retained_transport_and_lineage": {
+    "neutron_poisson_counting_rse": 0.12909944487358055,
+    "neutron_selected_physical_events": 60,
+    "primary_response_seed": 26071301,
+    "raw_sim_bindings_imported_from_hash_frozen_lineage_authority": [
+      {
+        "ID": 1000000,
+        "SE": 1000000,
+        "TE_s_from_manifest": 2872055.496907,
+        "TE_s_inferred_as_inverse_event_weight": 2872055.496907,
+        "TS_records": 1,
+        "TS_value": 1000000,
+        "event_weight_cps": 3.481826869560595e-07,
+        "family": "alpha",
+        "selected_events_primary_response_seed": 1,
+        "sim": "runs/geometry_optimization_20260704/step02_delayed_transport_s3d_o8_all8_activation_m50000_20260713/alpha/DelayedDecayS3dO8AlphaM50000.inc1.id1.sim.gz",
+        "sim_sha256_from_retained_lineage_authority": "bfc62760023309b3597c00d3a61643a7c337fb3d5094af7cad3beebd4fac4672",
+        "sim_size_bytes": 1233929551,
+        "source_and_transport_seed": 260613,
+        "transport_provenance_verified_by_retained_authority": true
+      },
+      {
+        "ID": 1000000,
+        "SE": 1000000,
+        "TE_s_from_manifest": 465103453.49127,
+        "TE_s_inferred_as_inverse_event_weight": 465103453.49126995,
+        "TS_records": 1,
+        "TS_value": 1000000,
+        "event_weight_cps": 2.1500592878714673e-09,
+        "family": "eplus",
+        "selected_events_primary_response_seed": 0,
+        "sim": "runs/geometry_optimization_20260704/step02_delayed_transport_s3d_o8_all8_activation_m50000_20260713/eplus/DelayedDecayS3dO8EPlusM50000.inc1.id1.sim.gz",
+        "sim_sha256_from_retained_lineage_authority": "40f0f3b9d753e6302edf836ea217cced04a80ba6efed5320495c466fef206ca9",
+        "sim_size_bytes": 1603699945,
+        "source_and_transport_seed": 260613,
+        "transport_provenance_verified_by_retained_authority": true
+      },
+      {
+        "ID": 1000000,
+        "SE": 1000000,
+        "TE_s_from_manifest": 183019346.724261,
+        "TE_s_inferred_as_inverse_event_weight": 183019346.724261,
+        "TS_records": 1,
+        "TS_value": 1000000,
+        "event_weight_cps": 5.463903231534376e-09,
+        "family": "gamma",
+        "selected_events_primary_response_seed": 0,
+        "sim": "runs/geometry_optimization_20260704/step02_delayed_transport_s3d_o8_all8_activation_m50000_20260713/gamma/DelayedDecayS3dO8GammaM50000.inc1.id1.sim.gz",
+        "sim_sha256_from_retained_lineage_authority": "54bb3cc8c98e280cbe017b30f74ed2617df6586178402ea05bc709ba4b945d2e",
+        "sim_size_bytes": 379952459,
+        "source_and_transport_seed": 260613,
+        "transport_provenance_verified_by_retained_authority": true
+      },
+      {
+        "ID": 1000000,
+        "SE": 1000000,
+        "TE_s_from_manifest": 237581.250236,
+        "TE_s_inferred_as_inverse_event_weight": 237581.25023600002,
+        "TS_records": 1,
+        "TS_value": 1000000,
+        "event_weight_cps": 4.209086361009783e-06,
+        "family": "muminus",
+        "selected_events_primary_response_seed": 5,
+        "sim": "runs/geometry_optimization_20260704/step02_delayed_transport_s3d_o8_all8_activation_m50000_20260713/muminus/DelayedDecayS3dO8MuMinusM50000.inc1.id1.sim.gz",
+        "sim_sha256_from_retained_lineage_authority": "f97d06cb0fd119af0ccd93edcbee2e42fc47ee7054d0d59ac3bb7853637f12e7",
+        "sim_size_bytes": 558750972,
+        "source_and_transport_seed": 260613,
+        "transport_provenance_verified_by_retained_authority": true
+      },
+      {
+        "ID": 1000000,
+        "SE": 1000000,
+        "TE_s_from_manifest": 1258991152.384783,
+        "TE_s_inferred_as_inverse_event_weight": 1258991152.384783,
+        "TS_records": 1,
+        "TS_value": 1000000,
+        "event_weight_cps": 7.942867573817325e-10,
+        "family": "muplus",
+        "selected_events_primary_response_seed": 0,
+        "sim": "runs/geometry_optimization_20260704/step02_delayed_transport_s3d_o8_all8_activation_m50000_20260713/muplus/DelayedDecayS3dO8MuPlusM50000.inc1.id1.sim.gz",
+        "sim_sha256_from_retained_lineage_authority": "38dc24b968b1fe65a016c0d1054e67a0fb98bfc5d9b20ed8f3d2e4265f387fae",
+        "sim_size_bytes": 2741401329,
+        "source_and_transport_seed": 260613,
+        "transport_provenance_verified_by_retained_authority": true
+      },
+      {
+        "ID": 1000000,
+        "SE": 1000000,
+        "TE_s_from_manifest": 30484.193888,
+        "TE_s_inferred_as_inverse_event_weight": 30484.193888000005,
+        "TS_records": 1,
+        "TS_value": 1000000,
+        "event_weight_cps": 3.280388530771176e-05,
+        "family": "n",
+        "selected_events_primary_response_seed": 60,
+        "sim": "runs/geometry_optimization_20260704/step02_delayed_transport_s3d_o8_all8_activation_m50000_20260713/n/DelayedDecayS3dO8NM50000.inc1.id1.sim.gz",
+        "sim_sha256_from_retained_lineage_authority": "60443f8587266aec37b939eb97b503afcb4088a43ce7b2d75723d02999e4dc9c",
+        "sim_size_bytes": 929573699,
+        "source_and_transport_seed": 260613,
+        "transport_provenance_verified_by_retained_authority": true
+      },
+      {
+        "ID": 1000000,
+        "SE": 1000000,
+        "TE_s_from_manifest": 445369.147711,
+        "TE_s_inferred_as_inverse_event_weight": 445369.147711,
+        "TS_records": 1,
+        "TS_value": 1000000,
+        "event_weight_cps": 2.2453284093421305e-06,
+        "family": "p",
+        "selected_events_primary_response_seed": 12,
+        "sim": "runs/geometry_optimization_20260704/step02_delayed_transport_s3d_o8_all8_activation_m50000_20260713/p/DelayedDecayS3dO8PM50000.inc1.id1.sim.gz",
+        "sim_sha256_from_retained_lineage_authority": "b385864ba8058c2d7de8430d0889de7ebee417f996bcbd7e72dda559dabb89a5",
+        "sim_size_bytes": 1276958314,
+        "source_and_transport_seed": 260613,
+        "transport_provenance_verified_by_retained_authority": true
+      }
+    ],
+    "raw_sim_parse_audit": [
+      {
+        "IA_INIT_records": 1000000,
+        "ID_records": 1000000,
+        "ID_sequence_mismatches": 0,
+        "adaptive_displacement_cap_cm_per_axis": 0.001,
+        "adaptive_identified_transport_trials": 1000000,
+        "adaptive_unidentified_zero_outcome_trials": 0,
+        "adaptive_unique_mapped_records": 1000000,
+        "adaptive_unique_unmapped_fraction": 0.0,
+        "adaptive_unique_unmapped_records": 0,
+        "adaptive_unmapped_known_zero_selected_events": 0,
+        "adaptive_unmapped_selected_events": 0,
+        "duplicate_IA_INIT_records": 0,
+        "expected_events": 1000000,
+        "failed_absolute_cap_records": 0,
+        "failed_distance_ratio_records": 0,
+        "failed_second_gap_records": 0,
+        "family": "alpha",
+        "forced_same_za_adaptive_accepted_records": 722556,
+        "forced_same_za_adaptive_agrees_coordinate_parent_records": 722556,
+        "forced_same_za_adaptive_disagrees_coordinate_parent_records": 0,
+        "forced_same_za_nearest_distance_max_cm": 50.111200000000004,
+        "ia_init_za_semantics": "transport_or_daughter_ZA_not_guaranteed_source_parent_ZA",
+        "init_za_differs_from_coordinate_mapped_source_parent_za_fraction": 0.277444,
+        "init_za_differs_from_coordinate_mapped_source_parent_za_records": 277444,
+        "init_za_equals_coordinate_mapped_source_parent_za_records": 722556,
+        "mapped_IA_INIT_records": 1000000,
+        "mapping_strategy_sensitivity": {
+          "adaptive_unique_mapped_fraction": 1.0,
+          "adaptive_vs_nearest_all_assignment_disagreements": 0,
+          "nearest_all_fraction": 1.0,
+          "retained_selected_tolerance_mapped_fraction": 0.879198,
+          "strict_serialization_only_mapped_fraction": 0.725726
+        },
+        "minimum_second_nearest_gap_cm": 1.102e-05,
+        "minimum_second_to_first_distance_ratio": 2.0,
+        "missing_IA_INIT_records": 0,
+        "nearest_all_sensitivity_source_block_vs_trial_share_total_variation": 0.213132,
+        "nearest_distance_max_cm": 0.00039999999999906777,
+        "nearest_distance_median_cm": 2.9999999999752447e-06,
+        "nearest_distance_p99_cm": 4.999999999988347e-05,
+        "nearest_distance_p99p999_cm": 0.00035000000000096065,
+        "nearest_distance_p99p99_cm": 0.0003299999999981651,
+        "nearest_distance_p99p9_cm": 0.0002400000000015723,
+        "position_metric": "Chebyshev_max_abs_axis_distance_cm",
+        "rejected_first20": [],
+        "retained_selected_lineage_tolerance_cm_per_axis": 1.01e-05,
+        "retained_source_rows_with_zero_transport_trials": 0,
+        "retained_source_unique_rows": 422,
+        "same_init_za_source_support_available_records": 771302,
+        "second_nearest_gap_min_cm": 0.001209999999998601,
+        "selected_ids_mapped": 1,
+        "selected_ids_missing": 0,
+        "selected_ids_missing_first20": [],
+        "selected_ids_nearest_distance_max_cm": 4.000000000004e-06,
+        "selected_ids_requested": 1,
+        "selected_indicator_contract": "response replay enumerates every final delayed W511 lineage; all other local IDs, including events absent from the TES compact catalog, have selected indicator zero",
+        "selected_init_za_by_local_id": {
+          "46083": 27058
+        },
+        "serialization_tolerance_cm_per_axis": 5.51e-06,
+        "sim": "runs/geometry_optimization_20260704/step02_delayed_transport_s3d_o8_all8_activation_m50000_20260713/alpha/DelayedDecayS3dO8AlphaM50000.inc1.id1.sim.gz",
+        "sim_ia_init_coordinate_decimals": 5,
+        "source_block_vs_realized_trial_share_total_variation": 0.213132,
+        "source_card_coordinate_decimals": 6,
+        "source_support_min_pairwise_chebyshev_separation_cm": 0.0012699999999998823,
+        "source_support_rows_k_gt_zero": 422,
+        "transport_trials_on_rows_absent_from_source": 0,
+        "within_retained_selected_tolerance_records": 879198,
+        "within_serialization_tolerance_records": 725726
+      },
+      {
+        "IA_INIT_records": 1000000,
+        "ID_records": 1000000,
+        "ID_sequence_mismatches": 0,
+        "adaptive_displacement_cap_cm_per_axis": 0.001,
+        "adaptive_identified_transport_trials": 1000000,
+        "adaptive_unidentified_zero_outcome_trials": 0,
+        "adaptive_unique_mapped_records": 1000000,
+        "adaptive_unique_unmapped_fraction": 0.0,
+        "adaptive_unique_unmapped_records": 0,
+        "adaptive_unmapped_known_zero_selected_events": 0,
+        "adaptive_unmapped_selected_events": 0,
+        "duplicate_IA_INIT_records": 0,
+        "expected_events": 1000000,
+        "failed_absolute_cap_records": 0,
+        "failed_distance_ratio_records": 0,
+        "failed_second_gap_records": 0,
+        "family": "eplus",
+        "forced_same_za_adaptive_accepted_records": 886997,
+        "forced_same_za_adaptive_agrees_coordinate_parent_records": 886997,
+        "forced_same_za_adaptive_disagrees_coordinate_parent_records": 0,
+        "forced_same_za_nearest_distance_max_cm": 4.999999999810711e-06,
+        "ia_init_za_semantics": "transport_or_daughter_ZA_not_guaranteed_source_parent_ZA",
+        "init_za_differs_from_coordinate_mapped_source_parent_za_fraction": 0.113003,
+        "init_za_differs_from_coordinate_mapped_source_parent_za_records": 113003,
+        "init_za_equals_coordinate_mapped_source_parent_za_records": 886997,
+        "mapped_IA_INIT_records": 1000000,
+        "mapping_strategy_sensitivity": {
+          "adaptive_unique_mapped_fraction": 1.0,
+          "adaptive_vs_nearest_all_assignment_disagreements": 0,
+          "nearest_all_fraction": 1.0,
+          "retained_selected_tolerance_mapped_fraction": 0.922722,
+          "strict_serialization_only_mapped_fraction": 0.886997
+        },
+        "minimum_second_nearest_gap_cm": 1.102e-05,
+        "minimum_second_to_first_distance_ratio": 2.0,
+        "missing_IA_INIT_records": 0,
+        "nearest_all_sensitivity_source_block_vs_trial_share_total_variation": 0.08022699999999999,
+        "nearest_distance_max_cm": 2.000000000279556e-05,
+        "nearest_distance_median_cm": 2.000000000279556e-06,
+        "nearest_distance_p99_cm": 1.6000000000016e-05,
+        "nearest_distance_p99p999_cm": 1.9999999999242846e-05,
+        "nearest_distance_p99p99_cm": 1.9999999999242846e-05,
+        "nearest_distance_p99p9_cm": 1.9999999999242846e-05,
+        "position_metric": "Chebyshev_max_abs_axis_distance_cm",
+        "rejected_first20": [],
+        "retained_selected_lineage_tolerance_cm_per_axis": 1.01e-05,
+        "retained_source_rows_with_zero_transport_trials": 0,
+        "retained_source_unique_rows": 5,
+        "same_init_za_source_support_available_records": 886997,
+        "second_nearest_gap_min_cm": 8.977575000000002,
+        "selected_ids_mapped": 0,
+        "selected_ids_missing": 0,
+        "selected_ids_missing_first20": [],
+        "selected_ids_nearest_distance_max_cm": null,
+        "selected_ids_requested": 0,
+        "selected_indicator_contract": "response replay enumerates every final delayed W511 lineage; all other local IDs, including events absent from the TES compact catalog, have selected indicator zero",
+        "selected_init_za_by_local_id": {},
+        "serialization_tolerance_cm_per_axis": 5.51e-06,
+        "sim": "runs/geometry_optimization_20260704/step02_delayed_transport_s3d_o8_all8_activation_m50000_20260713/eplus/DelayedDecayS3dO8EPlusM50000.inc1.id1.sim.gz",
+        "sim_ia_init_coordinate_decimals": 5,
+        "source_block_vs_realized_trial_share_total_variation": 0.08022699999999999,
+        "source_card_coordinate_decimals": 6,
+        "source_support_min_pairwise_chebyshev_separation_cm": 8.977601,
+        "source_support_rows_k_gt_zero": 5,
+        "transport_trials_on_rows_absent_from_source": 0,
+        "within_retained_selected_tolerance_records": 922722,
+        "within_serialization_tolerance_records": 886997
+      },
+      {
+        "IA_INIT_records": 1000000,
+        "ID_records": 1000000,
+        "ID_sequence_mismatches": 0,
+        "adaptive_displacement_cap_cm_per_axis": 0.001,
+        "adaptive_identified_transport_trials": 1000000,
+        "adaptive_unidentified_zero_outcome_trials": 0,
+        "adaptive_unique_mapped_records": 1000000,
+        "adaptive_unique_unmapped_fraction": 0.0,
+        "adaptive_unique_unmapped_records": 0,
+        "adaptive_unmapped_known_zero_selected_events": 0,
+        "adaptive_unmapped_selected_events": 0,
+        "duplicate_IA_INIT_records": 0,
+        "expected_events": 1000000,
+        "failed_absolute_cap_records": 0,
+        "failed_distance_ratio_records": 0,
+        "failed_second_gap_records": 0,
+        "family": "gamma",
+        "forced_same_za_adaptive_accepted_records": 993971,
+        "forced_same_za_adaptive_agrees_coordinate_parent_records": 993971,
+        "forced_same_za_adaptive_disagrees_coordinate_parent_records": 0,
+        "forced_same_za_nearest_distance_max_cm": 1.999999999946489e-06,
+        "ia_init_za_semantics": "transport_or_daughter_ZA_not_guaranteed_source_parent_ZA",
+        "init_za_differs_from_coordinate_mapped_source_parent_za_fraction": 0.006029,
+        "init_za_differs_from_coordinate_mapped_source_parent_za_records": 6029,
+        "init_za_equals_coordinate_mapped_source_parent_za_records": 993971,
+        "mapped_IA_INIT_records": 1000000,
+        "mapping_strategy_sensitivity": {
+          "adaptive_unique_mapped_fraction": 1.0,
+          "adaptive_vs_nearest_all_assignment_disagreements": 0,
+          "nearest_all_fraction": 1.0,
+          "retained_selected_tolerance_mapped_fraction": 0.993971,
+          "strict_serialization_only_mapped_fraction": 0.993971
+        },
+        "minimum_second_nearest_gap_cm": 1.102e-05,
+        "minimum_second_to_first_distance_ratio": 2.0,
+        "missing_IA_INIT_records": 0,
+        "nearest_all_sensitivity_source_block_vs_trial_share_total_variation": 0.0,
+        "nearest_distance_max_cm": 6.20000000000065e-05,
+        "nearest_distance_median_cm": 1.999999999946489e-06,
+        "nearest_distance_p99_cm": 1.999999999946489e-06,
+        "nearest_distance_p99p999_cm": 6.20000000000065e-05,
+        "nearest_distance_p99p99_cm": 6.000000000128125e-05,
+        "nearest_distance_p99p9_cm": 5.8000000000002494e-05,
+        "position_metric": "Chebyshev_max_abs_axis_distance_cm",
+        "rejected_first20": [],
+        "retained_selected_lineage_tolerance_cm_per_axis": 1.01e-05,
+        "retained_source_rows_with_zero_transport_trials": 0,
+        "retained_source_unique_rows": 1,
+        "same_init_za_source_support_available_records": 993971,
+        "second_nearest_gap_min_cm": null,
+        "selected_ids_mapped": 0,
+        "selected_ids_missing": 0,
+        "selected_ids_missing_first20": [],
+        "selected_ids_nearest_distance_max_cm": null,
+        "selected_ids_requested": 0,
+        "selected_indicator_contract": "response replay enumerates every final delayed W511 lineage; all other local IDs, including events absent from the TES compact catalog, have selected indicator zero",
+        "selected_init_za_by_local_id": {},
+        "serialization_tolerance_cm_per_axis": 5.51e-06,
+        "sim": "runs/geometry_optimization_20260704/step02_delayed_transport_s3d_o8_all8_activation_m50000_20260713/gamma/DelayedDecayS3dO8GammaM50000.inc1.id1.sim.gz",
+        "sim_ia_init_coordinate_decimals": 5,
+        "source_block_vs_realized_trial_share_total_variation": 0.0,
+        "source_card_coordinate_decimals": 6,
+        "source_support_min_pairwise_chebyshev_separation_cm": null,
+        "source_support_rows_k_gt_zero": 1,
+        "transport_trials_on_rows_absent_from_source": 0,
+        "within_retained_selected_tolerance_records": 993971,
+        "within_serialization_tolerance_records": 993971
+      },
+      {
+        "IA_INIT_records": 1000000,
+        "ID_records": 1000000,
+        "ID_sequence_mismatches": 0,
+        "adaptive_displacement_cap_cm_per_axis": 0.001,
+        "adaptive_identified_transport_trials": 999914,
+        "adaptive_unidentified_zero_outcome_trials": 86,
+        "adaptive_unique_mapped_records": 999914,
+        "adaptive_unique_unmapped_fraction": 8.6e-05,
+        "adaptive_unique_unmapped_records": 86,
+        "adaptive_unmapped_known_zero_selected_events": 86,
+        "adaptive_unmapped_selected_events": 0,
+        "duplicate_IA_INIT_records": 0,
+        "expected_events": 1000000,
+        "failed_absolute_cap_records": 86,
+        "failed_distance_ratio_records": 69,
+        "failed_second_gap_records": 2,
+        "family": "muminus",
+        "forced_same_za_adaptive_accepted_records": 937373,
+        "forced_same_za_adaptive_agrees_coordinate_parent_records": 937373,
+        "forced_same_za_adaptive_disagrees_coordinate_parent_records": 0,
+        "forced_same_za_nearest_distance_max_cm": 46.18118,
+        "ia_init_za_semantics": "transport_or_daughter_ZA_not_guaranteed_source_parent_ZA",
+        "init_za_differs_from_coordinate_mapped_source_parent_za_fraction": 0.062626,
+        "init_za_differs_from_coordinate_mapped_source_parent_za_records": 62626,
+        "init_za_equals_coordinate_mapped_source_parent_za_records": 937374,
+        "mapped_IA_INIT_records": 999914,
+        "mapping_strategy_sensitivity": {
+          "adaptive_unique_mapped_fraction": 0.999914,
+          "adaptive_vs_nearest_all_assignment_disagreements": 86,
+          "nearest_all_fraction": 1.0,
+          "retained_selected_tolerance_mapped_fraction": 0.938831,
+          "strict_serialization_only_mapped_fraction": 0.937392
+        },
+        "minimum_second_nearest_gap_cm": 1.102e-05,
+        "minimum_second_to_first_distance_ratio": 2.0,
+        "missing_IA_INIT_records": 0,
+        "nearest_all_sensitivity_source_block_vs_trial_share_total_variation": 0.063004,
+        "nearest_distance_max_cm": 44.32713999999999,
+        "nearest_distance_median_cm": 0.0,
+        "nearest_distance_p99_cm": 0.00018999999999991246,
+        "nearest_distance_p99p999_cm": 6.790363037023125,
+        "nearest_distance_p99p99_cm": 0.00026000000000436785,
+        "nearest_distance_p99p9_cm": 0.00021000000000270802,
+        "position_metric": "Chebyshev_max_abs_axis_distance_cm",
+        "rejected_first20": [
+          {
+            "local_id": 76090,
+            "nearest_distance_chebyshev_cm": 2.4704500000000067,
+            "nearest_weighted_table_row": 1978,
+            "position_cm": [
+              -0.27989,
+              -19.77222,
+              -32.18778
+            ],
+            "second_nearest_distance_chebyshev_cm": 5.7504399999999976
+          },
+          {
+            "local_id": 91058,
+            "nearest_distance_chebyshev_cm": 0.4276100000000014,
+            "nearest_weighted_table_row": 247,
+            "position_cm": [
+              34.12306,
+              -10.27902,
+              35.17323
+            ],
+            "second_nearest_distance_chebyshev_cm": 4.852550000000001
+          },
+          {
+            "local_id": 97418,
+            "nearest_distance_chebyshev_cm": 4.29846,
+            "nearest_weighted_table_row": 4764,
+            "position_cm": [
+              12.33873,
+              2.29394,
+              -29.96345
+            ],
+            "second_nearest_distance_chebyshev_cm": 4.815966
+          },
+          {
+            "local_id": 98215,
+            "nearest_distance_chebyshev_cm": 4.29846,
+            "nearest_weighted_table_row": 4764,
+            "position_cm": [
+              12.33873,
+              2.29394,
+              -29.96345
+            ],
+            "second_nearest_distance_chebyshev_cm": 4.815966
+          },
+          {
+            "local_id": 100100,
+            "nearest_distance_chebyshev_cm": 6.308149999999998,
+            "nearest_weighted_table_row": 440,
+            "position_cm": [
+              -22.69866,
+              27.63607,
+              -16.19188
+            ],
+            "second_nearest_distance_chebyshev_cm": 6.30836
+          },
+          {
+            "local_id": 124982,
+            "nearest_distance_chebyshev_cm": 5.273400000000002,
+            "nearest_weighted_table_row": 631,
+            "position_cm": [
+              34.16711,
+              -4.08482,
+              35.12919
+            ],
+            "second_nearest_distance_chebyshev_cm": 5.30894
+          },
+          {
+            "local_id": 127847,
+            "nearest_distance_chebyshev_cm": 4.268919999999994,
+            "nearest_weighted_table_row": 4265,
+            "position_cm": [
+              13.71468,
+              -19.92158,
+              45.43626
+            ],
+            "second_nearest_distance_chebyshev_cm": 4.951460000000004
+          },
+          {
+            "local_id": 136051,
+            "nearest_distance_chebyshev_cm": 5.21677,
+            "nearest_weighted_table_row": 5290,
+            "position_cm": [
+              41.2229,
+              -7.49616,
+              28.07331
+            ],
+            "second_nearest_distance_chebyshev_cm": 5.3125599999999995
+          },
+          {
+            "local_id": 159828,
+            "nearest_distance_chebyshev_cm": 0.9606099999999991,
+            "nearest_weighted_table_row": 5362,
+            "position_cm": [
+              44.85764,
+              -26.43236,
+              -22.50004
+            ],
+            "second_nearest_distance_chebyshev_cm": 1.05931
+          },
+          {
+            "local_id": 162079,
+            "nearest_distance_chebyshev_cm": 4.268919999999994,
+            "nearest_weighted_table_row": 4265,
+            "position_cm": [
+              13.71468,
+              -19.92158,
+              45.43626
+            ],
+            "second_nearest_distance_chebyshev_cm": 4.951460000000004
+          },
+          {
+            "local_id": 221416,
+            "nearest_distance_chebyshev_cm": 0.4550099999999979,
+            "nearest_weighted_table_row": 4956,
+            "position_cm": [
+              26.08452,
+              -39.42716,
+              -22.50008
+            ],
+            "second_nearest_distance_chebyshev_cm": 0.9532999999999987
+          },
+          {
+            "local_id": 242612,
+            "nearest_distance_chebyshev_cm": 5.195443,
+            "nearest_weighted_table_row": 1325,
+            "position_cm": [
+              -24.94787,
+              -0.52937,
+              17.4717
+            ],
+            "second_nearest_distance_chebyshev_cm": 6.669249
+          },
+          {
+            "local_id": 256469,
+            "nearest_distance_chebyshev_cm": 0.410890000000002,
+            "nearest_weighted_table_row": 5101,
+            "position_cm": [
+              -32.62813,
+              -22.08229,
+              -11.65231
+            ],
+            "second_nearest_distance_chebyshev_cm": 0.5791800000000009
+          },
+          {
+            "local_id": 261012,
+            "nearest_distance_chebyshev_cm": 3.1240000000000006,
+            "nearest_weighted_table_row": 5910,
+            "position_cm": [
+              38.08195,
+              -15.93272,
+              31.21418
+            ],
+            "second_nearest_distance_chebyshev_cm": 4.347799999999999
+          },
+          {
+            "local_id": 268694,
+            "nearest_distance_chebyshev_cm": 5.171760000000003,
+            "nearest_weighted_table_row": 2461,
+            "position_cm": [
+              -21.56222,
+              26.43683,
+              -17.32848
+            ],
+            "second_nearest_distance_chebyshev_cm": 5.173970000000001
+          },
+          {
+            "local_id": 287271,
+            "nearest_distance_chebyshev_cm": 0.9215300000000006,
+            "nearest_weighted_table_row": 5698,
+            "position_cm": [
+              -30.11806,
+              20.51702,
+              -21.57847
+            ],
+            "second_nearest_distance_chebyshev_cm": 0.9748699999999992
+          },
+          {
+            "local_id": 295613,
+            "nearest_distance_chebyshev_cm": 22.6709,
+            "nearest_weighted_table_row": 3940,
+            "position_cm": [
+              66.96622,
+              19.35637,
+              -46.17087
+            ],
+            "second_nearest_distance_chebyshev_cm": 22.6709
+          },
+          {
+            "local_id": 296602,
+            "nearest_distance_chebyshev_cm": 5.644820000000001,
+            "nearest_weighted_table_row": 4320,
+            "position_cm": [
+              48.33344,
+              -5.05244,
+              20.96281
+            ],
+            "second_nearest_distance_chebyshev_cm": 7.66049
+          },
+          {
+            "local_id": 303581,
+            "nearest_distance_chebyshev_cm": 2.28984,
+            "nearest_weighted_table_row": 786,
+            "position_cm": [
+              33.20726,
+              6.55924,
+              -8.19256
+            ],
+            "second_nearest_distance_chebyshev_cm": 7.830969999999997
+          },
+          {
+            "local_id": 311470,
+            "nearest_distance_chebyshev_cm": 4.9199800000000025,
+            "nearest_weighted_table_row": 3144,
+            "position_cm": [
+              -25.56057,
+              17.87926,
+              -13.32988
+            ],
+            "second_nearest_distance_chebyshev_cm": 5.010710000000003
+          }
+        ],
+        "retained_selected_lineage_tolerance_cm_per_axis": 1.01e-05,
+        "retained_source_rows_with_zero_transport_trials": 0,
+        "retained_source_unique_rows": 5794,
+        "same_init_za_source_support_available_records": 985616,
+        "second_nearest_gap_min_cm": 0.0,
+        "selected_ids_mapped": 5,
+        "selected_ids_missing": 0,
+        "selected_ids_missing_first20": [],
+        "selected_ids_nearest_distance_max_cm": 4.999999999977245e-06,
+        "selected_ids_requested": 5,
+        "selected_indicator_contract": "response replay enumerates every final delayed W511 lineage; all other local IDs, including events absent from the TES compact catalog, have selected indicator zero",
+        "selected_init_za_by_local_id": {
+          "489362": 29064,
+          "523362": 11024,
+          "646993": 29064,
+          "687917": 29062,
+          "725776": 7016
+        },
+        "serialization_tolerance_cm_per_axis": 5.51e-06,
+        "sim": "runs/geometry_optimization_20260704/step02_delayed_transport_s3d_o8_all8_activation_m50000_20260713/muminus/DelayedDecayS3dO8MuMinusM50000.inc1.id1.sim.gz",
+        "sim_ia_init_coordinate_decimals": 5,
+        "source_block_vs_realized_trial_share_total_variation": 0.063029,
+        "source_card_coordinate_decimals": 6,
+        "source_support_min_pairwise_chebyshev_separation_cm": 0.01968000000000103,
+        "source_support_rows_k_gt_zero": 5794,
+        "transport_trials_on_rows_absent_from_source": 0,
+        "within_retained_selected_tolerance_records": 938831,
+        "within_serialization_tolerance_records": 937392
+      },
+      {
+        "IA_INIT_records": 1000000,
+        "ID_records": 1000000,
+        "ID_sequence_mismatches": 0,
+        "adaptive_displacement_cap_cm_per_axis": 0.001,
+        "adaptive_identified_transport_trials": 1000000,
+        "adaptive_unidentified_zero_outcome_trials": 0,
+        "adaptive_unique_mapped_records": 1000000,
+        "adaptive_unique_unmapped_fraction": 0.0,
+        "adaptive_unique_unmapped_records": 0,
+        "adaptive_unmapped_known_zero_selected_events": 0,
+        "adaptive_unmapped_selected_events": 0,
+        "duplicate_IA_INIT_records": 0,
+        "expected_events": 1000000,
+        "failed_absolute_cap_records": 0,
+        "failed_distance_ratio_records": 0,
+        "failed_second_gap_records": 0,
+        "family": "muplus",
+        "forced_same_za_adaptive_accepted_records": 694533,
+        "forced_same_za_adaptive_agrees_coordinate_parent_records": 694533,
+        "forced_same_za_adaptive_disagrees_coordinate_parent_records": 0,
+        "forced_same_za_nearest_distance_max_cm": 3.9999999996709334e-06,
+        "ia_init_za_semantics": "transport_or_daughter_ZA_not_guaranteed_source_parent_ZA",
+        "init_za_differs_from_coordinate_mapped_source_parent_za_fraction": 0.305467,
+        "init_za_differs_from_coordinate_mapped_source_parent_za_records": 305467,
+        "init_za_equals_coordinate_mapped_source_parent_za_records": 694533,
+        "mapped_IA_INIT_records": 1000000,
+        "mapping_strategy_sensitivity": {
+          "adaptive_unique_mapped_fraction": 1.0,
+          "adaptive_vs_nearest_all_assignment_disagreements": 0,
+          "nearest_all_fraction": 1.0,
+          "retained_selected_tolerance_mapped_fraction": 0.882917,
+          "strict_serialization_only_mapped_fraction": 0.694533
+        },
+        "minimum_second_nearest_gap_cm": 1.102e-05,
+        "minimum_second_to_first_distance_ratio": 2.0,
+        "missing_IA_INIT_records": 0,
+        "nearest_all_sensitivity_source_block_vs_trial_share_total_variation": 0.0006469999999999766,
+        "nearest_distance_max_cm": 2.000000000279556e-05,
+        "nearest_distance_median_cm": 1.9999999998354667e-06,
+        "nearest_distance_p99_cm": 1.9999999999242846e-05,
+        "nearest_distance_p99p999_cm": 2.000000000279556e-05,
+        "nearest_distance_p99p99_cm": 2.000000000279556e-05,
+        "nearest_distance_p99p9_cm": 2.000000000279556e-05,
+        "position_metric": "Chebyshev_max_abs_axis_distance_cm",
+        "rejected_first20": [],
+        "retained_selected_lineage_tolerance_cm_per_axis": 1.01e-05,
+        "retained_source_rows_with_zero_transport_trials": 0,
+        "retained_source_unique_rows": 3,
+        "same_init_za_source_support_available_records": 694533,
+        "second_nearest_gap_min_cm": 29.027880000000003,
+        "selected_ids_mapped": 0,
+        "selected_ids_missing": 0,
+        "selected_ids_missing_first20": [],
+        "selected_ids_nearest_distance_max_cm": null,
+        "selected_ids_requested": 0,
+        "selected_indicator_contract": "response replay enumerates every final delayed W511 lineage; all other local IDs, including events absent from the TES compact catalog, have selected indicator zero",
+        "selected_init_za_by_local_id": {},
+        "serialization_tolerance_cm_per_axis": 5.51e-06,
+        "sim": "runs/geometry_optimization_20260704/step02_delayed_transport_s3d_o8_all8_activation_m50000_20260713/muplus/DelayedDecayS3dO8MuPlusM50000.inc1.id1.sim.gz",
+        "sim_ia_init_coordinate_decimals": 5,
+        "source_block_vs_realized_trial_share_total_variation": 0.0006469999999999766,
+        "source_card_coordinate_decimals": 6,
+        "source_support_min_pairwise_chebyshev_separation_cm": 29.02792,
+        "source_support_rows_k_gt_zero": 3,
+        "transport_trials_on_rows_absent_from_source": 0,
+        "within_retained_selected_tolerance_records": 882917,
+        "within_serialization_tolerance_records": 694533
+      },
+      {
+        "IA_INIT_records": 1000000,
+        "ID_records": 1000000,
+        "ID_sequence_mismatches": 0,
+        "adaptive_displacement_cap_cm_per_axis": 0.001,
+        "adaptive_identified_transport_trials": 999993,
+        "adaptive_unidentified_zero_outcome_trials": 7,
+        "adaptive_unique_mapped_records": 999993,
+        "adaptive_unique_unmapped_fraction": 7e-06,
+        "adaptive_unique_unmapped_records": 7,
+        "adaptive_unmapped_known_zero_selected_events": 7,
+        "adaptive_unmapped_selected_events": 0,
+        "duplicate_IA_INIT_records": 0,
+        "expected_events": 1000000,
+        "failed_absolute_cap_records": 7,
+        "failed_distance_ratio_records": 3,
+        "failed_second_gap_records": 0,
+        "family": "n",
+        "forced_same_za_adaptive_accepted_records": 931973,
+        "forced_same_za_adaptive_agrees_coordinate_parent_records": 931973,
+        "forced_same_za_adaptive_disagrees_coordinate_parent_records": 0,
+        "forced_same_za_nearest_distance_max_cm": 64.19536,
+        "ia_init_za_semantics": "transport_or_daughter_ZA_not_guaranteed_source_parent_ZA",
+        "init_za_differs_from_coordinate_mapped_source_parent_za_fraction": 0.068027,
+        "init_za_differs_from_coordinate_mapped_source_parent_za_records": 68027,
+        "init_za_equals_coordinate_mapped_source_parent_za_records": 931973,
+        "mapped_IA_INIT_records": 999993,
+        "mapping_strategy_sensitivity": {
+          "adaptive_unique_mapped_fraction": 0.999993,
+          "adaptive_vs_nearest_all_assignment_disagreements": 7,
+          "nearest_all_fraction": 1.0,
+          "retained_selected_tolerance_mapped_fraction": 0.973255,
+          "strict_serialization_only_mapped_fraction": 0.936706
+        },
+        "minimum_second_nearest_gap_cm": 1.102e-05,
+        "minimum_second_to_first_distance_ratio": 2.0,
+        "missing_IA_INIT_records": 0,
+        "nearest_all_sensitivity_source_block_vs_trial_share_total_variation": 0.093433,
+        "nearest_distance_max_cm": 1.161778,
+        "nearest_distance_median_cm": 2.9999999995311555e-06,
+        "nearest_distance_p99_cm": 3.999999999848569e-05,
+        "nearest_distance_p99p999_cm": 0.0003199999999985437,
+        "nearest_distance_p99p99_cm": 0.00019999999999953388,
+        "nearest_distance_p99p9_cm": 6.000000000128125e-05,
+        "position_metric": "Chebyshev_max_abs_axis_distance_cm",
+        "rejected_first20": [
+          {
+            "local_id": 7920,
+            "nearest_distance_chebyshev_cm": 0.15631199999999978,
+            "nearest_weighted_table_row": 559,
+            "position_cm": [
+              -2.13944,
+              0.89325,
+              -3.26366
+            ],
+            "second_nearest_distance_chebyshev_cm": 0.3895170000000001
+          },
+          {
+            "local_id": 300836,
+            "nearest_distance_chebyshev_cm": 0.29474900000000037,
+            "nearest_weighted_table_row": 13106,
+            "position_cm": [
+              -2.56715,
+              -1.96409,
+              -4.12276
+            ],
+            "second_nearest_distance_chebyshev_cm": 0.61957
+          },
+          {
+            "local_id": 397597,
+            "nearest_distance_chebyshev_cm": 0.37970799999999993,
+            "nearest_weighted_table_row": 15418,
+            "position_cm": [
+              -2.91663,
+              0.60918,
+              -4.04092
+            ],
+            "second_nearest_distance_chebyshev_cm": 0.47066799999999986
+          },
+          {
+            "local_id": 403897,
+            "nearest_distance_chebyshev_cm": 0.9006500000000024,
+            "nearest_weighted_table_row": 31433,
+            "position_cm": [
+              -20.64287,
+              -4.73264,
+              -6.79287
+            ],
+            "second_nearest_distance_chebyshev_cm": 1.212338
+          },
+          {
+            "local_id": 533802,
+            "nearest_distance_chebyshev_cm": 0.07563999999999993,
+            "nearest_weighted_table_row": 27775,
+            "position_cm": [
+              -5.35328,
+              11.36697,
+              -14.58704
+            ],
+            "second_nearest_distance_chebyshev_cm": 0.18440000000000012
+          },
+          {
+            "local_id": 586548,
+            "nearest_distance_chebyshev_cm": 0.18274800000000013,
+            "nearest_weighted_table_row": 23160,
+            "position_cm": [
+              -2.56232,
+              -0.30457,
+              -3.68654
+            ],
+            "second_nearest_distance_chebyshev_cm": 0.370193
+          },
+          {
+            "local_id": 760250,
+            "nearest_distance_chebyshev_cm": 1.161778,
+            "nearest_weighted_table_row": 44320,
+            "position_cm": [
+              -0.74229,
+              1.98921,
+              -1.70385
+            ],
+            "second_nearest_distance_chebyshev_cm": 1.304333
+          }
+        ],
+        "retained_selected_lineage_tolerance_cm_per_axis": 1.01e-05,
+        "retained_source_rows_with_zero_transport_trials": 0,
+        "retained_source_unique_rows": 30951,
+        "same_init_za_source_support_available_records": 952327,
+        "second_nearest_gap_min_cm": 0.000828000000000273,
+        "selected_ids_mapped": 63,
+        "selected_ids_missing": 0,
+        "selected_ids_missing_first20": [],
+        "selected_ids_nearest_distance_max_cm": 8.000000000008e-06,
+        "selected_ids_requested": 63,
+        "selected_indicator_contract": "response replay enumerates every final delayed W511 lineage; all other local IDs, including events absent from the TES compact catalog, have selected indicator zero",
+        "selected_init_za_by_local_id": {
+          "113331": 29064,
+          "119081": 29064,
+          "177089": 29064,
+          "177190": 29064,
+          "184031": 29064,
+          "187111": 29064,
+          "215805": 29064,
+          "223923": 29064,
+          "232279": 29064,
+          "237049": 29062,
+          "272165": 29064,
+          "282849": 29064,
+          "290498": 29064,
+          "31280": 29062,
+          "377545": 29061,
+          "38683": 29064,
+          "401149": 25050,
+          "401914": 29064,
+          "415469": 29064,
+          "423457": 29064,
+          "471478": 29062,
+          "501204": 29064,
+          "51563": 29064,
+          "526547": 29064,
+          "54874": 29064,
+          "549331": 29064,
+          "550775": 29064,
+          "553375": 29064,
+          "557161": 29064,
+          "573617": 29064,
+          "586793": 29064,
+          "606066": 29064,
+          "606362": 29064,
+          "617496": 29064,
+          "619294": 29064,
+          "619427": 29062,
+          "627798": 72171,
+          "647917": 29064,
+          "653927": 29064,
+          "672905": 29064,
+          "679457": 29064,
+          "697810": 29064,
+          "704332": 29064,
+          "71833": 29064,
+          "723342": 29064,
+          "729847": 29064,
+          "731783": 29064,
+          "754137": 29064,
+          "806460": 29064,
+          "811466": 29062,
+          "81807": 29064,
+          "825773": 29060,
+          "831988": 29064,
+          "842390": 29064,
+          "843102": 29064,
+          "845971": 29064,
+          "846536": 29064,
+          "861882": 29062,
+          "880872": 29061,
+          "92071": 74182,
+          "962440": 29062,
+          "975809": 29064,
+          "998483": 29064
+        },
+        "serialization_tolerance_cm_per_axis": 5.51e-06,
+        "sim": "runs/geometry_optimization_20260704/step02_delayed_transport_s3d_o8_all8_activation_m50000_20260713/n/DelayedDecayS3dO8NM50000.inc1.id1.sim.gz",
+        "sim_ia_init_coordinate_decimals": 5,
+        "source_block_vs_realized_trial_share_total_variation": 0.0934325,
+        "source_card_coordinate_decimals": 6,
+        "source_support_min_pairwise_chebyshev_separation_cm": 0.0008300000000005525,
+        "source_support_rows_k_gt_zero": 30951,
+        "transport_trials_on_rows_absent_from_source": 0,
+        "within_retained_selected_tolerance_records": 973255,
+        "within_serialization_tolerance_records": 936706
+      },
+      {
+        "IA_INIT_records": 1000000,
+        "ID_records": 1000000,
+        "ID_sequence_mismatches": 0,
+        "adaptive_displacement_cap_cm_per_axis": 0.001,
+        "adaptive_identified_transport_trials": 1000000,
+        "adaptive_unidentified_zero_outcome_trials": 0,
+        "adaptive_unique_mapped_records": 1000000,
+        "adaptive_unique_unmapped_fraction": 0.0,
+        "adaptive_unique_unmapped_records": 0,
+        "adaptive_unmapped_known_zero_selected_events": 0,
+        "adaptive_unmapped_selected_events": 0,
+        "duplicate_IA_INIT_records": 0,
+        "expected_events": 1000000,
+        "failed_absolute_cap_records": 0,
+        "failed_distance_ratio_records": 0,
+        "failed_second_gap_records": 0,
+        "family": "p",
+        "forced_same_za_adaptive_accepted_records": 754303,
+        "forced_same_za_adaptive_agrees_coordinate_parent_records": 754303,
+        "forced_same_za_adaptive_disagrees_coordinate_parent_records": 0,
+        "forced_same_za_nearest_distance_max_cm": 73.04782,
+        "ia_init_za_semantics": "transport_or_daughter_ZA_not_guaranteed_source_parent_ZA",
+        "init_za_differs_from_coordinate_mapped_source_parent_za_fraction": 0.245697,
+        "init_za_differs_from_coordinate_mapped_source_parent_za_records": 245697,
+        "init_za_equals_coordinate_mapped_source_parent_za_records": 754303,
+        "mapped_IA_INIT_records": 1000000,
+        "mapping_strategy_sensitivity": {
+          "adaptive_unique_mapped_fraction": 1.0,
+          "adaptive_vs_nearest_all_assignment_disagreements": 0,
+          "nearest_all_fraction": 1.0,
+          "retained_selected_tolerance_mapped_fraction": 0.898844,
+          "strict_serialization_only_mapped_fraction": 0.755019
+        },
+        "minimum_second_nearest_gap_cm": 1.102e-05,
+        "minimum_second_to_first_distance_ratio": 2.0,
+        "missing_IA_INIT_records": 0,
+        "nearest_all_sensitivity_source_block_vs_trial_share_total_variation": 0.183254,
+        "nearest_distance_max_cm": 0.0004100000000022419,
+        "nearest_distance_median_cm": 2.9999999999752447e-06,
+        "nearest_distance_p99_cm": 5.2999999999997494e-05,
+        "nearest_distance_p99p999_cm": 0.0003599999999934767,
+        "nearest_distance_p99p99_cm": 0.0003399999999977865,
+        "nearest_distance_p99p9_cm": 0.0002899999999996794,
+        "position_metric": "Chebyshev_max_abs_axis_distance_cm",
+        "rejected_first20": [],
+        "retained_selected_lineage_tolerance_cm_per_axis": 1.01e-05,
+        "retained_source_rows_with_zero_transport_trials": 0,
+        "retained_source_unique_rows": 2928,
+        "same_init_za_source_support_available_records": 919142,
+        "second_nearest_gap_min_cm": 0.0010399999999997078,
+        "selected_ids_mapped": 13,
+        "selected_ids_missing": 0,
+        "selected_ids_missing_first20": [],
+        "selected_ids_nearest_distance_max_cm": 4.999999999810711e-06,
+        "selected_ids_requested": 13,
+        "selected_indicator_contract": "response replay enumerates every final delayed W511 lineage; all other local IDs, including events absent from the TES compact catalog, have selected indicator zero",
+        "selected_init_za_by_local_id": {
+          "13151": 29064,
+          "154305": 29061,
+          "23369": 29062,
+          "333023": 30063,
+          "362934": 29064,
+          "408023": 29062,
+          "554002": 29062,
+          "622805": 29061,
+          "664497": 29062,
+          "706252": 29064,
+          "709294": 29061,
+          "743365": 29062,
+          "920617": 39086
+        },
+        "serialization_tolerance_cm_per_axis": 5.51e-06,
+        "sim": "runs/geometry_optimization_20260704/step02_delayed_transport_s3d_o8_all8_activation_m50000_20260713/p/DelayedDecayS3dO8PM50000.inc1.id1.sim.gz",
+        "sim_ia_init_coordinate_decimals": 5,
+        "source_block_vs_realized_trial_share_total_variation": 0.183254,
+        "source_card_coordinate_decimals": 6,
+        "source_support_min_pairwise_chebyshev_separation_cm": 0.0011600000000022703,
+        "source_support_rows_k_gt_zero": 2928,
+        "transport_trials_on_rows_absent_from_source": 0,
+        "within_retained_selected_tolerance_records": 898844,
+        "within_serialization_tolerance_records": 755019
+      }
+    ],
+    "raw_sim_parse_summary_csv": "data/raw_sim_parse_summary.csv",
+    "raw_sim_reparsed_by_this_program": true,
+    "selected_indicator_contract": "all seven 1M-event SIMs retain one IA INIT per ID; the exact 64-seed response replay enumerates all final delayed W511 strong-lineage keys; the complement is selected=0",
+    "selected_physical_events": 78,
+    "selected_rate_cps": 0.002016570673866816,
+    "weighted_poisson_transport_counting_rse": 0.1261504132198012,
+    "weighted_poisson_transport_counting_sigma_cps": 0.00025439122379523183
+  },
+  "schema": "m04_wp1_offline_m_sampling_validation_summary_v1",
+  "scope": {
+    "claim_boundary": "not_transport_backed_m_convergence",
+    "cosima_runner_allowed": false,
+    "mode": "offline_existing_artifacts_only",
+    "raw_sim_reparse": true,
+    "response_replay_mode": "event_level_replay_of_retained_catalog_for_all_64_seeds",
+    "source_card_generation": false,
+    "transport_simulation": false
+  },
+  "source_only_resampling": {
+    "aggregate": [
+      {
+        "family": "alpha",
+        "m": 50000,
+        "mean_group_jsd_nats": 0.0004663222408952288,
+        "mean_group_top90_jaccard": 0.7306989910057983,
+        "mean_row_jsd_nats": 0.001074394466074699,
+        "mean_target_group_mass_unseen": 4.827171847660017e-05,
+        "mean_target_row_mass_coverage": 0.9998800293216031,
+        "sample_sd_group_jsd_nats": 6.928561316649865e-05,
+        "sample_sd_group_top90_jaccard": 0.011733552481395293,
+        "sample_sd_row_jsd_nats": 9.056581343789767e-05,
+        "sample_sd_target_group_mass_unseen": 3.535698595447332e-05,
+        "sample_sd_target_row_mass_coverage": 4.421921613033742e-05,
+        "source_seeds": 4
+      },
+      {
+        "family": "alpha",
+        "m": 100000,
+        "mean_group_jsd_nats": 0.00023803497995274634,
+        "mean_group_top90_jaccard": 0.7315826228913478,
+        "mean_row_jsd_nats": 0.0005694293915421847,
+        "mean_target_group_mass_unseen": 7.427430286033321e-06,
+        "mean_target_row_mass_coverage": 0.9999514498358864,
+        "sample_sd_group_jsd_nats": 3.6566896249346645e-05,
+        "sample_sd_group_top90_jaccard": 0.009489121171744302,
+        "sample_sd_row_jsd_nats": 6.272645070646828e-05,
+        "sample_sd_target_group_mass_unseen": 3.569980811851743e-07,
+        "sample_sd_target_row_mass_coverage": 5.023756261431747e-06,
+        "source_seeds": 4
+      },
+      {
+        "family": "eplus",
+        "m": 50000,
+        "mean_group_jsd_nats": 8.910699944165732e-06,
+        "mean_group_top90_jaccard": 1.0,
+        "mean_row_jsd_nats": 1.0218785165157525e-05,
+        "mean_target_group_mass_unseen": 1.1000526056736959e-07,
+        "mean_target_row_mass_coverage": 0.9999998899947394,
+        "sample_sd_group_jsd_nats": 1.0997403937646949e-05,
+        "sample_sd_group_top90_jaccard": 0.0,
+        "sample_sd_row_jsd_nats": 1.021416968441273e-05,
+        "sample_sd_target_group_mass_unseen": 0.0,
+        "sample_sd_target_row_mass_coverage": 0.0,
+        "source_seeds": 4
+      },
+      {
+        "family": "eplus",
+        "m": 100000,
+        "mean_group_jsd_nats": 5.483738282283447e-06,
+        "mean_group_top90_jaccard": 1.0,
+        "mean_row_jsd_nats": 7.0386874942814045e-06,
+        "mean_target_group_mass_unseen": 1.1000526056736959e-07,
+        "mean_target_row_mass_coverage": 0.9999998899947394,
+        "sample_sd_group_jsd_nats": 4.013359423665241e-06,
+        "sample_sd_group_top90_jaccard": 0.0,
+        "sample_sd_row_jsd_nats": 3.6077480500918398e-06,
+        "sample_sd_target_group_mass_unseen": 0.0,
+        "sample_sd_target_row_mass_coverage": 0.0,
+        "source_seeds": 4
+      },
+      {
+        "family": "gamma",
+        "m": 50000,
+        "mean_group_jsd_nats": 3.392147750404454e-08,
+        "mean_group_top90_jaccard": 1.0,
+        "mean_row_jsd_nats": 3.392147750404454e-08,
+        "mean_target_group_mass_unseen": 9.787669119631914e-08,
+        "mean_target_row_mass_coverage": 0.9999999021233088,
+        "sample_sd_group_jsd_nats": 0.0,
+        "sample_sd_group_top90_jaccard": 0.0,
+        "sample_sd_row_jsd_nats": 0.0,
+        "sample_sd_target_group_mass_unseen": 0.0,
+        "sample_sd_target_row_mass_coverage": 0.0,
+        "source_seeds": 4
+      },
+      {
+        "family": "gamma",
+        "m": 100000,
+        "mean_group_jsd_nats": 3.392147750404454e-08,
+        "mean_group_top90_jaccard": 1.0,
+        "mean_row_jsd_nats": 3.392147750404454e-08,
+        "mean_target_group_mass_unseen": 9.787669119631914e-08,
+        "mean_target_row_mass_coverage": 0.9999999021233088,
+        "sample_sd_group_jsd_nats": 0.0,
+        "sample_sd_group_top90_jaccard": 0.0,
+        "sample_sd_row_jsd_nats": 0.0,
+        "sample_sd_target_group_mass_unseen": 0.0,
+        "sample_sd_target_row_mass_coverage": 0.0,
+        "source_seeds": 4
+      },
+      {
+        "family": "muminus",
+        "m": 50000,
+        "mean_group_jsd_nats": 0.0005173612132065462,
+        "mean_group_top90_jaccard": 0.921875,
+        "mean_row_jsd_nats": 0.015031818825730651,
+        "mean_target_group_mass_unseen": 8.81286847782825e-05,
+        "mean_target_row_mass_coverage": 0.9997239887350673,
+        "sample_sd_group_jsd_nats": 1.8963060087161722e-05,
+        "sample_sd_group_top90_jaccard": 0.05983919423477113,
+        "sample_sd_row_jsd_nats": 0.00010681704826841305,
+        "sample_sd_target_group_mass_unseen": 2.5097511080823953e-05,
+        "sample_sd_target_row_mass_coverage": 7.965618743161021e-05,
+        "source_seeds": 4
+      },
+      {
+        "family": "muminus",
+        "m": 100000,
+        "mean_group_jsd_nats": 0.00026522659634486425,
+        "mean_group_top90_jaccard": 0.96875,
+        "mean_row_jsd_nats": 0.007452721536217951,
+        "mean_target_group_mass_unseen": 5.870643711231027e-05,
+        "mean_target_row_mass_coverage": 0.9998848193175469,
+        "sample_sd_group_jsd_nats": 2.2443010926706454e-05,
+        "sample_sd_group_top90_jaccard": 0.0625,
+        "sample_sd_row_jsd_nats": 6.628121099094746e-05,
+        "sample_sd_target_group_mass_unseen": 1.6478342348162843e-05,
+        "sample_sd_target_row_mass_coverage": 1.780862329278428e-05,
+        "source_seeds": 4
+      },
+      {
+        "family": "muplus",
+        "m": 50000,
+        "mean_group_jsd_nats": 1.533475188331214e-06,
+        "mean_group_top90_jaccard": 1.0,
+        "mean_row_jsd_nats": 3.6748767149136248e-06,
+        "mean_target_group_mass_unseen": 4.7589614737830743e-07,
+        "mean_target_row_mass_coverage": 0.9999995241038526,
+        "sample_sd_group_jsd_nats": 1.8077695573874262e-06,
+        "sample_sd_group_top90_jaccard": 0.0,
+        "sample_sd_row_jsd_nats": 3.3831744182892336e-06,
+        "sample_sd_target_group_mass_unseen": 0.0,
+        "sample_sd_target_row_mass_coverage": 0.0,
+        "source_seeds": 4
+      },
+      {
+        "family": "muplus",
+        "m": 100000,
+        "mean_group_jsd_nats": 1.3325881448871278e-06,
+        "mean_group_top90_jaccard": 1.0,
+        "mean_row_jsd_nats": 2.2207674776457864e-06,
+        "mean_target_group_mass_unseen": 4.7589614737830743e-07,
+        "mean_target_row_mass_coverage": 0.9999995241038526,
+        "sample_sd_group_jsd_nats": 2.116139303614313e-06,
+        "sample_sd_group_top90_jaccard": 0.0,
+        "sample_sd_row_jsd_nats": 2.0796252684360836e-06,
+        "sample_sd_target_group_mass_unseen": 0.0,
+        "sample_sd_target_row_mass_coverage": 0.0,
+        "source_seeds": 4
+      },
+      {
+        "family": "n",
+        "m": 50000,
+        "mean_group_jsd_nats": 0.003482138093502415,
+        "mean_group_top90_jaccard": 0.960644167412184,
+        "mean_row_jsd_nats": 0.16299434978024582,
+        "mean_target_group_mass_unseen": 0.004837630496833417,
+        "mean_target_row_mass_coverage": 0.6507687662332236,
+        "sample_sd_group_jsd_nats": 5.776530637085103e-05,
+        "sample_sd_group_top90_jaccard": 0.031062722436079677,
+        "sample_sd_row_jsd_nats": 0.0006921728571469005,
+        "sample_sd_target_group_mass_unseen": 0.00022357396764180205,
+        "sample_sd_target_row_mass_coverage": 0.0014325489541328444,
+        "source_seeds": 4
+      },
+      {
+        "family": "n",
+        "m": 100000,
+        "mean_group_jsd_nats": 0.0017427451460253947,
+        "mean_group_top90_jaccard": 0.9673097206711208,
+        "mean_row_jsd_nats": 0.0793044487782519,
+        "mean_target_group_mass_unseen": 0.0018072680149244513,
+        "mean_target_row_mass_coverage": 0.8728658405798223,
+        "sample_sd_group_jsd_nats": 3.8582942580170455e-05,
+        "sample_sd_group_top90_jaccard": 0.01596165794488244,
+        "sample_sd_row_jsd_nats": 0.0005961783532271967,
+        "sample_sd_target_group_mass_unseen": 0.00015550698328891668,
+        "sample_sd_target_row_mass_coverage": 0.0013785317576816489,
+        "source_seeds": 4
+      },
+      {
+        "family": "p",
+        "m": 50000,
+        "mean_group_jsd_nats": 0.0011969890672359816,
+        "mean_group_top90_jaccard": 0.873956238889011,
+        "mean_row_jsd_nats": 0.0078023261727268286,
+        "mean_target_group_mass_unseen": 0.0003863969290719971,
+        "mean_target_row_mass_coverage": 0.9982043042695578,
+        "sample_sd_group_jsd_nats": 5.5613994273672954e-05,
+        "sample_sd_group_top90_jaccard": 0.024684243800725675,
+        "sample_sd_row_jsd_nats": 0.00015242491646617732,
+        "sample_sd_target_group_mass_unseen": 0.00010865787063840985,
+        "sample_sd_target_row_mass_coverage": 0.0001270084455501361,
+        "source_seeds": 4
+      },
+      {
+        "family": "p",
+        "m": 100000,
+        "mean_group_jsd_nats": 0.0006243850715034405,
+        "mean_group_top90_jaccard": 0.8782120423509985,
+        "mean_row_jsd_nats": 0.00399553557083704,
+        "mean_target_group_mass_unseen": 0.00021686835099524182,
+        "mean_target_row_mass_coverage": 0.9993156102411808,
+        "sample_sd_group_jsd_nats": 3.42484885423801e-05,
+        "sample_sd_group_top90_jaccard": 0.016561596901802887,
+        "sample_sd_row_jsd_nats": 0.00011766731201563873,
+        "sample_sd_target_group_mass_unseen": 5.341020304525995e-05,
+        "sample_sd_target_row_mass_coverage": 7.943764181500386e-05,
+        "source_seeds": 4
+      }
+    ],
+    "boundary": "cannot_establish_post_selection_rate_convergence",
+    "m_values": [
+      50000,
+      100000
+    ],
+    "rows_csv": "source_only/source_only_resampling.csv",
+    "source_seeds": [
+      260613,
+      260614,
+      260615,
+      260617
+    ],
+    "status": "PASS_SOURCE_LAYER_DIAGNOSTICS_ONLY"
+  },
+  "status": "CONDITIONAL_OFFLINE_FINITE_M_VARIANCE_ESTIMATE__NOT_HANDOFF_TRANSPORT_PASS",
+  "stop_conditions": [
+    "any frozen input hash mismatch",
+    "source card fails exact blockwise replay",
+    "selected lineage does not uniquely reconnect to its weighted-table row",
+    "raw IA INIT nearest-neighbor mapping violates its displacement, second-gap, or distance-ratio guard",
+    "the rare-pair factorial-moment upper is approximate and does not replace independent-source-seed or multi-M validation, even when its numerical 95% upper is below the handoff 10% subcriterion",
+    "importance ESS is small or candidate mass outside retained support is material",
+    "transport counting RSE remains above the requested precision",
+    "attempt to interpret 64 response seeds as independent transport statistics",
+    "attempt to use Var_p(q) alone as selected-rate M variance despite measured raw trial share differing from K/M",
+    "attempt to promote the frozen selected rate without resolving the passive-Kapton active-veto predicate blocker"
+  ],
+  "user_override": {
+    "handoff_section_7_3B_transport_matrix": "NOT_EXECUTED_USER_OVERRIDDEN_ZERO_SIMULATION",
+    "handoff_section_8_4_6_detector_transport": "USER_OVERRIDDEN_WP1_NO_TRANSPORT__WP2_INDEPENDENT_ATMOSPHERIC_ANNIHILATION_511KEV_MONO_ONLY"
+  }
+}

@@ -1,0 +1,179 @@
+{
+  "status": "PASS_FIX5_FULLSTAT_CLOSURE",
+  "label": "fix5_fullstat_v2_exactpos_m50000_s260613",
+  "generated_at_utc": "2026-06-21T20:16:09Z",
+  "decision": "PASS_FIX5_REPLACES_V3P5",
+  "decision_reason": "All automatic promotion thresholds are satisfied, including selected W2 delayed W/collimator-origin decomposition.",
+  "contract_authority": "core_md/fix5_benchmarks.json",
+  "fixed_geometry": "outputs/geometry/DEMO2_DR_v3p5_user_cylmag_redesign_multiholeW_fix5_20260621_megalib_proxy/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup",
+  "old_new_geo_re_policy": "REPORT_ONLY_UNTIL_BENCHMARK_ALIGNMENT_IS_ALIGNED",
+  "clean_fullstat_policy": "Clean full-stat fix5 closure; no append/merge promotion was used.",
+  "role_split": {
+    "Builder": "Prepared fix5 source cards, Step09 focused signal replay wiring, and report builders under fix5-specific output paths.",
+    "Runner": "Executed clean fix5 prompt, buildup, delayed, and focused signal transports with fix5 SIM headers.",
+    "Verifier": "Checked source/SIM geometry provenance, delayed normalization, selected W activation decomposition, Step05--Step08 outputs, and promotion decision."
+  },
+  "required_artifacts": {
+    "source_manifest": {
+      "path": "outputs/reports/fix5_fullstat_v2/fix5_source_manifest.json",
+      "status": "PASS_BY_VERIFIER",
+      "source_card_count": 9
+    },
+    "benchmark_alignment": {
+      "path": "outputs/reports/fix5_fullstat_v2/fix5_benchmark_alignment.json",
+      "decision": "NOT_ALIGNED",
+      "use_of_old_new_geo_re": "REPORT_ONLY"
+    },
+    "verification_verdict": {
+      "path": "outputs/reports/fix5_fullstat_v2/fix5_verification_verdict.json",
+      "overall_status": "PASS_FIX5_PROMOTION",
+      "all_blocking_rows_pass": true
+    },
+    "promotion_decision": {
+      "path": "outputs/reports/fix5_fullstat_v2_exactpos_m50000_s260613/fix5_promotion_decision.json",
+      "decision": "PASS_FIX5_REPLACES_V3P5",
+      "blocking_items": []
+    },
+    "w_activation_selected_w2_audit": {
+      "path": "outputs/reports/fix5_fullstat_v2_exactpos_m50000_s260613/fix5_w_activation_selected_w2_audit.json",
+      "status": "PASS_FIX5_SELECTED_W_ACTIVATION_W2_AUDIT",
+      "selected_events": 30,
+      "w_or_collimator_selected_rate_hz": 0
+    },
+    "final_report": {
+      "json": "outputs/reports/fix5_fullstat_v2_exactpos_m50000_s260613/fix5_final_closure_report.json",
+      "markdown": "outputs/reports/fix5_fullstat_v2_exactpos_m50000_s260613/fix5_final_closure_report.md",
+      "comparison_table_csv": "outputs/reports/fix5_fullstat_v2_exactpos_m50000_s260613/fix5_final_comparison_table.csv"
+    }
+  },
+  "normalization_audits": {
+    "groundstate_half_life": {
+      "path": "outputs/reports/fix5_fullstat_v2_exactpos_m50000_s260613/fix5_groundstate_half_life_audit_summary.json",
+      "status": "PASS_FIX5_GROUNDSTATE_HALF_LIFE_AUDIT",
+      "w_or_collimator_new_activity_Bq": 0.9860798287567217
+    },
+    "delayed_exactpos_source": {
+      "path": "outputs/reports/fix5_fullstat_v2_exactpos_m50000_s260613/fix5_delayed_source_exactpos_summary.json",
+      "status": "PASS_FIX5_FULLSTAT_V2_EXACTPOS_M50000_S260613_EXACTPOS_DELAYED_TRANSPORT"
+    }
+  },
+  "one_of_ten_screen": {
+    "path": "outputs/reports/fix5_1of10/fix5_step05_screen_summary.json",
+    "status": "PASS_STEP05_EXTRACTION_ARTIFACT_READY_NOT_FINAL_GATE",
+    "use_in_final_decision": "SUPERSEDED_BY_FULLSTAT"
+  },
+  "step_chain": {
+    "step05": {
+      "path": "stepwise_maintenance/step05_veto_time_axis/outputs_fix5_fullstat_v2_exactpos_m50000_s260613_l1/step05_fix5_fullstat_v2_exactpos_m50000_s260613_l1_response_summary.json",
+      "status": "PASS_FIX5_STEP05_SIDE_ENTRY_COMPTON_TIME_AXIS_L1_FULLSTAT_V2_EXACTPOS_NOT_PROMOTION"
+    },
+    "step06": {
+      "path": "stepwise_maintenance/step06_mission_time_variation/outputs_fix5_fullstat_v2_exactpos_m50000_s260613/step06_fix5_fullstat_v2_exactpos_m50000_s260613_summary.json",
+      "status": "PASS_FIX5_STEP06_TIME_AXIS_FIX5_FULLSTAT_V2_EXACTPOS_M50000_S260613_NOT_PROMOTION"
+    },
+    "step07": {
+      "path": "stepwise_maintenance/step07_source_cases/outputs_fix5_fullstat_v2_exactpos_m50000_s260613/source_case_summary.json",
+      "status": "PASS_FIX5_STEP07_SOURCE_CASES_FIX5_FULLSTAT_V2_EXACTPOS_M50000_S260613_SIGNAL_REPLAYED_NOT_PROMOTION"
+    },
+    "step08": {
+      "path": "stepwise_maintenance/step08_significance/outputs_fix5_fullstat_v2_exactpos_m50000_s260613/step08_fix5_fullstat_v2_exactpos_m50000_s260613_time_dependent_summary.json",
+      "status": "PASS_FIX5_STEP08_TIME_DEPENDENT_FIX5_FULLSTAT_V2_EXACTPOS_M50000_S260613_SIGNAL_REPLAYED_NOT_PROMOTION"
+    },
+    "step09_signal_replay": {
+      "path": "stepwise_maintenance/step09_optics_bridge/outputs_fix5_fullstat_v2_exactpos_m50000_s260613/step09_focus_summary.json",
+      "status": "PASS_FIX5_STEP09_FOCUS_TRANSPORT"
+    }
+  },
+  "comparison_table": [
+    {
+      "metric": "W2 total selected background cps",
+      "fix5": 0.0392162265186315,
+      "fix5_sigma": 0.005008329321646361,
+      "v3p5_reference": 0.06298036183985109,
+      "fix5_over_v3p5": 0.6226738839378542,
+      "old_new_geo_re_reference": null,
+      "status": "PASS_DECISIVE_VS_V3P5",
+      "notes": "B_fix5 + sigma_fix5 is below current v3p5 authority."
+    },
+    {
+      "metric": "W2 prompt selected cps",
+      "fix5": 0.036641023029691425,
+      "fix5_sigma": 0.0049862116709061865,
+      "v3p5_reference": 0.05908272463250492,
+      "fix5_over_v3p5": 0.6201647479461876,
+      "old_new_geo_re_reference": 0.0323247092031,
+      "status": "PASS_VS_V3P5_REPORT_ONLY_VS_OLD_NEW_GEO_RE",
+      "notes": "Old new_geo_re prompt is report-only because benchmark_alignment.decision is not ALIGNED."
+    },
+    {
+      "metric": "W2 delayed selected cps",
+      "fix5": 0.0025752034889400762,
+      "fix5_sigma": 0.0004701656803528284,
+      "v3p5_reference": 0.0038976372073461713,
+      "fix5_over_v3p5": 0.6607088735930567,
+      "old_new_geo_re_reference": 0.151456825339,
+      "status": "PASS_VS_V3P5_REPORT_ONLY_VS_OLD_NEW_GEO_RE",
+      "notes": "Delayed total is below current v3p5; old new_geo_re delayed is not a promotion bar."
+    },
+    {
+      "metric": "W/collimator-origin W2 delayed selected cps",
+      "fix5": 0.0,
+      "fix5_sigma": null,
+      "v3p5_reference": null,
+      "fix5_over_v3p5": null,
+      "old_new_geo_re_reference": null,
+      "status": "PASS_NOT_DOMINANT",
+      "notes": "Dedicated selected-event audit found zero W/collimator-origin W2 delayed selected events."
+    },
+    {
+      "metric": "W/collimator source activity Bq",
+      "fix5": 0.9860798287567217,
+      "fix5_sigma": null,
+      "v3p5_reference": null,
+      "fix5_over_v3p5": null,
+      "old_new_geo_re_reference": null,
+      "status": "AUDITED_SOURCE_LEVEL_CONTEXT",
+      "notes": "Ground-state corrected fixed source activity inventory; selected-rate audit is the promotion check."
+    },
+    {
+      "metric": "Reference-flux signal cps",
+      "fix5": 0.00118587480749719,
+      "fix5_sigma": null,
+      "v3p5_reference": 0.0011811656293957314,
+      "fix5_over_v3p5": 1.0039868905632376,
+      "old_new_geo_re_reference": null,
+      "status": "PASS_SIGNAL_KEEP",
+      "notes": "Fix5 focused signal replay was consumed by Step05."
+    },
+    {
+      "metric": "Z20d",
+      "fix5": 7.79950030715189,
+      "fix5_sigma": null,
+      "v3p5_reference": 6.130394687582996,
+      "fix5_over_v3p5": 1.2722672363901197,
+      "old_new_geo_re_reference": null,
+      "status": "PASS",
+      "notes": "Fix5 is above the current v3p5 authority."
+    },
+    {
+      "metric": "F3(20d) ph cm^-2 s^-1",
+      "fix5": 3.8464002588077305e-05,
+      "fix5_sigma": null,
+      "v3p5_reference": 4.893649027323553e-05,
+      "fix5_over_v3p5": 0.7859983904304256,
+      "old_new_geo_re_reference": null,
+      "status": "PASS",
+      "notes": "Fix5 is below the current v3p5 authority."
+    },
+    {
+      "metric": "Old new_geo_re benchmark alignment",
+      "fix5": "NOT_ALIGNED",
+      "fix5_sigma": null,
+      "v3p5_reference": null,
+      "fix5_over_v3p5": null,
+      "old_new_geo_re_reference": "ALIGNED required before old-new_geo_re gating",
+      "status": "REPORT_ONLY",
+      "notes": "Historical old-new_geo_re numbers are not used for pass/fail gating."
+    }
+  ]
+}

@@ -1,0 +1,164 @@
+{
+  "schema": "o8-parma511-day15-modular-recomposition-v1",
+  "status": "DIAGNOSTIC_ONLY_MODULAR_RECOMPOSITION__NOT_PAPER_AUTHORITY",
+  "selection_id": "w2_510p58_511p42",
+  "window_keV": [
+    510.58,
+    511.42
+  ],
+  "day15_index_zero_based": 60,
+  "composition": {
+    "formula": "R_new = R_old - R_legacy_sidecar - Delta_R_prompt_gamma_line + R_PARMA511_corrected",
+    "occupancy_formula": "lambda(t) = prompt_event_rate_hz(t) - removed_prompt_gamma_line_occupancy_hz(t) + delayed_event_rate_hz(t) + corrected_PARMA511_event_rate_hz(t)",
+    "legacy_sidecar_removed": true,
+    "legacy_sidecar_subtracted_from_prompt_occupancy": false,
+    "prompt_gamma_line_dedup_delta_W2_cps": 0.0,
+    "prompt_gamma_line_dedup_delta_broad_480_550_cps": 0.0,
+    "prompt_gamma_misplaced_line_occupancy_removed": true,
+    "all_other_modules_reused": true
+  },
+  "retained_and_replaced_rates_cps": {
+    "prompt_retained": 0.0033930315141215083,
+    "delayed_retained": 0.0020165706738668157,
+    "signal_retained_slant45": 0.0009862278909041333,
+    "legacy_atm511_sidecar_removed": 0.0015552613519498118,
+    "corrected_PARMA511_added": 0.004174895515607628,
+    "old_background": 0.006964863539938136,
+    "recomposed_background": 0.009584497703595953,
+    "recomposed_minus_old_background": 0.0026196341636578174
+  },
+  "endpoint_rates_cps": {
+    "prompt_retained_componentwise_upper95": 0.043376079007110026,
+    "delayed_retained_componentwise_upper95": 0.002631655800017891,
+    "legacy_sidecar_upper95_removed": 0.003064484872204819,
+    "corrected_line_endpoint_added": 0.007132488676899776,
+    "recomposed_background_componentwise_endpoint": 0.05314022348402769,
+    "corrected_line_endpoint_method": "diagnostic normal approximation rate + 1.95996*importance-weighted MC sigma; not an exact coverage endpoint"
+  },
+  "occupancy_and_live_factor": {
+    "prompt_hz_retained_before_line_occupancy_dedup": 23733.994096992763,
+    "prompt_gamma_scale": 1.0,
+    "prompt_gamma_misplaced_line_hz_removed": 737.844505175763,
+    "prompt_hz_after_line_occupancy_dedup": 22996.149591817,
+    "delayed_hz_retained": 19.10454293591002,
+    "legacy_sidecar_hz_removed": 202.4765592953111,
+    "legacy_sidecar_subtracted_from_prompt_occupancy": false,
+    "corrected_line_hz_added": 653.9602599842195,
+    "old_live_factor": 0.9763290820194607,
+    "pre_fix_recomposition_live_factor_without_prompt_gamma_occupancy_dedup": 0.9758883848437021,
+    "recomposed_live_factor": 0.9766087044353708,
+    "line_occupancy_method": "DIAGNOSTIC scalar old-sidecar occupancy multiplied by total PARMA/legacy flux; angular occupancy reweight is unavailable in the compact cache",
+    "dedup_provenance": {
+      "status": "PASS_PROMPT_GAMMA_LINE_TERM_OCCUPANCY_SCALE_SEMANTICS",
+      "provenance_path": "affected_events.step05_catalog.removed_rate_sum_cps",
+      "affected_rows": 317048,
+      "tes_nonzero_rows": 0,
+      "active_volume_nonzero_rows": 317048,
+      "removed_event_rate_day15_hz": 737.844505175763,
+      "day15_prompt_gamma_occupancy_before_dedup_hz": 19731.813033759743,
+      "removed_fraction_of_day15_prompt_gamma_occupancy": 0.03739364973271148,
+      "scale_field": "prompt_scale_gamma",
+      "scale_min": 0.849039217915,
+      "scale_max": 1.20169595615,
+      "scaled_removal_min_hz": 626.45892161731,
+      "scaled_removal_max_hz": 886.6647581372121,
+      "corrected_prompt_occupancy_min_hz": 19561.46850711005,
+      "formula": "lambda(t) = prompt_event_rate_hz(t) - removed_prompt_gamma_line_occupancy_hz(t) + delayed_event_rate_hz(t) + corrected_PARMA511_event_rate_hz(t)",
+      "sidecar_subtracted_from_prompt": false
+    },
+    "formula_validation": {
+      "status": "PASS_81BIN_PROMPT_GAMMA_LINE_OCCUPANCY_DEDUP_FORMULA",
+      "checked_bins": 81,
+      "max_absolute_residuals": {
+        "scaled_line_term_removal_hz": 0.0,
+        "prompt_after_dedup_hz": 0.0,
+        "total_occupancy_hz": 0.0,
+        "pre_fix_total_occupancy_hz": 0.0,
+        "live_factor": 0.0,
+        "pre_fix_live_factor": 0.0
+      },
+      "minimum_prompt_occupancy_after_dedup_hz": 19561.46850711005,
+      "minimum_total_occupancy_hz": 20142.5413420411,
+      "day15_removed_prompt_gamma_line_occupancy_hz": 737.844505175763,
+      "legacy_sidecar_occupancy_omitted_separately_once": true,
+      "legacy_sidecar_subtracted_from_prompt_occupancy": false,
+      "formula": "lambda(t) = prompt_event_rate_hz(t) - removed_prompt_gamma_line_occupancy_hz(t) + delayed_event_rate_hz(t) + corrected_PARMA511_event_rate_hz(t)"
+    }
+  },
+  "line_input": {
+    "input_kind": "existing_low_stat_angular_reweight_diagnostic",
+    "input_path": "engineering/m04_validation_geometry_handoff_20260810/02_parma_atm511_repair_20260810/data/existing_o8_line_module_reweight_summary.json",
+    "input_sha256": "2af3e9a69ee783ad8828cbdd6babcfdfb8867585b077134cd1c2804fed8ecb1e",
+    "response_summary_path": null,
+    "response_summary_sha256": null,
+    "response_grade": "DIAGNOSTIC_ONLY_FAILS_PARMA511_RATE_STATISTICS",
+    "passes_detector_rate_gate": false,
+    "passes_final_input_gate": false,
+    "campaign_receipt": null,
+    "w2_rate_day15_cps": 0.004174895515607628,
+    "w2_mc_sigma_day15_cps": 0.0015090038309995824,
+    "w2_upper95_day15_cps": 0.007132488676899776,
+    "w2_upper95_method": "diagnostic normal approximation rate + 1.95996*importance-weighted MC sigma; not an exact coverage endpoint",
+    "w2_selected_events": 8,
+    "w2_importance_effective_sample_size": 7.65438913521842,
+    "broad_rate_day15_cps": null,
+    "broad_upper95_day15_cps": null,
+    "broad_selected_events": null,
+    "line_occupancy_day15_hz": 653.9602599842195,
+    "line_occupancy_events": null,
+    "line_occupancy_method": "DIAGNOSTIC scalar old-sidecar occupancy multiplied by total PARMA/legacy flux; angular occupancy reweight is unavailable in the compact cache",
+    "transport_TE_s": 5143.83,
+    "detector_gate": {
+      "handoff_required_final_w2_events_or_relative_error": ">=400 final events or <=5% pure-counting relative standard error",
+      "handoff_required_40_vs_80_combined_count_error": "<1.5%",
+      "actual_unsmeared_events": 9,
+      "actual_primary_events": 8,
+      "actual_unsmeared_80bin_relative_mc_sigma": 0.3400468660245954,
+      "actual_primary_80bin_relative_mc_sigma": 0.36144708900097033,
+      "passes_PASS_PARMA_511_detector_response": false,
+      "decision": "Existing transport supports a zero-simulation angular-reweight diagnostic only. If paper-authority PASS_PARMA_511 is required, transport only the corrected atmospheric 510.99895-keV mono-line module; reuse and recompose every other retained module."
+    },
+    "selection_frozen": true,
+    "active_veto_kapton_blocker_preserved": true
+  },
+  "broad_window_corrected_line": {
+    "rate_day15_cps": null,
+    "upper95_day15_cps": null,
+    "note": "Unavailable from the compact low-stat W2 diagnostic; populated from primary_event_response.csv for a campaign aggregate."
+  },
+  "scientific_blockers": [
+    {
+      "id": "LEGACY_PROMPT_GAMMA_AXIS_FACTOR_1000",
+      "severity": "SCIENTIFIC_BLOCKER",
+      "statement": "The complete retained O8 prompt-photon DP abscissa is 1000 times below the correct Cosima-keV axis. The selected W2 rate delta is zero and the active-only misplaced-line occupancy is removed offline, but neither operation repairs absolute prompt-gamma continuum fidelity.",
+      "scope_action": "Freeze the user-directed legacy prompt-gamma module; do not launch a continuum rerun from this recomposition."
+    },
+    {
+      "id": "FROZEN_ACTIVE_SHIELD_NAME_MATCH_INCLUDES_PASSIVE_KAPTON",
+      "severity": "SCIENTIFIC_BLOCKER",
+      "statement": "The frozen final predicate matches the substring ACTIVE_SHIELD and therefore includes three passive ActiveShield_S3C_BGO_Kapton_* scorer volumes in the 50-keV veto; it is not a BGO-plus-plastic-only mask.",
+      "scope_action": "Preserve the historical selection exactly; do not repair the predicate and do not rerun transport in this work package."
+    },
+    {
+      "id": "DAY15_ANGULAR_RESPONSE_HELD_FIXED_ACROSS_MISSION",
+      "severity": "CONDITIONAL_MODEL_QUALIFICATION",
+      "statement": "Only the day-15 line detector response is available. The 20-day fold holds that angular response fixed while evaluating PARMA line flux at retained depths with fixed W and Rc.",
+      "scope_action": "Report the mission result as a conditional modular fold, not as new transport authority."
+    },
+    {
+      "id": "LINE_RESPONSE_INPUT_NOT_FINAL_RATE_GATE_AUTHORITY",
+      "severity": "DIAGNOSTIC_BLOCKER",
+      "statement": "The supplied line response is low-stat, direct-without-complete-aggregate, partial, or fails the detector-rate gate.",
+      "scope_action": "Keep every reported number labeled DIAGNOSTIC; replace only this JSON input with the completed line campaign aggregate when available."
+    }
+  ],
+  "no_rerun_attestation": {
+    "cosima_launched": false,
+    "transport_launched": false,
+    "continuum_rerun": false,
+    "other_particle_rerun": false,
+    "m_sampling_rerun": false,
+    "retained_product_modified": false,
+    "m04_modified": false
+  }
+}

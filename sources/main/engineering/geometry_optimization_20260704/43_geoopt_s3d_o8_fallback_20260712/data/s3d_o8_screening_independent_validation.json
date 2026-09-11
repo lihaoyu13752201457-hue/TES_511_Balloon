@@ -1,0 +1,63 @@
+{
+  "checks": {
+    "atmospheric_transport_and_entry_counts_close": true,
+    "dominant_gate_arithmetic_closes": true,
+    "geometry_authority_pass": true,
+    "mass_arithmetic_closes": true,
+    "promotion_metadata_closes": true,
+    "prompt_full_stream_headers_close": true,
+    "prompt_run_tables_close": true,
+    "screening_final_pass": true,
+    "selection_contract_frozen": true,
+    "signal_pairing_closes": true
+  },
+  "claim_boundary": "Independent reconciliation of completed screening summaries, transport tables, geometry authority, and mass arithmetic; not an independent event-selection rerun and not the all-family/delayed mission closure.",
+  "details": {
+    "atmospheric_entry_surfaces": {
+      "heavy_control": {
+        "bottom": 1,
+        "side": 5
+      },
+      "o8": {
+        "bottom": 3,
+        "side": 6
+      }
+    },
+    "dominant_gate": {
+      "heavy_control_rate_cps": 0.0038835593099640093,
+      "limit_cps": 0.0052,
+      "margin_cps": 0.0007362087902577277,
+      "o8_over_heavy_control": 1.1494072456392175,
+      "o8_rate_cps": 0.004463791209742272,
+      "recomputed_o8_gaussian_95": [
+        0.001568768560411386,
+        0.007358813859073159
+      ]
+    },
+    "mass": {
+      "baseline_kg": 391.1988472997,
+      "optimized_kg": 309.77676671553456,
+      "saved_fraction": 0.20813476610729234,
+      "saved_kg": 81.42208058416543
+    },
+    "signal_gate": {
+      "heavy_control_pass": 29703,
+      "limit": 0.02,
+      "o8_pass": 29598,
+      "ratio": 0.9964650035349965,
+      "relative_loss": 0.003534996465003548,
+      "total": 37194
+    }
+  },
+  "generated_at_utc": "2026-08-04T08:14:46Z",
+  "inputs": {
+    "engineering/geometry_optimization_20260704/43_geoopt_s3d_o8_fallback_20260712/data/s3d_o8_geometry_manifest.json": "fd9118e9dc8edc8658c37757af035739f95152ea7738d10bcff71900fc24295b",
+    "engineering/geometry_optimization_20260704/43_geoopt_s3d_o8_fallback_20260712/data/s3d_o8_independent_geometry_validation.json": "61af35280c80b07399e9bb04a46ca2d406da34d31d6e9a8dac94d9871acb3d78",
+    "engineering/geometry_optimization_20260704/43_geoopt_s3d_o8_fallback_20260712/data/s3d_o8_mass_ledger.json": "277a01a506b5f6dec528624c61610cb7dfc141b1c1829b38844a4d54c27819e5",
+    "engineering/geometry_optimization_20260704/43_geoopt_s3d_o8_fallback_20260712/data/s3d_o8_screening_analysis.json": "b4e1c5151358618c04b75d585f08c2c50913fbdd6c709bb9a6a544789046730b",
+    "runs/geometry_optimization_20260704/s3d_o8_eqstats_prompt_eplus_n_20260712/run_manifest.csv": "c8e9193475afd5f9d53ba71484672efe58d2f9a19914bb023247b11132034564",
+    "runs/geometry_optimization_20260704/s3d_o8_eqstats_prompt_eplus_n_20260712/run_summary.csv": "368d809fc64aaa8abfdbc2e9bb713d61614f8c5aac86549c14ee085479f6376c"
+  },
+  "problems": [],
+  "status": "PASS_O8_SCREENING_INDEPENDENT_VALIDATION"
+}

@@ -1,0 +1,62 @@
+{
+  "status": "PASS_PROMPT511_SPATIAL_ROI_DIAGNOSTIC_WITHDRAWN_AS_STRATEGY",
+  "label": "fullstat_v2_exactpos_m50000_s260613",
+  "scope": "Post-processing detector-coordinate spatial ROI diagnostic only; withdrawn as the prompt-suppression strategy.",
+  "inputs": {
+    "step05_summary": "stepwise_maintenance/step05_veto_time_axis/outputs_v3p5_centerfinger_fullstat_v2_exactpos_m50000_s260613_l1/step05_v3p5_centerfinger_l1_response_summary.json",
+    "step06_background_time_variation": "stepwise_maintenance/step06_mission_time_variation/outputs_v3p5_centerfinger_fullstat_v2_exactpos_m50000_s260613/background_time_variation.csv",
+    "step08_summary": "stepwise_maintenance/step08_significance/outputs_v3p5_centerfinger_fullstat_v2_exactpos_m50000_s260613/step08_v3p5_centerfinger_time_dependent_summary.json",
+    "spatial_cuts_csv": "stepwise_maintenance/step09_optics_bridge/outputs_f10m_a1_v3p5/detector_coupled_spatial_line_cuts.csv",
+    "claude_fix_review": "core_md/CLAUDE_PROMPT511_SIDEPORT_FIX_REVIEW_20260617.md",
+    "current_boundary_closure_summary": "outputs/reports/v3p5_boundary_closure_fullstat_v2_exactpos_m50000_s260613_20260613/v3p5_boundary_closure_summary.json"
+  },
+  "normalization": {
+    "hard_window_signal_cps_at_reference_flux": 0.0011811656293957314,
+    "hard_window_prompt_cps": 0.05908272463250492,
+    "hard_window_delayed_cps": 0.0038976372073461713,
+    "hard_window_background_cps": 0.06298036183985109,
+    "spatial_full_aperture_prompt_cps_before_scaling": 0.05892377643173456,
+    "spatial_full_aperture_delayed_cps_before_scaling": 0.014077942546693124,
+    "spatial_full_aperture_signal_cps": 0.001062316339232761,
+    "prompt_scale_to_current_hard_window": 1.0026975222973786,
+    "delayed_scale_to_current_hard_window": 0.27686128100172686
+  },
+  "hard_window_validation": {
+    "folded_Z20d": 6.130394687582996,
+    "authority_Z20d": 6.130394687582996,
+    "relative_Z20d_difference": 0.0,
+    "folded_F3_20d_ph_cm2_s": 4.893649027323553e-05,
+    "authority_F3_20d_ph_cm2_s": 4.893649027323553e-05
+  },
+  "headline": {
+    "best_counting_cut_id": "spot_r90",
+    "best_counting_radius_cm": 1.0516422148529696,
+    "best_counting_Z20d": 8.760949682270843,
+    "best_counting_F3_20d_ph_cm2_s": 3.424286303197211e-05,
+    "best_counting_prompt_reduction_factor": 3.1067715902023876,
+    "spot_r90_prompt_cps_scaled_to_current": 0.01901740212213542,
+    "spot_r90_prompt_reduction_factor": 3.1067715902023876,
+    "spot_r90_signal_keep_vs_current_hard_window": 0.8094450613614232,
+    "spot_r90_signal_psf_fraction_vs_spatial_full": 0.9000037465815031,
+    "spot_r90_background_cps_scaled_to_current": 0.02020369991614247,
+    "spot_r90_Z20d": 8.760949682270843,
+    "spot_r90_F3_20d_ph_cm2_s": 3.424286303197211e-05,
+    "annular_likelihood_Z20d_rescaled_delayed": 9.043717867615495,
+    "annular_likelihood_F3_20d_ph_cm2_s_rescaled_delayed": 3.317219802646268e-05,
+    "annular_likelihood_gain_vs_spot_r90": 1.0322759741351875
+  },
+  "outputs": {
+    "summary_json": "outputs/reports/prompt511_spatial_roi_smoke_20260618/prompt511_spatial_roi_smoke_summary.json",
+    "report_md": "outputs/reports/prompt511_spatial_roi_smoke_20260618/prompt511_spatial_roi_smoke_report.md",
+    "cut_csv": "outputs/reports/prompt511_spatial_roi_smoke_20260618/prompt511_spatial_roi_smoke_cuts.csv",
+    "annuli_csv": "outputs/reports/prompt511_spatial_roi_smoke_20260618/prompt511_spatial_roi_smoke_annuli.csv"
+  },
+  "limitations": [
+    "This is a post-processing sidecar; it does not replace the hard-window rate authority.",
+    "Prompt spatial fractions come from the existing detector-coupled spatial table and are scaled to current M=50000 hard-window prompt normalization.",
+    "Delayed spatial fractions are rescaled to current exact-position delayed normalization, but a selection-consistent exactpos delayed spatial table is still a stronger future check.",
+    "No new passive material or W activation penalty is introduced, but this also means the side-port/side-wall prompt source is not physically fixed.",
+    "The annular likelihood is fixed-template only; no nuisance-profile or publication-analysis claim is made.",
+    "After the old/current prompt-entry audit, do not promote ROI as the prompt-suppression strategy; use it only as a spatial diagnostic."
+  ]
+}

@@ -1,0 +1,363 @@
+{
+  "status": "PASS__ALL_TRANSPORTED_ACTIVATION_SUPPORT_AND_TES_FINAL_W2_SUBSET",
+  "figure_contract": {
+    "geometry": "overview combines a complete pale native-WRL x'-z' mesh-edge projection with the exact dark InstrumentFrame y'=0 section; TES detail remains the exact y'=0 section",
+    "all_source_layer": "all 80,000 stride-retained delayed-source blocks, aggregated to unique family-nuclide-position sites with multiplicity and day-15 activity preserved",
+    "highlight_layer": "mother-nuclide sites of delayed events surviving current final-W2 response selection",
+    "projection": "all 3-D source positions projected onto InstrumentFrame x'-z'",
+    "marker_areas": "fixed manuscript sizes shared across A/B: all-source sites 0.5175 pt^2 overview and 0.8625 pt^2 detail (15% larger than the prior paper revision); selected mother sites 2.0 pt^2 overview and 6.0 pt^2 detail",
+    "paper_layout": "two plot panels only; no figure title, subtitle, sidebar, point callouts, material legend, or per-nuclide legend; panel letters and axes retained",
+    "geometry_style": "neutral grayscale so geometry context cannot be confused with the coloured nuclide layer",
+    "bottom_legend": "two entries only: all transported delayed-activation source sites and parent nuclides whose delayed-decay events enter the 510.58-511.42 keV response window",
+    "languages": [
+      "zh",
+      "en"
+    ],
+    "no_sim_or_transport_read_or_run": true
+  },
+  "model_b_reference_to_current_family_rate_factors": {
+    "alpha": 1.0106927502670635,
+    "eminus": 1.0187038218725057,
+    "eplus": 0.9799624680112426,
+    "gamma": 0.9582839562129253,
+    "muminus": 0.9248883775416663,
+    "n": 0.9883757935440425,
+    "p": 0.982064585454321
+  },
+  "closure_expected": {
+    "A_blocks": 80000,
+    "A_sites": 20970,
+    "A_activity": 1352.2974936021085,
+    "A_selected_events": 394,
+    "A_selected_sites": 64,
+    "A_selected_rate": 0.037720860604326306,
+    "B_blocks": 80000,
+    "B_sites": 17388,
+    "B_activity": 211.3874334766397,
+    "B_selected_events": 111,
+    "B_selected_sites": 42,
+    "B_selected_rate": 0.0035805378117859145
+  },
+  "closure_observed": {
+    "A_blocks": 80000,
+    "A_sites": 20970,
+    "A_activity": 1352.2974936021085,
+    "A_selected_events": 394,
+    "A_selected_sites": 64,
+    "A_selected_rate": 0.037720860604326306,
+    "B_blocks": 80000,
+    "B_sites": 17388,
+    "B_activity": 211.3874334766397,
+    "B_selected_events": 111,
+    "B_selected_sites": 42,
+    "B_selected_rate": 0.003580537811785915
+  },
+  "models": [
+    {
+      "model": "A / SG3B",
+      "geometry": {
+        "wrl": "engineering/geometry_optimization_20260815/68_m05_ab_detailed_activation_sections_20260824/inputs/model_a_sg3b_native_no_transport.wrl",
+        "parsed_solids": 3336,
+        "section_crossing_solids": 274,
+        "section_crossing_solids_by_category": {
+          "al_local": 5,
+          "bgo": 3,
+          "bi": 2,
+          "bpe": 3,
+          "cu_link": 12,
+          "cu_stage": 14,
+          "envelope": 27,
+          "hole": 18,
+          "plastic": 3,
+          "service": 3,
+          "silicon": 6,
+          "support": 8,
+          "tes": 138,
+          "w": 25,
+          "window": 7
+        },
+        "overview_projected_solids": 3336,
+        "overview_projected_solids_by_category": {
+          "al_local": 5,
+          "bgo": 3,
+          "bi": 2,
+          "bpe": 3,
+          "cu_link": 34,
+          "cu_stage": 21,
+          "envelope": 27,
+          "hole": 240,
+          "plastic": 3,
+          "service": 18,
+          "silicon": 6,
+          "support": 86,
+          "tes": 2256,
+          "w": 625,
+          "window": 7
+        },
+        "overview_unique_projected_mesh_edges": 21346,
+        "full_panel": "complete pale native-WRL x'-z' mesh-edge projection plus exact dark InstrumentFrame y'=0 section",
+        "detail_panel": "exact InstrumentFrame y'=0 section only"
+      },
+      "all_transported_activation_support": {
+        "manifest": "/mnt/data/TES_Balloon_511_data/SG3/sg3b_m05_delayed_1m_v1/generated/activation/manifest.json",
+        "source_blocks": 80000,
+        "unique_family_nuclide_position_sites": 20970,
+        "unique_nuclides": 732,
+        "unique_volumes": 142,
+        "included_family_volume_nuclide_state_rows": 6987,
+        "day15_total_ground_activity_bq": 1352.2974936021085,
+        "day15_ground_activity_by_family_bq": {
+          "p": 724.2735643184277,
+          "n": 330.02102227995357,
+          "alpha": 287.5411355819042,
+          "gamma": 6.592310510637941,
+          "eminus": 0.6678773272741142,
+          "eplus": 2.9536959274816383,
+          "muminus": 0.24788765516904385,
+          "muplus": 1.2604307748521477e-09
+        },
+        "meaning": "all stride-retained source blocks actually used by the delayed-source catalogue; not every raw BUILDUP RP record"
+      },
+      "tes_impacting_final_w2_subset": {
+        "selected_events": 394,
+        "unique_mother_sites": 64,
+        "unique_mother_nuclides": 16,
+        "day15_final_w2_rate_cps": 0.037720860604326306,
+        "top_groups": [
+          {
+            "id": "G01",
+            "family": "p",
+            "nuclide": "Cu-62",
+            "volume": "Cu_SubstrateSupport_OpenRing_L2_ZP_panel",
+            "rate_cps": 0.007069928012959033
+          },
+          {
+            "id": "G02",
+            "family": "p",
+            "nuclide": "Cu-62",
+            "volume": "ColdPlate_MXC_50mK_SD_anchor",
+            "rate_cps": 0.005655942410367227
+          },
+          {
+            "id": "G03",
+            "family": "p",
+            "nuclide": "Po-199",
+            "volume": "SG3B_Bi_MXC_TES_UpperHalfCylinder_Main_4p796mm",
+            "rate_cps": 0.0028269158070864356
+          },
+          {
+            "id": "G04",
+            "family": "alpha",
+            "nuclide": "Cu-64",
+            "volume": "Cu_SubstrateSupport_OpenRing_L2_ZP_panel",
+            "rate_cps": 0.002247245504136557
+          },
+          {
+            "id": "G05",
+            "family": "p",
+            "nuclide": "Cu-62",
+            "volume": "SG3_Cu_SubstrateSupport_L0_HeatSinkRing_10mm",
+            "rate_cps": 0.00212097840388771
+          },
+          {
+            "id": "G06",
+            "family": "p",
+            "nuclide": "Cu-64",
+            "volume": "ColdPlate_MXC_50mK_SD_anchor",
+            "rate_cps": 0.0014694400825531711
+          },
+          {
+            "id": "G07",
+            "family": "alpha",
+            "nuclide": "O-15",
+            "volume": "SE3_Al_Shield_Inner_Cylinder_2mm",
+            "rate_cps": 0.0014670337814832288
+          },
+          {
+            "id": "G08",
+            "family": "p",
+            "nuclide": "O-15",
+            "volume": "Shield_60K_Al_side_window_bottom_cap",
+            "rate_cps": 0.0014130268739705068
+          },
+          {
+            "id": "G09",
+            "family": "gamma",
+            "nuclide": "Cu-61",
+            "volume": "Cu_SubstrateSupport_OpenRing_L4_YP_panel",
+            "rate_cps": 0.001142755635157013
+          },
+          {
+            "id": "G10",
+            "family": "p",
+            "nuclide": "Fe-52",
+            "volume": "ColdPlate_MXC_50mK_SD_anchor",
+            "rate_cps": 0.00073186785866811
+          }
+        ]
+      },
+      "outputs_by_language": {
+        "zh": {
+          "png": "engineering/geometry_optimization_20260815/70_m05_ab_activation_support_tes_overlay_20260824/outputs/model_a_sg3b_all_activation_support_and_tes_subset_zh.png",
+          "svg": "engineering/geometry_optimization_20260815/70_m05_ab_activation_support_tes_overlay_20260824/outputs/model_a_sg3b_all_activation_support_and_tes_subset_zh.svg",
+          "pdf": "engineering/geometry_optimization_20260815/70_m05_ab_activation_support_tes_overlay_20260824/outputs/model_a_sg3b_all_activation_support_and_tes_subset_zh.pdf"
+        },
+        "en": {
+          "png": "engineering/geometry_optimization_20260815/70_m05_ab_activation_support_tes_overlay_20260824/outputs/model_a_sg3b_all_activation_support_and_tes_subset_en.png",
+          "svg": "engineering/geometry_optimization_20260815/70_m05_ab_activation_support_tes_overlay_20260824/outputs/model_a_sg3b_all_activation_support_and_tes_subset_en.svg",
+          "pdf": "engineering/geometry_optimization_20260815/70_m05_ab_activation_support_tes_overlay_20260824/outputs/model_a_sg3b_all_activation_support_and_tes_subset_en.pdf"
+        }
+      }
+    },
+    {
+      "model": "B / SH3 OptV3",
+      "geometry": {
+        "wrl": "engineering/geometry_optimization_20260815/sh3/assembly_opt_v3/figures/SH3_Chimney_DR_Assembly_OptV3.wrl",
+        "parsed_solids": 2696,
+        "section_crossing_solids": 245,
+        "section_crossing_solids_by_category": {
+          "al_local": 16,
+          "bgo": 3,
+          "cu_link": 16,
+          "cu_stage": 15,
+          "envelope": 15,
+          "hole": 18,
+          "service": 3,
+          "silicon": 6,
+          "support": 8,
+          "tes": 138,
+          "w": 2,
+          "window": 5
+        },
+        "overview_projected_solids": 2696,
+        "overview_projected_solids_by_category": {
+          "al_local": 16,
+          "bgo": 3,
+          "cu_link": 34,
+          "cu_stage": 19,
+          "envelope": 15,
+          "hole": 240,
+          "service": 12,
+          "silicon": 6,
+          "support": 86,
+          "tes": 2256,
+          "w": 4,
+          "window": 5
+        },
+        "overview_unique_projected_mesh_edges": 21183,
+        "full_panel": "complete pale native-WRL x'-z' mesh-edge projection plus exact dark InstrumentFrame y'=0 section",
+        "detail_panel": "exact InstrumentFrame y'=0 section only"
+      },
+      "all_transported_activation_support": {
+        "manifest": "/mnt/data/TES_Balloon_511_data/SH3/sh3_optv3_m05_delayed_activation_v1/generated/activation/manifest.json",
+        "source_blocks": 80000,
+        "unique_family_nuclide_position_sites": 17388,
+        "unique_nuclides": 673,
+        "unique_volumes": 159,
+        "included_family_volume_nuclide_state_rows": 8417,
+        "day15_total_ground_activity_bq": 211.3874334766397,
+        "day15_ground_activity_by_family_bq": {
+          "p": 105.52618169460558,
+          "n": 68.53156340008296,
+          "alpha": 34.28357522292878,
+          "gamma": 2.032041625601467,
+          "eminus": 0.26633154457908836,
+          "eplus": 0.6753644685125626,
+          "muminus": 0.06840935553039425,
+          "muplus": 0.003966164798867338
+        },
+        "meaning": "all stride-retained source blocks actually used by the delayed-source catalogue; not every raw BUILDUP RP record"
+      },
+      "tes_impacting_final_w2_subset": {
+        "selected_events": 111,
+        "unique_mother_sites": 42,
+        "unique_mother_nuclides": 22,
+        "day15_final_w2_rate_cps": 0.003580537811785915,
+        "top_groups": [
+          {
+            "id": "G01",
+            "family": "p",
+            "nuclide": "Cu-62",
+            "volume": "Cu_SubstrateSupport_OpenRing_L5_YP_panel",
+            "rate_cps": 0.00041453410352196074
+          },
+          {
+            "id": "G02",
+            "family": "n",
+            "nuclide": "Cu-62",
+            "volume": "SG3_Cu_SubstrateSupport_L0_HeatSinkRing_10mm",
+            "rate_cps": 0.0002709397534334834
+          },
+          {
+            "id": "G03",
+            "family": "p",
+            "nuclide": "Re-175",
+            "volume": "SH3_OptV2_W_Frame_Top",
+            "rate_cps": 0.00020726705176098037
+          },
+          {
+            "id": "G04",
+            "family": "p",
+            "nuclide": "Cu-64",
+            "volume": "Cu_SubstrateSupport_OpenRing_L4_YP_panel",
+            "rate_cps": 0.00020726705176098037
+          },
+          {
+            "id": "G05",
+            "family": "p",
+            "nuclide": "Cu-62",
+            "volume": "SG3_Cu_SubstrateSupport_L0_HeatSinkRing_10mm",
+            "rate_cps": 0.00020726705176098037
+          },
+          {
+            "id": "G06",
+            "family": "p",
+            "nuclide": "Cr-49",
+            "volume": "Cu_SubstrateSupport_OpenRing_L2_YM_panel",
+            "rate_cps": 0.00020726705176098037
+          },
+          {
+            "id": "G07",
+            "family": "alpha",
+            "nuclide": "Cu-62",
+            "volume": "SG3_Cu_SubstrateSupport_L0_HeatSinkRing_10mm",
+            "rate_cps": 0.00013860064372419857
+          },
+          {
+            "id": "G08",
+            "family": "n",
+            "nuclide": "Cu-61",
+            "volume": "SH3_TES_BottomColdPlate_Spoke_YM",
+            "rate_cps": 0.0001354698767167417
+          },
+          {
+            "id": "G09",
+            "family": "p",
+            "nuclide": "Al-25",
+            "volume": "SH3_Layer02_SideShell",
+            "rate_cps": 0.00010363352588049018
+          },
+          {
+            "id": "G10",
+            "family": "p",
+            "nuclide": "Mg-23",
+            "volume": "SH3_Layer04_SideShell",
+            "rate_cps": 0.00010363352588049018
+          }
+        ]
+      },
+      "outputs_by_language": {
+        "zh": {
+          "png": "engineering/geometry_optimization_20260815/70_m05_ab_activation_support_tes_overlay_20260824/outputs/model_b_sh3_optv3_all_activation_support_and_tes_subset_zh.png",
+          "svg": "engineering/geometry_optimization_20260815/70_m05_ab_activation_support_tes_overlay_20260824/outputs/model_b_sh3_optv3_all_activation_support_and_tes_subset_zh.svg",
+          "pdf": "engineering/geometry_optimization_20260815/70_m05_ab_activation_support_tes_overlay_20260824/outputs/model_b_sh3_optv3_all_activation_support_and_tes_subset_zh.pdf"
+        },
+        "en": {
+          "png": "engineering/geometry_optimization_20260815/70_m05_ab_activation_support_tes_overlay_20260824/outputs/model_b_sh3_optv3_all_activation_support_and_tes_subset_en.png",
+          "svg": "engineering/geometry_optimization_20260815/70_m05_ab_activation_support_tes_overlay_20260824/outputs/model_b_sh3_optv3_all_activation_support_and_tes_subset_en.svg",
+          "pdf": "engineering/geometry_optimization_20260815/70_m05_ab_activation_support_tes_overlay_20260824/outputs/model_b_sh3_optv3_all_activation_support_and_tes_subset_en.pdf"
+        }
+      }
+    }
+  ]
+}

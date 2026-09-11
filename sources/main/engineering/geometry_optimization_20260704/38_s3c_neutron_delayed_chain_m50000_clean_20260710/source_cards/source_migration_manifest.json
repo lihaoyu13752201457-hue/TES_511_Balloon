@@ -1,0 +1,40 @@
+{
+  "farfield_radius_cm": 60.0,
+  "gamma_card_policy": "retained as run_equiv2602 flux normalization anchor only; not transported",
+  "generated_at_utc": "2026-07-09T17:33:00Z",
+  "geometry_manifest": "engineering/geometry_optimization_20260704/29_geoopt_s3c_bgo_w2mm_al3mm_shell_20260709/geoopt_s3c_geometry_manifest.json",
+  "geometry_setup": "engineering/geometry_optimization_20260704/29_geoopt_s3c_bgo_w2mm_al3mm_shell_20260709/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup",
+  "label": "s3c_bgo_w2mm_al3mm_shell_neutron_delay_m50000_clean_20260710",
+  "problems": [],
+  "selected_transport_particles": [
+    "n"
+  ],
+  "source_dir": "engineering/geometry_optimization_20260704/38_s3c_neutron_delayed_chain_m50000_clean_20260710/source_cards",
+  "source_template_dir": "engineering/geometry_optimization_20260704/32_s3c_dominant_backgrounds_20260709/source_cards",
+  "sources": [
+    {
+      "geometry_lines": [
+        "engineering/geometry_optimization_20260704/29_geoopt_s3c_bgo_w2mm_al3mm_shell_20260709/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup"
+      ],
+      "particle": "gamma",
+      "role": "normalization_anchor_only",
+      "source": "engineering/geometry_optimization_20260704/38_s3c_neutron_delayed_chain_m50000_clean_20260710/source_cards/Background_gamma_fullsphere20.source",
+      "status": "PASS",
+      "template_source": "engineering/geometry_optimization_20260704/32_s3c_dominant_backgrounds_20260709/source_cards/Background_gamma_fullsphere20.source",
+      "total_flux_cm2_s": 4.7996615777852
+    },
+    {
+      "geometry_lines": [
+        "engineering/geometry_optimization_20260704/29_geoopt_s3c_bgo_w2mm_al3mm_shell_20260709/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup"
+      ],
+      "particle": "n",
+      "role": "neutron_activation_driver",
+      "source": "engineering/geometry_optimization_20260704/38_s3c_neutron_delayed_chain_m50000_clean_20260710/source_cards/Background_n_fullsphere20.source",
+      "status": "PASS",
+      "template_source": "engineering/geometry_optimization_20260704/32_s3c_dominant_backgrounds_20260709/source_cards/Background_n_fullsphere20.source",
+      "total_flux_cm2_s": 0.462239182229625
+    }
+  ],
+  "status": "PASS_S3C_NEUTRON_DELAY_SOURCE_CARDS",
+  "variant": "s3c"
+}

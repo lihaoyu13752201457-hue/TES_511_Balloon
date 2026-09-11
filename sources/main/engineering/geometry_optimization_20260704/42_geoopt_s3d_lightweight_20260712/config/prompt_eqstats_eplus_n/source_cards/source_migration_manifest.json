@@ -1,0 +1,106 @@
+{
+  "status": "PASS_S3D_PROMPT_EQSTATS_SOURCE_COPY_PREPARED",
+  "label": "s3d_lightweight_eqstats_prompt_eplus_n_20260712",
+  "prepared_for": "S3d eplus/neutron equal-stat prompt transport and activation inventory",
+  "change_scope": "Copied retained S3c gamma/eplus/neutron cards; changed only the Geometry directive and geometry_setup comment from the retained S3c setup to the validated S3d setup.",
+  "source_dir": "engineering/geometry_optimization_20260704/42_geoopt_s3d_lightweight_20260712/config/prompt_eqstats_eplus_n/source_cards",
+  "source_parent": "engineering/geometry_optimization_20260704/42_geoopt_s3d_lightweight_20260712/config/prompt_eqstats_eplus_n/source_cards",
+  "template_source_dir": "engineering/geometry_optimization_20260704/32_s3c_dominant_backgrounds_20260709/source_cards",
+  "copied_from_source_parent": "engineering/geometry_optimization_20260704/32_s3c_dominant_backgrounds_20260709/source_cards",
+  "geometry_setup": "engineering/geometry_optimization_20260704/42_geoopt_s3d_lightweight_20260712/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup",
+  "geometry_status": "S3D_O9_GEOMETRY_VALIDATED_COSIMA_OVERLAP_PASS",
+  "geometry_manifest": "engineering/geometry_optimization_20260704/42_geoopt_s3d_lightweight_20260712/data/s3d_geometry_manifest.json",
+  "geometry_setup_sha256": "86a9e56e54dc86834dfe2a9b03a5f71373fb40f2ef24e3889fa66f216058fbec",
+  "geometry_overlap_status": "PASS",
+  "farfield_radius_cm": 60.0,
+  "surrounding_sphere": "SurroundingSphere 60 5 0 9 60",
+  "pointing_policy": "InstrumentFrame rotated 0 45 0 deg; local side-window -x looks 45 deg upward in global zenith frame",
+  "statistics_reference": "Retained S3c equal-stat source cards: gamma reference 10,000,000; eplus and neutron event counts scaled by gamma flux; eight independent replicas",
+  "source_card_particles": [
+    "gamma",
+    "eplus",
+    "n"
+  ],
+  "transport_particles": [
+    "eplus",
+    "n"
+  ],
+  "sources": [
+    {
+      "particle": "gamma",
+      "source": "engineering/geometry_optimization_20260704/42_geoopt_s3d_lightweight_20260712/config/prompt_eqstats_eplus_n/source_cards/Background_gamma_fullsphere20.source",
+      "template_source": "engineering/geometry_optimization_20260704/32_s3c_dominant_backgrounds_20260709/source_cards/Background_gamma_fullsphere20.source",
+      "template_sha256": "d50b74283bcb9407fd6345961614c197c737c39fc90ccaac3f010dee6d80777d",
+      "source_sha256": "136d61dfe2357b5b938c68b2787bf4647cfa08b9065a19febbccdd2a83732bd3",
+      "normalized_payload_sha256": "290db800acaaf8c9d44555ba9ca3d1372d9f36f76c8612ffbdf5ed5624757cd0",
+      "geometry_lines": [
+        "Geometry engineering/geometry_optimization_20260704/42_geoopt_s3d_lightweight_20260712/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup"
+      ],
+      "geometry_comment": "# geometry_setup=engineering/geometry_optimization_20260704/42_geoopt_s3d_lightweight_20260712/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup",
+      "total_flux_cm2_s": 4.7996615777852,
+      "spectrum_files": 20,
+      "missing_spectrum_files": [],
+      "checks": {
+        "exactly_one_geometry_directive": true,
+        "exactly_one_geometry_comment": true,
+        "retired_geometry_absent": true,
+        "non_geometry_payload_byte_identical": true,
+        "twenty_equal_mu_spectra": true,
+        "all_spectra_exist": true,
+        "twenty_flux_bins": true
+      },
+      "status": "PASS_S3D_GEOMETRY_REPOINTED_ONLY"
+    },
+    {
+      "particle": "eplus",
+      "source": "engineering/geometry_optimization_20260704/42_geoopt_s3d_lightweight_20260712/config/prompt_eqstats_eplus_n/source_cards/Background_eplus_fullsphere20.source",
+      "template_source": "engineering/geometry_optimization_20260704/32_s3c_dominant_backgrounds_20260709/source_cards/Background_eplus_fullsphere20.source",
+      "template_sha256": "483668b95c1e5adb6e1f990d5103994fff511c8d80c90520e40ef8b45da17cbe",
+      "source_sha256": "941df715c0866dbfc8669ccdda84949582040f2c6a7d9a96b903f3c49550c62e",
+      "normalized_payload_sha256": "0f5a269f19a584da354b285e78af87bd52de1cdae248097ab430f7e40a8a57de",
+      "geometry_lines": [
+        "Geometry engineering/geometry_optimization_20260704/42_geoopt_s3d_lightweight_20260712/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup"
+      ],
+      "geometry_comment": "# geometry_setup=engineering/geometry_optimization_20260704/42_geoopt_s3d_lightweight_20260712/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup",
+      "total_flux_cm2_s": 0.11698054572276201,
+      "spectrum_files": 20,
+      "missing_spectrum_files": [],
+      "checks": {
+        "exactly_one_geometry_directive": true,
+        "exactly_one_geometry_comment": true,
+        "retired_geometry_absent": true,
+        "non_geometry_payload_byte_identical": true,
+        "twenty_equal_mu_spectra": true,
+        "all_spectra_exist": true,
+        "twenty_flux_bins": true
+      },
+      "status": "PASS_S3D_GEOMETRY_REPOINTED_ONLY"
+    },
+    {
+      "particle": "n",
+      "source": "engineering/geometry_optimization_20260704/42_geoopt_s3d_lightweight_20260712/config/prompt_eqstats_eplus_n/source_cards/Background_n_fullsphere20.source",
+      "template_source": "engineering/geometry_optimization_20260704/32_s3c_dominant_backgrounds_20260709/source_cards/Background_n_fullsphere20.source",
+      "template_sha256": "6f4c13884e4ce43f7ef19ccfcd8098e6f4425b2605de06270821a67df1ca6d03",
+      "source_sha256": "377c52e65c7e4e4d15f63393ed580a9fa0320027e18c32f0e2cf3645037edc62",
+      "normalized_payload_sha256": "b678ef10918cc1d25b39408f9bdba90aca53abb3684939c396bf34ee167fa2fc",
+      "geometry_lines": [
+        "Geometry engineering/geometry_optimization_20260704/42_geoopt_s3d_lightweight_20260712/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup"
+      ],
+      "geometry_comment": "# geometry_setup=engineering/geometry_optimization_20260704/42_geoopt_s3d_lightweight_20260712/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup",
+      "total_flux_cm2_s": 0.462239182229625,
+      "spectrum_files": 20,
+      "missing_spectrum_files": [],
+      "checks": {
+        "exactly_one_geometry_directive": true,
+        "exactly_one_geometry_comment": true,
+        "retired_geometry_absent": true,
+        "non_geometry_payload_byte_identical": true,
+        "twenty_equal_mu_spectra": true,
+        "all_spectra_exist": true,
+        "twenty_flux_bins": true
+      },
+      "status": "PASS_S3D_GEOMETRY_REPOINTED_ONLY"
+    }
+  ],
+  "problems": []
+}

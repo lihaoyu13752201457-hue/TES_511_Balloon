@@ -1,0 +1,164 @@
+{
+  "double_count_audit": {
+    "catalog_exclusive_component_events": {
+      "atm511": 650363,
+      "gamma_continuum": 4189660,
+      "other": 3869338
+    },
+    "catalog_total_events": 8709361,
+    "counterfactual_old_broadband_plus_mono_B20": 54981.47832957051,
+    "counterfactual_old_broadband_plus_mono_Fmin3": 4.191853542302664e-05,
+    "counterfactual_two_mono_lines_B20": 86781.61459013962,
+    "counterfactual_two_mono_lines_Fmin3": 5.266374717386855e-05,
+    "day15_continuum_flux": 4.422560610421608,
+    "day15_original_broadband_flux": 4.591345225624589,
+    "day15_parma_line_flux": 0.16651547160226118,
+    "day15_recomposed_flux": 4.589076082023869,
+    "day15_recomposition_delta_vs_original": -0.0022691436007198362,
+    "day15_recomposition_fractional_delta_vs_original": -0.0004942219522190581,
+    "day15_removed_coarse_line_flux": 0.16878461520297966,
+    "maximum_day15_importance_ratio_deviation_from_one": 0.0,
+    "mono_target_unique_node_bin_pairs": 6480,
+    "reference_continuum_flux": 4.623218946551606,
+    "reference_original_broadband_flux": 4.7996615777852,
+    "reference_recomposed_flux": 4.7970018744868055,
+    "reference_recomposition_delta_vs_original": -0.002659703298394156,
+    "reference_removed_coarse_line_flux": 0.17644263123359388,
+    "reference_same_state_parma_line_flux": 0.17378292793520006,
+    "state_policy": "hybrid: W118.3/g0 continuum de-line plus W114.6/g0.15 per-node mono target",
+    "strict_same_atmospheric_state_closed": false,
+    "verdict": "NO_EVIDENCE_OF_DIRECT_DOUBLE_COUNT_OR_BIN_OVERLAP"
+  },
+  "fmin_decomposition": {
+    "closed_sg3": {
+      "B20": 99923.14165545377,
+      "Fmin3": 5.799926385676048e-05,
+      "K": 16350529.192505842,
+      "line_B20": 12552.15515508207,
+      "line_share": 0.12561809954257955,
+      "non_line_B20": 87370.98650037171
+    },
+    "closed_sh3": {
+      "B20": 54805.970088911905,
+      "Fmin3": 4.185157715646857e-05,
+      "K": 16781213.415433664,
+      "line_B20": 39429.801994611786,
+      "line_share": 0.7194435557046922,
+      "non_line_B20": 15376.168094300125
+    },
+    "closed_sh3_non_line_fractional_change_from_old_total": -0.011285486971206793,
+    "closed_sh3_signal_K_fractional_change_from_old": -1.0431896666052154e-05,
+    "fmin_if_wgrid_line_equaled_sg3_absolute_line": 2.987585379029424e-05,
+    "non_line_only_fmin_floor": 2.2167767263546307e-05,
+    "old_sh3": {
+      "B20": 15551.676334958727,
+      "Fmin3": 2.2293690527382333e-05,
+      "K": 16781388.47714417
+    },
+    "old_to_closed_sh3_background_ratio": 3.524119773873712,
+    "old_to_closed_sh3_fmin_ratio": 1.8772834899212478,
+    "wgrid_conditional": {
+      "B20": 47351.81259552783,
+      "Fmin3": 3.890148662146553e-05,
+      "Fmin3_standard_error": 1.5968577393074476e-06,
+      "K": 16781213.415433664,
+      "line_B20": 31975.644501227704,
+      "line_share": 0.6752781519550037,
+      "non_line_B20": 15376.168094300125
+    },
+    "wgrid_to_old_sh3_fmin_ratio": 1.7449549940457185
+  },
+  "geometry_response": {
+    "aperture_envelope_area_scale_wgrid_over_sg3": 2.0236486523998978,
+    "down_flux_share": 0.17678024690707972,
+    "down_suppression": 0.24965781828154132,
+    "observed_wgrid_over_open_minus_open_fraction_sigma": -0.36082389200162895,
+    "open_sh3_area_normalized_over_sg3_ratio": 1.461229728466073,
+    "open_sh3_area_normalized_over_sg3_ratio_sigma": 0.43521514435746783,
+    "open_sh3_line_rate_cps": 0.02229246057190028,
+    "sg3_line_rate_cps": 0.007538837736129749,
+    "up_flux_share": 0.8232197530929202,
+    "up_suppression": 0.14111775425937434,
+    "wgrid_absolute_over_sg3_ratio": 2.4016831594025856,
+    "wgrid_absolute_over_sg3_ratio_sigma": 0.7203282018478426,
+    "wgrid_area_normalized_over_sg3_ratio": 1.1868083703929369,
+    "wgrid_area_normalized_over_sg3_ratio_sigma": 0.35595517087098427,
+    "wgrid_area_normalized_z_from_unity": 0.5248086997467595,
+    "wgrid_line_rate_cps": 0.018105899632331533,
+    "wgrid_minus_open_difference_z": -1.902429708337738,
+    "wgrid_normal_incidence_open_fraction": 0.8443,
+    "wgrid_over_open_ratio": 0.8121983472364679,
+    "wgrid_over_open_ratio_sigma": 0.08896764730697833,
+    "wgrid_residual_up_share": 0.6026490066225165
+  },
+  "limitations": [
+    "The W-grid Fmin is the user-requested conditional approximation: SH3 non-line background, signal response, and timeline coincidence ratio are frozen.",
+    "The current package is an explicit hybrid state: continuum de-line uses W=118.3/g=0 while the correct mono target uses W=114.6/g=0.15 with node-specific Rc/depth; strict same-state continuum closure remains outstanding.",
+    "SG3 mono511 has only 12 final selected events (28.9% rate RSE); absolute and angular comparisons retain this uncertainty.",
+    "PARMA/source-model systematics and the continuum/line hybrid-state approximation are not included in the quoted Monte Carlo errors.",
+    "The aperture-area comparison uses the stated square envelope spans as a geometry scale, not an effective-area calibration."
+  ],
+  "parma": {
+    "angular_components_equal_mu": 80,
+    "day15_full_space_flux_ph_cm2_s": 0.16651547160226118,
+    "line_energy_keV": 510.99895,
+    "normalization_source": "PARMA dedicated line parameterization at the mission mono-target state"
+  },
+  "schema_version": 1,
+  "scope": "PARMA 510.99895-keV line, mature background, W-grid conditional Fmin diagnosis",
+  "source_files": {
+    "catalog_audit": "engineering/geometry_optimization_20260815/67_m05_mono511_flux_closure_20260823/outputs/02_fluxclosed_catalog_b/audit.json",
+    "coarse_bins": "engineering/geometry_optimization_20260815/67_m05_mono511_flux_closure_20260823/outputs/00_source_closure/coarse_line_decomposition_20bins.csv",
+    "mono_target": "engineering/geometry_optimization_20260815/67_m05_mono511_flux_closure_20260823/outputs/00_source_closure/mono511_target_81x80.csv",
+    "old_sg3": "engineering/geometry_optimization_20260815/63_m05new_sg3b_signal_statistics_20260820/outputs/04_candidate_timeline/summary.json",
+    "old_sh3": "DEEPSEEK_CODE/outputs/05_mature_timeline_m05_fixed_20260820/summary.json",
+    "publication_values": "engineering/geometry_optimization_20260815/67_m05_mono511_flux_closure_20260823/outputs/06_publication_values/publication_values.json",
+    "source_closure": "engineering/geometry_optimization_20260815/67_m05_mono511_flux_closure_20260823/outputs/00_source_closure/source_closure.json",
+    "trajectory_scales": "engineering/geometry_optimization_20260815/67_m05_mono511_flux_closure_20260823/outputs/00_source_closure/trajectory_component_scales_81nodes.csv",
+    "wgrid_compare": "engineering/geometry_optimization_20260815/68_sh3_wgrid_mono511_statistics_20260824/outputs/01_wgrid_mono511_response_comparison_20260825/comparison_summary.json",
+    "wgrid_fmin": "engineering/geometry_optimization_20260815/69_sh3_wgrid_conditional_fmin_20260825/outputs/01_approx_fmin_20260825/approx_fmin_summary.json",
+    "wgrid_geometry": "engineering/geometry_optimization_20260815/sh3/assembly_opt_v3_wgrid_20260824/README.md"
+  },
+  "spectral_representation": {
+    "W2_half_width_keV": 0.42,
+    "day15_physical_mono_flux_ph_cm2_s": 0.16651547160226118,
+    "day15_scaled_old_coarse_line_area_inside_W2_ph_cm2_s": 0.0005681363465797491,
+    "ideal_unscattered_gaussian_fraction_in_W2": 0.981468322248801,
+    "mono_to_old_coarse_W2_line_ratio": 293.0906860733429,
+    "old_coarse_line_area_inside_W2_ph_cm2_s": 0.0005939135611940672,
+    "old_coarse_line_fraction_inside_W2": 0.003366043438831855,
+    "old_coarse_line_total_area_ph_cm2_s": 0.17644263123359388,
+    "response_fwhm_keV": 0.42,
+    "same_state_mono_to_old_coarse_W2_line_ratio": 292.60643179423
+  },
+  "status": "PASS__NO_DIRECT_DOUBLE_COUNT_FOUND__SOURCE_AND_EVENT_CLOSURE",
+  "targets": [
+    {
+      "allowed_line_counts": 175.18377538998357,
+      "allowed_total_counts": 15551.351869690108,
+      "feasibility": "仅压线可达",
+      "required_line_suppression_fraction": 0.9945213371576214,
+      "target": "恢复旧 SH3 阈值",
+      "target_fmin": 2.2293690527382333e-05,
+      "target_fmin_display": "2.229369 × 10⁻⁵"
+    },
+    {
+      "allowed_line_counts": 12784.744275132949,
+      "allowed_total_counts": 28160.912369433074,
+      "feasibility": "仅压线可达",
+      "required_line_suppression_fraction": 0.6001724289046909,
+      "target": "达到 3.0e-5",
+      "target_fmin": 3e-05,
+      "target_fmin_display": "3.000000 × 10⁻⁵"
+    },
+    {
+      "allowed_line_counts": -2860.207041218753,
+      "allowed_total_counts": 12515.961053081372,
+      "feasibility": "非线本底已超预算",
+      "required_line_suppression_fraction": null,
+      "target": "达到 2.0e-5",
+      "target_fmin": 2e-05,
+      "target_fmin_display": "2.000000 × 10⁻⁵"
+    }
+  ]
+}

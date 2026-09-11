@@ -1,0 +1,23 @@
+PhysicsListHD   qgsp-bic-hp
+
+DecayMode	Buildup
+#PreTriggerMode              EveryEventWithHits
+
+DefaultRangeCut 0.005
+
+Region Spacecraft
+Spacecraft.Volume SCbody
+Spacecraft.RangeCut 1.
+
+Region Pipebody
+Pipebody.Volume PIPbody
+Pipebody.RangeCut 1.
+
+DetectorTimeConstant 0.000002
+
+DataChallenge.Source PrimaryAlpha
+PrimaryAlpha.ParticleType	    21
+PrimaryAlpha.Beam FarFieldEarthOccultation false
+PrimaryAlpha.Spectrum File PrimaryAlphas_Spec_530.0km_0.0deg_12.600cutoff_520.0solarmod_fluxdividedby1000.dat
+PrimaryAlpha.Flux                0.017755030668705027e-3
+PrimaryAlpha.LightCurve File false PrimaryAlphas_HelMod_LightCurve.dat

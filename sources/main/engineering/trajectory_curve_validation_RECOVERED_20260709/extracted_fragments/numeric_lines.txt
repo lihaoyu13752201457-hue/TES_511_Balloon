@@ -1,0 +1,75 @@
+12	  h1 { font-size:34px; margin:0 0 6px; }
+41	  .cover h1 { font-size:42px; }
+54	  <div class="tag">TES 511 keV BALLOON · ENGINEERING REPORT</div>
+55	  <h1>三项工程进展汇报</h1>
+99	         Q(t) = [R<sub>MC</sub>(t)/R<sub>MC</sub>(REF)] / S<sub>analytic</sub>(t)。</p>
+102	        <tr><td>REF</td><td class="num">15.00</td><td class="num">38.75</td><td class="num">11.00</td><td>锚点</td></tr>
+103	        <tr><td>L1</td><td class="num">3.75</td><td class="num">36.25</td><td class="num">10.98</td><td>低点(早)</td></tr>
+104	        <tr><td>L2</td><td class="num">18.75</td><td class="num">36.25</td><td class="num">11.01</td><td>低点(晚)</td></tr>
+105	        <tr><td>H1</td><td class="num">6.25</td><td class="num">41.25</td><td class="num">11.02</td><td>高点</td></tr>
+164	      <p>W2 的关键教训:REF 单点细 response 太稀(W2 选后仅 37 个事例,拆到 粒子×角×能 后大量空格),
+166	         L1/L2/H1 与直接点合并统计回到 ~1σ 内(z = 0.99 / 0.45 / 0.42)。</p>
+220	  <div class="src">expacs_fullsphere_20bin_sources/cosima_spectra_dp_2602units/gamma_bin*.dat; core_md/balloon511_ea_latex_drafts/physics_review_publishability_20260702.md (P2)</div>
+395	  <div class="src">core_md/balloon511_ea_latex_drafts/physics_review_publishability_20260702.md §4.1–4.2</div>
+current_simulation_point: none; completed REF, L1, L2, H1, M1
+reference_normalization: Q(t) = (R_MC(t) / R_MC(REF_day15)) / S_analytic(t)
+| REF | 15.00 | 60 | 38.75 | 34.000000 | 100.000000 | 11.000000 | COMPLETED_SMOKE_REF |
+| L1 | 3.75 | 15 | 36.25 | 34.155872 | 99.750000 | 10.980030 | COMPLETED_SMOKE |
+| L2 | 18.75 | 75 | 36.25 | 33.944370 | 100.125000 | 11.008200 | COMPLETED_SMOKE |
+| H1 | 6.25 | 25 | 41.25 | 33.750000 | 100.043412 | 11.021302 | COMPLETED_SMOKE |
+| G2 sources | PASS | 02_sources/source_generation_manifest.json | none | No scalar-rescaled reference cards. |
+| G3 prompt | SMOKE_COMPLETE_DEVIATES_OR_LOW_POWER | 10_curve_validation/prompt_curve_residuals.csv | low-stat CI too large; trend gate false | Full-stat approval required before final claim. |
+| G4 activation | ACTIVATION_SMOKE_INCONCLUSIVE | 05_activation_smoke/activation_smoke_verdict.json | prod_residual=0.15772074895; cu_residual=0.231663165445 | Full-stat/full activation evidence required. |
+- prod_residual: 0.15772074895
+- cu_residual: 0.231663165445
+- `engineering/trajectory_transport_validation_20260626/09_full_if_required/full_4point_curve_validation/full4_prompt_curve_residuals.csv`
+- `engineering/trajectory_transport_validation_20260626/09_full_if_required/full_4point_curve_validation/full4_activation_curve_residuals.csv`
+- `engineering/trajectory_transport_validation_20260626/09_full_if_required/full_4point_curve_validation/full4_activation_key_state_residuals.csv`
+Step06 reference code:
+224-        longitude = LON_REF_DEG + lon_offset
+227:        prompt_scale = math.exp((depth - depth_ref) / PROMPT_ATTEN_DEPTH_G_CM2) * (11.0 / rc) ** 0.2
+244-                "science_atm_scale_to_day15": t_atm / t_ref,
+249-    return rows, {"depth_ref_g_cm2": depth_ref, "mu_eff_cm2_g": mu_eff}
+378-                out[f"science_{stage}_cps_at_ref_flux"] = science
+379-            out["claim_level"] = f"{row_claim_prefix}_L1_RATE_FOLD_{label}_NO_NEW_TRANSPORT"
+455:            f"- T_atm day-15 closure: `{c['T_day15']:.12g}` vs reference `{c['T_ref']:.12g}`.",
+456-            f"- W2 day-15 background/signal: `{c['w2_day15_background_final_cps']:.6g}` / `{c['w2_day15_science_final_cps_at_ref_flux']:.6g}` cps.",
+457-            f"- W2 mission-mean background/signal: `{c['w2_dt_weighted_background_final_cps']:.6g}` / `{c['w2_dt_weighted_science_final_cps_at_ref_flux']:.6g}` cps.",
+484-    prefix = output_prefix(label)
+485:    t_ref = float(step05["science_physical_normalization"]["atmospheric_transmission"]["T_atm"])
+491-    mean_s = sum(float(row["science_final_cps_at_ref_flux"]) * float(row["dt_s"]) for row in w2_rows) / total_dt
+545-            "T_ref": t_ref,
+547:            "T_day15_abs_error": abs(float(day15["T_atm_511"]) - t_ref),
+551-            "w2_day15_science_final_cps_at_ref_flux": float(w2_day15["science_final_cps_at_ref_flux"]),
+553-            "w2_dt_weighted_science_final_cps_at_ref_flux": mean_s,
+engineering/ENGINEERING_20260627_CURVE_CHECK/scripts/build_curve_check_outputs.py:1795:def prediction_lookup(rows: list[dict[str, str]], stage: str = "side_compton_fov_pass", particle: str = "ALL") -> dict[str, dict[str, str]]:
+2	name: balloon511-nima-paper-editing
+3	description: "编辑 balloon511 论文(NIM-A + EA 双目录,各自 en/zh 双稿)的约束:数字锁定证据清单、EA 稿编号陷阱、多波段光学口径、abstract 显著度用 Z_{20d}、诚实措辞"
+10	编辑 `core_md/balloon511_nima_latex_drafts/` 的 NIM A 手稿时:
+12	- **双稿同步**:`balloon511_nima_draft_en.tex`(投稿稿)+ `_zh.tex`(内部对照稿)必须同改。编译用 `latexmk -pdfxe`(XeLaTeX);参考文献是内嵌 `thebibliography`,reviewer 建议的新引用(DeCesare2011/Roques2015/Gallego2025Balloon/Beechert2022/Ciabattoni2025ACS/Cowan2011/Sleator2019 等)**已存在为 \bibitem**,引言只用了其中一个子集。
+25	- **0702 物理审查记录**:`core_md/balloon511_ea_latex_drafts/physics_review_publishability_20260702.md`——无硬错误;P1=模拟本底 511 是 δ 线(54/54 单 bin 实锤,G4 无 Doppler/源线宽≥1.3 keV vs ±0.42 窗;粗算 Z 7.8→6–7 仍成立,分析级可修);P2=EXPACS 光子输入无大气 511 线(449.65→566.08 keV 线性插值实锤,需补线源 run 或上限);P3=银心 34°N 最大仰角 27° vs 45° 窗(V404 δ+33.9° 恰过天顶→改叙事);投稿前清单 6 项在该文件 §4。EA 期刊体裁对口,补强后可投。
+27	相关:[[review-fix-loop-workflow]] [[tes511-balloon-project-state]]
+6	A2 PASS。信号链闭合：从 [Mass Step05 summary](/home/ubuntu/TES_511_Balloon/stepwise_maintenance/step05_veto_time_axis/outputs_Mass_model_511_fullstat_v1_l1/step05_Mass_model_511_fullstat_v1_l1_response_summary.json) 与 [Aeff authority](/home/ubuntu/TES_511_Balloon/stepwise_maintenance/step04_opticsim/optics_aeff_authority_f10m_a1.json)，`A_net=S/F0=11.847573754 cm²`，且 `20.08476 * 0.7390423888 * 0.7981663709 = 11.847573754 cm²`。
+14	A6 FLAG。当前 W2 是 `±0.42 keV`，MC 511 为 δ 线。按 [P1 summary](/home/ubuntu/TES_511_Balloon/engineering/Mass_model_511_nearfield_migration_20260701/15_p1_p2_p3_replay_20260703/p1_mass_model_511_linewidth_sensitivity_summary.json)，现实线宽+优化窗后，Harris-included 20d 约 `4.10e-5` 到 `4.73e-5`；固定 W2 且源 FWHM `1.3 keV`、本底 FWHM `2.43 keV` 约 `4.82e-5`。
+20	当前 30d baseline `F3=3.77e-5`。理想 delayed→0：`3.64e-5`。非 gamma prompt 减半：`2.95e-5`。非 gamma prompt 清零：`1.79e-5`。方向重建 `1.28–1.4x`：`2.95e-5` 到 `2.70e-5`，但来源 [fullrecon_metrics.json](/home/ubuntu/TES_511_Balloon/engineering/fullrecon_firstpass_20260702/fullrecon_metrics.json) 是 fix5 非权威且 ch2 本底仅 `5` 事例。最乐观组合：prompt other 清零 + recon `1.4x` 得 `1.279e-5`；要到 `1e-5` 还需 `A_net x1.279`，即 `A_net≈15.15 cm²` 或 `Aeff≈25.69 cm²`。
+old/code/tools/build_v3p5_centerfinger_step05_l1_response.py
+214:    depth_ref = vertical_depth_g_cm2(ALT_REF_KM)
+215:    mu_eff = -math.log(t_ref) / depth_ref
+214-    depth_ref = vertical_depth_g_cm2(ALT_REF_KM)
+215:    mu_eff = -math.log(t_ref) / depth_ref
+227-        prompt_scale = math.exp((depth - depth_ref) / PROMPT_ATTEN_DEPTH_G_CM2) * (11.0 / rc) ** 0.2
+249:    return rows, {"depth_ref_g_cm2": depth_ref, "mu_eff_cm2_g": mu_eff}
+  "cu_residual": 0.3848767627,
+  "prod_residual": 0.16595651763
+  "activation_residuals": "engineering/trajectory_transport_validation_20260626/09_full_if_required/full_4point_curve_validation/full4_activation_curve_residuals.csv",
+  "key_state_residuals": "engineering/trajectory_transport_validation_20260626/09_full_if_required/full_4point_curve_validation/full4_activation_key_state_residuals.csv",
+  "prompt_residuals": "engineering/trajectory_transport_validation_20260626/09_full_if_required/full_4point_curve_validation/full4_prompt_curve_residuals.csv",
+03_ref_response_matrix
+engineering/ENGINEERING_20260627_CURVE_CHECK/outputs/09_report/assets/model_chi2_summary.png
+/home/ubuntu/TES_511_Balloon/engineering/ENGINEERING_20260627_CURVE_CHECK/outputs/01_model_spec/:
+/home/ubuntu/TES_511_Balloon/engineering/ENGINEERING_20260627_CURVE_CHECK/outputs/07_step06_patch_plan/:
+/home/ubuntu/TES_511_Balloon/engineering/ENGINEERING_20260627_CURVE_CHECK/outputs/08_manuscript_support/:
+COSMOSRAY_BALLOON_SIM_CMFIX_GEOMETRY_BACKGROUND_AUDIT_20260628.md
+/home/ubuntu/TES_511_Balloon/engineering/ENGINEERING_20260627_CURVE_CHECK/:
+/home/ubuntu/TES_511_Balloon/engineering/ENGINEERING_20260627_CURVE_CHECK/outputs/:
+03_ref_response_matrix

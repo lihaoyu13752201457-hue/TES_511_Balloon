@@ -1,0 +1,61 @@
+{
+  "authority_hashes": {
+    "det": "dd2c1d68cd474f8b0c7489f2cbbfc924eb69beb14d3ce360d9437c319a33d6cb",
+    "geo": "ff4e8402df702501e0112fe377d837a74c39100317146b09e9569b7bd615c37c",
+    "intro": "f4ea834bf385f68a85690e018fd52d692e94e19dd93959e35e6f91efd3dbfd52",
+    "materials": "751cd83f08631085496ee86efa4418e4f001a639b15573554b93e73ff95678bf",
+    "s3d_o8_builder": "5b154fad2beff70824b658ec2073b7096a8dd04c2156884512d0dfdabcbef112",
+    "setup": "86a9e56e54dc86834dfe2a9b03a5f71373fb40f2ef24e3889fa66f216058fbec"
+  },
+  "bpe_mode": "P20-port",
+  "checks": {
+    "equivalent_area_preserved_per_plate": true,
+    "exactly_48_equivalent_holes_per_plate": true,
+    "five_hole_templates": true,
+    "forbidden_performance_claim_absent": true,
+    "hole_copy_count_matches_ledger": true,
+    "instrument_rotation_frozen": true,
+    "intro_byte_identical": true,
+    "materials_byte_identical": true,
+    "new_al_placements_exactly_two": true,
+    "new_al_scorers_exactly_two": true,
+    "old_mu_placements_absent": true,
+    "old_nb_mu_scorers_absent": true,
+    "old_nb_placements_absent": true,
+    "p20_port_present_iff_selected": true,
+    "plastic_no_se3_port_token": true,
+    "plastic_side_shape_frozen": true,
+    "setup_only_se3_main_and_det": true,
+    "win_magshield_frozen": true
+  },
+  "counts": {
+    "accepted_holes": 240,
+    "accepted_holes_by_plate": {
+      "4K": 48,
+      "60K": 48,
+      "CP_100mK": 48,
+      "MXC_50mK": 48,
+      "Still_0p7K": 48
+    },
+    "se3_det_lines": 1173,
+    "se3_geo_lines": 18513,
+    "skipped_equivalent_selection_points": 4769,
+    "skipped_keepout_points": 4308
+  },
+  "generated_hashes": {
+    "det": "a7eb310ef3313533c33472a22a13bc18c87de25cde0984359b56a03d5d175580",
+    "geo": "65ba13b39cc581bcf92fe5ab597a364fd0414ee0e09b766b9e8833893359a814",
+    "intro": "f4ea834bf385f68a85690e018fd52d692e94e19dd93959e35e6f91efd3dbfd52",
+    "materials": "751cd83f08631085496ee86efa4418e4f001a639b15573554b93e73ff95678bf",
+    "setup": "3e32bcd555a3c83cf8144949ad0bb31594f14f5204deb3784b2eb4cdd982ca98"
+  },
+  "model_identity": "SE3",
+  "status": "PASS",
+  "whitelist": [
+    "remove exactly two MuMetal placements/scorers",
+    "rename exactly two Nb placements/scorers and change material to Aluminium",
+    "thin exactly five cold plates from 6 mm to 4 mm and add 48 equivalent-area hole daughters per plate",
+    "cut the registered focused port in BPE side shell only for P20-port",
+    "update setup entry filename/name for SE3"
+  ]
+}

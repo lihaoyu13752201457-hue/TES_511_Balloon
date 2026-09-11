@@ -1,0 +1,129 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:tes511:m05cc-v1",
+  "title": "DEPRECATED historical M05 compact logical pseudo-schema (non-authority)",
+  "$comment": "Retained for historical intent only. This file is non-executable and non-authoritative; schema/m05cc_v2.record_schema.json is the sole executable record authority.",
+  "deprecated": true,
+  "x-authority-status": "DEPRECATED__HISTORICAL_PSEUDO_SCHEMA__NON_EXECUTABLE__NON_AUTHORITY",
+  "x-superseded-by": "schema/m05cc_v2.record_schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "units",
+    "run",
+    "root",
+    "event",
+    "pixel",
+    "deposit_truth",
+    "ia_truth",
+    "ht_truth",
+    "activation",
+    "truth_index",
+    "job_footer"
+  ],
+  "properties": {
+    "schema_version": {"const": "m05cc-v1"},
+    "units": {
+      "const": {"energy": "keV", "length": "cm", "time": "s", "weight": "dimensionless"}
+    },
+    "run": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "run_uuid", "arm", "geometry", "mode", "family", "job", "shard", "seed",
+          "source_contract_sha256", "source_card_sha256", "tape_sha256", "root_sidecar_sha256",
+          "geometry_bundle_sha256", "transport_binary_sha256", "shadow_source_manifest_sha256",
+          "toolchain_sha256", "physics_list", "production_cut_contract_sha256", "veto_whitelist_sha256",
+          "control_salt", "control_predicate", "control_inclusion_probability", "generated_count",
+          "started_count", "TT_s", "table_row_counts", "table_sha256"
+        ]
+      },
+      "minItems": 31,
+      "uniqueItems": true
+    },
+    "root": {
+      "type": "array",
+      "items": {"type": "string"},
+      "const": [
+        "event_key", "eventlist_id", "row_index0", "stable_root_id", "driver", "family",
+        "particle", "excitation_keV", "source_time_s", "position_cm", "direction", "polarization",
+        "kinetic_energy_keV", "energy_stratum", "angle_stratum", "target_density_p", "proposal_q",
+        "weight_p_over_q", "raw_tape_line_sha256", "expected_generated_tuple_sha256",
+        "observed_generated_tuple_sha256", "observed_ia_init_tuple_sha256", "control_flag"
+      ]
+    },
+    "event": {
+      "type": "array",
+      "items": {"type": "string"},
+      "const": [
+        "event_key", "stable_root_id", "source_time_s", "root_weight", "tes_raw_keV",
+        "mass_csi_keV", "o8_bgo_keV", "o8_plastic_keV", "kapton_diagnostic_keV",
+        "raw_tes_occupancy", "active_occupancy", "candidate_reason", "control_flag"
+      ]
+    },
+    "pixel": {
+      "type": "array",
+      "items": {"type": "string"},
+      "const": [
+        "event_key", "stable_root_id", "tes_uid", "layer", "touchable_copy_path", "sum_energy_keV",
+        "energy_weighted_centroid_cm", "t_min_s", "t_max_s", "t_energy_weighted_s", "deposit_count",
+        "first_sequence", "last_sequence"
+      ]
+    },
+    "deposit_truth": {
+      "type": "array",
+      "items": {"type": "string"},
+      "const": [
+        "event_key", "stable_root_id", "sequence", "role", "physical_volume", "logical_volume",
+        "touchable_copy_path", "material", "edep_keV", "pre_position_cm", "post_position_cm",
+        "pre_time_s", "post_time_s", "track_id", "parent_track_id", "primary_track_id", "particle",
+        "parent_particle", "primary_particle", "creator_process", "step_process"
+      ]
+    },
+    "ia_truth": {
+      "type": "array",
+      "items": {"type": "string"},
+      "const": [
+        "event_key", "stable_root_id", "process", "interaction_id", "origin_id", "detector_type",
+        "time_s", "position_cm", "mother_particle_id", "mother_direction", "mother_polarization",
+        "mother_energy_keV", "secondary_particle_id", "secondary_direction", "secondary_polarization",
+        "secondary_energy_keV"
+      ]
+    },
+    "ht_truth": {
+      "type": "array",
+      "items": {"type": "string"},
+      "const": [
+        "event_key", "stable_root_id", "detector_type", "position_cm", "energy_keV", "time_s",
+        "origin_interaction_ids", "guardring_or_directional_payload"
+      ]
+    },
+    "activation": {
+      "type": "array",
+      "items": {"type": "string"},
+      "const": [
+        "event_key", "stable_root_id", "eventlist_id", "driver", "family", "root_weight",
+        "production_serial", "za", "z", "a", "excitation_keV", "excitation_f64_bits",
+        "native_dat_volume", "physical_volume", "logical_volume", "touchable_copy_path", "material",
+        "production_position_cm", "production_time_s", "track_id", "parent_track_id", "primary_track_id",
+        "particle", "parent_particle", "primary_particle", "creator_process", "step_process",
+        "ancestry_chain"
+      ]
+    },
+    "truth_index": {
+      "type": "array",
+      "items": {"type": "string"},
+      "const": ["event_key", "stable_root_id", "reason", "native_sim_fragment_offset", "length", "sha256"]
+    },
+    "job_footer": {
+      "type": "array",
+      "items": {"type": "string"},
+      "const": [
+        "run_uuid", "generated_count", "root_count", "rp_row_count", "TT_s", "native_dat_path",
+        "native_dat_sha256", "rp_aggregate_reconciliation", "zero_rp_positive_tt", "finalized"
+      ]
+    }
+  }
+}

@@ -1,0 +1,197 @@
+{
+  "claim_boundary": "Transport datasets only. Detector-rate/background claims require Step05 detector response, normalization audit review, and downstream rate/significance rebuild.",
+  "delayed_transport": [
+    {
+      "ID": 1000000,
+      "SE": 1000000,
+      "TE_s": 9307.684386,
+      "contains_expected_geometry": true,
+      "geometry": "  /home/ubuntu/TES_511_Balloon/engineering/geometry_optimization_20260704/01_geo_opt_s1_bottomw_b4c/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup",
+      "status": "PASS_GEO_OPT_S1_BPE_W5_FULLSTAT_V1_EXACTPOS_M50000_S260613_EXACTPOS_DELAYED_TRANSPORT",
+      "transport_sim": "runs/geometry_optimization_20260704/step02_delayed_transport_geo_opt_s1_bpe_w5_fullstat_v1/DelayedDecayGeoOptS1BpeW5FullstatV1.inc1.id1.sim.gz"
+    }
+  ],
+  "document_type": "geo_opt_s1_bpe_w5_fullstat_prompt_delay_campaign",
+  "exactpos_source": {
+    "exists": true,
+    "source": "runs/geometry_optimization_20260704/step02_delay_exactpos_geo_opt_s1_bpe_w5_fullstat_v1/activation_decay_day15_groundstate_fixed_exactpos.source"
+  },
+  "fixed_source": {
+    "exists": true,
+    "fix_dir": "runs/geometry_optimization_20260704/step02_delay_fix_geo_opt_s1_bpe_w5_fullstat_v1",
+    "fixed_source": "runs/geometry_optimization_20260704/step02_delay_fix_geo_opt_s1_bpe_w5_fullstat_v1/activation_decay_day15_groundstate_fixed.source"
+  },
+  "generated_at_utc": "2026-07-06T07:48:16Z",
+  "geometry": "engineering/geometry_optimization_20260704/01_geo_opt_s1_bottomw_b4c/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup",
+  "geometry_manifest": "engineering/geometry_optimization_20260704/01_geo_opt_s1_bottomw_b4c/geo_opt_s1_bottomw_b4c_manifest.json",
+  "label": "geo_opt_s1_bpe_w5_fullstat_v1",
+  "prompt_buildup": [
+    {
+      "events_requested": 25210216,
+      "fail": 0,
+      "jobs": 68,
+      "mode": "instant",
+      "outdir": "runs/geometry_optimization_20260704/step02_instant_geo_opt_s1_bpe_w5_fullstat_v1",
+      "pass_or_skip": 68,
+      "run_manifest": "runs/geometry_optimization_20260704/step02_instant_geo_opt_s1_bpe_w5_fullstat_v1/run_manifest.csv",
+      "run_summary": "runs/geometry_optimization_20260704/step02_instant_geo_opt_s1_bpe_w5_fullstat_v1/run_summary.json",
+      "sim_headers_checked": 68,
+      "sim_headers_with_expected_geometry": 68,
+      "status": "PASS_TRANSPORT",
+      "summary_rows": 68
+    },
+    {
+      "events_requested": 25210216,
+      "fail": 0,
+      "jobs": 68,
+      "mode": "buildup",
+      "outdir": "runs/geometry_optimization_20260704/step02_buildup_geo_opt_s1_bpe_w5_fullstat_v1",
+      "pass_or_skip": 68,
+      "run_manifest": "runs/geometry_optimization_20260704/step02_buildup_geo_opt_s1_bpe_w5_fullstat_v1/run_manifest.csv",
+      "run_summary": "runs/geometry_optimization_20260704/step02_buildup_geo_opt_s1_bpe_w5_fullstat_v1/run_summary.json",
+      "sim_headers_checked": 68,
+      "sim_headers_with_expected_geometry": 68,
+      "status": "PASS_TRANSPORT",
+      "summary_rows": 68
+    }
+  ],
+  "raw_source": {
+    "exists": true,
+    "raw_source": "runs/geometry_optimization_20260704/step02_decay_source_geo_opt_s1_bpe_w5_fullstat_v1/activation_decay_day15.source",
+    "raw_source_dir": "runs/geometry_optimization_20260704/step02_decay_source_geo_opt_s1_bpe_w5_fullstat_v1"
+  },
+  "run_root": "runs/geometry_optimization_20260704",
+  "source_migration": {
+    "change_scope": "Copied Mass_model_511 source cards; changed only Geometry line, geometry_setup comment, and header label.",
+    "farfield_radius_cm": 60.0,
+    "generated_at_utc": "2026-07-06T05:51:13Z",
+    "geometry_manifest": "engineering/geometry_optimization_20260704/01_geo_opt_s1_bottomw_b4c/geo_opt_s1_bottomw_b4c_manifest.json",
+    "geometry_setup": "engineering/geometry_optimization_20260704/01_geo_opt_s1_bottomw_b4c/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup",
+    "label": "geo_opt_s1_bpe_w5_fullstat_v1",
+    "problems": [],
+    "source_dir": "engineering/geometry_optimization_20260704/02_fullstat_prompt_delay_20260706/source_cards",
+    "sources": [
+      {
+        "contains_mass_model_geometry": false,
+        "geometry_comment": "# geometry_setup=engineering/geometry_optimization_20260704/01_geo_opt_s1_bottomw_b4c/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup",
+        "geometry_lines": [
+          "Geometry engineering/geometry_optimization_20260704/01_geo_opt_s1_bottomw_b4c/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup"
+        ],
+        "geometry_setup": "engineering/geometry_optimization_20260704/01_geo_opt_s1_bottomw_b4c/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup",
+        "particle": "alpha",
+        "source": "engineering/geometry_optimization_20260704/02_fullstat_prompt_delay_20260706/source_cards/Background_alpha_fullsphere20.source",
+        "status": "PASS",
+        "template_source": "engineering/Mass_model_511_nearfield_migration_20260701/03_source_migration/source_dirs/Mass_model_511/Background_alpha_fullsphere20.source",
+        "total_flux_cm2_s": 0.011487096450232017
+      },
+      {
+        "contains_mass_model_geometry": false,
+        "geometry_comment": "# geometry_setup=engineering/geometry_optimization_20260704/01_geo_opt_s1_bottomw_b4c/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup",
+        "geometry_lines": [
+          "Geometry engineering/geometry_optimization_20260704/01_geo_opt_s1_bottomw_b4c/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup"
+        ],
+        "geometry_setup": "engineering/geometry_optimization_20260704/01_geo_opt_s1_bottomw_b4c/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup",
+        "particle": "eminus",
+        "source": "engineering/geometry_optimization_20260704/02_fullstat_prompt_delay_20260706/source_cards/Background_eminus_fullsphere20.source",
+        "status": "PASS",
+        "template_source": "engineering/Mass_model_511_nearfield_migration_20260701/03_source_migration/source_dirs/Mass_model_511/Background_eminus_fullsphere20.source",
+        "total_flux_cm2_s": 0.19900204457214196
+      },
+      {
+        "contains_mass_model_geometry": false,
+        "geometry_comment": "# geometry_setup=engineering/geometry_optimization_20260704/01_geo_opt_s1_bottomw_b4c/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup",
+        "geometry_lines": [
+          "Geometry engineering/geometry_optimization_20260704/01_geo_opt_s1_bottomw_b4c/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup"
+        ],
+        "geometry_setup": "engineering/geometry_optimization_20260704/01_geo_opt_s1_bottomw_b4c/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup",
+        "particle": "eplus",
+        "source": "engineering/geometry_optimization_20260704/02_fullstat_prompt_delay_20260706/source_cards/Background_eplus_fullsphere20.source",
+        "status": "PASS",
+        "template_source": "engineering/Mass_model_511_nearfield_migration_20260701/03_source_migration/source_dirs/Mass_model_511/Background_eplus_fullsphere20.source",
+        "total_flux_cm2_s": 0.11698054572276201
+      },
+      {
+        "contains_mass_model_geometry": false,
+        "geometry_comment": "# geometry_setup=engineering/geometry_optimization_20260704/01_geo_opt_s1_bottomw_b4c/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup",
+        "geometry_lines": [
+          "Geometry engineering/geometry_optimization_20260704/01_geo_opt_s1_bottomw_b4c/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup"
+        ],
+        "geometry_setup": "engineering/geometry_optimization_20260704/01_geo_opt_s1_bottomw_b4c/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup",
+        "particle": "gamma",
+        "source": "engineering/geometry_optimization_20260704/02_fullstat_prompt_delay_20260706/source_cards/Background_gamma_fullsphere20.source",
+        "status": "PASS",
+        "template_source": "engineering/Mass_model_511_nearfield_migration_20260701/03_source_migration/source_dirs/Mass_model_511/Background_gamma_fullsphere20.source",
+        "total_flux_cm2_s": 4.7996615777852
+      },
+      {
+        "contains_mass_model_geometry": false,
+        "geometry_comment": "# geometry_setup=engineering/geometry_optimization_20260704/01_geo_opt_s1_bottomw_b4c/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup",
+        "geometry_lines": [
+          "Geometry engineering/geometry_optimization_20260704/01_geo_opt_s1_bottomw_b4c/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup"
+        ],
+        "geometry_setup": "engineering/geometry_optimization_20260704/01_geo_opt_s1_bottomw_b4c/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup",
+        "particle": "muminus",
+        "source": "engineering/geometry_optimization_20260704/02_fullstat_prompt_delay_20260706/source_cards/Background_muminus_fullsphere20.source",
+        "status": "PASS",
+        "template_source": "engineering/Mass_model_511_nearfield_migration_20260701/03_source_migration/source_dirs/Mass_model_511/Background_muminus_fullsphere20.source",
+        "total_flux_cm2_s": 0.0049689300223750696
+      },
+      {
+        "contains_mass_model_geometry": false,
+        "geometry_comment": "# geometry_setup=engineering/geometry_optimization_20260704/01_geo_opt_s1_bottomw_b4c/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup",
+        "geometry_lines": [
+          "Geometry engineering/geometry_optimization_20260704/01_geo_opt_s1_bottomw_b4c/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup"
+        ],
+        "geometry_setup": "engineering/geometry_optimization_20260704/01_geo_opt_s1_bottomw_b4c/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup",
+        "particle": "muplus",
+        "source": "engineering/geometry_optimization_20260704/02_fullstat_prompt_delay_20260706/source_cards/Background_muplus_fullsphere20.source",
+        "status": "PASS",
+        "template_source": "engineering/Mass_model_511_nearfield_migration_20260701/03_source_migration/source_dirs/Mass_model_511/Background_muplus_fullsphere20.source",
+        "total_flux_cm2_s": 0.0055700117660621405
+      },
+      {
+        "contains_mass_model_geometry": false,
+        "geometry_comment": "# geometry_setup=engineering/geometry_optimization_20260704/01_geo_opt_s1_bottomw_b4c/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup",
+        "geometry_lines": [
+          "Geometry engineering/geometry_optimization_20260704/01_geo_opt_s1_bottomw_b4c/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup"
+        ],
+        "geometry_setup": "engineering/geometry_optimization_20260704/01_geo_opt_s1_bottomw_b4c/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup",
+        "particle": "n",
+        "source": "engineering/geometry_optimization_20260704/02_fullstat_prompt_delay_20260706/source_cards/Background_n_fullsphere20.source",
+        "status": "PASS",
+        "template_source": "engineering/Mass_model_511_nearfield_migration_20260701/03_source_migration/source_dirs/Mass_model_511/Background_n_fullsphere20.source",
+        "total_flux_cm2_s": 0.462239182229625
+      },
+      {
+        "contains_mass_model_geometry": false,
+        "geometry_comment": "# geometry_setup=engineering/geometry_optimization_20260704/01_geo_opt_s1_bottomw_b4c/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup",
+        "geometry_lines": [
+          "Geometry engineering/geometry_optimization_20260704/01_geo_opt_s1_bottomw_b4c/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup"
+        ],
+        "geometry_setup": "engineering/geometry_optimization_20260704/01_geo_opt_s1_bottomw_b4c/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup",
+        "particle": "p",
+        "source": "engineering/geometry_optimization_20260704/02_fullstat_prompt_delay_20260706/source_cards/Background_p_fullsphere20.source",
+        "status": "PASS",
+        "template_source": "engineering/Mass_model_511_nearfield_migration_20260701/03_source_migration/source_dirs/Mass_model_511/Background_p_fullsphere20.source",
+        "total_flux_cm2_s": 0.11230072163133409
+      }
+    ],
+    "statistics_reference": "Mass_model_511 fullstat_v1 / fix5_fullstat_v2-equivalent source surface statistics",
+    "status": "PASS_GEO_OPT_SOURCE_COPY_PREPARED",
+    "template_source_dir": "engineering/Mass_model_511_nearfield_migration_20260701/03_source_migration/source_dirs/Mass_model_511"
+  },
+  "statistics": {
+    "farfield_radius_cm": 60.0,
+    "gamma_events": 10000000,
+    "gamma_splits": 12,
+    "m_pointsource_blocks": 50000,
+    "n_sample": 2000000,
+    "non_gamma_div": 8,
+    "non_gamma_replicas": 8,
+    "raw_triggers": 1000000,
+    "seed": 260613
+  },
+  "statistics_reference": "Mass_model_511 fullstat_v1",
+  "status": "PASS_PROMPT_AND_DELAYED_TRANSPORT",
+  "work_dir": "engineering/geometry_optimization_20260704/02_fullstat_prompt_delay_20260706"
+}

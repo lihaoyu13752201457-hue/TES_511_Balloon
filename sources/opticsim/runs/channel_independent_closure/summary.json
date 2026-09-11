@@ -1,0 +1,338 @@
+{
+  "best_no_fudge_variant": {
+    "cam511_target_effective_area_cm2": 50.89,
+    "cam511_target_transmissivity": 0.8,
+    "delta_to_cam511_transmissivity": -0.03850000000000009,
+    "effective_area_cm2": 48.444536815599704,
+    "include_si_path_absorption": false,
+    "mean_bounces_per_survivor": 19.047275114904792,
+    "mean_grazing_angle_rad": 7.977636337723926e-05,
+    "n": 10000,
+    "n_absorbed": 769,
+    "n_entry_blocked": 1536,
+    "n_leaked": 80,
+    "n_survived": 7615,
+    "open_fraction_from_geometry": 0.8333333333333334,
+    "required_multiplier_to_cam511": 1.050558108995404,
+    "roughness_nm": 0.0,
+    "spot_d90_cm": 1.0425010788348428,
+    "transmissivity": 0.7615
+  },
+  "cam511_target": {
+    "effective_area_cm2": 50.89,
+    "transmissivity": 0.8
+  },
+  "closure_statement": "Optical constants and multilayer reflectivity are independently cross-checked, but CAM511 80% headline is not derived from public geometry without an accounting gap.",
+  "cxro_511kev_direct": {
+    "reason": "Public CXRO/Henke web tools are a low-energy optical-constants source and do not directly cover 511 keV; used here for 30 keV benchmark only.",
+    "used": false
+  },
+  "direct_darpanx_package": {
+    "reason": "DarpanX is not installed locally and no PyPI package is available; local transfer-matrix recursion is used as DarpanX/IMD-equivalent algorithmic closure.",
+    "used": false
+  },
+  "literature_roughness_1nm_no_si_variant": {
+    "cam511_target_effective_area_cm2": 50.89,
+    "cam511_target_transmissivity": 0.8,
+    "delta_to_cam511_transmissivity": -0.06310000000000004,
+    "effective_area_cm2": 46.87955243521395,
+    "include_si_path_absorption": false,
+    "mean_bounces_per_survivor": 19.414167458271137,
+    "mean_grazing_angle_rad": 7.866554783389169e-05,
+    "n": 10000,
+    "n_absorbed": 919,
+    "n_entry_blocked": 1605,
+    "n_leaked": 107,
+    "n_survived": 7369,
+    "open_fraction_from_geometry": 0.8333333333333334,
+    "required_multiplier_to_cam511": 1.0856289862939341,
+    "roughness_nm": 1.0,
+    "spot_d90_cm": 1.0409426066549154,
+    "transmissivity": 0.7369
+  },
+  "literature_roughness_1nm_with_si_variant": {
+    "cam511_target_effective_area_cm2": 50.89,
+    "cam511_target_transmissivity": 0.8,
+    "delta_to_cam511_transmissivity": -0.43410000000000004,
+    "effective_area_cm2": 23.27755222695723,
+    "include_si_path_absorption": true,
+    "mean_bounces_per_survivor": 19.254714402842307,
+    "mean_grazing_angle_rad": 7.678467247824512e-05,
+    "n": 10000,
+    "n_absorbed": 4613,
+    "n_entry_blocked": 1642,
+    "n_leaked": 86,
+    "n_survived": 3659,
+    "open_fraction_from_geometry": 0.8333333333333334,
+    "required_multiplier_to_cam511": 2.1863897239682974,
+    "roughness_nm": 1.0,
+    "spot_d90_cm": 1.0465965981963339,
+    "transmissivity": 0.3659
+  },
+  "no_fudge_reaches_cam511": false,
+  "optical_constant_checks": {
+    "cxro_30kev_periodictable_vs_xraydb": [
+      {
+        "beta_rel_diff": 0.001172800274289213,
+        "delta_rel_diff": 0.00034444839644561876,
+        "energy_keV": 30.0,
+        "material": "Si",
+        "periodictable_henke_beta": 8.743639877417382e-10,
+        "periodictable_henke_delta": 5.368292693664904e-07,
+        "xraydb_chantler_beta": 8.733397346613796e-10,
+        "xraydb_chantler_delta": 5.366444230555074e-07
+      },
+      {
+        "beta_rel_diff": -0.01296595374190907,
+        "delta_rel_diff": 0.001663253152630629,
+        "energy_keV": 30.0,
+        "material": "W",
+        "periodictable_henke_beta": 1.315791696726329e-07,
+        "periodictable_henke_delta": 3.561396546690803e-06,
+        "xraydb_chantler_beta": 1.3330763023976522e-07,
+        "xraydb_chantler_delta": 3.5554828785838742e-06
+      }
+    ],
+    "cxro_range_note": "periodictable/Henke data are usable here at 30 keV; public CXRO/Henke tools do not directly close 511 keV.",
+    "electron_density_511kev_vs_xraydb": [
+      {
+        "delta_rel_diff": 0.0013715936353953372,
+        "electron_density_delta": 1.8467292654366023e-09,
+        "energy_keV": 511.0,
+        "material": "Si",
+        "xraydb_beta": 6.1454474234393635e-15,
+        "xraydb_chantler_delta": 1.844199772765879e-09
+      },
+      {
+        "delta_rel_diff": 0.010689080041980948,
+        "electron_density_delta": 1.2352154651603677e-08,
+        "energy_keV": 511.0,
+        "material": "W",
+        "xraydb_beta": 1.9496189375267275e-11,
+        "xraydb_chantler_delta": 1.2221517868868838e-08
+      }
+    ],
+    "status": "PASS"
+  },
+  "pass_abs_tolerance": 0.03,
+  "reflectivity_algorithm_checks": [
+    {
+      "builtin_source": "xraydb_multilayer_reflectivity_chantler_plus_stack_attenuation",
+      "manual_source": "manual_parratt_recursion_chantler_plus_stack_attenuation",
+      "max_abs_delta_R": 0.0,
+      "mean_abs_delta_R": 0.0,
+      "n_theta": 3101,
+      "roughness_nm": 5.0,
+      "status": "PASS"
+    },
+    {
+      "builtin_source": "xraydb_multilayer_reflectivity_chantler_plus_stack_attenuation",
+      "manual_source": "manual_parratt_recursion_chantler_plus_stack_attenuation",
+      "max_abs_delta_R": 0.0,
+      "mean_abs_delta_R": 0.0,
+      "n_theta": 3101,
+      "roughness_nm": 2.0,
+      "status": "PASS"
+    },
+    {
+      "builtin_source": "xraydb_multilayer_reflectivity_chantler_plus_stack_attenuation",
+      "manual_source": "manual_parratt_recursion_chantler_plus_stack_attenuation",
+      "max_abs_delta_R": 0.0,
+      "mean_abs_delta_R": 0.0,
+      "n_theta": 3101,
+      "roughness_nm": 1.0,
+      "status": "PASS"
+    },
+    {
+      "builtin_source": "xraydb_multilayer_reflectivity_chantler_plus_stack_attenuation",
+      "manual_source": "manual_parratt_recursion_chantler_plus_stack_attenuation",
+      "max_abs_delta_R": 0.0,
+      "mean_abs_delta_R": 0.0,
+      "n_theta": 3101,
+      "roughness_nm": 0.0,
+      "status": "PASS"
+    }
+  ],
+  "sources": [
+    {
+      "label": "511-CAM arXiv/JATIS",
+      "role": "CAM511 geometry and headline: 12 m, four channel rings, W/Si 30/150 nm, 80% transmissivity, 50.89 cm2.",
+      "url": "https://arxiv.org/abs/2206.14652"
+    },
+    {
+      "label": "Shirazi 2020 OSTI/JATIS",
+      "role": "IMD reflectivity, IDL ray tracing, MEGAlib detector chain, 1 nm modeling roughness, R^n/open/path-absorption formula.",
+      "url": "https://www.osti.gov/biblio/1716823"
+    },
+    {
+      "label": "CXRO/Henke optical constants",
+      "role": "Independent low-energy optical-constant benchmark. Its public web tools do not directly cover 511 keV.",
+      "url": "https://henke.lbl.gov/optical_constants/"
+    },
+    {
+      "label": "DarpanX",
+      "role": "Independent multilayer transfer-matrix code family validated against IMD.",
+      "url": "https://arxiv.org/abs/2101.02571"
+    },
+    {
+      "label": "NIST XCOM",
+      "role": "Independent photon attenuation database family for path-absorption closure at 511 keV.",
+      "url": "https://www.nist.gov/pml/xcom-photon-cross-sections-database"
+    }
+  ],
+  "status": "INDEPENDENT_CLOSURE_COMPLETE",
+  "wallbywall_variants": [
+    {
+      "cam511_target_effective_area_cm2": 50.89,
+      "cam511_target_transmissivity": 0.8,
+      "delta_to_cam511_transmissivity": -0.5125000000000001,
+      "effective_area_cm2": 18.289959730118078,
+      "include_si_path_absorption": true,
+      "mean_bounces_per_survivor": 20.385391304347827,
+      "mean_grazing_angle_rad": 7.40387655995802e-05,
+      "n": 10000,
+      "n_absorbed": 5240,
+      "n_entry_blocked": 1708,
+      "n_leaked": 177,
+      "n_survived": 2875,
+      "open_fraction_from_geometry": 0.8333333333333334,
+      "required_multiplier_to_cam511": 2.7826086956521743,
+      "roughness_nm": 5.0,
+      "spot_d90_cm": 1.0349458058584096,
+      "transmissivity": 0.2875
+    },
+    {
+      "cam511_target_effective_area_cm2": 50.89,
+      "cam511_target_transmissivity": 0.8,
+      "delta_to_cam511_transmissivity": -0.2076,
+      "effective_area_cm2": 37.68685963172852,
+      "include_si_path_absorption": false,
+      "mean_bounces_per_survivor": 20.7609723160027,
+      "mean_grazing_angle_rad": 7.348050715142756e-05,
+      "n": 10000,
+      "n_absorbed": 2203,
+      "n_entry_blocked": 1643,
+      "n_leaked": 230,
+      "n_survived": 5924,
+      "open_fraction_from_geometry": 0.8333333333333334,
+      "required_multiplier_to_cam511": 1.350438892640108,
+      "roughness_nm": 5.0,
+      "spot_d90_cm": 1.04211909168343,
+      "transmissivity": 0.5924
+    },
+    {
+      "cam511_target_effective_area_cm2": 50.89,
+      "cam511_target_transmissivity": 0.8,
+      "delta_to_cam511_transmissivity": -0.44300000000000006,
+      "effective_area_cm2": 22.711358690964012,
+      "include_si_path_absorption": true,
+      "mean_bounces_per_survivor": 19.00392156862745,
+      "mean_grazing_angle_rad": 7.73060666456335e-05,
+      "n": 10000,
+      "n_absorbed": 4662,
+      "n_entry_blocked": 1650,
+      "n_leaked": 118,
+      "n_survived": 3570,
+      "open_fraction_from_geometry": 0.8333333333333334,
+      "required_multiplier_to_cam511": 2.2408963585434174,
+      "roughness_nm": 2.0,
+      "spot_d90_cm": 1.0508130830442068,
+      "transmissivity": 0.357
+    },
+    {
+      "cam511_target_effective_area_cm2": 50.89,
+      "cam511_target_transmissivity": 0.8,
+      "delta_to_cam511_transmissivity": -0.09150000000000003,
+      "effective_area_cm2": 45.07282250013446,
+      "include_si_path_absorption": false,
+      "mean_bounces_per_survivor": 19.23076923076923,
+      "mean_grazing_angle_rad": 7.923232032711389e-05,
+      "n": 10000,
+      "n_absorbed": 1144,
+      "n_entry_blocked": 1646,
+      "n_leaked": 125,
+      "n_survived": 7085,
+      "open_fraction_from_geometry": 0.8333333333333334,
+      "required_multiplier_to_cam511": 1.1291460832745237,
+      "roughness_nm": 2.0,
+      "spot_d90_cm": 1.0403114440378578,
+      "transmissivity": 0.7085
+    },
+    {
+      "cam511_target_effective_area_cm2": 50.89,
+      "cam511_target_transmissivity": 0.8,
+      "delta_to_cam511_transmissivity": -0.43410000000000004,
+      "effective_area_cm2": 23.27755222695723,
+      "include_si_path_absorption": true,
+      "mean_bounces_per_survivor": 19.254714402842307,
+      "mean_grazing_angle_rad": 7.678467247824512e-05,
+      "n": 10000,
+      "n_absorbed": 4613,
+      "n_entry_blocked": 1642,
+      "n_leaked": 86,
+      "n_survived": 3659,
+      "open_fraction_from_geometry": 0.8333333333333334,
+      "required_multiplier_to_cam511": 2.1863897239682974,
+      "roughness_nm": 1.0,
+      "spot_d90_cm": 1.0465965981963339,
+      "transmissivity": 0.3659
+    },
+    {
+      "cam511_target_effective_area_cm2": 50.89,
+      "cam511_target_transmissivity": 0.8,
+      "delta_to_cam511_transmissivity": -0.06310000000000004,
+      "effective_area_cm2": 46.87955243521395,
+      "include_si_path_absorption": false,
+      "mean_bounces_per_survivor": 19.414167458271137,
+      "mean_grazing_angle_rad": 7.866554783389169e-05,
+      "n": 10000,
+      "n_absorbed": 919,
+      "n_entry_blocked": 1605,
+      "n_leaked": 107,
+      "n_survived": 7369,
+      "open_fraction_from_geometry": 0.8333333333333334,
+      "required_multiplier_to_cam511": 1.0856289862939341,
+      "roughness_nm": 1.0,
+      "spot_d90_cm": 1.0409426066549154,
+      "transmissivity": 0.7369
+    },
+    {
+      "cam511_target_effective_area_cm2": 50.89,
+      "cam511_target_transmissivity": 0.8,
+      "delta_to_cam511_transmissivity": -0.4272,
+      "effective_area_cm2": 23.716511260480065,
+      "include_si_path_absorption": true,
+      "mean_bounces_per_survivor": 18.689377682403432,
+      "mean_grazing_angle_rad": 7.791349776335557e-05,
+      "n": 10000,
+      "n_absorbed": 4598,
+      "n_entry_blocked": 1601,
+      "n_leaked": 73,
+      "n_survived": 3728,
+      "open_fraction_from_geometry": 0.8333333333333334,
+      "required_multiplier_to_cam511": 2.1459227467811157,
+      "roughness_nm": 0.0,
+      "spot_d90_cm": 1.049466492600385,
+      "transmissivity": 0.3728
+    },
+    {
+      "cam511_target_effective_area_cm2": 50.89,
+      "cam511_target_transmissivity": 0.8,
+      "delta_to_cam511_transmissivity": -0.03850000000000009,
+      "effective_area_cm2": 48.444536815599704,
+      "include_si_path_absorption": false,
+      "mean_bounces_per_survivor": 19.047275114904792,
+      "mean_grazing_angle_rad": 7.977636337723926e-05,
+      "n": 10000,
+      "n_absorbed": 769,
+      "n_entry_blocked": 1536,
+      "n_leaked": 80,
+      "n_survived": 7615,
+      "open_fraction_from_geometry": 0.8333333333333334,
+      "required_multiplier_to_cam511": 1.050558108995404,
+      "roughness_nm": 0.0,
+      "spot_d90_cm": 1.0425010788348428,
+      "transmissivity": 0.7615
+    }
+  ]
+}

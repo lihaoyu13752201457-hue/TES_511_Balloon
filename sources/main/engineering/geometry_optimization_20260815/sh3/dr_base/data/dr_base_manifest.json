@@ -1,0 +1,160 @@
+{
+  "component_identity": "SH3_PureDR_Base",
+  "coordinate_contract": {
+    "cold_finger_port_axis": "local x' through the former side-window stack",
+    "cold_finger_port_center_z_cm": -5.2,
+    "dr_axis": "local +z'",
+    "frame": "InstrumentFrame",
+    "frame_rotation_deg": [
+      0.0,
+      45.0,
+      0.0
+    ],
+    "future_chimney_world_vertical_placement": "deliberately deferred to assembly geometry"
+  },
+  "generated_at_utc": "2026-08-18T08:08:56.280107+00:00",
+  "interface": {
+    "diameter_cm": 1.5,
+    "matching_sh3_chimney_parameter": "COLD_PORT_RADIUS_CM=0.75",
+    "radius_cm": 0.75
+  },
+  "outputs": {
+    "Materials_SH3_DR_Base.geo": {
+      "bytes": 2065,
+      "path": "/home/ubuntu/TES_511_Balloon/engineering/geometry_optimization_20260815/sh3/dr_base/geometry/Materials_SH3_DR_Base.geo",
+      "sha256": "56f6c2b58f072f4350a1fed8707490ed4f0b196769a9a4e22e0acb2ebe58ae0a"
+    },
+    "SH3_PureDR_Base.geo": {
+      "bytes": 127607,
+      "path": "/home/ubuntu/TES_511_Balloon/engineering/geometry_optimization_20260815/sh3/dr_base/geometry/SH3_PureDR_Base.geo",
+      "sha256": "bef7520e6dec55baa61507c18b87df29b2124c89753ec8689817f20f423b9b32"
+    },
+    "SH3_PureDR_Base.geo.setup": {
+      "bytes": 89,
+      "path": "/home/ubuntu/TES_511_Balloon/engineering/geometry_optimization_20260815/sh3/dr_base/geometry/SH3_PureDR_Base.geo.setup",
+      "sha256": "0264a28e58e527fa4117039c28ba6cd83c002a6a09511206b58f191ca10174c0"
+    },
+    "sh3_pure_dr_base_xz_section.svg": {
+      "bytes": 21669,
+      "path": "/home/ubuntu/TES_511_Balloon/engineering/geometry_optimization_20260815/sh3/dr_base/figures/sh3_pure_dr_base_xz_section.svg",
+      "sha256": "46aec4d7f3c1dbc0f3a24d2a041f447d13cfcae5597eded75a04c933ee34d0e3"
+    }
+  },
+  "reference_sg3b": {
+    "geo": {
+      "bytes": 698532,
+      "path": "/home/ubuntu/.codex/worktrees/4f50/TES_511_Balloon/engineering/geometry_optimization_20260815/55_geoopt_sg3b_bi_halfcylinder_al_harness_20260816/geometry/DEMO2_DR_v3p5_SG3B.geo",
+      "sha256": "5f0482e307bf8701204f1d6df1b74396b7105d853dccb885e4df401146f552d9"
+    },
+    "intro": {
+      "bytes": 500,
+      "path": "/home/ubuntu/.codex/worktrees/4f50/TES_511_Balloon/engineering/geometry_optimization_20260815/55_geoopt_sg3b_bi_halfcylinder_al_harness_20260816/geometry/Intro_DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo",
+      "sha256": "f4ea834bf385f68a85690e018fd52d692e94e19dd93959e35e6f91efd3dbfd52"
+    },
+    "materials": {
+      "bytes": 2065,
+      "path": "/home/ubuntu/.codex/worktrees/4f50/TES_511_Balloon/engineering/geometry_optimization_20260815/55_geoopt_sg3b_bi_halfcylinder_al_harness_20260816/geometry/Materials_DEMO2_DR_v3p5.geo",
+      "sha256": "56f6c2b58f072f4350a1fed8707490ed4f0b196769a9a4e22e0acb2ebe58ae0a"
+    }
+  },
+  "removed": [
+    "all TES pixels, TES containers, silicon substrates, local copper support/cold-finger assembly, and detector map",
+    "near-TES Al/Bi shielding, readout/SQUID, and SG3B cable-bundle proxy",
+    "all old window foils/filters and 3.796 cm square side-window cuts",
+    "passive W bottom plate and W multihole collimator",
+    "BGO, Kapton active-shield wrap, BGO mechanical enclosure, outer plastic scintillator, and outer BPE",
+    "SH3 chimney placement and connecting cold finger"
+  ],
+  "retained": [
+    "MXC/100mK/Still/4K/60K cold plates and their validated hole patterns",
+    "five DR aluminium shells and bottom caps, rebuilt with a common small port",
+    "DR process hardware, capillaries, thermal structures, top services, and support cage",
+    "45 degree InstrumentFrame tilt from pinned SG3B"
+  ],
+  "retained_reference_blocks": {
+    "cold_plates_and_internal_supports": {
+      "bytes": 72734,
+      "sha256": "574d340d34261f862dbdac794bb125026f1823c6a912d643d035e1e3a0095fef"
+    },
+    "dr_core": {
+      "bytes": 4697,
+      "sha256": "a0e4bd6cab73be56f744682ef6c3d60358fba124ca1a3445a8e9d9965b95dd2a"
+    },
+    "g10_support_rings": {
+      "bytes": 1622,
+      "sha256": "e0ba63f46ac37d653e6a18c1ec9dc47306e7d045d6f6c63a22945eb3de8dd6fc"
+    },
+    "top_services_and_outer_support_cage": {
+      "bytes": 40192,
+      "sha256": "6bed32a30c635c56d01b5a9e00f2ebca9cb53539cbea9692d41ccc384100a21b"
+    }
+  },
+  "shells": [
+    {
+      "bottom_z_max_cm": -9.7,
+      "bottom_z_min_cm": -9.9,
+      "color": "#2457d6",
+      "inner_radius_cm": 15.1,
+      "key": "MXC50mK",
+      "label": "50 mK aluminium can",
+      "material": "Aluminium",
+      "outer_radius_cm": 15.3,
+      "side_z_max_cm": -0.3,
+      "side_z_min_cm": -9.7
+    },
+    {
+      "bottom_z_max_cm": -10.4,
+      "bottom_z_min_cm": -10.7,
+      "color": "#367ee8",
+      "inner_radius_cm": 15.5,
+      "key": "Still",
+      "label": "Still aluminium shield",
+      "material": "Aluminium",
+      "outer_radius_cm": 15.8,
+      "side_z_max_cm": 10.7,
+      "side_z_min_cm": -10.4
+    },
+    {
+      "bottom_z_max_cm": -11.4,
+      "bottom_z_min_cm": -11.7,
+      "color": "#49a6e9",
+      "inner_radius_cm": 17.7,
+      "key": "4K",
+      "label": "4 K aluminium shield",
+      "material": "Aluminium",
+      "outer_radius_cm": 18.0,
+      "side_z_max_cm": 19.7,
+      "side_z_min_cm": -11.4
+    },
+    {
+      "bottom_z_max_cm": -12.4,
+      "bottom_z_min_cm": -12.7,
+      "color": "#79c8e8",
+      "inner_radius_cm": 18.2,
+      "key": "60K",
+      "label": "60 K aluminium shield",
+      "material": "Aluminium",
+      "outer_radius_cm": 18.5,
+      "side_z_max_cm": 28.65,
+      "side_z_min_cm": -12.4
+    },
+    {
+      "bottom_z_max_cm": -13.6,
+      "bottom_z_min_cm": -14.1,
+      "color": "#9aa5b1",
+      "inner_radius_cm": 20.1,
+      "key": "VacuumJacket",
+      "label": "300 K aluminium vacuum jacket",
+      "material": "Aluminium",
+      "outer_radius_cm": 20.6,
+      "side_z_max_cm": 37.5,
+      "side_z_min_cm": -13.6
+    }
+  ],
+  "static_validation": {
+    "bytes": 1792,
+    "path": "/home/ubuntu/TES_511_Balloon/engineering/geometry_optimization_20260815/sh3/dr_base/audit/dr_base_static_validation.json",
+    "sha256": "3d11a79475a2d1a2b3a13a29afdb2a612b8bf0db15ff8fb2701bb82ff506a882"
+  },
+  "status": "PASS__SH3_PURE_DR_BASE_BUILT"
+}

@@ -1,0 +1,168 @@
+{
+  "assumptions": {
+    "atm511": "replaced by the small-aperture 510.99895-keV response and folded with the same 81x80 PARMA target",
+    "gamma_continuum": "flux-conserving coarse-bin-de-lined continuum frozen from SH3 model-B 81-node authority",
+    "geometric_signal_response": "frozen SH3 signal kernel multiplied by 29598/37194; purely geometric direct-through estimate, not a transported signal response",
+    "new_geometry_activation_near_511": "assumed absent for this requested approximation; no new activation component is added",
+    "other_background": "frozen from SH3 model-B 81-node authority",
+    "primary_signal_response": "frozen SH3 effective area, atmospheric transmission, and accidental-survival kernel",
+    "timeline_coincidence_ratio": "frozen SH3 five-anchor interpolation"
+  },
+  "day15_reference": {
+    "approx_bgo_smallap_total_rate_cps": 0.028526460048586756,
+    "old_sh3_total_rate_cps": 0.03122834776990912,
+    "ratio": 0.9134796454417022
+  },
+  "flux_conservation": {
+    "formula": "frozen other + frozen (broadband gamma minus coarse-bin line) + new monoenergetic line",
+    "line_double_counted": false
+  },
+  "inputs": {
+    "mono511_target": {
+      "path": "/home/ubuntu/.codex/worktrees/ebb2/TES_511_Balloon/engineering/geometry_optimization_20260815/67_m05_mono511_flux_closure_20260823/outputs/00_source_closure/mono511_target_81x80.csv",
+      "sha256": "92ee53428dceb36f4d6c1eb0b7efd72ad239dd233f25af73618aa654ee6cdd90"
+    },
+    "new_line_bins": {
+      "path": "/home/ubuntu/.codex/worktrees/a61c/TES_511_Balloon/engineering/geometry_optimization_20260815/72_sh3_bgo_smallap_mono511_trial_20260825/outputs/01_mono_line_response/mono_line_final_by_source_bin80.csv",
+      "sha256": "bca644c199743915c3e031f822484418a2de9d9b6c9f52ee71832dae26b1a8fa"
+    },
+    "new_line_summary": {
+      "path": "/home/ubuntu/.codex/worktrees/a61c/TES_511_Balloon/engineering/geometry_optimization_20260815/72_sh3_bgo_smallap_mono511_trial_20260825/outputs/01_mono_line_response/summary.json",
+      "sha256": "add56693bf3ca77b6b1670750ea0cb408490142227b0d0edd3fe4637676fa872"
+    },
+    "old_line_bins": {
+      "path": "/home/ubuntu/.codex/worktrees/ebb2/TES_511_Balloon/engineering/geometry_optimization_20260815/67_m05_mono511_flux_closure_20260823/outputs/01_line_response_b60/mono_line_final_by_source_bin80.csv",
+      "sha256": "b970ee2483eedbb0415497b3e6d59cfed0b3de4eb732ee922fb554dbd9ac5456"
+    },
+    "old_line_summary": {
+      "path": "/home/ubuntu/.codex/worktrees/ebb2/TES_511_Balloon/engineering/geometry_optimization_20260815/67_m05_mono511_flux_closure_20260823/outputs/01_line_response_b60/summary.json",
+      "sha256": "d6487790c9818f0dde9fef1323e164ae3dc500559381fdfdca6ffd21558de1e2"
+    },
+    "old_timeline": {
+      "path": "/home/ubuntu/.codex/worktrees/ebb2/TES_511_Balloon/engineering/geometry_optimization_20260815/67_m05_mono511_flux_closure_20260823/outputs/03_fluxclosed_timeline_b/mission_timeline_81nodes.csv",
+      "sha256": "4b9fa13545adb679b56c91ceb2568ff55985264cf7d63c8dd582c277eaccbafa"
+    },
+    "old_timeline_summary": {
+      "path": "/home/ubuntu/.codex/worktrees/ebb2/TES_511_Balloon/engineering/geometry_optimization_20260815/67_m05_mono511_flux_closure_20260823/outputs/03_fluxclosed_timeline_b/summary.json",
+      "sha256": "90e8ebc1d530ee2d863bd13c0ee6f8118dbebb38ed35621c3ca293c109c1d426"
+    }
+  },
+  "line_statistics": {
+    "incident_statistics_match_required": false,
+    "new_bgo_smallap_day15_line_rate_cps": 0.019590572850577914,
+    "new_bgo_smallap_incident_photons": 5000000,
+    "new_bgo_smallap_physical_exposure_s": 2654.3379,
+    "new_bgo_smallap_selected_events": 52,
+    "new_over_old_incident_ratio": 0.31828043013945073,
+    "normalization": "each response uses its own 1/physical_exposure_s",
+    "old_open_sh3_day15_line_rate_cps": 0.02229246057190028,
+    "old_open_sh3_incident_photons": 15709417,
+    "old_open_sh3_physical_exposure_s": 8343.628079999999,
+    "old_open_sh3_selected_events": 186
+  },
+  "mission_20day": {
+    "approx_bgo_smallap_atm511_counts": 34656.31978579414,
+    "approx_bgo_smallap_total_background_counts": 50032.48788009427,
+    "atm511_ratio": 0.8789372006111024,
+    "conservative_geometric_direct_through_signal": {
+      "Fmin": {
+        "Fmin_3sigma_gaussian_ph_cm2_s": {
+          "relative_standard_error": 0.05605850747188353,
+          "standard_error": 2.8169296118369516e-06,
+          "value": 5.0249814682451165e-05
+        },
+        "Fmin_3sigma_poisson_asimov_ph_cm2_s": {
+          "relative_standard_error": 0.0559341088375273,
+          "standard_error": 2.816954433968903e-06,
+          "value": 5.036201510157881e-05
+        },
+        "Fmin_5sigma_gaussian_ph_cm2_s": {
+          "relative_standard_error": 0.05605850747188353,
+          "standard_error": 4.694882686394919e-06,
+          "value": 8.37496911374186e-05
+        },
+        "Fmin_5sigma_poisson_asimov_ph_cm2_s": {
+          "relative_standard_error": 0.05585178859823841,
+          "standard_error": 4.694964388202576e-06,
+          "value": 8.406112867709768e-05
+        }
+      },
+      "caveat": "pure geometry scaling only; it does not replace a transported signal response",
+      "gaussian_3sigma_threshold_ratio_new_over_old": 1.200667169473315,
+      "geometric_clear_rays": 29598,
+      "geometric_direct_through_fraction": 0.795773511856751,
+      "geometric_total_rays": 37194,
+      "signal_counts_per_unit_flux": 13354045.13281727
+    },
+    "frozen_gamma_continuum_counts": 9333.446660019403,
+    "frozen_other_counts": 6042.721434280722,
+    "old_sh3_Fmin": {
+      "Fmin_3sigma_gaussian_ph_cm2_s": 4.185157715646857e-05,
+      "Fmin_3sigma_poisson_asimov_ph_cm2_s": 4.194086769692741e-05,
+      "Fmin_5sigma_gaussian_ph_cm2_s": 6.975262859411428e-05,
+      "Fmin_5sigma_poisson_asimov_ph_cm2_s": 7.000048270238174e-05
+    },
+    "old_sh3_atm511_counts": 39429.801994611786,
+    "old_sh3_total_background_counts": 54805.970088911905,
+    "primary_frozen_sh3_signal": {
+      "Fmin": {
+        "Fmin_3sigma_gaussian_ph_cm2_s": {
+          "relative_standard_error": 0.05605850747188353,
+          "standard_error": 2.2416379698647654e-06,
+          "value": 3.99874715000051e-05
+        },
+        "Fmin_3sigma_poisson_asimov_ph_cm2_s": {
+          "relative_standard_error": 0.05593410883752731,
+          "standard_error": 2.2416577226598804e-06,
+          "value": 4.0076757621566104e-05
+        },
+        "Fmin_5sigma_gaussian_ph_cm2_s": {
+          "relative_standard_error": 0.05605850747188353,
+          "standard_error": 3.736063283107942e-06,
+          "value": 6.664578583334182e-05
+        },
+        "Fmin_5sigma_poisson_asimov_ph_cm2_s": {
+          "relative_standard_error": 0.05585178859823842,
+          "standard_error": 3.7361282992423467e-06,
+          "value": 6.689361957801626e-05
+        }
+      },
+      "gaussian_3sigma_threshold_ratio_new_over_old": 0.9554591300228847,
+      "signal_counts_per_unit_flux": 16781213.415433664
+    },
+    "total_background_ratio": 0.9129021491440877
+  },
+  "outputs": [
+    "approx_fmin_summary.json",
+    "mission_timeline_81nodes_approx.csv",
+    "README.md"
+  ],
+  "parma": {
+    "angular_components_equal_mu": 80,
+    "day15_full_space_flux_ph_cm2_s": 0.16651547160226118,
+    "line_energy_keV": 510.99895
+  },
+  "result_scope": "conditional engineering approximation; not a full small-aperture broadband/signal/activation closure",
+  "schema_version": 1,
+  "status": "PASS__APPROX_BGO_SMALLAP_FMIN_UNDER_FROZEN_SH3_NONLINE_ASSUMPTION",
+  "uncertainty": {
+    "frozen_signal_combined_relative_sigma": 0.002985055062472794,
+    "geometric_fraction_treated_as_exact_for_reported_statistical_error": true,
+    "new_atm511_transport_sigma_counts": 4807.296811019243,
+    "new_background_combined_relative_sigma": 0.11195795114683418,
+    "new_background_combined_sigma_counts": 5601.534833834167,
+    "new_timeline_replay_sigma_counts": 298.1802672992594,
+    "new_total_transport_sigma_counts": 5593.592854583797,
+    "note": "MC/statistical uncertainty only; approximation/systematic error from freezing non-line/signal responses and from geometric signal scaling is not quantified"
+  },
+  "validation": {
+    "component_sum_matches_trapezoid_total": true,
+    "frozen_signal_kernel_reproduced": true,
+    "geometric_signal_kernel_ratio_reproduced": true,
+    "incident_statistics_equality_not_required": true,
+    "new_line_81node_count_and_variance_folded_from_bin80": true,
+    "old_line_mission_counts_reproduced": true,
+    "old_line_mission_variance_reproduced": true,
+    "old_sh3_Fmin_reproduced": true
+  }
+}

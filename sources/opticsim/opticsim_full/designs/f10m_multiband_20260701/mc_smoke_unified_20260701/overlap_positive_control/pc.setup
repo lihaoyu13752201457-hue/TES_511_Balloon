@@ -1,0 +1,35 @@
+Name overlap_positive_control
+Version 1
+SurroundingSphere 20 0 0 0 20
+Include /home/ubuntu/TES_511_Balloon/add_mass/TES_511_Balloon_nearfield_mass_proxy_v2/optics/Materials_OpticsNearfield_v2.geo
+Volume WorldVolume
+WorldVolume.Material Vacuum
+WorldVolume.Visibility 0
+WorldVolume.Shape BRIK 100.0 100.0 100.0
+WorldVolume.Mother 0
+Volume InstrumentFrame
+InstrumentFrame.Material Vacuum
+InstrumentFrame.Shape BRIK 60.0 60.0 60.0
+InstrumentFrame.Position 0 0 0
+InstrumentFrame.Mother WorldVolume
+Volume BoxA
+BoxA.Material GeProxy
+BoxA.Shape BRIK 1.0 1.0 1.0
+BoxA.Position 0 0 0
+BoxA.Mother InstrumentFrame
+Volume BoxB
+BoxB.Material GeProxy
+BoxB.Shape BRIK 1.0 1.0 1.0
+BoxB.Position 0 0 1.5
+BoxB.Mother InstrumentFrame
+Scintillator DetA
+DetA.DetectorVolume  BoxA
+DetA.SensitiveVolume BoxA
+DetA.NoiseThreshold   0.000001
+DetA.TriggerThreshold 0.000001
+DetA.EnergyResolution ideal
+DetA.FailureRate 0.0
+Trigger TN01
+TN01.Veto false
+TN01.TriggerByChannel true
+TN01.Detector DetA 1

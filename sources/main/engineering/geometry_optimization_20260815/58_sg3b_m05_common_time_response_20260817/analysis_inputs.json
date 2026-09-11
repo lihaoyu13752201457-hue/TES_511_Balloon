@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "profile_id": "SG3B_M05_COMMON_TIME_RESPONSE_20260817_V1",
+  "candidate": "SG3B",
+  "geometry_setup": "/home/ubuntu/.codex/worktrees/4f50/TES_511_Balloon/engineering/geometry_optimization_20260815/55_geoopt_sg3b_bi_halfcylinder_al_harness_20260816/geometry/DEMO2_DR_v3p5_SG3B.geo.setup",
+  "prompt_campaigns": [
+    "/mnt/data/TES_Balloon_511_data/SG3/sg3b_plan1_background_v1",
+    "/mnt/data/TES_Balloon_511_data/SG3/sg3b_plan1_background_extra2x_v1"
+  ],
+  "delayed_campaign": "/mnt/data/TES_Balloon_511_data/SG3/sg3b_m05_delayed_1m_sharded_v2",
+  "superseded_delayed_campaign_excluded": "/mnt/data/TES_Balloon_511_data/SG3/sg3b_m05_delayed_1m_v1",
+  "activation_manifest": "/mnt/data/TES_Balloon_511_data/SG3/sg3b_m05_delayed_1m_v1/generated/activation/manifest.json",
+  "parma_mono511_sidecar_excluded_from_broadband_sum": "/mnt/data/TES_Balloon_511_data/SG3/sg3b_parma511_sidecar_3m_v1",
+  "active_veto": {
+    "plastic_positron_veto_volumes": [
+      "GeoOpt_S2B_CryoShell_Plastic_SideSkin_10mm",
+      "GeoOpt_S2B_CryoShell_Plastic_BottomCap_10mm",
+      "GeoOpt_S2B_CryoShell_Plastic_TopCap_10mm"
+    ],
+    "bgo_active_scintillator_volumes": [
+      "BGO_S3C_FullWrap_SideShell_WindowCut_40mm",
+      "BGO_S3D_O8_FullWrap_BottomCap_30mm",
+      "BGO_S3D_O8_FullWrap_TopAnnulus_10mm"
+    ],
+    "offline_threshold_keV": 50.0,
+    "comparison_thresholds_keV": [50.0, 70.0, 80.0]
+  },
+  "response": {
+    "fwhm_keV_per_pixel": 0.42,
+    "post_noise_pixel_threshold_keV": 0.3,
+    "windows_keV": {
+      "broad_480_550": [480.0, 550.0],
+      "w2_510p58_511p42": [510.58, 511.42]
+    },
+    "compton_fov_implementation": "old/code/tools/build_v3p5_centerfinger_step05_l1_response.py",
+    "reject_policy_for_more_than_six_hits": "keep"
+  },
+  "mission": {
+    "duration_days": 20.0,
+    "time_bins": 81,
+    "source_elevation_deg": 45.0,
+    "coincidence_window_s": 1e-6,
+    "reference_flux_ph_cm2_s": 1e-4,
+    "family_scales": "engineering/particle_source_unit_repair_20260811/m05_corrected_reanalysis_20260813/data/parma_energy_integrated_family_scales_81bins.csv",
+    "atmospheric_transmission": "engineering/geometry_optimization_20260704/43_geoopt_s3d_o8_fallback_20260712/fullchain/step06/atmosphere_transmission_511_by_time.csv"
+  },
+  "conditional_signal_proxy": {
+    "geometry": "SE3",
+    "scope": "FULL_ENVELOPE",
+    "eventlist_rows": 37194,
+    "authority": "/home/ubuntu/.codex/worktrees/c528/TES_511_Balloon/engineering/geometry_optimization_20260815/47_se3_plan1_transport_20260815/outputs/04_common_response/common_cutflow.csv",
+    "static_no_intersection_audit": "/home/ubuntu/.codex/worktrees/4f50/TES_511_Balloon/engineering/geometry_optimization_20260815/55_geoopt_sg3b_bi_halfcylinder_al_harness_20260816/data/sg3b_static_and_f3_estimate.json",
+    "authority_boundary": "CONDITIONAL_PROXY_ONLY__FRESH_SG3B_37194_RAY_SIGNAL_TRANSPORT_REQUIRED"
+  }
+}

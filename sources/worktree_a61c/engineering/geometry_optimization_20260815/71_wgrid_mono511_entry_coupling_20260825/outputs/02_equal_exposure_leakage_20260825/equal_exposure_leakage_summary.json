@@ -1,0 +1,117 @@
+{
+  "common_physical_exposure_s": 8339.8231,
+  "definition_boundary": "Any TES entry means at least one recorded positive-energy TES pixel deposit. Zero-interaction boundary crossings are unobservable in the frozen catalogs/SIM contract.",
+  "equal_exposure": {
+    "any_recorded_tes_deposition": {
+      "difference_z": 2.045058512310254,
+      "ratio_sigma": 0.1432258921850155,
+      "sg3_current_mc_sigma_events": 48.86969344472693,
+      "sg3_expected_events": 455.82615496721763,
+      "wgrid_current_mc_sigma_events": 23.811761799581316,
+      "wgrid_events": 567,
+      "wgrid_over_sg3_ratio": 1.2438952741550728
+    },
+    "final_w2_line_leakage": {
+      "difference_z": 4.020717378040288,
+      "equal_rate_null_two_sided_p": 0.0017815072610712418,
+      "exact_conditional_poisson_rate_ratio_95": [
+        1.3352165027991068,
+        4.751541606225274
+      ],
+      "ratio_sigma": 0.7203282018478426,
+      "sg3_current_mc_sigma_events": 18.14974850165484,
+      "sg3_expected_events": 62.87257309892658,
+      "wgrid_current_mc_sigma_events": 12.288205727444508,
+      "wgrid_events": 151,
+      "wgrid_over_sg3_ratio": 2.4016831594025856
+    },
+    "final_window_retention_given_any_tes": {
+      "multiplicative_closure": 2.401683159402585,
+      "sg3_fraction": 0.13793103448275862,
+      "wgrid_fraction": 0.26631393298059963,
+      "wgrid_over_sg3_ratio": 1.9307760141093473
+    }
+  },
+  "fmin_common_time_audit": {
+    "contract": "0–20 d continuous effective observation, 81 nodes at 0.25 d spacing, trapezoidal integration",
+    "explicit_observation_duty_cycle_parameter_present": false,
+    "rows": [
+      {
+        "asimov_3sigma_fmin": 5.8090931634870914e-05,
+        "fmin_increase_from_mono_line_fraction": 0.06942275421580213,
+        "gaussian_3sigma_fmin": 5.799926385676048e-05,
+        "gaussian_3sigma_fmin_without_mono_line": 5.4234177857278536e-05,
+        "geometry": "SG3",
+        "line_background_counts": 12552.15515508207,
+        "line_fraction_of_total": 0.12561809954257955,
+        "mission_days": 20,
+        "nonline_background_counts": 87370.9865003717,
+        "observation_contract": "0–20 d 连续有效观测；81 节点；无额外显式 duty 参数",
+        "scope": "完整 SG3 81 节点闭合",
+        "signal_kernel_counts_per_unit_flux": 16350529.192505842,
+        "total_background_counts": 99923.14165545377
+      },
+      {
+        "asimov_3sigma_fmin": 3.899076997416569e-05,
+        "fmin_increase_from_mono_line_fraction": 0.7548671527888564,
+        "gaussian_3sigma_fmin": 3.890148662146553e-05,
+        "gaussian_3sigma_fmin_without_mono_line": 2.2167767263546307e-05,
+        "geometry": "SH3 + W-grid",
+        "line_background_counts": 31975.644501227704,
+        "line_fraction_of_total": 0.6752781519550037,
+        "mission_days": 20,
+        "nonline_background_counts": 15376.168094300125,
+        "observation_contract": "0–20 d 连续有效观测；81 节点；无额外显式 duty 参数",
+        "scope": "条件近似：冻结 SH3 非线、信号与时间修正，只替换 W-grid 单线",
+        "signal_kernel_counts_per_unit_flux": 16781213.415433664,
+        "total_background_counts": 47351.81259552783
+      }
+    ]
+  },
+  "front_aperture_audit": {
+    "scope": "front-plane normal projection only; not a 4pi effective acceptance",
+    "sg3_net_normal_open_area_cm2": 12.158848,
+    "wgrid_net_normal_open_area_cm2": 24.619776,
+    "wgrid_over_sg3_net_open_area_ratio": 2.0248444589487424
+  },
+  "hemisphere_equal_exposure": {
+    "sg3_any_tes_down": 83.83009746523544,
+    "sg3_any_tes_up": 371.9960575019822,
+    "sg3_final_down": 0.0,
+    "sg3_final_up": 62.87257309892657,
+    "wgrid_any_tes_down": 198.0,
+    "wgrid_any_tes_up": 369.0,
+    "wgrid_final_down": 60.0,
+    "wgrid_final_up": 91.0
+  },
+  "line_source": {
+    "day15_full_space_flux_ph_cm2_s": 0.16651547160226118,
+    "energy_keV": 510.99895,
+    "equal_mu_components": 80,
+    "provider": "PARMA dedicated atmospheric line parameterization"
+  },
+  "matched_open_sh3_wgrid_check": {
+    "incident_photons_each": 15709417,
+    "wgrid_over_open_sh3_final_rate_ratio": 0.8121983472364679,
+    "wgrid_over_open_sh3_ratio_sigma": 0.08896764730697833,
+    "wgrid_suppression_fraction": 0.1878016527635321
+  },
+  "mission_20day_final_line": {
+    "ratio_sigma": 0.7640540423949108,
+    "sg3_counts": 12552.15515508207,
+    "sg3_mc_sigma_counts": 3623.4956203507727,
+    "wgrid_counts": 31975.644501227704,
+    "wgrid_mc_sigma_counts": 2602.8168145215445,
+    "wgrid_over_sg3_ratio": 2.5474226621777794
+  },
+  "source_primary_rate_fractional_difference": -0.0005551721077433625,
+  "sources": {
+    "publication": "engineering/geometry_optimization_20260815/67_m05_mono511_flux_closure_20260823/outputs/06_publication_values/publication_values.json",
+    "sg3_catalog": "engineering/geometry_optimization_20260815/67_m05_mono511_flux_closure_20260823/outputs/01_line_response_a/mono_line_event_catalog.npz",
+    "sg3_summary": "engineering/geometry_optimization_20260815/67_m05_mono511_flux_closure_20260823/outputs/01_line_response_a/summary.json",
+    "wgrid_catalog": "engineering/geometry_optimization_20260815/68_sh3_wgrid_mono511_statistics_20260824/outputs/01_wgrid_mono511_response_comparison_20260825/response/mono_line_event_catalog.npz",
+    "wgrid_mission": "engineering/geometry_optimization_20260815/69_sh3_wgrid_conditional_fmin_20260825/outputs/01_approx_fmin_20260825/approx_fmin_summary.json",
+    "wgrid_summary": "engineering/geometry_optimization_20260815/68_sh3_wgrid_mono511_statistics_20260824/outputs/01_wgrid_mono511_response_comparison_20260825/response/summary.json"
+  },
+  "status": "PASS__SG3_WGRID_EQUAL_EXPOSURE_LEAKAGE_CLOSED"
+}

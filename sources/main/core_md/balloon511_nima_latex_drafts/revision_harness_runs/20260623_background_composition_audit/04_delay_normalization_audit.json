@@ -1,0 +1,311 @@
+{
+  "artifact_type": "local_data_auditor_delay_normalization_audit",
+  "created_date": "2026-06-23",
+  "role": "Local Data Auditor",
+  "independence": "SUBAGENT",
+  "scope": "Read-only delayed/prompt normalization audit for current fix5 and old new_geo_re authority outputs.",
+  "judgments": [
+    {
+      "id": "current_fix5_geometry_provenance",
+      "status": "PASS",
+      "judgment": "Current fix5 source cards, job sources, prompt/buildup SIM headers, delayed SIM header, and signal source/SIM geometry provenance pass the existing verifier checks.",
+      "evidence": [
+        {
+          "path": "outputs/reports/fix5_fullstat_v2/fix5_verification_verdict.json",
+          "json_pointer": "/rows/0/details",
+          "value": {
+            "source_cards": 8,
+            "contains_fix5_geometry": 8,
+            "contains_forbidden_baseline_geometry": 0
+          }
+        },
+        {
+          "path": "outputs/reports/fix5_fullstat_v2/fix5_verification_verdict.json",
+          "json_pointer": "/rows/8/details",
+          "value": {
+            "sim_headers_checked": 136,
+            "sim_headers_with_fix5_geometry": 136,
+            "sim_headers_with_forbidden_baseline_geometry": 0
+          }
+        },
+        {
+          "path": "outputs/reports/fix5_fullstat_v2/fix5_verification_verdict.json",
+          "json_pointer": "/rows/11/details/geometry_ok",
+          "value": true
+        },
+        {
+          "path": "outputs/reports/fix5_fullstat_v2/fix5_verification_verdict.json",
+          "json_pointer": "/rows/20/details/geometry_ok",
+          "value": true
+        }
+      ]
+    },
+    {
+      "id": "current_prompt_normalization",
+      "status": "PASS",
+      "judgment": "Current fix5 prompt normalization follows 1/sum(TT) and the prompt audit reports closure.",
+      "evidence": [
+        {
+          "path": "stepwise_maintenance/step05_veto_time_axis/outputs_fix5_fullstat_v2_exactpos_m50000_s260613_l1/step05_fix5_fullstat_v2_exactpos_m50000_s260613_l1_response_summary.json",
+          "json_pointer": "/normalization/prompt_rate_rule",
+          "value": "per-tag event rate = 1 / sum(TT_s for prompt dat files with that tag)"
+        },
+        {
+          "path": "stepwise_maintenance/step05_veto_time_axis/outputs_fix5_fullstat_v2_exactpos_m50000_s260613_l1/step05_fix5_fullstat_v2_exactpos_m50000_s260613_l1_response_summary.json",
+          "json_pointer": "/normalization/prompt_normalization_audit/status",
+          "value": "PASS"
+        },
+        {
+          "path": "stepwise_maintenance/step05_veto_time_axis/outputs_fix5_fullstat_v2_exactpos_m50000_s260613_l1/step05_fix5_fullstat_v2_exactpos_m50000_s260613_l1_response_summary.json",
+          "json_pointer": "/normalization/prompt_normalization_audit/rows/2",
+          "value": "tag=eplus, tt_sum_s=1473.8280000000002, rate_times_tt_sum=1.0"
+        }
+      ]
+    },
+    {
+      "id": "current_delayed_groundstate_and_division_guard",
+      "status": "PASS",
+      "judgment": "Current fix5 delayed source has a ground-state half-life audit PASS and the per-family TT division guard reports status PASS/problems empty.",
+      "evidence": [
+        {
+          "path": "outputs/reports/fix5_fullstat_v2_exactpos_m50000_s260613/fix5_groundstate_half_life_audit_summary.json",
+          "json_pointer": "/status",
+          "value": "PASS_FIX5_GROUNDSTATE_HALF_LIFE_AUDIT"
+        },
+        {
+          "path": "outputs/reports/fix5_fullstat_v2_exactpos_m50000_s260613/fix5_groundstate_half_life_audit_summary.json",
+          "json_pointer": "/checks",
+          "value": {
+            "normalization_status": "PASS",
+            "normalization_problems": [],
+            "old_total_activity_Bq": 87.48329383240524,
+            "new_total_activity_Bq": 85.44920253876245,
+            "w_or_collimator_new_activity_Bq": 0.9860798287567217
+          }
+        },
+        {
+          "path": "runs/step02_delay_fix_fix5_fullstat_v2/normalization_audit_groundstate_fix.json",
+          "json_pointer": "/status",
+          "value": "PASS"
+        },
+        {
+          "path": "runs/step02_delay_fix_fix5_fullstat_v2/normalization_audit_groundstate_fix.json",
+          "json_pointer": "/problems",
+          "value": []
+        },
+        {
+          "path": "runs/step02_delay_fix_fix5_fullstat_v2/normalization_audit_groundstate_fix.json",
+          "json_pointer": "/rows/6",
+          "value": "tag=n, files=8, division=8.0, rp_raw_total=251062.0, rp_scaled_total=31382.75"
+        }
+      ]
+    },
+    {
+      "id": "current_exactpos_m_sampling",
+      "status": "PASS",
+      "judgment": "Current fix5 exact-position delayed source preserves source inventory within the fix5 audit thresholds.",
+      "evidence": [
+        {
+          "path": "outputs/reports/fix5_fullstat_v2_exactpos_m50000_s260613/fix5_delayed_source_exactpos_summary.json",
+          "json_pointer": "/sampling_audit",
+          "value": {
+            "status": "PASS",
+            "parsed_pointsource_blocks": 50000,
+            "manifest_flux_relative_delta": 0.0,
+            "source_text_flux_relative_delta": 4.53631512934923e-10,
+            "matched_back_to_exact_table_fraction": 1.0,
+            "ambiguous_coordinate_key_fraction": 0.0,
+            "missed_nuclides_total_activity_fraction": 0.0001463401094264377,
+            "problems": []
+          }
+        }
+      ]
+    },
+    {
+      "id": "current_w_activation_selected_w2",
+      "status": "PASS",
+      "judgment": "Current fix5 W/collimator activation exists in the fixed source but contributes zero selected W2 delayed events in the audited Step05 selection.",
+      "evidence": [
+        {
+          "path": "outputs/reports/fix5_fullstat_v2_exactpos_m50000_s260613/fix5_groundstate_half_life_audit_summary.json",
+          "json_pointer": "/checks/w_or_collimator_new_activity_Bq",
+          "value": 0.9860798287567217
+        },
+        {
+          "path": "outputs/reports/fix5_fullstat_v2_exactpos_m50000_s260613/fix5_w_activation_selected_w2_audit.json",
+          "json_pointer": "/checks",
+          "value": {
+            "selected_events": 30,
+            "w_or_collimator_selected_events": 0,
+            "w_or_collimator_selected_rate_hz": 0,
+            "w_or_collimator_fraction_of_delayed_selected_rate": 0.0,
+            "w_or_collimator_is_dominant_component": false
+          }
+        }
+      ]
+    },
+    {
+      "id": "current_delayed_rate_convergence",
+      "status": "PASS",
+      "judgment": "The current delayed selected-rate estimate is backed by four exact-position production-position samplings meeting the PI-02 minimum convergence screen.",
+      "evidence": [
+        {
+          "path": "outputs/reports/fix5_immediate_fixes_20260623/delayed_selected_rate_convergence.json",
+          "json_pointer": "/combined",
+          "value": {
+            "independent_production_position_samplings": 4,
+            "selected_events": 103,
+            "selected_rate_cps": 0.0022127821289687215,
+            "sigma_cps": 0.00021803190178715983,
+            "relative_uncertainty": 0.09853292781642932,
+            "between_sampling_check": "PASS"
+          }
+        },
+        {
+          "path": "outputs/reports/fix5_immediate_fixes_20260623/delayed_selected_rate_convergence.json",
+          "json_pointer": "/verdict/decision",
+          "value": "DONE"
+        }
+      ]
+    },
+    {
+      "id": "current_dimension_error_screen",
+      "status": "NO_BUG",
+      "judgment": "No local evidence was found for using generated decays as seconds, using TE_s as activity, or duplicating activity multiplication in the current selected delayed cps calculation. The stored rates equal selected_events divided by TE_s for the audited runs.",
+      "evidence": [
+        {
+          "path": "outputs/reports/fix5_immediate_fixes_20260623/delayed_selected_rate_convergence.json",
+          "json_pointer": "/runs/0",
+          "value": "selected_events=30, TE_s=11649.564832, selected_rate_cps=0.0025752034889400762"
+        },
+        {
+          "path": "outputs/reports/fix5_immediate_fixes_20260623/delayed_selected_rate_convergence.json",
+          "json_pointer": "/combined",
+          "value": "selected_events=103, total_TE_s=46547.736739, selected_rate_cps=0.0022127821289687215"
+        }
+      ]
+    },
+    {
+      "id": "old_new_geo_re_as_current_authority",
+      "status": "WARN",
+      "judgment": "Old new_geo_re delayed and prompt rates are historical authority for the old chain, not current fix5 authority or pass/fail gate values.",
+      "evidence": [
+        {
+          "path": "core_md/fix5_benchmarks.json",
+          "json_pointer": "/benchmarks/new_geo_re/selection_definition",
+          "value": "UNVERIFIED. The exact window / veto / Compton-FoV / source-surface normalization behind these numbers is NOT restated in the fix5 contracts. MUST be confirmed to match the fix5 selection before any gate comparison; otherwise the comparison is apples-to-oranges."
+        },
+        {
+          "path": "outputs/reports/fix5_fullstat_v2/fix5_benchmark_alignment.json",
+          "json_pointer": "/selection_equivalence_status",
+          "value": "UNVERIFIED"
+        }
+      ]
+    }
+  ],
+  "old_new_geo_re_delayed_inventory": {
+    "total_activity_Bq_after_fix": 624.2710918319826,
+    "source_blocks_after_fix": 5968,
+    "fixed_source_contains_W183": false,
+    "fixed_source_contains_W180": false,
+    "dominant_activity_summary": {
+      "I_128_activity_Bq": 533.2757337939476,
+      "CsI_active_shield_mass_kg": 65.15479778075493,
+      "chain_specific_activity_Bq_per_kg": 8.184750040793828
+    },
+    "evidence": [
+      {
+        "path": "/home/ubuntu/codex_tes_511_sim/new_geo_re/outputs/reports/day15_complete_report/complete_day15_summary.json",
+        "json_pointer": "/delay_fix",
+        "value": {
+          "new_total_activity_Bq": 624.2710918319826,
+          "source_blocks_after_fix": 5968,
+          "fixed_source_contains_W183": false,
+          "fixed_source_contains_W180": false
+        }
+      },
+      {
+        "path": "/home/ubuntu/codex_tes_511_sim/new_geo_re/CODEX_A_SERIES_EXECUTION_REPORT_20260611.md:188",
+        "value": "Chain I-128 activity | 533.2757337939476 Bq"
+      },
+      {
+        "path": "/home/ubuntu/codex_tes_511_sim/new_geo_re/outputs/reports/day15_complete_report/activation_inventory_day15_after_groundstate_fix.csv",
+        "csv_row": 2,
+        "value": "CsI_Active_Shield_Bottom03,I-128,Activity_Bq_after_fix=49.832546179576646"
+      }
+    ]
+  },
+  "current_fix5_delayed_inventory": {
+    "fixed_total_activity_Bq": 85.44920253876245,
+    "source_mode": "sampled_equal_flux_pointsource_blocks",
+    "n_pointsource_blocks": 50000,
+    "flux_per_pointsource_Bq": 0.001708984050775249,
+    "w_or_collimator_activity_Bq": 0.9860798278743999,
+    "w_or_collimator_activity_fraction": 0.011539953556727517,
+    "dominant_activity_summary": {
+      "I_128_activity_Bq_from_groundstate_corrections_csv": 65.53339484918757,
+      "Al_28_activity_Bq_from_groundstate_corrections_csv": 6.886899620076007,
+      "Cu_64_activity_Bq_from_groundstate_corrections_csv": 4.668644949435703
+    },
+    "evidence": [
+      {
+        "path": "outputs/reports/fix5_fullstat_v2_exactpos_m50000_s260613/fix5_delayed_source_exactpos_summary.json",
+        "json_pointer": "/fixed_total_activity_Bq",
+        "value": 85.44920253876245
+      },
+      {
+        "path": "outputs/reports/fix5_fullstat_v2_exactpos_m50000_s260613/fix5_delayed_source_exactpos_summary.json",
+        "json_pointer": "/activity_slices/w_or_collimator_volume_activity_Bq",
+        "value": 0.9860798278743999
+      },
+      {
+        "path": "runs/step02_delay_fix_fix5_fullstat_v2/groundstate_activity_corrections.csv",
+        "csv_row": 2,
+        "value": "CsI_Bottom_Quadrant_03,I-128,new_groundstate_activity_Bq=7.822245023524668"
+      },
+      {
+        "path": "runs/step02_delay_fix_fix5_fullstat_v2/groundstate_activity_corrections.csv",
+        "csv_row": 23,
+        "value": "Passive_W_Bottom_Plate_detector_bay,W-187,new_groundstate_activity_Bq=0.9319387837983522"
+      }
+    ]
+  },
+  "prompt_source_surface_normalization": {
+    "old_new_geo_re": {
+      "prompt_time_s": 541.3815137522625,
+      "farfield_radius_cm_from_review_log": 35.0,
+      "evidence": [
+        {
+          "path": "/home/ubuntu/codex_tes_511_sim/new_geo_re/outputs/reports/day15_complete_report/complete_day15_summary.json",
+          "json_pointer": "/normalization/prompt_time_s",
+          "value": 541.3815137522625
+        },
+        {
+          "path": "/home/ubuntu/codex_tes_511_sim/new_geo_re/CC48_REVIEW_LOG.md:82",
+          "value": "Prompt normalization: 35 cm far-field, area πR²=3848.45 cm², gamma time = 10⁷/(4.79966·3848.45)=541.38 s"
+        }
+      ]
+    },
+    "current_fix5": {
+      "prompt_time_s": 184.2200984295893,
+      "farfield_radius_cm": 60.0,
+      "source_surface": "FarFieldAreaSource full sphere, equal-mu theta bins, global zenith, instrument tilt 45 deg",
+      "evidence": [
+        {
+          "path": "stepwise_maintenance/step05_veto_time_axis/outputs_fix5_fullstat_v2_exactpos_m50000_s260613_l1/step05_fix5_fullstat_v2_exactpos_m50000_s260613_l1_response_summary.json",
+          "json_pointer": "/normalization/prompt_time_s",
+          "value": 184.2200984295893
+        },
+        {
+          "path": "core_md/balloon511_nima_latex_drafts/source_normalization_audit_20260623.json",
+          "json_pointer": "/source_plane/atmospheric_prompt_fix5",
+          "value": {
+            "surface": "FarFieldAreaSource full sphere, equal-mu theta bins, global zenith, instrument tilt 45 deg",
+            "radius_cm": 60.0,
+            "area_cm2": 11309.733552923255
+          }
+        }
+      ]
+    }
+  }
+}

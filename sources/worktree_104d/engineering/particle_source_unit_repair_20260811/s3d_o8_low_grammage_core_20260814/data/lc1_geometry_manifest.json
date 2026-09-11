@@ -1,0 +1,529 @@
+{
+  "baseline": {
+    "det": {
+      "path": "engineering/geometry_optimization_20260704/43_geoopt_s3d_o8_fallback_20260712/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.det",
+      "sha256": "dd2c1d68cd474f8b0c7489f2cbbfc924eb69beb14d3ce360d9437c319a33d6cb"
+    },
+    "geo": {
+      "path": "engineering/geometry_optimization_20260704/43_geoopt_s3d_o8_fallback_20260712/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo",
+      "sha256": "ff4e8402df702501e0112fe377d837a74c39100317146b09e9569b7bd615c37c"
+    }
+  },
+  "engineering_boundaries": [
+    "All edits are shrink-only in the transport model.",
+    "The 12 cm MXC radius leaves 2.35 cm beyond the modeled 9.65 cm MuMetal envelope, but real service routing is absent and requires CAD review.",
+    "The Nb option requires magnetic FEM and field testing; geometry transport cannot establish magnetic adequacy.",
+    "The LC2 MXC plate keeps its lower modeled interface fixed and requires thermal/structural verification; the static geometry is not a mechanical design.",
+    "Thermal conductance, stiffness, launch vibration, fastener pads, cabling, and assembly tolerance are not represented."
+  ],
+  "mass_model": {
+    "LC1_CuNb_kg": {
+      "can_bottom": 0.6589322201538359,
+      "dr_mixing_cu": 0.05472101482246389,
+      "l0_support": 0.026019840000000006,
+      "mxc_plate": 2.432045103220617,
+      "nb_back_cap": 0.01747331842778068,
+      "nb_cylinder": 0.0861516715009163,
+      "open_rings_20": 0.032551680000000006
+    },
+    "LC1_CuNb_subset_total_kg": 3.3078948481256143,
+    "LC1_Cu_kg": {
+      "can_bottom": 0.6589322201538359,
+      "dr_mixing_cu": 0.05472101482246389,
+      "l0_support": 0.026019840000000006,
+      "mxc_plate": 2.432045103220617,
+      "nb_back_cap": 0.07655682734883569,
+      "nb_cylinder": 0.35102792860000703,
+      "open_rings_20": 0.032551680000000006
+    },
+    "LC1_Cu_subset_total_kg": 3.6318546141457597,
+    "LC2_CuNb_MXC3mm_kg": {
+      "can_bottom": 0.6589322201538359,
+      "dr_mixing_cu": 0.05472101482246389,
+      "l0_support": 0.026019840000000006,
+      "mxc_plate": 1.2160225516103085,
+      "nb_back_cap": 0.01747331842778068,
+      "nb_cylinder": 0.0861516715009163,
+      "open_rings_20": 0.032551680000000006
+    },
+    "LC2_CuNb_MXC3mm_subset_total_kg": 2.0918722965153056,
+    "current_kg": {
+      "can_bottom": 1.3178644403076718,
+      "dr_mixing_cu": 0.24523121457474562,
+      "l0_support": 0.06071296000000001,
+      "mxc_plate": 3.8000704737822137,
+      "nb_back_cap": 0.07655682734883569,
+      "nb_cylinder": 0.35102792860000703,
+      "open_rings_20": 0.06510336000000001
+    },
+    "current_subset_total_kg": 5.916567204613474,
+    "density_g_cm3": {
+      "Copper": 8.96,
+      "Nb": 8.57
+    }
+  },
+  "schema_version": 1,
+  "status": "BUILT_STATIC_ONLY__NO_TRANSPORT_OR_PROMOTION_AUTHORITY",
+  "variants": [
+    {
+      "det": {
+        "path": "engineering/particle_source_unit_repair_20260811/s3d_o8_low_grammage_core_20260814/geometry/DEMO2_DR_v3p5_S3d_O8_LC1_Cu_screening_20260814.det",
+        "sha256": "dd2c1d68cd474f8b0c7489f2cbbfc924eb69beb14d3ce360d9437c319a33d6cb"
+      },
+      "edits": [
+        {
+          "label": "MXC cold-plate radius 15 -> 12 cm",
+          "new": "ColdPlate_MXC_50mK_SD_anchor.Shape PCON 0 360 2 -0.3 0 12 0.3 0 12",
+          "old": "ColdPlate_MXC_50mK_SD_anchor.Shape PCON 0 360 2 -0.3 0 15 0.3 0 15"
+        },
+        {
+          "label": "50 mK can bottom thickness 2 -> 1 mm",
+          "new": "Cu_50mK_StillLike_Can_bottom_cap_2mm.Shape PCON 0 360 2 -0.05 0 15.3 0.05 0 15.3",
+          "old": "Cu_50mK_StillLike_Can_bottom_cap_2mm.Shape PCON 0 360 2 -0.1 0 15.3 0.1 0 15.3"
+        },
+        {
+          "label": "keep can-bottom inner interface at z=-9.7 cm",
+          "new": "Cu_50mK_StillLike_Can_bottom_cap_2mm.Position 0 0 -9.75",
+          "old": "Cu_50mK_StillLike_Can_bottom_cap_2mm.Position 0 0 -9.8"
+        },
+        {
+          "label": "mixing-chamber Cu puck r 2.2 -> 1.8 cm and t 18 -> 6 mm",
+          "new": "DR_MixingChamber_Cu.Shape PCON 0 360 2 -0.3 0 1.8 0.3 0 1.8",
+          "old": "DR_MixingChamber_Cu.Shape PCON 0 360 2 -0.9 0 2.2 0.9 0 2.2"
+        },
+        {
+          "label": "L0 Cu support thickness 3.5 -> 1.5 mm",
+          "new": "Cu_SubstrateSupport_SolidDisk_L0_deepest.Shape BRIK 0.075 2.2 2.2",
+          "old": "Cu_SubstrateSupport_SolidDisk_L0_deepest.Shape BRIK 0.175 2.2 2.2"
+        },
+        {
+          "label": "Cu_SubstrateSupport_OpenRing_L1_ZP_panel thickness 3 -> 1.5 mm",
+          "new": "Cu_SubstrateSupport_OpenRing_L1_ZP_panel.Shape BRIK 0.075 1.73 0.175",
+          "old": "Cu_SubstrateSupport_OpenRing_L1_ZP_panel.Shape BRIK 0.15 1.73 0.175"
+        },
+        {
+          "label": "Cu_SubstrateSupport_OpenRing_L1_ZM_panel thickness 3 -> 1.5 mm",
+          "new": "Cu_SubstrateSupport_OpenRing_L1_ZM_panel.Shape BRIK 0.075 1.73 0.175",
+          "old": "Cu_SubstrateSupport_OpenRing_L1_ZM_panel.Shape BRIK 0.15 1.73 0.175"
+        },
+        {
+          "label": "Cu_SubstrateSupport_OpenRing_L1_YP_panel thickness 3 -> 1.5 mm",
+          "new": "Cu_SubstrateSupport_OpenRing_L1_YP_panel.Shape BRIK 0.075 0.175 1.73",
+          "old": "Cu_SubstrateSupport_OpenRing_L1_YP_panel.Shape BRIK 0.15 0.175 1.73"
+        },
+        {
+          "label": "Cu_SubstrateSupport_OpenRing_L1_YM_panel thickness 3 -> 1.5 mm",
+          "new": "Cu_SubstrateSupport_OpenRing_L1_YM_panel.Shape BRIK 0.075 0.175 1.73",
+          "old": "Cu_SubstrateSupport_OpenRing_L1_YM_panel.Shape BRIK 0.15 0.175 1.73"
+        },
+        {
+          "label": "Cu_SubstrateSupport_OpenRing_L2_ZP_panel thickness 3 -> 1.5 mm",
+          "new": "Cu_SubstrateSupport_OpenRing_L2_ZP_panel.Shape BRIK 0.075 1.73 0.175",
+          "old": "Cu_SubstrateSupport_OpenRing_L2_ZP_panel.Shape BRIK 0.15 1.73 0.175"
+        },
+        {
+          "label": "Cu_SubstrateSupport_OpenRing_L2_ZM_panel thickness 3 -> 1.5 mm",
+          "new": "Cu_SubstrateSupport_OpenRing_L2_ZM_panel.Shape BRIK 0.075 1.73 0.175",
+          "old": "Cu_SubstrateSupport_OpenRing_L2_ZM_panel.Shape BRIK 0.15 1.73 0.175"
+        },
+        {
+          "label": "Cu_SubstrateSupport_OpenRing_L2_YP_panel thickness 3 -> 1.5 mm",
+          "new": "Cu_SubstrateSupport_OpenRing_L2_YP_panel.Shape BRIK 0.075 0.175 1.73",
+          "old": "Cu_SubstrateSupport_OpenRing_L2_YP_panel.Shape BRIK 0.15 0.175 1.73"
+        },
+        {
+          "label": "Cu_SubstrateSupport_OpenRing_L2_YM_panel thickness 3 -> 1.5 mm",
+          "new": "Cu_SubstrateSupport_OpenRing_L2_YM_panel.Shape BRIK 0.075 0.175 1.73",
+          "old": "Cu_SubstrateSupport_OpenRing_L2_YM_panel.Shape BRIK 0.15 0.175 1.73"
+        },
+        {
+          "label": "Cu_SubstrateSupport_OpenRing_L3_ZP_panel thickness 3 -> 1.5 mm",
+          "new": "Cu_SubstrateSupport_OpenRing_L3_ZP_panel.Shape BRIK 0.075 1.73 0.175",
+          "old": "Cu_SubstrateSupport_OpenRing_L3_ZP_panel.Shape BRIK 0.15 1.73 0.175"
+        },
+        {
+          "label": "Cu_SubstrateSupport_OpenRing_L3_ZM_panel thickness 3 -> 1.5 mm",
+          "new": "Cu_SubstrateSupport_OpenRing_L3_ZM_panel.Shape BRIK 0.075 1.73 0.175",
+          "old": "Cu_SubstrateSupport_OpenRing_L3_ZM_panel.Shape BRIK 0.15 1.73 0.175"
+        },
+        {
+          "label": "Cu_SubstrateSupport_OpenRing_L3_YP_panel thickness 3 -> 1.5 mm",
+          "new": "Cu_SubstrateSupport_OpenRing_L3_YP_panel.Shape BRIK 0.075 0.175 1.73",
+          "old": "Cu_SubstrateSupport_OpenRing_L3_YP_panel.Shape BRIK 0.15 0.175 1.73"
+        },
+        {
+          "label": "Cu_SubstrateSupport_OpenRing_L3_YM_panel thickness 3 -> 1.5 mm",
+          "new": "Cu_SubstrateSupport_OpenRing_L3_YM_panel.Shape BRIK 0.075 0.175 1.73",
+          "old": "Cu_SubstrateSupport_OpenRing_L3_YM_panel.Shape BRIK 0.15 0.175 1.73"
+        },
+        {
+          "label": "Cu_SubstrateSupport_OpenRing_L4_ZP_panel thickness 3 -> 1.5 mm",
+          "new": "Cu_SubstrateSupport_OpenRing_L4_ZP_panel.Shape BRIK 0.075 1.73 0.175",
+          "old": "Cu_SubstrateSupport_OpenRing_L4_ZP_panel.Shape BRIK 0.15 1.73 0.175"
+        },
+        {
+          "label": "Cu_SubstrateSupport_OpenRing_L4_ZM_panel thickness 3 -> 1.5 mm",
+          "new": "Cu_SubstrateSupport_OpenRing_L4_ZM_panel.Shape BRIK 0.075 1.73 0.175",
+          "old": "Cu_SubstrateSupport_OpenRing_L4_ZM_panel.Shape BRIK 0.15 1.73 0.175"
+        },
+        {
+          "label": "Cu_SubstrateSupport_OpenRing_L4_YP_panel thickness 3 -> 1.5 mm",
+          "new": "Cu_SubstrateSupport_OpenRing_L4_YP_panel.Shape BRIK 0.075 0.175 1.73",
+          "old": "Cu_SubstrateSupport_OpenRing_L4_YP_panel.Shape BRIK 0.15 0.175 1.73"
+        },
+        {
+          "label": "Cu_SubstrateSupport_OpenRing_L4_YM_panel thickness 3 -> 1.5 mm",
+          "new": "Cu_SubstrateSupport_OpenRing_L4_YM_panel.Shape BRIK 0.075 0.175 1.73",
+          "old": "Cu_SubstrateSupport_OpenRing_L4_YM_panel.Shape BRIK 0.15 0.175 1.73"
+        },
+        {
+          "label": "Cu_SubstrateSupport_OpenRing_L5_ZP_panel thickness 3 -> 1.5 mm",
+          "new": "Cu_SubstrateSupport_OpenRing_L5_ZP_panel.Shape BRIK 0.075 1.73 0.175",
+          "old": "Cu_SubstrateSupport_OpenRing_L5_ZP_panel.Shape BRIK 0.15 1.73 0.175"
+        },
+        {
+          "label": "Cu_SubstrateSupport_OpenRing_L5_ZM_panel thickness 3 -> 1.5 mm",
+          "new": "Cu_SubstrateSupport_OpenRing_L5_ZM_panel.Shape BRIK 0.075 1.73 0.175",
+          "old": "Cu_SubstrateSupport_OpenRing_L5_ZM_panel.Shape BRIK 0.15 1.73 0.175"
+        },
+        {
+          "label": "Cu_SubstrateSupport_OpenRing_L5_YP_panel thickness 3 -> 1.5 mm",
+          "new": "Cu_SubstrateSupport_OpenRing_L5_YP_panel.Shape BRIK 0.075 0.175 1.73",
+          "old": "Cu_SubstrateSupport_OpenRing_L5_YP_panel.Shape BRIK 0.15 0.175 1.73"
+        },
+        {
+          "label": "Cu_SubstrateSupport_OpenRing_L5_YM_panel thickness 3 -> 1.5 mm",
+          "new": "Cu_SubstrateSupport_OpenRing_L5_YM_panel.Shape BRIK 0.075 0.175 1.73",
+          "old": "Cu_SubstrateSupport_OpenRing_L5_YM_panel.Shape BRIK 0.15 0.175 1.73"
+        }
+      ],
+      "geo": {
+        "path": "engineering/particle_source_unit_repair_20260811/s3d_o8_low_grammage_core_20260814/geometry/DEMO2_DR_v3p5_S3d_O8_LC1_Cu_screening_20260814.geo",
+        "sha256": "02e48581731142702cdf5b9dfd55361bccc63e1e9012ecd81edfd68f9d6c2094"
+      },
+      "key": "LC1_Cu",
+      "name": "DEMO2_DR_v3p5_S3d_O8_LC1_Cu_screening_20260814",
+      "setup": {
+        "path": "engineering/particle_source_unit_repair_20260811/s3d_o8_low_grammage_core_20260814/geometry/DEMO2_DR_v3p5_S3d_O8_LC1_Cu_screening_20260814.geo.setup",
+        "sha256": "0709ebf64b4b6aaa790b535d8b5de9d97a39e8b14b651549dfa6cdf1217ada19"
+      },
+      "thin_mxc": false,
+      "thin_nb": false
+    },
+    {
+      "det": {
+        "path": "engineering/particle_source_unit_repair_20260811/s3d_o8_low_grammage_core_20260814/geometry/DEMO2_DR_v3p5_S3d_O8_LC1_CuNb_screening_20260814.det",
+        "sha256": "dd2c1d68cd474f8b0c7489f2cbbfc924eb69beb14d3ce360d9437c319a33d6cb"
+      },
+      "edits": [
+        {
+          "label": "MXC cold-plate radius 15 -> 12 cm",
+          "new": "ColdPlate_MXC_50mK_SD_anchor.Shape PCON 0 360 2 -0.3 0 12 0.3 0 12",
+          "old": "ColdPlate_MXC_50mK_SD_anchor.Shape PCON 0 360 2 -0.3 0 15 0.3 0 15"
+        },
+        {
+          "label": "50 mK can bottom thickness 2 -> 1 mm",
+          "new": "Cu_50mK_StillLike_Can_bottom_cap_2mm.Shape PCON 0 360 2 -0.05 0 15.3 0.05 0 15.3",
+          "old": "Cu_50mK_StillLike_Can_bottom_cap_2mm.Shape PCON 0 360 2 -0.1 0 15.3 0.1 0 15.3"
+        },
+        {
+          "label": "keep can-bottom inner interface at z=-9.7 cm",
+          "new": "Cu_50mK_StillLike_Can_bottom_cap_2mm.Position 0 0 -9.75",
+          "old": "Cu_50mK_StillLike_Can_bottom_cap_2mm.Position 0 0 -9.8"
+        },
+        {
+          "label": "mixing-chamber Cu puck r 2.2 -> 1.8 cm and t 18 -> 6 mm",
+          "new": "DR_MixingChamber_Cu.Shape PCON 0 360 2 -0.3 0 1.8 0.3 0 1.8",
+          "old": "DR_MixingChamber_Cu.Shape PCON 0 360 2 -0.9 0 2.2 0.9 0 2.2"
+        },
+        {
+          "label": "L0 Cu support thickness 3.5 -> 1.5 mm",
+          "new": "Cu_SubstrateSupport_SolidDisk_L0_deepest.Shape BRIK 0.075 2.2 2.2",
+          "old": "Cu_SubstrateSupport_SolidDisk_L0_deepest.Shape BRIK 0.175 2.2 2.2"
+        },
+        {
+          "label": "Cu_SubstrateSupport_OpenRing_L1_ZP_panel thickness 3 -> 1.5 mm",
+          "new": "Cu_SubstrateSupport_OpenRing_L1_ZP_panel.Shape BRIK 0.075 1.73 0.175",
+          "old": "Cu_SubstrateSupport_OpenRing_L1_ZP_panel.Shape BRIK 0.15 1.73 0.175"
+        },
+        {
+          "label": "Cu_SubstrateSupport_OpenRing_L1_ZM_panel thickness 3 -> 1.5 mm",
+          "new": "Cu_SubstrateSupport_OpenRing_L1_ZM_panel.Shape BRIK 0.075 1.73 0.175",
+          "old": "Cu_SubstrateSupport_OpenRing_L1_ZM_panel.Shape BRIK 0.15 1.73 0.175"
+        },
+        {
+          "label": "Cu_SubstrateSupport_OpenRing_L1_YP_panel thickness 3 -> 1.5 mm",
+          "new": "Cu_SubstrateSupport_OpenRing_L1_YP_panel.Shape BRIK 0.075 0.175 1.73",
+          "old": "Cu_SubstrateSupport_OpenRing_L1_YP_panel.Shape BRIK 0.15 0.175 1.73"
+        },
+        {
+          "label": "Cu_SubstrateSupport_OpenRing_L1_YM_panel thickness 3 -> 1.5 mm",
+          "new": "Cu_SubstrateSupport_OpenRing_L1_YM_panel.Shape BRIK 0.075 0.175 1.73",
+          "old": "Cu_SubstrateSupport_OpenRing_L1_YM_panel.Shape BRIK 0.15 0.175 1.73"
+        },
+        {
+          "label": "Cu_SubstrateSupport_OpenRing_L2_ZP_panel thickness 3 -> 1.5 mm",
+          "new": "Cu_SubstrateSupport_OpenRing_L2_ZP_panel.Shape BRIK 0.075 1.73 0.175",
+          "old": "Cu_SubstrateSupport_OpenRing_L2_ZP_panel.Shape BRIK 0.15 1.73 0.175"
+        },
+        {
+          "label": "Cu_SubstrateSupport_OpenRing_L2_ZM_panel thickness 3 -> 1.5 mm",
+          "new": "Cu_SubstrateSupport_OpenRing_L2_ZM_panel.Shape BRIK 0.075 1.73 0.175",
+          "old": "Cu_SubstrateSupport_OpenRing_L2_ZM_panel.Shape BRIK 0.15 1.73 0.175"
+        },
+        {
+          "label": "Cu_SubstrateSupport_OpenRing_L2_YP_panel thickness 3 -> 1.5 mm",
+          "new": "Cu_SubstrateSupport_OpenRing_L2_YP_panel.Shape BRIK 0.075 0.175 1.73",
+          "old": "Cu_SubstrateSupport_OpenRing_L2_YP_panel.Shape BRIK 0.15 0.175 1.73"
+        },
+        {
+          "label": "Cu_SubstrateSupport_OpenRing_L2_YM_panel thickness 3 -> 1.5 mm",
+          "new": "Cu_SubstrateSupport_OpenRing_L2_YM_panel.Shape BRIK 0.075 0.175 1.73",
+          "old": "Cu_SubstrateSupport_OpenRing_L2_YM_panel.Shape BRIK 0.15 0.175 1.73"
+        },
+        {
+          "label": "Cu_SubstrateSupport_OpenRing_L3_ZP_panel thickness 3 -> 1.5 mm",
+          "new": "Cu_SubstrateSupport_OpenRing_L3_ZP_panel.Shape BRIK 0.075 1.73 0.175",
+          "old": "Cu_SubstrateSupport_OpenRing_L3_ZP_panel.Shape BRIK 0.15 1.73 0.175"
+        },
+        {
+          "label": "Cu_SubstrateSupport_OpenRing_L3_ZM_panel thickness 3 -> 1.5 mm",
+          "new": "Cu_SubstrateSupport_OpenRing_L3_ZM_panel.Shape BRIK 0.075 1.73 0.175",
+          "old": "Cu_SubstrateSupport_OpenRing_L3_ZM_panel.Shape BRIK 0.15 1.73 0.175"
+        },
+        {
+          "label": "Cu_SubstrateSupport_OpenRing_L3_YP_panel thickness 3 -> 1.5 mm",
+          "new": "Cu_SubstrateSupport_OpenRing_L3_YP_panel.Shape BRIK 0.075 0.175 1.73",
+          "old": "Cu_SubstrateSupport_OpenRing_L3_YP_panel.Shape BRIK 0.15 0.175 1.73"
+        },
+        {
+          "label": "Cu_SubstrateSupport_OpenRing_L3_YM_panel thickness 3 -> 1.5 mm",
+          "new": "Cu_SubstrateSupport_OpenRing_L3_YM_panel.Shape BRIK 0.075 0.175 1.73",
+          "old": "Cu_SubstrateSupport_OpenRing_L3_YM_panel.Shape BRIK 0.15 0.175 1.73"
+        },
+        {
+          "label": "Cu_SubstrateSupport_OpenRing_L4_ZP_panel thickness 3 -> 1.5 mm",
+          "new": "Cu_SubstrateSupport_OpenRing_L4_ZP_panel.Shape BRIK 0.075 1.73 0.175",
+          "old": "Cu_SubstrateSupport_OpenRing_L4_ZP_panel.Shape BRIK 0.15 1.73 0.175"
+        },
+        {
+          "label": "Cu_SubstrateSupport_OpenRing_L4_ZM_panel thickness 3 -> 1.5 mm",
+          "new": "Cu_SubstrateSupport_OpenRing_L4_ZM_panel.Shape BRIK 0.075 1.73 0.175",
+          "old": "Cu_SubstrateSupport_OpenRing_L4_ZM_panel.Shape BRIK 0.15 1.73 0.175"
+        },
+        {
+          "label": "Cu_SubstrateSupport_OpenRing_L4_YP_panel thickness 3 -> 1.5 mm",
+          "new": "Cu_SubstrateSupport_OpenRing_L4_YP_panel.Shape BRIK 0.075 0.175 1.73",
+          "old": "Cu_SubstrateSupport_OpenRing_L4_YP_panel.Shape BRIK 0.15 0.175 1.73"
+        },
+        {
+          "label": "Cu_SubstrateSupport_OpenRing_L4_YM_panel thickness 3 -> 1.5 mm",
+          "new": "Cu_SubstrateSupport_OpenRing_L4_YM_panel.Shape BRIK 0.075 0.175 1.73",
+          "old": "Cu_SubstrateSupport_OpenRing_L4_YM_panel.Shape BRIK 0.15 0.175 1.73"
+        },
+        {
+          "label": "Cu_SubstrateSupport_OpenRing_L5_ZP_panel thickness 3 -> 1.5 mm",
+          "new": "Cu_SubstrateSupport_OpenRing_L5_ZP_panel.Shape BRIK 0.075 1.73 0.175",
+          "old": "Cu_SubstrateSupport_OpenRing_L5_ZP_panel.Shape BRIK 0.15 1.73 0.175"
+        },
+        {
+          "label": "Cu_SubstrateSupport_OpenRing_L5_ZM_panel thickness 3 -> 1.5 mm",
+          "new": "Cu_SubstrateSupport_OpenRing_L5_ZM_panel.Shape BRIK 0.075 1.73 0.175",
+          "old": "Cu_SubstrateSupport_OpenRing_L5_ZM_panel.Shape BRIK 0.15 1.73 0.175"
+        },
+        {
+          "label": "Cu_SubstrateSupport_OpenRing_L5_YP_panel thickness 3 -> 1.5 mm",
+          "new": "Cu_SubstrateSupport_OpenRing_L5_YP_panel.Shape BRIK 0.075 0.175 1.73",
+          "old": "Cu_SubstrateSupport_OpenRing_L5_YP_panel.Shape BRIK 0.15 0.175 1.73"
+        },
+        {
+          "label": "Cu_SubstrateSupport_OpenRing_L5_YM_panel thickness 3 -> 1.5 mm",
+          "new": "Cu_SubstrateSupport_OpenRing_L5_YM_panel.Shape BRIK 0.075 0.175 1.73",
+          "old": "Cu_SubstrateSupport_OpenRing_L5_YM_panel.Shape BRIK 0.15 0.175 1.73"
+        },
+        {
+          "label": "Nb inner cylinder thickness 2 -> 0.5 mm at fixed inner radius",
+          "new": "Nb_MagShield_Inner_Cylinder_2mm.Shape PCON 0 360 2 -3.85 4 4.05 4.1 4 4.05",
+          "old": "Nb_MagShield_Inner_Cylinder_2mm.Shape PCON 0 360 2 -3.85 4 4.2 4.1 4 4.2"
+        },
+        {
+          "label": "Nb back cap thickness 2 -> 0.5 mm",
+          "new": "Nb_MagShield_Inner_Back_ColdFingerCap_2mm.Shape PCON 0 360 2 4.1 1.85 4.05 4.15 1.85 4.05",
+          "old": "Nb_MagShield_Inner_Back_ColdFingerCap_2mm.Shape PCON 0 360 2 4.1 1.85 4.2 4.3 1.85 4.2"
+        }
+      ],
+      "geo": {
+        "path": "engineering/particle_source_unit_repair_20260811/s3d_o8_low_grammage_core_20260814/geometry/DEMO2_DR_v3p5_S3d_O8_LC1_CuNb_screening_20260814.geo",
+        "sha256": "f455af0529595e25f54b33ff07d4693815ff4580a2f90ddceb967381dfa09e10"
+      },
+      "key": "LC1_CuNb",
+      "name": "DEMO2_DR_v3p5_S3d_O8_LC1_CuNb_screening_20260814",
+      "setup": {
+        "path": "engineering/particle_source_unit_repair_20260811/s3d_o8_low_grammage_core_20260814/geometry/DEMO2_DR_v3p5_S3d_O8_LC1_CuNb_screening_20260814.geo.setup",
+        "sha256": "4283791b5e7597eea5258e1472fed0a1d81520a3dedc78b5f7f7868169ba1e68"
+      },
+      "thin_mxc": false,
+      "thin_nb": true
+    },
+    {
+      "det": {
+        "path": "engineering/particle_source_unit_repair_20260811/s3d_o8_low_grammage_core_20260814/geometry/DEMO2_DR_v3p5_S3d_O8_LC2_CuNb_MXC3mm_screening_20260814.det",
+        "sha256": "dd2c1d68cd474f8b0c7489f2cbbfc924eb69beb14d3ce360d9437c319a33d6cb"
+      },
+      "edits": [
+        {
+          "label": "MXC cold-plate radius 15 -> 12 cm and thickness 6 -> 3 mm",
+          "new": "ColdPlate_MXC_50mK_SD_anchor.Shape PCON 0 360 2 -0.15 0 12 0.15 0 12",
+          "old": "ColdPlate_MXC_50mK_SD_anchor.Shape PCON 0 360 2 -0.3 0 15 0.3 0 15"
+        },
+        {
+          "label": "keep MXC cold-plate lower interface at z=-0.3 cm",
+          "new": "ColdPlate_MXC_50mK_SD_anchor.Position 0 0 -0.15",
+          "old": "ColdPlate_MXC_50mK_SD_anchor.Position 0 0 0"
+        },
+        {
+          "label": "50 mK can bottom thickness 2 -> 1 mm",
+          "new": "Cu_50mK_StillLike_Can_bottom_cap_2mm.Shape PCON 0 360 2 -0.05 0 15.3 0.05 0 15.3",
+          "old": "Cu_50mK_StillLike_Can_bottom_cap_2mm.Shape PCON 0 360 2 -0.1 0 15.3 0.1 0 15.3"
+        },
+        {
+          "label": "keep can-bottom inner interface at z=-9.7 cm",
+          "new": "Cu_50mK_StillLike_Can_bottom_cap_2mm.Position 0 0 -9.75",
+          "old": "Cu_50mK_StillLike_Can_bottom_cap_2mm.Position 0 0 -9.8"
+        },
+        {
+          "label": "mixing-chamber Cu puck r 2.2 -> 1.8 cm and t 18 -> 6 mm",
+          "new": "DR_MixingChamber_Cu.Shape PCON 0 360 2 -0.3 0 1.8 0.3 0 1.8",
+          "old": "DR_MixingChamber_Cu.Shape PCON 0 360 2 -0.9 0 2.2 0.9 0 2.2"
+        },
+        {
+          "label": "L0 Cu support thickness 3.5 -> 1.5 mm",
+          "new": "Cu_SubstrateSupport_SolidDisk_L0_deepest.Shape BRIK 0.075 2.2 2.2",
+          "old": "Cu_SubstrateSupport_SolidDisk_L0_deepest.Shape BRIK 0.175 2.2 2.2"
+        },
+        {
+          "label": "Cu_SubstrateSupport_OpenRing_L1_ZP_panel thickness 3 -> 1.5 mm",
+          "new": "Cu_SubstrateSupport_OpenRing_L1_ZP_panel.Shape BRIK 0.075 1.73 0.175",
+          "old": "Cu_SubstrateSupport_OpenRing_L1_ZP_panel.Shape BRIK 0.15 1.73 0.175"
+        },
+        {
+          "label": "Cu_SubstrateSupport_OpenRing_L1_ZM_panel thickness 3 -> 1.5 mm",
+          "new": "Cu_SubstrateSupport_OpenRing_L1_ZM_panel.Shape BRIK 0.075 1.73 0.175",
+          "old": "Cu_SubstrateSupport_OpenRing_L1_ZM_panel.Shape BRIK 0.15 1.73 0.175"
+        },
+        {
+          "label": "Cu_SubstrateSupport_OpenRing_L1_YP_panel thickness 3 -> 1.5 mm",
+          "new": "Cu_SubstrateSupport_OpenRing_L1_YP_panel.Shape BRIK 0.075 0.175 1.73",
+          "old": "Cu_SubstrateSupport_OpenRing_L1_YP_panel.Shape BRIK 0.15 0.175 1.73"
+        },
+        {
+          "label": "Cu_SubstrateSupport_OpenRing_L1_YM_panel thickness 3 -> 1.5 mm",
+          "new": "Cu_SubstrateSupport_OpenRing_L1_YM_panel.Shape BRIK 0.075 0.175 1.73",
+          "old": "Cu_SubstrateSupport_OpenRing_L1_YM_panel.Shape BRIK 0.15 0.175 1.73"
+        },
+        {
+          "label": "Cu_SubstrateSupport_OpenRing_L2_ZP_panel thickness 3 -> 1.5 mm",
+          "new": "Cu_SubstrateSupport_OpenRing_L2_ZP_panel.Shape BRIK 0.075 1.73 0.175",
+          "old": "Cu_SubstrateSupport_OpenRing_L2_ZP_panel.Shape BRIK 0.15 1.73 0.175"
+        },
+        {
+          "label": "Cu_SubstrateSupport_OpenRing_L2_ZM_panel thickness 3 -> 1.5 mm",
+          "new": "Cu_SubstrateSupport_OpenRing_L2_ZM_panel.Shape BRIK 0.075 1.73 0.175",
+          "old": "Cu_SubstrateSupport_OpenRing_L2_ZM_panel.Shape BRIK 0.15 1.73 0.175"
+        },
+        {
+          "label": "Cu_SubstrateSupport_OpenRing_L2_YP_panel thickness 3 -> 1.5 mm",
+          "new": "Cu_SubstrateSupport_OpenRing_L2_YP_panel.Shape BRIK 0.075 0.175 1.73",
+          "old": "Cu_SubstrateSupport_OpenRing_L2_YP_panel.Shape BRIK 0.15 0.175 1.73"
+        },
+        {
+          "label": "Cu_SubstrateSupport_OpenRing_L2_YM_panel thickness 3 -> 1.5 mm",
+          "new": "Cu_SubstrateSupport_OpenRing_L2_YM_panel.Shape BRIK 0.075 0.175 1.73",
+          "old": "Cu_SubstrateSupport_OpenRing_L2_YM_panel.Shape BRIK 0.15 0.175 1.73"
+        },
+        {
+          "label": "Cu_SubstrateSupport_OpenRing_L3_ZP_panel thickness 3 -> 1.5 mm",
+          "new": "Cu_SubstrateSupport_OpenRing_L3_ZP_panel.Shape BRIK 0.075 1.73 0.175",
+          "old": "Cu_SubstrateSupport_OpenRing_L3_ZP_panel.Shape BRIK 0.15 1.73 0.175"
+        },
+        {
+          "label": "Cu_SubstrateSupport_OpenRing_L3_ZM_panel thickness 3 -> 1.5 mm",
+          "new": "Cu_SubstrateSupport_OpenRing_L3_ZM_panel.Shape BRIK 0.075 1.73 0.175",
+          "old": "Cu_SubstrateSupport_OpenRing_L3_ZM_panel.Shape BRIK 0.15 1.73 0.175"
+        },
+        {
+          "label": "Cu_SubstrateSupport_OpenRing_L3_YP_panel thickness 3 -> 1.5 mm",
+          "new": "Cu_SubstrateSupport_OpenRing_L3_YP_panel.Shape BRIK 0.075 0.175 1.73",
+          "old": "Cu_SubstrateSupport_OpenRing_L3_YP_panel.Shape BRIK 0.15 0.175 1.73"
+        },
+        {
+          "label": "Cu_SubstrateSupport_OpenRing_L3_YM_panel thickness 3 -> 1.5 mm",
+          "new": "Cu_SubstrateSupport_OpenRing_L3_YM_panel.Shape BRIK 0.075 0.175 1.73",
+          "old": "Cu_SubstrateSupport_OpenRing_L3_YM_panel.Shape BRIK 0.15 0.175 1.73"
+        },
+        {
+          "label": "Cu_SubstrateSupport_OpenRing_L4_ZP_panel thickness 3 -> 1.5 mm",
+          "new": "Cu_SubstrateSupport_OpenRing_L4_ZP_panel.Shape BRIK 0.075 1.73 0.175",
+          "old": "Cu_SubstrateSupport_OpenRing_L4_ZP_panel.Shape BRIK 0.15 1.73 0.175"
+        },
+        {
+          "label": "Cu_SubstrateSupport_OpenRing_L4_ZM_panel thickness 3 -> 1.5 mm",
+          "new": "Cu_SubstrateSupport_OpenRing_L4_ZM_panel.Shape BRIK 0.075 1.73 0.175",
+          "old": "Cu_SubstrateSupport_OpenRing_L4_ZM_panel.Shape BRIK 0.15 1.73 0.175"
+        },
+        {
+          "label": "Cu_SubstrateSupport_OpenRing_L4_YP_panel thickness 3 -> 1.5 mm",
+          "new": "Cu_SubstrateSupport_OpenRing_L4_YP_panel.Shape BRIK 0.075 0.175 1.73",
+          "old": "Cu_SubstrateSupport_OpenRing_L4_YP_panel.Shape BRIK 0.15 0.175 1.73"
+        },
+        {
+          "label": "Cu_SubstrateSupport_OpenRing_L4_YM_panel thickness 3 -> 1.5 mm",
+          "new": "Cu_SubstrateSupport_OpenRing_L4_YM_panel.Shape BRIK 0.075 0.175 1.73",
+          "old": "Cu_SubstrateSupport_OpenRing_L4_YM_panel.Shape BRIK 0.15 0.175 1.73"
+        },
+        {
+          "label": "Cu_SubstrateSupport_OpenRing_L5_ZP_panel thickness 3 -> 1.5 mm",
+          "new": "Cu_SubstrateSupport_OpenRing_L5_ZP_panel.Shape BRIK 0.075 1.73 0.175",
+          "old": "Cu_SubstrateSupport_OpenRing_L5_ZP_panel.Shape BRIK 0.15 1.73 0.175"
+        },
+        {
+          "label": "Cu_SubstrateSupport_OpenRing_L5_ZM_panel thickness 3 -> 1.5 mm",
+          "new": "Cu_SubstrateSupport_OpenRing_L5_ZM_panel.Shape BRIK 0.075 1.73 0.175",
+          "old": "Cu_SubstrateSupport_OpenRing_L5_ZM_panel.Shape BRIK 0.15 1.73 0.175"
+        },
+        {
+          "label": "Cu_SubstrateSupport_OpenRing_L5_YP_panel thickness 3 -> 1.5 mm",
+          "new": "Cu_SubstrateSupport_OpenRing_L5_YP_panel.Shape BRIK 0.075 0.175 1.73",
+          "old": "Cu_SubstrateSupport_OpenRing_L5_YP_panel.Shape BRIK 0.15 0.175 1.73"
+        },
+        {
+          "label": "Cu_SubstrateSupport_OpenRing_L5_YM_panel thickness 3 -> 1.5 mm",
+          "new": "Cu_SubstrateSupport_OpenRing_L5_YM_panel.Shape BRIK 0.075 0.175 1.73",
+          "old": "Cu_SubstrateSupport_OpenRing_L5_YM_panel.Shape BRIK 0.15 0.175 1.73"
+        },
+        {
+          "label": "Nb inner cylinder thickness 2 -> 0.5 mm at fixed inner radius",
+          "new": "Nb_MagShield_Inner_Cylinder_2mm.Shape PCON 0 360 2 -3.85 4 4.05 4.1 4 4.05",
+          "old": "Nb_MagShield_Inner_Cylinder_2mm.Shape PCON 0 360 2 -3.85 4 4.2 4.1 4 4.2"
+        },
+        {
+          "label": "Nb back cap thickness 2 -> 0.5 mm",
+          "new": "Nb_MagShield_Inner_Back_ColdFingerCap_2mm.Shape PCON 0 360 2 4.1 1.85 4.05 4.15 1.85 4.05",
+          "old": "Nb_MagShield_Inner_Back_ColdFingerCap_2mm.Shape PCON 0 360 2 4.1 1.85 4.2 4.3 1.85 4.2"
+        }
+      ],
+      "geo": {
+        "path": "engineering/particle_source_unit_repair_20260811/s3d_o8_low_grammage_core_20260814/geometry/DEMO2_DR_v3p5_S3d_O8_LC2_CuNb_MXC3mm_screening_20260814.geo",
+        "sha256": "9783d93c964df3ddf90bc0b7aae2d431b4e068d327d284ffde6984bd7338045a"
+      },
+      "key": "LC2_CuNb_MXC3mm",
+      "name": "DEMO2_DR_v3p5_S3d_O8_LC2_CuNb_MXC3mm_screening_20260814",
+      "setup": {
+        "path": "engineering/particle_source_unit_repair_20260811/s3d_o8_low_grammage_core_20260814/geometry/DEMO2_DR_v3p5_S3d_O8_LC2_CuNb_MXC3mm_screening_20260814.geo.setup",
+        "sha256": "d919aeaf9df9951c179cba6d6fe785deb8ca1016946346d5fb32cddfa53eb1fe"
+      },
+      "thin_mxc": true,
+      "thin_nb": true
+    }
+  ]
+}

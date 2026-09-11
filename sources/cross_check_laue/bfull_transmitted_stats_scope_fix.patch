@@ -1,0 +1,68 @@
+--- a/geant4_app/src/laue_multiring_bfull_demo.cc
++++ b/geant4_app/src/laue_multiring_bfull_demo.cc
+@@ -873,6 +873,11 @@
+     if (track.GetParentID() == 0) {
+       sourceTag = "laue_bfull_primary_or_transmitted";
+       ++nPrimaryFocalCrossings_;
++      transmitted_ << eventId << "," << track.GetKineticEnergy() / keV << "," << std::setprecision(10)
++                   << hit.x() / mm << "," << hit.y() / mm << "," << hit.z() / mm << ","
++                   << dir.x() << "," << dir.y() << "," << dir.z()
++                   << ",1.0,geant4_laue_bfull_focal_primary_or_transmitted,gamma,22,"
++                   << track.GetTrackID() << ",0\n";
+     } else if (creatorName == "BFullLaueBraggProcess") {
+       sourceTag = "laue_bfull_diffracted";
+       ++nLaueFocalCrossings_;
+@@ -930,19 +935,28 @@
+     summary << "  \"only_tile_id\": " << opt_.onlyTileId << ",\n";
+     summary << "  \"n_primaries\": " << opt_.nEvents << ",\n";
+     summary << "  \"custom_laue_only_branch_counters\": true,\n";
++    summary << "  \"custom_laue_branch_scope\": \"DIFFRACT is the only sampled custom Laue branch; ABSORB/TRANSMIT probabilities are backend diagnostics while standard Geant4 EM processes compete independently\",\n";
+     summary << "  \"standard_em_losses_are_not_written_to_optics_history\": true,\n";
++    summary << "  \"transmitted_space_source\": \"actual primary gamma focal-plane crossings recorded by BFullFocalPlaneSteppingAction\",\n";
+     summary << "  \"n_rings\": " << rings_.size() << ",\n";
+     summary << "  \"n_laue_interactions\": " << nDiff_ << ",\n";
+     summary << "  \"laue_interaction_fraction\": " << (n ? nDiff_ / n : 0.0) << ",\n";
+     summary << "  \"n_diffracted\": " << nDiff_ << ",\n";
++    summary << "  \"n_custom_laue_diffracted\": " << nDiff_ << ",\n";
++    summary << "  \"n_custom_laue_absorbed\": " << nAbs_ << ",\n";
++    summary << "  \"n_custom_laue_transmitted\": " << nTrans_ << ",\n";
+     summary << "  \"n_absorbed\": " << nAbs_ << ",\n";
+     summary << "  \"n_transmitted\": " << nTrans_ << ",\n";
++    summary << "  \"n_absorbed_field_scope\": \"custom Laue branch only; not total Geant4 EM absorption\",\n";
++    summary << "  \"n_transmitted_field_scope\": \"custom Laue branch only; use primary_or_transmitted_focal_crossings/transmitted_space.csv for tracked transmitted primaries\",\n";
+     summary << "  \"diffraction_fraction\": " << (n ? nDiff_ / n : 0.0) << ",\n";
+     summary << "  \"absorption_fraction\": " << (n ? nAbs_ / n : 0.0) << ",\n";
+     summary << "  \"transmission_fraction\": " << (n ? nTrans_ / n : 0.0) << ",\n";
+     summary << "  \"non_focal_event_estimate\": " << (opt_.nEvents - nFocalCrossings_) << ",\n";
++    summary << "  \"estimated_standard_em_or_nonfocal_losses\": " << (opt_.nEvents - nFocalCrossings_) << ",\n";
+     summary << "  \"focal_crossings\": " << nFocalCrossings_ << ",\n";
+     summary << "  \"primary_or_transmitted_focal_crossings\": " << nPrimaryFocalCrossings_ << ",\n";
++    summary << "  \"transmitted_space_rows\": " << nPrimaryFocalCrossings_ << ",\n";
+     summary << "  \"laue_diffracted_focal_crossings\": " << nLaueFocalCrossings_ << ",\n";
+     summary << "  \"other_gamma_focal_crossings\": " << nOtherFocalCrossings_ << ",\n";
+     summary << "  \"projected_interaction_spot_d90_cm\": " << ContainmentDiameterCm(detectorHits_) << ",\n";
+@@ -1007,7 +1021,7 @@
+ 
+   void WritePerRingSummary() const {
+     std::ofstream csv((opt_.outDir + "/per_ring_summary.csv").c_str());
+-    csv << "ring_id,design_energy_keV,radius_mm,n_primaries,n_diffracted,n_absorbed,n_transmitted,diffraction_fraction,mean_p_diff,mean_p_abs,mean_p_trans,rocking_curve_source,rocking_curve_path\n";
++    csv << "ring_id,design_energy_keV,radius_mm,n_laue_process_interactions,n_diffracted,n_custom_laue_absorbed,n_custom_laue_transmitted,laue_process_diffraction_fraction,mean_p_diff,mean_p_abs,mean_p_trans,rocking_curve_source,rocking_curve_path\n";
+     std::ofstream json((opt_.outDir + "/per_ring_summary.json").c_str());
+     json << "[\n";
+     for (std::size_t i = 0; i < rings_.size(); ++i) {
+@@ -1023,11 +1037,11 @@
+       json << "  {\"ring_id\": " << ring.ringId
+            << ", \"design_energy_keV\": " << ring.designEnergyKeV
+            << ", \"radius_mm\": " << ring.radiusMm
+-           << ", \"n_primaries\": " << st.n
++           << ", \"n_laue_process_interactions\": " << st.n
+            << ", \"n_diffracted\": " << st.diff
+-           << ", \"n_absorbed\": " << st.abs
+-           << ", \"n_transmitted\": " << st.trans
+-           << ", \"diffraction_fraction\": " << (n ? st.diff / n : 0.0)
++           << ", \"n_custom_laue_absorbed\": " << st.abs
++           << ", \"n_custom_laue_transmitted\": " << st.trans
++           << ", \"laue_process_diffraction_fraction\": " << (n ? st.diff / n : 0.0)
+            << ", \"mean_p_diff\": " << (n ? st.sumPDiff / n : 0.0)
+            << ", \"mean_p_abs\": " << (n ? st.sumPAbs / n : 0.0)
+            << ", \"mean_p_trans\": " << (n ? st.sumPTrans / n : 0.0)

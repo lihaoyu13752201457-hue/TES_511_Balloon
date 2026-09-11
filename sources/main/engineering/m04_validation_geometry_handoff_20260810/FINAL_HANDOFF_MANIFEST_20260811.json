@@ -1,0 +1,187 @@
+{
+  "schema": "m04-validation-geometry-handoff-final-manifest-v1",
+  "generated_at_utc": "2026-08-10T17:15:19Z",
+  "status": "EXECUTED_WITH_USER_MODULAR_OVERRIDE__PARMA511_LINE_MODULE_PASS__OVERALL_NOT_PUBLICATION_AUTHORITY",
+  "scope": {
+    "user_override": "Finite-M validation uses retained data only. Only the PARMA atmospheric-annihilation 510.99895-keV mono-line may be newly transported. All other modules are reused offline.",
+    "wp1_new_transport": false,
+    "new_transport_scope": "PARMA atmospheric-annihilation gamma line only",
+    "continuum_rerun": false,
+    "prompt_rerun": false,
+    "delayed_or_activation_rerun": false,
+    "signal_rerun": false,
+    "other_particle_rerun": false,
+    "geometry_ab_rerun": false,
+    "full_chain_rerun": false,
+    "m04_modified_or_recompiled": false,
+    "m05_created": false
+  },
+  "wp0_review": {
+    "status": "WP0_AUDIT_COMPLETE_WITH_EXPLICIT_BLOCKERS",
+    "review_manifest": {
+      "path": "engineering/m04_validation_geometry_handoff_20260810/00_review/review_manifest.json",
+      "sha256": "e46f2f59ecb569494b430dd07e2f5b6cbf6dc399244e2bd169fb8498690fb3a8"
+    },
+    "protected_hash_list": {
+      "path": "engineering/m04_validation_geometry_handoff_20260810/00_review/protected_file_hashes.sha256",
+      "sha256": "81af1b574f0e70154c9ecaa0065ad3a8fea3ada522675a7adb6087c40d7ce0d6",
+      "verified": "PASS_19_OF_19"
+    }
+  },
+  "wp1_m_sampling": {
+    "status": "CONDITIONAL_OFFLINE_FINITE_M_VARIANCE_ESTIMATE__NOT_HANDOFF_TRANSPORT_PASS",
+    "output_manifest": {
+      "path": "engineering/m04_validation_geometry_handoff_20260810/01_m_sampling_validation_20260810/data/output_manifest.json",
+      "sha256": "e1cd4ecc032deae5764d76e61258fcbd0d287bf2a11bca2c8bd6b919cb66da25",
+      "verified": "PASS_15_OF_15"
+    },
+    "conclusion": {
+      "path": "engineering/m04_validation_geometry_handoff_20260810/01_m_sampling_validation_20260810/M_SAMPLING_CONCLUSION.md",
+      "sha256": "b7f3a4f5b4d0ba865247372b53c9c46e8299848186e5e0ce94367f1be4133186"
+    },
+    "total_delayed_rate_cps": 0.00201657067386682,
+    "finite_m_cv_independent_rss": 0.0262439034473186,
+    "finite_m_cv_independent_rss_approx_upper": 0.0583891868176131,
+    "new_transport": false,
+    "claim_boundary": "The numerical finite-M subgate is conditionally estimable from retained data, but this is not the handoff's transport-backed multi-M PASS."
+  },
+  "wp2_parma511": {
+    "readme": {
+      "path": "engineering/m04_validation_geometry_handoff_20260810/02_parma_atm511_repair_20260810/README.md",
+      "sha256": "9e09b1e9272acf2b58ea80a0f2912a343d201ef34211c0cbd8d8cfc792776dcf"
+    },
+    "source_authority": {
+      "build_manifest": {
+        "path": "engineering/m04_validation_geometry_handoff_20260810/02_parma_atm511_repair_20260810/data/build_manifest.json",
+        "sha256": "976d8c8d7cf636c6c5576bed8ea8a6dc2f1c186532fe9dadf627d5ec94b5cb24"
+      },
+      "closure": {
+        "path": "engineering/m04_validation_geometry_handoff_20260810/02_parma_atm511_repair_20260810/data/parma_line_closure.json",
+        "sha256": "dee071a7ec7f7714f8515c7df7de687a0de2c9c9648ecbb67eeb20e89cfc041b"
+      },
+      "energy_keV": 510.99895,
+      "day15_flux_ph_cm2_s": 0.16651547160226118
+    },
+    "legacy_prompt_line_dedup": {
+      "manifest": {
+        "path": "engineering/m04_validation_geometry_handoff_20260810/02_parma_atm511_repair_20260810/data/o8_prompt_gamma_line_dedup_manifest.json",
+        "sha256": "47194bcd4e0ce9c7be4927afdc239fadc0ec317f1dae96fd28a2306979e93d86"
+      },
+      "audit": {
+        "path": "engineering/m04_validation_geometry_handoff_20260810/02_parma_atm511_repair_20260810/data/o8_prompt_gamma_line_dedup_audit.json",
+        "sha256": "60c5c96d9c666c5fe0e6ac03dcd786712dc3d63af45aa4e4cc9801c9a10d6c10"
+      },
+      "w2_selected_rate_delta_cps": 0.0,
+      "broad_selected_rate_delta_cps": 0.0,
+      "day15_prompt_occupancy_removed_hz": 737.844505175763
+    },
+    "line_campaign": {
+      "harness": {
+        "path": "engineering/m04_validation_geometry_handoff_20260810/02_parma_atm511_repair_20260810/code/o8_parma511_line_transport_harness.py",
+        "sha256": "6c7c921769f99141325cd856b6c476d94ecbbec3a3c8806409ef3caa5faacc37"
+      },
+      "campaign_manifest": {
+        "path": "engineering/m04_validation_geometry_handoff_20260810/02_parma_atm511_repair_20260810/transport/campaigns/o8_parma511_line_nominal_180m_20260810/campaign_manifest.json",
+        "sha256": "7ea73d40eef451e1da3229c0ed424370111e84c05f5360e4e3121c5273e3ad6f"
+      },
+      "aggregate_receipt": {
+        "path": "engineering/m04_validation_geometry_handoff_20260810/02_parma_atm511_repair_20260810/transport/campaigns/o8_parma511_line_nominal_180m_20260810/aggregate/wave_0000_0059_f00f57c40852/campaign_aggregate_receipt.json",
+        "sha256": "63f49eb1bf8951f7ae849a319d779c088d6deb41aa83158d230063d644fefb8e"
+      },
+      "response_summary": {
+        "path": "engineering/m04_validation_geometry_handoff_20260810/02_parma_atm511_repair_20260810/transport/campaigns/o8_parma511_line_nominal_180m_20260810/aggregate/wave_0000_0059_f00f57c40852/response/response_64seed_summary.json",
+        "sha256": "0537288197d57022b00270632ac8da9bf0e7189797a4b20cb6c5ce6676477f68"
+      },
+      "dynamic_status": "PASS_PARMA511_LINE_MODULE_RATE_GATE",
+      "batches": 60,
+      "transport_seeds": 60,
+      "triggers": 180000000,
+      "TE_s": 95575.47507199999,
+      "primary_w2_events": 663,
+      "primary_w2_rate_cps": 0.006936926021037709,
+      "primary_w2_rse": 0.038836781869030945,
+      "combined_relative_40_vs_80_error": 0.001214774312296421,
+      "prepared_supplement_executed": false
+    },
+    "raw_cleanup": {
+      "status": "PASS_EXTERNAL_RAW_CLEANUP_60_OF_60",
+      "batch_union": "0..59",
+      "duplicates": 0,
+      "raw_regular_files_remaining": 0,
+      "removed_raw_bytes": 48600153913,
+      "locally_recoverable": false,
+      "receipts": [
+        {
+          "path": "engineering/m04_validation_geometry_handoff_20260810/02_parma_atm511_repair_20260810/transport/campaigns/o8_parma511_line_nominal_180m_20260810/EXTERNAL_RAW_CLEANUP_WAVE0000_0014.json",
+          "sha256": "cdc551c10f5e8d8383016f5bf5103bec601866dd98a8672bdabc7dfc5b26b735"
+        },
+        {
+          "path": "engineering/m04_validation_geometry_handoff_20260810/02_parma_atm511_repair_20260810/transport/campaigns/o8_parma511_line_nominal_180m_20260810/EXTERNAL_RAW_CLEANUP_WAVE0015_0029.json",
+          "sha256": "17069dea77db04646b4e5e830c2c8abba6b41b27fe13fbafe053ef519c3cff52"
+        },
+        {
+          "path": "engineering/m04_validation_geometry_handoff_20260810/02_parma_atm511_repair_20260810/transport/campaigns/o8_parma511_line_nominal_180m_20260810/EXTERNAL_RAW_CLEANUP_WAVE0030_0044.json",
+          "sha256": "5d4b31f2c89c86e9212eae02a049ac6b82483a9de75f2e0b376eb866615aa7c3"
+        },
+        {
+          "path": "engineering/m04_validation_geometry_handoff_20260810/02_parma_atm511_repair_20260810/transport/campaigns/o8_parma511_line_nominal_180m_20260810/EXTERNAL_RAW_CLEANUP_WAVE0045_0059.json",
+          "sha256": "ae8f5cc1baed9eeed8a93be7e618aab231da75c8bf538c54c1f9cadc8129eca0"
+        }
+      ],
+      "state_note": "Producer raw_deleted=false fields are pre-cleanup state; the external receipts are the post-campaign cleanup authority."
+    },
+    "offline_recomposition": {
+      "manifest": {
+        "path": "engineering/m04_validation_geometry_handoff_20260810/02_parma_atm511_repair_20260810/recomposition/outputs/final_line_campaign_180m_20260811/recomposition_manifest.json",
+        "sha256": "a7471b6abb5f72bff0837603c58042d6e05707740a9c50c76707e26b22f22696"
+      },
+      "day15_background_cps": 0.012346528209026033,
+      "mission_20d_source_counts": 1650.787710238136,
+      "mission_20d_background_counts": 20734.191748070585,
+      "mission_20d_Z": 11.464303417952294,
+      "claim_grade": "CONDITIONAL_MODULAR_FOLD__NOT_PUBLICATION_AUTHORITY"
+    },
+    "finalization": {
+      "finalizer": {
+        "path": "engineering/m04_validation_geometry_handoff_20260810/02_parma_atm511_repair_20260810/code/finalize_parma511_wp2.py",
+        "sha256": "b007e29bda6703aa1ed8540fc8260f8bf7970d9fb903f007addc2ae1091b9f29"
+      },
+      "status": "PASS_PARMA511_MONO_LINE_MODULE_AND_OFFLINE_RECOMPOSITION__SCIENTIFIC_BLOCKERS_REMAIN",
+      "validated_input_files": 812,
+      "conclusion": {
+        "path": "engineering/m04_validation_geometry_handoff_20260810/02_parma_atm511_repair_20260810/response/wp2_final_180m_20260811/PARMA_ATM511_CONCLUSION.md",
+        "sha256": "a47abd7f71fb376d79ac8ad561ae4c27e9025823b15544259cdc1b1e3752ad73"
+      },
+      "summary": {
+        "path": "engineering/m04_validation_geometry_handoff_20260810/02_parma_atm511_repair_20260810/response/wp2_final_180m_20260811/wp2_final_summary.json",
+        "sha256": "e62e937dcfa2fa988cc0272f20643c3811f0d7629186d1f13d89380b250191a0"
+      },
+      "output_manifest": {
+        "path": "engineering/m04_validation_geometry_handoff_20260810/02_parma_atm511_repair_20260810/response/wp2_final_180m_20260811/wp2_output_manifest.json",
+        "sha256": "f3887cb8208834399079f8605f02a0fb9e50158b9ccfc9b18b3b8dfed999cf7a"
+      },
+      "top_level_conclusion_pointer": {
+        "path": "engineering/m04_validation_geometry_handoff_20260810/02_parma_atm511_repair_20260810/PARMA_ATM511_CONCLUSION.md",
+        "sha256": "de23a97e7844b8f2b80d480d26bafb12f774bc9d925ca6cdb5b05ee28cb62dd3"
+      }
+    }
+  },
+  "protected_geometry": {
+    "setup_sha256": "86a9e56e54dc86834dfe2a9b03a5f71373fb40f2ef24e3889fa66f216058fbec",
+    "geo_sha256": "ff4e8402df702501e0112fe377d837a74c39100317146b09e9569b7bd615c37c",
+    "det_sha256": "dd2c1d68cd474f8b0c7489f2cbbfc924eb69beb14d3ce360d9437c319a33d6cb",
+    "verified": true
+  },
+  "scientific_blockers": [
+    "LEGACY_PROMPT_GAMMA_AXIS_FACTOR_1000",
+    "FROZEN_ACTIVE_SHIELD_NAME_MATCH_INCLUDES_PASSIVE_KAPTON",
+    "DAY15_ANGULAR_RESPONSE_HELD_FIXED_ACROSS_MISSION",
+    "WP1_NOT_TRANSPORT_BACKED_MULTI_M_PASS",
+    "FOCUSED_SIGNAL_UPSTREAM_OUTER_ENVELOPE_TRANSMISSION_NOT_CLOSED"
+  ],
+  "manuscript_decision": {
+    "m04_unchanged": true,
+    "m05_not_created": true,
+    "reason": "Scientific blockers and frozen-prefix conflicts prevent publication-authority promotion; a correction proposal exists for user decision."
+  }
+}

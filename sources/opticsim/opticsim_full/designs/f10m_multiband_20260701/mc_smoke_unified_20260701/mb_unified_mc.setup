@@ -1,0 +1,44 @@
+// MC-smoke geometry for the UNIFIED tiled multiband lens + support.
+// Same 1245-tile + support geometry as viz_unified_20260701, made
+// cosima-runnable: the single shared Ge tile template MB_Tile is declared as a
+// Scintillator, so every tile is a calorimeter voxel. Run this setup with the
+// mb_unified_mc.source (which enables CheckForOverlaps) to have Geant4 itself
+// confirm the tiles do not overlap AND transport particles through them.
+
+Name multiband_unified_mc
+Version 1
+
+SurroundingSphere 18 0 0 0 18
+
+Include /home/ubuntu/TES_511_Balloon/add_mass/TES_511_Balloon_nearfield_mass_proxy_v2/optics/Materials_OpticsNearfield_v2.geo
+
+Volume WorldVolume
+WorldVolume.Material Vacuum
+WorldVolume.Visibility 0
+WorldVolume.Shape BRIK 100.0 100.0 100.0
+WorldVolume.Mother 0
+
+Volume InstrumentFrame
+InstrumentFrame.Material Vacuum
+InstrumentFrame.Visibility 0
+InstrumentFrame.Shape BRIK 60.0 60.0 60.0
+InstrumentFrame.Position 0 0 0
+InstrumentFrame.Mother WorldVolume
+
+Include /home/ubuntu/opticsim/opticsim_full/designs/f10m_multiband_20260701/viz_unified_20260701/MultibandUnified_TilesAndSupport_f10m.geo
+
+//------------------------------------------------------------
+// Detector: every Ge tile (copies of MB_Tile) is a calorimeter voxel.
+
+Scintillator GeTileDetector
+GeTileDetector.DetectorVolume  MB_Tile
+GeTileDetector.SensitiveVolume MB_Tile
+GeTileDetector.NoiseThreshold   0.000001
+GeTileDetector.TriggerThreshold 0.000001
+GeTileDetector.EnergyResolution ideal
+GeTileDetector.FailureRate 0.0
+
+Trigger TN01
+TN01.Veto false
+TN01.TriggerByChannel true
+TN01.Detector GeTileDetector 1

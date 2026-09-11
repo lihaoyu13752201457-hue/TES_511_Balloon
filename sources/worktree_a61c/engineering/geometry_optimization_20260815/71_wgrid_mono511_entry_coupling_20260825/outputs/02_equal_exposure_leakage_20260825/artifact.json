@@ -1,0 +1,1531 @@
+{
+  "surface": "report",
+  "manifest": {
+    "version": 1,
+    "surface": "report",
+    "title": "SG3 与 SH3+W-grid：同时间口径、泄漏倍率与统计审计",
+    "description": "核对蒙卡曝光与 20 日 Fmin 时间口径，分解 511 keV 泄漏倍率，并检验其与开孔和有限统计的相容性。",
+    "generatedAt": "2026-08-25T09:14:39Z",
+    "sources": [
+      {
+        "id": "equal_exposure_bundle",
+        "label": "SG3 与 SH3+W-grid 同曝光大气 511 keV 泄漏闭合",
+        "path": "engineering/geometry_optimization_20260815/71_wgrid_mono511_entry_coupling_20260825/outputs/02_equal_exposure_leakage_20260825/equal_exposure_leakage_summary.json"
+      },
+      {
+        "id": "entry_path_bundle",
+        "label": "W-grid末级事件的逐事件入射路径与前网格包络求交",
+        "path": "engineering/geometry_optimization_20260815/71_wgrid_mono511_entry_coupling_20260825/outputs/01_entry_path_diagnosis_20260825/entry_coupling_summary.json"
+      },
+      {
+        "id": "source_headline",
+        "label": "相同 8339.8231 s 物理曝光下的主要绝对泄漏结果。",
+        "path": "engineering/geometry_optimization_20260815/71_wgrid_mono511_entry_coupling_20260825/outputs/02_equal_exposure_leakage_20260825/equal_exposure_leakage.sqlite",
+        "query": {
+          "engine": "sqlite3",
+          "language": "sql",
+          "sql": "SELECT * FROM \"headline\" ORDER BY _row_order",
+          "description": "相同 8339.8231 s 物理曝光下的主要绝对泄漏结果。",
+          "executed_at": "2026-08-25T09:14:39Z",
+          "tables_used": [
+            "headline"
+          ],
+          "filters": [
+            "PARMA 510.99895 keV only",
+            "No row sampling"
+          ],
+          "metric_definitions": [
+            "Values are formatted from equal_exposure_leakage_summary.json."
+          ]
+        }
+      },
+      {
+        "id": "source_equal_exposure",
+        "label": "由各自冻结输运率换算到 W-grid 8339.8231 s 的 TES 沉积和科学线窗事件数。",
+        "path": "engineering/geometry_optimization_20260815/71_wgrid_mono511_entry_coupling_20260825/outputs/02_equal_exposure_leakage_20260825/equal_exposure_leakage.sqlite",
+        "query": {
+          "engine": "sqlite3",
+          "language": "sql",
+          "sql": "SELECT * FROM \"equal_exposure\" ORDER BY _row_order",
+          "description": "由各自冻结输运率换算到 W-grid 8339.8231 s 的 TES 沉积和科学线窗事件数。",
+          "executed_at": "2026-08-25T09:14:39Z",
+          "tables_used": [
+            "equal_exposure"
+          ],
+          "filters": [
+            "PARMA 510.99895 keV only",
+            "No row sampling"
+          ],
+          "metric_definitions": [
+            "N_equal = rate_cps * 8339.8231 s.",
+            "The quoted sigma is the current finite-MC rate uncertainty multiplied by the common exposure."
+          ]
+        }
+      },
+      {
+        "id": "source_retention",
+        "label": "最终线窗事件占所有可记录 TES 沉积事件的条件比例。",
+        "path": "engineering/geometry_optimization_20260815/71_wgrid_mono511_entry_coupling_20260825/outputs/02_equal_exposure_leakage_20260825/equal_exposure_leakage.sqlite",
+        "query": {
+          "engine": "sqlite3",
+          "language": "sql",
+          "sql": "SELECT * FROM \"retention\" ORDER BY _row_order",
+          "description": "最终线窗事件占所有可记录 TES 沉积事件的条件比例。",
+          "executed_at": "2026-08-25T09:14:39Z",
+          "tables_used": [
+            "retention"
+          ],
+          "filters": [
+            "PARMA 510.99895 keV only",
+            "No row sampling"
+          ],
+          "metric_definitions": [
+            "retention = W2-final events / events with at least one positive-energy TES pixel hit."
+          ]
+        }
+      },
+      {
+        "id": "source_mission_20day",
+        "label": "共同 81 节点、连续 20 日有效观测和任务时间折叠后的大气 511 线计数。",
+        "path": "engineering/geometry_optimization_20260815/71_wgrid_mono511_entry_coupling_20260825/outputs/02_equal_exposure_leakage_20260825/equal_exposure_leakage.sqlite",
+        "query": {
+          "engine": "sqlite3",
+          "language": "sql",
+          "sql": "SELECT * FROM \"mission_20day\" ORDER BY _row_order",
+          "description": "共同 81 节点、连续 20 日有效观测和任务时间折叠后的大气 511 线计数。",
+          "executed_at": "2026-08-25T09:14:39Z",
+          "tables_used": [
+            "mission_20day"
+          ],
+          "filters": [
+            "PARMA 510.99895 keV only",
+            "No row sampling"
+          ],
+          "metric_definitions": [
+            "Counts use the 81-node mission fold, not a constant day-15 rate times 20 days."
+          ]
+        }
+      },
+      {
+        "id": "source_source_audit",
+        "label": "SG3 与 W-grid 原始模拟入射数、曝光、目录与 TES 命中闭合。",
+        "path": "engineering/geometry_optimization_20260815/71_wgrid_mono511_entry_coupling_20260825/outputs/02_equal_exposure_leakage_20260825/equal_exposure_leakage.sqlite",
+        "query": {
+          "engine": "sqlite3",
+          "language": "sql",
+          "sql": "SELECT * FROM \"source_audit\" ORDER BY _row_order",
+          "description": "SG3 与 W-grid 原始模拟入射数、曝光、目录与 TES 命中闭合。",
+          "executed_at": "2026-08-25T09:14:39Z",
+          "tables_used": [
+            "source_audit"
+          ],
+          "filters": [
+            "PARMA 510.99895 keV only",
+            "No row sampling"
+          ],
+          "metric_definitions": [
+            "detector-positive catalog rows may come from TES, plastic, or BGO; any_tes_events is hit_count>0 and is the relevant TES metric."
+          ]
+        }
+      },
+      {
+        "id": "source_hemisphere",
+        "label": "同一8339.8231 s下按PARMA down/up半球分解的TES沉积与最终线泄漏。",
+        "path": "engineering/geometry_optimization_20260815/71_wgrid_mono511_entry_coupling_20260825/outputs/02_equal_exposure_leakage_20260825/equal_exposure_leakage.sqlite",
+        "query": {
+          "engine": "sqlite3",
+          "language": "sql",
+          "sql": "SELECT * FROM \"hemisphere\" ORDER BY _row_order",
+          "description": "同一8339.8231 s下按PARMA down/up半球分解的TES沉积与最终线泄漏。",
+          "executed_at": "2026-08-25T09:14:39Z",
+          "tables_used": [
+            "hemisphere"
+          ],
+          "filters": [
+            "PARMA 510.99895 keV only",
+            "No row sampling"
+          ],
+          "metric_definitions": [
+            "source_bin80 0–39 is down and 40–79 is up.",
+            "SG3 values are scaled from its own 1591.7573 s transport exposure."
+          ]
+        }
+      },
+      {
+        "id": "source_line_rate_audit",
+        "label": "SG3、开放SH3与SH3+W-grid的最终单线率、原始统计量和输运曝光。",
+        "path": "engineering/geometry_optimization_20260815/71_wgrid_mono511_entry_coupling_20260825/outputs/02_equal_exposure_leakage_20260825/equal_exposure_leakage.sqlite",
+        "query": {
+          "engine": "sqlite3",
+          "language": "sql",
+          "sql": "SELECT * FROM \"line_rate_audit\" ORDER BY _row_order",
+          "description": "SG3、开放SH3与SH3+W-grid的最终单线率、原始统计量和输运曝光。",
+          "executed_at": "2026-08-25T09:14:39Z",
+          "tables_used": [
+            "line_rate_audit"
+          ],
+          "filters": [
+            "PARMA 510.99895 keV only",
+            "No row sampling"
+          ],
+          "metric_definitions": [
+            "Each geometry is normalized by its own Cosima exposure before comparison.",
+            "Open SH3 and W-grid each use 15,709,417 incident photons."
+          ]
+        }
+      },
+      {
+        "id": "source_fmin_audit",
+        "label": "SG3与SH3+W-grid条件近似的共同20日观测时间、线/非线本底、信号核和Fmin。",
+        "path": "engineering/geometry_optimization_20260815/71_wgrid_mono511_entry_coupling_20260825/outputs/02_equal_exposure_leakage_20260825/equal_exposure_leakage.sqlite",
+        "query": {
+          "engine": "sqlite3",
+          "language": "sql",
+          "sql": "SELECT * FROM \"fmin_audit\" ORDER BY _row_order",
+          "description": "SG3与SH3+W-grid条件近似的共同20日观测时间、线/非线本底、信号核和Fmin。",
+          "executed_at": "2026-08-25T09:14:39Z",
+          "tables_used": [
+            "fmin_audit"
+          ],
+          "filters": [
+            "PARMA 510.99895 keV only",
+            "No row sampling"
+          ],
+          "metric_definitions": [
+            "Both rows use 0–20 d, 81 nodes, 0.25 d spacing and trapezoidal integration.",
+            "No separate sub-unity observation duty-cycle parameter is present."
+          ]
+        }
+      },
+      {
+        "id": "source_stage_factors",
+        "label": "最终2.40168倍线率比的四阶段乘法分解。",
+        "path": "engineering/geometry_optimization_20260815/71_wgrid_mono511_entry_coupling_20260825/outputs/02_equal_exposure_leakage_20260825/equal_exposure_leakage.sqlite",
+        "query": {
+          "engine": "sqlite3",
+          "language": "sql",
+          "sql": "SELECT * FROM \"stage_factors\" ORDER BY _row_order",
+          "description": "最终2.40168倍线率比的四阶段乘法分解。",
+          "executed_at": "2026-08-25T09:14:39Z",
+          "tables_used": [
+            "stage_factors"
+          ],
+          "filters": [
+            "PARMA 510.99895 keV only",
+            "No row sampling"
+          ],
+          "metric_definitions": [
+            "The product of the four W-grid/SG3 factors equals the final line-rate ratio."
+          ]
+        }
+      },
+      {
+        "id": "source_front_aperture",
+        "label": "SG3与SH3+W-grid冻结几何的前平面法向包络、净开孔与TES距离。",
+        "path": "engineering/geometry_optimization_20260815/71_wgrid_mono511_entry_coupling_20260825/outputs/02_equal_exposure_leakage_20260825/equal_exposure_leakage.sqlite",
+        "query": {
+          "engine": "sqlite3",
+          "language": "sql",
+          "sql": "SELECT * FROM \"front_aperture\" ORDER BY _row_order",
+          "description": "SG3与SH3+W-grid冻结几何的前平面法向包络、净开孔与TES距离。",
+          "executed_at": "2026-08-25T09:14:39Z",
+          "tables_used": [
+            "front_aperture"
+          ],
+          "filters": [
+            "PARMA 510.99895 keV only",
+            "No row sampling"
+          ],
+          "metric_definitions": [
+            "Net open area is the front-plane normal projection after summing the frozen W bars.",
+            "It is not a full-sphere effective acceptance."
+          ]
+        }
+      }
+    ],
+    "cards": [
+      {
+        "id": "card_any",
+        "dataset": "headline",
+        "sourceId": "source_headline",
+        "description": "8339.8231 s，至少一个正能 TES 像素沉积。",
+        "metrics": [
+          {
+            "label": "SG3 任意TES沉积",
+            "field": "any_tes_sg3"
+          },
+          {
+            "label": "SH3+W-grid",
+            "field": "any_tes_wgrid"
+          }
+        ]
+      },
+      {
+        "id": "card_any_ratio",
+        "dataset": "headline",
+        "sourceId": "source_headline",
+        "description": "SH3+W-grid / SG3；独立 MC 一阶误差。",
+        "metrics": [
+          {
+            "label": "绝对TES沉积率比",
+            "field": "any_ratio"
+          }
+        ]
+      },
+      {
+        "id": "card_final",
+        "dataset": "headline",
+        "sourceId": "source_headline",
+        "description": "8339.8231 s，最终511窄窗共同选择。",
+        "metrics": [
+          {
+            "label": "SG3 末级泄漏",
+            "field": "final_sg3"
+          },
+          {
+            "label": "SH3+W-grid",
+            "field": "final_wgrid"
+          }
+        ]
+      },
+      {
+        "id": "card_final_ratio",
+        "dataset": "headline",
+        "sourceId": "source_headline",
+        "description": "SH3+W-grid / SG3；独立 MC 一阶误差。",
+        "metrics": [
+          {
+            "label": "末级线泄漏率比",
+            "field": "final_ratio"
+          }
+        ]
+      }
+    ],
+    "charts": [
+      {
+        "id": "equal_exposure_counts",
+        "title": "相同 8339.8231 s 下的单能 TES 事件数",
+        "subtitle": "SG3 为冻结率换算期望；SH3+W-grid 为该曝光的实际选后数",
+        "showDescription": true,
+        "intent": "comparison",
+        "question": "两个几何在同一时间内分别有多少绝对TES沉积与最终线泄漏？",
+        "rationale": "分组柱同时保留物理阶段和几何两个维度。",
+        "comparisonContext": {
+          "grain": "selection stage by geometry",
+          "unit": "expected events",
+          "denominator": "8339.8231 s common physical exposure"
+        },
+        "type": "bar",
+        "dataset": "equal_exposure",
+        "sourceId": "source_equal_exposure",
+        "encodings": {
+          "x": {
+            "field": "stage",
+            "type": "nominal",
+            "label": "物理/选择阶段"
+          },
+          "y": {
+            "field": "equal_exposure_expected_events",
+            "type": "quantitative",
+            "label": "同曝光事件数",
+            "unit": "events"
+          },
+          "color": {
+            "field": "geometry",
+            "type": "nominal",
+            "label": "几何"
+          },
+          "tooltip": [
+            {
+              "field": "geometry",
+              "type": "text",
+              "label": "几何"
+            },
+            {
+              "field": "equal_exposure_expected_events",
+              "type": "quantitative",
+              "label": "同曝光事件数"
+            },
+            {
+              "field": "equal_exposure_current_mc_sigma_events",
+              "type": "quantitative",
+              "label": "当前MC σ"
+            },
+            {
+              "field": "rate_cps",
+              "type": "quantitative",
+              "label": "率/cps"
+            },
+            {
+              "field": "raw_selected_events",
+              "type": "quantitative",
+              "label": "原始选后数"
+            }
+          ]
+        },
+        "xAxisTitle": "阶段",
+        "yAxisTitle": "8339.8231 s 内事件数",
+        "palette": {
+          "kind": "categorical"
+        },
+        "unit": "events",
+        "layout": "full",
+        "maxRows": 20,
+        "surface": {
+          "surface": "export",
+          "showControls": false,
+          "viewMode": "both"
+        }
+      },
+      {
+        "id": "hemisphere_counts",
+        "title": "相同曝光下的 down/up 半球分解",
+        "subtitle": "SG3按1591.7573 s原始样本换算；W-grid为8339.8231 s实际事件",
+        "showDescription": true,
+        "intent": "comparison",
+        "question": "额外泄漏主要来自哪个PARMA半球？",
+        "rationale": "按物理阶段分面比较down/up贡献，定位倍率的方向来源。",
+        "comparisonContext": {
+          "grain": "geometry and selection stage by hemisphere",
+          "unit": "expected events",
+          "denominator": "8339.8231 s common physical exposure"
+        },
+        "type": "bar",
+        "dataset": "hemisphere",
+        "sourceId": "source_hemisphere",
+        "encodings": {
+          "x": {
+            "field": "sample",
+            "type": "nominal",
+            "label": "几何与阶段"
+          },
+          "y": {
+            "field": "equal_exposure_expected_events",
+            "type": "quantitative",
+            "label": "同曝光事件数",
+            "unit": "events"
+          },
+          "color": {
+            "field": "hemisphere",
+            "type": "nominal",
+            "label": "PARMA半球"
+          },
+          "tooltip": [
+            {
+              "field": "geometry",
+              "type": "text",
+              "label": "几何"
+            },
+            {
+              "field": "stage",
+              "type": "text",
+              "label": "阶段"
+            },
+            {
+              "field": "hemisphere",
+              "type": "text",
+              "label": "半球"
+            },
+            {
+              "field": "raw_events",
+              "type": "quantitative",
+              "label": "原始事件"
+            },
+            {
+              "field": "equal_exposure_expected_events",
+              "type": "quantitative",
+              "label": "同曝光事件数"
+            }
+          ]
+        },
+        "xAxisTitle": "几何与阶段",
+        "yAxisTitle": "8339.8231 s 内事件数",
+        "palette": {
+          "kind": "categorical"
+        },
+        "unit": "events",
+        "layout": "full",
+        "maxRows": 20,
+        "surface": {
+          "surface": "export",
+          "showControls": false,
+          "viewMode": "both"
+        }
+      }
+    ],
+    "tables": [
+      {
+        "id": "retention_detail",
+        "title": "从任意 TES 沉积到最终窄窗的条件保留率",
+        "subtitle": "分母为各自目录中的 hit_count>0 事件",
+        "showDescription": true,
+        "dataset": "retention",
+        "defaultSort": {
+          "field": "geometry",
+          "direction": "asc"
+        },
+        "density": "spacious",
+        "sourceId": "source_retention",
+        "layout": "full",
+        "columns": [
+          {
+            "field": "geometry",
+            "label": "几何",
+            "type": "text"
+          },
+          {
+            "field": "any_tes_events",
+            "label": "任意TES沉积",
+            "format": "number"
+          },
+          {
+            "field": "w2_final_events",
+            "label": "末级线窗",
+            "format": "number"
+          },
+          {
+            "field": "final_given_any_tes_fraction",
+            "label": "条件保留率",
+            "format": "percent"
+          },
+          {
+            "field": "binomial_sigma",
+            "label": "二项 σ",
+            "format": "percent"
+          }
+        ]
+      },
+      {
+        "id": "stage_factor_detail",
+        "title": "最终2.40168倍的阶段分解",
+        "subtitle": "四个W-grid/SG3因子的乘积等于末级线率比",
+        "showDescription": true,
+        "dataset": "stage_factors",
+        "defaultSort": {
+          "field": "sequence",
+          "direction": "asc"
+        },
+        "density": "spacious",
+        "sourceId": "source_stage_factors",
+        "layout": "full",
+        "columns": [
+          {
+            "field": "sequence",
+            "label": "序",
+            "format": "number"
+          },
+          {
+            "field": "factor_stage",
+            "label": "阶段因子",
+            "type": "text"
+          },
+          {
+            "field": "sg3_value",
+            "label": "SG3",
+            "format": "number"
+          },
+          {
+            "field": "wgrid_value",
+            "label": "SH3+W-grid",
+            "format": "number"
+          },
+          {
+            "field": "wgrid_over_sg3_factor",
+            "label": "倍率",
+            "format": "number"
+          },
+          {
+            "field": "cumulative_product",
+            "label": "累计乘积",
+            "format": "number"
+          }
+        ]
+      },
+      {
+        "id": "line_rate_detail",
+        "title": "SG3、开放SH3与W-grid的单线率",
+        "subtitle": "每套样本先除以各自Cosima曝光；开放SH3与W-grid初级数匹配",
+        "showDescription": true,
+        "dataset": "line_rate_audit",
+        "defaultSort": {
+          "field": "rate_over_sg3",
+          "direction": "asc"
+        },
+        "density": "spacious",
+        "sourceId": "source_line_rate_audit",
+        "layout": "full",
+        "columns": [
+          {
+            "field": "geometry",
+            "label": "几何",
+            "type": "text"
+          },
+          {
+            "field": "raw_final_events",
+            "label": "原始末级事件",
+            "format": "number"
+          },
+          {
+            "field": "transport_exposure_s",
+            "label": "蒙卡曝光/s",
+            "format": "number"
+          },
+          {
+            "field": "final_line_rate_cps",
+            "label": "末级线率/cps",
+            "format": "number"
+          },
+          {
+            "field": "rate_mc_sigma_cps",
+            "label": "MC σ/cps",
+            "format": "number"
+          },
+          {
+            "field": "rate_over_sg3",
+            "label": "相对SG3",
+            "format": "number"
+          },
+          {
+            "field": "scope",
+            "label": "范围",
+            "type": "text"
+          }
+        ]
+      },
+      {
+        "id": "aperture_detail",
+        "title": "前平面法向净开孔审计",
+        "subtitle": "仅比较投影开孔；不等同于4π有效接受度",
+        "showDescription": true,
+        "dataset": "front_aperture",
+        "defaultSort": {
+          "field": "geometry",
+          "direction": "asc"
+        },
+        "density": "spacious",
+        "sourceId": "source_front_aperture",
+        "layout": "full",
+        "columns": [
+          {
+            "field": "geometry",
+            "label": "几何",
+            "type": "text"
+          },
+          {
+            "field": "front_envelope_width_cm",
+            "label": "前包络宽/cm",
+            "format": "number"
+          },
+          {
+            "field": "front_envelope_area_cm2",
+            "label": "包络面积/cm²",
+            "format": "number"
+          },
+          {
+            "field": "net_normal_open_area_cm2",
+            "label": "净开孔/cm²",
+            "format": "number"
+          },
+          {
+            "field": "normal_open_fraction",
+            "label": "开孔率",
+            "format": "percent"
+          },
+          {
+            "field": "grid_to_first_tes_layer_cm",
+            "label": "至首层TES/cm",
+            "format": "number"
+          },
+          {
+            "field": "scope",
+            "label": "范围",
+            "type": "text"
+          }
+        ]
+      },
+      {
+        "id": "fmin_detail",
+        "title": "共同20日口径的背景组成与Fmin",
+        "subtitle": "0–20 d、81节点、0.25 d梯形积分；无额外显式亚单位duty参数",
+        "showDescription": true,
+        "dataset": "fmin_audit",
+        "defaultSort": {
+          "field": "geometry",
+          "direction": "asc"
+        },
+        "density": "spacious",
+        "sourceId": "source_fmin_audit",
+        "layout": "full",
+        "columns": [
+          {
+            "field": "geometry",
+            "label": "几何",
+            "type": "text"
+          },
+          {
+            "field": "line_background_counts",
+            "label": "单线B",
+            "format": "number"
+          },
+          {
+            "field": "nonline_background_counts",
+            "label": "非线B",
+            "format": "number"
+          },
+          {
+            "field": "total_background_counts",
+            "label": "总B",
+            "format": "number"
+          },
+          {
+            "field": "line_fraction_of_total",
+            "label": "线占比",
+            "format": "percent"
+          },
+          {
+            "field": "signal_kernel_counts_per_unit_flux",
+            "label": "信号核K",
+            "format": "number"
+          },
+          {
+            "field": "gaussian_3sigma_fmin",
+            "label": "Gaussian 3σ Fmin",
+            "format": "number"
+          },
+          {
+            "field": "asimov_3sigma_fmin",
+            "label": "Asimov 3σ Fmin",
+            "format": "number"
+          },
+          {
+            "field": "scope",
+            "label": "范围",
+            "type": "text"
+          }
+        ]
+      },
+      {
+        "id": "mission_detail",
+        "title": "20日任务折叠的大气511线本底",
+        "subtitle": "81节点、共同PARMA目标、连续20日有效观测；无额外显式亚单位duty参数",
+        "showDescription": true,
+        "dataset": "mission_20day",
+        "defaultSort": {
+          "field": "mission_final_line_counts",
+          "direction": "desc"
+        },
+        "density": "spacious",
+        "sourceId": "source_mission_20day",
+        "layout": "full",
+        "columns": [
+          {
+            "field": "geometry",
+            "label": "几何",
+            "type": "text"
+          },
+          {
+            "field": "mission_final_line_counts",
+            "label": "20日线计数",
+            "format": "number"
+          },
+          {
+            "field": "transport_mc_sigma_counts",
+            "label": "MC σ",
+            "format": "number"
+          },
+          {
+            "field": "transport_ess",
+            "label": "输运 ESS",
+            "format": "number"
+          },
+          {
+            "field": "scope",
+            "label": "范围",
+            "type": "text"
+          }
+        ]
+      }
+    ],
+    "blocks": [
+      {
+        "id": "title",
+        "type": "markdown",
+        "body": "# SG3 与 SH3+W-grid：同时间口径、2.4倍泄漏与统计审计"
+      },
+      {
+        "id": "summary",
+        "type": "markdown",
+        "sourceId": "equal_exposure_bundle",
+        "body": "## 技术结论\n\n**Fmin 的任务时间口径相同，但2.40倍不是一个已经精确测定的几何常数。** SG3 与SH3+W-grid都按0–20 d、81节点、0.25 d间隔做梯形积分；代码没有额外的亚单位观测占空率参数，等价于连续20日有效观测。8339.8231 s和1591.7573 s只是两套蒙卡模板曝光，均先除以各自曝光变成cps。\n\n同8339.8231 s展示时，末级线泄漏为151±12.3对62.9±18.1，中心比值2.402±0.720；但SG3分母底层只有12个原始事件，精确95%区间为1.335–4.752。因此现有结果支持W-grid高于SG3，却不能区分1.5、2.0和2.4。前平面法向净开孔面积比本身为2.025，与2.402只差约0.52σ。"
+      },
+      {
+        "id": "metrics",
+        "type": "metric-strip",
+        "cardIds": [
+          "card_any",
+          "card_any_ratio",
+          "card_final",
+          "card_final_ratio"
+        ]
+      },
+      {
+        "id": "absolute_heading",
+        "type": "markdown",
+        "sourceId": "equal_exposure_bundle",
+        "body": "## 151与62.9的确是同曝光显示，但62.9不是新模拟整数\n\nW-grid的151来自8339.8231 s实际输运；SG3的62.87是12×8339.8231/1591.7573的率外推。下图同时给出任意TES沉积、响应前原始全能峰、响应后窄窗和末级泄漏，避免把不同阶段混为同一‘入口’。"
+      },
+      {
+        "id": "equal_chart",
+        "type": "chart",
+        "chartId": "equal_exposure_counts"
+      },
+      {
+        "id": "factor_heading",
+        "type": "markdown",
+        "sourceId": "equal_exposure_bundle",
+        "body": "## 2.402倍在响应和能窗之前已经基本形成\n\n最终倍率可精确分解为1.24390（任意TES沉积率）×1.80839（原始全能沉积概率）×1.03124（Gaussian响应后的窄窗接受）×1.03534（末级选择）=2.40168。共同响应、能窗和末级选择合计只再放大约6.8%；没有发现pixel-hit重复、宽/窄窗相加或80方向分箱重叠。"
+      },
+      {
+        "id": "factor_table",
+        "type": "table",
+        "tableId": "stage_factor_detail"
+      },
+      {
+        "id": "line_audit_heading",
+        "type": "markdown",
+        "sourceId": "equal_exposure_bundle",
+        "body": "## 网络板正常工作；剩余差异继承自开放SH3\n\n开放SH3相对SG3的末级线率原本就是2.957倍；加入网络板后，W-grid/open-SH3=0.812±0.089，即降低18.8%。因此2.957×0.812=2.402。网络板没有制造异常，问题在于一块前置网络并不会把SH3整体的4π路径结构变成SG3。"
+      },
+      {
+        "id": "line_audit_table",
+        "type": "table",
+        "tableId": "line_rate_detail"
+      },
+      {
+        "id": "aperture_heading",
+        "type": "markdown",
+        "sourceId": "equal_exposure_bundle",
+        "body": "## 前平面净开孔其实约为SG3的2.025倍，但两者仍不是等效准直器\n\nW-grid前包络为5.40×5.40 cm²，SG3为3.796×3.796 cm²；逐条扣除W网筋后净开孔为24.6198与12.1588 cm²，法向开孔率都约84.4%。更重要的是，W-grid距第一层TES约6.15 cm，SG3约22.9 cm；几何接受度不能只由开孔面积决定。"
+      },
+      {
+        "id": "aperture_table",
+        "type": "table",
+        "tableId": "aperture_detail"
+      },
+      {
+        "id": "hemisphere_heading",
+        "type": "markdown",
+        "sourceId": "equal_exposure_bundle",
+        "body": "## 差异集中在down方向，不是全空间归一漂移\n\n任意TES沉积的up分量几乎完全相同：W-grid 369、SG3等效372；down则为198对83.8。末级中W-grid为down/up=60/91，SG3原始12个末级事件全部来自up。SG3的down末级中心值为0并不等于严格零接受度，因为该方向样本尤其稀薄。"
+      },
+      {
+        "id": "hemisphere_chart",
+        "type": "chart",
+        "chartId": "hemisphere_counts"
+      },
+      {
+        "id": "path_heading",
+        "type": "markdown",
+        "sourceId": "entry_path_bundle",
+        "body": "## 约70.9%的W-grid末级事件没有完整穿过前网络包络\n\n逐事件路径重建显示：151个末级事件中42个完整穿过网络包络、2个掠过；42个从前侧包络外绕入，65个从后方或侧方绕入。即107/151完全绕开这块前网络。它填补了一个前开口，但不是4π包围准直。"
+      },
+      {
+        "id": "fmin_heading",
+        "type": "markdown",
+        "sourceId": "equal_exposure_bundle",
+        "body": "## Fmin同为连续20日，但W-grid仍是条件近似\n\nSG3完整闭合得到B=99,923.14、K=16,350,529.19和3σ Gaussian Fmin=5.79993×10⁻⁵。W-grid条件包得到B=47,351.81、冻结SH3信号核K=16,781,213.42和3.89015×10⁻⁵；它只替换W-grid单线，冻结了SH3非线本底、五锚点时间修正和信号响应，并假设网络不增加511 keV邻近活化。"
+      },
+      {
+        "id": "fmin_table",
+        "type": "table",
+        "tableId": "fmin_detail"
+      },
+      {
+        "id": "fmin_driver_heading",
+        "type": "markdown",
+        "sourceId": "equal_exposure_bundle",
+        "body": "## 为什么线项对SH3+W-grid的Fmin影响大、对SG3看起来小\n\nSG3的单线只占总本底12.56%，从去线的5.423×10⁻⁵升到5.800×10⁻⁵，仅恶化6.9%。W-grid条件包的单线占总本底67.53%，从冻结非线基线2.217×10⁻⁵升到3.890×10⁻⁵，恶化75.5%。这是同一20日下的分量占比效应，不是观测时间不同。"
+      },
+      {
+        "id": "mission_heading",
+        "type": "markdown",
+        "sourceId": "equal_exposure_bundle",
+        "body": "## 20日任务折叠后的大气单线计数\n\n逐节点折叠得到SH3+W-grid 31,975.6±2,602.8、SG3 12,552.2±3,623.5。该表只比较单线分量；Fmin还取决于各自非线本底和信号核。"
+      },
+      {
+        "id": "mission_table",
+        "type": "table",
+        "tableId": "mission_detail"
+      },
+      {
+        "id": "definitions",
+        "type": "markdown",
+        "sourceId": "equal_exposure_bundle",
+        "body": "## 范围、数据与指标定义\n\n源严格采用PARMA专用大气线参数化：510.99895 keV、day-15全空间通量0.16651547160226118 ph cm⁻² s⁻¹、80个等μ分量。‘任意TES沉积’是至少一个正能TES像素命中；‘原始全能峰’是响应前|ΣE−510.99895|<0.01 keV；‘末级线泄漏’是共同响应后落入[510.58,511.42) keV并通过主动veto和轨迹选择。"
+      },
+      {
+        "id": "method",
+        "type": "markdown",
+        "sourceId": "equal_exposure_bundle",
+        "body": "## 归一与统计检验\n\n每套模板按r=N/T归一，再按所需展示时间或0–20 d任务积分换算。两源初级率为1884.709与1883.663 s⁻¹，仅差0.0555%。最终率比的small-count条件Poisson精确95%区间为1.335–4.752；等率原假设双侧p=0.00178。后者排斥‘完全相同率’，但宽区间意味着无法把2.40与约2.0精确区分。"
+      },
+      {
+        "id": "limitations",
+        "type": "markdown",
+        "sourceId": "equal_exposure_bundle",
+        "body": "## 局限性与稳健性\n\n- 现有SIM没有被动体边界crossing日志；可计数的是TES正能沉积，不是零相互作用穿越。\n- SG3最终线样本只有12个，特别是down方向为0个末级事件；2.402不能当作高精度定值。\n- 原有NO_TOPUP门只保证总Fmin误差目标：SG3线只占总本底12.56%，不代表几何线率比已精确。\n- W-grid Fmin是用户指定的条件近似，而非W-grid宽带、信号和活化的完整自洽闭合。"
+      },
+      {
+        "id": "next",
+        "type": "markdown",
+        "body": "## 建议的最小下一步\n\n当前最稳妥结论是：**SH3+W-grid泄漏与约2倍前开孔接受度相容；2.4是有限SG3统计下的中心值。** 若只需判断1.5与2.0，先把SG3补到约72个末级事件（约再补1500万初级光子）即可达到约2σ；若要10%倍率精度，SG3约需297个末级事件，代价约再补7125万初级光子。未获得新授权前不启动输运。"
+      },
+      {
+        "id": "questions",
+        "type": "markdown",
+        "body": "## 尚需由精度目标决定的问题\n\n真正需要决定的不是是否存在一个已发现的归一错误，而是论文要报告‘约2倍、方向相关’还是精确报告2.40倍。前者现有证据足够；后者需要匹配的SG3增量统计，并且若要区分2.0与2.4，所需统计显著高于简单匹配15.7M初级光子。"
+      }
+    ]
+  },
+  "snapshot": {
+    "version": 1,
+    "generatedAt": "2026-08-25T09:14:39Z",
+    "status": "ready",
+    "datasets": {
+      "headline": [
+        {
+          "_row_order": 0,
+          "any_tes_sg3": "455.8 ± 48.9",
+          "any_tes_wgrid": "567 ± 23.8",
+          "any_ratio": "1.244 ± 0.143",
+          "final_sg3": "62.9 ± 18.1",
+          "final_wgrid": "151 ± 12.3",
+          "final_ratio": "2.402 ± 0.720",
+          "final_ratio_exact95": "1.335–4.752",
+          "equal_rate_p": "0.001782"
+        }
+      ],
+      "equal_exposure": [
+        {
+          "_row_order": 0,
+          "stage": "TES 任意可记录沉积",
+          "geometry": "SG3",
+          "definition": "至少一个原始正能 TES 像素沉积；不是边界穿越",
+          "raw_selected_events": 87,
+          "raw_physical_exposure_s": 1591.7573,
+          "rate_cps": 0.05465657358694067,
+          "rate_mc_sigma_cps": 0.005859799765384343,
+          "equal_exposure_s": 8339.8231,
+          "equal_exposure_expected_events": 455.82615496721763,
+          "equal_exposure_current_mc_sigma_events": 48.86969344472693
+        },
+        {
+          "_row_order": 1,
+          "stage": "TES 任意可记录沉积",
+          "geometry": "SH3 + W-grid",
+          "definition": "至少一个原始正能 TES 像素沉积；不是边界穿越",
+          "raw_selected_events": 567,
+          "raw_physical_exposure_s": 8339.8231,
+          "rate_cps": 0.06798705358630448,
+          "rate_mc_sigma_cps": 0.002855187875577519,
+          "equal_exposure_s": 8339.8231,
+          "equal_exposure_expected_events": 566.9999999999999,
+          "equal_exposure_current_mc_sigma_events": 23.811761799581316
+        },
+        {
+          "_row_order": 2,
+          "stage": "原始 TES 全能峰",
+          "geometry": "SG3",
+          "definition": "响应前 TES 总沉积满足 |E−510.99895|<0.01 keV",
+          "raw_selected_events": 14,
+          "raw_physical_exposure_s": 1591.7573,
+          "rate_cps": 0.008795310692151373,
+          "rate_mc_sigma_cps": 0.002350645658590001,
+          "equal_exposure_s": 8339.8231,
+          "equal_exposure_expected_events": 73.35133528208101,
+          "equal_exposure_current_mc_sigma_events": 19.6039689634236
+        },
+        {
+          "_row_order": 3,
+          "stage": "原始 TES 全能峰",
+          "geometry": "SH3 + W-grid",
+          "definition": "响应前 TES 总沉积满足 |E−510.99895|<0.01 keV",
+          "raw_selected_events": 165,
+          "raw_physical_exposure_s": 8339.8231,
+          "rate_cps": 0.01978459231347485,
+          "rate_mc_sigma_cps": 0.0015402284226706355,
+          "equal_exposure_s": 8339.8231,
+          "equal_exposure_expected_events": 165.0,
+          "equal_exposure_current_mc_sigma_events": 12.84523257866513
+        },
+        {
+          "_row_order": 4,
+          "stage": "511 窄窗、主动 veto 前",
+          "geometry": "SG3",
+          "definition": "510.58–511.42 keV，尚未施加最终轨迹选择",
+          "raw_selected_events": 13,
+          "raw_physical_exposure_s": 1591.7573,
+          "rate_cps": 0.008167074214140561,
+          "rate_mc_sigma_cps": 0.002265138834584889,
+          "equal_exposure_s": 8339.8231,
+          "equal_exposure_expected_events": 68.1119541905038,
+          "equal_exposure_current_mc_sigma_events": 18.890857177378134
+        },
+        {
+          "_row_order": 5,
+          "stage": "511 窄窗、主动 veto 前",
+          "geometry": "SH3 + W-grid",
+          "definition": "510.58–511.42 keV，尚未施加最终轨迹选择",
+          "raw_selected_events": 158,
+          "raw_physical_exposure_s": 8339.8231,
+          "rate_cps": 0.01894524597290319,
+          "rate_mc_sigma_cps": 0.001507202843424405,
+          "equal_exposure_s": 8339.8231,
+          "equal_exposure_expected_events": 158.0,
+          "equal_exposure_current_mc_sigma_events": 12.569805089976535
+        },
+        {
+          "_row_order": 6,
+          "stage": "511 窄窗末级泄漏",
+          "geometry": "SG3",
+          "definition": "共同响应、能窗、主动 veto 与轨迹选择后的线本底",
+          "raw_selected_events": 12,
+          "raw_physical_exposure_s": 1591.7573,
+          "rate_cps": 0.007538837736129749,
+          "rate_mc_sigma_cps": 0.0021762749981657096,
+          "equal_exposure_s": 8339.8231,
+          "equal_exposure_expected_events": 62.87257309892658,
+          "equal_exposure_current_mc_sigma_events": 18.14974850165484
+        },
+        {
+          "_row_order": 7,
+          "stage": "511 窄窗末级泄漏",
+          "geometry": "SH3 + W-grid",
+          "definition": "共同响应、能窗、主动 veto 与轨迹选择后的线本底",
+          "raw_selected_events": 151,
+          "raw_physical_exposure_s": 8339.8231,
+          "rate_cps": 0.018105899632331533,
+          "rate_mc_sigma_cps": 0.0014734372156460379,
+          "equal_exposure_s": 8339.8231,
+          "equal_exposure_expected_events": 151.00000000000003,
+          "equal_exposure_current_mc_sigma_events": 12.288205727444508
+        }
+      ],
+      "retention": [
+        {
+          "_row_order": 0,
+          "geometry": "SG3",
+          "any_tes_events": 87,
+          "w2_final_events": 12,
+          "final_given_any_tes_fraction": 0.13793103448275862,
+          "binomial_sigma": 0.036969397753027405
+        },
+        {
+          "_row_order": 1,
+          "geometry": "SH3 + W-grid",
+          "any_tes_events": 567,
+          "w2_final_events": 151,
+          "final_given_any_tes_fraction": 0.26631393298059963,
+          "binomial_sigma": 0.018563529418768647
+        }
+      ],
+      "mission_20day": [
+        {
+          "_row_order": 0,
+          "geometry": "SG3",
+          "mission_days": 20,
+          "mission_final_line_counts": 12552.15515508207,
+          "transport_mc_sigma_counts": 3623.4956203507727,
+          "transport_ess": 11.99999641339194,
+          "scope": "完整 81 节点任务折叠"
+        },
+        {
+          "_row_order": 1,
+          "geometry": "SH3 + W-grid",
+          "mission_days": 20,
+          "mission_final_line_counts": 31975.644501227704,
+          "transport_mc_sigma_counts": 2602.8168145215445,
+          "transport_ess": 150.9216019759721,
+          "scope": "实际 W-grid 单线响应 × 同一 81 节点任务；非线/信号冻结不影响本行线计数"
+        }
+      ],
+      "source_audit": [
+        {
+          "_row_order": 0,
+          "geometry": "SG3",
+          "incident_photons": 3000000,
+          "physical_exposure_s": 1591.7573,
+          "source_primary_rate_s1": 1884.709434032437,
+          "catalog_rows_detector_positive_any_subsystem": 1008606,
+          "any_tes_events": 87,
+          "pixel_hit_records": 108,
+          "w2_final_events": 12
+        },
+        {
+          "_row_order": 1,
+          "geometry": "SH3 + W-grid",
+          "incident_photons": 15709417,
+          "physical_exposure_s": 8339.8231,
+          "source_primary_rate_s1": 1883.6630959234615,
+          "catalog_rows_detector_positive_any_subsystem": 650437,
+          "any_tes_events": 567,
+          "pixel_hit_records": 724,
+          "w2_final_events": 151
+        }
+      ],
+      "hemisphere": [
+        {
+          "_row_order": 0,
+          "sample": "SG3 · TES 任意可记录沉积",
+          "stage": "TES 任意可记录沉积",
+          "geometry": "SG3",
+          "hemisphere": "down",
+          "raw_events": 16,
+          "raw_exposure_s": 1591.7573,
+          "equal_exposure_expected_events": 83.83009746523544,
+          "equal_exposure_current_mc_sigma_events": 20.95752436630886
+        },
+        {
+          "_row_order": 1,
+          "sample": "SG3 · TES 任意可记录沉积",
+          "stage": "TES 任意可记录沉积",
+          "geometry": "SG3",
+          "hemisphere": "up",
+          "raw_events": 71,
+          "raw_exposure_s": 1591.7573,
+          "equal_exposure_expected_events": 371.9960575019822,
+          "equal_exposure_current_mc_sigma_events": 44.14780979637785
+        },
+        {
+          "_row_order": 2,
+          "sample": "SH3 + W-grid · TES 任意可记录沉积",
+          "stage": "TES 任意可记录沉积",
+          "geometry": "SH3 + W-grid",
+          "hemisphere": "down",
+          "raw_events": 198,
+          "raw_exposure_s": 8339.8231,
+          "equal_exposure_expected_events": 198.0,
+          "equal_exposure_current_mc_sigma_events": 14.071247279470288
+        },
+        {
+          "_row_order": 3,
+          "sample": "SH3 + W-grid · TES 任意可记录沉积",
+          "stage": "TES 任意可记录沉积",
+          "geometry": "SH3 + W-grid",
+          "hemisphere": "up",
+          "raw_events": 369,
+          "raw_exposure_s": 8339.8231,
+          "equal_exposure_expected_events": 369.0,
+          "equal_exposure_current_mc_sigma_events": 19.209372712298546
+        },
+        {
+          "_row_order": 4,
+          "sample": "SG3 · 511 窄窗末级泄漏",
+          "stage": "511 窄窗末级泄漏",
+          "geometry": "SG3",
+          "hemisphere": "down",
+          "raw_events": 0,
+          "raw_exposure_s": 1591.7573,
+          "equal_exposure_expected_events": 0.0,
+          "equal_exposure_current_mc_sigma_events": 0.0
+        },
+        {
+          "_row_order": 5,
+          "sample": "SG3 · 511 窄窗末级泄漏",
+          "stage": "511 窄窗末级泄漏",
+          "geometry": "SG3",
+          "hemisphere": "up",
+          "raw_events": 12,
+          "raw_exposure_s": 1591.7573,
+          "equal_exposure_expected_events": 62.87257309892657,
+          "equal_exposure_current_mc_sigma_events": 18.149748501654837
+        },
+        {
+          "_row_order": 6,
+          "sample": "SH3 + W-grid · 511 窄窗末级泄漏",
+          "stage": "511 窄窗末级泄漏",
+          "geometry": "SH3 + W-grid",
+          "hemisphere": "down",
+          "raw_events": 60,
+          "raw_exposure_s": 8339.8231,
+          "equal_exposure_expected_events": 60.0,
+          "equal_exposure_current_mc_sigma_events": 7.745966692414834
+        },
+        {
+          "_row_order": 7,
+          "sample": "SH3 + W-grid · 511 窄窗末级泄漏",
+          "stage": "511 窄窗末级泄漏",
+          "geometry": "SH3 + W-grid",
+          "hemisphere": "up",
+          "raw_events": 91,
+          "raw_exposure_s": 8339.8231,
+          "equal_exposure_expected_events": 91.0,
+          "equal_exposure_current_mc_sigma_events": 9.539392014169456
+        }
+      ],
+      "line_rate_audit": [
+        {
+          "_row_order": 0,
+          "geometry": "SG3",
+          "raw_final_events": 12,
+          "transport_exposure_s": 1591.7573,
+          "final_line_rate_cps": 0.007538837736129749,
+          "rate_mc_sigma_cps": 0.0021762749981657096,
+          "rate_over_sg3": 1.0,
+          "scope": "参考几何，3M 单能输运"
+        },
+        {
+          "_row_order": 1,
+          "geometry": "开放 SH3",
+          "raw_final_events": 186,
+          "transport_exposure_s": 8343.628079999999,
+          "final_line_rate_cps": 0.02229246057190028,
+          "rate_mc_sigma_cps": 0.0016345625147982216,
+          "rate_over_sg3": 2.957015570857037,
+          "scope": "与 W-grid 匹配的 15,709,417 初级光子"
+        },
+        {
+          "_row_order": 2,
+          "geometry": "SH3 + W-grid",
+          "raw_final_events": 151,
+          "transport_exposure_s": 8339.8231,
+          "final_line_rate_cps": 0.018105899632331533,
+          "rate_mc_sigma_cps": 0.0014734372156460379,
+          "rate_over_sg3": 2.4016831594025856,
+          "scope": "与开放 SH3 匹配的 15,709,417 初级光子"
+        }
+      ],
+      "fmin_audit": [
+        {
+          "_row_order": 0,
+          "geometry": "SG3",
+          "mission_days": 20,
+          "observation_contract": "0–20 d 连续有效观测；81 节点；无额外显式 duty 参数",
+          "line_background_counts": 12552.15515508207,
+          "nonline_background_counts": 87370.9865003717,
+          "total_background_counts": 99923.14165545377,
+          "line_fraction_of_total": 0.12561809954257955,
+          "signal_kernel_counts_per_unit_flux": 16350529.192505842,
+          "gaussian_3sigma_fmin": 5.799926385676048e-05,
+          "asimov_3sigma_fmin": 5.8090931634870914e-05,
+          "gaussian_3sigma_fmin_without_mono_line": 5.4234177857278536e-05,
+          "fmin_increase_from_mono_line_fraction": 0.06942275421580213,
+          "scope": "完整 SG3 81 节点闭合"
+        },
+        {
+          "_row_order": 1,
+          "geometry": "SH3 + W-grid",
+          "mission_days": 20,
+          "observation_contract": "0–20 d 连续有效观测；81 节点；无额外显式 duty 参数",
+          "line_background_counts": 31975.644501227704,
+          "nonline_background_counts": 15376.168094300125,
+          "total_background_counts": 47351.81259552783,
+          "line_fraction_of_total": 0.6752781519550037,
+          "signal_kernel_counts_per_unit_flux": 16781213.415433664,
+          "gaussian_3sigma_fmin": 3.890148662146553e-05,
+          "asimov_3sigma_fmin": 3.899076997416569e-05,
+          "gaussian_3sigma_fmin_without_mono_line": 2.2167767263546307e-05,
+          "fmin_increase_from_mono_line_fraction": 0.7548671527888564,
+          "scope": "条件近似：冻结 SH3 非线、信号与时间修正，只替换 W-grid 单线"
+        }
+      ],
+      "stage_factors": [
+        {
+          "_row_order": 0,
+          "sequence": 1,
+          "factor_stage": "单位时间任意 TES 沉积",
+          "sg3_value": 0.05465657358694067,
+          "wgrid_value": 0.06798705358630448,
+          "wgrid_over_sg3_factor": 1.2438952741550728,
+          "cumulative_product": 1.2438952741550728
+        },
+        {
+          "_row_order": 1,
+          "sequence": 2,
+          "factor_stage": "原始全能峰 / 任意 TES 沉积",
+          "sg3_value": 0.16091954022988506,
+          "wgrid_value": 0.291005291005291,
+          "wgrid_over_sg3_factor": 1.8083900226757368,
+          "cumulative_product": 2.249447803035534
+        },
+        {
+          "_row_order": 2,
+          "sequence": 3,
+          "factor_stage": "响应后窄窗 / 原始全能峰",
+          "sg3_value": 0.9285714285714286,
+          "wgrid_value": 0.9575757575757575,
+          "wgrid_over_sg3_factor": 1.031235431235431,
+          "cumulative_product": 2.319710275204942
+        },
+        {
+          "_row_order": 3,
+          "sequence": 4,
+          "factor_stage": "末级 / 窄窗前级",
+          "sg3_value": 0.9230769230769231,
+          "wgrid_value": 0.9556962025316456,
+          "wgrid_over_sg3_factor": 1.0353375527426159,
+          "cumulative_product": 2.4016831594025847
+        }
+      ],
+      "front_aperture": [
+        {
+          "_row_order": 0,
+          "geometry": "SG3",
+          "front_envelope_width_cm": 3.796,
+          "front_envelope_area_cm2": 14.409615999999998,
+          "net_normal_open_area_cm2": 12.158848,
+          "normal_open_fraction": 0.843801,
+          "grid_to_first_tes_layer_cm": 22.9,
+          "scope": "逐条投影冻结几何中的W条带；只描述前平面法向净开孔"
+        },
+        {
+          "_row_order": 1,
+          "geometry": "SH3 + W-grid",
+          "front_envelope_width_cm": 5.4,
+          "front_envelope_area_cm2": 29.160000000000004,
+          "net_normal_open_area_cm2": 24.619776,
+          "normal_open_fraction": 0.8443,
+          "grid_to_first_tes_layer_cm": 6.15,
+          "scope": "逐条投影冻结几何中的W条带；只描述前平面法向净开孔"
+        }
+      ]
+    }
+  },
+  "sources": [
+    {
+      "id": "equal_exposure_bundle",
+      "label": "SG3 与 SH3+W-grid 同曝光大气 511 keV 泄漏闭合",
+      "path": "engineering/geometry_optimization_20260815/71_wgrid_mono511_entry_coupling_20260825/outputs/02_equal_exposure_leakage_20260825/equal_exposure_leakage_summary.json"
+    },
+    {
+      "id": "entry_path_bundle",
+      "label": "W-grid末级事件的逐事件入射路径与前网格包络求交",
+      "path": "engineering/geometry_optimization_20260815/71_wgrid_mono511_entry_coupling_20260825/outputs/01_entry_path_diagnosis_20260825/entry_coupling_summary.json"
+    },
+    {
+      "id": "source_headline",
+      "label": "相同 8339.8231 s 物理曝光下的主要绝对泄漏结果。",
+      "path": "engineering/geometry_optimization_20260815/71_wgrid_mono511_entry_coupling_20260825/outputs/02_equal_exposure_leakage_20260825/equal_exposure_leakage.sqlite",
+      "query": {
+        "engine": "sqlite3",
+        "language": "sql",
+        "sql": "SELECT * FROM \"headline\" ORDER BY _row_order",
+        "description": "相同 8339.8231 s 物理曝光下的主要绝对泄漏结果。",
+        "executed_at": "2026-08-25T09:14:39Z",
+        "tables_used": [
+          "headline"
+        ],
+        "filters": [
+          "PARMA 510.99895 keV only",
+          "No row sampling"
+        ],
+        "metric_definitions": [
+          "Values are formatted from equal_exposure_leakage_summary.json."
+        ]
+      }
+    },
+    {
+      "id": "source_equal_exposure",
+      "label": "由各自冻结输运率换算到 W-grid 8339.8231 s 的 TES 沉积和科学线窗事件数。",
+      "path": "engineering/geometry_optimization_20260815/71_wgrid_mono511_entry_coupling_20260825/outputs/02_equal_exposure_leakage_20260825/equal_exposure_leakage.sqlite",
+      "query": {
+        "engine": "sqlite3",
+        "language": "sql",
+        "sql": "SELECT * FROM \"equal_exposure\" ORDER BY _row_order",
+        "description": "由各自冻结输运率换算到 W-grid 8339.8231 s 的 TES 沉积和科学线窗事件数。",
+        "executed_at": "2026-08-25T09:14:39Z",
+        "tables_used": [
+          "equal_exposure"
+        ],
+        "filters": [
+          "PARMA 510.99895 keV only",
+          "No row sampling"
+        ],
+        "metric_definitions": [
+          "N_equal = rate_cps * 8339.8231 s.",
+          "The quoted sigma is the current finite-MC rate uncertainty multiplied by the common exposure."
+        ]
+      }
+    },
+    {
+      "id": "source_retention",
+      "label": "最终线窗事件占所有可记录 TES 沉积事件的条件比例。",
+      "path": "engineering/geometry_optimization_20260815/71_wgrid_mono511_entry_coupling_20260825/outputs/02_equal_exposure_leakage_20260825/equal_exposure_leakage.sqlite",
+      "query": {
+        "engine": "sqlite3",
+        "language": "sql",
+        "sql": "SELECT * FROM \"retention\" ORDER BY _row_order",
+        "description": "最终线窗事件占所有可记录 TES 沉积事件的条件比例。",
+        "executed_at": "2026-08-25T09:14:39Z",
+        "tables_used": [
+          "retention"
+        ],
+        "filters": [
+          "PARMA 510.99895 keV only",
+          "No row sampling"
+        ],
+        "metric_definitions": [
+          "retention = W2-final events / events with at least one positive-energy TES pixel hit."
+        ]
+      }
+    },
+    {
+      "id": "source_mission_20day",
+      "label": "共同 81 节点、连续 20 日有效观测和任务时间折叠后的大气 511 线计数。",
+      "path": "engineering/geometry_optimization_20260815/71_wgrid_mono511_entry_coupling_20260825/outputs/02_equal_exposure_leakage_20260825/equal_exposure_leakage.sqlite",
+      "query": {
+        "engine": "sqlite3",
+        "language": "sql",
+        "sql": "SELECT * FROM \"mission_20day\" ORDER BY _row_order",
+        "description": "共同 81 节点、连续 20 日有效观测和任务时间折叠后的大气 511 线计数。",
+        "executed_at": "2026-08-25T09:14:39Z",
+        "tables_used": [
+          "mission_20day"
+        ],
+        "filters": [
+          "PARMA 510.99895 keV only",
+          "No row sampling"
+        ],
+        "metric_definitions": [
+          "Counts use the 81-node mission fold, not a constant day-15 rate times 20 days."
+        ]
+      }
+    },
+    {
+      "id": "source_source_audit",
+      "label": "SG3 与 W-grid 原始模拟入射数、曝光、目录与 TES 命中闭合。",
+      "path": "engineering/geometry_optimization_20260815/71_wgrid_mono511_entry_coupling_20260825/outputs/02_equal_exposure_leakage_20260825/equal_exposure_leakage.sqlite",
+      "query": {
+        "engine": "sqlite3",
+        "language": "sql",
+        "sql": "SELECT * FROM \"source_audit\" ORDER BY _row_order",
+        "description": "SG3 与 W-grid 原始模拟入射数、曝光、目录与 TES 命中闭合。",
+        "executed_at": "2026-08-25T09:14:39Z",
+        "tables_used": [
+          "source_audit"
+        ],
+        "filters": [
+          "PARMA 510.99895 keV only",
+          "No row sampling"
+        ],
+        "metric_definitions": [
+          "detector-positive catalog rows may come from TES, plastic, or BGO; any_tes_events is hit_count>0 and is the relevant TES metric."
+        ]
+      }
+    },
+    {
+      "id": "source_hemisphere",
+      "label": "同一8339.8231 s下按PARMA down/up半球分解的TES沉积与最终线泄漏。",
+      "path": "engineering/geometry_optimization_20260815/71_wgrid_mono511_entry_coupling_20260825/outputs/02_equal_exposure_leakage_20260825/equal_exposure_leakage.sqlite",
+      "query": {
+        "engine": "sqlite3",
+        "language": "sql",
+        "sql": "SELECT * FROM \"hemisphere\" ORDER BY _row_order",
+        "description": "同一8339.8231 s下按PARMA down/up半球分解的TES沉积与最终线泄漏。",
+        "executed_at": "2026-08-25T09:14:39Z",
+        "tables_used": [
+          "hemisphere"
+        ],
+        "filters": [
+          "PARMA 510.99895 keV only",
+          "No row sampling"
+        ],
+        "metric_definitions": [
+          "source_bin80 0–39 is down and 40–79 is up.",
+          "SG3 values are scaled from its own 1591.7573 s transport exposure."
+        ]
+      }
+    },
+    {
+      "id": "source_line_rate_audit",
+      "label": "SG3、开放SH3与SH3+W-grid的最终单线率、原始统计量和输运曝光。",
+      "path": "engineering/geometry_optimization_20260815/71_wgrid_mono511_entry_coupling_20260825/outputs/02_equal_exposure_leakage_20260825/equal_exposure_leakage.sqlite",
+      "query": {
+        "engine": "sqlite3",
+        "language": "sql",
+        "sql": "SELECT * FROM \"line_rate_audit\" ORDER BY _row_order",
+        "description": "SG3、开放SH3与SH3+W-grid的最终单线率、原始统计量和输运曝光。",
+        "executed_at": "2026-08-25T09:14:39Z",
+        "tables_used": [
+          "line_rate_audit"
+        ],
+        "filters": [
+          "PARMA 510.99895 keV only",
+          "No row sampling"
+        ],
+        "metric_definitions": [
+          "Each geometry is normalized by its own Cosima exposure before comparison.",
+          "Open SH3 and W-grid each use 15,709,417 incident photons."
+        ]
+      }
+    },
+    {
+      "id": "source_fmin_audit",
+      "label": "SG3与SH3+W-grid条件近似的共同20日观测时间、线/非线本底、信号核和Fmin。",
+      "path": "engineering/geometry_optimization_20260815/71_wgrid_mono511_entry_coupling_20260825/outputs/02_equal_exposure_leakage_20260825/equal_exposure_leakage.sqlite",
+      "query": {
+        "engine": "sqlite3",
+        "language": "sql",
+        "sql": "SELECT * FROM \"fmin_audit\" ORDER BY _row_order",
+        "description": "SG3与SH3+W-grid条件近似的共同20日观测时间、线/非线本底、信号核和Fmin。",
+        "executed_at": "2026-08-25T09:14:39Z",
+        "tables_used": [
+          "fmin_audit"
+        ],
+        "filters": [
+          "PARMA 510.99895 keV only",
+          "No row sampling"
+        ],
+        "metric_definitions": [
+          "Both rows use 0–20 d, 81 nodes, 0.25 d spacing and trapezoidal integration.",
+          "No separate sub-unity observation duty-cycle parameter is present."
+        ]
+      }
+    },
+    {
+      "id": "source_stage_factors",
+      "label": "最终2.40168倍线率比的四阶段乘法分解。",
+      "path": "engineering/geometry_optimization_20260815/71_wgrid_mono511_entry_coupling_20260825/outputs/02_equal_exposure_leakage_20260825/equal_exposure_leakage.sqlite",
+      "query": {
+        "engine": "sqlite3",
+        "language": "sql",
+        "sql": "SELECT * FROM \"stage_factors\" ORDER BY _row_order",
+        "description": "最终2.40168倍线率比的四阶段乘法分解。",
+        "executed_at": "2026-08-25T09:14:39Z",
+        "tables_used": [
+          "stage_factors"
+        ],
+        "filters": [
+          "PARMA 510.99895 keV only",
+          "No row sampling"
+        ],
+        "metric_definitions": [
+          "The product of the four W-grid/SG3 factors equals the final line-rate ratio."
+        ]
+      }
+    },
+    {
+      "id": "source_front_aperture",
+      "label": "SG3与SH3+W-grid冻结几何的前平面法向包络、净开孔与TES距离。",
+      "path": "engineering/geometry_optimization_20260815/71_wgrid_mono511_entry_coupling_20260825/outputs/02_equal_exposure_leakage_20260825/equal_exposure_leakage.sqlite",
+      "query": {
+        "engine": "sqlite3",
+        "language": "sql",
+        "sql": "SELECT * FROM \"front_aperture\" ORDER BY _row_order",
+        "description": "SG3与SH3+W-grid冻结几何的前平面法向包络、净开孔与TES距离。",
+        "executed_at": "2026-08-25T09:14:39Z",
+        "tables_used": [
+          "front_aperture"
+        ],
+        "filters": [
+          "PARMA 510.99895 keV only",
+          "No row sampling"
+        ],
+        "metric_definitions": [
+          "Net open area is the front-plane normal projection after summing the frozen W bars.",
+          "It is not a full-sphere effective acceptance."
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,1095 @@
+{
+  "A_B_improvements": {
+    "Gaussian_3sigma_Fmin_improvement_factor_A_over_B": {
+      "denominator_field": "Fmin_3sigma_gaussian_ph_cm2_s",
+      "denominator_model": "b",
+      "denominator_value": 4.185157715646857e-05,
+      "interpretation": "larger than 1 means Model B has a lower flux threshold",
+      "metric": "Gaussian_3sigma_Fmin_improvement_factor_A_over_B",
+      "numerator_field": "Fmin_3sigma_gaussian_ph_cm2_s",
+      "numerator_model": "a",
+      "numerator_value": 5.799926385676048e-05,
+      "value": 1.3858322146360529
+    },
+    "Gaussian_5sigma_Fmin_improvement_factor_A_over_B": {
+      "denominator_field": "Fmin_5sigma_gaussian_ph_cm2_s",
+      "denominator_model": "b",
+      "denominator_value": 6.975262859411428e-05,
+      "interpretation": "larger than 1 means Model B has a lower flux threshold",
+      "metric": "Gaussian_5sigma_Fmin_improvement_factor_A_over_B",
+      "numerator_field": "Fmin_5sigma_gaussian_ph_cm2_s",
+      "numerator_model": "a",
+      "numerator_value": 9.666543976126748e-05,
+      "value": 1.385832214636053
+    },
+    "Poisson_Asimov_3sigma_Fmin_improvement_factor_A_over_B": {
+      "denominator_field": "Fmin_3sigma_poisson_asimov_ph_cm2_s",
+      "denominator_model": "b",
+      "denominator_value": 4.194086769692741e-05,
+      "interpretation": "larger than 1 means Model B has a lower flux threshold",
+      "metric": "Poisson_Asimov_3sigma_Fmin_improvement_factor_A_over_B",
+      "numerator_field": "Fmin_3sigma_poisson_asimov_ph_cm2_s",
+      "numerator_model": "a",
+      "numerator_value": 5.8090931634870914e-05,
+      "value": 1.3850674729632895
+    },
+    "Poisson_Asimov_5sigma_Fmin_improvement_factor_A_over_B": {
+      "denominator_field": "Fmin_5sigma_poisson_asimov_ph_cm2_s",
+      "denominator_model": "b",
+      "denominator_value": 7.000048270238174e-05,
+      "interpretation": "larger than 1 means Model B has a lower flux threshold",
+      "metric": "Poisson_Asimov_5sigma_Fmin_improvement_factor_A_over_B",
+      "numerator_field": "Fmin_5sigma_poisson_asimov_ph_cm2_s",
+      "numerator_model": "a",
+      "numerator_value": 9.691993901792263e-05,
+      "value": 1.3845610098146506
+    },
+    "cumulative_background_reduction_factor_A_over_B": {
+      "denominator_field": "cumulative_background_counts_B",
+      "denominator_model": "b",
+      "denominator_value": 54805.970088911905,
+      "interpretation": "larger than 1 means Model B has fewer 20-day cumulative background counts",
+      "metric": "cumulative_background_reduction_factor_A_over_B",
+      "numerator_field": "cumulative_background_counts_B",
+      "numerator_model": "a",
+      "numerator_value": 99923.14165545377,
+      "value": 1.823216366635754
+    },
+    "day15_background_reduction_factor_A_over_B": {
+      "denominator_field": "day15_total_W2_rate_cps",
+      "denominator_model": "b",
+      "denominator_value": 0.03122834776990912,
+      "interpretation": "larger than 1 means Model B has a lower day-15 final W2 background rate",
+      "metric": "day15_background_reduction_factor_A_over_B",
+      "numerator_field": "day15_total_W2_rate_cps",
+      "numerator_model": "a",
+      "numerator_value": 0.060595953980508585,
+      "value": 1.940414985351783
+    },
+    "signal_Aeff_retention_B_over_A": {
+      "denominator_field": "signal_Aeff_cm2",
+      "denominator_model": "a",
+      "denominator_value": 15.12324,
+      "interpretation": "fraction of Model A conditional signal effective area retained by Model B",
+      "metric": "signal_Aeff_retention_B_over_A",
+      "numerator_field": "signal_Aeff_cm2",
+      "numerator_model": "b",
+      "numerator_value": 15.085439999999998,
+      "value": 0.9975005355995143
+    },
+    "signal_kernel_retention_B_over_A": {
+      "denominator_field": "signal_kernel_cm2",
+      "denominator_model": "a",
+      "denominator_value": 9.53801575351885,
+      "interpretation": "fraction of Model A 20-day signal kernel retained by Model B",
+      "metric": "signal_kernel_retention_B_over_A",
+      "numerator_field": "signal_kernel_cm2",
+      "numerator_model": "b",
+      "numerator_value": 9.791193388508535,
+      "value": 1.0265440571217634
+    }
+  },
+  "hash_receipt": "receipt.json",
+  "models": {
+    "a": {
+      "candidate": "SG3B",
+      "catalog": {
+        "categories": 1808,
+        "components": {
+          "atm511": {
+            "component_id": 2,
+            "effective_sample_size": 1008606.0000000005,
+            "events": 1008606,
+            "sumw2_cps2": 0.39807769761167316,
+            "sumw_cps": 633.6430811405735
+          },
+          "gamma_continuum": {
+            "component_id": 1,
+            "effective_sample_size": 6253855.856536312,
+            "events": 6372612,
+            "sumw2_cps2": 42.78699663205219,
+            "sumw_cps": 16357.98610682131
+          },
+          "other": {
+            "component_id": 0,
+            "effective_sample_size": 303965.77222784836,
+            "events": 7498902,
+            "sumw2_cps2": 92.44567254242168,
+            "sumw_cps": 5300.973518466208
+          }
+        },
+        "continuum_weight_contract": "event_base_weight_cps already equals proposal_event_weight_cps times J_cont/J_total; downstream must not apply importance again",
+        "events": 14880120,
+        "gamma_IA_INIT_matching_rate": 1.0,
+        "hits": 135950
+      },
+      "day15_W2_final_components": {
+        "atm511": {
+          "rate_cps": 0.007538837736129749,
+          "selected_raw": 12,
+          "sumw2_cps2": 4.7361728676411595e-06,
+          "transport_ESS": 12.0,
+          "transport_sigma_cps": 0.0021762749981657096
+        },
+        "gamma_continuum": {
+          "rate_cps": 0.015336255640052532,
+          "selected_raw": 6,
+          "sumw2_cps2": 3.920012284284052e-05,
+          "transport_ESS": 5.999999999999999,
+          "transport_sigma_cps": 0.006261000147168224
+        },
+        "other": {
+          "rate_cps": 0.037720860604326306,
+          "selected_raw": 394,
+          "sumw2_cps2": 2.0990351307301606e-05,
+          "transport_ESS": 67.78654172577215,
+          "transport_sigma_cps": 0.004581522815320427
+        },
+        "total": {
+          "rate_cps": 0.060595953980508585,
+          "selected_raw": 412,
+          "sumw2_cps2": 6.492664701778329e-05,
+          "transport_ESS": 56.55412388386845,
+          "transport_sigma_cps": 0.008057707305293689
+        }
+      },
+      "five_anchors": [
+        {
+          "atm511_rate_cps": 0.007500865700245604,
+          "atm511_selected_raw": 12,
+          "atm511_sumw2_cps2": 4.688582284632674e-06,
+          "atm511_transport_ESS": 11.999999752063408,
+          "atm511_transport_sigma_cps": 0.0021653134379652,
+          "candidate": "SG3B",
+          "day_mid": 0.0,
+          "direct_rate_cps": 0.02275757765241761,
+          "direct_selected_raw": 412,
+          "direct_sumw2_cps2": 4.348312554989071e-05,
+          "direct_transport_ESS": 11.910536192058972,
+          "direct_transport_sigma_cps": 0.006594173606289928,
+          "gamma_continuum_rate_cps": 0.015256711952172007,
+          "gamma_continuum_selected_raw": 6,
+          "gamma_continuum_sumw2_cps2": 3.879454326525804e-05,
+          "gamma_continuum_transport_ESS": 5.999999999999998,
+          "gamma_continuum_transport_sigma_cps": 0.0062285265725738085,
+          "label_en": "Model A",
+          "label_zh": "模型 A",
+          "model": "a",
+          "other_rate_cps": 0.0,
+          "other_selected_raw": 394,
+          "other_sumw2_cps2": 0.0,
+          "other_transport_ESS": null,
+          "other_transport_sigma_cps": 0.0,
+          "signal_accidental_survival": 0.9692445,
+          "signal_survival_standard_error": 0.00012208521454244581,
+          "stage": "compton_trajectory_veto",
+          "time_bin_id": 0,
+          "timeline_counts": 401,
+          "timeline_rate_cps": 0.02005,
+          "timeline_rate_standard_error_cps": 0.0010012492197250394,
+          "timeline_to_direct_ratio": 0.8810252262445877,
+          "timeline_to_direct_ratio_standard_error": 0.04399630026610822,
+          "window_id": "w2_510p58_511p42"
+        },
+        {
+          "atm511_rate_cps": 0.007523304471251029,
+          "atm511_selected_raw": 12,
+          "atm511_sumw2_cps2": 4.716675863516327e-06,
+          "atm511_transport_ESS": 11.999999958646683,
+          "atm511_transport_sigma_cps": 0.0021717909345782636,
+          "candidate": "SG3B",
+          "day_mid": 5.0,
+          "direct_rate_cps": 0.060425563673423596,
+          "direct_selected_raw": 412,
+          "direct_sumw2_cps2": 6.458100690751801e-05,
+          "direct_transport_ESS": 56.53750104081947,
+          "direct_transport_sigma_cps": 0.00803623088938577,
+          "gamma_continuum_rate_cps": 0.01530371534833272,
+          "gamma_continuum_selected_raw": 6,
+          "gamma_continuum_sumw2_cps2": 3.9033950577132406e-05,
+          "gamma_continuum_transport_ESS": 6.0,
+          "gamma_continuum_transport_sigma_cps": 0.006247715628702415,
+          "label_en": "Model A",
+          "label_zh": "模型 A",
+          "model": "a",
+          "other_rate_cps": 0.037598543853839844,
+          "other_selected_raw": 394,
+          "other_sumw2_cps2": 2.083038046686928e-05,
+          "other_transport_ESS": 67.86484299590825,
+          "other_transport_sigma_cps": 0.004564031164099264,
+          "signal_accidental_survival": 0.9674915,
+          "signal_survival_standard_error": 0.00012540274603801556,
+          "stage": "compton_trajectory_veto",
+          "time_bin_id": 20,
+          "timeline_counts": 1166,
+          "timeline_rate_cps": 0.0583,
+          "timeline_rate_standard_error_cps": 0.0017073371078963873,
+          "timeline_to_direct_ratio": 0.96482343656881,
+          "timeline_to_direct_ratio_standard_error": 0.028255211935198036,
+          "window_id": "w2_510p58_511p42"
+        },
+        {
+          "atm511_rate_cps": 0.007587321083299136,
+          "atm511_selected_raw": 12,
+          "atm511_sumw2_cps2": 4.797286927973321e-06,
+          "atm511_transport_ESS": 11.999999600898526,
+          "atm511_transport_sigma_cps": 0.0021902709713579552,
+          "candidate": "SG3B",
+          "day_mid": 10.0,
+          "direct_rate_cps": 0.06156183032376787,
+          "direct_selected_raw": 412,
+          "direct_sumw2_cps2": 6.644485118901843e-05,
+          "direct_transport_ESS": 57.037661835244634,
+          "direct_transport_sigma_cps": 0.008151371123253953,
+          "gamma_continuum_rate_cps": 0.01543783341562116,
+          "gamma_continuum_selected_raw": 6,
+          "gamma_continuum_sumw2_cps2": 3.972111676141155e-05,
+          "gamma_continuum_transport_ESS": 6.0,
+          "gamma_continuum_transport_sigma_cps": 0.006302469100393238,
+          "label_en": "Model A",
+          "label_zh": "模型 A",
+          "model": "a",
+          "other_rate_cps": 0.03853667582484757,
+          "other_selected_raw": 394,
+          "other_sumw2_cps2": 2.192644749963356e-05,
+          "other_transport_ESS": 67.72986748784591,
+          "other_transport_sigma_cps": 0.004682568472498139,
+          "signal_accidental_survival": 0.966933,
+          "signal_survival_standard_error": 0.00012643886568417158,
+          "stage": "compton_trajectory_veto",
+          "time_bin_id": 40,
+          "timeline_counts": 1176,
+          "timeline_rate_cps": 0.0588,
+          "timeline_rate_standard_error_cps": 0.0017146428199482247,
+          "timeline_to_direct_ratio": 0.9551372935268043,
+          "timeline_to_direct_ratio_standard_error": 0.0278523690886142,
+          "window_id": "w2_510p58_511p42"
+        },
+        {
+          "atm511_rate_cps": 0.007538837736129749,
+          "atm511_selected_raw": 12,
+          "atm511_sumw2_cps2": 4.7361728676411595e-06,
+          "atm511_transport_ESS": 12.0,
+          "atm511_transport_sigma_cps": 0.0021762749981657096,
+          "candidate": "SG3B",
+          "day_mid": 15.0,
+          "direct_rate_cps": 0.060595953980508585,
+          "direct_selected_raw": 412,
+          "direct_sumw2_cps2": 6.492664701778329e-05,
+          "direct_transport_ESS": 56.55412388386845,
+          "direct_transport_sigma_cps": 0.008057707305293689,
+          "gamma_continuum_rate_cps": 0.015336255640052532,
+          "gamma_continuum_selected_raw": 6,
+          "gamma_continuum_sumw2_cps2": 3.920012284284052e-05,
+          "gamma_continuum_transport_ESS": 5.999999999999999,
+          "gamma_continuum_transport_sigma_cps": 0.006261000147168224,
+          "label_en": "Model A",
+          "label_zh": "模型 A",
+          "model": "a",
+          "other_rate_cps": 0.037720860604326306,
+          "other_selected_raw": 394,
+          "other_sumw2_cps2": 2.0990351307301606e-05,
+          "other_transport_ESS": 67.78654172577215,
+          "other_transport_sigma_cps": 0.004581522815320427,
+          "signal_accidental_survival": 0.967066,
+          "signal_survival_standard_error": 0.0001261930101947014,
+          "stage": "compton_trajectory_veto",
+          "time_bin_id": 60,
+          "timeline_counts": 1194,
+          "timeline_rate_cps": 0.0597,
+          "timeline_rate_standard_error_cps": 0.0017277152543170996,
+          "timeline_to_direct_ratio": 0.9852142936672509,
+          "timeline_to_direct_ratio_standard_error": 0.028512056347406296,
+          "window_id": "w2_510p58_511p42"
+        },
+        {
+          "atm511_rate_cps": 0.007494023558027137,
+          "atm511_selected_raw": 12,
+          "atm511_sumw2_cps2": 4.680032558839657e-06,
+          "atm511_transport_ESS": 11.999999654316472,
+          "atm511_transport_sigma_cps": 0.002163338290429783,
+          "candidate": "SG3B",
+          "day_mid": 20.0,
+          "direct_rate_cps": 0.05987807211885675,
+          "direct_selected_raw": 412,
+          "direct_sumw2_cps2": 6.370974213758902e-05,
+          "direct_transport_ESS": 56.276848726336596,
+          "direct_transport_sigma_cps": 0.00798183826806764,
+          "gamma_continuum_rate_cps": 0.015242380172902567,
+          "gamma_continuum_selected_raw": 6,
+          "gamma_continuum_sumw2_cps2": 3.872169222254888e-05,
+          "gamma_continuum_transport_ESS": 6.000000000000001,
+          "gamma_continuum_transport_sigma_cps": 0.006222675648187754,
+          "label_en": "Model A",
+          "label_zh": "模型 A",
+          "model": "a",
+          "other_rate_cps": 0.03714166838792705,
+          "other_selected_raw": 394,
+          "other_sumw2_cps2": 2.030801735620048e-05,
+          "other_transport_ESS": 67.92901081589567,
+          "other_transport_sigma_cps": 0.004506441762211121,
+          "signal_accidental_survival": 0.967259,
+          "signal_survival_standard_error": 0.0001258352631796827,
+          "stage": "compton_trajectory_veto",
+          "time_bin_id": 80,
+          "timeline_counts": 1153,
+          "timeline_rate_cps": 0.05765,
+          "timeline_rate_standard_error_cps": 0.0016977926846349647,
+          "timeline_to_direct_ratio": 0.9627898487707809,
+          "timeline_to_direct_ratio_standard_error": 0.028354164129815018,
+          "window_id": "w2_510p58_511p42"
+        }
+      ],
+      "label_en": "Model A",
+      "label_zh": "模型 A",
+      "line_response": {
+        "detector_positive_events": 1008606,
+        "final_selected_events": 12,
+        "geometry_setup": "/home/ubuntu/.codex/worktrees/4f50/TES_511_Balloon/engineering/geometry_optimization_20260815/55_geoopt_sg3b_bi_halfcylinder_al_harness_20260816/geometry/DEMO2_DR_v3p5_SG3B.geo.setup",
+        "incident_photons": 3000000,
+        "mission_integrated_ESS": 11.99999641339194,
+        "mission_integrated_background_counts": 12552.15515508207,
+        "mission_integrated_sumw2_counts2": 13129720.510701232,
+        "mission_integrated_transport_sigma_counts": 3623.4956203507727,
+        "node60_target_and_transport_proposal_final_ESS": 12.0,
+        "node60_target_and_transport_proposal_final_rate_cps": 0.007538837736129749,
+        "node60_target_and_transport_proposal_final_sumw2_cps2": 4.7361728676411595e-06,
+        "node60_target_and_transport_proposal_final_transport_sigma_cps": 0.0021762749981657096,
+        "physical_exposure_s": 1591.7573,
+        "proposal_event_weight_cps": 0.0006282364780108124
+      },
+      "mission_20day": {
+        "Fmin": {
+          "Fmin_3sigma_gaussian_ph_cm2_s": {
+            "relative_standard_error": 0.06744652530060449,
+            "standard_error_ph_cm2_s": 3.9118488171314315e-06,
+            "value_ph_cm2_s": 5.799926385676048e-05
+          },
+          "Fmin_3sigma_poisson_asimov_ph_cm2_s": {
+            "relative_standard_error": 0.06734038462100718,
+            "standard_error_ph_cm2_s": 3.9118656792848405e-06,
+            "value_ph_cm2_s": 5.8090931634870914e-05
+          },
+          "Fmin_5sigma_gaussian_ph_cm2_s": {
+            "relative_standard_error": 0.06744652530060449,
+            "standard_error_ph_cm2_s": 6.519748028552386e-06,
+            "value_ph_cm2_s": 9.666543976126748e-05
+          },
+          "Fmin_5sigma_poisson_asimov_ph_cm2_s": {
+            "relative_standard_error": 0.06726999477757527,
+            "standard_error_ph_cm2_s": 6.519803791578569e-06,
+            "value_ph_cm2_s": 9.691993901792263e-05
+          }
+        },
+        "atmospheric_transmission_slant45": 0.6520342542373311,
+        "background_combined_relative_sigma": 0.13476215349666643,
+        "background_combined_sigma_counts": 13465.857753641405,
+        "components": {
+          "atm511": {
+            "integrated_background_counts": 12552.15515508207,
+            "selected_raw": 12,
+            "sumw2_counts2": 13129720.510701232,
+            "transport_ESS": 11.99999641339194,
+            "transport_sigma_counts": 3623.4956203507727
+          },
+          "gamma_continuum": {
+            "integrated_background_counts": 25674.82726205473,
+            "selected_raw": 6,
+            "sumw2_counts2": 109866125.82272479,
+            "transport_ESS": 5.999999999999999,
+            "transport_sigma_counts": 10481.704337688829
+          },
+          "other": {
+            "integrated_background_counts": 61696.15923831698,
+            "selected_raw": 394,
+            "sumw2_counts2": 56258876.16469831,
+            "transport_ESS": 67.65894245054686,
+            "transport_sigma_counts": 7500.591720970973
+          },
+          "total": {
+            "integrated_background_counts": 99923.14165545377,
+            "selected_raw": 412,
+            "sumw2_counts2": 179254722.49812433,
+            "transport_ESS": 55.70081557209941,
+            "transport_sigma_counts": 13388.604202758566
+          }
+        },
+        "cumulative_background_counts_B": 99923.14165545377,
+        "cumulative_signal_counts_per_unit_flux_K": 16350529.192505842,
+        "mission_day": 20.0,
+        "signal_Aeff_cm2": 15.12324,
+        "signal_accidental_survival": 0.967259,
+        "signal_combined_relative_sigma": 0.0029705675148550535,
+        "signal_kernel_cm2": 9.53801575351885,
+        "transport_ESS": 55.70081557209941,
+        "transport_sigma_counts": 13388.604202758566,
+        "transport_sumw2_counts2": 179254722.49812433
+      },
+      "model": "a",
+      "topup": {
+        "Fmin_line_MC_contributions": {
+          "Fmin_3sigma_gaussian_ph_cm2_s": {
+            "existing_total_standard_error_ph_cm2_s": 3.9118488171314315e-06,
+            "fraction_of_existing_total_standard_error": 0.26882650403833086,
+            "line_MC_relative_sigma_on_Fmin": 0.018131413606094337,
+            "line_MC_standard_error_contribution_ph_cm2_s": 1.0516086418359225e-06,
+            "standard_error_without_line_MC_ph_cm2_s": 3.7678482496656613e-06
+          },
+          "Fmin_3sigma_poisson_asimov_ph_cm2_s": {
+            "existing_total_standard_error_ph_cm2_s": 3.9118656792848405e-06,
+            "fraction_of_existing_total_standard_error": 0.26882567985445915,
+            "line_MC_relative_sigma_on_Fmin": 0.018102824677403023,
+            "line_MC_standard_error_contribution_ph_cm2_s": 1.051609950733073e-06,
+            "standard_error_without_line_MC_ph_cm2_s": 3.7678653909456254e-06
+          },
+          "Fmin_5sigma_gaussian_ph_cm2_s": {
+            "existing_total_standard_error_ph_cm2_s": 6.519748028552386e-06,
+            "fraction_of_existing_total_standard_error": 0.26882650403833086,
+            "line_MC_relative_sigma_on_Fmin": 0.018131413606094337,
+            "line_MC_standard_error_contribution_ph_cm2_s": 1.7526810697265376e-06,
+            "standard_error_without_line_MC_ph_cm2_s": 6.279747082776102e-06
+          },
+          "Fmin_5sigma_poisson_asimov_ph_cm2_s": {
+            "existing_total_standard_error_ph_cm2_s": 6.519803791578569e-06,
+            "fraction_of_existing_total_standard_error": 0.268825131122114,
+            "line_MC_relative_sigma_on_Fmin": 0.018083865166665592,
+            "line_MC_standard_error_contribution_ph_cm2_s": 1.7526871091615647e-06,
+            "standard_error_without_line_MC_ph_cm2_s": 6.279803291350865e-06
+          }
+        },
+        "additional_incident_photons": 0,
+        "decision": "NO_TOPUP",
+        "legacy_last_digit_diagnostic": {
+          "caveat": "the 1e-8 step is inherited from an old TeX mantissa and must not force a transport top-up",
+          "decision_authority": false,
+          "display_step_ph_cm2_s": 1e-08,
+          "existing_total_standard_error_ph_cm2_s": 3.9118488171314315e-06,
+          "line_standard_error_contribution_ph_cm2_s": 1.0516086418359225e-06,
+          "maximum_line_standard_error_for_same_reported_last_digit_ph_cm2_s": 2.322596983796674e-07,
+          "passes": false,
+          "rounded_existing_total_standard_error_ph_cm2_s": 3.91e-06,
+          "rounded_standard_error_without_line_MC_ph_cm2_s": 3.77e-06,
+          "same_reported_last_digit_with_and_without_line_MC": false,
+          "standard_error_without_line_MC_ph_cm2_s": 3.7678482496656613e-06,
+          "status": "INFORMATIONAL__LEGACY_LAST_DIGIT_DIAGNOSTIC"
+        },
+        "physical_PARMA_flux_systematic": {
+          "reason": "transport top-up reduces finite-MC response variance but cannot reduce physical source-model/atmospheric flux systematics",
+          "status": "EXCLUDED"
+        },
+        "publication_precision_gate": {
+          "current": {
+            "Fmin_ph_cm2_s": 5.799926385676048e-05,
+            "line_Fmin_variance_fraction": 0.07226768927347071,
+            "line_sigma_to_rest_sigma": 0.2791005826546323,
+            "line_standard_error_ph_cm2_s": 1.0516086418359225e-06,
+            "passes_both_publication_gates": true,
+            "passes_line_sigma_not_greater_than_rest": true,
+            "passes_line_variance_fraction": true,
+            "passes_total_MC_RSE": true,
+            "rest_MC_relative_standard_error": 0.0649637253840158,
+            "rest_standard_error_ph_cm2_s": 3.7678482496656613e-06,
+            "total_MC_relative_standard_error": 0.06744652530060449,
+            "total_standard_error_ph_cm2_s": 3.9118488171314315e-06
+          },
+          "decision": "NO_TOPUP",
+          "decision_authority": true,
+          "formulas": {
+            "allowed_line_from_RSE": "sqrt((0.10*Fmin)^2 - sigma_F_rest^2)",
+            "allowed_line_from_nondominance": "sigma_F_rest*sqrt(0.50/(1-0.50)) = sigma_F_rest",
+            "line_variance_fraction": "f_line = sigma_F_line^2 / (sigma_F_rest^2 + sigma_F_line^2)",
+            "required_incident": "ceil(N_current * (sigma_F_line_current/min(allowed_RSE,allowed_nondominance))^2)",
+            "rest_error": "sigma_F_rest = sqrt(sigma_F_total^2 - sigma_F_line^2)",
+            "total_RSE": "RSE_total = sigma_F_total / Fmin"
+          },
+          "line_error_budgets_ph_cm2_s": {
+            "maximum_from_total_MC_RSE": 4.409361138164195e-06,
+            "maximum_from_variance_nondominance": 3.7678482496656613e-06,
+            "maximum_simultaneously_allowed": 3.7678482496656613e-06
+          },
+          "line_topup_can_satisfy_both_gates": true,
+          "projected_at_required_incident": {
+            "incident_scale": 1.0,
+            "line_Fmin_variance_fraction": 0.07226768927347071,
+            "line_sigma_to_rest_sigma": 0.2791005826546323,
+            "line_standard_error_ph_cm2_s": 1.0516086418359225e-06,
+            "total_MC_relative_standard_error": 0.06744652530060449,
+            "total_standard_error_ph_cm2_s": 3.9118488171314315e-06
+          },
+          "publication_metric": "Fmin_3sigma_gaussian_ph_cm2_s",
+          "reason": "current total Gaussian 3-sigma Fmin MC RSE is at most 10% and the line contributes at most half of Fmin variance",
+          "required_total_incident_photons": 3000000,
+          "status": "NO_TOPUP",
+          "thresholds": {
+            "line_Fmin_variance_fraction_max": 0.5,
+            "line_sigma_to_rest_sigma_max": 1.0,
+            "total_MC_relative_standard_error_max": 0.1
+          }
+        },
+        "required_total_incident_photons": 3000000
+      }
+    },
+    "b": {
+      "candidate": "SH3_OPTV3_60cm",
+      "catalog": {
+        "categories": 1541,
+        "components": {
+          "atm511": {
+            "component_id": 2,
+            "effective_sample_size": 650363.0000000001,
+            "events": 650363,
+            "sumw2_cps2": 0.009342130973410929,
+            "sumw_cps": 77.94726631678915
+          },
+          "gamma_continuum": {
+            "component_id": 1,
+            "effective_sample_size": 4108388.319529832,
+            "events": 4189660,
+            "sumw2_cps2": 0.9160609592250699,
+            "sumw_cps": 1939.9830269508986
+          },
+          "other": {
+            "component_id": 0,
+            "effective_sample_size": 131815.83241547918,
+            "events": 3869338,
+            "sumw2_cps2": 2.82221809469813,
+            "sumw_cps": 609.9287068261845
+          }
+        },
+        "continuum_weight_contract": "event_base_weight_cps already equals proposal_event_weight_cps times J_cont/J_total; downstream must not apply importance again",
+        "events": 8709361,
+        "gamma_IA_INIT_matching_rate": 1.0,
+        "hits": 623747
+      },
+      "day15_W2_final_components": {
+        "atm511": {
+          "rate_cps": 0.022292460571900277,
+          "selected_raw": 186,
+          "sumw2_cps2": 2.6717946147834866e-06,
+          "transport_ESS": 185.99999999999997,
+          "transport_sigma_cps": 0.0016345625147982216
+        },
+        "gamma_continuum": {
+          "rate_cps": 0.005355349386222926,
+          "selected_raw": 12,
+          "sumw2_cps2": 2.4221011730126847e-06,
+          "transport_ESS": 11.840862540372532,
+          "transport_sigma_cps": 0.001556310114666317
+        },
+        "other": {
+          "rate_cps": 0.0035805378117859145,
+          "selected_raw": 111,
+          "sumw2_cps2": 2.88337454595599e-07,
+          "transport_ESS": 44.46266281849998,
+          "transport_sigma_cps": 0.000536970627311773
+        },
+        "total": {
+          "rate_cps": 0.03122834776990912,
+          "selected_raw": 309,
+          "sumw2_cps2": 5.3822332423917705e-06,
+          "transport_ESS": 181.19053198166895,
+          "transport_sigma_cps": 0.0023199640605819243
+        }
+      },
+      "five_anchors": [
+        {
+          "atm511_rate_cps": 0.022173334991876348,
+          "atm511_selected_raw": 186,
+          "atm511_sumw2_cps2": 2.643316675580998e-06,
+          "atm511_transport_ESS": 185.99995573890232,
+          "atm511_transport_sigma_cps": 0.0016258279969237207,
+          "candidate": "SH3_OPTV3_60cm",
+          "day_mid": 0.0,
+          "direct_rate_cps": 0.02750090809097503,
+          "direct_selected_raw": 309,
+          "direct_sumw2_cps2": 5.04035785644644e-06,
+          "direct_transport_ESS": 150.04885910252878,
+          "direct_transport_sigma_cps": 0.0022450741316149096,
+          "gamma_continuum_rate_cps": 0.005327573099098684,
+          "gamma_continuum_selected_raw": 12,
+          "gamma_continuum_sumw2_cps2": 2.397041180865442e-06,
+          "gamma_continuum_transport_ESS": 11.840862540372532,
+          "gamma_continuum_transport_sigma_cps": 0.0015482380892050944,
+          "label_en": "Model B",
+          "label_zh": "模型 B",
+          "model": "b",
+          "other_rate_cps": 0.0,
+          "other_selected_raw": 111,
+          "other_sumw2_cps2": 0.0,
+          "other_transport_ESS": null,
+          "other_transport_sigma_cps": 0.0,
+          "signal_accidental_survival": 0.995638,
+          "signal_survival_standard_error": 4.659921113066174e-05,
+          "stage": "compton_trajectory_veto",
+          "time_bin_id": 0,
+          "timeline_counts": 5443,
+          "timeline_rate_cps": 0.027215,
+          "timeline_rate_standard_error_cps": 0.0003688834504284517,
+          "timeline_to_direct_ratio": 0.9896036854481596,
+          "timeline_to_direct_ratio_standard_error": 0.013413500718163855,
+          "window_id": "w2_510p58_511p42"
+        },
+        {
+          "atm511_rate_cps": 0.022243725971227313,
+          "atm511_selected_raw": 186,
+          "atm511_sumw2_cps2": 2.660125616740557e-06,
+          "atm511_transport_ESS": 185.99999262038943,
+          "atm511_transport_sigma_cps": 0.0016309891528580307,
+          "candidate": "SH3_OPTV3_60cm",
+          "day_mid": 5.0,
+          "direct_rate_cps": 0.031115322552616804,
+          "direct_selected_raw": 309,
+          "direct_sumw2_cps2": 5.354804738807124e-06,
+          "direct_transport_ESS": 180.80272666843481,
+          "direct_transport_sigma_cps": 0.0023140451030191967,
+          "gamma_continuum_rate_cps": 0.005343986467178065,
+          "gamma_continuum_selected_raw": 12,
+          "gamma_continuum_sumw2_cps2": 2.411833704175727e-06,
+          "gamma_continuum_transport_ESS": 11.840862540372532,
+          "gamma_continuum_transport_sigma_cps": 0.001553007953674329,
+          "label_en": "Model B",
+          "label_zh": "模型 B",
+          "model": "b",
+          "other_rate_cps": 0.0035276101142114255,
+          "other_selected_raw": 111,
+          "other_sumw2_cps2": 2.8284541789083987e-07,
+          "other_transport_ESS": 43.995880190250574,
+          "other_transport_sigma_cps": 0.0005318321331875687,
+          "signal_accidental_survival": 0.9954395,
+          "signal_survival_standard_error": 4.764295246807217e-05,
+          "stage": "compton_trajectory_veto",
+          "time_bin_id": 20,
+          "timeline_counts": 6202,
+          "timeline_rate_cps": 0.03101,
+          "timeline_rate_standard_error_cps": 0.0003937638886439436,
+          "timeline_to_direct_ratio": 0.9966150904449503,
+          "timeline_to_direct_ratio_standard_error": 0.01265498334391613,
+          "window_id": "w2_510p58_511p42"
+        },
+        {
+          "atm511_rate_cps": 0.022444606919635998,
+          "atm511_selected_raw": 186,
+          "atm511_sumw2_cps2": 2.7083901745752026e-06,
+          "atm511_transport_ESS": 185.9999288529336,
+          "atm511_transport_sigma_cps": 0.001645718741029342,
+          "candidate": "SH3_OPTV3_60cm",
+          "day_mid": 10.0,
+          "direct_rate_cps": 0.03146959394255905,
+          "direct_selected_raw": 309,
+          "direct_sumw2_cps2": 5.4608882489773255e-06,
+          "direct_transport_ESS": 181.35059678157887,
+          "direct_transport_sigma_cps": 0.002336854349114922,
+          "gamma_continuum_rate_cps": 0.0053908198746402325,
+          "gamma_continuum_selected_raw": 12,
+          "gamma_continuum_sumw2_cps2": 2.4542923981872215e-06,
+          "gamma_continuum_transport_ESS": 11.84086254037253,
+          "gamma_continuum_transport_sigma_cps": 0.0015666181405138973,
+          "label_en": "Model B",
+          "label_zh": "模型 B",
+          "model": "b",
+          "other_rate_cps": 0.0036341671482828185,
+          "other_selected_raw": 111,
+          "other_sumw2_cps2": 2.982056762149012e-07,
+          "other_transport_ESS": 44.28879768251077,
+          "other_transport_sigma_cps": 0.0005460821149011394,
+          "signal_accidental_survival": 0.9953965,
+          "signal_survival_standard_error": 4.786599935105285e-05,
+          "stage": "compton_trajectory_veto",
+          "time_bin_id": 40,
+          "timeline_counts": 6288,
+          "timeline_rate_cps": 0.03144,
+          "timeline_rate_standard_error_cps": 0.0003964845520319802,
+          "timeline_to_direct_ratio": 0.999059602020507,
+          "timeline_to_direct_ratio_standard_error": 0.012598972606881333,
+          "window_id": "w2_510p58_511p42"
+        },
+        {
+          "atm511_rate_cps": 0.022292460571900277,
+          "atm511_selected_raw": 186,
+          "atm511_sumw2_cps2": 2.6717946147834866e-06,
+          "atm511_transport_ESS": 185.99999999999997,
+          "atm511_transport_sigma_cps": 0.0016345625147982216,
+          "candidate": "SH3_OPTV3_60cm",
+          "day_mid": 15.0,
+          "direct_rate_cps": 0.03122834776990912,
+          "direct_selected_raw": 309,
+          "direct_sumw2_cps2": 5.3822332423917705e-06,
+          "direct_transport_ESS": 181.19053198166895,
+          "direct_transport_sigma_cps": 0.0023199640605819243,
+          "gamma_continuum_rate_cps": 0.005355349386222926,
+          "gamma_continuum_selected_raw": 12,
+          "gamma_continuum_sumw2_cps2": 2.4221011730126847e-06,
+          "gamma_continuum_transport_ESS": 11.840862540372532,
+          "gamma_continuum_transport_sigma_cps": 0.001556310114666317,
+          "label_en": "Model B",
+          "label_zh": "模型 B",
+          "model": "b",
+          "other_rate_cps": 0.0035805378117859145,
+          "other_selected_raw": 111,
+          "other_sumw2_cps2": 2.88337454595599e-07,
+          "other_transport_ESS": 44.46266281849998,
+          "other_transport_sigma_cps": 0.000536970627311773,
+          "signal_accidental_survival": 0.9953055,
+          "signal_survival_standard_error": 4.8334571839161074e-05,
+          "stage": "compton_trajectory_veto",
+          "time_bin_id": 60,
+          "timeline_counts": 6261,
+          "timeline_rate_cps": 0.031305,
+          "timeline_rate_standard_error_cps": 0.00039563240514396697,
+          "timeline_to_direct_ratio": 1.0024545720656006,
+          "timeline_to_direct_ratio_standard_error": 0.012669014962270556,
+          "window_id": "w2_510p58_511p42"
+        },
+        {
+          "atm511_rate_cps": 0.02215187320036257,
+          "atm511_selected_raw": 186,
+          "atm511_sumw2_cps2": 2.638202414560878e-06,
+          "atm511_transport_ESS": 185.99993828245283,
+          "atm511_transport_sigma_cps": 0.0016242544180518268,
+          "candidate": "SH3_OPTV3_60cm",
+          "day_mid": 20.0,
+          "direct_rate_cps": 0.03102182698848631,
+          "direct_selected_raw": 309,
+          "direct_sumw2_cps2": 5.313704404712257e-06,
+          "direct_transport_ESS": 181.107881885592,
+          "direct_transport_sigma_cps": 0.002305147371582185,
+          "gamma_continuum_rate_cps": 0.005322568508205347,
+          "gamma_continuum_selected_raw": 12,
+          "gamma_continuum_sumw2_cps2": 2.3925398532367394e-06,
+          "gamma_continuum_transport_ESS": 11.84086254037253,
+          "gamma_continuum_transport_sigma_cps": 0.0015467837124940058,
+          "label_en": "Model B",
+          "label_zh": "模型 B",
+          "model": "b",
+          "other_rate_cps": 0.003547385279918393,
+          "other_selected_raw": 111,
+          "other_sumw2_cps2": 2.829621369146394e-07,
+          "other_transport_ESS": 44.472177307516816,
+          "other_transport_sigma_cps": 0.0005319418548249793,
+          "signal_accidental_survival": 0.995422,
+          "signal_survival_standard_error": 4.773385546967672e-05,
+          "stage": "compton_trajectory_veto",
+          "time_bin_id": 80,
+          "timeline_counts": 6119,
+          "timeline_rate_cps": 0.030595,
+          "timeline_rate_standard_error_cps": 0.0003911201861320891,
+          "timeline_to_direct_ratio": 0.9862410750777275,
+          "timeline_to_direct_ratio_standard_error": 0.012607903018647244,
+          "window_id": "w2_510p58_511p42"
+        }
+      ],
+      "label_en": "Model B",
+      "label_zh": "模型 B",
+      "line_response": {
+        "detector_positive_events": 650363,
+        "final_selected_events": 186,
+        "geometry_setup": "/home/ubuntu/.codex/worktrees/e3cf/TES_511_Balloon/engineering/geometry_optimization_20260815/sh3/assembly_opt_v3/geometry/SH3_Assembly_OptV3_60cm.geo.setup",
+        "incident_photons": 15709417,
+        "mission_integrated_ESS": 185.89988254230673,
+        "mission_integrated_background_counts": 39429.801994611786,
+        "mission_integrated_sumw2_counts2": 8363153.672141098,
+        "mission_integrated_transport_sigma_counts": 2891.9117676964315,
+        "node60_target_and_transport_proposal_final_ESS": 186.0,
+        "node60_target_and_transport_proposal_final_rate_cps": 0.02229246057190028,
+        "node60_target_and_transport_proposal_final_sumw2_cps2": 2.6717946147834866e-06,
+        "node60_target_and_transport_proposal_final_transport_sigma_cps": 0.0016345625147982216,
+        "physical_exposure_s": 8343.628079999999,
+        "proposal_event_weight_cps": 0.00011985193855860365
+      },
+      "mission_20day": {
+        "Fmin": {
+          "Fmin_3sigma_gaussian_ph_cm2_s": {
+            "relative_standard_error": 0.03734351869818048,
+            "standard_error_ph_cm2_s": 1.562885154090927e-06,
+            "value_ph_cm2_s": 4.185157715646857e-05
+          },
+          "Fmin_3sigma_poisson_asimov_ph_cm2_s": {
+            "relative_standard_error": 0.03726460814652572,
+            "standard_error_ph_cm2_s": 1.5629100000512787e-06,
+            "value_ph_cm2_s": 4.194086769692741e-05
+          },
+          "Fmin_5sigma_gaussian_ph_cm2_s": {
+            "relative_standard_error": 0.03734351869818048,
+            "standard_error_ph_cm2_s": 2.604808590151545e-06,
+            "value_ph_cm2_s": 6.975262859411428e-05
+          },
+          "Fmin_5sigma_poisson_asimov_ph_cm2_s": {
+            "relative_standard_error": 0.037212372641133674,
+            "standard_error_ph_cm2_s": 2.604884047380261e-06,
+            "value_ph_cm2_s": 7.000048270238174e-05
+          }
+        },
+        "atmospheric_transmission_slant45": 0.6520342542373311,
+        "background_combined_relative_sigma": 0.07444804456895723,
+        "background_combined_sigma_counts": 4080.197303824251,
+        "components": {
+          "atm511": {
+            "integrated_background_counts": 39429.801994611786,
+            "selected_raw": 186,
+            "sumw2_counts2": 8363153.672141098,
+            "transport_ESS": 185.89988254230673,
+            "transport_sigma_counts": 2891.9117676964315
+          },
+          "gamma_continuum": {
+            "integrated_background_counts": 9333.446660019403,
+            "selected_raw": 12,
+            "sumw2_counts2": 7357000.071439612,
+            "transport_ESS": 11.840862540372532,
+            "transport_sigma_counts": 2712.3790427297604
+          },
+          "other": {
+            "integrated_background_counts": 6042.721434280722,
+            "selected_raw": 111,
+            "sumw2_counts2": 821178.3221755163,
+            "transport_ESS": 44.465959885033556,
+            "transport_sigma_counts": 906.1888998302265
+          },
+          "total": {
+            "integrated_background_counts": 54805.97008891191,
+            "selected_raw": 309,
+            "sumw2_counts2": 16541332.065756226,
+            "transport_ESS": 181.58721108107966,
+            "transport_sigma_counts": 4067.103645809414
+          }
+        },
+        "cumulative_background_counts_B": 54805.970088911905,
+        "cumulative_signal_counts_per_unit_flux_K": 16781213.415433664,
+        "mission_day": 20.0,
+        "signal_Aeff_cm2": 15.085439999999998,
+        "signal_accidental_survival": 0.995422,
+        "signal_combined_relative_sigma": 0.002985055062472794,
+        "signal_kernel_cm2": 9.791193388508535,
+        "transport_ESS": 181.58721108107966,
+        "transport_sigma_counts": 4067.103645809414,
+        "transport_sumw2_counts2": 16541332.065756226
+      },
+      "model": "b",
+      "topup": {
+        "Fmin_line_MC_contributions": {
+          "Fmin_3sigma_gaussian_ph_cm2_s": {
+            "existing_total_standard_error_ph_cm2_s": 1.562885154090927e-06,
+            "fraction_of_existing_total_standard_error": 0.706499626315796,
+            "line_MC_relative_sigma_on_Fmin": 0.026383182005581447,
+            "line_MC_standard_error_contribution_ph_cm2_s": 1.104177777339745e-06,
+            "standard_error_without_line_MC_ph_cm2_s": 1.1060747899246601e-06
+          },
+          "Fmin_3sigma_poisson_asimov_ph_cm2_s": {
+            "existing_total_standard_error_ph_cm2_s": 1.5629100000512787e-06,
+            "fraction_of_existing_total_standard_error": 0.7064899953222146,
+            "line_MC_relative_sigma_on_Fmin": 0.026327072835123113,
+            "line_MC_standard_error_contribution_ph_cm2_s": 1.1041802786252702e-06,
+            "standard_error_without_line_MC_ph_cm2_s": 1.106107400099696e-06
+          },
+          "Fmin_5sigma_gaussian_ph_cm2_s": {
+            "existing_total_standard_error_ph_cm2_s": 2.604808590151545e-06,
+            "fraction_of_existing_total_standard_error": 0.706499626315796,
+            "line_MC_relative_sigma_on_Fmin": 0.026383182005581447,
+            "line_MC_standard_error_contribution_ph_cm2_s": 1.8402962955662417e-06,
+            "standard_error_without_line_MC_ph_cm2_s": 1.8434579832077665e-06
+          },
+          "Fmin_5sigma_poisson_asimov_ph_cm2_s": {
+            "existing_total_standard_error_ph_cm2_s": 2.604884047380261e-06,
+            "fraction_of_existing_total_standard_error": 0.7064835862019285,
+            "line_MC_relative_sigma_on_Fmin": 0.02628993047459065,
+            "line_MC_standard_error_contribution_ph_cm2_s": 1.8403078234334012e-06,
+            "standard_error_without_line_MC_ph_cm2_s": 1.8435530953314006e-06
+          }
+        },
+        "additional_incident_photons": 0,
+        "decision": "NO_TOPUP",
+        "legacy_last_digit_diagnostic": {
+          "caveat": "the 1e-8 step is inherited from an old TeX mantissa and must not force a transport top-up",
+          "decision_authority": false,
+          "display_step_ph_cm2_s": 1e-08,
+          "existing_total_standard_error_ph_cm2_s": 1.562885154090927e-06,
+          "line_standard_error_contribution_ph_cm2_s": 1.104177777339745e-06,
+          "maximum_line_standard_error_for_same_reported_last_digit_ph_cm2_s": 1.4079616149994702e-07,
+          "passes": false,
+          "rounded_existing_total_standard_error_ph_cm2_s": 1.56e-06,
+          "rounded_standard_error_without_line_MC_ph_cm2_s": 1.11e-06,
+          "same_reported_last_digit_with_and_without_line_MC": false,
+          "standard_error_without_line_MC_ph_cm2_s": 1.1060747899246601e-06,
+          "status": "INFORMATIONAL__LEGACY_LAST_DIGIT_DIAGNOSTIC"
+        },
+        "physical_PARMA_flux_systematic": {
+          "reason": "transport top-up reduces finite-MC response variance but cannot reduce physical source-model/atmospheric flux systematics",
+          "status": "EXCLUDED"
+        },
+        "publication_precision_gate": {
+          "current": {
+            "Fmin_ph_cm2_s": 4.185157715646857e-05,
+            "line_Fmin_variance_fraction": 0.4991417219843593,
+            "line_sigma_to_rest_sigma": 0.9982849147253015,
+            "line_standard_error_ph_cm2_s": 1.104177777339745e-06,
+            "passes_both_publication_gates": true,
+            "passes_line_sigma_not_greater_than_rest": true,
+            "passes_line_variance_fraction": true,
+            "passes_total_MC_RSE": true,
+            "rest_MC_relative_standard_error": 0.026428509152461067,
+            "rest_standard_error_ph_cm2_s": 1.1060747899246601e-06,
+            "total_MC_relative_standard_error": 0.03734351869818048,
+            "total_standard_error_ph_cm2_s": 1.562885154090927e-06
+          },
+          "decision": "NO_TOPUP",
+          "decision_authority": true,
+          "formulas": {
+            "allowed_line_from_RSE": "sqrt((0.10*Fmin)^2 - sigma_F_rest^2)",
+            "allowed_line_from_nondominance": "sigma_F_rest*sqrt(0.50/(1-0.50)) = sigma_F_rest",
+            "line_variance_fraction": "f_line = sigma_F_line^2 / (sigma_F_rest^2 + sigma_F_line^2)",
+            "required_incident": "ceil(N_current * (sigma_F_line_current/min(allowed_RSE,allowed_nondominance))^2)",
+            "rest_error": "sigma_F_rest = sqrt(sigma_F_total^2 - sigma_F_line^2)",
+            "total_RSE": "RSE_total = sigma_F_total / Fmin"
+          },
+          "line_error_budgets_ph_cm2_s": {
+            "maximum_from_total_MC_RSE": 4.036352767528074e-06,
+            "maximum_from_variance_nondominance": 1.1060747899246601e-06,
+            "maximum_simultaneously_allowed": 1.1060747899246601e-06
+          },
+          "line_topup_can_satisfy_both_gates": true,
+          "projected_at_required_incident": {
+            "incident_scale": 1.0,
+            "line_Fmin_variance_fraction": 0.4991417219843593,
+            "line_sigma_to_rest_sigma": 0.9982849147253015,
+            "line_standard_error_ph_cm2_s": 1.104177777339745e-06,
+            "total_MC_relative_standard_error": 0.03734351869818048,
+            "total_standard_error_ph_cm2_s": 1.562885154090927e-06
+          },
+          "publication_metric": "Fmin_3sigma_gaussian_ph_cm2_s",
+          "reason": "current total Gaussian 3-sigma Fmin MC RSE is at most 10% and the line contributes at most half of Fmin variance",
+          "required_total_incident_photons": 15709417,
+          "status": "NO_TOPUP",
+          "thresholds": {
+            "line_Fmin_variance_fraction_max": 0.5,
+            "line_sigma_to_rest_sigma_max": 1.0,
+            "total_MC_relative_standard_error_max": 0.1
+          }
+        },
+        "required_total_incident_photons": 15709417
+      }
+    }
+  },
+  "publication_precision_policy": {
+    "formal_gate": "Gaussian 3-sigma Fmin total MC RSE <= 10% and line Fmin variance fraction <= 50%",
+    "legacy_last_digit_diagnostic_is_informational_only": true,
+    "physical_PARMA_flux_systematic": "EXCLUDED"
+  },
+  "schema_version": 2,
+  "scope": {
+    "anchor_nodes": [
+      0,
+      20,
+      40,
+      60,
+      80
+    ],
+    "formal_input_stages": [
+      "00",
+      "01",
+      "02",
+      "03",
+      "04"
+    ],
+    "mission_day_range": [
+      0.0,
+      20.0
+    ],
+    "mission_nodes": 81,
+    "models": [
+      "a",
+      "b"
+    ],
+    "purpose": "machine-readable bilingual-manuscript and data-table values",
+    "stage": "compton_trajectory_veto",
+    "window_id": "w2_510p58_511p42"
+  },
+  "source_closure": {
+    "continuum_deline_state": {
+      "atmospheric_depth_g_cm2": 3.84535,
+      "cutoff_rigidity_Rc_GV": 11.6,
+      "local_geometry_g": 0.0,
+      "solar_modulation_W_MV": 118.3
+    },
+    "continuum_state_diagnostic_fluxes_ph_cm2_s": {
+      "continuum": 4.623218946551606,
+      "original_broadband": 4.7996615777852,
+      "parma511_at_continuum_deline_state": 0.17378292793520006,
+      "removed_coarse_line": 0.17644263123359388,
+      "same_state_recomposed": 4.7970018744868055,
+      "same_state_representation_delta": -0.002659703298394156
+    },
+    "hybrid_day15_fluxes_ph_cm2_s": {
+      "continuum": 4.422560610421608,
+      "mono511": 0.16651547160226118,
+      "original_broadband": 4.591345225624589,
+      "recomposed_gamma": 4.589076082023869,
+      "representation_delta": -0.0022691436007198362
+    },
+    "importance_ranges": {
+      "continuum_Jcont_over_Jtotal_max": 1.0,
+      "continuum_Jcont_over_Jtotal_min": 0.3971350029339165,
+      "mono_target_over_proposal_max": 1.6128636607432865,
+      "mono_target_over_proposal_min": 0.6538646344950084
+    },
+    "mono511_day15_authority": {
+      "atmospheric_depth_g_cm2": 3.4614689720143224,
+      "cutoff_rigidity_Rc_GV": 11.6,
+      "day_mid": 15.0,
+      "integrated_flux_ph_cm2_s": 0.16651547160226118,
+      "local_geometry_g": 0.15,
+      "maximum_importance_ratio": 1.0,
+      "minimum_importance_ratio": 1.0,
+      "solar_modulation_W_MV": 114.6,
+      "time_bin_id": 60
+    },
+    "mono_target_state": {
+      "Rc_depth": "per-node",
+      "angular_bins_per_node": 80,
+      "line_energy_MeV": 0.51099895,
+      "local_geometry_g": 0.15,
+      "solar_modulation_W_MV": 114.6,
+      "trajectory_nodes": 81
+    },
+    "physical_PARMA_flux_systematic": {
+      "status": "EXCLUDED"
+    },
+    "reference_state_caveat": "Explicit hybrid: the continuum de-line state is W=118.3/g=0/Rc=11.6/X=3.84535; the physical mono target and transport proposal share W=114.6/g=0.15 at node60 and use per-node Rc/depth elsewhere. They are not one atmospheric state; no old-total renormalization is used.",
+    "transport_proposal_state": {
+      "atmospheric_depth_g_cm2": 3.4614689720143224,
+      "cutoff_rigidity_Rc_GV": 11.6,
+      "integrated_flux_ph_cm2_s": 0.16651547160226118,
+      "local_geometry_g": 0.15,
+      "solar_modulation_W_MV": 114.6
+    }
+  },
+  "status": "PASS__PUBLICATION_VALUES_FLUXCLOSED_A_B",
+  "topup_gate_definition": {
+    "Asimov_and_5sigma_line_contributions_are_reported_not_gated": true,
+    "background_count_precision_is_diagnostic_not_gate": true,
+    "formal_publication_gates": {
+      "equivalent_line_nondominance": "sigma_F_line <= sigma_F_rest",
+      "line_Fmin_variance_fraction_max": 0.5,
+      "rationale": "the existing manuscript A/B total MC errors are about 7--9%; 10% is a no-degradation publication target, and the line finite-MC term may not dominate the remaining statistical variance",
+      "total_MC_relative_standard_error_max": 0.1
+    },
+    "gated_metric": "Gaussian 3-sigma Fmin total MC uncertainty",
+    "legacy_last_digit_diagnostic": {
+      "decision_authority": false,
+      "display_step_ph_cm2_s": 1e-08,
+      "reason": "old TeX mantissa precision must not force a no-benefit top-up",
+      "status": "INFORMATIONAL_ONLY"
+    },
+    "not_beneficial_rule": "if sigma_F_rest/Fmin >= 0.10, no finite reduction of the incremental line variance can satisfy total RSE <=10%; report LINE_TOPUP_NOT_BENEFICIAL",
+    "required_incident_formula": "ceil(N_current * (sigma_F_line_current/min(sqrt((0.10*Fmin)^2-sigma_F_rest^2),sigma_F_rest))^2)"
+  },
+  "topup_global_decision": "NO_TOPUP",
+  "uncertainty_scope": {
+    "excluded": {
+      "other_systematics": "geometry, detector-response model, activation/source model, atmosphere, and cross-component transport systematics",
+      "physical_PARMA_flux_systematic": {
+        "reason": "transport top-up reduces finite-MC response variance but cannot reduce physical source-model/atmospheric flux systematics",
+        "status": "EXCLUDED"
+      }
+    },
+    "included": "finite transport-template sumw2 with each template fully correlated across mission nodes; independent five-anchor replay Poisson terms; signal Aeff and accidental-probe binomial terms"
+  }
+}

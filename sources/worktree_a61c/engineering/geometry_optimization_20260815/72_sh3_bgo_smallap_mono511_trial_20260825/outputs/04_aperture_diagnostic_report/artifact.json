@@ -1,0 +1,575 @@
+{
+  "surface": "report",
+  "manifest": {
+    "version": 1,
+    "surface": "report",
+    "title": "SH3 小口为何没有按面积压低 511 keV 泄漏",
+    "description": "对旧大口与新小口 PARMA 511 keV 输运的逐事件路径、几何接受度和稀疏计数假设检验。",
+    "generatedAt": "2026-08-25T19:01:04+08:00",
+    "cards": [
+      {
+        "id": "removed_branch_share",
+        "description": "旧大口最终样本中，真正落在本次封闭方环的事件占比。",
+        "dataset": "headline_metrics",
+        "sourceId": "path_audit",
+        "metrics": [
+          {
+            "label": "被封闭外环原占比",
+            "field": "removed_branch_share",
+            "format": "percent"
+          }
+        ]
+      },
+      {
+        "id": "removed_branch_reduction",
+        "description": "按各自等效曝光归一后，被封闭方环支路的率降幅。",
+        "dataset": "headline_metrics",
+        "sourceId": "path_audit",
+        "metrics": [
+          {
+            "label": "外环支路下降",
+            "field": "removed_branch_reduction",
+            "format": "percent"
+          }
+        ]
+      },
+      {
+        "id": "total_rate_significance",
+        "description": "新旧总单能线率差除以独立 Poisson 误差。",
+        "dataset": "headline_metrics",
+        "sourceId": "mono_response",
+        "metrics": [
+          {
+            "label": "总率变化显著度",
+            "field": "total_rate_difference_sigma",
+            "format": "number"
+          }
+        ]
+      }
+    ],
+    "charts": [
+      {
+        "id": "new_path_chart",
+        "title": "新小口的存活事件由非前窗路径主导",
+        "subtitle": "穿过 BGO 零相互作用与 Rayleigh 路径合计 39/52；前方小方孔为 12/52。",
+        "type": "bar",
+        "dataset": "new_path_breakdown",
+        "sourceId": "path_audit",
+        "valueFormat": "number",
+        "encodings": {
+          "x": {
+            "field": "path_class",
+            "type": "nominal",
+            "label": "路径类别"
+          },
+          "y": {
+            "field": "events",
+            "type": "quantitative",
+            "label": "最终事件数"
+          },
+          "tooltip": [
+            {
+              "field": "share",
+              "type": "quantitative",
+              "label": "占比",
+              "format": "percent"
+            }
+          ]
+        }
+      }
+    ],
+    "tables": [
+      {
+        "id": "rate_comparison",
+        "title": "小口总率没有显著下降",
+        "subtitle": "各配置采用各自 Cosima 等效曝光；误差为有限 Monte Carlo Poisson 误差。",
+        "dataset": "rate_comparison",
+        "sourceId": "mono_response",
+        "defaultSort": {
+          "field": "rate_cps",
+          "direction": "desc"
+        },
+        "columns": [
+          {
+            "field": "configuration",
+            "label": "配置",
+            "type": "text"
+          },
+          {
+            "field": "selected_events",
+            "label": "最终事件",
+            "format": "number"
+          },
+          {
+            "field": "exposure_s",
+            "label": "等效曝光 / s",
+            "format": "number"
+          },
+          {
+            "field": "rate_cps",
+            "label": "线率 / cps",
+            "format": "number"
+          },
+          {
+            "field": "rate_error_cps",
+            "label": "率误差 / cps",
+            "format": "number"
+          }
+        ]
+      },
+      {
+        "id": "new_path_breakdown",
+        "title": "新小口最终事件主要不走前方真空孔",
+        "subtitle": "52 条最终事件按首要几何路径互斥分类；穿过 BGO 而零沉积仍可通过 veto。",
+        "dataset": "new_path_breakdown",
+        "sourceId": "path_audit",
+        "defaultSort": {
+          "field": "events",
+          "direction": "desc"
+        },
+        "columns": [
+          {
+            "field": "path_class",
+            "label": "路径类别",
+            "type": "text"
+          },
+          {
+            "field": "events",
+            "label": "事件",
+            "format": "number"
+          },
+          {
+            "field": "share",
+            "label": "占比",
+            "format": "percent"
+          },
+          {
+            "field": "aperture_controlled",
+            "label": "前窗可直接控制",
+            "type": "text"
+          }
+        ]
+      },
+      {
+        "id": "old_path_partition",
+        "title": "旧大口中被缩掉的外环只占 13.9%",
+        "subtitle": "旧大口加 35×35 网格的 151 条最终事件按前方投影与其余路径分组。",
+        "dataset": "old_path_partition",
+        "sourceId": "path_audit",
+        "defaultSort": {
+          "field": "events",
+          "direction": "desc"
+        },
+        "columns": [
+          {
+            "field": "region",
+            "label": "区域或路径",
+            "type": "text"
+          },
+          {
+            "field": "events",
+            "label": "事件",
+            "format": "number"
+          },
+          {
+            "field": "share",
+            "label": "占比",
+            "format": "percent"
+          }
+        ]
+      },
+      {
+        "id": "area_scaling_tests",
+        "title": "总率按开口面积缩放的假设被数据否定",
+        "subtitle": "在给定新旧曝光下，对合并计数作精确条件二项检验。",
+        "dataset": "area_scaling_tests",
+        "sourceId": "path_audit",
+        "defaultSort": {
+          "field": "p_value",
+          "direction": "asc"
+        },
+        "columns": [
+          {
+            "field": "hypothesis",
+            "label": "新/旧总率假设",
+            "type": "text"
+          },
+          {
+            "field": "rate_ratio",
+            "label": "假设率比",
+            "format": "number"
+          },
+          {
+            "field": "expected_new_events",
+            "label": "期望新事件",
+            "format": "number"
+          },
+          {
+            "field": "observed_new_events",
+            "label": "实际新事件",
+            "format": "number"
+          },
+          {
+            "field": "p_value",
+            "label": "双侧 p 值",
+            "format": "number"
+          }
+        ]
+      },
+      {
+        "id": "geometry_comparison",
+        "title": "SH3 与 SG3 的主要几何差异不止前窗",
+        "subtitle": "新小口已接近 TES 与网格的投影面积，但 SH3 的准直距离和全包络屏蔽仍与 SG3 不同。",
+        "dataset": "geometry_comparison",
+        "sourceId": "geometry_audit",
+        "defaultSort": {
+          "field": "metric_order",
+          "direction": "asc"
+        },
+        "columns": [
+          {
+            "field": "metric",
+            "label": "几何量",
+            "type": "text"
+          },
+          {
+            "field": "sh3_value",
+            "label": "SH3 小口版本",
+            "type": "text"
+          },
+          {
+            "field": "sg3_value",
+            "label": "SG3",
+            "type": "text"
+          },
+          {
+            "field": "interpretation",
+            "label": "物理含义",
+            "type": "text"
+          },
+          {
+            "field": "metric_order",
+            "label": "顺序",
+            "format": "number"
+          }
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "id": "mono_response",
+        "label": "PARMA 511 keV 共同响应汇总",
+        "path": "engineering/geometry_optimization_20260815/72_sh3_bgo_smallap_mono511_trial_20260825/outputs/04_aperture_diagnostic_report/mono_response.sql"
+      },
+      {
+        "id": "path_audit",
+        "label": "新旧单能事件逐条路径审计",
+        "path": "engineering/geometry_optimization_20260815/72_sh3_bgo_smallap_mono511_trial_20260825/outputs/04_aperture_diagnostic_report/path_audit.sql"
+      },
+      {
+        "id": "geometry_audit",
+        "label": "小口几何与 SH3/SG3 包络审计",
+        "path": "engineering/geometry_optimization_20260815/72_sh3_bgo_smallap_mono511_trial_20260825/outputs/04_aperture_diagnostic_report/geometry_audit.sql"
+      }
+    ],
+    "blocks": [
+      {
+        "id": "title",
+        "type": "markdown",
+        "body": "# SH3 小口为何没有按面积压低 511 keV 泄漏"
+      },
+      {
+        "id": "answer",
+        "type": "markdown",
+        "sourceId": "path_audit",
+        "body": "## 结论：大开窗只是次要支路，不是 SH3/SG3 差距主因\n\n前窗确实缩小且输运使用了正确几何。真正被封闭的外环分量下降约 70.1%，但它在旧最终样本中只占 13.9%，所以全部 511 keV 事件不应按开口总面积缩放。大量存活光子从侧后方进入，或穿过 BGO 而不相互作用，或先发生零能损 Rayleigh 散射；这些路径的 BGO 沉积仍为零，因而不会被能量 veto 去掉。此前把 SH3 相对 SG3 的单能劣化主要归因于“大开窗”的说法应撤回。"
+      },
+      {
+        "id": "headline",
+        "type": "metric-strip",
+        "cardIds": [
+          "removed_branch_share",
+          "removed_branch_reduction",
+          "total_rate_significance"
+        ]
+      },
+      {
+        "id": "rate_heading",
+        "type": "markdown",
+        "body": "## 总率比较：新旧网格在当前统计下没有显著差异"
+      },
+      {
+        "id": "rate_table_block",
+        "type": "table",
+        "tableId": "rate_comparison"
+      },
+      {
+        "id": "path_heading",
+        "type": "markdown",
+        "body": "## 路径分解：BGO 零沉积不能解释为没有穿过 BGO"
+      },
+      {
+        "id": "new_path_chart_block",
+        "type": "chart",
+        "chartId": "new_path_chart"
+      },
+      {
+        "id": "new_path_table_block",
+        "type": "table",
+        "tableId": "new_path_breakdown"
+      },
+      {
+        "id": "old_path_table_block",
+        "type": "table",
+        "tableId": "old_path_partition"
+      },
+      {
+        "id": "test_heading",
+        "type": "markdown",
+        "body": "## 统计检验：面积比例模型与观测计数不相容"
+      },
+      {
+        "id": "test_table_block",
+        "type": "table",
+        "tableId": "area_scaling_tests"
+      },
+      {
+        "id": "geometry_heading",
+        "type": "markdown",
+        "body": "## 更可信的差异来源：短准直距离和全空间屏蔽路径"
+      },
+      {
+        "id": "geometry_table_block",
+        "type": "table",
+        "tableId": "geometry_comparison"
+      },
+      {
+        "id": "scope",
+        "type": "markdown",
+        "body": "## 限制与下一步\n\n当前小口试跑同时把旧 35×35 网格换为精确 25×25 SG3 网格并移除了旧外框，因此新旧总率不是严格的单变量前窗 A/B，不能把总率差全部归因于孔径。SG3 参照仅有 12 条最终事件，也限制了各路径比例的精度。若要给出论文级因果比例，应固定同一 25×25 网格、同一 W 外框策略和相同统计量，只改变 BGO 前窗尺寸；当前结果足以否定“全部泄漏按孔面积缩放”，但不足以精确分配侧向、后向、穿透和 Rayleigh 四类贡献。图中只展示互斥路径类别的精确计数；新旧稀疏 Poisson 总率与误差仍以表格呈现，避免把两次试跑画成虚假连续趋势。"
+      }
+    ]
+  },
+  "snapshot": {
+    "version": 1,
+    "generatedAt": "2026-08-25T19:01:04+08:00",
+    "status": "ready",
+    "datasets": {
+      "headline_metrics": [
+        {
+          "removed_branch_share": 0.1390728476821192,
+          "removed_branch_reduction": 0.7007657289350137,
+          "total_rate_difference_sigma": 0.48
+        }
+      ],
+      "rate_comparison": [
+        {
+          "configuration": "原 SH3",
+          "selected_events": 186,
+          "exposure_s": 8343.62808,
+          "rate_cps": 0.022292460571900277,
+          "rate_error_cps": 0.0016345625
+        },
+        {
+          "configuration": "旧 SH3 + 35×35 网格",
+          "selected_events": 151,
+          "exposure_s": 8339.8231,
+          "rate_cps": 0.01810589963,
+          "rate_error_cps": 0.00147343722
+        },
+        {
+          "configuration": "新 SH3 小口 + 25×25 网格",
+          "selected_events": 52,
+          "exposure_s": 2654.3379,
+          "rate_cps": 0.01959057285,
+          "rate_error_cps": 0.00271672365
+        },
+        {
+          "configuration": "SG3",
+          "selected_events": 12,
+          "exposure_s": 1591.7573,
+          "rate_cps": 0.007538837736,
+          "rate_error_cps": 0.002176275
+        }
+      ],
+      "new_path_breakdown": [
+        {
+          "path_class": "穿过 BGO、无相互作用/零沉积",
+          "events": 31,
+          "share": 0.5961538461538461,
+          "aperture_controlled": "否"
+        },
+        {
+          "path_class": "前方 ±1.898 cm 小方孔",
+          "events": 12,
+          "share": 0.23076923076923078,
+          "aperture_controlled": "是"
+        },
+        {
+          "path_class": "BGO Rayleigh 后入 TES",
+          "events": 8,
+          "share": 0.15384615384615385,
+          "aperture_controlled": "否"
+        },
+        {
+          "path_class": "后方 r<0.75 cm 冷端口",
+          "events": 1,
+          "share": 0.019230769230769232,
+          "aperture_controlled": "否"
+        }
+      ],
+      "old_path_partition": [
+        {
+          "region": "其余侧/后/高倾角/穿透或散射路径",
+          "events": 107,
+          "share": 0.7086092715231788
+        },
+        {
+          "region": "保留的小方孔",
+          "events": 23,
+          "share": 0.152317880794702
+        },
+        {
+          "region": "本次封闭的 1.898–3.0 cm 方环",
+          "events": 21,
+          "share": 0.1390728476821192
+        }
+      ],
+      "area_scaling_tests": [
+        {
+          "hypothesis": "按完整 BGO 方孔面积缩放",
+          "rate_ratio": 0.400267111111111,
+          "expected_new_events": 22.938740101972456,
+          "observed_new_events": 52,
+          "p_value": 1.2184163743675276e-8
+        },
+        {
+          "hypothesis": "按网格投影方形面积缩放",
+          "rate_ratio": 0.49415692729766797,
+          "expected_new_events": 27.588183353478783,
+          "observed_new_events": 52,
+          "p_value": 4.745487419361364e-6
+        },
+        {
+          "hypothesis": "新旧总率不变",
+          "rate_ratio": 1.0,
+          "expected_new_events": 49.01061515289798,
+          "observed_new_events": 52,
+          "p_value": 0.6229462586488472
+        }
+      ],
+      "geometry_comparison": [
+        {
+          "metric_order": 1,
+          "metric": "前方 BGO 方孔面积",
+          "sh3_value": "14.4096 cm²（旧为 36 cm²）",
+          "sg3_value": "不作同名面积映射",
+          "interpretation": "小口已只略大于 TES 正投影"
+        },
+        {
+          "metric_order": 2,
+          "metric": "TES 单层正投影面积",
+          "sh3_value": "12.96 cm²",
+          "sg3_value": "12.96 cm²",
+          "interpretation": "旧孔多出的外环并不等于有效 TES 接受度"
+        },
+        {
+          "metric_order": 3,
+          "metric": "25×25 网格真空开孔总面积",
+          "sh3_value": "12.158848 cm²",
+          "sg3_value": "12.158848 cm²",
+          "interpretation": "两者网格开孔本身一致"
+        },
+        {
+          "metric_order": 4,
+          "metric": "网格中心到 TES L0 中心距离",
+          "sh3_value": "6.15 cm",
+          "sg3_value": "22.9 cm",
+          "interpretation": "SG3 约 3.7 倍的角度杠杆更强"
+        },
+        {
+          "metric_order": 5,
+          "metric": "BGO 全空间包络",
+          "sh3_value": "紧凑侧壳与端环，长度约 13 cm",
+          "sg3_value": "全包络，长度约 60.3 cm",
+          "interpretation": "侧/后/高倾角与零损路径的抑制条件不同"
+        }
+      ]
+    }
+  },
+  "sources": [
+    {
+      "id": "mono_response",
+      "path": "engineering/geometry_optimization_20260815/72_sh3_bgo_smallap_mono511_trial_20260825/outputs/04_aperture_diagnostic_report/mono_response.sql",
+      "query": {
+        "engine": "filesystem",
+        "language": "python",
+        "description": "读取共同 PARMA 单能响应结果并核对选后数、等效曝光、线率与 Poisson 误差。",
+        "executed_at": "2026-08-25T19:01:04+08:00",
+        "tables_used": [
+          "package72.outputs.01_mono_line_response.summary",
+          "package67.modelA_modelB_mono511_authority",
+          "package68.sh3_wgrid_mono511_authority"
+        ],
+        "filters": [
+          "510.99895 keV PARMA line only",
+          "80 equal-mu components",
+          "common W2 final response and selection"
+        ],
+        "metric_definitions": [
+          "line rate = final selected events / Cosima physical exposure",
+          "rate uncertainty = sqrt(final selected events) / Cosima physical exposure"
+        ]
+      }
+    },
+    {
+      "id": "path_audit",
+      "path": "engineering/geometry_optimization_20260815/72_sh3_bgo_smallap_mono511_trial_20260825/outputs/04_aperture_diagnostic_report/path_audit.sql",
+      "query": {
+        "engine": "Cosima SIM event audit",
+        "language": "python",
+        "description": "逐条读取旧大口与新小口最终事件的 IA 记录，并把初始射线和交互位置与 BGO、W 网格、前后端口相交。",
+        "executed_at": "2026-08-25T19:01:04+08:00",
+        "tables_used": [
+          "package72.raw_final_event_IA",
+          "package68.raw_final_event_IA"
+        ],
+        "filters": [
+          "common W2 final selected event IDs only",
+          "mutually exclusive primary path classes",
+          "old/new rates normalized by their own physical exposure"
+        ],
+        "metric_definitions": [
+          "removed annulus = initial front-plane intersection with max(|y|,|z|) in [1.898, 3.0) cm",
+          "conditional exact test fixes the combined event total and uses exposure-weighted hypothesized rate ratio"
+        ]
+      }
+    },
+    {
+      "id": "geometry_audit",
+      "path": "engineering/geometry_optimization_20260815/72_sh3_bgo_smallap_mono511_trial_20260825/outputs/04_aperture_diagnostic_report/geometry_audit.sql",
+      "query": {
+        "engine": "MEGAlib geometry audit",
+        "language": "text",
+        "description": "核对运行 SIM header、setup/GEO 哈希、前窗尺寸、网格/TES 面积、准直距离与 BGO 包络。",
+        "executed_at": "2026-08-25T19:01:04+08:00",
+        "tables_used": [
+          "package72.SH3_Assembly_OptV3.geo",
+          "package72.transport_receipts",
+          "SG3_geometry_authority"
+        ],
+        "filters": [
+          "read-only geometry and transport-header validation",
+          "no geometry reinterpretation from rendered WRL alone"
+        ]
+      }
+    }
+  ],
+  "package_info": {
+    "originUrl": "artifact://sh3-aperture-mono511-diagnostic",
+    "controls": {
+      "edit": false,
+      "refresh": false
+    }
+  }
+}

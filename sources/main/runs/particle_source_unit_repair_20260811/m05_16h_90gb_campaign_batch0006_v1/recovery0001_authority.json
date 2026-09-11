@@ -1,0 +1,80 @@
+{
+  "batch_id": "m05_16h_90gb_campaign_batch0006",
+  "clock_policy": "retain the original global-contract T0 and all hard boundaries",
+  "defect": {
+    "corrected_pattern": "^ID\\s+(\\d+)(?:\\s|$)",
+    "cosima_record_example": "ID 1 1",
+    "established_reference": "engineering/particle_source_unit_repair_20260811/code/validate_mergeable_two_geometry_smoke.py",
+    "old_pattern": "^ID\\s+(\\d+)\\s*$",
+    "scope": "SIM validator only; transport/source/geometry/physics unchanged"
+  },
+  "frozen_controller": {
+    "path": "engineering/particle_source_unit_repair_20260811/m05_16h_90gb_campaign_batch0006_20260812/code/run_m05_16h_campaign_batch0006.py",
+    "sha256": "edd6b32e28eeee6e4d44aa2e052926d9a646b26108d948ef86c1f0d24814416f"
+  },
+  "global_contract": "runs/particle_source_unit_repair_20260811/m05_16h_90gb_campaign_batch0006_v1/global_contract.json",
+  "global_contract_sha256": "4586fb62a16c0145401a997f70a878bfaebd94529fe04c45da51a1abcf102275",
+  "physics_changes": [],
+  "plan_changes": [],
+  "preserved_failed_validations": [
+    {
+      "TT_s": 0.0603087,
+      "generated": 3334,
+      "path": "runs/particle_source_unit_repair_20260811/m05_16h_90gb_campaign_batch0006_v1/failed_attempts/s00_gamma_instant_Mass_model_511_shard0001/attempt01/validation.json",
+      "returncode": 0,
+      "sha256": "98db815cc8747e77869950f607c3272d212be692bf94440a33409a8798bb8d4c",
+      "watchdog_reason": "completed"
+    },
+    {
+      "TT_s": 0.0603087,
+      "generated": 3334,
+      "path": "runs/particle_source_unit_repair_20260811/m05_16h_90gb_campaign_batch0006_v1/failed_attempts/s00_gamma_instant_Mass_model_511_shard0001/attempt02/validation.json",
+      "returncode": 0,
+      "sha256": "0ce10aca1458ff8870c4a94c0b63bd1b511da6c484137a7cb495b07cdde3ad41",
+      "watchdog_reason": "completed"
+    }
+  ],
+  "recovery_controller": {
+    "path": "engineering/particle_source_unit_repair_20260811/m05_16h_90gb_campaign_batch0006_20260812/code/resume_m05_campaign_batch0006_recovery0001.py",
+    "sha256": "ec8891d13840841b9c455ab3d225fb708b3c53aa4901945093f7cf3ab099b4f1"
+  },
+  "recovery_id": "batch0006_recovery0001_sim_id_parser",
+  "recovery_publications": {
+    "final_ledger": "runs/particle_source_unit_repair_20260811/m05_16h_90gb_campaign_batch0006_v1/final_ledger.recovery0001.json",
+    "final_umbrella": "runs/particle_source_unit_repair_20260811/m05_16h_90gb_campaign_batch0006_v1/final_umbrella.recovery0001.json",
+    "final_validation": "runs/particle_source_unit_repair_20260811/m05_16h_90gb_campaign_batch0006_v1/final_validation.recovery0001.json",
+    "smoke_decision": "runs/particle_source_unit_repair_20260811/m05_16h_90gb_campaign_batch0006_v1/smoke_decision.recovery0001.json"
+  },
+  "schema_version": 1,
+  "seed_changes": [],
+  "selected_for_revalidation": {
+    "TT_s": 0.0603087,
+    "generated": 3334,
+    "path": "runs/particle_source_unit_repair_20260811/m05_16h_90gb_campaign_batch0006_v1/failed_attempts/s00_gamma_instant_Mass_model_511_shard0001/attempt01/validation.json",
+    "returncode": 0,
+    "sha256": "98db815cc8747e77869950f607c3272d212be692bf94440a33409a8798bb8d4c",
+    "watchdog_reason": "completed"
+  },
+  "selection_rule": "select attempt01, the chronologically first complete same-seed transport; do not inspect or select on physics outcome",
+  "source_changes": [],
+  "status": "PASS__NON_PHYSICS_VALIDATOR_AMENDMENT__RESUME_AUTHORIZED",
+  "superseded_failed_publications": {
+    "final_ledger.json": {
+      "path": "runs/particle_source_unit_repair_20260811/m05_16h_90gb_campaign_batch0006_v1/final_ledger.json",
+      "sha256": "4b877b9695ead85ed75b64d7960e348a6d092abb64f7337c22b5438a5617273e"
+    },
+    "final_umbrella.json": {
+      "path": "runs/particle_source_unit_repair_20260811/m05_16h_90gb_campaign_batch0006_v1/final_umbrella.json",
+      "sha256": "56b261d1cb6fdd30b5f709baec58f7c3017d0c196d06d11198895f4e9cb201f8"
+    },
+    "final_validation.json": {
+      "path": "runs/particle_source_unit_repair_20260811/m05_16h_90gb_campaign_batch0006_v1/final_validation.json",
+      "sha256": "4625758424d5e8751ad4effaf13bf8fcc23e7ae2867e819a49ebab71b9e4d3d8"
+    },
+    "smoke_decision.json": {
+      "path": "runs/particle_source_unit_repair_20260811/m05_16h_90gb_campaign_batch0006_v1/smoke_decision.json",
+      "sha256": "4112624113198eaf539764e92e9e8d2a85ce54050319c0f0cb025a3231d9275b"
+    }
+  },
+  "transport_changes": []
+}

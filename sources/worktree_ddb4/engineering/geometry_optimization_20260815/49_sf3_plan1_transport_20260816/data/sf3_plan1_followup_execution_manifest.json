@@ -1,0 +1,178 @@
+{
+  "schema_version": 1,
+  "profile_id": "SF3_PLAN1_APPROX_ONE_THIRD_PHYSICS_SCREEN",
+  "status": "PASS__SF3_PLAN1_CRASH_SAFE_FOLLOWUP_EXECUTION_MANIFEST_PREPARED",
+  "scope": "POST_BACKGROUND_PLAN1_ONLY",
+  "required_service_unit": "sf3-plan1-followup.service",
+  "policies": {
+    "authority_order": "EACH_STEP_REQUIRES_ALL_PREVIOUS_CANONICAL_SMALL_AUTHORITIES_PASS",
+    "resume": "RECOMPUTE_FROM_AUTHORITIES__JOURNAL_IS_NEVER_PHYSICS_AUTHORITY",
+    "existing_receipts": "CANONICAL_PASS_RECEIPTS_ARE_ALWAYS_SKIPPED__NEVER_RERUN",
+    "interrupted_attempts": "NEVER_COUNTED__STALE_ACTIVE_FAILS_CLOSED_FOR_EXPLICIT_RECOVERY",
+    "write_once_outputs": "VALID_COMPLETE_OUTPUTS_SKIP__EXISTING_NONCANONICAL_OUTPUTS_BLOCK",
+    "SIM": "NO_SIM_SCAN_OR_HASH_BY_ADAPTER",
+    "workers": 4,
+    "continuous_handoff": {
+      "entrypoint": "--wait-and-run-to-completion",
+      "default_heartbeat_seconds": 45,
+      "allowed_heartbeat_seconds": [
+        30,
+        60
+      ],
+      "wait_reads": "NAMED_SMALL_AUTHORITIES_ONLY",
+      "conflict_policy": "AUTHORITY_OR_WRITE_ONCE_ERROR_FAILS_IMMEDIATELY"
+    },
+    "pressure_guard": {
+      "guarded_steps": [
+        "build_prompt",
+        "transport_delayed",
+        "analyze_delayed",
+        "transport_signal",
+        "build_common_response"
+      ],
+      "normal_quota_percent": 400,
+      "throttle_quota_percent": 300,
+      "mem_available_floor_bytes": 1610612736,
+      "swap_free_floor_bytes": 8589934592,
+      "session_closure": "GUARD_EXIT_RESTORE_NORMAL",
+      "failure_policy": "TERMINATE_ACTIVE_TRANSPORT_CONTROLLER_GROUP__PRESERVE_PARTIAL_FOR_EXPLICIT_RECOVERY"
+    }
+  },
+  "steps": [
+    {
+      "ordinal": 0,
+      "id": "await_background_transport",
+      "kind": "wait",
+      "command": [],
+      "completion_authority": "audit/sf3_plan1_transport_receipts.json"
+    },
+    {
+      "ordinal": 10,
+      "id": "validate_background_receipts",
+      "kind": "metadata_validation",
+      "command": ["{python}", "{code}/validate_sf3_receipts.py", "--stage", "background"],
+      "completion_authority": "audit/sf3_plan1_background_receipt_validation.json"
+    },
+    {
+      "ordinal": 20,
+      "id": "build_prompt",
+      "kind": "analysis_with_pressure_guard",
+      "preflight": ["{python}", "{code}/run_prompt_analysis.py", "--check-prerequisites"],
+      "command": ["{python}", "{code}/run_prompt_analysis.py", "--workers", "4"],
+      "completion_authority": "outputs/01_prompt/summary.json",
+      "write_once_target": "outputs/01_prompt",
+      "guard": true
+    },
+    {
+      "ordinal": 30,
+      "id": "build_activation_and_delayed_sources",
+      "kind": "analysis",
+      "preflight": ["{python}", "{code}/build_sf3_activation.py", "--check-prerequisites"],
+      "command": ["{python}", "{code}/build_sf3_activation.py", "--prepare"],
+      "completion_authority": "audit/sf3_activation_validation.json",
+      "write_once_target": "outputs/02_activation",
+      "existing_target_policy": "IDEMPOTENT_PREPARE_MAY_REPUBLISH_MISSING_SMALL_VALIDATION"
+    },
+    {
+      "ordinal": 40,
+      "id": "transport_delayed",
+      "kind": "transport_with_pressure_guard",
+      "command": ["{python}", "{code}/run_sf3_plan1.py", "--phase", "delayed", "--cpu-budget", "4"],
+      "completion_authority": "audit/sf3_plan1_transport_receipts.json",
+      "guard": true
+    },
+    {
+      "ordinal": 50,
+      "id": "validate_delayed_receipts",
+      "kind": "metadata_validation",
+      "command": ["{python}", "{code}/validate_sf3_receipts.py", "--stage", "delayed"],
+      "completion_authority": "audit/sf3_plan1_delayed_receipt_validation.json"
+    },
+    {
+      "ordinal": 60,
+      "id": "analyze_delayed",
+      "kind": "analysis_with_pressure_guard",
+      "preflight": ["{python}", "{code}/analyze_delayed_stage.py", "--check-prerequisites"],
+      "command": ["{python}", "{code}/analyze_delayed_stage.py", "--workers", "4"],
+      "completion_authority": "outputs/03_delayed/summary.json",
+      "write_once_target": "outputs/03_delayed",
+      "guard": true
+    },
+    {
+      "ordinal": 70,
+      "id": "transport_signal",
+      "kind": "transport_with_pressure_guard",
+      "command": ["{python}", "{code}/run_sf3_plan1.py", "--phase", "signal", "--cpu-budget", "4"],
+      "completion_authority": "audit/sf3_plan1_transport_receipts.json",
+      "guard": true
+    },
+    {
+      "ordinal": 80,
+      "id": "validate_signal_receipt",
+      "kind": "metadata_validation",
+      "command": ["{python}", "{code}/validate_sf3_receipts.py", "--stage", "signal"],
+      "completion_authority": "audit/sf3_plan1_signal_receipt_validation.json"
+    },
+    {
+      "ordinal": 90,
+      "id": "validate_all_receipts",
+      "kind": "metadata_validation",
+      "command": ["{python}", "{code}/validate_sf3_receipts.py", "--stage", "all"],
+      "completion_authority": "audit/sf3_plan1_all_receipt_validation.json"
+    },
+    {
+      "ordinal": 100,
+      "id": "build_common_response",
+      "kind": "analysis_with_pressure_guard",
+      "preflight": ["{python}", "{code}/build_common_response.py", "--check-prerequisites"],
+      "command": ["{python}", "{code}/build_common_response.py", "--workers", "4"],
+      "completion_authority": "outputs/04_common_response/summary.json",
+      "write_once_target": "outputs/04_common_response",
+      "guard": true
+    },
+    {
+      "ordinal": 110,
+      "id": "build_matched_comparison",
+      "kind": "small_table_analysis",
+      "preflight": ["{python}", "{code}/build_matched_comparison.py", "--check-prerequisites"],
+      "command": ["{python}", "{code}/build_matched_comparison.py", "--build"],
+      "completion_authority": "outputs/05_se3_vs_sf3_matched_comparison/summary.json",
+      "write_once_target": "outputs/05_se3_vs_sf3_matched_comparison"
+    },
+    {
+      "ordinal": 120,
+      "id": "build_mission",
+      "kind": "small_table_analysis",
+      "preflight": ["{python}", "{code}/build_mission_stage.py", "--check-prerequisites"],
+      "command": ["{python}", "{code}/build_mission_stage.py", "--build"],
+      "completion_authority": "outputs/06_mission/summary.json",
+      "write_once_target": "outputs/06_mission"
+    },
+    {
+      "ordinal": 130,
+      "id": "build_resource_timeline",
+      "kind": "metadata_audit",
+      "preflight": [
+        "{python}",
+        "{code}/build_sf3_resource_timeline.py",
+        "--check-prerequisites"
+      ],
+      "command": [
+        "{python}",
+        "{code}/build_sf3_resource_timeline.py",
+        "--build"
+      ],
+      "completion_authority": "audit/sf3_resource_timeline_audit.json",
+      "write_once_target": "audit/sf3_resource_timeline_audit.json"
+    },
+    {
+      "ordinal": 140,
+      "id": "finalize_plan1",
+      "kind": "small_table_finalizer",
+      "preflight": ["{python}", "{code}/finalize_sf3_plan1.py", "--check-prerequisites"],
+      "command": ["{python}", "{code}/finalize_sf3_plan1.py", "--build"],
+      "completion_authority": "outputs/07_final_audit/final_audit.json",
+      "write_once_target": "outputs/07_final_audit"
+    }
+  ]
+}

@@ -1,0 +1,105 @@
+{
+  "schema_version": 1,
+  "status": "RECORDED__NONPHYSICS_PROMPT_SCANNER_OPTIMIZATION_RESTART",
+  "profile_id": "SF3_PLAN1_APPROX_ONE_THIRD_PHYSICS_SCREEN",
+  "authority_role": "NON_AUTHORITATIVE_EXECUTION_RECOVERY_AUDIT",
+  "recorded_at_local": "2026-08-16T07:40:39+08:00",
+  "reason": "The retained exact W-diagnostic matcher showed an observed in-memory O((PAIR+ANNI)*CC_HIT) long tail. The n worker retained full CPU with unchanged rchar=179609855 for at least 79 minutes; alpha and gamma workers also entered long no-I/O compute intervals. The live prompt stage had produced only one compact cache after about 2.4 hours. A stable-time-index implementation was independently differential-tested against a separate linear oracle and approved for a guarded four-worker restart.",
+  "physics_semantics": {
+    "changed": false,
+    "transport_rerun": false,
+    "sim_payload_opened_by_recovery": false,
+    "sim_payload_statted_by_recovery": false,
+    "sim_payload_hashed_by_recovery": false,
+    "algorithm_contract": "EXACT_ALIAS_PRIORITY__TIME_ONLY_FALLBACK__ORIGINAL_TOLERANCE__STABLE_SOURCE_ORDER_TIES__NONFINITE_EVENT_LINEAR_FALLBACK",
+    "passive_w_veto_role_changed": false
+  },
+  "pre_stop_snapshot": {
+    "service": "sf3-plan1-followup.service",
+    "active_state": "active",
+    "sub_state": "running",
+    "exec_main_pid": 403433,
+    "tasks_current": 9,
+    "memory_current_bytes": 5533990912,
+    "cpu_usage_nsec": 37192360091000,
+    "cpu_quota_percent": 400,
+    "worker_rchar_bytes": {
+      "403452_p": 613114105,
+      "403453_n": 179609855,
+      "403454_alpha": 569565461,
+      "403456_gamma_queue": 815189531
+    }
+  },
+  "completed_compact_cache": {
+    "job_id": "sf3_instant_gamma_shard0001",
+    "generated_events": 267312,
+    "cache_bytes": 52589,
+    "cache_sha256": "0c06f3af6a145ecee0d51d1fae26203000ce17a0a342d26ba13b4808403e50c9",
+    "completed_at_local": "2026-08-16T06:34:13.280630549+08:00",
+    "credited_as_stage_authority": false,
+    "preserved_under": "audit/non_authoritative/prompt_preoptimization_restart_20260816T074039"
+  },
+  "stop_closure": {
+    "service_active_state": "inactive",
+    "service_sub_state": "dead",
+    "service_result": "success",
+    "guard_final_decision": "guard_exit_restore_normal",
+    "guard_observed_quota_percent": 400,
+    "guard_final_unit_state": "deactivating",
+    "old_processes_remaining": 0
+  },
+  "approved_restart_implementation": {
+    "path": "code/run_prompt_analysis.py",
+    "sha256": "59ab0bce8fe45dcb82bd9b07600429d79553d0b577ee3b264646432cbe272dad",
+    "workers": 4,
+    "built_in_differential": {
+      "match_cases": 1211,
+      "event_cases": 301,
+      "counterexamples": 0
+    },
+    "independent_linear_oracle": {
+      "match_cases": 64699,
+      "event_cases": 5000,
+      "production_valid_domain_counterexamples": 0
+    },
+    "independent_pathological_benchmark": {
+      "hits": 20000,
+      "queries": 1200,
+      "linear_seconds": 8.681,
+      "indexed_seconds": 0.03422,
+      "speedup": 253.7
+    },
+    "residual_risk": "An adversarial equal-rounded-distance plateau may still require a stable original-order scan; production H/Q and exact-time telemetry are unavailable. Retain four workers and all existing resource floors."
+  },
+  "partial_output_policy": "PRESERVED_NONAUTHORITATIVE__NEVER_MERGE_OR_CREDIT",
+  "restart": {
+    "started_at_local": "2026-08-16T07:43:21+08:00",
+    "service": "sf3-plan1-followup.service",
+    "exec_main_pid": 469503,
+    "active_state": "active",
+    "sub_state": "running",
+    "cpu_quota_percent": 400,
+    "tasks_current": 9,
+    "working_directory": "/home/ubuntu/.codex/worktrees/ddb4/TES_511_Balloon/engineering/geometry_optimization_20260815/49_sf3_plan1_transport_20260816",
+    "kill_mode": "control-group",
+    "restart_policy": "no",
+    "prompt_workers": 4,
+    "guard_safe_streak_observed": 4,
+    "frozen_implementation_sha256_rechecked": "59ab0bce8fe45dcb82bd9b07600429d79553d0b577ee3b264646432cbe272dad"
+  },
+  "real_canary_equivalence": {
+    "job_id": "sf3_instant_gamma_shard0001",
+    "generated_events": 267312,
+    "optimized_completed_at_local": "2026-08-16T07:49:20.450324274+08:00",
+    "optimized_elapsed_seconds": 359.12,
+    "preoptimization_elapsed_seconds": 5317.205,
+    "observed_speedup": 14.806,
+    "preoptimization_cache_bytes": 52589,
+    "optimized_cache_bytes": 52589,
+    "preoptimization_cache_sha256": "0c06f3af6a145ecee0d51d1fae26203000ce17a0a342d26ba13b4808403e50c9",
+    "optimized_cache_sha256": "0c06f3af6a145ecee0d51d1fae26203000ce17a0a342d26ba13b4808403e50c9",
+    "byte_identical": true,
+    "authority_note": "The old cache remains non-authoritative; identity is execution evidence for exact semantic equivalence. Only the completed write-once stage01 package may become prompt authority."
+  },
+  "next_action": "MONITOR_RESTARTED_PROMPT_TO_WRITE_ONCE_STAGE01_COMPLETION"
+}

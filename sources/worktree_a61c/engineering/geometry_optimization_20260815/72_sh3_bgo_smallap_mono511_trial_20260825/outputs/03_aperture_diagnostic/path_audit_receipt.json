@@ -1,0 +1,2378 @@
+{
+  "schema_version": 1,
+  "status": "PASS__SH3_APERTURE_PATH_AUDIT",
+  "generated_at_utc": "2026-08-25T11:04:53.276467+00:00",
+  "scope": "Event-by-event path audit of the 54 current small-aperture W2 pre-veto events and 52 final events, with an exposure-matched comparison to the old large-aperture 35x35-grid campaign.",
+  "source_and_response_contract": {
+    "provider": "PARMA dedicated atmospheric annihilation-line parameterization",
+    "line_energy_keV": 510.99895,
+    "day15_full_space_flux_ph_cm2_s": 0.16651547160226118,
+    "equal_mu_components": 80,
+    "response_window_keV": [
+      510.58,
+      511.42
+    ],
+    "bgo_veto_threshold_keV": 50.0
+  },
+  "classification_rules": {
+    "coordinate_transform": "All IA INIT directions and IA positions are inverse-rotated by the InstrumentFrame Rotation 0 45 0 into the instrument-local frame.",
+    "aperture_center_local_cm": [
+      -44.7,
+      0.0,
+      -2.8
+    ],
+    "current_front_square_half_width_cm": 1.898,
+    "old_front_square_half_width_cm": 3.0,
+    "bgo_membership_local": {
+      "front": "x in [-45.7,-41.7], r<=10.7, excluding |y|<1.898 and |z+2.8|<1.898",
+      "side": "x in [-41.7,-28.7], 6.7<=r<=10.7",
+      "rear": "x in [-28.7,-24.7], 0.75<=r<=10.7",
+      "r_definition": "sqrt(y^2 + (z+2.8)^2)"
+    },
+    "first_interaction": "The first non-INIT IA record is recovered from each raw SIM event. A TES first interaction means no prior simulated interaction; a BGO RAYL first interaction is an elastic BGO scatter.",
+    "uninteracted_transmission": "For TES-first events, the INIT-to-first-IA segment is tested against the BGO solids at 0.002 cm midpoint resolution. The component with the longest crossed path labels mixed side/rear crossings.",
+    "w_grid": "All 624 W bar BRIK placements are parsed from the frozen geometry and intersected analytically with each INIT-to-first-IA ray.",
+    "front_square_direct": "TES-first, no BGO intersection, forward optical-axis direction, and projection at x=-44.7 within the current +/-1.898 cm square. This label does not imply an empty W channel; W path is recorded separately.",
+    "rear_cold_port_direct": "TES-first, no BGO intersection, reverse optical-axis direction, and projection through the rear r<0.75 cm cold port.",
+    "old_new_aperture_region_comparison": "TES-first forward events projected at x=-44.7. Retained region is inside +/-1.898 cm; removed region is inside the old +/-3.0 cm square but outside the retained square."
+  },
+  "current_small_aperture": {
+    "incident_photons": 5000000,
+    "physical_exposure_s": 2654.3379,
+    "event_weight_cps": 0.00037674178558803683,
+    "w2_pre_veto_events": 54,
+    "w2_final_events": 52,
+    "w2_final_rate_cps": 0.019590572850577914,
+    "w2_final_mc_sigma_cps": 0.0027167236510950536,
+    "pre_veto_classification_counts": {
+      "bgo_rayleigh_rear": 3,
+      "bgo_rayleigh_side": 5,
+      "bgo_uninteracted_transmission_front": 4,
+      "bgo_uninteracted_transmission_rear": 5,
+      "bgo_uninteracted_transmission_side": 24,
+      "front_square_direct": 12,
+      "rear_cold_port_direct": 1
+    },
+    "final_classification_counts": {
+      "bgo_rayleigh_rear": 3,
+      "bgo_rayleigh_side": 5,
+      "bgo_uninteracted_transmission_front": 4,
+      "bgo_uninteracted_transmission_rear": 5,
+      "bgo_uninteracted_transmission_side": 22,
+      "front_square_direct": 12,
+      "rear_cold_port_direct": 1
+    },
+    "summary": {
+      "front_BGO_square_without_BGO_interaction": 12,
+      "rear_cold_port_without_BGO_interaction": 1,
+      "straight_BGO_transmission_without_interaction": 31,
+      "BGO_Rayleigh_then_TES": 8,
+      "BGO_associated_final_events": 39,
+      "BGO_associated_fraction": 0.75,
+      "final_events_with_positive_BGO_deposit": 0,
+      "front_square_events_crossing_W_material": 10,
+      "front_square_events_in_true_empty_W_channel": 2
+    },
+    "events": [
+      {
+        "job_index_zero_based": 2,
+        "job_id": "bgo_smallap_parma511_trial_shard0003",
+        "event_id": 139288,
+        "source_bin80": 61,
+        "passes_final_compton_veto": true,
+        "classification": "bgo_rayleigh_side",
+        "initial_direction_instrument_frame": [
+          -0.1256599,
+          -0.76116,
+          0.6362759
+        ],
+        "optical_axis_mu": -0.1256599,
+        "optical_axis_angle_deg": 97.21887,
+        "first_interaction": {
+          "process": "RAYL",
+          "component": "BGO_side",
+          "position_instrument_frame_cm": [
+            -38.035005,
+            6.90841,
+            -7.187542
+          ]
+        },
+        "projected_grid_center_cm": {
+          "y": -33.462637,
+          "z_relative_to_aperture_center": 29.359807
+        },
+        "bgo_path_before_first_interaction_cm": {
+          "front": 0.0,
+          "side": 2.551976,
+          "rear": 0.0
+        },
+        "w_grid_material_path_before_first_interaction_cm": 0.0,
+        "bgo_deposit_keV": 0.0,
+        "measured_total_keV": 511.0512390136719
+      },
+      {
+        "job_index_zero_based": 2,
+        "job_id": "bgo_smallap_parma511_trial_shard0003",
+        "event_id": 210494,
+        "source_bin80": 8,
+        "passes_final_compton_veto": true,
+        "classification": "bgo_uninteracted_transmission_front",
+        "initial_direction_instrument_frame": [
+          0.9737567,
+          0.1705,
+          -0.1507693
+        ],
+        "optical_axis_mu": 0.9737567,
+        "optical_axis_angle_deg": 13.1553,
+        "first_interaction": {
+          "process": "COMP",
+          "component": "TES",
+          "position_instrument_frame_cm": [
+            -37.40778,
+            -0.50264,
+            -3.391305
+          ]
+        },
+        "projected_grid_center_cm": {
+          "y": -1.779422,
+          "z_relative_to_aperture_center": 0.537761
+        },
+        "bgo_path_before_first_interaction_cm": {
+          "front": 0.331981,
+          "side": 0.0,
+          "rear": 0.0
+        },
+        "w_grid_material_path_before_first_interaction_cm": 0.087984,
+        "bgo_deposit_keV": 0.0,
+        "measured_total_keV": 510.86968994140625
+      },
+      {
+        "job_index_zero_based": 3,
+        "job_id": "bgo_smallap_parma511_trial_shard0004",
+        "event_id": 231807,
+        "source_bin80": 41,
+        "passes_final_compton_veto": true,
+        "classification": "bgo_uninteracted_transmission_side",
+        "initial_direction_instrument_frame": [
+          -0.3184173,
+          0.9057,
+          -0.2798375
+        ],
+        "optical_axis_mu": -0.3184173,
+        "optical_axis_angle_deg": 108.56723,
+        "first_interaction": {
+          "process": "PHOT",
+          "component": "TES",
+          "position_instrument_frame_cm": [
+            -33.775655,
+            -1.58101,
+            -2.981141
+          ]
+        },
+        "projected_grid_center_cm": {
+          "y": 29.492187,
+          "z_relative_to_aperture_center": -9.781777
+        },
+        "bgo_path_before_first_interaction_cm": {
+          "front": 0.0,
+          "side": 4.23191,
+          "rear": 0.0
+        },
+        "w_grid_material_path_before_first_interaction_cm": 0.0,
+        "bgo_deposit_keV": 0.0,
+        "measured_total_keV": 510.8188171386719
+      },
+      {
+        "job_index_zero_based": 4,
+        "job_id": "bgo_smallap_parma511_trial_shard0005",
+        "event_id": 51567,
+        "source_bin80": 74,
+        "passes_final_compton_veto": true,
+        "classification": "bgo_uninteracted_transmission_rear",
+        "initial_direction_instrument_frame": [
+          -0.6180891,
+          -0.51656,
+          0.5925626
+        ],
+        "optical_axis_mu": -0.6180891,
+        "optical_axis_angle_deg": 128.17672,
+        "first_interaction": {
+          "process": "COMP",
+          "component": "TES",
+          "position_instrument_frame_cm": [
+            -33.700136,
+            -0.03429,
+            -3.305052
+          ]
+        },
+        "projected_grid_center_cm": {
+          "y": -9.227608,
+          "z_relative_to_aperture_center": 10.040855
+        },
+        "bgo_path_before_first_interaction_cm": {
+          "front": 0.0,
+          "side": 0.033999,
+          "rear": 5.057911
+        },
+        "w_grid_material_path_before_first_interaction_cm": 0.0,
+        "bgo_deposit_keV": 0.0,
+        "measured_total_keV": 511.0900573730469
+      },
+      {
+        "job_index_zero_based": 4,
+        "job_id": "bgo_smallap_parma511_trial_shard0005",
+        "event_id": 137502,
+        "source_bin80": 77,
+        "passes_final_compton_veto": true,
+        "classification": "bgo_rayleigh_rear",
+        "initial_direction_instrument_frame": [
+          -0.706032,
+          -0.35803,
+          0.611011
+        ],
+        "optical_axis_mu": -0.706032,
+        "optical_axis_angle_deg": 134.91298,
+        "first_interaction": {
+          "process": "RAYL",
+          "component": "BGO_rear",
+          "position_instrument_frame_cm": [
+            -27.018105,
+            1.97231,
+            -6.069939
+          ]
+        },
+        "projected_grid_center_cm": {
+          "y": -6.994345,
+          "z_relative_to_aperture_center": 12.032173
+        },
+        "bgo_path_before_first_interaction_cm": {
+          "front": 0.0,
+          "side": 0.0,
+          "rear": 3.283954
+        },
+        "w_grid_material_path_before_first_interaction_cm": 0.0,
+        "bgo_deposit_keV": 0.0,
+        "measured_total_keV": 511.1563415527344
+      },
+      {
+        "job_index_zero_based": 4,
+        "job_id": "bgo_smallap_parma511_trial_shard0005",
+        "event_id": 193430,
+        "source_bin80": 60,
+        "passes_final_compton_veto": true,
+        "classification": "bgo_uninteracted_transmission_side",
+        "initial_direction_instrument_frame": [
+          -0.3277157,
+          -0.85084,
+          0.4106876
+        ],
+        "optical_axis_mu": -0.3277157,
+        "optical_axis_angle_deg": 109.13019,
+        "first_interaction": {
+          "process": "COMP",
+          "component": "TES",
+          "position_instrument_frame_cm": [
+            -37.341135,
+            -0.24918,
+            -1.407779
+          ]
+        },
+        "projected_grid_center_cm": {
+          "y": -19.355376,
+          "z_relative_to_aperture_center": 10.614579
+        },
+        "bgo_path_before_first_interaction_cm": {
+          "front": 0.0,
+          "side": 4.273901,
+          "rear": 0.0
+        },
+        "w_grid_material_path_before_first_interaction_cm": 0.0,
+        "bgo_deposit_keV": 0.0,
+        "measured_total_keV": 511.0187683105469
+      },
+      {
+        "job_index_zero_based": 5,
+        "job_id": "bgo_smallap_parma511_trial_shard0006",
+        "event_id": 1758,
+        "source_bin80": 77,
+        "passes_final_compton_veto": true,
+        "classification": "bgo_uninteracted_transmission_side",
+        "initial_direction_instrument_frame": [
+          -0.4948263,
+          -0.30419,
+          0.8140143
+        ],
+        "optical_axis_mu": -0.4948263,
+        "optical_axis_angle_deg": 119.65829,
+        "first_interaction": {
+          "process": "PHOT",
+          "component": "TES",
+          "position_instrument_frame_cm": [
+            -34.825016,
+            -1.1886,
+            -2.985949
+          ]
+        },
+        "projected_grid_center_cm": {
+          "y": -7.258839,
+          "z_relative_to_aperture_center": 16.058704
+        },
+        "bgo_path_before_first_interaction_cm": {
+          "front": 0.0,
+          "side": 4.509961,
+          "rear": 0.137999
+        },
+        "w_grid_material_path_before_first_interaction_cm": 0.0,
+        "bgo_deposit_keV": 0.0,
+        "measured_total_keV": 511.13446044921875
+      },
+      {
+        "job_index_zero_based": 5,
+        "job_id": "bgo_smallap_parma511_trial_shard0006",
+        "event_id": 3560,
+        "source_bin80": 78,
+        "passes_final_compton_veto": true,
+        "classification": "bgo_uninteracted_transmission_rear",
+        "initial_direction_instrument_frame": [
+          -0.8699676,
+          -0.07178,
+          0.4878471
+        ],
+        "optical_axis_mu": -0.8699676,
+        "optical_axis_angle_deg": 150.45488,
+        "first_interaction": {
+          "process": "PHOT",
+          "component": "TES",
+          "position_instrument_frame_cm": [
+            -36.100545,
+            0.80235,
+            -3.56345
+          ]
+        },
+        "projected_grid_center_cm": {
+          "y": 0.092881,
+          "z_relative_to_aperture_center": 4.058798
+        },
+        "bgo_path_before_first_interaction_cm": {
+          "front": 0.0,
+          "side": 0.0,
+          "rear": 4.597996
+        },
+        "w_grid_material_path_before_first_interaction_cm": 0.0,
+        "bgo_deposit_keV": 0.0,
+        "measured_total_keV": 510.9091796875
+      },
+      {
+        "job_index_zero_based": 5,
+        "job_id": "bgo_smallap_parma511_trial_shard0006",
+        "event_id": 44202,
+        "source_bin80": 48,
+        "passes_final_compton_veto": true,
+        "classification": "bgo_rayleigh_rear",
+        "initial_direction_instrument_frame": [
+          -0.721058,
+          -0.55226,
+          -0.4184304
+        ],
+        "optical_axis_mu": -0.721058,
+        "optical_axis_angle_deg": 136.1419,
+        "first_interaction": {
+          "process": "RAYL",
+          "component": "BGO_rear",
+          "position_instrument_frame_cm": [
+            -27.630961,
+            7.53793,
+            2.544792
+          ]
+        },
+        "projected_grid_center_cm": {
+          "y": -5.535166,
+          "z_relative_to_aperture_center": -4.560728
+        },
+        "bgo_path_before_first_interaction_cm": {
+          "front": 0.0,
+          "side": 0.0,
+          "rear": 2.107961
+        },
+        "w_grid_material_path_before_first_interaction_cm": 0.0,
+        "bgo_deposit_keV": 0.0,
+        "measured_total_keV": 510.8596496582031
+      },
+      {
+        "job_index_zero_based": 5,
+        "job_id": "bgo_smallap_parma511_trial_shard0006",
+        "event_id": 158393,
+        "source_bin80": 62,
+        "passes_final_compton_veto": true,
+        "classification": "bgo_uninteracted_transmission_side",
+        "initial_direction_instrument_frame": [
+          0.018802,
+          0.59727,
+          0.8018237
+        ],
+        "optical_axis_mu": 0.018802,
+        "optical_axis_angle_deg": 88.92266,
+        "first_interaction": {
+          "process": "PHOT",
+          "component": "TES",
+          "position_instrument_frame_cm": [
+            -37.257881,
+            -0.09756,
+            -3.75222
+          ]
+        },
+        "projected_grid_center_cm": {
+          "y": -236.49715,
+          "z_relative_to_aperture_center": -318.314488
+        },
+        "bgo_path_before_first_interaction_cm": {
+          "front": 0.0,
+          "side": 4.00784,
+          "rear": 0.0
+        },
+        "w_grid_material_path_before_first_interaction_cm": 0.0,
+        "bgo_deposit_keV": 0.0,
+        "measured_total_keV": 510.8930358886719
+      },
+      {
+        "job_index_zero_based": 5,
+        "job_id": "bgo_smallap_parma511_trial_shard0006",
+        "event_id": 175021,
+        "source_bin80": 18,
+        "passes_final_compton_veto": true,
+        "classification": "front_square_direct",
+        "initial_direction_instrument_frame": [
+          0.9771721,
+          0.05789,
+          0.2044316
+        ],
+        "optical_axis_mu": 0.9771721,
+        "optical_axis_angle_deg": 12.26593,
+        "first_interaction": {
+          "process": "PHOT",
+          "component": "TES",
+          "position_instrument_frame_cm": [
+            -37.385068,
+            1.56713,
+            -2.7783
+          ]
+        },
+        "projected_grid_center_cm": {
+          "y": 1.133797,
+          "z_relative_to_aperture_center": -1.508661
+        },
+        "bgo_path_before_first_interaction_cm": {
+          "front": 0.0,
+          "side": 0.0,
+          "rear": 0.0
+        },
+        "w_grid_material_path_before_first_interaction_cm": 0.088381,
+        "bgo_deposit_keV": 0.0,
+        "measured_total_keV": 510.8124694824219
+      },
+      {
+        "job_index_zero_based": 5,
+        "job_id": "bgo_smallap_parma511_trial_shard0006",
+        "event_id": 193784,
+        "source_bin80": 58,
+        "passes_final_compton_veto": true,
+        "classification": "bgo_uninteracted_transmission_side",
+        "initial_direction_instrument_frame": [
+          -0.3301623,
+          0.88252,
+          0.3348858
+        ],
+        "optical_axis_mu": -0.3301623,
+        "optical_axis_angle_deg": 109.27863,
+        "first_interaction": {
+          "process": "PHOT",
+          "component": "TES",
+          "position_instrument_frame_cm": [
+            -38.46086,
+            -0.96161,
+            -1.745599
+          ]
+        },
+        "projected_grid_center_cm": {
+          "y": 15.714977,
+          "z_relative_to_aperture_center": 7.382776
+        },
+        "bgo_path_before_first_interaction_cm": {
+          "front": 0.0,
+          "side": 4.291995,
+          "rear": 0.0
+        },
+        "w_grid_material_path_before_first_interaction_cm": 0.0,
+        "bgo_deposit_keV": 0.0,
+        "measured_total_keV": 511.2086181640625
+      },
+      {
+        "job_index_zero_based": 6,
+        "job_id": "bgo_smallap_parma511_trial_shard0007",
+        "event_id": 95488,
+        "source_bin80": 65,
+        "passes_final_compton_veto": true,
+        "classification": "bgo_uninteracted_transmission_side",
+        "initial_direction_instrument_frame": [
+          0.0764241,
+          0.10524,
+          0.9915051
+        ],
+        "optical_axis_mu": 0.0764241,
+        "optical_axis_angle_deg": 85.61695,
+        "first_interaction": {
+          "process": "PHOT",
+          "component": "TES",
+          "position_instrument_frame_cm": [
+            -34.857288,
+            -0.29701,
+            -4.382641
+          ]
+        },
+        "projected_grid_center_cm": {
+          "y": -13.85104,
+          "z_relative_to_aperture_center": -129.280599
+        },
+        "bgo_path_before_first_interaction_cm": {
+          "front": 0.0,
+          "side": 4.013831,
+          "rear": 0.0
+        },
+        "w_grid_material_path_before_first_interaction_cm": 0.0,
+        "bgo_deposit_keV": 0.0,
+        "measured_total_keV": 511.23583984375
+      },
+      {
+        "job_index_zero_based": 6,
+        "job_id": "bgo_smallap_parma511_trial_shard0007",
+        "event_id": 138952,
+        "source_bin80": 19,
+        "passes_final_compton_veto": true,
+        "classification": "front_square_direct",
+        "initial_direction_instrument_frame": [
+          0.9621178,
+          -0.15417,
+          0.22486
+        ],
+        "optical_axis_mu": 0.9621178,
+        "optical_axis_angle_deg": 15.82108,
+        "first_interaction": {
+          "process": "COMP",
+          "component": "TES",
+          "position_instrument_frame_cm": [
+            -38.474932,
+            -0.55279,
+            -2.543117
+          ]
+        },
+        "projected_grid_center_cm": {
+          "y": 0.444717,
+          "z_relative_to_aperture_center": -1.198032
+        },
+        "bgo_path_before_first_interaction_cm": {
+          "front": 0.0,
+          "side": 0.0,
+          "rear": 0.0
+        },
+        "w_grid_material_path_before_first_interaction_cm": 0.142136,
+        "bgo_deposit_keV": 0.0,
+        "measured_total_keV": 510.9719543457031
+      },
+      {
+        "job_index_zero_based": 6,
+        "job_id": "bgo_smallap_parma511_trial_shard0007",
+        "event_id": 197283,
+        "source_bin80": 65,
+        "passes_final_compton_veto": true,
+        "classification": "bgo_uninteracted_transmission_rear",
+        "initial_direction_instrument_frame": [
+          -0.8676412,
+          0.4969,
+          0.0170625
+        ],
+        "optical_axis_mu": -0.8676412,
+        "optical_axis_angle_deg": 150.18568,
+        "first_interaction": {
+          "process": "PHOT",
+          "component": "TES",
+          "position_instrument_frame_cm": [
+            -33.637685,
+            -1.24039,
+            -3.702432
+          ]
+        },
+        "projected_grid_center_cm": {
+          "y": 5.09543,
+          "z_relative_to_aperture_center": -0.685186
+        },
+        "bgo_path_before_first_interaction_cm": {
+          "front": 0.0,
+          "side": 0.0,
+          "rear": 4.611948
+        },
+        "w_grid_material_path_before_first_interaction_cm": 0.0,
+        "bgo_deposit_keV": 0.0,
+        "measured_total_keV": 511.07208251953125
+      },
+      {
+        "job_index_zero_based": 7,
+        "job_id": "bgo_smallap_parma511_trial_shard0008",
+        "event_id": 148174,
+        "source_bin80": 14,
+        "passes_final_compton_veto": true,
+        "classification": "bgo_uninteracted_transmission_side",
+        "initial_direction_instrument_frame": [
+          0.392515,
+          0.75646,
+          -0.5231742
+        ],
+        "optical_axis_mu": 0.392515,
+        "optical_axis_angle_deg": 66.88892,
+        "first_interaction": {
+          "process": "PHOT",
+          "component": "TES",
+          "position_instrument_frame_cm": [
+            -37.208404,
+            0.1713,
+            -1.388086
+          ]
+        },
+        "projected_grid_center_cm": {
+          "y": -14.266327,
+          "z_relative_to_aperture_center": 11.396967
+        },
+        "bgo_path_before_first_interaction_cm": {
+          "front": 0.0,
+          "side": 4.397874,
+          "rear": 0.0
+        },
+        "w_grid_material_path_before_first_interaction_cm": 0.0,
+        "bgo_deposit_keV": 0.0,
+        "measured_total_keV": 511.3231201171875
+      },
+      {
+        "job_index_zero_based": 8,
+        "job_id": "bgo_smallap_parma511_trial_shard0009",
+        "event_id": 152965,
+        "source_bin80": 51,
+        "passes_final_compton_veto": true,
+        "classification": "bgo_uninteracted_transmission_side",
+        "initial_direction_instrument_frame": [
+          -0.3974435,
+          0.91761,
+          0.0050558
+        ],
+        "optical_axis_mu": -0.3974435,
+        "optical_axis_angle_deg": 113.41846,
+        "first_interaction": {
+          "process": "PHOT",
+          "component": "TES",
+          "position_instrument_frame_cm": [
+            -38.478863,
+            0.42621,
+            -2.651827
+          ]
+        },
+        "projected_grid_center_cm": {
+          "y": 14.790056,
+          "z_relative_to_aperture_center": 0.227189
+        },
+        "bgo_path_before_first_interaction_cm": {
+          "front": 0.0,
+          "side": 4.359919,
+          "rear": 0.0
+        },
+        "w_grid_material_path_before_first_interaction_cm": 0.0,
+        "bgo_deposit_keV": 0.0,
+        "measured_total_keV": 510.9659118652344
+      },
+      {
+        "job_index_zero_based": 9,
+        "job_id": "bgo_smallap_parma511_trial_shard0010",
+        "event_id": 106896,
+        "source_bin80": 58,
+        "passes_final_compton_veto": true,
+        "classification": "bgo_uninteracted_transmission_side",
+        "initial_direction_instrument_frame": [
+          0.3036104,
+          0.12066,
+          0.945126
+        ],
+        "optical_axis_mu": 0.3036104,
+        "optical_axis_angle_deg": 72.32542,
+        "first_interaction": {
+          "process": "COMP",
+          "component": "TES",
+          "position_instrument_frame_cm": [
+            -32.548104,
+            -0.21326,
+            -1.662175
+          ]
+        },
+        "projected_grid_center_cm": {
+          "y": -5.042688,
+          "z_relative_to_aperture_center": -36.691239
+        },
+        "bgo_path_before_first_interaction_cm": {
+          "front": 0.0,
+          "side": 4.201791,
+          "rear": 0.0
+        },
+        "w_grid_material_path_before_first_interaction_cm": 0.0,
+        "bgo_deposit_keV": 0.0,
+        "measured_total_keV": 510.7626037597656
+      },
+      {
+        "job_index_zero_based": 9,
+        "job_id": "bgo_smallap_parma511_trial_shard0010",
+        "event_id": 116915,
+        "source_bin80": 8,
+        "passes_final_compton_veto": true,
+        "classification": "front_square_direct",
+        "initial_direction_instrument_frame": [
+          0.99229,
+          0.04064,
+          -0.1170757
+        ],
+        "optical_axis_mu": 0.99229,
+        "optical_axis_angle_deg": 7.11941,
+        "first_interaction": {
+          "process": "RAYL",
+          "component": "TES",
+          "position_instrument_frame_cm": [
+            -38.62732,
+            0.65783,
+            -3.847326
+          ]
+        },
+        "projected_grid_center_cm": {
+          "y": 0.409073,
+          "z_relative_to_aperture_center": -0.330794
+        },
+        "bgo_path_before_first_interaction_cm": {
+          "front": 0.0,
+          "side": 0.0,
+          "rear": 0.0
+        },
+        "w_grid_material_path_before_first_interaction_cm": 0.031214,
+        "bgo_deposit_keV": 0.0,
+        "measured_total_keV": 510.8972473144531
+      },
+      {
+        "job_index_zero_based": 9,
+        "job_id": "bgo_smallap_parma511_trial_shard0010",
+        "event_id": 226419,
+        "source_bin80": 30,
+        "passes_final_compton_veto": true,
+        "classification": "bgo_rayleigh_side",
+        "initial_direction_instrument_frame": [
+          0.1994324,
+          -0.97173,
+          -0.1263741
+        ],
+        "optical_axis_mu": 0.1994324,
+        "optical_axis_angle_deg": 78.49623,
+        "first_interaction": {
+          "process": "RAYL",
+          "component": "BGO_side",
+          "position_instrument_frame_cm": [
+            -39.281422,
+            6.70727,
+            -3.519256
+          ]
+        },
+        "projected_grid_center_cm": {
+          "y": 33.109735,
+          "z_relative_to_aperture_center": 2.714487
+        },
+        "bgo_path_before_first_interaction_cm": {
+          "front": 0.0,
+          "side": 4.107864,
+          "rear": 0.0
+        },
+        "w_grid_material_path_before_first_interaction_cm": 0.0,
+        "bgo_deposit_keV": 0.0,
+        "measured_total_keV": 510.9259338378906
+      },
+      {
+        "job_index_zero_based": 10,
+        "job_id": "bgo_smallap_parma511_trial_shard0011",
+        "event_id": 36636,
+        "source_bin80": 42,
+        "passes_final_compton_veto": true,
+        "classification": "bgo_uninteracted_transmission_side",
+        "initial_direction_instrument_frame": [
+          -0.6343172,
+          -0.53034,
+          -0.5624752
+        ],
+        "optical_axis_mu": -0.6343172,
+        "optical_axis_angle_deg": 129.36936,
+        "first_interaction": {
+          "process": "COMP",
+          "component": "TES",
+          "position_instrument_frame_cm": [
+            -37.32869,
+            -1.19682,
+            -3.22032
+          ]
+        },
+        "projected_grid_center_cm": {
+          "y": -7.360282,
+          "z_relative_to_aperture_center": -6.957043
+        },
+        "bgo_path_before_first_interaction_cm": {
+          "front": 0.0,
+          "side": 3.509938,
+          "rear": 1.67597
+        },
+        "w_grid_material_path_before_first_interaction_cm": 0.0,
+        "bgo_deposit_keV": 0.0,
+        "measured_total_keV": 510.90692138671875
+      },
+      {
+        "job_index_zero_based": 11,
+        "job_id": "bgo_smallap_parma511_trial_shard0012",
+        "event_id": 42656,
+        "source_bin80": 8,
+        "passes_final_compton_veto": true,
+        "classification": "front_square_direct",
+        "initial_direction_instrument_frame": [
+          0.9900909,
+          0.07304,
+          -0.119897
+        ],
+        "optical_axis_mu": 0.9900909,
+        "optical_axis_angle_deg": 8.0726,
+        "first_interaction": {
+          "process": "PHOT",
+          "component": "TES",
+          "position_instrument_frame_cm": [
+            -38.607875,
+            1.12276,
+            -3.724826
+          ]
+        },
+        "projected_grid_center_cm": {
+          "y": 0.673329,
+          "z_relative_to_aperture_center": -0.187148
+        },
+        "bgo_path_before_first_interaction_cm": {
+          "front": 0.0,
+          "side": 0.0,
+          "rear": 0.0
+        },
+        "w_grid_material_path_before_first_interaction_cm": 0.152719,
+        "bgo_deposit_keV": 0.0,
+        "measured_total_keV": 511.1361999511719
+      },
+      {
+        "job_index_zero_based": 11,
+        "job_id": "bgo_smallap_parma511_trial_shard0012",
+        "event_id": 99389,
+        "source_bin80": 71,
+        "passes_final_compton_veto": true,
+        "classification": "bgo_uninteracted_transmission_side",
+        "initial_direction_instrument_frame": [
+          -0.1837205,
+          0.32941,
+          0.9261402
+        ],
+        "optical_axis_mu": -0.1837205,
+        "optical_axis_angle_deg": 100.58654,
+        "first_interaction": {
+          "process": "COMP",
+          "component": "TES",
+          "position_instrument_frame_cm": [
+            -36.03781,
+            -0.35419,
+            -2.038447
+          ]
+        },
+        "projected_grid_center_cm": {
+          "y": 15.176787,
+          "z_relative_to_aperture_center": 44.427766
+        },
+        "bgo_path_before_first_interaction_cm": {
+          "front": 0.0,
+          "side": 4.077877,
+          "rear": 0.0
+        },
+        "w_grid_material_path_before_first_interaction_cm": 0.0,
+        "bgo_deposit_keV": 0.0,
+        "measured_total_keV": 511.02032470703125
+      },
+      {
+        "job_index_zero_based": 11,
+        "job_id": "bgo_smallap_parma511_trial_shard0012",
+        "event_id": 137245,
+        "source_bin80": 13,
+        "passes_final_compton_veto": true,
+        "classification": "front_square_direct",
+        "initial_direction_instrument_frame": [
+          0.9969074,
+          -0.02698,
+          0.0738219
+        ],
+        "optical_axis_mu": 0.9969074,
+        "optical_axis_angle_deg": 4.50723,
+        "first_interaction": {
+          "process": "PHOT",
+          "component": "TES",
+          "position_instrument_frame_cm": [
+            -37.262088,
+            -0.22206,
+            -2.881524
+          ]
+        },
+        "projected_grid_center_cm": {
+          "y": -0.020831,
+          "z_relative_to_aperture_center": -0.632369
+        },
+        "bgo_path_before_first_interaction_cm": {
+          "front": 0.0,
+          "side": 0.0,
+          "rear": 0.0
+        },
+        "w_grid_material_path_before_first_interaction_cm": 0.0,
+        "bgo_deposit_keV": 0.0,
+        "measured_total_keV": 511.3111877441406
+      },
+      {
+        "job_index_zero_based": 12,
+        "job_id": "bgo_smallap_parma511_trial_shard0013",
+        "event_id": 31003,
+        "source_bin80": 15,
+        "passes_final_compton_veto": true,
+        "classification": "front_square_direct",
+        "initial_direction_instrument_frame": [
+          0.9661624,
+          0.23535,
+          0.1055993
+        ],
+        "optical_axis_mu": 0.9661624,
+        "optical_axis_angle_deg": 14.94753,
+        "first_interaction": {
+          "process": "COMP",
+          "component": "TES",
+          "position_instrument_frame_cm": [
+            -37.387741,
+            0.71393,
+            -2.242299
+          ]
+        },
+        "projected_grid_center_cm": {
+          "y": -1.067343,
+          "z_relative_to_aperture_center": -0.241555
+        },
+        "bgo_path_before_first_interaction_cm": {
+          "front": 0.0,
+          "side": 0.0,
+          "rear": 0.0
+        },
+        "w_grid_material_path_before_first_interaction_cm": 0.214614,
+        "bgo_deposit_keV": 0.0,
+        "measured_total_keV": 510.9635925292969
+      },
+      {
+        "job_index_zero_based": 12,
+        "job_id": "bgo_smallap_parma511_trial_shard0013",
+        "event_id": 138304,
+        "source_bin80": 15,
+        "passes_final_compton_veto": true,
+        "classification": "bgo_uninteracted_transmission_front",
+        "initial_direction_instrument_frame": [
+          0.9885706,
+          -0.06193,
+          0.1374545
+        ],
+        "optical_axis_mu": 0.9885706,
+        "optical_axis_angle_deg": 8.67088,
+        "first_interaction": {
+          "process": "PHOT",
+          "component": "TES",
+          "position_instrument_frame_cm": [
+            -38.659239,
+            -0.97679,
+            -3.791549
+          ]
+        },
+        "projected_grid_center_cm": {
+          "y": -0.598431,
+          "z_relative_to_aperture_center": -1.831483
+        },
+        "bgo_path_before_first_interaction_cm": {
+          "front": 0.527984,
+          "side": 0.0,
+          "rear": 0.0
+        },
+        "w_grid_material_path_before_first_interaction_cm": 0.094544,
+        "bgo_deposit_keV": 0.0,
+        "measured_total_keV": 511.2801818847656
+      },
+      {
+        "job_index_zero_based": 13,
+        "job_id": "bgo_smallap_parma511_trial_shard0014",
+        "event_id": 248389,
+        "source_bin80": 8,
+        "passes_final_compton_veto": true,
+        "classification": "front_square_direct",
+        "initial_direction_instrument_frame": [
+          0.9924668,
+          0.049,
+          -0.1123027
+        ],
+        "optical_axis_mu": 0.9924668,
+        "optical_axis_angle_deg": 7.03721,
+        "first_interaction": {
+          "process": "COMP",
+          "component": "TES",
+          "position_instrument_frame_cm": [
+            -38.633776,
+            -0.01479,
+            -2.634333
+          ]
+        },
+        "projected_grid_center_cm": {
+          "y": -0.314299,
+          "z_relative_to_aperture_center": 0.852137
+        },
+        "bgo_path_before_first_interaction_cm": {
+          "front": 0.0,
+          "side": 0.0,
+          "rear": 0.0
+        },
+        "w_grid_material_path_before_first_interaction_cm": 0.115759,
+        "bgo_deposit_keV": 0.0,
+        "measured_total_keV": 510.8963317871094
+      },
+      {
+        "job_index_zero_based": 14,
+        "job_id": "bgo_smallap_parma511_trial_shard0015",
+        "event_id": 5306,
+        "source_bin80": 34,
+        "passes_final_compton_veto": true,
+        "classification": "bgo_rayleigh_side",
+        "initial_direction_instrument_frame": [
+          -0.0110874,
+          -0.97661,
+          -0.2147483
+        ],
+        "optical_axis_mu": -0.0110874,
+        "optical_axis_angle_deg": 90.63528,
+        "first_interaction": {
+          "process": "RAYL",
+          "component": "BGO_side",
+          "position_instrument_frame_cm": [
+            -34.540434,
+            8.40865,
+            -1.051927
+          ]
+        },
+        "projected_grid_center_cm": {
+          "y": -886.491315,
+          "z_relative_to_aperture_center": -195.032881
+        },
+        "bgo_path_before_first_interaction_cm": {
+          "front": 0.0,
+          "side": 2.111991,
+          "rear": 0.0
+        },
+        "w_grid_material_path_before_first_interaction_cm": 0.0,
+        "bgo_deposit_keV": 0.0,
+        "measured_total_keV": 510.8102722167969
+      },
+      {
+        "job_index_zero_based": 14,
+        "job_id": "bgo_smallap_parma511_trial_shard0015",
+        "event_id": 169893,
+        "source_bin80": 40,
+        "passes_final_compton_veto": true,
+        "classification": "bgo_uninteracted_transmission_side",
+        "initial_direction_instrument_frame": [
+          0.1053589,
+          -0.98815,
+          0.1115815
+        ],
+        "optical_axis_mu": 0.1053589,
+        "optical_axis_angle_deg": 83.95215,
+        "first_interaction": {
+          "process": "COMP",
+          "component": "TES",
+          "position_instrument_frame_cm": [
+            -32.692523,
+            -0.73506,
+            -2.17569
+          ]
+        },
+        "projected_grid_center_cm": {
+          "y": 111.881017,
+          "z_relative_to_aperture_center": -12.09245
+        },
+        "bgo_path_before_first_interaction_cm": {
+          "front": 0.0,
+          "side": 4.03187,
+          "rear": 0.0
+        },
+        "w_grid_material_path_before_first_interaction_cm": 0.0,
+        "bgo_deposit_keV": 0.0,
+        "measured_total_keV": 511.09014892578125
+      },
+      {
+        "job_index_zero_based": 14,
+        "job_id": "bgo_smallap_parma511_trial_shard0015",
+        "event_id": 202015,
+        "source_bin80": 21,
+        "passes_final_compton_veto": true,
+        "classification": "front_square_direct",
+        "initial_direction_instrument_frame": [
+          0.9369518,
+          0.1915,
+          0.2923109
+        ],
+        "optical_axis_mu": 0.9369518,
+        "optical_axis_angle_deg": 20.4542,
+        "first_interaction": {
+          "process": "PHOT",
+          "component": "TES",
+          "position_instrument_frame_cm": [
+            -38.531111,
+            1.27152,
+            -1.868784
+          ]
+        },
+        "projected_grid_center_cm": {
+          "y": 0.01062,
+          "z_relative_to_aperture_center": -0.993251
+        },
+        "bgo_path_before_first_interaction_cm": {
+          "front": 0.0,
+          "side": 0.0,
+          "rear": 0.0
+        },
+        "w_grid_material_path_before_first_interaction_cm": 0.112358,
+        "bgo_deposit_keV": 0.0,
+        "measured_total_keV": 510.8992614746094
+      },
+      {
+        "job_index_zero_based": 14,
+        "job_id": "bgo_smallap_parma511_trial_shard0015",
+        "event_id": 220695,
+        "source_bin80": 57,
+        "passes_final_compton_veto": true,
+        "classification": "bgo_uninteracted_transmission_side",
+        "initial_direction_instrument_frame": [
+          0.2284238,
+          -0.48278,
+          0.845431
+        ],
+        "optical_axis_mu": 0.2284238,
+        "optical_axis_angle_deg": 76.79571,
+        "first_interaction": {
+          "process": "PHOT",
+          "component": "TES",
+          "position_instrument_frame_cm": [
+            -32.676055,
+            1.29362,
+            -3.119331
+          ]
+        },
+        "projected_grid_center_cm": {
+          "y": 26.706463,
+          "z_relative_to_aperture_center": -44.821567
+        },
+        "bgo_path_before_first_interaction_cm": {
+          "front": 0.0,
+          "side": 4.135923,
+          "rear": 0.0
+        },
+        "w_grid_material_path_before_first_interaction_cm": 0.0,
+        "bgo_deposit_keV": 0.0,
+        "measured_total_keV": 511.0777587890625
+      },
+      {
+        "job_index_zero_based": 15,
+        "job_id": "bgo_smallap_parma511_trial_shard0016",
+        "event_id": 7593,
+        "source_bin80": 7,
+        "passes_final_compton_veto": true,
+        "classification": "front_square_direct",
+        "initial_direction_instrument_frame": [
+          0.9877928,
+          0.00787,
+          -0.1555564
+        ],
+        "optical_axis_mu": 0.9877928,
+        "optical_axis_angle_deg": 8.96165,
+        "first_interaction": {
+          "process": "PHOT",
+          "component": "TES",
+          "position_instrument_frame_cm": [
+            -36.042378,
+            0.06752,
+            -3.99282
+          ]
+        },
+        "projected_grid_center_cm": {
+          "y": -0.001539,
+          "z_relative_to_aperture_center": 0.170526
+        },
+        "bgo_path_before_first_interaction_cm": {
+          "front": 0.0,
+          "side": 0.0,
+          "rear": 0.0
+        },
+        "w_grid_material_path_before_first_interaction_cm": 0.047313,
+        "bgo_deposit_keV": 0.0,
+        "measured_total_keV": 510.6855163574219
+      },
+      {
+        "job_index_zero_based": 15,
+        "job_id": "bgo_smallap_parma511_trial_shard0016",
+        "event_id": 84996,
+        "source_bin80": 26,
+        "passes_final_compton_veto": true,
+        "classification": "bgo_uninteracted_transmission_front",
+        "initial_direction_instrument_frame": [
+          0.9076705,
+          -0.00404,
+          0.4196679
+        ],
+        "optical_axis_mu": 0.9076705,
+        "optical_axis_angle_deg": 24.8146,
+        "first_interaction": {
+          "process": "PHOT",
+          "component": "TES",
+          "position_instrument_frame_cm": [
+            -38.497311,
+            -1.15072,
+            -1.937105
+          ]
+        },
+        "projected_grid_center_cm": {
+          "y": -1.123175,
+          "z_relative_to_aperture_center": -2.004846
+        },
+        "bgo_path_before_first_interaction_cm": {
+          "front": 1.355981,
+          "side": 0.0,
+          "rear": 0.0
+        },
+        "w_grid_material_path_before_first_interaction_cm": 0.0,
+        "bgo_deposit_keV": 0.0,
+        "measured_total_keV": 510.865966796875
+      },
+      {
+        "job_index_zero_based": 15,
+        "job_id": "bgo_smallap_parma511_trial_shard0016",
+        "event_id": 228416,
+        "source_bin80": 57,
+        "passes_final_compton_veto": true,
+        "classification": "bgo_uninteracted_transmission_side",
+        "initial_direction_instrument_frame": [
+          0.0278459,
+          -0.77241,
+          0.6345152
+        ],
+        "optical_axis_mu": 0.0278459,
+        "optical_axis_angle_deg": 88.40434,
+        "first_interaction": {
+          "process": "PHOT",
+          "component": "TES",
+          "position_instrument_frame_cm": [
+            -32.597566,
+            0.46709,
+            -4.06486
+          ]
+        },
+        "projected_grid_center_cm": {
+          "y": 336.178526,
+          "z_relative_to_aperture_center": -277.043111
+        },
+        "bgo_path_before_first_interaction_cm": {
+          "front": 0.0,
+          "side": 4.013989,
+          "rear": 0.0
+        },
+        "w_grid_material_path_before_first_interaction_cm": 0.0,
+        "bgo_deposit_keV": 0.0,
+        "measured_total_keV": 510.8449401855469
+      },
+      {
+        "job_index_zero_based": 15,
+        "job_id": "bgo_smallap_parma511_trial_shard0016",
+        "event_id": 237360,
+        "source_bin80": 57,
+        "passes_final_compton_veto": true,
+        "classification": "bgo_uninteracted_transmission_side",
+        "initial_direction_instrument_frame": [
+          -0.1302208,
+          -0.85441,
+          0.5030075
+        ],
+        "optical_axis_mu": -0.1302208,
+        "optical_axis_angle_deg": 97.48235,
+        "first_interaction": {
+          "process": "PHOT",
+          "component": "TES",
+          "position_instrument_frame_cm": [
+            -37.201001,
+            1.10312,
+            -3.215653
+          ]
+        },
+        "projected_grid_center_cm": {
+          "y": -48.100041,
+          "z_relative_to_aperture_center": 28.55113
+        },
+        "bgo_path_before_first_interaction_cm": {
+          "front": 0.0,
+          "side": 4.035875,
+          "rear": 0.0
+        },
+        "w_grid_material_path_before_first_interaction_cm": 0.0,
+        "bgo_deposit_keV": 0.0,
+        "measured_total_keV": 511.0882263183594
+      },
+      {
+        "job_index_zero_based": 16,
+        "job_id": "bgo_smallap_parma511_trial_shard0017",
+        "event_id": 46509,
+        "source_bin80": 55,
+        "passes_final_compton_veto": true,
+        "classification": "bgo_uninteracted_transmission_side",
+        "initial_direction_instrument_frame": [
+          0.3394678,
+          0.2958,
+          0.892892
+        ],
+        "optical_axis_mu": 0.3394678,
+        "optical_axis_angle_deg": 70.15555,
+        "first_interaction": {
+          "process": "PHOT",
+          "component": "TES",
+          "position_instrument_frame_cm": [
+            -32.620335,
+            0.76994,
+            -3.09601
+          ]
+        },
+        "projected_grid_center_cm": {
+          "y": -9.755705,
+          "z_relative_to_aperture_center": -32.069073
+        },
+        "bgo_path_before_first_interaction_cm": {
+          "front": 0.0,
+          "side": 4.27184,
+          "rear": 0.0
+        },
+        "w_grid_material_path_before_first_interaction_cm": 0.0,
+        "bgo_deposit_keV": 0.0,
+        "measured_total_keV": 511.1140441894531
+      },
+      {
+        "job_index_zero_based": 16,
+        "job_id": "bgo_smallap_parma511_trial_shard0017",
+        "event_id": 46772,
+        "source_bin80": 8,
+        "passes_final_compton_veto": true,
+        "classification": "bgo_rayleigh_side",
+        "initial_direction_instrument_frame": [
+          0.3767748,
+          0.58229,
+          -0.7204004
+        ],
+        "optical_axis_mu": 0.3767748,
+        "optical_axis_angle_deg": 67.86595,
+        "first_interaction": {
+          "process": "RAYL",
+          "component": "BGO_side",
+          "position_instrument_frame_cm": [
+            -36.807072,
+            -5.08678,
+            6.029302
+          ]
+        },
+        "projected_grid_center_cm": {
+          "y": -17.284848,
+          "z_relative_to_aperture_center": 23.920422
+        },
+        "bgo_path_before_first_interaction_cm": {
+          "front": 0.0,
+          "side": 0.557996,
+          "rear": 0.0
+        },
+        "w_grid_material_path_before_first_interaction_cm": 0.0,
+        "bgo_deposit_keV": 0.0,
+        "measured_total_keV": 510.92376708984375
+      },
+      {
+        "job_index_zero_based": 16,
+        "job_id": "bgo_smallap_parma511_trial_shard0017",
+        "event_id": 47725,
+        "source_bin80": 17,
+        "passes_final_compton_veto": true,
+        "classification": "front_square_direct",
+        "initial_direction_instrument_frame": [
+          0.973184,
+          -0.16234,
+          0.1629952
+        ],
+        "optical_axis_mu": 0.973184,
+        "optical_axis_angle_deg": 13.29872,
+        "first_interaction": {
+          "process": "COMP",
+          "component": "TES",
+          "position_instrument_frame_cm": [
+            -38.575044,
+            0.32321,
+            -3.249898
+          ]
+        },
+        "projected_grid_center_cm": {
+          "y": 1.345045,
+          "z_relative_to_aperture_center": -1.47579
+        },
+        "bgo_path_before_first_interaction_cm": {
+          "front": 0.0,
+          "side": 0.0,
+          "rear": 0.0
+        },
+        "w_grid_material_path_before_first_interaction_cm": 0.159836,
+        "bgo_deposit_keV": 0.0,
+        "measured_total_keV": 511.1825866699219
+      },
+      {
+        "job_index_zero_based": 16,
+        "job_id": "bgo_smallap_parma511_trial_shard0017",
+        "event_id": 96278,
+        "source_bin80": 60,
+        "passes_final_compton_veto": false,
+        "classification": "bgo_uninteracted_transmission_side",
+        "initial_direction_instrument_frame": [
+          0.2043326,
+          0.2757,
+          0.9392712
+        ],
+        "optical_axis_mu": 0.2043326,
+        "optical_axis_angle_deg": 78.20956,
+        "first_interaction": {
+          "process": "RAYL",
+          "component": "TES",
+          "position_instrument_frame_cm": [
+            -32.640728,
+            -0.15029,
+            -4.371829
+          ]
+        },
+        "projected_grid_center_cm": {
+          "y": -16.421464,
+          "z_relative_to_aperture_center": -57.00573
+        },
+        "bgo_path_before_first_interaction_cm": {
+          "front": 0.0,
+          "side": 4.087807,
+          "rear": 0.0
+        },
+        "w_grid_material_path_before_first_interaction_cm": 0.0,
+        "bgo_deposit_keV": 0.0,
+        "measured_total_keV": 511.1758728027344
+      },
+      {
+        "job_index_zero_based": 16,
+        "job_id": "bgo_smallap_parma511_trial_shard0017",
+        "event_id": 139447,
+        "source_bin80": 71,
+        "passes_final_compton_veto": true,
+        "classification": "rear_cold_port_direct",
+        "initial_direction_instrument_frame": [
+          -0.9890727,
+          -0.04808,
+          0.1393849
+        ],
+        "optical_axis_mu": -0.9890727,
+        "optical_axis_angle_deg": 171.52205,
+        "first_interaction": {
+          "process": "COMP",
+          "component": "TES",
+          "position_instrument_frame_cm": [
+            -36.246202,
+            -0.99044,
+            -1.781732
+          ]
+        },
+        "projected_grid_center_cm": {
+          "y": -1.401076,
+          "z_relative_to_aperture_center": 2.209314
+        },
+        "bgo_path_before_first_interaction_cm": {
+          "front": 0.0,
+          "side": 0.0,
+          "rear": 0.0
+        },
+        "w_grid_material_path_before_first_interaction_cm": 0.0,
+        "bgo_deposit_keV": 0.0,
+        "measured_total_keV": 511.3056335449219
+      },
+      {
+        "job_index_zero_based": 17,
+        "job_id": "bgo_smallap_parma511_trial_shard0018",
+        "event_id": 121781,
+        "source_bin80": 44,
+        "passes_final_compton_veto": true,
+        "classification": "bgo_uninteracted_transmission_side",
+        "initial_direction_instrument_frame": [
+          -0.4263642,
+          -0.86492,
+          -0.2648186
+        ],
+        "optical_axis_mu": -0.4263642,
+        "optical_axis_angle_deg": 115.23704,
+        "first_interaction": {
+          "process": "PHOT",
+          "component": "TES",
+          "position_instrument_frame_cm": [
+            -36.161257,
+            0.94018,
+            -2.182655
+          ]
+        },
+        "projected_grid_center_cm": {
+          "y": -16.381068,
+          "z_relative_to_aperture_center": -4.686051
+        },
+        "bgo_path_before_first_interaction_cm": {
+          "front": 0.0,
+          "side": 4.423902,
+          "rear": 0.0
+        },
+        "w_grid_material_path_before_first_interaction_cm": 0.0,
+        "bgo_deposit_keV": 0.0,
+        "measured_total_keV": 511.1684265136719
+      },
+      {
+        "job_index_zero_based": 17,
+        "job_id": "bgo_smallap_parma511_trial_shard0018",
+        "event_id": 175056,
+        "source_bin80": 34,
+        "passes_final_compton_veto": true,
+        "classification": "bgo_uninteracted_transmission_side",
+        "initial_direction_instrument_frame": [
+          -0.2930463,
+          0.82434,
+          -0.4843469
+        ],
+        "optical_axis_mu": -0.2930463,
+        "optical_axis_angle_deg": 107.04042,
+        "first_interaction": {
+          "process": "PHOT",
+          "component": "TES",
+          "position_instrument_frame_cm": [
+            -33.696601,
+            0.31105,
+            -2.933722
+          ]
+        },
+        "projected_grid_center_cm": {
+          "y": 31.263087,
+          "z_relative_to_aperture_center": -18.319668
+        },
+        "bgo_path_before_first_interaction_cm": {
+          "front": 0.0,
+          "side": 4.183891,
+          "rear": 0.0
+        },
+        "w_grid_material_path_before_first_interaction_cm": 0.0,
+        "bgo_deposit_keV": 0.0,
+        "measured_total_keV": 510.92578125
+      },
+      {
+        "job_index_zero_based": 17,
+        "job_id": "bgo_smallap_parma511_trial_shard0018",
+        "event_id": 196992,
+        "source_bin80": 33,
+        "passes_final_compton_veto": true,
+        "classification": "bgo_uninteracted_transmission_side",
+        "initial_direction_instrument_frame": [
+          -0.5212367,
+          -0.43355,
+          -0.7350799
+        ],
+        "optical_axis_mu": -0.5212367,
+        "optical_axis_angle_deg": 121.41524,
+        "first_interaction": {
+          "process": "COMP",
+          "component": "TES",
+          "position_instrument_frame_cm": [
+            -34.945252,
+            1.08781,
+            -1.487618
+          ]
+        },
+        "projected_grid_center_cm": {
+          "y": -7.026288,
+          "z_relative_to_aperture_center": -12.444247
+        },
+        "bgo_path_before_first_interaction_cm": {
+          "front": 0.0,
+          "side": 4.689956,
+          "rear": 0.0
+        },
+        "w_grid_material_path_before_first_interaction_cm": 0.0,
+        "bgo_deposit_keV": 0.0,
+        "measured_total_keV": 511.2671203613281
+      },
+      {
+        "job_index_zero_based": 17,
+        "job_id": "bgo_smallap_parma511_trial_shard0018",
+        "event_id": 215966,
+        "source_bin80": 75,
+        "passes_final_compton_veto": true,
+        "classification": "bgo_rayleigh_side",
+        "initial_direction_instrument_frame": [
+          -0.3175687,
+          -0.00997,
+          0.9481807
+        ],
+        "optical_axis_mu": -0.3175687,
+        "optical_axis_angle_deg": 108.51596,
+        "first_interaction": {
+          "process": "RAYL",
+          "component": "BGO_side",
+          "position_instrument_frame_cm": [
+            -34.830157,
+            -1.27295,
+            -10.387059
+          ]
+        },
+        "projected_grid_center_cm": {
+          "y": -1.582997,
+          "z_relative_to_aperture_center": 21.88278
+        },
+        "bgo_path_before_first_interaction_cm": {
+          "front": 0.0,
+          "side": 3.205887,
+          "rear": 0.0
+        },
+        "w_grid_material_path_before_first_interaction_cm": 0.0,
+        "bgo_deposit_keV": 0.0,
+        "measured_total_keV": 511.0599365234375
+      },
+      {
+        "job_index_zero_based": 18,
+        "job_id": "bgo_smallap_parma511_trial_shard0019",
+        "event_id": 2933,
+        "source_bin80": 59,
+        "passes_final_compton_veto": true,
+        "classification": "bgo_uninteracted_transmission_side",
+        "initial_direction_instrument_frame": [
+          -0.3824175,
+          0.87326,
+          0.3019487
+        ],
+        "optical_axis_mu": -0.3824175,
+        "optical_axis_angle_deg": 112.48351,
+        "first_interaction": {
+          "process": "PHOT",
+          "component": "TES",
+          "position_instrument_frame_cm": [
+            -38.650414,
+            0.91295,
+            -3.359931
+          ]
+        },
+        "projected_grid_center_cm": {
+          "y": 14.727528,
+          "z_relative_to_aperture_center": 4.216995
+        },
+        "bgo_path_before_first_interaction_cm": {
+          "front": 0.0,
+          "side": 4.349914,
+          "rear": 0.0
+        },
+        "w_grid_material_path_before_first_interaction_cm": 0.0,
+        "bgo_deposit_keV": 0.0,
+        "measured_total_keV": 510.6646728515625
+      },
+      {
+        "job_index_zero_based": 18,
+        "job_id": "bgo_smallap_parma511_trial_shard0019",
+        "event_id": 11457,
+        "source_bin80": 48,
+        "passes_final_compton_veto": true,
+        "classification": "bgo_uninteracted_transmission_side",
+        "initial_direction_instrument_frame": [
+          -0.5121645,
+          0.83018,
+          -0.220186
+        ],
+        "optical_axis_mu": -0.5121645,
+        "optical_axis_angle_deg": 120.80811,
+        "first_interaction": {
+          "process": "PHOT",
+          "component": "TES",
+          "position_instrument_frame_cm": [
+            -38.5892,
+            -0.043,
+            -3.853923
+          ]
+        },
+        "projected_grid_center_cm": {
+          "y": 9.861623,
+          "z_relative_to_aperture_center": -3.681004
+        },
+        "bgo_path_before_first_interaction_cm": {
+          "front": 0.0,
+          "side": 4.691982,
+          "rear": 0.0
+        },
+        "w_grid_material_path_before_first_interaction_cm": 0.0,
+        "bgo_deposit_keV": 0.0,
+        "measured_total_keV": 511.1393127441406
+      },
+      {
+        "job_index_zero_based": 18,
+        "job_id": "bgo_smallap_parma511_trial_shard0019",
+        "event_id": 73911,
+        "source_bin80": 74,
+        "passes_final_compton_veto": true,
+        "classification": "bgo_uninteracted_transmission_side",
+        "initial_direction_instrument_frame": [
+          -0.2437538,
+          0.12813,
+          0.96134
+        ],
+        "optical_axis_mu": -0.2437538,
+        "optical_axis_angle_deg": 104.1082,
+        "first_interaction": {
+          "process": "PHOT",
+          "component": "TES",
+          "position_instrument_frame_cm": [
+            -36.006698,
+            0.7381,
+            -3.372687
+          ]
+        },
+        "projected_grid_center_cm": {
+          "y": 5.307643,
+          "z_relative_to_aperture_center": 33.712733
+        },
+        "bgo_path_before_first_interaction_cm": {
+          "front": 0.0,
+          "side": 4.143929,
+          "rear": 0.0
+        },
+        "w_grid_material_path_before_first_interaction_cm": 0.0,
+        "bgo_deposit_keV": 0.0,
+        "measured_total_keV": 511.2726745605469
+      },
+      {
+        "job_index_zero_based": 18,
+        "job_id": "bgo_smallap_parma511_trial_shard0019",
+        "event_id": 152790,
+        "source_bin80": 73,
+        "passes_final_compton_veto": true,
+        "classification": "bgo_rayleigh_rear",
+        "initial_direction_instrument_frame": [
+          -0.6645319,
+          -0.53637,
+          0.5202962
+        ],
+        "optical_axis_mu": -0.6645319,
+        "optical_axis_angle_deg": 131.64642,
+        "first_interaction": {
+          "process": "RAYL",
+          "component": "BGO_rear",
+          "position_instrument_frame_cm": [
+            -28.419124,
+            5.56309,
+            -10.575341
+          ]
+        },
+        "projected_grid_center_cm": {
+          "y": -7.57808,
+          "z_relative_to_aperture_center": 4.97214
+        },
+        "bgo_path_before_first_interaction_cm": {
+          "front": 0.0,
+          "side": 0.0,
+          "rear": 1.547981
+        },
+        "w_grid_material_path_before_first_interaction_cm": 0.0,
+        "bgo_deposit_keV": 0.0,
+        "measured_total_keV": 510.8067932128906
+      },
+      {
+        "job_index_zero_based": 18,
+        "job_id": "bgo_smallap_parma511_trial_shard0019",
+        "event_id": 207992,
+        "source_bin80": 9,
+        "passes_final_compton_veto": true,
+        "classification": "front_square_direct",
+        "initial_direction_instrument_frame": [
+          0.9958821,
+          0.05818,
+          -0.0695581
+        ],
+        "optical_axis_mu": 0.9958821,
+        "optical_axis_angle_deg": 5.20144,
+        "first_interaction": {
+          "process": "PHOT",
+          "component": "TES",
+          "position_instrument_frame_cm": [
+            -36.086516,
+            -0.78015,
+            -1.840288
+          ]
+        },
+        "projected_grid_center_cm": {
+          "y": -1.28334,
+          "z_relative_to_aperture_center": 1.561424
+        },
+        "bgo_path_before_first_interaction_cm": {
+          "front": 0.0,
+          "side": 0.0,
+          "rear": 0.0
+        },
+        "w_grid_material_path_before_first_interaction_cm": 0.0,
+        "bgo_deposit_keV": 0.0,
+        "measured_total_keV": 510.974365234375
+      },
+      {
+        "job_index_zero_based": 19,
+        "job_id": "bgo_smallap_parma511_trial_shard0020",
+        "event_id": 14370,
+        "source_bin80": 47,
+        "passes_final_compton_veto": false,
+        "classification": "bgo_uninteracted_transmission_side",
+        "initial_direction_instrument_frame": [
+          0.5299624,
+          -0.33305,
+          0.7798822
+        ],
+        "optical_axis_mu": 0.5299624,
+        "optical_axis_angle_deg": 57.99709,
+        "first_interaction": {
+          "process": "COMP",
+          "component": "TES",
+          "position_instrument_frame_cm": [
+            -36.00691,
+            1.37631,
+            -3.297013
+          ]
+        },
+        "projected_grid_center_cm": {
+          "y": 6.83938,
+          "z_relative_to_aperture_center": -13.289669
+        },
+        "bgo_path_before_first_interaction_cm": {
+          "front": 0.63597,
+          "side": 4.117808,
+          "rear": 0.0
+        },
+        "w_grid_material_path_before_first_interaction_cm": 0.0,
+        "bgo_deposit_keV": 0.0,
+        "measured_total_keV": 510.9961242675781
+      },
+      {
+        "job_index_zero_based": 19,
+        "job_id": "bgo_smallap_parma511_trial_shard0020",
+        "event_id": 231918,
+        "source_bin80": 65,
+        "passes_final_compton_veto": true,
+        "classification": "bgo_uninteracted_transmission_rear",
+        "initial_direction_instrument_frame": [
+          -0.9281201,
+          0.37118,
+          -0.0284681
+        ],
+        "optical_axis_mu": -0.9281201,
+        "optical_axis_angle_deg": 158.14364,
+        "first_interaction": {
+          "process": "COMP",
+          "component": "TES",
+          "position_instrument_frame_cm": [
+            -33.821992,
+            0.67541,
+            -2.675112
+          ]
+        },
+        "projected_grid_center_cm": {
+          "y": 5.025813,
+          "z_relative_to_aperture_center": -0.2085
+        },
+        "bgo_path_before_first_interaction_cm": {
+          "front": 0.0,
+          "side": 0.0,
+          "rear": 4.309914
+        },
+        "w_grid_material_path_before_first_interaction_cm": 0.0,
+        "bgo_deposit_keV": 0.0,
+        "measured_total_keV": 511.1430358886719
+      },
+      {
+        "job_index_zero_based": 20,
+        "job_id": "bgo_smallap_parma511_trial_shard0021",
+        "event_id": 96196,
+        "source_bin80": 42,
+        "passes_final_compton_veto": true,
+        "classification": "bgo_uninteracted_transmission_rear",
+        "initial_direction_instrument_frame": [
+          -0.6385245,
+          0.52421,
+          -0.563458
+        ],
+        "optical_axis_mu": -0.6385245,
+        "optical_axis_angle_deg": 129.68188,
+        "first_interaction": {
+          "process": "PHOT",
+          "component": "TES",
+          "position_instrument_frame_cm": [
+            -34.814756,
+            -0.224,
+            -2.802717
+          ]
+        },
+        "projected_grid_center_cm": {
+          "y": 7.892013,
+          "z_relative_to_aperture_center": -8.726337
+        },
+        "bgo_path_before_first_interaction_cm": {
+          "front": 0.0,
+          "side": 1.067997,
+          "rear": 4.129988
+        },
+        "w_grid_material_path_before_first_interaction_cm": 0.0,
+        "bgo_deposit_keV": 0.0,
+        "measured_total_keV": 511.0665283203125
+      },
+      {
+        "job_index_zero_based": 20,
+        "job_id": "bgo_smallap_parma511_trial_shard0021",
+        "event_id": 186413,
+        "source_bin80": 17,
+        "passes_final_compton_veto": true,
+        "classification": "front_square_direct",
+        "initial_direction_instrument_frame": [
+          0.970497,
+          -0.17992,
+          0.1605062
+        ],
+        "optical_axis_mu": 0.970497,
+        "optical_axis_angle_deg": 13.95225,
+        "first_interaction": {
+          "process": "COMP",
+          "component": "TES",
+          "position_instrument_frame_cm": [
+            -37.452696,
+            -0.31096,
+            -2.180343
+          ]
+        },
+        "projected_grid_center_cm": {
+          "y": 1.032637,
+          "z_relative_to_aperture_center": -0.57901
+        },
+        "bgo_path_before_first_interaction_cm": {
+          "front": 0.0,
+          "side": 0.0,
+          "rear": 0.0
+        },
+        "w_grid_material_path_before_first_interaction_cm": 0.153248,
+        "bgo_deposit_keV": 0.0,
+        "measured_total_keV": 510.8234558105469
+      },
+      {
+        "job_index_zero_based": 20,
+        "job_id": "bgo_smallap_parma511_trial_shard0021",
+        "event_id": 194943,
+        "source_bin80": 12,
+        "passes_final_compton_veto": true,
+        "classification": "bgo_uninteracted_transmission_front",
+        "initial_direction_instrument_frame": [
+          0.9963417,
+          -0.08425,
+          0.0141563
+        ],
+        "optical_axis_mu": 0.9963417,
+        "optical_axis_angle_deg": 4.90239,
+        "first_interaction": {
+          "process": "PHOT",
+          "component": "TES",
+          "position_instrument_frame_cm": [
+            -34.866891,
+            1.07812,
+            -3.11535
+          ]
+        },
+        "projected_grid_center_cm": {
+          "y": 1.909635,
+          "z_relative_to_aperture_center": -0.455097
+        },
+        "bgo_path_before_first_interaction_cm": {
+          "front": 1.13998,
+          "side": 0.0,
+          "rear": 0.0
+        },
+        "w_grid_material_path_before_first_interaction_cm": 0.0,
+        "bgo_deposit_keV": 0.0,
+        "measured_total_keV": 511.1611022949219
+      }
+    ]
+  },
+  "old_large_aperture_comparator": {
+    "incident_photons": 15709417,
+    "physical_exposure_s": 8339.8231,
+    "event_weight_cps": 0.00011990662008166577,
+    "w2_pre_veto_events": 158,
+    "w2_final_events": 151,
+    "w2_final_rate_cps": 0.018105899632331533,
+    "w2_final_mc_sigma_cps": 0.0014734372156460379,
+    "final_projected_route_counts": {
+      "retained_current_square": 23,
+      "removed_aperture_region": 21,
+      "removed_region_breakdown": {
+        "inside_old_35x35_grid_footprint_but_outside_current_square": 20,
+        "inside_old_BGO_square_but_outside_old_grid_footprint": 1
+      },
+      "all_other_side_rear_oblique_or_scattered_paths": 107
+    },
+    "note": "The old 151-event comparator was independently parsed from all 64 raw SIM shards using the same INIT/first-IA convention. Its compact event list is not duplicated here; hashes freeze the source catalog."
+  },
+  "aperture_and_rate_comparison": {
+    "active_BGO_square_area": {
+      "old_cm2": 36.0,
+      "new_cm2": 14.409615999999998,
+      "new_over_old": 0.4002671111111111
+    },
+    "normal_incidence_grid_open_area": {
+      "old_cm2": 24.619776000000005,
+      "new_cm2": 12.158848,
+      "new_over_old": 0.493865094467147
+    },
+    "projected_route_components": {
+      "retained_current_square": {
+        "old_count": 23,
+        "old_rate_cps": 0.0027578522618783127,
+        "old_poisson_sigma_cps": 0.0005750519484415347,
+        "new_count": 14,
+        "new_rate_cps": 0.005274384998232516,
+        "new_poisson_sigma_cps": 0.0014096386849518825,
+        "new_minus_old_cps": 0.002516532736354203,
+        "difference_sigma": 1.6529807411242246
+      },
+      "removed_aperture_region": {
+        "old_count": 21,
+        "old_rate_cps": 0.002518039021714981,
+        "old_poisson_sigma_cps": 0.0005494811628505453,
+        "new_count": 2,
+        "new_rate_cps": 0.0007534835711760737,
+        "new_poisson_sigma_cps": 0.0005327933426912584,
+        "new_minus_old_cps": -0.0017645554505389075,
+        "difference_sigma": -2.305479469024941
+      },
+      "all_other_paths": {
+        "old_count": 107,
+        "old_rate_cps": 0.012830008348738237,
+        "old_poisson_sigma_cps": 0.0012403237225485756,
+        "new_count": 36,
+        "new_rate_cps": 0.013562704281169327,
+        "new_poisson_sigma_cps": 0.002260450713528221,
+        "new_minus_old_cps": 0.0007326959324310909,
+        "difference_sigma": 0.28416916863397446
+      },
+      "total": {
+        "old_count": 151,
+        "old_rate_cps": 0.01810589963233153,
+        "old_poisson_sigma_cps": 0.0014734372156460379,
+        "new_count": 52,
+        "new_rate_cps": 0.019590572850577918,
+        "new_poisson_sigma_cps": 0.002716723651095054,
+        "new_minus_old_cps": 0.0014846732182463886,
+        "difference_sigma": 0.4803886145588098
+      }
+    },
+    "removed_region_rate_reduction_fraction": 0.7007657289350137,
+    "old_removed_region_fraction_of_total_final_events": 0.1390728476821192,
+    "net_total_rate_difference_sigma": 0.4803886145588098
+  },
+  "input_integrity": {
+    "current": {
+      "geometry_geo": {
+        "path": "/home/ubuntu/.codex/worktrees/a61c/TES_511_Balloon/engineering/geometry_optimization_20260815/72_sh3_bgo_smallap_mono511_trial_20260825/transport_authority/geometry/SH3_Assembly_OptV3.geo",
+        "bytes": 592084,
+        "sha256": "ae015378ca7731eb52545f19e2e7e7df2f88f75026b51d7f5f2dc598bcf1e973"
+      },
+      "geometry_setup": {
+        "path": "/home/ubuntu/.codex/worktrees/a61c/TES_511_Balloon/engineering/geometry_optimization_20260815/72_sh3_bgo_smallap_mono511_trial_20260825/transport_authority/geometry/SH3_Assembly_OptV3_BGO_SmallAp_SG3Grid_60cm.geo.setup",
+        "bytes": 162,
+        "sha256": "cbdcf7633ee08417d002a74c10c397df9515eebc32d099b642f1f361f096b1d0"
+      },
+      "geometry_detector": {
+        "path": "/home/ubuntu/.codex/worktrees/a61c/TES_511_Balloon/engineering/geometry_optimization_20260815/72_sh3_bgo_smallap_mono511_trial_20260825/transport_authority/geometry/SH3_Assembly_OptV3.det",
+        "bytes": 3103,
+        "sha256": "12d3a6831f3d00da6668f48487e5d83f7a0354419fdec75cfec211b28373cae9"
+      },
+      "geometry_materials": {
+        "path": "/home/ubuntu/.codex/worktrees/a61c/TES_511_Balloon/engineering/geometry_optimization_20260815/72_sh3_bgo_smallap_mono511_trial_20260825/transport_authority/geometry/Materials_SH3_Assembly_OptV3.geo",
+        "bytes": 2065,
+        "sha256": "56f6c2b58f072f4350a1fed8707490ed4f0b196769a9a4e22e0acb2ebe58ae0a"
+      },
+      "parma_source_fragment": {
+        "path": "/home/ubuntu/.codex/worktrees/a61c/TES_511_Balloon/engineering/geometry_optimization_20260815/72_sh3_bgo_smallap_mono511_trial_20260825/transport_authority/parma_line/PARMA_atm511_day15_fullsphere_80bins.inc.source",
+        "bytes": 22292,
+        "sha256": "fc386a44b096d33d12d4a096532a3a57da5743681d93e779e653ae1349f776e6"
+      },
+      "line_transport_contract": {
+        "path": "/home/ubuntu/.codex/worktrees/a61c/TES_511_Balloon/engineering/geometry_optimization_20260815/72_sh3_bgo_smallap_mono511_trial_20260825/transport_authority/parma_line/line_only_transport_contract.json",
+        "bytes": 3076,
+        "sha256": "87e034405d46c0a928f4e4c2aa2c36030f110f7dc8ab4c843436bf195bf9357f"
+      },
+      "campaign_config": {
+        "path": "/home/ubuntu/.codex/worktrees/a61c/TES_511_Balloon/engineering/geometry_optimization_20260815/72_sh3_bgo_smallap_mono511_trial_20260825/transport_trial_5m/config.json",
+        "bytes": 2107,
+        "sha256": "528ce8e1a3099bc1490033b2b08a2acd106c24e07d3aed0cdc574ed236aec26b"
+      },
+      "job_plan": {
+        "path": "/home/ubuntu/.codex/worktrees/a61c/TES_511_Balloon/engineering/geometry_optimization_20260815/72_sh3_bgo_smallap_mono511_trial_20260825/transport_trial_5m/generated/job_plan.json",
+        "bytes": 24027,
+        "sha256": "6d67fc8c1be6d3d7a8752cf1a817f4b08fd818ea825be3f49404d72aee0ca1a6"
+      },
+      "source_manifest": {
+        "path": "/home/ubuntu/.codex/worktrees/a61c/TES_511_Balloon/engineering/geometry_optimization_20260815/72_sh3_bgo_smallap_mono511_trial_20260825/transport_trial_5m/generated/source_manifest.json",
+        "bytes": 22411,
+        "sha256": "b583de9e45dede8a8b30116ce9214921990e960f28f0dcfb67d6adc409f6e858"
+      },
+      "seed_registry": {
+        "path": "/home/ubuntu/.codex/worktrees/a61c/TES_511_Balloon/engineering/geometry_optimization_20260815/72_sh3_bgo_smallap_mono511_trial_20260825/transport_trial_5m/generated/seed_registry.json",
+        "bytes": 3822,
+        "sha256": "c77ca831d1b84b558d0e5d03dd2e04b85095931e177e54fbd6281fdf0875bd2a"
+      },
+      "bundle_contract": {
+        "path": "/home/ubuntu/.codex/worktrees/a61c/TES_511_Balloon/engineering/geometry_optimization_20260815/72_sh3_bgo_smallap_mono511_trial_20260825/transport_trial_5m/BUNDLE_CONTRACT.json",
+        "bytes": 1936,
+        "sha256": "def272fe2082b67ddabdd884ae22e9d4438dd6ca2607d4ecfe43e0663cffaa2a"
+      },
+      "transport_validation": {
+        "path": "/home/ubuntu/.codex/worktrees/a61c/TES_511_Balloon/engineering/geometry_optimization_20260815/72_sh3_bgo_smallap_mono511_trial_20260825/transport_trial_5m/TRANSPORT_VALIDATION.json",
+        "bytes": 1420,
+        "sha256": "0cee568245775ad468127a1567ed4b4e3e084e515777420ae1a8016e69971478"
+      },
+      "response_summary": {
+        "path": "/home/ubuntu/.codex/worktrees/a61c/TES_511_Balloon/engineering/geometry_optimization_20260815/72_sh3_bgo_smallap_mono511_trial_20260825/outputs/01_mono_line_response/summary.json",
+        "bytes": 1280,
+        "sha256": "add56693bf3ca77b6b1670750ea0cb408490142227b0d0edd3fe4637676fa872"
+      },
+      "response_event_catalog": {
+        "path": "/home/ubuntu/.codex/worktrees/a61c/TES_511_Balloon/engineering/geometry_optimization_20260815/72_sh3_bgo_smallap_mono511_trial_20260825/outputs/01_mono_line_response/mono_line_event_catalog.npz",
+        "bytes": 818658,
+        "sha256": "fd602a775f4a71020062d4ddb972a385db6d8a7c25fbbf709a856ad0bf348ebc"
+      },
+      "geometry_build_manifest": {
+        "path": "/home/ubuntu/.codex/worktrees/a61c/TES_511_Balloon/engineering/geometry_optimization_20260815/sh3/assembly_opt_v3_bgo_smallap_sg3grid_20260825/data/bgo_smallap_sg3grid_manifest.json",
+        "bytes": 5469,
+        "sha256": "7ec24745e3cc607f37f632c246eb7b165bd39f8c422775ad46f366e4f18c846b"
+      }
+    },
+    "old_comparator": {
+      "geometry_geo": {
+        "path": "/home/ubuntu/.codex/worktrees/ebb2/TES_511_Balloon/engineering/geometry_optimization_20260815/68_sh3_wgrid_mono511_statistics_20260824/transport_authority/geometry/SH3_Assembly_OptV3.geo",
+        "bytes": 771117,
+        "sha256": "d6392df0d13692b9b238e839296939de6336dcb66c6fe2b1b99b2226281d6daf"
+      },
+      "geometry_setup": {
+        "path": "/home/ubuntu/.codex/worktrees/ebb2/TES_511_Balloon/engineering/geometry_optimization_20260815/68_sh3_wgrid_mono511_statistics_20260824/transport_authority/geometry/SH3_Assembly_OptV3_WGrid_60cm.geo.setup",
+        "bytes": 148,
+        "sha256": "5f2b47ec520b951bc77bd444085a73078adefffd5b687691b498ab7c635bd18d"
+      },
+      "parma_source_fragment": {
+        "path": "/home/ubuntu/.codex/worktrees/ebb2/TES_511_Balloon/engineering/geometry_optimization_20260815/68_sh3_wgrid_mono511_statistics_20260824/transport_authority/parma_line/PARMA_atm511_day15_fullsphere_80bins.inc.source",
+        "bytes": 22292,
+        "sha256": "fc386a44b096d33d12d4a096532a3a57da5743681d93e779e653ae1349f776e6"
+      },
+      "campaign_config": {
+        "path": "/home/ubuntu/.codex/worktrees/ebb2/TES_511_Balloon/engineering/geometry_optimization_20260815/68_sh3_wgrid_mono511_statistics_20260824/transport_full/config.json",
+        "bytes": 2010,
+        "sha256": "c837b5ea0ab4961fbc0e2305879ab34909ce4faef7b031812addd87c71d364ce"
+      },
+      "job_plan": {
+        "path": "/home/ubuntu/.codex/worktrees/ebb2/TES_511_Balloon/engineering/geometry_optimization_20260815/68_sh3_wgrid_mono511_statistics_20260824/transport_full/generated/job_plan.json",
+        "bytes": 68371,
+        "sha256": "f96a23e1b8e6c5689841b34347deb72325dff8a579219bf627cd07d683a7b672"
+      },
+      "source_manifest": {
+        "path": "/home/ubuntu/.codex/worktrees/ebb2/TES_511_Balloon/engineering/geometry_optimization_20260815/68_sh3_wgrid_mono511_statistics_20260824/transport_full/generated/source_manifest.json",
+        "bytes": 56894,
+        "sha256": "043bab55f72f11ea1b46ae15b491c73e476d13dc372b708c601272707d53c535"
+      },
+      "bundle_contract": {
+        "path": "/home/ubuntu/.codex/worktrees/ebb2/TES_511_Balloon/engineering/geometry_optimization_20260815/68_sh3_wgrid_mono511_statistics_20260824/transport_full/BUNDLE_CONTRACT.json",
+        "bytes": 1927,
+        "sha256": "3193e7bdbea6ef150b75341d260932d0eece988ceb1a70c3cfd5907df05f0a64"
+      },
+      "transport_validation": {
+        "path": "/home/ubuntu/.codex/worktrees/ebb2/TES_511_Balloon/engineering/geometry_optimization_20260815/68_sh3_wgrid_mono511_statistics_20260824/transport_full/TRANSPORT_VALIDATION.json",
+        "bytes": 1352,
+        "sha256": "e944d7393dedb75d4259df350b5f72d26f02a07047f4bb15ed7c10177149a9b1"
+      },
+      "response_summary": {
+        "path": "/home/ubuntu/.codex/worktrees/ebb2/TES_511_Balloon/engineering/geometry_optimization_20260815/68_sh3_wgrid_mono511_statistics_20260824/outputs/01_wgrid_mono511_response_comparison_20260825/response/summary.json",
+        "bytes": 1296,
+        "sha256": "c18a3df231c1aad01fd60d7305bb0b7b07aa8cc0e63cacf8a8e0988df5a25390"
+      },
+      "response_event_catalog": {
+        "path": "/home/ubuntu/.codex/worktrees/ebb2/TES_511_Balloon/engineering/geometry_optimization_20260815/68_sh3_wgrid_mono511_statistics_20260824/outputs/01_wgrid_mono511_response_comparison_20260825/response/mono_line_event_catalog.npz",
+        "bytes": 2544348,
+        "sha256": "4d2aaf177c8ad83da28ba232cb31b1d0b2a2a5f01b97cd6215d4c7bb6393cd5a"
+      },
+      "geometry_build_manifest": {
+        "path": "/home/ubuntu/.codex/worktrees/ebb2/TES_511_Balloon/engineering/geometry_optimization_20260815/sh3/assembly_opt_v3_wgrid_20260824/data/assembly_opt_v3_wgrid_manifest.json",
+        "bytes": 4472,
+        "sha256": "020c0006a19f7425ae3901e1e08a39014f41c61c3d3080cab21c0606a1926b01"
+      }
+    },
+    "current_source_cards": [
+      {
+        "job_id": "bgo_smallap_parma511_trial_shard0001",
+        "events": 50000,
+        "seed": 1540451401,
+        "source_sha256": "43c3da59a11186aea4d427ccfdd3650dd06584ac4f8584ca97139e9709fe8bfe"
+      },
+      {
+        "job_id": "bgo_smallap_parma511_trial_shard0002",
+        "events": 250000,
+        "seed": 1269777306,
+        "source_sha256": "6b7e220bc17df2e659f9650ba3ce37a343587823a914759a6a011f000fc7fa1f"
+      },
+      {
+        "job_id": "bgo_smallap_parma511_trial_shard0003",
+        "events": 250000,
+        "seed": 115040042,
+        "source_sha256": "f84859cec82ee0d61749c7d7e712c355eedc078ae788089cc1e4a2149a8c838a"
+      },
+      {
+        "job_id": "bgo_smallap_parma511_trial_shard0004",
+        "events": 250000,
+        "seed": 1869930538,
+        "source_sha256": "80d280087d067c38c285735aa7b4dea9f9cf1bf03b88c42c755e94b6cc636ca1"
+      },
+      {
+        "job_id": "bgo_smallap_parma511_trial_shard0005",
+        "events": 250000,
+        "seed": 1084738948,
+        "source_sha256": "59d91007e3c15a06c1e79a5c6e9e6ff1e48f47c31b66e849e4ad7d8fabf36471"
+      },
+      {
+        "job_id": "bgo_smallap_parma511_trial_shard0006",
+        "events": 250000,
+        "seed": 160128312,
+        "source_sha256": "4ac832d7b3280f28446c5dae9340869dd782eab8e2f580460086c64fb4e6deaf"
+      },
+      {
+        "job_id": "bgo_smallap_parma511_trial_shard0007",
+        "events": 250000,
+        "seed": 888895827,
+        "source_sha256": "94cd473b0f12cab9480e621fc4783efaa18c213438b45677c6ff4cff5c8ff5e5"
+      },
+      {
+        "job_id": "bgo_smallap_parma511_trial_shard0008",
+        "events": 250000,
+        "seed": 935225331,
+        "source_sha256": "3c3c1e8277f5fa3e3907c3448f156428dc85e2f5d73687a001e9d929d7a02b93"
+      },
+      {
+        "job_id": "bgo_smallap_parma511_trial_shard0009",
+        "events": 250000,
+        "seed": 991031787,
+        "source_sha256": "7f94cfdcc0459649abe857f3d3f831980c09dbedcab5b8ed70d14ef0993985ad"
+      },
+      {
+        "job_id": "bgo_smallap_parma511_trial_shard0010",
+        "events": 250000,
+        "seed": 1648730906,
+        "source_sha256": "99b912f8cf051051b5dfc4ee5125a13dc679fba24150d4a993ca9e32a81ebf9c"
+      },
+      {
+        "job_id": "bgo_smallap_parma511_trial_shard0011",
+        "events": 250000,
+        "seed": 1863984093,
+        "source_sha256": "d200eb7bfa80cb559cc2b43bb1aa01c05699a376f9908bcc9269a0a9874eed48"
+      },
+      {
+        "job_id": "bgo_smallap_parma511_trial_shard0012",
+        "events": 250000,
+        "seed": 660064819,
+        "source_sha256": "3843d1b6ac30ec6e4d31b7ded0a6a11861d0340803214b262fc9fe7a0a07ea70"
+      },
+      {
+        "job_id": "bgo_smallap_parma511_trial_shard0013",
+        "events": 250000,
+        "seed": 1152066612,
+        "source_sha256": "fea213bbb97c52cd3da23cfda3ed9ee0b094237c233cbe32a10b7b25acbcb307"
+      },
+      {
+        "job_id": "bgo_smallap_parma511_trial_shard0014",
+        "events": 250000,
+        "seed": 871001976,
+        "source_sha256": "9240e788ba7e5ae5810a395b36408d496787e5060451dbf30814eac749193247"
+      },
+      {
+        "job_id": "bgo_smallap_parma511_trial_shard0015",
+        "events": 250000,
+        "seed": 1536856400,
+        "source_sha256": "48ce92c5da23b542cffe11dc2ace78707591c7de26e59314ab3edaee5924e447"
+      },
+      {
+        "job_id": "bgo_smallap_parma511_trial_shard0016",
+        "events": 250000,
+        "seed": 905592873,
+        "source_sha256": "ed0c21dfa9e74dfc528d971f6d5384570097ed3ec3647e679da1bf6ee46c47d6"
+      },
+      {
+        "job_id": "bgo_smallap_parma511_trial_shard0017",
+        "events": 250000,
+        "seed": 470008462,
+        "source_sha256": "f7da8a5cb39ad20816675f70fdbf014a6256cebecab6f0a56a7a4f0cf2a8be97"
+      },
+      {
+        "job_id": "bgo_smallap_parma511_trial_shard0018",
+        "events": 250000,
+        "seed": 1703102731,
+        "source_sha256": "22c721a850029ff8f07047976d7fd35a272b42a37cb03cff6428e64773437d37"
+      },
+      {
+        "job_id": "bgo_smallap_parma511_trial_shard0019",
+        "events": 250000,
+        "seed": 1071753342,
+        "source_sha256": "86b3d1d7a06a33fec6a2a3b647e685c26620598c25fc9801e3c6c825aba0579e"
+      },
+      {
+        "job_id": "bgo_smallap_parma511_trial_shard0020",
+        "events": 250000,
+        "seed": 1900453372,
+        "source_sha256": "eff4e924850dc67105853ec89472a4cbb9b2e5827e565536a8e09f696c2962f1"
+      },
+      {
+        "job_id": "bgo_smallap_parma511_trial_shard0021",
+        "events": 200000,
+        "seed": 545574097,
+        "source_sha256": "37db437a48e8cb1096056fc272b475a84759873cc004a57d87dbb854fb1f2d91"
+      }
+    ],
+    "current_sim_output_digest_policy": "No full SIM hashes were computed, matching the frozen campaign PATH_SIZE_HEADER_ONLY__NO_FULL_SIM_HASH policy. All 21 paths, sizes, geometry headers, seeds, event totals, and exposure are closed by TRANSPORT_VALIDATION.json.",
+    "current_receipts_manifest_sha256": "2ecba57d2d0f9fa9c5d45b3b8238884b028b6436f26113e153f6b3ec02138d27",
+    "normalized_PARMA_fragment_sha256": "91463c9f6c6be08ec974354860ac6470e4d7e32e97b56ea459dedbc0ed4382a0"
+  },
+  "interpretation": {
+    "finding": "large_front_aperture_is_a_secondary_not_dominant_driver",
+    "evidence": "The specifically removed aperture-region component falls from 21/8339.8231 s to 2/2654.3379 s, a 70.1% reduction, but it represented only 13.9% of the old final leakage. Most selected events are side, rear, high-obliquity, uncollided shield transmissions, or zero-deposit BGO Rayleigh scatters.",
+    "correction": "BGO deposit equal to zero does not mean that a photon avoided BGO. It can traverse BGO without an interaction or Rayleigh-scatter with negligible energy transfer.",
+    "conclusion": "The total mono-line rate is not expected to scale with front-window area. The old and new total rates differ by only 0.48 combined Poisson sigma. The SH3-versus-SG3 line-performance gap therefore cannot be assigned primarily to the old SH3 front opening from these data; full 4pi side/rear transport and shield coupling must be compared."
+  },
+  "limitations": [
+    "This is a prompt monoenergetic transport path audit, not an activation study.",
+    "BGO path lengths use 0.002 cm midpoint membership sampling; W boxes use exact ray-box intersections.",
+    "The SG3 3M raw SIM volume was unavailable through the failing /mnt/data mount, so no matched SG3 event-path decomposition is claimed.",
+    "The SG3 line result has only 12 final events and 28.9% relative Monte Carlo uncertainty."
+  ]
+}

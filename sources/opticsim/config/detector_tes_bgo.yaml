@@ -1,0 +1,37 @@
+system: cam511_detector_tes_bgo
+model: calibrated_probabilistic_detector_only
+warning: "Detector-only probabilistic response fed by optics phase_space.csv; not a full Geant4 energy-deposition model."
+
+source:
+  expected_energy_keV: 511.0
+  detector_plane_z_mm: 12000.0
+
+absorber:
+  material: Bi
+  n_layers: 8
+  pixels_x: 20
+  pixels_y: 20
+  pixel_size_mm: [1.45, 1.45, 2.0]
+  gap_mm: 0.0
+  stack_detection_efficiency: 0.65
+
+tes:
+  threshold_keV: 1.2
+  pixel_resolution_fwhm_eV_at_511: 230.0
+  reconstructed_resolution_fwhm_eV_at_511: 390.0
+  full_energy_peak_fraction: 0.93
+  multihit_fraction: 0.10
+  tail_energy_range_keV: [480.0, 509.0]
+
+bgo:
+  enabled: true
+  side_thickness_cm: 2.0
+  bottom_thickness_cm: 5.0
+  threshold_keV: 70.0
+  resolution_fwhm_keV: 10.0
+  signal_self_veto_probability: 0.01
+  passthrough_detection_probability: 0.80
+
+selection:
+  line_window_keV: [510.3, 511.8]
+  require_no_bgo_veto: true

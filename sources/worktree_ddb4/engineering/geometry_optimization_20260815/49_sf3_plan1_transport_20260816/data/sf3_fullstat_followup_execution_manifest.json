@@ -1,0 +1,178 @@
+{
+  "schema_version": 1,
+  "profile_id": "SF3_FULLSTAT_CONDITIONAL_FOLLOWUP_V1",
+  "status": "PASS__SF3_FULLSTAT_CRASH_SAFE_FOLLOWUP_EXECUTION_MANIFEST_PREPARED",
+  "scope": "CONDITIONAL_POST_PLAN1_STAGE07_FULLSTAT_ONLY",
+  "required_service_unit": "sf3-fullstat-followup.service",
+  "entry_gate": {
+    "authority": "outputs/07_final_audit/final_audit.json",
+    "mission_authority": "outputs/06_mission/summary.json",
+    "metric": "fullstat_gate.observed_central_ratio",
+    "closure_copy": "mission_results.central_F3_ratio",
+    "operator": "<=",
+    "threshold": 0.75,
+    "proxy_controls_gate": false,
+    "false_branch": "PUBLISH_TERMINAL_STOP_AUTHORITY_AND_EXIT_ZERO",
+    "true_branch": "RUN_EXACTLY_ONE_FULLSTAT_CHAIN"
+  },
+  "terminal_stop_authority": "audit/sf3_fullstat_followup_terminal_stop.json",
+  "policies": {
+    "authority_order": "EACH_STEP_REQUIRES_ALL_PREVIOUS_CANONICAL_SMALL_AUTHORITIES_PASS",
+    "resume": "RECOMPUTE_FROM_AUTHORITIES__JOURNAL_IS_NEVER_PHYSICS_AUTHORITY",
+    "existing_receipts": "CANONICAL_PASS_RECEIPTS_ARE_ALWAYS_SKIPPED__NEVER_RERUN",
+    "interrupted_attempts": "NEVER_COUNTED__STALE_ACTIVE_FAILS_CLOSED_FOR_EXPLICIT_RECOVERY",
+    "write_once_outputs": "VALID_COMPLETE_OUTPUTS_SKIP__EXISTING_NONCANONICAL_OUTPUTS_BLOCK",
+    "plan1_delayed_83334": "FORBIDDEN_TO_READ_POOL_OR_MERGE_IN_FULLSTAT_DELAYED",
+    "post_authority_resource_event_crash_recovery": {
+      "write_ahead_log": "audit/sf3_fullstat_followup_guard_session_wal.jsonl",
+      "write_ahead_timing": "FSYNC_BEFORE_GUARD_OR_STAGE_LAUNCH",
+      "normal_completion": "STAGE_RETURNCODE_0_AND_ORIGINAL_GUARD_CLOSURE_RESOURCES",
+      "recovery_hard_gate": "CANONICAL_STEP_AUTHORITY_PLUS_SAME_MANIFEST_WAL_PLUS_EXACT_CLEAN_GUARD_BYTE_SEGMENT",
+      "recovery_stage_returncode": null,
+      "live_resource_inference_on_recovery": false,
+      "rerun_canonical_stage_for_missing_resource_row": false
+    },
+    "workers": 4,
+    "configured_cpu_budget_max": 6,
+    "dynamic_disk_reserve_bytes": 8589934592,
+    "continuous_handoff": {
+      "entrypoint": "--wait-and-run-to-completion",
+      "default_heartbeat_seconds": 45,
+      "allowed_heartbeat_seconds": [30, 60],
+      "wait_reads": "NAMED_SMALL_AUTHORITIES_ONLY",
+      "conflict_policy": "AUTHORITY_OR_WRITE_ONCE_ERROR_FAILS_IMMEDIATELY"
+    },
+    "pressure_guard": {
+      "guarded_steps": [
+        "transport_topup",
+        "build_fullstat_prompt",
+        "transport_fullstat_delayed",
+        "analyze_fullstat_delayed",
+        "build_fullstat_common_response"
+      ],
+      "normal_quota_percent": 400,
+      "throttle_quota_percent": 300,
+      "mem_available_floor_bytes": 1610612736,
+      "swap_free_floor_bytes": 8589934592,
+      "disk_free_floor_bytes": 8589934592,
+      "disk_sampled_in_every_guard_event_and_closure": true,
+      "session_closure": "GUARD_EXIT_RESTORE_NORMAL",
+      "failure_policy": "TERMINATE_ACTIVE_STAGE_PROCESS_GROUP__RESTORE_400__PRESERVE_PARTIAL_FOR_EXPLICIT_RECOVERY"
+    }
+  },
+  "steps": [
+    {
+      "ordinal": 0,
+      "id": "await_plan1_stage07",
+      "kind": "wait",
+      "command": [],
+      "completion_authority": "outputs/07_final_audit/final_audit.json"
+    },
+    {
+      "ordinal": 10,
+      "id": "prepare_topup",
+      "kind": "static_prepare",
+      "command": ["{python}", "{code}/build_sf3_fullstat_topup.py", "--prepare"],
+      "completion_authority": "audit/sf3_fullstat_topup_static_audit.json"
+    },
+    {
+      "ordinal": 20,
+      "id": "transport_topup",
+      "kind": "transport_with_pressure_guard",
+      "preflight": ["{python}", "{code}/run_sf3_fullstat_topup.py", "--check-prerequisites", "--cpu-budget", "4"],
+      "command": ["{python}", "{code}/run_sf3_fullstat_topup.py", "--phase", "background", "--cpu-budget", "4"],
+      "completion_authority": "audit/sf3_fullstat_topup_transport_receipts.json",
+      "guard": true
+    },
+    {
+      "ordinal": 30,
+      "id": "validate_topup_receipts",
+      "kind": "virtual_metadata_validation",
+      "command": [],
+      "completion_authority": "audit/sf3_fullstat_topup_transport_receipts.json"
+    },
+    {
+      "ordinal": 40,
+      "id": "build_fullstat_prompt",
+      "kind": "analysis_with_pressure_guard",
+      "preflight": ["{python}", "{code}/run_sf3_fullstat_prompt_analysis.py", "--check-prerequisites", "--workers", "4"],
+      "command": ["{python}", "{code}/run_sf3_fullstat_prompt_analysis.py", "--build", "--workers", "4"],
+      "completion_authority": "outputs/fullstat/01_prompt/summary.json",
+      "write_once_target": "outputs/fullstat/01_prompt",
+      "guard": true
+    },
+    {
+      "ordinal": 50,
+      "id": "build_fullstat_activation",
+      "kind": "analysis",
+      "preflight": ["{python}", "{code}/build_sf3_fullstat_activation.py", "--check-prerequisites"],
+      "command": ["{python}", "{code}/build_sf3_fullstat_activation.py", "--prepare"],
+      "completion_authority": "audit/sf3_fullstat_activation_validation.json",
+      "write_once_target": "outputs/fullstat/02_activation",
+      "existing_target_policy": "IDEMPOTENT_PREPARE_MAY_REPUBLISH_MISSING_SMALL_VALIDATION"
+    },
+    {
+      "ordinal": 60,
+      "id": "transport_fullstat_delayed",
+      "kind": "transport_with_pressure_guard",
+      "preflight": ["{python}", "{code}/run_sf3_fullstat_delayed.py", "--check-prerequisites", "--cpu-budget", "4"],
+      "command": ["{python}", "{code}/run_sf3_fullstat_delayed.py", "--phase", "delayed", "--cpu-budget", "4"],
+      "completion_authority": "audit/sf3_fullstat_delayed_transport_receipts.json",
+      "guard": true
+    },
+    {
+      "ordinal": 70,
+      "id": "validate_fullstat_delayed_receipts",
+      "kind": "virtual_metadata_validation",
+      "command": [],
+      "completion_authority": "audit/sf3_fullstat_delayed_transport_receipts.json"
+    },
+    {
+      "ordinal": 80,
+      "id": "analyze_fullstat_delayed",
+      "kind": "analysis_with_pressure_guard",
+      "preflight": ["{python}", "{code}/analyze_sf3_fullstat_delayed.py", "--check-prerequisites", "--workers", "4"],
+      "command": ["{python}", "{code}/analyze_sf3_fullstat_delayed.py", "--workers", "4"],
+      "completion_authority": "outputs/fullstat/03_delayed/summary.json",
+      "write_once_target": "outputs/fullstat/03_delayed",
+      "guard": true
+    },
+    {
+      "ordinal": 90,
+      "id": "build_fullstat_common_response",
+      "kind": "analysis_with_pressure_guard",
+      "preflight": ["{python}", "{code}/build_sf3_fullstat_common_response.py", "--check-prerequisites", "--workers", "4"],
+      "command": ["{python}", "{code}/build_sf3_fullstat_common_response.py", "--workers", "4"],
+      "completion_authority": "outputs/fullstat/04_common_response/summary.json",
+      "write_once_target": "outputs/fullstat/04_common_response",
+      "guard": true
+    },
+    {
+      "ordinal": 100,
+      "id": "build_fullstat_mission",
+      "kind": "small_table_analysis",
+      "preflight": ["{python}", "{code}/build_sf3_fullstat_mission.py", "--check-prerequisites"],
+      "command": ["{python}", "{code}/build_sf3_fullstat_mission.py", "--build"],
+      "completion_authority": "outputs/fullstat/06_mission/summary.json",
+      "write_once_target": "outputs/fullstat/06_mission"
+    },
+    {
+      "ordinal": 110,
+      "id": "build_fullstat_resource_timeline",
+      "kind": "metadata_audit",
+      "preflight": ["{python}", "{code}/build_sf3_fullstat_resource_timeline.py", "--check-prerequisites"],
+      "command": ["{python}", "{code}/build_sf3_fullstat_resource_timeline.py", "--build"],
+      "completion_authority": "audit/sf3_fullstat_resource_timeline.json",
+      "write_once_target": "audit/sf3_fullstat_resource_timeline.json"
+    },
+    {
+      "ordinal": 120,
+      "id": "finalize_fullstat",
+      "kind": "small_table_finalizer",
+      "preflight": ["{python}", "{code}/finalize_sf3_fullstat.py", "--check-prerequisites"],
+      "command": ["{python}", "{code}/finalize_sf3_fullstat.py", "--build"],
+      "completion_authority": "outputs/fullstat/07_final_audit/final_audit.json",
+      "write_once_target": "outputs/fullstat/07_final_audit"
+    }
+  ]
+}

@@ -1,0 +1,412 @@
+--- a/geant4_app/src/laue_multiring_bfull_demo.cc	2026-05-29 08:21:14.625056868 +0800
++++ b/geant4_app/src/laue_multiring_bfull_demo.cc	2026-05-29 08:24:56.936150041 +0800
+@@ -16,6 +16,7 @@
+ 
+ #include "G4Box.hh"
+ #include "G4DynamicParticle.hh"
++#include "G4EmStandardPhysics.hh"
+ #include "G4Event.hh"
+ #include "G4Gamma.hh"
+ #include "G4LogicalVolume.hh"
+@@ -31,10 +32,13 @@
+ #include "G4ThreeVector.hh"
+ #include "G4Track.hh"
+ #include "G4VDiscreteProcess.hh"
++#include "G4VModularPhysicsList.hh"
+ #include "G4VPhysicalVolume.hh"
+ #include "G4VUserDetectorConstruction.hh"
+ #include "G4VUserPhysicsList.hh"
+ #include "G4VUserPrimaryGeneratorAction.hh"
++#include "G4UserSteppingAction.hh"
++#include "G4VProcess.hh"
+ #include "Randomize.hh"
+ 
+ #include "optics/LaueEfficiencyTable.hh"
+@@ -61,7 +65,7 @@
+ 
+ struct Options {
+   int nEvents = 50000;
+-  std::string outDir = "runs/geant4_laue_darwin_guan_process";
++  std::string outDir = "runs/geant4_laue_bfull_process";
+   long seed = 12345;
+   std::string efficiencyTablePath = "data/laue/Ge111_480_550keV_darwin_mosaic_table.csv";
+   std::string ringConfigPath = "data/laue/ge111_480_550keV_multiring_darwin_config.csv";
+@@ -276,6 +280,59 @@
+   return (k - 2.0 * k.dot(n) * n).unit();
+ }
+ 
++G4ThreeVector DesignFocusPoint(const Options& opt) {
++  return G4ThreeVector(0.0, 0.0, opt.focalLengthMm * mm);
++}
++
++G4ThreeVector TileCenter(const RingSpec& ring, int tileId) {
++  const double phi = 2.0 * kPi * static_cast<double>(tileId) / static_cast<double>(ring.nTiles);
++  return G4ThreeVector(ring.radiusMm * std::cos(phi) * mm, ring.radiusMm * std::sin(phi) * mm, 0.0);
++}
++
++G4ThreeVector FixedTilePlaneNormal(const RingSpec& ring, int tileId, const Options& opt) {
++  const G4ThreeVector center = TileCenter(ring, tileId);
++  const G4ThreeVector nominalInDir(0.0, 0.0, 1.0);
++  const G4ThreeVector nominalOutDir = (DesignFocusPoint(opt) - center).unit();
++  return (nominalInDir - nominalOutDir).unit();
++}
++
++struct BFullInteractionScale {
++  double thetaBRad = 0.0;
++  double thetaLocalRad = 0.0;
++  double deltaThetaRad = 0.0;
++  double qCmInv = 0.0;
++  double wRadInv = 0.0;
++  double sigmaCmInv = 0.0;
++  double diffractionOnlyProbability = 0.0;
++  double pathLengthCm = 0.0;
++  double meanFreePathCm = 0.0;
++};
++
++BFullInteractionScale BFullEquivalentDiffractionScale(
++    const RingSpec& ring,
++    double deltaThetaRad,
++    const G4ThreeVector& inDir,
++    const Options& opt) {
++  BFullInteractionScale scale;
++  scale.thetaBRad = BraggAngleRad(ring.designEnergyKeV, ring.dSpacingA);
++  scale.thetaLocalRad = scale.thetaBRad + deltaThetaRad;
++  scale.deltaThetaRad = deltaThetaRad;
++  scale.qCmInv = DarwinQGe111CmInv(ring.designEnergyKeV, ring, opt.crystalliteThicknessUm);
++  scale.wRadInv = MosaicWeightRadInv(deltaThetaRad, opt.mosaicFwhmArcsec);
++  scale.sigmaCmInv = scale.qCmInv * scale.wRadInv;
++  const double thicknessCm = ring.thicknessMm / 10.0;
++  const double zProjection = std::max(1.0e-6, std::fabs(inDir.unit().z()));
++  scale.pathLengthCm = thicknessCm / zProjection;
++  scale.diffractionOnlyProbability = 0.5 * (1.0 - std::exp(-2.0 * scale.sigmaCmInv * thicknessCm));
++  scale.diffractionOnlyProbability = Clamp(scale.diffractionOnlyProbability, 0.0, 0.499999999);
++  if (scale.diffractionOnlyProbability > 1.0e-12) {
++    scale.meanFreePathCm = -scale.pathLengthCm / std::log(1.0 - scale.diffractionOnlyProbability);
++  } else {
++    scale.meanFreePathCm = DBL_MAX;
++  }
++  return scale;
++}
++
+ LaueVectorDiagnostics MakeLaueVectorDiagnostics(
+     const std::string& model,
+     double energyKeV,
+@@ -471,11 +528,13 @@
+     phase_.open((opt_.outDir + "/phase_space.csv").c_str());
+     transmitted_.open((opt_.outDir + "/transmitted_space.csv").c_str());
+     history_.open((opt_.outDir + "/optics_history.csv").c_str());
+-    if (!phase_ || !transmitted_ || !history_) {
++    focal_.open((opt_.outDir + "/focal_crossings.csv").c_str());
++    if (!phase_ || !transmitted_ || !history_ || !focal_) {
+       throw std::runtime_error("cannot open multiring Laue output files in: " + opt_.outDir);
+     }
+     phase_ << "event_id,E_keV,x_mm,y_mm,z_mm,ux,uy,uz,weight,source_tag,particle_name,pdg_encoding,track_id,parent_id\n";
+     transmitted_ << "event_id,E_keV,x_mm,y_mm,z_mm,ux,uy,uz,weight,source_tag,particle_name,pdg_encoding,track_id,parent_id\n";
++    focal_ << "event_id,track_id,parent_id,E_keV,x_mm,y_mm,z_mm,ux,uy,uz,source_tag,creator_process\n";
+     history_ << "event_id,track_id,optics_kind,stage,ring_id,tile_id,surface_id,E_keV,"
+              << "x_mm,y_mm,z_mm,ux_in,uy_in,uz_in,ux_out,uy_out,uz_out,"
+              << "grazing_angle_rad,p_reflect,p_absorb,p_transmit,n_bounce,weight,"
+@@ -541,7 +600,7 @@
+       phase_ << eventId << "," << ring.designEnergyKeV << "," << std::setprecision(10)
+              << hit.x() / mm << "," << hit.y() / mm << "," << opt_.focalLengthMm
+              << "," << outDir.x() << "," << outDir.y() << "," << outDir.z()
+-             << ",1.0,geant4_laue_darwin_guan_process,gamma,22," << trackId << ",0\n";
++             << ",1.0,geant4_laue_bfull_projected_diffraction,gamma,22," << trackId << ",0\n";
+       AddWrl(pos, hit, stage);
+     } else if (stage == "ABSORB") {
+       ++nAbs_;
+@@ -554,31 +613,57 @@
+       transmitted_ << eventId << "," << ring.designEnergyKeV << "," << std::setprecision(10)
+                    << hit.x() / mm << "," << hit.y() / mm << "," << opt_.focalLengthMm
+                    << "," << inDir.x() << "," << inDir.y() << "," << inDir.z()
+-                   << ",1.0,geant4_laue_darwin_guan_process_transmitted,gamma,22," << trackId << ",0\n";
++                   << ",1.0,geant4_laue_bfull_projected_transmitted,gamma,22," << trackId << ",0\n";
+       AddWrl(pos, hit, stage);
+     }
+   }
+ 
++  void RecordFocalCrossing(const G4Track& track, const G4ThreeVector& hit, const G4ThreeVector& dir) {
++    const G4Event* event = G4RunManager::GetRunManager()->GetCurrentEvent();
++    const int eventId = event ? event->GetEventID() : -1;
++    const G4VProcess* creator = track.GetCreatorProcess();
++    const std::string creatorName = creator ? creator->GetProcessName() : "primary";
++    std::string sourceTag = "laue_bfull_other_gamma";
++    if (track.GetParentID() == 0) {
++      sourceTag = "laue_bfull_primary_or_transmitted";
++      ++nPrimaryFocalCrossings_;
++    } else if (creatorName == "BFullLaueBraggProcess") {
++      sourceTag = "laue_bfull_diffracted";
++      ++nLaueFocalCrossings_;
++      focalDetectorHits_.push_back(hit);
++    } else {
++      ++nOtherFocalCrossings_;
++    }
++    ++nFocalCrossings_;
++    focal_ << eventId << "," << track.GetTrackID() << "," << track.GetParentID()
++           << "," << track.GetKineticEnergy() / keV << "," << std::setprecision(10)
++           << hit.x() / mm << "," << hit.y() / mm << "," << hit.z() / mm << ","
++           << dir.x() << "," << dir.y() << "," << dir.z() << ","
++           << sourceTag << "," << creatorName << "\n";
++  }
++
+   void WriteOutputs() {
+     phase_.flush();
+     transmitted_.flush();
+     history_.flush();
++    focal_.flush();
+     WritePerRingSummary();
+     WriteWrl(opt_.outDir + "/laue_multiring_scene.wrl");
+     std::ofstream summary((opt_.outDir + "/summary.json").c_str());
+     const double n = static_cast<double>(opt_.nEvents);
+     summary << "{\n";
+-    summary << "  \"system\": \"geant4_laue_darwin_guan_process\",\n";
+-    summary << "  \"model\": \"guan_reiazi_style_online_darwin_hamilton_virtual_crystallite_v2\",\n";
+-    summary << "  \"warning\": \"Compiled Geant4 C++ process/model split inspired by Guan/Reiazi. This is not Guan/Reiazi source-code migration and not a Geant4 toolkit EM-category patch. Unlike the 01 baseline, branch probabilities are computed online in the model and are not read from the 01 pAbs/pDiff/pTrans efficiency table.\",\n";
++    summary << "  \"system\": \"geant4_laue_bfull_process\",\n";
++    summary << "  \"model\": \"bfull_fixed_tile_orientation_standard_em_competing_laue_mfp_v1\",\n";
++    summary << "  \"warning\": \"B-FULL stage-1: standard Geant4 EM physics is enabled, the Laue process is non-forced with a finite equivalent diffraction mean free path, and each tile uses a fixed design lattice-plane normal. This is still an application-level G4VDiscreteProcess, not a Geant4 toolkit EM-category patch.\",\n";
+     summary << "  \"geant4_bottom_code_modified\": false,\n";
+     summary << "  \"model_process_split\": true,\n";
+-    summary << "  \"registered_process\": \"GuanStyleLaueBraggProcess added to gamma G4ProcessManager as a discrete process\",\n";
++    summary << "  \"registered_process\": \"BFullLaueBraggProcess added to gamma G4ProcessManager as a non-forced finite-MFP discrete process\",\n";
+     summary << "  \"registered_in_geant4_em_category\": false,\n";
++    summary << "  \"standard_geant4_em_enabled\": true,\n";
+     summary << "  \"uses_external_efficiency_table_for_physics\": false,\n";
+-    summary << "  \"online_physics_backend\": \"Darwin-Hamilton mosaic formula with virtual crystallite plane-normal sampling\",\n";
++    summary << "  \"online_physics_backend\": \"Darwin-Hamilton mosaic formula converted to an equivalent finite diffraction mean free path; Geant4 standard EM processes remain enabled\",\n";
+     summary << "  \"vector_diagnostics_in_optics_history\": true,\n";
+-    summary << "  \"plane_normal_diagnostic_model\": \"guan_virtual_crystallite_plane_normal; emitted DIFFRACT direction is reflected across the recorded plane normal\",\n";
++    summary << "  \"plane_normal_diagnostic_model\": \"bfull_fixed_tile_plane_normal_em_competing; emitted DIFFRACT direction is reflected across a perturbed fixed tile plane normal\",\n";
+     summary << "  \"mosaic_fwhm_arcsec\": " << opt_.mosaicFwhmArcsec << ",\n";
+     summary << "  \"crystallite_thickness_um\": " << opt_.crystalliteThicknessUm << ",\n";
+     summary << "  \"n_primaries\": " << opt_.nEvents << ",\n";
+@@ -589,7 +674,12 @@
+     summary << "  \"diffraction_fraction\": " << (n ? nDiff_ / n : 0.0) << ",\n";
+     summary << "  \"absorption_fraction\": " << (n ? nAbs_ / n : 0.0) << ",\n";
+     summary << "  \"transmission_fraction\": " << (n ? nTrans_ / n : 0.0) << ",\n";
+-    summary << "  \"spot_d90_cm\": " << ContainmentDiameterCm(detectorHits_) << ",\n";
++    summary << "  \"focal_crossings\": " << nFocalCrossings_ << ",\n";
++    summary << "  \"primary_or_transmitted_focal_crossings\": " << nPrimaryFocalCrossings_ << ",\n";
++    summary << "  \"laue_diffracted_focal_crossings\": " << nLaueFocalCrossings_ << ",\n";
++    summary << "  \"other_gamma_focal_crossings\": " << nOtherFocalCrossings_ << ",\n";
++    summary << "  \"projected_interaction_spot_d90_cm\": " << ContainmentDiameterCm(detectorHits_) << ",\n";
++    summary << "  \"focal_crossing_spot_d90_cm\": " << ContainmentDiameterCm(focalDetectorHits_) << ",\n";
+     summary << "  \"energy_min_keV\": " << rings_.front().designEnergyKeV << ",\n";
+     summary << "  \"energy_max_keV\": " << rings_.back().designEnergyKeV << ",\n";
+     summary << "  \"focal_length_mm\": " << opt_.focalLengthMm << ",\n";
+@@ -730,12 +820,18 @@
+   std::ofstream phase_;
+   std::ofstream transmitted_;
+   std::ofstream history_;
++  std::ofstream focal_;
+   std::vector<RingStats> ringStats_;
+   std::vector<G4ThreeVector> detectorHits_;
++  std::vector<G4ThreeVector> focalDetectorHits_;
+   std::vector<WrlSegment> segments_;
+   double nDiff_ = 0.0;
+   double nAbs_ = 0.0;
+   double nTrans_ = 0.0;
++  long nFocalCrossings_ = 0;
++  long nPrimaryFocalCrossings_ = 0;
++  long nLaueFocalCrossings_ = 0;
++  long nOtherFocalCrossings_ = 0;
+ };
+ 
+ struct CrystalDecision {
+@@ -759,24 +855,25 @@
+ 
+   CrystalDecision Evaluate(
+       const RingSpec& ring,
++      int tileId,
+       const G4ThreeVector& pos,
+       const G4ThreeVector& inDir,
+       const Options& opt) const {
+     CrystalDecision decision;
+     const double offAxisXRad = opt.offAxisXArcmin / 60.0 * kPi / 180.0;
+     const double offAxisYRad = opt.offAxisYArcmin / 60.0 * kPi / 180.0;
+-    const G4ThreeVector focusPoint(
++    const G4ThreeVector diagnosticFocusPoint(
+         opt.focalLengthMm * std::tan(offAxisXRad) * mm,
+         opt.focalLengthMm * std::tan(offAxisYRad) * mm,
+         opt.focalLengthMm * mm);
+-    decision.idealOutDir = (focusPoint - pos).unit();
+-    decision.focusDirection = decision.idealOutDir;
+-    decision.idealPlaneNormal = (inDir.unit() - decision.idealOutDir).unit();
++    decision.focusDirection = (diagnosticFocusPoint - pos).unit();
++    decision.idealPlaneNormal = FixedTilePlaneNormal(ring, tileId, opt);
++    decision.idealOutDir = ReflectAcrossPlane(inDir, decision.idealPlaneNormal);
+     decision.planeNormal = PerturbDirection(decision.idealPlaneNormal, FwhmArcsecToSigmaRad(opt.mosaicFwhmArcsec));
+     decision.reflectedOutDir = ReflectAcrossPlane(inDir, decision.planeNormal);
+     decision.mosaicPerturbationRad = AngleBetweenRad(decision.planeNormal, decision.idealPlaneNormal);
+     decision.reflectionVectorError = AngleBetweenRad(decision.reflectedOutDir, ReflectAcrossPlane(inDir, decision.planeNormal));
+-    decision.thetaLocalRad = 0.5 * std::acos(std::max(-1.0, std::min(1.0, inDir.unit().dot(decision.idealOutDir))));
++    decision.thetaLocalRad = std::asin(std::fabs(inDir.unit().dot(decision.idealPlaneNormal)));
+     decision.thetaBRad = BraggAngleRad(ring.designEnergyKeV, ring.dSpacingA);
+     decision.deltaThetaRad = decision.thetaLocalRad - decision.thetaBRad;
+     const double braggFromPlane = std::asin(std::fabs(inDir.unit().dot(decision.planeNormal)));
+@@ -792,28 +889,36 @@
+       MultiRingRunState* state,
+       const Options& opt,
+       const std::vector<RingSpec>& rings)
+-      : G4VDiscreteProcess("GuanStyleLaueBraggProcess"), state_(state), opt_(opt), rings_(rings) {}
++      : G4VDiscreteProcess("BFullLaueBraggProcess"), state_(state), opt_(opt), rings_(rings) {}
+ 
+   G4bool IsApplicable(const G4ParticleDefinition& particle) override {
+     return &particle == G4Gamma::GammaDefinition();
+   }
+ 
+-  G4double GetMeanFreePath(const G4Track&, G4double, G4ForceCondition* condition) override {
+-    *condition = StronglyForced;
+-    return DBL_MAX;
++  G4double GetMeanFreePath(const G4Track& track, G4double, G4ForceCondition* condition) override {
++    if (condition) *condition = NotForced;
++    if (track.GetDefinition() != G4Gamma::GammaDefinition()) return DBL_MAX;
++    const G4VPhysicalVolume* volume = track.GetVolume();
++    if (!NameContains(volume, "LaueCrystal")) return DBL_MAX;
++    const int copyNo = volume ? volume->GetCopyNo() : 0;
++    const RingSpec& ring = RingFromCopyNo(rings_, copyNo);
++    const int tileId = copyNo % kCopyStride;
++    const G4ThreeVector inDir = track.GetMomentumDirection().unit();
++    const G4ThreeVector fixedPlaneNormal = FixedTilePlaneNormal(ring, tileId, opt_);
++    const double thetaLocal = std::asin(std::fabs(inDir.dot(fixedPlaneNormal)));
++    const double deltaTheta = thetaLocal - BraggAngleRad(ring.designEnergyKeV, ring.dSpacingA);
++    const BFullInteractionScale scale = BFullEquivalentDiffractionScale(ring, deltaTheta, inDir, opt_);
++    if (!std::isfinite(scale.meanFreePathCm) || scale.meanFreePathCm <= 0.0 || scale.meanFreePathCm == DBL_MAX) {
++      return DBL_MAX;
++    }
++    return scale.meanFreePathCm * cm;
+   }
+ 
+   G4VParticleChange* PostStepDoIt(const G4Track& track, const G4Step& step) override {
+     aParticleChange.Initialize(track);
+     if (track.GetDefinition() != G4Gamma::GammaDefinition()) return &aParticleChange;
+-    if (track.GetParentID() != 0) return &aParticleChange;
+-    if (step.GetPostStepPoint()->GetStepStatus() != fGeomBoundary) return &aParticleChange;
+-    if (!NameContains(step.GetPostStepPoint()->GetPhysicalVolume(), "LaueCrystal") &&
+-        !NameContains(step.GetPreStepPoint()->GetPhysicalVolume(), "LaueCrystal")) {
+-      return &aParticleChange;
+-    }
+-    const G4VPhysicalVolume* volume = step.GetPostStepPoint()->GetPhysicalVolume();
+-    if (volume == 0 || !NameContains(volume, "LaueCrystal")) volume = step.GetPreStepPoint()->GetPhysicalVolume();
++    const G4VPhysicalVolume* volume = step.GetPreStepPoint()->GetPhysicalVolume();
++    if (!NameContains(volume, "LaueCrystal")) return &aParticleChange;
+     const int copyNo = volume ? volume->GetCopyNo() : 0;
+     const RingSpec& ring = RingFromCopyNo(rings_, copyNo);
+     const int tileId = copyNo % kCopyStride;
+@@ -821,22 +926,11 @@
+     const int eventId = event ? event->GetEventID() : -1;
+     const G4ThreeVector pos = step.GetPostStepPoint()->GetPosition();
+     const G4ThreeVector inDir = track.GetMomentumDirection().unit();
+-    const CrystalDecision decision = model_.Evaluate(ring, pos, inDir, opt_);
++    const CrystalDecision decision = model_.Evaluate(ring, tileId, pos, inDir, opt_);
+     const optics::LaueEfficiencyRow probs = decision.probs;
+-    const double u = G4UniformRand();
+-    if (u < probs.pAbs) {
+-      state_->Record(eventId, track.GetTrackID(), "ABSORB", ring, tileId, pos, inDir, G4ThreeVector(), probs, decision.deltaThetaRad);
+-      aParticleChange.ProposeTrackStatus(fStopAndKill);
+-      return &aParticleChange;
+-    }
+-    if (u >= probs.pAbs + probs.pDiff) {
+-      state_->Record(eventId, track.GetTrackID(), "TRANSMIT", ring, tileId, pos, inDir, inDir, probs, decision.deltaThetaRad);
+-      aParticleChange.ProposeTrackStatus(fStopAndKill);
+-      return &aParticleChange;
+-    }
+     const G4ThreeVector outDir = decision.reflectedOutDir;
+     const LaueVectorDiagnostics diagnostics = MakeLaueVectorDiagnostics(
+-        "guan_virtual_crystallite_plane_normal",
++        "bfull_fixed_tile_plane_normal_em_competing",
+         ring.designEnergyKeV,
+         inDir,
+         outDir,
+@@ -901,15 +995,20 @@
+   double focalLengthMm_ = 8300.0;
+ };
+ 
+-class MultiRingPhysicsList : public G4VUserPhysicsList {
++class MultiRingPhysicsList : public G4VModularPhysicsList {
+  public:
+-  explicit MultiRingPhysicsList(GuanStyleLaueBraggProcess* process) : process_(process) {}
+-  void ConstructParticle() override { G4Gamma::GammaDefinition(); }
++  explicit MultiRingPhysicsList(GuanStyleLaueBraggProcess* process) : process_(process) {
++    defaultCutValue = 0.1 * mm;
++    RegisterPhysics(new G4EmStandardPhysics());
++  }
++  void ConstructParticle() override {
++    G4VModularPhysicsList::ConstructParticle();
++    G4Gamma::GammaDefinition();
++  }
+   void ConstructProcess() override {
+-    AddTransportation();
++    G4VModularPhysicsList::ConstructProcess();
+     G4Gamma::GammaDefinition()->GetProcessManager()->AddDiscreteProcess(process_);
+   }
+-  void SetCuts() override { SetCutsWithDefault(); }
+  private:
+   GuanStyleLaueBraggProcess* process_;
+ };
+@@ -950,6 +1049,32 @@
+   double sourceZMm_ = -5.0;
+ };
+ 
++
++class BFullFocalPlaneSteppingAction : public G4UserSteppingAction {
++ public:
++  BFullFocalPlaneSteppingAction(MultiRingRunState* state, double focalLengthMm)
++      : state_(state), focalLengthMm_(focalLengthMm) {}
++
++  void UserSteppingAction(const G4Step* step) override {
++    const G4Track* track = step->GetTrack();
++    if (track->GetDefinition() != G4Gamma::GammaDefinition()) return;
++    const G4ThreeVector pre = step->GetPreStepPoint()->GetPosition();
++    const G4ThreeVector post = step->GetPostStepPoint()->GetPosition();
++    const double focalZ = focalLengthMm_ * mm;
++    if (!((pre.z() < focalZ && post.z() >= focalZ) || (pre.z() > focalZ && post.z() <= focalZ))) return;
++    const double dz = post.z() - pre.z();
++    if (std::fabs(dz) < 1.0e-12 * mm) return;
++    const double f = (focalZ - pre.z()) / dz;
++    if (f < 0.0 || f > 1.0) return;
++    const G4ThreeVector hit = pre + f * (post - pre);
++    state_->RecordFocalCrossing(*track, hit, track->GetMomentumDirection().unit());
++  }
++
++ private:
++  MultiRingRunState* state_;
++  double focalLengthMm_ = 8300.0;
++};
++
+ }  // namespace
+ 
+ int main(int argc, char** argv) {
+@@ -963,14 +1088,15 @@
+     runManager->SetUserInitialization(new MultiRingDetectorConstruction(rings, opt.focalLengthMm));
+     runManager->SetUserInitialization(new MultiRingPhysicsList(process));
+     runManager->SetUserAction(new MultiRingPrimaryGenerator(opt, rings));
++    runManager->SetUserAction(new BFullFocalPlaneSteppingAction(&state, opt.focalLengthMm));
+     runManager->Initialize();
+     runManager->BeamOn(opt.nEvents);
+     delete runManager;
+     state.WriteOutputs();
+-    std::cout << "LAUE_DARWIN_GUAN_PROCESS_SUMMARY events=" << opt.nEvents
++    std::cout << "LAUE_BFULL_PROCESS_SUMMARY events=" << opt.nEvents
+               << " rings=" << rings.size() << " out=" << opt.outDir << std::endl;
+   } catch (const std::exception& exc) {
+-    std::cerr << "laue_multiring_darwin_guan_demo error: " << exc.what() << std::endl;
++    std::cerr << "laue_multiring_bfull_demo error: " << exc.what() << std::endl;
+     return 1;
+   }
+   return 0;
+--- a/CMakeLists.txt	2026-05-22 00:01:27.706403316 +0800
++++ b/CMakeLists.txt	2026-05-29 08:25:09.920068927 +0800
+@@ -76,6 +76,12 @@
+   target_include_directories(laue_multiring_darwin_guan_demo PRIVATE geant4_app/include)
+   target_link_libraries(laue_multiring_darwin_guan_demo PRIVATE gamma_optics_geant4 ${Geant4_LIBRARIES})
+ 
++  add_executable(laue_multiring_bfull_demo
++    geant4_app/src/laue_multiring_bfull_demo.cc
++  )
++  target_include_directories(laue_multiring_bfull_demo PRIVATE geant4_app/include)
++  target_link_libraries(laue_multiring_bfull_demo PRIVATE gamma_optics_geant4 ${Geant4_LIBRARIES})
++
+   add_executable(channel_4ring_effective_demo
+     geant4_app/src/channel_4ring_effective_demo.cc
+   )

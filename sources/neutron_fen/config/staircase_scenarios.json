@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "model_boundary": "Weighted direct acoustic-phonon interface-response kernel; not a full recoil partition or TES electrothermal model.",
+  "common": {
+    "miller_indices": [1, 0, 0],
+    "max_phonon_bounces": 20000,
+    "fixed_geometry_mm": [36.0, 36.0, 0.3],
+    "ta_projected_area_fraction_at_sensor_area_scale_1": 0.6527777777777778
+  },
+  "scenarios": [
+    {"name": "low", "packet_energy_meV": 62.0, "packets_per_group": 128, "sensor_area_scale": 0.01, "sensor_absorption": 0.05, "bath_absorption": 1.0, "specular_probability": 0.0},
+    {"name": "intermediate", "packet_energy_meV": 62.0, "packets_per_group": 128, "sensor_area_scale": 0.1, "sensor_absorption": 0.3, "bath_absorption": 0.1, "specular_probability": 0.0},
+    {"name": "nominal_envelope_point", "packet_energy_meV": 62.0, "packets_per_group": 128, "sensor_area_scale": 1.0, "sensor_absorption": 0.3, "bath_absorption": 0.1, "specular_probability": 0.0},
+    {"name": "optimistic", "packet_energy_meV": 62.0, "packets_per_group": 128, "sensor_area_scale": 1.0, "sensor_absorption": 1.0, "bath_absorption": 0.01, "specular_probability": 0.0},
+    {"name": "nominal_specular", "packet_energy_meV": 62.0, "packets_per_group": 128, "sensor_area_scale": 1.0, "sensor_absorption": 0.3, "bath_absorption": 0.1, "specular_probability": 1.0},
+    {"name": "nominal_30meV", "packet_energy_meV": 30.0, "packets_per_group": 256, "sensor_area_scale": 1.0, "sensor_absorption": 0.3, "bath_absorption": 0.1, "specular_probability": 0.0},
+    {"name": "nominal_2p7meV", "packet_energy_meV": 2.7, "packets_per_group": 512, "sensor_area_scale": 1.0, "sensor_absorption": 0.3, "bath_absorption": 0.1, "specular_probability": 0.0}
+  ]
+}

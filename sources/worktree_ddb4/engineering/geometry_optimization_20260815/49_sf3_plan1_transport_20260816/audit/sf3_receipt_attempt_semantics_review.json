@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "status": "PASS__SF3_RECEIPT_ATTEMPT_AND_CANONICAL_STATISTICS_SEMANTICS_REVIEW",
+  "audited_at": "2026-08-15T19:22:48Z",
+  "reviewed_code": [
+    "engineering/geometry_optimization_20260815/49_sf3_plan1_transport_20260816/code/run_sf3_plan1.py",
+    "engineering/geometry_optimization_20260815/49_sf3_plan1_transport_20260816/code/validate_sf3_receipts.py"
+  ],
+  "closures": {
+    "attempt_ordinals": "ONLY jobs/<id>/attempts/attemptNN AND jobs/<id>/failed/attemptNN ARE COUNTED; jobs/<id>/interrupted IS NEVER ENUMERATED",
+    "canonical_receipt_binding": "PASS RECEIPTS MUST BIND EXACTLY TO jobs/<id>/attempts/attemptNN AND ITS EXPECTED SIM/LOG/DAT PATHS; interrupted/failed PATHS FAIL CLOSED",
+    "statistics_inclusion": "ONLY CANONICAL PASS RECEIPTS ARE INCLUDED; INTERRUPTED ARTIFACTS HAVE NO RECEIPT AND ARE EXCLUDED",
+    "projection_credit": "ONLY LIVE IN-PROCESS _active BYTES REDUCE A PENDING JOB ESTIMATE; INTERRUPTED BYTES RECEIVE ZERO COMPLETION CREDIT",
+    "projection_disk_accounting": "RETAINED INTERRUPTED BYTES REMAIN REFLECTED CONSERVATIVELY IN FILESYSTEM FREE SPACE BUT ARE NOT COUNTED AS PRODUCED OR VALIDATED ARTIFACTS",
+    "canonical_statistics_publication": "ONLY COMPLETE ERROR-FREE background OR all SCOPE MAY ATOMICALLY CREATE/REPLACE sf3_plan1_statistics_validation.json; PARTIAL/FAILED/DELAYED/SIGNAL CHECKS CANNOT OVERWRITE IT"
+  },
+  "current_small_authority_evidence": {
+    "interrupted_validation_records": 6,
+    "interrupted_partial_artifact_bytes_retained": 2544750854,
+    "interrupted_statistics_disposition": "ALL EXCLUDED__RETRY_WHOLE_JOB_FROM_EVENT_ZERO_WITH_REGISTERED_SEED",
+    "canonical_receipts_checked": 8,
+    "canonical_receipts_bound_to_attempts_parent": 8,
+    "canonical_receipts_bound_to_interrupted_or_failed_parent": 0,
+    "sim_access": "STAT_ONLY__NO_SIM_OPEN_SCAN_OR_HASH"
+  },
+  "premature_statistics_recovery": {
+    "audit": "engineering/geometry_optimization_20260815/49_sf3_plan1_transport_20260816/audit/sf3_plan1_statistics_authority_recovery.json",
+    "canonical_state": "ABSENT__PENDING_COMPLETE_PASS_BACKGROUND_OR_ALL_VALIDATION",
+    "old_fail_disposition": "PRESERVED_UNDER audit/non_authoritative AS EARLY INCOMPLETE SNAPSHOT"
+  },
+  "tests": {
+    "py_compile": "PASS",
+    "runner_self_test": "PASS__SF3_RUNNER_STATIC_SELF_TEST",
+    "receipt_validator_self_test": "PASS__SF3_RECEIPT_VALIDATOR_STATIC_SELF_TEST",
+    "current_receipt_binding_check": "PASS__CURRENT_CANONICAL_RECEIPTS_BOUND_TO_PASS_ATTEMPTS"
+  },
+  "transport_interference": "NONE__RUNNING CONTROLLER/SERVICE WAS NOT STOPPED, SIGNALLED, OR RESTARTED"
+}

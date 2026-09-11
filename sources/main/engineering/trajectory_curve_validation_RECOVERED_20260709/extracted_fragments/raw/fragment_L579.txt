@@ -1,0 +1,110 @@
+# FINAL_STATUS
+
+repo_head: 455999408676e9a2c9b1e531a6c8562fe880792d
+harness: engineering/engineering_0626/HARNESS_ENGINEERING_B_TRAJECTORY_TIME_FOLD_TRANSPORT_VALIDATION.md
+harness_version: 1.1
+run_scope: LOWSTAT_SMOKE_ONLY
+current_simulation_point: none; completed REF, L1, L2, H1, M1
+full_stat_status: NOT_AUTHORIZED_NOT_RUN
+targeted_status: NOT_AUTHORIZED_NOT_RUN
+reference_normalization: Q(t) = (R_MC(t) / R_MC(REF_day15)) / S_analytic(t)
+geometry_authority: outputs/geometry/DEMO2_DR_v3p5_user_cylmag_redesign_multiholeW_fix5_20260621_megalib_proxy/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup
+
+Validation points:
+| ID | day | time_bin | alt_km | lat_deg | lon_deg | Rc_GV | status |
+|---|---:|---:|---:|---:|---:|---:|---|
+| REF | 15.00 | 60 | 38.75 | 34.000000 | 100.000000 | 11.000000 | COMPLETED_SMOKE_REF |
+| L1 | 3.75 | 15 | 36.25 | 34.155872 | 99.750000 | 10.980030 | COMPLETED_SMOKE |
+| L2 | 18.75 | 75 | 36.25 | 33.944370 | 100.125000 | 11.008200 | COMPLETED_SMOKE |
+| H1 | 6.25 | 25 | 41.25 | 33.750000 | 100.043412 | 11.021302 | COMPLETED_SMOKE |
+| M1 | 10.00 | 40 | 38.75 | 34.243732 | 100.085505 | 10.983067 | COMPLETED_SMOKE |
+
+Run summary:
+| Component | Statistics | Result | Evidence |
+|---|---:|---|---|
+| G3/G4 prompt+activation transport | 680 jobs; 25,210,220 generated primaries | PASS transport; raw freeze PASS | 04_prompt_smoke/transport_smoke_manifest.json |
+| G3 prompt extraction | stripped prompt rates frozen | SMOKE_DEVIATION_OR_LOW_POWER | 04_prompt_smoke/prompt_direct_rates_stripped.csv |
+| G4 activation extraction | activation products frozen | INCONCLUSIVE/FAIL gate | 05_activation_smoke/activation_smoke_verdict.json |
+| G5 history model | 81-bin history model | PASS | 06_history_model/history_model_verdict.json |
+| G6 delayed sources | 5 x 250,000 EventList rows | PASS | 07_delayed_sources/delayed_source_manifest.json |
+| G7 delayed replay | 5 x 250,000 delayed decays | COMPLETE_NOT_VALIDATED | 08_delayed_smoke/delayed_smoke_run_summary.json |
+| Curve verifier | frozen evidence only | LOWSTAT_SMOKE_DEVIATES_RUN_FULLSTAT | 10_curve_validation/validation_decision.json |
+
+Gate status:
+| Gate | Status | Evidence | Blocking | Next action |
+|---|---|---|---|---|
+| G0 authority | PASS | 00_manifest/authority_manifest.json | none | Keep locked. |
+| G1 points | PASS | 01_points/validation_points.csv | none | Use only frozen five points. |
+| G2 sources | PASS | 02_sources/source_generation_manifest.json | none | No scalar-rescaled reference cards. |
+| G3 prompt | SMOKE_COMPLETE_DEVIATES_OR_LOW_POWER | 10_curve_validation/prompt_curve_residuals.csv | low-stat CI too large; trend gate false | Full-stat approval required before final claim. |
+| G4 activation | ACTIVATION_SMOKE_INCONCLUSIVE | 05_activation_smoke/activation_smoke_verdict.json | prod_residual=0.15772074895; cu_residual=0.231663165445 | Full-stat/full activation evidence required. |
+| G5 history | PASS | 06_history_model/history_model_verdict.json | none | Use as smoke evidence only. |
+| G6 delayed source | PASS | 07_delayed_sources/delayed_source_manifest.json | none | Sources are replay-ready for smoke only. |
+| G7 delayed transport | COMPLETE_NOT_VALIDATED | 08_delayed_smoke/delayed_direct_vs_analytic.csv | W2 low-count guard; uniform-vs-matrix not powered | Full delayed replay required before final delayed claim. |
+| G8 escalation | NOT_AUTHORIZED | 10_curve_validation/validation_decision.json | user approval required | Ask before full-stat/full delayed replay. |
+| G9 full/targeted | NOT_RUN | no 09_targeted_or_full promotion | no approval | Do not run by default. |
+| G10 curve verdict | FIRST_SMOKE_ONLY | diagnostic G10 says correction, but not promoted | no full-stat evidence | Final status remains LOWSTAT_SMOKE_DEVIATES_RUN_FULLSTAT. |
+| G11 Step06-08 support | NOT_RUN | no authority rewrite | not authorized | Do not rewrite Step06/07/08. |
+| G12 manuscript | NOT_RUN | support packager not run | full-stat decision absent | Do not edit manuscript source. |
+
+Prompt metrics:
+- q480_550_ci: 23.9349060905
+- qw2_ci: 12.7860351248
+- eplus_neutron_ci: 23.9349060905
+- trend_ok: false
+- rows_480_550: 12
+- rows_w2: 8
+
+Activation metrics:
+- prod_residual: 0.15772074895
+- cu_residual: 0.231663165445
+=====CURVE CHECK=====
+# Handoff - ENGINEERING_20260627_CURVE_CHECK
+
+Created: 2026-06-27
+
+## Current objective
+
+This harness is for Step06 trajectory/time-fold analytic-curve validation and patch planning. It is not a request to rerun the full project, redesign geometry, rewrite Step06/07/08, or edit manuscript source.
+
+The task is to decide whether the old Step06 analytic curve is physically too coarse, and whether a corrected analytic model can explain the full4 direct prompt / activation-production evidence. The corrected model must separate:
+
+- celestial 511 keV signal atmospheric transmission;
+- local prompt-background source-response;
+- activation production;
+- delayed inventory/activity.
+
+No final delayed selected-rate curve can be promoted or declared wrong without time-specific delayed full replay.
+
+## Read first
+
+Primary harness:
+
+- `engineering/ENGINEERING_20260627_CURVE_CHECK/ENGINEERING.md`
+
+Authority evidence:
+
+- `engineering/trajectory_transport_validation_20260626/01_points/trajectory_profile_frozen.csv`
+- `engineering/trajectory_transport_validation_20260626/01_points/validation_points.csv`
+- `engineering/trajectory_transport_validation_20260626/01_points/analytic_predictions_at_points.csv`
+- `engineering/trajectory_transport_validation_20260626/09_full_if_required/full_4point_prompt_activation_weighted/transport_full4_status.md`
+- `engineering/trajectory_transport_validation_20260626/09_full_if_required/full_4point_prompt_activation_weighted/transport_full4_manifest.json`
+- `engineering/trajectory_transport_validation_20260626/09_full_if_required/full_4point_prompt_activation_weighted/transport_full4_summary.json`
+- `engineering/trajectory_transport_validation_20260626/09_full_if_required/full_4point_prompt_activation_weighted/normalization.json`
+- `engineering/trajectory_transport_validation_20260626/09_full_if_required/full_4point_curve_validation/full4_validation_decision.json`
+- `engineering/trajectory_transport_validation_20260626/09_full_if_required/full_4point_curve_validation/full4_curve_metrics.json`
+- `engineering/trajectory_transport_validation_20260626/09_full_if_required/full_4point_curve_validation/full4_prompt_curve_residuals.csv`
+- `engineering/trajectory_transport_validation_20260626/09_full_if_required/full_4point_curve_validation/full4_activation_curve_residuals.csv`
+- `engineering/trajectory_transport_validation_20260626/09_full_if_required/full_4point_curve_validation/full4_activation_key_state_residuals.csv`
+
+Step06 reference code:
+
+- `stepwise_maintenance/step06_mission_time_variation/code/build_step06_mission_time_variation.py`
+
+## What has already been done
+
+Weighted full4 prompt/activation production run completed under:
+
+- `engineering/trajectory_transport_validation_20260626/09_full_if_required/full_4point_prompt_activation_weighted`
+
+Status from `transport_full4_status.md`:

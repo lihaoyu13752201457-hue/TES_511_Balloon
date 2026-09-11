@@ -1,0 +1,102 @@
+{
+  "schema": "m04_wp1_offline_m_sampling_validation_config_v1",
+  "analysis_date": "2026-08-10",
+  "scope": {
+    "mode": "offline_existing_artifacts_only",
+    "transport_simulation": false,
+    "source_card_generation": false,
+    "cosima_runner_allowed": false,
+    "raw_sim_reparse": true,
+    "response_replay_mode": "event_level_replay_of_retained_catalog_for_all_64_seeds",
+    "claim_boundary": "not_transport_backed_m_convergence"
+  },
+  "baseline": {
+    "m_blocks": 50000,
+    "source_seed": 260613,
+    "triggers_per_positive_family": 1000000,
+    "response_seed_primary": 26071301
+  },
+  "source_only_resampling": {
+    "m_values": [50000, 100000],
+    "source_seeds": [260613, 260614, 260615, 260617],
+    "top_mass_fraction": 0.9
+  },
+  "offline_event_analysis": {
+    "replay_all_response_seeds": true,
+    "response_seed_replicas": 64,
+    "scan_all_positive_family_raw_sims": true,
+    "poisson_source_block_bootstrap_replicates": 4000,
+    "poisson_source_block_bootstrap_seed": 20260810
+  },
+  "raw_sim_position_mapping": {
+    "distance_metric": "chebyshev_max_abs_axis_cm",
+    "source_card_coordinate_decimals": 6,
+    "sim_ia_init_coordinate_decimals": 5,
+    "serialization_tolerance_cm_per_axis": 5.51e-6,
+    "retained_selected_lineage_tolerance_cm_per_axis": 1.01e-5,
+    "adaptive_displacement_cap_cm_per_axis": 1.0e-3,
+    "minimum_second_nearest_gap_cm": 1.102e-5,
+    "minimum_second_to_first_distance_ratio": 2.0
+  },
+  "families": ["alpha", "eplus", "gamma", "muminus", "muplus", "n", "p"],
+  "path_templates": {
+    "weighted_table": "runs/geometry_optimization_20260704/step02_delay_exactpos_s3d_o8_all8_activation_m50000_20260713/{family}/exactpos_weighted_rpip_table_m50000_s260613.csv",
+    "manifest": "runs/geometry_optimization_20260704/step02_delay_exactpos_s3d_o8_all8_activation_m50000_20260713/{family}/s3d_o8_{family}_exactpos_m50000_s260613_manifest.json",
+    "source_card": "runs/geometry_optimization_20260704/step02_delay_exactpos_s3d_o8_all8_activation_m50000_20260713/{family}/activation_decay_day15_groundstate_fixed_exactpos_m50000.source"
+  },
+  "authorities": {
+    "builder": "code/tools/build_fix5_1of10_exactpos_delayed_source.py",
+    "package44_activation_runner": "engineering/geometry_optimization_20260704/44_s3d_o8_all8_activation_20260713/code/run_s3d_o8_all8_activation.py",
+    "package44_step05_runner": "engineering/geometry_optimization_20260704/44_s3d_o8_all8_activation_20260713/code/run_s3d_o8_all8_step05.py",
+    "response_summary": "engineering/ea_s3d_o8_all8_detector_response_closure_20260713/data/s3d_o8_all8_energy_response_summary.json",
+    "response_replicas": "engineering/ea_s3d_o8_all8_detector_response_closure_20260713/data/s3d_o8_all8_energy_response_replicas.csv",
+    "primary_selected_lineage": "engineering/ea_s3d_o8_all8_family_nuclide_mission_fold_20260713/data/s3d_o8_all8_selected_family_nuclides_primary_seed.json"
+  },
+  "expected_sha256": {
+    "code/tools/build_fix5_1of10_exactpos_delayed_source.py": "3716bc1a436f5d7375be7ef387eea5d2ac22cecf37cd793cf474873f20124e0b",
+    "engineering/geometry_optimization_20260704/44_s3d_o8_all8_activation_20260713/code/run_s3d_o8_all8_activation.py": "942bbcc3b466bd11ec38d8bd9b868762b70a7d895caadf610a85cdbbacc23a9c",
+    "engineering/geometry_optimization_20260704/44_s3d_o8_all8_activation_20260713/code/run_s3d_o8_all8_step05.py": "ad300404813ab41e96fa876ab34f3545f480d7e8ab038cda7f5242ecd701e1af",
+    "engineering/ea_s3d_o8_all8_detector_response_closure_20260713/data/s3d_o8_all8_energy_response_summary.json": "8c86ba7f4ebca3b5e4c9dfe084651751eddc031ed9b7d8203220073763beaf43",
+    "engineering/ea_s3d_o8_all8_detector_response_closure_20260713/data/s3d_o8_all8_energy_response_replicas.csv": "fbbd347f4cb9a962c872da6da1560764a3419a125ce9c3deea06444bdda314b1",
+    "engineering/ea_s3d_o8_all8_family_nuclide_mission_fold_20260713/data/s3d_o8_all8_selected_family_nuclides_primary_seed.json": "21c8d1738e1d10425211a721d3f9ea423120007e2ac4cff5a5150a1b809ad202",
+    "engineering/ea_s3d_o8_all8_detector_response_closure_20260713/code/build_s3d_o8_all8_energy_response.py": "c064afcabb1c6739070761003a10f284e72a44057fa8f11ef0f0a420164e7057",
+    "engineering/ea_detector_response_closure_20260713/code/build_o8_energy_response_closure.py": "4b5f03f7915a6829a03bef776554f8e3c473a967b11e031deac955faad750973",
+    "old/code/tools/build_v3p5_centerfinger_step05_l1_response.py": "0c1e69e4a73bd8653e999b1d8d2aff404a37a44457e40f134388c819ad4b91ab",
+    "engineering/geometry_optimization_20260704/44_s3d_o8_all8_activation_20260713/fullchain/step05/work/event_catalog.pkl": "752b40019d6bbb72f9ce096fde933cf155dec5832a5daf03e4ee0e16f299b278",
+    "stepwise_maintenance/step09_optics_bridge/outputs_f10m_a1_v3p5/step09_optics_bridge_summary.json": "8d147e21928b4830a215ab034f29379383b4368b4177f8a16a2f45769df73a25",
+    "engineering/geometry_optimization_20260704/43_geoopt_s3d_o8_fallback_20260712/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup": "86a9e56e54dc86834dfe2a9b03a5f71373fb40f2ef24e3889fa66f216058fbec",
+    "engineering/geometry_optimization_20260704/43_geoopt_s3d_o8_fallback_20260712/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo": "ff4e8402df702501e0112fe377d837a74c39100317146b09e9569b7bd615c37c",
+    "engineering/geometry_optimization_20260704/43_geoopt_s3d_o8_fallback_20260712/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.det": "dd2c1d68cd474f8b0c7489f2cbbfc924eb69beb14d3ce360d9437c319a33d6cb",
+    "engineering/geometry_optimization_20260704/43_geoopt_s3d_o8_fallback_20260712/geometry/Intro_DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo": "f4ea834bf385f68a85690e018fd52d692e94e19dd93959e35e6f91efd3dbfd52",
+    "engineering/geometry_optimization_20260704/43_geoopt_s3d_o8_fallback_20260712/geometry/Materials_DEMO2_DR_v3p5.geo": "751cd83f08631085496ee86efa4418e4f001a639b15573554b93e73ff95678bf",
+    "runs/geometry_optimization_20260704/step02_delay_exactpos_s3d_o8_all8_activation_m50000_20260713/alpha/exactpos_weighted_rpip_table_m50000_s260613.csv": "9e67ca2d07d52dc3aa975485da0dfd266c09d9007fbe6d3164ad583b1abbfbd6",
+    "runs/geometry_optimization_20260704/step02_delay_exactpos_s3d_o8_all8_activation_m50000_20260713/alpha/s3d_o8_alpha_exactpos_m50000_s260613_manifest.json": "bf9c099b59f31a36bbecdb838c8b3348437dec6cf02ccf592886244fa49b3e6e",
+    "runs/geometry_optimization_20260704/step02_delay_exactpos_s3d_o8_all8_activation_m50000_20260713/alpha/activation_decay_day15_groundstate_fixed_exactpos_m50000.source": "a95f4bca12842711d07b35d9d9917a3d06a2ec1a5e0b4845ca41f5f0dd81a722",
+    "runs/geometry_optimization_20260704/step02_delay_exactpos_s3d_o8_all8_activation_m50000_20260713/eplus/exactpos_weighted_rpip_table_m50000_s260613.csv": "f071851a0a6540aa7c94d84055f97ac775c55e9dd8ed839a2b6f34bdf15e888a",
+    "runs/geometry_optimization_20260704/step02_delay_exactpos_s3d_o8_all8_activation_m50000_20260713/eplus/s3d_o8_eplus_exactpos_m50000_s260613_manifest.json": "bfb14ca9c06adf93a29742f41a5290db35b98a4285ebaec97818d647fb427d4a",
+    "runs/geometry_optimization_20260704/step02_delay_exactpos_s3d_o8_all8_activation_m50000_20260713/eplus/activation_decay_day15_groundstate_fixed_exactpos_m50000.source": "64aa783707552b3ddca5f335d22ce933accca80b3a7e2f9ac699d9dda35b5245",
+    "runs/geometry_optimization_20260704/step02_delay_exactpos_s3d_o8_all8_activation_m50000_20260713/gamma/exactpos_weighted_rpip_table_m50000_s260613.csv": "3ca03b19682b2e901868d5cf0e7978c458c329e9e5509fa4b1030bb5fc0944f7",
+    "runs/geometry_optimization_20260704/step02_delay_exactpos_s3d_o8_all8_activation_m50000_20260713/gamma/s3d_o8_gamma_exactpos_m50000_s260613_manifest.json": "581a65224d0595ecbaa45e6561816136dec7e883c0ac0ee148057dfc277d94fe",
+    "runs/geometry_optimization_20260704/step02_delay_exactpos_s3d_o8_all8_activation_m50000_20260713/gamma/activation_decay_day15_groundstate_fixed_exactpos_m50000.source": "f0447812d02670d011769b00bec660041c3cfb8572cb63e04df716326c04aef1",
+    "runs/geometry_optimization_20260704/step02_delay_exactpos_s3d_o8_all8_activation_m50000_20260713/muminus/exactpos_weighted_rpip_table_m50000_s260613.csv": "b548b2fd6ce2a6b960872f77d58cc88305c9268e9c0a2efb606942f6330a9f94",
+    "runs/geometry_optimization_20260704/step02_delay_exactpos_s3d_o8_all8_activation_m50000_20260713/muminus/s3d_o8_muminus_exactpos_m50000_s260613_manifest.json": "01e393fcbba8d53085910c5e2bc7d0077f1c831ff3a074c8977a9682288a72f8",
+    "runs/geometry_optimization_20260704/step02_delay_exactpos_s3d_o8_all8_activation_m50000_20260713/muminus/activation_decay_day15_groundstate_fixed_exactpos_m50000.source": "08dff2b3a9c8668dfd015e82dea5f1718ddb852a0ed3f7188c096562b63aa911",
+    "runs/geometry_optimization_20260704/step02_delay_exactpos_s3d_o8_all8_activation_m50000_20260713/muplus/exactpos_weighted_rpip_table_m50000_s260613.csv": "304b43598d59605e856a5b72c3b693c2f24d27ffc3bfd1a877fa4a15a91e9836",
+    "runs/geometry_optimization_20260704/step02_delay_exactpos_s3d_o8_all8_activation_m50000_20260713/muplus/s3d_o8_muplus_exactpos_m50000_s260613_manifest.json": "1ff16abaf4be966af224dbda55b44702eb170e1cdfcc529d817b9b03c636c983",
+    "runs/geometry_optimization_20260704/step02_delay_exactpos_s3d_o8_all8_activation_m50000_20260713/muplus/activation_decay_day15_groundstate_fixed_exactpos_m50000.source": "987091f2cf92e3b1cc61032f6acedbdeb334f8937cbcf068fb98566cc6fcc136",
+    "runs/geometry_optimization_20260704/step02_delay_exactpos_s3d_o8_all8_activation_m50000_20260713/n/exactpos_weighted_rpip_table_m50000_s260613.csv": "2f85d8e5cd8e12f40b9ccd67b90419e5a863249a95bcd2cf363821d7de81ef4b",
+    "runs/geometry_optimization_20260704/step02_delay_exactpos_s3d_o8_all8_activation_m50000_20260713/n/s3d_o8_n_exactpos_m50000_s260613_manifest.json": "7e2af93e35d0dfae024bba44fb7d3cdae6e6f8a3dbfbff1debe10c2440482fb7",
+    "runs/geometry_optimization_20260704/step02_delay_exactpos_s3d_o8_all8_activation_m50000_20260713/n/activation_decay_day15_groundstate_fixed_exactpos_m50000.source": "7c01db33f29517d8e225b616f11233c92039ff753f6fd677e4dbb881713acbf0",
+    "runs/geometry_optimization_20260704/step02_delay_exactpos_s3d_o8_all8_activation_m50000_20260713/p/exactpos_weighted_rpip_table_m50000_s260613.csv": "cb515398e90128d9237821e1b7f7232050957a463ece7b4cce3a4eef586e8cc0",
+    "runs/geometry_optimization_20260704/step02_delay_exactpos_s3d_o8_all8_activation_m50000_20260713/p/s3d_o8_p_exactpos_m50000_s260613_manifest.json": "1c4fde8861143f8ee187dedc6ed912369690388834f28652a8c78a3a6e2ccbf0",
+    "runs/geometry_optimization_20260704/step02_delay_exactpos_s3d_o8_all8_activation_m50000_20260713/p/activation_decay_day15_groundstate_fixed_exactpos_m50000.source": "99f8423885c8d0b858f0b5462c19fe1aa4e2152dbece0b47b284d34bf955f477"
+    ,
+    "runs/geometry_optimization_20260704/step02_delayed_transport_s3d_o8_all8_activation_m50000_20260713/alpha/DelayedDecayS3dO8AlphaM50000.inc1.id1.sim.gz": "bfc62760023309b3597c00d3a61643a7c337fb3d5094af7cad3beebd4fac4672",
+    "runs/geometry_optimization_20260704/step02_delayed_transport_s3d_o8_all8_activation_m50000_20260713/eplus/DelayedDecayS3dO8EPlusM50000.inc1.id1.sim.gz": "40f0f3b9d753e6302edf836ea217cced04a80ba6efed5320495c466fef206ca9",
+    "runs/geometry_optimization_20260704/step02_delayed_transport_s3d_o8_all8_activation_m50000_20260713/gamma/DelayedDecayS3dO8GammaM50000.inc1.id1.sim.gz": "54bb3cc8c98e280cbe017b30f74ed2617df6586178402ea05bc709ba4b945d2e",
+    "runs/geometry_optimization_20260704/step02_delayed_transport_s3d_o8_all8_activation_m50000_20260713/muminus/DelayedDecayS3dO8MuMinusM50000.inc1.id1.sim.gz": "f97d06cb0fd119af0ccd93edcbee2e42fc47ee7054d0d59ac3bb7853637f12e7",
+    "runs/geometry_optimization_20260704/step02_delayed_transport_s3d_o8_all8_activation_m50000_20260713/muplus/DelayedDecayS3dO8MuPlusM50000.inc1.id1.sim.gz": "38dc24b968b1fe65a016c0d1054e67a0fb98bfc5d9b20ed8f3d2e4265f387fae",
+    "runs/geometry_optimization_20260704/step02_delayed_transport_s3d_o8_all8_activation_m50000_20260713/n/DelayedDecayS3dO8NM50000.inc1.id1.sim.gz": "60443f8587266aec37b939eb97b503afcb4088a43ce7b2d75723d02999e4dc9c",
+    "runs/geometry_optimization_20260704/step02_delayed_transport_s3d_o8_all8_activation_m50000_20260713/p/DelayedDecayS3dO8PM50000.inc1.id1.sim.gz": "b385864ba8058c2d7de8430d0889de7ebee417f996bcbd7e72dda559dabb89a5"
+  }
+}

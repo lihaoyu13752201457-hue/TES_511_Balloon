@@ -1,0 +1,223 @@
+{
+  "surface": "report",
+  "manifest": {
+    "version": 1,
+    "surface": "report",
+    "title": "修正 keV 源谱后的输运耗时诊断",
+    "description": "比较旧 1/1000 能轴与修正能轴的 Cosima 运行成本，并定位当前及全统计阶段的主要开销。",
+    "generatedAt": "2026-08-11T19:33:05+08:00",
+    "cards": [],
+    "charts": [
+      {
+        "id": "measured_campaign_time",
+        "title": "batch0001 实测 Cosima run-phase 时间",
+        "subtitle": "四个 campaign 的事件数相同，均为 116,673；质子不在本批中。",
+        "showDescription": true,
+        "type": "bar",
+        "dataset": "measured_campaign_time",
+        "sourceId": "runtime_metrics",
+        "encodings": {
+          "x": {"field": "campaign", "type": "nominal", "label": "几何与模式"},
+          "y": {"field": "run_seconds", "type": "quantitative", "label": "run-phase 时间", "unit": "s"},
+          "tooltip": [
+            {"field": "events", "type": "quantitative", "label": "事件数"},
+            {"field": "sim_dat_gb", "type": "quantitative", "label": "SIM+DAT", "unit": "GB"},
+            {"field": "share", "type": "quantitative", "label": "时间占比", "format": "percent"}
+          ]
+        },
+        "yAxisTitle": "Cosima run-phase seconds",
+        "layout": "full"
+      },
+      {
+        "id": "projected_family_time",
+        "title": "历史 full-stat 目标的修正能轴时间点估计",
+        "subtitle": "按 batch0001 每族实测速率外推；总计约 383.93 小时，属于容量规划点估计。",
+        "showDescription": true,
+        "type": "bar",
+        "dataset": "projected_family_time",
+        "sourceId": "runtime_metrics",
+        "encodings": {
+          "x": {"field": "family", "type": "nominal", "label": "粒子族"},
+          "y": {"field": "run_hours", "type": "quantitative", "label": "run-phase 时间", "unit": "h"},
+          "tooltip": [
+            {"field": "share", "type": "quantitative", "label": "预计占比", "format": "percent"},
+            {"field": "basis", "type": "text", "label": "证据类型"}
+          ]
+        },
+        "yAxisTitle": "Estimated run-phase hours",
+        "layout": "full"
+      }
+    ],
+    "tables": [
+      {
+        "id": "full_target_comparison",
+        "title": "同一历史 full-stat 目标的运行时间对比",
+        "subtitle": "旧列为 1/1000 能轴的已完成 run-phase 时间；修正列为 batch0001 校准后的点估计。",
+        "showDescription": true,
+        "dataset": "full_target_comparison",
+        "sourceId": "runtime_metrics",
+        "layout": "full",
+        "defaultSort": {"field": "multiplier", "direction": "desc"},
+        "columns": [
+          {"field": "campaign", "label": "Campaign", "type": "text"},
+          {"field": "legacy_run_hours", "label": "旧能轴实测", "type": "number", "format": "number", "unit": "h", "align": "right"},
+          {"field": "corrected_run_hours", "label": "修正能轴点估计", "type": "number", "format": "number", "unit": "h", "align": "right"},
+          {"field": "multiplier", "label": "倍数", "type": "number", "format": "number", "unit": "x", "align": "right"},
+          {"field": "geometry", "label": "几何", "type": "text"},
+          {"field": "mode", "label": "模式", "type": "text"}
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "id": "runtime_metrics",
+        "label": "Reviewed runtime metrics and full-target projections",
+        "path": "runtime_metrics.csv"
+      },
+      {
+        "id": "source_repair_contract",
+        "label": "TES-511 primary-source unit repair contract",
+        "path": "engineering/particle_source_unit_repair_20260811/README.md"
+      }
+    ],
+    "blocks": [
+      {
+        "id": "title",
+        "type": "markdown",
+        "body": "# 修正 keV 源谱后的输运耗时诊断",
+        "layout": "full"
+      },
+      {
+        "id": "technical_summary",
+        "type": "markdown",
+        "sourceId": "runtime_metrics",
+        "body": "## 结论先行\n\n变慢的根因不是读谱，而是原来每个 primary 的动能被压低 1000 倍，Geant4 大量事件在很少的相互作用后就结束；恢复正确能量后，同一个 primary 会产生更长的径迹、更多次相互作用和更多次级粒子。当前又用 `StoreSimulationInfo all` 保存完整事件史，因此物理输运复杂度与 SIM 序列化/压缩开销同时放大。\n\nbatch0001 的 466,692 个七族事件中，O8 两个模式占 83.70% 的 run-phase 时间；O8 buildup 单项占 54.76%。按历史 full-stat 事件合同外推，修正能轴约需 383.93 run-phase 小时，而四条旧 1/1000 链合计只用了约 15.62 小时，点估约慢 24.57 倍。"
+      },
+      {
+        "id": "measured_chart",
+        "type": "chart",
+        "chartId": "measured_campaign_time",
+        "layout": "full"
+      },
+      {
+        "id": "mechanism",
+        "type": "markdown",
+        "body": "## 能量恢复后，单事件不再是同一种计算量\n\n源抽样仍然只是从同样的 20 个角箱和 DP 表中抽一个 primary，成本几乎不随能量轴变化。真正变化的是 primary 进入几何后的输运树：高能 gamma 与 e± 会形成电磁级联，e+ 还会湮灭；高能中子和 alpha 会触发强子反应、慢化和核素生产。每多一条次级径迹，Geant4 都要做几何导航、截面采样和能量沉积处理；被记录的 IA、CC、HT 等事件信息也随之增多。\n\nmu± 是有用的反例：它们通常更接近穿透型最小电离粒子，因此修复前后每事件成本只增加约数倍，而 alpha、n、e± 和高能 gamma 会增加一个到两个数量级。这说明主要变化来自级联与核反应复杂度，而不是一个固定的 1000 倍软件常数。"
+      },
+      {
+        "id": "projected_chart",
+        "type": "chart",
+        "chartId": "projected_family_time",
+        "layout": "full"
+      },
+      {
+        "id": "future_hotspots",
+        "type": "markdown",
+        "sourceId": "runtime_metrics",
+        "body": "## 当前批与全统计的热点并不完全相同\n\n当前校准批中 gamma 数量最多，所以 O8 buildup gamma 是单个最大热点。全统计合同会给非 gamma 族各做 8 个 replica；在该目标下，预计中子约占 35.67% 时间，alpha 约占 25.41%，e+ 约占 17.81%，三者合计约 78.6%。因此真正的生产排程应优先围绕 O8 的中子、alpha 和 e+ 做分片、容量门禁与归档设计。"
+      },
+      {
+        "id": "comparison_table",
+        "type": "table",
+        "tableId": "full_target_comparison",
+        "layout": "full"
+      },
+      {
+        "id": "scope",
+        "type": "markdown",
+        "sourceId": "source_repair_contract",
+        "body": "## 范围与定义\n\n这里的旧结果只作为计算性能基线，不恢复其物理权威。修复包把非 alpha 的原始 MeV 乘 1000 转为总 keV，把 alpha 的 MeV/n 乘 4000 转为总 alpha keV；Flux、20 角箱、R=60 cm、几何和物理列表保持不变。batch0001 明确排除了质子，并保留完整 SIM、DAT 与 `StoreSimulationInfo all`，因此它能够用于后续合并，但不是低输出量的性能特化测试。"
+      },
+      {
+        "id": "method",
+        "type": "markdown",
+        "sourceId": "runtime_metrics",
+        "body": "## 方法\n\n实测 campaign 时间、事件数和输出字节来自四份 corrected-keV batch0001 `run_summary.csv`。旧基线来自 Mass_model_511 与 S3d-O8 的 instant/buildup full-stat summaries。每族先计算 run-phase seconds/event，再按历史目标——每个几何、每个模式含 10,000,000 gamma，其他族按 Flux 比例并做 8 个 replica——外推修正能轴的完整时间。所有比值均在同一粒子族内计算后再按目标事件数汇总，避免用当前校准批不同的族权重直接比较。"
+      },
+      {
+        "id": "limitations",
+        "type": "markdown",
+        "sourceId": "runtime_metrics",
+        "body": "## 不确定性与证据边界\n\n修正能轴的非 gamma 校准目前每个 geometry/mode/family 只有一个 job；alpha 与 mu 的事件尤其少。高能级联具有长尾，O8 buildup 的四个 25k gamma shard 已出现明显离散，因此 383.93 小时是容量规划点估计，不是完成时限保证。`cpu_s` 字段实际来自 Cosima 对 BeamOn run phase 的 steady-clock 计时，而不是操作系统 user+sys CPU；报告统一称 run-phase 时间。现有数据没有一组关闭 SIM 输出的配对实验，所以不能把总开销严格拆成 Geant4 输运、序列化、gzip 与磁盘 I/O 的百分比。"
+      },
+      {
+        "id": "next_steps",
+        "type": "markdown",
+        "body": "## 建议的下一步\n\n1. 不直接启动 retain-all 全量任务；继续按 geometry × mode × family 分片。\n2. 先用 O8 的 n、alpha、e+ 做中统计标定，更新每事件时间与字节的置信区间。\n3. 为生产链增加经验证的紧凑 sidecar/归档流程；只有在保留 Step05 与 delayed 所需信息并完成哈希验证后，才释放完整 SIM。\n4. 若要严格回答“输运与写盘各占多少”，增加同 seed、同 source、同 geometry 的 `StoreSimulationInfo all` 与受控低输出 profile 配对 benchmark；该 benchmark 只用于性能诊断，不能混入物理统计。"
+      },
+      {
+        "id": "questions",
+        "type": "markdown",
+        "body": "## 仍待回答的问题\n\n- O8 buildup gamma 的长尾来自少数超高能 shower、激活模式，还是两者共同作用？\n- 正确能量下，中子与 alpha 每事件输出的上尾有多重，2× 磁盘门槛是否足够？\n- 在不破坏 prompt Step05 与精确 RP-position delayed 合同的前提下，最小可保留事件字段集合是什么？"
+      }
+    ]
+  },
+  "snapshot": {
+    "version": 1,
+    "generatedAt": "2026-08-11T19:33:05+08:00",
+    "status": "ready",
+    "datasets": {
+      "measured_campaign_time": [
+        {"campaign": "Mass instant", "geometry": "Mass_model_511", "mode": "instant", "events": 116673, "run_seconds": 297.336001, "sim_dat_gb": 0.253308936, "share": 0.09234897},
+        {"campaign": "Mass buildup", "geometry": "Mass_model_511", "mode": "buildup", "events": 116673, "run_seconds": 227.542535, "sim_dat_gb": 0.215647192, "share": 0.07067195},
+        {"campaign": "O8 instant", "geometry": "S3d-O8", "mode": "instant", "events": 116673, "run_seconds": 931.740480, "sim_dat_gb": 0.756690765, "share": 0.28938736},
+        {"campaign": "O8 buildup", "geometry": "S3d-O8", "mode": "buildup", "events": 116673, "run_seconds": 1763.081140, "sim_dat_gb": 1.045157367, "share": 0.54759172}
+      ],
+      "projected_family_time": [
+        {"family": "n", "run_hours": 136.95, "share": 0.35670565, "rank": 1, "basis": "batch0001 calibrated point estimate"},
+        {"family": "alpha", "run_hours": 97.54, "share": 0.25405673, "rank": 2, "basis": "batch0001 calibrated point estimate"},
+        {"family": "e+", "run_hours": 68.39, "share": 0.17813143, "rank": 3, "basis": "batch0001 calibrated point estimate"},
+        {"family": "gamma", "run_hours": 46.78, "share": 0.12184513, "rank": 4, "basis": "batch0001 calibrated point estimate"},
+        {"family": "e-", "run_hours": 32.51, "share": 0.08467689, "rank": 5, "basis": "batch0001 calibrated point estimate"},
+        {"family": "mu-/mu+", "run_hours": 1.76, "share": 0.00458417, "rank": 6, "basis": "batch0001 calibrated point estimate"}
+      ],
+      "full_target_comparison": [
+        {"campaign": "Mass instant", "geometry": "Mass_model_511", "mode": "instant", "legacy_run_hours": 3.604375, "corrected_run_hours": 36.07, "multiplier": 10.0073, "comparison": "legacy measured vs corrected point estimate"},
+        {"campaign": "Mass buildup", "geometry": "Mass_model_511", "mode": "buildup", "legacy_run_hours": 3.204922, "corrected_run_hours": 27.92, "multiplier": 8.7116, "comparison": "legacy measured vs corrected point estimate"},
+        {"campaign": "O8 instant", "geometry": "S3d-O8", "mode": "instant", "legacy_run_hours": 4.671307, "corrected_run_hours": 148.08, "multiplier": 31.6999, "comparison": "legacy measured vs corrected point estimate"},
+        {"campaign": "O8 buildup", "geometry": "S3d-O8", "mode": "buildup", "legacy_run_hours": 4.143256, "corrected_run_hours": 171.87, "multiplier": 41.4819, "comparison": "legacy measured vs corrected point estimate"}
+      ]
+    },
+    "accessIssues": []
+  },
+  "sources": [
+    {
+      "id": "runtime_metrics",
+      "label": "Reviewed runtime metrics and full-target projections",
+      "path": "runtime_metrics.csv",
+      "query": {
+        "engine": "DuckDB-compatible SQL",
+        "id": "corrected-kev-runtime-diagnosis-20260811",
+        "sql": "SELECT * FROM read_csv_auto('runtime_metrics.csv', header = true);",
+        "description": "Reads the reviewed aggregate runtime table built from corrected-keV batch0001 summaries and retained legacy full-stat summaries.",
+        "language": "sql",
+        "executed_at": "2026-08-11T19:33:05+08:00",
+        "tables_used": [
+          "runtime_metrics.csv"
+        ],
+        "filters": [
+          "Corrected campaign scope is batch0001 and excludes protons",
+          "Legacy data are used only as computational benchmarks",
+          "Full target is 10M gamma plus eight Flux-scaled replicas for each non-gamma family per geometry and mode"
+        ],
+        "metric_definitions": [
+          "run_seconds is Cosima's steady-clock BeamOn run-phase time reported as cpu_s in run_summary.csv",
+          "per-family corrected rate = sum(run_seconds) / sum(events) within geometry, mode, and family",
+          "corrected full-target run hours = sum(per-family rate multiplied by target family events) / 3600",
+          "multiplier = corrected full-target point estimate / legacy measured full-target run time"
+        ]
+      }
+    },
+    {
+      "id": "source_repair_contract",
+      "label": "TES-511 primary-source unit repair contract",
+      "path": "engineering/particle_source_unit_repair_20260811/README.md",
+      "query": {
+        "description": "Defines the unit-only total-gamma repair, preserved source/geometry contracts, completed mergeable batches, and authority boundary.",
+        "tables_used": [
+          "engineering/particle_source_unit_repair_20260811/README.md"
+        ]
+      }
+    }
+  ]
+}

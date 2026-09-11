@@ -1,0 +1,210 @@
+{
+  "schema_version": 1,
+  "status": "PASS__SH3_FOUR_ENVIRONMENT_SOURCE_SPECTRUM_PROJECTION",
+  "geometry": "SH3_OPTV3_60cm",
+  "authority_boundary": "SOURCE_SPECTRUM_RESPONSE_PROJECTION__NOT_ENVIRONMENT_MATCHED_TRANSPORT",
+  "SH3_event_closure": {
+    "prompt_W2_final_events": 12,
+    "prompt_W2_final_rate_cps": 0.005794014387213695,
+    "delayed_W2_final_events": 111,
+    "delayed_W2_final_rate_cps": 0.003624666351900698,
+    "total_direct_no_coincidence_rate_cps": 0.009418680739114393
+  },
+  "SH3_balloon_20d": {
+    "F3_ph_cm2_s": 2.2293690527382333e-05,
+    "statistical_sigma_ph_cm2_s": 2.086243579556387e-06,
+    "Aeff_cm2": 15.085439999999998,
+    "effective_20d_slant45_signal_transmission_holding_accidentals_common": 0.646719999026442
+  },
+  "L2_source_contract": {
+    "location_semantics": "Sun-Earth L2 treated as near-Earth interplanetary space at approximately 1 AU",
+    "gamma": "COSI DC4 cosmic-photon intensity expanded from LEO unocculted sky to full 4pi",
+    "charged_primaries": "same COSI 1-AU p/alpha/e-/e+ parent spectra as LEO with 12.6-GV geomagnetic transmission removed, full 4pi",
+    "removed_LEO_components": [
+      "Earth albedo photons",
+      "atmospheric 511",
+      "atmospheric/albedo neutrons",
+      "secondary charged particles",
+      "SAA"
+    ],
+    "not_in_baseline": [
+      "SEP",
+      "GCR Z>2 heavy ions",
+      "directional Galactic diffuse sky",
+      "spacecraft-local secondaries beyond retained SH3 response"
+    ],
+    "integrated_flux_over_fixed_model_support_cm2_s": {
+      "gamma": {
+        "nodes": 86,
+        "support_min_MeV_total": 0.1,
+        "support_max_MeV_total": 739072.2033525775,
+        "integrated_flux_over_model_support_cm2_s": 1.839727347466887
+      },
+      "p": {
+        "nodes": 67,
+        "support_min_MeV_total": 10.0,
+        "support_max_MeV_total": 10000000.0,
+        "integrated_flux_over_model_support_cm2_s": 2.795930895251337
+      },
+      "alpha": {
+        "nodes": 67,
+        "support_min_MeV_total": 10.0,
+        "support_max_MeV_total": 10000000.0,
+        "integrated_flux_over_model_support_cm2_s": 0.45796663837780976
+      },
+      "eminus": {
+        "nodes": 31,
+        "support_min_MeV_total": 657.9332246575683,
+        "support_max_MeV_total": 351119.17342151416,
+        "integrated_flux_over_model_support_cm2_s": 0.046982883452817335
+      },
+      "eplus": {
+        "nodes": 31,
+        "support_min_MeV_total": 657.9332246575683,
+        "support_max_MeV_total": 351119.17342151416,
+        "integrated_flux_over_model_support_cm2_s": 0.004449148797132692
+      }
+    },
+    "SH3_activation_RP_mapping_status_counts": {
+      "L2_COSI_1AU_PRIMARY__LEO_GEOMAGNETIC_FILTER_REMOVED__4PI": 52,
+      "L2_COSI_COSMIC_PHOTON_INTENSITY__4PI": 2,
+      "L2_NO_PLANETARY_ALBEDO_NEUTRON_OR_ATMOSPHERIC_MUON_COMPONENT": 25,
+      "TARGET_MODEL_OUTSIDE_CITED_SUPPORT_AS_ZERO": 6
+    }
+  },
+  "environment_estimates": {
+    "balloon_38km": {
+      "environment": "balloon_38km",
+      "geometry": "SH3_OPTV3_60cm",
+      "prompt_rate_cps": 0.005794014387213694,
+      "delayed_rate_cps": 0.003624666351900699,
+      "total_rate_cps": 0.009418680739114393,
+      "background_ratio_to_balloon": 1.0,
+      "conditional_mc_sigma_cps": 0.0017591124447582376,
+      "conditional_background_relative_sigma": 0.18676845446654783,
+      "weighted_effective_selected_events": 28.667706537946803,
+      "signal_effective_area_cm2": 15.085439999999998,
+      "exposure_days": 20.0,
+      "assumed_signal_transmission": 0.646719999026442,
+      "spectrum_only_relative_F3_to_balloon": 1.0,
+      "mission_relative_F3_to_SH3_balloon_including_signal_transmission": 1.0,
+      "estimated_20d_F3_ph_cm2_s": 2.2293690527382333e-05,
+      "estimated_20d_F3_conditional_MC_relative_sigma": 0.09358000089729192,
+      "estimated_20d_F3_conditional_MC_sigma_ph_cm2_s": 2.086243579556387e-06,
+      "delayed_fraction_of_projected_background": 0.384838009939969,
+      "top_5_delayed_event_fraction": 0.14556675214984946,
+      "top_2_activation_key_fraction": 0.19208139806127686,
+      "proton_fraction_of_delayed": 0.582267008599398,
+      "SH3_balloon_official_F3_ph_cm2_s": 2.2293690527382333e-05,
+      "SH3_balloon_official_statistical_sigma_ph_cm2_s": 2.086243579556387e-06
+    },
+    "leo530_quiet_proxy": {
+      "environment": "leo530_quiet_proxy",
+      "geometry": "SH3_OPTV3_60cm",
+      "prompt_rate_cps": 0.0014769334142005726,
+      "delayed_rate_cps": 0.003708634288027353,
+      "total_rate_cps": 0.005185567702227925,
+      "background_ratio_to_balloon": 0.5505619996963085,
+      "conditional_mc_sigma_cps": 0.0007805675435770062,
+      "conditional_background_relative_sigma": 0.1505269217180683,
+      "weighted_effective_selected_events": 44.133832177481295,
+      "signal_effective_area_cm2": 15.085439999999998,
+      "exposure_days": 20.0,
+      "assumed_signal_transmission": 1.0,
+      "spectrum_only_relative_F3_to_balloon": 0.741998652085237,
+      "mission_relative_F3_to_SH3_balloon_including_signal_transmission": 0.4798653675541857,
+      "estimated_20d_F3_ph_cm2_s": 1.069796999906159e-05,
+      "estimated_20d_F3_conditional_MC_relative_sigma": 0.0753226333363466,
+      "estimated_20d_F3_conditional_MC_sigma_ph_cm2_s": 8.057992716825524e-07,
+      "delayed_fraction_of_projected_background": 0.7151838527600318,
+      "top_5_delayed_event_fraction": 0.21417316693507754,
+      "top_2_activation_key_fraction": 0.17770910651508484,
+      "proton_fraction_of_delayed": 0.7106694899945308,
+      "SH3_balloon_official_F3_ph_cm2_s": 2.2293690527382333e-05,
+      "SH3_balloon_official_statistical_sigma_ph_cm2_s": 2.086243579556387e-06
+    },
+    "lunar_surface_proxy": {
+      "environment": "lunar_surface_proxy",
+      "geometry": "SH3_OPTV3_60cm",
+      "prompt_rate_cps": 0.1841764847421588,
+      "delayed_rate_cps": 0.03593450536609711,
+      "total_rate_cps": 0.2201109901082559,
+      "background_ratio_to_balloon": 23.369620035443752,
+      "conditional_mc_sigma_cps": 0.09727148165644804,
+      "conditional_background_relative_sigma": 0.441920149505518,
+      "weighted_effective_selected_events": 5.120500257925518,
+      "signal_effective_area_cm2": 15.085439999999998,
+      "exposure_days": 20.0,
+      "assumed_signal_transmission": 1.0,
+      "spectrum_only_relative_F3_to_balloon": 4.834213486746707,
+      "mission_relative_F3_to_SH3_balloon_including_signal_transmission": 3.126382541442443,
+      "estimated_20d_F3_ph_cm2_s": 6.96986048491289e-05,
+      "estimated_20d_F3_conditional_MC_relative_sigma": 0.22098023709596112,
+      "estimated_20d_F3_conditional_MC_sigma_ph_cm2_s": 1.540201422481821e-05,
+      "delayed_fraction_of_projected_background": 0.16325629787237633,
+      "top_5_delayed_event_fraction": 0.5898177117721588,
+      "top_2_activation_key_fraction": 0.6267664994370955,
+      "proton_fraction_of_delayed": 0.5732736960753902,
+      "SH3_balloon_official_F3_ph_cm2_s": 2.2293690527382333e-05,
+      "SH3_balloon_official_statistical_sigma_ph_cm2_s": 2.086243579556387e-06
+    },
+    "sun_earth_l2_quiet_1au_proxy": {
+      "environment": "sun_earth_l2_quiet_1au_proxy",
+      "geometry": "SH3_OPTV3_60cm",
+      "prompt_rate_cps": 0.0002692426768121059,
+      "delayed_rate_cps": 0.06379970769406762,
+      "total_rate_cps": 0.06406895037087973,
+      "background_ratio_to_balloon": 6.8023274326319205,
+      "conditional_mc_sigma_cps": 0.02684083244619173,
+      "conditional_background_relative_sigma": 0.4189366657455228,
+      "weighted_effective_selected_events": 5.697748247248574,
+      "signal_effective_area_cm2": 15.085439999999998,
+      "exposure_days": 20.0,
+      "assumed_signal_transmission": 1.0,
+      "spectrum_only_relative_F3_to_balloon": 2.608127188737528,
+      "mission_relative_F3_to_SH3_balloon_including_signal_transmission": 1.6867280129611708,
+      "estimated_20d_F3_ph_cm2_s": 3.7603392324822876e-05,
+      "estimated_20d_F3_conditional_MC_relative_sigma": 0.20948960124248725,
+      "estimated_20d_F3_conditional_MC_sigma_ph_cm2_s": 7.87751966349195e-06,
+      "delayed_fraction_of_projected_background": 0.9957976106171004,
+      "top_5_delayed_event_fraction": 0.907545340415616,
+      "top_2_activation_key_fraction": 0.907545340415616,
+      "proton_fraction_of_delayed": 0.9637203790495994,
+      "SH3_balloon_official_F3_ph_cm2_s": 2.2293690527382333e-05,
+      "SH3_balloon_official_statistical_sigma_ph_cm2_s": 2.086243579556387e-06
+    }
+  },
+  "main_L2_result": {
+    "environment": "sun_earth_l2_quiet_1au_proxy",
+    "geometry": "SH3_OPTV3_60cm",
+    "prompt_rate_cps": 0.0002692426768121059,
+    "delayed_rate_cps": 0.06379970769406762,
+    "total_rate_cps": 0.06406895037087973,
+    "background_ratio_to_balloon": 6.8023274326319205,
+    "conditional_mc_sigma_cps": 0.02684083244619173,
+    "conditional_background_relative_sigma": 0.4189366657455228,
+    "weighted_effective_selected_events": 5.697748247248574,
+    "signal_effective_area_cm2": 15.085439999999998,
+    "exposure_days": 20.0,
+    "assumed_signal_transmission": 1.0,
+    "spectrum_only_relative_F3_to_balloon": 2.608127188737528,
+    "mission_relative_F3_to_SH3_balloon_including_signal_transmission": 1.6867280129611708,
+    "estimated_20d_F3_ph_cm2_s": 3.7603392324822876e-05,
+    "estimated_20d_F3_conditional_MC_relative_sigma": 0.20948960124248725,
+    "estimated_20d_F3_conditional_MC_sigma_ph_cm2_s": 7.87751966349195e-06,
+    "delayed_fraction_of_projected_background": 0.9957976106171004,
+    "top_5_delayed_event_fraction": 0.907545340415616,
+    "top_2_activation_key_fraction": 0.907545340415616,
+    "proton_fraction_of_delayed": 0.9637203790495994,
+    "SH3_balloon_official_F3_ph_cm2_s": 2.2293690527382333e-05,
+    "SH3_balloon_official_statistical_sigma_ph_cm2_s": 2.086243579556387e-06
+  },
+  "cautions": [
+    "Target spectra reweight retained balloon transport at incident primary energy; no target-environment transport was run.",
+    "Activation ratios are averaged within exact incident-family x source-volume x parent-ZA x excitation keys.",
+    "The L2 central value has sparse conditional response statistics; five delayed selected events supply about 91% of the projected delayed rate.",
+    "Six of 85 activation RP records fall below the retained L2 electron/positron support and are numerical coverage gaps, not physical zero-flux claims; their current W2 contribution is negligible.",
+    "The L2 estimate excludes SEP and heavy ions because the retained eight-family SH3 response has no corresponding source families.",
+    "Target-environment accidental-coincidence changes and orbit/site time histories are not modeled."
+  ]
+}

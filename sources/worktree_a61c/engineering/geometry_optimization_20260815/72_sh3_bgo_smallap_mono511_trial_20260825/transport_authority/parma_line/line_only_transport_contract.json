@@ -1,0 +1,76 @@
+{
+  "authority": {
+    "o8_det_sha256": "dd2c1d68cd474f8b0c7489f2cbbfc924eb69beb14d3ce360d9437c319a33d6cb",
+    "o8_geo_sha256": "ff4e8402df702501e0112fe377d837a74c39100317146b09e9569b7bd615c37c",
+    "o8_setup_sha256": "86a9e56e54dc86834dfe2a9b03a5f71373fb40f2ef24e3889fa66f216058fbec",
+    "parma_80bin_physical_flux_csv_sha256": "2f4ae904bf89179fe1709e3a8123ff864f4450e8bcf443389898ea43cd6a5a32",
+    "step05_implementation_sha256": "0c1e69e4a73bd8653e999b1d8d2aff404a37a44457e40f134388c819ad4b91ab",
+    "step09_summary_sha256": "8d147e21928b4830a215ab034f29379383b4368b4177f8a16a2f45769df73a25"
+  },
+  "cleanup": {
+    "delete_command_implemented": false,
+    "eligibility_scope": "exact validated SIM paths under the new campaign raw directory only",
+    "raw_automatically_deleted": false
+  },
+  "concurrency": {
+    "aggregate_uses_same_lock": true,
+    "lock": "campaign-local fcntl exclusive lock",
+    "manifest_reloaded_inside_lock": true,
+    "stale_manifest_replace_forbidden": true
+  },
+  "excluded": [
+    "broadband photon continuum",
+    "prompt",
+    "delayed or activation",
+    "focused signal",
+    "all other particles",
+    "full-chain recomposition"
+  ],
+  "execution_gate": {
+    "confirmation": "RUN_O8_PARMA511_LINE_ONLY_510.99895",
+    "flag": "--authorize-line-only-cosima",
+    "preparation_is_authorization": false
+  },
+  "frozen_active_veto_blocker": {
+    "retained_old_3m_cc_hit_records": {
+      "ActiveShield_S3C_BGO_Kapton_BottomCap_0p3mm": 40677,
+      "ActiveShield_S3C_BGO_Kapton_SideWrap_WindowCut_0p3mm": 155840,
+      "ActiveShield_S3C_BGO_Kapton_TopAnnulus_0p3mm": 7280
+    },
+    "retained_old_w2_active_energy_max_keV": {
+      "primary_420eV_8": 0.0,
+      "unsmeared_9": 0.0
+    },
+    "known_passive_kapton_wrappers_matched_by_name": [
+      "ActiveShield_S3C_BGO_Kapton_BottomCap_0p3mm",
+      "ActiveShield_S3C_BGO_Kapton_SideWrap_WindowCut_0p3mm",
+      "ActiveShield_S3C_BGO_Kapton_TopAnnulus_0p3mm"
+    ],
+    "policy_changed_by_harness": false,
+    "predicate": "BGO/plastic plus ACTIVE_SHIELD substring, which unintentionally includes the three passive O8 Kapton wrappers"
+  },
+  "included": "atmospheric annihilation mono gamma line only",
+  "line_energy_keV": 510.99895,
+  "physical_4pi_flux_ph_cm2_s": 0.16651547160226118,
+  "physical_angular_grid_equal_mu_bins": 80,
+  "response": {
+    "active_veto_threshold_keV": 50.0,
+    "default_seed_replicas": 64,
+    "fwhm_keV": 0.42,
+    "primary_atmospheric_seed": 1026071308,
+    "seed_stride": 7919,
+    "tes_threshold_keV": 0.3
+  },
+  "runtime": {
+    "cosima_binary_sha256": "3fb7613de58ebb365f2a55c3336e54d2aabea2a4ddb282003a5d25eac6f1c74a",
+    "package44_runner_sha256": "942bbcc3b466bd11ec38d8bd9b868762b70a7d895caadf610a85cdbbacc23a9c",
+    "preflight_probe": "cosima -h only; no source argument",
+    "stdout_stderr_storage": "unique streaming gzip log; no uncompressed log"
+  },
+  "schema": "o8-parma511-line-transport-contract-v1",
+  "source_card_required": {
+    "particle_type": 1,
+    "spectrum": "Mono 510.99895",
+    "store_simulation_info": "all"
+  }
+}

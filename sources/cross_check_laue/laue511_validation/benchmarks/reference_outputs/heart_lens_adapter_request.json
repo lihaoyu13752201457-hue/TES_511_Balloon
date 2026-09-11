@@ -1,0 +1,161 @@
+{
+  "adapter_strategy": {
+    "comparability_boundary": "if HEART or another external tool cannot independently orient the diffracting lattice plane according to ideal_plane_normal_*, the run is a geometry smoke test rather than a current-lens oracle",
+    "crystal_model": "flat Ge(111) mosaic tile, tile_size_mm by tile_size_mm, thickness_mm from each ring; use the tile table's ideal_plane_normal_* as the target diffracting-plane normal",
+    "detector": "plane normal to +z at focal_plane_z_mm; export detector-plane coordinates relative to the optical axis",
+    "full_lens_combination": "accumulate diffracted detector hits across all rings/tiles before computing lens-level observables",
+    "source": "parallel on-axis rays, +z direction, one ring design energy per ring unless the external oracle supports the whole 480-550 keV ring set in one run"
+  },
+  "comparison_targets": {
+    "current_opticsim_observed_diffracted_area_cm2": 0.5684893167746538,
+    "current_opticsim_spot_d90_cm": 0.21941501207548417,
+    "geometric_area_cm2": 2.3040000000000003,
+    "python_reference_diffracted_area_cm2": 0.566854076473241
+  },
+  "coordinate_convention": {
+    "focal_plane_z_mm": 8300.0,
+    "incident_direction": "+z",
+    "lens_entry_z_mm": "approximately -thickness_mm/2 per tile in current opticsim output",
+    "source": "parallel on-axis 480-550 keV photons, one design energy per ring"
+  },
+  "heart": {
+    "checked_on": "2026-05-28",
+    "documentation": "https://heart-ray-tracing.gitlab.io/HEART/",
+    "head_commit_checked": "d54196aaa787eaefef6df7c66255803f50ea8517",
+    "notes": [
+      "HEART uses mm for geometry and keV for photon energies.",
+      "HEART HDF5 output stores detector images and detector pixel axes, not final per-photon detector hit coordinates.",
+      "Use tools/import_heart_detector_image.py for HEART HDF5 detector-image exports.",
+      "Use external_lens_oracle_tiles.csv as the per-tile geometry and crystallographic orientation handoff.",
+      "A full lens can be adapted as a loop over flat tiles/rings only if the tile model maps each ideal_plane_normal_* row to the Ge(111) lattice-plane normal."
+    ],
+    "repository": "https://gitlab.com/heart-ray-tracing/HEART"
+  },
+  "import_command": "python3 tools/import_heart_detector_image.py --input path/to/heart_output.h5 --incident-weight <total incident ray weight if not stored in HDF5>",
+  "physics": {
+    "crystal_shape": "flat mosaic tile",
+    "crystallite_thickness_um": 5.0,
+    "hkl": [
+      1,
+      1,
+      1
+    ],
+    "material": "Ge",
+    "mosaic_fwhm_arcsec": 30.0
+  },
+  "purpose": "heart_full_lens_adapter_request",
+  "requested_heart_hdf5_datasets": {
+    "detector_image": "Results/detector_image",
+    "detector_l_pos_mm": "Detector/detector_L_pos",
+    "detector_w_pos_mm": "Detector/detector_W_pos",
+    "heart_version": "Version",
+    "number_of_photons": "Diagnostics/Number_of_Photons"
+  },
+  "requested_hit_columns": [
+    {
+      "name": "x_mm",
+      "required": true,
+      "unit": "mm"
+    },
+    {
+      "name": "y_mm",
+      "required": true,
+      "unit": "mm"
+    },
+    {
+      "name": "weight",
+      "required": false,
+      "unit": "dimensionless"
+    },
+    {
+      "name": "event_id",
+      "required": false,
+      "unit": "index"
+    },
+    {
+      "name": "ring_id",
+      "required": false,
+      "unit": "index"
+    },
+    {
+      "name": "tile_id",
+      "required": false,
+      "unit": "index"
+    },
+    {
+      "name": "energy_keV",
+      "required": false,
+      "unit": "keV"
+    }
+  ],
+  "requested_hit_table_schema": "EXTERNAL_LENS_HITS_SCHEMA.md",
+  "requested_tile_table": "external_lens_oracle_tiles.csv",
+  "rings": [
+    {
+      "d_spacing_A": 3.266590088,
+      "design_energy_keV": 480.0,
+      "h": 1,
+      "k": 1,
+      "l": 1,
+      "material": "Ge",
+      "n_tiles": 72,
+      "radius_mm": 65.644327,
+      "ring_id": 0,
+      "thickness_mm": 9.452263,
+      "tile_size_mm": 0.8
+    },
+    {
+      "d_spacing_A": 3.266590088,
+      "design_energy_keV": 500.0,
+      "h": 1,
+      "k": 1,
+      "l": 1,
+      "material": "Ge",
+      "n_tiles": 72,
+      "radius_mm": 63.018438,
+      "ring_id": 1,
+      "thickness_mm": 9.947306,
+      "tile_size_mm": 0.8
+    },
+    {
+      "d_spacing_A": 3.266590088,
+      "design_energy_keV": 511.0,
+      "h": 1,
+      "k": 1,
+      "l": 1,
+      "material": "Ge",
+      "n_tiles": 72,
+      "radius_mm": 61.66182,
+      "ring_id": 2,
+      "thickness_mm": 10.218801,
+      "tile_size_mm": 0.8
+    },
+    {
+      "d_spacing_A": 3.266590088,
+      "design_energy_keV": 530.0,
+      "h": 1,
+      "k": 1,
+      "l": 1,
+      "material": "Ge",
+      "n_tiles": 72,
+      "radius_mm": 59.451215,
+      "ring_id": 3,
+      "thickness_mm": 10.686285,
+      "tile_size_mm": 0.8
+    },
+    {
+      "d_spacing_A": 3.266590088,
+      "design_energy_keV": 550.0,
+      "h": 1,
+      "k": 1,
+      "l": 1,
+      "material": "Ge",
+      "n_tiles": 72,
+      "radius_mm": 57.289274,
+      "ring_id": 4,
+      "thickness_mm": 11.17625,
+      "tile_size_mm": 0.8
+    }
+  ],
+  "source_request": "external_lens_oracle_request.json"
+}

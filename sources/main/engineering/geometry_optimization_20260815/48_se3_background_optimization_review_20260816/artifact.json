@@ -1,0 +1,1707 @@
+{
+  "surface": "report",
+  "manifest": {
+    "version": 1,
+    "surface": "report",
+    "title": "SE3 本底归因与几何优化复习",
+    "generatedAt": "2026-08-16T00:00:00+08:00",
+    "blocks": [
+      {
+        "id": "title",
+        "type": "markdown",
+        "body": "# SE3 本底归因与几何优化复习"
+      },
+      {
+        "id": "technical_summary",
+        "type": "markdown",
+        "sourceId": "src_headline",
+        "body": "## 技术摘要\n\n- **优化主靶点是 TES 近场 Cu，而不是 BGO。** SE3 day-15 总活度为 1348.14 Bq，但最终 delayed W2 的约 93.0% 来自 Cu-61/62/64；BGO 占总活度约 77%，最终 W2 却没有观测 survivor。\n- **瞬时本底已由现有主动屏蔽解决。** 120 个 pre-veto W2 事件、7.5800 cps 全部带 pair/annihilation 链并在 50 keV active veto 后归零；IA INIT 射线与 instrument-local 外包络相交后，按权重约 84.20% 从侧面进入。\n- **SE3 的源项优化有效，但 final-rate 胜负未定。** 冷板活度较 S3d 降约 51.8%，Cu-62/64 各降约 31%；然而 delayed 仅 47 个加权 survivor，SE3 与 S3d 的 delayed 中央值差约 0.25σ。\n- **推荐 SE3-v2：先减影，再错孔，最后才考虑局部 liner。** 首轮目标是把 50 mK Cu can 底盖、L0 实心 Cu 盘和 MXC 视线耦合压低；预期筛选区间为 delayed 下降约 32–45%，对应 F3 约 5.45–6.15 ×10⁻⁵（Aeff 不变），必须由 matched transport 验证。"
+      },
+      {
+        "id": "headline_strip",
+        "type": "metric-strip",
+        "cardIds": [
+          "card_delayed",
+          "card_prompt",
+          "card_cu",
+          "card_f3"
+        ]
+      },
+      {
+        "id": "definitions",
+        "type": "markdown",
+        "body": "## 判读口径\n\n本报告把 **W2** 定义为测量能量 510.58–511.42 keV；所有三流共享 420 eV FWHM、0.3 keV pixel threshold、BGO+plastic event-summed 50 keV veto 与 frozen Step05。“总活度”指 day-15 transported ground-state inventory；“最终本底”指响应、veto、W2 与 Step05 后的加权率。二者必须分开看。当前八族 gamma 已包含湮没隆起，因此不再叠加独立 mono-511。"
+      },
+      {
+        "id": "geometry_flow",
+        "type": "markdown",
+        "body": "## M05 的流程主干仍正确，但当前必须换成 corrected-keV 合同\n\n1. **聚焦信号：** 511 keV 远场点源先进入独立 Laue 质量模型，衍射后的焦平面位置/方向写成 EventList，再从 detector-side 注入同一探测器质量模型。\n2. **prompt：** corrected EXPACS/PARMA 的 γ、n、e−、e+、p、α、μ−、μ+ 八族按 family-local exposure 直接输运；当前 total-gamma 已含湮没隆起，不再加 mono-511。\n3. **activation：** 同一八族跑 BUILDUP，记录核素态、logical volume、exact production xyz 与 family；按 geometry × family 的 `sum(RP)/sum(TT)` 和 NUBASE ground-state 构建 inventory。\n4. **delayed：** inventory 按 exact position 采样 decay source；transport trigger time 只是衰变记录，不是 balloon exposure。\n5. **共同响应：** 三类 catalogue 都经过 per-pixel 420 eV FWHM、0.3 keV threshold、event-summed BGO+plastic 50 keV veto、W2 与 frozen Step05。single-pixel 固定保留，因此 Step05 不是 SE3 delayed 的主旋钮。\n6. **任务折叠：** 对 fixed geometry 用 81 个 0.25-day 节点折叠 0–20 d 的 signal transmission、prompt family response、inventory recurrence 与 delayed response，最后计算 S、B、Z 与 F3。\n\n### 三个几何的关键细节\n\n**Mass_model_511** 有 6 层、2256 个 Ta TES pixel，层后 Si substrate；近场含 Cu rings/深层实心盘、Nb 与 MuMetal、2 mm 50 mK Cu can，六块 6 mm 冷盘/盖，8 mm/624-bar W 多孔准直器。主动 CsI 为侧 40 mm、底 60 mm、顶 30 mm；总质量约 180.509 kg（含 CsI）。\n\n**S3d-O8** 把主动层冻结为侧 40 mm、底 30 mm、顶 10 mm，并去掉三件 outer W2；corrected-keV 对照得到 prompt 0.03384、delayed 0.05448、总 0.08832 cps。旧 O9 把侧 BGO 降到 30 mm 后出现明显侧入射恶化，所以该旋钮不应在 SE3 重开。\n\n**SE3 Plan1** 将五块冷板 6→4 mm 并各开 48 孔，Nb→Al、移除 MuMetal，BPE 只开光学口而 10 mm plastic 连续；白名单触及质量减少 10.217 kg。full-envelope signal 的主要前置损失来自 plastic 与 W collimator，BPE port 没有观测到 ray path/deposit，但仍缺同注入面的 S3d control。\n\n结构流程和几何事实可复用；M05 的旧 broadband 数率、独立 mono-511 叠加，以及把 unit-EventList 约 0.987/s 当物理 signal occupancy 的写法不可沿用。"
+      },
+      {
+        "id": "geometry_table_block",
+        "type": "table",
+        "tableId": "geometry_table"
+      },
+      {
+        "id": "prompt_finding",
+        "type": "markdown",
+        "sourceId": "src_prompt_ingress",
+        "body": "## 瞬时本底主要从侧面入射，但当前已被主动层截净\n\nW2 pre-veto 的 7.5800 cps 中，IA INIT 射线与 instrument-local 外包络相交后约 84.20% 从侧面、12.47% 从底部、3.33% 从顶部进入；这是方向代理，不是首相互作用面。120/120 事件均出现 pair + annihilation，说明到达 W2 的主链不是带电粒子直接沉积，而是高能初级粒子产生正电子后湮没。现有 10 mm 连续塑闪拒绝约 82.58% 的加权率，余下约 17.42% 由 BGO-only 拒绝，post-veto W2 为零。含义很直接：保留侧 BGO 40 mm 和连续塑闪；不要用开侧窗、降阈值或更紧 Step05 换取并不存在的当前收益。"
+      },
+      {
+        "id": "prompt_chart_block",
+        "type": "chart",
+        "chartId": "prompt_ingress_chart"
+      },
+      {
+        "id": "prompt_veto_table_block",
+        "type": "table",
+        "tableId": "prompt_veto_table"
+      },
+      {
+        "id": "activation_finding",
+        "type": "markdown",
+        "sourceId": "src_material",
+        "body": "## 总活度在 BGO，选后本底却在近场 Cu\n\nBGO 主动闪烁体贡献 1037.86 Bq、约 76.99% 的 day-15 活度，却没有最终 W2 survivor；cold plates 只有 45.39 Bq、other internal 只有 28.23 Bq，却分别贡献约 46.87% 和 53.00% 的最终 delayed 率。这说明本底控制量不是 Bq 本身，而是 **产生活度 × 到 TES 的传输/选择耦合**。按体积看，MXC Cu 板、50 mK Cu can 底盖、4 K Cu 板和 L0 实心 Cu 盘合计约 78.83% 的 final delayed 中央率。"
+      },
+      {
+        "id": "volume_chart_block",
+        "type": "chart",
+        "chartId": "delayed_volume_chart"
+      },
+      {
+        "id": "material_table_block",
+        "type": "table",
+        "tableId": "material_table"
+      },
+      {
+        "id": "activation_chain",
+        "type": "markdown",
+        "body": "## delayed 的主链是 p/n 激发近场 Cu-62/64/61\n\nproton、neutron、alpha 合计产生约 99.18% 的 day-15 总活度；到了 final W2，proton 与 neutron 分别占约 58.79% 和 28.02%，alpha 约 9.98%。按 radioactive parent，Cu-62、Cu-64、Cu-61 分别贡献约 59.18%、28.71%、5.11%，三者合计约 93.0%。因此最有效的策略是同时降低近场 Cu 的产生量和到 TES 的可见固角；单纯加厚 BPE 只能部分调节 neutron，不会按比例消掉 proton-driven 分量。"
+      },
+      {
+        "id": "parent_table_block",
+        "type": "table",
+        "tableId": "parent_table"
+      },
+      {
+        "id": "incident_table_block",
+        "type": "table",
+        "tableId": "incident_table"
+      },
+      {
+        "id": "comparison_finding",
+        "type": "markdown",
+        "sourceId": "src_comparison",
+        "body": "## SE3 已降低源项，但尚未证明 final delayed 优于 S3d\n\nSE3 将 cold-plate A15 降低约 51.8%，Cu-62/64 A15 各降低约 31%，并移除了 S3d 中磁屏蔽的主要 selected delayed 中央贡献。但 SE3 delayed 为 0.06011 ± 0.02003 cps，S3d 为 0.05448 ± 0.01016 cps，差异只有约 0.25σ；当前样本每族约 83,334 次 delayed trigger，分体积 Neff 很低。因此可据来源构成确定优化方向，不能据 0.0601/0.0545 的点估计宣布 SE3 退化或晋级。"
+      },
+      {
+        "id": "comparison_table_block",
+        "type": "table",
+        "tableId": "comparison_table"
+      },
+      {
+        "id": "optimization_design",
+        "type": "markdown",
+        "sourceId": "src_actions",
+        "body": "## 推荐方案：SE3-v2“近场 Cu 减影 + 冷板错孔”\n\n先做两个嵌套、可归因的几何变体。**V2A** 把 50 mK Cu can 底盖改为环形盖加少量径向热桥，把 L0 实心盘改为 open-ring/spoke，并把热带和锚点移出 TES 直视固角。**V2B** 在 V2A 上重排 MXC 开孔到 TES 投影方向，同时错开五块冷板的 48 孔图案，消除当前 16 组两板投影重合通道。BGO、塑闪、BPE port 与 W/FoV 全部冻结。只有 V2A/B 仍不足时，才在 37.96 mm 光学走廊之外试验分段 shadow cup / graded liner；任何 Ta/W/Pb/Al 替材都必须有候选自有 BUILDUP，不能把被动衰减收益与新增活化拆开估。"
+      },
+      {
+        "id": "actions_table_block",
+        "type": "table",
+        "tableId": "actions_table"
+      },
+      {
+        "id": "expected_result",
+        "type": "markdown",
+        "sourceId": "src_sensitivity",
+        "body": "## 预期：32–45% delayed 降幅是首轮合理区间\n\nV2A 直接覆盖当前约 39.0% 的 delayed 中央率；V2B 加上 MXC 后覆盖约 64.1%。若它们对目标部件实现 50–70% 抑制，则总 delayed 的透明筛选预期约下降 32–45%，即约 0.033–0.042 cps。在 signal Aeff 保留 98% 的统一缩放情景下，背景下降 40%、50%、60%、65% 时，F3 分别约为 5.81、5.30、4.74、4.44 ×10⁻⁵。这些值是份额敏感性和晋级尺，不是未经 transport 的物理预言。"
+      },
+      {
+        "id": "sensitivity_chart_block",
+        "type": "chart",
+        "chartId": "sensitivity_chart"
+      },
+      {
+        "id": "gates_table_block",
+        "type": "table",
+        "tableId": "gates_table"
+      },
+      {
+        "id": "methodology",
+        "type": "markdown",
+        "body": "## 方法与复用代码\n\n本次只读复用 corrected SE3 response/catalogue、S3d 的 `scan_target_inits/classify_entry` 与 selected-lineage 反查方法；只扫描 10 个含目标事件的 prompt SIM 文件，没有启动 transport，也没有做额外大文件哈希。activation 以 geometry × family 内 `sum(RP)/sum(TT)`、NUBASE ground-state、exact-position parent/volume 为合同；prompt 与 delayed 均在同一响应、veto、W2 和 Step05 下比较。下一轮先做现有 exact-position source 的 response-only shadowing replay，再为入围几何跑 fresh corrected BUILDUP→inventory→delayed，最后用同一 37,194 条 full-envelope ray bank 做 signal 与 prompt canary。"
+      },
+      {
+        "id": "limitations",
+        "type": "markdown",
+        "body": "## 不确定性与稳健性边界\n\n- final delayed 只有 47 个加权事件，若干体积的 Neff≈1；分体积点估计适合定方向，不适合精排。\n- SE3 full-envelope Aeff=11.6948 cm² 与历史 S3d post-Be Aeff=15.0417 cm² 的注入面不同，不能直接形成公平比值。\n- current total-gamma 已包含湮没隆起；若未来重建 continuum+mono，必须先显式减线并做 flux closure。\n- 几何减影优先于材料替换；材料替换会改变自身活化，不能只做衰减响应重放后就晋级。"
+      },
+      {
+        "id": "next_steps",
+        "type": "markdown",
+        "body": "## 建议的下一轮执行顺序\n\n1. 建 V2A/V2B 两个嵌套几何，并做质量、热路、磁需求、overlap/navigation 审核。\n2. 用现有 exact-position delayed source 做 response-only 视线筛选，定位几何耦合收益。\n3. 对入围者跑 fresh corrected-keV BUILDUP→inventory→delayed；对 Cu-61/62/64 × cap/MXC/L0/4K 做分层 importance sampling。\n4. 用同一 full-envelope signal ray bank 和 paired prompt seeds 做 matched closure；按下表 gate 晋级。"
+      },
+      {
+        "id": "further_questions",
+        "type": "markdown",
+        "body": "## 仍需工程侧回答的问题\n\n- 50 mK can 底盖和 L0 盘允许保留的最小热导、刚度与磁屏蔽边界是多少？\n- 五块冷板的 48 孔是否有不可移动的线束、支撑或热带 keep-out？\n- 若 V2A/B 不足，局部 shadow cup 的候选材料、最大质量和可接受自身活化上限是什么？\n- 能否补一个同注入面的 S3d full-envelope signal control，以关闭 Aeff 比较缺口？"
+      }
+    ],
+    "cards": [
+      {
+        "id": "card_delayed",
+        "dataset": "headline",
+        "sourceId": "src_headline",
+        "description": "day-15 final delayed W2；后续指标为同一 MC 估计的统计支持。",
+        "metrics": [
+          {
+            "label": "delayed W2",
+            "field": "selected_delayed_rate_cps",
+            "format": "number",
+            "unit": "cps"
+          },
+          {
+            "label": "MC σ",
+            "field": "selected_delayed_sigma_cps",
+            "format": "number",
+            "unit": "cps"
+          },
+          {
+            "label": "survivors",
+            "field": "selected_delayed_events",
+            "format": "number"
+          }
+        ]
+      },
+      {
+        "id": "card_prompt",
+        "dataset": "headline",
+        "sourceId": "src_headline",
+        "description": "SE3 W2 prompt 在 50 keV active veto 后的观测中央率。",
+        "metrics": [
+          {
+            "label": "prompt post-veto",
+            "field": "prompt_post_veto_rate_cps",
+            "format": "number",
+            "unit": "cps"
+          },
+          {
+            "label": "pre-veto",
+            "field": "prompt_pre_veto_rate_cps",
+            "format": "number",
+            "unit": "cps"
+          }
+        ]
+      },
+      {
+        "id": "card_cu",
+        "dataset": "headline",
+        "sourceId": "src_headline",
+        "description": "Cu-61、Cu-62、Cu-64 占最终 delayed W2 的加权率份额。",
+        "metrics": [
+          {
+            "label": "Cu parents",
+            "field": "selected_cu_parent_share",
+            "format": "percent"
+          }
+        ]
+      },
+      {
+        "id": "card_f3",
+        "dataset": "headline",
+        "sourceId": "src_headline",
+        "description": "SE3 central 20-day mission fold；显示值单位为 ×10⁻⁵ ph cm⁻² s⁻¹。",
+        "metrics": [
+          {
+            "label": "F3",
+            "field": "baseline_F3_e5",
+            "format": "number",
+            "unit": "×10⁻⁵"
+          },
+          {
+            "label": "Z20",
+            "field": "baseline_Z20",
+            "format": "number"
+          }
+        ]
+      }
+    ],
+    "charts": [
+      {
+        "id": "prompt_ingress_chart",
+        "title": "SE3 prompt W2 的 local-envelope 入射面",
+        "subtitle": "120 个 pre-veto W2；IA INIT 方向代理、family-weighted rate share，post-veto 全为零",
+        "type": "horizontalBar",
+        "dataset": "prompt_ingress",
+        "sourceId": "src_prompt_ingress",
+        "valueFormat": "percent",
+        "encodings": {
+          "x": {
+            "field": "surface",
+            "type": "nominal"
+          },
+          "y": {
+            "field": "rate_share",
+            "type": "quantitative",
+            "format": "percent"
+          }
+        }
+      },
+      {
+        "id": "delayed_volume_chart",
+        "title": "SE3 final delayed W2 生产体积",
+        "subtitle": "七个观测主导体积；单位 10⁻³ cps，误差与 Neff 见数据详情",
+        "type": "horizontalBar",
+        "dataset": "delayed_volume",
+        "sourceId": "src_volume",
+        "valueFormat": "number",
+        "encodings": {
+          "x": {
+            "field": "volume",
+            "type": "nominal"
+          },
+          "y": {
+            "field": "selected_rate_milli_cps",
+            "type": "quantitative",
+            "unit": "10⁻³ cps"
+          }
+        }
+      },
+      {
+        "id": "sensitivity_chart",
+        "title": "背景降低对 20-day F3 的敏感性",
+        "subtitle": "signal Aeff 固定保留 98%；为筛选目标，不是 candidate transport 预测",
+        "type": "line",
+        "dataset": "sensitivity",
+        "sourceId": "src_sensitivity",
+        "valueFormat": "number",
+        "encodings": {
+          "x": {
+            "field": "background_reduction_fraction",
+            "type": "quantitative",
+            "format": "percent"
+          },
+          "y": {
+            "field": "F3_e5",
+            "type": "quantitative",
+            "unit": "×10⁻⁵ ph cm⁻² s⁻¹"
+          }
+        }
+      }
+    ],
+    "tables": [
+      {
+        "id": "geometry_table",
+        "title": "Mass → S3d-O8 → SE3 的设计演化",
+        "subtitle": "几何事实与当前物理 authority 分列，避免把历史率带入现行比较",
+        "dataset": "geometry",
+        "sourceId": "src_geometry",
+        "defaultSort": {
+          "field": "design",
+          "direction": "asc"
+        },
+        "columns": [
+          {
+            "field": "design",
+            "label": "设计"
+          },
+          {
+            "field": "near_tes_structure",
+            "label": "近 TES / 低温结构"
+          },
+          {
+            "field": "active_veto",
+            "label": "主动屏蔽"
+          },
+          {
+            "field": "role",
+            "label": "本项目角色"
+          },
+          {
+            "field": "current_authority",
+            "label": "当前 authority"
+          }
+        ]
+      },
+      {
+        "id": "prompt_veto_table",
+        "title": "SE3 prompt W2 的 veto 分工",
+        "subtitle": "两条主动 veto 路径互补，合计覆盖 100% pre-veto W2 加权率",
+        "dataset": "prompt_veto",
+        "sourceId": "src_prompt_veto",
+        "defaultSort": {
+          "field": "rate_cps",
+          "direction": "desc"
+        },
+        "columns": [
+          {
+            "field": "veto_route",
+            "label": "拒绝路径"
+          },
+          {
+            "field": "events",
+            "label": "事件数",
+            "format": "number"
+          },
+          {
+            "field": "rate_cps",
+            "label": "加权率",
+            "format": "number",
+            "unit": "cps"
+          },
+          {
+            "field": "rate_share",
+            "label": "率份额",
+            "format": "percent"
+          },
+          {
+            "field": "post_route_survivors",
+            "label": "剩余",
+            "format": "number"
+          }
+        ]
+      },
+      {
+        "id": "material_table",
+        "title": "day-15 活度与 final delayed W2 的材料错位",
+        "subtitle": "activity 与 selected rate 使用同一 SE3 inventory/lineage，但物理含义不同",
+        "dataset": "material",
+        "sourceId": "src_material",
+        "defaultSort": {
+          "field": "selected_rate_milli_cps",
+          "direction": "desc"
+        },
+        "columns": [
+          {
+            "field": "material",
+            "label": "材料组"
+          },
+          {
+            "field": "activity_Bq",
+            "label": "A15",
+            "format": "number",
+            "unit": "Bq"
+          },
+          {
+            "field": "activity_share",
+            "label": "活度份额",
+            "format": "percent"
+          },
+          {
+            "field": "selected_events",
+            "label": "final 事件",
+            "format": "number"
+          },
+          {
+            "field": "selected_rate_milli_cps",
+            "label": "final 率",
+            "format": "number",
+            "unit": "10⁻³ cps"
+          },
+          {
+            "field": "selected_rate_share",
+            "label": "final 率份额",
+            "format": "percent"
+          },
+          {
+            "field": "selected_Neff",
+            "label": "Neff",
+            "format": "number"
+          }
+        ]
+      },
+      {
+        "id": "comparison_table",
+        "title": "S3d-O8 与 SE3 的 corrected-keV 对照",
+        "subtitle": "源项改善清楚；final rate 受 1/3 delayed 统计限制",
+        "dataset": "comparison",
+        "sourceId": "src_comparison",
+        "defaultSort": {
+          "field": "metric",
+          "direction": "asc"
+        },
+        "columns": [
+          {
+            "field": "metric",
+            "label": "指标"
+          },
+          {
+            "field": "unit",
+            "label": "单位"
+          },
+          {
+            "field": "s3d",
+            "label": "S3d-O8",
+            "format": "number"
+          },
+          {
+            "field": "se3",
+            "label": "SE3",
+            "format": "number"
+          },
+          {
+            "field": "se3_change",
+            "label": "SE3 变化",
+            "format": "percent",
+            "movement": true
+          },
+          {
+            "field": "interpretation",
+            "label": "解释"
+          }
+        ]
+      },
+      {
+        "id": "parent_table",
+        "title": "final delayed W2 的 radioactive parent",
+        "subtitle": "Cu-61/62/64 合计约 93.0% 加权率；K-38 为单个高权重事件",
+        "dataset": "delayed_parent",
+        "sourceId": "src_parent",
+        "defaultSort": {
+          "field": "selected_rate_milli_cps",
+          "direction": "desc"
+        },
+        "columns": [
+          {
+            "field": "parent",
+            "label": "母核"
+          },
+          {
+            "field": "activity_Bq",
+            "label": "A15",
+            "format": "number",
+            "unit": "Bq"
+          },
+          {
+            "field": "selected_events",
+            "label": "final 事件",
+            "format": "number"
+          },
+          {
+            "field": "selected_rate_milli_cps",
+            "label": "final 率",
+            "format": "number",
+            "unit": "10⁻³ cps"
+          },
+          {
+            "field": "selected_rate_share",
+            "label": "率份额",
+            "format": "percent"
+          },
+          {
+            "field": "selected_Neff",
+            "label": "Neff",
+            "format": "number"
+          }
+        ]
+      },
+      {
+        "id": "incident_table",
+        "title": "活化入射族：总活度与 final delayed W2",
+        "subtitle": "总活度由 p/n/alpha 主导；final W2 中 p+n 约占 86.8%",
+        "dataset": "incident",
+        "sourceId": "src_incident",
+        "defaultSort": {
+          "field": "selected_rate_milli_cps",
+          "direction": "desc"
+        },
+        "columns": [
+          {
+            "field": "incident_family",
+            "label": "入射族"
+          },
+          {
+            "field": "activity_Bq",
+            "label": "A15",
+            "format": "number",
+            "unit": "Bq"
+          },
+          {
+            "field": "activity_share",
+            "label": "活度份额",
+            "format": "percent"
+          },
+          {
+            "field": "selected_events",
+            "label": "final 事件",
+            "format": "number"
+          },
+          {
+            "field": "selected_rate_milli_cps",
+            "label": "final 率",
+            "format": "number",
+            "unit": "10⁻³ cps"
+          },
+          {
+            "field": "selected_rate_share",
+            "label": "率份额",
+            "format": "percent"
+          }
+        ]
+      },
+      {
+        "id": "actions_table",
+        "title": "SE3-v2 嵌套变体",
+        "subtitle": "先做可归因的 Cu 减影与错孔，局部 liner 只作为不足时的第三步",
+        "dataset": "actions",
+        "sourceId": "src_actions",
+        "defaultSort": {
+          "field": "variant",
+          "direction": "asc"
+        },
+        "columns": [
+          {
+            "field": "variant",
+            "label": "变体"
+          },
+          {
+            "field": "geometry_action",
+            "label": "几何动作"
+          },
+          {
+            "field": "targeted_current_share",
+            "label": "覆盖当前中央率份额",
+            "format": "percent"
+          },
+          {
+            "field": "risk",
+            "label": "风险"
+          },
+          {
+            "field": "why",
+            "label": "证据依据"
+          }
+        ]
+      },
+      {
+        "id": "gates_table",
+        "title": "candidate 晋级门",
+        "subtitle": "中心值、区间、signal 与工程约束必须同时满足",
+        "dataset": "gates",
+        "sourceId": "src_gates",
+        "defaultSort": {
+          "field": "gate",
+          "direction": "asc"
+        },
+        "columns": [
+          {
+            "field": "gate",
+            "label": "门"
+          },
+          {
+            "field": "promotion_threshold",
+            "label": "阈值"
+          },
+          {
+            "field": "reason",
+            "label": "原因"
+          }
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "id": "src_headline",
+        "label": "SE3 headline metrics",
+        "path": "data/report_headline_metrics.csv",
+        "query": {
+          "engine": "duckdb",
+          "language": "sql",
+          "sql": "SELECT * FROM read_csv_auto('data/report_headline_metrics.csv', header = true)",
+          "description": "Packages the reviewed SE3 prompt, delayed, activity, and mission headline values.",
+          "tables_used": [
+            "engineering/geometry_optimization_20260815/47_se3_plan1_transport_20260815/outputs/07_final_audit/FINAL_REPORT.md",
+            "data/analysis_summary.json"
+          ],
+          "filters": [],
+          "metric_definitions": {
+            "selected delayed W2 rate": "Sum of final delayed event weights after 420 eV FWHM response, 0.3 keV pixel threshold, 50 keV active veto, W2, and Step05.",
+            "selected Cu parent share": "Final selected W2 rate from Cu-61, Cu-62, and Cu-64 divided by total final delayed W2 rate.",
+            "F3": "Reference flux multiplied by 3/Z20 for the 20-day central mission fold."
+          },
+          "executed_at": "2026-08-16T00:00:00+08:00"
+        }
+      },
+      {
+        "id": "src_geometry",
+        "label": "M05, Mass, S3d, and SE3 geometry review",
+        "path": "data/report_geometry_progression.csv",
+        "query": {
+          "engine": "duckdb",
+          "language": "sql",
+          "sql": "SELECT * FROM read_csv_auto('data/report_geometry_progression.csv', header = true)",
+          "description": "Synthesizes the exact geometry changes and the authority boundary of each design generation.",
+          "tables_used": [
+            "core_md/balloon511_ea_latex_drafts/m05_atm511_source_revision_20260811/balloon511_ea_draft_zh_m05_atm511_source_revision_20260811.tex",
+            "outputs/reports/Mass_model_511_stage_diam_300_300_300_350_350_400_20260701/MASS_MODEL_511_STAGE_DIAM_300_300_300_350_350_400_FINAL_REVIEW.md",
+            "engineering/particle_source_unit_repair_20260811/m05_corrected_reanalysis_20260813/outputs/05_matched_comparison/REPORT.md",
+            "engineering/geometry_optimization_20260815/44_geoopt_se3_minimal_20260815/README.md"
+          ],
+          "filters": [],
+          "metric_definitions": {
+            "touched mass delta": "SE3 exact after-minus-before mass over the whitelist-touched solids only."
+          },
+          "executed_at": "2026-08-16T00:00:00+08:00"
+        }
+      },
+      {
+        "id": "src_prompt_ingress",
+        "label": "SE3 prompt W2 ingress rescan",
+        "path": "data/report_prompt_ingress.csv",
+        "query": {
+          "engine": "duckdb",
+          "language": "sql",
+          "sql": "SELECT * FROM read_csv_auto('data/report_prompt_ingress.csv', header = true)",
+          "description": "Classifies all 120 measured pre-veto W2 histories by the intersection of the IA INIT ray with the instrument-local outer envelope, using physical event weights.",
+          "tables_used": [
+            "engineering/geometry_optimization_20260815/47_se3_plan1_transport_20260815/outputs/01_prompt/catalog/SE3",
+            "engineering/geometry_optimization_20260704/40_s3c_mainline_lightweight_review_20260710/code/build_s3c_lightweight_analysis.py",
+            "data/prompt_entry_events.csv"
+          ],
+          "filters": [
+            "Measured TES energy in 510.58–511.42 keV before active veto",
+            "Corrected-keV prompt jobs only"
+          ],
+          "metric_definitions": {
+            "rate share": "Sum of family-local prompt event weights for the surface divided by the 7.5800339 cps pre-veto W2 total.",
+            "post-veto rate": "Prompt W2 rate remaining after event-summed BGO plus plastic energy is compared with 50 keV."
+          },
+          "executed_at": "2026-08-16T00:00:00+08:00"
+        }
+      },
+      {
+        "id": "src_prompt_veto",
+        "label": "SE3 prompt veto-route decomposition",
+        "path": "data/report_prompt_veto.csv",
+        "query": {
+          "engine": "duckdb",
+          "language": "sql",
+          "sql": "SELECT * FROM read_csv_auto('data/report_prompt_veto.csv', header = true)",
+          "description": "Separates the 120 prompt W2 histories by the active subsystem that rejects them at 50 keV.",
+          "tables_used": [
+            "engineering/geometry_optimization_20260815/47_se3_plan1_transport_20260815/outputs/04_common_response/background_prompt_delayed_cutflow.csv",
+            "data/prompt_entry_events.csv"
+          ],
+          "filters": [],
+          "metric_definitions": {
+            "veto route share": "Weighted prompt W2 rate rejected by the named subsystem divided by total pre-veto W2 rate."
+          },
+          "executed_at": "2026-08-16T00:00:00+08:00"
+        }
+      },
+      {
+        "id": "src_material",
+        "label": "SE3 activation by material",
+        "path": "data/report_activation_material.csv",
+        "query": {
+          "engine": "duckdb",
+          "language": "sql",
+          "sql": "SELECT * FROM read_csv_auto('data/report_activation_material.csv', header = true)",
+          "description": "Joins day-15 transported ground-state activity to final delayed W2 lineage by material category.",
+          "tables_used": [
+            "engineering/geometry_optimization_20260815/47_se3_plan1_transport_20260815/outputs/02_activation/day15_inventory.csv",
+            "engineering/geometry_optimization_20260815/47_se3_plan1_transport_20260815/outputs/04_common_response/selected_background_w2_lineage.csv",
+            "data/activation_origin_by_material.csv"
+          ],
+          "filters": [],
+          "metric_definitions": {
+            "activity share": "Material day-15 transported ground-state activity divided by 1348.141992 Bq.",
+            "selected rate share": "Final selected delayed W2 rate from the material divided by 0.0601133621 cps."
+          },
+          "executed_at": "2026-08-16T00:00:00+08:00"
+        }
+      },
+      {
+        "id": "src_volume",
+        "label": "SE3 selected delayed W2 by production volume",
+        "path": "data/report_delayed_volume.csv",
+        "query": {
+          "engine": "duckdb",
+          "language": "sql",
+          "sql": "SELECT * FROM read_csv_auto('data/report_delayed_volume.csv', header = true)",
+          "description": "Ranks the dominant final delayed W2 production volumes with rate, MC sigma, effective support, activity, and local position.",
+          "tables_used": [
+            "data/activation_origin_by_volume.csv",
+            "data/selected_delayed_event_origins.csv"
+          ],
+          "filters": [
+            "Seven dominant observed final delayed W2 volumes"
+          ],
+          "metric_definitions": {
+            "selected rate": "Sum of final event weights by exact production volume.",
+            "Neff": "(sum w)^2 / sum(w^2) within the volume."
+          },
+          "executed_at": "2026-08-16T00:00:00+08:00"
+        }
+      },
+      {
+        "id": "src_parent",
+        "label": "SE3 selected delayed W2 by radioactive parent",
+        "path": "data/report_delayed_parent.csv",
+        "query": {
+          "engine": "duckdb",
+          "language": "sql",
+          "sql": "SELECT * FROM read_csv_auto('data/report_delayed_parent.csv', header = true)",
+          "description": "Ranks Cu-61, Cu-62, Cu-64, and K-38 by selected delayed W2 rate.",
+          "tables_used": [
+            "data/activation_origin_by_parent.csv"
+          ],
+          "filters": [],
+          "metric_definitions": {
+            "parent selected rate": "Sum of final delayed event weights keyed by the radioactive source parent, not the stable daughter."
+          },
+          "executed_at": "2026-08-16T00:00:00+08:00"
+        }
+      },
+      {
+        "id": "src_incident",
+        "label": "SE3 activation and selected delayed W2 by inducing family",
+        "path": "data/report_delayed_incident_family.csv",
+        "query": {
+          "engine": "duckdb",
+          "language": "sql",
+          "sql": "SELECT * FROM read_csv_auto('data/report_delayed_incident_family.csv', header = true)",
+          "description": "Compares each incident family's share of day-15 activity with its share of final selected delayed W2 rate.",
+          "tables_used": [
+            "data/activation_origin_by_incident_family.csv"
+          ],
+          "filters": [],
+          "metric_definitions": {
+            "family activity": "Day-15 transported ground-state activity attributed to the corrected-keV incident family.",
+            "family selected rate": "Sum of final delayed W2 event weights attributed to the incident family that produced the parent."
+          },
+          "executed_at": "2026-08-16T00:00:00+08:00"
+        }
+      },
+      {
+        "id": "src_comparison",
+        "label": "Matched S3d–SE3 source and response comparison",
+        "path": "data/report_se3_s3d_comparison.csv",
+        "query": {
+          "engine": "duckdb",
+          "language": "sql",
+          "sql": "SELECT * FROM read_csv_auto('data/report_se3_s3d_comparison.csv', header = true)",
+          "description": "Compares corrected-keV S3d-O8 with the SE3 one-third screen while preserving the statistical and signal-scope boundaries.",
+          "tables_used": [
+            "engineering/particle_source_unit_repair_20260811/m05_corrected_reanalysis_20260813/outputs/05_matched_comparison/REPORT.md",
+            "engineering/geometry_optimization_20260815/47_se3_plan1_transport_20260815/outputs/07_final_audit/FINAL_REPORT.md"
+          ],
+          "filters": [],
+          "metric_definitions": {
+            "SE3 change": "SE3/S3d minus 1 for comparable source or response metrics."
+          },
+          "executed_at": "2026-08-16T00:00:00+08:00"
+        }
+      },
+      {
+        "id": "src_sensitivity",
+        "label": "SE3 mission sensitivity screen",
+        "path": "data/report_sensitivity_98pct_signal.csv",
+        "query": {
+          "engine": "duckdb",
+          "language": "sql",
+          "sql": "SELECT * FROM read_csv_auto('data/report_sensitivity_98pct_signal.csv', header = true)",
+          "description": "Recomputes B20, S20, Z20, and F3 under transparent background-reduction scenarios at 98% signal Aeff retention.",
+          "tables_used": [
+            "data/optimization_sensitivity_scenarios.csv"
+          ],
+          "filters": [
+            "signal_Aeff_retention_fraction = 0.98"
+          ],
+          "metric_definitions": {
+            "Z20": "S20 / sqrt(B20).",
+            "F3": "1e-4 ph cm^-2 s^-1 multiplied by 3/Z20.",
+            "scenario": "Background is scaled uniformly; signal counts are scaled to 98% of SE3. This is a target sensitivity, not a transport prediction."
+          },
+          "executed_at": "2026-08-16T00:00:00+08:00"
+        }
+      },
+      {
+        "id": "src_actions",
+        "label": "SE3-v2 candidate definition",
+        "path": "data/report_candidate_actions.csv",
+        "query": {
+          "engine": "duckdb",
+          "language": "sql",
+          "sql": "SELECT * FROM read_csv_auto('data/report_candidate_actions.csv', header = true)",
+          "description": "Maps the observed near-field source shares to nested geometry actions and engineering risks.",
+          "tables_used": [
+            "data/report_delayed_volume.csv",
+            "engineering/geometry_optimization_20260815/44_geoopt_se3_minimal_20260815/geometry/DEMO2_DR_v3p5_SE3.geo"
+          ],
+          "filters": [],
+          "metric_definitions": {
+            "targeted current share": "Sum of the current central selected delayed W2 shares of the components directly addressed by the variant."
+          },
+          "executed_at": "2026-08-16T00:00:00+08:00"
+        }
+      },
+      {
+        "id": "src_gates",
+        "label": "SE3-v2 promotion gates",
+        "path": "data/report_promotion_gates.csv",
+        "query": {
+          "engine": "duckdb",
+          "language": "sql",
+          "sql": "SELECT * FROM read_csv_auto('data/report_promotion_gates.csv', header = true)",
+          "description": "Defines physics and engineering acceptance gates for the matched candidate rerun.",
+          "tables_used": [
+            "data/report_headline_metrics.csv",
+            "data/report_candidate_actions.csv"
+          ],
+          "filters": [],
+          "metric_definitions": {
+            "promotion threshold": "A design-screen acceptance condition; not an achieved result."
+          },
+          "executed_at": "2026-08-16T00:00:00+08:00"
+        }
+      }
+    ]
+  },
+  "snapshot": {
+    "version": 1,
+    "generatedAt": "2026-08-16T00:00:00+08:00",
+    "status": "ready",
+    "datasets": {
+      "headline": [
+        {
+          "selected_delayed_rate_cps": 0.06011336205846697,
+          "selected_delayed_sigma_cps": 0.020032,
+          "prompt_pre_veto_rate_cps": 7.580033878144443,
+          "prompt_post_veto_rate_cps": 0.0,
+          "selected_cu_parent_share": 0.9299463264463577,
+          "day15_activity_Bq": 1348.1419924456227,
+          "baseline_F3_e5": 7.350822463,
+          "baseline_Z20": 4.081175,
+          "selected_delayed_events": 47
+        }
+      ],
+      "geometry": [
+        {
+          "design": "Mass_model_511",
+          "near_tes_structure": "6 层 TES；厚 Cu 冷板、Cu can、Nb + MuMetal；W 多孔准直器",
+          "active_veto": "CsI：侧 40 mm、底 60 mm、顶 30 mm；离线 50 keV event-sum",
+          "role": "完整质量模型基线与方法来源",
+          "current_authority": "几何权威；旧 broadband 率仅历史经验"
+        },
+        {
+          "design": "S3d-O8",
+          "near_tes_structure": "保留近场 Cu/Nb/MuMetal；去 3 个 outer-W2；轻量化外壳",
+          "active_veto": "侧 BGO 40 mm、底 30 mm、顶 10 mm；塑闪 + BPE",
+          "role": "corrected-keV 匹配比较基准",
+          "current_authority": "prompt/delayed/common-response 为当前对照"
+        },
+        {
+          "design": "SE3 Plan1",
+          "near_tes_structure": "五块冷板 6→4 mm 并各开 48 孔；Nb→Al；移除 MuMetal",
+          "active_veto": "沿用 S3d-O8 BGO；BPE 仅开光学口；10 mm 塑闪连续",
+          "role": "近场减质候选；触及质量 −10.217 kg",
+          "current_authority": "1/3 corrected-keV screen，stage00–07 PASS"
+        }
+      ],
+      "prompt_ingress": [
+        {
+          "surface": "侧面",
+          "pre_veto_events": 95,
+          "pre_veto_rate_cps": 6.382411696538332,
+          "rate_share": 0.8420030568650594,
+          "post_veto_rate_cps": 0.0,
+          "classification": "IA INIT ray × instrument-local outer envelope",
+          "first_active_crosscheck": "首主动体加权率约 85.9% 为 side"
+        },
+        {
+          "surface": "底部",
+          "pre_veto_events": 21,
+          "pre_veto_rate_cps": 0.9455231386202443,
+          "rate_share": 0.1247386428372671,
+          "post_veto_rate_cps": 0.0,
+          "classification": "IA INIT ray × instrument-local outer envelope",
+          "first_active_crosscheck": "首主动体加权率约 12.3% 为 bottom"
+        },
+        {
+          "surface": "顶部",
+          "pre_veto_events": 4,
+          "pre_veto_rate_cps": 0.25209904298586633,
+          "rate_share": 0.033258300297673474,
+          "post_veto_rate_cps": 0.0,
+          "classification": "IA INIT ray × instrument-local outer envelope",
+          "first_active_crosscheck": "首主动体加权率约 1.8% 为 top"
+        }
+      ],
+      "prompt_veto": [
+        {
+          "veto_route": "plastic ≥ 50 keV",
+          "events": 94,
+          "rate_cps": 6.25992,
+          "rate_share": 0.8258,
+          "post_route_survivors": 0
+        },
+        {
+          "veto_route": "BGO-only ≥ 50 keV",
+          "events": 26,
+          "rate_cps": 1.32011,
+          "rate_share": 0.1742,
+          "post_route_survivors": 0
+        }
+      ],
+      "material": [
+        {
+          "material": "其他内部件",
+          "activity_Bq": 28.227009527839222,
+          "activity_share": 0.02093771255996075,
+          "selected_events": 34,
+          "selected_rate_milli_cps": 31.85753071428187,
+          "selected_rate_share": 0.5299575605719218,
+          "selected_Neff": 4.846168344001083,
+          "material_category": "other_internal"
+        },
+        {
+          "material": "冷板",
+          "activity_Bq": 45.39497370256719,
+          "activity_share": 0.03367224962722033,
+          "selected_events": 11,
+          "selected_rate_milli_cps": 28.173691341524204,
+          "selected_rate_share": 0.4686760210503971,
+          "selected_Neff": 4.137106986459388,
+          "material_category": "cold_plates"
+        },
+        {
+          "material": "窗口材料",
+          "activity_Bq": 54.45342856494371,
+          "activity_share": 0.04039146385920479,
+          "selected_events": 1,
+          "selected_rate_milli_cps": 0.07249199627073623,
+          "selected_rate_share": 0.0012059215087692093,
+          "selected_Neff": 1.0,
+          "material_category": "window"
+        },
+        {
+          "material": "W / 准直器",
+          "activity_Bq": 73.93124708218252,
+          "activity_share": 0.05483936224556445,
+          "selected_events": 1,
+          "selected_rate_milli_cps": 0.009648006390162734,
+          "selected_rate_share": 0.00016049686891208927,
+          "selected_Neff": 1.0,
+          "material_category": "passive_w_or_collimator"
+        },
+        {
+          "material": "BGO 主动闪烁体",
+          "activity_Bq": 1037.8646464611475,
+          "activity_share": 0.7698481705019731,
+          "selected_events": 0,
+          "selected_rate_milli_cps": 0.0,
+          "selected_rate_share": 0.0,
+          "selected_Neff": 0.0,
+          "material_category": "active_scintillator"
+        },
+        {
+          "material": "外部机械结构",
+          "activity_Bq": 52.58076571044701,
+          "activity_share": 0.039002394410296404,
+          "selected_events": 0,
+          "selected_rate_milli_cps": 0.0,
+          "selected_rate_share": 0.0,
+          "selected_Neff": 0.0,
+          "material_category": "outer_mechanics"
+        },
+        {
+          "material": "BPE",
+          "activity_Bq": 34.4410491656867,
+          "activity_share": 0.02554704872237401,
+          "selected_events": 0,
+          "selected_rate_milli_cps": 0.0,
+          "selected_rate_share": 0.0,
+          "selected_Neff": 0.0,
+          "material_category": "bpe_neutron_shield"
+        },
+        {
+          "material": "塑闪",
+          "activity_Bq": 19.69618016581009,
+          "activity_share": 0.01460987067844379,
+          "selected_events": 0,
+          "selected_rate_milli_cps": 0.0,
+          "selected_rate_share": 0.0,
+          "selected_Neff": 0.0,
+          "material_category": "plastic_positron_veto"
+        },
+        {
+          "material": "TES",
+          "activity_Bq": 1.5526920649904408,
+          "activity_share": 0.001151727394956187,
+          "selected_events": 0,
+          "selected_rate_milli_cps": 0.0,
+          "selected_rate_share": 0.0,
+          "selected_Neff": 0.0,
+          "material_category": "tes"
+        }
+      ],
+      "delayed_volume": [
+        {
+          "volume": "MXC 50 mK Cu 冷板",
+          "source_volume": "ColdPlate_MXC_50mK_SD_anchor",
+          "material": "Cu",
+          "activity_Bq": 10.410287912517905,
+          "selected_events": 7,
+          "selected_rate_milli_cps": 15.071195046020287,
+          "selected_sigma_milli_cps": 9.801275715213336,
+          "selected_rate_share": 0.2507128952688067,
+          "selected_Neff": 2.36445018233877,
+          "local_x_cm": -5.180690157768209,
+          "local_y_cm": 8.944177317876711,
+          "local_z_cm": -0.03930183159992288
+        },
+        {
+          "volume": "50 mK Cu can 底盖",
+          "source_volume": "Cu_50mK_StillLike_Can_bottom_cap_2mm",
+          "material": "Cu",
+          "activity_Bq": 7.487711244436926,
+          "selected_events": 31,
+          "selected_rate_milli_cps": 14.599956628767611,
+          "selected_sigma_milli_cps": 9.79256004529467,
+          "selected_rate_share": 0.24287373270800458,
+          "selected_Neff": 2.222852496768015,
+          "local_x_cm": 8.472642178049789,
+          "local_y_cm": -0.8796316941584633,
+          "local_z_cm": -9.727815800492696
+        },
+        {
+          "volume": "4 K Cu 冷板",
+          "source_volume": "ColdPlate_4K",
+          "material": "Cu",
+          "activity_Bq": 13.700631392016176,
+          "selected_events": 2,
+          "selected_rate_milli_cps": 8.881686447257998,
+          "selected_sigma_milli_cps": 8.835372429551182,
+          "selected_rate_share": 0.14774895535903587,
+          "selected_Neff": 1.01051124997493,
+          "local_x_cm": 3.85608914627582,
+          "local_y_cm": -2.2929419678108305,
+          "local_z_cm": 20.033785093031938
+        },
+        {
+          "volume": "L0 深层 Cu 实心盘",
+          "source_volume": "Cu_SubstrateSupport_SolidDisk_L0_deepest",
+          "material": "Cu",
+          "activity_Bq": 0.30156320072590076,
+          "selected_events": 1,
+          "selected_rate_milli_cps": 8.835250401802748,
+          "selected_sigma_milli_cps": 8.835250401802748,
+          "selected_rate_share": 0.14697648075663242,
+          "selected_Neff": 1.0,
+          "local_x_cm": 3.4201340792430925,
+          "local_y_cm": -0.34709,
+          "local_z_cm": -4.669704898684712
+        },
+        {
+          "volume": "100 mK Cu 冷板",
+          "source_volume": "ColdPlate_CP_100mK_intercept",
+          "material": "Cu",
+          "activity_Bq": 10.134330200779628,
+          "selected_events": 1,
+          "selected_rate_milli_cps": 4.211161841855755,
+          "selected_sigma_milli_cps": 4.211161841855755,
+          "selected_rate_share": 0.07005367355364235,
+          "selected_Neff": 1.0,
+          "local_x_cm": -0.09893838082362105,
+          "local_y_cm": -1.27442,
+          "local_z_cm": 5.1540023331193785
+        },
+        {
+          "volume": "Still–4 K NbTi 线束",
+          "source_volume": "NbTi_Bundle_Still_4K",
+          "material": "NbTi",
+          "activity_Bq": 0.42964962347882596,
+          "selected_events": 1,
+          "selected_rate_milli_cps": 4.211161841855755,
+          "selected_sigma_milli_cps": 4.211161841855755,
+          "selected_rate_share": 0.07005367355364235,
+          "selected_Neff": 1.0,
+          "local_x_cm": -8.360851793953174,
+          "local_y_cm": 3.8547400000000005,
+          "local_z_cm": 17.462235306639585
+        },
+        {
+          "volume": "L3 Cu 开口环",
+          "source_volume": "Cu_SubstrateSupport_OpenRing_L3_ZM_panel",
+          "material": "Cu",
+          "activity_Bq": 0.2375515349669809,
+          "selected_events": 1,
+          "selected_rate_milli_cps": 4.211161841855755,
+          "selected_sigma_milli_cps": 4.211161841855755,
+          "selected_rate_share": 0.07005367355364235,
+          "selected_Neff": 1.0,
+          "local_x_cm": -0.3427841543158032,
+          "local_y_cm": -0.1005,
+          "local_z_cm": -7.141714850373823
+        }
+      ],
+      "delayed_parent": [
+        {
+          "parent": "Cu-62",
+          "activity_Bq": 28.71762737439496,
+          "selected_events": 41,
+          "selected_rate_milli_cps": 35.57308985444344,
+          "selected_rate_share": 0.5917667659287568,
+          "selected_Neff": 4.847909232660585
+        },
+        {
+          "parent": "Cu-64",
+          "activity_Bq": 55.35178145397622,
+          "selected_events": 3,
+          "selected_rate_milli_cps": 17.25757408551426,
+          "selected_rate_share": 0.2870838278639172,
+          "selected_Neff": 2.6233188643347782
+        },
+        {
+          "parent": "K-38",
+          "activity_Bq": 0.06778741865509762,
+          "selected_events": 1,
+          "selected_rate_milli_cps": 4.211161841855755,
+          "selected_rate_share": 0.07005367355364235,
+          "selected_Neff": 1.0
+        },
+        {
+          "parent": "Cu-61",
+          "activity_Bq": 9.943398489856524,
+          "selected_events": 2,
+          "selected_rate_milli_cps": 3.0715362766535197,
+          "selected_rate_share": 0.05109573265368367,
+          "selected_Neff": 1.0483151692709025
+        }
+      ],
+      "incident": [
+        {
+          "incident_family": "proton",
+          "family_code": "p",
+          "activity_Bq": 736.2767569838228,
+          "activity_share": 0.5461418464149803,
+          "selected_events": 4,
+          "selected_rate_milli_cps": 35.34100160721099,
+          "selected_rate_share": 0.5879059230265297,
+          "selected_Neff": 4.0
+        },
+        {
+          "incident_family": "neutron",
+          "family_code": "n",
+          "activity_Bq": 350.9329609292052,
+          "activity_share": 0.2603086046541645,
+          "selected_events": 4,
+          "selected_rate_milli_cps": 16.84464736742302,
+          "selected_rate_share": 0.2802146942145694,
+          "selected_Neff": 4.0
+        },
+        {
+          "incident_family": "alpha",
+          "family_code": "alpha",
+          "activity_Bq": 249.9223560614197,
+          "activity_share": 0.18538281387411074,
+          "selected_events": 2,
+          "selected_rate_milli_cps": 5.998088560765567,
+          "selected_rate_share": 0.09977962228982892,
+          "selected_Neff": 2.0
+        },
+        {
+          "incident_family": "gamma",
+          "family_code": "gamma",
+          "activity_Bq": 6.041048017225534,
+          "activity_share": 0.0044810176161538115,
+          "selected_events": 18,
+          "selected_rate_milli_cps": 1.3048559328732523,
+          "selected_rate_share": 0.02170658715784577,
+          "selected_Neff": 18.000000000000007
+        },
+        {
+          "incident_family": "positron",
+          "family_code": "eplus",
+          "activity_Bq": 3.8697014119678035,
+          "activity_share": 0.0028703960218225215,
+          "selected_events": 12,
+          "selected_rate_milli_cps": 0.5572325454630004,
+          "selected_rate_share": 0.009269695228841624,
+          "selected_Neff": 12.0
+        },
+        {
+          "incident_family": "electron",
+          "family_code": "eminus",
+          "activity_Bq": 0.8040069645178216,
+          "activity_share": 0.0005963815154658134,
+          "selected_events": 7,
+          "selected_rate_milli_cps": 0.06753604473113914,
+          "selected_rate_share": 0.0011234780823846247,
+          "selected_Neff": 6.999999999999998
+        },
+        {
+          "incident_family": "muon−",
+          "family_code": "muminus",
+          "activity_Bq": 0.2951620774550896,
+          "activity_share": 0.00021893990329582805,
+          "selected_events": 0,
+          "selected_rate_milli_cps": 0.0,
+          "selected_rate_share": 0.0,
+          "selected_Neff": 0.0
+        }
+      ],
+      "comparison": [
+        {
+          "metric": "总 A15",
+          "unit": "Bq",
+          "s3d": 1404.131069,
+          "se3": 1348.141992,
+          "se3_change": -0.03987,
+          "interpretation": "总源项小幅下降"
+        },
+        {
+          "metric": "冷板 A15",
+          "unit": "Bq",
+          "s3d": 94.1144,
+          "se3": 45.39497,
+          "se3_change": -0.51767,
+          "interpretation": "减薄 + 开孔明确降低冷板活化"
+        },
+        {
+          "metric": "Cu-62 A15",
+          "unit": "Bq",
+          "s3d": 41.6066,
+          "se3": 28.71763,
+          "se3_change": -0.30978,
+          "interpretation": "铜源项下降"
+        },
+        {
+          "metric": "Cu-64 A15",
+          "unit": "Bq",
+          "s3d": 80.2465,
+          "se3": 55.35178,
+          "se3_change": -0.31023,
+          "interpretation": "铜源项下降"
+        },
+        {
+          "metric": "delayed W2",
+          "unit": "cps",
+          "s3d": 0.05447975,
+          "se3": 0.06011336,
+          "se3_change": 0.10341,
+          "interpretation": "中央值上浮但仅约 0.25σ，不构成退化证据"
+        },
+        {
+          "metric": "prompt W2",
+          "unit": "cps",
+          "s3d": 0.03384293,
+          "se3": 0.0,
+          "se3_change": -1.0,
+          "interpretation": "SE3 样本中未观测 final survivor"
+        }
+      ],
+      "sensitivity": [
+        {
+          "background_reduction_fraction": 0.0,
+          "signal_Aeff_retention_fraction": 0.98,
+          "B20_counts": 98257.66905,
+          "S20_counts": 1253.70288484,
+          "Z20": 3.9995524509329776,
+          "F3_e5": 7.500839248401878,
+          "F3_ph_cm2_s": 7.500839248401878e-05,
+          "F3_ratio_to_SE3": 1.02040816332553,
+          "scenario_type": "份额敏感性，不是 transport 预测"
+        },
+        {
+          "background_reduction_fraction": 0.25,
+          "signal_Aeff_retention_fraction": 0.98,
+          "B20_counts": 73693.25178749999,
+          "S20_counts": 1253.70288484,
+          "Z20": 4.6182853683683645,
+          "F3_e5": 6.4959173388194005,
+          "F3_ph_cm2_s": 6.4959173388194e-05,
+          "F3_ratio_to_SE3": 0.8836993916689293,
+          "scenario_type": "份额敏感性，不是 transport 预测"
+        },
+        {
+          "background_reduction_fraction": 0.4,
+          "signal_Aeff_retention_fraction": 0.98,
+          "B20_counts": 58954.601429999995,
+          "S20_counts": 1253.70288484,
+          "Z20": 5.163400011582159,
+          "F3_e5": 5.8101250983278865,
+          "F3_ph_cm2_s": 5.810125098327886e-05,
+          "F3_ratio_to_SE3": 0.7904047645787751,
+          "scenario_type": "份额敏感性，不是 transport 预测"
+        },
+        {
+          "background_reduction_fraction": 0.5,
+          "signal_Aeff_retention_fraction": 0.98,
+          "B20_counts": 49128.834525,
+          "S20_counts": 1253.70288484,
+          "Z20": 5.656221319531969,
+          "F3_e5": 5.303894297135174,
+          "F3_ph_cm2_s": 5.303894297135174e-05,
+          "F3_ratio_to_SE3": 0.7215375318655923,
+          "scenario_type": "份额敏感性，不是 transport 预测"
+        },
+        {
+          "background_reduction_fraction": 0.6,
+          "signal_Aeff_retention_fraction": 0.98,
+          "B20_counts": 39303.06762,
+          "S20_counts": 1253.70288484,
+          "Z20": 6.323847683128521,
+          "F3_e5": 4.743947277547088,
+          "F3_ph_cm2_s": 4.7439472775470876e-05,
+          "F3_ratio_to_SE3": 0.6453627878275541,
+          "scenario_type": "份额敏感性，不是 transport 预测"
+        },
+        {
+          "background_reduction_fraction": 0.65,
+          "signal_Aeff_retention_fraction": 0.98,
+          "B20_counts": 34390.184167499996,
+          "S20_counts": 1253.70288484,
+          "Z20": 6.7604775418317455,
+          "F3_e5": 4.4375563433750465,
+          "F3_ph_cm2_s": 4.437556343375046e-05,
+          "F3_ratio_to_SE3": 0.6036816105559978,
+          "scenario_type": "份额敏感性，不是 transport 预测"
+        },
+        {
+          "background_reduction_fraction": 0.7,
+          "signal_Aeff_retention_fraction": 0.98,
+          "B20_counts": 29477.300715000005,
+          "S20_counts": 1253.70288484,
+          "Z20": 7.302150324336885,
+          "F3_e5": 4.108378856569805,
+          "F3_ph_cm2_s": 4.108378856569805e-05,
+          "F3_ratio_to_SE3": 0.5589005689158085,
+          "scenario_type": "份额敏感性，不是 transport 预测"
+        },
+        {
+          "background_reduction_fraction": 0.7883,
+          "signal_Aeff_retention_fraction": 0.98,
+          "B20_counts": 20801.148537884997,
+          "S20_counts": 1253.70288484,
+          "Z20": 8.692625460749422,
+          "F3_e5": 3.4512012665749427,
+          "F3_ph_cm2_s": 3.451201266574943e-05,
+          "F3_ratio_to_SE3": 0.4694986559594376,
+          "scenario_type": "份额敏感性，不是 transport 预测"
+        },
+        {
+          "background_reduction_fraction": 0.9299,
+          "signal_Aeff_retention_fraction": 0.98,
+          "B20_counts": 6887.862600405005,
+          "S20_counts": 1253.70288484,
+          "Z20": 15.106101122513198,
+          "F3_e5": 1.985952547033454,
+          "F3_ph_cm2_s": 1.985952547033454e-05,
+          "F3_ratio_to_SE3": 0.2701673937888784,
+          "scenario_type": "份额敏感性，不是 transport 预测"
+        }
+      ],
+      "actions": [
+        {
+          "variant": "V2A",
+          "geometry_action": "50 mK Cu can 底盖改环形盖 + 径向热桥；L0 实心盘改 open-ring/spoke；热带移出 TES 直视固角",
+          "targeted_current_share": 0.38985,
+          "risk": "低到中；需热设计与导航复核",
+          "why": "两件合计约 39.0% delayed 中央率，且 full-envelope 首击 Cu 的信号本就全部失败"
+        },
+        {
+          "variant": "V2B",
+          "geometry_action": "在 V2A 上重排 MXC 开孔到 TES 投影方向，并错开各冷板孔位，消除多板投影直通道",
+          "targeted_current_share": 0.641,
+          "risk": "中；需同源响应重放 + fresh BUILDUP",
+          "why": "加入 MXC 后覆盖约 64.1% delayed 中央率；错孔可近似质量中性地降耦合"
+        },
+        {
+          "variant": "V2C（仅筛选）",
+          "geometry_action": "保留 37.96 mm 光学走廊，在非视场固角试验分段 shadow cup / graded liner",
+          "targeted_current_share": 0.78831,
+          "risk": "中到高；候选材料必须自有 corrected-keV 活化链",
+          "why": "只在 V2A/B 仍不足时，用最小被动质量截断 4 K / can / MXC 到 TES 的视线"
+        }
+      ],
+      "gates": [
+        {
+          "gate": "delayed W2",
+          "promotion_threshold": "< 0.042 cps，且区间支持改善",
+          "reason": "对应约 ≥30% 当前中央率降低；避免只看点估计"
+        },
+        {
+          "gate": "Cu-61/62/64 A15",
+          "promotion_threshold": "相对 SE3 再降 ≥30%",
+          "reason": "三个铜母核占 final delayed 约 93%"
+        },
+        {
+          "gate": "prompt W2",
+          "promotion_threshold": "上限不劣于当前 / S3d control",
+          "reason": "不得破坏已证明有效的侧 BGO + 连续塑闪"
+        },
+        {
+          "gate": "full-envelope Aeff",
+          "promotion_threshold": "同一 ray bank 损失 ≤2%（首轮）；≤5% 绝对门",
+          "reason": "当前 SE3 与历史 S3d 注入面不同，必须 matched"
+        },
+        {
+          "gate": "工程",
+          "promotion_threshold": "质量节省保留；热、磁、结构、overlap/navigation 全 PASS",
+          "reason": "几何收益必须能落地"
+        }
+      ]
+    }
+  },
+  "sources": [
+    {
+      "id": "src_headline",
+      "label": "SE3 headline metrics",
+      "path": "data/report_headline_metrics.csv",
+      "query": {
+        "engine": "duckdb",
+        "language": "sql",
+        "sql": "SELECT * FROM read_csv_auto('data/report_headline_metrics.csv', header = true)",
+        "description": "Packages the reviewed SE3 prompt, delayed, activity, and mission headline values.",
+        "tables_used": [
+          "engineering/geometry_optimization_20260815/47_se3_plan1_transport_20260815/outputs/07_final_audit/FINAL_REPORT.md",
+          "data/analysis_summary.json"
+        ],
+        "filters": [],
+        "metric_definitions": {
+          "selected delayed W2 rate": "Sum of final delayed event weights after 420 eV FWHM response, 0.3 keV pixel threshold, 50 keV active veto, W2, and Step05.",
+          "selected Cu parent share": "Final selected W2 rate from Cu-61, Cu-62, and Cu-64 divided by total final delayed W2 rate.",
+          "F3": "Reference flux multiplied by 3/Z20 for the 20-day central mission fold."
+        },
+        "executed_at": "2026-08-16T00:00:00+08:00"
+      }
+    },
+    {
+      "id": "src_geometry",
+      "label": "M05, Mass, S3d, and SE3 geometry review",
+      "path": "data/report_geometry_progression.csv",
+      "query": {
+        "engine": "duckdb",
+        "language": "sql",
+        "sql": "SELECT * FROM read_csv_auto('data/report_geometry_progression.csv', header = true)",
+        "description": "Synthesizes the exact geometry changes and the authority boundary of each design generation.",
+        "tables_used": [
+          "core_md/balloon511_ea_latex_drafts/m05_atm511_source_revision_20260811/balloon511_ea_draft_zh_m05_atm511_source_revision_20260811.tex",
+          "outputs/reports/Mass_model_511_stage_diam_300_300_300_350_350_400_20260701/MASS_MODEL_511_STAGE_DIAM_300_300_300_350_350_400_FINAL_REVIEW.md",
+          "engineering/particle_source_unit_repair_20260811/m05_corrected_reanalysis_20260813/outputs/05_matched_comparison/REPORT.md",
+          "engineering/geometry_optimization_20260815/44_geoopt_se3_minimal_20260815/README.md"
+        ],
+        "filters": [],
+        "metric_definitions": {
+          "touched mass delta": "SE3 exact after-minus-before mass over the whitelist-touched solids only."
+        },
+        "executed_at": "2026-08-16T00:00:00+08:00"
+      }
+    },
+    {
+      "id": "src_prompt_ingress",
+      "label": "SE3 prompt W2 ingress rescan",
+      "path": "data/report_prompt_ingress.csv",
+      "query": {
+        "engine": "duckdb",
+        "language": "sql",
+        "sql": "SELECT * FROM read_csv_auto('data/report_prompt_ingress.csv', header = true)",
+        "description": "Classifies all 120 measured pre-veto W2 histories by the intersection of the IA INIT ray with the instrument-local outer envelope, using physical event weights.",
+        "tables_used": [
+          "engineering/geometry_optimization_20260815/47_se3_plan1_transport_20260815/outputs/01_prompt/catalog/SE3",
+          "engineering/geometry_optimization_20260704/40_s3c_mainline_lightweight_review_20260710/code/build_s3c_lightweight_analysis.py",
+          "data/prompt_entry_events.csv"
+        ],
+        "filters": [
+          "Measured TES energy in 510.58–511.42 keV before active veto",
+          "Corrected-keV prompt jobs only"
+        ],
+        "metric_definitions": {
+          "rate share": "Sum of family-local prompt event weights for the surface divided by the 7.5800339 cps pre-veto W2 total.",
+          "post-veto rate": "Prompt W2 rate remaining after event-summed BGO plus plastic energy is compared with 50 keV."
+        },
+        "executed_at": "2026-08-16T00:00:00+08:00"
+      }
+    },
+    {
+      "id": "src_prompt_veto",
+      "label": "SE3 prompt veto-route decomposition",
+      "path": "data/report_prompt_veto.csv",
+      "query": {
+        "engine": "duckdb",
+        "language": "sql",
+        "sql": "SELECT * FROM read_csv_auto('data/report_prompt_veto.csv', header = true)",
+        "description": "Separates the 120 prompt W2 histories by the active subsystem that rejects them at 50 keV.",
+        "tables_used": [
+          "engineering/geometry_optimization_20260815/47_se3_plan1_transport_20260815/outputs/04_common_response/background_prompt_delayed_cutflow.csv",
+          "data/prompt_entry_events.csv"
+        ],
+        "filters": [],
+        "metric_definitions": {
+          "veto route share": "Weighted prompt W2 rate rejected by the named subsystem divided by total pre-veto W2 rate."
+        },
+        "executed_at": "2026-08-16T00:00:00+08:00"
+      }
+    },
+    {
+      "id": "src_material",
+      "label": "SE3 activation by material",
+      "path": "data/report_activation_material.csv",
+      "query": {
+        "engine": "duckdb",
+        "language": "sql",
+        "sql": "SELECT * FROM read_csv_auto('data/report_activation_material.csv', header = true)",
+        "description": "Joins day-15 transported ground-state activity to final delayed W2 lineage by material category.",
+        "tables_used": [
+          "engineering/geometry_optimization_20260815/47_se3_plan1_transport_20260815/outputs/02_activation/day15_inventory.csv",
+          "engineering/geometry_optimization_20260815/47_se3_plan1_transport_20260815/outputs/04_common_response/selected_background_w2_lineage.csv",
+          "data/activation_origin_by_material.csv"
+        ],
+        "filters": [],
+        "metric_definitions": {
+          "activity share": "Material day-15 transported ground-state activity divided by 1348.141992 Bq.",
+          "selected rate share": "Final selected delayed W2 rate from the material divided by 0.0601133621 cps."
+        },
+        "executed_at": "2026-08-16T00:00:00+08:00"
+      }
+    },
+    {
+      "id": "src_volume",
+      "label": "SE3 selected delayed W2 by production volume",
+      "path": "data/report_delayed_volume.csv",
+      "query": {
+        "engine": "duckdb",
+        "language": "sql",
+        "sql": "SELECT * FROM read_csv_auto('data/report_delayed_volume.csv', header = true)",
+        "description": "Ranks the dominant final delayed W2 production volumes with rate, MC sigma, effective support, activity, and local position.",
+        "tables_used": [
+          "data/activation_origin_by_volume.csv",
+          "data/selected_delayed_event_origins.csv"
+        ],
+        "filters": [
+          "Seven dominant observed final delayed W2 volumes"
+        ],
+        "metric_definitions": {
+          "selected rate": "Sum of final event weights by exact production volume.",
+          "Neff": "(sum w)^2 / sum(w^2) within the volume."
+        },
+        "executed_at": "2026-08-16T00:00:00+08:00"
+      }
+    },
+    {
+      "id": "src_parent",
+      "label": "SE3 selected delayed W2 by radioactive parent",
+      "path": "data/report_delayed_parent.csv",
+      "query": {
+        "engine": "duckdb",
+        "language": "sql",
+        "sql": "SELECT * FROM read_csv_auto('data/report_delayed_parent.csv', header = true)",
+        "description": "Ranks Cu-61, Cu-62, Cu-64, and K-38 by selected delayed W2 rate.",
+        "tables_used": [
+          "data/activation_origin_by_parent.csv"
+        ],
+        "filters": [],
+        "metric_definitions": {
+          "parent selected rate": "Sum of final delayed event weights keyed by the radioactive source parent, not the stable daughter."
+        },
+        "executed_at": "2026-08-16T00:00:00+08:00"
+      }
+    },
+    {
+      "id": "src_incident",
+      "label": "SE3 activation and selected delayed W2 by inducing family",
+      "path": "data/report_delayed_incident_family.csv",
+      "query": {
+        "engine": "duckdb",
+        "language": "sql",
+        "sql": "SELECT * FROM read_csv_auto('data/report_delayed_incident_family.csv', header = true)",
+        "description": "Compares each incident family's share of day-15 activity with its share of final selected delayed W2 rate.",
+        "tables_used": [
+          "data/activation_origin_by_incident_family.csv"
+        ],
+        "filters": [],
+        "metric_definitions": {
+          "family activity": "Day-15 transported ground-state activity attributed to the corrected-keV incident family.",
+          "family selected rate": "Sum of final delayed W2 event weights attributed to the incident family that produced the parent."
+        },
+        "executed_at": "2026-08-16T00:00:00+08:00"
+      }
+    },
+    {
+      "id": "src_comparison",
+      "label": "Matched S3d–SE3 source and response comparison",
+      "path": "data/report_se3_s3d_comparison.csv",
+      "query": {
+        "engine": "duckdb",
+        "language": "sql",
+        "sql": "SELECT * FROM read_csv_auto('data/report_se3_s3d_comparison.csv', header = true)",
+        "description": "Compares corrected-keV S3d-O8 with the SE3 one-third screen while preserving the statistical and signal-scope boundaries.",
+        "tables_used": [
+          "engineering/particle_source_unit_repair_20260811/m05_corrected_reanalysis_20260813/outputs/05_matched_comparison/REPORT.md",
+          "engineering/geometry_optimization_20260815/47_se3_plan1_transport_20260815/outputs/07_final_audit/FINAL_REPORT.md"
+        ],
+        "filters": [],
+        "metric_definitions": {
+          "SE3 change": "SE3/S3d minus 1 for comparable source or response metrics."
+        },
+        "executed_at": "2026-08-16T00:00:00+08:00"
+      }
+    },
+    {
+      "id": "src_sensitivity",
+      "label": "SE3 mission sensitivity screen",
+      "path": "data/report_sensitivity_98pct_signal.csv",
+      "query": {
+        "engine": "duckdb",
+        "language": "sql",
+        "sql": "SELECT * FROM read_csv_auto('data/report_sensitivity_98pct_signal.csv', header = true)",
+        "description": "Recomputes B20, S20, Z20, and F3 under transparent background-reduction scenarios at 98% signal Aeff retention.",
+        "tables_used": [
+          "data/optimization_sensitivity_scenarios.csv"
+        ],
+        "filters": [
+          "signal_Aeff_retention_fraction = 0.98"
+        ],
+        "metric_definitions": {
+          "Z20": "S20 / sqrt(B20).",
+          "F3": "1e-4 ph cm^-2 s^-1 multiplied by 3/Z20.",
+          "scenario": "Background is scaled uniformly; signal counts are scaled to 98% of SE3. This is a target sensitivity, not a transport prediction."
+        },
+        "executed_at": "2026-08-16T00:00:00+08:00"
+      }
+    },
+    {
+      "id": "src_actions",
+      "label": "SE3-v2 candidate definition",
+      "path": "data/report_candidate_actions.csv",
+      "query": {
+        "engine": "duckdb",
+        "language": "sql",
+        "sql": "SELECT * FROM read_csv_auto('data/report_candidate_actions.csv', header = true)",
+        "description": "Maps the observed near-field source shares to nested geometry actions and engineering risks.",
+        "tables_used": [
+          "data/report_delayed_volume.csv",
+          "engineering/geometry_optimization_20260815/44_geoopt_se3_minimal_20260815/geometry/DEMO2_DR_v3p5_SE3.geo"
+        ],
+        "filters": [],
+        "metric_definitions": {
+          "targeted current share": "Sum of the current central selected delayed W2 shares of the components directly addressed by the variant."
+        },
+        "executed_at": "2026-08-16T00:00:00+08:00"
+      }
+    },
+    {
+      "id": "src_gates",
+      "label": "SE3-v2 promotion gates",
+      "path": "data/report_promotion_gates.csv",
+      "query": {
+        "engine": "duckdb",
+        "language": "sql",
+        "sql": "SELECT * FROM read_csv_auto('data/report_promotion_gates.csv', header = true)",
+        "description": "Defines physics and engineering acceptance gates for the matched candidate rerun.",
+        "tables_used": [
+          "data/report_headline_metrics.csv",
+          "data/report_candidate_actions.csv"
+        ],
+        "filters": [],
+        "metric_definitions": {
+          "promotion threshold": "A design-screen acceptance condition; not an achieved result."
+        },
+        "executed_at": "2026-08-16T00:00:00+08:00"
+      }
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+diff --git a/core_md/balloon511_nima_latex_drafts/balloon511_nima_draft_en.tex b/core_md/balloon511_nima_latex_drafts/balloon511_nima_draft_en.tex
+--- a/core_md/balloon511_nima_latex_drafts/balloon511_nima_draft_en.tex
++++ b/core_md/balloon511_nima_latex_drafts/balloon511_nima_draft_en.tex
+@@ -255,6 +255,8 @@ The integrated source-plane fluxes are approximately $4.80$, $0.462$, $0.199$,
+   r_{\mathrm{event},j}=\left(\sum_i \mathcal{T}_{ij}\right)^{-1},
+ \end{equation}
+ where $\mathcal{T}_{ij}$ is the transported exposure of subsample $i$ for particle species $j$. This per-species normalization is required because photon and non-photon atmospheric streams have different sampling and exposure structures. The normalization check enforces $r_{\mathrm{event},j}\sum_i\mathcal{T}_{ij}=1$ for each particle species, so over-sampling changes the Monte Carlo variance but not the expected physical rate.
++
++As a reproducibility check, the selected prompt rate was reconstructed independently from the far-field source definitions and detector-level event weights. The check gives a selected $\wii$ prompt rate of $3.66\times10^{-2}\cps$, consistent with the prompt component used in Table~\ref{tab:primary_sensitivity}. The selected events from the positron-primary prompt stream were also traced in the event records; the 47 survivors in this stream are associated with annihilation-photon histories entering through the detector aperture. These checks support the source normalization and event provenance, but they do not add a new selection criterion.
+ 
+ \subsection{Delayed activation source}
+ \label{subsec:delayed_source}
+@@ -664,5 +666,7 @@ The production-position delayed-source treatment addresses a specific approximat
+ 
+ The background composition points to the first engineering sensitivities to test, rather than to a completed optimization. The selected line-window rate remains dominated by prompt atmospheric streams, so shield geometry, side-entry collimation, material near the focal plane, topology selection, and multi-pixel reconstruction are the most direct handles on the present background. Delayed activation is smaller but remains spatially and materially structured, so source-position preservation is retained in the rate calculation. The dominance of iodine activation in the CsI shield also motivates a future shield-material trade study.
++
++A same-envelope BGO active-shield variant has been constructed at geometry level and passed static geometry and overlap checks with the same detector envelope and analysis definitions. Matched CsI/BGO transport has not yet been run, so the present paper does not quote a BGO/CsI background ratio or material preference.
+ 
+ The selected-rate result has four immediate boundaries. First, the detector/cryostat model is an engineering proxy, not a final flight CAD model. Second, quantitative active-shield rejection is applied in the common detector-level post-processing selection rather than by production-time trigger/veto filtering. Third, the mission-time calculation is a rate-level fold, not a new particle transport at each trajectory time bin. Fourth, the custom topology/field-of-view selection is not yet a full Revan/Mimrec reconstruction, and the retained unreconstructed class is a baseline acceptance choice rather than a conservative sensitivity bound.
+ 

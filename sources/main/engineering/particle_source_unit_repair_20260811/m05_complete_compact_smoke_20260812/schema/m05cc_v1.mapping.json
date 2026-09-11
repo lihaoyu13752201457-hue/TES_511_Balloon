@@ -1,0 +1,66 @@
+{
+  "deprecated": true,
+  "status": "DEPRECATED__HISTORICAL_PSEUDO_MAPPING__NON_EXECUTABLE__NON_AUTHORITY",
+  "superseded_by": "schema/m05cc_v2.record_schema.json",
+  "authority_policy": "m05cc_v2.record_schema.json is the sole executable TSV/header/type/key/join authority; this v1 document is retained only to explain historical intent and must never authorize preflight, materialization, or transport output.",
+  "schema_version": "m05cc-v1-physical-mapping",
+  "event_key_contract": "(geometry,mode,family,job_id,seed,shard_index,simulation_event_id); stable_root_id is the cross-table root join within a job",
+  "physical_tables": {
+    "activation": ["simulation_event_id", "stable_root_id", "eventlist_id", "driver", "family", "root_weight", "production_serial", "za", "z", "a", "excitation_keV", "excitation_f64_bits", "native_dat_volume", "physical_volume", "logical_volume", "touchable_copy_path", "material", "production_x_cm", "production_y_cm", "production_z_cm", "production_time_s", "track_id", "parent_track_id", "primary_track_id", "particle", "parent_particle", "primary_particle", "creator_process", "step_process", "ancestry_chain"],
+    "deposits": ["simulation_event_id", "stable_root_id", "sequence", "role", "physical_volume", "logical_volume", "touchable_copy_path", "material", "edep_keV", "pre_x_cm", "pre_y_cm", "pre_z_cm", "post_x_cm", "post_y_cm", "post_z_cm", "pre_time_s", "post_time_s", "track_id", "parent_track_id", "primary_track_id", "particle", "parent_particle", "primary_particle", "creator_process", "step_process"],
+    "events": ["simulation_event_id", "stable_root_id", "source_time_s", "tes_raw_keV", "mass_csi_keV", "o8_bgo_keV", "o8_plastic_keV", "kapton_diagnostic_keV", "tes_multiplicity", "candidate_reason", "control_flag"],
+    "footer": ["arm", "generated_count", "root_count", "rp_row_count", "TT_s", "native_added_isotopes", "zero_rp_positive_tt", "finalized"],
+    "pixels": ["simulation_event_id", "stable_root_id", "tes_uid", "layer", "touchable_copy_path", "sum_energy_keV", "centroid_x_cm", "centroid_y_cm", "centroid_z_cm", "t_min_s", "t_max_s", "t_energy_weighted_s", "deposit_count", "first_sequence", "last_sequence"],
+    "roots": ["simulation_event_id", "row_index0", "eventlist_id", "stable_root_id", "driver", "family", "raw_tape_line_sha256", "expected_generated_tuple_sha256", "observed_generated_tuple_sha256", "observed_ia_init_tuple_sha256", "control_flag"],
+    "truth_index": ["simulation_event_id", "stable_root_id", "reason", "offset", "length", "sha256"]
+  },
+  "lossless_views": {
+    "activation": {
+      "source": "activation joined one-to-one by simulation_event_id+stable_root_id+eventlist_id to roots and by job identity to the native isotope DAT; production_serial is the exact native AddIsotope commit serial"
+    },
+    "deposit_truth": {
+      "source": "Historical only. Production deposits.tsv is header-only diagnostic (row_count=0); TES pixels and geometry-specific active blocks are streaming aggregates. Byte-exact native full-event IA/HT truth is retained only for raw-TES-positive roots and outcome-independent preregistered controls. Active-veto-only roots retain typed block aggregates without full truth."
+    },
+    "event": {
+      "derivations": {
+        "active_occupancy": "mass_csi_keV>0 or o8_bgo_keV>0 or o8_plastic_keV>0; Kapton is excluded",
+        "event_key": "job manifest identity plus simulation_event_id",
+        "raw_tes_occupancy": "tes_multiplicity>0",
+        "root_weight": "1 for this analog smoke"
+      },
+      "source": "events joined to planned_job_manifest by job and to roots by simulation_event_id+stable_root_id"
+    },
+    "ht_truth": {
+      "source": "byte-exact native MSimEvent fragment selected by truth_index offset/length/hash; parse every HT/GR/DR record fail-closed"
+    },
+    "ia_truth": {
+      "source": "byte-exact native MSimEvent fragment selected by truth_index offset/length/hash; parse every IA record including INIT/PAIR/ANNI/DECA fail-closed"
+    },
+    "job_footer": {
+      "source": "footer joined to planned job, native isotope DAT and post-run receipt; DAT path/hash cannot be inferred from a filename"
+    },
+    "pixel": {
+      "derivations": {
+        "energy_weighted_centroid_cm": "(centroid_x_cm,centroid_y_cm,centroid_z_cm)"
+      },
+      "source": "pixels streaming aggregates: energy, PRE energy-weighted centroid, POST time min/max/energy-weighted, deposit_count and first/last sequence; production does not require per-step deposits"
+    },
+    "root": {
+      "derivations": {
+        "angle_stratum": "driver",
+        "event_key": "job manifest identity plus simulation_event_id",
+        "sampling_contract": "analog p=q over the complete corrected source support",
+        "weight_p_over_q": "1"
+      },
+      "source": "roots joined one-to-one by row_index0/eventlist_id/stable_root_id to the frozen tape root sidecar"
+    },
+    "run": {
+      "source": "write-once benchmark contract, planned-job manifest, tape manifest, geometry bundle, shadow-build manifest, active-volume whitelist, post-run receipt and per-table hashes; missing post-run fields are PENDING before transport and must never be defaulted"
+    },
+    "truth_index": {
+      "source": "truth_index joined by simulation_event_id+stable_root_id to candidate/control roots; offset+length+sha256 addresses one byte-exact native MSimEvent fragment"
+    }
+  },
+  "selection_contract": "Every raw-TES-positive root and every deterministic outcome-independent pre-registered control has a native full-truth fragment. Active-veto-only roots retain typed geometry-specific block aggregates but no full truth; Kapton alone never selects truth.",
+  "unsupported_policy": "A consumer that cannot obtain a required field through these exact tables, joins or derivations must fail with UNSUPPORTED; it must not synthesize a default."
+}

@@ -1,0 +1,14 @@
+# Stress extension of the official examples/phonon single.mac.
+/control/verbose 0
+/run/verbose 0
+/event/verbose 0
+/tracking/verbose 0
+/g4cmp/verbose 0
+/random/setSeeds 240903 511420
+/g4cmp/phononBounces 20000
+/gun/particle geantino
+/gun/energy 0.0027 eV
+/run/initialize
+/process/inactivate phononScattering
+/process/inactivate phononDownconversion
+/run/beamOn 10000

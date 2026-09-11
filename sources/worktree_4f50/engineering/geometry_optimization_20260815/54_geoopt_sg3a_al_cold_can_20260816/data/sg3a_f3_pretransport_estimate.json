@@ -1,0 +1,63 @@
+{
+  "authority_boundary": "NOT_TRANSPORT__NOT_PROMOTION__conditional on no new accepted prompt and unchanged signal",
+  "baseline": {
+    "B20_counts": 98257.66905,
+    "F3_ph_cm2_s": 7.350822463e-05,
+    "S20_counts": 1279.288658,
+    "identity": "SE3 frozen central mission result",
+    "signal_Aeff_cm2": 11.69478
+  },
+  "generated_at_utc": "2026-08-16T09:58:09.268981+00:00",
+  "headline": {
+    "central_estimate_F3_ph_cm2_s": 5.769833354236724e-05,
+    "conditional_range_F3_ph_cm2_s": [
+      5.075891517670896e-05,
+      6.59312609843363e-05
+    ],
+    "interpretation": "A defensible pre-transport estimate is about 5.8e-5, with a conditional 5.1e-5 to 6.6e-5 engineering range. New accepted prompt, Al activation, or a different mission time profile can move the true result outside this range."
+  },
+  "required_closure": "SG3A-own corrected prompt, buildup/inventory, actual-position delayed, fresh 37194-ray signal, common response/veto/Step05, and 81-node/20-day fold",
+  "retained_small_table_levers": {
+    "bi_direct_511_attenuation_screen": 0.527,
+    "bi_mxc_geometric_upper_reduction_share": 0.13212569580666114,
+    "mxc_selected_rate_share": 0.2507128952688067,
+    "old_50mK_can_selected_rate_share": 0.2440796542167738,
+    "old_l0_disk_selected_rate_share": 0.14697648075663242
+  },
+  "scenarios": {
+    "central_engineering_estimate": {
+      "accepted_prompt_increment_assumption_cps": 0.0,
+      "al_can_cu_lineage_suppression": 0.7,
+      "estimated_B20_counts": 60537.03267978605,
+      "estimated_F3_ph_cm2_s": 5.769833354236724e-05,
+      "estimated_background_reduction_fraction": 0.38389508661170463,
+      "estimated_background_remaining_fraction": 0.6161049133882954,
+      "fraction_of_bi_geometric_upper_realized": 0.5,
+      "l0_share_suppression": 1.0,
+      "signal_retention_assumption": 1.0
+    },
+    "conservative_benefit": {
+      "accepted_prompt_increment_assumption_cps": 0.0,
+      "al_can_cu_lineage_suppression": 0.5,
+      "estimated_B20_counts": 79045.53690490547,
+      "estimated_F3_ph_cm2_s": 6.59312609843363e-05,
+      "estimated_background_reduction_fraction": 0.1955280674867031,
+      "estimated_background_remaining_fraction": 0.804471932513297,
+      "fraction_of_bi_geometric_upper_realized": 0.0,
+      "l0_share_suppression": 0.5,
+      "signal_retention_assumption": 1.0
+    },
+    "optimistic_geometric_upper": {
+      "accepted_prompt_increment_assumption_cps": 0.0,
+      "al_can_cu_lineage_suppression": 1.0,
+      "estimated_B20_counts": 46851.041868239045,
+      "estimated_F3_ph_cm2_s": 5.075891517670896e-05,
+      "estimated_background_reduction_fraction": 0.5231818307800673,
+      "estimated_background_remaining_fraction": 0.4768181692199327,
+      "fraction_of_bi_geometric_upper_realized": 1.0,
+      "l0_share_suppression": 1.0,
+      "signal_retention_assumption": 1.0
+    }
+  },
+  "status": "PASS__SG3A_PRETRANSPORT_SENSITIVITY_ESTIMATE_ONLY"
+}

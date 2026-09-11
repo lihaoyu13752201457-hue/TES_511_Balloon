@@ -1,0 +1,33 @@
+# This cosima input file represent a proton beam
+# incident on the PMMA target
+
+
+Version       1
+Geometry      HadronTherapy.geo.setup
+
+# Physics list
+PhysicsListEM                      LivermorePol
+PhysicsListHD                      qgsp-bic-hp
+DecayMode                          buildup
+DetectorTimeConstant               0.000001
+
+# Output formats
+StoreSimulationInfo                all
+PreTriggerMode                     everything
+
+# Regions
+DefaultRangeCut   0.05
+
+
+# The proton beam
+Run Protons
+Protons.FileName              Protons100MeV
+Protons.Time                  10000.0
+
+Protons.Source                Protons_Source
+Protons_Source.ParticleType   4
+Protons_Source.Beam           HomogeneousBeam  -100 0 0   1 0 0  0.1
+Protons_Source.Spectrum       Mono 100000
+Protons_Source.Flux           10000
+
+

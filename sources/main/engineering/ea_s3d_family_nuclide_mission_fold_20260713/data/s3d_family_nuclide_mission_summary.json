@@ -1,0 +1,190 @@
+{
+  "status": "PASS_S3D_EXISTING_DATA_FAMILY_NUCLIDE_MISSION_CLOSURE",
+  "generated_at_utc": "2026-07-13T06:27:48Z",
+  "claim": "Existing-data replacement of the historical one-scalar S3d mission fold by the manuscript's family-resolved prompt and nuclide-response delayed equations; no new transport.",
+  "inputs": {
+    "engineering/ea_detector_response_closure_20260713/data/o8_energy_response_closure_summary.json": {
+      "sha256": "810b1e3182e5247f5caacd346f24415ddce7833921840b601dde0a38da1779bd",
+      "bytes": 78399
+    },
+    "engineering/ea_detector_response_closure_20260713/code/build_o8_energy_response_closure.py": {
+      "sha256": "4b5f03f7915a6829a03bef776554f8e3c473a967b11e031deac955faad750973",
+      "bytes": 70665
+    },
+    "engineering/geometry_optimization_20260704/43_geoopt_s3d_o8_fallback_20260712/fullchain/step05/work/event_catalog.pkl": {
+      "sha256": "6ed8d9d765ebc814786cb144765f02dfa437dc26a6df9a0a91c03ad983f4e403",
+      "bytes": 505464443
+    },
+    "engineering/geometry_optimization_20260704/43_geoopt_s3d_o8_fallback_20260712/fullchain/step06/background_time_variation.csv": {
+      "sha256": "7db55a31eafc2929add31a8b43e6c43198c914c294cb7ff699c9b592f9ed59ec",
+      "bytes": 103757
+    },
+    "runs/geometry_optimization_20260704/step02_delay_fix_s3d_o8_neutron_delayed_m50000_20260712/groundstate_activity_corrections.csv": {
+      "sha256": "7c59048f5117eb3cb0fb5e18b8a1b9be6715b9adf8e2db3946595bc7d9dc7eb0",
+      "bytes": 38266
+    },
+    "runs/geometry_optimization_20260704/step02_delayed_transport_s3d_o8_neutron_delayed_m50000_20260712/DelayedDecayS3dO8NeutronM50000.inc1.id1.sim.gz": {
+      "sha256": null,
+      "bytes": 910935364
+    },
+    "engineering/trajectory_transport_validation_20260709/01_points/trajectory_profile_frozen.csv": {
+      "sha256": "c73f52c2675fa49cf7424cb552a28afcce4cab1bd4acdc239d3762ce0c581a02",
+      "bytes": 19696
+    },
+    "engineering/trajectory_transport_validation_20260709/11_analytic_agreement_20260709/claude_source_response_curve_by_time.csv": {
+      "sha256": "8e88868e11e723e7124e030e6c6f89bed6c9acb0ad064deafb35c557dcba6388",
+      "bytes": 28941
+    },
+    "engineering/trajectory_transport_validation_20260709/11_analytic_agreement_20260709/analytic_agreement_summary.json": {
+      "sha256": "5d11245e5571020159d27481b7b936fbe6125d3ae8a14b39a5cdb08b8fd388e8",
+      "bytes": 2559
+    }
+  },
+  "curve_parity": {
+    "status": "PASS_ALL8_CURVE_REPRODUCES_RETAINED_EPLUS_N_GAMMA",
+    "max_abs_scale_delta": 1.000000082740371e-11,
+    "targeted_audit": "engineering/trajectory_transport_validation_20260709/11_analytic_agreement_20260709/analytic_agreement_summary.json",
+    "targeted_audit_status": "PASS_ANALYTIC_AGREEMENT_AUDIT_BUILT",
+    "validation_scope": "The retained direct-transport comparison validates e+, n, and gamma modulation in the 480--550 keV diagnostic band; the final W2 response coefficients remain anchored to the day-15 S3d event selection."
+  },
+  "selected_delayed_lineage": {
+    "authority": "engineering/ea_s3d_family_nuclide_mission_fold_20260713/data/selected_delayed_nuclides_primary_seed.json",
+    "status": "PASS_PRIMARY_SEED_DELAYED_NUCLIDE_LINEAGE",
+    "response_seed": 26071301,
+    "selected_summary": {
+      "events": 29,
+      "rate_cps": 0.0009012256072797496,
+      "event_weight_cps": 3.107674507861205e-05
+    },
+    "by_nuclide": [
+      {
+        "ZA": 29064,
+        "nuclide": "Cu-64",
+        "selected_events": 24,
+        "day15_selected_rate_cps": 0.0007458418818866891
+      },
+      {
+        "ZA": 29062,
+        "nuclide": "Cu-62",
+        "selected_events": 5,
+        "day15_selected_rate_cps": 0.00015538372539306022
+      }
+    ]
+  },
+  "prompt_occupancy_day15_by_family": {
+    "alpha": {
+      "events": 69649,
+      "rate_hz_day15": 47.28964969850293
+    },
+    "eminus": {
+      "events": 1013953,
+      "rate_hz_day15": 688.2320440488916
+    },
+    "eplus": {
+      "events": 860892,
+      "rate_hz_day15": 584.4139446033697
+    },
+    "gamma": {
+      "events": 3635995,
+      "rate_hz_day15": 19731.813033759743
+    },
+    "muminus": {
+      "events": 40646,
+      "rate_hz_day15": 27.5240105447988
+    },
+    "muplus": {
+      "events": 40222,
+      "rate_hz_day15": 27.258655649892106
+    },
+    "n": {
+      "events": 3161855,
+      "rate_hz_day15": 2145.1473821827844
+    },
+    "p": {
+      "events": 712189,
+      "rate_hz_day15": 482.31876873399233
+    }
+  },
+  "delayed_nuclide_response": {
+    "status": "PASS_NEUTRON_DRIVER_NUCLIDE_ACTIVITY_AND_SELECTION_RESPONSE",
+    "nuclides_in_inventory": 81,
+    "day15_total_activity_Bq": 29.23316595493249,
+    "selected_nuclides": [
+      {
+        "ZA": 29064,
+        "nuclide": "Cu-64",
+        "selected_events": 24,
+        "day15_selected_rate_cps": 0.0007458418818866891,
+        "day15_activity_Bq": 7.515106564174003,
+        "selection_response_cps_per_Bq": 9.924568274816816e-05
+      },
+      {
+        "ZA": 29062,
+        "nuclide": "Cu-62",
+        "selected_events": 5,
+        "day15_selected_rate_cps": 0.00015538372539306022,
+        "day15_activity_Bq": 0.23421063886552448,
+        "selection_response_cps_per_Bq": 0.0006634358120780162
+      }
+    ],
+    "day15_selected_rate_cps": 0.0009012256072797492,
+    "production_driver": "live-PARMA neutron flux ratio in each trajectory bin",
+    "day15_anchor": "Each NUBASE-corrected nuclide inventory is anchored to its retained day-15 S3d activity before applying its selected-event response."
+  },
+  "mission": {
+    "status": "PASS_S3D_W2_FAMILY_NUCLIDE_MISSION_FOLD",
+    "reference_flux_ph_cm2_s": 0.0001,
+    "day15_selected_rates_cps": {
+      "prompt": 0.003393031514121508,
+      "delayed": 0.0009012256072797496,
+      "atm511": 0.0015552613519498118,
+      "background": 0.005849518473351069,
+      "signal": 0.0011134811712591435,
+      "background_upper95": 0.04773487418321436,
+      "signal_lower95": 0.0011069016402656172
+    },
+    "source_counts_20d": 1865.0868211710092,
+    "background_counts_20d": 10082.935177080408,
+    "source_lower95_counts_20d": 1854.066072134333,
+    "background_upper95_counts_20d": 81753.53412475654,
+    "Z20d": 18.574005327523444,
+    "Z20d_conservative95": 6.484431977663695,
+    "flux_3sigma_20d_ph_cm2_s": 1.615160514439243e-05,
+    "flux_3sigma_20d_conservative95_ph_cm2_s": 4.626465371730037e-05,
+    "T3_day": 0.414566781505468,
+    "T5_day": 1.0456162001940468,
+    "T3_day_conservative95": 4.132365494529706,
+    "T5_day_conservative95": 11.500362575304045,
+    "accidental_loss_min": 0.020144879901872192,
+    "accidental_loss_max": 0.028341184054694546,
+    "model": {
+      "prompt": "sum of eight day-15 S3d selected family rates times live-PARMA family flux ratios",
+      "delayed": "sum of neutron-driven nuclide activities times day-15 selected nuclide responses",
+      "atm511": "independent semi-empirical 4pi line-flux scale retained from S3d Step06",
+      "signal": "independent 511-keV atmospheric-transmission scale retained from S3d Step06",
+      "coincidence": "prompt family occupancy plus total delayed activity occupancy plus atmospheric-line occupancy"
+    }
+  },
+  "comparison_to_retired_scalar_fold": {
+    "retired_status": "PASS_O8_EVENT_LEVEL_420EV_FWHM_RESPONSE_MISSION_FOLD",
+    "old_Z20d": 18.563290210456216,
+    "new_Z20d": 18.574005327523444,
+    "old_Z20d_conservative95": 6.503075947563706,
+    "new_Z20d_conservative95": 6.484431977663695,
+    "old_background_counts_20d": 10095.211020169254,
+    "new_background_counts_20d": 10082.935177080408,
+    "interpretation": "Day-15 detector rates are unchanged; differences come only from the corrected trajectory response and occupancy scales."
+  },
+  "outputs": {
+    "all8_scales": "engineering/ea_s3d_family_nuclide_mission_fold_20260713/data/live_parma_all8_scales_81bins.csv",
+    "selected_delayed_nuclides": "engineering/ea_s3d_family_nuclide_mission_fold_20260713/data/selected_delayed_nuclides_primary_seed.json",
+    "nuclide_activity_timeline": "engineering/ea_s3d_family_nuclide_mission_fold_20260713/outputs/nuclide_activity_by_time.csv",
+    "mission_timeline": "engineering/ea_s3d_family_nuclide_mission_fold_20260713/outputs/w2_family_nuclide_mission_timeline.csv"
+  },
+  "scope": {
+    "new_monte_carlo_transport": false,
+    "day15_response_changed": false,
+    "trajectory_modulation_changed": true,
+    "optics_hardware_background_included": false
+  }
+}

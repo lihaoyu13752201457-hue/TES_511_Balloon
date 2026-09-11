@@ -1,0 +1,46 @@
+{
+  "input": {
+    "path": "/home/ubuntu/neutron_fen/install/G4CMP-g4cmp-V10-05-00-g4.11.4.0/share/G4CMP/CrystalMaps/Si/config.txt",
+    "sha256": "39866262563220a2042595fda8792de0efb7b903a3f9baf4d626ad018125f57c"
+  },
+  "limitations": [
+    "Mean free path is rate-to-length conversion with representative velocities; G4CMP uses mode- and direction-dependent group velocity.",
+    "Anharmonic bulk downconversion is applied to longitudinal phonons in this G4CMP implementation."
+  ],
+  "model": {
+    "A_s4": 7.41e-56,
+    "B_s3": 2.43e-42,
+    "isotope_scattering_rate": "B*nu^4",
+    "longitudinal_anharmonic_decay_rate": "A*nu^5",
+    "longitudinal_velocity_m_s": 9000.0,
+    "representative_velocity_m_s": 6000.0
+  },
+  "outputs": {
+    "pdf": "/home/ubuntu/neutron_fen/outputs/figures/sh3_g4cmp_phonon_transport_physics.pdf",
+    "png": "/home/ubuntu/neutron_fen/outputs/figures/sh3_g4cmp_phonon_transport_physics.png"
+  },
+  "scenario_markers": {
+    "2.7 meV": {
+      "frequency_THz": 0.6528570955087684,
+      "isotope_mean_free_path_mm_at_6000_m_s": 13.591658766280167,
+      "isotope_rate_Hz": 441447.2216507912,
+      "longitudinal_anharmonic_mean_free_path_mm_at_9000_m_s": 1024.0794673134435,
+      "longitudinal_anharmonic_rate_Hz": 8788.38047950564
+    },
+    "30 meV": {
+      "frequency_THz": 7.253967727875203,
+      "isotope_mean_free_path_mm_at_6000_m_s": 0.0008917487316556419,
+      "isotope_rate_Hz": 6728352715.299361,
+      "longitudinal_anharmonic_mean_free_path_mm_at_9000_m_s": 0.006047086846539152,
+      "longitudinal_anharmonic_rate_Hz": 1488319951.1432266
+    },
+    "62 meV": {
+      "frequency_THz": 14.99153330427542,
+      "isotope_mean_free_path_mm_at_6000_m_s": 4.8883327547578103e-05,
+      "isotope_rate_Hz": 122741235120.71074,
+      "longitudinal_anharmonic_mean_free_path_mm_at_9000_m_s": 0.00016039618408840239,
+      "longitudinal_anharmonic_rate_Hz": 56111060566.37637
+    }
+  },
+  "schema_version": 1
+}

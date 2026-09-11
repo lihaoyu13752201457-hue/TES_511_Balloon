@@ -1,0 +1,59 @@
+{
+  "hard_constraints": {
+    "SF3_full_stat_completion": false,
+    "final_optimal_geometry_exists": false,
+    "mono_511_enabled": false,
+    "passive_W_is_veto": false
+  },
+  "optimization_order": [
+    "V2A: convert L0 solid Cu disk to an open-ring implementation and replace the broad 50 mK bottom cap with an aperture/ring-cap variant, subject to thermal and mechanical constraints",
+    "V2B: add staggered line-of-sight relief in the MXC plate; do not infer MXC is safe from SF3 delayed data because SF3 passive W perturbs activation",
+    "Keep 4 K plate modification as a later engineering-risk branch despite its observed residual share",
+    "Do not add or retain near-field high-Z passive W in the focused acceptance path unless a matched common-response/veto/Step05 run demonstrates benefit"
+  ],
+  "required_gates": [
+    "matched corrected-keV prompt -> candidate-own activation/inventory -> actual-position delayed chain",
+    "independent 37,194-ray focused-signal run",
+    "shared detector response, active-veto policy, and Step05 selection",
+    "81-node / 20-day F3 comparison"
+  ],
+  "se3_activation": {
+    "Cu61_Cu62_Cu64_rate_share": 0.9299463264463577,
+    "MXC": {
+      "incident_family_rate_cps": {
+        "alpha": 0.005998088560765567,
+        "eplus": 9.287209091050005e-05,
+        "gamma": 0.00014498399254147246,
+        "p": 0.008835250401802748
+      },
+      "parent_rate_cps": {
+        "Cu-61": 0.0030715362766535197,
+        "Cu-62": 0.011999658769366768
+      },
+      "selected_Neff": 2.3644501823387705,
+      "selected_events": 7,
+      "selected_rate_cps": 0.015071195046020287,
+      "selected_rate_share": 0.2507128952688067,
+      "selected_sigma_cps": 0.009801275715213335
+    },
+    "V2A_bottom_plus_L0_observed_rate_share": 0.389850213464637,
+    "V2B_bottom_plus_L0_plus_MXC_observed_rate_share": 0.6405631087334437,
+    "selected_delayed_W2_events": 47,
+    "selected_delayed_W2_rate_cps": 0.06011336205846697
+  },
+  "sf3_prompt": {
+    "active_veto_edep_keV": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "interpretation": "near-field passive W creates/scatters survivor routes and provides no veto signal",
+    "pair_event_regions": {
+      "OUTSIDE_NEW_SF3_W": 1,
+      "SF3_W_NearField_SideSleeve_2p9mm": 2
+    },
+    "selected_events": 3,
+    "selected_rate_cps": 0.15225512681075754
+  },
+  "status": "DIAGNOSTIC_NOT_GEOMETRY_PROMOTION"
+}

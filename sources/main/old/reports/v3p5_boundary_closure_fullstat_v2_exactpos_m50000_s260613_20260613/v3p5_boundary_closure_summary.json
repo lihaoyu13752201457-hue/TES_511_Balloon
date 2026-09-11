@@ -1,0 +1,113 @@
+{
+  "status": "PASS_V3P5_BOUNDARY_CLOSURE_SIDECARS",
+  "statistics_label": "fullstat_v2_exactpos_m50000_s260613",
+  "base_label": "fullstat_v2_exactpos_m50000_s260613",
+  "authority_role": "CURRENT_EXACT_POSITION_RATE_AUTHORITY",
+  "claim_level": "SIDECAR_CLOSURE_FOR_ATMOSPHERE_AND_SPATIAL_LIKELIHOOD",
+  "atmosphere_45deg_los": {
+    "status": "PASS_V3P5_45DEG_LOS_ATMOSPHERE_SIDECAR",
+    "base_label": "fullstat_v2_exactpos_m50000_s260613",
+    "claim_level": "L1_ABSOLUTE_LOS_RENORMALIZATION_SIDECAR_NO_NEW_TRANSPORT",
+    "method": "T_slant(depth)=T_vertical(depth)**sec(45deg), using the same Step06 Beer-Lambert mu_eff and depth curve.",
+    "secant_45deg": 1.4142135623730951,
+    "w2_hard_window": {
+      "Z20d": 5.402804022153669,
+      "T3_day": 5.96659264651918,
+      "T3_status": "mission_internal_crossing",
+      "flux_3sigma_20d_ph_cm2_s": 5.5526722562928324e-05,
+      "total_source_counts": 1784.6121577833846,
+      "total_background_counts": 109106.15864638158,
+      "T_ref_vertical": 0.7390423888027,
+      "T_ref_slant": 0.6520342542373311,
+      "day15_signal_scale_slant_vs_vertical": 0.8822690878309049
+    },
+    "spot_r90": {
+      "Z20d": 7.205133954277794,
+      "T3_day": 2.8567680405591296,
+      "T3_status": "mission_internal_crossing",
+      "flux_3sigma_20d_ph_cm2_s": 4.163697745298484e-05,
+      "total_source_counts": 1444.5454975633133,
+      "total_background_counts": 40195.58291231084,
+      "T_ref_vertical": 0.7390423888027,
+      "T_ref_slant": 0.6520342542373311,
+      "day15_signal_scale_slant_vs_vertical": 0.8822690878309049
+    },
+    "inputs": {
+      "step05": "stepwise_maintenance/step05_veto_time_axis/outputs_v3p5_centerfinger_fullstat_v2_exactpos_m50000_s260613_l1/step05_v3p5_centerfinger_l1_response_summary.json",
+      "step06_background_time_variation": "stepwise_maintenance/step06_mission_time_variation/outputs_v3p5_centerfinger_fullstat_v2_exactpos_m50000_s260613/background_time_variation.csv"
+    }
+  },
+  "spatial_annular_likelihood": {
+    "status": "PASS_V3P5_SPATIAL_ANNULAR_LIKELIHOOD_SIDECAR",
+    "base_label": "fullstat_v2_exactpos_m50000_s260613",
+    "spatial_cuts_base": "detector_coupled_spatial_line_cuts_from_step09_f10m_a1_v3p5",
+    "claim_level": "L1_FIXED_TEMPLATE_MULTI_ANNULUS_POISSON_LIKELIHOOD_NO_NUISANCE_PROFILE",
+    "method": "Non-overlapping annuli from detector_coupled_spatial_line_cuts.csv; Asimov Poisson likelihood ratio for reference flux.",
+    "annulus_count": 6,
+    "total_source_counts_20d": 1821.1936582143198,
+    "total_background_counts_20d": 126184.2825760906,
+    "counting_Z20d_same_aperture": 5.126884078150418,
+    "annular_likelihood_Z20d": 8.457811713591632,
+    "flux_3sigma_20d_ph_cm2_s": 3.547016771701155e-05,
+    "gain_vs_full_aperture_counting": 1.6496982542743357,
+    "gain_vs_spot_r90_time_dependent": 1.0345105855534842,
+    "inputs": {
+      "spatial_cuts_csv": "stepwise_maintenance/step09_optics_bridge/outputs_f10m_a1_v3p5/detector_coupled_spatial_line_cuts.csv",
+      "step06_background_time_variation": "stepwise_maintenance/step06_mission_time_variation/outputs_v3p5_centerfinger_fullstat_v2_exactpos_m50000_s260613/background_time_variation.csv",
+      "spatial_proxy_summary": "stepwise_maintenance/step08_significance/outputs_v3p5_centerfinger_fullstat_v2_spatial/v3p5_spatial_line_proxy_summary.json"
+    },
+    "boundaries": [
+      "This is a fixed-template annular likelihood sidecar, not a nuisance-profile publication analysis.",
+      "It uses W2-selected event rates already passed through active-veto and side-entry Compton/FoV selection."
+    ]
+  },
+  "exact_position_delayed_source": {
+    "status": "PASS_EXACT_RPIP_POINTSOURCE_PRODUCTION_TRANSPORT",
+    "claim_level": "CLOSED_FOR_EXACTPOS_SAMPLE_SUPPORT_RUN",
+    "raw_audit_status": "PASS",
+    "fixed_audit_status": "PASS",
+    "feasibility_status": "EXACT_RPIP_POINTSOURCE_SMOKE_VALIDATED_AND_PROMOTED_TO_V3P5_RUN",
+    "feasibility_evidence": {
+      "repo_smoke_readme": "tests/realpos_delayed_smoke/README.md",
+      "new_geo_re_smoke_readme": "../codex_tes_511_sim/new_geo_re/tests/realpos_delayed_smoke/README.md",
+      "new_geo_re_verify_summary": "../codex_tes_511_sim/new_geo_re/tests/realpos_delayed_smoke/outputs/verify_summary.json",
+      "new_geo_re_smoke_events_SE": 2000,
+      "new_geo_re_smoke_match_fraction": 0.9905
+    },
+    "source_mode": "sampled_equal_flux_pointsource_blocks",
+    "n_pointsource_blocks": 50000,
+    "triggers_requested": 1000000,
+    "fixed_total_activity_Bq": 85.63669586527698,
+    "sum_flux_check_Bq": 85.63669586527698,
+    "delayed_transport": {
+      "path": "runs/step02_delayed_transport_v3p5_centerfinger_fullstat_v2_exactpos_m50000_s260613/DelayedDecayRPIPGroundStateFixed.inc1.id1.sim.gz",
+      "SE": 1000000,
+      "ID": 1000000,
+      "TS": 1,
+      "TE_s": 11545.456287,
+      "geometry": "outputs/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup",
+      "size_bytes": 827056701,
+      "TE_source": "Cosima SIM TE live-time record; radioactive daughter decays can make TE differ from triggers/fixed_total_activity_Bq",
+      "primary_activity_time_s_if_no_daughters": 11677.237075718016,
+      "status": "PASS"
+    },
+    "convergence": {
+      "status": "PASS_EXACTPOS_TRANSPORT_CONVERGENCE",
+      "summary_json": "outputs/reports/v3p5_exactpos_convergence_20260614/v3p5_exactpos_convergence_summary.json"
+    },
+    "inputs": {
+      "step02_summary": "stepwise_maintenance/step02_raw_background_simulation/outputs_v3p5_centerfinger_fullstat_v2_exactpos_m50000_s260613/step02_v3p5_centerfinger_fullstat_v2_exactpos_m50000_s260613_summary.json",
+      "delay_fix_dir": "runs/step02_delay_fix_v3p5_centerfinger_fullstat_v2_exactpos_m50000_s260613"
+    },
+    "limitations": [
+      "This exact-position production closure uses the sampled PointSource support recorded in the source manifest, not the full weighted-table one-block-per-RPIP source if source_mode is sampled_equal_flux_pointsource_blocks.",
+      "The source is fixed-inventory and activity-preserving; spatial sampling uncertainty is controlled by the sampled support size recorded above."
+    ]
+  },
+  "outputs": {
+    "summary_json": "outputs/reports/v3p5_boundary_closure_fullstat_v2_exactpos_m50000_s260613_20260613/v3p5_boundary_closure_summary.json",
+    "report_md": "outputs/reports/v3p5_boundary_closure_fullstat_v2_exactpos_m50000_s260613_20260613/v3p5_boundary_closure_report.md",
+    "atmosphere_45deg_curve_csv": "outputs/reports/v3p5_boundary_closure_fullstat_v2_exactpos_m50000_s260613_20260613/v3p5_45deg_los_time_curve.csv",
+    "spatial_annulus_csv": "outputs/reports/v3p5_boundary_closure_fullstat_v2_exactpos_m50000_s260613_20260613/v3p5_spatial_annular_likelihood.csv"
+  }
+}

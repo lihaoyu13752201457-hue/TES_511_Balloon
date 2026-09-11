@@ -1,0 +1,188 @@
+{
+  "caveats": [
+    "The old corrected-keV broadband total contains a coarse 449.65/566.08/712.64-keV IP-LIN hat. Its exact removed area is not numerically identical to the official physical mono-line integral, so recomposition intentionally changes the total.",
+    "This is an explicit hybrid closure: continuum de-line uses W=118.3/g=0/Rc=11.6/X=3.84535, while the physical mono target uses W=114.6/g=0.15 and node-specific Rc/depth. The two states must not be presented as one common atmosphere.",
+    "The continuum trajectory retains scale_gamma_to_parma_reference from the existing 81-node family table, whose W_index is 114.6. No new W=118.3 broadband continuum trajectory was generated.",
+    "Physical PARMA flux/source-model systematics are EXCLUDED; the closure and later top-up decision cover finite transport statistics and deterministic source reweighting only.",
+    "The ebb2 vendor copy lacks required runtime angle tables, so the script selected the complete local /home/ubuntu/TES_511_Balloon PARMA vendor tree. Driver and input-tree hashes are recorded."
+  ],
+  "coarse_line": {
+    "current_table_intensity_definition": "source-card Flux times the printed corrected-keV DP values, divided by the printed DP trapezoidal integral",
+    "definition": "current W=118.3 total grid minus official W=118.3 continuum; only the 566.08-keV node differs",
+    "energy_basis_keV": [
+      449.65,
+      566.08,
+      712.64
+    ],
+    "event_importance_ratio_definition": "For an existing broadband event use source_bin20=clip(floor((1+IA_INIT.dir_z)*10),0,19), then w_cont=J_cont(source_bin20,IA_INIT.energy_keV)/J_total(source_bin20,IA_INIT.energy_keV); w_cont=1 outside (449.65,712.64) keV. Both J grids use the same IP-LIN nodes.",
+    "interpolation": "IP LIN in energy and intensity",
+    "maximum_event_importance_ratio_Jcont_over_Jtotal": 1.0,
+    "minimum_event_importance_ratio_Jcont_over_Jtotal": 0.3971350029339165,
+    "negative_continuum_flux_or_importance_count": 0,
+    "w2_source_flux": {
+      "broadband_total_ph_cm2_s": 0.0014810264670661224,
+      "coarse_line_contribution_ph_cm2_s": 0.0005939135611940672,
+      "continuum_ph_cm2_s": 0.0008871129058720552
+    }
+  },
+  "continuum_deline_reference_closure": {
+    "atmospheric_depth_g_cm2": 3.84535,
+    "broadband_reference_flux_ph_cm2_s": 4.7996615777852,
+    "continuum_reference_flux_ph_cm2_s": 4.623218946551606,
+    "current_grid_integral_minus_contract_ph_cm2_s": 8.881784197001252e-16,
+    "cutoff_rigidity_Rc_GV": 11.6,
+    "exact_subtraction_identity_residual_ph_cm2_s": -8.881784197001252e-16,
+    "local_geometry_g": 0.0,
+    "parma511_flux_at_continuum_deline_state_ph_cm2_s": 0.17378292793520006,
+    "recomposed_continuum_plus_same_state_parma511_flux_ph_cm2_s": 4.7970018744868055,
+    "removed_coarse_line_reference_flux_ph_cm2_s": 0.17644263123359388,
+    "representation_deficit_ph_cm2_s": 0.002659703298394156,
+    "representation_delta_ph_cm2_s": -0.002659703298394156,
+    "representation_surplus_ph_cm2_s": 0.0,
+    "solar_modulation_W_MV": 118.3,
+    "state_role": "CONTINUUM_DELINE_STATE"
+  },
+  "inputs": {
+    "broadband_contract": {
+      "path": "/home/ubuntu/.codex/worktrees/ebb2/TES_511_Balloon/engineering/particle_source_unit_repair_20260811/data/source_contract_manifest.json",
+      "sha256": "5424eeca35b20affb153c0e07c31a6582e575f511922bf55f40a5a0f77ab4326"
+    },
+    "current_broadband_source_card": {
+      "path": "/home/ubuntu/.codex/worktrees/ebb2/TES_511_Balloon/engineering/particle_source_unit_repair_20260811/config/source_cards/mass_model_511/Background_gamma_fullsphere20.source",
+      "sha256": "03aca6b27b6dba016334c7b9a5f1ef05f41628b175170034a94aa6cf6566d11a"
+    },
+    "current_corrected_gamma_spectra": {
+      "path_pattern": "/home/ubuntu/.codex/worktrees/ebb2/TES_511_Balloon/engineering/particle_source_unit_repair_20260811/spectra/correct_keV_total/gamma_binNN_*_pdf.spectrum",
+      "sha256_by_file": {
+        "gamma_bin00_theta18.19_pdf.spectrum": "ec1d32bbbf4a19f941e483d73dabf5be61c2e08e6c9a001a2cc489c65486c181",
+        "gamma_bin01_theta31.79_pdf.spectrum": "552dbbb1f6137ce4dd17b474908b14901d59bda579aeb9da14753299bb4aeed8",
+        "gamma_bin02_theta41.41_pdf.spectrum": "82f8c10792addd51b185b59c12baa153f4d74f592350ed5f6aff8dc563e83f2c",
+        "gamma_bin03_theta49.46_pdf.spectrum": "0f7845d1b905a592f8c7c63eab912336962b8a42581a94b27511489748bad9bd",
+        "gamma_bin04_theta56.63_pdf.spectrum": "449ae28d780f4edb79f057c5ad18dd8f254da885a777f18af51e8b0abf601369",
+        "gamma_bin05_theta63.26_pdf.spectrum": "83f784f2b50291c9738971c3bd4ee3b067fa4c09c573d28cbdb978ff76a905bc",
+        "gamma_bin06_theta69.51_pdf.spectrum": "a28ef971dede1e481639e12d896c6a56a8458e2bc90b4a15fb7c3e88d9bdfd28",
+        "gamma_bin07_theta75.52_pdf.spectrum": "feabb646c6daafb5d97ed4eeed6eea24b9ea67d095a7f72615c2a2057bfe4eda",
+        "gamma_bin08_theta81.37_pdf.spectrum": "bad6cf25ba251dadc1178dd141aea373070e190fe9836a352dab5f7812c86c1e",
+        "gamma_bin09_theta87.13_pdf.spectrum": "d7d9a0ff0672f49910acdea1448281c2e6807d1b94e24c4980a0ef09532bb7af",
+        "gamma_bin10_theta92.87_pdf.spectrum": "b0c7e3fc9b593a0285c6522e88c11248fb5eaab36e1d0736ab4922b89101abed",
+        "gamma_bin11_theta98.63_pdf.spectrum": "c0ca8190bb6ae112ae1c66233b702107a3f5b6acd3318e3789b7a476c877657a",
+        "gamma_bin12_theta104.48_pdf.spectrum": "f78035280627c656a00c9a7dd287fa64e5b38df94364e7ba8ea97b982a568bb4",
+        "gamma_bin13_theta110.49_pdf.spectrum": "00c21d328ad1fc59bc0f4b024247ce29d672402282c0d20b0d57e967e59c8edd",
+        "gamma_bin14_theta116.74_pdf.spectrum": "08b95a6aefe566b6524c96c745f8c7695c6e9aa9de4f7ef75dd80588dd6a9fa4",
+        "gamma_bin15_theta123.37_pdf.spectrum": "61a78c21099cf46f84568023fc51a08e09064530d21c90d8a4769e7931ce26c9",
+        "gamma_bin16_theta130.54_pdf.spectrum": "5695bb1a2b86453dfa46e8647f86b3834332310d09b3a42d39e274ea1230cf2c",
+        "gamma_bin17_theta138.59_pdf.spectrum": "5f994638aa401bde8ca3395080bf487c0dd3c913c8c1ed52ddcb5f9bcb1ef08d",
+        "gamma_bin18_theta148.21_pdf.spectrum": "09981063474061dc555c5cab134de906de2b531fe2cb29b31076bc75ced63fe8",
+        "gamma_bin19_theta161.81_pdf.spectrum": "6e738e9e7029cd2aa8c433537cac8ceadc5c59b6c933162d42ad46f6a9a9797c"
+      }
+    },
+    "day15_environment_authority": {
+      "path": "/home/ubuntu/.codex/worktrees/ebb2/TES_511_Balloon/engineering/m04_validation_geometry_handoff_20260810/02_parma_atm511_repair_20260810/config/day15_environment_authority.json",
+      "sha256": "b4e5e4bb165735c3cf4add6af62090382aa88b839a0bea71e0da800eaafff6d2"
+    },
+    "gamma_scale_81nodes": {
+      "path": "/home/ubuntu/.codex/worktrees/ebb2/TES_511_Balloon/engineering/particle_source_unit_repair_20260811/m05_corrected_reanalysis_20260813/data/parma_energy_integrated_family_scales_81bins.csv",
+      "sha256": "b9f955e2172809fb6867d8b983481cc015889787fd155bec8cb5aa4139f66eb4"
+    },
+    "parma_driver": {
+      "path": "/home/ubuntu/TES_511_Balloon/engineering/m04_validation_geometry_handoff_20260810/02_parma_atm511_repair_20260810/code/parma511_driver",
+      "sha256": "62c3f94df965c13fba9cb3194728dd2317ad11c80491bc858aebdb213f8f69b5"
+    },
+    "parma_driver_source": {
+      "path": "/home/ubuntu/TES_511_Balloon/engineering/m04_validation_geometry_handoff_20260810/02_parma_atm511_repair_20260810/code/parma511_driver.cpp",
+      "sha256": "7320b03accc6b50e04d409d7a7bd37548deb26af0072068961dd0a517ed13f3f"
+    },
+    "parma_subroutines_source": {
+      "path": "/home/ubuntu/TES_511_Balloon/engineering/m04_validation_geometry_handoff_20260810/02_parma_atm511_repair_20260810/vendor/parma_cpp_official_20260810/subroutines.cpp",
+      "sha256": "620cab2b58bac6bf996dcc0ad9a33b7bc113a4d768eb2f17b97788a500010c1b"
+    },
+    "parma_vendor_input_tree": {
+      "file_count": 69,
+      "manifest_scheme": "sha256(relative_path + NUL + sha256(file) + newline), sorted",
+      "path": "/home/ubuntu/TES_511_Balloon/engineering/m04_validation_geometry_handoff_20260810/02_parma_atm511_repair_20260810/vendor/parma_cpp_official_20260810/input",
+      "sha256": "d8282422683390e24b95774e521ec1d7598e0482d3a0923cf40455c64630dd97"
+    },
+    "proposal_mono_line_80bins": {
+      "path": "/home/ubuntu/.codex/worktrees/ebb2/TES_511_Balloon/engineering/m04_validation_geometry_handoff_20260810/02_parma_atm511_repair_20260810/line/parma511_day15_80bins.csv",
+      "sha256": "2f4ae904bf89179fe1709e3a8123ff864f4450e8bcf443389898ea43cd6a5a32"
+    },
+    "source_builder": {
+      "path": "/home/ubuntu/.codex/worktrees/ebb2/TES_511_Balloon/engineering/geometry_optimization_20260815/67_m05_mono511_flux_closure_20260823/code/build_source_closure.py",
+      "sha256": "5e79d398d67d437afe432f4d7c8d96b33b5cbea74b722b3a23211fed9ca995d7"
+    }
+  },
+  "mono511_day15_authority": {
+    "all_80_importance_ratios_equal_one_within_abs_tolerance": 2e-13,
+    "angular_bins": 80,
+    "atmospheric_depth_g_cm2": 3.4614689720143224,
+    "cutoff_rigidity_Rc_GV": 11.6,
+    "day_mid": 15.0,
+    "integrated_flux_ph_cm2_s": 0.16651547160226118,
+    "local_geometry_g": 0.15,
+    "maximum_importance_ratio_minus_one_abs": 0.0,
+    "maximum_target_minus_proposal_bin_flux_abs_ph_cm2_s": 0.0,
+    "solar_modulation_W_MV": 114.6,
+    "state_role": "MONO_TARGET_STATE_AND_TRANSPORT_PROPOSAL_AT_NODE60",
+    "time_bin_id": 60
+  },
+  "mono511_target": {
+    "angular_bins_per_node": 80,
+    "day15_identity_node": 60,
+    "day15_integrated_flux_ph_cm2_s": 0.16651547160226118,
+    "day15_maximum_importance_ratio": 1.0,
+    "day15_minimum_importance_ratio": 1.0,
+    "driver_command_template": "parma511_driver --s 114.6 --rc <Rc_GV_parma> --depth <depth_g_cm2_parma> --g 0.15 --bins 80 --quadrature-order 64",
+    "line_energy_MeV": 0.51099895,
+    "local_geometry_g": 0.15,
+    "maximum_bin_sum_or_importance_closure_residual_ph_cm2_s": 1.1102230246251565e-16,
+    "maximum_importance_ratio": 1.6128636607432865,
+    "maximum_node_flux_ph_cm2_s": 0.1987154073966674,
+    "maximum_node_time_bin_id": 15,
+    "minimum_importance_ratio": 0.6538646344950084,
+    "minimum_node_flux_ph_cm2_s": 0.14311309451525386,
+    "minimum_node_time_bin_id": 25,
+    "negative_target_flux_or_importance_count": 0,
+    "quadrature_order": 64,
+    "rows": 6480,
+    "solar_modulation_W_MV": 114.6,
+    "source_bin80_from_event_definition": "clip(floor((1+IA_INIT.dir_z)*40),0,79)",
+    "state_role": "MONO_TARGET_STATE",
+    "trajectory_nodes": 81
+  },
+  "outputs": {
+    "coarse_line_decomposition_20bins.csv": {
+      "rows": 20,
+      "sha256": "f2394067e057d9092851244cd5e5076d8b867fe3b05fe1d9b77d8af173aaecf4"
+    },
+    "mono511_target_81x80.csv": {
+      "rows": 6480,
+      "sha256": "92ee53428dceb36f4d6c1eb0b7efd72ad239dd233f25af73618aa654ee6cdd90"
+    },
+    "trajectory_component_scales_81nodes.csv": {
+      "rows": 81,
+      "sha256": "e72d4707be4fcb4b54ebf304a6dcb61748198326c8858f987264c864cc7f42fa"
+    }
+  },
+  "proposal_denominator": {
+    "atmospheric_depth_g_cm2": 3.4614689720143224,
+    "cutoff_rigidity_Rc_GV": 11.6,
+    "definition": "existing transported W=114.6 day-15 PARMA 80-bin source",
+    "importance_ratio_definition": "target_flux(time_bin_id,source_bin80; W=114.6,Rc_t,depth_t,g=0.15) / proposal_flux(source_bin80; frozen W=114.6,g=0.15 day15 source)",
+    "integrated_flux_ph_cm2_s": 0.16651547160226118,
+    "local_geometry_g": 0.15,
+    "solar_modulation_W_MV": 114.6
+  },
+  "schema_version": 2,
+  "status": "COMPLETE__HYBRID_W118P3_G0_DELINE__W114P6_G0P15_MONO_81X80",
+  "trajectory_component_policy": {
+    "continuum": "exact de-lined W=118.3 reference continuum multiplied by the existing scale_gamma_to_parma_reference; no line-dependent renormalization",
+    "gamma_scale_input_W_index_values_MV": [
+      114.6
+    ],
+    "line": "absolute official W=114.6/Rc_t/depth_t/g=0.15 driver result; node 60 uses the full-precision frozen day-15 Rc/depth tuple",
+    "maximum_exact_subtraction_identity_residual_ph_cm2_s": 8.881784197001252e-16,
+    "maximum_representation_deficit_ph_cm2_s": 0.00427629030898391,
+    "maximum_representation_surplus_ph_cm2_s": 0.0006788975465612523,
+    "recomposition": "continuum plus physical mono line; old broadband total is not enforced"
+  }
+}

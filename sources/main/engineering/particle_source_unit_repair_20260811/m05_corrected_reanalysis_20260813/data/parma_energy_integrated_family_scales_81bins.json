@@ -1,0 +1,30 @@
+{
+  "corrected_source_contract_environment": {
+    "altitude_km": 38.0,
+    "cutoff_rigidity_gv": 11.6,
+    "date": "2025-08-31",
+    "latitude_deg": 34.0,
+    "longitude_deg": 100.0,
+    "solar_modulation_w": 118.3
+  },
+  "date": "2025-08-31",
+  "driver": "/home/ubuntu/codex_tes_511_sim/COSMOSRAY_BALLOON_SIM/external/expacs_parma/phase2_parma_grid_driver",
+  "energy_integration": "trapezoidal dE within each of 20 equal-mu bins, then sum 2*pi*0.1",
+  "known_model_difference": "The date-driven PARMA executable returns W=114.6; the retained corrected source contract records W=118.3.",
+  "normalization_boundary": "Only PARMA family flux ratios to the 34N,100E,38km driver reference are used. The driver's absolute flux is not substituted for the corrected source-card flux.",
+  "output": "engineering/particle_source_unit_repair_20260811/m05_corrected_reanalysis_20260813/data/parma_energy_integrated_family_scales_81bins.csv",
+  "reference_environment": {
+    "altitude_km": 38.0,
+    "day_mid": -1.0,
+    "latitude_deg": 34.0,
+    "longitude_deg": 100.0,
+    "parma_Rc_GV": 11.6,
+    "parma_W_index": 114.6,
+    "parma_depth_g_cm2": 3.86509853156,
+    "time_bin_id": -1
+  },
+  "schema_version": 1,
+  "status": "PASS__PARMA_ENERGY_INTEGRATED_81BIN_RELATIVE_SCALES",
+  "trajectory": "engineering/geometry_optimization_20260704/43_geoopt_s3d_o8_fallback_20260712/fullchain/step06/atmosphere_transmission_511_by_time.csv",
+  "workers": 8
+}

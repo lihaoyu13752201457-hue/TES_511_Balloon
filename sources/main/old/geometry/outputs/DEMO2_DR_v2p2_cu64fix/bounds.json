@@ -1,0 +1,2184 @@
+{
+  "UNITS": "cm",
+  "VERSION": "DEMO2_DR_v2p2_cu64fix",
+  "DESIGN_NOTE": "DEMO2 DR_v2p2 Cu64-fix: removes the innermost Cu TES sample box, moves the nearest Cryoperm magnetic shield function/material into the former sample-box envelope, and adds a short Cu thermal finger through a bottom-center hole to the 50 mK/MXC plate.",
+  "TES_LAYERS": [
+    {
+      "z_center": 1.1649999999999998,
+      "r_max": 1.8,
+      "hz": 0.15
+    },
+    {
+      "z_center": 2.365,
+      "r_max": 1.8,
+      "hz": 0.15
+    },
+    {
+      "z_center": 3.565,
+      "r_max": 1.8,
+      "hz": 0.15
+    },
+    {
+      "z_center": 4.765,
+      "r_max": 1.8,
+      "hz": 0.15
+    },
+    {
+      "z_center": 5.965,
+      "r_max": 1.8,
+      "hz": 0.15
+    },
+    {
+      "z_center": 7.165,
+      "r_max": 1.8,
+      "hz": 0.15
+    }
+  ],
+  "SUBSTRATES": [
+    {
+      "name": "Substrate_L0",
+      "z_center": 1.0,
+      "hz": 0.015,
+      "r_max": 2.2
+    },
+    {
+      "name": "Substrate_L1",
+      "z_center": 2.2,
+      "hz": 0.015,
+      "r_max": 2.2
+    },
+    {
+      "name": "Substrate_L2",
+      "z_center": 3.4,
+      "hz": 0.015,
+      "r_max": 2.2
+    },
+    {
+      "name": "Substrate_L3",
+      "z_center": 4.6,
+      "hz": 0.015,
+      "r_max": 2.2
+    },
+    {
+      "name": "Substrate_L4",
+      "z_center": 5.8,
+      "hz": 0.015,
+      "r_max": 2.2
+    },
+    {
+      "name": "Substrate_L5",
+      "z_center": 7.0,
+      "hz": 0.015,
+      "r_max": 2.2
+    }
+  ],
+  "COLD_PLATES": [
+    {
+      "name": "ColdPlate_MXC_50mK_Retained",
+      "mat": "Copper",
+      "r": 4.5,
+      "h": 0.5,
+      "zc": 0.0,
+      "basis": "Retained 50 mK/MXC detector mounting plate; TES/sample box/Nb/Cryoperm clearances are unchanged."
+    },
+    {
+      "name": "ColdPlate_Still_0p7K_SDEnvelope",
+      "mat": "Copper",
+      "r": 7.65,
+      "h": 0.5,
+      "zc": -3.2,
+      "basis": "Still / ~0.7 K intercept plate enlarged for service clearance."
+    },
+    {
+      "name": "ColdPlate_4K_SDEnvelope",
+      "mat": "Copper",
+      "r": 8.35,
+      "h": 0.6,
+      "zc": -7.2,
+      "basis": "4 K condenser / pulse-tube intercept plate enlarged for DR service routing."
+    },
+    {
+      "name": "ColdPlate_60K_SDEnvelope",
+      "mat": "Aluminium",
+      "r": 9.05,
+      "h": 0.6,
+      "zc": -10.8,
+      "basis": "50/60 K radiation and pulse-tube first-stage plate; still inside unchanged CsI well."
+    }
+  ],
+  "SAMPLE_BOX": {
+    "name": "TES_SampleBox_Cryoperm",
+    "mat": "Cryoperm",
+    "r_in": 3.4,
+    "r_out": 3.7,
+    "z_out_bot": 0.25,
+    "z_in_bot": 0.55,
+    "z_in_top": 8.4,
+    "z_out_top": 8.7,
+    "hole": 1.898,
+    "bottom_hole": 0.4,
+    "moved_from": "Cryoperm_Inner_Mag_Shield",
+    "replaces": "TES_SampleBox_Cu",
+    "basis": "Cu64-fix sample box: Cryoperm material/function from the nearest magnetic-shield box, placed in the former TES_SampleBox_Cu envelope. Bottom has a center hole for a Cu thermal finger.",
+    "window": {
+      "name": "SampleBox_Al_Window",
+      "mat": "Aluminium",
+      "r": 1.898,
+      "thick": 0.0025,
+      "zc": 8.55,
+      "basis": "Very thin Al foil placeholder; nominal only, open-aperture scan recommended."
+    }
+  },
+  "OPEN_BOTTOM_CANS": [
+    {
+      "name": "Nb_SC_Detector_Can",
+      "mat": "Nb",
+      "r_in": 4.505,
+      "r_out": 4.535,
+      "z_in_bot": -0.25,
+      "z_in_top": 9.2,
+      "z_out_top": 9.23,
+      "hole": 1.898,
+      "basis": "Open-bottom Nb superconducting can; top aperture is open in the nominal demo.",
+      "window": null,
+      "nominal_aperture_policy": "open_aperture_no_continuous_Nb_foil"
+    }
+  ],
+  "CRYOSTAT_SHELLS": [
+    {
+      "name": "Thermal_MXC_50mK_Al_Shield_Retained",
+      "mat": "Aluminium",
+      "r_in": 4.58,
+      "r_out": 4.66,
+      "z_in_bot": -0.55,
+      "z_in_top": 9.25,
+      "z_out_bot": -0.65,
+      "z_out_top": 9.33,
+      "hole": 1.898,
+      "basis": "Retained innermost MXC/50 mK detector radiation can; SD-scale DR flange is placed below this can, not through it."
+    },
+    {
+      "name": "Thermal_Still_0p7K_Al_Shield_SDEnvelope",
+      "mat": "Aluminium",
+      "r_in": 7.85,
+      "r_out": 7.98,
+      "z_in_bot": -3.85,
+      "z_in_top": 10.45,
+      "z_out_bot": -4.05,
+      "z_out_top": 10.57,
+      "hole": 1.898,
+      "basis": "Still-stage radiation can; previous 1 K layer reinterpreted and enlarged."
+    },
+    {
+      "name": "Thermal_4K_Al_Shield_SDEnvelope",
+      "mat": "Aluminium",
+      "r_in": 8.6,
+      "r_out": 8.75,
+      "z_in_bot": -9.0,
+      "z_in_top": 11.55,
+      "z_out_bot": -9.15,
+      "z_out_top": 11.65,
+      "hole": 1.898,
+      "basis": "4 K radiation shield enlarged to carry condenser/line clearance."
+    },
+    {
+      "name": "Thermal_60K_Al_Shield_SDEnvelope",
+      "mat": "Aluminium",
+      "r_in": 9.25,
+      "r_out": 9.4,
+      "z_in_bot": -12.55,
+      "z_in_top": 12.35,
+      "z_out_bot": -12.75,
+      "z_out_top": 12.45,
+      "hole": 1.898,
+      "basis": "50/60 K shield in the unchanged-CsI compact envelope; radial gap to the vacuum jacket is only 1.5 mm, so this is a tight nominal and should be paired with an expanded-CsI systematic."
+    },
+    {
+      "name": "Vacuum_Jacket_Al_SDEnvelope",
+      "mat": "Aluminium",
+      "r_in": 9.55,
+      "r_out": 9.72,
+      "z_in_bot": -13.2,
+      "z_in_top": 12.75,
+      "z_out_bot": -13.65,
+      "z_out_top": 12.9,
+      "hole": 1.898,
+      "basis": "Vacuum jacket enlarged but still kept inside the unchanged active CsI well."
+    }
+  ],
+  "STAGE_WINDOWS": [
+    {
+      "name": "Win_MXC_50mK_Al_Shield",
+      "material": "Aluminium",
+      "z_center": 9.315,
+      "thick": 0.0025,
+      "r_max": 1.898,
+      "stage": "MXC_50mK",
+      "basis": "Thin Al thermal/optical blocking foil across the MXC can aperture."
+    },
+    {
+      "name": "Win_Still_0p7K_Al_Shield",
+      "material": "Aluminium",
+      "z_center": 10.555,
+      "thick": 0.0025,
+      "r_max": 1.898,
+      "stage": "Still_0p7K",
+      "basis": "Thin Al thermal/optical blocking foil across the still-stage aperture."
+    },
+    {
+      "name": "Win_4K_Al_Shield_SDEnvelope",
+      "material": "Aluminium",
+      "z_center": 11.635,
+      "thick": 0.0025,
+      "r_max": 1.898,
+      "stage": "4K",
+      "basis": "Thin Al thermal/optical blocking foil across the 4 K aperture."
+    },
+    {
+      "name": "Win_60K_Al_Shield_SDEnvelope",
+      "material": "Aluminium",
+      "z_center": 12.435,
+      "thick": 0.0025,
+      "r_max": 1.898,
+      "stage": "60K",
+      "basis": "Thin Al thermal/optical blocking foil across the 60 K aperture."
+    }
+  ],
+  "PASSIVE_PROXIES": [
+    {
+      "name": "SQUID_Readout_Al_Box",
+      "mat": "Aluminium",
+      "hx": 0.25,
+      "hy": 0.8,
+      "hz": 1.4,
+      "x": 8.3,
+      "y": 0.0,
+      "z": 4.2,
+      "basis": "Readout/support box proxy offset from aperture in the 4 K to 60 K radial gap. Review-fix: moved to the still--4 K radial gap to avoid the enlarged still shield."
+    },
+    {
+      "name": "Harness_Cu_Bundle_A",
+      "mat": "Copper",
+      "hx": 0.12,
+      "hy": 0.35,
+      "hz": 4.0,
+      "x": -5.7,
+      "y": 1.4,
+      "z": 3.1,
+      "basis": "Cu harness/strap proxy. Review-fix: shifted upward so the lower end clears the enlarged MXC flange."
+    },
+    {
+      "name": "Harness_Cu_Bundle_B",
+      "mat": "Copper",
+      "hx": 0.12,
+      "hy": 0.35,
+      "hz": 4.0,
+      "x": -5.7,
+      "y": -1.4,
+      "z": 3.1,
+      "basis": "Cu harness/strap proxy. Review-fix: shifted upward so the lower end clears the enlarged MXC flange."
+    },
+    {
+      "name": "Support_G10_Post_A",
+      "mat": "G10",
+      "hx": 0.08,
+      "hy": 0.08,
+      "hz": 5.7,
+      "x": 9.1,
+      "y": 0.0,
+      "z": -3.1,
+      "basis": "Low-Z support post in the 60 K shield to vacuum-jacket radial gap."
+    },
+    {
+      "name": "Support_G10_Post_B",
+      "mat": "G10",
+      "hx": 0.08,
+      "hy": 0.08,
+      "hz": 5.7,
+      "x": -9.1,
+      "y": 0.0,
+      "z": -3.1,
+      "basis": "Low-Z support post in the 60 K shield to vacuum-jacket radial gap."
+    },
+    {
+      "name": "Support_G10_Post_C",
+      "mat": "G10",
+      "hx": 0.08,
+      "hy": 0.08,
+      "hz": 5.7,
+      "x": 0.0,
+      "y": 9.1,
+      "z": -3.1,
+      "basis": "Low-Z support post in the 60 K shield to vacuum-jacket radial gap."
+    },
+    {
+      "name": "Support_G10_Post_D",
+      "mat": "G10",
+      "hx": 0.08,
+      "hy": 0.08,
+      "hz": 5.7,
+      "x": 0.0,
+      "y": -9.1,
+      "z": -3.1,
+      "basis": "Low-Z support post in the 60 K shield to vacuum-jacket radial gap."
+    },
+    {
+      "category": "shield_packaging",
+      "name": "ActiveShield_Al_Backplane_Liner",
+      "mat": "Aluminium",
+      "r_in": 14.07,
+      "r_out": 14.18,
+      "z0": -21.85,
+      "z1": 15.25,
+      "basis": "Thin Al support liner/readout backplane in the radial clearance outside the segmented CsI well."
+    },
+    {
+      "category": "shield_packaging",
+      "name": "ActiveShield_Top_Al_Retainer",
+      "mat": "Aluminium",
+      "r_in": 14.07,
+      "r_out": 14.22,
+      "z0": 15.37,
+      "z1": 15.53,
+      "basis": "Upper scintillator-retainer collar below the outer Al cover, outside the open 1.898 cm optical path."
+    },
+    {
+      "category": "shield_packaging",
+      "name": "ActiveShield_Bottom_Al_Retainer",
+      "mat": "Aluminium",
+      "r_in": 14.07,
+      "r_out": 14.22,
+      "z0": -22.1,
+      "z1": -21.97,
+      "basis": "Lower scintillator-retainer collar below the CsI bottom panels and inside the outer Al cover."
+    },
+    {
+      "category": "shield_packaging",
+      "name": "ActiveShield_Flex_Readout_Kapton",
+      "mat": "Kapton",
+      "r_in": 14.18,
+      "r_out": 14.23,
+      "z0": -16.0,
+      "z1": 14.6,
+      "basis": "Flexible readout/cable-layer proxy on the outside of the CsI package."
+    },
+    {
+      "category": "shield_packaging",
+      "name": "ActiveShield_Readout_Box_XP",
+      "mat": "Aluminium",
+      "hx": 0.28,
+      "hy": 1.05,
+      "hz": 2.6,
+      "x": 14.83,
+      "y": 0.0,
+      "z": -2.0,
+      "basis": "External active-shield readout/electronics box proxy outside the outer Al cover."
+    },
+    {
+      "category": "shield_packaging",
+      "name": "ActiveShield_Readout_Box_XM",
+      "mat": "Aluminium",
+      "hx": 0.28,
+      "hy": 1.05,
+      "hz": 2.6,
+      "x": -14.83,
+      "y": 0.0,
+      "z": -2.0,
+      "basis": "External active-shield readout/electronics box proxy outside the outer Al cover."
+    },
+    {
+      "category": "shield_packaging",
+      "name": "ActiveShield_Readout_Box_YP",
+      "mat": "Aluminium",
+      "hx": 1.05,
+      "hy": 0.28,
+      "hz": 2.6,
+      "x": 0.0,
+      "y": 14.83,
+      "z": -2.0,
+      "basis": "External active-shield readout/electronics box proxy outside the outer Al cover."
+    },
+    {
+      "category": "shield_packaging",
+      "name": "ActiveShield_Readout_Box_YM",
+      "mat": "Aluminium",
+      "hx": 1.05,
+      "hy": 0.28,
+      "hz": 2.6,
+      "x": 0.0,
+      "y": -14.83,
+      "z": -2.0,
+      "basis": "External active-shield readout/electronics box proxy outside the outer Al cover."
+    },
+    {
+      "category": "shield_packaging",
+      "name": "Shield_Feedthrough_Stainless_XP",
+      "mat": "StainlessSteel",
+      "hx": 0.16,
+      "hy": 0.42,
+      "hz": 0.58,
+      "x": 15.35,
+      "y": 0.0,
+      "z": 10.9,
+      "basis": "Small stainless feedthrough/connector proxy outside the active-shield cover."
+    },
+    {
+      "category": "shield_packaging",
+      "name": "Shield_Feedthrough_Stainless_XM",
+      "mat": "StainlessSteel",
+      "hx": 0.16,
+      "hy": 0.42,
+      "hz": 0.58,
+      "x": -15.35,
+      "y": 0.0,
+      "z": 10.9,
+      "basis": "Small stainless feedthrough/connector proxy outside the active-shield cover."
+    },
+    {
+      "name": "Vacuum_Jacket_Al_Reinforcement_SDEnvelope",
+      "category": "cryostat_passive",
+      "material": "Aluminium",
+      "shape": "annulus",
+      "params": {
+        "r_in": 9.73,
+        "r_out": 9.83,
+        "h": 25.0
+      },
+      "z0": -12.85,
+      "z1": 12.15,
+      "r_in": 9.73,
+      "r_out": 9.83,
+      "x": 0.0,
+      "y": 0.0,
+      "nominal": true,
+      "notes": "Reinforcement sleeve adjusted around the enlarged vacuum jacket.",
+      "volume_cm3": 153.62388076054,
+      "mass_kg": 0.41478447805345803
+    },
+    {
+      "name": "Vacuum_Top_Flange_Al_SDEnvelope",
+      "category": "cryostat_passive",
+      "material": "Aluminium",
+      "shape": "annulus",
+      "params": {
+        "r_in": 9.73,
+        "r_out": 10.0,
+        "h": 0.14
+      },
+      "z0": 12.94,
+      "z1": 13.08,
+      "r_in": 9.73,
+      "r_out": 10.0,
+      "x": 0.0,
+      "y": 0.0,
+      "nominal": true,
+      "notes": "Top flange/collar mass below active-shield top; kept under r=10 cm.",
+      "volume_cm3": 2.342980951491341,
+      "mass_kg": 0.006326048569026622
+    },
+    {
+      "name": "Vacuum_Bottom_Flange_Al_SDEnvelope",
+      "category": "cryostat_passive",
+      "material": "Aluminium",
+      "shape": "annulus",
+      "params": {
+        "r_in": 9.73,
+        "r_out": 10.0,
+        "h": 0.3
+      },
+      "z0": -13.55,
+      "z1": -13.25,
+      "r_in": 9.73,
+      "r_out": 10.0,
+      "x": 0.0,
+      "y": 0.0,
+      "nominal": true,
+      "notes": "Bottom flange/collar mass above active-shield bottom; service-port systematic handled separately.",
+      "volume_cm3": 5.020673467481444,
+      "mass_kg": 0.013555818362199901
+    },
+    {
+      "name": "Passive_Cu_Inner_Liner_SDEnvelope",
+      "category": "passive_shield",
+      "material": "Copper",
+      "shape": "annulus",
+      "params": {
+        "r_in": 9.84,
+        "r_out": 9.91,
+        "h": 25.6
+      },
+      "z0": -13.1,
+      "z1": 12.5,
+      "r_in": 9.84,
+      "r_out": 9.91,
+      "x": 0.0,
+      "y": 0.0,
+      "nominal": true,
+      "notes": "Nearest passive liner remains Cu, not W, after shield enlargement.",
+      "volume_cm3": 111.18724719585055,
+      "mass_kg": 0.9962377348748209
+    },
+    {
+      "name": "Passive_W_Outer_Liner_SDEnvelope",
+      "category": "passive_shield",
+      "material": "W",
+      "shape": "annulus",
+      "params": {
+        "r_in": 9.925,
+        "r_out": 10.0,
+        "h": 25.6
+      },
+      "z0": -13.1,
+      "z1": 12.5,
+      "r_in": 9.925,
+      "r_out": 10.0,
+      "x": 0.0,
+      "y": 0.0,
+      "nominal": true,
+      "notes": "Outer high-Z side liner; still kept outside Cu and below active-shield inner radius.",
+      "volume_cm3": 120.1847685557304,
+      "mass_kg": 2.319566033125597
+    },
+    {
+      "name": "Passive_Bottom_W_Shield_SDEnvelope",
+      "category": "passive_shield",
+      "material": "W",
+      "shape": "annulus",
+      "params": {
+        "r_in": 0.0,
+        "r_out": 9.9,
+        "h": 0.27
+      },
+      "z0": -13.93,
+      "z1": -13.66,
+      "r_in": 0.0,
+      "r_out": 9.9,
+      "x": 0.0,
+      "y": 0.0,
+      "nominal": true,
+      "notes": "Bottom W shield retained; no actual through-port cut in nominal, only port systematic note.",
+      "volume_cm3": 83.13502391415064,
+      "mass_kg": 1.6045059615431074
+    },
+    {
+      "name": "Passive_Top_W_Aperture_Annulus_SDEnvelope",
+      "category": "passive_shield",
+      "material": "W",
+      "shape": "annulus",
+      "params": {
+        "r_in": 2.05,
+        "r_out": 9.9,
+        "h": 0.2
+      },
+      "z0": 13.1,
+      "z1": 13.3,
+      "r_in": 2.05,
+      "r_out": 9.9,
+      "x": 0.0,
+      "y": 0.0,
+      "nominal": true,
+      "notes": "Top annular W aperture stop retained; Be/window radius still 1.898 cm.",
+      "volume_cm3": 58.94099057032491,
+      "mass_kg": 1.1375611180072709
+    },
+    {
+      "name": "DR_MXC_Flange_Cu_SDEnvelope",
+      "category": "dr_passive",
+      "material": "Copper",
+      "shape": "cylinder",
+      "params": {
+        "r": 7.35,
+        "h": 0.5
+      },
+      "z0": -1.55,
+      "z1": -1.05,
+      "r_in": 0.0,
+      "r_out": 7.35,
+      "x": 0.0,
+      "y": 0.0,
+      "nominal": true,
+      "notes": "SD-class local MXC flange proxy (≈147 mm diameter) placed below the unchanged TES/sample-box region.",
+      "volume_cm3": 84.85834456427729,
+      "mass_kg": 0.7603307672959246
+    },
+    {
+      "name": "DR_MixingChamber_Cu",
+      "category": "dr_passive",
+      "material": "Copper",
+      "shape": "cylinder",
+      "params": {
+        "r": 2.35,
+        "h": 0.55
+      },
+      "z0": -2.2,
+      "z1": -1.65,
+      "r_in": 0.0,
+      "r_out": 2.35,
+      "x": 0.0,
+      "y": 0.0,
+      "nominal": true,
+      "notes": "Mixing chamber body below MXC flange; separated from Cryoperm and plate bottoms by explicit clearance.",
+      "volume_cm3": 9.5421949861973,
+      "mass_kg": 0.08549806707632782
+    },
+    {
+      "name": "DR_MXC_Sinter_HEX_AgProxy",
+      "category": "dr_passive",
+      "material": "SilverSinterProxy",
+      "shape": "annulus",
+      "params": {
+        "r_in": 2.7,
+        "r_out": 3.45,
+        "h": 0.5
+      },
+      "z0": -2.85,
+      "z1": -2.35,
+      "r_in": 2.7,
+      "r_out": 3.45,
+      "x": 0.0,
+      "y": 0.0,
+      "nominal": true,
+      "notes": "Porous sintered Ag / step HEX proxy near MXC; ring geometry avoids sample-box axis.",
+      "volume_cm3": 7.245298057341461,
+      "mass_kg": 0.036226490286707304
+    },
+    {
+      "name": "DR_Still_Pot_Cu",
+      "category": "dr_passive",
+      "material": "Copper",
+      "shape": "cylinder",
+      "params": {
+        "r": 2.45,
+        "h": 0.5
+      },
+      "z0": -4.65,
+      "z1": -4.15,
+      "r_in": 0.0,
+      "r_out": 2.45,
+      "x": 0.0,
+      "y": 0.0,
+      "nominal": true,
+      "notes": "Still pot below still plate; does not pierce the plate in v2.1.",
+      "volume_cm3": 9.428704951586369,
+      "mass_kg": 0.08448119636621386
+    },
+    {
+      "name": "DR_Continuous_HEX_CuNi_EQ",
+      "category": "dr_passive",
+      "material": "CuNi",
+      "shape": "annulus",
+      "params": {
+        "r_in": 3.8,
+        "r_out": 4.2,
+        "h": 1.9
+      },
+      "z0": -6.75,
+      "z1": -4.85,
+      "r_in": 3.8,
+      "r_out": 4.2,
+      "x": 0.0,
+      "y": 0.0,
+      "nominal": true,
+      "notes": "Continuous CuNi heat-exchanger equivalent mass in the still-to-4K cavity.",
+      "volume_cm3": 19.100883333825948,
+      "mass_kg": 0.16999786167105094
+    },
+    {
+      "name": "DR_4K_Condenser_Cu",
+      "category": "dr_passive",
+      "material": "Copper",
+      "shape": "cylinder",
+      "params": {
+        "r": 2.0,
+        "h": 0.85
+      },
+      "z0": -8.6,
+      "z1": -7.75,
+      "r_in": 0.0,
+      "r_out": 2.0,
+      "x": 0.0,
+      "y": 0.0,
+      "nominal": true,
+      "notes": "4 K condenser/cold-finger mass below 4 K plate, with clearance.",
+      "volume_cm3": 10.681415022205297,
+      "mass_kg": 0.09570547859895948
+    },
+    {
+      "name": "DR_50K_CharcoalTrap_Proxy",
+      "category": "dr_passive",
+      "material": "CharcoalTrapProxy",
+      "shape": "annulus",
+      "params": {
+        "r_in": 6.2,
+        "r_out": 7.0,
+        "h": 0.9,
+        "phi_fraction": 0.55
+      },
+      "z0": -12.25,
+      "z1": -11.35,
+      "r_in": 6.2,
+      "r_out": 7.0,
+      "x": 0.0,
+      "y": 0.0,
+      "nominal": true,
+      "notes": "Internal charcoal/cryotrap effective mass near 50/60 K intercept; no plate overlap.",
+      "volume_cm3": 16.421733118844564,
+      "mass_kg": 0.019706079742613476
+    },
+    {
+      "name": "DR_CuNi_Capillary_MXC_to_Still",
+      "category": "service_proxy",
+      "material": "CuNi",
+      "shape": "annulus",
+      "params": {
+        "r_in": 4.6,
+        "r_out": 4.75,
+        "h": 1.2,
+        "phi_fraction": 0.35
+      },
+      "z0": -2.9,
+      "z1": -1.7,
+      "r_in": 4.6,
+      "r_out": 4.75,
+      "x": 0.0,
+      "y": 0.0,
+      "nominal": true,
+      "notes": "Segmented CuNi inlet/return capillary; v2.1 avoids one long volume crossing plates.",
+      "volume_cm3": 1.850555152597072,
+      "mass_kg": 0.01646994085811394
+    },
+    {
+      "name": "DR_CuNi_Capillary_Still_to_4K",
+      "category": "service_proxy",
+      "material": "CuNi",
+      "shape": "annulus",
+      "params": {
+        "r_in": 5.0,
+        "r_out": 5.15,
+        "h": 1.8,
+        "phi_fraction": 0.35
+      },
+      "z0": -6.75,
+      "z1": -4.95,
+      "r_in": 5.0,
+      "r_out": 5.15,
+      "x": 0.0,
+      "y": 0.0,
+      "nominal": true,
+      "notes": "Segmented CuNi capillary between still and 4 K cavities.",
+      "volume_cm3": 3.0133371335069987,
+      "mass_kg": 0.02681870048821229
+    },
+    {
+      "name": "DR_CuNi_Capillary_4K_to_60K",
+      "category": "service_proxy",
+      "material": "CuNi",
+      "shape": "annulus",
+      "params": {
+        "r_in": 6.9,
+        "r_out": 7.05,
+        "h": 1.05,
+        "phi_fraction": 0.35
+      },
+      "z0": -10.35,
+      "z1": -9.3,
+      "r_in": 6.9,
+      "r_out": 7.05,
+      "x": 0.0,
+      "y": 0.0,
+      "nominal": true,
+      "notes": "Segmented CuNi capillary between 4 K and 50/60 K regions; stopped below the 4 K shield bottom to avoid overlap.",
+      "volume_cm3": 2.4158651156564592,
+      "mass_kg": 0.02150119952934249
+    },
+    {
+      "name": "DR_Precool_FlexLink_Cu_Still_to_4K",
+      "category": "service_proxy",
+      "material": "Copper",
+      "shape": "annulus",
+      "params": {
+        "r_in": 5.45,
+        "r_out": 5.7,
+        "h": 1.8,
+        "phi_fraction": 0.28
+      },
+      "z0": -6.75,
+      "z1": -4.95,
+      "r_in": 5.45,
+      "r_out": 5.7,
+      "x": 0.0,
+      "y": 0.0,
+      "nominal": true,
+      "notes": "Pre-cool/flex thermal link equivalent mass; not the ADR cyclic heat switch.",
+      "volume_cm3": 4.413623519028303,
+      "mass_kg": 0.0395460667304936
+    },
+    {
+      "name": "DR_MXC_to_Still_G10_Supports",
+      "category": "support_proxy",
+      "material": "G10",
+      "shape": "annulus",
+      "params": {
+        "r_in": 7.05,
+        "r_out": 7.25,
+        "h": 1.2,
+        "phi_fraction": 0.16
+      },
+      "z0": -2.9,
+      "z1": -1.7,
+      "r_in": 7.05,
+      "r_out": 7.25,
+      "x": 0.0,
+      "y": 0.0,
+      "nominal": true,
+      "notes": "Sparse G10 stage supports, represented as annular equivalent mass.",
+      "volume_cm3": 1.725111357939227,
+      "mass_kg": 0.00319145601218757
+    },
+    {
+      "name": "DR_Still_to_4K_G10_Supports",
+      "category": "support_proxy",
+      "material": "G10",
+      "shape": "annulus",
+      "params": {
+        "r_in": 8.1,
+        "r_out": 8.3,
+        "h": 1.8,
+        "phi_fraction": 0.16
+      },
+      "z0": -6.75,
+      "z1": -4.95,
+      "r_in": 8.1,
+      "r_out": 8.3,
+      "x": 0.0,
+      "y": 0.0,
+      "nominal": true,
+      "notes": "Sparse G10 stage supports between still and 4 K regions.",
+      "volume_cm3": 2.9676740842870766,
+      "mass_kg": 0.005490197055931092
+    },
+    {
+      "name": "DR_4K_to_60K_G10_Supports",
+      "category": "support_proxy",
+      "material": "G10",
+      "shape": "annulus",
+      "params": {
+        "r_in": 8.85,
+        "r_out": 9.05,
+        "h": 1.05,
+        "phi_fraction": 0.16
+      },
+      "z0": -10.35,
+      "z1": -9.3,
+      "r_in": 8.85,
+      "r_out": 9.05,
+      "x": 0.0,
+      "y": 0.0,
+      "nominal": true,
+      "notes": "Sparse G10 stage supports between 4 K and 50/60 K regions.",
+      "volume_cm3": 1.8894794855750594,
+      "mass_kg": 0.0034955370483138602
+    },
+    {
+      "name": "Readout_NbTi_SS_Cable_Bundle_MXC_to_4K",
+      "category": "service_proxy",
+      "material": "NbTiCableProxy",
+      "shape": "annulus",
+      "params": {
+        "r_in": 5.95,
+        "r_out": 6.35,
+        "h": 1.8,
+        "phi_fraction": 0.5
+      },
+      "z0": -6.75,
+      "z1": -4.95,
+      "r_in": 5.95,
+      "r_out": 6.35,
+      "x": 0.0,
+      "y": 0.0,
+      "nominal": true,
+      "notes": "Heavier readout cable proxy than v1; avoids passing through the still plate as one long solid.",
+      "volume_cm3": 13.91097227009559,
+      "mass_kg": 0.09042131975562133
+    },
+    {
+      "name": "Readout_NbTi_SS_Cable_Bundle_Still_to_MXC",
+      "category": "service_proxy",
+      "material": "NbTiCableProxy",
+      "shape": "annulus",
+      "params": {
+        "r_in": 5.6,
+        "r_out": 6.0,
+        "h": 1.2,
+        "phi_fraction": 0.5
+      },
+      "z0": -2.9,
+      "z1": -1.7,
+      "r_in": 5.6,
+      "r_out": 6.0,
+      "x": 0.0,
+      "y": 0.0,
+      "nominal": true,
+      "notes": "Segmented readout/service bundle in MXC-to-still gap.",
+      "volume_cm3": 8.746193947593992,
+      "mass_kg": 0.05685026065936095
+    }
+  ],
+  "ACTIVE_SHIELD": {
+    "name": "CsI_Active_Shield",
+    "mat": "CsI",
+    "r_in": 10.05,
+    "r_out": 14.05,
+    "z_in_bot": -13.95,
+    "z_in_top": 13.35,
+    "z_out_bot": -21.95,
+    "z_out_top": 15.35,
+    "hole": 1.898,
+    "side_thickness": 4.0,
+    "bottom_thickness": 8.0,
+    "top_thickness": 2.0,
+    "nominal_veto_threshold_keV": 80.0,
+    "threshold_scan_keV": [
+      30,
+      50,
+      70,
+      80,
+      100
+    ],
+    "basis": "Nominal oxygen-free segmented CsI(Tl) active well from review."
+  },
+  "ACTIVE_SHIELD_SEGMENTS": [
+    {
+      "name": "CsI_Active_Shield_Side00",
+      "part": "side",
+      "phi0_deg": 0.0,
+      "dphi_deg": 45.0,
+      "r_in": 10.05,
+      "r_out": 14.05,
+      "z0": -13.95,
+      "z1": 13.35
+    },
+    {
+      "name": "CsI_Active_Shield_Side01",
+      "part": "side",
+      "phi0_deg": 45.0,
+      "dphi_deg": 45.0,
+      "r_in": 10.05,
+      "r_out": 14.05,
+      "z0": -13.95,
+      "z1": 13.35
+    },
+    {
+      "name": "CsI_Active_Shield_Side02",
+      "part": "side",
+      "phi0_deg": 90.0,
+      "dphi_deg": 45.0,
+      "r_in": 10.05,
+      "r_out": 14.05,
+      "z0": -13.95,
+      "z1": 13.35
+    },
+    {
+      "name": "CsI_Active_Shield_Side03",
+      "part": "side",
+      "phi0_deg": 135.0,
+      "dphi_deg": 45.0,
+      "r_in": 10.05,
+      "r_out": 14.05,
+      "z0": -13.95,
+      "z1": 13.35
+    },
+    {
+      "name": "CsI_Active_Shield_Side04",
+      "part": "side",
+      "phi0_deg": 180.0,
+      "dphi_deg": 45.0,
+      "r_in": 10.05,
+      "r_out": 14.05,
+      "z0": -13.95,
+      "z1": 13.35
+    },
+    {
+      "name": "CsI_Active_Shield_Side05",
+      "part": "side",
+      "phi0_deg": 225.0,
+      "dphi_deg": 45.0,
+      "r_in": 10.05,
+      "r_out": 14.05,
+      "z0": -13.95,
+      "z1": 13.35
+    },
+    {
+      "name": "CsI_Active_Shield_Side06",
+      "part": "side",
+      "phi0_deg": 270.0,
+      "dphi_deg": 45.0,
+      "r_in": 10.05,
+      "r_out": 14.05,
+      "z0": -13.95,
+      "z1": 13.35
+    },
+    {
+      "name": "CsI_Active_Shield_Side07",
+      "part": "side",
+      "phi0_deg": 315.0,
+      "dphi_deg": 45.0,
+      "r_in": 10.05,
+      "r_out": 14.05,
+      "z0": -13.95,
+      "z1": 13.35
+    },
+    {
+      "name": "CsI_Active_Shield_Bottom00",
+      "part": "bottom",
+      "phi0_deg": 0.0,
+      "dphi_deg": 90.0,
+      "r_in": 0.0,
+      "r_out": 14.05,
+      "z0": -21.95,
+      "z1": -13.95
+    },
+    {
+      "name": "CsI_Active_Shield_Bottom01",
+      "part": "bottom",
+      "phi0_deg": 90.0,
+      "dphi_deg": 90.0,
+      "r_in": 0.0,
+      "r_out": 14.05,
+      "z0": -21.95,
+      "z1": -13.95
+    },
+    {
+      "name": "CsI_Active_Shield_Bottom02",
+      "part": "bottom",
+      "phi0_deg": 180.0,
+      "dphi_deg": 90.0,
+      "r_in": 0.0,
+      "r_out": 14.05,
+      "z0": -21.95,
+      "z1": -13.95
+    },
+    {
+      "name": "CsI_Active_Shield_Bottom03",
+      "part": "bottom",
+      "phi0_deg": 270.0,
+      "dphi_deg": 90.0,
+      "r_in": 0.0,
+      "r_out": 14.05,
+      "z0": -21.95,
+      "z1": -13.95
+    },
+    {
+      "name": "CsI_Active_Shield_Top00",
+      "part": "top",
+      "phi0_deg": 0.0,
+      "dphi_deg": 45.0,
+      "r_in": 1.898,
+      "r_out": 14.05,
+      "z0": 13.35,
+      "z1": 15.35
+    },
+    {
+      "name": "CsI_Active_Shield_Top01",
+      "part": "top",
+      "phi0_deg": 45.0,
+      "dphi_deg": 45.0,
+      "r_in": 1.898,
+      "r_out": 14.05,
+      "z0": 13.35,
+      "z1": 15.35
+    },
+    {
+      "name": "CsI_Active_Shield_Top02",
+      "part": "top",
+      "phi0_deg": 90.0,
+      "dphi_deg": 45.0,
+      "r_in": 1.898,
+      "r_out": 14.05,
+      "z0": 13.35,
+      "z1": 15.35
+    },
+    {
+      "name": "CsI_Active_Shield_Top03",
+      "part": "top",
+      "phi0_deg": 135.0,
+      "dphi_deg": 45.0,
+      "r_in": 1.898,
+      "r_out": 14.05,
+      "z0": 13.35,
+      "z1": 15.35
+    },
+    {
+      "name": "CsI_Active_Shield_Top04",
+      "part": "top",
+      "phi0_deg": 180.0,
+      "dphi_deg": 45.0,
+      "r_in": 1.898,
+      "r_out": 14.05,
+      "z0": 13.35,
+      "z1": 15.35
+    },
+    {
+      "name": "CsI_Active_Shield_Top05",
+      "part": "top",
+      "phi0_deg": 225.0,
+      "dphi_deg": 45.0,
+      "r_in": 1.898,
+      "r_out": 14.05,
+      "z0": 13.35,
+      "z1": 15.35
+    },
+    {
+      "name": "CsI_Active_Shield_Top06",
+      "part": "top",
+      "phi0_deg": 270.0,
+      "dphi_deg": 45.0,
+      "r_in": 1.898,
+      "r_out": 14.05,
+      "z0": 13.35,
+      "z1": 15.35
+    },
+    {
+      "name": "CsI_Active_Shield_Top07",
+      "part": "top",
+      "phi0_deg": 315.0,
+      "dphi_deg": 45.0,
+      "r_in": 1.898,
+      "r_out": 14.05,
+      "z0": 13.35,
+      "z1": 15.35
+    }
+  ],
+  "OUTER_MECHANICAL_SHELL": {
+    "name": "Outer_Al_Mech_Shell",
+    "mat": "Aluminium",
+    "r_in": 14.25,
+    "r_out": 14.45,
+    "z_in_bot": -22.15,
+    "z_in_top": 15.55,
+    "z_out_bot": -22.35,
+    "z_out_top": 15.75,
+    "hole": 1.898,
+    "basis": "Outer cover/support outside segmented CsI panels; not a pressure boundary."
+  },
+  "WINDOWS": [
+    {
+      "name": "SampleBox_Al_Window",
+      "material": "Aluminium",
+      "z_center": 8.55,
+      "thick": 0.0025,
+      "r_max": 1.898,
+      "basis": "Retained thin Al top foil for the v2p2 Cryoperm sample-box aperture; not part of the removed Cu sample box mass."
+    },
+    {
+      "name": "Win_Be_Cryostat",
+      "material": "Be",
+      "z_center": 12.8425,
+      "thick": 0.015,
+      "r_max": 1.898,
+      "basis": "Current Be-window transport convention retained: r=1.898 cm, t=0.015 cm."
+    },
+    {
+      "name": "Win_Vacuum_Al_Filter",
+      "material": "Aluminium",
+      "z_center": 13.41,
+      "thick": 0.003,
+      "r_max": 1.898,
+      "basis": "Thin Al-equivalent vacuum/filter foil outside the Be window; conservative low-Z filter-stack proxy."
+    }
+  ],
+  "COLLIMATOR": {
+    "name": "W_Collimator_Aperture_Stop",
+    "type": "annular_aperture_stop",
+    "z_center": 16.0,
+    "r_inner": 1.898,
+    "r_max": 3.1,
+    "hz": 0.05,
+    "basis": "Overlap-safe W annular aperture stop retained only as first passive entrance aperture proxy; not a Laue optic."
+  },
+  "META": {
+    "length_unit": "cm",
+    "source_design_unit": "cm",
+    "N_LAYERS": 6,
+    "n_pixels_per_layer": 376,
+    "tes_pixel_thickness_cm": 0.3,
+    "tes_top_cm": 7.315,
+    "be_window_radius_reference_cm": 1.898,
+    "all_axial_holes_match_be_window": true,
+    "active_material_nominal": "CsI(Tl) represented as pure CsI",
+    "nominal_veto_threshold_keV": 80.0,
+    "threshold_scan_keV": [
+      30,
+      50,
+      70,
+      80,
+      100
+    ],
+    "science_beam_z_cm": 16.051,
+    "science_beam_radius_cm": 1.8,
+    "review_drivers": [
+      "P1 passive detector-head mass closure with ADR mass proxies",
+      "P2 oxygen-free segmented active shield",
+      "60K/4K/1K/50mK Al thermal-window stack on open apertures",
+      "Cu/W passive shield outside the dewar; W kept away from TES; Sn reserved for systematic graded-Z variants"
+    ],
+    "claim_level": "DEMO2_DR_V2P2_CU64FIX_SIM_GEOMETRY_READY",
+    "dr_policy": "nominal is a compact local detector-head DR with internal-circulation/capillary proxies and an SD-class MXC-flange envelope; full commercial dry-DR use requires the remote envelope plus service-chimney systematic, not the nominal local mass only",
+    "geometry_authority_lists": [
+      "TES_LAYERS",
+      "SUBSTRATES",
+      "SAMPLE_BOX",
+      "THERMAL_FINGER",
+      "COLD_PLATES",
+      "CRYOSTAT_SHELLS",
+      "STAGE_WINDOWS",
+      "OPEN_BOTTOM_CANS",
+      "PASSIVE_PROXIES",
+      "ACTIVE_SHIELD_SEGMENTS",
+      "WINDOWS",
+      "COLLIMATOR",
+      "OUTER_MECHANICAL_SHELL"
+    ],
+    "non_instantiable_view_lists": [
+      "MIDMASS_PROXY_NAMES",
+      "DR_UNIT_PROXY_NAMES",
+      "DR_UNIT_PROXIES_VIEW",
+      "SHIELD_PACKAGING_PROXY_NAMES",
+      "SHIELD_PACKAGING_PROXIES_VIEW",
+      "REMOTE_DR_ENVELOPE_SYSTEMATIC",
+      "SERVICE_CHIMNEY_SYSTEMATIC",
+      "REMOTE_LAUE_OPTICS_SYSTEMATIC",
+      "EXPANDED_CSI_WELL_SYSTEMATIC",
+      "LAUE_LENS_DESIGN"
+    ],
+    "shield_packaging_policy": "active-shield packaging/readout entries are instantiated exactly once via PASSIVE_PROXIES; SHIELD_PACKAGING_* entries are non-instantiable views only",
+    "tes_sample_box_policy": "TES stack, Cu sample box and sample-box Al window are intentionally unchanged.",
+    "laue_focal_length_m": 10.0,
+    "laue_design_material": "Ge(111)",
+    "laue_effective_area_target_511_cm2": 20.0,
+    "v2p1_changes": [
+      "removed ADR-only magnet/yoke/salt-pill/cyclic heat-switch and old thermal-bus proxies",
+      "enlarged local plates/shields to SD-class MXC flange scale without moving TES/sample box",
+      "deleted v1 dead-end still pump-line and used segmented capillary/internal-circulation proxies",
+      "removed duplicate instantiable MIDMASS/DR lists and converted SHIELD_PACKAGING to non-instantiable view lists",
+      "moved legacy SQUID/readout and harness boxes and added box-aware overlap checking",
+      "added stage-support and heavier readout/service cable proxies",
+      "added service-chimney, commercial PT, and Laue-optics systematic envelopes outside the nominal mass",
+      "downgraded single-layer Laue effective-area expectation and added diffuse-bulge rate sanity check"
+    ],
+    "sample_box_policy": "TES_SampleBox_Cu removed; TES_SampleBox_Cryoperm occupies the former sample-box envelope with bottom_hole=0.40 cm.",
+    "cu64_fix": {
+      "removed": [
+        "TES_SampleBox_Cu"
+      ],
+      "moved_material_function": "Cryoperm_Inner_Mag_Shield -> TES_SampleBox_Cryoperm",
+      "added": [
+        "SampleBox_Cu_ThermalFinger_50mK"
+      ],
+      "thermal_finger_radius_cm": 0.4
+    }
+  },
+  "MIDMASS_PROXY_NAMES": [
+    "Cryoperm_Inner_Mag_Shield",
+    "SQUID_Readout_Al_Box",
+    "Harness_Cu_Bundle_A",
+    "Harness_Cu_Bundle_B",
+    "Support_G10_Post_A",
+    "Support_G10_Post_B",
+    "Support_G10_Post_C",
+    "Support_G10_Post_D",
+    "ActiveShield_Al_Backplane_Liner",
+    "ActiveShield_Top_Al_Retainer",
+    "ActiveShield_Bottom_Al_Retainer",
+    "ActiveShield_Flex_Readout_Kapton",
+    "ActiveShield_Readout_Box_XP",
+    "ActiveShield_Readout_Box_XM",
+    "ActiveShield_Readout_Box_YP",
+    "ActiveShield_Readout_Box_YM",
+    "Shield_Feedthrough_Stainless_XP",
+    "Shield_Feedthrough_Stainless_XM",
+    "Vacuum_Jacket_Al_Reinforcement_SDEnvelope",
+    "Vacuum_Top_Flange_Al_SDEnvelope",
+    "Vacuum_Bottom_Flange_Al_SDEnvelope",
+    "Passive_Cu_Inner_Liner_SDEnvelope",
+    "Passive_W_Outer_Liner_SDEnvelope",
+    "Passive_Bottom_W_Shield_SDEnvelope",
+    "Passive_Top_W_Aperture_Annulus_SDEnvelope",
+    "DR_MXC_Flange_Cu_SDEnvelope",
+    "DR_MixingChamber_Cu",
+    "DR_MXC_Sinter_HEX_AgProxy",
+    "DR_Still_Pot_Cu",
+    "DR_Continuous_HEX_CuNi_EQ",
+    "DR_4K_Condenser_Cu",
+    "DR_50K_CharcoalTrap_Proxy",
+    "DR_CuNi_Capillary_MXC_to_Still",
+    "DR_CuNi_Capillary_Still_to_4K",
+    "DR_CuNi_Capillary_4K_to_60K",
+    "DR_Precool_FlexLink_Cu_Still_to_4K",
+    "DR_MXC_to_Still_G10_Supports",
+    "DR_Still_to_4K_G10_Supports",
+    "DR_4K_to_60K_G10_Supports",
+    "Readout_NbTi_SS_Cable_Bundle_MXC_to_4K",
+    "Readout_NbTi_SS_Cable_Bundle_Still_to_MXC"
+  ],
+  "DR_UNIT_PROXY_NAMES": [
+    "DR_MXC_Flange_Cu_SDEnvelope",
+    "DR_MixingChamber_Cu",
+    "DR_MXC_Sinter_HEX_AgProxy",
+    "DR_Still_Pot_Cu",
+    "DR_Continuous_HEX_CuNi_EQ",
+    "DR_4K_Condenser_Cu",
+    "DR_50K_CharcoalTrap_Proxy",
+    "DR_CuNi_Capillary_MXC_to_Still",
+    "DR_CuNi_Capillary_Still_to_4K",
+    "DR_CuNi_Capillary_4K_to_60K",
+    "DR_Precool_FlexLink_Cu_Still_to_4K",
+    "DR_MXC_to_Still_G10_Supports",
+    "DR_Still_to_4K_G10_Supports",
+    "DR_4K_to_60K_G10_Supports",
+    "Readout_NbTi_SS_Cable_Bundle_MXC_to_4K",
+    "Readout_NbTi_SS_Cable_Bundle_Still_to_MXC"
+  ],
+  "DR_UNIT_PROXIES_VIEW": [
+    {
+      "name": "DR_MXC_Flange_Cu_SDEnvelope",
+      "category": "dr_passive",
+      "material": "Copper",
+      "shape": "cylinder",
+      "params": {
+        "r": 7.35,
+        "h": 0.5
+      },
+      "z0": -1.55,
+      "z1": -1.05,
+      "r_in": 0.0,
+      "r_out": 7.35,
+      "x": 0.0,
+      "y": 0.0,
+      "nominal": true,
+      "notes": "SD-class local MXC flange proxy (≈147 mm diameter) placed below the unchanged TES/sample-box region.",
+      "volume_cm3": 84.85834456427729,
+      "mass_kg": 0.7603307672959246
+    },
+    {
+      "name": "DR_MixingChamber_Cu",
+      "category": "dr_passive",
+      "material": "Copper",
+      "shape": "cylinder",
+      "params": {
+        "r": 2.35,
+        "h": 0.55
+      },
+      "z0": -2.2,
+      "z1": -1.65,
+      "r_in": 0.0,
+      "r_out": 2.35,
+      "x": 0.0,
+      "y": 0.0,
+      "nominal": true,
+      "notes": "Mixing chamber body below MXC flange; separated from Cryoperm and plate bottoms by explicit clearance.",
+      "volume_cm3": 9.5421949861973,
+      "mass_kg": 0.08549806707632782
+    },
+    {
+      "name": "DR_MXC_Sinter_HEX_AgProxy",
+      "category": "dr_passive",
+      "material": "SilverSinterProxy",
+      "shape": "annulus",
+      "params": {
+        "r_in": 2.7,
+        "r_out": 3.45,
+        "h": 0.5
+      },
+      "z0": -2.85,
+      "z1": -2.35,
+      "r_in": 2.7,
+      "r_out": 3.45,
+      "x": 0.0,
+      "y": 0.0,
+      "nominal": true,
+      "notes": "Porous sintered Ag / step HEX proxy near MXC; ring geometry avoids sample-box axis.",
+      "volume_cm3": 7.245298057341461,
+      "mass_kg": 0.036226490286707304
+    },
+    {
+      "name": "DR_Still_Pot_Cu",
+      "category": "dr_passive",
+      "material": "Copper",
+      "shape": "cylinder",
+      "params": {
+        "r": 2.45,
+        "h": 0.5
+      },
+      "z0": -4.65,
+      "z1": -4.15,
+      "r_in": 0.0,
+      "r_out": 2.45,
+      "x": 0.0,
+      "y": 0.0,
+      "nominal": true,
+      "notes": "Still pot below still plate; does not pierce the plate in v2.1.",
+      "volume_cm3": 9.428704951586369,
+      "mass_kg": 0.08448119636621386
+    },
+    {
+      "name": "DR_Continuous_HEX_CuNi_EQ",
+      "category": "dr_passive",
+      "material": "CuNi",
+      "shape": "annulus",
+      "params": {
+        "r_in": 3.8,
+        "r_out": 4.2,
+        "h": 1.9
+      },
+      "z0": -6.75,
+      "z1": -4.85,
+      "r_in": 3.8,
+      "r_out": 4.2,
+      "x": 0.0,
+      "y": 0.0,
+      "nominal": true,
+      "notes": "Continuous CuNi heat-exchanger equivalent mass in the still-to-4K cavity.",
+      "volume_cm3": 19.100883333825948,
+      "mass_kg": 0.16999786167105094
+    },
+    {
+      "name": "DR_4K_Condenser_Cu",
+      "category": "dr_passive",
+      "material": "Copper",
+      "shape": "cylinder",
+      "params": {
+        "r": 2.0,
+        "h": 0.85
+      },
+      "z0": -8.6,
+      "z1": -7.75,
+      "r_in": 0.0,
+      "r_out": 2.0,
+      "x": 0.0,
+      "y": 0.0,
+      "nominal": true,
+      "notes": "4 K condenser/cold-finger mass below 4 K plate, with clearance.",
+      "volume_cm3": 10.681415022205297,
+      "mass_kg": 0.09570547859895948
+    },
+    {
+      "name": "DR_50K_CharcoalTrap_Proxy",
+      "category": "dr_passive",
+      "material": "CharcoalTrapProxy",
+      "shape": "annulus",
+      "params": {
+        "r_in": 6.2,
+        "r_out": 7.0,
+        "h": 0.9,
+        "phi_fraction": 0.55
+      },
+      "z0": -12.25,
+      "z1": -11.35,
+      "r_in": 6.2,
+      "r_out": 7.0,
+      "x": 0.0,
+      "y": 0.0,
+      "nominal": true,
+      "notes": "Internal charcoal/cryotrap effective mass near 50/60 K intercept; no plate overlap.",
+      "volume_cm3": 16.421733118844564,
+      "mass_kg": 0.019706079742613476
+    },
+    {
+      "name": "DR_CuNi_Capillary_MXC_to_Still",
+      "category": "service_proxy",
+      "material": "CuNi",
+      "shape": "annulus",
+      "params": {
+        "r_in": 4.6,
+        "r_out": 4.75,
+        "h": 1.2,
+        "phi_fraction": 0.35
+      },
+      "z0": -2.9,
+      "z1": -1.7,
+      "r_in": 4.6,
+      "r_out": 4.75,
+      "x": 0.0,
+      "y": 0.0,
+      "nominal": true,
+      "notes": "Segmented CuNi inlet/return capillary; v2.1 avoids one long volume crossing plates.",
+      "volume_cm3": 1.850555152597072,
+      "mass_kg": 0.01646994085811394
+    },
+    {
+      "name": "DR_CuNi_Capillary_Still_to_4K",
+      "category": "service_proxy",
+      "material": "CuNi",
+      "shape": "annulus",
+      "params": {
+        "r_in": 5.0,
+        "r_out": 5.15,
+        "h": 1.8,
+        "phi_fraction": 0.35
+      },
+      "z0": -6.75,
+      "z1": -4.95,
+      "r_in": 5.0,
+      "r_out": 5.15,
+      "x": 0.0,
+      "y": 0.0,
+      "nominal": true,
+      "notes": "Segmented CuNi capillary between still and 4 K cavities.",
+      "volume_cm3": 3.0133371335069987,
+      "mass_kg": 0.02681870048821229
+    },
+    {
+      "name": "DR_CuNi_Capillary_4K_to_60K",
+      "category": "service_proxy",
+      "material": "CuNi",
+      "shape": "annulus",
+      "params": {
+        "r_in": 6.9,
+        "r_out": 7.05,
+        "h": 1.05,
+        "phi_fraction": 0.35
+      },
+      "z0": -10.35,
+      "z1": -9.3,
+      "r_in": 6.9,
+      "r_out": 7.05,
+      "x": 0.0,
+      "y": 0.0,
+      "nominal": true,
+      "notes": "Segmented CuNi capillary between 4 K and 50/60 K regions; stopped below the 4 K shield bottom to avoid overlap.",
+      "volume_cm3": 2.4158651156564592,
+      "mass_kg": 0.02150119952934249
+    },
+    {
+      "name": "DR_Precool_FlexLink_Cu_Still_to_4K",
+      "category": "service_proxy",
+      "material": "Copper",
+      "shape": "annulus",
+      "params": {
+        "r_in": 5.45,
+        "r_out": 5.7,
+        "h": 1.8,
+        "phi_fraction": 0.28
+      },
+      "z0": -6.75,
+      "z1": -4.95,
+      "r_in": 5.45,
+      "r_out": 5.7,
+      "x": 0.0,
+      "y": 0.0,
+      "nominal": true,
+      "notes": "Pre-cool/flex thermal link equivalent mass; not the ADR cyclic heat switch.",
+      "volume_cm3": 4.413623519028303,
+      "mass_kg": 0.0395460667304936
+    },
+    {
+      "name": "DR_MXC_to_Still_G10_Supports",
+      "category": "support_proxy",
+      "material": "G10",
+      "shape": "annulus",
+      "params": {
+        "r_in": 7.05,
+        "r_out": 7.25,
+        "h": 1.2,
+        "phi_fraction": 0.16
+      },
+      "z0": -2.9,
+      "z1": -1.7,
+      "r_in": 7.05,
+      "r_out": 7.25,
+      "x": 0.0,
+      "y": 0.0,
+      "nominal": true,
+      "notes": "Sparse G10 stage supports, represented as annular equivalent mass.",
+      "volume_cm3": 1.725111357939227,
+      "mass_kg": 0.00319145601218757
+    },
+    {
+      "name": "DR_Still_to_4K_G10_Supports",
+      "category": "support_proxy",
+      "material": "G10",
+      "shape": "annulus",
+      "params": {
+        "r_in": 8.1,
+        "r_out": 8.3,
+        "h": 1.8,
+        "phi_fraction": 0.16
+      },
+      "z0": -6.75,
+      "z1": -4.95,
+      "r_in": 8.1,
+      "r_out": 8.3,
+      "x": 0.0,
+      "y": 0.0,
+      "nominal": true,
+      "notes": "Sparse G10 stage supports between still and 4 K regions.",
+      "volume_cm3": 2.9676740842870766,
+      "mass_kg": 0.005490197055931092
+    },
+    {
+      "name": "DR_4K_to_60K_G10_Supports",
+      "category": "support_proxy",
+      "material": "G10",
+      "shape": "annulus",
+      "params": {
+        "r_in": 8.85,
+        "r_out": 9.05,
+        "h": 1.05,
+        "phi_fraction": 0.16
+      },
+      "z0": -10.35,
+      "z1": -9.3,
+      "r_in": 8.85,
+      "r_out": 9.05,
+      "x": 0.0,
+      "y": 0.0,
+      "nominal": true,
+      "notes": "Sparse G10 stage supports between 4 K and 50/60 K regions.",
+      "volume_cm3": 1.8894794855750594,
+      "mass_kg": 0.0034955370483138602
+    },
+    {
+      "name": "Readout_NbTi_SS_Cable_Bundle_MXC_to_4K",
+      "category": "service_proxy",
+      "material": "NbTiCableProxy",
+      "shape": "annulus",
+      "params": {
+        "r_in": 5.95,
+        "r_out": 6.35,
+        "h": 1.8,
+        "phi_fraction": 0.5
+      },
+      "z0": -6.75,
+      "z1": -4.95,
+      "r_in": 5.95,
+      "r_out": 6.35,
+      "x": 0.0,
+      "y": 0.0,
+      "nominal": true,
+      "notes": "Heavier readout cable proxy than v1; avoids passing through the still plate as one long solid.",
+      "volume_cm3": 13.91097227009559,
+      "mass_kg": 0.09042131975562133
+    },
+    {
+      "name": "Readout_NbTi_SS_Cable_Bundle_Still_to_MXC",
+      "category": "service_proxy",
+      "material": "NbTiCableProxy",
+      "shape": "annulus",
+      "params": {
+        "r_in": 5.6,
+        "r_out": 6.0,
+        "h": 1.2,
+        "phi_fraction": 0.5
+      },
+      "z0": -2.9,
+      "z1": -1.7,
+      "r_in": 5.6,
+      "r_out": 6.0,
+      "x": 0.0,
+      "y": 0.0,
+      "nominal": true,
+      "notes": "Segmented readout/service bundle in MXC-to-still gap.",
+      "volume_cm3": 8.746193947593992,
+      "mass_kg": 0.05685026065936095
+    }
+  ],
+  "SHIELD_PACKAGING_PROXY_NAMES": [
+    "ActiveShield_Al_Backplane_Liner",
+    "ActiveShield_Top_Al_Retainer",
+    "ActiveShield_Bottom_Al_Retainer",
+    "ActiveShield_Flex_Readout_Kapton",
+    "ActiveShield_Readout_Box_XP",
+    "ActiveShield_Readout_Box_XM",
+    "ActiveShield_Readout_Box_YP",
+    "ActiveShield_Readout_Box_YM",
+    "Shield_Feedthrough_Stainless_XP",
+    "Shield_Feedthrough_Stainless_XM"
+  ],
+  "SHIELD_PACKAGING_PROXIES_VIEW": [
+    {
+      "category": "shield_packaging",
+      "name": "ActiveShield_Al_Backplane_Liner",
+      "mat": "Aluminium",
+      "r_in": 14.07,
+      "r_out": 14.18,
+      "z0": -21.85,
+      "z1": 15.25,
+      "basis": "Thin Al support liner/readout backplane in the radial clearance outside the segmented CsI well."
+    },
+    {
+      "category": "shield_packaging",
+      "name": "ActiveShield_Top_Al_Retainer",
+      "mat": "Aluminium",
+      "r_in": 14.07,
+      "r_out": 14.22,
+      "z0": 15.37,
+      "z1": 15.53,
+      "basis": "Upper scintillator-retainer collar below the outer Al cover, outside the open 1.898 cm optical path."
+    },
+    {
+      "category": "shield_packaging",
+      "name": "ActiveShield_Bottom_Al_Retainer",
+      "mat": "Aluminium",
+      "r_in": 14.07,
+      "r_out": 14.22,
+      "z0": -22.1,
+      "z1": -21.97,
+      "basis": "Lower scintillator-retainer collar below the CsI bottom panels and inside the outer Al cover."
+    },
+    {
+      "category": "shield_packaging",
+      "name": "ActiveShield_Flex_Readout_Kapton",
+      "mat": "Kapton",
+      "r_in": 14.18,
+      "r_out": 14.23,
+      "z0": -16.0,
+      "z1": 14.6,
+      "basis": "Flexible readout/cable-layer proxy on the outside of the CsI package."
+    },
+    {
+      "category": "shield_packaging",
+      "name": "ActiveShield_Readout_Box_XP",
+      "mat": "Aluminium",
+      "hx": 0.28,
+      "hy": 1.05,
+      "hz": 2.6,
+      "x": 14.83,
+      "y": 0.0,
+      "z": -2.0,
+      "basis": "External active-shield readout/electronics box proxy outside the outer Al cover."
+    },
+    {
+      "category": "shield_packaging",
+      "name": "ActiveShield_Readout_Box_XM",
+      "mat": "Aluminium",
+      "hx": 0.28,
+      "hy": 1.05,
+      "hz": 2.6,
+      "x": -14.83,
+      "y": 0.0,
+      "z": -2.0,
+      "basis": "External active-shield readout/electronics box proxy outside the outer Al cover."
+    },
+    {
+      "category": "shield_packaging",
+      "name": "ActiveShield_Readout_Box_YP",
+      "mat": "Aluminium",
+      "hx": 1.05,
+      "hy": 0.28,
+      "hz": 2.6,
+      "x": 0.0,
+      "y": 14.83,
+      "z": -2.0,
+      "basis": "External active-shield readout/electronics box proxy outside the outer Al cover."
+    },
+    {
+      "category": "shield_packaging",
+      "name": "ActiveShield_Readout_Box_YM",
+      "mat": "Aluminium",
+      "hx": 1.05,
+      "hy": 0.28,
+      "hz": 2.6,
+      "x": 0.0,
+      "y": -14.83,
+      "z": -2.0,
+      "basis": "External active-shield readout/electronics box proxy outside the outer Al cover."
+    },
+    {
+      "category": "shield_packaging",
+      "name": "Shield_Feedthrough_Stainless_XP",
+      "mat": "StainlessSteel",
+      "hx": 0.16,
+      "hy": 0.42,
+      "hz": 0.58,
+      "x": 15.35,
+      "y": 0.0,
+      "z": 10.9,
+      "basis": "Small stainless feedthrough/connector proxy outside the active-shield cover."
+    },
+    {
+      "category": "shield_packaging",
+      "name": "Shield_Feedthrough_Stainless_XM",
+      "mat": "StainlessSteel",
+      "hx": 0.16,
+      "hy": 0.42,
+      "hz": 0.58,
+      "x": -15.35,
+      "y": 0.0,
+      "z": 10.9,
+      "basis": "Small stainless feedthrough/connector proxy outside the active-shield cover."
+    }
+  ],
+  "ADR_REMOVED_PROXIES": [
+    "ADR_HeatSwitch_Stainless_Link",
+    "ADR_Magnet_Coil_Cu",
+    "ADR_Magnet_Yoke_Fe",
+    "ADR_SaltPill_Cu_Can",
+    "ADR_SaltPill_Proxy",
+    "PulseTube_ColdHead_Interface_Cu",
+    "Thermal_Bus_Cu"
+  ],
+  "REMOTE_DR_ENVELOPE_SYSTEMATIC": [
+    {
+      "name": "Remote_PT405_ColdHead_Envelope_NotInNominal",
+      "category": "remote_dr_systematic",
+      "material": "StainlessSteel",
+      "shape": "cylinder",
+      "params": {
+        "r": 5.6,
+        "h": 16.5
+      },
+      "z0": -44.5,
+      "z1": -28.0,
+      "r_in": 0.0,
+      "r_out": 5.6,
+      "x": 0.0,
+      "y": 0.0,
+      "nominal": false,
+      "notes": "Optional remote dry-DR PT405-class cold-head envelope; sized so cold-head + regenerator proxy is about 14.5 kg, not in nominal local mass.",
+      "volume_cm3": 1625.5857026735025,
+      "mass_kg": 13.00468562138802
+    },
+    {
+      "name": "Remote_PT_Regenerator_Materials_NotInNominal",
+      "category": "remote_dr_systematic",
+      "material": "PTRegeneratorProxy",
+      "shape": "annulus",
+      "params": {
+        "r_in": 1.2,
+        "r_out": 4.5,
+        "h": 5.0,
+        "phi_fraction": 0.6
+      },
+      "z0": -38.0,
+      "z1": -33.0,
+      "r_in": 1.2,
+      "r_out": 4.5,
+      "x": 0.0,
+      "y": 0.0,
+      "nominal": false,
+      "notes": "Optional Pb/rare-earth regenerator material proxy for commercial dry-DR systematic.",
+      "volume_cm3": 177.28007344207202,
+      "mass_kg": 1.5955206609786483
+    },
+    {
+      "name": "Remote_300K_TopPlate_Flange_NotInNominal",
+      "category": "remote_dr_systematic",
+      "material": "Aluminium",
+      "shape": "annulus",
+      "params": {
+        "r_in": 0.0,
+        "r_out": 10.0,
+        "h": 1.0
+      },
+      "z0": -27.0,
+      "z1": -26.0,
+      "r_in": 0.0,
+      "r_out": 10.0,
+      "x": 0.0,
+      "y": 0.0,
+      "nominal": false,
+      "notes": "Optional 300 K top-plate/flange envelope for dry-DR systematic, not local nominal.",
+      "volume_cm3": 314.1592653589793,
+      "mass_kg": 0.8482300164692442
+    }
+  ],
+  "SERVICE_CHIMNEY_SYSTEMATIC": [
+    {
+      "name": "Service_Chimney_SS_PumpTube_Through_CsI_Bottom_NotInNominal",
+      "category": "service_chimney_systematic",
+      "material": "StainlessSteel",
+      "shape": "box",
+      "params": {
+        "hx": 0.45,
+        "hy": 0.45,
+        "hz": 4.5
+      },
+      "z0": -22.2,
+      "z1": -13.2,
+      "r_in": null,
+      "r_out": null,
+      "x": 8.55,
+      "y": 0.0,
+      "nominal": false,
+      "notes": "Commercial dry-DR still-pumping/service chimney variant through the CsI/W bottom at off-axis radius; this is a streaming-path systematic, not part of the internal-circulation nominal.",
+      "volume_cm3": 7.290000000000001,
+      "mass_kg": 0.05832000000000001
+    },
+    {
+      "name": "Service_Chimney_W_Baffle_Sleeve_NotInNominal",
+      "category": "service_chimney_systematic",
+      "material": "W",
+      "shape": "box",
+      "params": {
+        "hx": 0.7,
+        "hy": 0.7,
+        "hz": 0.6
+      },
+      "z0": -16.2,
+      "z1": -15.0,
+      "r_in": null,
+      "r_out": null,
+      "x": 8.55,
+      "y": 0.0,
+      "nominal": false,
+      "notes": "Local W baffle/sleeve around the bottom service chimney; included only in the commercial dry-DR service-port systematic.",
+      "volume_cm3": 2.3519999999999994,
+      "mass_kg": 0.04539359999999999
+    }
+  ],
+  "REMOTE_LAUE_OPTICS_SYSTEMATIC": [
+    {
+      "name": "Laue_Ge111_Crystal_Array_Envelope_NotInNominal",
+      "category": "remote_optics_systematic",
+      "material": "Germanium",
+      "shape": "annulus",
+      "params": {
+        "r_in": 6.900953310519695,
+        "r_out": 8.434572875594569,
+        "h": 1.0,
+        "phi_fraction": 1.0
+      },
+      "z0": 1000.0,
+      "z1": 1001.0,
+      "r_in": 6.900953310519695,
+      "r_out": 8.434572875594569,
+      "x": 0.0,
+      "y": 0.0,
+      "nominal": false,
+      "notes": "Front-end Ge(111) crystal annulus envelope at 10 m; mass assumes full annulus area 73.9 cm^2 and 1 cm crystal-equivalent thickness.",
+      "volume_cm3": 73.88668722077708,
+      "mass_kg": 0.3932988360761964
+    },
+    {
+      "name": "Laue_10m_OpticalBench_Frame_NotInNominal",
+      "category": "remote_optics_systematic",
+      "material": "Aluminium",
+      "shape": "annulus",
+      "params": {
+        "r_in": 8.5,
+        "r_out": 20.0,
+        "h": 0.5,
+        "phi_fraction": 0.15
+      },
+      "z0": 999.5,
+      "z1": 1000.0,
+      "r_in": 8.5,
+      "r_out": 20.0,
+      "x": 0.0,
+      "y": 0.0,
+      "nominal": false,
+      "notes": "Approximate 40 cm diameter lens frame / optical-bench mass systematic; truss/gondola still outside local nominal.",
+      "volume_cm3": 77.2242744160541,
+      "mass_kg": 0.20850554092334608
+    }
+  ],
+  "EXPANDED_CSI_WELL_SYSTEMATIC": {
+    "name": "Expanded_CsI_Well_RadialPlus2cm_NotInNominal",
+    "category": "active_shield_systematic",
+    "material": "CsI",
+    "old_r_in_cm": 10.05,
+    "old_r_out_cm": 14.05,
+    "new_r_in_cm": 12.05,
+    "new_r_out_cm": 16.05,
+    "radial_expansion_cm": 2.0,
+    "delta_volume_cm3": 3263.4864485490743,
+    "delta_mass_kg": 14.718323882956325,
+    "notes": "Non-nominal variant: expands the active well by 2 cm radius to recover MLI/packaging/service margin around an SD-envelope cryostat while keeping TES and sample box fixed."
+  },
+  "LAUE_LENS_DESIGN": {
+    "input": {
+      "material": "Ge(111)",
+      "lattice_a_A": 5.658,
+      "d111_A": 3.2666478230749028,
+      "focal_length_m": 10.0,
+      "energy_range_keV": [
+        450,
+        550
+      ],
+      "target_effective_area_511_cm2": 20.0
+    },
+    "energy_radius_table": [
+      {
+        "energy_keV": 450,
+        "lambda_A": 0.027552044096266725,
+        "theta_deg": 0.24162698404836763,
+        "two_theta_deg": 0.48325396809673526,
+        "ring_radius_cm": 8.434572875594569,
+        "ring_diameter_cm": 16.869145751189137
+      },
+      {
+        "energy_keV": 475,
+        "lambda_A": 0.026101936512252687,
+        "theta_deg": 0.2289097048182076,
+        "two_theta_deg": 0.4578194096364152,
+        "ring_radius_cm": 7.990626138619321,
+        "ring_diameter_cm": 15.981252277238642
+      },
+      {
+        "energy_keV": 500,
+        "lambda_A": 0.02479683968664005,
+        "theta_deg": 0.217464163171104,
+        "two_theta_deg": 0.434928326342208,
+        "ring_radius_cm": 7.591077110370859,
+        "ring_diameter_cm": 15.182154220741719
+      },
+      {
+        "energy_keV": 511,
+        "lambda_A": 0.024263052530958954,
+        "theta_deg": 0.21278291676552832,
+        "two_theta_deg": 0.42556583353105665,
+        "ring_radius_cm": 7.4276615696730985,
+        "ring_diameter_cm": 14.855323139346197
+      },
+      {
+        "energy_keV": 525,
+        "lambda_A": 0.02361603779680005,
+        "theta_deg": 0.20710868059952767,
+        "two_theta_deg": 0.41421736119905533,
+        "ring_radius_cm": 7.229582723774299,
+        "ring_diameter_cm": 14.459165447548598
+      },
+      {
+        "energy_keV": 550,
+        "lambda_A": 0.02254258153330914,
+        "theta_deg": 0.19769461141418054,
+        "two_theta_deg": 0.3953892228283611,
+        "ring_radius_cm": 6.900953310519695,
+        "ring_diameter_cm": 13.80190662103939
+      }
+    ],
+    "annulus": {
+      "r_inner_cm_at_550keV": 6.900953310519695,
+      "r_511_cm": 7.4276615696730985,
+      "r_outer_cm_at_450keV": 8.434572875594569,
+      "geometric_annulus_area_cm2": 73.88668722077708,
+      "mean_efficiency_needed_for_20cm2_over_whole_annulus": 0.27068475732629627
+    },
+    "tile_rows": [
+      {
+        "row_center_radius_cm": 7.05,
+        "nominal_energy_keV": 538.372663862326,
+        "radial_pitch_cm": 0.4,
+        "tangential_pitch_cm": 0.45,
+        "tiles_full_360": 98,
+        "geometric_tile_area_cm2": 17.64
+      },
+      {
+        "row_center_radius_cm": 7.45,
+        "nominal_energy_keV": 509.46785706203605,
+        "radial_pitch_cm": 0.4,
+        "tangential_pitch_cm": 0.45,
+        "tiles_full_360": 104,
+        "geometric_tile_area_cm2": 18.720000000000002
+      },
+      {
+        "row_center_radius_cm": 7.85,
+        "nominal_energy_keV": 483.50882107116297,
+        "radial_pitch_cm": 0.4,
+        "tangential_pitch_cm": 0.45,
+        "tiles_full_360": 109,
+        "geometric_tile_area_cm2": 19.62
+      },
+      {
+        "row_center_radius_cm": 8.25,
+        "nominal_energy_keV": 460.06708013506073,
+        "radial_pitch_cm": 0.4,
+        "tangential_pitch_cm": 0.45,
+        "tiles_full_360": 115,
+        "geometric_tile_area_cm2": 20.7
+      }
+    ],
+    "targeted_511_rows": [
+      {
+        "layer": 1,
+        "row_center_radius_cm": 7.227661569673098,
+        "nominal_energy_keV": 525.1395425564759,
+        "radial_pitch_cm": 0.4,
+        "tangential_pitch_cm": 0.45,
+        "tiles_full_360": 100,
+        "geometric_tile_area_cm2": 18.0
+      },
+      {
+        "layer": 2,
+        "row_center_radius_cm": 7.4276615696730985,
+        "nominal_energy_keV": 511.0,
+        "radial_pitch_cm": 0.4,
+        "tangential_pitch_cm": 0.45,
+        "tiles_full_360": 103,
+        "geometric_tile_area_cm2": 18.540000000000003
+      },
+      {
+        "layer": 3,
+        "row_center_radius_cm": 7.627661569673099,
+        "nominal_energy_keV": 497.6019600422453,
+        "radial_pitch_cm": 0.4,
+        "tangential_pitch_cm": 0.45,
+        "tiles_full_360": 106,
+        "geometric_tile_area_cm2": 19.080000000000002
+      }
+    ],
+    "tile_summary": {
+      "total_tiles_full_360_broadband": 426,
+      "total_geometric_tile_area_cm2_broadband": 76.68,
+      "targeted_511_tiles_per_layer_mean": 103.0,
+      "targeted_511_total_tiles_three_layers": 309,
+      "layout_note": "Broad-band 450--550 keV layout uses 4 radial rows. A credible 20 cm^2 @511 keV option requires 2--3 rows/layers centered near r_511, not just the broad-band single row."
+    },
+    "focal_plane": {
+      "be_window_radius_mm": 18.98,
+      "spot_fwhm_mm_for_2arcmin_at_10m": 5.817764173314432,
+      "half_fov_offset_mm_if_5arcmin_is_diameter": 7.27220521664304,
+      "half_fov_offset_mm_if_5arcmin_is_semiaxis": 14.54441043328608,
+      "pointing_rss_mm_15arcsec_10arcsec": 0.8740102931434396,
+      "pointing_worst_sum_mm_25arcsec": 1.21203420277384,
+      "required_radius_mm_fullFOV_diameter_plus_halfFWHM_margin": 13.393121506074095,
+      "required_radius_mm_fullFOV_diameter_plus_approx95_margin": 16.30200359273131,
+      "required_radius_mm_if_5arcmin_is_semifov_plus_approx95_margin": 23.57420880937435,
+      "be_window_area_cm2": 11.317285941662487
+    },
+    "effective_area_sanity": {
+      "assumed_mosaic_bragg_angle_arcmin": 1.0,
+      "approx_image_blur_arcmin": 2.0,
+      "approx_deltaE_FWHM_at_511_keV": 40.02495896777969,
+      "approx_radial_acceptance_FWHM_cm": 0.581784441394755,
+      "approx_local_geometric_area_at_511_cm2": 27.151515706844588,
+      "diffraction_fill_efficiency_needed_for_20cm2": 0.7366071277913309,
+      "optimistic_single_layer_area_cm2_at_R30_fill85": 6.923636505245369,
+      "optimistic_two_layer_area_cm2_at_R30_fill85": 13.847273010490738,
+      "optimistic_three_layer_area_cm2_at_R30_fill85": 20.770909515736108,
+      "broadband_layout_accepted_rows_at_511": [
+        {
+          "row_center_radius_cm": 7.45,
+          "nominal_energy_keV": 509.46785706203605,
+          "radial_pitch_cm": 0.4,
+          "tangential_pitch_cm": 0.45,
+          "tiles_full_360": 104,
+          "geometric_tile_area_cm2": 18.720000000000002
+        }
+      ],
+      "broadband_layout_effective_area_cm2_at_R30_fill85": 4.7736,
+      "interpretation": "Single-layer Ge(111) is better treated as 5--7 cm^2 at 511 keV. The 20 cm^2 value is a stretch goal requiring about three effective layers or a high-reflectivity bent-crystal implementation."
+    },
+    "diffuse_science_sanity": {
+      "fov_diameter_arcmin": 5.0,
+      "fov_solid_angle_sr": 1.6614302919399338e-06,
+      "assumed_bulge_surface_brightness_ph_cm2_s_sr": 0.065,
+      "bulge_rate_if_Aeff_20cm2_per_day": 0.1866118503906934,
+      "bulge_rate_if_single_layer_Aeff_per_day": 0.06460163098381959,
+      "science_recommendation": "Use Laue focusing for point-like or compact 511-keV targets. Treat diffuse Galactic-bulge 511 keV as a non-focusing or wide-field spectrometer science case, not a 5-arcmin Laue-imaging case."
+    }
+  },
+  "THERMAL_FINGER": {
+    "name": "SampleBox_Cu_ThermalFinger_50mK",
+    "mat": "Copper",
+    "r": 0.4,
+    "z0": 0.25,
+    "z1": 0.55,
+    "touches": [
+      "ColdPlate_MXC_50mK_Retained",
+      "TES_SampleBox_Cryoperm"
+    ],
+    "basis": "Short Cu thermal finger through the new sample-box bottom hole; keeps a thermal path to the 50 mK/MXC plate while removing the large Cu box."
+  }
+}

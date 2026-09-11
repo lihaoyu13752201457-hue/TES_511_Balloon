@@ -1,0 +1,963 @@
+% =====================================================================
+% Experimental Astronomy (Springer) journal layout -- EMULATED.
+% Compile with XeLaTeX (e.g. latexmk -pdfxe).
+% Auto-generated from the NIM-A elsarticle source by build_ea_format.py;
+% only the journal FORMAT changed -- text, figures, tables, and references
+% are carried over verbatim from balloon511_nima_draft_zh.tex.
+% For submission, replace this emulated preamble with the official Springer
+% Nature class (sn-jnl.cls); the structure is already aligned to it.
+% =====================================================================
+\documentclass[11pt]{article}
+\usepackage[a4paper,top=2.4cm,bottom=2.5cm,left=2.0cm,right=2.0cm]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage[UTF8]{ctex}
+\usepackage{fontspec}
+\setmainfont{TeX Gyre Termes}
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage{pdflscape}
+\usepackage[section]{placeins}
+\usepackage{float}
+\graphicspath{{./}}
+\renewcommand{\topfraction}{0.92}
+\renewcommand{\bottomfraction}{0.8}
+\renewcommand{\textfraction}{0.07}
+\renewcommand{\floatpagefraction}{0.75}
+\usepackage{xcolor}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning}
+\usepackage{caption}
+\captionsetup{font=small,labelfont=bf}
+\usepackage{titlesec}
+\titleformat{\section}{\normalfont\large\bfseries}{\thesection}{0.6em}{}
+\titleformat{\subsection}{\normalfont\normalsize\bfseries}{\thesubsection}{0.5em}{}
+\titleformat{\subsubsection}{\normalfont\normalsize\bfseries}{\thesubsubsection}{0.5em}{}
+\titlespacing*{\section}{0pt}{1.3ex plus .2ex minus .2ex}{0.6ex}
+\titlespacing*{\subsection}{0pt}{1.0ex plus .2ex minus .2ex}{0.5ex}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small\itshape Experimental Astronomy}
+\fancyhead[R]{\small\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+\usepackage{cite}
+\usepackage{hyperref}
+\hypersetup{hidelinks}
+\setlength{\emergencystretch}{3em}
+\newcommand{\keV}{\,\mathrm{keV}}
+\newcommand{\MeV}{\,\mathrm{MeV}}
+\newcommand{\cms}{\,\mathrm{cm^{-2}\,s^{-1}}}
+\newcommand{\phcms}{\,\mathrm{ph\,cm^{-2}\,s^{-1}}}
+\newcommand{\cps}{\,\mathrm{s^{-1}}}
+\newcommand{\wii}{W_{511}}
+\newcommand{\aeff}{A_{\mathrm{eff}}}
+\newcommand{\fzero}{F_{0}}
+\newcommand{\fthree}{F_{3\sigma}}
+
+\begin{document}
+\thispagestyle{fancy}
+\begin{flushleft}
+{\LARGE\bfseries 气球载 511 keV Laue 透镜 TES 望远镜本底和未分辨线灵敏度的探测器耦合 Monte Carlo 估计 \par}
+\vspace{1.1em}
+{\large 作者信息暂隐\par}
+\vspace{0.3em}
+{\normalsize\itshape 单位信息暂隐\par}
+\end{flushleft}
+\vspace{0.7em}
+\noindent\rule{\textwidth}{0.4pt}
+\vspace{0.5em}
+
+\noindent\textbf{摘要}\hspace{0.7em}
+本底决定气球载 511 keV Laue 透镜--过渡边缘传感器（TES）微量热计望远镜的灵敏度。本文采用端到端 Geant4/MEGAlib 链，分别处理聚焦天体信号、宽带八族大气粒子场、独立输运的 PARMA 大气 511 keV 单能线，以及按模拟记录的产生位置抽样的活化衰变。
+叠加前先从宽带光子分量中移除该线的粗网格表示，再以 510.99895 keV 单能项放回，因而只计数一次。全部计算流统一施加 $510.58$--$511.42\keV$ 科学窗、主动反符合以及拓扑/孔径选择。
+质量模型 A 第 15 天选后本底为 $6.0596\times10^{-2}\cps$，其选后延迟率中有 $32.18\%$ 来自稀释制冷机混合室及各级冷盘。由该产生位置分布出发，质量模型 B 将六层 TES 焦面横向移入主动 BGO 包围的铝烟囱，使冷端区域占比降至 $3.92\%$。
+选后有效面积仅由 $15.12324\pm0.04492$ 变为 $15.08544\pm0.04503\,\mathrm{cm^2}$，而第 15 天总本底降至 $3.1228\times10^{-2}\cps$。在大气层顶 $10^{-4}\phcms$ 线流量下，质量模型 B 第 15 天信号率为 $9.7900\times10^{-4}\cps$。
+固定 $45^\circ$ 仰角的 20 d、81 节点轨迹折叠得到 1678.12 个信号和 54805.97 个本底计数，高斯与 Asimov 显著度分别为 7.168 和 7.132，高斯 $3\sigma$ 流量阈值为 $(4.185\pm0.156)\times10^{-5}\phcms$。相对质量模型 A，质量模型 B 保留 $99.75\%$ 的有效面积，将 20 d 累计本底降至 $54.85\%$，最小可分辨流量改善约 1.386 倍。
+
+\vspace{0.7em}
+\noindent\textbf{关键词}\hspace{0.7em}伽马射线仪器 $\cdot$ 511 keV 湮灭线 $\cdot$ 过渡边缘传感器微量热计 $\cdot$ Laue 透镜 $\cdot$ 气球载望远镜 $\cdot$ Monte Carlo 本底模拟
+
+\vspace{0.3em}
+\noindent\rule{\textwidth}{0.4pt}
+\vspace{1.0em}
+
+\section{引言}
+\label{sec:intro}
+
+银河系 511 keV 湮灭辐射是研究银河系正电子产生、传播和湮灭环境的重要观测探针。其谱学特征包括接近 511 keV 的双光子谱线和位于较低能量处的正电子素连续谱。正电子可与电子直接湮灭，或先形成对位正电子素并产生两个约 511 keV 光子；正交正电子素则通过三光子衰变形成连续谱。因此，谱线强度、轮廓和正电子素连续谱可以约束正电子减速和湮灭所在介质的性质 \cite{Prantzos2011,Jean2006}。在近似稳态假设下，INTEGRAL/SPI 测得的银河系 511 keV 总通量对应约几 $\times10^{43}\,\mathrm{e^+\,s^{-1}}$ 的正电子湮灭率 \cite{Prantzos2011,Kierans2020}。候选正电子来源包括恒星爆发中合成的 $\beta^+$ 不稳定核素、能够产生正负电子对的致密天体，以及更具推测性的粒子物理情景，例如由轻质量暗物质湮灭或衰变注入低能正电子。现有观测尚不能唯一确定其中的主导贡献 \cite{Prantzos2011,Siegert2016AA,Siegert2016V404}。
+
+过去的宽视场观测已经建立了 511 keV 辐射的弥散形态。INTEGRAL/SPI 显示出明亮的中心核球成分和较弱的银盘成分，20 年数据分析进一步重建出中心、宽核球与银盘结构，但额外关联结构的证据仍较边际 \cite{Knodlseder2005AllSky,Siegert2016AA,Yoneda2025}。COSI 2016 年气球飞行独立探测到核球信号，并给出辐射比单一点源更延展的迹象 \cite{Kierans2020,Siegert2020COSI}。谱学测量还约束了湮灭介质的物理状态和运动学：SPI 谱线可分解为约 $1.3\keV$ FWHM 的窄成分和约 $5.4\keV$ 的宽成分，并已在银河系内区搜寻其中心能量与线宽的变化 \cite{Jean2006,Siegert2019Kinematics}。然而，511 keV 天图记录的是正电子减速并湮灭后的位置，不一定是正电子最初产生的位置；正电子在热化之前可在磁化的多相星际介质中传播。因此，现有弥散形态和谱学约束仍不能单独判定主导来源，或还原湮灭前的输运历史 \cite{Prantzos2011}。
+
+宽视场康普顿和编码孔径仪器非常适合测量核球和银盘的总体发射。为了检验中心区域是否还包含未分辨中心增强、紧致源或可测量的谱线运动学结构，需要一种互补的定点仪器。探测到点状或窄集中分布的特征，将表明部分湮灭在空间上是局域的；未探测到信号则会限制紧致成分，但不能排除正电子逃逸后以弥散形式湮灭的源族。INTEGRAL/IBIS 紧致源搜索未发现银河系 511 keV 点源，并针对银河系中心方向约 10 Ms 的曝光给出约 $1.6\times10^{-4}\phcms$ 的 $2\sigma$ 上限 \cite{DeCesare2011}。该上限既给出了以往紧致源搜索的比较尺度，也构成新型窄视场定点仪器的灵敏度目标。
+
+Laue 光学利用透射式 Bragg 衍射，将来自已知方向的光子聚焦到小型焦面上，为这种定点观测提供了一种途径 \cite{Barriere2009Laue,Barriere2011LauePrototype}。当探测器相关本底占主导时，把大口径收集的通量汇聚到较小的灵敏探测器面积上，可以提高点源灵敏度 \cite{Weidenspointner2006MAX}。相应的焦面必须兼具窄能量响应和足够的 511 keV 阻止效率。过渡边缘传感器（transition-edge sensor, TES）微量热计利用超导体陡峭的电阻转变测量沉积能量引起的微小温度变化，可在 511 keV 处提供亚 keV 能量分辨率 \cite{Shirazi2023,Zhang2022TESGamma}。阵列用于覆盖焦斑，厚吸收体与多层布局则提高全能量效率。Laue 聚焦压缩接收相空间，而 TES 响应允许使用窄线窗并进行精细谱线轮廓测量。所得仪器以视场换取集中束流和高分辨率谱学能力，是对核球和银盘宽视场测量的补充，而不是替代。
+
+不过，TES 探测器本征的高能量分辨率和聚焦光学的聚焦性能并不足以单独论证整套探测系统针对点源的高分辨率 \cite{Shirazi2023,Hu2026}。大气环境中的宇宙线本底在探测器灵敏区沉积的瞬发本底谱，以及宇宙线在探测器及探测器周围物质活化引起的次级延时本底谱，也会影响探测系统对于科学源探测的分辨能力 \cite{Gallego2025Balloon,Tian2026DIXE}。
+
+本工作旨在量化球载 Laue 透镜--TES 阵列望远镜系统在高空环境下对于银河系中心 511 keV 点源的探测性能，同时研判本底的来源与分布，给出进一步设计优化的指导意见。
+
+\subsection{科学目标与仪器要求}
+\label{sec:requirements}
+
+\begingroup
+\clubpenalty=10000
+\widowpenalty=10000
+
+本文模拟的仪器旨在探测此前仪器尚未发现的银河系中心区域 511 keV 点源或未分辨中心超额成分。INTEGRAL/SPI 测量表明，511 keV 天空辐射以弥散的核球和银盘发射为主 \cite{Siegert2016AA,Yoneda2025}。De Cesare 针对 INTEGRAL/IBIS 开展的紧致源专项搜索未发现银河系 511 keV 点源，并给出了银河系中心方向 10 Ms 曝光下的 $2\sigma$ 上限 \cite{DeCesare2011}。为与本文报告的 $3\sigma$ 灵敏度进行比较，我们在高斯近似下对该已发表上限作线性换算，得到基于 IBIS 结果的 $3\sigma$ 等效大气层顶上限 $2.4\times10^{-4}\phcms$。在飞行第 15 天的高度，保留的垂直剩余大气柱深为 $3.461\,\mathrm{g\,cm^{-2}}$。对于本文设计的固定 $45^\circ$ 仰角仪器轴，平面平行近似下的斜程柱深为 $4.895\,\mathrm{g\,cm^{-2}}$；采用与 NIST XCOM 在 511 keV 附近数据一致的有效干空气衰减系数 $0.08736\,\mathrm{cm^2\,g^{-1}}$，得到透过率 $T_{15,45}=0.6520$。施加该透过率后，定义唯一的载荷平面观测参考通量 $F_{0,\mathrm{ref}}=(2.4\times10^{-4})\times0.6520=1.565\times10^{-4}\phcms$。该参考通量将作为后文评估所模拟望远镜系统在可接受飞行时间内最小可分辨通量性能的参照。与 INTEGRAL 已开展的宽视场光谱和编码孔径搜索相比，本文模拟的载荷引入 Laue 聚焦以改善点源响应，并采用高能量分辨率、多层厚吸收体 TES 微量热计阵列作为焦面探测器，以提高 511 keV 谱线测量能力 \cite{Shirazi2023,Caputo2017}。
+
+本工作首先考虑早期测试用的气球载荷平台，并期望后续拓展到卫星观测平台。
+
+\begingroup
+\interlinepenalty=10000
+这一目标对仪器和模拟提出四项要求。第一，望远镜必须将大口径透镜收集的 511 keV 光子汇聚到小型焦面上，从而提高聚焦光学的集光面积与探测器灵敏面积之比；这是一种窄视场定点构型，而不是扩大天空覆盖范围的手段。第二，焦面探测器必须具备足以分辨精细谱线结构的亚 keV 能量响应。第三，探测器和屏蔽模型必须抑制大气本底、活化本底及侧向入射本底。第四，模拟链必须一致处理瞬发本底、延迟活化、聚焦信号、veto、事例拓扑及任务时间变化，使信号和本底在相同的探测器选择条件下进行评估。
+\par
+\endgroup
+
+本文余下结构如下：第 2 节给出探测器与低温系统质量模型；第 3 节描述模拟框架——模拟流程、光学耦合、本底来源、事例选择，以及任务时间轨迹折叠（第~\ref{sec:mission_time_fold}~小节）；第 4 节给出选后率和灵敏度结果以及归一化、收敛与边界检查；第 5 节为讨论与结论。
+
+\endgroup
+
+\section{探测器与低温系统质量模型}
+\label{sec:geometry}
+
+本文比较两个完整的探测器--低温系统质量模型：参考方案质量模型 A，以及由质量模型 A 本底分析提出的质量模型 B。两者采用相同的六层 TES 核心，并均包含小型稀释制冷机、混合室、多级冷盘、热屏蔽与磁屏蔽、铜支撑、主动闪烁体和低温服务结构 \cite{Shirazi2023,Gottardi2021TESReview}；但焦面的布置、物理入口、局部 W 结构和主动屏蔽构型并不相同。图~\ref{fig:mass_model} 以相同视角和物理比例比较两种几何。后续计算对两者采用相同的 Laue 焦平面光子输入、TES 响应、源定义和事例选择合同。
+
+TES 探测器概念采用本实验室研发的 AlMn 薄膜与吸收体耦合结构。AlMn 合金的相变温度可通过成分和退火工艺调节，适于阵列制备，并且对磁场相对不敏感 \cite{Xie2026AlMn,Vavagiakis2017AlMnMagnetic}。在本文概念设计中，TES 温度计为厚约 $200\,\mathrm{nm}$、名义 Mn 原子浓度为 $2000\,\mathrm{ppm}$ 的 AlMn 薄膜，而 $\gamma$ 射线吸收体为毫米量级金属体。吸收体采用 $1.5\times1.5\times3.0\,\mathrm{mm^3}$ Ta 像素；Ta 的高原子序数提高了 511 keV 光子的相互作用效率。在 511 keV 处，单层 $3.0\,\mathrm{mm}$ Ta 的预估相互作用效率约为 $49\%$，相应的六层效率接近 1。当前几何中，相邻 Ta 阵列层的中心间距为 $12\,\mathrm{mm}$；该间距的设计兼顾后续基于康普顿运动学轨迹重建的 veto 机制。选择 Ta 还考虑了其作为超导体在低温下较低的比热，本文采用的数值为 $5.99\times10^{-7}\,\mathrm{J\,kg^{-1}\,K^{-1}}$。Ta 同时具有较高的光电--康普顿相互作用比；根据 NIST XCOM 在 511 keV 附近的截面，该比值约为 0.731 \cite{NISTXCOM}。在探测器响应模型中，我们根据本实验室已开发的 X 射线 TES 的实验经验 \cite{Xie2026AlMn}，采用 $\Delta E_{\mathrm{FWHM}}\simeq420\,\mathrm{eV}$ 作为 511 keV 处的预估能量分辨率和探测器响应后处理输入。
+
+由于 TES 薄膜与 Ta 吸收体在尺寸和质量上相差很大，且 TES 薄膜本身对 511 keV 光子的相互作用贡献可忽略，输运几何使用 Ta 吸收体代表 TES 像素的主要敏感体积。显式建模的敏感体积共 6 层，每层包含 376 个 Ta 吸收体像素，总计 2256 个像素；每个像素长、宽均为 $1.5\,\mathrm{mm}$，厚度为 $3\,\mathrm{mm}$。每个 Ta 像素下方放置一个 Si 衬底代理；由于本模拟不处理详细热传导，使用 Si 代表 $\mathrm{SiO_2}$--$\mathrm{SiN_x}$--Si 衬底。TES 薄膜、布线和读出细节不作为显式相互作用体积逐层建立，而是通过假设的能量响应和服务质量代理进入模型。与响应 FWHM 独立定义，保留的科学窗选择采用 511 keV 线窗 $W_{511}=511\,\mathrm{keV}\pm420\,\mathrm{eV}$，即 $510.58$--$511.42\,\mathrm{keV}$。
+
+质量模型 A 的 TES 阵列安装在多级冷盘正下方的铜支架上。沿光路依次设置铝热屏蔽窗、Be 真空窗和与 TES 像素对准的 W 多孔准直器；周围壳层通过布尔开孔形成侧入射光路。完整仪器框架旋转 $45^\circ$，使局部孔径在地平坐标中指向 $45^\circ$ 仰角。
+
+质量模型 B 采用相同的六层 TES 和 Laue 焦平面光子输入，但把焦面横向平移到圆柱形铝烟囱中。烟囱内、外半径分别为 10.75 和 11.05 cm，壁厚 3 mm，其局部轴位于 $z'=-2.80$ cm。物理入口半径为 2.70 cm，并以开放四边 W 框取代质量模型 A 的多孔准直器；主动 BGO 覆盖烟囱侧面、前端光学环和后端冷孔环。
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.98\linewidth]{figures/manuscript/fig01_mass_models_ab_zh.pdf}
+\caption{质量模型 A（a）与质量模型 B（b）的探测器--低温系统对照图；两面板采用相同的相机、物理视口和比例。质量模型 A 的六层 TES 位于多级冷端结构下方，前方为多孔 W 准直器。质量模型 B 将同一 TES 核心横向移入 Al 烟囱，采用开放四边 W 框，并在烟囱侧面、前端光学环和后端冷孔环设置主动 BGO。红色箭头表示聚焦 511 keV 光子的名义传播路径。为便于观察，部分外层包络和质量模型 A 的塑料闪烁体设为半透明或隐藏；质量模型 B 不含塑料通道。图中物理入口不等同于拓扑 veto 使用的分析圆盘。}
+\label{fig:mass_model}
+\end{figure}
+
+对照图直接显示了焦面的横向位移。质量模型 A 中，厚 4.796 mm 的 Bi 上半圆筒安装在 2 mm Al 冷端圆筒内侧，位于六层 Ta 吸收体及其铜热支撑上方；质量模型 B 的六个敏感平面则沿侧烟囱轴布置，离开多级冷盘的直接投影，并位于局部 BGO 组件内。
+
+质量模型 A 和质量模型 B 保留相同的六个敏感平面、像素尺寸、响应模型、Laue 焦平面输入和光轴约定，但它们不是只改变一个变量的几何对：物理入口和 W 结构也不同，如图~\ref{fig:mass_model} 所示。因此，后文是在共同源、响应、计时和选择合同下比较两个完整设计；质量模型 B 的灵敏度以当前入口和开放式 W 框的接受度为条件。
+
+\FloatBarrier
+
+\section{模拟框架}
+\label{sec:framework}
+
+本文采用基于详细质量模型的探测器耦合 Monte Carlo 输运，计算 511\,keV 谱仪的响应与本底 \cite{Sturner2003}。图~\ref{fig:workflow} 将端到端计算按物理来源分为三条分支：聚焦信号、瞬发大气本底和延迟活化本底。Laue 光学系统与探测器--低温系统分别建立质量模型。参考点源首先在 Laue 透镜模型中输运；到达焦平面的光子位置与方向写入 MEGAlib EventList，并据此初始化探测器侧 Monte Carlo 输运。对于每一版设计，聚焦信号输入与全部本底源均在第~\ref{sec:geometry}~节所述的同一完整探测器--低温系统质量模型中输运。
+
+宽带瞬发输运与活化产生输运采用同一套八族 EXPACS/PARMA 宽带辐射场定义，并作为并行计算执行。瞬发分支包含两个独立模拟的输入：去除粗网格湮没线贡献后的宽带伽马连续谱与其余粒子场，以及独立构建的单能大气正电子湮没 511\,keV 线源。PARMA 标准光子输出将该线的积分通量计入包含 511\,keV 的粗能箱；本文移除这一粗网格表示，并以 510.99895\,keV 单能源独立输运。该线源的积分通量和角分布由 PARMA 专用线参数化在与宽带场相同的大气状态下给出；已有大气观测为该湮没线成分的存在提供实验依据 \cite{Mahoney1981Atmospheric,Harris2003Atmospheric}。在延迟活化分支中，BUILDUP 输运记录核素产额、材料体积和产生位置。这些记录用于计算飞行期间积累的活度并构建参考时刻核素清单；随后按记录的产生位置抽样延迟衰变，并在探测器--低温系统模型中输运。
+
+聚焦信号、宽带瞬发本底、大气 511\,keV 线和延迟活化四类探测器侧事例目录统一施加相同的探测器响应、主动 veto 判据与 Compton 拓扑检验。选后本底事例按入射粒子族、母核素和产生体积分解，并据此定义和筛选候选屏蔽几何。最终候选几何固定后，再将其选后信号率与分量本底率沿任务时间及所采用的参考轨迹进行解析折叠，以计算累计计数和未分辨线灵敏度。多日飞行会采样变化的大气与地磁条件，因此该折叠并非将单一 Monte Carlo 快照按飞行时间简单缩放；方法定义见第~\ref{sec:mission_time_fold}~节，独立瞬发折叠检验见第~\ref{subsec:mission_fold_validation_zh}~节。图~\ref{fig:workflow} 末端的设计反馈节点表示利用任务尺度评价约束后续屏蔽改进，并不表示本文的任务折叠先于所用最终候选几何的定义与输运。下文依次给出源模型、输运归一化、事例选择判据和轨迹计算方法。
+
+\begin{landscape}
+\centering
+\vspace*{\fill}
+\includegraphics[width=0.94\linewidth]{figures/manuscript/fig02_workflow_zh.pdf}
+\captionof{figure}{端到端模拟与分析流程。三条物理分支生成四类探测器侧事例目录：聚焦信号、宽带瞬发本底、大气 511\,keV 瞬发线和延迟活化本底。各事例目录统一施加探测器响应、主动 veto 和 Compton 拓扑检验。选后本底来源分解用于候选几何筛选；本文报告的任务折叠随后针对已固定的最终候选几何进行。末端节点表示任务尺度结果对后续方案比较和屏蔽改进的反馈。}
+\label{fig:workflow}
+\vspace*{\fill}
+\end{landscape}
+
+\FloatBarrier
+
+\subsection{Laue 光学与探测器耦合信号输运}
+\label{sec:optics}
+
+本文模拟采用基于镶嵌型 Ge(111) 晶体的 Laue 透镜系统 \cite{Barriere2009Laue,Barriere2011LauePrototype}，通过光学设计实现 $10\,\mathrm{m}$ 的焦距、511 keV 单环参考响应，以及 511 keV 下 $20.1\,\mathrm{cm^2}$ 的有效面积；有效面积按
+\begin{equation}
+  A_{\mathrm{eff}}(E)=A_{\mathrm{inc}}\frac{N_{\mathrm{fp}}(E)}{N_{\mathrm{inc}}(E)}
+  \label{eq:laue_aeff}
+\end{equation}
+计算，其中 $A_{\mathrm{inc}}$ 为蒙特卡洛入射采样面积，$N_{\mathrm{inc}}(E)$ 为入射光子数，$N_{\mathrm{fp}}(E)$ 为满足聚焦/焦面截取条件的光子数。
+采用镶嵌晶体系统是为了在满足预期设计聚焦性能的同时便于蒙特卡洛计算；实际工程适配时也可考虑其他候选方案。
+
+在本模拟中，laue光学分支给出聚焦性能模拟，并使聚焦信号穿过 Ge 晶体质量输运。
+
+为此,晶体对光子的衍射概率不再作为一个效率参数叠加给光子,而是在 Geant4 应用层定义为一个离散过程 \cite{Agostinelli2003,Allison2016}。该过程按当前光子相对晶面的角偏差取衍射概率 $R(|\Delta\theta|)$,并把它转换为一个有限的等效衍射平均自由程 $\lambda_{\mathrm{diff}}$,使光子穿过晶体路径 $\ell$ 时累计的衍射概率复现该值:$1-\exp(-\ell/\lambda_{\mathrm{diff}})=R(|\Delta\theta|)$,即 $\lambda_{\mathrm{diff}}=-\,\ell/\ln[1-R(|\Delta\theta|)]$;为避免与标准光电吸收重复计数,$R$ 先按未吸收份额归一($R/(1-A)$)再转成自由程。该自由程交回 Geant4 后,衍射过程与标准电磁过程(光电吸收、康普顿散射)在同一竞争框架下各自抽样相互作用长度,由最短者决定谁先发生,而不是在晶体边界强制拦截光子。未被抽中发生衍射的光子仍按标准电磁物理继续输运,可能被吸收、散射或直接透射。
+
+本文采用预先计算的 XOP/CRYSTAL rocking curve 确定衍射概率。Ge(111) 的反射率、透射率和吸收率随角偏差的关系由 XOP 工具包的 CRYSTAL/diff\_pat 模块生成（通过 xoppylib 调用，晶体学参数取自 DABAX）\cite{SanchezDelRio2011XOP}，并在预处理阶段存为输运查找表。在 Geant4 输运过程中，对晶体内的每个输运步计算光子相对于 Bragg 条件的角偏差，并通过插值得到相应的衍射概率。30 角秒 FWHM 的镶嵌角分布通过对理想 Bragg 晶面法线施加高斯角扰动实现；发生衍射后，根据扰动后的晶面法线确定出射方向，光子能量保持不变。该方法借鉴了已有的 Geant4 晶体 Bragg 反射实现 \cite{Guan2023BraggReflection,Reiazi2025G4BraggReflection}，并应用于本文研究的能段。
+
+这里的参考信号是一个单色 511 keV 点源；其大气层顶取整参考尺度 $\fzero=10^{-4}\phcms$（见第~\ref{sec:requirements} 节）由 INTEGRAL/IBIS 的专门紧凑源上限提供依据，而非取自某个已观测天体 \cite{DeCesare2011}。信号以 MEGAlib 远场源方式构建 \cite{Zoglauer2006}，详细构建方式见第~\ref{subsec:pointsource} 节。信号经光学分支输运并作为平行束源输入探测器质量模型；宇宙线瞬发本底与活化衰变则直接在探测器/低温系统质量模型中输运。因此，主要本底预算定义在探测器/低温系统分支上，光学分支提供输运到焦平面的信号相空间。
+
+\subsection{源构建}
+\label{sec:background}
+
+在上述三条物理分支内，本文独立构建四类探测器侧输入：参考点源的焦面 EventList、宽带瞬发大气场、单能大气 511\,keV 线，以及由活化核素清单构建的延迟衰变源。大气 511\,keV 线仍属于瞬发本底分支，活化产生与延迟衰变输运则作为两个独立阶段处理。该构建方式在施加共同探测器响应和事例选择前，保留了每类输入独立的归一化与来源追溯关系。
+
+\subsubsection{瞬发大气源}
+\label{subsec:prompt_source}
+
+瞬发大气粒子场由 EXPACS/PARMA 给出。PARMA3.0 是由 PHITS 大气级联计算参数化得到、
+并针对陆地宇宙线测量验证过的解析模型，EXPACS 是其公开表格与软件接口
+\cite{Sato2015EXPACS,Sato2016PARMA4}。底层的粒子输运物理由 PHITS 提供：一次宇宙线
+与大气核作用，次级强子、轻子、光子和中子在大气柱中继续输运，最终通量按海拔、
+地磁截止刚度、太阳调制、能量和方向参数化。本文中 EXPACS/PARMA 给出随粒子种类、
+动能、天顶角、地理位置、海拔、截止刚度和太阳活动变化的入射微分通量，且只用于构造
+外部辐射场；探测器响应、反符合、拓扑选择和任务时间计数都在下游施加。参考源定义
+采用纬度 $34^\circ$、经度 $100^\circ$、海拔 $38\,\mathrm{km}$、垂直截止刚度
+$R_c=11.6\,\mathrm{GV}$，以及 2025-08-31 对应的太阳条件 $W=118.3$。
+
+瞬发源包含光子、中子、电子、正电子、质子、$\alpha$ 粒子以及正负 $\mu$ 子。对每个
+粒子族，EXPACS/PARMA 微分谱被转换为 MEGAlib 远场面积源，覆盖完整天顶角范围
+$\theta=0^\circ$--$180^\circ$ 和完整方位角范围 $\phi=0^\circ$--$360^\circ$。天顶角
+依赖用 20 个等 $\mu$ 微分分箱表示，其中 $\mu=\cos\theta$，每箱立体角
+$\Delta\Omega=0.6283185307\,\mathrm{sr}$：前 10 箱为下行粒子，后 10 箱为上行或反照
+成分。瞬发输运和活化产生输运都保留这两个半球，因此源构建阶段没有丢弃上行反照
+粒子。图~\ref{fig:expacs_fullsphere_flux} 给出由源定义实际采用的全空间通量场。
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\linewidth]{figures/manuscript/fig03_corrected_kev_sources.pdf}
+\caption{用于瞬发输运和活化产生计算的 EXPACS/PARMA 大气粒子场。（a）八类粒子族在下行和上行（反照）半球内对能量和立体角积分后的通量。（b）各粒子族在 20 个等 $\mu$ 天顶角分箱（$\mu=\cos\theta$）中的积分通量。环境参数为纬度 $34^\circ$、经度 $100^\circ$、海拔 $38\,\mathrm{km}$、$R_c=11.6\,\mathrm{GV}$ 和 $W=118.3$。}
+\label{fig:expacs_fullsphere_flux}
+\end{figure}
+
+全空间积分通量分别为 4.79966、0.462239、0.199002、0.116981、0.112301、0.0114871、0.00496893 和 $0.00557001\,\mathrm{cm^{-2}\,s^{-1}}$，依次对应 $\gamma$、$n$、$e^-$、$e^+$、$p$、$\alpha$、$\mu^-$ 和 $\mu^+$。每一族均采用 20 个等 $\mu$ 分箱和半径 60 cm 的远场起始球。少数族可以增加 Monte Carlo 抽样，但每族始终保留独立输运曝光
+\begin{equation}
+  r_{\mathrm{event},j}=\left(\sum_i \mathcal{T}_{ij}\right)^{-1},
+\end{equation}
+其中 $\mathcal{T}_{ij}$ 为粒子族 $j$ 的第 $i$ 个子样本曝光。因此增加抽样只改变统计方差，不改变物理期望率。
+
+送入 Cosima 的源能量以 keV 表示。非 $\alpha$ 粒子的表格动能由 MeV 按 $E_{\mathrm{tot,keV}}=10^3E_{\mathrm{MeV}}$ 转换；$\alpha$ 粒子表格以每核子 MeV 给出，故其总动能为 $E_{\alpha,\mathrm{keV}}=4\times10^3E_{\mathrm{MeV/nucleon}}$。每个角分箱内的能谱归一为一，绝对幅度由该分箱的积分通量给出。
+
+若 $I_j(E,\mu)$ 表示粒子族 $j$ 的 EXPACS/PARMA 微分强度，则等 $\mu$ 分箱 $m$ 承载的通量为
+\begin{equation}
+ \Phi_{j,m}=2\pi\int_{\mu_m}^{\mu_{m+1}}\!\mathrm d\mu
+             \int I_j(E,\mu)\,\mathrm dE,
+ \qquad \Delta\mu=0.1,
+ \label{eq:source_bin_flux_zh}
+\end{equation}
+故每箱立体角为 $\Delta\Omega=2\pi\Delta\mu=0.62831853\,\mathrm{sr}$。前 10 箱覆盖下行半球，后 10 箱覆盖上行或反照半球，两者方位角均完整。
+
+八类粒子族均采用半径 $R=60\,\mathrm{cm}$ 的远场面积源。对每个抽样方向，起点在垂直于该方向的投影圆盘内均匀抽样，动量指向质量模型内部，因而几何率因子为投影面积 $\pi R^2$。20 个角分箱共同覆盖 $4\pi$ 入射立体角。同一大气粒子场定义分别用于瞬发输运和活化产生计算。
+
+\subsubsection{大气 511 keV 线源}
+\label{subsec:atm511_source_zh}
+
+大气正电子湮没线是地球大气伽马射线场中已被观测到的独立成分
+\cite{Mahoney1981Atmospheric,Harris2003Atmospheric}。第~\ref{subsec:prompt_source} 节的
+EXPACS/PARMA 光子谱采用对数能量网格 \cite{Sato2015EXPACS,Sato2016PARMA4}。标准光子
+输出把线积分通量加入 566.08\,keV 的粗网格节点；经线性插值后，该贡献分布在
+449.65--712.64\,keV，而不能在湮没能量处保留窄线结构。由于该范围远大于探测器的
+420\,eV FWHM 响应，本文从宽带光子表中移除这一粗网格线贡献，再以独立单能分量放回。
+
+轨迹节点 $t$ 的 PARMA 线源状态记为
+$\boldsymbol{\xi}_{511}(t)=(W,R_c(t),X(t),g)$。第 15 天参考节点采用
+$W=114.6\,\mathrm{MV}$、$R_c=11.6\,\mathrm{GV}$、
+$X=3.461468972\,\mathrm{g\,cm^{-2}}$ 和 $g=0.15$，其中 $g$ 为 PARMA 的无量纲局地几何参数。该节点的全空间线通量为
+$\Phi_{511,4\pi}=0.166515472\,\mathrm{ph\,cm^{-2}\,s^{-1}}$。相应的 PARMA 角密度
+$A_\gamma(\mu\mid\boldsymbol{\xi}_{511})$ 按等 $\mu$ 分箱积分：
+\begin{equation}
+  p_k=
+  \frac{2\pi\int_{\mu_k^-}^{\mu_k^+}
+        A_\gamma(\mu\mid\boldsymbol{\xi}_{511})\,\mathrm{d}\mu}
+       {2\pi\int_{-1}^{1}
+        A_\gamma(\mu\mid\boldsymbol{\xi}_{511})\,\mathrm{d}\mu},
+  \qquad
+  \Phi_{511,k}=\Phi_{511,4\pi}p_k .
+  \label{eq:atm511_bins_zh}
+\end{equation}
+PARMA 以 $\mu=-1$ 表示上行、$\mu=+1$ 表示下行；第 15 天参考节点的积分份额分别为
+0.823220 和 0.176780。全空间用 80 个等 $\mu$ 远场分量表示。令归一化角密度为
+$p_{511}(\Omega,t)$，满足 $\int_{4\pi}p_{511}(\Omega,t)\,\mathrm{d}\Omega=1$。
+每个分量均在 Cosima 中设为 $E_{511}=510.99895\,\mathrm{keV}$ 的单能光子源；仪器展宽
+只在探测器响应阶段施加。
+
+宽带连续谱与单能线在轨迹节点 $t$ 的组合写为
+\begin{equation}
+  \begin{aligned}
+  J_\gamma(E,\Omega,t)={}&s_\gamma(t)
+  \left[J_{\gamma,\mathrm{tot}}^{\mathrm{ref}}(E,\Omega)
+  -J_{511,\mathrm{bin}}^{\mathrm{ref}}(E,\Omega)\right] \\
+  &+\Phi_{511,4\pi}(t)
+   p_{511}(\Omega,t)\delta(E-E_{511}).
+  \end{aligned}
+  \label{eq:atm511_single_count_zh}
+\end{equation}
+其中，$J_{\gamma,\mathrm{tot}}^{\mathrm{ref}}$ 是第~\ref{subsec:prompt_source} 节的参考宽带
+光子表；去线参考采用 $W=118.3\,\mathrm{MV}$、$R_c=11.6\,\mathrm{GV}$、
+$X=3.84535\,\mathrm{g\,cm^{-2}}$ 和 $g=0$。$J_{511,\mathrm{bin}}^{\mathrm{ref}}$ 是在相同
+参考条件和插值规则下由标准总光子输出与纯连续谱之差得到的粗网格线贡献，$s_\gamma(t)$
+是任务折叠采用的宽带光子尺度因子。$\Phi_{511,4\pi}(t)$ 和 $p_{511}(\Omega,t)$ 由各轨迹节点
+的 PARMA 专用线参数化给出。实际计算按初始光子能量和入射方向，对既有宽带光子事例施加
+纯连续谱与总光子谱的强度比，从而得到去线连续谱响应；单能线事例独立输运。
+式~\eqref{eq:atm511_single_count_zh} 因而先去除宽带表中的展宽线表示，再在物理能量处计数一次。
+
+\subsubsection{延迟活化源}
+\label{subsec:delayed_source}
+
+延迟源来自独立的活化产生输运。活化记录不作为即时本底计数，而是保存每个放射性产物的核素、材料体积、入射粒子族和产生位置；基态半衰期对照 NUBASE2020 校验 \cite{Kondev2021NUBASE}。对核素 $k$，
+\begin{equation}
+  A_k(t_{\mathrm{flight}})=P_k\left[1-\exp(-\lambda_k t_{\mathrm{flight}})\right],
+  \qquad \lambda_k=\frac{\ln2}{t_{1/2,k}},
+\end{equation}
+其中 $P_k$ 为产生率，活化模拟以气球飞行第 15 天为参考状态，即
+$t_{\mathrm{flight}}=15\,\mathrm{d}$。
+
+MEGAlib/Cosima 默认保存的事例信息不足以重建该延迟源的空间分布。因此，本文在 Geant4 的
+\texttt{SteppingAction} 中加入自定义记录钩子，在放射性产物形成时保存其产生坐标，并按材料体积、
+核素和激发态将第 15 天核素群体与这些产生记录匹配。所得源描述按入射粒子族、材料类别、产生体积和坐标组织。
+
+保留核素产生位置十分重要，因为延迟粒子能否穿出周围材料、是否触发 BGO 反符合以及能否通过康普顿拓扑选择，都与其产生地点有关。本文按材料体积、核素、激发态和坐标，将活化产生记录与第 15 天核素清单匹配，并按活度权重从这些记录中抽样衰变位置。抽样事例随后归一到相应入射粒子族的总活度，从而同时保留空间分布和总活度。两种质量模型的活化源位置及其中影响 TES 511 keV 响应窗的母核素示于图~\ref{fig:activation_source_positions_zh}。
+
+模拟时，每个入射粒子族均输运 $10^6$ 个延迟衰变，因此每个质量模型均生成 $8\times10^6$ 个延迟触发。经科学窗、BGO 反符合和康普顿拓扑选择后，质量模型 A 和质量模型 B 分别保留 394 和 111 条 Monte Carlo 事例。这些事例随后按各粒子族的第 15 天活度和输运量归一为物理率，并在相同物理观测时间下进行比较。质量模型 A 的第 15 天分族活度主要来自质子（724.2736 Bq）、中子（330.0210 Bq）和 $\alpha$ 粒子（287.5411 Bq）；其余依次为 $\gamma$（6.5923 Bq）、$e^+$（2.9537 Bq）、$e^-$（0.6679 Bq）、$\mu^-$（0.2479 Bq）和 $\mu^+$（$1.26\times10^{-9}$ Bq）。质量模型 B 的相应活度为质子（105.5262 Bq）、中子（68.5316 Bq）、$\alpha$ 粒子（34.2836 Bq）、$\gamma$（2.0320 Bq）、$e^+$（0.6754 Bq）、$e^-$（0.2663 Bq）、$\mu^-$（0.0684 Bq）和 $\mu^+$（0.0040 Bq）。
+
+最终延迟事例继续保留母核素身份和产生体积。对于 511 keV 附近的活化本底事例，质量模型 A 的主要来源包括 L2 铜支撑环和 50 mK 混合室板中的 $^{62}\mathrm{Cu}$；质量模型 B 的最大来源是 L5 铜环中的 $^{62}\mathrm{Cu}$，其次为 TES 热沉环中的 $^{62}\mathrm{Cu}$，W 框和 Al 壳的贡献较小。后文将进一步讨论这些本底来源及其与几何结构的关系。表~\ref{tab:background_source_model} 汇总了两个质量模型采用的源构建层级。
+
+\begin{table}[H]
+\centering
+\caption{质量模型 A 与质量模型 B 共同采用的源层级。表中只定义源构建，探测器响应和选择在下游施加。}
+\label{tab:background_source_model}
+\footnotesize
+\begin{tabular}{p{0.21\linewidth}p{0.34\linewidth}p{0.37\linewidth}}
+\toprule
+层级 & 物理作用 & 当前实现 \\
+\midrule
+全空间大气场 & 瞬发探测器命中和活化产生 & 八族、每族 20 个等 $\mu$ 分箱、全空间、60 cm 起始半径；总动能以 keV 输入。 \\
+宽带 $\gamma$ 连续谱 & 大气光子连续谱 & 20 个等 $\mu$ 分箱，并移除粗能箱中的湮没线贡献。 \\
+大气 511 keV 线 & 正电子湮没光子 & PARMA 线归一，510.99895 keV，80 个等 $\mu$ 分量。 \\
+活化产生 & 粒子族--核素--体积--位置历史 & 使用同一全空间大气场，并采用 NUBASE 校验的基态衰变数据。 \\
+产生位置衰变 & 从实际记录材料坐标发射延迟粒子 & 每族 $10^6$ 次衰变；每个几何含八个独立归一族目录。 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{figure}[p]
+\centering
+\includegraphics[width=0.96\linewidth]{figures/manuscript/fig_activation_positions_model_a_zh.pdf}
+\vspace{0.35em}
+
+\includegraphics[width=0.96\linewidth]{figures/manuscript/fig_activation_positions_model_b_zh.pdf}
+\caption{质量模型 A（上）和质量模型 B（下）的延迟活化产生位置。每行左图为质量模型全景，右图为 TES 区域放大；蓝色点表示全部输运的延迟活化源位置，彩色点表示在 TES $510.58$--$511.42$ keV 响应窗中产生本底的活化母核素。}
+\label{fig:activation_source_positions_zh}
+\end{figure}
+
+\FloatBarrier
+
+\subsubsection{参考点源构建}
+\label{subsec:pointsource}
+
+聚焦信号采用轴上单色 $511\keV$ 远场点源。参照 INTEGRAL/IBIS 的紧凑源上限，本文采用大气层顶通量 $\fzero=10^{-4}\phcms$ 作为取整比较尺度（见第~\ref{sec:requirements} 节）\cite{DeCesare2011}。
+
+在光学计算中，光子平行于光轴入射，并在式~(\ref{eq:laue_aeff}) 定义的入射孔径 $A_{\mathrm{inc}}$ 上均匀抽样。焦面响应由 30 角秒 mosaic 展宽、XOP/CRYSTAL 摇摆曲线和 10 m 聚焦几何共同决定。三个独立光学样本共含 $1.5\times10^5$ 个入射光子，产生 37,256 个衍射焦面穿越，其中 37,194 个落入半径为 $1.898\,\mathrm{cm}$ 的 Be 入射窗。所得光斑半径为 $r_{90}=1.03\,\mathrm{cm}$ 和 $r_{99}=1.25\,\mathrm{cm}$。每个接受穿越的位置和方向构成共同的焦平面 EventList，并分别在两个质量模型中独立输运。
+
+对于大气层顶通量 $F_{\mathrm{TOA}}$，探测器入口聚焦率为
+\begin{equation}
+  R_{\mathrm{fp}}=F_{\mathrm{TOA}}\,A_{\mathrm{fp}}\,T_{\mathrm{atm},45}.
+\end{equation}
+共同 EventList 含 $N_{\mathrm{fp}}=37{,}194$ 个条目，表示的光学有效面积为 $A_{\mathrm{fp}}=20.08476\,\mathrm{cm^2}$。该样本对应等效曝光 $T_{\mathrm{exp}}=N_{\mathrm{fp}}/[F_{\mathrm{TOA}}A_{\mathrm{fp}}T_{\mathrm{atm},45}]$，因此每个 EventList 条目的物理率权重为 $1/T_{\mathrm{exp}}$。质量模型 $j$ 的选后有效面积按 $A_{\mathrm{eff},j}^{\mathrm{sel}}=A_{\mathrm{fp}}N_{\mathrm{sel},j}/N_{\mathrm{fp}}$ 计算。
+
+第 15 天的大气透过率为 $T_{\mathrm{atm},45}=0.652034$。质量模型 A 中有 28,612 条记录进入测量科学窗，其中 28,006 条通过最终康普顿拓扑选择，对应 $A_{\mathrm{eff,A}}^{\mathrm{sel}}=15.12324\pm0.04492\,\mathrm{cm^2}$。质量模型 B 的相应记录数为 28,434 和 27,936，选后有效面积为 $A_{\mathrm{eff,B}}^{\mathrm{sel}}=15.08544\pm0.04503\,\mathrm{cm^2}$。施加大气透过率和第 15 天偶然符合存活率后，在 $F_{\mathrm{TOA}}=10^{-4}\phcms$ 下，两种质量模型的信号率分别为 $9.5361\times10^{-4}$ 和 $9.7900\times10^{-4}\cps$。两者的选后有效面积相差 $0.25\%$，表明烟囱结构基本保持了信号接受度。
+
+上述有效面积均为轴上参考值。点源离轴角和飞行姿态抖动通过 Laue 透镜的有限角接受改变聚焦响应，并作为信号有效面积的指向系统学处理 \cite{Barriere2009Laue,Weidenspointner2006MAX}。任务计算将望远镜光轴固定在 $45^\circ$ 仰角，焦平面 EventList 沿该轴通过侧向入射窗注入。
+
+\subsection{探测器响应、事例选择与 veto 定义}
+\label{sec:selection}
+
+参考符合计算把聚焦信号、瞬发大气本底与延迟活化本底三个事例目录映射到一条显式时间轴，并顺次施加两层 veto。独立输运的大气 511\,keV 事例目录采用相同的探测器响应和逐事例选择；其全能段探测器占有率随后用于最终任务的本底时间轴和聚焦信号偶然符合存活率计算。该区分把三目录参考符合检验与最终四分量率预算分开陈述。
+
+\subsubsection{时间轴与率归一}
+\label{subsec:time_axis_zh}
+
+在固定辐射环境下，如果粒子事例彼此独立且平均到达率保持稳定，则给定时间窗内的事例数服从泊松分布；在事例数给定后，各事例的到达时刻可视为在该时间窗内均匀分布。这为率归一的 Monte Carlo 事例目录提供了自然的时间表示：事例目录给出能量沉积、空间位置和拓扑等探测器信息，泊松过程则决定这些事例在物理时间轴上出现的次数和时刻。
+
+气球飞行中的辐射场会随轨迹变化，但这种变化远慢于本项目采用的 $1\,\mu\mathrm{s}$ 符合时间尺度。因此，在每个轨迹节点内，各类事例流均可近似为到达率恒定且相互独立的泊松过程。聚焦信号、瞬发大气本底和延迟活化本底由不同的输运计算产生，原始目录之间不共享物理时间轴；而 BGO 反符合和康普顿拓扑选择取决于同一时间窗内的全部能量沉积。为计算不同来源之间的偶然符合，需要先将这些目录映射到同一条时间轴。
+
+三个参考事例目录在第~\ref{sec:background} 节的源归一化阶段各自获得逐记录率权重 $r_{km}$。其中 $k$ 仅取聚焦信号、瞬发大气本底和延迟活化本底三类，$m$ 标记该目录中的输运记录，目录总率为 $R_k=\sum_m r_{km}$。对于长度为 $T$ 的参考观测窗，第 $k$ 个目录产生的事例数由下式抽取：
+\begin{equation}
+ N_k\sim\mathrm{Pois}(R_kT).
+ \label{eq:poisson_superposition_zh}
+\end{equation}
+随后以 $r_{km}/R_k$ 为概率有放回地抽取记录，并在 $[0,T]$ 内为每个实例赋予独立均匀时刻。这样生成的时间序列同时保持了事例流的物理率及其能量、方向和探测器响应分布。
+
+三组实例合并后按到达时刻排序。相邻事例的时间间隔不超过 $\tau=1\,\mu\mathrm{s}$ 时，将其递归归入同一个符合候选组 $c$；组内的全部能量沉积共同接受科学窗、BGO 反符合和康普顿拓扑选择。图~\ref{fig:poisson_time_axis_schematic} 给出这一过程的示意。
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\linewidth]{figures/manuscript/fig04a_poisson_time_axis_schematic.pdf}
+\caption{三目录参考符合时间轴的构建示意。（a）每个目录具有逐记录率权重和目录总率；（b）三组独立泊松抽样合并并排序到公共时间轴；（c）间隔不超过 $\tau=1\,\mu\mathrm{s}$ 的事例组成一个符合候选组。颜色表示目录身份，事例位置和密度均为示意。独立输运的大气 511\,keV 目录不参与图示的三目录参考抽样；当前最终四分量计算将其并入公共本底时间轴，聚焦信号则作为条件探针处理。}
+\label{fig:poisson_time_axis_schematic}
+\end{figure}
+
+上述计算在第 0、5、10、15 和 20 天五个参考时间点分别进行。在每个参考时间点，根据宽带瞬发本底、大气 511\,keV 线和延迟活化本底各自的物理率进行泊松抽样，组合出该参考环境下的公共本底时间轴。时间间隔不超过 $1\,\mu\mathrm{s}$ 的事例归入同一个符合组，并共同接受科学窗、BGO 反符合和康普顿拓扑选择。聚焦信号事例也逐个加入相应的本底时间轴，用于计算偶然符合造成的信号损失。
+
+随后，本文沿气球的长期飞行轨迹计算仪器性能，并将 20 d 轨迹按 6 h 间隔离散。粒子通量、大气 511\,keV 线强度、信号大气透过率和活化库存均随飞行时间及空间位置变化，这些变化也会改变公共时间轴上的事例密度和偶然符合概率。五个参考时间点得到的本底修正和信号存活率用于描述这种变化，并应用于完整轨迹上的信号和本底计算。具体的轨迹模型、时间插值和累计计数方法见第~\ref{sec:mission_time_fold} 节。
+
+\subsubsection{探测器响应、科学窗与带权率}
+\label{subsec:detector_response_zh}
+
+在进行科学窗和反符合判断前，同一候选组内的 TES 能量沉积先按像素合并。同一像素中的多次沉积相加为该像素的真实沉积能量，并以能量加权位置代表其作用位置。本文采用预估的单像素能量分辨率 $\Delta E_{\mathrm{FWHM}}=420\,\mathrm{eV}$，并以具有该 FWHM 的高斯响应近似 TES 的测量涨落。展宽后测量能量低于 $0.300\keV$ 的像素命中被移除。质量模型 A 和质量模型 B 采用相同的响应与阈值设置。
+
+所有保留 TES 像素命中的测量能量相加，得到事例的 TES 总测量能量，用于 511\,keV 科学窗判断；各像素的能量、位置、层号和多重度仍分别保留，用于后续康普顿拓扑选择。BGO 中的沉积能量独立累计，不计入 TES 总能量，并在下一小节用于主动反符合判断；质量模型 A 中的塑料闪烁体采用相同的独立处理方式。
+
+当前主分析统一采用 $510.58\le E_{\mathrm{TES}}<511.42\keV$ 的科学窗。该窗口是根据预估能量分辨率预先固定的高包含率基准窗，对聚焦信号和所有本底分量采用相同定义，并在两个质量模型之间保持不变，避免根据不同模型的结果分别调整选择条件。
+
+本文给出的流量阈值适用于本征宽度相对探测器能量分辨率较小、经响应卷积后仍可由该科学窗充分包含的谱线；若源线明显展宽，须将源线型与响应卷积并重新优化窗宽。
+
+不同源目录具有不同的物理通量、输运曝光和源级重权，因此原始记录数只反映 Monte Carlo 输运支撑，不能直接代表物理率。每条事例均携带相应的物理率权重，各选择阶段的信号率和本底率由通过该阶段的事例权重累加得到。有限输运统计误差按实际权重分布传播，聚焦信号接受度按共同焦面样本的二项统计处理。任务轨迹上的长期率折叠见第~\ref{sec:mission_time_fold} 节；经过两层 veto 的响应卷积能谱与 cut-flow 结果一并在第~\ref{subsec:optimized_fullchain_zh} 节给出。
+
+\subsubsection{主动反符合门}
+
+主动反符合用于排除在 TES 中形成 511\,keV 候选能量、同时在外围主动屏蔽中留下能量沉积的本底事例。被动屏蔽通过材料衰减入射辐射，而 BGO 和塑料闪烁体还可为逐事例判别提供时间符合信息。聚焦 511\,keV 光子主要沿光学通道到达 TES；大气带电粒子、强子相互作用产生的次级粒子以及部分宽带 $\gamma$ 射线级联则更容易同时在 TES 和外围主动体中产生沉积。因此，主动体中的符合沉积可用于识别科学窗内的本底候选。
+
+主动反符合沿用第~\ref{subsec:time_axis_zh} 节定义的公共时间轴和 $1\,\mu\mathrm{s}$ 符合分组。对于每个候选组，TES 沉积按照第~\ref{subsec:detector_response_zh} 节的方法先按像素合并，再施加能量响应，并由所有保留像素的测量能量之和判断是否落入科学窗。同组内全部 BGO 体积中的模拟能量沉积相加，记为 $E_{\mathrm{BGO}}$；对于含有塑料闪烁体的质量模型 A，全部塑料体积中的沉积另行相加，记为 $E_{\mathrm{pl}}$。主动体沉积仅用于反符合判断，不计入 TES 事例能量。
+
+质量模型 A 的主动系统包括 BGO 侧壳、底盖和顶部开孔环，以及塑料闪烁体侧壁、底盖和顶盖。候选组的通过条件为
+\[
+ E_{\mathrm{BGO}}<50\keV
+ \quad\text{且}\quad
+ E_{\mathrm{pl}}<50\keV .
+\]
+质量模型 B 不含塑料闪烁体，其主动系统由烟囱侧屏、前端光学环和后端冷孔环三个 BGO 体积组成，通过条件为
+\[
+ E_{\mathrm{BGO}}<50\keV .
+\]
+阈值作用于每类主动体在整个符合组内的沉积总和；沉积达到或超过 $50\keV$ 时即否决该候选组。对于给定质量模型，聚焦信号、宽带瞬发本底、大气 511\,keV 线和延迟活化本底均采用相同的组级判据。
+
+组级求和同时包含同一入射粒子在 TES 与主动屏蔽中产生的相关沉积，以及相互独立的命中因满足 $1\,\mu\mathrm{s}$ 链接条件而形成的偶然重叠。聚焦光子若与无关的主动体命中进入同一符合组，也可能被反符合门拒绝；相应的信号损失由第~\ref{subsec:time_axis_zh} 节定义的偶然符合存活率表征，并在任务时间折叠中计入。通过主动反符合的候选事例随后进入康普顿拓扑和入射孔径相容性选择。
+
+本分析直接使用 Cosima 输运记录中的模拟能量沉积，并将 $50\keV$ 作为统一的离线反符合阈值。
+
+\subsubsection{康普顿拓扑与入射孔径相容性}
+
+主动反符合首先排除在外围闪烁体中沉积能量达到所用阈值的候选事例，却无法区分聚焦光子和完全在 TES 阵列内发生相互作用的本底；二者都可能在焦面留下接近 511\,keV 的总能量。不过，聚焦光子应从侧向光学通道进入探测器舱。对于包含两个或更多空间分离命中的事例，各命中的能量分配和相对位置能够约束可能的入射方向。本文只用这些信息回答一个问题：该事例是否可能来自入射孔径？这一判据沿用康普顿相机的运动学成锥方法~\cite{Zoglauer2006}，但这里只检验孔径相容性，不进行成像或源定位。
+
+六层像素化 TES 焦面在像素尺度上提供了这一检验所需的信息。对于第~\ref{subsec:detector_response_zh}~节定义的保留命中，响应模型给出测量能量，事例目录保留 TES 层号和像素位置。位于不同像素或不同层的命中因而同时给出能量分配和有限的空间杆臂，但目录并不直接给出作用先后，也不能分辨像素内部的作用位置。单命中不含康普顿来向信息，因此作为量热谱线候选保留；多命中事例才进入下述孔径相容性检验。
+
+对一个假定的作用次序，设总能量为 $E_0$ 的候选事例在第一个代表位置 $\mathbf r_1$ 沉积能量 $E_1$，随后以能量 $E_{\mathrm{sc}}=E_0-E_1$ 到达第二个位置 $\mathbf r_2$。测量能量给出的康普顿散射角为
+\begin{equation}
+  \cos\theta_C =
+  1 - m_ec^2\left(\frac{1}{E_{\mathrm{sc}}}
+  - \frac{1}{E_1+E_{\mathrm{sc}}}\right).
+\end{equation}
+向量 $\mathbf r_2-\mathbf r_1$ 确定散射后的飞行方向 $\hat{\mathbf u}_{12}$，却不能唯一确定入射方向；它与 $\theta_C$ 共同给出以 $\mathbf r_1$ 为顶点、以 $-\hat{\mathbf u}_{12}$ 为轴的允许入射方向锥面。若该锥面与侧向入口平面内的圆形分析孔径相交，则认为这一作用次序与光学入口相容。质量模型 A 和质量模型 B 的分析孔径半径分别为 $1.898$ 和 $1.900\,\mathrm{cm}$。这些圆盘只定义本层选择所用的几何一致性区域，并不等同于完整物理窗口或准直器开口。
+
+像素内部的位置不确定性在分析中单独处理。目录给出每个命中的分析位置，但不能确定像素内的实际作用点。本文以记录位置为中心，在分析坐标的 $x$、$y$ 和 $z$ 方向分别取 $\pm0.075$、$\pm0.075$ 和 $\pm0.150\,\mathrm{cm}$，构造一个轴对齐代表盒。盒的八个角点和中心给出九个代表位置，而不是九次额外测量。对前两次命中的一个假定次序，两个代表盒形成 $9\times9=81$ 组位置对，也就得到 81 个候选锥。每个锥面沿方位角均匀采样 24 条母线并向入口平面正向延伸；采样交点落入孔径圆盘，或相邻交点之间的线段穿过圆盘，均判为相交。该判据有意从宽：81 个候选锥中只要有一个与圆盘相交，就保留这一作用次序。图~\ref{fig:compton_aperture_consistency} 概括了这一过程。
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\linewidth]{figures/manuscript/fig_compton_aperture_consistency_zh.pdf}
+\caption{康普顿锥与分析孔径相容性 veto 示意图。（a）由前两次 TES 命中的测量能量和代表位置构造康普顿锥；锥面给出允许的源方向集合，而不是一条确定的光子轨迹。（b）每个命中使用轴对齐代表盒的八个角点和中心，给定次序形成 $9\times9=81$ 组位置假设。（c）候选锥在入口平面的截线由 24 个方位采样点及其相邻线段近似；任一截线与分析孔径相交即保留，存在有效重建但未相交时否决。无法形成有效锥或命中数超过六的事例归入未重建类并保留在率核算中。示意图不按比例。}
+\label{fig:compton_aperture_consistency}
+\end{figure}
+
+作用次序与像素内部的位置不确定性分别处理。双命中事例检验两种可能的次序，任一次序与孔径相容即予保留。对于三至六命中事例，先用记录的分析位置枚举全部作用次序。设一个候选次序含 $n$ 个命中 $\{(\mathbf r_j,\epsilon_j)\}_{j=1}^{n}$，其康普顿序列残差定义为
+\begin{equation}
+ Q=\sum_{i=2}^{n-1}\left(\cos\theta_{C,i}-\hat{\mathbf u}_{i-1,i}\!\cdot\!\hat{\mathbf u}_{i,i+1}\right)^2 ,
+\end{equation}
+其中 $\theta_{C,i}$ 由第 $i$ 个命中的沉积能量 $\epsilon_i$ 及其后的剩余能量 $\sum_{k=i+1}^{n}\epsilon_k$ 计算，$\hat{\mathbf u}_{i-1,i}$ 和 $\hat{\mathbf u}_{i,i+1}$ 分别为相邻两段的飞行方向。无物理解的次序不参与排序。其余次序中取 $Q$ 最小者；若 $Q$ 相同，则选择前两次命中间距较大的次序。随后只对这一最优次序的第一散射锥施加 81 组位置假设检验。
+
+出于计算量考虑，全排列枚举限制在 $n\leq6$。候选次序数按 $n!$ 增长：六命中事例最多需要检查 $6!=720$ 个次序，七命中和八命中则分别增至 5040 和 40320。每个次序还需要进行 $n-1$ 次运动学检查并计算 $n-2$ 项序列残差。完成排序后，固定的 $9^2\times24=1944$ 个位置--方位采样只对最小 $Q$ 次序执行一次。因此，六命中上限约束的是阶乘增长的次序搜索，并非探测器或物理阈值。
+
+最后的否决规则采取保守口径。只有多命中事例能够按上述规则形成有效重建、且受检候选锥均未与分析孔径相交时，才施加 veto。命中数超过六，或所有次序均无物理解时，当前实现不能给出可用的孔径检验；这类事例归入未重建类并继续计入最终率，而不是直接拒绝。换言之，不能重建本身不作为该事例属于本底的证据。
+
+\subsection{任务时间轨迹与解析率折叠}
+\label{sec:mission_time_fold}
+
+MeV 气球观测由本底主导：大气次级粒子和宇宙线诱发活化共同设定率底，且二者都随飞行环境变化 \cite{Gallego2025Balloon,Kierans2017}。固定几何的探测器耦合 Monte Carlo 已在共同响应、veto 和能窗下给出第 15 天选后信号与本底率，但这些率只描述单一经纬度和海拔。多日浮空期间，残余大气深度、地磁截止和活化库存均会演化，因此不能用恒定率把第 15 天快照直接外推。本文把参考率映射到连续 20 d 性能曲线，并用五个公共时间锚点确定本底率的偶然符合修正和聚焦信号存活率。
+
+所采用的轨迹是\emph{合成参考剖面}，既非气球遥测，也非源可见性时间表。它包含第 0--20 天的 81 个节点，间隔 0.25 d，并围绕海拔 38.75 km、纬度 $34^\circ$ 和经度 $100^\circ$ 作温和中纬度浮空变化。保留海拔是因为残余大气深度变化同时影响驱动瞬发本底与活化的粒子谱，以及乘在聚焦信号上的 511 keV 大气透过率；经纬度只提供受控的地磁环境参考调制，不编码地球遮挡、重指向损失或某一具名源的可见性。因此，该折叠给出参考曝光灵敏度，而非某次具体发射任务的预报。
+
+下文统一以 $g$ 表示质量模型，$j$ 表示选择阶段，$a$ 表示入射粒子族，$q$ 表示大气线 proposal 角分箱，$k$ 表示放射性母核，$r$ 表示公共时间锚点，$\ell$ 表示 81 节点轨迹索引。这样可把环境尺度、探测器响应与公共时间修正分开书写。
+
+单色点源在跨事例符合之前的选后率为
+\begin{equation}
+ S^{\mathrm{dir}}_g(t)=F_{511}A_{\mathrm{eff},g}T_{\mathrm{atm},511}(t),
+ \label{eq:mission_signal_zh}
+\end{equation}
+其中 $A_{\mathrm{eff},g}$ 已包含探测器响应和两层 veto 的单事例接受度。若仪器轴仰角为 $\epsilon$，平面平行近似下的斜程透过率为 $T_{\mathrm{atm},511}(t)=\exp[-\mu_{\mathrm{air}}X(t)/\sin\epsilon]$；本文取 $\epsilon=45^\circ$，且 $T_{15,45}=0.652034$。
+
+瞬发本底逐粒子族折叠：
+\begin{equation}
+ R_{\mathrm{prompt},g,j}(t)=\sum_a\Phi_a(t)K_{g,j,a},
+ \label{eq:prompt_source_response_zh}
+\end{equation}
+其中八族外部通量 $\Phi_a(t)$ 各有自己的 81 节点尺度，$K_{g,j,a}$ 为相应几何输运目录在选择阶段 $j$ 的响应系数。任务外推只改变每个粒子族在各节点的总尺度，族内能谱与角分布仍采用参考输运模板。因此，这一步是解析复用探测器响应，而不是在 81 个环境点分别重新输运。
+
+独立输运的大气 511 keV 线则保留 80 个角分箱的重要性重权：
+\begin{equation}
+ R_{\mathrm{atm511},g,j}(t)=
+ \sum_{q=1}^{80}R_{g,j,q}^{\mathrm{prop}}
+ \frac{\Phi_{511,q}^{\mathrm{target}}(t)}{\Phi_{511,q}^{\mathrm{prop}}},
+ \label{eq:mission_atm511_zh}
+\end{equation}
+其中 $R_{g,j,q}^{\mathrm{prop}}$ 是由 proposal 分箱 $q$ 输运得到的选后率。本计算的 proposal 正是冻结的第 15 天角分布，因此写成相对第 15 天分箱通量的比值是式~\eqref{eq:mission_atm511_zh} 的特例。逐箱求和同时保留总线通量和随节点变化的角分布；若只缩放第 15 天全空间总率，就会遗漏不同角分量探测响应的差别。
+
+对入射族 $a$ 和母核 $k$，活化产生率写为
+\begin{equation}
+ P_{g,a,k}(t)=\Phi_a(t)Y_{g,a,k},
+ \label{eq:activation_production_zh}
+\end{equation}
+其中 $Y_{g,a,k}$ 由对应几何的产生目录固定。相邻节点之间的 $P_{g,a,k}(t)$ 作线性插值，并对其与放射性衰变的卷积精确积分：
+\begin{equation}
+ \begin{aligned}
+ N_{g,a,k}(t_{\ell+1})={}&N_{g,a,k}(t_\ell)e^{-\lambda_k\Delta t_\ell}\\
+ &+\int_0^{\Delta t_\ell}P_{g,a,k}(t_\ell+u)
+ e^{-\lambda_k(\Delta t_\ell-u)}\,\mathrm du,\\
+ A_{g,a,k}(t_\ell)={}&\lambda_kN_{g,a,k}(t_\ell).
+ \end{aligned}
+ \label{eq:delayed_inventory_zh}
+\end{equation}
+当前计算采用初值 $N_{g,a,k}(0)=0$，即不包含地面预活化，也不包含进入第一个轨迹节点以前的上升段库存。因此，任务早期的阈值到达时间是这一初值条件下的结果。选后延迟率随后由
+\begin{equation}
+ R_{\mathrm{delayed},g,j}(t)=
+ \sum_a\sum_kA_{g,a,k}(t)\varepsilon_{g,j,a,k}
+ \label{eq:delayed_selected_zh}
+\end{equation}
+得到。逐“粒子族--母核”推进保留了不同半衰期及选后衰变响应；若只给第 15 天延迟总率乘一个统一尺度，这些差别会被抹去。
+
+令 $B^{\mathrm{dir}}_g(t)$ 为瞬发、大气线和延迟三项在跨事例分组前的选后直接率之和。公共时间计算取 $r=1,\ldots,5$，对应第 0、5、10、15 和 20 天。对锚点 $r$，设等效统计曝光为 $T^{\mathrm{rep}}_{g,r}$，通过全部选择的符合组数为 $n^{\mathrm{tl}}_{g,r}$，加入和最终通过的聚焦信号探针数分别为 $N^{\mathrm{probe}}_{g,r}$ 和 $n^{\mathrm{pass}}_{g,r}$。本底修正与信号存活率分别定义为
+\begin{equation}
+ \widehat\rho_{g,r}=
+ \frac{n^{\mathrm{tl}}_{g,r}/T^{\mathrm{rep}}_{g,r}}
+ {B^{\mathrm{dir}}_g(t_r)},\qquad
+ \widehat\eta_{g,r}=
+ \frac{n^{\mathrm{pass}}_{g,r}}{N^{\mathrm{probe}}_{g,r}}.
+ \label{eq:anchor_time_factors_zh}
+\end{equation}
+$\widehat\rho$ 把本底分量的直接加和率换算为公共时间轴率；偶然分组也可能把事例移入科学窗，因此它可以略大于 1，不能称为存活概率。$\widehat\eta$ 才是弱聚焦事例在相同偶然符合环境中的条件存活率。两者分别建模，避免让本底和信号共用单一的 $e^{-R\tau}$ 近似。$\rho_g(t)$ 与 $\eta_g(t)$ 均在相邻锚点间独立线性插值。质量模型 A、B 的每点等效统计曝光分别为 $2\times10^4$ 和 $2\times10^5$ s；这些曝光只决定锚点抽样支撑，轨迹的物理步长仍为 6 h。
+
+对 $\Delta t_\ell=t_\ell-t_{\ell-1}$，累计计数采用梯形积分：
+\begin{equation}
+ \begin{aligned}
+ N_s(T_n)&=\sum_{\ell=1}^{n}\frac{S^{\mathrm{dir}}_g(t_{\ell-1})\eta_g(t_{\ell-1})+S^{\mathrm{dir}}_g(t_\ell)\eta_g(t_\ell)}{2}\,\Delta t_\ell,\\
+ N_b(T_n)&=\sum_{\ell=1}^{n}\frac{B^{\mathrm{dir}}_g(t_{\ell-1})\rho_g(t_{\ell-1})+B^{\mathrm{dir}}_g(t_\ell)\rho_g(t_\ell)}{2}\,\Delta t_\ell.
+ \end{aligned}
+ \label{eq:cumulative_counts_zh}
+\end{equation}
+本文同时报告 $Z_G=N_s/\sqrt{N_b}$ 与 Asimov 指标
+\begin{equation}
+ Z_A=\sqrt{2\left[(N_s+N_b)\ln\left(1+\frac{N_s}{N_b}\right)-N_s\right]},
+\end{equation}
+并由同一信号核求解 $3\sigma$ 和 $5\sigma$ 最小可分辨线流量。
+
+有限输运误差必须保留重复使用参考模板所产生的节点间相关性：先把每条保留事例在 81 个节点上的带权贡献积分，再对该事例的任务贡献平方；公共时间锚点、选后面积和信号探针的独立统计项随后再合并。阈值到达时间只在相邻轨迹节点之间插值，流量不确定度用 delta 方法传播。这些误差描述有限 Monte Carlo 与公共时间统计支撑，不包含辐射场、截面、标定或指向系统学。本文的统计停止判据为：高斯 $3\sigma$ 流量阈值的相对统计误差低于 10\%，且大气线有限输运对该阈值方差的贡献不超过一半；这一判据约束的是统计精度，不是线模型系统学。修正后瞬发解析曲线的独立检验与五锚点实现诊断见第~\ref{subsec:mission_fold_validation_zh} 节。
+
+% M05 第 4 节中文独立草案（2026-08-28）
+% 用途：供逐段审阅；尚未并入 ebb2 当前中英文主稿。
+% 依赖：当前 M05NEW 主稿的宏、参考文献、图件和方法部分标签。
+% 权威范围：仅质量模型 A 与质量模型 B 的当前通量闭合结果。
+
+\clearpage
+\input{/home/ubuntu/TES_511_Balloon/core_md/balloon511_ea_latex_drafts/M05NEW/M05_SECTION4_ZH_STANDALONE_DRAFT_20260828.tex}
+\iffalse
+\section{结果}
+\label{sec:results}
+
+本节沿图~\ref{fig:workflow} 的端到端流程组织结果：先建立质量模型 A 的本底与响应基线，再由其选后事例追溯本底来源；随后给出质量模型 B 的完整几何、全链选择结果和来源重分配，最后在共同时间轴上比较两套完整设计的任务性能。聚焦信号、瞬发大气本底和延迟活化本底三条物理分支生成聚焦信号、去线宽带瞬发本底、大气 511\,keV 单能线和延迟活化本底四类探测器侧事例目录。宽带 $\gamma$ 中粗能箱表示的湮没线已先行扣除，510.99895\,keV 线由独立单能目录恢复，故连续谱与线项各计数一次。两套设计均采用第~\ref{subsec:detector_response_zh}--\ref{sec:mission_time_fold}~节定义的 420\,eV FWHM 响应、科学窗、$1\,\mu\mathrm{s}$ 分组和 Compton 拓扑/孔径判据。质量模型 A 对 BGO 与塑料闪烁体分别求和并各施加 50\,keV 门限；质量模型 B 不含塑料通道，只对 BGO 施加同一门限。五个公共时间锚点和 81 节点任务折叠也采用同一算法。因此，下述差异不是由响应或分析规则改变造成的。
+
+\subsection{质量模型 A 的基线本底与选择性能}
+\label{subsec:model_a_baseline_zh}
+\label{subsec:reference_background_results_zh}
+
+质量模型 A 构成本文的基线。表~\ref{tab:phase2_cutflow} 给出第 15 天直接、无符合样本在 $[510.58,511.42)\keV$ 科学窗内的完整 cut-flow。BGO 与塑料闪烁体的主动门将总本底由 2391 条记录、$5.77556\cps$ 降至 456 条记录、$6.88770\times10^{-2}\cps$，相当于去除预 veto 率的 $98.807\%$。其他瞬发族在该阶段由 $3.24326\cps$ 降为零；去线宽带 $\gamma$ 由 $2.35667\cps$ 降至 $1.78923\times10^{-2}\cps$；延迟活化由 $0.167460\cps$ 降至 $4.28176\times10^{-2}\cps$。单能大气线在主动门前后均为 13 条记录、$8.16707\times10^{-3}\cps$，表明这部分入窗事例通常没有足以触发主动屏蔽的伴随沉积。
+
+最终 Compton 拓扑/孔径选择后，本底降至 412 条记录、$6.05960\times10^{-2}\cps$，即保留主动门后带权率的 $87.98\%$。同一 $37{,}194$ 光子焦面样本中，测量窗内的 28,612 条孤立聚焦信号记录全部通过主动门；最终保留 28,006 条，对应有效面积 $15.12324\pm0.04492\,\mathrm{cm^2}$，为测量窗信号的 $97.882\%$。因此，在当前宽松策略下，主动反符合承担主要的率压低，拓扑检验移除较小的残余，同时保留绝大多数聚焦信号。
+
+\begin{table}[H]
+\centering
+\caption{质量模型 A 科学窗 cut-flow。本底为第 15 天直接、无符合记录数/率；信号为共同 $37{,}194$ 光子焦面样本的记录数/有效面积。}
+\label{tab:phase2_cutflow}
+\footnotesize
+\begin{tabular}{lccc}
+\toprule
+计算流 & 预 veto & 主动 veto 后 & 最终拓扑/孔径后 \\
+\midrule
+其他瞬发族 & 161 / $3.24326\cps$ & 0 / 0 & 0 / 0 \\
+去线宽带 $\gamma$ & 922 / $2.35667\cps$ & 7 / $1.78923\times10^{-2}\cps$ & 6 / $1.53363\times10^{-2}\cps$ \\
+大气 511 keV 线 & 13 / $8.16707\times10^{-3}\cps$ & 13 / $8.16707\times10^{-3}\cps$ & 12 / $7.53884\times10^{-3}\cps$ \\
+延迟活化 & 1295 / $0.167460\cps$ & 436 / $4.28176\times10^{-2}\cps$ & 394 / $3.77209\times10^{-2}\cps$ \\
+总本底 & 2391 / $5.77556\cps$ & 456 / $6.88770\times10^{-2}\cps$ & 412 / $6.05960\times10^{-2}\cps$ \\
+聚焦信号 & 28612 / $15.45048\,\mathrm{cm^2}$ & 28612 / $15.45048\,\mathrm{cm^2}$ & 28006 / $15.12324\,\mathrm{cm^2}$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+最终直接本底由三项独立归一的分量构成（表~\ref{tab:reference_background_budget_zh}）。其他本底为 $3.77209\times10^{-2}\cps$，占 $62.250\%$；去线宽带 $\gamma$ 为 $1.53363\times10^{-2}\cps$，占 $25.309\%$；大气 511 keV 单能线为 $7.53884\times10^{-3}\cps$，占 $12.441\%$。各分量的单事例权重不同，因此记录数不能代替有效样本量；总本底 412 条记录对应 $N_{\mathrm{eff}}=56.55$。
+
+\begin{table}[H]
+\centering
+\caption{质量模型 A 第 15 天科学窗最终直接本底。标准误差和有效样本量由不等权事例的 $\sum_i w_i^2$ 计算。}
+\label{tab:reference_background_budget_zh}
+\footnotesize
+\begin{tabular}{lrrrrr}
+\toprule
+分量 & 记录数 & 率 / $\cps$ & 标准误差 / $\cps$ & $N_{\mathrm{eff}}$ & 总本底 / \% \\
+\midrule
+其他本底 & 394 & $3.77209\times10^{-2}$ & $4.58152\times10^{-3}$ & 67.79 & 62.250 \\
+去线宽带 $\gamma$ & 6 & $1.53363\times10^{-2}$ & $6.26100\times10^{-3}$ & 6.00 & 25.309 \\
+大气 511 keV 线 & 12 & $7.53884\times10^{-3}$ & $2.17627\times10^{-3}$ & 12.00 & 12.441 \\
+\midrule
+总计 & 412 & $6.05960\times10^{-2}$ & $8.05771\times10^{-3}$ & 56.55 & 100.000 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+把上述直接率送入共同任务折叠后，质量模型 A 在参考线流量 $F_0=10^{-4}\phcms$ 下得到 20\,d 累计信号 1635.05、本底 99923.14，高斯显著度为 5.172；20\,d 高斯 $3\sigma$ 最小可分辨流量为 $(5.800\pm0.391)\times10^{-5}\phcms$。这些任务量在第~\ref{subsec:final_mission_performance_zh}~节与质量模型 B 同口径展开比较。单能线响应由 $3.0\times10^6$ 个入射光子得到 12 条最终记录，任务积分 $N_{\mathrm{eff}}=12.00$；其有限输运项占高斯 $3\sigma$ 流量阈值方差的 $7.23\%$，总阈值 Monte Carlo 相对标准误差为 $6.74\%$。两项均满足预先规定的统计停止判据，故质量模型 A 不追加单能线输运。
+
+\subsection{质量模型 A 的本底来源与空间耦合}
+\label{subsec:mass_model_a_origins_zh}
+
+总率回答“有多少本底”，却不能回答“本底为什么入选”。为此，质量模型 A 的选后目录依次按四个层级追溯：触发事例的初级入射粒子族、产生放射性母核的材料、具体的“源体积--母核素”组合，以及该源体积相对 TES 的空间区域。DIXE 先建立基准 NXB 谱，再分解沉积粒子、产生位置和相互作用过程；COSI 的气球本底研究则分别处理瞬发与活化分量 \cite{Gallego2025Balloon,Tian2026DIXE}。本节借用这一“基线--来源--设计响应”的叙事次序，但绝对率和来源比例全部取自当前质量模型 A 的通量闭合目录，不移用其他仪器的数值。
+
+按初级入射粒子族分解，质子诱发活化是最大的单项来源，最终率为 $2.48463\times10^{-2}\cps$（35 条记录），占质量模型 A 总直接本底的 $41.003\%$。其余延迟分量依次为 $\alpha$ 诱发的 $7.49239\times10^{-3}\cps$（26 条，$12.364\%$）、中子诱发的 $3.60054\times10^{-3}\cps$（11 条，$5.942\%$）、$\gamma$ 诱发的 $1.68617\times10^{-3}\cps$（260 条，$2.783\%$）、$e^+$ 诱发的 $7.02083\times10^{-5}\cps$（24 条，$0.116\%$）和 $e^-$ 诱发的 $2.52755\times10^{-5}\cps$（38 条，$0.042\%$）。这些分量之和为质量模型 A 的最终延迟率 $3.77209\times10^{-2}\cps$。
+
+按材料分类，铜贡献选后延迟来源目录的 $70.87\%$。进一步追溯到源体积--母核素组合，主要具名来源是 L2 铜支撑环中的 $^{62}$Cu、50\,mK 混合室铜板中的 $^{62}$Cu 和 L0 TES 热沉环中的 $^{62}$Cu；其后的具名组包括 Bi 上半圆柱中的 $^{199}$Po，以及 50\,mK 混合室铜板和 L2 铜支撑环中的 $^{64}$Cu。这里的排序已经包含输运、响应和全部选后条件，不能由材料总质量或总活度直接推出。
+
+空间分解进一步说明了几何耦合：DR 混合室及多级冷盘贡献选后延迟目录的 $32.18\%$，TES 近场结构贡献 $47.29\%$，两者合计 $79.47\%$。按通量闭合的最终延迟率换算，前者约为 $1.21398\times10^{-2}\cps$，后者约为 $1.78397\times10^{-2}\cps$。因此，质量模型 A 的主要延迟负担不是“铜很多”这一全局事实本身，而是部分活化铜及近场结构仍与 TES 入选条件保持较强的空间耦合。
+
+这一来源诊断提出了一个明确但尚非因果证明的设计问题：若改变焦面与冷端结构的相对位置，并用局部主动屏蔽重新包围探测器，能否在保留聚焦信号响应的同时削弱这部分选后耦合？质量模型 B 是对该完整设计问题的独立实现。由于它同时改变物理入口、局部 W 结构、BGO 布局和部分材料清单，后文只能评价这套完整构型的条件性能，不能把任一差值单独归因于侧烟囱或焦面位移。
+
+\FloatBarrier
+
+\subsection{由来源诊断到质量模型 B 的完整构型}
+\label{subsec:optimized_shield_results_zh}
+
+质量模型 B 将六层 TES 沿局部 $z'=-2.80$\,cm 的侧烟囱轴布置。烟囱 Al 壁的内、外半径分别为 10.75 和 11.05\,cm，壁厚为 3\,mm，并与稀释制冷机外壳形成连续接口；烟囱底部与稀释制冷机底部之间保留 0.25\,cm 间隙。焦面由外、内方孔分别为 6.00 和 5.40\,cm、轴向深度为 2.00\,cm 的四边 W 框支撑。三个主动 BGO 体积覆盖烟囱侧面、前端光学环和后端冷孔环；质量模型 B 不含塑料闪烁体通道。主动门仍按同一 $1\,\mu\mathrm{s}$ 公共时间组累计全部 BGO 沉积，并要求组内 BGO 总沉积严格低于 50\,keV。
+
+图~\ref{fig:optimized_shield_background_zh} 将侧烟囱布局与其选后本底概览联系起来，表~\ref{tab:final_geometry_zh} 汇总输运采用的几何尺寸。最终选择后，质量模型 A 与质量模型 B 的聚焦信号有效面积分别为 $15.12324\pm0.04492$ 和 $15.08544\pm0.04503\,\mathrm{cm^2}$，即质量模型 B 对当前聚焦焦面样本保留了质量模型 A 有效面积的 $99.75\%$。
+
+\begin{figure}[!ht]
+\centering
+\includegraphics[width=0.92\linewidth]{figures/manuscript/fig09_mass_model_b_geometry_background.pdf}
+\caption{质量模型 B 的侧烟囱几何与选后本底。（a）仪器坐标截面，显示横向 Al 烟囱、六层 TES、W 焦面框、聚焦光路、多级冷盘和主动 BGO；（b）瞬发与延迟直接率经过科学窗、主动 BGO 和最终拓扑阶段的变化；（c）最终直接本底 $3.12283\times10^{-2}\cps$ 的组成，其中单能大气线单独列出。}
+\label{fig:optimized_shield_background_zh}
+\end{figure}
+
+\begin{table}[!ht]
+\centering
+\caption{质量模型 B 侧烟囱在局部仪器坐标中的几何参数。表中“作用”表示设计意图，不是单因素因果测量。}
+\label{tab:final_geometry_zh}
+\footnotesize
+\begin{tabular}{p{0.23\linewidth}p{0.34\linewidth}p{0.34\linewidth}}
+\toprule
+部件 & 最终设置 & 设计作用 \\
+\midrule
+Al 烟囱 & 内/外半径 10.75/11.05 cm；壁厚 3 mm & 将 TES 横向布置于多级冷端区域之外 \\
+共同轴与间隙 & $z'=-2.80$ cm；烟囱/DR 底部 $-13.85/-14.10$ cm & 连续接口并保留 0.25 cm 间隙 \\
+TES 焦面 & 沿烟囱轴布置六层 Ta 像素 & 保持探测器响应和多层阻止深度 \\
+W 焦面框 & 外/内方孔 6.00/5.40 cm；深 2.00 cm & 紧凑局部支撑及孔径定义 \\
+冷端/光学孔 & 1.50 cm 冷孔；6.00 cm 上端光学开孔 & 保留低温服务和聚焦光束通道 \\
+主动 BGO & 侧屏、前端光学环、后端冷孔环 & 环绕烟囱的逐事例反符合 \\
+BGO 阈值 & 50 keV 离线沉积能 & 共同主动 veto 判据 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+有效面积的一致只约束当前聚焦光子样本，并不意味着两套几何具有相同的弥散光子接受度。质量模型 A 使用半径约 1.898\,cm 的入口包络和 624-copy W 多孔准直结构；质量模型 B 使用半径 2.70\,cm 的物理窗口和开放四边 W 框，主动屏蔽构型也不同。因此，本节比较的是共同源、响应、计时和选择合同下的两套完整设计。质量模型 B 的本底和灵敏度必须以其当前入口、W 框、BGO 与无塑料通道的组合为条件；现有数据没有提供仅改变侧烟囱、同时冻结其余结构的消融样本。
+
+\FloatBarrier
+
+\subsection{质量模型 B 的全链本底与来源重分配}
+\label{subsec:optimized_fullchain_zh}
+
+质量模型 B 的四类探测器侧事例目录沿用上述 420\,eV FWHM 的 TES 响应、$[510.58,511.42)\keV$ 科学窗、主动 BGO 门以及同一 Compton 拓扑/孔径检验。表~\ref{tab:optimized_cutflow_zh} 给出第 15 天直接、无符合样本的完整 cut-flow。
+
+主动 BGO 将总本底由 6657 条记录、$2.29831\cps$ 降至 330 条记录、$3.28175\times10^{-2}\cps$，即预 veto 率的 $1.428\%$。测量窗内的 28,434 条孤立聚焦信号记录全部通过主动门。随后，Compton 拓扑/孔径检验将本底由 330 条降至 309 条，保留主动门后带权率的 $95.16\%$；聚焦信号由 28,434 条降至 27,936 条，对应最终有效面积 $15.08544\pm0.04503\,\mathrm{cm^2}$。因此，与质量模型 A 相同，主动反符合承担主要的率压低，最终拓扑检验只移除较小的残余，同时保留 $98.249\%$ 的测量窗聚焦信号。
+
+\begin{table}[H]
+\centering
+\caption{质量模型 B 经响应卷积的科学窗 cut-flow。本底为第 15 天直接、无符合记录数/率；信号为记录数/有效面积。}
+\label{tab:optimized_cutflow_zh}
+\footnotesize
+\begin{tabular}{lccc}
+\toprule
+计算流 & 预 veto & 主动 BGO 后 & 最终拓扑/孔径后 \\
+\midrule
+其他本底 & 3474 / $0.895372\cps$ & 122 / $3.97120\times10^{-3}\cps$ & 111 / $3.58054\times10^{-3}\cps$ \\
+去线宽带 $\gamma$ & 2987 / $1.37944\cps$ & 12 / $5.35535\times10^{-3}\cps$ & 12 / $5.35535\times10^{-3}\cps$ \\
+大气 511 keV 线 & 196 / $2.34910\times10^{-2}\cps$ & 196 / $2.34910\times10^{-2}\cps$ & 186 / $2.22925\times10^{-2}\cps$ \\
+总本底 & 6657 / $2.29831\cps$ & 330 / $3.28175\times10^{-2}\cps$ & 309 / $3.12283\times10^{-2}\cps$ \\
+聚焦信号 & 28434 / $15.35436\,\mathrm{cm^2}$ & 28434 / $15.35436\,\mathrm{cm^2}$ & 27936 / $15.08544\,\mathrm{cm^2}$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+最终直接本底由其他本底 $3.58054\times10^{-3}\cps$、去线宽带 $\gamma$ 的 $5.35535\times10^{-3}\cps$ 和大气 511\,keV 单能线的 $2.22925\times10^{-2}\cps$ 构成，分别占总率的 $11.466\%$、$17.149\%$ 和 $71.385\%$；总直接率为 $3.12283\times10^{-2}\cps$。与质量模型 A 相比，其他本底和去线宽带 $\gamma$ 分别降至其 $9.49\%$ 和 $34.92\%$，两项合计由 $5.30571\times10^{-2}$ 降至 $8.93589\times10^{-3}\cps$，降低 5.94 倍。相反，单能大气线增至质量模型 A 的 2.957 倍，抵消了部分非线本底收益，使总直接率最终降至质量模型 A 的 $51.54\%$。
+
+单能线分量在主动门前后均为 196 条记录、$2.34910\times10^{-2}\cps$，最终由拓扑检验降至 186 条记录、$2.22925\times10^{-2}\cps$。这一变化与质量模型 B 更大的物理入口和开放四边 W 框所允许的弥散接受度相容，但不能仅由当前 A/B 对照确定入口、W 框或 BGO 中哪一项分别贡献了多少。
+
+\begin{table}[!ht]
+\centering
+\caption{质量模型 B 第 15 天最终直接本底的有限输运支撑。标准误差和有效样本量由不等权事例的 $\sum_i w_i^2$ 计算。}
+\label{tab:optimized_component_precision_zh}
+\scriptsize
+\resizebox{\linewidth}{!}{%
+\begin{tabular}{lrrrrr}
+\toprule
+分量 & 记录数 & 率 / $\cps$ & 标准误差 / $\cps$ & $N_{\mathrm{eff}}$ & 总本底 / \% \\
+\midrule
+其他本底 & 111 & $3.58054\times10^{-3}$ & $5.36971\times10^{-4}$ & 44.46 & 11.466 \\
+去线宽带 $\gamma$ & 12 & $5.35535\times10^{-3}$ & $1.55631\times10^{-3}$ & 11.84 & 17.149 \\
+大气 511 keV 线 & 186 & $2.22925\times10^{-2}$ & $1.63456\times10^{-3}$ & 186.00 & 71.385 \\
+\midrule
+总本底 & 309 & $3.12283\times10^{-2}$ & $2.31996\times10^{-3}$ & 181.19 & 100.000 \\
+\bottomrule
+\end{tabular}}
+\end{table}
+
+表~\ref{tab:optimized_component_precision_zh} 给出三项分量的不等权统计支撑。单能线响应累计使用 $1.5709417\times10^7$ 个入射光子并保留 186 条最终记录，任务积分有效样本量为 185.90。其有限输运项占高斯 $3\sigma$ 流量阈值方差的 $49.91\%$，等价的线项标准误差/其余统计项标准误差为 0.998；总阈值 Monte Carlo 相对标准误差为 $3.73\%$。线项方差份额低于 $50\%$，总相对误差低于 $10\%$，满足第~\ref{sec:mission_time_fold}~节预先规定的两个停止条件，故质量模型 B 同样不追加单能线输运。线项主导性只略低于门限；该结论只表示现有 Monte Carlo 统计足以支撑本文报告精度，并不约束大气线通量、角分布及混合源表示的物理系统学。
+
+图~\ref{fig:background_origin_story_zh} 把两套设计的选后来源放到同一坐标中。质量模型 B 的铜来源仍占其延迟目录的 $63.44\%$，说明铜活化并未消失；但多级冷端来源占比由质量模型 A 的 $32.18\%$ 降至 $3.92\%$，最终由延迟样本主导的其他本底率由 $3.77209\times10^{-2}$ 降至 $3.58054\times10^{-3}\cps$。质量模型 B 的主要具名组仍包括 L5 铜环和 TES 热沉中的 $^{62}$Cu。选后铜贡献因而发生削弱和空间重分配，而不是材料层面的完全消除。
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.98\linewidth]{figures/manuscript/fig08_background_origins.pdf}
+\caption{质量模型 A 与质量模型 B 的选后本底来源。（a）宽带与活化输运记录按初级入射粒子族分解的科学窗最终率；（b）各自选后延迟来源目录内的材料占比；（c）质量模型 A 的主要“源体积--母核素”组；（d）按多级冷盘、TES 近场结构及其他结构划分的延迟来源。材料和区域面板均给出各自目录内的归一占比；最终延迟绝对率取自通量闭合 cut-flow。}
+\label{fig:background_origin_story_zh}
+\end{figure}
+
+图~\ref{fig:s33_compton_mult} 给出最终本底的 TES 命中多重度。480--550\,keV 最终样本在质量模型 A 和 B 中分别含 580 和 1004 条本底记录；两者均只有 1 条五命中记录，六命中及以上均为零。五命中带权率分别为 $2.87731\times10^{-6}$ 和 $6.93521\times10^{-5}\cps$，只占相应宽窗最终率的 $0.00221\%$ 和 $0.07110\%$。科学窗内，两套设计的最高非零多重度分别为四和三，五命中及以上均为零。所有选择阶段中唯一的六命中记录出现在质量模型 B 的宽窗预 veto 样本，并已被主动 BGO 去除。因此，未重建的 $n>6$ 分支对本文报告的最终科学窗率没有贡献。
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\linewidth]{figures/manuscript/fig07_hit_multiplicity.pdf}
+\caption{质量模型 A 与质量模型 B 第 15 天最终选择后带权本底率按 TES 命中多重度的分解：（a）480--550 keV 宽带；（b）$[510.58,511.42)\keV$ 科学窗。误差棒为各多重度分箱有限输运权重的 $\sqrt{\sum_i w_i^2}$；四组最终样本均无 $n\geq6$ 的事例。}
+\label{fig:s33_compton_mult}
+\end{figure}
+
+图~\ref{fig:s33_spec_anti} 在 480--550\,keV 宽窗内比较两套质量模型的同一选择序列。两者均表现为主动反符合提供主要的宽带抑制，随后 Compton 拓扑/孔径检验只对残余能谱产生较小修正。该宽窗结果与科学窗 cut-flow 一致：质量模型 B 的完整构型显著削弱去线宽带和活化相关本底，但对从物理入口进入的弥散单能线抑制有限。
+
+\begin{figure}[!ht]
+\centering
+\includegraphics[width=\linewidth]{figures/manuscript/fig05_broadband_veto_spectra.pdf}
+\caption{第 15 天直接、无符合的 480--550 keV 宽窗瞬发与延迟输运本底能谱：（a）质量模型 A；（b）质量模型 B。曲线依次给出响应卷积后主动反符合前、主动门后以及 Compton 拓扑/孔径 veto 后的带权率。每四个相邻的 0.25 keV 分析能箱合并为一个 1 keV 展示能箱；图例数值为对应阶段的宽窗积分率。}
+\label{fig:s33_spec_anti}
+\end{figure}
+
+上述结果闭合了“基线总率--来源诊断--候选构型--重新选后”的探测器侧链条：质量模型 B 的非线本底明显降低，而单能大气线成为主要残余。由于入口、W 结构、主动屏蔽和局部材料同时变化，这一闭合支持质量模型 B 作为完整候选设计的条件性能评价，但不构成侧烟囱这一单一几何因素的因果测量。
+
+\FloatBarrier
+
+\subsection{共同时间轴与任务性能}
+\label{subsec:mission_fold_validation_zh}
+\label{subsec:final_mission_performance_zh}
+
+任务投影前，逐粒子族瞬发环境折叠在三个非参考环境中做过直接输运检验。L1、H1 和 L2 的直接输运率/解析率分别为 0.992、1.004 和 0.994，最大偏差为 $0.51\sigma$。该检验只覆盖 $e^+$、中子和 $\gamma$ 三族在 480--550\,keV 内的瞬发切片；它不验证当前窄科学窗、大气单能线、活化产生或延迟衰变分量，因而不对这些分支作超出样本的外推。
+
+第 0、5、10、15 和 20 天的五个公共时间锚点把各节点的直接加和率映射为同一 $1\,\mu\mathrm{s}$ 符合时间轴。图~\ref{fig:common_time_anchors} 给出背景修正 $\widehat\rho_g$ 和聚焦信号条件存活率 $\widehat\eta_g$。五个锚点上，质量模型 A 的 $\widehat\rho_g$ 依次为 0.8810、0.9648、0.9551、0.9852 和 0.9628，质量模型 B 为 0.9896、0.9966、0.9991、1.0025 和 0.9862。每个实现中，质量模型 A 有 401--1194 个最终科学窗符合组，质量模型 B 有 5443--6288 个；锚点间只作独立线性插值，不增加经验平滑。
+
+\begin{figure}[!tbp]
+\centering
+\includegraphics[width=\linewidth]{figures/manuscript/fig04_common_time_normalization.pdf}
+\caption{五锚点公共时间诊断。（a）质量模型 A 与质量模型 B 的科学窗最终直接率和公共时间轴率；锚点误差棒为时间轴实现的泊松标准误差。（b）分别插值得到的本底修正 $\rho_g(t)$ 与聚焦信号存活率 $\eta_g(t)$，后者误差棒为二项统计误差。质量模型 A、B 的每点等效曝光分别为 $2\times10^4$ 和 $2\times10^5$\,s，所有锚点采用同一 $1\,\mu\mathrm{s}$ 分组规则。曲线是五点的线性插值，因此点线闭合只检验公共时间实现和插值，不是环境外推的独立验证。}
+\label{fig:common_time_anchors}
+\end{figure}
+
+聚焦信号的 $\widehat\eta_g$ 在质量模型 A 中为 0.96693--0.96924，在质量模型 B 中为 0.99531--0.99564；第 15 天分别为 0.967066 和 0.995306。质量模型 B 的较高值来自其当前完整构型下较低的符合占有率，而不是对聚焦信号采用了不同的选择判据。五锚点定义的 $\rho_g$ 和 $\eta_g$ 随后分别插值到 0--20\,d、步长 0.25\,d 的 81 个节点，并与同一轨迹透过率和分量响应作梯形积分。
+
+20\,d 时，质量模型 A 累计 1635.05 个参考流量信号和 99923.14 个本底计数；质量模型 B 累计 1678.12 个信号和 54805.97 个本底计数。分量核算显示，质量模型 A 的单能线、去线宽带 $\gamma$ 和其他本底分别为 12552.16、25674.83 和 61696.16 个计数，质量模型 B 相应为 39429.80、9333.45 和 6042.72 个。也就是说，质量模型 B 的 20\,d 非线本底由 87370.99 降至 15376.17，减少 71994.82 个计数；与此同时，大气线增加 26877.65 个计数，回填了非线节省的 $37.33\%$，最终净减少 45117.17 个本底计数。该分解只是同一条件比较中的分量核算，不是关闭大气线或单独改变烟囱的反事实实验。
+
+图~\ref{fig:optimized_mission_significance_zh} 和表~\ref{tab:primary_sensitivity_zh} 汇总共同分析合同下的条件任务投影。20\,d 高斯显著度从质量模型 A 的 5.172 提高到质量模型 B 的 7.168，Asimov 值分别为 5.158 和 7.132。高斯 $3\sigma$ 最小可分辨流量分别为 $(5.800\pm0.391)\times10^{-5}$ 和 $(4.185\pm0.156)\times10^{-5}\phcms$；对应 Asimov 值分别只高 $0.158\%$ 和 $0.213\%$。因此，在当前高本底端点，高斯近似与 Asimov 计算在数值上相容。
+
+\begin{figure}[!ht]
+\centering
+\includegraphics[width=0.98\linewidth]{figures/manuscript/fig10_mission_performance.pdf}
+\caption{质量模型 A 与质量模型 B 在共同分析合同下的 81 节点条件任务性能。（a）$F_0=10^{-4}\phcms$ 下的高斯计数显著度，水平线标出 $3\sigma$ 与 $5\sigma$；（b）高斯和 Asimov $3\sigma$ 最小可分辨流量。两条曲线采用相同源、探测器响应、事例选择、计时及大气透过约定，但两套完整设计的入口、局部 W 结构和主动屏蔽布局并不相同。}
+\label{fig:optimized_mission_significance_zh}
+\end{figure}
+
+\begin{table}[!ht]
+\centering
+\caption{质量模型 A 与质量模型 B 在共同分析合同下的条件任务投影；流量阈值后的误差为传播的 $1\sigma$ Monte Carlo 统计不确定度。}
+\label{tab:primary_sensitivity_zh}
+\footnotesize
+\resizebox{\linewidth}{!}{%
+\begin{tabular}{lrr}
+\toprule
+量 & 质量模型 A & 质量模型 B \\
+\midrule
+选后有效面积 / $\mathrm{cm^2}$ & $15.12324\pm0.04492$ & $15.08544\pm0.04503$ \\
+第 15 天本底 / $\cps$ & $6.05960\times10^{-2}$ & $3.12283\times10^{-2}$ \\
+第 15 天 $F_0$ 信号 / $\cps$ & $9.53611\times10^{-4}$ & $9.79005\times10^{-4}$ \\
+20 d 本底计数 & 99923.14 & 54805.97 \\
+20 d $F_0$ 信号计数 & 1635.05 & 1678.12 \\
+$Z_{20\mathrm d}$，高斯 / Asimov & 5.172 / 5.158 & 7.168 / 7.132 \\
+$T_{3\sigma}$，高斯 / Asimov / d & 6.152 / 6.180 & 2.468 / 2.512 \\
+$T_{5\sigma}$，高斯 / Asimov / d & 18.095 / 18.246 & 9.676 / 9.795 \\
+$F_{3\sigma}(20\,\mathrm d)$，高斯 / Asimov / $\phcms$ &
+$(5.800\pm0.391)\times10^{-5}$ / $(5.809\pm0.391)\times10^{-5}$ &
+$(4.185\pm0.156)\times10^{-5}$ / $(4.194\pm0.156)\times10^{-5}$ \\
+$F_{5\sigma}(20\,\mathrm d)$，高斯 / Asimov / $\phcms$ &
+$(9.667\pm0.652)\times10^{-5}$ / $(9.692\pm0.652)\times10^{-5}$ &
+$(6.975\pm0.260)\times10^{-5}$ / $(7.000\pm0.260)\times10^{-5}$ \\
+\bottomrule
+\end{tabular}}
+\end{table}
+
+高斯阈值的变化可以直接拆成累计本底和累计信号核两项。质量模型 B 的 20\,d 本底为质量模型 A 的 $54.85\%$，而其 20\,d 累计信号核为质量模型 A 的 1.026341 倍，因此
+\begin{equation}
+ \frac{F_{\min,A}}{F_{\min,B}}
+ =\sqrt{\frac{N_{b,A}}{N_{b,B}}}\frac{K_B^{20\mathrm d}}{K_A^{20\mathrm d}}
+ =1.350265\times1.026341
+ =1.385832 .
+ \label{eq:fmin_ratio_decomposition_zh}
+\end{equation}
+这里的 $K_g^{20\mathrm d}$ 是 81 节点积分后的累计信号核，而不是某一节点的条件信号核。式~\eqref{eq:fmin_ratio_decomposition_zh} 表明，1.386 倍的流量阈值改善主要来自总本底的平方根项，并由当前时间轴上的累计信号核差异进一步修正。
+
+高斯 $3\sigma$ 流量阈值的 Monte Carlo 相对标准误差在质量模型 A、B 中分别为 $6.74\%$ 和 $3.73\%$，单能线有限输运项的方差份额分别为 $7.23\%$ 和 $49.91\%$。按预先规定的统计停止准则，两套模型均无需追加单能线输运；质量模型 B 的线项仅略低于 $50\%$ 上限，因此这一决定不应被解释为线模型系统学已经闭合。
+
+综上，在当前完整构型和共同分析合同下，质量模型 B 保留了 $99.75\%$ 的聚焦有效面积，将 20\,d 累计本底降至质量模型 A 的 $54.85\%$，并把高斯 $3\sigma$ 流量阈值降至其 $72.16\%$。这是一项条件式完整设计比较：两者的入口、局部 W 框、主动屏蔽布局和局部材料清单同时不同，现有结果不能识别侧烟囱、TES 侧移或某一层屏蔽的单变量因果效应。此外，数值仍限于探测器--低温系统和合成连续在源轨迹；完整吊舱/光学本底、真实银河中心可见性、50\,keV 离线 BGO 阈值与 80\,keV 本机触发差异、Laue PSF 的完整验证、宽带/单能大气源的统一化以及辐射场、截面、标定、重建和指向系统学均未包含在上述统计误差内。
+
+\FloatBarrier
+\fi
+
+\clearpage
+\section{讨论}
+\label{sec:discussion}
+
+主要结果是几何变化的完整物理解释。质量模型 A 的 TES 位于多级冷盘下方，来自该区域的事例占科学窗选后延迟率的 32.18\%。质量模型 B 将同一六层焦面横向移入 BGO 包围的烟囱，使该比例降至 3.92\%；有效面积变化不超过 0.25\%，第 15 天总本底降低 1.94 倍。质量模型 B 的单能大气线响应较高，因而把几何对其他本底的更强抑制部分抵消；在 20 d 累计量上，总本底降低 1.82 倍，流量阈值改善 1.386 倍。几何、选后事例来源和任务灵敏度因而是同一结果的三个层面。
+
+这一分析顺序与近期仪器本底研究一致。COSI 在详细气球载荷中分别输运瞬发与活化分量，并与飞行数据比较其能谱和时间行为 \cite{Gallego2025Balloon}；DIXE 同样从详细 TES 载荷出发，追问哪些入射粒子、产生区域和物理过程构成探测谱 \cite{Tian2026DIXE}。本工作中总清单与选后来源的区别尤其关键：主导选后组集中在局部 Cu 与近场结构，因此只依据总活度会遗漏真正的几何杠杆。
+
+来源图也说明了为什么在冷端铜结构下方继续堆叠被动材料并不是高效解法。被动层可通过康普顿散射和光电吸收衰减 511 keV 光子，但要覆盖向下投影需要足够厚度和质量，还会与光学、低温服务开口竞争，并增加可被活化的材料 \cite{NISTXCOM}。这里需要区分两个过程：510.99895 keV 低于核场单光子对产生阈值 $2m_ec^2=1.022$ MeV，本身不能发生电子--正电子对产生；但更高能的宽带光子和粒子级联可在新增材料中产生正电子，$\beta^+$ 活化也会产生正电子，随后湮没形成次级 511 keV 光子。因此，更直接的办法是先把 TES 移出活化铜的几何投影，再由主动屏蔽处理剩余穿透事例。质量模型 B 的紧凑 BGO 布局也提示可进一步节省主动屏蔽质量预算，但当前完整设计比较尚未单独量化这一节省。
+
+最终分量组成还分离了仪器各层的作用。主动 BGO 提供主要抑制，将质量模型 B 科学窗直接率由 2.29831 降至 $3.28175\times10^{-2}\cps$；宽松拓扑检验移除较小残余，同时保留 98.25\% 的科学窗信号。单能大气线对主动 BGO 基本不敏感，最终占第 15 天总本底的 $71.39\%$，而去线宽带 $\gamma$ 和其他本底分别占 $17.15\%$ 和 $11.47\%$。
+
+该望远镜的观测角色与测量核球、银盘及更广银河发射的 INTEGRAL/SPI 和 COSI 互补 \cite{Siegert2016AA,Kierans2020,Siegert2020COSI,Yoneda2025,Karwin2023}。Laue 透镜--TES 概念以天空覆盖换取集中束流和亚 keV 科学窗，适合紧致 511 keV 源、未分辨中心分量及定点后随观测。表~\ref{tab:primary_sensitivity_zh} 量化的是持续在源、窄线的 20 d 参考情形。
+
+\subsection{适用范围与下一步}
+\label{subsec:limitations}
+
+任务数值是探测器--低温系统几何及合成连续在源轨迹的统计投影。计算采用 50 keV 离线 BGO 沉积能阈值、探测器级拓扑检验、全部八族瞬发和全部八族活化。Laue 光学与气球平台本底不在当前探测器--低温系统预算内。去线宽带模板保留 $W=118.3$ 参考谱形与既有连续谱时间缩放，而专用单能线采用 $W=114.6$、$g=0.15$ 及逐节点 $R_c$ 和柱深，因此还需要在统一源参数下重生成全部宽带分量，才能量化这一混合表示的系统影响。辐射场、PARMA 线参数化、截面、标定、重建和指向系统学也不在传播统计不确定度内。
+
+当前精度主要受选后输运事件数有限且权重不等限制。单能线统计已达到本文采用的阈值精度判据；后续统计投入应优先增加去线宽带 $\gamma$ 和主导延迟族支撑，重复产生位置抽样以检验空间收敛，以实际飞行计划和可见性历史替换合成轨迹，并标定能量响应与 BGO 触发效率。随后可使用聚焦斑和控制区构建空间--能谱似然，同时剖面化本底扰动参数 \cite{Cowan2011}；这会扩展当前“来源--几何”逻辑，但不改变已经闭合的质量模型 A 与质量模型 B 同口径比较。
+
+\subsection{结论}
+\label{sec:conclusions}
+
+质量模型 A 的分析指出，多级冷端及其附近活化结构是选后延迟本底的重要来源。将六层 TES 焦面移入质量模型 B 的横向烟囱后，冷端占比由 32.18\% 降至 3.92\%，同时保留 $99.75\%$ 的选后有效面积。按“宽带总量减粗能箱线面积再加 PARMA 单能线”的通量守恒重组，第 15 天质量模型 A 与质量模型 B 的本底分别为 $6.0596\times10^{-2}$ 和 $3.1228\times10^{-2}\cps$。在 $F_0=10^{-4}\phcms$ 下，质量模型 B 第 15 天信号率为 $9.7900\times10^{-4}\cps$；沿固定 $45^\circ$ 的 20 d、81 节点轨迹，高斯与 Asimov 显著度为 7.168 和 7.132，高斯 $3\sigma$ 阈值为 $(4.185\pm0.156)\times10^{-5}\phcms$。相对质量模型 A，20 d 累计本底降低 1.82 倍，匹配阈值改善约 1.386 倍，表明粒子族、母核素、产生位置与单能大气线响应必须共同进入任务尺度 511 keV 性能预测。
+
+\section*{数据与软件可用性}
+正式发表前，应通过带版本号的公共代码仓库或机构存档提供复现本文图表所需的几何和源定义、随机性约定、分析与制图脚本、LaTeX 源文件及派生验证产物。
+
+\section*{声明}
+\textbf{经费来源} 投稿前补充。
+
+\textbf{利益冲突} 投稿前补充。
+
+\textbf{作者贡献} 投稿前补充。
+
+\textbf{伦理审批与参与同意} 不适用。
+
+\begin{thebibliography}{99}
+
+\bibitem{Prantzos2011}
+N. Prantzos, C. Boehm, A.M. Bykov, R. Diehl, K. Ferriere, N. Guessoum, P. Jean, J. Knoedlseder, A. Marcowith, I.V. Moskalenko, A. Strong, G. Weidenspointner, The 511 keV emission from positron annihilation in the Galaxy, Rev. Mod. Phys. 83 (2011) 1001--1056, doi:10.1103/RevModPhys.83.1001.
+
+\bibitem{Jean2006}
+P. Jean, J. Knoedlseder, V. Lonjou, M. Allain, J.-P. Roques, G.K. Skinner, B.J. Teegarden, G. Vedrenne, P. von Ballmoos, B. Cordier, P. Caraveo, R. Diehl, P. Durouchoux, P. Leleux, R. Schanne, G. Weidenspointner, Spectral analysis of the Galactic $e^+e^-$ annihilation emission, Astron. Astrophys. 445 (2006) 579--589, doi:10.1051/0004-6361:20053765.
+
+\bibitem{Kierans2020}
+C.A. Kierans, S.E. Boggs, A. Zoglauer, A.W. Lowell, C. Sleator, J. Beechert, T.J. Brandt, P. Jean, H. Lazar, J. Roberts, T. Siegert, J.A. Tomsick, P. von Ballmoos, Detection of the 511 keV Galactic positron annihilation line with COSI, Astrophys. J. 895 (2020) 44, doi:10.3847/1538-4357/ab89a9.
+
+\bibitem{Siegert2016AA}
+T. Siegert, R. Diehl, G. Khachatryan, M.G.H. Krause, F. Guglielmetti, J. Greiner, A.W. Strong, X. Zhang, Gamma-ray spectroscopy of positron annihilation in the Milky Way, Astron. Astrophys. 586 (2016) A84, doi:10.1051/0004-6361/201527510.
+
+\bibitem{Siegert2016V404}
+T. Siegert, R. Diehl, J. Greiner, M.G.H. Krause, A.M. Beloborodov, M. Cadolle Bel, F. Guglielmetti, J. Rodriguez, A.W. Strong, X. Zhang, Positron annihilation signatures associated with the outburst of the microquasar V404 Cygni, Nature 531 (2016) 341--343, doi:10.1038/nature16978.
+
+\bibitem{Knodlseder2005AllSky}
+J. Knoedlseder, P. Jean, V. Lonjou, G. Weidenspointner, N. Guessoum, R. Diehl, W. Gillard, M.J. Harris, G.K. Skinner, P. von Ballmoos, G. Vedrenne, P. Caraveo, B. Cordier, V. Schoenfelder, B.J. Teegarden, The all-sky distribution of 511 keV electron-positron annihilation emission, Astron. Astrophys. 441 (2005) 513--532, doi:10.1051/0004-6361:20042063.
+
+\bibitem{Yoneda2025}
+H. Yoneda, T. Siegert, S. Mittal, Imaging the positron annihilation line with 20 years of INTEGRAL/SPI observations, arXiv:2509.01066, 2025.
+
+\bibitem{Siegert2020COSI}
+T. Siegert, S.E. Boggs, J.A. Tomsick, A.C. Zoglauer, C.A. Kierans, C.C. Sleator, J. Beechert, T.J. Brandt, P. Jean, H. Lazar, A.W. Lowell, J.M. Roberts, P. von Ballmoos, Imaging the 511 keV positron annihilation sky with COSI, Astrophys. J. 897 (2020) 45, doi:10.3847/1538-4357/ab9607.
+
+\bibitem{Siegert2019Kinematics}
+T. Siegert, R. Diehl, G. Khachatryan, M.G.H. Krause, F. Guglielmetti, J. Greiner, A.W. Strong, X. Zhang, Constraints on positron annihilation kinematics in the inner Galaxy, Astron. Astrophys. 627 (2019) A126, doi:10.1051/0004-6361/201833856.
+
+\bibitem{DeCesare2011}
+G. De Cesare, Searching for the 511 keV annihilation line from galactic compact objects with the IBIS gamma ray telescope, Astron. Astrophys. 531 (2011) A56, doi:10.1051/0004-6361/201116516.
+
+\bibitem{Barriere2009Laue}
+N.M. Barriere, L. Natalucci, N. Abrosimov, P. von Ballmoos, P. Bastie, P. Courtois, M. Jentschel, J. Knodlseder, J. Rousselle, P. Ubertini, Soft gamma-ray optics: new Laue lens design and performance estimates, arXiv:0910.0488, 2009.
+
+\bibitem{Barriere2011LauePrototype}
+N.M. Barriere, J.A. Tomsick, S.E. Boggs, A. Lowell, P. von Ballmoos, Developing a second generation Laue lens prototype: high reflectivity crystals and accurate assembly, arXiv:1111.6700, 2011.
+
+\bibitem{Weidenspointner2006MAX}
+G. Weidenspointner, C.B. Wunderer, N. Barriere, A. Zoglauer, P. von Ballmoos, Monte Carlo study of detector concepts for the MAX Laue Lens gamma-ray telescope, arXiv:astro-ph/0603152, 2006.
+
+\bibitem{Shirazi2023}
+F. Shirazi, E. Gau, M.A. Hossen, D. Becker, D. Schmidt, D. Swetz, D. Bennett, D. Braun, F. Kislat, J. Gard, J. Mates, J. Weber, N.R. Cavero, S. Chun, L. Lisalda, A. West, B. Dev, F. Ferrer, R. Bose, J. Ullom, H. Krawczynski, The 511-CAM Mission: A pointed 511 keV gamma-ray telescope with a focal plane detector made of stacked transition edge sensor microcalorimeter arrays, J. Astron. Telesc. Instrum. Syst. 9 (2023) 024006, doi:10.1117/1.JATIS.9.2.024006.
+
+\bibitem{Zhang2022TESGamma}
+S. Zhang, J.-K. Xia, T. Sun, et al., Transition edge sensor based detector: from X-ray to gamma-ray, arXiv:2204.00010, 2022.
+
+\bibitem{Hu2026}
+K. Hu, M. Fritts, D. Becker, D. Schmidt, F. Zhou, A. Dasgupta, F. Kislat, M. Keller, S. Chun, A.G. Detoito, E. Gau, X. Jin, D. Bennett, D. Braun, J. Gard, J.A.B. Mates, J. Nobles, D. Radomski, N. Rodriguez Cavero, R. Snodgrass, D. Swetz, J. Ullom, S. Vengalil Menon, J. Weber, K. Wimalasena, H. Krawczynski, Design of a mission to measure the shape and substructure of the 511 keV gamma-ray line from the center of the Milky Way, J. Astron. Telesc. Instrum. Syst. 12 (2026) 025002, doi:10.1117/1.JATIS.12.2.025002.
+
+\bibitem{Gallego2025Balloon}
+S. Gallego, U. Oberlack, J. Lommler, C.M. Karwin, A. Zoglauer, P. Jean, P. von Ballmoos, C. Kierans, C.C. Sleator, J.A. Tomsick, S.E. Boggs, Bottom-up background simulations of the 2016 COSI balloon flight, Astrophys. J. 986 (2025) 116, doi:10.3847/1538-4357/add6a0.
+
+\bibitem{Tian2026DIXE}
+R. Tian, J. Mao, J. Liu, H. Jin, W. Cui, Simulation of non-X-ray background for the DIffuse X-ray Explorer (DIXE) mission, arXiv:2604.13569, 2026.
+
+\bibitem{Caputo2017}
+R. Caputo, F. Kislat, J. Racusin, on behalf of the AMEGO Team, AMEGO: Simulations of the instrument performance, Proc. 35th International Cosmic Ray Conference, PoS(ICRC2017) 783 (2018), doi:10.22323/1.301.0783.
+
+\bibitem{Gottardi2021TESReview}
+L. Gottardi, K. Nagayoshi, A review of X-ray microcalorimeters based on superconducting transition edge sensors for astrophysics and particle physics, Applied Sciences 11 (2021) 3793, doi:10.3390/app11093793.
+
+\bibitem{Xie2026AlMn}
+L. Xie, Y. Zhang, Z. Li, Z. Liu, S. Shu, J. Zhou, X. Li, H. Li, H. Gao, Y. Gu, X. Lu, Y. Zhao, C. Liu, Beyond one-thousandth energy resolution with an AlMn TES detector, arXiv:2602.11728, 2026.
+
+\bibitem{Vavagiakis2017AlMnMagnetic}
+E.M. Vavagiakis, S.W. Henderson, K. Zheng, H.-M. Cho, N.F. Cothard, B. Dober, S.M. Duff, P.A. Gallardo, G. Hilton, J. Hubmayr, K.D. Irwin, B.J. Koopman, D. Li, F. Nati, M.D. Niemack, C.D. Reintsema, S. Simon, J.R. Stevens, A. Suzuki, B. Westbrook, Magnetic sensitivity of AlMn TESes and shielding considerations for next-generation CMB surveys, arXiv:1710.08456, 2017.
+
+\bibitem{NISTXCOM}
+J.H. Hubbell, S.M. Seltzer, XCOM: Photon Cross Section Database, NIST Standard Reference Database 8 (XGAM), National Institute of Standards and Technology, doi:10.18434/T48G6X.
+
+\bibitem{Sturner2003}
+S.J. Sturner, C.R. Shrader, G. Weidenspointner, B.J. Teegarden, D. Attie, B. Cordier, R. Diehl, C. Ferguson, P. Jean, A. von Kienlin, P. Paul, F. Sanchez, S. Schanne, P. Sizun, G. Skinner, C.B. Wunderer, Monte Carlo simulations and generation of the SPI response, Astron. Astrophys. 411 (2003) L81--L84, doi:10.1051/0004-6361:20031171.
+
+\bibitem{Agostinelli2003}
+S. Agostinelli, J. Allison, K. Amako, et al., Geant4---a simulation toolkit, Nucl. Instrum. Methods Phys. Res. A 506 (2003) 250--303, doi:10.1016/S0168-9002(03)01368-8.
+
+\bibitem{Allison2016}
+J. Allison, K. Amako, J. Apostolakis, et al., Recent developments in Geant4, Nucl. Instrum. Methods Phys. Res. A 835 (2016) 186--225, doi:10.1016/j.nima.2016.06.125.
+
+\bibitem{SanchezDelRio2011XOP}
+M. Sanchez del Rio, R.J. Dejus, XOP v2.4: recent developments of the x-ray optics software toolkit, Proc. SPIE 8141 (2011) 814115, doi:10.1117/12.893911.
+
+\bibitem{Guan2023BraggReflection}
+F. Guan, M. Asai, D.A. Bartkoski, M. Kleckner, Z. Harel, M. Salehpour, Adding the X-ray Bragg reflection physical process in crystal to the Geant4 Monte Carlo simulation toolkit, part I: reflection from a crystal slab, Precision Radiation Oncology 7(1) (2023) 59--66.
+
+\bibitem{Reiazi2025G4BraggReflection}
+R. Reiazi, D. Lee, D. Bartkoski, M. Kleckner, M. Salehpour, G4BraggReflection for accurate modeling of Bragg reflection in perfect and mosaic crystals, J. Phys. D: Appl. Phys. 58 (2025) 295102, doi:10.1088/1361-6463/aded1d.
+
+\bibitem{Zoglauer2006}
+A. Zoglauer, R. Andritschke, F. Schopper, MEGAlib: The Medium Energy Gamma-ray Astronomy Library, New Astron. Rev. 50 (2006) 629--632, doi:10.1016/j.newar.2006.06.049.
+
+\bibitem{Sato2015EXPACS}
+T. Sato, Analytical model for estimating terrestrial cosmic ray fluxes nearly anytime and anywhere in the world: extension of PARMA/EXPACS, PLoS ONE 10 (2015) e0144679, doi:10.1371/journal.pone.0144679.
+
+\bibitem{Sato2016PARMA4}
+T. Sato, Analytical model for estimating the zenith angle dependence of terrestrial cosmic ray fluxes, PLoS ONE 11 (2016) e0160390, doi:10.1371/journal.pone.0160390.
+
+\bibitem{Mahoney1981Atmospheric}
+W.A. Mahoney, J.C. Ling, A.S. Jacobson, HEAO 3 measurements of the atmospheric positron annihilation line, J. Geophys. Res. 86 (1981) 11098--11104, doi:10.1029/JA086iA13p11098.
+
+\bibitem{Harris2003Atmospheric}
+M.J. Harris, G.H. Share, M.D. Leising, Spatial and temporal variability of the gamma radiation from Earth's atmosphere during a solar cycle, J. Geophys. Res. Space Phys. 108 (2003) 1435, doi:10.1029/2003JA009958.
+
+\bibitem{Kondev2021NUBASE}
+F.G. Kondev, M. Wang, W.J. Huang, S. Naimi, G. Audi, The NUBASE2020 evaluation of nuclear physics properties, Chinese Phys. C 45 (2021) 030001, doi:10.1088/1674-1137/abddae.
+
+\bibitem{Kierans2017}
+C.A. Kierans, S.E. Boggs, J.-L. Chiu, A. Lowell, C. Sleator, J.A. Tomsick, A. Zoglauer, M. Amman, H.-K. Chang, C.-H. Tseng, C.-Y. Yang, C.-H. Lin, P. Jean, P. von Ballmoos, The 2016 Super Pressure Balloon flight of the Compton Spectrometer and Imager, arXiv:1701.05558, 2017.
+
+\bibitem{Karwin2023}
+C.M. Karwin, T. Siegert, J. Beechert, J.A. Tomsick, T.A. Porter, M. Negro, C. Kierans, M. Ajello, I. Martinez Castellanos, A. Shih, A. Zoglauer, S.E. Boggs, Probing the Galactic diffuse continuum emission with COSI, arXiv:2310.12206, 2023.
+
+\bibitem{Cowan2011}
+G. Cowan, K. Cranmer, E. Gross, O. Vitells, Asymptotic formulae for likelihood-based tests of new physics, Eur. Phys. J. C 71 (2011) 1554, doi:10.1140/epjc/s10052-011-1554-0.
+
+\end{thebibliography}
+\end{document}

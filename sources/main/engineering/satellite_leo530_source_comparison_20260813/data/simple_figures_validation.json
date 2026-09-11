@@ -1,0 +1,77 @@
+{
+  "authority_boundary": "source-input comparison only; not transport, activation, response, sensitivity, or geometry-promotion authority",
+  "errors": [],
+  "metrics": {
+    "balloon_native_gamma_knots_300_800_keV": [
+      357.17,
+      449.65,
+      566.08,
+      712.64
+    ],
+    "figures": {
+      "simple_00_incident_component_spectra.png": {
+        "height": 1274,
+        "rgb_standard_deviation": 42.25345749427915,
+        "white_fraction": 0.9164998934700873,
+        "width": 2962
+      },
+      "simple_01_gamma_source.png": {
+        "height": 1190,
+        "rgb_standard_deviation": 36.02473799919719,
+        "white_fraction": 0.9414724417033226,
+        "width": 2879
+      },
+      "simple_02_family_band_ratio.png": {
+        "height": 1528,
+        "rgb_standard_deviation": 60.84289090625789,
+        "white_fraction": 0.4763846056582221,
+        "width": 2443
+      },
+      "simple_03_readout.png": {
+        "height": 1416,
+        "rgb_standard_deviation": 38.17396751682289,
+        "white_fraction": 0.4720686516291893,
+        "width": 2914
+      }
+    },
+    "incident_component_environments": [
+      "balloon_38km",
+      "satellite_leo530_proxy"
+    ],
+    "incident_component_rows": 2694,
+    "readout_rows": 8,
+    "readout_status_counts": {
+      "B-level contrast": 1,
+      "Input established": 1,
+      "Not established": 5,
+      "Pilot required": 1
+    },
+    "simple_gamma_bands": 5,
+    "simple_matrix_cells": 24,
+    "simple_matrix_na_cells": 5,
+    "validated_source_tables": 5
+  },
+  "output_sha256": {
+    "outputs/simple/figures/simple_00_incident_component_spectra.pdf": "96623f55e383d08d85f58212fea35f9462cf4cf43a6d5bfeb12732edcc0bbb11",
+    "outputs/simple/figures/simple_00_incident_component_spectra.png": "f01b714bac05d778301b335f449859e3461a3a9bae7b77f14fb0ddd95de8ad19",
+    "outputs/simple/figures/simple_01_gamma_source.pdf": "b4bad3a106f197f81abb34f414628450d008cbd76a2029dde5e9586e9e46728f",
+    "outputs/simple/figures/simple_01_gamma_source.png": "c7edb2657a859e7fe1ac0169301522a5aca01cc905324a5c7b2331f86612d616",
+    "outputs/simple/figures/simple_02_family_band_ratio.pdf": "31b613db1e878cb19578189ec7be17b0b010cf7fcd3e2646d9ce89f42cc903f8",
+    "outputs/simple/figures/simple_02_family_band_ratio.png": "f33d732c4f1dd65281794236fcd236ff1689186f6b580bd8e9d2332cadcc6402",
+    "outputs/simple/figures/simple_03_readout.pdf": "9997e3623428b80726f6239c1d0718542b4da605e4656097ccb9cddf2d4004bf",
+    "outputs/simple/figures/simple_03_readout.png": "c15d6b96df4e5ae10a95221511346a3636d1faadb927e972f2118362a013602f",
+    "outputs/simple/manifest.json": "90e938f55133950667079f6ec277ecfba7799accbe006ff8964489e01e666ff7",
+    "outputs/simple/tables/simple_family_band_matrix.csv": "b5ed9abb876a1f69f0db0a1c4b7a1aa92bd5f2a5e559c790b7554331fc6354ed",
+    "outputs/simple/tables/simple_gamma_bands.csv": "3dfef1ceac86638d301c9a38e38d5746b127dcf995a894fc8af5c180c82e984e",
+    "outputs/simple/tables/simple_incident_component_spectra.csv": "d2bb888bd73afae318d687780ddf24a1d9fc6383d1775714e7a0f7a249daea45",
+    "outputs/simple/tables/simple_readout.csv": "545b5317c88fffd8b1d5aae77c3623988642dd60f86df64d53b19b9a16918ba5"
+  },
+  "schema_version": 1,
+  "status": "PASS",
+  "warnings": [
+    "Figure 0 contains prompt incident particle spectra only; activation/delayed components and a cross-family Total are deliberately omitted.",
+    "Figure 1 compares angular-domain source inputs; 450\u2013600 keV is a broad proxy and not a narrow-line flux ratio.",
+    "Figure 2 is an environment contrast only. The neutron row uses a diagnostic 10-GV fallback, partial/mixed validity is marked, and missing muons remain NA.",
+    "Figure 3 deliberately leaves detector background, activation, sensitivity, and CPU/disk cost unestablished until matched transport or pilots exist."
+  ]
+}

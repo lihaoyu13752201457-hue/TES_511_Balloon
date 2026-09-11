@@ -1,0 +1,189 @@
+{
+  "chart_contract": {
+    "analytical_question": "How does adding only the W-grid change the matched PARMA mono-511 selected response relative to open SH3?",
+    "bin80_policy": "used for numerical closure and sparse angular diagnostic, not promoted to a main chart",
+    "family": "Uncertainty & Benchmark",
+    "palette_policy": "hard two-root cap: blue=open, gold=W-grid; marker fill also distinguishes variants",
+    "renderer": "Matplotlib static PNG/PDF",
+    "variant": "two-panel dot-and-interval plus ordered stage-ratio intervals"
+  },
+  "contract_checks": [
+    {
+      "detail": "510.99895 keV",
+      "name": "canonical_line_energy",
+      "status": "PASS"
+    },
+    {
+      "detail": "0.16651547160226118 ph cm^-2 s^-1",
+      "name": "canonical_parma_flux",
+      "status": "PASS"
+    },
+    {
+      "detail": "80",
+      "name": "equal_mu_components",
+      "status": "PASS"
+    },
+    {
+      "detail": "True",
+      "name": "common_parma_source",
+      "status": "PASS"
+    },
+    {
+      "detail": "True",
+      "name": "common_response_selection_time",
+      "status": "PASS"
+    },
+    {
+      "detail": "required for the reported quadrature uncertainty",
+      "name": "independent_mc_samples",
+      "status": "PASS"
+    },
+    {
+      "detail": "open=15709417, grid=15709417",
+      "name": "matched_incident_photons",
+      "status": "PASS"
+    },
+    {
+      "detail": "open=8343.62808 s, grid=8339.8231 s; each independent run uses its own 1/sum(T)",
+      "name": "matched_source_exposure_realizations",
+      "status": "PASS"
+    },
+    {
+      "detail": "comparison=0.02229246057190028, cutflow=0.02229246057190028",
+      "name": "open_comparison_cutflow_rate",
+      "status": "PASS"
+    },
+    {
+      "detail": "comparison=0.001634562514798222, cutflow=0.001634562514798222",
+      "name": "open_comparison_cutflow_sigma",
+      "status": "PASS"
+    },
+    {
+      "detail": "comparison=186, cutflow=186",
+      "name": "open_comparison_cutflow_selected",
+      "status": "PASS"
+    },
+    {
+      "detail": "bin_sum=0.02229246057190028, final=0.02229246057190028",
+      "name": "open_bin80_rate_closure",
+      "status": "PASS"
+    },
+    {
+      "detail": "bin_sum=186, final=186",
+      "name": "open_bin80_count_closure",
+      "status": "PASS"
+    },
+    {
+      "detail": "selected counts cannot increase after a cut",
+      "name": "open_cutflow_monotone",
+      "status": "PASS"
+    },
+    {
+      "detail": "comparison=0.01810589963233153, cutflow=0.01810589963233153",
+      "name": "grid_comparison_cutflow_rate",
+      "status": "PASS"
+    },
+    {
+      "detail": "comparison=0.001473437215646038, cutflow=0.001473437215646038",
+      "name": "grid_comparison_cutflow_sigma",
+      "status": "PASS"
+    },
+    {
+      "detail": "comparison=151, cutflow=151",
+      "name": "grid_comparison_cutflow_selected",
+      "status": "PASS"
+    },
+    {
+      "detail": "bin_sum=0.01810589963233153, final=0.01810589963233153",
+      "name": "grid_bin80_rate_closure",
+      "status": "PASS"
+    },
+    {
+      "detail": "bin_sum=151, final=151",
+      "name": "grid_bin80_count_closure",
+      "status": "PASS"
+    },
+    {
+      "detail": "selected counts cannot increase after a cut",
+      "name": "grid_cutflow_monotone",
+      "status": "PASS"
+    }
+  ],
+  "data_status": "actual",
+  "generated_utc": "2026-08-24T18:45:30.139410+00:00",
+  "input_files": {
+    "comparison": {
+      "bytes": 1708,
+      "path": "/home/ubuntu/.codex/worktrees/ebb2/TES_511_Balloon/engineering/geometry_optimization_20260815/68_sh3_wgrid_mono511_statistics_20260824/outputs/01_wgrid_mono511_response_comparison_20260825/report_input.json",
+      "sha256": "1b79d09d769e8458acec55a0e40992a5c80918f16bf201fe56f594071abf23b1"
+    },
+    "grid_bin80": {
+      "bytes": 1911,
+      "path": "/home/ubuntu/.codex/worktrees/ebb2/TES_511_Balloon/engineering/geometry_optimization_20260815/68_sh3_wgrid_mono511_statistics_20260824/outputs/01_wgrid_mono511_response_comparison_20260825/response/mono_line_final_by_source_bin80.csv",
+      "sha256": "509b16b438ccd5ad338fe81676c65b94bf3ab08f619a9d1438b83a318bd86d44"
+    },
+    "grid_cutflow": {
+      "bytes": 1234,
+      "path": "/home/ubuntu/.codex/worktrees/ebb2/TES_511_Balloon/engineering/geometry_optimization_20260815/68_sh3_wgrid_mono511_statistics_20260824/outputs/01_wgrid_mono511_response_comparison_20260825/response/mono_line_cutflow.csv",
+      "sha256": "28cac1add0341d268e9d72677e9e79dca7b45b7f3e9e6fc4745b931f1d2df849"
+    },
+    "open_bin80": {
+      "bytes": 1912,
+      "path": "/home/ubuntu/.codex/worktrees/ebb2/TES_511_Balloon/engineering/geometry_optimization_20260815/68_sh3_wgrid_mono511_statistics_20260824/outputs/01_wgrid_mono511_response_comparison_20260825/frozen_open_sh3_comparator/mono_line_final_by_source_bin80.csv",
+      "sha256": "b970ee2483eedbb0415497b3e6d59cfed0b3de4eb732ee922fb554dbd9ac5456"
+    },
+    "open_cutflow": {
+      "bytes": 1240,
+      "path": "/home/ubuntu/.codex/worktrees/ebb2/TES_511_Balloon/engineering/geometry_optimization_20260815/68_sh3_wgrid_mono511_statistics_20260824/outputs/01_wgrid_mono511_response_comparison_20260825/frozen_open_sh3_comparator/mono_line_cutflow.csv",
+      "sha256": "e264f97841eb80ed636293c38da02bbccb69c1a1b3e0b49ab055dc29d3e33986"
+    }
+  },
+  "outputs": {
+    "data": {
+      "bytes": 7828,
+      "path": "/home/ubuntu/.codex/worktrees/ebb2/TES_511_Balloon/engineering/geometry_optimization_20260815/68_sh3_wgrid_mono511_statistics_20260824/outputs/02_mono511_technical_report_20260825/mono511_report_data.json",
+      "sha256": "b994327717cf6d7b04a78336465be99e3a439765b6c35ef09ad1d22c8d81f1fe"
+    },
+    "pdf": {
+      "bytes": 71050,
+      "path": "/home/ubuntu/.codex/worktrees/ebb2/TES_511_Balloon/engineering/geometry_optimization_20260815/68_sh3_wgrid_mono511_statistics_20260824/outputs/02_mono511_technical_report_20260825/mono511_open_vs_wgrid.pdf",
+      "sha256": "932749a799506f63eb7c6866d7cf47b8eeb5bc8c9a9de9d3b1225afba24fc3b0"
+    },
+    "png": {
+      "bytes": 218401,
+      "path": "/home/ubuntu/.codex/worktrees/ebb2/TES_511_Balloon/engineering/geometry_optimization_20260815/68_sh3_wgrid_mono511_statistics_20260824/outputs/02_mono511_technical_report_20260825/mono511_open_vs_wgrid.png",
+      "sha256": "ddf0d249372860d2d60c8b5434cf5d247e1c941dc433408cae3fc895d725d267"
+    },
+    "report": {
+      "bytes": 5447,
+      "path": "/home/ubuntu/.codex/worktrees/ebb2/TES_511_Balloon/engineering/geometry_optimization_20260815/68_sh3_wgrid_mono511_statistics_20260824/outputs/02_mono511_technical_report_20260825/mono511_technical_report_zh.md",
+      "sha256": "627a542af51c20cbb7f6ef195df90da79477ee822d1bbb93c5c3c75feb30d829"
+    },
+    "stage_csv": {
+      "bytes": 1027,
+      "path": "/home/ubuntu/.codex/worktrees/ebb2/TES_511_Balloon/engineering/geometry_optimization_20260815/68_sh3_wgrid_mono511_statistics_20260824/outputs/02_mono511_technical_report_20260825/mono511_stage_ratios.csv",
+      "sha256": "c43c303dbb7e7db8a681aa37d9a588a76be416b71cff1bf90a2bf2b517dd136b"
+    }
+  },
+  "render_qa": {
+    "font": "Noto Sans CJK JP",
+    "matplotlib_version": "3.5.1",
+    "numpy_version": "1.21.5",
+    "pdf_magic": "%PDF-",
+    "png_shape": [
+      1370,
+      2323,
+      4
+    ]
+  },
+  "scope_guard": {
+    "activation_updated": false,
+    "broadband_total_updated": false,
+    "fmin_updated": false,
+    "mono511_only": true
+  },
+  "script_sha256": "7d4966329abde336f25200fc8ec7be666eb2f62ceda46633cc32aa8ce0fb0b2d",
+  "script_version": "1.0.0",
+  "status": "PASS__MONO511_STATIC_REPORT",
+  "warnings": []
+}

@@ -1,0 +1,19 @@
+#PreTriggerMode              EveryEventWithHits
+DefaultRangeCut 0.005 
+
+Region Spacecraft
+Spacecraft.Volume SCbody
+Spacecraft.RangeCut 1.
+
+Region Pipebody
+Pipebody.Volume PIPbody
+Pipebody.RangeCut 1.
+
+DetectorTimeConstant 0.000002
+
+DataChallenge.Source CosmicPhotons
+CosmicPhotons.ParticleType	       1
+CosmicPhotons.Beam FarFieldEarthOccultation false
+CosmicPhotons.Spectrum  File CosmicPhotons_Spec_530.0km_0.0deg_10.000cutoff_520.0solarmod_fluxdividedby1000.dat
+CosmicPhotons.Flux	  1.2235089686672167e-3
+

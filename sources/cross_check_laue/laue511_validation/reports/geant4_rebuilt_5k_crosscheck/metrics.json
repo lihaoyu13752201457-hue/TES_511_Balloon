@@ -1,0 +1,305 @@
+{
+  "focal_length_check": {
+    "geant4_summary_focal_length_mm": 8300,
+    "relative_delta_vs_geant4_summary": 0.00018064958263378837,
+    "ring_config_focal_length_mm_max": 8301.499683427082,
+    "ring_config_focal_length_mm_mean": 8301.499662449256,
+    "ring_config_focal_length_mm_min": 8301.499635004151
+  },
+  "geant4_run": "/tmp/laue511_g4_latest_run",
+  "geant4_summary": {
+    "absorption_fraction": 0.3498,
+    "benchmark_efficiency_table_not_used_for_physics": "data/laue/Ge111_480_550keV_darwin_mosaic_table.csv",
+    "crystallite_thickness_um": 5,
+    "diffraction_fraction": 0.245,
+    "energy_max_keV": 550,
+    "energy_min_keV": 480,
+    "focal_length_mm": 8300,
+    "geant4_bottom_code_modified": false,
+    "model": "guan_reiazi_style_online_darwin_hamilton_virtual_crystallite_v2",
+    "model_process_split": true,
+    "mosaic_fwhm_arcsec": 30,
+    "n_absorbed": 1749,
+    "n_diffracted": 1225,
+    "n_primaries": 5000,
+    "n_rings": 5,
+    "n_transmitted": 2026,
+    "online_physics_backend": "Darwin-Hamilton mosaic formula with virtual crystallite plane-normal sampling",
+    "plane_normal_diagnostic_model": "guan_virtual_crystallite_plane_normal; emitted DIFFRACT direction is reflected across the recorded plane normal",
+    "registered_in_geant4_em_category": false,
+    "registered_process": "GuanStyleLaueBraggProcess added to gamma G4ProcessManager as a discrete process",
+    "ring_config": "data/laue/ge111_480_550keV_multiring_darwin_config.csv",
+    "spot_d90_cm": 0.330996,
+    "system": "geant4_laue_darwin_guan_process",
+    "transmission_fraction": 0.4052,
+    "uses_external_efficiency_table_for_physics": false,
+    "vector_diagnostics_in_optics_history": true,
+    "visualization_wrl": "/tmp/laue511_g4_latest_run/laue_multiring_scene.wrl",
+    "warning": "Compiled Geant4 C++ process/model split inspired by Guan/Reiazi. This is not Guan/Reiazi source-code migration and not a Geant4 toolkit EM-category patch. Unlike the 01 baseline, branch probabilities are computed online in the model and are not read from the 01 pAbs/pDiff/pTrans efficiency table.",
+    "world_half_xy_mm": 160,
+    "world_half_z_mm": 8500
+  },
+  "history_schema": {
+    "columns": [
+      "event_id",
+      "track_id",
+      "optics_kind",
+      "stage",
+      "ring_id",
+      "tile_id",
+      "surface_id",
+      "E_keV",
+      "x_mm",
+      "y_mm",
+      "z_mm",
+      "ux_in",
+      "uy_in",
+      "uz_in",
+      "ux_out",
+      "uy_out",
+      "uz_out",
+      "grazing_angle_rad",
+      "p_reflect",
+      "p_absorb",
+      "p_transmit",
+      "n_bounce",
+      "weight",
+      "vector_diagnostic_model",
+      "plane_normal_x",
+      "plane_normal_y",
+      "plane_normal_z",
+      "reciprocal_vector_x_invA",
+      "reciprocal_vector_y_invA",
+      "reciprocal_vector_z_invA",
+      "reciprocal_vector_mag_invA",
+      "reciprocal_vector_expected_mag_invA",
+      "scattering_q_vector_x_invA",
+      "scattering_q_vector_y_invA",
+      "scattering_q_vector_z_invA",
+      "scattering_q_vector_mag_invA",
+      "lattice_G_nominal_x_invA",
+      "lattice_G_nominal_y_invA",
+      "lattice_G_nominal_z_invA",
+      "lattice_G_nominal_mag_invA",
+      "lattice_G_perturbed_x_invA",
+      "lattice_G_perturbed_y_invA",
+      "lattice_G_perturbed_z_invA",
+      "lattice_G_perturbed_mag_invA",
+      "q_minus_G_nominal_mag_invA",
+      "q_minus_G_perturbed_mag_invA",
+      "relative_bragg_residual_nominal",
+      "relative_bragg_residual_perturbed",
+      "focus_direction_x",
+      "focus_direction_y",
+      "focus_direction_z",
+      "theta_B_rad",
+      "theta_local_rad",
+      "delta_theta_model_rad",
+      "mosaic_perturbation_rad",
+      "angle_code_vs_recorded_reflect_rad",
+      "elastic_error"
+    ],
+    "vector_diagnostics_present": true
+  },
+  "n_history_rows_checked": 5000,
+  "phase_space_validation": {
+    "errors": [],
+    "n_rows": 1225,
+    "ok": true
+  },
+  "probability_max_abs_delta": {
+    "p_abs": 3.634270662189465e-11,
+    "p_diff": 5.087538723635987e-11,
+    "p_trans": 5.049111129196149e-11
+  },
+  "ring_config": "/home/ubuntu/cross_check_laue/laue511_validation/data/laue/ge111_480_550keV_multiring_darwin_config.csv",
+  "ring_metrics": [
+    {
+      "branch_fractions": {
+        "ABSORB": 0.3333333333333333,
+        "DIFFRACT": 0.25992063492063494,
+        "TRANSMIT": 0.40674603174603174
+      },
+      "branch_z": {
+        "ABSORB": -0.7629001736994265,
+        "DIFFRACT": 0.2624303476308997,
+        "TRANSMIT": 0.5064974983915913
+      },
+      "counts": {
+        "ABSORB": 336,
+        "DIFFRACT": 262,
+        "TRANSMIT": 410
+      },
+      "mean_abs_probability_delta": {
+        "p_abs": 1.634048452103798e-11,
+        "p_diff": 2.608803478578267e-11,
+        "p_trans": 2.5881514413991208e-11
+      },
+      "mean_recorded": {
+        "p_abs": 0.3447540752,
+        "p_diff": 0.2563118287938492,
+        "p_trans": 0.39893409598670637
+      },
+      "mean_reference": {
+        "p_abs": 0.3447540752163405,
+        "p_diff": 0.25631182879503445,
+        "p_trans": 0.39893409598862506
+      },
+      "n": 1008,
+      "ring_id": 0
+    },
+    {
+      "branch_fractions": {
+        "ABSORB": 0.35714285714285715,
+        "DIFFRACT": 0.2390873015873016,
+        "TRANSMIT": 0.4037698412698413
+      },
+      "branch_z": {
+        "ABSORB": 0.2925372687209065,
+        "DIFFRACT": -0.7916100643479144,
+        "TRANSMIT": 0.41471364332837146
+      },
+      "counts": {
+        "ABSORB": 360,
+        "DIFFRACT": 241,
+        "TRANSMIT": 407
+      },
+      "mean_abs_probability_delta": {
+        "p_abs": 2.9051760996878784e-11,
+        "p_diff": 2.4760823296923793e-11,
+        "p_trans": 2.528261583775682e-11
+      },
+      "mean_recorded": {
+        "p_abs": 0.352740171,
+        "p_diff": 0.24988207081180555,
+        "p_trans": 0.39737775816031745
+      },
+      "mean_reference": {
+        "p_abs": 0.35274017102905175,
+        "p_diff": 0.24988207081172972,
+        "p_trans": 0.39737775815921855
+      },
+      "n": 1008,
+      "ring_id": 1
+    },
+    {
+      "branch_fractions": {
+        "ABSORB": 0.3492063492063492,
+        "DIFFRACT": 0.25396825396825395,
+        "TRANSMIT": 0.3968253968253968
+      },
+      "branch_z": {
+        "ABSORB": -0.5144539299414089,
+        "DIFFRACT": 0.5554989134231831,
+        "TRANSMIT": 0.014505913229475718
+      },
+      "counts": {
+        "ABSORB": 352,
+        "DIFFRACT": 256,
+        "TRANSMIT": 400
+      },
+      "mean_abs_probability_delta": {
+        "p_abs": 1.230593404955016e-11,
+        "p_diff": 2.4826610426856168e-11,
+        "p_trans": 2.4685996908452213e-11
+      },
+      "mean_recorded": {
+        "p_abs": 0.3569696714,
+        "p_diff": 0.24642844032738095,
+        "p_trans": 0.39660188826011905
+      },
+      "mean_reference": {
+        "p_abs": 0.35696967141230596,
+        "p_diff": 0.2464284403279041,
+        "p_trans": 0.39660188825979
+      },
+      "n": 1008,
+      "ring_id": 2
+    },
+    {
+      "branch_fractions": {
+        "ABSORB": 0.3501984126984127,
+        "DIFFRACT": 0.23511904761904762,
+        "TRANSMIT": 0.4146825396825397
+      },
+      "branch_z": {
+        "ABSORB": -0.9118554944082476,
+        "DIFFRACT": -0.4091491135859159,
+        "TRANSMIT": 1.255074150907316
+      },
+      "counts": {
+        "ABSORB": 353,
+        "DIFFRACT": 237,
+        "TRANSMIT": 418
+      },
+      "mean_abs_probability_delta": {
+        "p_abs": 2.9046487437511814e-11,
+        "p_diff": 2.5238985174300782e-11,
+        "p_trans": 2.468473694850279e-11
+      },
+      "mean_recorded": {
+        "p_abs": 0.3640175034,
+        "p_diff": 0.2406277788362103,
+        "p_trans": 0.3953547177344246
+      },
+      "mean_reference": {
+        "p_abs": 0.3640175034290465,
+        "p_diff": 0.24062777883583483,
+        "p_trans": 0.3953547177351187
+      },
+      "n": 1008,
+      "ring_id": 3
+    },
+    {
+      "branch_fractions": {
+        "ABSORB": 0.359504132231405,
+        "DIFFRACT": 0.2365702479338843,
+        "TRANSMIT": 0.40392561983471076
+      },
+      "branch_z": {
+        "ABSORB": -0.7470579326644515,
+        "DIFFRACT": 0.13137678672610906,
+        "TRANSMIT": 0.6246027186311534
+      },
+      "counts": {
+        "ABSORB": 348,
+        "DIFFRACT": 229,
+        "TRANSMIT": 391
+      },
+      "mean_abs_probability_delta": {
+        "p_abs": 3.634270662189465e-11,
+        "p_diff": 2.501534135367732e-11,
+        "p_trans": 2.5163017158916385e-11
+      },
+      "mean_recorded": {
+        "p_abs": 0.37110402150000005,
+        "p_diff": 0.23478044610320248,
+        "p_trans": 0.39411553243440084
+      },
+      "mean_reference": {
+        "p_abs": 0.3711040214636573,
+        "p_diff": 0.23478044610240126,
+        "p_trans": 0.3941155324339415
+      },
+      "n": 968,
+      "ring_id": 4
+    }
+  ],
+  "transmitted_space_validation": {
+    "errors": [],
+    "n_rows": 2026,
+    "ok": true
+  },
+  "vector_diagnostics": {
+    "available": true,
+    "max_angle_code_vs_recorded_reflect_rad": 1.490116119e-08,
+    "max_elastic_error": 1.110223025e-16,
+    "max_relative_bragg_residual_nominal": 0.0591073581,
+    "max_relative_bragg_residual_perturbed": 0.05910685389,
+    "models": [
+      "guan_virtual_crystallite_plane_normal"
+    ],
+    "n_diffracted": 1225,
+    "n_diffracted_with_model": 1225
+  }
+}

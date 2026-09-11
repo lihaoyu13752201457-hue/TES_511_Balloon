@@ -1,0 +1,12161 @@
+Include Intro_DEMO2_DR_v2p2.geo
+
+// Volume ColdPlate_MXC_50mK_Retained; material=Copper
+Volume ColdPlate_MXC_50mK_Retained
+ColdPlate_MXC_50mK_Retained.Material Copper
+ColdPlate_MXC_50mK_Retained.Visibility 1
+ColdPlate_MXC_50mK_Retained.Shape PCON 0 360 2 -0.25 0 4.5 0.25 0 4.5
+
+ColdPlate_MXC_50mK_Retained.Position 0 0 0
+ColdPlate_MXC_50mK_Retained.Mother WorldVolume
+
+// Volume ColdPlate_Still_0p7K_SDEnvelope; material=Copper
+Volume ColdPlate_Still_0p7K_SDEnvelope
+ColdPlate_Still_0p7K_SDEnvelope.Material Copper
+ColdPlate_Still_0p7K_SDEnvelope.Visibility 1
+ColdPlate_Still_0p7K_SDEnvelope.Shape PCON 0 360 2 -0.25 0 7.65 0.25 0 7.65
+
+ColdPlate_Still_0p7K_SDEnvelope.Position 0 0 -3.2
+ColdPlate_Still_0p7K_SDEnvelope.Mother WorldVolume
+
+// Volume ColdPlate_4K_SDEnvelope; material=Copper
+Volume ColdPlate_4K_SDEnvelope
+ColdPlate_4K_SDEnvelope.Material Copper
+ColdPlate_4K_SDEnvelope.Visibility 1
+ColdPlate_4K_SDEnvelope.Shape PCON 0 360 2 -0.3 0 8.35 0.3 0 8.35
+
+ColdPlate_4K_SDEnvelope.Position 0 0 -7.2
+ColdPlate_4K_SDEnvelope.Mother WorldVolume
+
+// Volume ColdPlate_60K_SDEnvelope; material=Aluminium
+Volume ColdPlate_60K_SDEnvelope
+ColdPlate_60K_SDEnvelope.Material Aluminium
+ColdPlate_60K_SDEnvelope.Visibility 1
+ColdPlate_60K_SDEnvelope.Shape PCON 0 360 2 -0.3 0 9.05 0.3 0 9.05
+
+ColdPlate_60K_SDEnvelope.Position 0 0 -10.8
+ColdPlate_60K_SDEnvelope.Mother WorldVolume
+
+// Volume Substrate_L0; material=Silicon
+Volume Substrate_L0
+Substrate_L0.Material Silicon
+Substrate_L0.Visibility 1
+Substrate_L0.Shape PCON 0 360 2 -0.015 0 2.2 0.015 0 2.2
+
+// Volume TES_Pixel_L0; material=Ta
+Volume TES_Pixel_L0
+TES_Pixel_L0.Material Ta
+TES_Pixel_L0.Visibility 1
+TES_Pixel_L0.Shape BRIK 0.075 0.075 0.15
+
+// Volume TES_L0; material=Vacuum
+Volume TES_L0
+TES_L0.Material Vacuum
+TES_L0.Visibility 0
+TES_L0.Shape BRIK 2.4 2.4 0.15
+
+Substrate_L0.Position 0 0 1
+Substrate_L0.Mother WorldVolume
+
+TES_L0.Position 0 0 1.165
+TES_L0.Mother WorldVolume
+TES_L0.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00000
+TP_L0_00000.Position -1.705 0 0
+TP_L0_00000.Mother TES_L0
+TP_L0_00000.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00001
+TP_L0_00001.Position -1.55 -0.62 0
+TP_L0_00001.Mother TES_L0
+TP_L0_00001.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00002
+TP_L0_00002.Position -1.55 -0.465 0
+TP_L0_00002.Mother TES_L0
+TP_L0_00002.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00003
+TP_L0_00003.Position -1.55 -0.31 0
+TP_L0_00003.Mother TES_L0
+TP_L0_00003.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00004
+TP_L0_00004.Position -1.55 -0.155 0
+TP_L0_00004.Mother TES_L0
+TP_L0_00004.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00005
+TP_L0_00005.Position -1.55 0 0
+TP_L0_00005.Mother TES_L0
+TP_L0_00005.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00006
+TP_L0_00006.Position -1.55 0.155 0
+TP_L0_00006.Mother TES_L0
+TP_L0_00006.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00007
+TP_L0_00007.Position -1.55 0.31 0
+TP_L0_00007.Mother TES_L0
+TP_L0_00007.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00008
+TP_L0_00008.Position -1.55 0.465 0
+TP_L0_00008.Mother TES_L0
+TP_L0_00008.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00009
+TP_L0_00009.Position -1.55 0.62 0
+TP_L0_00009.Mother TES_L0
+TP_L0_00009.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00010
+TP_L0_00010.Position -1.395 -0.93 0
+TP_L0_00010.Mother TES_L0
+TP_L0_00010.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00011
+TP_L0_00011.Position -1.395 -0.775 0
+TP_L0_00011.Mother TES_L0
+TP_L0_00011.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00012
+TP_L0_00012.Position -1.395 -0.62 0
+TP_L0_00012.Mother TES_L0
+TP_L0_00012.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00013
+TP_L0_00013.Position -1.395 -0.465 0
+TP_L0_00013.Mother TES_L0
+TP_L0_00013.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00014
+TP_L0_00014.Position -1.395 -0.31 0
+TP_L0_00014.Mother TES_L0
+TP_L0_00014.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00015
+TP_L0_00015.Position -1.395 -0.155 0
+TP_L0_00015.Mother TES_L0
+TP_L0_00015.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00016
+TP_L0_00016.Position -1.395 0 0
+TP_L0_00016.Mother TES_L0
+TP_L0_00016.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00017
+TP_L0_00017.Position -1.395 0.155 0
+TP_L0_00017.Mother TES_L0
+TP_L0_00017.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00018
+TP_L0_00018.Position -1.395 0.31 0
+TP_L0_00018.Mother TES_L0
+TP_L0_00018.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00019
+TP_L0_00019.Position -1.395 0.465 0
+TP_L0_00019.Mother TES_L0
+TP_L0_00019.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00020
+TP_L0_00020.Position -1.395 0.62 0
+TP_L0_00020.Mother TES_L0
+TP_L0_00020.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00021
+TP_L0_00021.Position -1.395 0.775 0
+TP_L0_00021.Mother TES_L0
+TP_L0_00021.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00022
+TP_L0_00022.Position -1.395 0.93 0
+TP_L0_00022.Mother TES_L0
+TP_L0_00022.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00023
+TP_L0_00023.Position -1.24 -1.085 0
+TP_L0_00023.Mother TES_L0
+TP_L0_00023.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00024
+TP_L0_00024.Position -1.24 -0.93 0
+TP_L0_00024.Mother TES_L0
+TP_L0_00024.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00025
+TP_L0_00025.Position -1.24 -0.775 0
+TP_L0_00025.Mother TES_L0
+TP_L0_00025.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00026
+TP_L0_00026.Position -1.24 -0.62 0
+TP_L0_00026.Mother TES_L0
+TP_L0_00026.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00027
+TP_L0_00027.Position -1.24 -0.465 0
+TP_L0_00027.Mother TES_L0
+TP_L0_00027.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00028
+TP_L0_00028.Position -1.24 -0.31 0
+TP_L0_00028.Mother TES_L0
+TP_L0_00028.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00029
+TP_L0_00029.Position -1.24 -0.155 0
+TP_L0_00029.Mother TES_L0
+TP_L0_00029.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00030
+TP_L0_00030.Position -1.24 0 0
+TP_L0_00030.Mother TES_L0
+TP_L0_00030.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00031
+TP_L0_00031.Position -1.24 0.155 0
+TP_L0_00031.Mother TES_L0
+TP_L0_00031.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00032
+TP_L0_00032.Position -1.24 0.31 0
+TP_L0_00032.Mother TES_L0
+TP_L0_00032.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00033
+TP_L0_00033.Position -1.24 0.465 0
+TP_L0_00033.Mother TES_L0
+TP_L0_00033.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00034
+TP_L0_00034.Position -1.24 0.62 0
+TP_L0_00034.Mother TES_L0
+TP_L0_00034.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00035
+TP_L0_00035.Position -1.24 0.775 0
+TP_L0_00035.Mother TES_L0
+TP_L0_00035.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00036
+TP_L0_00036.Position -1.24 0.93 0
+TP_L0_00036.Mother TES_L0
+TP_L0_00036.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00037
+TP_L0_00037.Position -1.24 1.085 0
+TP_L0_00037.Mother TES_L0
+TP_L0_00037.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00038
+TP_L0_00038.Position -1.085 -1.24 0
+TP_L0_00038.Mother TES_L0
+TP_L0_00038.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00039
+TP_L0_00039.Position -1.085 -1.085 0
+TP_L0_00039.Mother TES_L0
+TP_L0_00039.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00040
+TP_L0_00040.Position -1.085 -0.93 0
+TP_L0_00040.Mother TES_L0
+TP_L0_00040.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00041
+TP_L0_00041.Position -1.085 -0.775 0
+TP_L0_00041.Mother TES_L0
+TP_L0_00041.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00042
+TP_L0_00042.Position -1.085 -0.62 0
+TP_L0_00042.Mother TES_L0
+TP_L0_00042.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00043
+TP_L0_00043.Position -1.085 -0.465 0
+TP_L0_00043.Mother TES_L0
+TP_L0_00043.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00044
+TP_L0_00044.Position -1.085 -0.31 0
+TP_L0_00044.Mother TES_L0
+TP_L0_00044.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00045
+TP_L0_00045.Position -1.085 -0.155 0
+TP_L0_00045.Mother TES_L0
+TP_L0_00045.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00046
+TP_L0_00046.Position -1.085 0 0
+TP_L0_00046.Mother TES_L0
+TP_L0_00046.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00047
+TP_L0_00047.Position -1.085 0.155 0
+TP_L0_00047.Mother TES_L0
+TP_L0_00047.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00048
+TP_L0_00048.Position -1.085 0.31 0
+TP_L0_00048.Mother TES_L0
+TP_L0_00048.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00049
+TP_L0_00049.Position -1.085 0.465 0
+TP_L0_00049.Mother TES_L0
+TP_L0_00049.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00050
+TP_L0_00050.Position -1.085 0.62 0
+TP_L0_00050.Mother TES_L0
+TP_L0_00050.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00051
+TP_L0_00051.Position -1.085 0.775 0
+TP_L0_00051.Mother TES_L0
+TP_L0_00051.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00052
+TP_L0_00052.Position -1.085 0.93 0
+TP_L0_00052.Mother TES_L0
+TP_L0_00052.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00053
+TP_L0_00053.Position -1.085 1.085 0
+TP_L0_00053.Mother TES_L0
+TP_L0_00053.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00054
+TP_L0_00054.Position -1.085 1.24 0
+TP_L0_00054.Mother TES_L0
+TP_L0_00054.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00055
+TP_L0_00055.Position -0.93 -1.395 0
+TP_L0_00055.Mother TES_L0
+TP_L0_00055.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00056
+TP_L0_00056.Position -0.93 -1.24 0
+TP_L0_00056.Mother TES_L0
+TP_L0_00056.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00057
+TP_L0_00057.Position -0.93 -1.085 0
+TP_L0_00057.Mother TES_L0
+TP_L0_00057.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00058
+TP_L0_00058.Position -0.93 -0.93 0
+TP_L0_00058.Mother TES_L0
+TP_L0_00058.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00059
+TP_L0_00059.Position -0.93 -0.775 0
+TP_L0_00059.Mother TES_L0
+TP_L0_00059.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00060
+TP_L0_00060.Position -0.93 -0.62 0
+TP_L0_00060.Mother TES_L0
+TP_L0_00060.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00061
+TP_L0_00061.Position -0.93 -0.465 0
+TP_L0_00061.Mother TES_L0
+TP_L0_00061.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00062
+TP_L0_00062.Position -0.93 -0.31 0
+TP_L0_00062.Mother TES_L0
+TP_L0_00062.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00063
+TP_L0_00063.Position -0.93 -0.155 0
+TP_L0_00063.Mother TES_L0
+TP_L0_00063.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00064
+TP_L0_00064.Position -0.93 0 0
+TP_L0_00064.Mother TES_L0
+TP_L0_00064.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00065
+TP_L0_00065.Position -0.93 0.155 0
+TP_L0_00065.Mother TES_L0
+TP_L0_00065.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00066
+TP_L0_00066.Position -0.93 0.31 0
+TP_L0_00066.Mother TES_L0
+TP_L0_00066.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00067
+TP_L0_00067.Position -0.93 0.465 0
+TP_L0_00067.Mother TES_L0
+TP_L0_00067.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00068
+TP_L0_00068.Position -0.93 0.62 0
+TP_L0_00068.Mother TES_L0
+TP_L0_00068.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00069
+TP_L0_00069.Position -0.93 0.775 0
+TP_L0_00069.Mother TES_L0
+TP_L0_00069.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00070
+TP_L0_00070.Position -0.93 0.93 0
+TP_L0_00070.Mother TES_L0
+TP_L0_00070.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00071
+TP_L0_00071.Position -0.93 1.085 0
+TP_L0_00071.Mother TES_L0
+TP_L0_00071.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00072
+TP_L0_00072.Position -0.93 1.24 0
+TP_L0_00072.Mother TES_L0
+TP_L0_00072.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00073
+TP_L0_00073.Position -0.93 1.395 0
+TP_L0_00073.Mother TES_L0
+TP_L0_00073.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00074
+TP_L0_00074.Position -0.775 -1.395 0
+TP_L0_00074.Mother TES_L0
+TP_L0_00074.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00075
+TP_L0_00075.Position -0.775 -1.24 0
+TP_L0_00075.Mother TES_L0
+TP_L0_00075.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00076
+TP_L0_00076.Position -0.775 -1.085 0
+TP_L0_00076.Mother TES_L0
+TP_L0_00076.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00077
+TP_L0_00077.Position -0.775 -0.93 0
+TP_L0_00077.Mother TES_L0
+TP_L0_00077.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00078
+TP_L0_00078.Position -0.775 -0.775 0
+TP_L0_00078.Mother TES_L0
+TP_L0_00078.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00079
+TP_L0_00079.Position -0.775 -0.62 0
+TP_L0_00079.Mother TES_L0
+TP_L0_00079.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00080
+TP_L0_00080.Position -0.775 -0.465 0
+TP_L0_00080.Mother TES_L0
+TP_L0_00080.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00081
+TP_L0_00081.Position -0.775 -0.31 0
+TP_L0_00081.Mother TES_L0
+TP_L0_00081.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00082
+TP_L0_00082.Position -0.775 -0.155 0
+TP_L0_00082.Mother TES_L0
+TP_L0_00082.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00083
+TP_L0_00083.Position -0.775 0 0
+TP_L0_00083.Mother TES_L0
+TP_L0_00083.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00084
+TP_L0_00084.Position -0.775 0.155 0
+TP_L0_00084.Mother TES_L0
+TP_L0_00084.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00085
+TP_L0_00085.Position -0.775 0.31 0
+TP_L0_00085.Mother TES_L0
+TP_L0_00085.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00086
+TP_L0_00086.Position -0.775 0.465 0
+TP_L0_00086.Mother TES_L0
+TP_L0_00086.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00087
+TP_L0_00087.Position -0.775 0.62 0
+TP_L0_00087.Mother TES_L0
+TP_L0_00087.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00088
+TP_L0_00088.Position -0.775 0.775 0
+TP_L0_00088.Mother TES_L0
+TP_L0_00088.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00089
+TP_L0_00089.Position -0.775 0.93 0
+TP_L0_00089.Mother TES_L0
+TP_L0_00089.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00090
+TP_L0_00090.Position -0.775 1.085 0
+TP_L0_00090.Mother TES_L0
+TP_L0_00090.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00091
+TP_L0_00091.Position -0.775 1.24 0
+TP_L0_00091.Mother TES_L0
+TP_L0_00091.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00092
+TP_L0_00092.Position -0.775 1.395 0
+TP_L0_00092.Mother TES_L0
+TP_L0_00092.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00093
+TP_L0_00093.Position -0.62 -1.55 0
+TP_L0_00093.Mother TES_L0
+TP_L0_00093.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00094
+TP_L0_00094.Position -0.62 -1.395 0
+TP_L0_00094.Mother TES_L0
+TP_L0_00094.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00095
+TP_L0_00095.Position -0.62 -1.24 0
+TP_L0_00095.Mother TES_L0
+TP_L0_00095.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00096
+TP_L0_00096.Position -0.62 -1.085 0
+TP_L0_00096.Mother TES_L0
+TP_L0_00096.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00097
+TP_L0_00097.Position -0.62 -0.93 0
+TP_L0_00097.Mother TES_L0
+TP_L0_00097.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00098
+TP_L0_00098.Position -0.62 -0.775 0
+TP_L0_00098.Mother TES_L0
+TP_L0_00098.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00099
+TP_L0_00099.Position -0.62 -0.62 0
+TP_L0_00099.Mother TES_L0
+TP_L0_00099.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00100
+TP_L0_00100.Position -0.62 -0.465 0
+TP_L0_00100.Mother TES_L0
+TP_L0_00100.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00101
+TP_L0_00101.Position -0.62 -0.31 0
+TP_L0_00101.Mother TES_L0
+TP_L0_00101.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00102
+TP_L0_00102.Position -0.62 -0.155 0
+TP_L0_00102.Mother TES_L0
+TP_L0_00102.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00103
+TP_L0_00103.Position -0.62 0 0
+TP_L0_00103.Mother TES_L0
+TP_L0_00103.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00104
+TP_L0_00104.Position -0.62 0.155 0
+TP_L0_00104.Mother TES_L0
+TP_L0_00104.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00105
+TP_L0_00105.Position -0.62 0.31 0
+TP_L0_00105.Mother TES_L0
+TP_L0_00105.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00106
+TP_L0_00106.Position -0.62 0.465 0
+TP_L0_00106.Mother TES_L0
+TP_L0_00106.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00107
+TP_L0_00107.Position -0.62 0.62 0
+TP_L0_00107.Mother TES_L0
+TP_L0_00107.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00108
+TP_L0_00108.Position -0.62 0.775 0
+TP_L0_00108.Mother TES_L0
+TP_L0_00108.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00109
+TP_L0_00109.Position -0.62 0.93 0
+TP_L0_00109.Mother TES_L0
+TP_L0_00109.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00110
+TP_L0_00110.Position -0.62 1.085 0
+TP_L0_00110.Mother TES_L0
+TP_L0_00110.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00111
+TP_L0_00111.Position -0.62 1.24 0
+TP_L0_00111.Mother TES_L0
+TP_L0_00111.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00112
+TP_L0_00112.Position -0.62 1.395 0
+TP_L0_00112.Mother TES_L0
+TP_L0_00112.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00113
+TP_L0_00113.Position -0.62 1.55 0
+TP_L0_00113.Mother TES_L0
+TP_L0_00113.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00114
+TP_L0_00114.Position -0.465 -1.55 0
+TP_L0_00114.Mother TES_L0
+TP_L0_00114.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00115
+TP_L0_00115.Position -0.465 -1.395 0
+TP_L0_00115.Mother TES_L0
+TP_L0_00115.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00116
+TP_L0_00116.Position -0.465 -1.24 0
+TP_L0_00116.Mother TES_L0
+TP_L0_00116.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00117
+TP_L0_00117.Position -0.465 -1.085 0
+TP_L0_00117.Mother TES_L0
+TP_L0_00117.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00118
+TP_L0_00118.Position -0.465 -0.93 0
+TP_L0_00118.Mother TES_L0
+TP_L0_00118.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00119
+TP_L0_00119.Position -0.465 -0.775 0
+TP_L0_00119.Mother TES_L0
+TP_L0_00119.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00120
+TP_L0_00120.Position -0.465 -0.62 0
+TP_L0_00120.Mother TES_L0
+TP_L0_00120.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00121
+TP_L0_00121.Position -0.465 -0.465 0
+TP_L0_00121.Mother TES_L0
+TP_L0_00121.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00122
+TP_L0_00122.Position -0.465 -0.31 0
+TP_L0_00122.Mother TES_L0
+TP_L0_00122.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00123
+TP_L0_00123.Position -0.465 -0.155 0
+TP_L0_00123.Mother TES_L0
+TP_L0_00123.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00124
+TP_L0_00124.Position -0.465 0 0
+TP_L0_00124.Mother TES_L0
+TP_L0_00124.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00125
+TP_L0_00125.Position -0.465 0.155 0
+TP_L0_00125.Mother TES_L0
+TP_L0_00125.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00126
+TP_L0_00126.Position -0.465 0.31 0
+TP_L0_00126.Mother TES_L0
+TP_L0_00126.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00127
+TP_L0_00127.Position -0.465 0.465 0
+TP_L0_00127.Mother TES_L0
+TP_L0_00127.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00128
+TP_L0_00128.Position -0.465 0.62 0
+TP_L0_00128.Mother TES_L0
+TP_L0_00128.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00129
+TP_L0_00129.Position -0.465 0.775 0
+TP_L0_00129.Mother TES_L0
+TP_L0_00129.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00130
+TP_L0_00130.Position -0.465 0.93 0
+TP_L0_00130.Mother TES_L0
+TP_L0_00130.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00131
+TP_L0_00131.Position -0.465 1.085 0
+TP_L0_00131.Mother TES_L0
+TP_L0_00131.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00132
+TP_L0_00132.Position -0.465 1.24 0
+TP_L0_00132.Mother TES_L0
+TP_L0_00132.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00133
+TP_L0_00133.Position -0.465 1.395 0
+TP_L0_00133.Mother TES_L0
+TP_L0_00133.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00134
+TP_L0_00134.Position -0.465 1.55 0
+TP_L0_00134.Mother TES_L0
+TP_L0_00134.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00135
+TP_L0_00135.Position -0.31 -1.55 0
+TP_L0_00135.Mother TES_L0
+TP_L0_00135.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00136
+TP_L0_00136.Position -0.31 -1.395 0
+TP_L0_00136.Mother TES_L0
+TP_L0_00136.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00137
+TP_L0_00137.Position -0.31 -1.24 0
+TP_L0_00137.Mother TES_L0
+TP_L0_00137.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00138
+TP_L0_00138.Position -0.31 -1.085 0
+TP_L0_00138.Mother TES_L0
+TP_L0_00138.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00139
+TP_L0_00139.Position -0.31 -0.93 0
+TP_L0_00139.Mother TES_L0
+TP_L0_00139.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00140
+TP_L0_00140.Position -0.31 -0.775 0
+TP_L0_00140.Mother TES_L0
+TP_L0_00140.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00141
+TP_L0_00141.Position -0.31 -0.62 0
+TP_L0_00141.Mother TES_L0
+TP_L0_00141.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00142
+TP_L0_00142.Position -0.31 -0.465 0
+TP_L0_00142.Mother TES_L0
+TP_L0_00142.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00143
+TP_L0_00143.Position -0.31 -0.31 0
+TP_L0_00143.Mother TES_L0
+TP_L0_00143.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00144
+TP_L0_00144.Position -0.31 -0.155 0
+TP_L0_00144.Mother TES_L0
+TP_L0_00144.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00145
+TP_L0_00145.Position -0.31 0 0
+TP_L0_00145.Mother TES_L0
+TP_L0_00145.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00146
+TP_L0_00146.Position -0.31 0.155 0
+TP_L0_00146.Mother TES_L0
+TP_L0_00146.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00147
+TP_L0_00147.Position -0.31 0.31 0
+TP_L0_00147.Mother TES_L0
+TP_L0_00147.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00148
+TP_L0_00148.Position -0.31 0.465 0
+TP_L0_00148.Mother TES_L0
+TP_L0_00148.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00149
+TP_L0_00149.Position -0.31 0.62 0
+TP_L0_00149.Mother TES_L0
+TP_L0_00149.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00150
+TP_L0_00150.Position -0.31 0.775 0
+TP_L0_00150.Mother TES_L0
+TP_L0_00150.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00151
+TP_L0_00151.Position -0.31 0.93 0
+TP_L0_00151.Mother TES_L0
+TP_L0_00151.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00152
+TP_L0_00152.Position -0.31 1.085 0
+TP_L0_00152.Mother TES_L0
+TP_L0_00152.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00153
+TP_L0_00153.Position -0.31 1.24 0
+TP_L0_00153.Mother TES_L0
+TP_L0_00153.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00154
+TP_L0_00154.Position -0.31 1.395 0
+TP_L0_00154.Mother TES_L0
+TP_L0_00154.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00155
+TP_L0_00155.Position -0.31 1.55 0
+TP_L0_00155.Mother TES_L0
+TP_L0_00155.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00156
+TP_L0_00156.Position -0.155 -1.55 0
+TP_L0_00156.Mother TES_L0
+TP_L0_00156.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00157
+TP_L0_00157.Position -0.155 -1.395 0
+TP_L0_00157.Mother TES_L0
+TP_L0_00157.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00158
+TP_L0_00158.Position -0.155 -1.24 0
+TP_L0_00158.Mother TES_L0
+TP_L0_00158.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00159
+TP_L0_00159.Position -0.155 -1.085 0
+TP_L0_00159.Mother TES_L0
+TP_L0_00159.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00160
+TP_L0_00160.Position -0.155 -0.93 0
+TP_L0_00160.Mother TES_L0
+TP_L0_00160.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00161
+TP_L0_00161.Position -0.155 -0.775 0
+TP_L0_00161.Mother TES_L0
+TP_L0_00161.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00162
+TP_L0_00162.Position -0.155 -0.62 0
+TP_L0_00162.Mother TES_L0
+TP_L0_00162.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00163
+TP_L0_00163.Position -0.155 -0.465 0
+TP_L0_00163.Mother TES_L0
+TP_L0_00163.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00164
+TP_L0_00164.Position -0.155 -0.31 0
+TP_L0_00164.Mother TES_L0
+TP_L0_00164.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00165
+TP_L0_00165.Position -0.155 -0.155 0
+TP_L0_00165.Mother TES_L0
+TP_L0_00165.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00166
+TP_L0_00166.Position -0.155 0 0
+TP_L0_00166.Mother TES_L0
+TP_L0_00166.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00167
+TP_L0_00167.Position -0.155 0.155 0
+TP_L0_00167.Mother TES_L0
+TP_L0_00167.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00168
+TP_L0_00168.Position -0.155 0.31 0
+TP_L0_00168.Mother TES_L0
+TP_L0_00168.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00169
+TP_L0_00169.Position -0.155 0.465 0
+TP_L0_00169.Mother TES_L0
+TP_L0_00169.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00170
+TP_L0_00170.Position -0.155 0.62 0
+TP_L0_00170.Mother TES_L0
+TP_L0_00170.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00171
+TP_L0_00171.Position -0.155 0.775 0
+TP_L0_00171.Mother TES_L0
+TP_L0_00171.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00172
+TP_L0_00172.Position -0.155 0.93 0
+TP_L0_00172.Mother TES_L0
+TP_L0_00172.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00173
+TP_L0_00173.Position -0.155 1.085 0
+TP_L0_00173.Mother TES_L0
+TP_L0_00173.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00174
+TP_L0_00174.Position -0.155 1.24 0
+TP_L0_00174.Mother TES_L0
+TP_L0_00174.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00175
+TP_L0_00175.Position -0.155 1.395 0
+TP_L0_00175.Mother TES_L0
+TP_L0_00175.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00176
+TP_L0_00176.Position -0.155 1.55 0
+TP_L0_00176.Mother TES_L0
+TP_L0_00176.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00177
+TP_L0_00177.Position 0 -1.705 0
+TP_L0_00177.Mother TES_L0
+TP_L0_00177.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00178
+TP_L0_00178.Position 0 -1.55 0
+TP_L0_00178.Mother TES_L0
+TP_L0_00178.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00179
+TP_L0_00179.Position 0 -1.395 0
+TP_L0_00179.Mother TES_L0
+TP_L0_00179.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00180
+TP_L0_00180.Position 0 -1.24 0
+TP_L0_00180.Mother TES_L0
+TP_L0_00180.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00181
+TP_L0_00181.Position 0 -1.085 0
+TP_L0_00181.Mother TES_L0
+TP_L0_00181.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00182
+TP_L0_00182.Position 0 -0.93 0
+TP_L0_00182.Mother TES_L0
+TP_L0_00182.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00183
+TP_L0_00183.Position 0 -0.775 0
+TP_L0_00183.Mother TES_L0
+TP_L0_00183.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00184
+TP_L0_00184.Position 0 -0.62 0
+TP_L0_00184.Mother TES_L0
+TP_L0_00184.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00185
+TP_L0_00185.Position 0 -0.465 0
+TP_L0_00185.Mother TES_L0
+TP_L0_00185.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00186
+TP_L0_00186.Position 0 -0.31 0
+TP_L0_00186.Mother TES_L0
+TP_L0_00186.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00187
+TP_L0_00187.Position 0 -0.155 0
+TP_L0_00187.Mother TES_L0
+TP_L0_00187.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00188
+TP_L0_00188.Position 0 0 0
+TP_L0_00188.Mother TES_L0
+TP_L0_00188.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00189
+TP_L0_00189.Position 0 0.155 0
+TP_L0_00189.Mother TES_L0
+TP_L0_00189.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00190
+TP_L0_00190.Position 0 0.31 0
+TP_L0_00190.Mother TES_L0
+TP_L0_00190.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00191
+TP_L0_00191.Position 0 0.465 0
+TP_L0_00191.Mother TES_L0
+TP_L0_00191.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00192
+TP_L0_00192.Position 0 0.62 0
+TP_L0_00192.Mother TES_L0
+TP_L0_00192.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00193
+TP_L0_00193.Position 0 0.775 0
+TP_L0_00193.Mother TES_L0
+TP_L0_00193.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00194
+TP_L0_00194.Position 0 0.93 0
+TP_L0_00194.Mother TES_L0
+TP_L0_00194.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00195
+TP_L0_00195.Position 0 1.085 0
+TP_L0_00195.Mother TES_L0
+TP_L0_00195.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00196
+TP_L0_00196.Position 0 1.24 0
+TP_L0_00196.Mother TES_L0
+TP_L0_00196.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00197
+TP_L0_00197.Position 0 1.395 0
+TP_L0_00197.Mother TES_L0
+TP_L0_00197.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00198
+TP_L0_00198.Position 0 1.55 0
+TP_L0_00198.Mother TES_L0
+TP_L0_00198.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00199
+TP_L0_00199.Position 0 1.705 0
+TP_L0_00199.Mother TES_L0
+TP_L0_00199.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00200
+TP_L0_00200.Position 0.155 -1.55 0
+TP_L0_00200.Mother TES_L0
+TP_L0_00200.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00201
+TP_L0_00201.Position 0.155 -1.395 0
+TP_L0_00201.Mother TES_L0
+TP_L0_00201.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00202
+TP_L0_00202.Position 0.155 -1.24 0
+TP_L0_00202.Mother TES_L0
+TP_L0_00202.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00203
+TP_L0_00203.Position 0.155 -1.085 0
+TP_L0_00203.Mother TES_L0
+TP_L0_00203.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00204
+TP_L0_00204.Position 0.155 -0.93 0
+TP_L0_00204.Mother TES_L0
+TP_L0_00204.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00205
+TP_L0_00205.Position 0.155 -0.775 0
+TP_L0_00205.Mother TES_L0
+TP_L0_00205.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00206
+TP_L0_00206.Position 0.155 -0.62 0
+TP_L0_00206.Mother TES_L0
+TP_L0_00206.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00207
+TP_L0_00207.Position 0.155 -0.465 0
+TP_L0_00207.Mother TES_L0
+TP_L0_00207.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00208
+TP_L0_00208.Position 0.155 -0.31 0
+TP_L0_00208.Mother TES_L0
+TP_L0_00208.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00209
+TP_L0_00209.Position 0.155 -0.155 0
+TP_L0_00209.Mother TES_L0
+TP_L0_00209.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00210
+TP_L0_00210.Position 0.155 0 0
+TP_L0_00210.Mother TES_L0
+TP_L0_00210.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00211
+TP_L0_00211.Position 0.155 0.155 0
+TP_L0_00211.Mother TES_L0
+TP_L0_00211.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00212
+TP_L0_00212.Position 0.155 0.31 0
+TP_L0_00212.Mother TES_L0
+TP_L0_00212.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00213
+TP_L0_00213.Position 0.155 0.465 0
+TP_L0_00213.Mother TES_L0
+TP_L0_00213.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00214
+TP_L0_00214.Position 0.155 0.62 0
+TP_L0_00214.Mother TES_L0
+TP_L0_00214.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00215
+TP_L0_00215.Position 0.155 0.775 0
+TP_L0_00215.Mother TES_L0
+TP_L0_00215.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00216
+TP_L0_00216.Position 0.155 0.93 0
+TP_L0_00216.Mother TES_L0
+TP_L0_00216.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00217
+TP_L0_00217.Position 0.155 1.085 0
+TP_L0_00217.Mother TES_L0
+TP_L0_00217.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00218
+TP_L0_00218.Position 0.155 1.24 0
+TP_L0_00218.Mother TES_L0
+TP_L0_00218.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00219
+TP_L0_00219.Position 0.155 1.395 0
+TP_L0_00219.Mother TES_L0
+TP_L0_00219.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00220
+TP_L0_00220.Position 0.155 1.55 0
+TP_L0_00220.Mother TES_L0
+TP_L0_00220.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00221
+TP_L0_00221.Position 0.31 -1.55 0
+TP_L0_00221.Mother TES_L0
+TP_L0_00221.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00222
+TP_L0_00222.Position 0.31 -1.395 0
+TP_L0_00222.Mother TES_L0
+TP_L0_00222.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00223
+TP_L0_00223.Position 0.31 -1.24 0
+TP_L0_00223.Mother TES_L0
+TP_L0_00223.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00224
+TP_L0_00224.Position 0.31 -1.085 0
+TP_L0_00224.Mother TES_L0
+TP_L0_00224.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00225
+TP_L0_00225.Position 0.31 -0.93 0
+TP_L0_00225.Mother TES_L0
+TP_L0_00225.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00226
+TP_L0_00226.Position 0.31 -0.775 0
+TP_L0_00226.Mother TES_L0
+TP_L0_00226.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00227
+TP_L0_00227.Position 0.31 -0.62 0
+TP_L0_00227.Mother TES_L0
+TP_L0_00227.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00228
+TP_L0_00228.Position 0.31 -0.465 0
+TP_L0_00228.Mother TES_L0
+TP_L0_00228.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00229
+TP_L0_00229.Position 0.31 -0.31 0
+TP_L0_00229.Mother TES_L0
+TP_L0_00229.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00230
+TP_L0_00230.Position 0.31 -0.155 0
+TP_L0_00230.Mother TES_L0
+TP_L0_00230.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00231
+TP_L0_00231.Position 0.31 0 0
+TP_L0_00231.Mother TES_L0
+TP_L0_00231.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00232
+TP_L0_00232.Position 0.31 0.155 0
+TP_L0_00232.Mother TES_L0
+TP_L0_00232.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00233
+TP_L0_00233.Position 0.31 0.31 0
+TP_L0_00233.Mother TES_L0
+TP_L0_00233.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00234
+TP_L0_00234.Position 0.31 0.465 0
+TP_L0_00234.Mother TES_L0
+TP_L0_00234.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00235
+TP_L0_00235.Position 0.31 0.62 0
+TP_L0_00235.Mother TES_L0
+TP_L0_00235.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00236
+TP_L0_00236.Position 0.31 0.775 0
+TP_L0_00236.Mother TES_L0
+TP_L0_00236.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00237
+TP_L0_00237.Position 0.31 0.93 0
+TP_L0_00237.Mother TES_L0
+TP_L0_00237.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00238
+TP_L0_00238.Position 0.31 1.085 0
+TP_L0_00238.Mother TES_L0
+TP_L0_00238.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00239
+TP_L0_00239.Position 0.31 1.24 0
+TP_L0_00239.Mother TES_L0
+TP_L0_00239.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00240
+TP_L0_00240.Position 0.31 1.395 0
+TP_L0_00240.Mother TES_L0
+TP_L0_00240.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00241
+TP_L0_00241.Position 0.31 1.55 0
+TP_L0_00241.Mother TES_L0
+TP_L0_00241.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00242
+TP_L0_00242.Position 0.465 -1.55 0
+TP_L0_00242.Mother TES_L0
+TP_L0_00242.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00243
+TP_L0_00243.Position 0.465 -1.395 0
+TP_L0_00243.Mother TES_L0
+TP_L0_00243.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00244
+TP_L0_00244.Position 0.465 -1.24 0
+TP_L0_00244.Mother TES_L0
+TP_L0_00244.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00245
+TP_L0_00245.Position 0.465 -1.085 0
+TP_L0_00245.Mother TES_L0
+TP_L0_00245.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00246
+TP_L0_00246.Position 0.465 -0.93 0
+TP_L0_00246.Mother TES_L0
+TP_L0_00246.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00247
+TP_L0_00247.Position 0.465 -0.775 0
+TP_L0_00247.Mother TES_L0
+TP_L0_00247.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00248
+TP_L0_00248.Position 0.465 -0.62 0
+TP_L0_00248.Mother TES_L0
+TP_L0_00248.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00249
+TP_L0_00249.Position 0.465 -0.465 0
+TP_L0_00249.Mother TES_L0
+TP_L0_00249.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00250
+TP_L0_00250.Position 0.465 -0.31 0
+TP_L0_00250.Mother TES_L0
+TP_L0_00250.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00251
+TP_L0_00251.Position 0.465 -0.155 0
+TP_L0_00251.Mother TES_L0
+TP_L0_00251.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00252
+TP_L0_00252.Position 0.465 0 0
+TP_L0_00252.Mother TES_L0
+TP_L0_00252.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00253
+TP_L0_00253.Position 0.465 0.155 0
+TP_L0_00253.Mother TES_L0
+TP_L0_00253.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00254
+TP_L0_00254.Position 0.465 0.31 0
+TP_L0_00254.Mother TES_L0
+TP_L0_00254.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00255
+TP_L0_00255.Position 0.465 0.465 0
+TP_L0_00255.Mother TES_L0
+TP_L0_00255.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00256
+TP_L0_00256.Position 0.465 0.62 0
+TP_L0_00256.Mother TES_L0
+TP_L0_00256.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00257
+TP_L0_00257.Position 0.465 0.775 0
+TP_L0_00257.Mother TES_L0
+TP_L0_00257.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00258
+TP_L0_00258.Position 0.465 0.93 0
+TP_L0_00258.Mother TES_L0
+TP_L0_00258.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00259
+TP_L0_00259.Position 0.465 1.085 0
+TP_L0_00259.Mother TES_L0
+TP_L0_00259.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00260
+TP_L0_00260.Position 0.465 1.24 0
+TP_L0_00260.Mother TES_L0
+TP_L0_00260.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00261
+TP_L0_00261.Position 0.465 1.395 0
+TP_L0_00261.Mother TES_L0
+TP_L0_00261.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00262
+TP_L0_00262.Position 0.465 1.55 0
+TP_L0_00262.Mother TES_L0
+TP_L0_00262.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00263
+TP_L0_00263.Position 0.62 -1.55 0
+TP_L0_00263.Mother TES_L0
+TP_L0_00263.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00264
+TP_L0_00264.Position 0.62 -1.395 0
+TP_L0_00264.Mother TES_L0
+TP_L0_00264.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00265
+TP_L0_00265.Position 0.62 -1.24 0
+TP_L0_00265.Mother TES_L0
+TP_L0_00265.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00266
+TP_L0_00266.Position 0.62 -1.085 0
+TP_L0_00266.Mother TES_L0
+TP_L0_00266.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00267
+TP_L0_00267.Position 0.62 -0.93 0
+TP_L0_00267.Mother TES_L0
+TP_L0_00267.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00268
+TP_L0_00268.Position 0.62 -0.775 0
+TP_L0_00268.Mother TES_L0
+TP_L0_00268.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00269
+TP_L0_00269.Position 0.62 -0.62 0
+TP_L0_00269.Mother TES_L0
+TP_L0_00269.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00270
+TP_L0_00270.Position 0.62 -0.465 0
+TP_L0_00270.Mother TES_L0
+TP_L0_00270.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00271
+TP_L0_00271.Position 0.62 -0.31 0
+TP_L0_00271.Mother TES_L0
+TP_L0_00271.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00272
+TP_L0_00272.Position 0.62 -0.155 0
+TP_L0_00272.Mother TES_L0
+TP_L0_00272.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00273
+TP_L0_00273.Position 0.62 0 0
+TP_L0_00273.Mother TES_L0
+TP_L0_00273.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00274
+TP_L0_00274.Position 0.62 0.155 0
+TP_L0_00274.Mother TES_L0
+TP_L0_00274.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00275
+TP_L0_00275.Position 0.62 0.31 0
+TP_L0_00275.Mother TES_L0
+TP_L0_00275.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00276
+TP_L0_00276.Position 0.62 0.465 0
+TP_L0_00276.Mother TES_L0
+TP_L0_00276.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00277
+TP_L0_00277.Position 0.62 0.62 0
+TP_L0_00277.Mother TES_L0
+TP_L0_00277.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00278
+TP_L0_00278.Position 0.62 0.775 0
+TP_L0_00278.Mother TES_L0
+TP_L0_00278.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00279
+TP_L0_00279.Position 0.62 0.93 0
+TP_L0_00279.Mother TES_L0
+TP_L0_00279.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00280
+TP_L0_00280.Position 0.62 1.085 0
+TP_L0_00280.Mother TES_L0
+TP_L0_00280.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00281
+TP_L0_00281.Position 0.62 1.24 0
+TP_L0_00281.Mother TES_L0
+TP_L0_00281.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00282
+TP_L0_00282.Position 0.62 1.395 0
+TP_L0_00282.Mother TES_L0
+TP_L0_00282.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00283
+TP_L0_00283.Position 0.62 1.55 0
+TP_L0_00283.Mother TES_L0
+TP_L0_00283.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00284
+TP_L0_00284.Position 0.775 -1.395 0
+TP_L0_00284.Mother TES_L0
+TP_L0_00284.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00285
+TP_L0_00285.Position 0.775 -1.24 0
+TP_L0_00285.Mother TES_L0
+TP_L0_00285.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00286
+TP_L0_00286.Position 0.775 -1.085 0
+TP_L0_00286.Mother TES_L0
+TP_L0_00286.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00287
+TP_L0_00287.Position 0.775 -0.93 0
+TP_L0_00287.Mother TES_L0
+TP_L0_00287.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00288
+TP_L0_00288.Position 0.775 -0.775 0
+TP_L0_00288.Mother TES_L0
+TP_L0_00288.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00289
+TP_L0_00289.Position 0.775 -0.62 0
+TP_L0_00289.Mother TES_L0
+TP_L0_00289.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00290
+TP_L0_00290.Position 0.775 -0.465 0
+TP_L0_00290.Mother TES_L0
+TP_L0_00290.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00291
+TP_L0_00291.Position 0.775 -0.31 0
+TP_L0_00291.Mother TES_L0
+TP_L0_00291.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00292
+TP_L0_00292.Position 0.775 -0.155 0
+TP_L0_00292.Mother TES_L0
+TP_L0_00292.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00293
+TP_L0_00293.Position 0.775 0 0
+TP_L0_00293.Mother TES_L0
+TP_L0_00293.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00294
+TP_L0_00294.Position 0.775 0.155 0
+TP_L0_00294.Mother TES_L0
+TP_L0_00294.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00295
+TP_L0_00295.Position 0.775 0.31 0
+TP_L0_00295.Mother TES_L0
+TP_L0_00295.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00296
+TP_L0_00296.Position 0.775 0.465 0
+TP_L0_00296.Mother TES_L0
+TP_L0_00296.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00297
+TP_L0_00297.Position 0.775 0.62 0
+TP_L0_00297.Mother TES_L0
+TP_L0_00297.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00298
+TP_L0_00298.Position 0.775 0.775 0
+TP_L0_00298.Mother TES_L0
+TP_L0_00298.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00299
+TP_L0_00299.Position 0.775 0.93 0
+TP_L0_00299.Mother TES_L0
+TP_L0_00299.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00300
+TP_L0_00300.Position 0.775 1.085 0
+TP_L0_00300.Mother TES_L0
+TP_L0_00300.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00301
+TP_L0_00301.Position 0.775 1.24 0
+TP_L0_00301.Mother TES_L0
+TP_L0_00301.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00302
+TP_L0_00302.Position 0.775 1.395 0
+TP_L0_00302.Mother TES_L0
+TP_L0_00302.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00303
+TP_L0_00303.Position 0.93 -1.395 0
+TP_L0_00303.Mother TES_L0
+TP_L0_00303.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00304
+TP_L0_00304.Position 0.93 -1.24 0
+TP_L0_00304.Mother TES_L0
+TP_L0_00304.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00305
+TP_L0_00305.Position 0.93 -1.085 0
+TP_L0_00305.Mother TES_L0
+TP_L0_00305.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00306
+TP_L0_00306.Position 0.93 -0.93 0
+TP_L0_00306.Mother TES_L0
+TP_L0_00306.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00307
+TP_L0_00307.Position 0.93 -0.775 0
+TP_L0_00307.Mother TES_L0
+TP_L0_00307.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00308
+TP_L0_00308.Position 0.93 -0.62 0
+TP_L0_00308.Mother TES_L0
+TP_L0_00308.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00309
+TP_L0_00309.Position 0.93 -0.465 0
+TP_L0_00309.Mother TES_L0
+TP_L0_00309.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00310
+TP_L0_00310.Position 0.93 -0.31 0
+TP_L0_00310.Mother TES_L0
+TP_L0_00310.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00311
+TP_L0_00311.Position 0.93 -0.155 0
+TP_L0_00311.Mother TES_L0
+TP_L0_00311.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00312
+TP_L0_00312.Position 0.93 0 0
+TP_L0_00312.Mother TES_L0
+TP_L0_00312.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00313
+TP_L0_00313.Position 0.93 0.155 0
+TP_L0_00313.Mother TES_L0
+TP_L0_00313.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00314
+TP_L0_00314.Position 0.93 0.31 0
+TP_L0_00314.Mother TES_L0
+TP_L0_00314.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00315
+TP_L0_00315.Position 0.93 0.465 0
+TP_L0_00315.Mother TES_L0
+TP_L0_00315.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00316
+TP_L0_00316.Position 0.93 0.62 0
+TP_L0_00316.Mother TES_L0
+TP_L0_00316.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00317
+TP_L0_00317.Position 0.93 0.775 0
+TP_L0_00317.Mother TES_L0
+TP_L0_00317.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00318
+TP_L0_00318.Position 0.93 0.93 0
+TP_L0_00318.Mother TES_L0
+TP_L0_00318.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00319
+TP_L0_00319.Position 0.93 1.085 0
+TP_L0_00319.Mother TES_L0
+TP_L0_00319.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00320
+TP_L0_00320.Position 0.93 1.24 0
+TP_L0_00320.Mother TES_L0
+TP_L0_00320.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00321
+TP_L0_00321.Position 0.93 1.395 0
+TP_L0_00321.Mother TES_L0
+TP_L0_00321.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00322
+TP_L0_00322.Position 1.085 -1.24 0
+TP_L0_00322.Mother TES_L0
+TP_L0_00322.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00323
+TP_L0_00323.Position 1.085 -1.085 0
+TP_L0_00323.Mother TES_L0
+TP_L0_00323.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00324
+TP_L0_00324.Position 1.085 -0.93 0
+TP_L0_00324.Mother TES_L0
+TP_L0_00324.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00325
+TP_L0_00325.Position 1.085 -0.775 0
+TP_L0_00325.Mother TES_L0
+TP_L0_00325.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00326
+TP_L0_00326.Position 1.085 -0.62 0
+TP_L0_00326.Mother TES_L0
+TP_L0_00326.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00327
+TP_L0_00327.Position 1.085 -0.465 0
+TP_L0_00327.Mother TES_L0
+TP_L0_00327.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00328
+TP_L0_00328.Position 1.085 -0.31 0
+TP_L0_00328.Mother TES_L0
+TP_L0_00328.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00329
+TP_L0_00329.Position 1.085 -0.155 0
+TP_L0_00329.Mother TES_L0
+TP_L0_00329.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00330
+TP_L0_00330.Position 1.085 0 0
+TP_L0_00330.Mother TES_L0
+TP_L0_00330.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00331
+TP_L0_00331.Position 1.085 0.155 0
+TP_L0_00331.Mother TES_L0
+TP_L0_00331.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00332
+TP_L0_00332.Position 1.085 0.31 0
+TP_L0_00332.Mother TES_L0
+TP_L0_00332.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00333
+TP_L0_00333.Position 1.085 0.465 0
+TP_L0_00333.Mother TES_L0
+TP_L0_00333.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00334
+TP_L0_00334.Position 1.085 0.62 0
+TP_L0_00334.Mother TES_L0
+TP_L0_00334.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00335
+TP_L0_00335.Position 1.085 0.775 0
+TP_L0_00335.Mother TES_L0
+TP_L0_00335.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00336
+TP_L0_00336.Position 1.085 0.93 0
+TP_L0_00336.Mother TES_L0
+TP_L0_00336.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00337
+TP_L0_00337.Position 1.085 1.085 0
+TP_L0_00337.Mother TES_L0
+TP_L0_00337.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00338
+TP_L0_00338.Position 1.085 1.24 0
+TP_L0_00338.Mother TES_L0
+TP_L0_00338.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00339
+TP_L0_00339.Position 1.24 -1.085 0
+TP_L0_00339.Mother TES_L0
+TP_L0_00339.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00340
+TP_L0_00340.Position 1.24 -0.93 0
+TP_L0_00340.Mother TES_L0
+TP_L0_00340.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00341
+TP_L0_00341.Position 1.24 -0.775 0
+TP_L0_00341.Mother TES_L0
+TP_L0_00341.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00342
+TP_L0_00342.Position 1.24 -0.62 0
+TP_L0_00342.Mother TES_L0
+TP_L0_00342.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00343
+TP_L0_00343.Position 1.24 -0.465 0
+TP_L0_00343.Mother TES_L0
+TP_L0_00343.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00344
+TP_L0_00344.Position 1.24 -0.31 0
+TP_L0_00344.Mother TES_L0
+TP_L0_00344.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00345
+TP_L0_00345.Position 1.24 -0.155 0
+TP_L0_00345.Mother TES_L0
+TP_L0_00345.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00346
+TP_L0_00346.Position 1.24 0 0
+TP_L0_00346.Mother TES_L0
+TP_L0_00346.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00347
+TP_L0_00347.Position 1.24 0.155 0
+TP_L0_00347.Mother TES_L0
+TP_L0_00347.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00348
+TP_L0_00348.Position 1.24 0.31 0
+TP_L0_00348.Mother TES_L0
+TP_L0_00348.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00349
+TP_L0_00349.Position 1.24 0.465 0
+TP_L0_00349.Mother TES_L0
+TP_L0_00349.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00350
+TP_L0_00350.Position 1.24 0.62 0
+TP_L0_00350.Mother TES_L0
+TP_L0_00350.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00351
+TP_L0_00351.Position 1.24 0.775 0
+TP_L0_00351.Mother TES_L0
+TP_L0_00351.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00352
+TP_L0_00352.Position 1.24 0.93 0
+TP_L0_00352.Mother TES_L0
+TP_L0_00352.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00353
+TP_L0_00353.Position 1.24 1.085 0
+TP_L0_00353.Mother TES_L0
+TP_L0_00353.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00354
+TP_L0_00354.Position 1.395 -0.93 0
+TP_L0_00354.Mother TES_L0
+TP_L0_00354.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00355
+TP_L0_00355.Position 1.395 -0.775 0
+TP_L0_00355.Mother TES_L0
+TP_L0_00355.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00356
+TP_L0_00356.Position 1.395 -0.62 0
+TP_L0_00356.Mother TES_L0
+TP_L0_00356.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00357
+TP_L0_00357.Position 1.395 -0.465 0
+TP_L0_00357.Mother TES_L0
+TP_L0_00357.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00358
+TP_L0_00358.Position 1.395 -0.31 0
+TP_L0_00358.Mother TES_L0
+TP_L0_00358.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00359
+TP_L0_00359.Position 1.395 -0.155 0
+TP_L0_00359.Mother TES_L0
+TP_L0_00359.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00360
+TP_L0_00360.Position 1.395 0 0
+TP_L0_00360.Mother TES_L0
+TP_L0_00360.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00361
+TP_L0_00361.Position 1.395 0.155 0
+TP_L0_00361.Mother TES_L0
+TP_L0_00361.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00362
+TP_L0_00362.Position 1.395 0.31 0
+TP_L0_00362.Mother TES_L0
+TP_L0_00362.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00363
+TP_L0_00363.Position 1.395 0.465 0
+TP_L0_00363.Mother TES_L0
+TP_L0_00363.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00364
+TP_L0_00364.Position 1.395 0.62 0
+TP_L0_00364.Mother TES_L0
+TP_L0_00364.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00365
+TP_L0_00365.Position 1.395 0.775 0
+TP_L0_00365.Mother TES_L0
+TP_L0_00365.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00366
+TP_L0_00366.Position 1.395 0.93 0
+TP_L0_00366.Mother TES_L0
+TP_L0_00366.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00367
+TP_L0_00367.Position 1.55 -0.62 0
+TP_L0_00367.Mother TES_L0
+TP_L0_00367.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00368
+TP_L0_00368.Position 1.55 -0.465 0
+TP_L0_00368.Mother TES_L0
+TP_L0_00368.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00369
+TP_L0_00369.Position 1.55 -0.31 0
+TP_L0_00369.Mother TES_L0
+TP_L0_00369.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00370
+TP_L0_00370.Position 1.55 -0.155 0
+TP_L0_00370.Mother TES_L0
+TP_L0_00370.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00371
+TP_L0_00371.Position 1.55 0 0
+TP_L0_00371.Mother TES_L0
+TP_L0_00371.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00372
+TP_L0_00372.Position 1.55 0.155 0
+TP_L0_00372.Mother TES_L0
+TP_L0_00372.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00373
+TP_L0_00373.Position 1.55 0.31 0
+TP_L0_00373.Mother TES_L0
+TP_L0_00373.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00374
+TP_L0_00374.Position 1.55 0.465 0
+TP_L0_00374.Mother TES_L0
+TP_L0_00374.Visibility 0
+
+TES_Pixel_L0.Copy TP_L0_00375
+TP_L0_00375.Position 1.55 0.62 0
+TP_L0_00375.Mother TES_L0
+TP_L0_00375.Visibility 0
+
+// Volume Substrate_L1; material=Silicon
+Volume Substrate_L1
+Substrate_L1.Material Silicon
+Substrate_L1.Visibility 1
+Substrate_L1.Shape PCON 0 360 2 -0.015 0 2.2 0.015 0 2.2
+
+// Volume TES_Pixel_L1; material=Ta
+Volume TES_Pixel_L1
+TES_Pixel_L1.Material Ta
+TES_Pixel_L1.Visibility 1
+TES_Pixel_L1.Shape BRIK 0.075 0.075 0.15
+
+// Volume TES_L1; material=Vacuum
+Volume TES_L1
+TES_L1.Material Vacuum
+TES_L1.Visibility 0
+TES_L1.Shape BRIK 2.4 2.4 0.15
+
+Substrate_L1.Position 0 0 2.2
+Substrate_L1.Mother WorldVolume
+
+TES_L1.Position 0 0 2.365
+TES_L1.Mother WorldVolume
+TES_L1.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00000
+TP_L1_00000.Position -1.705 0 0
+TP_L1_00000.Mother TES_L1
+TP_L1_00000.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00001
+TP_L1_00001.Position -1.55 -0.62 0
+TP_L1_00001.Mother TES_L1
+TP_L1_00001.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00002
+TP_L1_00002.Position -1.55 -0.465 0
+TP_L1_00002.Mother TES_L1
+TP_L1_00002.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00003
+TP_L1_00003.Position -1.55 -0.31 0
+TP_L1_00003.Mother TES_L1
+TP_L1_00003.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00004
+TP_L1_00004.Position -1.55 -0.155 0
+TP_L1_00004.Mother TES_L1
+TP_L1_00004.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00005
+TP_L1_00005.Position -1.55 0 0
+TP_L1_00005.Mother TES_L1
+TP_L1_00005.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00006
+TP_L1_00006.Position -1.55 0.155 0
+TP_L1_00006.Mother TES_L1
+TP_L1_00006.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00007
+TP_L1_00007.Position -1.55 0.31 0
+TP_L1_00007.Mother TES_L1
+TP_L1_00007.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00008
+TP_L1_00008.Position -1.55 0.465 0
+TP_L1_00008.Mother TES_L1
+TP_L1_00008.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00009
+TP_L1_00009.Position -1.55 0.62 0
+TP_L1_00009.Mother TES_L1
+TP_L1_00009.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00010
+TP_L1_00010.Position -1.395 -0.93 0
+TP_L1_00010.Mother TES_L1
+TP_L1_00010.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00011
+TP_L1_00011.Position -1.395 -0.775 0
+TP_L1_00011.Mother TES_L1
+TP_L1_00011.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00012
+TP_L1_00012.Position -1.395 -0.62 0
+TP_L1_00012.Mother TES_L1
+TP_L1_00012.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00013
+TP_L1_00013.Position -1.395 -0.465 0
+TP_L1_00013.Mother TES_L1
+TP_L1_00013.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00014
+TP_L1_00014.Position -1.395 -0.31 0
+TP_L1_00014.Mother TES_L1
+TP_L1_00014.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00015
+TP_L1_00015.Position -1.395 -0.155 0
+TP_L1_00015.Mother TES_L1
+TP_L1_00015.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00016
+TP_L1_00016.Position -1.395 0 0
+TP_L1_00016.Mother TES_L1
+TP_L1_00016.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00017
+TP_L1_00017.Position -1.395 0.155 0
+TP_L1_00017.Mother TES_L1
+TP_L1_00017.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00018
+TP_L1_00018.Position -1.395 0.31 0
+TP_L1_00018.Mother TES_L1
+TP_L1_00018.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00019
+TP_L1_00019.Position -1.395 0.465 0
+TP_L1_00019.Mother TES_L1
+TP_L1_00019.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00020
+TP_L1_00020.Position -1.395 0.62 0
+TP_L1_00020.Mother TES_L1
+TP_L1_00020.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00021
+TP_L1_00021.Position -1.395 0.775 0
+TP_L1_00021.Mother TES_L1
+TP_L1_00021.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00022
+TP_L1_00022.Position -1.395 0.93 0
+TP_L1_00022.Mother TES_L1
+TP_L1_00022.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00023
+TP_L1_00023.Position -1.24 -1.085 0
+TP_L1_00023.Mother TES_L1
+TP_L1_00023.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00024
+TP_L1_00024.Position -1.24 -0.93 0
+TP_L1_00024.Mother TES_L1
+TP_L1_00024.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00025
+TP_L1_00025.Position -1.24 -0.775 0
+TP_L1_00025.Mother TES_L1
+TP_L1_00025.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00026
+TP_L1_00026.Position -1.24 -0.62 0
+TP_L1_00026.Mother TES_L1
+TP_L1_00026.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00027
+TP_L1_00027.Position -1.24 -0.465 0
+TP_L1_00027.Mother TES_L1
+TP_L1_00027.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00028
+TP_L1_00028.Position -1.24 -0.31 0
+TP_L1_00028.Mother TES_L1
+TP_L1_00028.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00029
+TP_L1_00029.Position -1.24 -0.155 0
+TP_L1_00029.Mother TES_L1
+TP_L1_00029.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00030
+TP_L1_00030.Position -1.24 0 0
+TP_L1_00030.Mother TES_L1
+TP_L1_00030.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00031
+TP_L1_00031.Position -1.24 0.155 0
+TP_L1_00031.Mother TES_L1
+TP_L1_00031.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00032
+TP_L1_00032.Position -1.24 0.31 0
+TP_L1_00032.Mother TES_L1
+TP_L1_00032.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00033
+TP_L1_00033.Position -1.24 0.465 0
+TP_L1_00033.Mother TES_L1
+TP_L1_00033.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00034
+TP_L1_00034.Position -1.24 0.62 0
+TP_L1_00034.Mother TES_L1
+TP_L1_00034.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00035
+TP_L1_00035.Position -1.24 0.775 0
+TP_L1_00035.Mother TES_L1
+TP_L1_00035.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00036
+TP_L1_00036.Position -1.24 0.93 0
+TP_L1_00036.Mother TES_L1
+TP_L1_00036.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00037
+TP_L1_00037.Position -1.24 1.085 0
+TP_L1_00037.Mother TES_L1
+TP_L1_00037.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00038
+TP_L1_00038.Position -1.085 -1.24 0
+TP_L1_00038.Mother TES_L1
+TP_L1_00038.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00039
+TP_L1_00039.Position -1.085 -1.085 0
+TP_L1_00039.Mother TES_L1
+TP_L1_00039.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00040
+TP_L1_00040.Position -1.085 -0.93 0
+TP_L1_00040.Mother TES_L1
+TP_L1_00040.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00041
+TP_L1_00041.Position -1.085 -0.775 0
+TP_L1_00041.Mother TES_L1
+TP_L1_00041.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00042
+TP_L1_00042.Position -1.085 -0.62 0
+TP_L1_00042.Mother TES_L1
+TP_L1_00042.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00043
+TP_L1_00043.Position -1.085 -0.465 0
+TP_L1_00043.Mother TES_L1
+TP_L1_00043.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00044
+TP_L1_00044.Position -1.085 -0.31 0
+TP_L1_00044.Mother TES_L1
+TP_L1_00044.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00045
+TP_L1_00045.Position -1.085 -0.155 0
+TP_L1_00045.Mother TES_L1
+TP_L1_00045.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00046
+TP_L1_00046.Position -1.085 0 0
+TP_L1_00046.Mother TES_L1
+TP_L1_00046.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00047
+TP_L1_00047.Position -1.085 0.155 0
+TP_L1_00047.Mother TES_L1
+TP_L1_00047.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00048
+TP_L1_00048.Position -1.085 0.31 0
+TP_L1_00048.Mother TES_L1
+TP_L1_00048.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00049
+TP_L1_00049.Position -1.085 0.465 0
+TP_L1_00049.Mother TES_L1
+TP_L1_00049.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00050
+TP_L1_00050.Position -1.085 0.62 0
+TP_L1_00050.Mother TES_L1
+TP_L1_00050.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00051
+TP_L1_00051.Position -1.085 0.775 0
+TP_L1_00051.Mother TES_L1
+TP_L1_00051.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00052
+TP_L1_00052.Position -1.085 0.93 0
+TP_L1_00052.Mother TES_L1
+TP_L1_00052.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00053
+TP_L1_00053.Position -1.085 1.085 0
+TP_L1_00053.Mother TES_L1
+TP_L1_00053.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00054
+TP_L1_00054.Position -1.085 1.24 0
+TP_L1_00054.Mother TES_L1
+TP_L1_00054.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00055
+TP_L1_00055.Position -0.93 -1.395 0
+TP_L1_00055.Mother TES_L1
+TP_L1_00055.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00056
+TP_L1_00056.Position -0.93 -1.24 0
+TP_L1_00056.Mother TES_L1
+TP_L1_00056.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00057
+TP_L1_00057.Position -0.93 -1.085 0
+TP_L1_00057.Mother TES_L1
+TP_L1_00057.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00058
+TP_L1_00058.Position -0.93 -0.93 0
+TP_L1_00058.Mother TES_L1
+TP_L1_00058.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00059
+TP_L1_00059.Position -0.93 -0.775 0
+TP_L1_00059.Mother TES_L1
+TP_L1_00059.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00060
+TP_L1_00060.Position -0.93 -0.62 0
+TP_L1_00060.Mother TES_L1
+TP_L1_00060.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00061
+TP_L1_00061.Position -0.93 -0.465 0
+TP_L1_00061.Mother TES_L1
+TP_L1_00061.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00062
+TP_L1_00062.Position -0.93 -0.31 0
+TP_L1_00062.Mother TES_L1
+TP_L1_00062.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00063
+TP_L1_00063.Position -0.93 -0.155 0
+TP_L1_00063.Mother TES_L1
+TP_L1_00063.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00064
+TP_L1_00064.Position -0.93 0 0
+TP_L1_00064.Mother TES_L1
+TP_L1_00064.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00065
+TP_L1_00065.Position -0.93 0.155 0
+TP_L1_00065.Mother TES_L1
+TP_L1_00065.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00066
+TP_L1_00066.Position -0.93 0.31 0
+TP_L1_00066.Mother TES_L1
+TP_L1_00066.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00067
+TP_L1_00067.Position -0.93 0.465 0
+TP_L1_00067.Mother TES_L1
+TP_L1_00067.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00068
+TP_L1_00068.Position -0.93 0.62 0
+TP_L1_00068.Mother TES_L1
+TP_L1_00068.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00069
+TP_L1_00069.Position -0.93 0.775 0
+TP_L1_00069.Mother TES_L1
+TP_L1_00069.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00070
+TP_L1_00070.Position -0.93 0.93 0
+TP_L1_00070.Mother TES_L1
+TP_L1_00070.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00071
+TP_L1_00071.Position -0.93 1.085 0
+TP_L1_00071.Mother TES_L1
+TP_L1_00071.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00072
+TP_L1_00072.Position -0.93 1.24 0
+TP_L1_00072.Mother TES_L1
+TP_L1_00072.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00073
+TP_L1_00073.Position -0.93 1.395 0
+TP_L1_00073.Mother TES_L1
+TP_L1_00073.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00074
+TP_L1_00074.Position -0.775 -1.395 0
+TP_L1_00074.Mother TES_L1
+TP_L1_00074.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00075
+TP_L1_00075.Position -0.775 -1.24 0
+TP_L1_00075.Mother TES_L1
+TP_L1_00075.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00076
+TP_L1_00076.Position -0.775 -1.085 0
+TP_L1_00076.Mother TES_L1
+TP_L1_00076.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00077
+TP_L1_00077.Position -0.775 -0.93 0
+TP_L1_00077.Mother TES_L1
+TP_L1_00077.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00078
+TP_L1_00078.Position -0.775 -0.775 0
+TP_L1_00078.Mother TES_L1
+TP_L1_00078.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00079
+TP_L1_00079.Position -0.775 -0.62 0
+TP_L1_00079.Mother TES_L1
+TP_L1_00079.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00080
+TP_L1_00080.Position -0.775 -0.465 0
+TP_L1_00080.Mother TES_L1
+TP_L1_00080.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00081
+TP_L1_00081.Position -0.775 -0.31 0
+TP_L1_00081.Mother TES_L1
+TP_L1_00081.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00082
+TP_L1_00082.Position -0.775 -0.155 0
+TP_L1_00082.Mother TES_L1
+TP_L1_00082.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00083
+TP_L1_00083.Position -0.775 0 0
+TP_L1_00083.Mother TES_L1
+TP_L1_00083.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00084
+TP_L1_00084.Position -0.775 0.155 0
+TP_L1_00084.Mother TES_L1
+TP_L1_00084.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00085
+TP_L1_00085.Position -0.775 0.31 0
+TP_L1_00085.Mother TES_L1
+TP_L1_00085.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00086
+TP_L1_00086.Position -0.775 0.465 0
+TP_L1_00086.Mother TES_L1
+TP_L1_00086.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00087
+TP_L1_00087.Position -0.775 0.62 0
+TP_L1_00087.Mother TES_L1
+TP_L1_00087.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00088
+TP_L1_00088.Position -0.775 0.775 0
+TP_L1_00088.Mother TES_L1
+TP_L1_00088.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00089
+TP_L1_00089.Position -0.775 0.93 0
+TP_L1_00089.Mother TES_L1
+TP_L1_00089.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00090
+TP_L1_00090.Position -0.775 1.085 0
+TP_L1_00090.Mother TES_L1
+TP_L1_00090.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00091
+TP_L1_00091.Position -0.775 1.24 0
+TP_L1_00091.Mother TES_L1
+TP_L1_00091.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00092
+TP_L1_00092.Position -0.775 1.395 0
+TP_L1_00092.Mother TES_L1
+TP_L1_00092.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00093
+TP_L1_00093.Position -0.62 -1.55 0
+TP_L1_00093.Mother TES_L1
+TP_L1_00093.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00094
+TP_L1_00094.Position -0.62 -1.395 0
+TP_L1_00094.Mother TES_L1
+TP_L1_00094.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00095
+TP_L1_00095.Position -0.62 -1.24 0
+TP_L1_00095.Mother TES_L1
+TP_L1_00095.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00096
+TP_L1_00096.Position -0.62 -1.085 0
+TP_L1_00096.Mother TES_L1
+TP_L1_00096.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00097
+TP_L1_00097.Position -0.62 -0.93 0
+TP_L1_00097.Mother TES_L1
+TP_L1_00097.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00098
+TP_L1_00098.Position -0.62 -0.775 0
+TP_L1_00098.Mother TES_L1
+TP_L1_00098.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00099
+TP_L1_00099.Position -0.62 -0.62 0
+TP_L1_00099.Mother TES_L1
+TP_L1_00099.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00100
+TP_L1_00100.Position -0.62 -0.465 0
+TP_L1_00100.Mother TES_L1
+TP_L1_00100.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00101
+TP_L1_00101.Position -0.62 -0.31 0
+TP_L1_00101.Mother TES_L1
+TP_L1_00101.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00102
+TP_L1_00102.Position -0.62 -0.155 0
+TP_L1_00102.Mother TES_L1
+TP_L1_00102.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00103
+TP_L1_00103.Position -0.62 0 0
+TP_L1_00103.Mother TES_L1
+TP_L1_00103.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00104
+TP_L1_00104.Position -0.62 0.155 0
+TP_L1_00104.Mother TES_L1
+TP_L1_00104.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00105
+TP_L1_00105.Position -0.62 0.31 0
+TP_L1_00105.Mother TES_L1
+TP_L1_00105.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00106
+TP_L1_00106.Position -0.62 0.465 0
+TP_L1_00106.Mother TES_L1
+TP_L1_00106.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00107
+TP_L1_00107.Position -0.62 0.62 0
+TP_L1_00107.Mother TES_L1
+TP_L1_00107.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00108
+TP_L1_00108.Position -0.62 0.775 0
+TP_L1_00108.Mother TES_L1
+TP_L1_00108.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00109
+TP_L1_00109.Position -0.62 0.93 0
+TP_L1_00109.Mother TES_L1
+TP_L1_00109.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00110
+TP_L1_00110.Position -0.62 1.085 0
+TP_L1_00110.Mother TES_L1
+TP_L1_00110.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00111
+TP_L1_00111.Position -0.62 1.24 0
+TP_L1_00111.Mother TES_L1
+TP_L1_00111.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00112
+TP_L1_00112.Position -0.62 1.395 0
+TP_L1_00112.Mother TES_L1
+TP_L1_00112.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00113
+TP_L1_00113.Position -0.62 1.55 0
+TP_L1_00113.Mother TES_L1
+TP_L1_00113.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00114
+TP_L1_00114.Position -0.465 -1.55 0
+TP_L1_00114.Mother TES_L1
+TP_L1_00114.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00115
+TP_L1_00115.Position -0.465 -1.395 0
+TP_L1_00115.Mother TES_L1
+TP_L1_00115.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00116
+TP_L1_00116.Position -0.465 -1.24 0
+TP_L1_00116.Mother TES_L1
+TP_L1_00116.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00117
+TP_L1_00117.Position -0.465 -1.085 0
+TP_L1_00117.Mother TES_L1
+TP_L1_00117.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00118
+TP_L1_00118.Position -0.465 -0.93 0
+TP_L1_00118.Mother TES_L1
+TP_L1_00118.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00119
+TP_L1_00119.Position -0.465 -0.775 0
+TP_L1_00119.Mother TES_L1
+TP_L1_00119.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00120
+TP_L1_00120.Position -0.465 -0.62 0
+TP_L1_00120.Mother TES_L1
+TP_L1_00120.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00121
+TP_L1_00121.Position -0.465 -0.465 0
+TP_L1_00121.Mother TES_L1
+TP_L1_00121.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00122
+TP_L1_00122.Position -0.465 -0.31 0
+TP_L1_00122.Mother TES_L1
+TP_L1_00122.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00123
+TP_L1_00123.Position -0.465 -0.155 0
+TP_L1_00123.Mother TES_L1
+TP_L1_00123.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00124
+TP_L1_00124.Position -0.465 0 0
+TP_L1_00124.Mother TES_L1
+TP_L1_00124.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00125
+TP_L1_00125.Position -0.465 0.155 0
+TP_L1_00125.Mother TES_L1
+TP_L1_00125.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00126
+TP_L1_00126.Position -0.465 0.31 0
+TP_L1_00126.Mother TES_L1
+TP_L1_00126.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00127
+TP_L1_00127.Position -0.465 0.465 0
+TP_L1_00127.Mother TES_L1
+TP_L1_00127.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00128
+TP_L1_00128.Position -0.465 0.62 0
+TP_L1_00128.Mother TES_L1
+TP_L1_00128.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00129
+TP_L1_00129.Position -0.465 0.775 0
+TP_L1_00129.Mother TES_L1
+TP_L1_00129.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00130
+TP_L1_00130.Position -0.465 0.93 0
+TP_L1_00130.Mother TES_L1
+TP_L1_00130.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00131
+TP_L1_00131.Position -0.465 1.085 0
+TP_L1_00131.Mother TES_L1
+TP_L1_00131.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00132
+TP_L1_00132.Position -0.465 1.24 0
+TP_L1_00132.Mother TES_L1
+TP_L1_00132.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00133
+TP_L1_00133.Position -0.465 1.395 0
+TP_L1_00133.Mother TES_L1
+TP_L1_00133.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00134
+TP_L1_00134.Position -0.465 1.55 0
+TP_L1_00134.Mother TES_L1
+TP_L1_00134.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00135
+TP_L1_00135.Position -0.31 -1.55 0
+TP_L1_00135.Mother TES_L1
+TP_L1_00135.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00136
+TP_L1_00136.Position -0.31 -1.395 0
+TP_L1_00136.Mother TES_L1
+TP_L1_00136.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00137
+TP_L1_00137.Position -0.31 -1.24 0
+TP_L1_00137.Mother TES_L1
+TP_L1_00137.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00138
+TP_L1_00138.Position -0.31 -1.085 0
+TP_L1_00138.Mother TES_L1
+TP_L1_00138.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00139
+TP_L1_00139.Position -0.31 -0.93 0
+TP_L1_00139.Mother TES_L1
+TP_L1_00139.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00140
+TP_L1_00140.Position -0.31 -0.775 0
+TP_L1_00140.Mother TES_L1
+TP_L1_00140.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00141
+TP_L1_00141.Position -0.31 -0.62 0
+TP_L1_00141.Mother TES_L1
+TP_L1_00141.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00142
+TP_L1_00142.Position -0.31 -0.465 0
+TP_L1_00142.Mother TES_L1
+TP_L1_00142.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00143
+TP_L1_00143.Position -0.31 -0.31 0
+TP_L1_00143.Mother TES_L1
+TP_L1_00143.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00144
+TP_L1_00144.Position -0.31 -0.155 0
+TP_L1_00144.Mother TES_L1
+TP_L1_00144.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00145
+TP_L1_00145.Position -0.31 0 0
+TP_L1_00145.Mother TES_L1
+TP_L1_00145.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00146
+TP_L1_00146.Position -0.31 0.155 0
+TP_L1_00146.Mother TES_L1
+TP_L1_00146.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00147
+TP_L1_00147.Position -0.31 0.31 0
+TP_L1_00147.Mother TES_L1
+TP_L1_00147.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00148
+TP_L1_00148.Position -0.31 0.465 0
+TP_L1_00148.Mother TES_L1
+TP_L1_00148.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00149
+TP_L1_00149.Position -0.31 0.62 0
+TP_L1_00149.Mother TES_L1
+TP_L1_00149.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00150
+TP_L1_00150.Position -0.31 0.775 0
+TP_L1_00150.Mother TES_L1
+TP_L1_00150.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00151
+TP_L1_00151.Position -0.31 0.93 0
+TP_L1_00151.Mother TES_L1
+TP_L1_00151.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00152
+TP_L1_00152.Position -0.31 1.085 0
+TP_L1_00152.Mother TES_L1
+TP_L1_00152.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00153
+TP_L1_00153.Position -0.31 1.24 0
+TP_L1_00153.Mother TES_L1
+TP_L1_00153.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00154
+TP_L1_00154.Position -0.31 1.395 0
+TP_L1_00154.Mother TES_L1
+TP_L1_00154.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00155
+TP_L1_00155.Position -0.31 1.55 0
+TP_L1_00155.Mother TES_L1
+TP_L1_00155.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00156
+TP_L1_00156.Position -0.155 -1.55 0
+TP_L1_00156.Mother TES_L1
+TP_L1_00156.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00157
+TP_L1_00157.Position -0.155 -1.395 0
+TP_L1_00157.Mother TES_L1
+TP_L1_00157.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00158
+TP_L1_00158.Position -0.155 -1.24 0
+TP_L1_00158.Mother TES_L1
+TP_L1_00158.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00159
+TP_L1_00159.Position -0.155 -1.085 0
+TP_L1_00159.Mother TES_L1
+TP_L1_00159.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00160
+TP_L1_00160.Position -0.155 -0.93 0
+TP_L1_00160.Mother TES_L1
+TP_L1_00160.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00161
+TP_L1_00161.Position -0.155 -0.775 0
+TP_L1_00161.Mother TES_L1
+TP_L1_00161.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00162
+TP_L1_00162.Position -0.155 -0.62 0
+TP_L1_00162.Mother TES_L1
+TP_L1_00162.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00163
+TP_L1_00163.Position -0.155 -0.465 0
+TP_L1_00163.Mother TES_L1
+TP_L1_00163.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00164
+TP_L1_00164.Position -0.155 -0.31 0
+TP_L1_00164.Mother TES_L1
+TP_L1_00164.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00165
+TP_L1_00165.Position -0.155 -0.155 0
+TP_L1_00165.Mother TES_L1
+TP_L1_00165.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00166
+TP_L1_00166.Position -0.155 0 0
+TP_L1_00166.Mother TES_L1
+TP_L1_00166.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00167
+TP_L1_00167.Position -0.155 0.155 0
+TP_L1_00167.Mother TES_L1
+TP_L1_00167.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00168
+TP_L1_00168.Position -0.155 0.31 0
+TP_L1_00168.Mother TES_L1
+TP_L1_00168.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00169
+TP_L1_00169.Position -0.155 0.465 0
+TP_L1_00169.Mother TES_L1
+TP_L1_00169.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00170
+TP_L1_00170.Position -0.155 0.62 0
+TP_L1_00170.Mother TES_L1
+TP_L1_00170.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00171
+TP_L1_00171.Position -0.155 0.775 0
+TP_L1_00171.Mother TES_L1
+TP_L1_00171.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00172
+TP_L1_00172.Position -0.155 0.93 0
+TP_L1_00172.Mother TES_L1
+TP_L1_00172.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00173
+TP_L1_00173.Position -0.155 1.085 0
+TP_L1_00173.Mother TES_L1
+TP_L1_00173.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00174
+TP_L1_00174.Position -0.155 1.24 0
+TP_L1_00174.Mother TES_L1
+TP_L1_00174.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00175
+TP_L1_00175.Position -0.155 1.395 0
+TP_L1_00175.Mother TES_L1
+TP_L1_00175.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00176
+TP_L1_00176.Position -0.155 1.55 0
+TP_L1_00176.Mother TES_L1
+TP_L1_00176.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00177
+TP_L1_00177.Position 0 -1.705 0
+TP_L1_00177.Mother TES_L1
+TP_L1_00177.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00178
+TP_L1_00178.Position 0 -1.55 0
+TP_L1_00178.Mother TES_L1
+TP_L1_00178.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00179
+TP_L1_00179.Position 0 -1.395 0
+TP_L1_00179.Mother TES_L1
+TP_L1_00179.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00180
+TP_L1_00180.Position 0 -1.24 0
+TP_L1_00180.Mother TES_L1
+TP_L1_00180.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00181
+TP_L1_00181.Position 0 -1.085 0
+TP_L1_00181.Mother TES_L1
+TP_L1_00181.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00182
+TP_L1_00182.Position 0 -0.93 0
+TP_L1_00182.Mother TES_L1
+TP_L1_00182.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00183
+TP_L1_00183.Position 0 -0.775 0
+TP_L1_00183.Mother TES_L1
+TP_L1_00183.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00184
+TP_L1_00184.Position 0 -0.62 0
+TP_L1_00184.Mother TES_L1
+TP_L1_00184.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00185
+TP_L1_00185.Position 0 -0.465 0
+TP_L1_00185.Mother TES_L1
+TP_L1_00185.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00186
+TP_L1_00186.Position 0 -0.31 0
+TP_L1_00186.Mother TES_L1
+TP_L1_00186.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00187
+TP_L1_00187.Position 0 -0.155 0
+TP_L1_00187.Mother TES_L1
+TP_L1_00187.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00188
+TP_L1_00188.Position 0 0 0
+TP_L1_00188.Mother TES_L1
+TP_L1_00188.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00189
+TP_L1_00189.Position 0 0.155 0
+TP_L1_00189.Mother TES_L1
+TP_L1_00189.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00190
+TP_L1_00190.Position 0 0.31 0
+TP_L1_00190.Mother TES_L1
+TP_L1_00190.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00191
+TP_L1_00191.Position 0 0.465 0
+TP_L1_00191.Mother TES_L1
+TP_L1_00191.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00192
+TP_L1_00192.Position 0 0.62 0
+TP_L1_00192.Mother TES_L1
+TP_L1_00192.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00193
+TP_L1_00193.Position 0 0.775 0
+TP_L1_00193.Mother TES_L1
+TP_L1_00193.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00194
+TP_L1_00194.Position 0 0.93 0
+TP_L1_00194.Mother TES_L1
+TP_L1_00194.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00195
+TP_L1_00195.Position 0 1.085 0
+TP_L1_00195.Mother TES_L1
+TP_L1_00195.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00196
+TP_L1_00196.Position 0 1.24 0
+TP_L1_00196.Mother TES_L1
+TP_L1_00196.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00197
+TP_L1_00197.Position 0 1.395 0
+TP_L1_00197.Mother TES_L1
+TP_L1_00197.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00198
+TP_L1_00198.Position 0 1.55 0
+TP_L1_00198.Mother TES_L1
+TP_L1_00198.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00199
+TP_L1_00199.Position 0 1.705 0
+TP_L1_00199.Mother TES_L1
+TP_L1_00199.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00200
+TP_L1_00200.Position 0.155 -1.55 0
+TP_L1_00200.Mother TES_L1
+TP_L1_00200.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00201
+TP_L1_00201.Position 0.155 -1.395 0
+TP_L1_00201.Mother TES_L1
+TP_L1_00201.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00202
+TP_L1_00202.Position 0.155 -1.24 0
+TP_L1_00202.Mother TES_L1
+TP_L1_00202.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00203
+TP_L1_00203.Position 0.155 -1.085 0
+TP_L1_00203.Mother TES_L1
+TP_L1_00203.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00204
+TP_L1_00204.Position 0.155 -0.93 0
+TP_L1_00204.Mother TES_L1
+TP_L1_00204.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00205
+TP_L1_00205.Position 0.155 -0.775 0
+TP_L1_00205.Mother TES_L1
+TP_L1_00205.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00206
+TP_L1_00206.Position 0.155 -0.62 0
+TP_L1_00206.Mother TES_L1
+TP_L1_00206.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00207
+TP_L1_00207.Position 0.155 -0.465 0
+TP_L1_00207.Mother TES_L1
+TP_L1_00207.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00208
+TP_L1_00208.Position 0.155 -0.31 0
+TP_L1_00208.Mother TES_L1
+TP_L1_00208.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00209
+TP_L1_00209.Position 0.155 -0.155 0
+TP_L1_00209.Mother TES_L1
+TP_L1_00209.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00210
+TP_L1_00210.Position 0.155 0 0
+TP_L1_00210.Mother TES_L1
+TP_L1_00210.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00211
+TP_L1_00211.Position 0.155 0.155 0
+TP_L1_00211.Mother TES_L1
+TP_L1_00211.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00212
+TP_L1_00212.Position 0.155 0.31 0
+TP_L1_00212.Mother TES_L1
+TP_L1_00212.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00213
+TP_L1_00213.Position 0.155 0.465 0
+TP_L1_00213.Mother TES_L1
+TP_L1_00213.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00214
+TP_L1_00214.Position 0.155 0.62 0
+TP_L1_00214.Mother TES_L1
+TP_L1_00214.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00215
+TP_L1_00215.Position 0.155 0.775 0
+TP_L1_00215.Mother TES_L1
+TP_L1_00215.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00216
+TP_L1_00216.Position 0.155 0.93 0
+TP_L1_00216.Mother TES_L1
+TP_L1_00216.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00217
+TP_L1_00217.Position 0.155 1.085 0
+TP_L1_00217.Mother TES_L1
+TP_L1_00217.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00218
+TP_L1_00218.Position 0.155 1.24 0
+TP_L1_00218.Mother TES_L1
+TP_L1_00218.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00219
+TP_L1_00219.Position 0.155 1.395 0
+TP_L1_00219.Mother TES_L1
+TP_L1_00219.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00220
+TP_L1_00220.Position 0.155 1.55 0
+TP_L1_00220.Mother TES_L1
+TP_L1_00220.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00221
+TP_L1_00221.Position 0.31 -1.55 0
+TP_L1_00221.Mother TES_L1
+TP_L1_00221.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00222
+TP_L1_00222.Position 0.31 -1.395 0
+TP_L1_00222.Mother TES_L1
+TP_L1_00222.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00223
+TP_L1_00223.Position 0.31 -1.24 0
+TP_L1_00223.Mother TES_L1
+TP_L1_00223.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00224
+TP_L1_00224.Position 0.31 -1.085 0
+TP_L1_00224.Mother TES_L1
+TP_L1_00224.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00225
+TP_L1_00225.Position 0.31 -0.93 0
+TP_L1_00225.Mother TES_L1
+TP_L1_00225.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00226
+TP_L1_00226.Position 0.31 -0.775 0
+TP_L1_00226.Mother TES_L1
+TP_L1_00226.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00227
+TP_L1_00227.Position 0.31 -0.62 0
+TP_L1_00227.Mother TES_L1
+TP_L1_00227.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00228
+TP_L1_00228.Position 0.31 -0.465 0
+TP_L1_00228.Mother TES_L1
+TP_L1_00228.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00229
+TP_L1_00229.Position 0.31 -0.31 0
+TP_L1_00229.Mother TES_L1
+TP_L1_00229.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00230
+TP_L1_00230.Position 0.31 -0.155 0
+TP_L1_00230.Mother TES_L1
+TP_L1_00230.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00231
+TP_L1_00231.Position 0.31 0 0
+TP_L1_00231.Mother TES_L1
+TP_L1_00231.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00232
+TP_L1_00232.Position 0.31 0.155 0
+TP_L1_00232.Mother TES_L1
+TP_L1_00232.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00233
+TP_L1_00233.Position 0.31 0.31 0
+TP_L1_00233.Mother TES_L1
+TP_L1_00233.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00234
+TP_L1_00234.Position 0.31 0.465 0
+TP_L1_00234.Mother TES_L1
+TP_L1_00234.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00235
+TP_L1_00235.Position 0.31 0.62 0
+TP_L1_00235.Mother TES_L1
+TP_L1_00235.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00236
+TP_L1_00236.Position 0.31 0.775 0
+TP_L1_00236.Mother TES_L1
+TP_L1_00236.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00237
+TP_L1_00237.Position 0.31 0.93 0
+TP_L1_00237.Mother TES_L1
+TP_L1_00237.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00238
+TP_L1_00238.Position 0.31 1.085 0
+TP_L1_00238.Mother TES_L1
+TP_L1_00238.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00239
+TP_L1_00239.Position 0.31 1.24 0
+TP_L1_00239.Mother TES_L1
+TP_L1_00239.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00240
+TP_L1_00240.Position 0.31 1.395 0
+TP_L1_00240.Mother TES_L1
+TP_L1_00240.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00241
+TP_L1_00241.Position 0.31 1.55 0
+TP_L1_00241.Mother TES_L1
+TP_L1_00241.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00242
+TP_L1_00242.Position 0.465 -1.55 0
+TP_L1_00242.Mother TES_L1
+TP_L1_00242.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00243
+TP_L1_00243.Position 0.465 -1.395 0
+TP_L1_00243.Mother TES_L1
+TP_L1_00243.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00244
+TP_L1_00244.Position 0.465 -1.24 0
+TP_L1_00244.Mother TES_L1
+TP_L1_00244.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00245
+TP_L1_00245.Position 0.465 -1.085 0
+TP_L1_00245.Mother TES_L1
+TP_L1_00245.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00246
+TP_L1_00246.Position 0.465 -0.93 0
+TP_L1_00246.Mother TES_L1
+TP_L1_00246.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00247
+TP_L1_00247.Position 0.465 -0.775 0
+TP_L1_00247.Mother TES_L1
+TP_L1_00247.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00248
+TP_L1_00248.Position 0.465 -0.62 0
+TP_L1_00248.Mother TES_L1
+TP_L1_00248.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00249
+TP_L1_00249.Position 0.465 -0.465 0
+TP_L1_00249.Mother TES_L1
+TP_L1_00249.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00250
+TP_L1_00250.Position 0.465 -0.31 0
+TP_L1_00250.Mother TES_L1
+TP_L1_00250.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00251
+TP_L1_00251.Position 0.465 -0.155 0
+TP_L1_00251.Mother TES_L1
+TP_L1_00251.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00252
+TP_L1_00252.Position 0.465 0 0
+TP_L1_00252.Mother TES_L1
+TP_L1_00252.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00253
+TP_L1_00253.Position 0.465 0.155 0
+TP_L1_00253.Mother TES_L1
+TP_L1_00253.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00254
+TP_L1_00254.Position 0.465 0.31 0
+TP_L1_00254.Mother TES_L1
+TP_L1_00254.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00255
+TP_L1_00255.Position 0.465 0.465 0
+TP_L1_00255.Mother TES_L1
+TP_L1_00255.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00256
+TP_L1_00256.Position 0.465 0.62 0
+TP_L1_00256.Mother TES_L1
+TP_L1_00256.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00257
+TP_L1_00257.Position 0.465 0.775 0
+TP_L1_00257.Mother TES_L1
+TP_L1_00257.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00258
+TP_L1_00258.Position 0.465 0.93 0
+TP_L1_00258.Mother TES_L1
+TP_L1_00258.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00259
+TP_L1_00259.Position 0.465 1.085 0
+TP_L1_00259.Mother TES_L1
+TP_L1_00259.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00260
+TP_L1_00260.Position 0.465 1.24 0
+TP_L1_00260.Mother TES_L1
+TP_L1_00260.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00261
+TP_L1_00261.Position 0.465 1.395 0
+TP_L1_00261.Mother TES_L1
+TP_L1_00261.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00262
+TP_L1_00262.Position 0.465 1.55 0
+TP_L1_00262.Mother TES_L1
+TP_L1_00262.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00263
+TP_L1_00263.Position 0.62 -1.55 0
+TP_L1_00263.Mother TES_L1
+TP_L1_00263.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00264
+TP_L1_00264.Position 0.62 -1.395 0
+TP_L1_00264.Mother TES_L1
+TP_L1_00264.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00265
+TP_L1_00265.Position 0.62 -1.24 0
+TP_L1_00265.Mother TES_L1
+TP_L1_00265.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00266
+TP_L1_00266.Position 0.62 -1.085 0
+TP_L1_00266.Mother TES_L1
+TP_L1_00266.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00267
+TP_L1_00267.Position 0.62 -0.93 0
+TP_L1_00267.Mother TES_L1
+TP_L1_00267.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00268
+TP_L1_00268.Position 0.62 -0.775 0
+TP_L1_00268.Mother TES_L1
+TP_L1_00268.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00269
+TP_L1_00269.Position 0.62 -0.62 0
+TP_L1_00269.Mother TES_L1
+TP_L1_00269.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00270
+TP_L1_00270.Position 0.62 -0.465 0
+TP_L1_00270.Mother TES_L1
+TP_L1_00270.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00271
+TP_L1_00271.Position 0.62 -0.31 0
+TP_L1_00271.Mother TES_L1
+TP_L1_00271.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00272
+TP_L1_00272.Position 0.62 -0.155 0
+TP_L1_00272.Mother TES_L1
+TP_L1_00272.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00273
+TP_L1_00273.Position 0.62 0 0
+TP_L1_00273.Mother TES_L1
+TP_L1_00273.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00274
+TP_L1_00274.Position 0.62 0.155 0
+TP_L1_00274.Mother TES_L1
+TP_L1_00274.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00275
+TP_L1_00275.Position 0.62 0.31 0
+TP_L1_00275.Mother TES_L1
+TP_L1_00275.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00276
+TP_L1_00276.Position 0.62 0.465 0
+TP_L1_00276.Mother TES_L1
+TP_L1_00276.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00277
+TP_L1_00277.Position 0.62 0.62 0
+TP_L1_00277.Mother TES_L1
+TP_L1_00277.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00278
+TP_L1_00278.Position 0.62 0.775 0
+TP_L1_00278.Mother TES_L1
+TP_L1_00278.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00279
+TP_L1_00279.Position 0.62 0.93 0
+TP_L1_00279.Mother TES_L1
+TP_L1_00279.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00280
+TP_L1_00280.Position 0.62 1.085 0
+TP_L1_00280.Mother TES_L1
+TP_L1_00280.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00281
+TP_L1_00281.Position 0.62 1.24 0
+TP_L1_00281.Mother TES_L1
+TP_L1_00281.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00282
+TP_L1_00282.Position 0.62 1.395 0
+TP_L1_00282.Mother TES_L1
+TP_L1_00282.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00283
+TP_L1_00283.Position 0.62 1.55 0
+TP_L1_00283.Mother TES_L1
+TP_L1_00283.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00284
+TP_L1_00284.Position 0.775 -1.395 0
+TP_L1_00284.Mother TES_L1
+TP_L1_00284.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00285
+TP_L1_00285.Position 0.775 -1.24 0
+TP_L1_00285.Mother TES_L1
+TP_L1_00285.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00286
+TP_L1_00286.Position 0.775 -1.085 0
+TP_L1_00286.Mother TES_L1
+TP_L1_00286.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00287
+TP_L1_00287.Position 0.775 -0.93 0
+TP_L1_00287.Mother TES_L1
+TP_L1_00287.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00288
+TP_L1_00288.Position 0.775 -0.775 0
+TP_L1_00288.Mother TES_L1
+TP_L1_00288.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00289
+TP_L1_00289.Position 0.775 -0.62 0
+TP_L1_00289.Mother TES_L1
+TP_L1_00289.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00290
+TP_L1_00290.Position 0.775 -0.465 0
+TP_L1_00290.Mother TES_L1
+TP_L1_00290.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00291
+TP_L1_00291.Position 0.775 -0.31 0
+TP_L1_00291.Mother TES_L1
+TP_L1_00291.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00292
+TP_L1_00292.Position 0.775 -0.155 0
+TP_L1_00292.Mother TES_L1
+TP_L1_00292.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00293
+TP_L1_00293.Position 0.775 0 0
+TP_L1_00293.Mother TES_L1
+TP_L1_00293.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00294
+TP_L1_00294.Position 0.775 0.155 0
+TP_L1_00294.Mother TES_L1
+TP_L1_00294.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00295
+TP_L1_00295.Position 0.775 0.31 0
+TP_L1_00295.Mother TES_L1
+TP_L1_00295.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00296
+TP_L1_00296.Position 0.775 0.465 0
+TP_L1_00296.Mother TES_L1
+TP_L1_00296.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00297
+TP_L1_00297.Position 0.775 0.62 0
+TP_L1_00297.Mother TES_L1
+TP_L1_00297.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00298
+TP_L1_00298.Position 0.775 0.775 0
+TP_L1_00298.Mother TES_L1
+TP_L1_00298.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00299
+TP_L1_00299.Position 0.775 0.93 0
+TP_L1_00299.Mother TES_L1
+TP_L1_00299.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00300
+TP_L1_00300.Position 0.775 1.085 0
+TP_L1_00300.Mother TES_L1
+TP_L1_00300.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00301
+TP_L1_00301.Position 0.775 1.24 0
+TP_L1_00301.Mother TES_L1
+TP_L1_00301.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00302
+TP_L1_00302.Position 0.775 1.395 0
+TP_L1_00302.Mother TES_L1
+TP_L1_00302.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00303
+TP_L1_00303.Position 0.93 -1.395 0
+TP_L1_00303.Mother TES_L1
+TP_L1_00303.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00304
+TP_L1_00304.Position 0.93 -1.24 0
+TP_L1_00304.Mother TES_L1
+TP_L1_00304.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00305
+TP_L1_00305.Position 0.93 -1.085 0
+TP_L1_00305.Mother TES_L1
+TP_L1_00305.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00306
+TP_L1_00306.Position 0.93 -0.93 0
+TP_L1_00306.Mother TES_L1
+TP_L1_00306.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00307
+TP_L1_00307.Position 0.93 -0.775 0
+TP_L1_00307.Mother TES_L1
+TP_L1_00307.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00308
+TP_L1_00308.Position 0.93 -0.62 0
+TP_L1_00308.Mother TES_L1
+TP_L1_00308.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00309
+TP_L1_00309.Position 0.93 -0.465 0
+TP_L1_00309.Mother TES_L1
+TP_L1_00309.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00310
+TP_L1_00310.Position 0.93 -0.31 0
+TP_L1_00310.Mother TES_L1
+TP_L1_00310.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00311
+TP_L1_00311.Position 0.93 -0.155 0
+TP_L1_00311.Mother TES_L1
+TP_L1_00311.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00312
+TP_L1_00312.Position 0.93 0 0
+TP_L1_00312.Mother TES_L1
+TP_L1_00312.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00313
+TP_L1_00313.Position 0.93 0.155 0
+TP_L1_00313.Mother TES_L1
+TP_L1_00313.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00314
+TP_L1_00314.Position 0.93 0.31 0
+TP_L1_00314.Mother TES_L1
+TP_L1_00314.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00315
+TP_L1_00315.Position 0.93 0.465 0
+TP_L1_00315.Mother TES_L1
+TP_L1_00315.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00316
+TP_L1_00316.Position 0.93 0.62 0
+TP_L1_00316.Mother TES_L1
+TP_L1_00316.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00317
+TP_L1_00317.Position 0.93 0.775 0
+TP_L1_00317.Mother TES_L1
+TP_L1_00317.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00318
+TP_L1_00318.Position 0.93 0.93 0
+TP_L1_00318.Mother TES_L1
+TP_L1_00318.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00319
+TP_L1_00319.Position 0.93 1.085 0
+TP_L1_00319.Mother TES_L1
+TP_L1_00319.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00320
+TP_L1_00320.Position 0.93 1.24 0
+TP_L1_00320.Mother TES_L1
+TP_L1_00320.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00321
+TP_L1_00321.Position 0.93 1.395 0
+TP_L1_00321.Mother TES_L1
+TP_L1_00321.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00322
+TP_L1_00322.Position 1.085 -1.24 0
+TP_L1_00322.Mother TES_L1
+TP_L1_00322.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00323
+TP_L1_00323.Position 1.085 -1.085 0
+TP_L1_00323.Mother TES_L1
+TP_L1_00323.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00324
+TP_L1_00324.Position 1.085 -0.93 0
+TP_L1_00324.Mother TES_L1
+TP_L1_00324.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00325
+TP_L1_00325.Position 1.085 -0.775 0
+TP_L1_00325.Mother TES_L1
+TP_L1_00325.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00326
+TP_L1_00326.Position 1.085 -0.62 0
+TP_L1_00326.Mother TES_L1
+TP_L1_00326.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00327
+TP_L1_00327.Position 1.085 -0.465 0
+TP_L1_00327.Mother TES_L1
+TP_L1_00327.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00328
+TP_L1_00328.Position 1.085 -0.31 0
+TP_L1_00328.Mother TES_L1
+TP_L1_00328.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00329
+TP_L1_00329.Position 1.085 -0.155 0
+TP_L1_00329.Mother TES_L1
+TP_L1_00329.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00330
+TP_L1_00330.Position 1.085 0 0
+TP_L1_00330.Mother TES_L1
+TP_L1_00330.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00331
+TP_L1_00331.Position 1.085 0.155 0
+TP_L1_00331.Mother TES_L1
+TP_L1_00331.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00332
+TP_L1_00332.Position 1.085 0.31 0
+TP_L1_00332.Mother TES_L1
+TP_L1_00332.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00333
+TP_L1_00333.Position 1.085 0.465 0
+TP_L1_00333.Mother TES_L1
+TP_L1_00333.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00334
+TP_L1_00334.Position 1.085 0.62 0
+TP_L1_00334.Mother TES_L1
+TP_L1_00334.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00335
+TP_L1_00335.Position 1.085 0.775 0
+TP_L1_00335.Mother TES_L1
+TP_L1_00335.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00336
+TP_L1_00336.Position 1.085 0.93 0
+TP_L1_00336.Mother TES_L1
+TP_L1_00336.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00337
+TP_L1_00337.Position 1.085 1.085 0
+TP_L1_00337.Mother TES_L1
+TP_L1_00337.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00338
+TP_L1_00338.Position 1.085 1.24 0
+TP_L1_00338.Mother TES_L1
+TP_L1_00338.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00339
+TP_L1_00339.Position 1.24 -1.085 0
+TP_L1_00339.Mother TES_L1
+TP_L1_00339.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00340
+TP_L1_00340.Position 1.24 -0.93 0
+TP_L1_00340.Mother TES_L1
+TP_L1_00340.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00341
+TP_L1_00341.Position 1.24 -0.775 0
+TP_L1_00341.Mother TES_L1
+TP_L1_00341.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00342
+TP_L1_00342.Position 1.24 -0.62 0
+TP_L1_00342.Mother TES_L1
+TP_L1_00342.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00343
+TP_L1_00343.Position 1.24 -0.465 0
+TP_L1_00343.Mother TES_L1
+TP_L1_00343.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00344
+TP_L1_00344.Position 1.24 -0.31 0
+TP_L1_00344.Mother TES_L1
+TP_L1_00344.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00345
+TP_L1_00345.Position 1.24 -0.155 0
+TP_L1_00345.Mother TES_L1
+TP_L1_00345.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00346
+TP_L1_00346.Position 1.24 0 0
+TP_L1_00346.Mother TES_L1
+TP_L1_00346.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00347
+TP_L1_00347.Position 1.24 0.155 0
+TP_L1_00347.Mother TES_L1
+TP_L1_00347.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00348
+TP_L1_00348.Position 1.24 0.31 0
+TP_L1_00348.Mother TES_L1
+TP_L1_00348.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00349
+TP_L1_00349.Position 1.24 0.465 0
+TP_L1_00349.Mother TES_L1
+TP_L1_00349.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00350
+TP_L1_00350.Position 1.24 0.62 0
+TP_L1_00350.Mother TES_L1
+TP_L1_00350.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00351
+TP_L1_00351.Position 1.24 0.775 0
+TP_L1_00351.Mother TES_L1
+TP_L1_00351.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00352
+TP_L1_00352.Position 1.24 0.93 0
+TP_L1_00352.Mother TES_L1
+TP_L1_00352.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00353
+TP_L1_00353.Position 1.24 1.085 0
+TP_L1_00353.Mother TES_L1
+TP_L1_00353.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00354
+TP_L1_00354.Position 1.395 -0.93 0
+TP_L1_00354.Mother TES_L1
+TP_L1_00354.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00355
+TP_L1_00355.Position 1.395 -0.775 0
+TP_L1_00355.Mother TES_L1
+TP_L1_00355.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00356
+TP_L1_00356.Position 1.395 -0.62 0
+TP_L1_00356.Mother TES_L1
+TP_L1_00356.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00357
+TP_L1_00357.Position 1.395 -0.465 0
+TP_L1_00357.Mother TES_L1
+TP_L1_00357.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00358
+TP_L1_00358.Position 1.395 -0.31 0
+TP_L1_00358.Mother TES_L1
+TP_L1_00358.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00359
+TP_L1_00359.Position 1.395 -0.155 0
+TP_L1_00359.Mother TES_L1
+TP_L1_00359.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00360
+TP_L1_00360.Position 1.395 0 0
+TP_L1_00360.Mother TES_L1
+TP_L1_00360.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00361
+TP_L1_00361.Position 1.395 0.155 0
+TP_L1_00361.Mother TES_L1
+TP_L1_00361.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00362
+TP_L1_00362.Position 1.395 0.31 0
+TP_L1_00362.Mother TES_L1
+TP_L1_00362.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00363
+TP_L1_00363.Position 1.395 0.465 0
+TP_L1_00363.Mother TES_L1
+TP_L1_00363.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00364
+TP_L1_00364.Position 1.395 0.62 0
+TP_L1_00364.Mother TES_L1
+TP_L1_00364.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00365
+TP_L1_00365.Position 1.395 0.775 0
+TP_L1_00365.Mother TES_L1
+TP_L1_00365.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00366
+TP_L1_00366.Position 1.395 0.93 0
+TP_L1_00366.Mother TES_L1
+TP_L1_00366.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00367
+TP_L1_00367.Position 1.55 -0.62 0
+TP_L1_00367.Mother TES_L1
+TP_L1_00367.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00368
+TP_L1_00368.Position 1.55 -0.465 0
+TP_L1_00368.Mother TES_L1
+TP_L1_00368.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00369
+TP_L1_00369.Position 1.55 -0.31 0
+TP_L1_00369.Mother TES_L1
+TP_L1_00369.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00370
+TP_L1_00370.Position 1.55 -0.155 0
+TP_L1_00370.Mother TES_L1
+TP_L1_00370.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00371
+TP_L1_00371.Position 1.55 0 0
+TP_L1_00371.Mother TES_L1
+TP_L1_00371.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00372
+TP_L1_00372.Position 1.55 0.155 0
+TP_L1_00372.Mother TES_L1
+TP_L1_00372.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00373
+TP_L1_00373.Position 1.55 0.31 0
+TP_L1_00373.Mother TES_L1
+TP_L1_00373.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00374
+TP_L1_00374.Position 1.55 0.465 0
+TP_L1_00374.Mother TES_L1
+TP_L1_00374.Visibility 0
+
+TES_Pixel_L1.Copy TP_L1_00375
+TP_L1_00375.Position 1.55 0.62 0
+TP_L1_00375.Mother TES_L1
+TP_L1_00375.Visibility 0
+
+// Volume Substrate_L2; material=Silicon
+Volume Substrate_L2
+Substrate_L2.Material Silicon
+Substrate_L2.Visibility 1
+Substrate_L2.Shape PCON 0 360 2 -0.015 0 2.2 0.015 0 2.2
+
+// Volume TES_Pixel_L2; material=Ta
+Volume TES_Pixel_L2
+TES_Pixel_L2.Material Ta
+TES_Pixel_L2.Visibility 1
+TES_Pixel_L2.Shape BRIK 0.075 0.075 0.15
+
+// Volume TES_L2; material=Vacuum
+Volume TES_L2
+TES_L2.Material Vacuum
+TES_L2.Visibility 0
+TES_L2.Shape BRIK 2.4 2.4 0.15
+
+Substrate_L2.Position 0 0 3.4
+Substrate_L2.Mother WorldVolume
+
+TES_L2.Position 0 0 3.565
+TES_L2.Mother WorldVolume
+TES_L2.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00000
+TP_L2_00000.Position -1.705 0 0
+TP_L2_00000.Mother TES_L2
+TP_L2_00000.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00001
+TP_L2_00001.Position -1.55 -0.62 0
+TP_L2_00001.Mother TES_L2
+TP_L2_00001.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00002
+TP_L2_00002.Position -1.55 -0.465 0
+TP_L2_00002.Mother TES_L2
+TP_L2_00002.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00003
+TP_L2_00003.Position -1.55 -0.31 0
+TP_L2_00003.Mother TES_L2
+TP_L2_00003.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00004
+TP_L2_00004.Position -1.55 -0.155 0
+TP_L2_00004.Mother TES_L2
+TP_L2_00004.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00005
+TP_L2_00005.Position -1.55 0 0
+TP_L2_00005.Mother TES_L2
+TP_L2_00005.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00006
+TP_L2_00006.Position -1.55 0.155 0
+TP_L2_00006.Mother TES_L2
+TP_L2_00006.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00007
+TP_L2_00007.Position -1.55 0.31 0
+TP_L2_00007.Mother TES_L2
+TP_L2_00007.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00008
+TP_L2_00008.Position -1.55 0.465 0
+TP_L2_00008.Mother TES_L2
+TP_L2_00008.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00009
+TP_L2_00009.Position -1.55 0.62 0
+TP_L2_00009.Mother TES_L2
+TP_L2_00009.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00010
+TP_L2_00010.Position -1.395 -0.93 0
+TP_L2_00010.Mother TES_L2
+TP_L2_00010.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00011
+TP_L2_00011.Position -1.395 -0.775 0
+TP_L2_00011.Mother TES_L2
+TP_L2_00011.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00012
+TP_L2_00012.Position -1.395 -0.62 0
+TP_L2_00012.Mother TES_L2
+TP_L2_00012.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00013
+TP_L2_00013.Position -1.395 -0.465 0
+TP_L2_00013.Mother TES_L2
+TP_L2_00013.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00014
+TP_L2_00014.Position -1.395 -0.31 0
+TP_L2_00014.Mother TES_L2
+TP_L2_00014.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00015
+TP_L2_00015.Position -1.395 -0.155 0
+TP_L2_00015.Mother TES_L2
+TP_L2_00015.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00016
+TP_L2_00016.Position -1.395 0 0
+TP_L2_00016.Mother TES_L2
+TP_L2_00016.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00017
+TP_L2_00017.Position -1.395 0.155 0
+TP_L2_00017.Mother TES_L2
+TP_L2_00017.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00018
+TP_L2_00018.Position -1.395 0.31 0
+TP_L2_00018.Mother TES_L2
+TP_L2_00018.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00019
+TP_L2_00019.Position -1.395 0.465 0
+TP_L2_00019.Mother TES_L2
+TP_L2_00019.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00020
+TP_L2_00020.Position -1.395 0.62 0
+TP_L2_00020.Mother TES_L2
+TP_L2_00020.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00021
+TP_L2_00021.Position -1.395 0.775 0
+TP_L2_00021.Mother TES_L2
+TP_L2_00021.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00022
+TP_L2_00022.Position -1.395 0.93 0
+TP_L2_00022.Mother TES_L2
+TP_L2_00022.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00023
+TP_L2_00023.Position -1.24 -1.085 0
+TP_L2_00023.Mother TES_L2
+TP_L2_00023.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00024
+TP_L2_00024.Position -1.24 -0.93 0
+TP_L2_00024.Mother TES_L2
+TP_L2_00024.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00025
+TP_L2_00025.Position -1.24 -0.775 0
+TP_L2_00025.Mother TES_L2
+TP_L2_00025.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00026
+TP_L2_00026.Position -1.24 -0.62 0
+TP_L2_00026.Mother TES_L2
+TP_L2_00026.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00027
+TP_L2_00027.Position -1.24 -0.465 0
+TP_L2_00027.Mother TES_L2
+TP_L2_00027.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00028
+TP_L2_00028.Position -1.24 -0.31 0
+TP_L2_00028.Mother TES_L2
+TP_L2_00028.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00029
+TP_L2_00029.Position -1.24 -0.155 0
+TP_L2_00029.Mother TES_L2
+TP_L2_00029.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00030
+TP_L2_00030.Position -1.24 0 0
+TP_L2_00030.Mother TES_L2
+TP_L2_00030.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00031
+TP_L2_00031.Position -1.24 0.155 0
+TP_L2_00031.Mother TES_L2
+TP_L2_00031.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00032
+TP_L2_00032.Position -1.24 0.31 0
+TP_L2_00032.Mother TES_L2
+TP_L2_00032.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00033
+TP_L2_00033.Position -1.24 0.465 0
+TP_L2_00033.Mother TES_L2
+TP_L2_00033.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00034
+TP_L2_00034.Position -1.24 0.62 0
+TP_L2_00034.Mother TES_L2
+TP_L2_00034.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00035
+TP_L2_00035.Position -1.24 0.775 0
+TP_L2_00035.Mother TES_L2
+TP_L2_00035.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00036
+TP_L2_00036.Position -1.24 0.93 0
+TP_L2_00036.Mother TES_L2
+TP_L2_00036.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00037
+TP_L2_00037.Position -1.24 1.085 0
+TP_L2_00037.Mother TES_L2
+TP_L2_00037.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00038
+TP_L2_00038.Position -1.085 -1.24 0
+TP_L2_00038.Mother TES_L2
+TP_L2_00038.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00039
+TP_L2_00039.Position -1.085 -1.085 0
+TP_L2_00039.Mother TES_L2
+TP_L2_00039.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00040
+TP_L2_00040.Position -1.085 -0.93 0
+TP_L2_00040.Mother TES_L2
+TP_L2_00040.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00041
+TP_L2_00041.Position -1.085 -0.775 0
+TP_L2_00041.Mother TES_L2
+TP_L2_00041.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00042
+TP_L2_00042.Position -1.085 -0.62 0
+TP_L2_00042.Mother TES_L2
+TP_L2_00042.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00043
+TP_L2_00043.Position -1.085 -0.465 0
+TP_L2_00043.Mother TES_L2
+TP_L2_00043.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00044
+TP_L2_00044.Position -1.085 -0.31 0
+TP_L2_00044.Mother TES_L2
+TP_L2_00044.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00045
+TP_L2_00045.Position -1.085 -0.155 0
+TP_L2_00045.Mother TES_L2
+TP_L2_00045.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00046
+TP_L2_00046.Position -1.085 0 0
+TP_L2_00046.Mother TES_L2
+TP_L2_00046.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00047
+TP_L2_00047.Position -1.085 0.155 0
+TP_L2_00047.Mother TES_L2
+TP_L2_00047.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00048
+TP_L2_00048.Position -1.085 0.31 0
+TP_L2_00048.Mother TES_L2
+TP_L2_00048.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00049
+TP_L2_00049.Position -1.085 0.465 0
+TP_L2_00049.Mother TES_L2
+TP_L2_00049.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00050
+TP_L2_00050.Position -1.085 0.62 0
+TP_L2_00050.Mother TES_L2
+TP_L2_00050.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00051
+TP_L2_00051.Position -1.085 0.775 0
+TP_L2_00051.Mother TES_L2
+TP_L2_00051.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00052
+TP_L2_00052.Position -1.085 0.93 0
+TP_L2_00052.Mother TES_L2
+TP_L2_00052.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00053
+TP_L2_00053.Position -1.085 1.085 0
+TP_L2_00053.Mother TES_L2
+TP_L2_00053.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00054
+TP_L2_00054.Position -1.085 1.24 0
+TP_L2_00054.Mother TES_L2
+TP_L2_00054.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00055
+TP_L2_00055.Position -0.93 -1.395 0
+TP_L2_00055.Mother TES_L2
+TP_L2_00055.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00056
+TP_L2_00056.Position -0.93 -1.24 0
+TP_L2_00056.Mother TES_L2
+TP_L2_00056.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00057
+TP_L2_00057.Position -0.93 -1.085 0
+TP_L2_00057.Mother TES_L2
+TP_L2_00057.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00058
+TP_L2_00058.Position -0.93 -0.93 0
+TP_L2_00058.Mother TES_L2
+TP_L2_00058.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00059
+TP_L2_00059.Position -0.93 -0.775 0
+TP_L2_00059.Mother TES_L2
+TP_L2_00059.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00060
+TP_L2_00060.Position -0.93 -0.62 0
+TP_L2_00060.Mother TES_L2
+TP_L2_00060.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00061
+TP_L2_00061.Position -0.93 -0.465 0
+TP_L2_00061.Mother TES_L2
+TP_L2_00061.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00062
+TP_L2_00062.Position -0.93 -0.31 0
+TP_L2_00062.Mother TES_L2
+TP_L2_00062.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00063
+TP_L2_00063.Position -0.93 -0.155 0
+TP_L2_00063.Mother TES_L2
+TP_L2_00063.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00064
+TP_L2_00064.Position -0.93 0 0
+TP_L2_00064.Mother TES_L2
+TP_L2_00064.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00065
+TP_L2_00065.Position -0.93 0.155 0
+TP_L2_00065.Mother TES_L2
+TP_L2_00065.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00066
+TP_L2_00066.Position -0.93 0.31 0
+TP_L2_00066.Mother TES_L2
+TP_L2_00066.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00067
+TP_L2_00067.Position -0.93 0.465 0
+TP_L2_00067.Mother TES_L2
+TP_L2_00067.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00068
+TP_L2_00068.Position -0.93 0.62 0
+TP_L2_00068.Mother TES_L2
+TP_L2_00068.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00069
+TP_L2_00069.Position -0.93 0.775 0
+TP_L2_00069.Mother TES_L2
+TP_L2_00069.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00070
+TP_L2_00070.Position -0.93 0.93 0
+TP_L2_00070.Mother TES_L2
+TP_L2_00070.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00071
+TP_L2_00071.Position -0.93 1.085 0
+TP_L2_00071.Mother TES_L2
+TP_L2_00071.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00072
+TP_L2_00072.Position -0.93 1.24 0
+TP_L2_00072.Mother TES_L2
+TP_L2_00072.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00073
+TP_L2_00073.Position -0.93 1.395 0
+TP_L2_00073.Mother TES_L2
+TP_L2_00073.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00074
+TP_L2_00074.Position -0.775 -1.395 0
+TP_L2_00074.Mother TES_L2
+TP_L2_00074.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00075
+TP_L2_00075.Position -0.775 -1.24 0
+TP_L2_00075.Mother TES_L2
+TP_L2_00075.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00076
+TP_L2_00076.Position -0.775 -1.085 0
+TP_L2_00076.Mother TES_L2
+TP_L2_00076.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00077
+TP_L2_00077.Position -0.775 -0.93 0
+TP_L2_00077.Mother TES_L2
+TP_L2_00077.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00078
+TP_L2_00078.Position -0.775 -0.775 0
+TP_L2_00078.Mother TES_L2
+TP_L2_00078.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00079
+TP_L2_00079.Position -0.775 -0.62 0
+TP_L2_00079.Mother TES_L2
+TP_L2_00079.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00080
+TP_L2_00080.Position -0.775 -0.465 0
+TP_L2_00080.Mother TES_L2
+TP_L2_00080.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00081
+TP_L2_00081.Position -0.775 -0.31 0
+TP_L2_00081.Mother TES_L2
+TP_L2_00081.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00082
+TP_L2_00082.Position -0.775 -0.155 0
+TP_L2_00082.Mother TES_L2
+TP_L2_00082.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00083
+TP_L2_00083.Position -0.775 0 0
+TP_L2_00083.Mother TES_L2
+TP_L2_00083.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00084
+TP_L2_00084.Position -0.775 0.155 0
+TP_L2_00084.Mother TES_L2
+TP_L2_00084.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00085
+TP_L2_00085.Position -0.775 0.31 0
+TP_L2_00085.Mother TES_L2
+TP_L2_00085.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00086
+TP_L2_00086.Position -0.775 0.465 0
+TP_L2_00086.Mother TES_L2
+TP_L2_00086.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00087
+TP_L2_00087.Position -0.775 0.62 0
+TP_L2_00087.Mother TES_L2
+TP_L2_00087.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00088
+TP_L2_00088.Position -0.775 0.775 0
+TP_L2_00088.Mother TES_L2
+TP_L2_00088.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00089
+TP_L2_00089.Position -0.775 0.93 0
+TP_L2_00089.Mother TES_L2
+TP_L2_00089.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00090
+TP_L2_00090.Position -0.775 1.085 0
+TP_L2_00090.Mother TES_L2
+TP_L2_00090.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00091
+TP_L2_00091.Position -0.775 1.24 0
+TP_L2_00091.Mother TES_L2
+TP_L2_00091.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00092
+TP_L2_00092.Position -0.775 1.395 0
+TP_L2_00092.Mother TES_L2
+TP_L2_00092.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00093
+TP_L2_00093.Position -0.62 -1.55 0
+TP_L2_00093.Mother TES_L2
+TP_L2_00093.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00094
+TP_L2_00094.Position -0.62 -1.395 0
+TP_L2_00094.Mother TES_L2
+TP_L2_00094.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00095
+TP_L2_00095.Position -0.62 -1.24 0
+TP_L2_00095.Mother TES_L2
+TP_L2_00095.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00096
+TP_L2_00096.Position -0.62 -1.085 0
+TP_L2_00096.Mother TES_L2
+TP_L2_00096.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00097
+TP_L2_00097.Position -0.62 -0.93 0
+TP_L2_00097.Mother TES_L2
+TP_L2_00097.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00098
+TP_L2_00098.Position -0.62 -0.775 0
+TP_L2_00098.Mother TES_L2
+TP_L2_00098.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00099
+TP_L2_00099.Position -0.62 -0.62 0
+TP_L2_00099.Mother TES_L2
+TP_L2_00099.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00100
+TP_L2_00100.Position -0.62 -0.465 0
+TP_L2_00100.Mother TES_L2
+TP_L2_00100.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00101
+TP_L2_00101.Position -0.62 -0.31 0
+TP_L2_00101.Mother TES_L2
+TP_L2_00101.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00102
+TP_L2_00102.Position -0.62 -0.155 0
+TP_L2_00102.Mother TES_L2
+TP_L2_00102.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00103
+TP_L2_00103.Position -0.62 0 0
+TP_L2_00103.Mother TES_L2
+TP_L2_00103.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00104
+TP_L2_00104.Position -0.62 0.155 0
+TP_L2_00104.Mother TES_L2
+TP_L2_00104.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00105
+TP_L2_00105.Position -0.62 0.31 0
+TP_L2_00105.Mother TES_L2
+TP_L2_00105.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00106
+TP_L2_00106.Position -0.62 0.465 0
+TP_L2_00106.Mother TES_L2
+TP_L2_00106.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00107
+TP_L2_00107.Position -0.62 0.62 0
+TP_L2_00107.Mother TES_L2
+TP_L2_00107.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00108
+TP_L2_00108.Position -0.62 0.775 0
+TP_L2_00108.Mother TES_L2
+TP_L2_00108.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00109
+TP_L2_00109.Position -0.62 0.93 0
+TP_L2_00109.Mother TES_L2
+TP_L2_00109.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00110
+TP_L2_00110.Position -0.62 1.085 0
+TP_L2_00110.Mother TES_L2
+TP_L2_00110.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00111
+TP_L2_00111.Position -0.62 1.24 0
+TP_L2_00111.Mother TES_L2
+TP_L2_00111.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00112
+TP_L2_00112.Position -0.62 1.395 0
+TP_L2_00112.Mother TES_L2
+TP_L2_00112.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00113
+TP_L2_00113.Position -0.62 1.55 0
+TP_L2_00113.Mother TES_L2
+TP_L2_00113.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00114
+TP_L2_00114.Position -0.465 -1.55 0
+TP_L2_00114.Mother TES_L2
+TP_L2_00114.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00115
+TP_L2_00115.Position -0.465 -1.395 0
+TP_L2_00115.Mother TES_L2
+TP_L2_00115.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00116
+TP_L2_00116.Position -0.465 -1.24 0
+TP_L2_00116.Mother TES_L2
+TP_L2_00116.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00117
+TP_L2_00117.Position -0.465 -1.085 0
+TP_L2_00117.Mother TES_L2
+TP_L2_00117.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00118
+TP_L2_00118.Position -0.465 -0.93 0
+TP_L2_00118.Mother TES_L2
+TP_L2_00118.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00119
+TP_L2_00119.Position -0.465 -0.775 0
+TP_L2_00119.Mother TES_L2
+TP_L2_00119.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00120
+TP_L2_00120.Position -0.465 -0.62 0
+TP_L2_00120.Mother TES_L2
+TP_L2_00120.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00121
+TP_L2_00121.Position -0.465 -0.465 0
+TP_L2_00121.Mother TES_L2
+TP_L2_00121.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00122
+TP_L2_00122.Position -0.465 -0.31 0
+TP_L2_00122.Mother TES_L2
+TP_L2_00122.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00123
+TP_L2_00123.Position -0.465 -0.155 0
+TP_L2_00123.Mother TES_L2
+TP_L2_00123.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00124
+TP_L2_00124.Position -0.465 0 0
+TP_L2_00124.Mother TES_L2
+TP_L2_00124.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00125
+TP_L2_00125.Position -0.465 0.155 0
+TP_L2_00125.Mother TES_L2
+TP_L2_00125.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00126
+TP_L2_00126.Position -0.465 0.31 0
+TP_L2_00126.Mother TES_L2
+TP_L2_00126.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00127
+TP_L2_00127.Position -0.465 0.465 0
+TP_L2_00127.Mother TES_L2
+TP_L2_00127.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00128
+TP_L2_00128.Position -0.465 0.62 0
+TP_L2_00128.Mother TES_L2
+TP_L2_00128.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00129
+TP_L2_00129.Position -0.465 0.775 0
+TP_L2_00129.Mother TES_L2
+TP_L2_00129.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00130
+TP_L2_00130.Position -0.465 0.93 0
+TP_L2_00130.Mother TES_L2
+TP_L2_00130.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00131
+TP_L2_00131.Position -0.465 1.085 0
+TP_L2_00131.Mother TES_L2
+TP_L2_00131.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00132
+TP_L2_00132.Position -0.465 1.24 0
+TP_L2_00132.Mother TES_L2
+TP_L2_00132.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00133
+TP_L2_00133.Position -0.465 1.395 0
+TP_L2_00133.Mother TES_L2
+TP_L2_00133.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00134
+TP_L2_00134.Position -0.465 1.55 0
+TP_L2_00134.Mother TES_L2
+TP_L2_00134.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00135
+TP_L2_00135.Position -0.31 -1.55 0
+TP_L2_00135.Mother TES_L2
+TP_L2_00135.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00136
+TP_L2_00136.Position -0.31 -1.395 0
+TP_L2_00136.Mother TES_L2
+TP_L2_00136.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00137
+TP_L2_00137.Position -0.31 -1.24 0
+TP_L2_00137.Mother TES_L2
+TP_L2_00137.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00138
+TP_L2_00138.Position -0.31 -1.085 0
+TP_L2_00138.Mother TES_L2
+TP_L2_00138.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00139
+TP_L2_00139.Position -0.31 -0.93 0
+TP_L2_00139.Mother TES_L2
+TP_L2_00139.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00140
+TP_L2_00140.Position -0.31 -0.775 0
+TP_L2_00140.Mother TES_L2
+TP_L2_00140.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00141
+TP_L2_00141.Position -0.31 -0.62 0
+TP_L2_00141.Mother TES_L2
+TP_L2_00141.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00142
+TP_L2_00142.Position -0.31 -0.465 0
+TP_L2_00142.Mother TES_L2
+TP_L2_00142.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00143
+TP_L2_00143.Position -0.31 -0.31 0
+TP_L2_00143.Mother TES_L2
+TP_L2_00143.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00144
+TP_L2_00144.Position -0.31 -0.155 0
+TP_L2_00144.Mother TES_L2
+TP_L2_00144.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00145
+TP_L2_00145.Position -0.31 0 0
+TP_L2_00145.Mother TES_L2
+TP_L2_00145.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00146
+TP_L2_00146.Position -0.31 0.155 0
+TP_L2_00146.Mother TES_L2
+TP_L2_00146.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00147
+TP_L2_00147.Position -0.31 0.31 0
+TP_L2_00147.Mother TES_L2
+TP_L2_00147.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00148
+TP_L2_00148.Position -0.31 0.465 0
+TP_L2_00148.Mother TES_L2
+TP_L2_00148.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00149
+TP_L2_00149.Position -0.31 0.62 0
+TP_L2_00149.Mother TES_L2
+TP_L2_00149.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00150
+TP_L2_00150.Position -0.31 0.775 0
+TP_L2_00150.Mother TES_L2
+TP_L2_00150.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00151
+TP_L2_00151.Position -0.31 0.93 0
+TP_L2_00151.Mother TES_L2
+TP_L2_00151.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00152
+TP_L2_00152.Position -0.31 1.085 0
+TP_L2_00152.Mother TES_L2
+TP_L2_00152.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00153
+TP_L2_00153.Position -0.31 1.24 0
+TP_L2_00153.Mother TES_L2
+TP_L2_00153.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00154
+TP_L2_00154.Position -0.31 1.395 0
+TP_L2_00154.Mother TES_L2
+TP_L2_00154.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00155
+TP_L2_00155.Position -0.31 1.55 0
+TP_L2_00155.Mother TES_L2
+TP_L2_00155.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00156
+TP_L2_00156.Position -0.155 -1.55 0
+TP_L2_00156.Mother TES_L2
+TP_L2_00156.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00157
+TP_L2_00157.Position -0.155 -1.395 0
+TP_L2_00157.Mother TES_L2
+TP_L2_00157.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00158
+TP_L2_00158.Position -0.155 -1.24 0
+TP_L2_00158.Mother TES_L2
+TP_L2_00158.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00159
+TP_L2_00159.Position -0.155 -1.085 0
+TP_L2_00159.Mother TES_L2
+TP_L2_00159.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00160
+TP_L2_00160.Position -0.155 -0.93 0
+TP_L2_00160.Mother TES_L2
+TP_L2_00160.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00161
+TP_L2_00161.Position -0.155 -0.775 0
+TP_L2_00161.Mother TES_L2
+TP_L2_00161.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00162
+TP_L2_00162.Position -0.155 -0.62 0
+TP_L2_00162.Mother TES_L2
+TP_L2_00162.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00163
+TP_L2_00163.Position -0.155 -0.465 0
+TP_L2_00163.Mother TES_L2
+TP_L2_00163.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00164
+TP_L2_00164.Position -0.155 -0.31 0
+TP_L2_00164.Mother TES_L2
+TP_L2_00164.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00165
+TP_L2_00165.Position -0.155 -0.155 0
+TP_L2_00165.Mother TES_L2
+TP_L2_00165.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00166
+TP_L2_00166.Position -0.155 0 0
+TP_L2_00166.Mother TES_L2
+TP_L2_00166.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00167
+TP_L2_00167.Position -0.155 0.155 0
+TP_L2_00167.Mother TES_L2
+TP_L2_00167.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00168
+TP_L2_00168.Position -0.155 0.31 0
+TP_L2_00168.Mother TES_L2
+TP_L2_00168.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00169
+TP_L2_00169.Position -0.155 0.465 0
+TP_L2_00169.Mother TES_L2
+TP_L2_00169.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00170
+TP_L2_00170.Position -0.155 0.62 0
+TP_L2_00170.Mother TES_L2
+TP_L2_00170.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00171
+TP_L2_00171.Position -0.155 0.775 0
+TP_L2_00171.Mother TES_L2
+TP_L2_00171.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00172
+TP_L2_00172.Position -0.155 0.93 0
+TP_L2_00172.Mother TES_L2
+TP_L2_00172.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00173
+TP_L2_00173.Position -0.155 1.085 0
+TP_L2_00173.Mother TES_L2
+TP_L2_00173.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00174
+TP_L2_00174.Position -0.155 1.24 0
+TP_L2_00174.Mother TES_L2
+TP_L2_00174.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00175
+TP_L2_00175.Position -0.155 1.395 0
+TP_L2_00175.Mother TES_L2
+TP_L2_00175.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00176
+TP_L2_00176.Position -0.155 1.55 0
+TP_L2_00176.Mother TES_L2
+TP_L2_00176.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00177
+TP_L2_00177.Position 0 -1.705 0
+TP_L2_00177.Mother TES_L2
+TP_L2_00177.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00178
+TP_L2_00178.Position 0 -1.55 0
+TP_L2_00178.Mother TES_L2
+TP_L2_00178.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00179
+TP_L2_00179.Position 0 -1.395 0
+TP_L2_00179.Mother TES_L2
+TP_L2_00179.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00180
+TP_L2_00180.Position 0 -1.24 0
+TP_L2_00180.Mother TES_L2
+TP_L2_00180.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00181
+TP_L2_00181.Position 0 -1.085 0
+TP_L2_00181.Mother TES_L2
+TP_L2_00181.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00182
+TP_L2_00182.Position 0 -0.93 0
+TP_L2_00182.Mother TES_L2
+TP_L2_00182.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00183
+TP_L2_00183.Position 0 -0.775 0
+TP_L2_00183.Mother TES_L2
+TP_L2_00183.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00184
+TP_L2_00184.Position 0 -0.62 0
+TP_L2_00184.Mother TES_L2
+TP_L2_00184.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00185
+TP_L2_00185.Position 0 -0.465 0
+TP_L2_00185.Mother TES_L2
+TP_L2_00185.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00186
+TP_L2_00186.Position 0 -0.31 0
+TP_L2_00186.Mother TES_L2
+TP_L2_00186.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00187
+TP_L2_00187.Position 0 -0.155 0
+TP_L2_00187.Mother TES_L2
+TP_L2_00187.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00188
+TP_L2_00188.Position 0 0 0
+TP_L2_00188.Mother TES_L2
+TP_L2_00188.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00189
+TP_L2_00189.Position 0 0.155 0
+TP_L2_00189.Mother TES_L2
+TP_L2_00189.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00190
+TP_L2_00190.Position 0 0.31 0
+TP_L2_00190.Mother TES_L2
+TP_L2_00190.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00191
+TP_L2_00191.Position 0 0.465 0
+TP_L2_00191.Mother TES_L2
+TP_L2_00191.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00192
+TP_L2_00192.Position 0 0.62 0
+TP_L2_00192.Mother TES_L2
+TP_L2_00192.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00193
+TP_L2_00193.Position 0 0.775 0
+TP_L2_00193.Mother TES_L2
+TP_L2_00193.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00194
+TP_L2_00194.Position 0 0.93 0
+TP_L2_00194.Mother TES_L2
+TP_L2_00194.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00195
+TP_L2_00195.Position 0 1.085 0
+TP_L2_00195.Mother TES_L2
+TP_L2_00195.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00196
+TP_L2_00196.Position 0 1.24 0
+TP_L2_00196.Mother TES_L2
+TP_L2_00196.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00197
+TP_L2_00197.Position 0 1.395 0
+TP_L2_00197.Mother TES_L2
+TP_L2_00197.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00198
+TP_L2_00198.Position 0 1.55 0
+TP_L2_00198.Mother TES_L2
+TP_L2_00198.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00199
+TP_L2_00199.Position 0 1.705 0
+TP_L2_00199.Mother TES_L2
+TP_L2_00199.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00200
+TP_L2_00200.Position 0.155 -1.55 0
+TP_L2_00200.Mother TES_L2
+TP_L2_00200.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00201
+TP_L2_00201.Position 0.155 -1.395 0
+TP_L2_00201.Mother TES_L2
+TP_L2_00201.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00202
+TP_L2_00202.Position 0.155 -1.24 0
+TP_L2_00202.Mother TES_L2
+TP_L2_00202.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00203
+TP_L2_00203.Position 0.155 -1.085 0
+TP_L2_00203.Mother TES_L2
+TP_L2_00203.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00204
+TP_L2_00204.Position 0.155 -0.93 0
+TP_L2_00204.Mother TES_L2
+TP_L2_00204.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00205
+TP_L2_00205.Position 0.155 -0.775 0
+TP_L2_00205.Mother TES_L2
+TP_L2_00205.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00206
+TP_L2_00206.Position 0.155 -0.62 0
+TP_L2_00206.Mother TES_L2
+TP_L2_00206.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00207
+TP_L2_00207.Position 0.155 -0.465 0
+TP_L2_00207.Mother TES_L2
+TP_L2_00207.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00208
+TP_L2_00208.Position 0.155 -0.31 0
+TP_L2_00208.Mother TES_L2
+TP_L2_00208.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00209
+TP_L2_00209.Position 0.155 -0.155 0
+TP_L2_00209.Mother TES_L2
+TP_L2_00209.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00210
+TP_L2_00210.Position 0.155 0 0
+TP_L2_00210.Mother TES_L2
+TP_L2_00210.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00211
+TP_L2_00211.Position 0.155 0.155 0
+TP_L2_00211.Mother TES_L2
+TP_L2_00211.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00212
+TP_L2_00212.Position 0.155 0.31 0
+TP_L2_00212.Mother TES_L2
+TP_L2_00212.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00213
+TP_L2_00213.Position 0.155 0.465 0
+TP_L2_00213.Mother TES_L2
+TP_L2_00213.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00214
+TP_L2_00214.Position 0.155 0.62 0
+TP_L2_00214.Mother TES_L2
+TP_L2_00214.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00215
+TP_L2_00215.Position 0.155 0.775 0
+TP_L2_00215.Mother TES_L2
+TP_L2_00215.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00216
+TP_L2_00216.Position 0.155 0.93 0
+TP_L2_00216.Mother TES_L2
+TP_L2_00216.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00217
+TP_L2_00217.Position 0.155 1.085 0
+TP_L2_00217.Mother TES_L2
+TP_L2_00217.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00218
+TP_L2_00218.Position 0.155 1.24 0
+TP_L2_00218.Mother TES_L2
+TP_L2_00218.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00219
+TP_L2_00219.Position 0.155 1.395 0
+TP_L2_00219.Mother TES_L2
+TP_L2_00219.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00220
+TP_L2_00220.Position 0.155 1.55 0
+TP_L2_00220.Mother TES_L2
+TP_L2_00220.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00221
+TP_L2_00221.Position 0.31 -1.55 0
+TP_L2_00221.Mother TES_L2
+TP_L2_00221.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00222
+TP_L2_00222.Position 0.31 -1.395 0
+TP_L2_00222.Mother TES_L2
+TP_L2_00222.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00223
+TP_L2_00223.Position 0.31 -1.24 0
+TP_L2_00223.Mother TES_L2
+TP_L2_00223.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00224
+TP_L2_00224.Position 0.31 -1.085 0
+TP_L2_00224.Mother TES_L2
+TP_L2_00224.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00225
+TP_L2_00225.Position 0.31 -0.93 0
+TP_L2_00225.Mother TES_L2
+TP_L2_00225.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00226
+TP_L2_00226.Position 0.31 -0.775 0
+TP_L2_00226.Mother TES_L2
+TP_L2_00226.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00227
+TP_L2_00227.Position 0.31 -0.62 0
+TP_L2_00227.Mother TES_L2
+TP_L2_00227.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00228
+TP_L2_00228.Position 0.31 -0.465 0
+TP_L2_00228.Mother TES_L2
+TP_L2_00228.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00229
+TP_L2_00229.Position 0.31 -0.31 0
+TP_L2_00229.Mother TES_L2
+TP_L2_00229.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00230
+TP_L2_00230.Position 0.31 -0.155 0
+TP_L2_00230.Mother TES_L2
+TP_L2_00230.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00231
+TP_L2_00231.Position 0.31 0 0
+TP_L2_00231.Mother TES_L2
+TP_L2_00231.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00232
+TP_L2_00232.Position 0.31 0.155 0
+TP_L2_00232.Mother TES_L2
+TP_L2_00232.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00233
+TP_L2_00233.Position 0.31 0.31 0
+TP_L2_00233.Mother TES_L2
+TP_L2_00233.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00234
+TP_L2_00234.Position 0.31 0.465 0
+TP_L2_00234.Mother TES_L2
+TP_L2_00234.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00235
+TP_L2_00235.Position 0.31 0.62 0
+TP_L2_00235.Mother TES_L2
+TP_L2_00235.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00236
+TP_L2_00236.Position 0.31 0.775 0
+TP_L2_00236.Mother TES_L2
+TP_L2_00236.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00237
+TP_L2_00237.Position 0.31 0.93 0
+TP_L2_00237.Mother TES_L2
+TP_L2_00237.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00238
+TP_L2_00238.Position 0.31 1.085 0
+TP_L2_00238.Mother TES_L2
+TP_L2_00238.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00239
+TP_L2_00239.Position 0.31 1.24 0
+TP_L2_00239.Mother TES_L2
+TP_L2_00239.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00240
+TP_L2_00240.Position 0.31 1.395 0
+TP_L2_00240.Mother TES_L2
+TP_L2_00240.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00241
+TP_L2_00241.Position 0.31 1.55 0
+TP_L2_00241.Mother TES_L2
+TP_L2_00241.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00242
+TP_L2_00242.Position 0.465 -1.55 0
+TP_L2_00242.Mother TES_L2
+TP_L2_00242.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00243
+TP_L2_00243.Position 0.465 -1.395 0
+TP_L2_00243.Mother TES_L2
+TP_L2_00243.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00244
+TP_L2_00244.Position 0.465 -1.24 0
+TP_L2_00244.Mother TES_L2
+TP_L2_00244.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00245
+TP_L2_00245.Position 0.465 -1.085 0
+TP_L2_00245.Mother TES_L2
+TP_L2_00245.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00246
+TP_L2_00246.Position 0.465 -0.93 0
+TP_L2_00246.Mother TES_L2
+TP_L2_00246.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00247
+TP_L2_00247.Position 0.465 -0.775 0
+TP_L2_00247.Mother TES_L2
+TP_L2_00247.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00248
+TP_L2_00248.Position 0.465 -0.62 0
+TP_L2_00248.Mother TES_L2
+TP_L2_00248.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00249
+TP_L2_00249.Position 0.465 -0.465 0
+TP_L2_00249.Mother TES_L2
+TP_L2_00249.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00250
+TP_L2_00250.Position 0.465 -0.31 0
+TP_L2_00250.Mother TES_L2
+TP_L2_00250.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00251
+TP_L2_00251.Position 0.465 -0.155 0
+TP_L2_00251.Mother TES_L2
+TP_L2_00251.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00252
+TP_L2_00252.Position 0.465 0 0
+TP_L2_00252.Mother TES_L2
+TP_L2_00252.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00253
+TP_L2_00253.Position 0.465 0.155 0
+TP_L2_00253.Mother TES_L2
+TP_L2_00253.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00254
+TP_L2_00254.Position 0.465 0.31 0
+TP_L2_00254.Mother TES_L2
+TP_L2_00254.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00255
+TP_L2_00255.Position 0.465 0.465 0
+TP_L2_00255.Mother TES_L2
+TP_L2_00255.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00256
+TP_L2_00256.Position 0.465 0.62 0
+TP_L2_00256.Mother TES_L2
+TP_L2_00256.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00257
+TP_L2_00257.Position 0.465 0.775 0
+TP_L2_00257.Mother TES_L2
+TP_L2_00257.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00258
+TP_L2_00258.Position 0.465 0.93 0
+TP_L2_00258.Mother TES_L2
+TP_L2_00258.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00259
+TP_L2_00259.Position 0.465 1.085 0
+TP_L2_00259.Mother TES_L2
+TP_L2_00259.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00260
+TP_L2_00260.Position 0.465 1.24 0
+TP_L2_00260.Mother TES_L2
+TP_L2_00260.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00261
+TP_L2_00261.Position 0.465 1.395 0
+TP_L2_00261.Mother TES_L2
+TP_L2_00261.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00262
+TP_L2_00262.Position 0.465 1.55 0
+TP_L2_00262.Mother TES_L2
+TP_L2_00262.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00263
+TP_L2_00263.Position 0.62 -1.55 0
+TP_L2_00263.Mother TES_L2
+TP_L2_00263.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00264
+TP_L2_00264.Position 0.62 -1.395 0
+TP_L2_00264.Mother TES_L2
+TP_L2_00264.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00265
+TP_L2_00265.Position 0.62 -1.24 0
+TP_L2_00265.Mother TES_L2
+TP_L2_00265.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00266
+TP_L2_00266.Position 0.62 -1.085 0
+TP_L2_00266.Mother TES_L2
+TP_L2_00266.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00267
+TP_L2_00267.Position 0.62 -0.93 0
+TP_L2_00267.Mother TES_L2
+TP_L2_00267.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00268
+TP_L2_00268.Position 0.62 -0.775 0
+TP_L2_00268.Mother TES_L2
+TP_L2_00268.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00269
+TP_L2_00269.Position 0.62 -0.62 0
+TP_L2_00269.Mother TES_L2
+TP_L2_00269.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00270
+TP_L2_00270.Position 0.62 -0.465 0
+TP_L2_00270.Mother TES_L2
+TP_L2_00270.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00271
+TP_L2_00271.Position 0.62 -0.31 0
+TP_L2_00271.Mother TES_L2
+TP_L2_00271.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00272
+TP_L2_00272.Position 0.62 -0.155 0
+TP_L2_00272.Mother TES_L2
+TP_L2_00272.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00273
+TP_L2_00273.Position 0.62 0 0
+TP_L2_00273.Mother TES_L2
+TP_L2_00273.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00274
+TP_L2_00274.Position 0.62 0.155 0
+TP_L2_00274.Mother TES_L2
+TP_L2_00274.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00275
+TP_L2_00275.Position 0.62 0.31 0
+TP_L2_00275.Mother TES_L2
+TP_L2_00275.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00276
+TP_L2_00276.Position 0.62 0.465 0
+TP_L2_00276.Mother TES_L2
+TP_L2_00276.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00277
+TP_L2_00277.Position 0.62 0.62 0
+TP_L2_00277.Mother TES_L2
+TP_L2_00277.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00278
+TP_L2_00278.Position 0.62 0.775 0
+TP_L2_00278.Mother TES_L2
+TP_L2_00278.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00279
+TP_L2_00279.Position 0.62 0.93 0
+TP_L2_00279.Mother TES_L2
+TP_L2_00279.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00280
+TP_L2_00280.Position 0.62 1.085 0
+TP_L2_00280.Mother TES_L2
+TP_L2_00280.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00281
+TP_L2_00281.Position 0.62 1.24 0
+TP_L2_00281.Mother TES_L2
+TP_L2_00281.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00282
+TP_L2_00282.Position 0.62 1.395 0
+TP_L2_00282.Mother TES_L2
+TP_L2_00282.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00283
+TP_L2_00283.Position 0.62 1.55 0
+TP_L2_00283.Mother TES_L2
+TP_L2_00283.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00284
+TP_L2_00284.Position 0.775 -1.395 0
+TP_L2_00284.Mother TES_L2
+TP_L2_00284.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00285
+TP_L2_00285.Position 0.775 -1.24 0
+TP_L2_00285.Mother TES_L2
+TP_L2_00285.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00286
+TP_L2_00286.Position 0.775 -1.085 0
+TP_L2_00286.Mother TES_L2
+TP_L2_00286.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00287
+TP_L2_00287.Position 0.775 -0.93 0
+TP_L2_00287.Mother TES_L2
+TP_L2_00287.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00288
+TP_L2_00288.Position 0.775 -0.775 0
+TP_L2_00288.Mother TES_L2
+TP_L2_00288.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00289
+TP_L2_00289.Position 0.775 -0.62 0
+TP_L2_00289.Mother TES_L2
+TP_L2_00289.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00290
+TP_L2_00290.Position 0.775 -0.465 0
+TP_L2_00290.Mother TES_L2
+TP_L2_00290.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00291
+TP_L2_00291.Position 0.775 -0.31 0
+TP_L2_00291.Mother TES_L2
+TP_L2_00291.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00292
+TP_L2_00292.Position 0.775 -0.155 0
+TP_L2_00292.Mother TES_L2
+TP_L2_00292.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00293
+TP_L2_00293.Position 0.775 0 0
+TP_L2_00293.Mother TES_L2
+TP_L2_00293.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00294
+TP_L2_00294.Position 0.775 0.155 0
+TP_L2_00294.Mother TES_L2
+TP_L2_00294.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00295
+TP_L2_00295.Position 0.775 0.31 0
+TP_L2_00295.Mother TES_L2
+TP_L2_00295.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00296
+TP_L2_00296.Position 0.775 0.465 0
+TP_L2_00296.Mother TES_L2
+TP_L2_00296.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00297
+TP_L2_00297.Position 0.775 0.62 0
+TP_L2_00297.Mother TES_L2
+TP_L2_00297.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00298
+TP_L2_00298.Position 0.775 0.775 0
+TP_L2_00298.Mother TES_L2
+TP_L2_00298.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00299
+TP_L2_00299.Position 0.775 0.93 0
+TP_L2_00299.Mother TES_L2
+TP_L2_00299.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00300
+TP_L2_00300.Position 0.775 1.085 0
+TP_L2_00300.Mother TES_L2
+TP_L2_00300.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00301
+TP_L2_00301.Position 0.775 1.24 0
+TP_L2_00301.Mother TES_L2
+TP_L2_00301.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00302
+TP_L2_00302.Position 0.775 1.395 0
+TP_L2_00302.Mother TES_L2
+TP_L2_00302.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00303
+TP_L2_00303.Position 0.93 -1.395 0
+TP_L2_00303.Mother TES_L2
+TP_L2_00303.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00304
+TP_L2_00304.Position 0.93 -1.24 0
+TP_L2_00304.Mother TES_L2
+TP_L2_00304.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00305
+TP_L2_00305.Position 0.93 -1.085 0
+TP_L2_00305.Mother TES_L2
+TP_L2_00305.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00306
+TP_L2_00306.Position 0.93 -0.93 0
+TP_L2_00306.Mother TES_L2
+TP_L2_00306.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00307
+TP_L2_00307.Position 0.93 -0.775 0
+TP_L2_00307.Mother TES_L2
+TP_L2_00307.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00308
+TP_L2_00308.Position 0.93 -0.62 0
+TP_L2_00308.Mother TES_L2
+TP_L2_00308.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00309
+TP_L2_00309.Position 0.93 -0.465 0
+TP_L2_00309.Mother TES_L2
+TP_L2_00309.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00310
+TP_L2_00310.Position 0.93 -0.31 0
+TP_L2_00310.Mother TES_L2
+TP_L2_00310.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00311
+TP_L2_00311.Position 0.93 -0.155 0
+TP_L2_00311.Mother TES_L2
+TP_L2_00311.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00312
+TP_L2_00312.Position 0.93 0 0
+TP_L2_00312.Mother TES_L2
+TP_L2_00312.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00313
+TP_L2_00313.Position 0.93 0.155 0
+TP_L2_00313.Mother TES_L2
+TP_L2_00313.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00314
+TP_L2_00314.Position 0.93 0.31 0
+TP_L2_00314.Mother TES_L2
+TP_L2_00314.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00315
+TP_L2_00315.Position 0.93 0.465 0
+TP_L2_00315.Mother TES_L2
+TP_L2_00315.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00316
+TP_L2_00316.Position 0.93 0.62 0
+TP_L2_00316.Mother TES_L2
+TP_L2_00316.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00317
+TP_L2_00317.Position 0.93 0.775 0
+TP_L2_00317.Mother TES_L2
+TP_L2_00317.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00318
+TP_L2_00318.Position 0.93 0.93 0
+TP_L2_00318.Mother TES_L2
+TP_L2_00318.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00319
+TP_L2_00319.Position 0.93 1.085 0
+TP_L2_00319.Mother TES_L2
+TP_L2_00319.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00320
+TP_L2_00320.Position 0.93 1.24 0
+TP_L2_00320.Mother TES_L2
+TP_L2_00320.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00321
+TP_L2_00321.Position 0.93 1.395 0
+TP_L2_00321.Mother TES_L2
+TP_L2_00321.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00322
+TP_L2_00322.Position 1.085 -1.24 0
+TP_L2_00322.Mother TES_L2
+TP_L2_00322.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00323
+TP_L2_00323.Position 1.085 -1.085 0
+TP_L2_00323.Mother TES_L2
+TP_L2_00323.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00324
+TP_L2_00324.Position 1.085 -0.93 0
+TP_L2_00324.Mother TES_L2
+TP_L2_00324.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00325
+TP_L2_00325.Position 1.085 -0.775 0
+TP_L2_00325.Mother TES_L2
+TP_L2_00325.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00326
+TP_L2_00326.Position 1.085 -0.62 0
+TP_L2_00326.Mother TES_L2
+TP_L2_00326.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00327
+TP_L2_00327.Position 1.085 -0.465 0
+TP_L2_00327.Mother TES_L2
+TP_L2_00327.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00328
+TP_L2_00328.Position 1.085 -0.31 0
+TP_L2_00328.Mother TES_L2
+TP_L2_00328.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00329
+TP_L2_00329.Position 1.085 -0.155 0
+TP_L2_00329.Mother TES_L2
+TP_L2_00329.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00330
+TP_L2_00330.Position 1.085 0 0
+TP_L2_00330.Mother TES_L2
+TP_L2_00330.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00331
+TP_L2_00331.Position 1.085 0.155 0
+TP_L2_00331.Mother TES_L2
+TP_L2_00331.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00332
+TP_L2_00332.Position 1.085 0.31 0
+TP_L2_00332.Mother TES_L2
+TP_L2_00332.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00333
+TP_L2_00333.Position 1.085 0.465 0
+TP_L2_00333.Mother TES_L2
+TP_L2_00333.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00334
+TP_L2_00334.Position 1.085 0.62 0
+TP_L2_00334.Mother TES_L2
+TP_L2_00334.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00335
+TP_L2_00335.Position 1.085 0.775 0
+TP_L2_00335.Mother TES_L2
+TP_L2_00335.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00336
+TP_L2_00336.Position 1.085 0.93 0
+TP_L2_00336.Mother TES_L2
+TP_L2_00336.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00337
+TP_L2_00337.Position 1.085 1.085 0
+TP_L2_00337.Mother TES_L2
+TP_L2_00337.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00338
+TP_L2_00338.Position 1.085 1.24 0
+TP_L2_00338.Mother TES_L2
+TP_L2_00338.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00339
+TP_L2_00339.Position 1.24 -1.085 0
+TP_L2_00339.Mother TES_L2
+TP_L2_00339.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00340
+TP_L2_00340.Position 1.24 -0.93 0
+TP_L2_00340.Mother TES_L2
+TP_L2_00340.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00341
+TP_L2_00341.Position 1.24 -0.775 0
+TP_L2_00341.Mother TES_L2
+TP_L2_00341.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00342
+TP_L2_00342.Position 1.24 -0.62 0
+TP_L2_00342.Mother TES_L2
+TP_L2_00342.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00343
+TP_L2_00343.Position 1.24 -0.465 0
+TP_L2_00343.Mother TES_L2
+TP_L2_00343.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00344
+TP_L2_00344.Position 1.24 -0.31 0
+TP_L2_00344.Mother TES_L2
+TP_L2_00344.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00345
+TP_L2_00345.Position 1.24 -0.155 0
+TP_L2_00345.Mother TES_L2
+TP_L2_00345.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00346
+TP_L2_00346.Position 1.24 0 0
+TP_L2_00346.Mother TES_L2
+TP_L2_00346.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00347
+TP_L2_00347.Position 1.24 0.155 0
+TP_L2_00347.Mother TES_L2
+TP_L2_00347.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00348
+TP_L2_00348.Position 1.24 0.31 0
+TP_L2_00348.Mother TES_L2
+TP_L2_00348.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00349
+TP_L2_00349.Position 1.24 0.465 0
+TP_L2_00349.Mother TES_L2
+TP_L2_00349.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00350
+TP_L2_00350.Position 1.24 0.62 0
+TP_L2_00350.Mother TES_L2
+TP_L2_00350.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00351
+TP_L2_00351.Position 1.24 0.775 0
+TP_L2_00351.Mother TES_L2
+TP_L2_00351.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00352
+TP_L2_00352.Position 1.24 0.93 0
+TP_L2_00352.Mother TES_L2
+TP_L2_00352.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00353
+TP_L2_00353.Position 1.24 1.085 0
+TP_L2_00353.Mother TES_L2
+TP_L2_00353.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00354
+TP_L2_00354.Position 1.395 -0.93 0
+TP_L2_00354.Mother TES_L2
+TP_L2_00354.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00355
+TP_L2_00355.Position 1.395 -0.775 0
+TP_L2_00355.Mother TES_L2
+TP_L2_00355.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00356
+TP_L2_00356.Position 1.395 -0.62 0
+TP_L2_00356.Mother TES_L2
+TP_L2_00356.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00357
+TP_L2_00357.Position 1.395 -0.465 0
+TP_L2_00357.Mother TES_L2
+TP_L2_00357.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00358
+TP_L2_00358.Position 1.395 -0.31 0
+TP_L2_00358.Mother TES_L2
+TP_L2_00358.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00359
+TP_L2_00359.Position 1.395 -0.155 0
+TP_L2_00359.Mother TES_L2
+TP_L2_00359.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00360
+TP_L2_00360.Position 1.395 0 0
+TP_L2_00360.Mother TES_L2
+TP_L2_00360.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00361
+TP_L2_00361.Position 1.395 0.155 0
+TP_L2_00361.Mother TES_L2
+TP_L2_00361.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00362
+TP_L2_00362.Position 1.395 0.31 0
+TP_L2_00362.Mother TES_L2
+TP_L2_00362.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00363
+TP_L2_00363.Position 1.395 0.465 0
+TP_L2_00363.Mother TES_L2
+TP_L2_00363.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00364
+TP_L2_00364.Position 1.395 0.62 0
+TP_L2_00364.Mother TES_L2
+TP_L2_00364.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00365
+TP_L2_00365.Position 1.395 0.775 0
+TP_L2_00365.Mother TES_L2
+TP_L2_00365.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00366
+TP_L2_00366.Position 1.395 0.93 0
+TP_L2_00366.Mother TES_L2
+TP_L2_00366.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00367
+TP_L2_00367.Position 1.55 -0.62 0
+TP_L2_00367.Mother TES_L2
+TP_L2_00367.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00368
+TP_L2_00368.Position 1.55 -0.465 0
+TP_L2_00368.Mother TES_L2
+TP_L2_00368.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00369
+TP_L2_00369.Position 1.55 -0.31 0
+TP_L2_00369.Mother TES_L2
+TP_L2_00369.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00370
+TP_L2_00370.Position 1.55 -0.155 0
+TP_L2_00370.Mother TES_L2
+TP_L2_00370.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00371
+TP_L2_00371.Position 1.55 0 0
+TP_L2_00371.Mother TES_L2
+TP_L2_00371.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00372
+TP_L2_00372.Position 1.55 0.155 0
+TP_L2_00372.Mother TES_L2
+TP_L2_00372.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00373
+TP_L2_00373.Position 1.55 0.31 0
+TP_L2_00373.Mother TES_L2
+TP_L2_00373.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00374
+TP_L2_00374.Position 1.55 0.465 0
+TP_L2_00374.Mother TES_L2
+TP_L2_00374.Visibility 0
+
+TES_Pixel_L2.Copy TP_L2_00375
+TP_L2_00375.Position 1.55 0.62 0
+TP_L2_00375.Mother TES_L2
+TP_L2_00375.Visibility 0
+
+// Volume Substrate_L3; material=Silicon
+Volume Substrate_L3
+Substrate_L3.Material Silicon
+Substrate_L3.Visibility 1
+Substrate_L3.Shape PCON 0 360 2 -0.015 0 2.2 0.015 0 2.2
+
+// Volume TES_Pixel_L3; material=Ta
+Volume TES_Pixel_L3
+TES_Pixel_L3.Material Ta
+TES_Pixel_L3.Visibility 1
+TES_Pixel_L3.Shape BRIK 0.075 0.075 0.15
+
+// Volume TES_L3; material=Vacuum
+Volume TES_L3
+TES_L3.Material Vacuum
+TES_L3.Visibility 0
+TES_L3.Shape BRIK 2.4 2.4 0.15
+
+Substrate_L3.Position 0 0 4.6
+Substrate_L3.Mother WorldVolume
+
+TES_L3.Position 0 0 4.765
+TES_L3.Mother WorldVolume
+TES_L3.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00000
+TP_L3_00000.Position -1.705 0 0
+TP_L3_00000.Mother TES_L3
+TP_L3_00000.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00001
+TP_L3_00001.Position -1.55 -0.62 0
+TP_L3_00001.Mother TES_L3
+TP_L3_00001.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00002
+TP_L3_00002.Position -1.55 -0.465 0
+TP_L3_00002.Mother TES_L3
+TP_L3_00002.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00003
+TP_L3_00003.Position -1.55 -0.31 0
+TP_L3_00003.Mother TES_L3
+TP_L3_00003.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00004
+TP_L3_00004.Position -1.55 -0.155 0
+TP_L3_00004.Mother TES_L3
+TP_L3_00004.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00005
+TP_L3_00005.Position -1.55 0 0
+TP_L3_00005.Mother TES_L3
+TP_L3_00005.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00006
+TP_L3_00006.Position -1.55 0.155 0
+TP_L3_00006.Mother TES_L3
+TP_L3_00006.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00007
+TP_L3_00007.Position -1.55 0.31 0
+TP_L3_00007.Mother TES_L3
+TP_L3_00007.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00008
+TP_L3_00008.Position -1.55 0.465 0
+TP_L3_00008.Mother TES_L3
+TP_L3_00008.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00009
+TP_L3_00009.Position -1.55 0.62 0
+TP_L3_00009.Mother TES_L3
+TP_L3_00009.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00010
+TP_L3_00010.Position -1.395 -0.93 0
+TP_L3_00010.Mother TES_L3
+TP_L3_00010.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00011
+TP_L3_00011.Position -1.395 -0.775 0
+TP_L3_00011.Mother TES_L3
+TP_L3_00011.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00012
+TP_L3_00012.Position -1.395 -0.62 0
+TP_L3_00012.Mother TES_L3
+TP_L3_00012.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00013
+TP_L3_00013.Position -1.395 -0.465 0
+TP_L3_00013.Mother TES_L3
+TP_L3_00013.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00014
+TP_L3_00014.Position -1.395 -0.31 0
+TP_L3_00014.Mother TES_L3
+TP_L3_00014.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00015
+TP_L3_00015.Position -1.395 -0.155 0
+TP_L3_00015.Mother TES_L3
+TP_L3_00015.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00016
+TP_L3_00016.Position -1.395 0 0
+TP_L3_00016.Mother TES_L3
+TP_L3_00016.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00017
+TP_L3_00017.Position -1.395 0.155 0
+TP_L3_00017.Mother TES_L3
+TP_L3_00017.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00018
+TP_L3_00018.Position -1.395 0.31 0
+TP_L3_00018.Mother TES_L3
+TP_L3_00018.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00019
+TP_L3_00019.Position -1.395 0.465 0
+TP_L3_00019.Mother TES_L3
+TP_L3_00019.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00020
+TP_L3_00020.Position -1.395 0.62 0
+TP_L3_00020.Mother TES_L3
+TP_L3_00020.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00021
+TP_L3_00021.Position -1.395 0.775 0
+TP_L3_00021.Mother TES_L3
+TP_L3_00021.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00022
+TP_L3_00022.Position -1.395 0.93 0
+TP_L3_00022.Mother TES_L3
+TP_L3_00022.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00023
+TP_L3_00023.Position -1.24 -1.085 0
+TP_L3_00023.Mother TES_L3
+TP_L3_00023.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00024
+TP_L3_00024.Position -1.24 -0.93 0
+TP_L3_00024.Mother TES_L3
+TP_L3_00024.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00025
+TP_L3_00025.Position -1.24 -0.775 0
+TP_L3_00025.Mother TES_L3
+TP_L3_00025.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00026
+TP_L3_00026.Position -1.24 -0.62 0
+TP_L3_00026.Mother TES_L3
+TP_L3_00026.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00027
+TP_L3_00027.Position -1.24 -0.465 0
+TP_L3_00027.Mother TES_L3
+TP_L3_00027.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00028
+TP_L3_00028.Position -1.24 -0.31 0
+TP_L3_00028.Mother TES_L3
+TP_L3_00028.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00029
+TP_L3_00029.Position -1.24 -0.155 0
+TP_L3_00029.Mother TES_L3
+TP_L3_00029.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00030
+TP_L3_00030.Position -1.24 0 0
+TP_L3_00030.Mother TES_L3
+TP_L3_00030.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00031
+TP_L3_00031.Position -1.24 0.155 0
+TP_L3_00031.Mother TES_L3
+TP_L3_00031.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00032
+TP_L3_00032.Position -1.24 0.31 0
+TP_L3_00032.Mother TES_L3
+TP_L3_00032.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00033
+TP_L3_00033.Position -1.24 0.465 0
+TP_L3_00033.Mother TES_L3
+TP_L3_00033.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00034
+TP_L3_00034.Position -1.24 0.62 0
+TP_L3_00034.Mother TES_L3
+TP_L3_00034.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00035
+TP_L3_00035.Position -1.24 0.775 0
+TP_L3_00035.Mother TES_L3
+TP_L3_00035.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00036
+TP_L3_00036.Position -1.24 0.93 0
+TP_L3_00036.Mother TES_L3
+TP_L3_00036.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00037
+TP_L3_00037.Position -1.24 1.085 0
+TP_L3_00037.Mother TES_L3
+TP_L3_00037.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00038
+TP_L3_00038.Position -1.085 -1.24 0
+TP_L3_00038.Mother TES_L3
+TP_L3_00038.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00039
+TP_L3_00039.Position -1.085 -1.085 0
+TP_L3_00039.Mother TES_L3
+TP_L3_00039.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00040
+TP_L3_00040.Position -1.085 -0.93 0
+TP_L3_00040.Mother TES_L3
+TP_L3_00040.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00041
+TP_L3_00041.Position -1.085 -0.775 0
+TP_L3_00041.Mother TES_L3
+TP_L3_00041.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00042
+TP_L3_00042.Position -1.085 -0.62 0
+TP_L3_00042.Mother TES_L3
+TP_L3_00042.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00043
+TP_L3_00043.Position -1.085 -0.465 0
+TP_L3_00043.Mother TES_L3
+TP_L3_00043.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00044
+TP_L3_00044.Position -1.085 -0.31 0
+TP_L3_00044.Mother TES_L3
+TP_L3_00044.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00045
+TP_L3_00045.Position -1.085 -0.155 0
+TP_L3_00045.Mother TES_L3
+TP_L3_00045.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00046
+TP_L3_00046.Position -1.085 0 0
+TP_L3_00046.Mother TES_L3
+TP_L3_00046.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00047
+TP_L3_00047.Position -1.085 0.155 0
+TP_L3_00047.Mother TES_L3
+TP_L3_00047.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00048
+TP_L3_00048.Position -1.085 0.31 0
+TP_L3_00048.Mother TES_L3
+TP_L3_00048.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00049
+TP_L3_00049.Position -1.085 0.465 0
+TP_L3_00049.Mother TES_L3
+TP_L3_00049.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00050
+TP_L3_00050.Position -1.085 0.62 0
+TP_L3_00050.Mother TES_L3
+TP_L3_00050.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00051
+TP_L3_00051.Position -1.085 0.775 0
+TP_L3_00051.Mother TES_L3
+TP_L3_00051.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00052
+TP_L3_00052.Position -1.085 0.93 0
+TP_L3_00052.Mother TES_L3
+TP_L3_00052.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00053
+TP_L3_00053.Position -1.085 1.085 0
+TP_L3_00053.Mother TES_L3
+TP_L3_00053.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00054
+TP_L3_00054.Position -1.085 1.24 0
+TP_L3_00054.Mother TES_L3
+TP_L3_00054.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00055
+TP_L3_00055.Position -0.93 -1.395 0
+TP_L3_00055.Mother TES_L3
+TP_L3_00055.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00056
+TP_L3_00056.Position -0.93 -1.24 0
+TP_L3_00056.Mother TES_L3
+TP_L3_00056.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00057
+TP_L3_00057.Position -0.93 -1.085 0
+TP_L3_00057.Mother TES_L3
+TP_L3_00057.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00058
+TP_L3_00058.Position -0.93 -0.93 0
+TP_L3_00058.Mother TES_L3
+TP_L3_00058.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00059
+TP_L3_00059.Position -0.93 -0.775 0
+TP_L3_00059.Mother TES_L3
+TP_L3_00059.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00060
+TP_L3_00060.Position -0.93 -0.62 0
+TP_L3_00060.Mother TES_L3
+TP_L3_00060.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00061
+TP_L3_00061.Position -0.93 -0.465 0
+TP_L3_00061.Mother TES_L3
+TP_L3_00061.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00062
+TP_L3_00062.Position -0.93 -0.31 0
+TP_L3_00062.Mother TES_L3
+TP_L3_00062.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00063
+TP_L3_00063.Position -0.93 -0.155 0
+TP_L3_00063.Mother TES_L3
+TP_L3_00063.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00064
+TP_L3_00064.Position -0.93 0 0
+TP_L3_00064.Mother TES_L3
+TP_L3_00064.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00065
+TP_L3_00065.Position -0.93 0.155 0
+TP_L3_00065.Mother TES_L3
+TP_L3_00065.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00066
+TP_L3_00066.Position -0.93 0.31 0
+TP_L3_00066.Mother TES_L3
+TP_L3_00066.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00067
+TP_L3_00067.Position -0.93 0.465 0
+TP_L3_00067.Mother TES_L3
+TP_L3_00067.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00068
+TP_L3_00068.Position -0.93 0.62 0
+TP_L3_00068.Mother TES_L3
+TP_L3_00068.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00069
+TP_L3_00069.Position -0.93 0.775 0
+TP_L3_00069.Mother TES_L3
+TP_L3_00069.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00070
+TP_L3_00070.Position -0.93 0.93 0
+TP_L3_00070.Mother TES_L3
+TP_L3_00070.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00071
+TP_L3_00071.Position -0.93 1.085 0
+TP_L3_00071.Mother TES_L3
+TP_L3_00071.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00072
+TP_L3_00072.Position -0.93 1.24 0
+TP_L3_00072.Mother TES_L3
+TP_L3_00072.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00073
+TP_L3_00073.Position -0.93 1.395 0
+TP_L3_00073.Mother TES_L3
+TP_L3_00073.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00074
+TP_L3_00074.Position -0.775 -1.395 0
+TP_L3_00074.Mother TES_L3
+TP_L3_00074.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00075
+TP_L3_00075.Position -0.775 -1.24 0
+TP_L3_00075.Mother TES_L3
+TP_L3_00075.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00076
+TP_L3_00076.Position -0.775 -1.085 0
+TP_L3_00076.Mother TES_L3
+TP_L3_00076.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00077
+TP_L3_00077.Position -0.775 -0.93 0
+TP_L3_00077.Mother TES_L3
+TP_L3_00077.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00078
+TP_L3_00078.Position -0.775 -0.775 0
+TP_L3_00078.Mother TES_L3
+TP_L3_00078.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00079
+TP_L3_00079.Position -0.775 -0.62 0
+TP_L3_00079.Mother TES_L3
+TP_L3_00079.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00080
+TP_L3_00080.Position -0.775 -0.465 0
+TP_L3_00080.Mother TES_L3
+TP_L3_00080.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00081
+TP_L3_00081.Position -0.775 -0.31 0
+TP_L3_00081.Mother TES_L3
+TP_L3_00081.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00082
+TP_L3_00082.Position -0.775 -0.155 0
+TP_L3_00082.Mother TES_L3
+TP_L3_00082.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00083
+TP_L3_00083.Position -0.775 0 0
+TP_L3_00083.Mother TES_L3
+TP_L3_00083.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00084
+TP_L3_00084.Position -0.775 0.155 0
+TP_L3_00084.Mother TES_L3
+TP_L3_00084.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00085
+TP_L3_00085.Position -0.775 0.31 0
+TP_L3_00085.Mother TES_L3
+TP_L3_00085.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00086
+TP_L3_00086.Position -0.775 0.465 0
+TP_L3_00086.Mother TES_L3
+TP_L3_00086.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00087
+TP_L3_00087.Position -0.775 0.62 0
+TP_L3_00087.Mother TES_L3
+TP_L3_00087.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00088
+TP_L3_00088.Position -0.775 0.775 0
+TP_L3_00088.Mother TES_L3
+TP_L3_00088.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00089
+TP_L3_00089.Position -0.775 0.93 0
+TP_L3_00089.Mother TES_L3
+TP_L3_00089.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00090
+TP_L3_00090.Position -0.775 1.085 0
+TP_L3_00090.Mother TES_L3
+TP_L3_00090.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00091
+TP_L3_00091.Position -0.775 1.24 0
+TP_L3_00091.Mother TES_L3
+TP_L3_00091.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00092
+TP_L3_00092.Position -0.775 1.395 0
+TP_L3_00092.Mother TES_L3
+TP_L3_00092.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00093
+TP_L3_00093.Position -0.62 -1.55 0
+TP_L3_00093.Mother TES_L3
+TP_L3_00093.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00094
+TP_L3_00094.Position -0.62 -1.395 0
+TP_L3_00094.Mother TES_L3
+TP_L3_00094.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00095
+TP_L3_00095.Position -0.62 -1.24 0
+TP_L3_00095.Mother TES_L3
+TP_L3_00095.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00096
+TP_L3_00096.Position -0.62 -1.085 0
+TP_L3_00096.Mother TES_L3
+TP_L3_00096.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00097
+TP_L3_00097.Position -0.62 -0.93 0
+TP_L3_00097.Mother TES_L3
+TP_L3_00097.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00098
+TP_L3_00098.Position -0.62 -0.775 0
+TP_L3_00098.Mother TES_L3
+TP_L3_00098.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00099
+TP_L3_00099.Position -0.62 -0.62 0
+TP_L3_00099.Mother TES_L3
+TP_L3_00099.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00100
+TP_L3_00100.Position -0.62 -0.465 0
+TP_L3_00100.Mother TES_L3
+TP_L3_00100.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00101
+TP_L3_00101.Position -0.62 -0.31 0
+TP_L3_00101.Mother TES_L3
+TP_L3_00101.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00102
+TP_L3_00102.Position -0.62 -0.155 0
+TP_L3_00102.Mother TES_L3
+TP_L3_00102.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00103
+TP_L3_00103.Position -0.62 0 0
+TP_L3_00103.Mother TES_L3
+TP_L3_00103.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00104
+TP_L3_00104.Position -0.62 0.155 0
+TP_L3_00104.Mother TES_L3
+TP_L3_00104.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00105
+TP_L3_00105.Position -0.62 0.31 0
+TP_L3_00105.Mother TES_L3
+TP_L3_00105.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00106
+TP_L3_00106.Position -0.62 0.465 0
+TP_L3_00106.Mother TES_L3
+TP_L3_00106.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00107
+TP_L3_00107.Position -0.62 0.62 0
+TP_L3_00107.Mother TES_L3
+TP_L3_00107.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00108
+TP_L3_00108.Position -0.62 0.775 0
+TP_L3_00108.Mother TES_L3
+TP_L3_00108.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00109
+TP_L3_00109.Position -0.62 0.93 0
+TP_L3_00109.Mother TES_L3
+TP_L3_00109.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00110
+TP_L3_00110.Position -0.62 1.085 0
+TP_L3_00110.Mother TES_L3
+TP_L3_00110.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00111
+TP_L3_00111.Position -0.62 1.24 0
+TP_L3_00111.Mother TES_L3
+TP_L3_00111.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00112
+TP_L3_00112.Position -0.62 1.395 0
+TP_L3_00112.Mother TES_L3
+TP_L3_00112.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00113
+TP_L3_00113.Position -0.62 1.55 0
+TP_L3_00113.Mother TES_L3
+TP_L3_00113.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00114
+TP_L3_00114.Position -0.465 -1.55 0
+TP_L3_00114.Mother TES_L3
+TP_L3_00114.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00115
+TP_L3_00115.Position -0.465 -1.395 0
+TP_L3_00115.Mother TES_L3
+TP_L3_00115.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00116
+TP_L3_00116.Position -0.465 -1.24 0
+TP_L3_00116.Mother TES_L3
+TP_L3_00116.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00117
+TP_L3_00117.Position -0.465 -1.085 0
+TP_L3_00117.Mother TES_L3
+TP_L3_00117.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00118
+TP_L3_00118.Position -0.465 -0.93 0
+TP_L3_00118.Mother TES_L3
+TP_L3_00118.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00119
+TP_L3_00119.Position -0.465 -0.775 0
+TP_L3_00119.Mother TES_L3
+TP_L3_00119.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00120
+TP_L3_00120.Position -0.465 -0.62 0
+TP_L3_00120.Mother TES_L3
+TP_L3_00120.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00121
+TP_L3_00121.Position -0.465 -0.465 0
+TP_L3_00121.Mother TES_L3
+TP_L3_00121.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00122
+TP_L3_00122.Position -0.465 -0.31 0
+TP_L3_00122.Mother TES_L3
+TP_L3_00122.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00123
+TP_L3_00123.Position -0.465 -0.155 0
+TP_L3_00123.Mother TES_L3
+TP_L3_00123.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00124
+TP_L3_00124.Position -0.465 0 0
+TP_L3_00124.Mother TES_L3
+TP_L3_00124.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00125
+TP_L3_00125.Position -0.465 0.155 0
+TP_L3_00125.Mother TES_L3
+TP_L3_00125.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00126
+TP_L3_00126.Position -0.465 0.31 0
+TP_L3_00126.Mother TES_L3
+TP_L3_00126.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00127
+TP_L3_00127.Position -0.465 0.465 0
+TP_L3_00127.Mother TES_L3
+TP_L3_00127.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00128
+TP_L3_00128.Position -0.465 0.62 0
+TP_L3_00128.Mother TES_L3
+TP_L3_00128.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00129
+TP_L3_00129.Position -0.465 0.775 0
+TP_L3_00129.Mother TES_L3
+TP_L3_00129.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00130
+TP_L3_00130.Position -0.465 0.93 0
+TP_L3_00130.Mother TES_L3
+TP_L3_00130.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00131
+TP_L3_00131.Position -0.465 1.085 0
+TP_L3_00131.Mother TES_L3
+TP_L3_00131.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00132
+TP_L3_00132.Position -0.465 1.24 0
+TP_L3_00132.Mother TES_L3
+TP_L3_00132.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00133
+TP_L3_00133.Position -0.465 1.395 0
+TP_L3_00133.Mother TES_L3
+TP_L3_00133.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00134
+TP_L3_00134.Position -0.465 1.55 0
+TP_L3_00134.Mother TES_L3
+TP_L3_00134.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00135
+TP_L3_00135.Position -0.31 -1.55 0
+TP_L3_00135.Mother TES_L3
+TP_L3_00135.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00136
+TP_L3_00136.Position -0.31 -1.395 0
+TP_L3_00136.Mother TES_L3
+TP_L3_00136.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00137
+TP_L3_00137.Position -0.31 -1.24 0
+TP_L3_00137.Mother TES_L3
+TP_L3_00137.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00138
+TP_L3_00138.Position -0.31 -1.085 0
+TP_L3_00138.Mother TES_L3
+TP_L3_00138.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00139
+TP_L3_00139.Position -0.31 -0.93 0
+TP_L3_00139.Mother TES_L3
+TP_L3_00139.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00140
+TP_L3_00140.Position -0.31 -0.775 0
+TP_L3_00140.Mother TES_L3
+TP_L3_00140.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00141
+TP_L3_00141.Position -0.31 -0.62 0
+TP_L3_00141.Mother TES_L3
+TP_L3_00141.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00142
+TP_L3_00142.Position -0.31 -0.465 0
+TP_L3_00142.Mother TES_L3
+TP_L3_00142.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00143
+TP_L3_00143.Position -0.31 -0.31 0
+TP_L3_00143.Mother TES_L3
+TP_L3_00143.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00144
+TP_L3_00144.Position -0.31 -0.155 0
+TP_L3_00144.Mother TES_L3
+TP_L3_00144.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00145
+TP_L3_00145.Position -0.31 0 0
+TP_L3_00145.Mother TES_L3
+TP_L3_00145.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00146
+TP_L3_00146.Position -0.31 0.155 0
+TP_L3_00146.Mother TES_L3
+TP_L3_00146.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00147
+TP_L3_00147.Position -0.31 0.31 0
+TP_L3_00147.Mother TES_L3
+TP_L3_00147.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00148
+TP_L3_00148.Position -0.31 0.465 0
+TP_L3_00148.Mother TES_L3
+TP_L3_00148.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00149
+TP_L3_00149.Position -0.31 0.62 0
+TP_L3_00149.Mother TES_L3
+TP_L3_00149.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00150
+TP_L3_00150.Position -0.31 0.775 0
+TP_L3_00150.Mother TES_L3
+TP_L3_00150.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00151
+TP_L3_00151.Position -0.31 0.93 0
+TP_L3_00151.Mother TES_L3
+TP_L3_00151.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00152
+TP_L3_00152.Position -0.31 1.085 0
+TP_L3_00152.Mother TES_L3
+TP_L3_00152.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00153
+TP_L3_00153.Position -0.31 1.24 0
+TP_L3_00153.Mother TES_L3
+TP_L3_00153.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00154
+TP_L3_00154.Position -0.31 1.395 0
+TP_L3_00154.Mother TES_L3
+TP_L3_00154.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00155
+TP_L3_00155.Position -0.31 1.55 0
+TP_L3_00155.Mother TES_L3
+TP_L3_00155.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00156
+TP_L3_00156.Position -0.155 -1.55 0
+TP_L3_00156.Mother TES_L3
+TP_L3_00156.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00157
+TP_L3_00157.Position -0.155 -1.395 0
+TP_L3_00157.Mother TES_L3
+TP_L3_00157.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00158
+TP_L3_00158.Position -0.155 -1.24 0
+TP_L3_00158.Mother TES_L3
+TP_L3_00158.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00159
+TP_L3_00159.Position -0.155 -1.085 0
+TP_L3_00159.Mother TES_L3
+TP_L3_00159.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00160
+TP_L3_00160.Position -0.155 -0.93 0
+TP_L3_00160.Mother TES_L3
+TP_L3_00160.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00161
+TP_L3_00161.Position -0.155 -0.775 0
+TP_L3_00161.Mother TES_L3
+TP_L3_00161.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00162
+TP_L3_00162.Position -0.155 -0.62 0
+TP_L3_00162.Mother TES_L3
+TP_L3_00162.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00163
+TP_L3_00163.Position -0.155 -0.465 0
+TP_L3_00163.Mother TES_L3
+TP_L3_00163.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00164
+TP_L3_00164.Position -0.155 -0.31 0
+TP_L3_00164.Mother TES_L3
+TP_L3_00164.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00165
+TP_L3_00165.Position -0.155 -0.155 0
+TP_L3_00165.Mother TES_L3
+TP_L3_00165.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00166
+TP_L3_00166.Position -0.155 0 0
+TP_L3_00166.Mother TES_L3
+TP_L3_00166.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00167
+TP_L3_00167.Position -0.155 0.155 0
+TP_L3_00167.Mother TES_L3
+TP_L3_00167.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00168
+TP_L3_00168.Position -0.155 0.31 0
+TP_L3_00168.Mother TES_L3
+TP_L3_00168.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00169
+TP_L3_00169.Position -0.155 0.465 0
+TP_L3_00169.Mother TES_L3
+TP_L3_00169.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00170
+TP_L3_00170.Position -0.155 0.62 0
+TP_L3_00170.Mother TES_L3
+TP_L3_00170.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00171
+TP_L3_00171.Position -0.155 0.775 0
+TP_L3_00171.Mother TES_L3
+TP_L3_00171.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00172
+TP_L3_00172.Position -0.155 0.93 0
+TP_L3_00172.Mother TES_L3
+TP_L3_00172.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00173
+TP_L3_00173.Position -0.155 1.085 0
+TP_L3_00173.Mother TES_L3
+TP_L3_00173.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00174
+TP_L3_00174.Position -0.155 1.24 0
+TP_L3_00174.Mother TES_L3
+TP_L3_00174.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00175
+TP_L3_00175.Position -0.155 1.395 0
+TP_L3_00175.Mother TES_L3
+TP_L3_00175.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00176
+TP_L3_00176.Position -0.155 1.55 0
+TP_L3_00176.Mother TES_L3
+TP_L3_00176.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00177
+TP_L3_00177.Position 0 -1.705 0
+TP_L3_00177.Mother TES_L3
+TP_L3_00177.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00178
+TP_L3_00178.Position 0 -1.55 0
+TP_L3_00178.Mother TES_L3
+TP_L3_00178.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00179
+TP_L3_00179.Position 0 -1.395 0
+TP_L3_00179.Mother TES_L3
+TP_L3_00179.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00180
+TP_L3_00180.Position 0 -1.24 0
+TP_L3_00180.Mother TES_L3
+TP_L3_00180.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00181
+TP_L3_00181.Position 0 -1.085 0
+TP_L3_00181.Mother TES_L3
+TP_L3_00181.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00182
+TP_L3_00182.Position 0 -0.93 0
+TP_L3_00182.Mother TES_L3
+TP_L3_00182.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00183
+TP_L3_00183.Position 0 -0.775 0
+TP_L3_00183.Mother TES_L3
+TP_L3_00183.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00184
+TP_L3_00184.Position 0 -0.62 0
+TP_L3_00184.Mother TES_L3
+TP_L3_00184.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00185
+TP_L3_00185.Position 0 -0.465 0
+TP_L3_00185.Mother TES_L3
+TP_L3_00185.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00186
+TP_L3_00186.Position 0 -0.31 0
+TP_L3_00186.Mother TES_L3
+TP_L3_00186.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00187
+TP_L3_00187.Position 0 -0.155 0
+TP_L3_00187.Mother TES_L3
+TP_L3_00187.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00188
+TP_L3_00188.Position 0 0 0
+TP_L3_00188.Mother TES_L3
+TP_L3_00188.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00189
+TP_L3_00189.Position 0 0.155 0
+TP_L3_00189.Mother TES_L3
+TP_L3_00189.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00190
+TP_L3_00190.Position 0 0.31 0
+TP_L3_00190.Mother TES_L3
+TP_L3_00190.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00191
+TP_L3_00191.Position 0 0.465 0
+TP_L3_00191.Mother TES_L3
+TP_L3_00191.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00192
+TP_L3_00192.Position 0 0.62 0
+TP_L3_00192.Mother TES_L3
+TP_L3_00192.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00193
+TP_L3_00193.Position 0 0.775 0
+TP_L3_00193.Mother TES_L3
+TP_L3_00193.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00194
+TP_L3_00194.Position 0 0.93 0
+TP_L3_00194.Mother TES_L3
+TP_L3_00194.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00195
+TP_L3_00195.Position 0 1.085 0
+TP_L3_00195.Mother TES_L3
+TP_L3_00195.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00196
+TP_L3_00196.Position 0 1.24 0
+TP_L3_00196.Mother TES_L3
+TP_L3_00196.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00197
+TP_L3_00197.Position 0 1.395 0
+TP_L3_00197.Mother TES_L3
+TP_L3_00197.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00198
+TP_L3_00198.Position 0 1.55 0
+TP_L3_00198.Mother TES_L3
+TP_L3_00198.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00199
+TP_L3_00199.Position 0 1.705 0
+TP_L3_00199.Mother TES_L3
+TP_L3_00199.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00200
+TP_L3_00200.Position 0.155 -1.55 0
+TP_L3_00200.Mother TES_L3
+TP_L3_00200.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00201
+TP_L3_00201.Position 0.155 -1.395 0
+TP_L3_00201.Mother TES_L3
+TP_L3_00201.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00202
+TP_L3_00202.Position 0.155 -1.24 0
+TP_L3_00202.Mother TES_L3
+TP_L3_00202.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00203
+TP_L3_00203.Position 0.155 -1.085 0
+TP_L3_00203.Mother TES_L3
+TP_L3_00203.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00204
+TP_L3_00204.Position 0.155 -0.93 0
+TP_L3_00204.Mother TES_L3
+TP_L3_00204.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00205
+TP_L3_00205.Position 0.155 -0.775 0
+TP_L3_00205.Mother TES_L3
+TP_L3_00205.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00206
+TP_L3_00206.Position 0.155 -0.62 0
+TP_L3_00206.Mother TES_L3
+TP_L3_00206.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00207
+TP_L3_00207.Position 0.155 -0.465 0
+TP_L3_00207.Mother TES_L3
+TP_L3_00207.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00208
+TP_L3_00208.Position 0.155 -0.31 0
+TP_L3_00208.Mother TES_L3
+TP_L3_00208.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00209
+TP_L3_00209.Position 0.155 -0.155 0
+TP_L3_00209.Mother TES_L3
+TP_L3_00209.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00210
+TP_L3_00210.Position 0.155 0 0
+TP_L3_00210.Mother TES_L3
+TP_L3_00210.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00211
+TP_L3_00211.Position 0.155 0.155 0
+TP_L3_00211.Mother TES_L3
+TP_L3_00211.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00212
+TP_L3_00212.Position 0.155 0.31 0
+TP_L3_00212.Mother TES_L3
+TP_L3_00212.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00213
+TP_L3_00213.Position 0.155 0.465 0
+TP_L3_00213.Mother TES_L3
+TP_L3_00213.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00214
+TP_L3_00214.Position 0.155 0.62 0
+TP_L3_00214.Mother TES_L3
+TP_L3_00214.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00215
+TP_L3_00215.Position 0.155 0.775 0
+TP_L3_00215.Mother TES_L3
+TP_L3_00215.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00216
+TP_L3_00216.Position 0.155 0.93 0
+TP_L3_00216.Mother TES_L3
+TP_L3_00216.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00217
+TP_L3_00217.Position 0.155 1.085 0
+TP_L3_00217.Mother TES_L3
+TP_L3_00217.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00218
+TP_L3_00218.Position 0.155 1.24 0
+TP_L3_00218.Mother TES_L3
+TP_L3_00218.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00219
+TP_L3_00219.Position 0.155 1.395 0
+TP_L3_00219.Mother TES_L3
+TP_L3_00219.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00220
+TP_L3_00220.Position 0.155 1.55 0
+TP_L3_00220.Mother TES_L3
+TP_L3_00220.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00221
+TP_L3_00221.Position 0.31 -1.55 0
+TP_L3_00221.Mother TES_L3
+TP_L3_00221.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00222
+TP_L3_00222.Position 0.31 -1.395 0
+TP_L3_00222.Mother TES_L3
+TP_L3_00222.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00223
+TP_L3_00223.Position 0.31 -1.24 0
+TP_L3_00223.Mother TES_L3
+TP_L3_00223.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00224
+TP_L3_00224.Position 0.31 -1.085 0
+TP_L3_00224.Mother TES_L3
+TP_L3_00224.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00225
+TP_L3_00225.Position 0.31 -0.93 0
+TP_L3_00225.Mother TES_L3
+TP_L3_00225.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00226
+TP_L3_00226.Position 0.31 -0.775 0
+TP_L3_00226.Mother TES_L3
+TP_L3_00226.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00227
+TP_L3_00227.Position 0.31 -0.62 0
+TP_L3_00227.Mother TES_L3
+TP_L3_00227.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00228
+TP_L3_00228.Position 0.31 -0.465 0
+TP_L3_00228.Mother TES_L3
+TP_L3_00228.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00229
+TP_L3_00229.Position 0.31 -0.31 0
+TP_L3_00229.Mother TES_L3
+TP_L3_00229.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00230
+TP_L3_00230.Position 0.31 -0.155 0
+TP_L3_00230.Mother TES_L3
+TP_L3_00230.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00231
+TP_L3_00231.Position 0.31 0 0
+TP_L3_00231.Mother TES_L3
+TP_L3_00231.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00232
+TP_L3_00232.Position 0.31 0.155 0
+TP_L3_00232.Mother TES_L3
+TP_L3_00232.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00233
+TP_L3_00233.Position 0.31 0.31 0
+TP_L3_00233.Mother TES_L3
+TP_L3_00233.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00234
+TP_L3_00234.Position 0.31 0.465 0
+TP_L3_00234.Mother TES_L3
+TP_L3_00234.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00235
+TP_L3_00235.Position 0.31 0.62 0
+TP_L3_00235.Mother TES_L3
+TP_L3_00235.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00236
+TP_L3_00236.Position 0.31 0.775 0
+TP_L3_00236.Mother TES_L3
+TP_L3_00236.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00237
+TP_L3_00237.Position 0.31 0.93 0
+TP_L3_00237.Mother TES_L3
+TP_L3_00237.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00238
+TP_L3_00238.Position 0.31 1.085 0
+TP_L3_00238.Mother TES_L3
+TP_L3_00238.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00239
+TP_L3_00239.Position 0.31 1.24 0
+TP_L3_00239.Mother TES_L3
+TP_L3_00239.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00240
+TP_L3_00240.Position 0.31 1.395 0
+TP_L3_00240.Mother TES_L3
+TP_L3_00240.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00241
+TP_L3_00241.Position 0.31 1.55 0
+TP_L3_00241.Mother TES_L3
+TP_L3_00241.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00242
+TP_L3_00242.Position 0.465 -1.55 0
+TP_L3_00242.Mother TES_L3
+TP_L3_00242.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00243
+TP_L3_00243.Position 0.465 -1.395 0
+TP_L3_00243.Mother TES_L3
+TP_L3_00243.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00244
+TP_L3_00244.Position 0.465 -1.24 0
+TP_L3_00244.Mother TES_L3
+TP_L3_00244.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00245
+TP_L3_00245.Position 0.465 -1.085 0
+TP_L3_00245.Mother TES_L3
+TP_L3_00245.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00246
+TP_L3_00246.Position 0.465 -0.93 0
+TP_L3_00246.Mother TES_L3
+TP_L3_00246.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00247
+TP_L3_00247.Position 0.465 -0.775 0
+TP_L3_00247.Mother TES_L3
+TP_L3_00247.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00248
+TP_L3_00248.Position 0.465 -0.62 0
+TP_L3_00248.Mother TES_L3
+TP_L3_00248.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00249
+TP_L3_00249.Position 0.465 -0.465 0
+TP_L3_00249.Mother TES_L3
+TP_L3_00249.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00250
+TP_L3_00250.Position 0.465 -0.31 0
+TP_L3_00250.Mother TES_L3
+TP_L3_00250.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00251
+TP_L3_00251.Position 0.465 -0.155 0
+TP_L3_00251.Mother TES_L3
+TP_L3_00251.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00252
+TP_L3_00252.Position 0.465 0 0
+TP_L3_00252.Mother TES_L3
+TP_L3_00252.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00253
+TP_L3_00253.Position 0.465 0.155 0
+TP_L3_00253.Mother TES_L3
+TP_L3_00253.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00254
+TP_L3_00254.Position 0.465 0.31 0
+TP_L3_00254.Mother TES_L3
+TP_L3_00254.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00255
+TP_L3_00255.Position 0.465 0.465 0
+TP_L3_00255.Mother TES_L3
+TP_L3_00255.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00256
+TP_L3_00256.Position 0.465 0.62 0
+TP_L3_00256.Mother TES_L3
+TP_L3_00256.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00257
+TP_L3_00257.Position 0.465 0.775 0
+TP_L3_00257.Mother TES_L3
+TP_L3_00257.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00258
+TP_L3_00258.Position 0.465 0.93 0
+TP_L3_00258.Mother TES_L3
+TP_L3_00258.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00259
+TP_L3_00259.Position 0.465 1.085 0
+TP_L3_00259.Mother TES_L3
+TP_L3_00259.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00260
+TP_L3_00260.Position 0.465 1.24 0
+TP_L3_00260.Mother TES_L3
+TP_L3_00260.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00261
+TP_L3_00261.Position 0.465 1.395 0
+TP_L3_00261.Mother TES_L3
+TP_L3_00261.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00262
+TP_L3_00262.Position 0.465 1.55 0
+TP_L3_00262.Mother TES_L3
+TP_L3_00262.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00263
+TP_L3_00263.Position 0.62 -1.55 0
+TP_L3_00263.Mother TES_L3
+TP_L3_00263.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00264
+TP_L3_00264.Position 0.62 -1.395 0
+TP_L3_00264.Mother TES_L3
+TP_L3_00264.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00265
+TP_L3_00265.Position 0.62 -1.24 0
+TP_L3_00265.Mother TES_L3
+TP_L3_00265.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00266
+TP_L3_00266.Position 0.62 -1.085 0
+TP_L3_00266.Mother TES_L3
+TP_L3_00266.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00267
+TP_L3_00267.Position 0.62 -0.93 0
+TP_L3_00267.Mother TES_L3
+TP_L3_00267.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00268
+TP_L3_00268.Position 0.62 -0.775 0
+TP_L3_00268.Mother TES_L3
+TP_L3_00268.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00269
+TP_L3_00269.Position 0.62 -0.62 0
+TP_L3_00269.Mother TES_L3
+TP_L3_00269.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00270
+TP_L3_00270.Position 0.62 -0.465 0
+TP_L3_00270.Mother TES_L3
+TP_L3_00270.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00271
+TP_L3_00271.Position 0.62 -0.31 0
+TP_L3_00271.Mother TES_L3
+TP_L3_00271.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00272
+TP_L3_00272.Position 0.62 -0.155 0
+TP_L3_00272.Mother TES_L3
+TP_L3_00272.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00273
+TP_L3_00273.Position 0.62 0 0
+TP_L3_00273.Mother TES_L3
+TP_L3_00273.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00274
+TP_L3_00274.Position 0.62 0.155 0
+TP_L3_00274.Mother TES_L3
+TP_L3_00274.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00275
+TP_L3_00275.Position 0.62 0.31 0
+TP_L3_00275.Mother TES_L3
+TP_L3_00275.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00276
+TP_L3_00276.Position 0.62 0.465 0
+TP_L3_00276.Mother TES_L3
+TP_L3_00276.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00277
+TP_L3_00277.Position 0.62 0.62 0
+TP_L3_00277.Mother TES_L3
+TP_L3_00277.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00278
+TP_L3_00278.Position 0.62 0.775 0
+TP_L3_00278.Mother TES_L3
+TP_L3_00278.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00279
+TP_L3_00279.Position 0.62 0.93 0
+TP_L3_00279.Mother TES_L3
+TP_L3_00279.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00280
+TP_L3_00280.Position 0.62 1.085 0
+TP_L3_00280.Mother TES_L3
+TP_L3_00280.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00281
+TP_L3_00281.Position 0.62 1.24 0
+TP_L3_00281.Mother TES_L3
+TP_L3_00281.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00282
+TP_L3_00282.Position 0.62 1.395 0
+TP_L3_00282.Mother TES_L3
+TP_L3_00282.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00283
+TP_L3_00283.Position 0.62 1.55 0
+TP_L3_00283.Mother TES_L3
+TP_L3_00283.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00284
+TP_L3_00284.Position 0.775 -1.395 0
+TP_L3_00284.Mother TES_L3
+TP_L3_00284.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00285
+TP_L3_00285.Position 0.775 -1.24 0
+TP_L3_00285.Mother TES_L3
+TP_L3_00285.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00286
+TP_L3_00286.Position 0.775 -1.085 0
+TP_L3_00286.Mother TES_L3
+TP_L3_00286.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00287
+TP_L3_00287.Position 0.775 -0.93 0
+TP_L3_00287.Mother TES_L3
+TP_L3_00287.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00288
+TP_L3_00288.Position 0.775 -0.775 0
+TP_L3_00288.Mother TES_L3
+TP_L3_00288.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00289
+TP_L3_00289.Position 0.775 -0.62 0
+TP_L3_00289.Mother TES_L3
+TP_L3_00289.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00290
+TP_L3_00290.Position 0.775 -0.465 0
+TP_L3_00290.Mother TES_L3
+TP_L3_00290.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00291
+TP_L3_00291.Position 0.775 -0.31 0
+TP_L3_00291.Mother TES_L3
+TP_L3_00291.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00292
+TP_L3_00292.Position 0.775 -0.155 0
+TP_L3_00292.Mother TES_L3
+TP_L3_00292.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00293
+TP_L3_00293.Position 0.775 0 0
+TP_L3_00293.Mother TES_L3
+TP_L3_00293.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00294
+TP_L3_00294.Position 0.775 0.155 0
+TP_L3_00294.Mother TES_L3
+TP_L3_00294.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00295
+TP_L3_00295.Position 0.775 0.31 0
+TP_L3_00295.Mother TES_L3
+TP_L3_00295.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00296
+TP_L3_00296.Position 0.775 0.465 0
+TP_L3_00296.Mother TES_L3
+TP_L3_00296.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00297
+TP_L3_00297.Position 0.775 0.62 0
+TP_L3_00297.Mother TES_L3
+TP_L3_00297.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00298
+TP_L3_00298.Position 0.775 0.775 0
+TP_L3_00298.Mother TES_L3
+TP_L3_00298.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00299
+TP_L3_00299.Position 0.775 0.93 0
+TP_L3_00299.Mother TES_L3
+TP_L3_00299.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00300
+TP_L3_00300.Position 0.775 1.085 0
+TP_L3_00300.Mother TES_L3
+TP_L3_00300.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00301
+TP_L3_00301.Position 0.775 1.24 0
+TP_L3_00301.Mother TES_L3
+TP_L3_00301.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00302
+TP_L3_00302.Position 0.775 1.395 0
+TP_L3_00302.Mother TES_L3
+TP_L3_00302.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00303
+TP_L3_00303.Position 0.93 -1.395 0
+TP_L3_00303.Mother TES_L3
+TP_L3_00303.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00304
+TP_L3_00304.Position 0.93 -1.24 0
+TP_L3_00304.Mother TES_L3
+TP_L3_00304.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00305
+TP_L3_00305.Position 0.93 -1.085 0
+TP_L3_00305.Mother TES_L3
+TP_L3_00305.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00306
+TP_L3_00306.Position 0.93 -0.93 0
+TP_L3_00306.Mother TES_L3
+TP_L3_00306.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00307
+TP_L3_00307.Position 0.93 -0.775 0
+TP_L3_00307.Mother TES_L3
+TP_L3_00307.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00308
+TP_L3_00308.Position 0.93 -0.62 0
+TP_L3_00308.Mother TES_L3
+TP_L3_00308.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00309
+TP_L3_00309.Position 0.93 -0.465 0
+TP_L3_00309.Mother TES_L3
+TP_L3_00309.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00310
+TP_L3_00310.Position 0.93 -0.31 0
+TP_L3_00310.Mother TES_L3
+TP_L3_00310.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00311
+TP_L3_00311.Position 0.93 -0.155 0
+TP_L3_00311.Mother TES_L3
+TP_L3_00311.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00312
+TP_L3_00312.Position 0.93 0 0
+TP_L3_00312.Mother TES_L3
+TP_L3_00312.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00313
+TP_L3_00313.Position 0.93 0.155 0
+TP_L3_00313.Mother TES_L3
+TP_L3_00313.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00314
+TP_L3_00314.Position 0.93 0.31 0
+TP_L3_00314.Mother TES_L3
+TP_L3_00314.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00315
+TP_L3_00315.Position 0.93 0.465 0
+TP_L3_00315.Mother TES_L3
+TP_L3_00315.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00316
+TP_L3_00316.Position 0.93 0.62 0
+TP_L3_00316.Mother TES_L3
+TP_L3_00316.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00317
+TP_L3_00317.Position 0.93 0.775 0
+TP_L3_00317.Mother TES_L3
+TP_L3_00317.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00318
+TP_L3_00318.Position 0.93 0.93 0
+TP_L3_00318.Mother TES_L3
+TP_L3_00318.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00319
+TP_L3_00319.Position 0.93 1.085 0
+TP_L3_00319.Mother TES_L3
+TP_L3_00319.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00320
+TP_L3_00320.Position 0.93 1.24 0
+TP_L3_00320.Mother TES_L3
+TP_L3_00320.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00321
+TP_L3_00321.Position 0.93 1.395 0
+TP_L3_00321.Mother TES_L3
+TP_L3_00321.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00322
+TP_L3_00322.Position 1.085 -1.24 0
+TP_L3_00322.Mother TES_L3
+TP_L3_00322.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00323
+TP_L3_00323.Position 1.085 -1.085 0
+TP_L3_00323.Mother TES_L3
+TP_L3_00323.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00324
+TP_L3_00324.Position 1.085 -0.93 0
+TP_L3_00324.Mother TES_L3
+TP_L3_00324.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00325
+TP_L3_00325.Position 1.085 -0.775 0
+TP_L3_00325.Mother TES_L3
+TP_L3_00325.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00326
+TP_L3_00326.Position 1.085 -0.62 0
+TP_L3_00326.Mother TES_L3
+TP_L3_00326.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00327
+TP_L3_00327.Position 1.085 -0.465 0
+TP_L3_00327.Mother TES_L3
+TP_L3_00327.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00328
+TP_L3_00328.Position 1.085 -0.31 0
+TP_L3_00328.Mother TES_L3
+TP_L3_00328.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00329
+TP_L3_00329.Position 1.085 -0.155 0
+TP_L3_00329.Mother TES_L3
+TP_L3_00329.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00330
+TP_L3_00330.Position 1.085 0 0
+TP_L3_00330.Mother TES_L3
+TP_L3_00330.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00331
+TP_L3_00331.Position 1.085 0.155 0
+TP_L3_00331.Mother TES_L3
+TP_L3_00331.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00332
+TP_L3_00332.Position 1.085 0.31 0
+TP_L3_00332.Mother TES_L3
+TP_L3_00332.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00333
+TP_L3_00333.Position 1.085 0.465 0
+TP_L3_00333.Mother TES_L3
+TP_L3_00333.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00334
+TP_L3_00334.Position 1.085 0.62 0
+TP_L3_00334.Mother TES_L3
+TP_L3_00334.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00335
+TP_L3_00335.Position 1.085 0.775 0
+TP_L3_00335.Mother TES_L3
+TP_L3_00335.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00336
+TP_L3_00336.Position 1.085 0.93 0
+TP_L3_00336.Mother TES_L3
+TP_L3_00336.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00337
+TP_L3_00337.Position 1.085 1.085 0
+TP_L3_00337.Mother TES_L3
+TP_L3_00337.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00338
+TP_L3_00338.Position 1.085 1.24 0
+TP_L3_00338.Mother TES_L3
+TP_L3_00338.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00339
+TP_L3_00339.Position 1.24 -1.085 0
+TP_L3_00339.Mother TES_L3
+TP_L3_00339.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00340
+TP_L3_00340.Position 1.24 -0.93 0
+TP_L3_00340.Mother TES_L3
+TP_L3_00340.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00341
+TP_L3_00341.Position 1.24 -0.775 0
+TP_L3_00341.Mother TES_L3
+TP_L3_00341.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00342
+TP_L3_00342.Position 1.24 -0.62 0
+TP_L3_00342.Mother TES_L3
+TP_L3_00342.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00343
+TP_L3_00343.Position 1.24 -0.465 0
+TP_L3_00343.Mother TES_L3
+TP_L3_00343.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00344
+TP_L3_00344.Position 1.24 -0.31 0
+TP_L3_00344.Mother TES_L3
+TP_L3_00344.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00345
+TP_L3_00345.Position 1.24 -0.155 0
+TP_L3_00345.Mother TES_L3
+TP_L3_00345.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00346
+TP_L3_00346.Position 1.24 0 0
+TP_L3_00346.Mother TES_L3
+TP_L3_00346.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00347
+TP_L3_00347.Position 1.24 0.155 0
+TP_L3_00347.Mother TES_L3
+TP_L3_00347.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00348
+TP_L3_00348.Position 1.24 0.31 0
+TP_L3_00348.Mother TES_L3
+TP_L3_00348.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00349
+TP_L3_00349.Position 1.24 0.465 0
+TP_L3_00349.Mother TES_L3
+TP_L3_00349.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00350
+TP_L3_00350.Position 1.24 0.62 0
+TP_L3_00350.Mother TES_L3
+TP_L3_00350.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00351
+TP_L3_00351.Position 1.24 0.775 0
+TP_L3_00351.Mother TES_L3
+TP_L3_00351.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00352
+TP_L3_00352.Position 1.24 0.93 0
+TP_L3_00352.Mother TES_L3
+TP_L3_00352.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00353
+TP_L3_00353.Position 1.24 1.085 0
+TP_L3_00353.Mother TES_L3
+TP_L3_00353.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00354
+TP_L3_00354.Position 1.395 -0.93 0
+TP_L3_00354.Mother TES_L3
+TP_L3_00354.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00355
+TP_L3_00355.Position 1.395 -0.775 0
+TP_L3_00355.Mother TES_L3
+TP_L3_00355.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00356
+TP_L3_00356.Position 1.395 -0.62 0
+TP_L3_00356.Mother TES_L3
+TP_L3_00356.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00357
+TP_L3_00357.Position 1.395 -0.465 0
+TP_L3_00357.Mother TES_L3
+TP_L3_00357.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00358
+TP_L3_00358.Position 1.395 -0.31 0
+TP_L3_00358.Mother TES_L3
+TP_L3_00358.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00359
+TP_L3_00359.Position 1.395 -0.155 0
+TP_L3_00359.Mother TES_L3
+TP_L3_00359.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00360
+TP_L3_00360.Position 1.395 0 0
+TP_L3_00360.Mother TES_L3
+TP_L3_00360.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00361
+TP_L3_00361.Position 1.395 0.155 0
+TP_L3_00361.Mother TES_L3
+TP_L3_00361.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00362
+TP_L3_00362.Position 1.395 0.31 0
+TP_L3_00362.Mother TES_L3
+TP_L3_00362.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00363
+TP_L3_00363.Position 1.395 0.465 0
+TP_L3_00363.Mother TES_L3
+TP_L3_00363.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00364
+TP_L3_00364.Position 1.395 0.62 0
+TP_L3_00364.Mother TES_L3
+TP_L3_00364.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00365
+TP_L3_00365.Position 1.395 0.775 0
+TP_L3_00365.Mother TES_L3
+TP_L3_00365.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00366
+TP_L3_00366.Position 1.395 0.93 0
+TP_L3_00366.Mother TES_L3
+TP_L3_00366.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00367
+TP_L3_00367.Position 1.55 -0.62 0
+TP_L3_00367.Mother TES_L3
+TP_L3_00367.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00368
+TP_L3_00368.Position 1.55 -0.465 0
+TP_L3_00368.Mother TES_L3
+TP_L3_00368.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00369
+TP_L3_00369.Position 1.55 -0.31 0
+TP_L3_00369.Mother TES_L3
+TP_L3_00369.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00370
+TP_L3_00370.Position 1.55 -0.155 0
+TP_L3_00370.Mother TES_L3
+TP_L3_00370.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00371
+TP_L3_00371.Position 1.55 0 0
+TP_L3_00371.Mother TES_L3
+TP_L3_00371.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00372
+TP_L3_00372.Position 1.55 0.155 0
+TP_L3_00372.Mother TES_L3
+TP_L3_00372.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00373
+TP_L3_00373.Position 1.55 0.31 0
+TP_L3_00373.Mother TES_L3
+TP_L3_00373.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00374
+TP_L3_00374.Position 1.55 0.465 0
+TP_L3_00374.Mother TES_L3
+TP_L3_00374.Visibility 0
+
+TES_Pixel_L3.Copy TP_L3_00375
+TP_L3_00375.Position 1.55 0.62 0
+TP_L3_00375.Mother TES_L3
+TP_L3_00375.Visibility 0
+
+// Volume Substrate_L4; material=Silicon
+Volume Substrate_L4
+Substrate_L4.Material Silicon
+Substrate_L4.Visibility 1
+Substrate_L4.Shape PCON 0 360 2 -0.015 0 2.2 0.015 0 2.2
+
+// Volume TES_Pixel_L4; material=Ta
+Volume TES_Pixel_L4
+TES_Pixel_L4.Material Ta
+TES_Pixel_L4.Visibility 1
+TES_Pixel_L4.Shape BRIK 0.075 0.075 0.15
+
+// Volume TES_L4; material=Vacuum
+Volume TES_L4
+TES_L4.Material Vacuum
+TES_L4.Visibility 0
+TES_L4.Shape BRIK 2.4 2.4 0.15
+
+Substrate_L4.Position 0 0 5.8
+Substrate_L4.Mother WorldVolume
+
+TES_L4.Position 0 0 5.965
+TES_L4.Mother WorldVolume
+TES_L4.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00000
+TP_L4_00000.Position -1.705 0 0
+TP_L4_00000.Mother TES_L4
+TP_L4_00000.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00001
+TP_L4_00001.Position -1.55 -0.62 0
+TP_L4_00001.Mother TES_L4
+TP_L4_00001.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00002
+TP_L4_00002.Position -1.55 -0.465 0
+TP_L4_00002.Mother TES_L4
+TP_L4_00002.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00003
+TP_L4_00003.Position -1.55 -0.31 0
+TP_L4_00003.Mother TES_L4
+TP_L4_00003.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00004
+TP_L4_00004.Position -1.55 -0.155 0
+TP_L4_00004.Mother TES_L4
+TP_L4_00004.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00005
+TP_L4_00005.Position -1.55 0 0
+TP_L4_00005.Mother TES_L4
+TP_L4_00005.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00006
+TP_L4_00006.Position -1.55 0.155 0
+TP_L4_00006.Mother TES_L4
+TP_L4_00006.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00007
+TP_L4_00007.Position -1.55 0.31 0
+TP_L4_00007.Mother TES_L4
+TP_L4_00007.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00008
+TP_L4_00008.Position -1.55 0.465 0
+TP_L4_00008.Mother TES_L4
+TP_L4_00008.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00009
+TP_L4_00009.Position -1.55 0.62 0
+TP_L4_00009.Mother TES_L4
+TP_L4_00009.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00010
+TP_L4_00010.Position -1.395 -0.93 0
+TP_L4_00010.Mother TES_L4
+TP_L4_00010.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00011
+TP_L4_00011.Position -1.395 -0.775 0
+TP_L4_00011.Mother TES_L4
+TP_L4_00011.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00012
+TP_L4_00012.Position -1.395 -0.62 0
+TP_L4_00012.Mother TES_L4
+TP_L4_00012.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00013
+TP_L4_00013.Position -1.395 -0.465 0
+TP_L4_00013.Mother TES_L4
+TP_L4_00013.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00014
+TP_L4_00014.Position -1.395 -0.31 0
+TP_L4_00014.Mother TES_L4
+TP_L4_00014.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00015
+TP_L4_00015.Position -1.395 -0.155 0
+TP_L4_00015.Mother TES_L4
+TP_L4_00015.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00016
+TP_L4_00016.Position -1.395 0 0
+TP_L4_00016.Mother TES_L4
+TP_L4_00016.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00017
+TP_L4_00017.Position -1.395 0.155 0
+TP_L4_00017.Mother TES_L4
+TP_L4_00017.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00018
+TP_L4_00018.Position -1.395 0.31 0
+TP_L4_00018.Mother TES_L4
+TP_L4_00018.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00019
+TP_L4_00019.Position -1.395 0.465 0
+TP_L4_00019.Mother TES_L4
+TP_L4_00019.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00020
+TP_L4_00020.Position -1.395 0.62 0
+TP_L4_00020.Mother TES_L4
+TP_L4_00020.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00021
+TP_L4_00021.Position -1.395 0.775 0
+TP_L4_00021.Mother TES_L4
+TP_L4_00021.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00022
+TP_L4_00022.Position -1.395 0.93 0
+TP_L4_00022.Mother TES_L4
+TP_L4_00022.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00023
+TP_L4_00023.Position -1.24 -1.085 0
+TP_L4_00023.Mother TES_L4
+TP_L4_00023.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00024
+TP_L4_00024.Position -1.24 -0.93 0
+TP_L4_00024.Mother TES_L4
+TP_L4_00024.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00025
+TP_L4_00025.Position -1.24 -0.775 0
+TP_L4_00025.Mother TES_L4
+TP_L4_00025.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00026
+TP_L4_00026.Position -1.24 -0.62 0
+TP_L4_00026.Mother TES_L4
+TP_L4_00026.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00027
+TP_L4_00027.Position -1.24 -0.465 0
+TP_L4_00027.Mother TES_L4
+TP_L4_00027.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00028
+TP_L4_00028.Position -1.24 -0.31 0
+TP_L4_00028.Mother TES_L4
+TP_L4_00028.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00029
+TP_L4_00029.Position -1.24 -0.155 0
+TP_L4_00029.Mother TES_L4
+TP_L4_00029.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00030
+TP_L4_00030.Position -1.24 0 0
+TP_L4_00030.Mother TES_L4
+TP_L4_00030.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00031
+TP_L4_00031.Position -1.24 0.155 0
+TP_L4_00031.Mother TES_L4
+TP_L4_00031.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00032
+TP_L4_00032.Position -1.24 0.31 0
+TP_L4_00032.Mother TES_L4
+TP_L4_00032.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00033
+TP_L4_00033.Position -1.24 0.465 0
+TP_L4_00033.Mother TES_L4
+TP_L4_00033.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00034
+TP_L4_00034.Position -1.24 0.62 0
+TP_L4_00034.Mother TES_L4
+TP_L4_00034.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00035
+TP_L4_00035.Position -1.24 0.775 0
+TP_L4_00035.Mother TES_L4
+TP_L4_00035.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00036
+TP_L4_00036.Position -1.24 0.93 0
+TP_L4_00036.Mother TES_L4
+TP_L4_00036.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00037
+TP_L4_00037.Position -1.24 1.085 0
+TP_L4_00037.Mother TES_L4
+TP_L4_00037.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00038
+TP_L4_00038.Position -1.085 -1.24 0
+TP_L4_00038.Mother TES_L4
+TP_L4_00038.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00039
+TP_L4_00039.Position -1.085 -1.085 0
+TP_L4_00039.Mother TES_L4
+TP_L4_00039.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00040
+TP_L4_00040.Position -1.085 -0.93 0
+TP_L4_00040.Mother TES_L4
+TP_L4_00040.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00041
+TP_L4_00041.Position -1.085 -0.775 0
+TP_L4_00041.Mother TES_L4
+TP_L4_00041.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00042
+TP_L4_00042.Position -1.085 -0.62 0
+TP_L4_00042.Mother TES_L4
+TP_L4_00042.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00043
+TP_L4_00043.Position -1.085 -0.465 0
+TP_L4_00043.Mother TES_L4
+TP_L4_00043.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00044
+TP_L4_00044.Position -1.085 -0.31 0
+TP_L4_00044.Mother TES_L4
+TP_L4_00044.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00045
+TP_L4_00045.Position -1.085 -0.155 0
+TP_L4_00045.Mother TES_L4
+TP_L4_00045.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00046
+TP_L4_00046.Position -1.085 0 0
+TP_L4_00046.Mother TES_L4
+TP_L4_00046.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00047
+TP_L4_00047.Position -1.085 0.155 0
+TP_L4_00047.Mother TES_L4
+TP_L4_00047.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00048
+TP_L4_00048.Position -1.085 0.31 0
+TP_L4_00048.Mother TES_L4
+TP_L4_00048.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00049
+TP_L4_00049.Position -1.085 0.465 0
+TP_L4_00049.Mother TES_L4
+TP_L4_00049.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00050
+TP_L4_00050.Position -1.085 0.62 0
+TP_L4_00050.Mother TES_L4
+TP_L4_00050.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00051
+TP_L4_00051.Position -1.085 0.775 0
+TP_L4_00051.Mother TES_L4
+TP_L4_00051.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00052
+TP_L4_00052.Position -1.085 0.93 0
+TP_L4_00052.Mother TES_L4
+TP_L4_00052.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00053
+TP_L4_00053.Position -1.085 1.085 0
+TP_L4_00053.Mother TES_L4
+TP_L4_00053.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00054
+TP_L4_00054.Position -1.085 1.24 0
+TP_L4_00054.Mother TES_L4
+TP_L4_00054.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00055
+TP_L4_00055.Position -0.93 -1.395 0
+TP_L4_00055.Mother TES_L4
+TP_L4_00055.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00056
+TP_L4_00056.Position -0.93 -1.24 0
+TP_L4_00056.Mother TES_L4
+TP_L4_00056.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00057
+TP_L4_00057.Position -0.93 -1.085 0
+TP_L4_00057.Mother TES_L4
+TP_L4_00057.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00058
+TP_L4_00058.Position -0.93 -0.93 0
+TP_L4_00058.Mother TES_L4
+TP_L4_00058.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00059
+TP_L4_00059.Position -0.93 -0.775 0
+TP_L4_00059.Mother TES_L4
+TP_L4_00059.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00060
+TP_L4_00060.Position -0.93 -0.62 0
+TP_L4_00060.Mother TES_L4
+TP_L4_00060.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00061
+TP_L4_00061.Position -0.93 -0.465 0
+TP_L4_00061.Mother TES_L4
+TP_L4_00061.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00062
+TP_L4_00062.Position -0.93 -0.31 0
+TP_L4_00062.Mother TES_L4
+TP_L4_00062.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00063
+TP_L4_00063.Position -0.93 -0.155 0
+TP_L4_00063.Mother TES_L4
+TP_L4_00063.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00064
+TP_L4_00064.Position -0.93 0 0
+TP_L4_00064.Mother TES_L4
+TP_L4_00064.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00065
+TP_L4_00065.Position -0.93 0.155 0
+TP_L4_00065.Mother TES_L4
+TP_L4_00065.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00066
+TP_L4_00066.Position -0.93 0.31 0
+TP_L4_00066.Mother TES_L4
+TP_L4_00066.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00067
+TP_L4_00067.Position -0.93 0.465 0
+TP_L4_00067.Mother TES_L4
+TP_L4_00067.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00068
+TP_L4_00068.Position -0.93 0.62 0
+TP_L4_00068.Mother TES_L4
+TP_L4_00068.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00069
+TP_L4_00069.Position -0.93 0.775 0
+TP_L4_00069.Mother TES_L4
+TP_L4_00069.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00070
+TP_L4_00070.Position -0.93 0.93 0
+TP_L4_00070.Mother TES_L4
+TP_L4_00070.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00071
+TP_L4_00071.Position -0.93 1.085 0
+TP_L4_00071.Mother TES_L4
+TP_L4_00071.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00072
+TP_L4_00072.Position -0.93 1.24 0
+TP_L4_00072.Mother TES_L4
+TP_L4_00072.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00073
+TP_L4_00073.Position -0.93 1.395 0
+TP_L4_00073.Mother TES_L4
+TP_L4_00073.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00074
+TP_L4_00074.Position -0.775 -1.395 0
+TP_L4_00074.Mother TES_L4
+TP_L4_00074.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00075
+TP_L4_00075.Position -0.775 -1.24 0
+TP_L4_00075.Mother TES_L4
+TP_L4_00075.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00076
+TP_L4_00076.Position -0.775 -1.085 0
+TP_L4_00076.Mother TES_L4
+TP_L4_00076.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00077
+TP_L4_00077.Position -0.775 -0.93 0
+TP_L4_00077.Mother TES_L4
+TP_L4_00077.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00078
+TP_L4_00078.Position -0.775 -0.775 0
+TP_L4_00078.Mother TES_L4
+TP_L4_00078.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00079
+TP_L4_00079.Position -0.775 -0.62 0
+TP_L4_00079.Mother TES_L4
+TP_L4_00079.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00080
+TP_L4_00080.Position -0.775 -0.465 0
+TP_L4_00080.Mother TES_L4
+TP_L4_00080.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00081
+TP_L4_00081.Position -0.775 -0.31 0
+TP_L4_00081.Mother TES_L4
+TP_L4_00081.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00082
+TP_L4_00082.Position -0.775 -0.155 0
+TP_L4_00082.Mother TES_L4
+TP_L4_00082.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00083
+TP_L4_00083.Position -0.775 0 0
+TP_L4_00083.Mother TES_L4
+TP_L4_00083.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00084
+TP_L4_00084.Position -0.775 0.155 0
+TP_L4_00084.Mother TES_L4
+TP_L4_00084.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00085
+TP_L4_00085.Position -0.775 0.31 0
+TP_L4_00085.Mother TES_L4
+TP_L4_00085.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00086
+TP_L4_00086.Position -0.775 0.465 0
+TP_L4_00086.Mother TES_L4
+TP_L4_00086.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00087
+TP_L4_00087.Position -0.775 0.62 0
+TP_L4_00087.Mother TES_L4
+TP_L4_00087.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00088
+TP_L4_00088.Position -0.775 0.775 0
+TP_L4_00088.Mother TES_L4
+TP_L4_00088.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00089
+TP_L4_00089.Position -0.775 0.93 0
+TP_L4_00089.Mother TES_L4
+TP_L4_00089.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00090
+TP_L4_00090.Position -0.775 1.085 0
+TP_L4_00090.Mother TES_L4
+TP_L4_00090.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00091
+TP_L4_00091.Position -0.775 1.24 0
+TP_L4_00091.Mother TES_L4
+TP_L4_00091.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00092
+TP_L4_00092.Position -0.775 1.395 0
+TP_L4_00092.Mother TES_L4
+TP_L4_00092.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00093
+TP_L4_00093.Position -0.62 -1.55 0
+TP_L4_00093.Mother TES_L4
+TP_L4_00093.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00094
+TP_L4_00094.Position -0.62 -1.395 0
+TP_L4_00094.Mother TES_L4
+TP_L4_00094.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00095
+TP_L4_00095.Position -0.62 -1.24 0
+TP_L4_00095.Mother TES_L4
+TP_L4_00095.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00096
+TP_L4_00096.Position -0.62 -1.085 0
+TP_L4_00096.Mother TES_L4
+TP_L4_00096.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00097
+TP_L4_00097.Position -0.62 -0.93 0
+TP_L4_00097.Mother TES_L4
+TP_L4_00097.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00098
+TP_L4_00098.Position -0.62 -0.775 0
+TP_L4_00098.Mother TES_L4
+TP_L4_00098.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00099
+TP_L4_00099.Position -0.62 -0.62 0
+TP_L4_00099.Mother TES_L4
+TP_L4_00099.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00100
+TP_L4_00100.Position -0.62 -0.465 0
+TP_L4_00100.Mother TES_L4
+TP_L4_00100.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00101
+TP_L4_00101.Position -0.62 -0.31 0
+TP_L4_00101.Mother TES_L4
+TP_L4_00101.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00102
+TP_L4_00102.Position -0.62 -0.155 0
+TP_L4_00102.Mother TES_L4
+TP_L4_00102.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00103
+TP_L4_00103.Position -0.62 0 0
+TP_L4_00103.Mother TES_L4
+TP_L4_00103.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00104
+TP_L4_00104.Position -0.62 0.155 0
+TP_L4_00104.Mother TES_L4
+TP_L4_00104.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00105
+TP_L4_00105.Position -0.62 0.31 0
+TP_L4_00105.Mother TES_L4
+TP_L4_00105.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00106
+TP_L4_00106.Position -0.62 0.465 0
+TP_L4_00106.Mother TES_L4
+TP_L4_00106.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00107
+TP_L4_00107.Position -0.62 0.62 0
+TP_L4_00107.Mother TES_L4
+TP_L4_00107.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00108
+TP_L4_00108.Position -0.62 0.775 0
+TP_L4_00108.Mother TES_L4
+TP_L4_00108.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00109
+TP_L4_00109.Position -0.62 0.93 0
+TP_L4_00109.Mother TES_L4
+TP_L4_00109.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00110
+TP_L4_00110.Position -0.62 1.085 0
+TP_L4_00110.Mother TES_L4
+TP_L4_00110.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00111
+TP_L4_00111.Position -0.62 1.24 0
+TP_L4_00111.Mother TES_L4
+TP_L4_00111.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00112
+TP_L4_00112.Position -0.62 1.395 0
+TP_L4_00112.Mother TES_L4
+TP_L4_00112.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00113
+TP_L4_00113.Position -0.62 1.55 0
+TP_L4_00113.Mother TES_L4
+TP_L4_00113.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00114
+TP_L4_00114.Position -0.465 -1.55 0
+TP_L4_00114.Mother TES_L4
+TP_L4_00114.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00115
+TP_L4_00115.Position -0.465 -1.395 0
+TP_L4_00115.Mother TES_L4
+TP_L4_00115.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00116
+TP_L4_00116.Position -0.465 -1.24 0
+TP_L4_00116.Mother TES_L4
+TP_L4_00116.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00117
+TP_L4_00117.Position -0.465 -1.085 0
+TP_L4_00117.Mother TES_L4
+TP_L4_00117.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00118
+TP_L4_00118.Position -0.465 -0.93 0
+TP_L4_00118.Mother TES_L4
+TP_L4_00118.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00119
+TP_L4_00119.Position -0.465 -0.775 0
+TP_L4_00119.Mother TES_L4
+TP_L4_00119.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00120
+TP_L4_00120.Position -0.465 -0.62 0
+TP_L4_00120.Mother TES_L4
+TP_L4_00120.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00121
+TP_L4_00121.Position -0.465 -0.465 0
+TP_L4_00121.Mother TES_L4
+TP_L4_00121.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00122
+TP_L4_00122.Position -0.465 -0.31 0
+TP_L4_00122.Mother TES_L4
+TP_L4_00122.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00123
+TP_L4_00123.Position -0.465 -0.155 0
+TP_L4_00123.Mother TES_L4
+TP_L4_00123.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00124
+TP_L4_00124.Position -0.465 0 0
+TP_L4_00124.Mother TES_L4
+TP_L4_00124.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00125
+TP_L4_00125.Position -0.465 0.155 0
+TP_L4_00125.Mother TES_L4
+TP_L4_00125.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00126
+TP_L4_00126.Position -0.465 0.31 0
+TP_L4_00126.Mother TES_L4
+TP_L4_00126.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00127
+TP_L4_00127.Position -0.465 0.465 0
+TP_L4_00127.Mother TES_L4
+TP_L4_00127.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00128
+TP_L4_00128.Position -0.465 0.62 0
+TP_L4_00128.Mother TES_L4
+TP_L4_00128.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00129
+TP_L4_00129.Position -0.465 0.775 0
+TP_L4_00129.Mother TES_L4
+TP_L4_00129.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00130
+TP_L4_00130.Position -0.465 0.93 0
+TP_L4_00130.Mother TES_L4
+TP_L4_00130.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00131
+TP_L4_00131.Position -0.465 1.085 0
+TP_L4_00131.Mother TES_L4
+TP_L4_00131.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00132
+TP_L4_00132.Position -0.465 1.24 0
+TP_L4_00132.Mother TES_L4
+TP_L4_00132.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00133
+TP_L4_00133.Position -0.465 1.395 0
+TP_L4_00133.Mother TES_L4
+TP_L4_00133.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00134
+TP_L4_00134.Position -0.465 1.55 0
+TP_L4_00134.Mother TES_L4
+TP_L4_00134.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00135
+TP_L4_00135.Position -0.31 -1.55 0
+TP_L4_00135.Mother TES_L4
+TP_L4_00135.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00136
+TP_L4_00136.Position -0.31 -1.395 0
+TP_L4_00136.Mother TES_L4
+TP_L4_00136.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00137
+TP_L4_00137.Position -0.31 -1.24 0
+TP_L4_00137.Mother TES_L4
+TP_L4_00137.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00138
+TP_L4_00138.Position -0.31 -1.085 0
+TP_L4_00138.Mother TES_L4
+TP_L4_00138.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00139
+TP_L4_00139.Position -0.31 -0.93 0
+TP_L4_00139.Mother TES_L4
+TP_L4_00139.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00140
+TP_L4_00140.Position -0.31 -0.775 0
+TP_L4_00140.Mother TES_L4
+TP_L4_00140.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00141
+TP_L4_00141.Position -0.31 -0.62 0
+TP_L4_00141.Mother TES_L4
+TP_L4_00141.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00142
+TP_L4_00142.Position -0.31 -0.465 0
+TP_L4_00142.Mother TES_L4
+TP_L4_00142.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00143
+TP_L4_00143.Position -0.31 -0.31 0
+TP_L4_00143.Mother TES_L4
+TP_L4_00143.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00144
+TP_L4_00144.Position -0.31 -0.155 0
+TP_L4_00144.Mother TES_L4
+TP_L4_00144.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00145
+TP_L4_00145.Position -0.31 0 0
+TP_L4_00145.Mother TES_L4
+TP_L4_00145.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00146
+TP_L4_00146.Position -0.31 0.155 0
+TP_L4_00146.Mother TES_L4
+TP_L4_00146.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00147
+TP_L4_00147.Position -0.31 0.31 0
+TP_L4_00147.Mother TES_L4
+TP_L4_00147.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00148
+TP_L4_00148.Position -0.31 0.465 0
+TP_L4_00148.Mother TES_L4
+TP_L4_00148.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00149
+TP_L4_00149.Position -0.31 0.62 0
+TP_L4_00149.Mother TES_L4
+TP_L4_00149.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00150
+TP_L4_00150.Position -0.31 0.775 0
+TP_L4_00150.Mother TES_L4
+TP_L4_00150.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00151
+TP_L4_00151.Position -0.31 0.93 0
+TP_L4_00151.Mother TES_L4
+TP_L4_00151.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00152
+TP_L4_00152.Position -0.31 1.085 0
+TP_L4_00152.Mother TES_L4
+TP_L4_00152.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00153
+TP_L4_00153.Position -0.31 1.24 0
+TP_L4_00153.Mother TES_L4
+TP_L4_00153.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00154
+TP_L4_00154.Position -0.31 1.395 0
+TP_L4_00154.Mother TES_L4
+TP_L4_00154.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00155
+TP_L4_00155.Position -0.31 1.55 0
+TP_L4_00155.Mother TES_L4
+TP_L4_00155.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00156
+TP_L4_00156.Position -0.155 -1.55 0
+TP_L4_00156.Mother TES_L4
+TP_L4_00156.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00157
+TP_L4_00157.Position -0.155 -1.395 0
+TP_L4_00157.Mother TES_L4
+TP_L4_00157.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00158
+TP_L4_00158.Position -0.155 -1.24 0
+TP_L4_00158.Mother TES_L4
+TP_L4_00158.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00159
+TP_L4_00159.Position -0.155 -1.085 0
+TP_L4_00159.Mother TES_L4
+TP_L4_00159.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00160
+TP_L4_00160.Position -0.155 -0.93 0
+TP_L4_00160.Mother TES_L4
+TP_L4_00160.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00161
+TP_L4_00161.Position -0.155 -0.775 0
+TP_L4_00161.Mother TES_L4
+TP_L4_00161.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00162
+TP_L4_00162.Position -0.155 -0.62 0
+TP_L4_00162.Mother TES_L4
+TP_L4_00162.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00163
+TP_L4_00163.Position -0.155 -0.465 0
+TP_L4_00163.Mother TES_L4
+TP_L4_00163.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00164
+TP_L4_00164.Position -0.155 -0.31 0
+TP_L4_00164.Mother TES_L4
+TP_L4_00164.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00165
+TP_L4_00165.Position -0.155 -0.155 0
+TP_L4_00165.Mother TES_L4
+TP_L4_00165.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00166
+TP_L4_00166.Position -0.155 0 0
+TP_L4_00166.Mother TES_L4
+TP_L4_00166.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00167
+TP_L4_00167.Position -0.155 0.155 0
+TP_L4_00167.Mother TES_L4
+TP_L4_00167.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00168
+TP_L4_00168.Position -0.155 0.31 0
+TP_L4_00168.Mother TES_L4
+TP_L4_00168.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00169
+TP_L4_00169.Position -0.155 0.465 0
+TP_L4_00169.Mother TES_L4
+TP_L4_00169.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00170
+TP_L4_00170.Position -0.155 0.62 0
+TP_L4_00170.Mother TES_L4
+TP_L4_00170.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00171
+TP_L4_00171.Position -0.155 0.775 0
+TP_L4_00171.Mother TES_L4
+TP_L4_00171.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00172
+TP_L4_00172.Position -0.155 0.93 0
+TP_L4_00172.Mother TES_L4
+TP_L4_00172.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00173
+TP_L4_00173.Position -0.155 1.085 0
+TP_L4_00173.Mother TES_L4
+TP_L4_00173.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00174
+TP_L4_00174.Position -0.155 1.24 0
+TP_L4_00174.Mother TES_L4
+TP_L4_00174.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00175
+TP_L4_00175.Position -0.155 1.395 0
+TP_L4_00175.Mother TES_L4
+TP_L4_00175.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00176
+TP_L4_00176.Position -0.155 1.55 0
+TP_L4_00176.Mother TES_L4
+TP_L4_00176.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00177
+TP_L4_00177.Position 0 -1.705 0
+TP_L4_00177.Mother TES_L4
+TP_L4_00177.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00178
+TP_L4_00178.Position 0 -1.55 0
+TP_L4_00178.Mother TES_L4
+TP_L4_00178.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00179
+TP_L4_00179.Position 0 -1.395 0
+TP_L4_00179.Mother TES_L4
+TP_L4_00179.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00180
+TP_L4_00180.Position 0 -1.24 0
+TP_L4_00180.Mother TES_L4
+TP_L4_00180.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00181
+TP_L4_00181.Position 0 -1.085 0
+TP_L4_00181.Mother TES_L4
+TP_L4_00181.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00182
+TP_L4_00182.Position 0 -0.93 0
+TP_L4_00182.Mother TES_L4
+TP_L4_00182.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00183
+TP_L4_00183.Position 0 -0.775 0
+TP_L4_00183.Mother TES_L4
+TP_L4_00183.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00184
+TP_L4_00184.Position 0 -0.62 0
+TP_L4_00184.Mother TES_L4
+TP_L4_00184.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00185
+TP_L4_00185.Position 0 -0.465 0
+TP_L4_00185.Mother TES_L4
+TP_L4_00185.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00186
+TP_L4_00186.Position 0 -0.31 0
+TP_L4_00186.Mother TES_L4
+TP_L4_00186.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00187
+TP_L4_00187.Position 0 -0.155 0
+TP_L4_00187.Mother TES_L4
+TP_L4_00187.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00188
+TP_L4_00188.Position 0 0 0
+TP_L4_00188.Mother TES_L4
+TP_L4_00188.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00189
+TP_L4_00189.Position 0 0.155 0
+TP_L4_00189.Mother TES_L4
+TP_L4_00189.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00190
+TP_L4_00190.Position 0 0.31 0
+TP_L4_00190.Mother TES_L4
+TP_L4_00190.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00191
+TP_L4_00191.Position 0 0.465 0
+TP_L4_00191.Mother TES_L4
+TP_L4_00191.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00192
+TP_L4_00192.Position 0 0.62 0
+TP_L4_00192.Mother TES_L4
+TP_L4_00192.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00193
+TP_L4_00193.Position 0 0.775 0
+TP_L4_00193.Mother TES_L4
+TP_L4_00193.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00194
+TP_L4_00194.Position 0 0.93 0
+TP_L4_00194.Mother TES_L4
+TP_L4_00194.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00195
+TP_L4_00195.Position 0 1.085 0
+TP_L4_00195.Mother TES_L4
+TP_L4_00195.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00196
+TP_L4_00196.Position 0 1.24 0
+TP_L4_00196.Mother TES_L4
+TP_L4_00196.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00197
+TP_L4_00197.Position 0 1.395 0
+TP_L4_00197.Mother TES_L4
+TP_L4_00197.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00198
+TP_L4_00198.Position 0 1.55 0
+TP_L4_00198.Mother TES_L4
+TP_L4_00198.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00199
+TP_L4_00199.Position 0 1.705 0
+TP_L4_00199.Mother TES_L4
+TP_L4_00199.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00200
+TP_L4_00200.Position 0.155 -1.55 0
+TP_L4_00200.Mother TES_L4
+TP_L4_00200.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00201
+TP_L4_00201.Position 0.155 -1.395 0
+TP_L4_00201.Mother TES_L4
+TP_L4_00201.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00202
+TP_L4_00202.Position 0.155 -1.24 0
+TP_L4_00202.Mother TES_L4
+TP_L4_00202.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00203
+TP_L4_00203.Position 0.155 -1.085 0
+TP_L4_00203.Mother TES_L4
+TP_L4_00203.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00204
+TP_L4_00204.Position 0.155 -0.93 0
+TP_L4_00204.Mother TES_L4
+TP_L4_00204.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00205
+TP_L4_00205.Position 0.155 -0.775 0
+TP_L4_00205.Mother TES_L4
+TP_L4_00205.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00206
+TP_L4_00206.Position 0.155 -0.62 0
+TP_L4_00206.Mother TES_L4
+TP_L4_00206.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00207
+TP_L4_00207.Position 0.155 -0.465 0
+TP_L4_00207.Mother TES_L4
+TP_L4_00207.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00208
+TP_L4_00208.Position 0.155 -0.31 0
+TP_L4_00208.Mother TES_L4
+TP_L4_00208.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00209
+TP_L4_00209.Position 0.155 -0.155 0
+TP_L4_00209.Mother TES_L4
+TP_L4_00209.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00210
+TP_L4_00210.Position 0.155 0 0
+TP_L4_00210.Mother TES_L4
+TP_L4_00210.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00211
+TP_L4_00211.Position 0.155 0.155 0
+TP_L4_00211.Mother TES_L4
+TP_L4_00211.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00212
+TP_L4_00212.Position 0.155 0.31 0
+TP_L4_00212.Mother TES_L4
+TP_L4_00212.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00213
+TP_L4_00213.Position 0.155 0.465 0
+TP_L4_00213.Mother TES_L4
+TP_L4_00213.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00214
+TP_L4_00214.Position 0.155 0.62 0
+TP_L4_00214.Mother TES_L4
+TP_L4_00214.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00215
+TP_L4_00215.Position 0.155 0.775 0
+TP_L4_00215.Mother TES_L4
+TP_L4_00215.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00216
+TP_L4_00216.Position 0.155 0.93 0
+TP_L4_00216.Mother TES_L4
+TP_L4_00216.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00217
+TP_L4_00217.Position 0.155 1.085 0
+TP_L4_00217.Mother TES_L4
+TP_L4_00217.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00218
+TP_L4_00218.Position 0.155 1.24 0
+TP_L4_00218.Mother TES_L4
+TP_L4_00218.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00219
+TP_L4_00219.Position 0.155 1.395 0
+TP_L4_00219.Mother TES_L4
+TP_L4_00219.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00220
+TP_L4_00220.Position 0.155 1.55 0
+TP_L4_00220.Mother TES_L4
+TP_L4_00220.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00221
+TP_L4_00221.Position 0.31 -1.55 0
+TP_L4_00221.Mother TES_L4
+TP_L4_00221.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00222
+TP_L4_00222.Position 0.31 -1.395 0
+TP_L4_00222.Mother TES_L4
+TP_L4_00222.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00223
+TP_L4_00223.Position 0.31 -1.24 0
+TP_L4_00223.Mother TES_L4
+TP_L4_00223.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00224
+TP_L4_00224.Position 0.31 -1.085 0
+TP_L4_00224.Mother TES_L4
+TP_L4_00224.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00225
+TP_L4_00225.Position 0.31 -0.93 0
+TP_L4_00225.Mother TES_L4
+TP_L4_00225.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00226
+TP_L4_00226.Position 0.31 -0.775 0
+TP_L4_00226.Mother TES_L4
+TP_L4_00226.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00227
+TP_L4_00227.Position 0.31 -0.62 0
+TP_L4_00227.Mother TES_L4
+TP_L4_00227.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00228
+TP_L4_00228.Position 0.31 -0.465 0
+TP_L4_00228.Mother TES_L4
+TP_L4_00228.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00229
+TP_L4_00229.Position 0.31 -0.31 0
+TP_L4_00229.Mother TES_L4
+TP_L4_00229.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00230
+TP_L4_00230.Position 0.31 -0.155 0
+TP_L4_00230.Mother TES_L4
+TP_L4_00230.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00231
+TP_L4_00231.Position 0.31 0 0
+TP_L4_00231.Mother TES_L4
+TP_L4_00231.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00232
+TP_L4_00232.Position 0.31 0.155 0
+TP_L4_00232.Mother TES_L4
+TP_L4_00232.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00233
+TP_L4_00233.Position 0.31 0.31 0
+TP_L4_00233.Mother TES_L4
+TP_L4_00233.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00234
+TP_L4_00234.Position 0.31 0.465 0
+TP_L4_00234.Mother TES_L4
+TP_L4_00234.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00235
+TP_L4_00235.Position 0.31 0.62 0
+TP_L4_00235.Mother TES_L4
+TP_L4_00235.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00236
+TP_L4_00236.Position 0.31 0.775 0
+TP_L4_00236.Mother TES_L4
+TP_L4_00236.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00237
+TP_L4_00237.Position 0.31 0.93 0
+TP_L4_00237.Mother TES_L4
+TP_L4_00237.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00238
+TP_L4_00238.Position 0.31 1.085 0
+TP_L4_00238.Mother TES_L4
+TP_L4_00238.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00239
+TP_L4_00239.Position 0.31 1.24 0
+TP_L4_00239.Mother TES_L4
+TP_L4_00239.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00240
+TP_L4_00240.Position 0.31 1.395 0
+TP_L4_00240.Mother TES_L4
+TP_L4_00240.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00241
+TP_L4_00241.Position 0.31 1.55 0
+TP_L4_00241.Mother TES_L4
+TP_L4_00241.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00242
+TP_L4_00242.Position 0.465 -1.55 0
+TP_L4_00242.Mother TES_L4
+TP_L4_00242.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00243
+TP_L4_00243.Position 0.465 -1.395 0
+TP_L4_00243.Mother TES_L4
+TP_L4_00243.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00244
+TP_L4_00244.Position 0.465 -1.24 0
+TP_L4_00244.Mother TES_L4
+TP_L4_00244.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00245
+TP_L4_00245.Position 0.465 -1.085 0
+TP_L4_00245.Mother TES_L4
+TP_L4_00245.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00246
+TP_L4_00246.Position 0.465 -0.93 0
+TP_L4_00246.Mother TES_L4
+TP_L4_00246.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00247
+TP_L4_00247.Position 0.465 -0.775 0
+TP_L4_00247.Mother TES_L4
+TP_L4_00247.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00248
+TP_L4_00248.Position 0.465 -0.62 0
+TP_L4_00248.Mother TES_L4
+TP_L4_00248.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00249
+TP_L4_00249.Position 0.465 -0.465 0
+TP_L4_00249.Mother TES_L4
+TP_L4_00249.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00250
+TP_L4_00250.Position 0.465 -0.31 0
+TP_L4_00250.Mother TES_L4
+TP_L4_00250.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00251
+TP_L4_00251.Position 0.465 -0.155 0
+TP_L4_00251.Mother TES_L4
+TP_L4_00251.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00252
+TP_L4_00252.Position 0.465 0 0
+TP_L4_00252.Mother TES_L4
+TP_L4_00252.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00253
+TP_L4_00253.Position 0.465 0.155 0
+TP_L4_00253.Mother TES_L4
+TP_L4_00253.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00254
+TP_L4_00254.Position 0.465 0.31 0
+TP_L4_00254.Mother TES_L4
+TP_L4_00254.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00255
+TP_L4_00255.Position 0.465 0.465 0
+TP_L4_00255.Mother TES_L4
+TP_L4_00255.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00256
+TP_L4_00256.Position 0.465 0.62 0
+TP_L4_00256.Mother TES_L4
+TP_L4_00256.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00257
+TP_L4_00257.Position 0.465 0.775 0
+TP_L4_00257.Mother TES_L4
+TP_L4_00257.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00258
+TP_L4_00258.Position 0.465 0.93 0
+TP_L4_00258.Mother TES_L4
+TP_L4_00258.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00259
+TP_L4_00259.Position 0.465 1.085 0
+TP_L4_00259.Mother TES_L4
+TP_L4_00259.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00260
+TP_L4_00260.Position 0.465 1.24 0
+TP_L4_00260.Mother TES_L4
+TP_L4_00260.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00261
+TP_L4_00261.Position 0.465 1.395 0
+TP_L4_00261.Mother TES_L4
+TP_L4_00261.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00262
+TP_L4_00262.Position 0.465 1.55 0
+TP_L4_00262.Mother TES_L4
+TP_L4_00262.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00263
+TP_L4_00263.Position 0.62 -1.55 0
+TP_L4_00263.Mother TES_L4
+TP_L4_00263.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00264
+TP_L4_00264.Position 0.62 -1.395 0
+TP_L4_00264.Mother TES_L4
+TP_L4_00264.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00265
+TP_L4_00265.Position 0.62 -1.24 0
+TP_L4_00265.Mother TES_L4
+TP_L4_00265.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00266
+TP_L4_00266.Position 0.62 -1.085 0
+TP_L4_00266.Mother TES_L4
+TP_L4_00266.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00267
+TP_L4_00267.Position 0.62 -0.93 0
+TP_L4_00267.Mother TES_L4
+TP_L4_00267.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00268
+TP_L4_00268.Position 0.62 -0.775 0
+TP_L4_00268.Mother TES_L4
+TP_L4_00268.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00269
+TP_L4_00269.Position 0.62 -0.62 0
+TP_L4_00269.Mother TES_L4
+TP_L4_00269.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00270
+TP_L4_00270.Position 0.62 -0.465 0
+TP_L4_00270.Mother TES_L4
+TP_L4_00270.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00271
+TP_L4_00271.Position 0.62 -0.31 0
+TP_L4_00271.Mother TES_L4
+TP_L4_00271.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00272
+TP_L4_00272.Position 0.62 -0.155 0
+TP_L4_00272.Mother TES_L4
+TP_L4_00272.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00273
+TP_L4_00273.Position 0.62 0 0
+TP_L4_00273.Mother TES_L4
+TP_L4_00273.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00274
+TP_L4_00274.Position 0.62 0.155 0
+TP_L4_00274.Mother TES_L4
+TP_L4_00274.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00275
+TP_L4_00275.Position 0.62 0.31 0
+TP_L4_00275.Mother TES_L4
+TP_L4_00275.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00276
+TP_L4_00276.Position 0.62 0.465 0
+TP_L4_00276.Mother TES_L4
+TP_L4_00276.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00277
+TP_L4_00277.Position 0.62 0.62 0
+TP_L4_00277.Mother TES_L4
+TP_L4_00277.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00278
+TP_L4_00278.Position 0.62 0.775 0
+TP_L4_00278.Mother TES_L4
+TP_L4_00278.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00279
+TP_L4_00279.Position 0.62 0.93 0
+TP_L4_00279.Mother TES_L4
+TP_L4_00279.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00280
+TP_L4_00280.Position 0.62 1.085 0
+TP_L4_00280.Mother TES_L4
+TP_L4_00280.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00281
+TP_L4_00281.Position 0.62 1.24 0
+TP_L4_00281.Mother TES_L4
+TP_L4_00281.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00282
+TP_L4_00282.Position 0.62 1.395 0
+TP_L4_00282.Mother TES_L4
+TP_L4_00282.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00283
+TP_L4_00283.Position 0.62 1.55 0
+TP_L4_00283.Mother TES_L4
+TP_L4_00283.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00284
+TP_L4_00284.Position 0.775 -1.395 0
+TP_L4_00284.Mother TES_L4
+TP_L4_00284.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00285
+TP_L4_00285.Position 0.775 -1.24 0
+TP_L4_00285.Mother TES_L4
+TP_L4_00285.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00286
+TP_L4_00286.Position 0.775 -1.085 0
+TP_L4_00286.Mother TES_L4
+TP_L4_00286.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00287
+TP_L4_00287.Position 0.775 -0.93 0
+TP_L4_00287.Mother TES_L4
+TP_L4_00287.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00288
+TP_L4_00288.Position 0.775 -0.775 0
+TP_L4_00288.Mother TES_L4
+TP_L4_00288.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00289
+TP_L4_00289.Position 0.775 -0.62 0
+TP_L4_00289.Mother TES_L4
+TP_L4_00289.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00290
+TP_L4_00290.Position 0.775 -0.465 0
+TP_L4_00290.Mother TES_L4
+TP_L4_00290.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00291
+TP_L4_00291.Position 0.775 -0.31 0
+TP_L4_00291.Mother TES_L4
+TP_L4_00291.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00292
+TP_L4_00292.Position 0.775 -0.155 0
+TP_L4_00292.Mother TES_L4
+TP_L4_00292.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00293
+TP_L4_00293.Position 0.775 0 0
+TP_L4_00293.Mother TES_L4
+TP_L4_00293.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00294
+TP_L4_00294.Position 0.775 0.155 0
+TP_L4_00294.Mother TES_L4
+TP_L4_00294.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00295
+TP_L4_00295.Position 0.775 0.31 0
+TP_L4_00295.Mother TES_L4
+TP_L4_00295.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00296
+TP_L4_00296.Position 0.775 0.465 0
+TP_L4_00296.Mother TES_L4
+TP_L4_00296.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00297
+TP_L4_00297.Position 0.775 0.62 0
+TP_L4_00297.Mother TES_L4
+TP_L4_00297.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00298
+TP_L4_00298.Position 0.775 0.775 0
+TP_L4_00298.Mother TES_L4
+TP_L4_00298.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00299
+TP_L4_00299.Position 0.775 0.93 0
+TP_L4_00299.Mother TES_L4
+TP_L4_00299.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00300
+TP_L4_00300.Position 0.775 1.085 0
+TP_L4_00300.Mother TES_L4
+TP_L4_00300.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00301
+TP_L4_00301.Position 0.775 1.24 0
+TP_L4_00301.Mother TES_L4
+TP_L4_00301.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00302
+TP_L4_00302.Position 0.775 1.395 0
+TP_L4_00302.Mother TES_L4
+TP_L4_00302.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00303
+TP_L4_00303.Position 0.93 -1.395 0
+TP_L4_00303.Mother TES_L4
+TP_L4_00303.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00304
+TP_L4_00304.Position 0.93 -1.24 0
+TP_L4_00304.Mother TES_L4
+TP_L4_00304.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00305
+TP_L4_00305.Position 0.93 -1.085 0
+TP_L4_00305.Mother TES_L4
+TP_L4_00305.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00306
+TP_L4_00306.Position 0.93 -0.93 0
+TP_L4_00306.Mother TES_L4
+TP_L4_00306.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00307
+TP_L4_00307.Position 0.93 -0.775 0
+TP_L4_00307.Mother TES_L4
+TP_L4_00307.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00308
+TP_L4_00308.Position 0.93 -0.62 0
+TP_L4_00308.Mother TES_L4
+TP_L4_00308.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00309
+TP_L4_00309.Position 0.93 -0.465 0
+TP_L4_00309.Mother TES_L4
+TP_L4_00309.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00310
+TP_L4_00310.Position 0.93 -0.31 0
+TP_L4_00310.Mother TES_L4
+TP_L4_00310.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00311
+TP_L4_00311.Position 0.93 -0.155 0
+TP_L4_00311.Mother TES_L4
+TP_L4_00311.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00312
+TP_L4_00312.Position 0.93 0 0
+TP_L4_00312.Mother TES_L4
+TP_L4_00312.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00313
+TP_L4_00313.Position 0.93 0.155 0
+TP_L4_00313.Mother TES_L4
+TP_L4_00313.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00314
+TP_L4_00314.Position 0.93 0.31 0
+TP_L4_00314.Mother TES_L4
+TP_L4_00314.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00315
+TP_L4_00315.Position 0.93 0.465 0
+TP_L4_00315.Mother TES_L4
+TP_L4_00315.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00316
+TP_L4_00316.Position 0.93 0.62 0
+TP_L4_00316.Mother TES_L4
+TP_L4_00316.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00317
+TP_L4_00317.Position 0.93 0.775 0
+TP_L4_00317.Mother TES_L4
+TP_L4_00317.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00318
+TP_L4_00318.Position 0.93 0.93 0
+TP_L4_00318.Mother TES_L4
+TP_L4_00318.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00319
+TP_L4_00319.Position 0.93 1.085 0
+TP_L4_00319.Mother TES_L4
+TP_L4_00319.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00320
+TP_L4_00320.Position 0.93 1.24 0
+TP_L4_00320.Mother TES_L4
+TP_L4_00320.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00321
+TP_L4_00321.Position 0.93 1.395 0
+TP_L4_00321.Mother TES_L4
+TP_L4_00321.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00322
+TP_L4_00322.Position 1.085 -1.24 0
+TP_L4_00322.Mother TES_L4
+TP_L4_00322.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00323
+TP_L4_00323.Position 1.085 -1.085 0
+TP_L4_00323.Mother TES_L4
+TP_L4_00323.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00324
+TP_L4_00324.Position 1.085 -0.93 0
+TP_L4_00324.Mother TES_L4
+TP_L4_00324.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00325
+TP_L4_00325.Position 1.085 -0.775 0
+TP_L4_00325.Mother TES_L4
+TP_L4_00325.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00326
+TP_L4_00326.Position 1.085 -0.62 0
+TP_L4_00326.Mother TES_L4
+TP_L4_00326.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00327
+TP_L4_00327.Position 1.085 -0.465 0
+TP_L4_00327.Mother TES_L4
+TP_L4_00327.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00328
+TP_L4_00328.Position 1.085 -0.31 0
+TP_L4_00328.Mother TES_L4
+TP_L4_00328.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00329
+TP_L4_00329.Position 1.085 -0.155 0
+TP_L4_00329.Mother TES_L4
+TP_L4_00329.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00330
+TP_L4_00330.Position 1.085 0 0
+TP_L4_00330.Mother TES_L4
+TP_L4_00330.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00331
+TP_L4_00331.Position 1.085 0.155 0
+TP_L4_00331.Mother TES_L4
+TP_L4_00331.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00332
+TP_L4_00332.Position 1.085 0.31 0
+TP_L4_00332.Mother TES_L4
+TP_L4_00332.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00333
+TP_L4_00333.Position 1.085 0.465 0
+TP_L4_00333.Mother TES_L4
+TP_L4_00333.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00334
+TP_L4_00334.Position 1.085 0.62 0
+TP_L4_00334.Mother TES_L4
+TP_L4_00334.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00335
+TP_L4_00335.Position 1.085 0.775 0
+TP_L4_00335.Mother TES_L4
+TP_L4_00335.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00336
+TP_L4_00336.Position 1.085 0.93 0
+TP_L4_00336.Mother TES_L4
+TP_L4_00336.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00337
+TP_L4_00337.Position 1.085 1.085 0
+TP_L4_00337.Mother TES_L4
+TP_L4_00337.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00338
+TP_L4_00338.Position 1.085 1.24 0
+TP_L4_00338.Mother TES_L4
+TP_L4_00338.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00339
+TP_L4_00339.Position 1.24 -1.085 0
+TP_L4_00339.Mother TES_L4
+TP_L4_00339.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00340
+TP_L4_00340.Position 1.24 -0.93 0
+TP_L4_00340.Mother TES_L4
+TP_L4_00340.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00341
+TP_L4_00341.Position 1.24 -0.775 0
+TP_L4_00341.Mother TES_L4
+TP_L4_00341.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00342
+TP_L4_00342.Position 1.24 -0.62 0
+TP_L4_00342.Mother TES_L4
+TP_L4_00342.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00343
+TP_L4_00343.Position 1.24 -0.465 0
+TP_L4_00343.Mother TES_L4
+TP_L4_00343.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00344
+TP_L4_00344.Position 1.24 -0.31 0
+TP_L4_00344.Mother TES_L4
+TP_L4_00344.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00345
+TP_L4_00345.Position 1.24 -0.155 0
+TP_L4_00345.Mother TES_L4
+TP_L4_00345.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00346
+TP_L4_00346.Position 1.24 0 0
+TP_L4_00346.Mother TES_L4
+TP_L4_00346.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00347
+TP_L4_00347.Position 1.24 0.155 0
+TP_L4_00347.Mother TES_L4
+TP_L4_00347.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00348
+TP_L4_00348.Position 1.24 0.31 0
+TP_L4_00348.Mother TES_L4
+TP_L4_00348.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00349
+TP_L4_00349.Position 1.24 0.465 0
+TP_L4_00349.Mother TES_L4
+TP_L4_00349.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00350
+TP_L4_00350.Position 1.24 0.62 0
+TP_L4_00350.Mother TES_L4
+TP_L4_00350.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00351
+TP_L4_00351.Position 1.24 0.775 0
+TP_L4_00351.Mother TES_L4
+TP_L4_00351.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00352
+TP_L4_00352.Position 1.24 0.93 0
+TP_L4_00352.Mother TES_L4
+TP_L4_00352.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00353
+TP_L4_00353.Position 1.24 1.085 0
+TP_L4_00353.Mother TES_L4
+TP_L4_00353.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00354
+TP_L4_00354.Position 1.395 -0.93 0
+TP_L4_00354.Mother TES_L4
+TP_L4_00354.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00355
+TP_L4_00355.Position 1.395 -0.775 0
+TP_L4_00355.Mother TES_L4
+TP_L4_00355.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00356
+TP_L4_00356.Position 1.395 -0.62 0
+TP_L4_00356.Mother TES_L4
+TP_L4_00356.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00357
+TP_L4_00357.Position 1.395 -0.465 0
+TP_L4_00357.Mother TES_L4
+TP_L4_00357.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00358
+TP_L4_00358.Position 1.395 -0.31 0
+TP_L4_00358.Mother TES_L4
+TP_L4_00358.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00359
+TP_L4_00359.Position 1.395 -0.155 0
+TP_L4_00359.Mother TES_L4
+TP_L4_00359.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00360
+TP_L4_00360.Position 1.395 0 0
+TP_L4_00360.Mother TES_L4
+TP_L4_00360.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00361
+TP_L4_00361.Position 1.395 0.155 0
+TP_L4_00361.Mother TES_L4
+TP_L4_00361.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00362
+TP_L4_00362.Position 1.395 0.31 0
+TP_L4_00362.Mother TES_L4
+TP_L4_00362.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00363
+TP_L4_00363.Position 1.395 0.465 0
+TP_L4_00363.Mother TES_L4
+TP_L4_00363.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00364
+TP_L4_00364.Position 1.395 0.62 0
+TP_L4_00364.Mother TES_L4
+TP_L4_00364.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00365
+TP_L4_00365.Position 1.395 0.775 0
+TP_L4_00365.Mother TES_L4
+TP_L4_00365.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00366
+TP_L4_00366.Position 1.395 0.93 0
+TP_L4_00366.Mother TES_L4
+TP_L4_00366.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00367
+TP_L4_00367.Position 1.55 -0.62 0
+TP_L4_00367.Mother TES_L4
+TP_L4_00367.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00368
+TP_L4_00368.Position 1.55 -0.465 0
+TP_L4_00368.Mother TES_L4
+TP_L4_00368.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00369
+TP_L4_00369.Position 1.55 -0.31 0
+TP_L4_00369.Mother TES_L4
+TP_L4_00369.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00370
+TP_L4_00370.Position 1.55 -0.155 0
+TP_L4_00370.Mother TES_L4
+TP_L4_00370.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00371
+TP_L4_00371.Position 1.55 0 0
+TP_L4_00371.Mother TES_L4
+TP_L4_00371.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00372
+TP_L4_00372.Position 1.55 0.155 0
+TP_L4_00372.Mother TES_L4
+TP_L4_00372.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00373
+TP_L4_00373.Position 1.55 0.31 0
+TP_L4_00373.Mother TES_L4
+TP_L4_00373.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00374
+TP_L4_00374.Position 1.55 0.465 0
+TP_L4_00374.Mother TES_L4
+TP_L4_00374.Visibility 0
+
+TES_Pixel_L4.Copy TP_L4_00375
+TP_L4_00375.Position 1.55 0.62 0
+TP_L4_00375.Mother TES_L4
+TP_L4_00375.Visibility 0
+
+// Volume Substrate_L5; material=Silicon
+Volume Substrate_L5
+Substrate_L5.Material Silicon
+Substrate_L5.Visibility 1
+Substrate_L5.Shape PCON 0 360 2 -0.015 0 2.2 0.015 0 2.2
+
+// Volume TES_Pixel_L5; material=Ta
+Volume TES_Pixel_L5
+TES_Pixel_L5.Material Ta
+TES_Pixel_L5.Visibility 1
+TES_Pixel_L5.Shape BRIK 0.075 0.075 0.15
+
+// Volume TES_L5; material=Vacuum
+Volume TES_L5
+TES_L5.Material Vacuum
+TES_L5.Visibility 0
+TES_L5.Shape BRIK 2.4 2.4 0.15
+
+Substrate_L5.Position 0 0 7
+Substrate_L5.Mother WorldVolume
+
+TES_L5.Position 0 0 7.165
+TES_L5.Mother WorldVolume
+TES_L5.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00000
+TP_L5_00000.Position -1.705 0 0
+TP_L5_00000.Mother TES_L5
+TP_L5_00000.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00001
+TP_L5_00001.Position -1.55 -0.62 0
+TP_L5_00001.Mother TES_L5
+TP_L5_00001.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00002
+TP_L5_00002.Position -1.55 -0.465 0
+TP_L5_00002.Mother TES_L5
+TP_L5_00002.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00003
+TP_L5_00003.Position -1.55 -0.31 0
+TP_L5_00003.Mother TES_L5
+TP_L5_00003.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00004
+TP_L5_00004.Position -1.55 -0.155 0
+TP_L5_00004.Mother TES_L5
+TP_L5_00004.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00005
+TP_L5_00005.Position -1.55 0 0
+TP_L5_00005.Mother TES_L5
+TP_L5_00005.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00006
+TP_L5_00006.Position -1.55 0.155 0
+TP_L5_00006.Mother TES_L5
+TP_L5_00006.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00007
+TP_L5_00007.Position -1.55 0.31 0
+TP_L5_00007.Mother TES_L5
+TP_L5_00007.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00008
+TP_L5_00008.Position -1.55 0.465 0
+TP_L5_00008.Mother TES_L5
+TP_L5_00008.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00009
+TP_L5_00009.Position -1.55 0.62 0
+TP_L5_00009.Mother TES_L5
+TP_L5_00009.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00010
+TP_L5_00010.Position -1.395 -0.93 0
+TP_L5_00010.Mother TES_L5
+TP_L5_00010.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00011
+TP_L5_00011.Position -1.395 -0.775 0
+TP_L5_00011.Mother TES_L5
+TP_L5_00011.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00012
+TP_L5_00012.Position -1.395 -0.62 0
+TP_L5_00012.Mother TES_L5
+TP_L5_00012.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00013
+TP_L5_00013.Position -1.395 -0.465 0
+TP_L5_00013.Mother TES_L5
+TP_L5_00013.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00014
+TP_L5_00014.Position -1.395 -0.31 0
+TP_L5_00014.Mother TES_L5
+TP_L5_00014.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00015
+TP_L5_00015.Position -1.395 -0.155 0
+TP_L5_00015.Mother TES_L5
+TP_L5_00015.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00016
+TP_L5_00016.Position -1.395 0 0
+TP_L5_00016.Mother TES_L5
+TP_L5_00016.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00017
+TP_L5_00017.Position -1.395 0.155 0
+TP_L5_00017.Mother TES_L5
+TP_L5_00017.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00018
+TP_L5_00018.Position -1.395 0.31 0
+TP_L5_00018.Mother TES_L5
+TP_L5_00018.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00019
+TP_L5_00019.Position -1.395 0.465 0
+TP_L5_00019.Mother TES_L5
+TP_L5_00019.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00020
+TP_L5_00020.Position -1.395 0.62 0
+TP_L5_00020.Mother TES_L5
+TP_L5_00020.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00021
+TP_L5_00021.Position -1.395 0.775 0
+TP_L5_00021.Mother TES_L5
+TP_L5_00021.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00022
+TP_L5_00022.Position -1.395 0.93 0
+TP_L5_00022.Mother TES_L5
+TP_L5_00022.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00023
+TP_L5_00023.Position -1.24 -1.085 0
+TP_L5_00023.Mother TES_L5
+TP_L5_00023.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00024
+TP_L5_00024.Position -1.24 -0.93 0
+TP_L5_00024.Mother TES_L5
+TP_L5_00024.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00025
+TP_L5_00025.Position -1.24 -0.775 0
+TP_L5_00025.Mother TES_L5
+TP_L5_00025.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00026
+TP_L5_00026.Position -1.24 -0.62 0
+TP_L5_00026.Mother TES_L5
+TP_L5_00026.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00027
+TP_L5_00027.Position -1.24 -0.465 0
+TP_L5_00027.Mother TES_L5
+TP_L5_00027.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00028
+TP_L5_00028.Position -1.24 -0.31 0
+TP_L5_00028.Mother TES_L5
+TP_L5_00028.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00029
+TP_L5_00029.Position -1.24 -0.155 0
+TP_L5_00029.Mother TES_L5
+TP_L5_00029.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00030
+TP_L5_00030.Position -1.24 0 0
+TP_L5_00030.Mother TES_L5
+TP_L5_00030.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00031
+TP_L5_00031.Position -1.24 0.155 0
+TP_L5_00031.Mother TES_L5
+TP_L5_00031.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00032
+TP_L5_00032.Position -1.24 0.31 0
+TP_L5_00032.Mother TES_L5
+TP_L5_00032.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00033
+TP_L5_00033.Position -1.24 0.465 0
+TP_L5_00033.Mother TES_L5
+TP_L5_00033.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00034
+TP_L5_00034.Position -1.24 0.62 0
+TP_L5_00034.Mother TES_L5
+TP_L5_00034.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00035
+TP_L5_00035.Position -1.24 0.775 0
+TP_L5_00035.Mother TES_L5
+TP_L5_00035.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00036
+TP_L5_00036.Position -1.24 0.93 0
+TP_L5_00036.Mother TES_L5
+TP_L5_00036.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00037
+TP_L5_00037.Position -1.24 1.085 0
+TP_L5_00037.Mother TES_L5
+TP_L5_00037.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00038
+TP_L5_00038.Position -1.085 -1.24 0
+TP_L5_00038.Mother TES_L5
+TP_L5_00038.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00039
+TP_L5_00039.Position -1.085 -1.085 0
+TP_L5_00039.Mother TES_L5
+TP_L5_00039.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00040
+TP_L5_00040.Position -1.085 -0.93 0
+TP_L5_00040.Mother TES_L5
+TP_L5_00040.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00041
+TP_L5_00041.Position -1.085 -0.775 0
+TP_L5_00041.Mother TES_L5
+TP_L5_00041.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00042
+TP_L5_00042.Position -1.085 -0.62 0
+TP_L5_00042.Mother TES_L5
+TP_L5_00042.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00043
+TP_L5_00043.Position -1.085 -0.465 0
+TP_L5_00043.Mother TES_L5
+TP_L5_00043.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00044
+TP_L5_00044.Position -1.085 -0.31 0
+TP_L5_00044.Mother TES_L5
+TP_L5_00044.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00045
+TP_L5_00045.Position -1.085 -0.155 0
+TP_L5_00045.Mother TES_L5
+TP_L5_00045.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00046
+TP_L5_00046.Position -1.085 0 0
+TP_L5_00046.Mother TES_L5
+TP_L5_00046.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00047
+TP_L5_00047.Position -1.085 0.155 0
+TP_L5_00047.Mother TES_L5
+TP_L5_00047.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00048
+TP_L5_00048.Position -1.085 0.31 0
+TP_L5_00048.Mother TES_L5
+TP_L5_00048.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00049
+TP_L5_00049.Position -1.085 0.465 0
+TP_L5_00049.Mother TES_L5
+TP_L5_00049.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00050
+TP_L5_00050.Position -1.085 0.62 0
+TP_L5_00050.Mother TES_L5
+TP_L5_00050.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00051
+TP_L5_00051.Position -1.085 0.775 0
+TP_L5_00051.Mother TES_L5
+TP_L5_00051.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00052
+TP_L5_00052.Position -1.085 0.93 0
+TP_L5_00052.Mother TES_L5
+TP_L5_00052.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00053
+TP_L5_00053.Position -1.085 1.085 0
+TP_L5_00053.Mother TES_L5
+TP_L5_00053.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00054
+TP_L5_00054.Position -1.085 1.24 0
+TP_L5_00054.Mother TES_L5
+TP_L5_00054.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00055
+TP_L5_00055.Position -0.93 -1.395 0
+TP_L5_00055.Mother TES_L5
+TP_L5_00055.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00056
+TP_L5_00056.Position -0.93 -1.24 0
+TP_L5_00056.Mother TES_L5
+TP_L5_00056.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00057
+TP_L5_00057.Position -0.93 -1.085 0
+TP_L5_00057.Mother TES_L5
+TP_L5_00057.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00058
+TP_L5_00058.Position -0.93 -0.93 0
+TP_L5_00058.Mother TES_L5
+TP_L5_00058.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00059
+TP_L5_00059.Position -0.93 -0.775 0
+TP_L5_00059.Mother TES_L5
+TP_L5_00059.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00060
+TP_L5_00060.Position -0.93 -0.62 0
+TP_L5_00060.Mother TES_L5
+TP_L5_00060.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00061
+TP_L5_00061.Position -0.93 -0.465 0
+TP_L5_00061.Mother TES_L5
+TP_L5_00061.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00062
+TP_L5_00062.Position -0.93 -0.31 0
+TP_L5_00062.Mother TES_L5
+TP_L5_00062.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00063
+TP_L5_00063.Position -0.93 -0.155 0
+TP_L5_00063.Mother TES_L5
+TP_L5_00063.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00064
+TP_L5_00064.Position -0.93 0 0
+TP_L5_00064.Mother TES_L5
+TP_L5_00064.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00065
+TP_L5_00065.Position -0.93 0.155 0
+TP_L5_00065.Mother TES_L5
+TP_L5_00065.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00066
+TP_L5_00066.Position -0.93 0.31 0
+TP_L5_00066.Mother TES_L5
+TP_L5_00066.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00067
+TP_L5_00067.Position -0.93 0.465 0
+TP_L5_00067.Mother TES_L5
+TP_L5_00067.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00068
+TP_L5_00068.Position -0.93 0.62 0
+TP_L5_00068.Mother TES_L5
+TP_L5_00068.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00069
+TP_L5_00069.Position -0.93 0.775 0
+TP_L5_00069.Mother TES_L5
+TP_L5_00069.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00070
+TP_L5_00070.Position -0.93 0.93 0
+TP_L5_00070.Mother TES_L5
+TP_L5_00070.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00071
+TP_L5_00071.Position -0.93 1.085 0
+TP_L5_00071.Mother TES_L5
+TP_L5_00071.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00072
+TP_L5_00072.Position -0.93 1.24 0
+TP_L5_00072.Mother TES_L5
+TP_L5_00072.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00073
+TP_L5_00073.Position -0.93 1.395 0
+TP_L5_00073.Mother TES_L5
+TP_L5_00073.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00074
+TP_L5_00074.Position -0.775 -1.395 0
+TP_L5_00074.Mother TES_L5
+TP_L5_00074.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00075
+TP_L5_00075.Position -0.775 -1.24 0
+TP_L5_00075.Mother TES_L5
+TP_L5_00075.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00076
+TP_L5_00076.Position -0.775 -1.085 0
+TP_L5_00076.Mother TES_L5
+TP_L5_00076.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00077
+TP_L5_00077.Position -0.775 -0.93 0
+TP_L5_00077.Mother TES_L5
+TP_L5_00077.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00078
+TP_L5_00078.Position -0.775 -0.775 0
+TP_L5_00078.Mother TES_L5
+TP_L5_00078.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00079
+TP_L5_00079.Position -0.775 -0.62 0
+TP_L5_00079.Mother TES_L5
+TP_L5_00079.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00080
+TP_L5_00080.Position -0.775 -0.465 0
+TP_L5_00080.Mother TES_L5
+TP_L5_00080.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00081
+TP_L5_00081.Position -0.775 -0.31 0
+TP_L5_00081.Mother TES_L5
+TP_L5_00081.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00082
+TP_L5_00082.Position -0.775 -0.155 0
+TP_L5_00082.Mother TES_L5
+TP_L5_00082.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00083
+TP_L5_00083.Position -0.775 0 0
+TP_L5_00083.Mother TES_L5
+TP_L5_00083.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00084
+TP_L5_00084.Position -0.775 0.155 0
+TP_L5_00084.Mother TES_L5
+TP_L5_00084.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00085
+TP_L5_00085.Position -0.775 0.31 0
+TP_L5_00085.Mother TES_L5
+TP_L5_00085.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00086
+TP_L5_00086.Position -0.775 0.465 0
+TP_L5_00086.Mother TES_L5
+TP_L5_00086.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00087
+TP_L5_00087.Position -0.775 0.62 0
+TP_L5_00087.Mother TES_L5
+TP_L5_00087.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00088
+TP_L5_00088.Position -0.775 0.775 0
+TP_L5_00088.Mother TES_L5
+TP_L5_00088.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00089
+TP_L5_00089.Position -0.775 0.93 0
+TP_L5_00089.Mother TES_L5
+TP_L5_00089.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00090
+TP_L5_00090.Position -0.775 1.085 0
+TP_L5_00090.Mother TES_L5
+TP_L5_00090.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00091
+TP_L5_00091.Position -0.775 1.24 0
+TP_L5_00091.Mother TES_L5
+TP_L5_00091.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00092
+TP_L5_00092.Position -0.775 1.395 0
+TP_L5_00092.Mother TES_L5
+TP_L5_00092.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00093
+TP_L5_00093.Position -0.62 -1.55 0
+TP_L5_00093.Mother TES_L5
+TP_L5_00093.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00094
+TP_L5_00094.Position -0.62 -1.395 0
+TP_L5_00094.Mother TES_L5
+TP_L5_00094.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00095
+TP_L5_00095.Position -0.62 -1.24 0
+TP_L5_00095.Mother TES_L5
+TP_L5_00095.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00096
+TP_L5_00096.Position -0.62 -1.085 0
+TP_L5_00096.Mother TES_L5
+TP_L5_00096.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00097
+TP_L5_00097.Position -0.62 -0.93 0
+TP_L5_00097.Mother TES_L5
+TP_L5_00097.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00098
+TP_L5_00098.Position -0.62 -0.775 0
+TP_L5_00098.Mother TES_L5
+TP_L5_00098.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00099
+TP_L5_00099.Position -0.62 -0.62 0
+TP_L5_00099.Mother TES_L5
+TP_L5_00099.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00100
+TP_L5_00100.Position -0.62 -0.465 0
+TP_L5_00100.Mother TES_L5
+TP_L5_00100.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00101
+TP_L5_00101.Position -0.62 -0.31 0
+TP_L5_00101.Mother TES_L5
+TP_L5_00101.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00102
+TP_L5_00102.Position -0.62 -0.155 0
+TP_L5_00102.Mother TES_L5
+TP_L5_00102.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00103
+TP_L5_00103.Position -0.62 0 0
+TP_L5_00103.Mother TES_L5
+TP_L5_00103.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00104
+TP_L5_00104.Position -0.62 0.155 0
+TP_L5_00104.Mother TES_L5
+TP_L5_00104.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00105
+TP_L5_00105.Position -0.62 0.31 0
+TP_L5_00105.Mother TES_L5
+TP_L5_00105.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00106
+TP_L5_00106.Position -0.62 0.465 0
+TP_L5_00106.Mother TES_L5
+TP_L5_00106.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00107
+TP_L5_00107.Position -0.62 0.62 0
+TP_L5_00107.Mother TES_L5
+TP_L5_00107.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00108
+TP_L5_00108.Position -0.62 0.775 0
+TP_L5_00108.Mother TES_L5
+TP_L5_00108.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00109
+TP_L5_00109.Position -0.62 0.93 0
+TP_L5_00109.Mother TES_L5
+TP_L5_00109.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00110
+TP_L5_00110.Position -0.62 1.085 0
+TP_L5_00110.Mother TES_L5
+TP_L5_00110.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00111
+TP_L5_00111.Position -0.62 1.24 0
+TP_L5_00111.Mother TES_L5
+TP_L5_00111.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00112
+TP_L5_00112.Position -0.62 1.395 0
+TP_L5_00112.Mother TES_L5
+TP_L5_00112.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00113
+TP_L5_00113.Position -0.62 1.55 0
+TP_L5_00113.Mother TES_L5
+TP_L5_00113.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00114
+TP_L5_00114.Position -0.465 -1.55 0
+TP_L5_00114.Mother TES_L5
+TP_L5_00114.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00115
+TP_L5_00115.Position -0.465 -1.395 0
+TP_L5_00115.Mother TES_L5
+TP_L5_00115.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00116
+TP_L5_00116.Position -0.465 -1.24 0
+TP_L5_00116.Mother TES_L5
+TP_L5_00116.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00117
+TP_L5_00117.Position -0.465 -1.085 0
+TP_L5_00117.Mother TES_L5
+TP_L5_00117.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00118
+TP_L5_00118.Position -0.465 -0.93 0
+TP_L5_00118.Mother TES_L5
+TP_L5_00118.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00119
+TP_L5_00119.Position -0.465 -0.775 0
+TP_L5_00119.Mother TES_L5
+TP_L5_00119.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00120
+TP_L5_00120.Position -0.465 -0.62 0
+TP_L5_00120.Mother TES_L5
+TP_L5_00120.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00121
+TP_L5_00121.Position -0.465 -0.465 0
+TP_L5_00121.Mother TES_L5
+TP_L5_00121.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00122
+TP_L5_00122.Position -0.465 -0.31 0
+TP_L5_00122.Mother TES_L5
+TP_L5_00122.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00123
+TP_L5_00123.Position -0.465 -0.155 0
+TP_L5_00123.Mother TES_L5
+TP_L5_00123.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00124
+TP_L5_00124.Position -0.465 0 0
+TP_L5_00124.Mother TES_L5
+TP_L5_00124.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00125
+TP_L5_00125.Position -0.465 0.155 0
+TP_L5_00125.Mother TES_L5
+TP_L5_00125.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00126
+TP_L5_00126.Position -0.465 0.31 0
+TP_L5_00126.Mother TES_L5
+TP_L5_00126.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00127
+TP_L5_00127.Position -0.465 0.465 0
+TP_L5_00127.Mother TES_L5
+TP_L5_00127.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00128
+TP_L5_00128.Position -0.465 0.62 0
+TP_L5_00128.Mother TES_L5
+TP_L5_00128.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00129
+TP_L5_00129.Position -0.465 0.775 0
+TP_L5_00129.Mother TES_L5
+TP_L5_00129.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00130
+TP_L5_00130.Position -0.465 0.93 0
+TP_L5_00130.Mother TES_L5
+TP_L5_00130.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00131
+TP_L5_00131.Position -0.465 1.085 0
+TP_L5_00131.Mother TES_L5
+TP_L5_00131.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00132
+TP_L5_00132.Position -0.465 1.24 0
+TP_L5_00132.Mother TES_L5
+TP_L5_00132.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00133
+TP_L5_00133.Position -0.465 1.395 0
+TP_L5_00133.Mother TES_L5
+TP_L5_00133.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00134
+TP_L5_00134.Position -0.465 1.55 0
+TP_L5_00134.Mother TES_L5
+TP_L5_00134.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00135
+TP_L5_00135.Position -0.31 -1.55 0
+TP_L5_00135.Mother TES_L5
+TP_L5_00135.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00136
+TP_L5_00136.Position -0.31 -1.395 0
+TP_L5_00136.Mother TES_L5
+TP_L5_00136.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00137
+TP_L5_00137.Position -0.31 -1.24 0
+TP_L5_00137.Mother TES_L5
+TP_L5_00137.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00138
+TP_L5_00138.Position -0.31 -1.085 0
+TP_L5_00138.Mother TES_L5
+TP_L5_00138.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00139
+TP_L5_00139.Position -0.31 -0.93 0
+TP_L5_00139.Mother TES_L5
+TP_L5_00139.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00140
+TP_L5_00140.Position -0.31 -0.775 0
+TP_L5_00140.Mother TES_L5
+TP_L5_00140.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00141
+TP_L5_00141.Position -0.31 -0.62 0
+TP_L5_00141.Mother TES_L5
+TP_L5_00141.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00142
+TP_L5_00142.Position -0.31 -0.465 0
+TP_L5_00142.Mother TES_L5
+TP_L5_00142.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00143
+TP_L5_00143.Position -0.31 -0.31 0
+TP_L5_00143.Mother TES_L5
+TP_L5_00143.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00144
+TP_L5_00144.Position -0.31 -0.155 0
+TP_L5_00144.Mother TES_L5
+TP_L5_00144.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00145
+TP_L5_00145.Position -0.31 0 0
+TP_L5_00145.Mother TES_L5
+TP_L5_00145.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00146
+TP_L5_00146.Position -0.31 0.155 0
+TP_L5_00146.Mother TES_L5
+TP_L5_00146.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00147
+TP_L5_00147.Position -0.31 0.31 0
+TP_L5_00147.Mother TES_L5
+TP_L5_00147.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00148
+TP_L5_00148.Position -0.31 0.465 0
+TP_L5_00148.Mother TES_L5
+TP_L5_00148.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00149
+TP_L5_00149.Position -0.31 0.62 0
+TP_L5_00149.Mother TES_L5
+TP_L5_00149.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00150
+TP_L5_00150.Position -0.31 0.775 0
+TP_L5_00150.Mother TES_L5
+TP_L5_00150.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00151
+TP_L5_00151.Position -0.31 0.93 0
+TP_L5_00151.Mother TES_L5
+TP_L5_00151.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00152
+TP_L5_00152.Position -0.31 1.085 0
+TP_L5_00152.Mother TES_L5
+TP_L5_00152.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00153
+TP_L5_00153.Position -0.31 1.24 0
+TP_L5_00153.Mother TES_L5
+TP_L5_00153.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00154
+TP_L5_00154.Position -0.31 1.395 0
+TP_L5_00154.Mother TES_L5
+TP_L5_00154.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00155
+TP_L5_00155.Position -0.31 1.55 0
+TP_L5_00155.Mother TES_L5
+TP_L5_00155.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00156
+TP_L5_00156.Position -0.155 -1.55 0
+TP_L5_00156.Mother TES_L5
+TP_L5_00156.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00157
+TP_L5_00157.Position -0.155 -1.395 0
+TP_L5_00157.Mother TES_L5
+TP_L5_00157.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00158
+TP_L5_00158.Position -0.155 -1.24 0
+TP_L5_00158.Mother TES_L5
+TP_L5_00158.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00159
+TP_L5_00159.Position -0.155 -1.085 0
+TP_L5_00159.Mother TES_L5
+TP_L5_00159.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00160
+TP_L5_00160.Position -0.155 -0.93 0
+TP_L5_00160.Mother TES_L5
+TP_L5_00160.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00161
+TP_L5_00161.Position -0.155 -0.775 0
+TP_L5_00161.Mother TES_L5
+TP_L5_00161.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00162
+TP_L5_00162.Position -0.155 -0.62 0
+TP_L5_00162.Mother TES_L5
+TP_L5_00162.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00163
+TP_L5_00163.Position -0.155 -0.465 0
+TP_L5_00163.Mother TES_L5
+TP_L5_00163.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00164
+TP_L5_00164.Position -0.155 -0.31 0
+TP_L5_00164.Mother TES_L5
+TP_L5_00164.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00165
+TP_L5_00165.Position -0.155 -0.155 0
+TP_L5_00165.Mother TES_L5
+TP_L5_00165.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00166
+TP_L5_00166.Position -0.155 0 0
+TP_L5_00166.Mother TES_L5
+TP_L5_00166.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00167
+TP_L5_00167.Position -0.155 0.155 0
+TP_L5_00167.Mother TES_L5
+TP_L5_00167.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00168
+TP_L5_00168.Position -0.155 0.31 0
+TP_L5_00168.Mother TES_L5
+TP_L5_00168.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00169
+TP_L5_00169.Position -0.155 0.465 0
+TP_L5_00169.Mother TES_L5
+TP_L5_00169.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00170
+TP_L5_00170.Position -0.155 0.62 0
+TP_L5_00170.Mother TES_L5
+TP_L5_00170.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00171
+TP_L5_00171.Position -0.155 0.775 0
+TP_L5_00171.Mother TES_L5
+TP_L5_00171.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00172
+TP_L5_00172.Position -0.155 0.93 0
+TP_L5_00172.Mother TES_L5
+TP_L5_00172.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00173
+TP_L5_00173.Position -0.155 1.085 0
+TP_L5_00173.Mother TES_L5
+TP_L5_00173.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00174
+TP_L5_00174.Position -0.155 1.24 0
+TP_L5_00174.Mother TES_L5
+TP_L5_00174.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00175
+TP_L5_00175.Position -0.155 1.395 0
+TP_L5_00175.Mother TES_L5
+TP_L5_00175.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00176
+TP_L5_00176.Position -0.155 1.55 0
+TP_L5_00176.Mother TES_L5
+TP_L5_00176.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00177
+TP_L5_00177.Position 0 -1.705 0
+TP_L5_00177.Mother TES_L5
+TP_L5_00177.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00178
+TP_L5_00178.Position 0 -1.55 0
+TP_L5_00178.Mother TES_L5
+TP_L5_00178.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00179
+TP_L5_00179.Position 0 -1.395 0
+TP_L5_00179.Mother TES_L5
+TP_L5_00179.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00180
+TP_L5_00180.Position 0 -1.24 0
+TP_L5_00180.Mother TES_L5
+TP_L5_00180.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00181
+TP_L5_00181.Position 0 -1.085 0
+TP_L5_00181.Mother TES_L5
+TP_L5_00181.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00182
+TP_L5_00182.Position 0 -0.93 0
+TP_L5_00182.Mother TES_L5
+TP_L5_00182.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00183
+TP_L5_00183.Position 0 -0.775 0
+TP_L5_00183.Mother TES_L5
+TP_L5_00183.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00184
+TP_L5_00184.Position 0 -0.62 0
+TP_L5_00184.Mother TES_L5
+TP_L5_00184.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00185
+TP_L5_00185.Position 0 -0.465 0
+TP_L5_00185.Mother TES_L5
+TP_L5_00185.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00186
+TP_L5_00186.Position 0 -0.31 0
+TP_L5_00186.Mother TES_L5
+TP_L5_00186.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00187
+TP_L5_00187.Position 0 -0.155 0
+TP_L5_00187.Mother TES_L5
+TP_L5_00187.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00188
+TP_L5_00188.Position 0 0 0
+TP_L5_00188.Mother TES_L5
+TP_L5_00188.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00189
+TP_L5_00189.Position 0 0.155 0
+TP_L5_00189.Mother TES_L5
+TP_L5_00189.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00190
+TP_L5_00190.Position 0 0.31 0
+TP_L5_00190.Mother TES_L5
+TP_L5_00190.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00191
+TP_L5_00191.Position 0 0.465 0
+TP_L5_00191.Mother TES_L5
+TP_L5_00191.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00192
+TP_L5_00192.Position 0 0.62 0
+TP_L5_00192.Mother TES_L5
+TP_L5_00192.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00193
+TP_L5_00193.Position 0 0.775 0
+TP_L5_00193.Mother TES_L5
+TP_L5_00193.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00194
+TP_L5_00194.Position 0 0.93 0
+TP_L5_00194.Mother TES_L5
+TP_L5_00194.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00195
+TP_L5_00195.Position 0 1.085 0
+TP_L5_00195.Mother TES_L5
+TP_L5_00195.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00196
+TP_L5_00196.Position 0 1.24 0
+TP_L5_00196.Mother TES_L5
+TP_L5_00196.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00197
+TP_L5_00197.Position 0 1.395 0
+TP_L5_00197.Mother TES_L5
+TP_L5_00197.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00198
+TP_L5_00198.Position 0 1.55 0
+TP_L5_00198.Mother TES_L5
+TP_L5_00198.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00199
+TP_L5_00199.Position 0 1.705 0
+TP_L5_00199.Mother TES_L5
+TP_L5_00199.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00200
+TP_L5_00200.Position 0.155 -1.55 0
+TP_L5_00200.Mother TES_L5
+TP_L5_00200.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00201
+TP_L5_00201.Position 0.155 -1.395 0
+TP_L5_00201.Mother TES_L5
+TP_L5_00201.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00202
+TP_L5_00202.Position 0.155 -1.24 0
+TP_L5_00202.Mother TES_L5
+TP_L5_00202.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00203
+TP_L5_00203.Position 0.155 -1.085 0
+TP_L5_00203.Mother TES_L5
+TP_L5_00203.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00204
+TP_L5_00204.Position 0.155 -0.93 0
+TP_L5_00204.Mother TES_L5
+TP_L5_00204.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00205
+TP_L5_00205.Position 0.155 -0.775 0
+TP_L5_00205.Mother TES_L5
+TP_L5_00205.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00206
+TP_L5_00206.Position 0.155 -0.62 0
+TP_L5_00206.Mother TES_L5
+TP_L5_00206.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00207
+TP_L5_00207.Position 0.155 -0.465 0
+TP_L5_00207.Mother TES_L5
+TP_L5_00207.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00208
+TP_L5_00208.Position 0.155 -0.31 0
+TP_L5_00208.Mother TES_L5
+TP_L5_00208.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00209
+TP_L5_00209.Position 0.155 -0.155 0
+TP_L5_00209.Mother TES_L5
+TP_L5_00209.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00210
+TP_L5_00210.Position 0.155 0 0
+TP_L5_00210.Mother TES_L5
+TP_L5_00210.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00211
+TP_L5_00211.Position 0.155 0.155 0
+TP_L5_00211.Mother TES_L5
+TP_L5_00211.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00212
+TP_L5_00212.Position 0.155 0.31 0
+TP_L5_00212.Mother TES_L5
+TP_L5_00212.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00213
+TP_L5_00213.Position 0.155 0.465 0
+TP_L5_00213.Mother TES_L5
+TP_L5_00213.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00214
+TP_L5_00214.Position 0.155 0.62 0
+TP_L5_00214.Mother TES_L5
+TP_L5_00214.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00215
+TP_L5_00215.Position 0.155 0.775 0
+TP_L5_00215.Mother TES_L5
+TP_L5_00215.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00216
+TP_L5_00216.Position 0.155 0.93 0
+TP_L5_00216.Mother TES_L5
+TP_L5_00216.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00217
+TP_L5_00217.Position 0.155 1.085 0
+TP_L5_00217.Mother TES_L5
+TP_L5_00217.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00218
+TP_L5_00218.Position 0.155 1.24 0
+TP_L5_00218.Mother TES_L5
+TP_L5_00218.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00219
+TP_L5_00219.Position 0.155 1.395 0
+TP_L5_00219.Mother TES_L5
+TP_L5_00219.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00220
+TP_L5_00220.Position 0.155 1.55 0
+TP_L5_00220.Mother TES_L5
+TP_L5_00220.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00221
+TP_L5_00221.Position 0.31 -1.55 0
+TP_L5_00221.Mother TES_L5
+TP_L5_00221.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00222
+TP_L5_00222.Position 0.31 -1.395 0
+TP_L5_00222.Mother TES_L5
+TP_L5_00222.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00223
+TP_L5_00223.Position 0.31 -1.24 0
+TP_L5_00223.Mother TES_L5
+TP_L5_00223.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00224
+TP_L5_00224.Position 0.31 -1.085 0
+TP_L5_00224.Mother TES_L5
+TP_L5_00224.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00225
+TP_L5_00225.Position 0.31 -0.93 0
+TP_L5_00225.Mother TES_L5
+TP_L5_00225.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00226
+TP_L5_00226.Position 0.31 -0.775 0
+TP_L5_00226.Mother TES_L5
+TP_L5_00226.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00227
+TP_L5_00227.Position 0.31 -0.62 0
+TP_L5_00227.Mother TES_L5
+TP_L5_00227.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00228
+TP_L5_00228.Position 0.31 -0.465 0
+TP_L5_00228.Mother TES_L5
+TP_L5_00228.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00229
+TP_L5_00229.Position 0.31 -0.31 0
+TP_L5_00229.Mother TES_L5
+TP_L5_00229.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00230
+TP_L5_00230.Position 0.31 -0.155 0
+TP_L5_00230.Mother TES_L5
+TP_L5_00230.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00231
+TP_L5_00231.Position 0.31 0 0
+TP_L5_00231.Mother TES_L5
+TP_L5_00231.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00232
+TP_L5_00232.Position 0.31 0.155 0
+TP_L5_00232.Mother TES_L5
+TP_L5_00232.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00233
+TP_L5_00233.Position 0.31 0.31 0
+TP_L5_00233.Mother TES_L5
+TP_L5_00233.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00234
+TP_L5_00234.Position 0.31 0.465 0
+TP_L5_00234.Mother TES_L5
+TP_L5_00234.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00235
+TP_L5_00235.Position 0.31 0.62 0
+TP_L5_00235.Mother TES_L5
+TP_L5_00235.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00236
+TP_L5_00236.Position 0.31 0.775 0
+TP_L5_00236.Mother TES_L5
+TP_L5_00236.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00237
+TP_L5_00237.Position 0.31 0.93 0
+TP_L5_00237.Mother TES_L5
+TP_L5_00237.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00238
+TP_L5_00238.Position 0.31 1.085 0
+TP_L5_00238.Mother TES_L5
+TP_L5_00238.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00239
+TP_L5_00239.Position 0.31 1.24 0
+TP_L5_00239.Mother TES_L5
+TP_L5_00239.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00240
+TP_L5_00240.Position 0.31 1.395 0
+TP_L5_00240.Mother TES_L5
+TP_L5_00240.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00241
+TP_L5_00241.Position 0.31 1.55 0
+TP_L5_00241.Mother TES_L5
+TP_L5_00241.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00242
+TP_L5_00242.Position 0.465 -1.55 0
+TP_L5_00242.Mother TES_L5
+TP_L5_00242.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00243
+TP_L5_00243.Position 0.465 -1.395 0
+TP_L5_00243.Mother TES_L5
+TP_L5_00243.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00244
+TP_L5_00244.Position 0.465 -1.24 0
+TP_L5_00244.Mother TES_L5
+TP_L5_00244.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00245
+TP_L5_00245.Position 0.465 -1.085 0
+TP_L5_00245.Mother TES_L5
+TP_L5_00245.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00246
+TP_L5_00246.Position 0.465 -0.93 0
+TP_L5_00246.Mother TES_L5
+TP_L5_00246.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00247
+TP_L5_00247.Position 0.465 -0.775 0
+TP_L5_00247.Mother TES_L5
+TP_L5_00247.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00248
+TP_L5_00248.Position 0.465 -0.62 0
+TP_L5_00248.Mother TES_L5
+TP_L5_00248.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00249
+TP_L5_00249.Position 0.465 -0.465 0
+TP_L5_00249.Mother TES_L5
+TP_L5_00249.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00250
+TP_L5_00250.Position 0.465 -0.31 0
+TP_L5_00250.Mother TES_L5
+TP_L5_00250.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00251
+TP_L5_00251.Position 0.465 -0.155 0
+TP_L5_00251.Mother TES_L5
+TP_L5_00251.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00252
+TP_L5_00252.Position 0.465 0 0
+TP_L5_00252.Mother TES_L5
+TP_L5_00252.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00253
+TP_L5_00253.Position 0.465 0.155 0
+TP_L5_00253.Mother TES_L5
+TP_L5_00253.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00254
+TP_L5_00254.Position 0.465 0.31 0
+TP_L5_00254.Mother TES_L5
+TP_L5_00254.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00255
+TP_L5_00255.Position 0.465 0.465 0
+TP_L5_00255.Mother TES_L5
+TP_L5_00255.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00256
+TP_L5_00256.Position 0.465 0.62 0
+TP_L5_00256.Mother TES_L5
+TP_L5_00256.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00257
+TP_L5_00257.Position 0.465 0.775 0
+TP_L5_00257.Mother TES_L5
+TP_L5_00257.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00258
+TP_L5_00258.Position 0.465 0.93 0
+TP_L5_00258.Mother TES_L5
+TP_L5_00258.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00259
+TP_L5_00259.Position 0.465 1.085 0
+TP_L5_00259.Mother TES_L5
+TP_L5_00259.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00260
+TP_L5_00260.Position 0.465 1.24 0
+TP_L5_00260.Mother TES_L5
+TP_L5_00260.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00261
+TP_L5_00261.Position 0.465 1.395 0
+TP_L5_00261.Mother TES_L5
+TP_L5_00261.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00262
+TP_L5_00262.Position 0.465 1.55 0
+TP_L5_00262.Mother TES_L5
+TP_L5_00262.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00263
+TP_L5_00263.Position 0.62 -1.55 0
+TP_L5_00263.Mother TES_L5
+TP_L5_00263.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00264
+TP_L5_00264.Position 0.62 -1.395 0
+TP_L5_00264.Mother TES_L5
+TP_L5_00264.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00265
+TP_L5_00265.Position 0.62 -1.24 0
+TP_L5_00265.Mother TES_L5
+TP_L5_00265.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00266
+TP_L5_00266.Position 0.62 -1.085 0
+TP_L5_00266.Mother TES_L5
+TP_L5_00266.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00267
+TP_L5_00267.Position 0.62 -0.93 0
+TP_L5_00267.Mother TES_L5
+TP_L5_00267.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00268
+TP_L5_00268.Position 0.62 -0.775 0
+TP_L5_00268.Mother TES_L5
+TP_L5_00268.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00269
+TP_L5_00269.Position 0.62 -0.62 0
+TP_L5_00269.Mother TES_L5
+TP_L5_00269.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00270
+TP_L5_00270.Position 0.62 -0.465 0
+TP_L5_00270.Mother TES_L5
+TP_L5_00270.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00271
+TP_L5_00271.Position 0.62 -0.31 0
+TP_L5_00271.Mother TES_L5
+TP_L5_00271.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00272
+TP_L5_00272.Position 0.62 -0.155 0
+TP_L5_00272.Mother TES_L5
+TP_L5_00272.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00273
+TP_L5_00273.Position 0.62 0 0
+TP_L5_00273.Mother TES_L5
+TP_L5_00273.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00274
+TP_L5_00274.Position 0.62 0.155 0
+TP_L5_00274.Mother TES_L5
+TP_L5_00274.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00275
+TP_L5_00275.Position 0.62 0.31 0
+TP_L5_00275.Mother TES_L5
+TP_L5_00275.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00276
+TP_L5_00276.Position 0.62 0.465 0
+TP_L5_00276.Mother TES_L5
+TP_L5_00276.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00277
+TP_L5_00277.Position 0.62 0.62 0
+TP_L5_00277.Mother TES_L5
+TP_L5_00277.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00278
+TP_L5_00278.Position 0.62 0.775 0
+TP_L5_00278.Mother TES_L5
+TP_L5_00278.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00279
+TP_L5_00279.Position 0.62 0.93 0
+TP_L5_00279.Mother TES_L5
+TP_L5_00279.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00280
+TP_L5_00280.Position 0.62 1.085 0
+TP_L5_00280.Mother TES_L5
+TP_L5_00280.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00281
+TP_L5_00281.Position 0.62 1.24 0
+TP_L5_00281.Mother TES_L5
+TP_L5_00281.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00282
+TP_L5_00282.Position 0.62 1.395 0
+TP_L5_00282.Mother TES_L5
+TP_L5_00282.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00283
+TP_L5_00283.Position 0.62 1.55 0
+TP_L5_00283.Mother TES_L5
+TP_L5_00283.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00284
+TP_L5_00284.Position 0.775 -1.395 0
+TP_L5_00284.Mother TES_L5
+TP_L5_00284.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00285
+TP_L5_00285.Position 0.775 -1.24 0
+TP_L5_00285.Mother TES_L5
+TP_L5_00285.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00286
+TP_L5_00286.Position 0.775 -1.085 0
+TP_L5_00286.Mother TES_L5
+TP_L5_00286.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00287
+TP_L5_00287.Position 0.775 -0.93 0
+TP_L5_00287.Mother TES_L5
+TP_L5_00287.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00288
+TP_L5_00288.Position 0.775 -0.775 0
+TP_L5_00288.Mother TES_L5
+TP_L5_00288.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00289
+TP_L5_00289.Position 0.775 -0.62 0
+TP_L5_00289.Mother TES_L5
+TP_L5_00289.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00290
+TP_L5_00290.Position 0.775 -0.465 0
+TP_L5_00290.Mother TES_L5
+TP_L5_00290.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00291
+TP_L5_00291.Position 0.775 -0.31 0
+TP_L5_00291.Mother TES_L5
+TP_L5_00291.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00292
+TP_L5_00292.Position 0.775 -0.155 0
+TP_L5_00292.Mother TES_L5
+TP_L5_00292.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00293
+TP_L5_00293.Position 0.775 0 0
+TP_L5_00293.Mother TES_L5
+TP_L5_00293.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00294
+TP_L5_00294.Position 0.775 0.155 0
+TP_L5_00294.Mother TES_L5
+TP_L5_00294.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00295
+TP_L5_00295.Position 0.775 0.31 0
+TP_L5_00295.Mother TES_L5
+TP_L5_00295.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00296
+TP_L5_00296.Position 0.775 0.465 0
+TP_L5_00296.Mother TES_L5
+TP_L5_00296.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00297
+TP_L5_00297.Position 0.775 0.62 0
+TP_L5_00297.Mother TES_L5
+TP_L5_00297.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00298
+TP_L5_00298.Position 0.775 0.775 0
+TP_L5_00298.Mother TES_L5
+TP_L5_00298.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00299
+TP_L5_00299.Position 0.775 0.93 0
+TP_L5_00299.Mother TES_L5
+TP_L5_00299.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00300
+TP_L5_00300.Position 0.775 1.085 0
+TP_L5_00300.Mother TES_L5
+TP_L5_00300.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00301
+TP_L5_00301.Position 0.775 1.24 0
+TP_L5_00301.Mother TES_L5
+TP_L5_00301.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00302
+TP_L5_00302.Position 0.775 1.395 0
+TP_L5_00302.Mother TES_L5
+TP_L5_00302.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00303
+TP_L5_00303.Position 0.93 -1.395 0
+TP_L5_00303.Mother TES_L5
+TP_L5_00303.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00304
+TP_L5_00304.Position 0.93 -1.24 0
+TP_L5_00304.Mother TES_L5
+TP_L5_00304.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00305
+TP_L5_00305.Position 0.93 -1.085 0
+TP_L5_00305.Mother TES_L5
+TP_L5_00305.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00306
+TP_L5_00306.Position 0.93 -0.93 0
+TP_L5_00306.Mother TES_L5
+TP_L5_00306.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00307
+TP_L5_00307.Position 0.93 -0.775 0
+TP_L5_00307.Mother TES_L5
+TP_L5_00307.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00308
+TP_L5_00308.Position 0.93 -0.62 0
+TP_L5_00308.Mother TES_L5
+TP_L5_00308.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00309
+TP_L5_00309.Position 0.93 -0.465 0
+TP_L5_00309.Mother TES_L5
+TP_L5_00309.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00310
+TP_L5_00310.Position 0.93 -0.31 0
+TP_L5_00310.Mother TES_L5
+TP_L5_00310.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00311
+TP_L5_00311.Position 0.93 -0.155 0
+TP_L5_00311.Mother TES_L5
+TP_L5_00311.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00312
+TP_L5_00312.Position 0.93 0 0
+TP_L5_00312.Mother TES_L5
+TP_L5_00312.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00313
+TP_L5_00313.Position 0.93 0.155 0
+TP_L5_00313.Mother TES_L5
+TP_L5_00313.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00314
+TP_L5_00314.Position 0.93 0.31 0
+TP_L5_00314.Mother TES_L5
+TP_L5_00314.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00315
+TP_L5_00315.Position 0.93 0.465 0
+TP_L5_00315.Mother TES_L5
+TP_L5_00315.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00316
+TP_L5_00316.Position 0.93 0.62 0
+TP_L5_00316.Mother TES_L5
+TP_L5_00316.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00317
+TP_L5_00317.Position 0.93 0.775 0
+TP_L5_00317.Mother TES_L5
+TP_L5_00317.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00318
+TP_L5_00318.Position 0.93 0.93 0
+TP_L5_00318.Mother TES_L5
+TP_L5_00318.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00319
+TP_L5_00319.Position 0.93 1.085 0
+TP_L5_00319.Mother TES_L5
+TP_L5_00319.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00320
+TP_L5_00320.Position 0.93 1.24 0
+TP_L5_00320.Mother TES_L5
+TP_L5_00320.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00321
+TP_L5_00321.Position 0.93 1.395 0
+TP_L5_00321.Mother TES_L5
+TP_L5_00321.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00322
+TP_L5_00322.Position 1.085 -1.24 0
+TP_L5_00322.Mother TES_L5
+TP_L5_00322.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00323
+TP_L5_00323.Position 1.085 -1.085 0
+TP_L5_00323.Mother TES_L5
+TP_L5_00323.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00324
+TP_L5_00324.Position 1.085 -0.93 0
+TP_L5_00324.Mother TES_L5
+TP_L5_00324.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00325
+TP_L5_00325.Position 1.085 -0.775 0
+TP_L5_00325.Mother TES_L5
+TP_L5_00325.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00326
+TP_L5_00326.Position 1.085 -0.62 0
+TP_L5_00326.Mother TES_L5
+TP_L5_00326.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00327
+TP_L5_00327.Position 1.085 -0.465 0
+TP_L5_00327.Mother TES_L5
+TP_L5_00327.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00328
+TP_L5_00328.Position 1.085 -0.31 0
+TP_L5_00328.Mother TES_L5
+TP_L5_00328.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00329
+TP_L5_00329.Position 1.085 -0.155 0
+TP_L5_00329.Mother TES_L5
+TP_L5_00329.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00330
+TP_L5_00330.Position 1.085 0 0
+TP_L5_00330.Mother TES_L5
+TP_L5_00330.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00331
+TP_L5_00331.Position 1.085 0.155 0
+TP_L5_00331.Mother TES_L5
+TP_L5_00331.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00332
+TP_L5_00332.Position 1.085 0.31 0
+TP_L5_00332.Mother TES_L5
+TP_L5_00332.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00333
+TP_L5_00333.Position 1.085 0.465 0
+TP_L5_00333.Mother TES_L5
+TP_L5_00333.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00334
+TP_L5_00334.Position 1.085 0.62 0
+TP_L5_00334.Mother TES_L5
+TP_L5_00334.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00335
+TP_L5_00335.Position 1.085 0.775 0
+TP_L5_00335.Mother TES_L5
+TP_L5_00335.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00336
+TP_L5_00336.Position 1.085 0.93 0
+TP_L5_00336.Mother TES_L5
+TP_L5_00336.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00337
+TP_L5_00337.Position 1.085 1.085 0
+TP_L5_00337.Mother TES_L5
+TP_L5_00337.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00338
+TP_L5_00338.Position 1.085 1.24 0
+TP_L5_00338.Mother TES_L5
+TP_L5_00338.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00339
+TP_L5_00339.Position 1.24 -1.085 0
+TP_L5_00339.Mother TES_L5
+TP_L5_00339.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00340
+TP_L5_00340.Position 1.24 -0.93 0
+TP_L5_00340.Mother TES_L5
+TP_L5_00340.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00341
+TP_L5_00341.Position 1.24 -0.775 0
+TP_L5_00341.Mother TES_L5
+TP_L5_00341.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00342
+TP_L5_00342.Position 1.24 -0.62 0
+TP_L5_00342.Mother TES_L5
+TP_L5_00342.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00343
+TP_L5_00343.Position 1.24 -0.465 0
+TP_L5_00343.Mother TES_L5
+TP_L5_00343.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00344
+TP_L5_00344.Position 1.24 -0.31 0
+TP_L5_00344.Mother TES_L5
+TP_L5_00344.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00345
+TP_L5_00345.Position 1.24 -0.155 0
+TP_L5_00345.Mother TES_L5
+TP_L5_00345.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00346
+TP_L5_00346.Position 1.24 0 0
+TP_L5_00346.Mother TES_L5
+TP_L5_00346.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00347
+TP_L5_00347.Position 1.24 0.155 0
+TP_L5_00347.Mother TES_L5
+TP_L5_00347.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00348
+TP_L5_00348.Position 1.24 0.31 0
+TP_L5_00348.Mother TES_L5
+TP_L5_00348.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00349
+TP_L5_00349.Position 1.24 0.465 0
+TP_L5_00349.Mother TES_L5
+TP_L5_00349.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00350
+TP_L5_00350.Position 1.24 0.62 0
+TP_L5_00350.Mother TES_L5
+TP_L5_00350.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00351
+TP_L5_00351.Position 1.24 0.775 0
+TP_L5_00351.Mother TES_L5
+TP_L5_00351.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00352
+TP_L5_00352.Position 1.24 0.93 0
+TP_L5_00352.Mother TES_L5
+TP_L5_00352.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00353
+TP_L5_00353.Position 1.24 1.085 0
+TP_L5_00353.Mother TES_L5
+TP_L5_00353.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00354
+TP_L5_00354.Position 1.395 -0.93 0
+TP_L5_00354.Mother TES_L5
+TP_L5_00354.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00355
+TP_L5_00355.Position 1.395 -0.775 0
+TP_L5_00355.Mother TES_L5
+TP_L5_00355.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00356
+TP_L5_00356.Position 1.395 -0.62 0
+TP_L5_00356.Mother TES_L5
+TP_L5_00356.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00357
+TP_L5_00357.Position 1.395 -0.465 0
+TP_L5_00357.Mother TES_L5
+TP_L5_00357.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00358
+TP_L5_00358.Position 1.395 -0.31 0
+TP_L5_00358.Mother TES_L5
+TP_L5_00358.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00359
+TP_L5_00359.Position 1.395 -0.155 0
+TP_L5_00359.Mother TES_L5
+TP_L5_00359.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00360
+TP_L5_00360.Position 1.395 0 0
+TP_L5_00360.Mother TES_L5
+TP_L5_00360.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00361
+TP_L5_00361.Position 1.395 0.155 0
+TP_L5_00361.Mother TES_L5
+TP_L5_00361.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00362
+TP_L5_00362.Position 1.395 0.31 0
+TP_L5_00362.Mother TES_L5
+TP_L5_00362.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00363
+TP_L5_00363.Position 1.395 0.465 0
+TP_L5_00363.Mother TES_L5
+TP_L5_00363.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00364
+TP_L5_00364.Position 1.395 0.62 0
+TP_L5_00364.Mother TES_L5
+TP_L5_00364.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00365
+TP_L5_00365.Position 1.395 0.775 0
+TP_L5_00365.Mother TES_L5
+TP_L5_00365.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00366
+TP_L5_00366.Position 1.395 0.93 0
+TP_L5_00366.Mother TES_L5
+TP_L5_00366.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00367
+TP_L5_00367.Position 1.55 -0.62 0
+TP_L5_00367.Mother TES_L5
+TP_L5_00367.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00368
+TP_L5_00368.Position 1.55 -0.465 0
+TP_L5_00368.Mother TES_L5
+TP_L5_00368.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00369
+TP_L5_00369.Position 1.55 -0.31 0
+TP_L5_00369.Mother TES_L5
+TP_L5_00369.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00370
+TP_L5_00370.Position 1.55 -0.155 0
+TP_L5_00370.Mother TES_L5
+TP_L5_00370.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00371
+TP_L5_00371.Position 1.55 0 0
+TP_L5_00371.Mother TES_L5
+TP_L5_00371.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00372
+TP_L5_00372.Position 1.55 0.155 0
+TP_L5_00372.Mother TES_L5
+TP_L5_00372.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00373
+TP_L5_00373.Position 1.55 0.31 0
+TP_L5_00373.Mother TES_L5
+TP_L5_00373.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00374
+TP_L5_00374.Position 1.55 0.465 0
+TP_L5_00374.Mother TES_L5
+TP_L5_00374.Visibility 0
+
+TES_Pixel_L5.Copy TP_L5_00375
+TP_L5_00375.Position 1.55 0.62 0
+TP_L5_00375.Mother TES_L5
+TP_L5_00375.Visibility 0
+
+// Volume TES_SampleBox_Cryoperm; material=Cryoperm
+Volume TES_SampleBox_Cryoperm
+TES_SampleBox_Cryoperm.Material Cryoperm
+TES_SampleBox_Cryoperm.Visibility 1
+TES_SampleBox_Cryoperm.Shape PCON 0 360 6 0.25 0.4 3.7 0.55 0.4 3.7 0.55 3.4 3.7 8.4 3.4 3.7 8.4 1.898 3.7 8.7 1.898 3.7
+
+TES_SampleBox_Cryoperm.Position 0 0 0
+TES_SampleBox_Cryoperm.Mother WorldVolume
+
+// Volume SampleBox_Cu_ThermalFinger_50mK; material=Copper
+Volume SampleBox_Cu_ThermalFinger_50mK
+SampleBox_Cu_ThermalFinger_50mK.Material Copper
+SampleBox_Cu_ThermalFinger_50mK.Visibility 1
+SampleBox_Cu_ThermalFinger_50mK.Shape PCON 0 360 2 -0.15 0 0.4 0.15 0 0.4
+
+SampleBox_Cu_ThermalFinger_50mK.Position 0 0 0.4
+SampleBox_Cu_ThermalFinger_50mK.Mother WorldVolume
+
+// Volume SampleBox_Al_Window; material=Aluminium
+Volume SampleBox_Al_Window
+SampleBox_Al_Window.Material Aluminium
+SampleBox_Al_Window.Visibility 1
+SampleBox_Al_Window.Shape PCON 0 360 2 -0.00125 0 1.898 0.00125 0 1.898
+
+SampleBox_Al_Window.Position 0 0 8.55
+SampleBox_Al_Window.Mother WorldVolume
+
+// Volume Nb_SC_Detector_Can; material=Nb
+Volume Nb_SC_Detector_Can
+Nb_SC_Detector_Can.Material Nb
+Nb_SC_Detector_Can.Visibility 1
+Nb_SC_Detector_Can.Shape PCON 0 360 4 -0.25 4.505 4.535 9.2 4.505 4.535 9.2 1.898 4.535 9.23 1.898 4.535
+
+Nb_SC_Detector_Can.Position 0 0 0
+Nb_SC_Detector_Can.Mother WorldVolume
+
+// Volume Thermal_MXC_50mK_Al_Shield_Retained; material=Aluminium
+Volume Thermal_MXC_50mK_Al_Shield_Retained
+Thermal_MXC_50mK_Al_Shield_Retained.Material Aluminium
+Thermal_MXC_50mK_Al_Shield_Retained.Visibility 1
+Thermal_MXC_50mK_Al_Shield_Retained.Shape PCON 0 360 6 -0.65 0 4.66 -0.55 0 4.66 -0.55 4.58 4.66 9.25 4.58 4.66 9.25 1.898 4.66 9.33 1.898 4.66
+
+Thermal_MXC_50mK_Al_Shield_Retained.Position 0 0 0
+Thermal_MXC_50mK_Al_Shield_Retained.Mother WorldVolume
+
+// Volume Thermal_Still_0p7K_Al_Shield_SDEnvelope; material=Aluminium
+Volume Thermal_Still_0p7K_Al_Shield_SDEnvelope
+Thermal_Still_0p7K_Al_Shield_SDEnvelope.Material Aluminium
+Thermal_Still_0p7K_Al_Shield_SDEnvelope.Visibility 1
+Thermal_Still_0p7K_Al_Shield_SDEnvelope.Shape PCON 0 360 6 -4.05 0 7.98 -3.85 0 7.98 -3.85 7.85 7.98 10.45 7.85 7.98 10.45 1.898 7.98 10.57 1.898 7.98
+
+Thermal_Still_0p7K_Al_Shield_SDEnvelope.Position 0 0 0
+Thermal_Still_0p7K_Al_Shield_SDEnvelope.Mother WorldVolume
+
+// Volume Thermal_4K_Al_Shield_SDEnvelope; material=Aluminium
+Volume Thermal_4K_Al_Shield_SDEnvelope
+Thermal_4K_Al_Shield_SDEnvelope.Material Aluminium
+Thermal_4K_Al_Shield_SDEnvelope.Visibility 1
+Thermal_4K_Al_Shield_SDEnvelope.Shape PCON 0 360 6 -9.15 0 8.75 -9 0 8.75 -9 8.6 8.75 11.55 8.6 8.75 11.55 1.898 8.75 11.65 1.898 8.75
+
+Thermal_4K_Al_Shield_SDEnvelope.Position 0 0 0
+Thermal_4K_Al_Shield_SDEnvelope.Mother WorldVolume
+
+// Volume Thermal_60K_Al_Shield_SDEnvelope; material=Aluminium
+Volume Thermal_60K_Al_Shield_SDEnvelope
+Thermal_60K_Al_Shield_SDEnvelope.Material Aluminium
+Thermal_60K_Al_Shield_SDEnvelope.Visibility 1
+Thermal_60K_Al_Shield_SDEnvelope.Shape PCON 0 360 6 -12.75 0 9.4 -12.55 0 9.4 -12.55 9.25 9.4 12.35 9.25 9.4 12.35 1.898 9.4 12.45 1.898 9.4
+
+Thermal_60K_Al_Shield_SDEnvelope.Position 0 0 0
+Thermal_60K_Al_Shield_SDEnvelope.Mother WorldVolume
+
+// Volume Vacuum_Jacket_Al_SDEnvelope; material=Aluminium
+Volume Vacuum_Jacket_Al_SDEnvelope
+Vacuum_Jacket_Al_SDEnvelope.Material Aluminium
+Vacuum_Jacket_Al_SDEnvelope.Visibility 1
+Vacuum_Jacket_Al_SDEnvelope.Shape PCON 0 360 6 -13.65 0 9.72 -13.2 0 9.72 -13.2 9.55 9.72 12.75 9.55 9.72 12.75 1.898 9.72 12.9 1.898 9.72
+
+Vacuum_Jacket_Al_SDEnvelope.Position 0 0 0
+Vacuum_Jacket_Al_SDEnvelope.Mother WorldVolume
+
+// Volume Win_MXC_50mK_Al_Shield; material=Aluminium
+Volume Win_MXC_50mK_Al_Shield
+Win_MXC_50mK_Al_Shield.Material Aluminium
+Win_MXC_50mK_Al_Shield.Visibility 1
+Win_MXC_50mK_Al_Shield.Shape PCON 0 360 2 -0.00125 0 1.898 0.00125 0 1.898
+
+Win_MXC_50mK_Al_Shield.Position 0 0 9.315
+Win_MXC_50mK_Al_Shield.Mother WorldVolume
+
+// Volume Win_Still_0p7K_Al_Shield; material=Aluminium
+Volume Win_Still_0p7K_Al_Shield
+Win_Still_0p7K_Al_Shield.Material Aluminium
+Win_Still_0p7K_Al_Shield.Visibility 1
+Win_Still_0p7K_Al_Shield.Shape PCON 0 360 2 -0.00125 0 1.898 0.00125 0 1.898
+
+Win_Still_0p7K_Al_Shield.Position 0 0 10.555
+Win_Still_0p7K_Al_Shield.Mother WorldVolume
+
+// Volume Win_4K_Al_Shield_SDEnvelope; material=Aluminium
+Volume Win_4K_Al_Shield_SDEnvelope
+Win_4K_Al_Shield_SDEnvelope.Material Aluminium
+Win_4K_Al_Shield_SDEnvelope.Visibility 1
+Win_4K_Al_Shield_SDEnvelope.Shape PCON 0 360 2 -0.00125 0 1.898 0.00125 0 1.898
+
+Win_4K_Al_Shield_SDEnvelope.Position 0 0 11.635
+Win_4K_Al_Shield_SDEnvelope.Mother WorldVolume
+
+// Volume Win_60K_Al_Shield_SDEnvelope; material=Aluminium
+Volume Win_60K_Al_Shield_SDEnvelope
+Win_60K_Al_Shield_SDEnvelope.Material Aluminium
+Win_60K_Al_Shield_SDEnvelope.Visibility 1
+Win_60K_Al_Shield_SDEnvelope.Shape PCON 0 360 2 -0.00125 0 1.898 0.00125 0 1.898
+
+Win_60K_Al_Shield_SDEnvelope.Position 0 0 12.435
+Win_60K_Al_Shield_SDEnvelope.Mother WorldVolume
+
+// Volume SQUID_Readout_Al_Box; material=Aluminium
+Volume SQUID_Readout_Al_Box
+SQUID_Readout_Al_Box.Material Aluminium
+SQUID_Readout_Al_Box.Visibility 1
+SQUID_Readout_Al_Box.Shape BRIK 0.25 0.8 1.4
+
+SQUID_Readout_Al_Box.Position 8.3 0 4.2
+SQUID_Readout_Al_Box.Mother WorldVolume
+
+// Volume Harness_Cu_Bundle_A; material=Copper
+Volume Harness_Cu_Bundle_A
+Harness_Cu_Bundle_A.Material Copper
+Harness_Cu_Bundle_A.Visibility 1
+Harness_Cu_Bundle_A.Shape BRIK 0.12 0.35 4
+
+Harness_Cu_Bundle_A.Position -5.7 1.4 3.1
+Harness_Cu_Bundle_A.Mother WorldVolume
+
+// Volume Harness_Cu_Bundle_B; material=Copper
+Volume Harness_Cu_Bundle_B
+Harness_Cu_Bundle_B.Material Copper
+Harness_Cu_Bundle_B.Visibility 1
+Harness_Cu_Bundle_B.Shape BRIK 0.12 0.35 4
+
+Harness_Cu_Bundle_B.Position -5.7 -1.4 3.1
+Harness_Cu_Bundle_B.Mother WorldVolume
+
+// Volume Support_G10_Post_A; material=G10
+Volume Support_G10_Post_A
+Support_G10_Post_A.Material G10
+Support_G10_Post_A.Visibility 1
+Support_G10_Post_A.Shape BRIK 0.08 0.08 5.7
+
+Support_G10_Post_A.Position 9.1 0 -3.1
+Support_G10_Post_A.Mother WorldVolume
+
+// Volume Support_G10_Post_B; material=G10
+Volume Support_G10_Post_B
+Support_G10_Post_B.Material G10
+Support_G10_Post_B.Visibility 1
+Support_G10_Post_B.Shape BRIK 0.08 0.08 5.7
+
+Support_G10_Post_B.Position -9.1 0 -3.1
+Support_G10_Post_B.Mother WorldVolume
+
+// Volume Support_G10_Post_C; material=G10
+Volume Support_G10_Post_C
+Support_G10_Post_C.Material G10
+Support_G10_Post_C.Visibility 1
+Support_G10_Post_C.Shape BRIK 0.08 0.08 5.7
+
+Support_G10_Post_C.Position 0 9.1 -3.1
+Support_G10_Post_C.Mother WorldVolume
+
+// Volume Support_G10_Post_D; material=G10
+Volume Support_G10_Post_D
+Support_G10_Post_D.Material G10
+Support_G10_Post_D.Visibility 1
+Support_G10_Post_D.Shape BRIK 0.08 0.08 5.7
+
+Support_G10_Post_D.Position 0 -9.1 -3.1
+Support_G10_Post_D.Mother WorldVolume
+
+// Volume ActiveShield_Al_Backplane_Liner; material=Aluminium
+Volume ActiveShield_Al_Backplane_Liner
+ActiveShield_Al_Backplane_Liner.Material Aluminium
+ActiveShield_Al_Backplane_Liner.Visibility 1
+ActiveShield_Al_Backplane_Liner.Shape PCON 0 360 2 -18.55 14.07 14.18 18.55 14.07 14.18
+
+ActiveShield_Al_Backplane_Liner.Position 0 0 -3.3
+ActiveShield_Al_Backplane_Liner.Mother WorldVolume
+
+// Volume ActiveShield_Top_Al_Retainer; material=Aluminium
+Volume ActiveShield_Top_Al_Retainer
+ActiveShield_Top_Al_Retainer.Material Aluminium
+ActiveShield_Top_Al_Retainer.Visibility 1
+ActiveShield_Top_Al_Retainer.Shape PCON 0 360 2 -0.08 14.07 14.22 0.08 14.07 14.22
+
+ActiveShield_Top_Al_Retainer.Position 0 0 15.45
+ActiveShield_Top_Al_Retainer.Mother WorldVolume
+
+// Volume ActiveShield_Bottom_Al_Retainer; material=Aluminium
+Volume ActiveShield_Bottom_Al_Retainer
+ActiveShield_Bottom_Al_Retainer.Material Aluminium
+ActiveShield_Bottom_Al_Retainer.Visibility 1
+ActiveShield_Bottom_Al_Retainer.Shape PCON 0 360 2 -0.065 14.07 14.22 0.065 14.07 14.22
+
+ActiveShield_Bottom_Al_Retainer.Position 0 0 -22.035
+ActiveShield_Bottom_Al_Retainer.Mother WorldVolume
+
+// Volume ActiveShield_Flex_Readout_Kapton; material=Kapton
+Volume ActiveShield_Flex_Readout_Kapton
+ActiveShield_Flex_Readout_Kapton.Material Kapton
+ActiveShield_Flex_Readout_Kapton.Visibility 1
+ActiveShield_Flex_Readout_Kapton.Shape PCON 0 360 2 -15.3 14.18 14.23 15.3 14.18 14.23
+
+ActiveShield_Flex_Readout_Kapton.Position 0 0 -0.7
+ActiveShield_Flex_Readout_Kapton.Mother WorldVolume
+
+// Volume ActiveShield_Readout_Box_XP; material=Aluminium
+Volume ActiveShield_Readout_Box_XP
+ActiveShield_Readout_Box_XP.Material Aluminium
+ActiveShield_Readout_Box_XP.Visibility 1
+ActiveShield_Readout_Box_XP.Shape BRIK 0.28 1.05 2.6
+
+ActiveShield_Readout_Box_XP.Position 14.83 0 -2
+ActiveShield_Readout_Box_XP.Mother WorldVolume
+
+// Volume ActiveShield_Readout_Box_XM; material=Aluminium
+Volume ActiveShield_Readout_Box_XM
+ActiveShield_Readout_Box_XM.Material Aluminium
+ActiveShield_Readout_Box_XM.Visibility 1
+ActiveShield_Readout_Box_XM.Shape BRIK 0.28 1.05 2.6
+
+ActiveShield_Readout_Box_XM.Position -14.83 0 -2
+ActiveShield_Readout_Box_XM.Mother WorldVolume
+
+// Volume ActiveShield_Readout_Box_YP; material=Aluminium
+Volume ActiveShield_Readout_Box_YP
+ActiveShield_Readout_Box_YP.Material Aluminium
+ActiveShield_Readout_Box_YP.Visibility 1
+ActiveShield_Readout_Box_YP.Shape BRIK 1.05 0.28 2.6
+
+ActiveShield_Readout_Box_YP.Position 0 14.83 -2
+ActiveShield_Readout_Box_YP.Mother WorldVolume
+
+// Volume ActiveShield_Readout_Box_YM; material=Aluminium
+Volume ActiveShield_Readout_Box_YM
+ActiveShield_Readout_Box_YM.Material Aluminium
+ActiveShield_Readout_Box_YM.Visibility 1
+ActiveShield_Readout_Box_YM.Shape BRIK 1.05 0.28 2.6
+
+ActiveShield_Readout_Box_YM.Position 0 -14.83 -2
+ActiveShield_Readout_Box_YM.Mother WorldVolume
+
+// Volume Shield_Feedthrough_Stainless_XP; material=StainlessSteel
+Volume Shield_Feedthrough_Stainless_XP
+Shield_Feedthrough_Stainless_XP.Material StainlessSteel
+Shield_Feedthrough_Stainless_XP.Visibility 1
+Shield_Feedthrough_Stainless_XP.Shape BRIK 0.16 0.42 0.58
+
+Shield_Feedthrough_Stainless_XP.Position 15.35 0 10.9
+Shield_Feedthrough_Stainless_XP.Mother WorldVolume
+
+// Volume Shield_Feedthrough_Stainless_XM; material=StainlessSteel
+Volume Shield_Feedthrough_Stainless_XM
+Shield_Feedthrough_Stainless_XM.Material StainlessSteel
+Shield_Feedthrough_Stainless_XM.Visibility 1
+Shield_Feedthrough_Stainless_XM.Shape BRIK 0.16 0.42 0.58
+
+Shield_Feedthrough_Stainless_XM.Position -15.35 0 10.9
+Shield_Feedthrough_Stainless_XM.Mother WorldVolume
+
+// Volume Vacuum_Jacket_Al_Reinforcement_SDEnvelope; material=Aluminium
+Volume Vacuum_Jacket_Al_Reinforcement_SDEnvelope
+Vacuum_Jacket_Al_Reinforcement_SDEnvelope.Material Aluminium
+Vacuum_Jacket_Al_Reinforcement_SDEnvelope.Visibility 1
+Vacuum_Jacket_Al_Reinforcement_SDEnvelope.Shape PCON 0 360 2 -12.5 9.73 9.83 12.5 9.73 9.83
+
+Vacuum_Jacket_Al_Reinforcement_SDEnvelope.Position 0 0 -0.35
+Vacuum_Jacket_Al_Reinforcement_SDEnvelope.Mother WorldVolume
+
+// Volume Vacuum_Top_Flange_Al_SDEnvelope; material=Aluminium
+Volume Vacuum_Top_Flange_Al_SDEnvelope
+Vacuum_Top_Flange_Al_SDEnvelope.Material Aluminium
+Vacuum_Top_Flange_Al_SDEnvelope.Visibility 1
+Vacuum_Top_Flange_Al_SDEnvelope.Shape PCON 0 360 2 -0.07 9.73 10 0.07 9.73 10
+
+Vacuum_Top_Flange_Al_SDEnvelope.Position 0 0 13.01
+Vacuum_Top_Flange_Al_SDEnvelope.Mother WorldVolume
+
+// Volume Vacuum_Bottom_Flange_Al_SDEnvelope; material=Aluminium
+Volume Vacuum_Bottom_Flange_Al_SDEnvelope
+Vacuum_Bottom_Flange_Al_SDEnvelope.Material Aluminium
+Vacuum_Bottom_Flange_Al_SDEnvelope.Visibility 1
+Vacuum_Bottom_Flange_Al_SDEnvelope.Shape PCON 0 360 2 -0.15 9.73 10 0.15 9.73 10
+
+Vacuum_Bottom_Flange_Al_SDEnvelope.Position 0 0 -13.4
+Vacuum_Bottom_Flange_Al_SDEnvelope.Mother WorldVolume
+
+// Volume Passive_Cu_Inner_Liner_SDEnvelope; material=Copper
+Volume Passive_Cu_Inner_Liner_SDEnvelope
+Passive_Cu_Inner_Liner_SDEnvelope.Material Copper
+Passive_Cu_Inner_Liner_SDEnvelope.Visibility 1
+Passive_Cu_Inner_Liner_SDEnvelope.Shape PCON 0 360 2 -12.8 9.84 9.91 12.8 9.84 9.91
+
+Passive_Cu_Inner_Liner_SDEnvelope.Position 0 0 -0.3
+Passive_Cu_Inner_Liner_SDEnvelope.Mother WorldVolume
+
+// Volume Passive_W_Outer_Liner_SDEnvelope; material=W
+Volume Passive_W_Outer_Liner_SDEnvelope
+Passive_W_Outer_Liner_SDEnvelope.Material W
+Passive_W_Outer_Liner_SDEnvelope.Visibility 1
+Passive_W_Outer_Liner_SDEnvelope.Shape PCON 0 360 2 -12.8 9.925 10 12.8 9.925 10
+
+Passive_W_Outer_Liner_SDEnvelope.Position 0 0 -0.3
+Passive_W_Outer_Liner_SDEnvelope.Mother WorldVolume
+
+// Volume Passive_Bottom_W_Shield_SDEnvelope; material=W
+Volume Passive_Bottom_W_Shield_SDEnvelope
+Passive_Bottom_W_Shield_SDEnvelope.Material W
+Passive_Bottom_W_Shield_SDEnvelope.Visibility 1
+Passive_Bottom_W_Shield_SDEnvelope.Shape PCON 0 360 2 -0.135 0 9.9 0.135 0 9.9
+
+Passive_Bottom_W_Shield_SDEnvelope.Position 0 0 -13.795
+Passive_Bottom_W_Shield_SDEnvelope.Mother WorldVolume
+
+// Volume Passive_Top_W_Aperture_Annulus_SDEnvelope; material=W
+Volume Passive_Top_W_Aperture_Annulus_SDEnvelope
+Passive_Top_W_Aperture_Annulus_SDEnvelope.Material W
+Passive_Top_W_Aperture_Annulus_SDEnvelope.Visibility 1
+Passive_Top_W_Aperture_Annulus_SDEnvelope.Shape PCON 0 360 2 -0.1 2.05 9.9 0.1 2.05 9.9
+
+Passive_Top_W_Aperture_Annulus_SDEnvelope.Position 0 0 13.2
+Passive_Top_W_Aperture_Annulus_SDEnvelope.Mother WorldVolume
+
+// Volume DR_MXC_Flange_Cu_SDEnvelope; material=Copper
+Volume DR_MXC_Flange_Cu_SDEnvelope
+DR_MXC_Flange_Cu_SDEnvelope.Material Copper
+DR_MXC_Flange_Cu_SDEnvelope.Visibility 1
+DR_MXC_Flange_Cu_SDEnvelope.Shape PCON 0 360 2 -0.25 0 7.35 0.25 0 7.35
+
+DR_MXC_Flange_Cu_SDEnvelope.Position 0 0 -1.3
+DR_MXC_Flange_Cu_SDEnvelope.Mother WorldVolume
+
+// Volume DR_MixingChamber_Cu; material=Copper
+Volume DR_MixingChamber_Cu
+DR_MixingChamber_Cu.Material Copper
+DR_MixingChamber_Cu.Visibility 1
+DR_MixingChamber_Cu.Shape PCON 0 360 2 -0.275 0 2.35 0.275 0 2.35
+
+DR_MixingChamber_Cu.Position 0 0 -1.925
+DR_MixingChamber_Cu.Mother WorldVolume
+
+// Volume DR_MXC_Sinter_HEX_AgProxy; material=SilverSinterProxy
+Volume DR_MXC_Sinter_HEX_AgProxy
+DR_MXC_Sinter_HEX_AgProxy.Material SilverSinterProxy
+DR_MXC_Sinter_HEX_AgProxy.Visibility 1
+DR_MXC_Sinter_HEX_AgProxy.Shape PCON 0 360 2 -0.25 2.7 3.45 0.25 2.7 3.45
+
+DR_MXC_Sinter_HEX_AgProxy.Position 0 0 -2.6
+DR_MXC_Sinter_HEX_AgProxy.Mother WorldVolume
+
+// Volume DR_Still_Pot_Cu; material=Copper
+Volume DR_Still_Pot_Cu
+DR_Still_Pot_Cu.Material Copper
+DR_Still_Pot_Cu.Visibility 1
+DR_Still_Pot_Cu.Shape PCON 0 360 2 -0.25 0 2.45 0.25 0 2.45
+
+DR_Still_Pot_Cu.Position 0 0 -4.4
+DR_Still_Pot_Cu.Mother WorldVolume
+
+// Volume DR_Continuous_HEX_CuNi_EQ; material=CuNi
+Volume DR_Continuous_HEX_CuNi_EQ
+DR_Continuous_HEX_CuNi_EQ.Material CuNi
+DR_Continuous_HEX_CuNi_EQ.Visibility 1
+DR_Continuous_HEX_CuNi_EQ.Shape PCON 0 360 2 -0.95 3.8 4.2 0.95 3.8 4.2
+
+DR_Continuous_HEX_CuNi_EQ.Position 0 0 -5.8
+DR_Continuous_HEX_CuNi_EQ.Mother WorldVolume
+
+// Volume DR_4K_Condenser_Cu; material=Copper
+Volume DR_4K_Condenser_Cu
+DR_4K_Condenser_Cu.Material Copper
+DR_4K_Condenser_Cu.Visibility 1
+DR_4K_Condenser_Cu.Shape PCON 0 360 2 -0.425 0 2 0.425 0 2
+
+DR_4K_Condenser_Cu.Position 0 0 -8.175
+DR_4K_Condenser_Cu.Mother WorldVolume
+
+// Volume DR_50K_CharcoalTrap_Proxy; material=CharcoalTrapProxy
+Volume DR_50K_CharcoalTrap_Proxy
+DR_50K_CharcoalTrap_Proxy.Material CharcoalTrapProxy
+DR_50K_CharcoalTrap_Proxy.Visibility 1
+DR_50K_CharcoalTrap_Proxy.Shape PCON 0 198 2 -0.45 6.2 7 0.45 6.2 7
+
+DR_50K_CharcoalTrap_Proxy.Position 0 0 -11.8
+DR_50K_CharcoalTrap_Proxy.Mother WorldVolume
+
+// Volume DR_CuNi_Capillary_MXC_to_Still; material=CuNi
+Volume DR_CuNi_Capillary_MXC_to_Still
+DR_CuNi_Capillary_MXC_to_Still.Material CuNi
+DR_CuNi_Capillary_MXC_to_Still.Visibility 1
+DR_CuNi_Capillary_MXC_to_Still.Shape PCON 0 126 2 -0.6 4.6 4.75 0.6 4.6 4.75
+
+DR_CuNi_Capillary_MXC_to_Still.Position 0 0 -2.3
+DR_CuNi_Capillary_MXC_to_Still.Mother WorldVolume
+
+// Volume DR_CuNi_Capillary_Still_to_4K; material=CuNi
+Volume DR_CuNi_Capillary_Still_to_4K
+DR_CuNi_Capillary_Still_to_4K.Material CuNi
+DR_CuNi_Capillary_Still_to_4K.Visibility 1
+DR_CuNi_Capillary_Still_to_4K.Shape PCON 0 126 2 -0.9 5 5.15 0.9 5 5.15
+
+DR_CuNi_Capillary_Still_to_4K.Position 0 0 -5.85
+DR_CuNi_Capillary_Still_to_4K.Mother WorldVolume
+
+// Volume DR_CuNi_Capillary_4K_to_60K; material=CuNi
+Volume DR_CuNi_Capillary_4K_to_60K
+DR_CuNi_Capillary_4K_to_60K.Material CuNi
+DR_CuNi_Capillary_4K_to_60K.Visibility 1
+DR_CuNi_Capillary_4K_to_60K.Shape PCON 0 126 2 -0.525 6.9 7.05 0.525 6.9 7.05
+
+DR_CuNi_Capillary_4K_to_60K.Position 0 0 -9.825
+DR_CuNi_Capillary_4K_to_60K.Mother WorldVolume
+
+// Volume DR_Precool_FlexLink_Cu_Still_to_4K; material=Copper
+Volume DR_Precool_FlexLink_Cu_Still_to_4K
+DR_Precool_FlexLink_Cu_Still_to_4K.Material Copper
+DR_Precool_FlexLink_Cu_Still_to_4K.Visibility 1
+DR_Precool_FlexLink_Cu_Still_to_4K.Shape PCON 0 100.8 2 -0.9 5.45 5.7 0.9 5.45 5.7
+
+DR_Precool_FlexLink_Cu_Still_to_4K.Position 0 0 -5.85
+DR_Precool_FlexLink_Cu_Still_to_4K.Mother WorldVolume
+
+// Volume DR_MXC_to_Still_G10_Supports; material=G10
+Volume DR_MXC_to_Still_G10_Supports
+DR_MXC_to_Still_G10_Supports.Material G10
+DR_MXC_to_Still_G10_Supports.Visibility 1
+DR_MXC_to_Still_G10_Supports.Shape PCON 0 57.6 2 -0.6 7.05 7.25 0.6 7.05 7.25
+
+DR_MXC_to_Still_G10_Supports.Position 0 0 -2.3
+DR_MXC_to_Still_G10_Supports.Mother WorldVolume
+
+// Volume DR_Still_to_4K_G10_Supports; material=G10
+Volume DR_Still_to_4K_G10_Supports
+DR_Still_to_4K_G10_Supports.Material G10
+DR_Still_to_4K_G10_Supports.Visibility 1
+DR_Still_to_4K_G10_Supports.Shape PCON 0 57.6 2 -0.9 8.1 8.3 0.9 8.1 8.3
+
+DR_Still_to_4K_G10_Supports.Position 0 0 -5.85
+DR_Still_to_4K_G10_Supports.Mother WorldVolume
+
+// Volume DR_4K_to_60K_G10_Supports; material=G10
+Volume DR_4K_to_60K_G10_Supports
+DR_4K_to_60K_G10_Supports.Material G10
+DR_4K_to_60K_G10_Supports.Visibility 1
+DR_4K_to_60K_G10_Supports.Shape PCON 0 57.6 2 -0.525 8.85 9.05 0.525 8.85 9.05
+
+DR_4K_to_60K_G10_Supports.Position 0 0 -9.825
+DR_4K_to_60K_G10_Supports.Mother WorldVolume
+
+// Volume Readout_NbTi_SS_Cable_Bundle_MXC_to_4K; material=NbTiCableProxy
+Volume Readout_NbTi_SS_Cable_Bundle_MXC_to_4K
+Readout_NbTi_SS_Cable_Bundle_MXC_to_4K.Material NbTiCableProxy
+Readout_NbTi_SS_Cable_Bundle_MXC_to_4K.Visibility 1
+Readout_NbTi_SS_Cable_Bundle_MXC_to_4K.Shape PCON 0 180 2 -0.9 5.95 6.35 0.9 5.95 6.35
+
+Readout_NbTi_SS_Cable_Bundle_MXC_to_4K.Position 0 0 -5.85
+Readout_NbTi_SS_Cable_Bundle_MXC_to_4K.Mother WorldVolume
+
+// Volume Readout_NbTi_SS_Cable_Bundle_Still_to_MXC; material=NbTiCableProxy
+Volume Readout_NbTi_SS_Cable_Bundle_Still_to_MXC
+Readout_NbTi_SS_Cable_Bundle_Still_to_MXC.Material NbTiCableProxy
+Readout_NbTi_SS_Cable_Bundle_Still_to_MXC.Visibility 1
+Readout_NbTi_SS_Cable_Bundle_Still_to_MXC.Shape PCON 0 180 2 -0.6 5.6 6 0.6 5.6 6
+
+Readout_NbTi_SS_Cable_Bundle_Still_to_MXC.Position 0 0 -2.3
+Readout_NbTi_SS_Cable_Bundle_Still_to_MXC.Mother WorldVolume
+
+// Volume CsI_Active_Shield_Side00; material=CsI
+Volume CsI_Active_Shield_Side00
+CsI_Active_Shield_Side00.Material CsI
+CsI_Active_Shield_Side00.Visibility 1
+CsI_Active_Shield_Side00.Shape PCON 0 45 2 -13.95 10.05 14.05 13.35 10.05 14.05
+
+CsI_Active_Shield_Side00.Position 0 0 0
+CsI_Active_Shield_Side00.Mother WorldVolume
+
+// Volume CsI_Active_Shield_Side01; material=CsI
+Volume CsI_Active_Shield_Side01
+CsI_Active_Shield_Side01.Material CsI
+CsI_Active_Shield_Side01.Visibility 1
+CsI_Active_Shield_Side01.Shape PCON 45 45 2 -13.95 10.05 14.05 13.35 10.05 14.05
+
+CsI_Active_Shield_Side01.Position 0 0 0
+CsI_Active_Shield_Side01.Mother WorldVolume
+
+// Volume CsI_Active_Shield_Side02; material=CsI
+Volume CsI_Active_Shield_Side02
+CsI_Active_Shield_Side02.Material CsI
+CsI_Active_Shield_Side02.Visibility 1
+CsI_Active_Shield_Side02.Shape PCON 90 45 2 -13.95 10.05 14.05 13.35 10.05 14.05
+
+CsI_Active_Shield_Side02.Position 0 0 0
+CsI_Active_Shield_Side02.Mother WorldVolume
+
+// Volume CsI_Active_Shield_Side03; material=CsI
+Volume CsI_Active_Shield_Side03
+CsI_Active_Shield_Side03.Material CsI
+CsI_Active_Shield_Side03.Visibility 1
+CsI_Active_Shield_Side03.Shape PCON 135 45 2 -13.95 10.05 14.05 13.35 10.05 14.05
+
+CsI_Active_Shield_Side03.Position 0 0 0
+CsI_Active_Shield_Side03.Mother WorldVolume
+
+// Volume CsI_Active_Shield_Side04; material=CsI
+Volume CsI_Active_Shield_Side04
+CsI_Active_Shield_Side04.Material CsI
+CsI_Active_Shield_Side04.Visibility 1
+CsI_Active_Shield_Side04.Shape PCON 180 45 2 -13.95 10.05 14.05 13.35 10.05 14.05
+
+CsI_Active_Shield_Side04.Position 0 0 0
+CsI_Active_Shield_Side04.Mother WorldVolume
+
+// Volume CsI_Active_Shield_Side05; material=CsI
+Volume CsI_Active_Shield_Side05
+CsI_Active_Shield_Side05.Material CsI
+CsI_Active_Shield_Side05.Visibility 1
+CsI_Active_Shield_Side05.Shape PCON 225 45 2 -13.95 10.05 14.05 13.35 10.05 14.05
+
+CsI_Active_Shield_Side05.Position 0 0 0
+CsI_Active_Shield_Side05.Mother WorldVolume
+
+// Volume CsI_Active_Shield_Side06; material=CsI
+Volume CsI_Active_Shield_Side06
+CsI_Active_Shield_Side06.Material CsI
+CsI_Active_Shield_Side06.Visibility 1
+CsI_Active_Shield_Side06.Shape PCON 270 45 2 -13.95 10.05 14.05 13.35 10.05 14.05
+
+CsI_Active_Shield_Side06.Position 0 0 0
+CsI_Active_Shield_Side06.Mother WorldVolume
+
+// Volume CsI_Active_Shield_Side07; material=CsI
+Volume CsI_Active_Shield_Side07
+CsI_Active_Shield_Side07.Material CsI
+CsI_Active_Shield_Side07.Visibility 1
+CsI_Active_Shield_Side07.Shape PCON 315 45 2 -13.95 10.05 14.05 13.35 10.05 14.05
+
+CsI_Active_Shield_Side07.Position 0 0 0
+CsI_Active_Shield_Side07.Mother WorldVolume
+
+// Volume CsI_Active_Shield_Bottom00; material=CsI
+Volume CsI_Active_Shield_Bottom00
+CsI_Active_Shield_Bottom00.Material CsI
+CsI_Active_Shield_Bottom00.Visibility 1
+CsI_Active_Shield_Bottom00.Shape PCON 0 90 2 -21.95 0 14.05 -13.95 0 14.05
+
+CsI_Active_Shield_Bottom00.Position 0 0 0
+CsI_Active_Shield_Bottom00.Mother WorldVolume
+
+// Volume CsI_Active_Shield_Bottom01; material=CsI
+Volume CsI_Active_Shield_Bottom01
+CsI_Active_Shield_Bottom01.Material CsI
+CsI_Active_Shield_Bottom01.Visibility 1
+CsI_Active_Shield_Bottom01.Shape PCON 90 90 2 -21.95 0 14.05 -13.95 0 14.05
+
+CsI_Active_Shield_Bottom01.Position 0 0 0
+CsI_Active_Shield_Bottom01.Mother WorldVolume
+
+// Volume CsI_Active_Shield_Bottom02; material=CsI
+Volume CsI_Active_Shield_Bottom02
+CsI_Active_Shield_Bottom02.Material CsI
+CsI_Active_Shield_Bottom02.Visibility 1
+CsI_Active_Shield_Bottom02.Shape PCON 180 90 2 -21.95 0 14.05 -13.95 0 14.05
+
+CsI_Active_Shield_Bottom02.Position 0 0 0
+CsI_Active_Shield_Bottom02.Mother WorldVolume
+
+// Volume CsI_Active_Shield_Bottom03; material=CsI
+Volume CsI_Active_Shield_Bottom03
+CsI_Active_Shield_Bottom03.Material CsI
+CsI_Active_Shield_Bottom03.Visibility 1
+CsI_Active_Shield_Bottom03.Shape PCON 270 90 2 -21.95 0 14.05 -13.95 0 14.05
+
+CsI_Active_Shield_Bottom03.Position 0 0 0
+CsI_Active_Shield_Bottom03.Mother WorldVolume
+
+// Volume CsI_Active_Shield_Top00; material=CsI
+Volume CsI_Active_Shield_Top00
+CsI_Active_Shield_Top00.Material CsI
+CsI_Active_Shield_Top00.Visibility 1
+CsI_Active_Shield_Top00.Shape PCON 0 45 2 13.35 1.898 14.05 15.35 1.898 14.05
+
+CsI_Active_Shield_Top00.Position 0 0 0
+CsI_Active_Shield_Top00.Mother WorldVolume
+
+// Volume CsI_Active_Shield_Top01; material=CsI
+Volume CsI_Active_Shield_Top01
+CsI_Active_Shield_Top01.Material CsI
+CsI_Active_Shield_Top01.Visibility 1
+CsI_Active_Shield_Top01.Shape PCON 45 45 2 13.35 1.898 14.05 15.35 1.898 14.05
+
+CsI_Active_Shield_Top01.Position 0 0 0
+CsI_Active_Shield_Top01.Mother WorldVolume
+
+// Volume CsI_Active_Shield_Top02; material=CsI
+Volume CsI_Active_Shield_Top02
+CsI_Active_Shield_Top02.Material CsI
+CsI_Active_Shield_Top02.Visibility 1
+CsI_Active_Shield_Top02.Shape PCON 90 45 2 13.35 1.898 14.05 15.35 1.898 14.05
+
+CsI_Active_Shield_Top02.Position 0 0 0
+CsI_Active_Shield_Top02.Mother WorldVolume
+
+// Volume CsI_Active_Shield_Top03; material=CsI
+Volume CsI_Active_Shield_Top03
+CsI_Active_Shield_Top03.Material CsI
+CsI_Active_Shield_Top03.Visibility 1
+CsI_Active_Shield_Top03.Shape PCON 135 45 2 13.35 1.898 14.05 15.35 1.898 14.05
+
+CsI_Active_Shield_Top03.Position 0 0 0
+CsI_Active_Shield_Top03.Mother WorldVolume
+
+// Volume CsI_Active_Shield_Top04; material=CsI
+Volume CsI_Active_Shield_Top04
+CsI_Active_Shield_Top04.Material CsI
+CsI_Active_Shield_Top04.Visibility 1
+CsI_Active_Shield_Top04.Shape PCON 180 45 2 13.35 1.898 14.05 15.35 1.898 14.05
+
+CsI_Active_Shield_Top04.Position 0 0 0
+CsI_Active_Shield_Top04.Mother WorldVolume
+
+// Volume CsI_Active_Shield_Top05; material=CsI
+Volume CsI_Active_Shield_Top05
+CsI_Active_Shield_Top05.Material CsI
+CsI_Active_Shield_Top05.Visibility 1
+CsI_Active_Shield_Top05.Shape PCON 225 45 2 13.35 1.898 14.05 15.35 1.898 14.05
+
+CsI_Active_Shield_Top05.Position 0 0 0
+CsI_Active_Shield_Top05.Mother WorldVolume
+
+// Volume CsI_Active_Shield_Top06; material=CsI
+Volume CsI_Active_Shield_Top06
+CsI_Active_Shield_Top06.Material CsI
+CsI_Active_Shield_Top06.Visibility 1
+CsI_Active_Shield_Top06.Shape PCON 270 45 2 13.35 1.898 14.05 15.35 1.898 14.05
+
+CsI_Active_Shield_Top06.Position 0 0 0
+CsI_Active_Shield_Top06.Mother WorldVolume
+
+// Volume CsI_Active_Shield_Top07; material=CsI
+Volume CsI_Active_Shield_Top07
+CsI_Active_Shield_Top07.Material CsI
+CsI_Active_Shield_Top07.Visibility 1
+CsI_Active_Shield_Top07.Shape PCON 315 45 2 13.35 1.898 14.05 15.35 1.898 14.05
+
+CsI_Active_Shield_Top07.Position 0 0 0
+CsI_Active_Shield_Top07.Mother WorldVolume
+
+// Volume Outer_Al_Mech_Shell; material=Aluminium
+Volume Outer_Al_Mech_Shell
+Outer_Al_Mech_Shell.Material Aluminium
+Outer_Al_Mech_Shell.Visibility 1
+Outer_Al_Mech_Shell.Shape PCON 0 360 6 -22.35 0 14.45 -22.15 0 14.45 -22.15 14.25 14.45 15.55 14.25 14.45 15.55 1.898 14.45 15.75 1.898 14.45
+
+Outer_Al_Mech_Shell.Position 0 0 0
+Outer_Al_Mech_Shell.Mother WorldVolume
+
+// Volume Win_Be_Cryostat; material=Be
+Volume Win_Be_Cryostat
+Win_Be_Cryostat.Material Be
+Win_Be_Cryostat.Visibility 1
+Win_Be_Cryostat.Shape PCON 0 360 2 -0.0075 0 1.898 0.0075 0 1.898
+
+Win_Be_Cryostat.Position 0 0 12.8425
+Win_Be_Cryostat.Mother WorldVolume
+
+// Volume Win_Vacuum_Al_Filter; material=Aluminium
+Volume Win_Vacuum_Al_Filter
+Win_Vacuum_Al_Filter.Material Aluminium
+Win_Vacuum_Al_Filter.Visibility 1
+Win_Vacuum_Al_Filter.Shape PCON 0 360 2 -0.0015 0 1.898 0.0015 0 1.898
+
+Win_Vacuum_Al_Filter.Position 0 0 13.41
+Win_Vacuum_Al_Filter.Mother WorldVolume
+
+// Volume W_Collimator_Aperture_Stop; material=W
+Volume W_Collimator_Aperture_Stop
+W_Collimator_Aperture_Stop.Material W
+W_Collimator_Aperture_Stop.Visibility 1
+W_Collimator_Aperture_Stop.Shape PCON 0 360 2 -0.05 1.898 3.1 0.05 1.898 3.1
+
+W_Collimator_Aperture_Stop.Position 0 0 16
+W_Collimator_Aperture_Stop.Mother WorldVolume
+

@@ -1,0 +1,27 @@
+system: laue_toy_baseline
+energy_keV: 511.0
+focal_length_m: 8.3
+source:
+  type: parallel
+  direction: [0.0, 0.0, 1.0]
+
+crystals:
+  material: Ge
+  hkl: [1, 1, 1]
+  d_spacing_A: 3.266
+  thickness_mm: 2.0
+  mosaic_spread_arcmin: 1.0
+
+rings:
+  - id: 0
+    radius_cm: 6.16618
+    tile_radial_mm: 10.0
+    tile_tangential_mm: 10.0
+    n_tiles: 64
+
+process:
+  mode: parameterized_focus
+  p_diffraction: 1.0
+  p_absorption: 0.0
+  angular_spread_arcmin: 1.0
+  warning: "Toy Laue process; diffraction probability is constant and not a dynamical-diffraction calculation."

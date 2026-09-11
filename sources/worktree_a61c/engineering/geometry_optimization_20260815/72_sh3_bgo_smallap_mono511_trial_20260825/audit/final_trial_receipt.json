@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "status": "PASS__SH3_BGO_SMALLAP_PARMA511_APPROXIMATION_COMPLETE",
+  "scope": "monoenergetic PARMA 511-keV transport plus flux-conserving frozen-SH3-background approximation",
+  "parma": {
+    "line_energy_keV": 510.99895,
+    "day15_full_space_flux_ph_cm2_s": 0.16651547160226118,
+    "equal_mu_components": 80
+  },
+  "transport": {
+    "incident_photons": 5000000,
+    "jobs": 21,
+    "physical_exposure_s": 2654.3379000000004,
+    "artifact_bytes": 938214093,
+    "geometry_geo_sha256": "ae015378ca7731eb52545f19e2e7e7df2f88f75026b51d7f5f2dc598bcf1e973",
+    "validation_sha256": "0cee568245775ad468127a1567ed4b4e3e084e515777420ae1a8016e69971478"
+  },
+  "response": {
+    "selected_events": 52,
+    "effective_sample_size": 52,
+    "day15_line_rate_cps": 0.019590572850577914,
+    "day15_line_rate_mc_sigma_cps": 0.0027167236510950536,
+    "relative_mc_sigma": 0.1386750490563073,
+    "w2_pre_veto_events": 54,
+    "w2_after_bgo_veto_events": 54,
+    "w2_pre_veto_events_with_positive_bgo_deposit": 0,
+    "summary_sha256": "add56693bf3ca77b6b1670750ea0cb408490142227b0d0edd3fe4637676fa872"
+  },
+  "flux_conserving_fold": {
+    "formula": "frozen other + frozen coarse-bin-de-lined gamma continuum + new monoenergetic line",
+    "line_double_counted": false,
+    "day15_total_rate_cps": 0.028526460048586756,
+    "mission_20day_atm511_counts": 34656.31978579414,
+    "mission_20day_total_background_counts": 50032.48788009427,
+    "primary_frozen_sh3_signal_gaussian_3sigma_ph_cm2_s": 3.99874715000051e-05,
+    "primary_frozen_sh3_signal_gaussian_3sigma_standard_error_ph_cm2_s": 2.2416379698647654e-06,
+    "primary_frozen_sh3_signal_asimov_3sigma_ph_cm2_s": 4.0076757621566104e-05,
+    "geometric_signal_scenario_gaussian_3sigma_ph_cm2_s": 5.0249814682451165e-05,
+    "geometric_signal_direct_through_fraction": 0.795773511856751,
+    "summary_sha256": "05ab414911c7237ee6bc3f2ccd837835dea7a1edb303026a6010b24b9614ce05"
+  },
+  "independent_checks": {
+    "transport_event_and_exposure_closure": true,
+    "response_80bin_sum_closure": true,
+    "mission_component_sum_closure": true,
+    "gaussian_fmin_formula_closure": true,
+    "line_double_count_excluded": true,
+    "python_syntax_checks": true
+  },
+  "result_summary_sha256": "149bee1708713d516230faec257a1210cab52ec26165dac1832a160cba40222a"
+}

@@ -1,0 +1,45 @@
+// Repo-local, cosima-runnable wrapper for the MIGRATED unified multiband optics
+// geometry (1245 Ge tiles + G10/Al support). All includes are inside
+// TES_511_Balloon: the migrated core .geo (this dir) + the project optics
+// materials. The single shared Ge tile template MB_Tile is declared as a
+// Scintillator so the migrated geometry can be exercised under Monte Carlo
+// directly from the repo. This is an optics mass/geometry model made available
+// in-repo; it is NOT coupled into the detector background transport chain.
+
+Name multiband_unified_migrated
+Version 1
+
+SurroundingSphere 18 0 0 0 18
+
+Include /home/ubuntu/TES_511_Balloon/engineering/Mass_model_511_nearfield_migration_20260701/05_optics_migration/geometry/Materials_OpticsNearfield_v2.geo
+
+Volume WorldVolume
+WorldVolume.Material Vacuum
+WorldVolume.Visibility 0
+WorldVolume.Shape BRIK 100.0 100.0 100.0
+WorldVolume.Mother 0
+
+Volume InstrumentFrame
+InstrumentFrame.Material Vacuum
+InstrumentFrame.Visibility 0
+InstrumentFrame.Shape BRIK 60.0 60.0 60.0
+InstrumentFrame.Position 0 0 0
+InstrumentFrame.Mother WorldVolume
+
+Include /home/ubuntu/TES_511_Balloon/engineering/Mass_model_511_nearfield_migration_20260701/05_optics_migration/geometry/MultibandUnified_TilesAndSupport_f10m.geo
+
+//------------------------------------------------------------
+// Detector: every Ge tile (copies of MB_Tile) is a calorimeter voxel.
+
+Scintillator GeTileDetector
+GeTileDetector.DetectorVolume  MB_Tile
+GeTileDetector.SensitiveVolume MB_Tile
+GeTileDetector.NoiseThreshold   0.000001
+GeTileDetector.TriggerThreshold 0.000001
+GeTileDetector.EnergyResolution ideal
+GeTileDetector.FailureRate 0.0
+
+Trigger TN01
+TN01.Veto false
+TN01.TriggerByChannel true
+TN01.Detector GeTileDetector 1

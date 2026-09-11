@@ -1,0 +1,22 @@
+# Candidate-owned SF3 day-15 exact-position delayed source
+# Built from validated SF3 BUILDUP DAT/SIM only; no S3d inventory is consumed.
+# original_blocks=0 stride=5 retained_blocks=0
+# original_flux_Bq=0 retained_flux_Bq=0
+Version 1
+Geometry /home/ubuntu/.codex/worktrees/c528/TES_511_Balloon/engineering/geometry_optimization_20260815/48_geoopt_sf3_windowed_w_nearfield_20260816/geometry/DEMO2_DR_v3p5_SF3.geo.setup
+Seed 1740970092
+
+PhysicsListHD qgsp-bic-hp
+PhysicsListEM LivermorePol
+PhysicsListRadioactiveDecay true
+DecayMode ActivationDelayedDecay
+StoreSimulationInfo all
+StoreIsotopes true
+DetectorTimeConstant 1e-9
+
+Run DecayRun
+DecayRun.FileName /home/ubuntu/.codex/worktrees/ddb4/TES_511_Balloon/runs/geometry_optimization_20260816/sf3_plan1_one_third_transport_v1/jobs/sf3_delayed_muplus/active/sf3_delayed_muplus
+DecayRun.Triggers 83334
+
+# ZERO_SOURCE_NO_TRANSPORTABLE_POSITIVE_GROUND_ACTIVITY
+# This card deliberately has no DecayRun.Source and must not be launched as a physics job.

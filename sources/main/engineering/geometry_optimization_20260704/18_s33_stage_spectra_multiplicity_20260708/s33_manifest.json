@@ -1,0 +1,2244 @@
+{
+  "status": "PASS",
+  "generated_at_utc": "2026-07-08T15:37:14Z",
+  "geometry_lineage": "Mass_model_511_fullstat_v1",
+  "claim_note": "Mass_model_511_fullstat_v1 stage spectra and multiplicity splits are shape-diagnostic for paper figures; fix5 remains the authority for locked rates.",
+  "inputs": {
+    "preflight": {
+      "status": "PASS",
+      "problems": [],
+      "inputs": {
+        "step05_driver": "old/code/tools/build_v3p5_centerfinger_step05_l1_response.py",
+        "day15_classifier_source": "old/code/tools/make_day15_report_ADR.py",
+        "adr_catalog_loader": "old/code/tools/make_complete_day15_report_ADR.py",
+        "prompt_dir": "runs/Mass_model_511_nearfield_migration_20260701/step02_instant_candidate_Mass_model_511_fullstat_v1",
+        "prompt_norm": "runs/Mass_model_511_nearfield_migration_20260701/step02_instant_candidate_Mass_model_511_fullstat_v1/normalization.json",
+        "delayed_sim": "runs/Mass_model_511_nearfield_migration_20260701/step02_delayed_transport_candidate_Mass_model_511_fullstat_v1/DelayedDecayMassModel511CandidateFullstatV1.inc1.id1.sim.gz",
+        "delayed_summary": "engineering/Mass_model_511_nearfield_migration_20260701/03_detector_transport/delayed/candidate_Mass_model_511/fullstat_v1/F1/delayed_source_exactpos_summary.json",
+        "exactpos_source": "runs/Mass_model_511_nearfield_migration_20260701/step02_delay_exactpos_candidate_Mass_model_511_fullstat_v1/activation_decay_day15_groundstate_fixed_exactpos.source",
+        "mass_signal_sim": "runs/Mass_model_511_nearfield_migration_20260701/step09_focus_candidate_Mass_model_511_Mass_model_511_smoke/Opticsim_laue_f10m_a1_candidate_Mass_model_511_Mass_model_511_signal_smoke.inc1.id1.sim.gz",
+        "signal_manifest": "engineering/Mass_model_511_nearfield_migration_20260701/06_smoke_closure/signal_transport_manifest.json",
+        "v3p5_fullstat_signal_sim": "old/runs/step09_optics_bridge/Opticsim_laue_f10m_a1_v3p5_centerfinger.inc1.id1.sim.gz",
+        "side_entry_bridge_summary": "stepwise_maintenance/step09_optics_bridge/outputs_f10m_a1_v3p5/step09_optics_bridge_summary.json",
+        "science_rate_ledger": "old/config/science_511_onaxis_source/metadata/science_rate_ledger.csv",
+        "f10m_a1_aeff": "stepwise_maintenance/step04_opticsim/optics_aeff_authority_f10m_a1.json"
+      },
+      "prompt_sim_files": 68,
+      "prompt_dat_files": 68,
+      "delayed_summary_status": "PASS_MASS_MODEL_511_CANDIDATE_MASS_MODEL_511_FULLSTAT_V1_EXACTPOS_DELAYED_TRANSPORT",
+      "mass_signal_header": {
+        "exists": true,
+        "SE": 37194,
+        "ID": 37194,
+        "TS": 1,
+        "TE_s": 3.7e-05,
+        "geometry": "/home/ubuntu/TES_511_Balloon/outputs/geometry/DEMO2_DR_v3p5_Mass_model_511_stage_diam_300_300_300_350_350_400_20260701_megalib_proxy/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup"
+      }
+    },
+    "prompt_dir": "runs/Mass_model_511_nearfield_migration_20260701/step02_instant_candidate_Mass_model_511_fullstat_v1",
+    "prompt_sim_files": [
+      "runs/Mass_model_511_nearfield_migration_20260701/step02_instant_candidate_Mass_model_511_fullstat_v1/Background_alpha_fullsphere20_rep01_part01.inc1.id1.sim.gz",
+      "runs/Mass_model_511_nearfield_migration_20260701/step02_instant_candidate_Mass_model_511_fullstat_v1/Background_alpha_fullsphere20_rep02_part01.inc1.id1.sim.gz",
+      "runs/Mass_model_511_nearfield_migration_20260701/step02_instant_candidate_Mass_model_511_fullstat_v1/Background_alpha_fullsphere20_rep03_part01.inc1.id1.sim.gz",
+      "runs/Mass_model_511_nearfield_migration_20260701/step02_instant_candidate_Mass_model_511_fullstat_v1/Background_alpha_fullsphere20_rep04_part01.inc1.id1.sim.gz",
+      "runs/Mass_model_511_nearfield_migration_20260701/step02_instant_candidate_Mass_model_511_fullstat_v1/Background_alpha_fullsphere20_rep05_part01.inc1.id1.sim.gz",
+      "runs/Mass_model_511_nearfield_migration_20260701/step02_instant_candidate_Mass_model_511_fullstat_v1/Background_alpha_fullsphere20_rep06_part01.inc1.id1.sim.gz",
+      "runs/Mass_model_511_nearfield_migration_20260701/step02_instant_candidate_Mass_model_511_fullstat_v1/Background_alpha_fullsphere20_rep07_part01.inc1.id1.sim.gz",
+      "runs/Mass_model_511_nearfield_migration_20260701/step02_instant_candidate_Mass_model_511_fullstat_v1/Background_alpha_fullsphere20_rep08_part01.inc1.id1.sim.gz",
+      "runs/Mass_model_511_nearfield_migration_20260701/step02_instant_candidate_Mass_model_511_fullstat_v1/Background_eminus_fullsphere20_rep01_part01.inc1.id1.sim.gz",
+      "runs/Mass_model_511_nearfield_migration_20260701/step02_instant_candidate_Mass_model_511_fullstat_v1/Background_eminus_fullsphere20_rep02_part01.inc1.id1.sim.gz",
+      "runs/Mass_model_511_nearfield_migration_20260701/step02_instant_candidate_Mass_model_511_fullstat_v1/Background_eminus_fullsphere20_rep03_part01.inc1.id1.sim.gz",
+      "runs/Mass_model_511_nearfield_migration_20260701/step02_instant_candidate_Mass_model_511_fullstat_v1/Background_eminus_fullsphere20_rep04_part01.inc1.id1.sim.gz",
+      "runs/Mass_model_511_nearfield_migration_20260701/step02_instant_candidate_Mass_model_511_fullstat_v1/Background_eminus_fullsphere20_rep05_part01.inc1.id1.sim.gz",
+      "runs/Mass_model_511_nearfield_migration_20260701/step02_instant_candidate_Mass_model_511_fullstat_v1/Background_eminus_fullsphere20_rep06_part01.inc1.id1.sim.gz",
+      "runs/Mass_model_511_nearfield_migration_20260701/step02_instant_candidate_Mass_model_511_fullstat_v1/Background_eminus_fullsphere20_rep07_part01.inc1.id1.sim.gz",
+      "runs/Mass_model_511_nearfield_migration_20260701/step02_instant_candidate_Mass_model_511_fullstat_v1/Background_eminus_fullsphere20_rep08_part01.inc1.id1.sim.gz",
+      "runs/Mass_model_511_nearfield_migration_20260701/step02_instant_candidate_Mass_model_511_fullstat_v1/Background_eplus_fullsphere20_rep01_part01.inc1.id1.sim.gz",
+      "runs/Mass_model_511_nearfield_migration_20260701/step02_instant_candidate_Mass_model_511_fullstat_v1/Background_eplus_fullsphere20_rep02_part01.inc1.id1.sim.gz",
+      "runs/Mass_model_511_nearfield_migration_20260701/step02_instant_candidate_Mass_model_511_fullstat_v1/Background_eplus_fullsphere20_rep03_part01.inc1.id1.sim.gz",
+      "runs/Mass_model_511_nearfield_migration_20260701/step02_instant_candidate_Mass_model_511_fullstat_v1/Background_eplus_fullsphere20_rep04_part01.inc1.id1.sim.gz",
+      "runs/Mass_model_511_nearfield_migration_20260701/step02_instant_candidate_Mass_model_511_fullstat_v1/Background_eplus_fullsphere20_rep05_part01.inc1.id1.sim.gz",
+      "runs/Mass_model_511_nearfield_migration_20260701/step02_instant_candidate_Mass_model_511_fullstat_v1/Background_eplus_fullsphere20_rep06_part01.inc1.id1.sim.gz",
+      "runs/Mass_model_511_nearfield_migration_20260701/step02_instant_candidate_Mass_model_511_fullstat_v1/Background_eplus_fullsphere20_rep07_part01.inc1.id1.sim.gz",
+      "runs/Mass_model_511_nearfield_migration_20260701/step02_instant_candidate_Mass_model_511_fullstat_v1/Background_eplus_fullsphere20_rep08_part01.inc1.id1.sim.gz",
+      "runs/Mass_model_511_nearfield_migration_20260701/step02_instant_candidate_Mass_model_511_fullstat_v1/Background_gamma_fullsphere20_rep01_part01.inc1.id1.sim.gz",
+      "runs/Mass_model_511_nearfield_migration_20260701/step02_instant_candidate_Mass_model_511_fullstat_v1/Background_gamma_fullsphere20_rep01_part02.inc1.id1.sim.gz",
+      "runs/Mass_model_511_nearfield_migration_20260701/step02_instant_candidate_Mass_model_511_fullstat_v1/Background_gamma_fullsphere20_rep01_part03.inc1.id1.sim.gz",
+      "runs/Mass_model_511_nearfield_migration_20260701/step02_instant_candidate_Mass_model_511_fullstat_v1/Background_gamma_fullsphere20_rep01_part04.inc1.id1.sim.gz",
+      "runs/Mass_model_511_nearfield_migration_20260701/step02_instant_candidate_Mass_model_511_fullstat_v1/Background_gamma_fullsphere20_rep01_part05.inc1.id1.sim.gz",
+      "runs/Mass_model_511_nearfield_migration_20260701/step02_instant_candidate_Mass_model_511_fullstat_v1/Background_gamma_fullsphere20_rep01_part06.inc1.id1.sim.gz",
+      "runs/Mass_model_511_nearfield_migration_20260701/step02_instant_candidate_Mass_model_511_fullstat_v1/Background_gamma_fullsphere20_rep01_part07.inc1.id1.sim.gz",
+      "runs/Mass_model_511_nearfield_migration_20260701/step02_instant_candidate_Mass_model_511_fullstat_v1/Background_gamma_fullsphere20_rep01_part08.inc1.id1.sim.gz",
+      "runs/Mass_model_511_nearfield_migration_20260701/step02_instant_candidate_Mass_model_511_fullstat_v1/Background_gamma_fullsphere20_rep01_part09.inc1.id1.sim.gz",
+      "runs/Mass_model_511_nearfield_migration_20260701/step02_instant_candidate_Mass_model_511_fullstat_v1/Background_gamma_fullsphere20_rep01_part10.inc1.id1.sim.gz",
+      "runs/Mass_model_511_nearfield_migration_20260701/step02_instant_candidate_Mass_model_511_fullstat_v1/Background_gamma_fullsphere20_rep01_part11.inc1.id1.sim.gz",
+      "runs/Mass_model_511_nearfield_migration_20260701/step02_instant_candidate_Mass_model_511_fullstat_v1/Background_gamma_fullsphere20_rep01_part12.inc1.id1.sim.gz",
+      "runs/Mass_model_511_nearfield_migration_20260701/step02_instant_candidate_Mass_model_511_fullstat_v1/Background_muminus_fullsphere20_rep01_part01.inc1.id1.sim.gz",
+      "runs/Mass_model_511_nearfield_migration_20260701/step02_instant_candidate_Mass_model_511_fullstat_v1/Background_muminus_fullsphere20_rep02_part01.inc1.id1.sim.gz",
+      "runs/Mass_model_511_nearfield_migration_20260701/step02_instant_candidate_Mass_model_511_fullstat_v1/Background_muminus_fullsphere20_rep03_part01.inc1.id1.sim.gz",
+      "runs/Mass_model_511_nearfield_migration_20260701/step02_instant_candidate_Mass_model_511_fullstat_v1/Background_muminus_fullsphere20_rep04_part01.inc1.id1.sim.gz",
+      "runs/Mass_model_511_nearfield_migration_20260701/step02_instant_candidate_Mass_model_511_fullstat_v1/Background_muminus_fullsphere20_rep05_part01.inc1.id1.sim.gz",
+      "runs/Mass_model_511_nearfield_migration_20260701/step02_instant_candidate_Mass_model_511_fullstat_v1/Background_muminus_fullsphere20_rep06_part01.inc1.id1.sim.gz",
+      "runs/Mass_model_511_nearfield_migration_20260701/step02_instant_candidate_Mass_model_511_fullstat_v1/Background_muminus_fullsphere20_rep07_part01.inc1.id1.sim.gz",
+      "runs/Mass_model_511_nearfield_migration_20260701/step02_instant_candidate_Mass_model_511_fullstat_v1/Background_muminus_fullsphere20_rep08_part01.inc1.id1.sim.gz",
+      "runs/Mass_model_511_nearfield_migration_20260701/step02_instant_candidate_Mass_model_511_fullstat_v1/Background_muplus_fullsphere20_rep01_part01.inc1.id1.sim.gz",
+      "runs/Mass_model_511_nearfield_migration_20260701/step02_instant_candidate_Mass_model_511_fullstat_v1/Background_muplus_fullsphere20_rep02_part01.inc1.id1.sim.gz",
+      "runs/Mass_model_511_nearfield_migration_20260701/step02_instant_candidate_Mass_model_511_fullstat_v1/Background_muplus_fullsphere20_rep03_part01.inc1.id1.sim.gz",
+      "runs/Mass_model_511_nearfield_migration_20260701/step02_instant_candidate_Mass_model_511_fullstat_v1/Background_muplus_fullsphere20_rep04_part01.inc1.id1.sim.gz",
+      "runs/Mass_model_511_nearfield_migration_20260701/step02_instant_candidate_Mass_model_511_fullstat_v1/Background_muplus_fullsphere20_rep05_part01.inc1.id1.sim.gz",
+      "runs/Mass_model_511_nearfield_migration_20260701/step02_instant_candidate_Mass_model_511_fullstat_v1/Background_muplus_fullsphere20_rep06_part01.inc1.id1.sim.gz",
+      "runs/Mass_model_511_nearfield_migration_20260701/step02_instant_candidate_Mass_model_511_fullstat_v1/Background_muplus_fullsphere20_rep07_part01.inc1.id1.sim.gz",
+      "runs/Mass_model_511_nearfield_migration_20260701/step02_instant_candidate_Mass_model_511_fullstat_v1/Background_muplus_fullsphere20_rep08_part01.inc1.id1.sim.gz",
+      "runs/Mass_model_511_nearfield_migration_20260701/step02_instant_candidate_Mass_model_511_fullstat_v1/Background_n_fullsphere20_rep01_part01.inc1.id1.sim.gz",
+      "runs/Mass_model_511_nearfield_migration_20260701/step02_instant_candidate_Mass_model_511_fullstat_v1/Background_n_fullsphere20_rep02_part01.inc1.id1.sim.gz",
+      "runs/Mass_model_511_nearfield_migration_20260701/step02_instant_candidate_Mass_model_511_fullstat_v1/Background_n_fullsphere20_rep03_part01.inc1.id1.sim.gz",
+      "runs/Mass_model_511_nearfield_migration_20260701/step02_instant_candidate_Mass_model_511_fullstat_v1/Background_n_fullsphere20_rep04_part01.inc1.id1.sim.gz",
+      "runs/Mass_model_511_nearfield_migration_20260701/step02_instant_candidate_Mass_model_511_fullstat_v1/Background_n_fullsphere20_rep05_part01.inc1.id1.sim.gz",
+      "runs/Mass_model_511_nearfield_migration_20260701/step02_instant_candidate_Mass_model_511_fullstat_v1/Background_n_fullsphere20_rep06_part01.inc1.id1.sim.gz",
+      "runs/Mass_model_511_nearfield_migration_20260701/step02_instant_candidate_Mass_model_511_fullstat_v1/Background_n_fullsphere20_rep07_part01.inc1.id1.sim.gz",
+      "runs/Mass_model_511_nearfield_migration_20260701/step02_instant_candidate_Mass_model_511_fullstat_v1/Background_n_fullsphere20_rep08_part01.inc1.id1.sim.gz",
+      "runs/Mass_model_511_nearfield_migration_20260701/step02_instant_candidate_Mass_model_511_fullstat_v1/Background_p_fullsphere20_rep01_part01.inc1.id1.sim.gz",
+      "runs/Mass_model_511_nearfield_migration_20260701/step02_instant_candidate_Mass_model_511_fullstat_v1/Background_p_fullsphere20_rep02_part01.inc1.id1.sim.gz",
+      "runs/Mass_model_511_nearfield_migration_20260701/step02_instant_candidate_Mass_model_511_fullstat_v1/Background_p_fullsphere20_rep03_part01.inc1.id1.sim.gz",
+      "runs/Mass_model_511_nearfield_migration_20260701/step02_instant_candidate_Mass_model_511_fullstat_v1/Background_p_fullsphere20_rep04_part01.inc1.id1.sim.gz",
+      "runs/Mass_model_511_nearfield_migration_20260701/step02_instant_candidate_Mass_model_511_fullstat_v1/Background_p_fullsphere20_rep05_part01.inc1.id1.sim.gz",
+      "runs/Mass_model_511_nearfield_migration_20260701/step02_instant_candidate_Mass_model_511_fullstat_v1/Background_p_fullsphere20_rep06_part01.inc1.id1.sim.gz",
+      "runs/Mass_model_511_nearfield_migration_20260701/step02_instant_candidate_Mass_model_511_fullstat_v1/Background_p_fullsphere20_rep07_part01.inc1.id1.sim.gz",
+      "runs/Mass_model_511_nearfield_migration_20260701/step02_instant_candidate_Mass_model_511_fullstat_v1/Background_p_fullsphere20_rep08_part01.inc1.id1.sim.gz"
+    ],
+    "delayed_sim": "runs/Mass_model_511_nearfield_migration_20260701/step02_delayed_transport_candidate_Mass_model_511_fullstat_v1/DelayedDecayMassModel511CandidateFullstatV1.inc1.id1.sim.gz",
+    "signal": {
+      "csv_signal_label": "signal_mass_model_511_smoke",
+      "mass_model_511_smoke_sim": "runs/Mass_model_511_nearfield_migration_20260701/step09_focus_candidate_Mass_model_511_Mass_model_511_smoke/Opticsim_laue_f10m_a1_candidate_Mass_model_511_Mass_model_511_signal_smoke.inc1.id1.sim.gz",
+      "mass_model_511_signal_manifest": "engineering/Mass_model_511_nearfield_migration_20260701/06_smoke_closure/signal_transport_manifest.json",
+      "alternate_v3p5_fullstat_signal_sim": "old/runs/step09_optics_bridge/Opticsim_laue_f10m_a1_v3p5_centerfinger.inc1.id1.sim.gz",
+      "signal_curve_policy": "CSV signal columns use the available Mass_model_511 smoke detector transport; the manifest also embeds the full-stat v3p5 signal spectrum for comparison."
+    },
+    "side_entry_bridge_summary": "stepwise_maintenance/step09_optics_bridge/outputs_f10m_a1_v3p5/step09_optics_bridge_summary.json"
+  },
+  "code_modules_reused": {
+    "step05_driver": {
+      "path": "old/code/tools/build_v3p5_centerfinger_step05_l1_response.py",
+      "functions": [
+        "load_adr_module",
+        "configure_parser",
+        "prompt_normalization_audit",
+        "refresh_prompt_event_rates",
+        "side_entry_disk",
+        "summarize_window",
+        "event_hits",
+        "side_keep_from_hits"
+      ]
+    },
+    "adr_catalog_loader": {
+      "path": "old/code/tools/make_complete_day15_report_ADR.py",
+      "functions": [
+        "load_or_build_catalog",
+        "parse_sim_catalog",
+        "catalog_to_arrays"
+      ]
+    },
+    "day15_classifier_source": {
+      "path": "old/code/tools/make_day15_report_ADR.py",
+      "functions": [
+        "EventHit",
+        "classify_compton"
+      ],
+      "note": "make_complete_day15_report_ADR imports EventHit/classify_compton from this module; the side-entry FoV decision is applied through the Step05 side_keep_from_hits wrapper."
+    }
+  },
+  "parameters": {
+    "active_veto_threshold_keV": 50.0,
+    "coincidence_window_s": 1e-06,
+    "reject_policy": "keep",
+    "windows": {
+      "broad_480_550": [
+        480.0,
+        550.0
+      ],
+      "w2_510p58_511p42": [
+        510.58,
+        511.42
+      ]
+    },
+    "bin_width_keV": 0.5,
+    "stage_definitions": {
+      "raw": "TES total energy inside window before active veto",
+      "active": "raw and active-shield/CsI energy < 50 keV",
+      "compton": "active and Step05 side-entry Compton/FoV keep; reject_kept retained"
+    }
+  },
+  "normalization": {
+    "prompt_rate_rule": "per-tag event rate = 1 / sum(TT_s for prompt dat files with that tag)",
+    "prompt_normalization_audit": {
+      "status": "PASS",
+      "problems": [],
+      "prompt_dir": "runs/Mass_model_511_nearfield_migration_20260701/step02_instant_candidate_Mass_model_511_fullstat_v1",
+      "prompt_norm": "runs/Mass_model_511_nearfield_migration_20260701/step02_instant_candidate_Mass_model_511_fullstat_v1/normalization.json",
+      "normalization_json": {
+        "non_gamma_replicas": 8,
+        "gamma_splits": 12,
+        "gamma_prompt_time_s_with_farfield_area": 184.2200984295893,
+        "non_gamma_combined_norm_factor": null
+      },
+      "rows": [
+        {
+          "tag": "alpha",
+          "files": 8,
+          "tt_files": 8,
+          "tt_line_count": 8,
+          "tt_sum_s": 1478.291,
+          "tt_mean_s": 184.786375,
+          "tt_min_s": 183.514,
+          "tt_max_s": 186.134,
+          "rate_hz_per_event": 0.0006764568004540379,
+          "rate_times_tt_sum": 1.0,
+          "expected_files_from_normalization": 8,
+          "warnings": []
+        },
+        {
+          "tag": "eminus",
+          "files": 8,
+          "tt_files": 8,
+          "tt_line_count": 8,
+          "tt_sum_s": 1472.612,
+          "tt_mean_s": 184.0765,
+          "tt_min_s": 183.831,
+          "tt_max_s": 184.432,
+          "rate_hz_per_event": 0.0006790654972253383,
+          "rate_times_tt_sum": 1.0,
+          "expected_files_from_normalization": 8,
+          "warnings": []
+        },
+        {
+          "tag": "eplus",
+          "files": 8,
+          "tt_files": 8,
+          "tt_line_count": 8,
+          "tt_sum_s": 1473.9640000000002,
+          "tt_mean_s": 184.24550000000002,
+          "tt_min_s": 184.002,
+          "tt_max_s": 184.725,
+          "rate_hz_per_event": 0.0006784426213937381,
+          "rate_times_tt_sum": 1.0,
+          "expected_files_from_normalization": 8,
+          "warnings": []
+        },
+        {
+          "tag": "gamma",
+          "files": 12,
+          "tt_files": 12,
+          "tt_line_count": 12,
+          "tt_sum_s": 184.18179999999998,
+          "tt_mean_s": 15.348483333333332,
+          "tt_min_s": 15.3345,
+          "tt_max_s": 15.3622,
+          "rate_hz_per_event": 0.005429418107543742,
+          "rate_times_tt_sum": 0.9999999999999999,
+          "expected_files_from_normalization": 12,
+          "warnings": []
+        },
+        {
+          "tag": "muminus",
+          "files": 8,
+          "tt_files": 8,
+          "tt_line_count": 8,
+          "tt_sum_s": 1472.903,
+          "tt_mean_s": 184.112875,
+          "tt_min_s": 183.139,
+          "tt_max_s": 185.05,
+          "rate_hz_per_event": 0.0006789313349215801,
+          "rate_times_tt_sum": 1.0,
+          "expected_files_from_normalization": 8,
+          "warnings": []
+        },
+        {
+          "tag": "muplus",
+          "files": 8,
+          "tt_files": 8,
+          "tt_line_count": 8,
+          "tt_sum_s": 1482.469,
+          "tt_mean_s": 185.308625,
+          "tt_min_s": 183.124,
+          "tt_max_s": 187.212,
+          "rate_hz_per_event": 0.0006745503615927213,
+          "rate_times_tt_sum": 0.9999999999999999,
+          "expected_files_from_normalization": 8,
+          "warnings": []
+        },
+        {
+          "tag": "n",
+          "files": 8,
+          "tt_files": 8,
+          "tt_line_count": 8,
+          "tt_sum_s": 1474.2099999999996,
+          "tt_mean_s": 184.27624999999995,
+          "tt_min_s": 183.939,
+          "tt_max_s": 184.524,
+          "rate_hz_per_event": 0.0006783294103282438,
+          "rate_times_tt_sum": 1.0,
+          "expected_files_from_normalization": 8,
+          "warnings": []
+        },
+        {
+          "tag": "p",
+          "files": 8,
+          "tt_files": 8,
+          "tt_line_count": 8,
+          "tt_sum_s": 1474.262,
+          "tt_mean_s": 184.28275,
+          "tt_min_s": 183.844,
+          "tt_max_s": 184.826,
+          "rate_hz_per_event": 0.0006783054843711633,
+          "rate_times_tt_sum": 1.0,
+          "expected_files_from_normalization": 8,
+          "warnings": []
+        }
+      ]
+    },
+    "prompt_cache_rates_refreshed": false,
+    "delayed_time_s": 7027.052893,
+    "science_unit_injection_rate_s-1": 1.0,
+    "science_physical_normalization": {
+      "reference_flux_ph_cm2_s": 0.0001,
+      "mission_days_for_direct_expectation": 20.0,
+      "optics_authority": "stepwise_maintenance/step04_opticsim/optics_aeff_authority_f10m_a1.json",
+      "optics_design_name": "balloon511_f10m_ge111_511line_a1",
+      "optics_profile": "f10m_a1_v3p5",
+      "aeff_511_cm2": 20.084760000000003,
+      "aeff_seed_pstdev_cm2": 0.22144082550424163,
+      "atmospheric_transmission": {
+        "ledger": "old/config/science_511_onaxis_source/metadata/science_rate_ledger.csv",
+        "source_id": "science_511_onaxis_v0",
+        "flux_ph_cm2_s": 0.0001,
+        "mainline_A_opt_cm2_in_ledger": 15.29928,
+        "T_atm": 0.7390423888027,
+        "note": "Only scalar T_atm is inherited from this mainline ledger; v3p5/f10m A1 uses the f10m_a1 A_eff authority below. A dedicated 45 deg side-entry LOS atmosphere sidecar is available in outputs/reports/v3p5_boundary_closure_fullstat_v2_exactpos_20260613/v3p5_boundary_closure_summary.json."
+      },
+      "rate_to_v3p5_injection_plane_s-1": 0.0014843489008928919,
+      "unit_eventlist_injection_rate_s-1": 1.0,
+      "scale_from_unit_eventlist_rate": 0.0014843489008928919
+    }
+  },
+  "side_entry_disk": {
+    "center_cm": [
+      -12.94005409571382,
+      0.0,
+      5.586143571373725
+    ],
+    "normal": [
+      0.7071067811865476,
+      0.0,
+      -0.7071067811865475
+    ],
+    "basis_u": [
+      0.0,
+      -1.0,
+      0.0
+    ],
+    "basis_v": [
+      -0.7071067811865475,
+      -0.0,
+      -0.7071067811865476
+    ],
+    "radius_cm": 1.898,
+    "local_center_cm": [
+      -13.1,
+      0.0,
+      -5.2
+    ],
+    "rotation_y_deg": 45.0,
+    "side_window_look_elevation_deg": 44.99999999999999
+  },
+  "stage_totals": {
+    "broad_480_550": {
+      "prompt": {
+        "raw": {
+          "events": 318,
+          "rate_s-1": 0.22992026073076582
+        },
+        "active": {
+          "events": 108,
+          "rate_s-1": 0.07325552054670123
+        },
+        "compton": {
+          "events": 92,
+          "rate_s-1": 0.06240108200152845
+        }
+      },
+      "delayed": {
+        "raw": {
+          "events": 74,
+          "rate_s-1": 0.010530730467919929
+        },
+        "active": {
+          "events": 45,
+          "rate_s-1": 0.0064038225818432055
+        },
+        "compton": {
+          "events": 43,
+          "rate_s-1": 0.006119208244872396
+        }
+      },
+      "signal": {
+        "raw": {
+          "events": 30364,
+          "rate_s-1": 0.8163682314355357
+        },
+        "active": {
+          "events": 30364,
+          "rate_s-1": 0.8163682314355357
+        },
+        "compton": {
+          "events": 29732,
+          "rate_s-1": 0.7993762434804615
+        }
+      }
+    },
+    "w2_510p58_511p42": {
+      "prompt": {
+        "raw": {
+          "events": 153,
+          "rate_s-1": 0.11801569228649718
+        },
+        "active": {
+          "events": 71,
+          "rate_s-1": 0.04816009251370224
+        },
+        "compton": {
+          "events": 65,
+          "rate_s-1": 0.044088948071811976
+        }
+      },
+      "delayed": {
+        "raw": {
+          "events": 43,
+          "rate_s-1": 0.006119208244872396
+        },
+        "active": {
+          "events": 28,
+          "rate_s-1": 0.003984600717591324
+        },
+        "compton": {
+          "events": 28,
+          "rate_s-1": 0.003984600717591324
+        }
+      },
+      "signal": {
+        "raw": {
+          "events": 30305,
+          "rate_s-1": 0.8147819540789702
+        },
+        "active": {
+          "events": 30305,
+          "rate_s-1": 0.8147819540789702
+        },
+        "compton": {
+          "events": 29687,
+          "rate_s-1": 0.7981663709203692
+        }
+      }
+    }
+  },
+  "step05_summarize_window_totals": {
+    "broad_480_550": {
+      "window_keV": [
+        480.0,
+        550.0
+      ],
+      "by_stream": {
+        "prompt": {
+          "raw_events": 318,
+          "active_veto_pass_events": 108,
+          "side_compton_fov_pass_events": 92,
+          "raw_rate_s-1": 0.22992026073076466,
+          "active_veto_pass_rate_s-1": 0.07325552054670129,
+          "side_compton_fov_pass_rate_s-1": 0.06240108200152845,
+          "active_veto_survival_fraction": 0.3186127238803156,
+          "side_compton_fov_survival_fraction_vs_active": 0.8518277057596908,
+          "side_compton_class_counts": {
+            "keep": 31,
+            "reject_kept": 1,
+            "single": 60,
+            "veto": 16
+          }
+        },
+        "delayed": {
+          "raw_events": 74,
+          "active_veto_pass_events": 45,
+          "side_compton_fov_pass_events": 43,
+          "raw_rate_s-1": 0.01053073046791993,
+          "active_veto_pass_rate_s-1": 0.006403822581843204,
+          "side_compton_fov_pass_rate_s-1": 0.006119208244872396,
+          "active_veto_survival_fraction": 0.6081081081081083,
+          "side_compton_fov_survival_fraction_vs_active": 0.9555555555555557,
+          "side_compton_class_counts": {
+            "keep": 15,
+            "single": 28,
+            "veto": 2
+          }
+        },
+        "science": {
+          "raw_events": 30364,
+          "active_veto_pass_events": 30364,
+          "side_compton_fov_pass_events": 29732,
+          "raw_rate_s-1": 0.8163682314351778,
+          "active_veto_pass_rate_s-1": 0.8163682314351778,
+          "side_compton_fov_pass_rate_s-1": 0.7993762434804615,
+          "active_veto_survival_fraction": 1.0,
+          "side_compton_fov_survival_fraction_vs_active": 0.9791858780138415,
+          "side_compton_class_counts": {
+            "keep": 12134,
+            "single": 17598,
+            "veto": 632
+          }
+        }
+      },
+      "total": {
+        "raw": {
+          "events": 30756,
+          "rate_s-1": 1.0568192226338624
+        },
+        "active_veto_pass": {
+          "events": 30517,
+          "rate_s-1": 0.8960275745637223
+        },
+        "side_compton_fov_pass": {
+          "events": 29867,
+          "rate_s-1": 0.8678965337268624
+        }
+      },
+      "physical_reference_flux": {
+        "reference_flux_ph_cm2_s": 0.0001,
+        "rate_to_v3p5_injection_plane_s-1": 0.0014843489008928919,
+        "prompt_background_cps": 0.06240108200152845,
+        "delayed_background_cps": 0.006119208244872396,
+        "background_cps": 0.06852029024640084,
+        "signal_cps_at_reference_flux": 0.0011865532484101118,
+        "signal_to_background": 0.017316815853278406,
+        "mission_days": 20.0,
+        "source_counts_20d": 2050.3640132526734,
+        "background_counts_20d": 118403.06154578066,
+        "Z20d_direct_s_over_sqrt_b": 5.95867233951368,
+        "T3_day_constant_rate_direct": 5.069597683152027,
+        "T5_day_constant_rate_direct": 14.082215786533407,
+        "flux_3sigma_20d_ph_cm2_s": 5.03467858117677e-05,
+        "low_stat_final_background_events": 135,
+        "low_stat_background_relative_poisson_sigma_approx": 0.08606629658238704,
+        "low_stat_prompt_final_events": 92,
+        "low_stat_delayed_final_events": 43,
+        "science_unit_rate_final_events": 29732,
+        "claim_note": "Direct expectation only. It uses the current Step05 selected-event rates and does not replace a full Step06-Step08 mission-axis regeneration."
+      }
+    },
+    "w2_510p58_511p42": {
+      "window_keV": [
+        510.58,
+        511.42
+      ],
+      "by_stream": {
+        "prompt": {
+          "raw_events": 153,
+          "active_veto_pass_events": 71,
+          "side_compton_fov_pass_events": 65,
+          "raw_rate_s-1": 0.1180156922864968,
+          "active_veto_pass_rate_s-1": 0.048160092513702304,
+          "side_compton_fov_pass_rate_s-1": 0.044088948071811976,
+          "active_veto_survival_fraction": 0.4080821082402168,
+          "side_compton_fov_survival_fraction_vs_active": 0.9154664322803777,
+          "side_compton_class_counts": {
+            "keep": 22,
+            "single": 43,
+            "veto": 6
+          }
+        },
+        "delayed": {
+          "raw_events": 43,
+          "active_veto_pass_events": 28,
+          "side_compton_fov_pass_events": 28,
+          "raw_rate_s-1": 0.006119208244872394,
+          "active_veto_pass_rate_s-1": 0.003984600717591325,
+          "side_compton_fov_pass_rate_s-1": 0.003984600717591324,
+          "active_veto_survival_fraction": 0.6511627906976742,
+          "side_compton_fov_survival_fraction_vs_active": 0.9999999999999996,
+          "side_compton_class_counts": {
+            "keep": 8,
+            "single": 20
+          }
+        },
+        "science": {
+          "raw_events": 30305,
+          "active_veto_pass_events": 30305,
+          "side_compton_fov_pass_events": 29687,
+          "raw_rate_s-1": 0.8147819540786149,
+          "active_veto_pass_rate_s-1": 0.8147819540786149,
+          "side_compton_fov_pass_rate_s-1": 0.7981663709203692,
+          "active_veto_survival_fraction": 1.0,
+          "side_compton_fov_survival_fraction_vs_active": 0.9796073255242439,
+          "side_compton_class_counts": {
+            "keep": 12098,
+            "single": 17589,
+            "veto": 618
+          }
+        }
+      },
+      "total": {
+        "raw": {
+          "events": 30501,
+          "rate_s-1": 0.9389168546099841
+        },
+        "active_veto_pass": {
+          "events": 30404,
+          "rate_s-1": 0.8669266473099085
+        },
+        "side_compton_fov_pass": {
+          "events": 29780,
+          "rate_s-1": 0.8462399197097725
+        }
+      },
+      "physical_reference_flux": {
+        "reference_flux_ph_cm2_s": 0.0001,
+        "rate_to_v3p5_injection_plane_s-1": 0.0014843489008928919,
+        "prompt_background_cps": 0.044088948071811976,
+        "delayed_background_cps": 0.003984600717591324,
+        "background_cps": 0.0480735487894033,
+        "signal_cps_at_reference_flux": 0.0011847573754053184,
+        "signal_to_background": 0.024644683099960176,
+        "mission_days": 20.0,
+        "source_counts_20d": 2047.2607447003902,
+        "background_counts_20d": 83071.0923080889,
+        "Z20d_direct_s_over_sqrt_b": 7.103104411180339,
+        "T3_day_constant_rate_direct": 3.567599611442422,
+        "T5_day_constant_rate_direct": 9.909998920673393,
+        "flux_3sigma_20d_ph_cm2_s": 4.223505422893655e-05,
+        "low_stat_final_background_events": 93,
+        "low_stat_background_relative_poisson_sigma_approx": 0.10369516947304253,
+        "low_stat_prompt_final_events": 65,
+        "low_stat_delayed_final_events": 28,
+        "science_unit_rate_final_events": 29687,
+        "claim_note": "Direct expectation only. It uses the current Step05 selected-event rates and does not replace a full Step06-Step08 mission-axis regeneration."
+      }
+    }
+  },
+  "w2_diff_note_vs_fix5_cutflow": "Mass_model_511_fullstat_v1 w2 raw totals prompt/delayed/signal = 153/43/30305 versus fix5 cut-flow raw 161/54/30323; these spectra are shape-diagnostic and do not replace the fix5 authority cut-flow.",
+  "alternate_signal": {
+    "label": "signal_v3p5_fullstat_optics",
+    "sim": "old/runs/step09_optics_bridge/Opticsim_laue_f10m_a1_v3p5_centerfinger.inc1.id1.sim.gz",
+    "note": "Full-stat v3p5 optics signal curve included because the Mass_model_511 signal SIM is smoke only.",
+    "catalog": {
+      "events_kept": 36579,
+      "pixel_hits_kept": 52973,
+      "tes_events": 35707
+    },
+    "stage_totals": {
+      "raw": {
+        "events": 30234,
+        "rate_s-1": 0.8128730440397135
+      },
+      "active": {
+        "events": 30234,
+        "rate_s-1": 0.8128730440397135
+      },
+      "compton": {
+        "events": 29597,
+        "rate_s-1": 0.7957466258001846
+      }
+    },
+    "broad_stage_totals": {
+      "raw": {
+        "events": 30296,
+        "rate_s-1": 0.8145399795669518
+      },
+      "active": {
+        "events": 30296,
+        "rate_s-1": 0.8145399795669518
+      },
+      "compton": {
+        "events": 29650,
+        "rate_s-1": 0.7971715868154045
+      }
+    },
+    "stage_spectra_480_550": [
+      {
+        "energy_lo_keV": 480.0,
+        "energy_hi_keV": 480.5,
+        "energy_center_keV": 480.25,
+        "raw_cps_per_keV": 0.0,
+        "raw_events_per_bin": 0,
+        "active_cps_per_keV": 0.0,
+        "active_events_per_bin": 0,
+        "compton_cps_per_keV": 0.0,
+        "compton_events_per_bin": 0
+      },
+      {
+        "energy_lo_keV": 480.5,
+        "energy_hi_keV": 481.0,
+        "energy_center_keV": 480.75,
+        "raw_cps_per_keV": 0.0,
+        "raw_events_per_bin": 0,
+        "active_cps_per_keV": 0.0,
+        "active_events_per_bin": 0,
+        "compton_cps_per_keV": 0.0,
+        "compton_events_per_bin": 0
+      },
+      {
+        "energy_lo_keV": 481.0,
+        "energy_hi_keV": 481.5,
+        "energy_center_keV": 481.25,
+        "raw_cps_per_keV": 0.00010754422756358553,
+        "raw_events_per_bin": 2,
+        "active_cps_per_keV": 0.00010754422756358553,
+        "active_events_per_bin": 2,
+        "compton_cps_per_keV": 0.00010754422756358553,
+        "compton_events_per_bin": 2
+      },
+      {
+        "energy_lo_keV": 481.5,
+        "energy_hi_keV": 482.0,
+        "energy_center_keV": 481.75,
+        "raw_cps_per_keV": 5.3772113781792764e-05,
+        "raw_events_per_bin": 1,
+        "active_cps_per_keV": 5.3772113781792764e-05,
+        "active_events_per_bin": 1,
+        "compton_cps_per_keV": 5.3772113781792764e-05,
+        "compton_events_per_bin": 1
+      },
+      {
+        "energy_lo_keV": 482.0,
+        "energy_hi_keV": 482.5,
+        "energy_center_keV": 482.25,
+        "raw_cps_per_keV": 0.0,
+        "raw_events_per_bin": 0,
+        "active_cps_per_keV": 0.0,
+        "active_events_per_bin": 0,
+        "compton_cps_per_keV": 0.0,
+        "compton_events_per_bin": 0
+      },
+      {
+        "energy_lo_keV": 482.5,
+        "energy_hi_keV": 483.0,
+        "energy_center_keV": 482.75,
+        "raw_cps_per_keV": 0.0,
+        "raw_events_per_bin": 0,
+        "active_cps_per_keV": 0.0,
+        "active_events_per_bin": 0,
+        "compton_cps_per_keV": 0.0,
+        "compton_events_per_bin": 0
+      },
+      {
+        "energy_lo_keV": 483.0,
+        "energy_hi_keV": 483.5,
+        "energy_center_keV": 483.25,
+        "raw_cps_per_keV": 5.3772113781792764e-05,
+        "raw_events_per_bin": 1,
+        "active_cps_per_keV": 5.3772113781792764e-05,
+        "active_events_per_bin": 1,
+        "compton_cps_per_keV": 0.0,
+        "compton_events_per_bin": 0
+      },
+      {
+        "energy_lo_keV": 483.5,
+        "energy_hi_keV": 484.0,
+        "energy_center_keV": 483.75,
+        "raw_cps_per_keV": 5.3772113781792764e-05,
+        "raw_events_per_bin": 1,
+        "active_cps_per_keV": 5.3772113781792764e-05,
+        "active_events_per_bin": 1,
+        "compton_cps_per_keV": 5.3772113781792764e-05,
+        "compton_events_per_bin": 1
+      },
+      {
+        "energy_lo_keV": 484.0,
+        "energy_hi_keV": 484.5,
+        "energy_center_keV": 484.25,
+        "raw_cps_per_keV": 0.0,
+        "raw_events_per_bin": 0,
+        "active_cps_per_keV": 0.0,
+        "active_events_per_bin": 0,
+        "compton_cps_per_keV": 0.0,
+        "compton_events_per_bin": 0
+      },
+      {
+        "energy_lo_keV": 484.5,
+        "energy_hi_keV": 485.0,
+        "energy_center_keV": 484.75,
+        "raw_cps_per_keV": 0.0,
+        "raw_events_per_bin": 0,
+        "active_cps_per_keV": 0.0,
+        "active_events_per_bin": 0,
+        "compton_cps_per_keV": 0.0,
+        "compton_events_per_bin": 0
+      },
+      {
+        "energy_lo_keV": 485.0,
+        "energy_hi_keV": 485.5,
+        "energy_center_keV": 485.25,
+        "raw_cps_per_keV": 5.3772113781792764e-05,
+        "raw_events_per_bin": 1,
+        "active_cps_per_keV": 5.3772113781792764e-05,
+        "active_events_per_bin": 1,
+        "compton_cps_per_keV": 5.3772113781792764e-05,
+        "compton_events_per_bin": 1
+      },
+      {
+        "energy_lo_keV": 485.5,
+        "energy_hi_keV": 486.0,
+        "energy_center_keV": 485.75,
+        "raw_cps_per_keV": 0.0,
+        "raw_events_per_bin": 0,
+        "active_cps_per_keV": 0.0,
+        "active_events_per_bin": 0,
+        "compton_cps_per_keV": 0.0,
+        "compton_events_per_bin": 0
+      },
+      {
+        "energy_lo_keV": 486.0,
+        "energy_hi_keV": 486.5,
+        "energy_center_keV": 486.25,
+        "raw_cps_per_keV": 0.0,
+        "raw_events_per_bin": 0,
+        "active_cps_per_keV": 0.0,
+        "active_events_per_bin": 0,
+        "compton_cps_per_keV": 0.0,
+        "compton_events_per_bin": 0
+      },
+      {
+        "energy_lo_keV": 486.5,
+        "energy_hi_keV": 487.0,
+        "energy_center_keV": 486.75,
+        "raw_cps_per_keV": 5.3772113781792764e-05,
+        "raw_events_per_bin": 1,
+        "active_cps_per_keV": 5.3772113781792764e-05,
+        "active_events_per_bin": 1,
+        "compton_cps_per_keV": 5.3772113781792764e-05,
+        "compton_events_per_bin": 1
+      },
+      {
+        "energy_lo_keV": 487.0,
+        "energy_hi_keV": 487.5,
+        "energy_center_keV": 487.25,
+        "raw_cps_per_keV": 0.0,
+        "raw_events_per_bin": 0,
+        "active_cps_per_keV": 0.0,
+        "active_events_per_bin": 0,
+        "compton_cps_per_keV": 0.0,
+        "compton_events_per_bin": 0
+      },
+      {
+        "energy_lo_keV": 487.5,
+        "energy_hi_keV": 488.0,
+        "energy_center_keV": 487.75,
+        "raw_cps_per_keV": 0.00010754422756358553,
+        "raw_events_per_bin": 2,
+        "active_cps_per_keV": 0.00010754422756358553,
+        "active_events_per_bin": 2,
+        "compton_cps_per_keV": 0.00010754422756358553,
+        "compton_events_per_bin": 2
+      },
+      {
+        "energy_lo_keV": 488.0,
+        "energy_hi_keV": 488.5,
+        "energy_center_keV": 488.25,
+        "raw_cps_per_keV": 0.00010754422756358553,
+        "raw_events_per_bin": 2,
+        "active_cps_per_keV": 0.00010754422756358553,
+        "active_events_per_bin": 2,
+        "compton_cps_per_keV": 0.00010754422756358553,
+        "compton_events_per_bin": 2
+      },
+      {
+        "energy_lo_keV": 488.5,
+        "energy_hi_keV": 489.0,
+        "energy_center_keV": 488.75,
+        "raw_cps_per_keV": 0.0,
+        "raw_events_per_bin": 0,
+        "active_cps_per_keV": 0.0,
+        "active_events_per_bin": 0,
+        "compton_cps_per_keV": 0.0,
+        "compton_events_per_bin": 0
+      },
+      {
+        "energy_lo_keV": 489.0,
+        "energy_hi_keV": 489.5,
+        "energy_center_keV": 489.25,
+        "raw_cps_per_keV": 0.0,
+        "raw_events_per_bin": 0,
+        "active_cps_per_keV": 0.0,
+        "active_events_per_bin": 0,
+        "compton_cps_per_keV": 0.0,
+        "compton_events_per_bin": 0
+      },
+      {
+        "energy_lo_keV": 489.5,
+        "energy_hi_keV": 490.0,
+        "energy_center_keV": 489.75,
+        "raw_cps_per_keV": 0.0,
+        "raw_events_per_bin": 0,
+        "active_cps_per_keV": 0.0,
+        "active_events_per_bin": 0,
+        "compton_cps_per_keV": 0.0,
+        "compton_events_per_bin": 0
+      },
+      {
+        "energy_lo_keV": 490.0,
+        "energy_hi_keV": 490.5,
+        "energy_center_keV": 490.25,
+        "raw_cps_per_keV": 5.3772113781792764e-05,
+        "raw_events_per_bin": 1,
+        "active_cps_per_keV": 5.3772113781792764e-05,
+        "active_events_per_bin": 1,
+        "compton_cps_per_keV": 5.3772113781792764e-05,
+        "compton_events_per_bin": 1
+      },
+      {
+        "energy_lo_keV": 490.5,
+        "energy_hi_keV": 491.0,
+        "energy_center_keV": 490.75,
+        "raw_cps_per_keV": 5.3772113781792764e-05,
+        "raw_events_per_bin": 1,
+        "active_cps_per_keV": 5.3772113781792764e-05,
+        "active_events_per_bin": 1,
+        "compton_cps_per_keV": 5.3772113781792764e-05,
+        "compton_events_per_bin": 1
+      },
+      {
+        "energy_lo_keV": 491.0,
+        "energy_hi_keV": 491.5,
+        "energy_center_keV": 491.25,
+        "raw_cps_per_keV": 0.0,
+        "raw_events_per_bin": 0,
+        "active_cps_per_keV": 0.0,
+        "active_events_per_bin": 0,
+        "compton_cps_per_keV": 0.0,
+        "compton_events_per_bin": 0
+      },
+      {
+        "energy_lo_keV": 491.5,
+        "energy_hi_keV": 492.0,
+        "energy_center_keV": 491.75,
+        "raw_cps_per_keV": 5.3772113781792764e-05,
+        "raw_events_per_bin": 1,
+        "active_cps_per_keV": 5.3772113781792764e-05,
+        "active_events_per_bin": 1,
+        "compton_cps_per_keV": 5.3772113781792764e-05,
+        "compton_events_per_bin": 1
+      },
+      {
+        "energy_lo_keV": 492.0,
+        "energy_hi_keV": 492.5,
+        "energy_center_keV": 492.25,
+        "raw_cps_per_keV": 5.3772113781792764e-05,
+        "raw_events_per_bin": 1,
+        "active_cps_per_keV": 5.3772113781792764e-05,
+        "active_events_per_bin": 1,
+        "compton_cps_per_keV": 5.3772113781792764e-05,
+        "compton_events_per_bin": 1
+      },
+      {
+        "energy_lo_keV": 492.5,
+        "energy_hi_keV": 493.0,
+        "energy_center_keV": 492.75,
+        "raw_cps_per_keV": 0.00016131634134537829,
+        "raw_events_per_bin": 3,
+        "active_cps_per_keV": 0.00016131634134537829,
+        "active_events_per_bin": 3,
+        "compton_cps_per_keV": 0.00016131634134537829,
+        "compton_events_per_bin": 3
+      },
+      {
+        "energy_lo_keV": 493.0,
+        "energy_hi_keV": 493.5,
+        "energy_center_keV": 493.25,
+        "raw_cps_per_keV": 5.3772113781792764e-05,
+        "raw_events_per_bin": 1,
+        "active_cps_per_keV": 5.3772113781792764e-05,
+        "active_events_per_bin": 1,
+        "compton_cps_per_keV": 5.3772113781792764e-05,
+        "compton_events_per_bin": 1
+      },
+      {
+        "energy_lo_keV": 493.5,
+        "energy_hi_keV": 494.0,
+        "energy_center_keV": 493.75,
+        "raw_cps_per_keV": 5.3772113781792764e-05,
+        "raw_events_per_bin": 1,
+        "active_cps_per_keV": 5.3772113781792764e-05,
+        "active_events_per_bin": 1,
+        "compton_cps_per_keV": 5.3772113781792764e-05,
+        "compton_events_per_bin": 1
+      },
+      {
+        "energy_lo_keV": 494.0,
+        "energy_hi_keV": 494.5,
+        "energy_center_keV": 494.25,
+        "raw_cps_per_keV": 5.3772113781792764e-05,
+        "raw_events_per_bin": 1,
+        "active_cps_per_keV": 5.3772113781792764e-05,
+        "active_events_per_bin": 1,
+        "compton_cps_per_keV": 5.3772113781792764e-05,
+        "compton_events_per_bin": 1
+      },
+      {
+        "energy_lo_keV": 494.5,
+        "energy_hi_keV": 495.0,
+        "energy_center_keV": 494.75,
+        "raw_cps_per_keV": 5.3772113781792764e-05,
+        "raw_events_per_bin": 1,
+        "active_cps_per_keV": 5.3772113781792764e-05,
+        "active_events_per_bin": 1,
+        "compton_cps_per_keV": 0.0,
+        "compton_events_per_bin": 0
+      },
+      {
+        "energy_lo_keV": 495.0,
+        "energy_hi_keV": 495.5,
+        "energy_center_keV": 495.25,
+        "raw_cps_per_keV": 0.0,
+        "raw_events_per_bin": 0,
+        "active_cps_per_keV": 0.0,
+        "active_events_per_bin": 0,
+        "compton_cps_per_keV": 0.0,
+        "compton_events_per_bin": 0
+      },
+      {
+        "energy_lo_keV": 495.5,
+        "energy_hi_keV": 496.0,
+        "energy_center_keV": 495.75,
+        "raw_cps_per_keV": 5.3772113781792764e-05,
+        "raw_events_per_bin": 1,
+        "active_cps_per_keV": 5.3772113781792764e-05,
+        "active_events_per_bin": 1,
+        "compton_cps_per_keV": 0.0,
+        "compton_events_per_bin": 0
+      },
+      {
+        "energy_lo_keV": 496.0,
+        "energy_hi_keV": 496.5,
+        "energy_center_keV": 496.25,
+        "raw_cps_per_keV": 0.00010754422756358553,
+        "raw_events_per_bin": 2,
+        "active_cps_per_keV": 0.00010754422756358553,
+        "active_events_per_bin": 2,
+        "compton_cps_per_keV": 0.00010754422756358553,
+        "compton_events_per_bin": 2
+      },
+      {
+        "energy_lo_keV": 496.5,
+        "energy_hi_keV": 497.0,
+        "energy_center_keV": 496.75,
+        "raw_cps_per_keV": 0.00010754422756358553,
+        "raw_events_per_bin": 2,
+        "active_cps_per_keV": 0.00010754422756358553,
+        "active_events_per_bin": 2,
+        "compton_cps_per_keV": 0.00010754422756358553,
+        "compton_events_per_bin": 2
+      },
+      {
+        "energy_lo_keV": 497.0,
+        "energy_hi_keV": 497.5,
+        "energy_center_keV": 497.25,
+        "raw_cps_per_keV": 5.3772113781792764e-05,
+        "raw_events_per_bin": 1,
+        "active_cps_per_keV": 5.3772113781792764e-05,
+        "active_events_per_bin": 1,
+        "compton_cps_per_keV": 5.3772113781792764e-05,
+        "compton_events_per_bin": 1
+      },
+      {
+        "energy_lo_keV": 497.5,
+        "energy_hi_keV": 498.0,
+        "energy_center_keV": 497.75,
+        "raw_cps_per_keV": 0.0,
+        "raw_events_per_bin": 0,
+        "active_cps_per_keV": 0.0,
+        "active_events_per_bin": 0,
+        "compton_cps_per_keV": 0.0,
+        "compton_events_per_bin": 0
+      },
+      {
+        "energy_lo_keV": 498.0,
+        "energy_hi_keV": 498.5,
+        "energy_center_keV": 498.25,
+        "raw_cps_per_keV": 0.0,
+        "raw_events_per_bin": 0,
+        "active_cps_per_keV": 0.0,
+        "active_events_per_bin": 0,
+        "compton_cps_per_keV": 0.0,
+        "compton_events_per_bin": 0
+      },
+      {
+        "energy_lo_keV": 498.5,
+        "energy_hi_keV": 499.0,
+        "energy_center_keV": 498.75,
+        "raw_cps_per_keV": 5.3772113781792764e-05,
+        "raw_events_per_bin": 1,
+        "active_cps_per_keV": 5.3772113781792764e-05,
+        "active_events_per_bin": 1,
+        "compton_cps_per_keV": 5.3772113781792764e-05,
+        "compton_events_per_bin": 1
+      },
+      {
+        "energy_lo_keV": 499.0,
+        "energy_hi_keV": 499.5,
+        "energy_center_keV": 499.25,
+        "raw_cps_per_keV": 0.0,
+        "raw_events_per_bin": 0,
+        "active_cps_per_keV": 0.0,
+        "active_events_per_bin": 0,
+        "compton_cps_per_keV": 0.0,
+        "compton_events_per_bin": 0
+      },
+      {
+        "energy_lo_keV": 499.5,
+        "energy_hi_keV": 500.0,
+        "energy_center_keV": 499.75,
+        "raw_cps_per_keV": 0.00010754422756358553,
+        "raw_events_per_bin": 2,
+        "active_cps_per_keV": 0.00010754422756358553,
+        "active_events_per_bin": 2,
+        "compton_cps_per_keV": 0.00010754422756358553,
+        "compton_events_per_bin": 2
+      },
+      {
+        "energy_lo_keV": 500.0,
+        "energy_hi_keV": 500.5,
+        "energy_center_keV": 500.25,
+        "raw_cps_per_keV": 0.00010754422756358553,
+        "raw_events_per_bin": 2,
+        "active_cps_per_keV": 0.00010754422756358553,
+        "active_events_per_bin": 2,
+        "compton_cps_per_keV": 0.00010754422756358553,
+        "compton_events_per_bin": 2
+      },
+      {
+        "energy_lo_keV": 500.5,
+        "energy_hi_keV": 501.0,
+        "energy_center_keV": 500.75,
+        "raw_cps_per_keV": 0.00010754422756358553,
+        "raw_events_per_bin": 2,
+        "active_cps_per_keV": 0.00010754422756358553,
+        "active_events_per_bin": 2,
+        "compton_cps_per_keV": 0.00010754422756358553,
+        "compton_events_per_bin": 2
+      },
+      {
+        "energy_lo_keV": 501.0,
+        "energy_hi_keV": 501.5,
+        "energy_center_keV": 501.25,
+        "raw_cps_per_keV": 5.3772113781792764e-05,
+        "raw_events_per_bin": 1,
+        "active_cps_per_keV": 5.3772113781792764e-05,
+        "active_events_per_bin": 1,
+        "compton_cps_per_keV": 5.3772113781792764e-05,
+        "compton_events_per_bin": 1
+      },
+      {
+        "energy_lo_keV": 501.5,
+        "energy_hi_keV": 502.0,
+        "energy_center_keV": 501.75,
+        "raw_cps_per_keV": 0.00021508845512717106,
+        "raw_events_per_bin": 4,
+        "active_cps_per_keV": 0.00021508845512717106,
+        "active_events_per_bin": 4,
+        "compton_cps_per_keV": 0.00016131634134537829,
+        "compton_events_per_bin": 3
+      },
+      {
+        "energy_lo_keV": 502.0,
+        "energy_hi_keV": 502.5,
+        "energy_center_keV": 502.25,
+        "raw_cps_per_keV": 5.3772113781792764e-05,
+        "raw_events_per_bin": 1,
+        "active_cps_per_keV": 5.3772113781792764e-05,
+        "active_events_per_bin": 1,
+        "compton_cps_per_keV": 5.3772113781792764e-05,
+        "compton_events_per_bin": 1
+      },
+      {
+        "energy_lo_keV": 502.5,
+        "energy_hi_keV": 503.0,
+        "energy_center_keV": 502.75,
+        "raw_cps_per_keV": 0.00021508845512717106,
+        "raw_events_per_bin": 4,
+        "active_cps_per_keV": 0.00021508845512717106,
+        "active_events_per_bin": 4,
+        "compton_cps_per_keV": 0.00016131634134537829,
+        "compton_events_per_bin": 3
+      },
+      {
+        "energy_lo_keV": 503.0,
+        "energy_hi_keV": 503.5,
+        "energy_center_keV": 503.25,
+        "raw_cps_per_keV": 0.0,
+        "raw_events_per_bin": 0,
+        "active_cps_per_keV": 0.0,
+        "active_events_per_bin": 0,
+        "compton_cps_per_keV": 0.0,
+        "compton_events_per_bin": 0
+      },
+      {
+        "energy_lo_keV": 503.5,
+        "energy_hi_keV": 504.0,
+        "energy_center_keV": 503.75,
+        "raw_cps_per_keV": 0.0,
+        "raw_events_per_bin": 0,
+        "active_cps_per_keV": 0.0,
+        "active_events_per_bin": 0,
+        "compton_cps_per_keV": 0.0,
+        "compton_events_per_bin": 0
+      },
+      {
+        "energy_lo_keV": 504.0,
+        "energy_hi_keV": 504.5,
+        "energy_center_keV": 504.25,
+        "raw_cps_per_keV": 5.3772113781792764e-05,
+        "raw_events_per_bin": 1,
+        "active_cps_per_keV": 5.3772113781792764e-05,
+        "active_events_per_bin": 1,
+        "compton_cps_per_keV": 5.3772113781792764e-05,
+        "compton_events_per_bin": 1
+      },
+      {
+        "energy_lo_keV": 504.5,
+        "energy_hi_keV": 505.0,
+        "energy_center_keV": 504.75,
+        "raw_cps_per_keV": 0.0,
+        "raw_events_per_bin": 0,
+        "active_cps_per_keV": 0.0,
+        "active_events_per_bin": 0,
+        "compton_cps_per_keV": 0.0,
+        "compton_events_per_bin": 0
+      },
+      {
+        "energy_lo_keV": 505.0,
+        "energy_hi_keV": 505.5,
+        "energy_center_keV": 505.25,
+        "raw_cps_per_keV": 5.3772113781792764e-05,
+        "raw_events_per_bin": 1,
+        "active_cps_per_keV": 5.3772113781792764e-05,
+        "active_events_per_bin": 1,
+        "compton_cps_per_keV": 0.0,
+        "compton_events_per_bin": 0
+      },
+      {
+        "energy_lo_keV": 505.5,
+        "energy_hi_keV": 506.0,
+        "energy_center_keV": 505.75,
+        "raw_cps_per_keV": 0.00021508845512717106,
+        "raw_events_per_bin": 4,
+        "active_cps_per_keV": 0.00021508845512717106,
+        "active_events_per_bin": 4,
+        "compton_cps_per_keV": 0.00016131634134537829,
+        "compton_events_per_bin": 3
+      },
+      {
+        "energy_lo_keV": 506.0,
+        "energy_hi_keV": 506.5,
+        "energy_center_keV": 506.25,
+        "raw_cps_per_keV": 0.00010754422756358553,
+        "raw_events_per_bin": 2,
+        "active_cps_per_keV": 0.00010754422756358553,
+        "active_events_per_bin": 2,
+        "compton_cps_per_keV": 5.3772113781792764e-05,
+        "compton_events_per_bin": 1
+      },
+      {
+        "energy_lo_keV": 506.5,
+        "energy_hi_keV": 507.0,
+        "energy_center_keV": 506.75,
+        "raw_cps_per_keV": 5.3772113781792764e-05,
+        "raw_events_per_bin": 1,
+        "active_cps_per_keV": 5.3772113781792764e-05,
+        "active_events_per_bin": 1,
+        "compton_cps_per_keV": 5.3772113781792764e-05,
+        "compton_events_per_bin": 1
+      },
+      {
+        "energy_lo_keV": 507.0,
+        "energy_hi_keV": 507.5,
+        "energy_center_keV": 507.25,
+        "raw_cps_per_keV": 5.3772113781792764e-05,
+        "raw_events_per_bin": 1,
+        "active_cps_per_keV": 5.3772113781792764e-05,
+        "active_events_per_bin": 1,
+        "compton_cps_per_keV": 5.3772113781792764e-05,
+        "compton_events_per_bin": 1
+      },
+      {
+        "energy_lo_keV": 507.5,
+        "energy_hi_keV": 508.0,
+        "energy_center_keV": 507.75,
+        "raw_cps_per_keV": 0.00021508845512717106,
+        "raw_events_per_bin": 4,
+        "active_cps_per_keV": 0.00021508845512717106,
+        "active_events_per_bin": 4,
+        "compton_cps_per_keV": 0.00016131634134537829,
+        "compton_events_per_bin": 3
+      },
+      {
+        "energy_lo_keV": 508.0,
+        "energy_hi_keV": 508.5,
+        "energy_center_keV": 508.25,
+        "raw_cps_per_keV": 5.3772113781792764e-05,
+        "raw_events_per_bin": 1,
+        "active_cps_per_keV": 5.3772113781792764e-05,
+        "active_events_per_bin": 1,
+        "compton_cps_per_keV": 5.3772113781792764e-05,
+        "compton_events_per_bin": 1
+      },
+      {
+        "energy_lo_keV": 508.5,
+        "energy_hi_keV": 509.0,
+        "energy_center_keV": 508.75,
+        "raw_cps_per_keV": 0.0,
+        "raw_events_per_bin": 0,
+        "active_cps_per_keV": 0.0,
+        "active_events_per_bin": 0,
+        "compton_cps_per_keV": 0.0,
+        "compton_events_per_bin": 0
+      },
+      {
+        "energy_lo_keV": 509.0,
+        "energy_hi_keV": 509.5,
+        "energy_center_keV": 509.25,
+        "raw_cps_per_keV": 0.0,
+        "raw_events_per_bin": 0,
+        "active_cps_per_keV": 0.0,
+        "active_events_per_bin": 0,
+        "compton_cps_per_keV": 0.0,
+        "compton_events_per_bin": 0
+      },
+      {
+        "energy_lo_keV": 509.5,
+        "energy_hi_keV": 510.0,
+        "energy_center_keV": 509.75,
+        "raw_cps_per_keV": 0.00010754422756358553,
+        "raw_events_per_bin": 2,
+        "active_cps_per_keV": 0.00010754422756358553,
+        "active_events_per_bin": 2,
+        "compton_cps_per_keV": 0.00010754422756358553,
+        "compton_events_per_bin": 2
+      },
+      {
+        "energy_lo_keV": 510.0,
+        "energy_hi_keV": 510.5,
+        "energy_center_keV": 510.25,
+        "raw_cps_per_keV": 0.0,
+        "raw_events_per_bin": 0,
+        "active_cps_per_keV": 0.0,
+        "active_events_per_bin": 0,
+        "compton_cps_per_keV": 0.0,
+        "compton_events_per_bin": 0
+      },
+      {
+        "energy_lo_keV": 510.5,
+        "energy_hi_keV": 511.0,
+        "energy_center_keV": 510.75,
+        "raw_cps_per_keV": 0.63085443888784,
+        "raw_events_per_bin": 11732,
+        "active_cps_per_keV": 0.63085443888784,
+        "active_events_per_bin": 11732,
+        "compton_cps_per_keV": 0.6157982470289446,
+        "compton_events_per_bin": 11452
+      },
+      {
+        "energy_lo_keV": 511.0,
+        "energy_hi_keV": 511.5,
+        "energy_center_keV": 511.25,
+        "raw_cps_per_keV": 0.994891649190418,
+        "raw_events_per_bin": 18502,
+        "active_cps_per_keV": 0.994891649190418,
+        "active_events_per_bin": 18502,
+        "compton_cps_per_keV": 0.9756950045703263,
+        "compton_events_per_bin": 18145
+      },
+      {
+        "energy_lo_keV": 511.5,
+        "energy_hi_keV": 512.0,
+        "energy_center_keV": 511.75,
+        "raw_cps_per_keV": 0.0,
+        "raw_events_per_bin": 0,
+        "active_cps_per_keV": 0.0,
+        "active_events_per_bin": 0,
+        "compton_cps_per_keV": 0.0,
+        "compton_events_per_bin": 0
+      },
+      {
+        "energy_lo_keV": 512.0,
+        "energy_hi_keV": 512.5,
+        "energy_center_keV": 512.25,
+        "raw_cps_per_keV": 0.0,
+        "raw_events_per_bin": 0,
+        "active_cps_per_keV": 0.0,
+        "active_events_per_bin": 0,
+        "compton_cps_per_keV": 0.0,
+        "compton_events_per_bin": 0
+      },
+      {
+        "energy_lo_keV": 512.5,
+        "energy_hi_keV": 513.0,
+        "energy_center_keV": 512.75,
+        "raw_cps_per_keV": 0.0,
+        "raw_events_per_bin": 0,
+        "active_cps_per_keV": 0.0,
+        "active_events_per_bin": 0,
+        "compton_cps_per_keV": 0.0,
+        "compton_events_per_bin": 0
+      },
+      {
+        "energy_lo_keV": 513.0,
+        "energy_hi_keV": 513.5,
+        "energy_center_keV": 513.25,
+        "raw_cps_per_keV": 0.0,
+        "raw_events_per_bin": 0,
+        "active_cps_per_keV": 0.0,
+        "active_events_per_bin": 0,
+        "compton_cps_per_keV": 0.0,
+        "compton_events_per_bin": 0
+      },
+      {
+        "energy_lo_keV": 513.5,
+        "energy_hi_keV": 514.0,
+        "energy_center_keV": 513.75,
+        "raw_cps_per_keV": 0.0,
+        "raw_events_per_bin": 0,
+        "active_cps_per_keV": 0.0,
+        "active_events_per_bin": 0,
+        "compton_cps_per_keV": 0.0,
+        "compton_events_per_bin": 0
+      },
+      {
+        "energy_lo_keV": 514.0,
+        "energy_hi_keV": 514.5,
+        "energy_center_keV": 514.25,
+        "raw_cps_per_keV": 0.0,
+        "raw_events_per_bin": 0,
+        "active_cps_per_keV": 0.0,
+        "active_events_per_bin": 0,
+        "compton_cps_per_keV": 0.0,
+        "compton_events_per_bin": 0
+      },
+      {
+        "energy_lo_keV": 514.5,
+        "energy_hi_keV": 515.0,
+        "energy_center_keV": 514.75,
+        "raw_cps_per_keV": 0.0,
+        "raw_events_per_bin": 0,
+        "active_cps_per_keV": 0.0,
+        "active_events_per_bin": 0,
+        "compton_cps_per_keV": 0.0,
+        "compton_events_per_bin": 0
+      },
+      {
+        "energy_lo_keV": 515.0,
+        "energy_hi_keV": 515.5,
+        "energy_center_keV": 515.25,
+        "raw_cps_per_keV": 0.0,
+        "raw_events_per_bin": 0,
+        "active_cps_per_keV": 0.0,
+        "active_events_per_bin": 0,
+        "compton_cps_per_keV": 0.0,
+        "compton_events_per_bin": 0
+      },
+      {
+        "energy_lo_keV": 515.5,
+        "energy_hi_keV": 516.0,
+        "energy_center_keV": 515.75,
+        "raw_cps_per_keV": 0.0,
+        "raw_events_per_bin": 0,
+        "active_cps_per_keV": 0.0,
+        "active_events_per_bin": 0,
+        "compton_cps_per_keV": 0.0,
+        "compton_events_per_bin": 0
+      },
+      {
+        "energy_lo_keV": 516.0,
+        "energy_hi_keV": 516.5,
+        "energy_center_keV": 516.25,
+        "raw_cps_per_keV": 0.0,
+        "raw_events_per_bin": 0,
+        "active_cps_per_keV": 0.0,
+        "active_events_per_bin": 0,
+        "compton_cps_per_keV": 0.0,
+        "compton_events_per_bin": 0
+      },
+      {
+        "energy_lo_keV": 516.5,
+        "energy_hi_keV": 517.0,
+        "energy_center_keV": 516.75,
+        "raw_cps_per_keV": 0.0,
+        "raw_events_per_bin": 0,
+        "active_cps_per_keV": 0.0,
+        "active_events_per_bin": 0,
+        "compton_cps_per_keV": 0.0,
+        "compton_events_per_bin": 0
+      },
+      {
+        "energy_lo_keV": 517.0,
+        "energy_hi_keV": 517.5,
+        "energy_center_keV": 517.25,
+        "raw_cps_per_keV": 0.0,
+        "raw_events_per_bin": 0,
+        "active_cps_per_keV": 0.0,
+        "active_events_per_bin": 0,
+        "compton_cps_per_keV": 0.0,
+        "compton_events_per_bin": 0
+      },
+      {
+        "energy_lo_keV": 517.5,
+        "energy_hi_keV": 518.0,
+        "energy_center_keV": 517.75,
+        "raw_cps_per_keV": 0.0,
+        "raw_events_per_bin": 0,
+        "active_cps_per_keV": 0.0,
+        "active_events_per_bin": 0,
+        "compton_cps_per_keV": 0.0,
+        "compton_events_per_bin": 0
+      },
+      {
+        "energy_lo_keV": 518.0,
+        "energy_hi_keV": 518.5,
+        "energy_center_keV": 518.25,
+        "raw_cps_per_keV": 0.0,
+        "raw_events_per_bin": 0,
+        "active_cps_per_keV": 0.0,
+        "active_events_per_bin": 0,
+        "compton_cps_per_keV": 0.0,
+        "compton_events_per_bin": 0
+      },
+      {
+        "energy_lo_keV": 518.5,
+        "energy_hi_keV": 519.0,
+        "energy_center_keV": 518.75,
+        "raw_cps_per_keV": 0.0,
+        "raw_events_per_bin": 0,
+        "active_cps_per_keV": 0.0,
+        "active_events_per_bin": 0,
+        "compton_cps_per_keV": 0.0,
+        "compton_events_per_bin": 0
+      },
+      {
+        "energy_lo_keV": 519.0,
+        "energy_hi_keV": 519.5,
+        "energy_center_keV": 519.25,
+        "raw_cps_per_keV": 0.0,
+        "raw_events_per_bin": 0,
+        "active_cps_per_keV": 0.0,
+        "active_events_per_bin": 0,
+        "compton_cps_per_keV": 0.0,
+        "compton_events_per_bin": 0
+      },
+      {
+        "energy_lo_keV": 519.5,
+        "energy_hi_keV": 520.0,
+        "energy_center_keV": 519.75,
+        "raw_cps_per_keV": 0.0,
+        "raw_events_per_bin": 0,
+        "active_cps_per_keV": 0.0,
+        "active_events_per_bin": 0,
+        "compton_cps_per_keV": 0.0,
+        "compton_events_per_bin": 0
+      },
+      {
+        "energy_lo_keV": 520.0,
+        "energy_hi_keV": 520.5,
+        "energy_center_keV": 520.25,
+        "raw_cps_per_keV": 0.0,
+        "raw_events_per_bin": 0,
+        "active_cps_per_keV": 0.0,
+        "active_events_per_bin": 0,
+        "compton_cps_per_keV": 0.0,
+        "compton_events_per_bin": 0
+      },
+      {
+        "energy_lo_keV": 520.5,
+        "energy_hi_keV": 521.0,
+        "energy_center_keV": 520.75,
+        "raw_cps_per_keV": 0.0,
+        "raw_events_per_bin": 0,
+        "active_cps_per_keV": 0.0,
+        "active_events_per_bin": 0,
+        "compton_cps_per_keV": 0.0,
+        "compton_events_per_bin": 0
+      },
+      {
+        "energy_lo_keV": 521.0,
+        "energy_hi_keV": 521.5,
+        "energy_center_keV": 521.25,
+        "raw_cps_per_keV": 0.0,
+        "raw_events_per_bin": 0,
+        "active_cps_per_keV": 0.0,
+        "active_events_per_bin": 0,
+        "compton_cps_per_keV": 0.0,
+        "compton_events_per_bin": 0
+      },
+      {
+        "energy_lo_keV": 521.5,
+        "energy_hi_keV": 522.0,
+        "energy_center_keV": 521.75,
+        "raw_cps_per_keV": 0.0,
+        "raw_events_per_bin": 0,
+        "active_cps_per_keV": 0.0,
+        "active_events_per_bin": 0,
+        "compton_cps_per_keV": 0.0,
+        "compton_events_per_bin": 0
+      },
+      {
+        "energy_lo_keV": 522.0,
+        "energy_hi_keV": 522.5,
+        "energy_center_keV": 522.25,
+        "raw_cps_per_keV": 0.0,
+        "raw_events_per_bin": 0,
+        "active_cps_per_keV": 0.0,
+        "active_events_per_bin": 0,
+        "compton_cps_per_keV": 0.0,
+        "compton_events_per_bin": 0
+      },
+      {
+        "energy_lo_keV": 522.5,
+        "energy_hi_keV": 523.0,
+        "energy_center_keV": 522.75,
+        "raw_cps_per_keV": 0.0,
+        "raw_events_per_bin": 0,
+        "active_cps_per_keV": 0.0,
+        "active_events_per_bin": 0,
+        "compton_cps_per_keV": 0.0,
+        "compton_events_per_bin": 0
+      },
+      {
+        "energy_lo_keV": 523.0,
+        "energy_hi_keV": 523.5,
+        "energy_center_keV": 523.25,
+        "raw_cps_per_keV": 0.0,
+        "raw_events_per_bin": 0,
+        "active_cps_per_keV": 0.0,
+        "active_events_per_bin": 0,
+        "compton_cps_per_keV": 0.0,
+        "compton_events_per_bin": 0
+      },
+      {
+        "energy_lo_keV": 523.5,
+        "energy_hi_keV": 524.0,
+        "energy_center_keV": 523.75,
+        "raw_cps_per_keV": 0.0,
+        "raw_events_per_bin": 0,
+        "active_cps_per_keV": 0.0,
+        "active_events_per_bin": 0,
+        "compton_cps_per_keV": 0.0,
+        "compton_events_per_bin": 0
+      },
+      {
+        "energy_lo_keV": 524.0,
+        "energy_hi_keV": 524.5,
+        "energy_center_keV": 524.25,
+        "raw_cps_per_keV": 0.0,
+        "raw_events_per_bin": 0,
+        "active_cps_per_keV": 0.0,
+        "active_events_per_bin": 0,
+        "compton_cps_per_keV": 0.0,
+        "compton_events_per_bin": 0
+      },
+      {
+        "energy_lo_keV": 524.5,
+        "energy_hi_keV": 525.0,
+        "energy_center_keV": 524.75,
+        "raw_cps_per_keV": 0.0,
+        "raw_events_per_bin": 0,
+        "active_cps_per_keV": 0.0,
+        "active_events_per_bin": 0,
+        "compton_cps_per_keV": 0.0,
+        "compton_events_per_bin": 0
+      },
+      {
+        "energy_lo_keV": 525.0,
+        "energy_hi_keV": 525.5,
+        "energy_center_keV": 525.25,
+        "raw_cps_per_keV": 0.0,
+        "raw_events_per_bin": 0,
+        "active_cps_per_keV": 0.0,
+        "active_events_per_bin": 0,
+        "compton_cps_per_keV": 0.0,
+        "compton_events_per_bin": 0
+      },
+      {
+        "energy_lo_keV": 525.5,
+        "energy_hi_keV": 526.0,
+        "energy_center_keV": 525.75,
+        "raw_cps_per_keV": 0.0,
+        "raw_events_per_bin": 0,
+        "active_cps_per_keV": 0.0,
+        "active_events_per_bin": 0,
+        "compton_cps_per_keV": 0.0,
+        "compton_events_per_bin": 0
+      },
+      {
+        "energy_lo_keV": 526.0,
+        "energy_hi_keV": 526.5,
+        "energy_center_keV": 526.25,
+        "raw_cps_per_keV": 0.0,
+        "raw_events_per_bin": 0,
+        "active_cps_per_keV": 0.0,
+        "active_events_per_bin": 0,
+        "compton_cps_per_keV": 0.0,
+        "compton_events_per_bin": 0
+      },
+      {
+        "energy_lo_keV": 526.5,
+        "energy_hi_keV": 527.0,
+        "energy_center_keV": 526.75,
+        "raw_cps_per_keV": 0.0,
+        "raw_events_per_bin": 0,
+        "active_cps_per_keV": 0.0,
+        "active_events_per_bin": 0,
+        "compton_cps_per_keV": 0.0,
+        "compton_events_per_bin": 0
+      },
+      {
+        "energy_lo_keV": 527.0,
+        "energy_hi_keV": 527.5,
+        "energy_center_keV": 527.25,
+        "raw_cps_per_keV": 0.0,
+        "raw_events_per_bin": 0,
+        "active_cps_per_keV": 0.0,
+        "active_events_per_bin": 0,
+        "compton_cps_per_keV": 0.0,
+        "compton_events_per_bin": 0
+      },
+      {
+        "energy_lo_keV": 527.5,
+        "energy_hi_keV": 528.0,
+        "energy_center_keV": 527.75,
+        "raw_cps_per_keV": 0.0,
+        "raw_events_per_bin": 0,
+        "active_cps_per_keV": 0.0,
+        "active_events_per_bin": 0,
+        "compton_cps_per_keV": 0.0,
+        "compton_events_per_bin": 0
+      },
+      {
+        "energy_lo_keV": 528.0,
+        "energy_hi_keV": 528.5,
+        "energy_center_keV": 528.25,
+        "raw_cps_per_keV": 0.0,
+        "raw_events_per_bin": 0,
+        "active_cps_per_keV": 0.0,
+        "active_events_per_bin": 0,
+        "compton_cps_per_keV": 0.0,
+        "compton_events_per_bin": 0
+      },
+      {
+        "energy_lo_keV": 528.5,
+        "energy_hi_keV": 529.0,
+        "energy_center_keV": 528.75,
+        "raw_cps_per_keV": 0.0,
+        "raw_events_per_bin": 0,
+        "active_cps_per_keV": 0.0,
+        "active_events_per_bin": 0,
+        "compton_cps_per_keV": 0.0,
+        "compton_events_per_bin": 0
+      },
+      {
+        "energy_lo_keV": 529.0,
+        "energy_hi_keV": 529.5,
+        "energy_center_keV": 529.25,
+        "raw_cps_per_keV": 0.0,
+        "raw_events_per_bin": 0,
+        "active_cps_per_keV": 0.0,
+        "active_events_per_bin": 0,
+        "compton_cps_per_keV": 0.0,
+        "compton_events_per_bin": 0
+      },
+      {
+        "energy_lo_keV": 529.5,
+        "energy_hi_keV": 530.0,
+        "energy_center_keV": 529.75,
+        "raw_cps_per_keV": 0.0,
+        "raw_events_per_bin": 0,
+        "active_cps_per_keV": 0.0,
+        "active_events_per_bin": 0,
+        "compton_cps_per_keV": 0.0,
+        "compton_events_per_bin": 0
+      },
+      {
+        "energy_lo_keV": 530.0,
+        "energy_hi_keV": 530.5,
+        "energy_center_keV": 530.25,
+        "raw_cps_per_keV": 0.0,
+        "raw_events_per_bin": 0,
+        "active_cps_per_keV": 0.0,
+        "active_events_per_bin": 0,
+        "compton_cps_per_keV": 0.0,
+        "compton_events_per_bin": 0
+      },
+      {
+        "energy_lo_keV": 530.5,
+        "energy_hi_keV": 531.0,
+        "energy_center_keV": 530.75,
+        "raw_cps_per_keV": 0.0,
+        "raw_events_per_bin": 0,
+        "active_cps_per_keV": 0.0,
+        "active_events_per_bin": 0,
+        "compton_cps_per_keV": 0.0,
+        "compton_events_per_bin": 0
+      },
+      {
+        "energy_lo_keV": 531.0,
+        "energy_hi_keV": 531.5,
+        "energy_center_keV": 531.25,
+        "raw_cps_per_keV": 0.0,
+        "raw_events_per_bin": 0,
+        "active_cps_per_keV": 0.0,
+        "active_events_per_bin": 0,
+        "compton_cps_per_keV": 0.0,
+        "compton_events_per_bin": 0
+      },
+      {
+        "energy_lo_keV": 531.5,
+        "energy_hi_keV": 532.0,
+        "energy_center_keV": 531.75,
+        "raw_cps_per_keV": 0.0,
+        "raw_events_per_bin": 0,
+        "active_cps_per_keV": 0.0,
+        "active_events_per_bin": 0,
+        "compton_cps_per_keV": 0.0,
+        "compton_events_per_bin": 0
+      },
+      {
+        "energy_lo_keV": 532.0,
+        "energy_hi_keV": 532.5,
+        "energy_center_keV": 532.25,
+        "raw_cps_per_keV": 0.0,
+        "raw_events_per_bin": 0,
+        "active_cps_per_keV": 0.0,
+        "active_events_per_bin": 0,
+        "compton_cps_per_keV": 0.0,
+        "compton_events_per_bin": 0
+      },
+      {
+        "energy_lo_keV": 532.5,
+        "energy_hi_keV": 533.0,
+        "energy_center_keV": 532.75,
+        "raw_cps_per_keV": 0.0,
+        "raw_events_per_bin": 0,
+        "active_cps_per_keV": 0.0,
+        "active_events_per_bin": 0,
+        "compton_cps_per_keV": 0.0,
+        "compton_events_per_bin": 0
+      },
+      {
+        "energy_lo_keV": 533.0,
+        "energy_hi_keV": 533.5,
+        "energy_center_keV": 533.25,
+        "raw_cps_per_keV": 0.0,
+        "raw_events_per_bin": 0,
+        "active_cps_per_keV": 0.0,
+        "active_events_per_bin": 0,
+        "compton_cps_per_keV": 0.0,
+        "compton_events_per_bin": 0
+      },
+      {
+        "energy_lo_keV": 533.5,
+        "energy_hi_keV": 534.0,
+        "energy_center_keV": 533.75,
+        "raw_cps_per_keV": 0.0,
+        "raw_events_per_bin": 0,
+        "active_cps_per_keV": 0.0,
+        "active_events_per_bin": 0,
+        "compton_cps_per_keV": 0.0,
+        "compton_events_per_bin": 0
+      },
+      {
+        "energy_lo_keV": 534.0,
+        "energy_hi_keV": 534.5,
+        "energy_center_keV": 534.25,
+        "raw_cps_per_keV": 0.0,
+        "raw_events_per_bin": 0,
+        "active_cps_per_keV": 0.0,
+        "active_events_per_bin": 0,
+        "compton_cps_per_keV": 0.0,
+        "compton_events_per_bin": 0
+      },
+      {
+        "energy_lo_keV": 534.5,
+        "energy_hi_keV": 535.0,
+        "energy_center_keV": 534.75,
+        "raw_cps_per_keV": 0.0,
+        "raw_events_per_bin": 0,
+        "active_cps_per_keV": 0.0,
+        "active_events_per_bin": 0,
+        "compton_cps_per_keV": 0.0,
+        "compton_events_per_bin": 0
+      },
+      {
+        "energy_lo_keV": 535.0,
+        "energy_hi_keV": 535.5,
+        "energy_center_keV": 535.25,
+        "raw_cps_per_keV": 0.0,
+        "raw_events_per_bin": 0,
+        "active_cps_per_keV": 0.0,
+        "active_events_per_bin": 0,
+        "compton_cps_per_keV": 0.0,
+        "compton_events_per_bin": 0
+      },
+      {
+        "energy_lo_keV": 535.5,
+        "energy_hi_keV": 536.0,
+        "energy_center_keV": 535.75,
+        "raw_cps_per_keV": 0.0,
+        "raw_events_per_bin": 0,
+        "active_cps_per_keV": 0.0,
+        "active_events_per_bin": 0,
+        "compton_cps_per_keV": 0.0,
+        "compton_events_per_bin": 0
+      },
+      {
+        "energy_lo_keV": 536.0,
+        "energy_hi_keV": 536.5,
+        "energy_center_keV": 536.25,
+        "raw_cps_per_keV": 0.0,
+        "raw_events_per_bin": 0,
+        "active_cps_per_keV": 0.0,
+        "active_events_per_bin": 0,
+        "compton_cps_per_keV": 0.0,
+        "compton_events_per_bin": 0
+      },
+      {
+        "energy_lo_keV": 536.5,
+        "energy_hi_keV": 537.0,
+        "energy_center_keV": 536.75,
+        "raw_cps_per_keV": 0.0,
+        "raw_events_per_bin": 0,
+        "active_cps_per_keV": 0.0,
+        "active_events_per_bin": 0,
+        "compton_cps_per_keV": 0.0,
+        "compton_events_per_bin": 0
+      },
+      {
+        "energy_lo_keV": 537.0,
+        "energy_hi_keV": 537.5,
+        "energy_center_keV": 537.25,
+        "raw_cps_per_keV": 0.0,
+        "raw_events_per_bin": 0,
+        "active_cps_per_keV": 0.0,
+        "active_events_per_bin": 0,
+        "compton_cps_per_keV": 0.0,
+        "compton_events_per_bin": 0
+      },
+      {
+        "energy_lo_keV": 537.5,
+        "energy_hi_keV": 538.0,
+        "energy_center_keV": 537.75,
+        "raw_cps_per_keV": 0.0,
+        "raw_events_per_bin": 0,
+        "active_cps_per_keV": 0.0,
+        "active_events_per_bin": 0,
+        "compton_cps_per_keV": 0.0,
+        "compton_events_per_bin": 0
+      },
+      {
+        "energy_lo_keV": 538.0,
+        "energy_hi_keV": 538.5,
+        "energy_center_keV": 538.25,
+        "raw_cps_per_keV": 0.0,
+        "raw_events_per_bin": 0,
+        "active_cps_per_keV": 0.0,
+        "active_events_per_bin": 0,
+        "compton_cps_per_keV": 0.0,
+        "compton_events_per_bin": 0
+      },
+      {
+        "energy_lo_keV": 538.5,
+        "energy_hi_keV": 539.0,
+        "energy_center_keV": 538.75,
+        "raw_cps_per_keV": 0.0,
+        "raw_events_per_bin": 0,
+        "active_cps_per_keV": 0.0,
+        "active_events_per_bin": 0,
+        "compton_cps_per_keV": 0.0,
+        "compton_events_per_bin": 0
+      },
+      {
+        "energy_lo_keV": 539.0,
+        "energy_hi_keV": 539.5,
+        "energy_center_keV": 539.25,
+        "raw_cps_per_keV": 0.0,
+        "raw_events_per_bin": 0,
+        "active_cps_per_keV": 0.0,
+        "active_events_per_bin": 0,
+        "compton_cps_per_keV": 0.0,
+        "compton_events_per_bin": 0
+      },
+      {
+        "energy_lo_keV": 539.5,
+        "energy_hi_keV": 540.0,
+        "energy_center_keV": 539.75,
+        "raw_cps_per_keV": 0.0,
+        "raw_events_per_bin": 0,
+        "active_cps_per_keV": 0.0,
+        "active_events_per_bin": 0,
+        "compton_cps_per_keV": 0.0,
+        "compton_events_per_bin": 0
+      },
+      {
+        "energy_lo_keV": 540.0,
+        "energy_hi_keV": 540.5,
+        "energy_center_keV": 540.25,
+        "raw_cps_per_keV": 0.0,
+        "raw_events_per_bin": 0,
+        "active_cps_per_keV": 0.0,
+        "active_events_per_bin": 0,
+        "compton_cps_per_keV": 0.0,
+        "compton_events_per_bin": 0
+      },
+      {
+        "energy_lo_keV": 540.5,
+        "energy_hi_keV": 541.0,
+        "energy_center_keV": 540.75,
+        "raw_cps_per_keV": 0.0,
+        "raw_events_per_bin": 0,
+        "active_cps_per_keV": 0.0,
+        "active_events_per_bin": 0,
+        "compton_cps_per_keV": 0.0,
+        "compton_events_per_bin": 0
+      },
+      {
+        "energy_lo_keV": 541.0,
+        "energy_hi_keV": 541.5,
+        "energy_center_keV": 541.25,
+        "raw_cps_per_keV": 0.0,
+        "raw_events_per_bin": 0,
+        "active_cps_per_keV": 0.0,
+        "active_events_per_bin": 0,
+        "compton_cps_per_keV": 0.0,
+        "compton_events_per_bin": 0
+      },
+      {
+        "energy_lo_keV": 541.5,
+        "energy_hi_keV": 542.0,
+        "energy_center_keV": 541.75,
+        "raw_cps_per_keV": 0.0,
+        "raw_events_per_bin": 0,
+        "active_cps_per_keV": 0.0,
+        "active_events_per_bin": 0,
+        "compton_cps_per_keV": 0.0,
+        "compton_events_per_bin": 0
+      },
+      {
+        "energy_lo_keV": 542.0,
+        "energy_hi_keV": 542.5,
+        "energy_center_keV": 542.25,
+        "raw_cps_per_keV": 0.0,
+        "raw_events_per_bin": 0,
+        "active_cps_per_keV": 0.0,
+        "active_events_per_bin": 0,
+        "compton_cps_per_keV": 0.0,
+        "compton_events_per_bin": 0
+      },
+      {
+        "energy_lo_keV": 542.5,
+        "energy_hi_keV": 543.0,
+        "energy_center_keV": 542.75,
+        "raw_cps_per_keV": 0.0,
+        "raw_events_per_bin": 0,
+        "active_cps_per_keV": 0.0,
+        "active_events_per_bin": 0,
+        "compton_cps_per_keV": 0.0,
+        "compton_events_per_bin": 0
+      },
+      {
+        "energy_lo_keV": 543.0,
+        "energy_hi_keV": 543.5,
+        "energy_center_keV": 543.25,
+        "raw_cps_per_keV": 0.0,
+        "raw_events_per_bin": 0,
+        "active_cps_per_keV": 0.0,
+        "active_events_per_bin": 0,
+        "compton_cps_per_keV": 0.0,
+        "compton_events_per_bin": 0
+      },
+      {
+        "energy_lo_keV": 543.5,
+        "energy_hi_keV": 544.0,
+        "energy_center_keV": 543.75,
+        "raw_cps_per_keV": 0.0,
+        "raw_events_per_bin": 0,
+        "active_cps_per_keV": 0.0,
+        "active_events_per_bin": 0,
+        "compton_cps_per_keV": 0.0,
+        "compton_events_per_bin": 0
+      },
+      {
+        "energy_lo_keV": 544.0,
+        "energy_hi_keV": 544.5,
+        "energy_center_keV": 544.25,
+        "raw_cps_per_keV": 0.0,
+        "raw_events_per_bin": 0,
+        "active_cps_per_keV": 0.0,
+        "active_events_per_bin": 0,
+        "compton_cps_per_keV": 0.0,
+        "compton_events_per_bin": 0
+      },
+      {
+        "energy_lo_keV": 544.5,
+        "energy_hi_keV": 545.0,
+        "energy_center_keV": 544.75,
+        "raw_cps_per_keV": 0.0,
+        "raw_events_per_bin": 0,
+        "active_cps_per_keV": 0.0,
+        "active_events_per_bin": 0,
+        "compton_cps_per_keV": 0.0,
+        "compton_events_per_bin": 0
+      },
+      {
+        "energy_lo_keV": 545.0,
+        "energy_hi_keV": 545.5,
+        "energy_center_keV": 545.25,
+        "raw_cps_per_keV": 0.0,
+        "raw_events_per_bin": 0,
+        "active_cps_per_keV": 0.0,
+        "active_events_per_bin": 0,
+        "compton_cps_per_keV": 0.0,
+        "compton_events_per_bin": 0
+      },
+      {
+        "energy_lo_keV": 545.5,
+        "energy_hi_keV": 546.0,
+        "energy_center_keV": 545.75,
+        "raw_cps_per_keV": 0.0,
+        "raw_events_per_bin": 0,
+        "active_cps_per_keV": 0.0,
+        "active_events_per_bin": 0,
+        "compton_cps_per_keV": 0.0,
+        "compton_events_per_bin": 0
+      },
+      {
+        "energy_lo_keV": 546.0,
+        "energy_hi_keV": 546.5,
+        "energy_center_keV": 546.25,
+        "raw_cps_per_keV": 0.0,
+        "raw_events_per_bin": 0,
+        "active_cps_per_keV": 0.0,
+        "active_events_per_bin": 0,
+        "compton_cps_per_keV": 0.0,
+        "compton_events_per_bin": 0
+      },
+      {
+        "energy_lo_keV": 546.5,
+        "energy_hi_keV": 547.0,
+        "energy_center_keV": 546.75,
+        "raw_cps_per_keV": 0.0,
+        "raw_events_per_bin": 0,
+        "active_cps_per_keV": 0.0,
+        "active_events_per_bin": 0,
+        "compton_cps_per_keV": 0.0,
+        "compton_events_per_bin": 0
+      },
+      {
+        "energy_lo_keV": 547.0,
+        "energy_hi_keV": 547.5,
+        "energy_center_keV": 547.25,
+        "raw_cps_per_keV": 0.0,
+        "raw_events_per_bin": 0,
+        "active_cps_per_keV": 0.0,
+        "active_events_per_bin": 0,
+        "compton_cps_per_keV": 0.0,
+        "compton_events_per_bin": 0
+      },
+      {
+        "energy_lo_keV": 547.5,
+        "energy_hi_keV": 548.0,
+        "energy_center_keV": 547.75,
+        "raw_cps_per_keV": 0.0,
+        "raw_events_per_bin": 0,
+        "active_cps_per_keV": 0.0,
+        "active_events_per_bin": 0,
+        "compton_cps_per_keV": 0.0,
+        "compton_events_per_bin": 0
+      },
+      {
+        "energy_lo_keV": 548.0,
+        "energy_hi_keV": 548.5,
+        "energy_center_keV": 548.25,
+        "raw_cps_per_keV": 0.0,
+        "raw_events_per_bin": 0,
+        "active_cps_per_keV": 0.0,
+        "active_events_per_bin": 0,
+        "compton_cps_per_keV": 0.0,
+        "compton_events_per_bin": 0
+      },
+      {
+        "energy_lo_keV": 548.5,
+        "energy_hi_keV": 549.0,
+        "energy_center_keV": 548.75,
+        "raw_cps_per_keV": 0.0,
+        "raw_events_per_bin": 0,
+        "active_cps_per_keV": 0.0,
+        "active_events_per_bin": 0,
+        "compton_cps_per_keV": 0.0,
+        "compton_events_per_bin": 0
+      },
+      {
+        "energy_lo_keV": 549.0,
+        "energy_hi_keV": 549.5,
+        "energy_center_keV": 549.25,
+        "raw_cps_per_keV": 0.0,
+        "raw_events_per_bin": 0,
+        "active_cps_per_keV": 0.0,
+        "active_events_per_bin": 0,
+        "compton_cps_per_keV": 0.0,
+        "compton_events_per_bin": 0
+      },
+      {
+        "energy_lo_keV": 549.5,
+        "energy_hi_keV": 550.0,
+        "energy_center_keV": 549.75,
+        "raw_cps_per_keV": 0.0,
+        "raw_events_per_bin": 0,
+        "active_cps_per_keV": 0.0,
+        "active_events_per_bin": 0,
+        "compton_cps_per_keV": 0.0,
+        "compton_events_per_bin": 0
+      }
+    ]
+  },
+  "acceptance_checks": {
+    "csv_exists": true,
+    "multiplicity_json_exists": true,
+    "manifest_json_exists": true,
+    "script_exists": true,
+    "csv_rows": 140,
+    "csv_has_140_rows": true,
+    "w2_compton_bucket_sums_match_totals": true,
+    "single_raw_le_raw_total": true,
+    "w2_bucket_details": {
+      "prompt": {
+        "w2_compton_bucket_sum": 65,
+        "w2_compton_total": 65,
+        "w2_single_raw": 102,
+        "w2_raw_total": 153
+      },
+      "delayed": {
+        "w2_compton_bucket_sum": 28,
+        "w2_compton_total": 28,
+        "w2_single_raw": 27,
+        "w2_raw_total": 43
+      },
+      "signal": {
+        "w2_compton_bucket_sum": 29687,
+        "w2_compton_total": 29687,
+        "w2_single_raw": 17589,
+        "w2_raw_total": 30305
+      }
+    },
+    "geometry_lineage_is_Mass_model_511_fullstat_v1": true,
+    "step05_summary_match": true,
+    "step05_summary_match_problems": [],
+    "all_done_contract_checks_passed": true
+  },
+  "deliverables": {
+    "s33_stage_spectra_480_550.csv": "engineering/geometry_optimization_20260704/18_s33_stage_spectra_multiplicity_20260708/s33_stage_spectra_480_550.csv",
+    "s33_multiplicity_split.json": "engineering/geometry_optimization_20260704/18_s33_stage_spectra_multiplicity_20260708/s33_multiplicity_split.json",
+    "s33_manifest.json": "engineering/geometry_optimization_20260704/18_s33_stage_spectra_multiplicity_20260708/s33_manifest.json",
+    "build_s33_stage_spectra.py": "engineering/geometry_optimization_20260704/18_s33_stage_spectra_multiplicity_20260708/build_s33_stage_spectra.py"
+  }
+}

@@ -1,0 +1,85 @@
+{
+  "status": "PASS_EA_P02_FIXED_45DEG_SLANT_SIGNAL_REFOLD",
+  "generated_at_utc": "2026-08-04T08:24:49Z",
+  "scope": "Derived signal-only atmospheric correction. Retained all-eight-family prompt, delayed, atmospheric-line background, occupancy, live factors, and transport statistics are unchanged.",
+  "input_authorities": {
+    "retained_mission_summary": "engineering/ea_s3d_o8_all8_family_nuclide_mission_fold_20260713/data/s3d_o8_all8_family_nuclide_mission_summary.json",
+    "retained_mission_summary_sha256": "2f9666bbde588318d48227f0245716a4ffc7d2a599b2b9f694f812d14d4c1bea",
+    "retained_mission_timeline": "engineering/ea_s3d_o8_all8_family_nuclide_mission_fold_20260713/outputs/w2_all8_family_nuclide_mission_timeline.csv",
+    "retained_mission_timeline_sha256": "695027a801bbfdc0ef7e5c1d97bd2780c412da0ecef8c995e65d2fbfa46cf8ce",
+    "vertical_atmosphere_timeline": "engineering/geometry_optimization_20260704/43_geoopt_s3d_o8_fallback_20260712/fullchain/step06/atmosphere_transmission_511_by_time.csv",
+    "vertical_atmosphere_timeline_sha256": "c73f52c2675fa49cf7424cb552a28afcce4cab1bd4acdc239d3762ce0c581a02",
+    "step06_summary": "engineering/geometry_optimization_20260704/43_geoopt_s3d_o8_fallback_20260712/fullchain/step06/step06_s3d_o8_fullchain_summary.json",
+    "step06_summary_sha256": "68a0951ab3dbb223f8591bfe57f8ba38d9e13140b0fc13df09a0067b483172d9"
+  },
+  "fixed_source_geometry": {
+    "source_elevation_deg": 45.0,
+    "source_zenith_deg": 45.0,
+    "plane_parallel_slant_column_factor": 1.414213562373095,
+    "qualification": "fixed continuously observed reference axis, not a Galactic-centre visibility forecast"
+  },
+  "atmosphere_model": {
+    "formula": "T=exp[-mu_eff*X_vertical/cos(zenith)]",
+    "day15_vertical_depth_g_cm2": 3.4614689720143224,
+    "mu_eff_cm2_g": 0.08736175376550424,
+    "day15_vertical_transmission_legacy": 0.7390423888027,
+    "day15_slant_path_depth_g_cm2": 4.8952563659563095,
+    "day15_slant45_transmission": 0.6520342542373312,
+    "slant_to_vertical_transmission_ratio": 0.882269087830905,
+    "attenuation_note": "mu_eff is inherited from the retained vertical T/depth closure and is consistent with the NIST XCOM dry-air mass attenuation coefficient near 511 keV."
+  },
+  "point_source_reference": {
+    "reference_surface": "top of atmosphere",
+    "F0_ph_cm2_s": 0.0001,
+    "IBIS_2sigma_upper_limit_ph_cm2_s": 0.00016,
+    "IBIS_exposure_s": 10000000.0,
+    "IBIS_reference": "De Cesare 2011, A&A 531 A56, doi:10.1051/0004-6361/201116516",
+    "F0_payload_plane_ph_cm2_s_at_day15_slant45": 6.520342542373313e-05,
+    "IBIS_limit_payload_plane_ph_cm2_s_at_day15_slant45": 0.000104325480677973
+  },
+  "detector_signal_normalization": {
+    "Laue_on_axis_effective_area_cm2": 20.1,
+    "detector_selection_efficiency_after_focal_plane": 0.7525074626865674,
+    "instrument_only_selected_effective_area_cm2": 15.125400000000006,
+    "day15_atmosphere_folded_selected_conversion_cm2": 9.862278909041333,
+    "day15_focal_plane_rate_cps_at_F0": 0.0013105888510170358
+  },
+  "day15_selected_rates_cps": {
+    "background_unchanged": 0.006964863539938135,
+    "signal": 0.0009862278909041333,
+    "signal_transport_counting_lower_endpoint": 0.0009804453853292
+  },
+  "mission": {
+    "reference_flux_ph_cm2_s": 0.0001,
+    "source_counts_20d": 1650.2917035214023,
+    "background_counts_20d": 11789.0822455626,
+    "source_transport_counting_lower_endpoint_counts_20d": 1640.6156225021045,
+    "background_componentwise_transport_counting_upper_endpoint_counts_20d": 83798.34065348787,
+    "Z20d": 15.199199574829539,
+    "Z20d_componentwise_transport_counting_endpoint_conditional": 5.667468738464053,
+    "flux_3sigma_20d_ph_cm2_s": 1.973788149323413e-05,
+    "flux_3sigma_20d_componentwise_transport_counting_endpoint_conditional_ph_cm2_s": 5.2933684126734744e-05,
+    "T3_day": 0.5452106753558245,
+    "T5_day": 1.382087193313179,
+    "T3_day_componentwise_transport_counting_endpoint_conditional": 5.518778795333779,
+    "T5_day_componentwise_transport_counting_endpoint_conditional": 15.47634438401012,
+    "model": {
+      "prompt": "sum of eight response-selected day15 family rates times matching live-PARMA family scales",
+      "delayed_central": "sum over incident family and exact-source parent nuclide of activity times the same family/nuclide selected response",
+      "delayed_finite_count": "componentwise (not joint-coverage) sum of transported-family Garwood upper counts times that family's 1/TE; the selected family/nuclide response curve supplies the time scale, with total family activity used when that positive transported family has zero selected W2 events",
+      "conditional_componentwise_transport_counting_endpoint": "This endpoint combines componentwise transported-count Garwood upper endpoints and a focused-signal Clopper-Pearson lower endpoint. It is conditional on the transported samples and selected nuclide mixture, is not a full 95% coverage statement, and excludes buildup-yield, exact-position M sampling, finite-buildup zero-family, and nuclide-mixture uncertainty. Zero-observation families receive no fictitious transport exposure.",
+      "coincidence": "family-resolved prompt occupancy plus family activity-scaled delayed occupancy plus atmospheric-line occupancy",
+      "signal_transmission": "fixed 45 degree elevation; T=exp[-mu_eff*X_vertical/cos(45 deg)] in every trajectory bin"
+    }
+  },
+  "comparison_to_legacy_vertical_signal": {
+    "day15_signal_ratio": 0.8822690878309051,
+    "Z20d_ratio": 0.8813941339084307,
+    "central_flux_threshold_ratio": 1.1345662077028202
+  },
+  "outputs": {
+    "timeline": "engineering/ea_peer_review_p02_slant_transmission_20260714/outputs/w2_all8_family_nuclide_mission_timeline_slant45.csv",
+    "timeline_sha256": "00f3c8edab23f0569b2981ebe256407a856f6f6df08425f4aa255bae33b1f8ce"
+  },
+  "problems": []
+}

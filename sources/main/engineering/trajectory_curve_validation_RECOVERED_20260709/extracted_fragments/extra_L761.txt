@@ -1,0 +1,154 @@
+1	<!DOCTYPE html>
+2	<html lang="zh-CN">
+3	<head>
+4	<meta charset="utf-8">
+5	<title>TES 511 气球项目 · 三项工程进展汇报 (2026-07-02)</title>
+6	<style>
+7	  * { box-sizing: border-box; }
+8	  body { margin:0; background:#fff; color:#1a1a1a;
+9	         font-family:"Noto Sans CJK SC","Microsoft YaHei","PingFang SC",sans-serif; }
+10	  .slide { min-height:100vh; padding:46px 72px 40px; display:none; flex-direction:column; }
+11	  .slide.active { display:flex; }
+12	  h1 { font-size:34px; margin:0 0 6px; }
+13	  h2 { font-size:26px; margin:0 0 4px; }
+14	  .rule { width:64px; height:3px; background:#2c5aa0; margin:10px 0 22px; }
+15	  .tag { font-size:13px; color:#2c5aa0; letter-spacing:1px; margin-bottom:2px; }
+16	  p, li { font-size:16.5px; line-height:1.62; }
+17	  ul { margin:8px 0; padding-left:22px; }
+18	  li { margin:5px 0; }
+19	  b.red { color:#c0392b; } b.green { color:#1e8449; } b.blue { color:#2c5aa0; }
+20	  table { border-collapse:collapse; margin:12px 0; font-size:14.5px; }
+21	  th, td { border:1px solid #d5d8dc; padding:6px 11px; text-align:left; }
+22	  th { background:#f2f4f6; font-weight:600; }
+23	  td.num { text-align:right; font-variant-numeric:tabular-nums; }
+24	  .cols { display:flex; gap:34px; align-items:flex-start; flex:1; }
+25	  .col { flex:1; min-width:0; }
+26	  .figbox { text-align:center; }
+27	  .figbox img { max-width:100%; max-height:62vh; border:1px solid #eee; }
+28	  .figcap { font-size:13px; color:#666; margin-top:6px; }
+29	  .src { margin-top:auto; padding-top:14px; font-size:11.5px; color:#999;
+30	         font-family:Consolas,monospace; border-top:1px dashed #e5e5e5; }
+31	  .kbox { border:1px solid #d5d8dc; border-left:4px solid #2c5aa0; background:#f8fafc;
+32	          padding:10px 16px; margin:10px 0; font-size:16px; }
+33	  .kbox.warn { border-left-color:#c0392b; background:#fdf6f5; }
+34	  .kbox.good { border-left-color:#1e8449; background:#f4faf6; }
+35	  .pager { position:fixed; right:18px; bottom:12px; font-size:13px; color:#888;
+36	           font-family:Consolas,monospace; user-select:none; }
+37	  .navbtn { position:fixed; bottom:10px; font-size:20px; color:#2c5aa0; cursor:pointer;
+38	            padding:2px 12px; user-select:none; }
+39	  #prev { left:18px; } #next { left:70px; }
+40	  .cover { justify-content:center; align-items:flex-start; }
+41	  .cover h1 { font-size:42px; }
+42	  .cover .item { font-size:20px; margin:10px 0; }
+43	  .cover .meta { color:#777; font-size:15px; margin-top:34px; }
+44	  @media print {
+45	    .slide { display:flex !important; page-break-after:always; min-height:auto; }
+46	    .pager,.navbtn { display:none; }
+47	  }
+48	</style>
+49	</head>
+50	<body>
+51	
+52	<!-- S1 封面 -->
+53	<section class="slide cover active">
+54	  <div class="tag">TES 511 keV BALLOON · ENGINEERING REPORT</div>
+55	  <h1>三项工程进展汇报</h1>
+56	  <div class="rule"></div>
+57	  <div class="item">① 任务轨迹解析曲线的直接输运验证与分层修正</div>
+58	  <div class="item">② 大气 511 keV 谱线缺失的发现与瞬发源修正</div>
+59	  <div class="item">③ 自研康普顿拓扑 veto 的 MEGAlib/Revan 交叉验证与重建层第一遍灵敏度</div>
+60	  <div class="meta">2026-07-02 · 数值权威:fix5_fullstat_v2_exactpos_m50000_s260613 · 白底简版(←/→ 翻页)</div>
+61	</section>
+62	
+63	<!-- S2 总览 -->
+64	<section class="slide">
+65	  <div class="tag">总览</div>
+66	  <h2>三项工作的一句话结论</h2>
+67	  <div class="rule"></div>
+68	  <table>
+69	    <tr><th style="width:26%">工作</th><th>结论</th><th style="width:20%">状态</th></tr>
+70	    <tr><td>① 轨迹曲线验证</td>
+71	        <td>旧"单标量"解析曲线被 4 个轨迹点的直接输运<b class="red">证伪</b>(活化残差 16.6%、W2 瞬发 60.7%);
+72	            按<b class="green">粒子族 / 能量×角度 source-response 分层修正后</b>与直接输运一致(活化 1.1%,W2 合并 ~1σ)</td>
+73	        <td>瞬发/活化层已验证;延迟层待全量回放;Step06 补丁为 plan 未晋升</td></tr>
+74	    <tr><td>② 大气 511 线修正</td>
+75	        <td>EXPACS 光子输入在 449.65→566.08 keV 间线性插值、<b class="red">无大气湮灭线</b>;
+76	            以独立单能线源补入后,基准场景本底 +22.4%,
+77	            <b class="blue">F<sub>3σ</sub>(20d):3.85 → 4.26 ×10⁻⁵</b>(+10.6%)</td>
+78	        <td>fix5 权威下已量化;Mass_model_511 全统计后需重权</td></tr>
+79	    <tr><td>③ Revan 交叉验证</td>
+80	        <td>自研 2 点穷举双序 veto <b class="green">设计被证实正确</b>(Revan 自己的选序仅 78.4% 指向源更优);
+81	            重建层第一遍双通道 <b class="blue">Z=8.3–10.0,F<sub>3σ</sub>≈3.0–3.6×10⁻⁵</b>,不劣于计数层</td>
+82	        <td>重建第一遍闭环;似然/系统误差包络未闭</td></tr>
+83	  </table>
+84	  <p>三项合起来回答同一个问题:<b>当前 20 天 3σ 灵敏度(3.85×10⁻⁵ ph cm⁻² s⁻¹)在时间外推、
+85	     输入完整性、事例重建三个方向上是否站得住。</b></p>
+86	  <div class="src">engineering/{trajectory_transport_validation_20260626, ENGINEERING_20260627_CURVE_CHECK, paper_review_p1_p2_p3_data_check_20260702, revan_compton_crosscheck_smoke_20260702, fullrecon_firstpass_20260702}</div>
+87	</section>
+88	
+89	<!-- S3 P1 背景 -->
+90	<section class="slide">
+91	  <div class="tag">① 轨迹曲线验证 · 1/4</div>
+92	  <h2>问题与验证设计:解析曲线能否代替逐时刻输运?</h2>
+93	  <div class="rule"></div>
+94	  <div class="cols">
+95	    <div class="col">
+96	      <p>论文的 20 天结果是<b>率级折叠</b>:只在第 15 天参考点做完整输运,其余时刻用解析曲线
+97	         缩放(高度→大气深度→透过率/瞬发标量/活化标量)。这条曲线若不真,20 天 Z 与 F<sub>3σ</sub> 都失去依据。</p>
+98	      <p>验证办法:在轨迹上另取代表点,做<b>直接输运</b>,与解析预测对比归一化比值
+99	         Q(t) = [R<sub>MC</sub>(t)/R<sub>MC</sub>(REF)] / S<sub>analytic</sub>(t)。</p>
+100	      <table>
+101	        <tr><th>点</th><th>day</th><th>高度 km</th><th>R<sub>c</sub> GV</th><th>作用</th></tr>
+102	        <tr><td>REF</td><td class="num">15.00</td><td class="num">38.75</td><td class="num">11.00</td><td>锚点</td></tr>
+103	        <tr><td>L1</td><td class="num">3.75</td><td class="num">36.25</td><td class="num">10.98</td><td>低点(早)</td></tr>
+104	        <tr><td>L2</td><td class="num">18.75</td><td class="num">36.25</td><td class="num">11.01</td><td>低点(晚)</td></tr>
+105	        <tr><td>H1</td><td class="num">6.25</td><td class="num">41.25</td><td class="num">11.02</td><td>高点</td></tr>
+106	      </table>
+107	      <p>规模:低统计 smoke 先行(另含 M1 点,判定"偏差或统计不足"),随后升级 full4 加权直接输运:
+108	         <b>544 个输运作业,合计 ~1.0×10⁸ 一次粒子</b>,冻结后进入曲线判定。</p>
+109	    </div>
+110	    <div class="col figbox">
+111	      <img src="figs/analytic_curves_with_validation_points.png" alt="validation points on curves">
+112	      <div class="figcap">四个验证点落位在 Step06 三条旧解析曲线(信号透过率 / 瞬发标量 / 活化标量)上</div>
+113	    </div>
+114	  </div>
+115	  <div class="src">trajectory_transport_validation_20260626/{01_points, 09_full_if_required}; FINAL_STATUS.md</div>
+116	</section>
+117	
+118	<!-- S4 P1 发现问题 -->
+119	<section class="slide">
+120	  <div class="tag">① 轨迹曲线验证 · 2/4</div>
+121	  <h2>发现:旧"单标量"曲线被直接输运证伪</h2>
+122	  <div class="rule"></div>
+123	  <div class="cols">
+124	    <div class="col figbox">
+125	      <img src="figs/direct_points_on_analytic_curves.png" alt="direct points vs old curves">
+126	      <div class="figcap">full4 直接输运点(左:瞬发;右:活化产生)没有全部落在旧解析标量曲线上</div>
+127	    </div>
+128	    <div class="col">
+129	      <table>
+130	        <tr><th>观测量</th><th>旧单标量最大残差</th><th>p 值</th><th>判定</th></tr>
+131	        <tr><td>活化产生总量</td><td class="num"><b class="red">16.6%</b></td><td class="num">≈0</td><td>显著偏离</td></tr>
+132	        <tr><td>瞬发 all-TES 选后</td><td class="num"><b class="red">19.5%</b></td><td class="num">4×10⁻¹⁴</td><td>显著偏离</td></tr>
+133	        <tr><td>瞬发 W2 选后</td><td class="num"><b class="red">60.7%</b></td><td class="num">0.025</td><td>显著偏离</td></tr>
+134	      </table>
+135	      <div class="kbox warn">
+136	        根因:<b>一个标量不能同时缩放信号、瞬发本底和活化</b>。
+137	        大气透过率 T<sub>atm,511</sub> 只作用于天体 511 信号;
+138	        本地瞬发与活化跟随的是当地粒子源通量,且各粒子族随高度/刚度的变化率不同。
+139	      </div>
+140	      <p>full4 判定字串:<span style="font-family:Consolas,monospace;font-size:13px">
+141	         FULL4_PROMPT_ACTIVATION_DEVIATES_ANALYTIC_CURVE_PENDING_DELAYED_FULL</span></p>
+142	    </div>
+143	  </div>
+144	  <div class="src">09_full_if_required/full_4point_curve_validation/full4_validation_decision.json; ENGINEERING_20260627_CURVE_CHECK/outputs/09_report</div>
+145	</section>
+146	
+147	<!-- S5 P1 修正 -->
+148	<section class="slide">
+149	  <div class="tag">① 轨迹曲线验证 · 3/4</div>
+150	  <h2>修正:曲线拆五层,标量换成 source-response</h2>
+151	  <div class="rule"></div>
+152	  <div class="cols">
+153	    <div class="col figbox">
+154	      <img src="figs/curve_layer_split.png" alt="five-

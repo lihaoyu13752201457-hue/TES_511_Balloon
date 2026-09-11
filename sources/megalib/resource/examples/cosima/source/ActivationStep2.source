@@ -1,0 +1,26 @@
+# Template Run for Step 2 of activation simulation: 
+# Calculate the activation
+
+# You should not run tis instance via mcosima!!
+
+# Global parameters:
+Version                            1
+Geometry                           $(MEGALIB)/resource/examples/geomega/special/ActivationSphere.geo.setup
+DetectorTimeConstant               0.000005
+
+
+# Physics parameters
+PhysicsListHD                      qgsp-bic-hp
+PhysicsListEM                      LivermorePol
+
+
+# The activation calculation
+Activator A
+A.IsotopeProductionFile   Isotopes.inc1.dat
+# If you ran multiple instances for cosima with mcosima, then add them here:
+# A.IsotopeProductionFile   Isotopes.p1.inc1.dat
+# A.IsotopeProductionFile   Isotopes.p1.inc2.dat
+# ...
+A.ActivationMode          ConstantIrradiation  31556736
+A.ActivationFile          Activation.dat
+

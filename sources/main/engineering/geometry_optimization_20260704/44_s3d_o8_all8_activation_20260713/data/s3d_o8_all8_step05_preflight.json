@@ -1,0 +1,2171 @@
+{
+  "status": "PASS_READY_FOR_S3D_O8_ALL8_STEP05_POSTPROCESS",
+  "generated_at_utc": "2026-07-13T21:25:10Z",
+  "regression": {
+    "status": "PASS_S3D_O8_NEUTRON_ONLY_STEP05_REGRESSION",
+    "generated_at_utc": "2026-07-13T19:46:27Z",
+    "script": "engineering/geometry_optimization_20260704/44_s3d_o8_all8_activation_20260713/code/run_s3d_o8_all8_step05.py",
+    "script_sha256": "ad300404813ab41e96fa876ab34f3545f480d7e8ab038cda7f5242ecd701e1af",
+    "base_catalog": "engineering/geometry_optimization_20260704/43_geoopt_s3d_o8_fallback_20260712/fullchain/step05/work/event_catalog.pkl",
+    "base_catalog_sha256": "6ed8d9d765ebc814786cb144765f02dfa437dc26a6df9a0a91c03ad983f4e403",
+    "base_step05": "engineering/geometry_optimization_20260704/43_geoopt_s3d_o8_fallback_20260712/fullchain/step05/step05_s3d_o8_fullchain_l1_response_summary.json",
+    "base_step05_sha256": "ee2559b92509ca719930351145451c5b6056a9650e50633f5575b4fc2fb13fe7",
+    "raw_neutron_parse": {
+      "family": "n",
+      "generated_events_seen": 1000000,
+      "detector_records_kept": 472495,
+      "pixel_hits_kept": 6580,
+      "local_id_min": 2,
+      "local_id_max": 999999,
+      "event_weight_hz": 3.107674507861205e-05,
+      "SE": 1000000,
+      "ID": 1000000,
+      "cache": "engineering/geometry_optimization_20260704/44_s3d_o8_all8_activation_20260713/fullchain/step05/work/regression_file_catalogs/n/dec9e4e5188f0922a2803f817fe9583ee7e99aace74e895456a16a4dda4f862d/delayed_DelayedDecayS3dO8NeutronM50000.inc1.id1.sim.gz.868938cf0dfc.pkl",
+      "cache_sha256": "0621d3671a3f82a1f3ce38127d78ab1fa5efdc646db99dd7dd729fbb4aba80d4",
+      "cache_fingerprint": "dec9e4e5188f0922a2803f817fe9583ee7e99aace74e895456a16a4dda4f862d",
+      "raw_sim_parse_completed": true,
+      "parsed_this_run": true,
+      "sim_sha256": "a8286c947ae1463a2d8e48cc0d2de3aeeab57aae8aefd9bf4990042e08ca5f5e",
+      "sim_size_bytes": 910935364,
+      "parser_sha256": "126afcf5b6bfa9445078a7106553d9992d4330ceefe3f104b411f1e6f1b1a5df",
+      "script_sha256": "ad300404813ab41e96fa876ab34f3545f480d7e8ab038cda7f5242ecd701e1af",
+      "active_veto_predicate_sha256": "98e3af697956630ca1196964c54d0095785933c32e9bb2fbb24b3370d6bb8e7e",
+      "cache_dependencies": {
+        "adr_implementation": {
+          "path": "old/code/tools/make_complete_day15_report_ADR.py",
+          "sha256": "126afcf5b6bfa9445078a7106553d9992d4330ceefe3f104b411f1e6f1b1a5df"
+        },
+        "step05_harness": {
+          "path": "engineering/geometry_optimization_20260704/44_s3d_o8_all8_activation_20260713/code/run_s3d_o8_all8_step05.py",
+          "sha256": "ad300404813ab41e96fa876ab34f3545f480d7e8ab038cda7f5242ecd701e1af"
+        },
+        "active_veto_predicate": {
+          "callable": "is_s3d_active_veto_volume",
+          "sha256": "98e3af697956630ca1196964c54d0095785933c32e9bb2fbb24b3370d6bb8e7e"
+        }
+      }
+    },
+    "reparsed_from_raw_sim_this_run": true,
+    "reparsed_from_sim": true,
+    "raw_sim_parse_completed": true,
+    "dependency_hashes": {
+      "adr_implementation": {
+        "path": "old/code/tools/make_complete_day15_report_ADR.py",
+        "sha256": "126afcf5b6bfa9445078a7106553d9992d4330ceefe3f104b411f1e6f1b1a5df"
+      },
+      "selection_implementation": {
+        "path": "old/code/tools/build_v3p5_centerfinger_step05_l1_response.py",
+        "sha256": "0c1e69e4a73bd8653e999b1d8d2aff404a37a44457e40f134388c819ad4b91ab"
+      },
+      "bridge_summary": {
+        "path": "stepwise_maintenance/step09_optics_bridge/outputs_f10m_a1_v3p5/step09_optics_bridge_summary.json",
+        "sha256": "8d147e21928b4830a215ab034f29379383b4368b4177f8a16a2f45769df73a25"
+      },
+      "aeff_authority": {
+        "path": "stepwise_maintenance/step04_opticsim/optics_aeff_authority_f10m_a1.json",
+        "sha256": "41078096711959d25e26ef79bd0f62b7c7d0ed70b4098c87147e4a9e8ff383b5"
+      },
+      "science_ledger": {
+        "path": "old/config/science_511_onaxis_source/metadata/science_rate_ledger.csv",
+        "sha256": "b8dcdd949af186ffa59a7d211c788fb89a461a1d924ecfcf3322a5601c21eb19"
+      },
+      "boundary_summary": {
+        "path": "old/reports/v3p5_boundary_closure_fullstat_v2_exactpos_20260613/v3p5_boundary_closure_summary.json",
+        "sha256": "13e254c2e75a3e9fce03d7bbcd8265da16ddd9437d32d448389b331c9760d13a"
+      },
+      "atm511_authority": {
+        "path": "engineering/geometry_optimization_20260704/43_geoopt_s3d_o8_fallback_20260712/data/s3d_o8_atm511_replay_summary.json",
+        "sha256": "b2c4e6ab26ca0f1210fc828086b574435a52100712cbc2f9a9209d324b31ec80"
+      },
+      "step05_harness": {
+        "path": "engineering/geometry_optimization_20260704/44_s3d_o8_all8_activation_20260713/code/run_s3d_o8_all8_step05.py",
+        "sha256": "ad300404813ab41e96fa876ab34f3545f480d7e8ab038cda7f5242ecd701e1af"
+      },
+      "active_veto_predicate": {
+        "callable": "is_s3d_active_veto_volume",
+        "sha256": "98e3af697956630ca1196964c54d0095785933c32e9bb2fbb24b3370d6bb8e7e"
+      }
+    },
+    "old_neutron_TE_s": 32178.402129,
+    "parser_field_identity": {
+      "stream": true,
+      "tag": true,
+      "source_file": true,
+      "local_id": true,
+      "rate_hz": true,
+      "tes_total_keV": true,
+      "bgo_total_keV": true,
+      "pix_count": true,
+      "pix_start": true,
+      "pix_uid": true,
+      "pix_layer": true,
+      "pix_e": true,
+      "pix_x": true,
+      "pix_y": true,
+      "pix_z": true,
+      "n_generated_events_seen": true
+    },
+    "catalog_structure": {
+      "retained_base": {
+        "status": "PASS_COMPACT_CUMULATIVE_CATALOG_SCHEMA",
+        "label": "retained package-43 base catalog",
+        "event_fields": {
+          "stream": 10044782,
+          "tag": 10044782,
+          "source_file": 10044782,
+          "local_id": 10044782,
+          "rate_hz": 10044782,
+          "tes_total_keV": 10044782,
+          "bgo_total_keV": 10044782,
+          "pix_count": 10044782,
+          "pix_start": 10044782
+        },
+        "pixel_fields": {
+          "pix_uid": 65487,
+          "pix_layer": 65487,
+          "pix_e": 65487,
+          "pix_x": 65487,
+          "pix_y": 65487,
+          "pix_z": 65487
+        },
+        "events": 10044782,
+        "pixels": 65487,
+        "sum_pix_count": 65487,
+        "n_kept_events": 10044782
+      },
+      "raw_sim_replacement": {
+        "status": "PASS_COMPACT_CUMULATIVE_CATALOG_SCHEMA",
+        "label": "raw-SIM reparsed neutron delayed catalog",
+        "event_fields": {
+          "stream": 472495,
+          "tag": 472495,
+          "source_file": 472495,
+          "local_id": 472495,
+          "rate_hz": 472495,
+          "tes_total_keV": 472495,
+          "bgo_total_keV": 472495,
+          "pix_count": 472495,
+          "pix_start": 472495
+        },
+        "pixel_fields": {
+          "pix_uid": 6580,
+          "pix_layer": 6580,
+          "pix_e": 6580,
+          "pix_x": 6580,
+          "pix_y": 6580,
+          "pix_z": 6580
+        },
+        "events": 472495,
+        "pixels": 6580,
+        "sum_pix_count": 6580,
+        "n_kept_events": 472495
+      },
+      "full_spliced": {
+        "status": "PASS_COMPACT_CUMULATIVE_CATALOG_SCHEMA",
+        "label": "neutron-regression full spliced catalog",
+        "event_fields": {
+          "stream": 10044782,
+          "tag": 10044782,
+          "source_file": 10044782,
+          "local_id": 10044782,
+          "rate_hz": 10044782,
+          "tes_total_keV": 10044782,
+          "bgo_total_keV": 10044782,
+          "pix_count": 10044782,
+          "pix_start": 10044782
+        },
+        "pixel_fields": {
+          "pix_uid": 65487,
+          "pix_layer": 65487,
+          "pix_e": 65487,
+          "pix_x": 65487,
+          "pix_y": 65487,
+          "pix_z": 65487
+        },
+        "events": 10044782,
+        "pixels": 65487,
+        "sum_pix_count": 65487,
+        "n_kept_events": 10044782
+      }
+    },
+    "retained_prompt_science_identity": {
+      "status": "PASS_RETAINED_PROMPT_SCIENCE_ARRAY_IDENTITY",
+      "prompt_events": 9535401,
+      "science_events": 36886,
+      "prompt_pixels": 5889,
+      "science_pixels": 53018,
+      "checks": 28
+    },
+    "lineage": {
+      "status": "PASS_FAMILY_LOCAL_ID_LINEAGE",
+      "lineage_key": [
+        "tag_as_incident_family",
+        "local_id"
+      ],
+      "strong_lineage_key": [
+        "tag_as_incident_family",
+        "source_file",
+        "local_id"
+      ],
+      "families": [
+        {
+          "family": "n",
+          "status": "PASS",
+          "kept_events": 472495,
+          "local_id_min": 2,
+          "local_id_max": 999999,
+          "source_file": "runs/geometry_optimization_20260704/step02_delayed_transport_s3d_o8_neutron_delayed_m50000_20260712/DelayedDecayS3dO8NeutronM50000.inc1.id1.sim.gz",
+          "event_weight_hz": 3.107674507861205e-05
+        }
+      ],
+      "problems": []
+    },
+    "synthetic_multi_family_regression": {
+      "status": "PASS_SYNTHETIC_MULTI_FAMILY_SPLICE_LINEAGE_GARWOOD",
+      "actual_adr_merge_one_catalog_into_calls": 2,
+      "positive_families": {
+        "gamma": {
+          "TE_s": 10.0
+        },
+        "n": {
+          "TE_s": 20.0
+        }
+      },
+      "cross_family_reused_local_id": 1,
+      "zero_observed_family_checked": "alpha",
+      "retained_identity": {
+        "status": "PASS_RETAINED_PROMPT_SCIENCE_ARRAY_IDENTITY",
+        "prompt_events": 2,
+        "science_events": 1,
+        "prompt_pixels": 1,
+        "science_pixels": 2,
+        "checks": 28
+      },
+      "catalog_structure": {
+        "base": {
+          "status": "PASS_COMPACT_CUMULATIVE_CATALOG_SCHEMA",
+          "label": "synthetic retained base",
+          "event_fields": {
+            "stream": 4,
+            "tag": 4,
+            "source_file": 4,
+            "local_id": 4,
+            "rate_hz": 4,
+            "tes_total_keV": 4,
+            "bgo_total_keV": 4,
+            "pix_count": 4,
+            "pix_start": 4
+          },
+          "pixel_fields": {
+            "pix_uid": 4,
+            "pix_layer": 4,
+            "pix_e": 4,
+            "pix_x": 4,
+            "pix_y": 4,
+            "pix_z": 4
+          },
+          "events": 4,
+          "pixels": 4,
+          "sum_pix_count": 4,
+          "n_kept_events": 4
+        },
+        "gamma_component": {
+          "status": "PASS_COMPACT_CUMULATIVE_CATALOG_SCHEMA",
+          "label": "synthetic gamma component",
+          "event_fields": {
+            "stream": 2,
+            "tag": 2,
+            "source_file": 2,
+            "local_id": 2,
+            "rate_hz": 2,
+            "tes_total_keV": 2,
+            "bgo_total_keV": 2,
+            "pix_count": 2,
+            "pix_start": 2
+          },
+          "pixel_fields": {
+            "pix_uid": 1,
+            "pix_layer": 1,
+            "pix_e": 1,
+            "pix_x": 1,
+            "pix_y": 1,
+            "pix_z": 1
+          },
+          "events": 2,
+          "pixels": 1,
+          "sum_pix_count": 1,
+          "n_kept_events": 2
+        },
+        "neutron_component": {
+          "status": "PASS_COMPACT_CUMULATIVE_CATALOG_SCHEMA",
+          "label": "synthetic neutron component",
+          "event_fields": {
+            "stream": 1,
+            "tag": 1,
+            "source_file": 1,
+            "local_id": 1,
+            "rate_hz": 1,
+            "tes_total_keV": 1,
+            "bgo_total_keV": 1,
+            "pix_count": 1,
+            "pix_start": 1
+          },
+          "pixel_fields": {
+            "pix_uid": 2,
+            "pix_layer": 2,
+            "pix_e": 2,
+            "pix_x": 2,
+            "pix_y": 2,
+            "pix_z": 2
+          },
+          "events": 1,
+          "pixels": 2,
+          "sum_pix_count": 2,
+          "n_kept_events": 1
+        },
+        "merged_delayed": {
+          "status": "PASS_COMPACT_CUMULATIVE_CATALOG_SCHEMA",
+          "label": "synthetic ADR merged delayed",
+          "event_fields": {
+            "stream": 3,
+            "tag": 3,
+            "source_file": 3,
+            "local_id": 3,
+            "rate_hz": 3,
+            "tes_total_keV": 3,
+            "bgo_total_keV": 3,
+            "pix_count": 3,
+            "pix_start": 3
+          },
+          "pixel_fields": {
+            "pix_uid": 3,
+            "pix_layer": 3,
+            "pix_e": 3,
+            "pix_x": 3,
+            "pix_y": 3,
+            "pix_z": 3
+          },
+          "events": 3,
+          "pixels": 3,
+          "sum_pix_count": 3,
+          "n_kept_events": 3
+        },
+        "full_spliced": {
+          "status": "PASS_COMPACT_CUMULATIVE_CATALOG_SCHEMA",
+          "label": "synthetic full spliced catalog",
+          "event_fields": {
+            "stream": 6,
+            "tag": 6,
+            "source_file": 6,
+            "local_id": 6,
+            "rate_hz": 6,
+            "tes_total_keV": 6,
+            "bgo_total_keV": 6,
+            "pix_count": 6,
+            "pix_start": 6
+          },
+          "pixel_fields": {
+            "pix_uid": 6,
+            "pix_layer": 6,
+            "pix_e": 6,
+            "pix_x": 6,
+            "pix_y": 6,
+            "pix_z": 6
+          },
+          "events": 6,
+          "pixels": 6,
+          "sum_pix_count": 6,
+          "n_kept_events": 6
+        }
+      },
+      "expected_merged_delayed_pix_start": [
+        0,
+        1,
+        1
+      ],
+      "observed_merged_delayed_pix_start": [
+        0,
+        1,
+        1
+      ],
+      "expected_pix_start": [
+        0,
+        1,
+        1,
+        2,
+        2,
+        4
+      ],
+      "observed_pix_start": [
+        0,
+        1,
+        1,
+        2,
+        2,
+        4
+      ],
+      "family_final_rates_cps": {
+        "gamma": 0.1,
+        "n": 0.05,
+        "sum": 0.15000000000000002,
+        "stream_sum": 0.15000000000000002
+      },
+      "family_garwood_upper_ratio_gamma_over_n": 2.0,
+      "delayed_family_stage_closure": {
+        "status": "PASS_DELAYED_INCIDENT_FAMILY_ALL_STAGE_CLOSURE",
+        "label": "synthetic central delayed",
+        "stages": [
+          {
+            "stage": "raw",
+            "family_event_sum": 2,
+            "stream_events": 2,
+            "family_rate_sum_cps": 0.15000000000000002,
+            "stream_rate_cps": 0.15
+          },
+          {
+            "stage": "active_veto_pass",
+            "family_event_sum": 2,
+            "stream_events": 2,
+            "family_rate_sum_cps": 0.15000000000000002,
+            "stream_rate_cps": 0.15
+          },
+          {
+            "stage": "side_compton_fov_pass",
+            "family_event_sum": 2,
+            "stream_events": 2,
+            "family_rate_sum_cps": 0.15000000000000002,
+            "stream_rate_cps": 0.15
+          }
+        ]
+      },
+      "lineage": {
+        "status": "PASS_FAMILY_LOCAL_ID_LINEAGE",
+        "lineage_key": [
+          "tag_as_incident_family",
+          "local_id"
+        ],
+        "strong_lineage_key": [
+          "tag_as_incident_family",
+          "source_file",
+          "local_id"
+        ],
+        "families": [
+          {
+            "family": "alpha",
+            "status": "PASS_ZERO_PRODUCTION",
+            "kept_events": 0
+          },
+          {
+            "family": "eminus",
+            "status": "PASS_ZERO_PRODUCTION",
+            "kept_events": 0
+          },
+          {
+            "family": "eplus",
+            "status": "PASS_ZERO_PRODUCTION",
+            "kept_events": 0
+          },
+          {
+            "family": "gamma",
+            "status": "PASS",
+            "kept_events": 2,
+            "local_id_min": 1,
+            "local_id_max": 2,
+            "source_file": "/tmp/synthetic_gamma.sim",
+            "event_weight_hz": 0.1
+          },
+          {
+            "family": "muminus",
+            "status": "PASS_ZERO_PRODUCTION",
+            "kept_events": 0
+          },
+          {
+            "family": "muplus",
+            "status": "PASS_ZERO_PRODUCTION",
+            "kept_events": 0
+          },
+          {
+            "family": "n",
+            "status": "PASS",
+            "kept_events": 1,
+            "local_id_min": 1,
+            "local_id_max": 1,
+            "source_file": "/tmp/synthetic_n.sim",
+            "event_weight_hz": 0.05
+          },
+          {
+            "family": "p",
+            "status": "PASS_ZERO_PRODUCTION",
+            "kept_events": 0
+          }
+        ],
+        "problems": []
+      }
+    },
+    "neutron_only_physics_algebra_regression": {
+      "status": "PASS_NEUTRON_ONLY_ATMOSPHERE_AND_PHYSICAL_ALGEBRA_REGRESSION",
+      "windows": {
+        "broad_480_550": {
+          "algebra_status": "PASS_ALL_STREAM_FAMILY_AND_PHYSICAL_ALGEBRA_CLOSURE",
+          "signal_to_background": 0.06773717739939639,
+          "low_stat_prompt_final_events": 12,
+          "low_stat_delayed_final_events": 47,
+          "low_stat_atm511_final_events": 16,
+          "low_stat_final_background_events": 75,
+          "low_stat_background_relative_poisson_sigma_approx": 0.11547005383792514
+        },
+        "w2_510p58_511p42": {
+          "algebra_status": "PASS_ALL_STREAM_FAMILY_AND_PHYSICAL_ALGEBRA_CLOSURE",
+          "signal_to_background": 0.1934474505372144,
+          "low_stat_prompt_final_events": 5,
+          "low_stat_delayed_final_events": 31,
+          "low_stat_atm511_final_events": 9,
+          "low_stat_final_background_events": 45,
+          "low_stat_background_relative_poisson_sigma_approx": 0.14907119849998599
+        }
+      }
+    },
+    "selection_checks": [
+      {
+        "window": "broad_480_550",
+        "stream": "prompt",
+        "stage": "raw",
+        "events": 108,
+        "rate_cps": 0.07801191817112904
+      },
+      {
+        "window": "broad_480_550",
+        "stream": "prompt",
+        "stage": "active_veto_pass",
+        "events": 17,
+        "rate_cps": 0.016283135666085066
+      },
+      {
+        "window": "broad_480_550",
+        "stream": "prompt",
+        "stage": "side_compton_fov_pass",
+        "events": 12,
+        "rate_cps": 0.012890505300524881
+      },
+      {
+        "window": "broad_480_550",
+        "stream": "delayed",
+        "stage": "raw",
+        "events": 176,
+        "rate_cps": 0.005469507133835719
+      },
+      {
+        "window": "broad_480_550",
+        "stream": "delayed",
+        "stage": "active_veto_pass",
+        "events": 54,
+        "rate_cps": 0.00167814423424505
+      },
+      {
+        "window": "broad_480_550",
+        "stream": "delayed",
+        "stage": "side_compton_fov_pass",
+        "events": 47,
+        "rate_cps": 0.0014606070186947656
+      },
+      {
+        "window": "broad_480_550",
+        "stream": "science",
+        "stage": "raw",
+        "events": 30303,
+        "rate_cps": 0.8147281819648331
+      },
+      {
+        "window": "broad_480_550",
+        "stream": "science",
+        "stage": "active_veto_pass",
+        "events": 30303,
+        "rate_cps": 0.8147281819648331
+      },
+      {
+        "window": "broad_480_550",
+        "stream": "science",
+        "stage": "side_compton_fov_pass",
+        "events": 29638,
+        "rate_cps": 0.7968489541327132
+      },
+      {
+        "window": "w2_510p58_511p42",
+        "stream": "prompt",
+        "stage": "raw",
+        "events": 44,
+        "rate_cps": 0.029848697231495004
+      },
+      {
+        "window": "w2_510p58_511p42",
+        "stream": "prompt",
+        "stage": "active_veto_pass",
+        "events": 6,
+        "rate_cps": 0.004071878506082602
+      },
+      {
+        "window": "w2_510p58_511p42",
+        "stream": "prompt",
+        "stage": "side_compton_fov_pass",
+        "events": 5,
+        "rate_cps": 0.003393031514121508
+      },
+      {
+        "window": "w2_510p58_511p42",
+        "stream": "delayed",
+        "stage": "raw",
+        "events": 131,
+        "rate_cps": 0.004071053605298178
+      },
+      {
+        "window": "w2_510p58_511p42",
+        "stream": "delayed",
+        "stage": "active_veto_pass",
+        "events": 35,
+        "rate_cps": 0.0010876860777514214
+      },
+      {
+        "window": "w2_510p58_511p42",
+        "stream": "delayed",
+        "stage": "side_compton_fov_pass",
+        "events": 31,
+        "rate_cps": 0.000963379097436974
+      },
+      {
+        "window": "w2_510p58_511p42",
+        "stream": "science",
+        "stage": "raw",
+        "events": 30252,
+        "rate_cps": 0.8133569930633974
+      },
+      {
+        "window": "w2_510p58_511p42",
+        "stream": "science",
+        "stage": "active_veto_pass",
+        "events": 30252,
+        "rate_cps": 0.8133569930633974
+      },
+      {
+        "window": "w2_510p58_511p42",
+        "stream": "science",
+        "stage": "side_compton_fov_pass",
+        "events": 29598,
+        "rate_cps": 0.7957735118570756
+      }
+    ],
+    "claim": "Replacing the retained activation-tagged neutron block with the same events tagged as incident family n reproduces package-43 Step05 exactly."
+  },
+  "components": {
+    "status": "PASS_S3D_O8_ALL8_STEP05_DELAYED_COMPONENTS",
+    "campaign_generated_at_utc": "2026-07-13T20:45:32Z",
+    "document_type": "s3d_o8_all8_family_delayed_step05_component_authority",
+    "script": "engineering/geometry_optimization_20260704/44_s3d_o8_all8_activation_20260713/code/run_s3d_o8_all8_step05.py",
+    "script_sha256": "ad300404813ab41e96fa876ab34f3545f480d7e8ab038cda7f5242ecd701e1af",
+    "campaign": "engineering/geometry_optimization_20260704/44_s3d_o8_all8_activation_20260713/data/s3d_o8_all8_activation_campaign.json",
+    "campaign_sha256": "60dddf5d1f2a4e256fb32c933a3a50afa17e3b7ae079262813cb05c70535cae3",
+    "campaign_status": "PASS_S3D_O8_ALL8_ACTIVATION_AND_FAMILY_DELAYED_TRANSPORT",
+    "geometry_setup": "engineering/geometry_optimization_20260704/43_geoopt_s3d_o8_fallback_20260712/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup",
+    "geometry_bundle": {
+      "status": "PASS_RETAINED_PACKAGE43_O8_GEOMETRY_BUNDLE",
+      "authority": "engineering/geometry_optimization_20260704/43_geoopt_s3d_o8_fallback_20260712/fullchain/step05/step05_s3d_o8_fullchain_l1_response_summary.json",
+      "authority_sha256": "ee2559b92509ca719930351145451c5b6056a9650e50633f5575b4fc2fb13fe7",
+      "required_exact_file_set": [
+        "DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup",
+        "DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo",
+        "DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.det",
+        "Intro_DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo",
+        "Materials_DEMO2_DR_v3p5.geo"
+      ],
+      "files": {
+        "DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup": {
+          "path": "engineering/geometry_optimization_20260704/43_geoopt_s3d_o8_fallback_20260712/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup",
+          "size_bytes": 219,
+          "sha256": "86a9e56e54dc86834dfe2a9b03a5f71373fb40f2ef24e3889fa66f216058fbec",
+          "authority_sha256": "86a9e56e54dc86834dfe2a9b03a5f71373fb40f2ef24e3889fa66f216058fbec",
+          "matches_authority": true
+        },
+        "DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo": {
+          "path": "engineering/geometry_optimization_20260704/43_geoopt_s3d_o8_fallback_20260712/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo",
+          "size_bytes": 650588,
+          "sha256": "ff4e8402df702501e0112fe377d837a74c39100317146b09e9569b7bd615c37c",
+          "authority_sha256": "ff4e8402df702501e0112fe377d837a74c39100317146b09e9569b7bd615c37c",
+          "matches_authority": true
+        },
+        "DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.det": {
+          "path": "engineering/geometry_optimization_20260704/43_geoopt_s3d_o8_fallback_20260712/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.det",
+          "size_bytes": 57508,
+          "sha256": "dd2c1d68cd474f8b0c7489f2cbbfc924eb69beb14d3ce360d9437c319a33d6cb",
+          "authority_sha256": "dd2c1d68cd474f8b0c7489f2cbbfc924eb69beb14d3ce360d9437c319a33d6cb",
+          "matches_authority": true
+        },
+        "Intro_DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo": {
+          "path": "engineering/geometry_optimization_20260704/43_geoopt_s3d_o8_fallback_20260712/geometry/Intro_DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo",
+          "size_bytes": 500,
+          "sha256": "f4ea834bf385f68a85690e018fd52d692e94e19dd93959e35e6f91efd3dbfd52",
+          "authority_sha256": "f4ea834bf385f68a85690e018fd52d692e94e19dd93959e35e6f91efd3dbfd52",
+          "matches_authority": true
+        },
+        "Materials_DEMO2_DR_v3p5.geo": {
+          "path": "engineering/geometry_optimization_20260704/43_geoopt_s3d_o8_fallback_20260712/geometry/Materials_DEMO2_DR_v3p5.geo",
+          "size_bytes": 1897,
+          "sha256": "751cd83f08631085496ee86efa4418e4f001a639b15573554b93e73ff95678bf",
+          "authority_sha256": "751cd83f08631085496ee86efa4418e4f001a639b15573554b93e73ff95678bf",
+          "matches_authority": true
+        }
+      },
+      "problems": []
+    },
+    "family_order": [
+      "alpha",
+      "eminus",
+      "eplus",
+      "gamma",
+      "muminus",
+      "muplus",
+      "n",
+      "p"
+    ],
+    "family_set_contract": "exactly alpha, eminus, eplus, gamma, muminus, muplus, n, p",
+    "family_source_validation": {
+      "path": "engineering/geometry_optimization_20260704/44_s3d_o8_all8_activation_20260713/data/s3d_o8_all8_family_source_validation.json",
+      "sha256": "3f6c5f96186c4ae3aed6bc3c583dccd8e7c0b10b4f071b9ffa4d913dc1efef81",
+      "family_set_complete": true
+    },
+    "dependency_hashes": {
+      "adr_implementation": {
+        "path": "old/code/tools/make_complete_day15_report_ADR.py",
+        "sha256": "126afcf5b6bfa9445078a7106553d9992d4330ceefe3f104b411f1e6f1b1a5df"
+      },
+      "selection_implementation": {
+        "path": "old/code/tools/build_v3p5_centerfinger_step05_l1_response.py",
+        "sha256": "0c1e69e4a73bd8653e999b1d8d2aff404a37a44457e40f134388c819ad4b91ab"
+      },
+      "bridge_summary": {
+        "path": "stepwise_maintenance/step09_optics_bridge/outputs_f10m_a1_v3p5/step09_optics_bridge_summary.json",
+        "sha256": "8d147e21928b4830a215ab034f29379383b4368b4177f8a16a2f45769df73a25"
+      },
+      "aeff_authority": {
+        "path": "stepwise_maintenance/step04_opticsim/optics_aeff_authority_f10m_a1.json",
+        "sha256": "41078096711959d25e26ef79bd0f62b7c7d0ed70b4098c87147e4a9e8ff383b5"
+      },
+      "science_ledger": {
+        "path": "old/config/science_511_onaxis_source/metadata/science_rate_ledger.csv",
+        "sha256": "b8dcdd949af186ffa59a7d211c788fb89a461a1d924ecfcf3322a5601c21eb19"
+      },
+      "boundary_summary": {
+        "path": "old/reports/v3p5_boundary_closure_fullstat_v2_exactpos_20260613/v3p5_boundary_closure_summary.json",
+        "sha256": "13e254c2e75a3e9fce03d7bbcd8265da16ddd9437d32d448389b331c9760d13a"
+      },
+      "atm511_authority": {
+        "path": "engineering/geometry_optimization_20260704/43_geoopt_s3d_o8_fallback_20260712/data/s3d_o8_atm511_replay_summary.json",
+        "sha256": "b2c4e6ab26ca0f1210fc828086b574435a52100712cbc2f9a9209d324b31ec80"
+      },
+      "step05_harness": {
+        "path": "engineering/geometry_optimization_20260704/44_s3d_o8_all8_activation_20260713/code/run_s3d_o8_all8_step05.py",
+        "sha256": "ad300404813ab41e96fa876ab34f3545f480d7e8ab038cda7f5242ecd701e1af"
+      },
+      "active_veto_predicate": {
+        "callable": "is_s3d_active_veto_volume",
+        "sha256": "98e3af697956630ca1196964c54d0095785933c32e9bb2fbb24b3370d6bb8e7e"
+      }
+    },
+    "components": [
+      {
+        "family": "alpha",
+        "status": "PASS",
+        "activity_Bq": 0.2515905022764692,
+        "production": {
+          "family": "alpha",
+          "files": 8,
+          "division": 8.0,
+          "tt_lines": 8,
+          "tt_mean_s": 184.43537500000002,
+          "rp_raw_total": 571.0,
+          "rp_scaled_total": 71.375,
+          "zero_production": false
+        },
+        "fixed_summary": "runs/geometry_optimization_20260704/step02_delay_fix_s3d_o8_all8_activation_m50000_20260713/alpha/source_fix_summary.json",
+        "fixed_summary_sha256": "4ac8cc0ad8acb3a99be133d10b6c09c217da90e7fa5bae49c4e3efba8dbff784",
+        "fixed_source": {
+          "path": "runs/geometry_optimization_20260704/step02_delay_fix_s3d_o8_all8_activation_m50000_20260713/alpha/activation_decay_day15_groundstate_fixed.source",
+          "size_bytes": 285652,
+          "sha256": "e5ec6fa8962f891550eab6ed86fcdc75b61a3e6f8f8f16e5a7b723c684bde74a"
+        },
+        "groundstate_corrections": {
+          "path": "runs/geometry_optimization_20260704/step02_delay_fix_s3d_o8_all8_activation_m50000_20260713/alpha/groundstate_activity_corrections.csv",
+          "size_bytes": 36647,
+          "sha256": "5737a16f0e568cfacaf1e961275c05cbba287bd3bb2ff8e3d83f8f786a0e2422"
+        },
+        "inventory": {
+          "path": "runs/geometry_optimization_20260704/step02_decay_source_s3d_o8_all8_activation_m50000_20260713/alpha/activation_inventory_day15.csv",
+          "size_bytes": 21052,
+          "sha256": "f42818c973d27472ff3e827852ac4797e4ff919578ebca22f7238d314bc53868"
+        },
+        "audit_evidence": {
+          "family_source_validation_status": "PASS",
+          "volume_map": {
+            "path": "engineering/geometry_optimization_20260704/44_s3d_o8_all8_activation_20260713/data/s3d_o8_alpha_volume_map_audit.json",
+            "sha256": "5cf4ae54c5c05ad61aeb2dd4f0997fe3a9ee2ca223eb49bf86828dca3bff28d2",
+            "status": "PASS"
+          },
+          "fixed_normalization": {
+            "path": "runs/geometry_optimization_20260704/step02_delay_fix_s3d_o8_all8_activation_m50000_20260713/alpha/normalization_audit_groundstate_fix.json",
+            "sha256": "82b37aa96ee3445309a631293ec8cb6c01743b109bae435a769fef20ad3bb76b",
+            "status": "PASS",
+            "rows": [
+              {
+                "tag": "alpha",
+                "files": 8,
+                "division": 8.0,
+                "is_gamma": false,
+                "gamma_div_mode": "",
+                "tt_count": 8,
+                "tt_files": 8,
+                "tt_line_count": 8,
+                "tt_sum_s": 1475.4830000000002,
+                "tt_mean_s": 184.43537500000002,
+                "tt_min_s": 182.457,
+                "tt_max_s": 187.856,
+                "tt_relative_spread": 0.0292731261559774,
+                "rp_raw_total": 571.0,
+                "rp_scaled_total": 71.375,
+                "warnings": "tag=alpha TT spread is 0.0293; rate uses mean TT"
+              }
+            ]
+          },
+          "activity_completeness": {
+            "path": "engineering/geometry_optimization_20260704/44_s3d_o8_all8_activation_20260713/data/s3d_o8_alpha_activity_completeness_audit.json",
+            "sha256": "3b10e0ae1db5fdfd775917ae9538a9cb3e17ad294e470b92a2041605f338b2e0",
+            "status": "PASS",
+            "expected_activity_keys": 225,
+            "fixed_source_activity_keys": 221
+          }
+        },
+        "sim": "runs/geometry_optimization_20260704/step02_delayed_transport_s3d_o8_all8_activation_m50000_20260713/alpha/DelayedDecayS3dO8AlphaM50000.inc1.id1.sim.gz",
+        "sim_size_bytes": 1233929551,
+        "sim_sha256": "bfc62760023309b3597c00d3a61643a7c337fb3d5094af7cad3beebd4fac4672",
+        "SE": 1000000,
+        "ID": 1000000,
+        "TE_s": 2872055.496907,
+        "event_weight_hz": 3.481826869560595e-07,
+        "geometry_header": "/home/ubuntu/TES_511_Balloon/engineering/geometry_optimization_20260704/43_geoopt_s3d_o8_fallback_20260712/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup",
+        "exact_manifest": "runs/geometry_optimization_20260704/step02_delay_exactpos_s3d_o8_all8_activation_m50000_20260713/alpha/s3d_o8_alpha_exactpos_m50000_s260613_manifest.json",
+        "exact_manifest_sha256": "bf9c099b59f31a36bbecdb838c8b3348437dec6cf02ccf592886244fa49b3e6e",
+        "source_provenance": {
+          "raw_source": {
+            "path": "runs/geometry_optimization_20260704/step02_decay_source_s3d_o8_all8_activation_m50000_20260713/alpha/activation_decay_day15.source",
+            "size_bytes": 286218,
+            "sha256": "8f984fbd369f0507e5990e085c28f337090d7f28757208242c11d0115911cb24"
+          },
+          "inventory": {
+            "path": "runs/geometry_optimization_20260704/step02_decay_source_s3d_o8_all8_activation_m50000_20260713/alpha/activation_inventory_day15.csv",
+            "size_bytes": 21052,
+            "sha256": "f42818c973d27472ff3e827852ac4797e4ff919578ebca22f7238d314bc53868"
+          },
+          "fixed_source": {
+            "path": "runs/geometry_optimization_20260704/step02_delay_fix_s3d_o8_all8_activation_m50000_20260713/alpha/activation_decay_day15_groundstate_fixed.source",
+            "size_bytes": 285652,
+            "sha256": "e5ec6fa8962f891550eab6ed86fcdc75b61a3e6f8f8f16e5a7b723c684bde74a"
+          },
+          "fixed_summary": {
+            "path": "runs/geometry_optimization_20260704/step02_delay_fix_s3d_o8_all8_activation_m50000_20260713/alpha/source_fix_summary.json",
+            "size_bytes": 13940,
+            "sha256": "4ac8cc0ad8acb3a99be133d10b6c09c217da90e7fa5bae49c4e3efba8dbff784"
+          },
+          "groundstate_corrections": {
+            "path": "runs/geometry_optimization_20260704/step02_delay_fix_s3d_o8_all8_activation_m50000_20260713/alpha/groundstate_activity_corrections.csv",
+            "size_bytes": 36647,
+            "sha256": "5737a16f0e568cfacaf1e961275c05cbba287bd3bb2ff8e3d83f8f786a0e2422"
+          },
+          "fixed_normalization": {
+            "path": "runs/geometry_optimization_20260704/step02_delay_fix_s3d_o8_all8_activation_m50000_20260713/alpha/normalization_audit_groundstate_fix.json",
+            "size_bytes": 564,
+            "sha256": "82b37aa96ee3445309a631293ec8cb6c01743b109bae435a769fef20ad3bb76b"
+          },
+          "volume_map_audit": {
+            "path": "engineering/geometry_optimization_20260704/44_s3d_o8_all8_activation_20260713/data/s3d_o8_alpha_volume_map_audit.json",
+            "size_bytes": 1755,
+            "sha256": "5cf4ae54c5c05ad61aeb2dd4f0997fe3a9ee2ca223eb49bf86828dca3bff28d2"
+          },
+          "activity_completeness_audit": {
+            "path": "engineering/geometry_optimization_20260704/44_s3d_o8_all8_activation_20260713/data/s3d_o8_alpha_activity_completeness_audit.json",
+            "size_bytes": 1062,
+            "sha256": "3b10e0ae1db5fdfd775917ae9538a9cb3e17ad294e470b92a2041605f338b2e0"
+          },
+          "exact_source": {
+            "path": "runs/geometry_optimization_20260704/step02_delay_exactpos_s3d_o8_all8_activation_m50000_20260713/alpha/activation_decay_day15_groundstate_fixed_exactpos_m50000.source",
+            "size_bytes": 7346661,
+            "sha256": "a95f4bca12842711d07b35d9d9917a3d06a2ec1a5e0b4845ca41f5f0dd81a722"
+          },
+          "weighted_table": {
+            "path": "runs/geometry_optimization_20260704/step02_delay_exactpos_s3d_o8_all8_activation_m50000_20260713/alpha/exactpos_weighted_rpip_table_m50000_s260613.csv",
+            "size_bytes": 152009,
+            "sha256": "9e67ca2d07d52dc3aa975485da0dfd266c09d9007fbe6d3164ad583b1abbfbd6"
+          },
+          "nubase": {
+            "path": "inputs/nubase/nubase_2020.txt",
+            "size_bytes": 761906,
+            "sha256": "1585a5eea86c5e17e90307c7e6e786d060049c4039e392a261ff6db977df9859"
+          },
+          "geometry_setup": {
+            "path": "engineering/geometry_optimization_20260704/43_geoopt_s3d_o8_fallback_20260712/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup",
+            "size_bytes": 219,
+            "sha256": "86a9e56e54dc86834dfe2a9b03a5f71373fb40f2ef24e3889fa66f216058fbec"
+          },
+          "geometry_source": {
+            "path": "engineering/geometry_optimization_20260704/43_geoopt_s3d_o8_fallback_20260712/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo",
+            "size_bytes": 650588,
+            "sha256": "ff4e8402df702501e0112fe377d837a74c39100317146b09e9569b7bd615c37c"
+          }
+        },
+        "transport_provenance": {
+          "status": "PASS",
+          "size_bytes": 1233929551,
+          "sha256": "bfc62760023309b3597c00d3a61643a7c337fb3d5094af7cad3beebd4fac4672",
+          "seed": 260613,
+          "source_sha256": "a95f4bca12842711d07b35d9d9917a3d06a2ec1a5e0b4845ca41f5f0dd81a722",
+          "sim_header_and_terminator": {
+            "geometry_values": [
+              "/home/ubuntu/TES_511_Balloon/engineering/geometry_optimization_20260704/43_geoopt_s3d_o8_fallback_20260712/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup"
+            ],
+            "geometry": "/home/ubuntu/TES_511_Balloon/engineering/geometry_optimization_20260704/43_geoopt_s3d_o8_fallback_20260712/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup",
+            "seed_values": [
+              260613
+            ],
+            "seed": 260613,
+            "SE": 1000000,
+            "ID": 1000000,
+            "TS": 1,
+            "TE": 1,
+            "TE_values_s": [
+              2872055.496907
+            ],
+            "TE_s": 2872055.496907
+          }
+        },
+        "TE_times_activity": 722581.8850327263,
+        "TE_activity_relative_delta_to_SE": 0.27741811496727364,
+        "TE_activity_diagnostic": "OUTSIDE_COARSE_10_PERCENT_DIAGNOSTIC_NONBLOCKING",
+        "normalization_contract": "each retained detector event carries 1/TE_s for its incident family"
+      },
+      {
+        "family": "eminus",
+        "status": "PASS_ZERO_PRODUCTION",
+        "activity_Bq": 0.0,
+        "production": {
+          "family": "eminus",
+          "files": 8,
+          "division": 8.0,
+          "tt_lines": 8,
+          "tt_mean_s": 184.15900000000002,
+          "rp_raw_total": 0.0,
+          "rp_scaled_total": 0.0,
+          "zero_production": true
+        },
+        "fixed_summary": "runs/geometry_optimization_20260704/step02_delay_fix_s3d_o8_all8_activation_m50000_20260713/eminus/source_fix_summary.json",
+        "fixed_summary_sha256": null,
+        "fixed_source": {
+          "path": "runs/geometry_optimization_20260704/step02_delay_fix_s3d_o8_all8_activation_m50000_20260713/eminus/activation_decay_day15_groundstate_fixed.source",
+          "size_bytes": null,
+          "sha256": null
+        },
+        "groundstate_corrections": {
+          "path": "runs/geometry_optimization_20260704/step02_delay_fix_s3d_o8_all8_activation_m50000_20260713/eminus/groundstate_activity_corrections.csv",
+          "size_bytes": null,
+          "sha256": null
+        },
+        "inventory": {
+          "path": "runs/geometry_optimization_20260704/step02_decay_source_s3d_o8_all8_activation_m50000_20260713/eminus/activation_inventory_day15.csv",
+          "size_bytes": null,
+          "sha256": null
+        },
+        "audit_evidence": {
+          "family_source_validation_status": "PASS_ZERO_PRODUCTION",
+          "volume_map": {
+            "path": "engineering/geometry_optimization_20260704/44_s3d_o8_all8_activation_20260713/data/s3d_o8_eminus_volume_map_audit.json",
+            "sha256": "dc45f001099f0f542f7eb3d6831192e4dc28d00afd473d8bb5c16c04be49fca5",
+            "status": "PASS"
+          },
+          "fixed_normalization": {
+            "path": null,
+            "sha256": null,
+            "status": null,
+            "rows": null
+          },
+          "activity_completeness": {
+            "path": null,
+            "sha256": null,
+            "status": null,
+            "expected_activity_keys": null,
+            "fixed_source_activity_keys": null
+          }
+        },
+        "sim": null,
+        "SE": 0,
+        "ID": 0,
+        "TE_s": null,
+        "event_weight_hz": null,
+        "exact_manifest": null,
+        "zero_observation_label": "ZERO_OBSERVED_PRODUCTION_IN_FINITE_BUILDUP_CAMPAIGN",
+        "normalization_contract": "no delayed transport exposure is assigned; this is a finite-campaign zero observation, not a physical or structural zero"
+      },
+      {
+        "family": "eplus",
+        "status": "PASS",
+        "activity_Bq": 0.001909400776570383,
+        "production": {
+          "family": "eplus",
+          "files": 8,
+          "division": 8.0,
+          "tt_lines": 8,
+          "tt_mean_s": 184.13575,
+          "rp_raw_total": 9.0,
+          "rp_scaled_total": 1.125,
+          "zero_production": false
+        },
+        "fixed_summary": "runs/geometry_optimization_20260704/step02_delay_fix_s3d_o8_all8_activation_m50000_20260713/eplus/source_fix_summary.json",
+        "fixed_summary_sha256": "f4123fcbbfeb4b5b9457d86b13f00784838e50c868078718f6074c97995b18dc",
+        "fixed_source": {
+          "path": "runs/geometry_optimization_20260704/step02_delay_fix_s3d_o8_all8_activation_m50000_20260713/eplus/activation_decay_day15_groundstate_fixed.source",
+          "size_bytes": 5754,
+          "sha256": "681778deba764c1d5a5a88953a3164bf24324df4c67baca79fdda387eab01e9f"
+        },
+        "groundstate_corrections": {
+          "path": "runs/geometry_optimization_20260704/step02_delay_fix_s3d_o8_all8_activation_m50000_20260713/eplus/groundstate_activity_corrections.csv",
+          "size_bytes": 1029,
+          "sha256": "668c3327bc979da8b178b0fe7c0cead6203094fa2ea72465566e0c5cc7f98eda"
+        },
+        "inventory": {
+          "path": "runs/geometry_optimization_20260704/step02_decay_source_s3d_o8_all8_activation_m50000_20260713/eplus/activation_inventory_day15.csv",
+          "size_bytes": 561,
+          "sha256": "b0d777fcb41c12abe05196c8ac18fa5ae8f64aee7285fd3a37af0cccece78476"
+        },
+        "audit_evidence": {
+          "family_source_validation_status": "PASS",
+          "volume_map": {
+            "path": "engineering/geometry_optimization_20260704/44_s3d_o8_all8_activation_20260713/data/s3d_o8_eplus_volume_map_audit.json",
+            "sha256": "929d36616887ed221275a55e13b4fcf0a624a6de829e857c3cda26a041eb20cd",
+            "status": "PASS"
+          },
+          "fixed_normalization": {
+            "path": "runs/geometry_optimization_20260704/step02_delay_fix_s3d_o8_all8_activation_m50000_20260713/eplus/normalization_audit_groundstate_fix.json",
+            "sha256": "98f4b11069d8bcac26ae57b03fc180b84ebd860e9183ff5e9020f165da005218",
+            "status": "PASS",
+            "rows": [
+              {
+                "tag": "eplus",
+                "files": 8,
+                "division": 8.0,
+                "is_gamma": false,
+                "gamma_div_mode": "",
+                "tt_count": 8,
+                "tt_files": 8,
+                "tt_line_count": 8,
+                "tt_sum_s": 1473.086,
+                "tt_mean_s": 184.13575,
+                "tt_min_s": 183.872,
+                "tt_max_s": 184.321,
+                "tt_relative_spread": 0.0024384183951241616,
+                "rp_raw_total": 9.0,
+                "rp_scaled_total": 1.125,
+                "warnings": ""
+              }
+            ]
+          },
+          "activity_completeness": {
+            "path": "engineering/geometry_optimization_20260704/44_s3d_o8_all8_activation_20260713/data/s3d_o8_eplus_activity_completeness_audit.json",
+            "sha256": "65ef9e6e037158407f166b435cea86c174bb9b78018f058e73b457c837c7b0bf",
+            "status": "PASS",
+            "expected_activity_keys": 5,
+            "fixed_source_activity_keys": 5
+          }
+        },
+        "sim": "runs/geometry_optimization_20260704/step02_delayed_transport_s3d_o8_all8_activation_m50000_20260713/eplus/DelayedDecayS3dO8EPlusM50000.inc1.id1.sim.gz",
+        "sim_size_bytes": 1603699945,
+        "sim_sha256": "40f0f3b9d753e6302edf836ea217cced04a80ba6efed5320495c466fef206ca9",
+        "SE": 1000000,
+        "ID": 1000000,
+        "TE_s": 465103453.49127,
+        "event_weight_hz": 2.1500592878714673e-09,
+        "geometry_header": "/home/ubuntu/TES_511_Balloon/engineering/geometry_optimization_20260704/43_geoopt_s3d_o8_fallback_20260712/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup",
+        "exact_manifest": "runs/geometry_optimization_20260704/step02_delay_exactpos_s3d_o8_all8_activation_m50000_20260713/eplus/s3d_o8_eplus_exactpos_m50000_s260613_manifest.json",
+        "exact_manifest_sha256": "bfb14ca9c06adf93a29742f41a5290db35b98a4285ebaec97818d647fb427d4a",
+        "source_provenance": {
+          "raw_source": {
+            "path": "runs/geometry_optimization_20260704/step02_decay_source_s3d_o8_all8_activation_m50000_20260713/eplus/activation_decay_day15.source",
+            "size_bytes": 5755,
+            "sha256": "46770c68c94bd6ae342a1504552029811cbdfb1735cc478cdd1af10432531c27"
+          },
+          "inventory": {
+            "path": "runs/geometry_optimization_20260704/step02_decay_source_s3d_o8_all8_activation_m50000_20260713/eplus/activation_inventory_day15.csv",
+            "size_bytes": 561,
+            "sha256": "b0d777fcb41c12abe05196c8ac18fa5ae8f64aee7285fd3a37af0cccece78476"
+          },
+          "fixed_source": {
+            "path": "runs/geometry_optimization_20260704/step02_delay_fix_s3d_o8_all8_activation_m50000_20260713/eplus/activation_decay_day15_groundstate_fixed.source",
+            "size_bytes": 5754,
+            "sha256": "681778deba764c1d5a5a88953a3164bf24324df4c67baca79fdda387eab01e9f"
+          },
+          "fixed_summary": {
+            "path": "runs/geometry_optimization_20260704/step02_delay_fix_s3d_o8_all8_activation_m50000_20260713/eplus/source_fix_summary.json",
+            "size_bytes": 2551,
+            "sha256": "f4123fcbbfeb4b5b9457d86b13f00784838e50c868078718f6074c97995b18dc"
+          },
+          "groundstate_corrections": {
+            "path": "runs/geometry_optimization_20260704/step02_delay_fix_s3d_o8_all8_activation_m50000_20260713/eplus/groundstate_activity_corrections.csv",
+            "size_bytes": 1029,
+            "sha256": "668c3327bc979da8b178b0fe7c0cead6203094fa2ea72465566e0c5cc7f98eda"
+          },
+          "fixed_normalization": {
+            "path": "runs/geometry_optimization_20260704/step02_delay_fix_s3d_o8_all8_activation_m50000_20260713/eplus/normalization_audit_groundstate_fix.json",
+            "size_bytes": 497,
+            "sha256": "98f4b11069d8bcac26ae57b03fc180b84ebd860e9183ff5e9020f165da005218"
+          },
+          "volume_map_audit": {
+            "path": "engineering/geometry_optimization_20260704/44_s3d_o8_all8_activation_20260713/data/s3d_o8_eplus_volume_map_audit.json",
+            "size_bytes": 1556,
+            "sha256": "929d36616887ed221275a55e13b4fcf0a624a6de829e857c3cda26a041eb20cd"
+          },
+          "activity_completeness_audit": {
+            "path": "engineering/geometry_optimization_20260704/44_s3d_o8_all8_activation_20260713/data/s3d_o8_eplus_activity_completeness_audit.json",
+            "size_bytes": 958,
+            "sha256": "65ef9e6e037158407f166b435cea86c174bb9b78018f058e73b457c837c7b0bf"
+          },
+          "exact_source": {
+            "path": "runs/geometry_optimization_20260704/step02_delay_exactpos_s3d_o8_all8_activation_m50000_20260713/eplus/activation_decay_day15_groundstate_fixed_exactpos_m50000.source",
+            "size_bytes": 7333058,
+            "sha256": "64aa783707552b3ddca5f335d22ce933accca80b3a7e2f9ac699d9dda35b5245"
+          },
+          "weighted_table": {
+            "path": "runs/geometry_optimization_20260704/step02_delay_exactpos_s3d_o8_all8_activation_m50000_20260713/eplus/exactpos_weighted_rpip_table_m50000_s260613.csv",
+            "size_bytes": 2528,
+            "sha256": "f071851a0a6540aa7c94d84055f97ac775c55e9dd8ed839a2b6f34bdf15e888a"
+          },
+          "nubase": {
+            "path": "inputs/nubase/nubase_2020.txt",
+            "size_bytes": 761906,
+            "sha256": "1585a5eea86c5e17e90307c7e6e786d060049c4039e392a261ff6db977df9859"
+          },
+          "geometry_setup": {
+            "path": "engineering/geometry_optimization_20260704/43_geoopt_s3d_o8_fallback_20260712/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup",
+            "size_bytes": 219,
+            "sha256": "86a9e56e54dc86834dfe2a9b03a5f71373fb40f2ef24e3889fa66f216058fbec"
+          },
+          "geometry_source": {
+            "path": "engineering/geometry_optimization_20260704/43_geoopt_s3d_o8_fallback_20260712/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo",
+            "size_bytes": 650588,
+            "sha256": "ff4e8402df702501e0112fe377d837a74c39100317146b09e9569b7bd615c37c"
+          }
+        },
+        "transport_provenance": {
+          "status": "PASS",
+          "size_bytes": 1603699945,
+          "sha256": "40f0f3b9d753e6302edf836ea217cced04a80ba6efed5320495c466fef206ca9",
+          "seed": 260613,
+          "source_sha256": "64aa783707552b3ddca5f335d22ce933accca80b3a7e2f9ac699d9dda35b5245",
+          "sim_header_and_terminator": {
+            "geometry_values": [
+              "/home/ubuntu/TES_511_Balloon/engineering/geometry_optimization_20260704/43_geoopt_s3d_o8_fallback_20260712/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup"
+            ],
+            "geometry": "/home/ubuntu/TES_511_Balloon/engineering/geometry_optimization_20260704/43_geoopt_s3d_o8_fallback_20260712/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup",
+            "seed_values": [
+              260613
+            ],
+            "seed": 260613,
+            "SE": 1000000,
+            "ID": 1000000,
+            "TS": 1,
+            "TE": 1,
+            "TE_values_s": [
+              465103453.49127
+            ],
+            "TE_s": 465103453.49127
+          }
+        },
+        "TE_times_activity": 888068.895281798,
+        "TE_activity_relative_delta_to_SE": 0.11193110471820203,
+        "TE_activity_diagnostic": "OUTSIDE_COARSE_10_PERCENT_DIAGNOSTIC_NONBLOCKING",
+        "normalization_contract": "each retained detector event carries 1/TE_s for its incident family"
+      },
+      {
+        "family": "gamma",
+        "status": "PASS",
+        "activity_Bq": 0.005426799257161888,
+        "production": {
+          "family": "gamma",
+          "files": 12,
+          "division": 12.0,
+          "tt_lines": 12,
+          "tt_mean_s": 15.355891666666665,
+          "rp_raw_total": 3.0,
+          "rp_scaled_total": 0.25,
+          "zero_production": false
+        },
+        "fixed_summary": "runs/geometry_optimization_20260704/step02_delay_fix_s3d_o8_all8_activation_m50000_20260713/gamma/source_fix_summary.json",
+        "fixed_summary_sha256": "2a7689463b5ec7c83f4bbf2f5cd2a40e39a64ce5786272147ef8f71e43414526",
+        "fixed_source": {
+          "path": "runs/geometry_optimization_20260704/step02_delay_fix_s3d_o8_all8_activation_m50000_20260713/gamma/activation_decay_day15_groundstate_fixed.source",
+          "size_bytes": 2320,
+          "sha256": "ea8d77f8c7643e343e9b3da840746f11cad71516b35f7f0092e1efeb79904296"
+        },
+        "groundstate_corrections": {
+          "path": "runs/geometry_optimization_20260704/step02_delay_fix_s3d_o8_all8_activation_m50000_20260713/gamma/groundstate_activity_corrections.csv",
+          "size_bytes": 720,
+          "sha256": "dd4fc7e125f20b75d5458143ed02053c90c17e23b3bb03ff7955dfb656457a53"
+        },
+        "inventory": {
+          "path": "runs/geometry_optimization_20260704/step02_decay_source_s3d_o8_all8_activation_m50000_20260713/gamma/activation_inventory_day15.csv",
+          "size_bytes": 382,
+          "sha256": "a59924eda73b41d0ba09f50ebb75caedc5687fcda9df610dda6b9dd0dee04e93"
+        },
+        "audit_evidence": {
+          "family_source_validation_status": "PASS",
+          "volume_map": {
+            "path": "engineering/geometry_optimization_20260704/44_s3d_o8_all8_activation_20260713/data/s3d_o8_gamma_volume_map_audit.json",
+            "sha256": "ab168120ea0edf6da735d4cbecf46f0d7ed90154f3faf2cde02334295c31b98c",
+            "status": "PASS"
+          },
+          "fixed_normalization": {
+            "path": "runs/geometry_optimization_20260704/step02_delay_fix_s3d_o8_all8_activation_m50000_20260713/gamma/normalization_audit_groundstate_fix.json",
+            "sha256": "b0354dbf949dbfee15e018d6e32f6d37ca910150a232267fbfc501bffbb82c4c",
+            "status": "PASS",
+            "rows": [
+              {
+                "tag": "gamma",
+                "files": 12,
+                "division": 12.0,
+                "is_gamma": true,
+                "gamma_div_mode": "auto",
+                "tt_count": 12,
+                "tt_files": 12,
+                "tt_line_count": 12,
+                "tt_sum_s": 184.27069999999998,
+                "tt_mean_s": 15.355891666666665,
+                "tt_min_s": 15.3306,
+                "tt_max_s": 15.378,
+                "tt_relative_spread": 0.0030867631153514694,
+                "rp_raw_total": 3.0,
+                "rp_scaled_total": 0.25,
+                "warnings": ""
+              }
+            ]
+          },
+          "activity_completeness": {
+            "path": "engineering/geometry_optimization_20260704/44_s3d_o8_all8_activation_20260713/data/s3d_o8_gamma_activity_completeness_audit.json",
+            "sha256": "0bdce76d47bf7800ddfd914f18639bfd455c2e7e4cb3b878bc8ff10d11bf078a",
+            "status": "PASS",
+            "expected_activity_keys": 3,
+            "fixed_source_activity_keys": 3
+          }
+        },
+        "sim": "runs/geometry_optimization_20260704/step02_delayed_transport_s3d_o8_all8_activation_m50000_20260713/gamma/DelayedDecayS3dO8GammaM50000.inc1.id1.sim.gz",
+        "sim_size_bytes": 379952459,
+        "sim_sha256": "54bb3cc8c98e280cbe017b30f74ed2617df6586178402ea05bc709ba4b945d2e",
+        "SE": 1000000,
+        "ID": 1000000,
+        "TE_s": 183019346.724261,
+        "event_weight_hz": 5.463903231534376e-09,
+        "geometry_header": "/home/ubuntu/TES_511_Balloon/engineering/geometry_optimization_20260704/43_geoopt_s3d_o8_fallback_20260712/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup",
+        "exact_manifest": "runs/geometry_optimization_20260704/step02_delay_exactpos_s3d_o8_all8_activation_m50000_20260713/gamma/s3d_o8_gamma_exactpos_m50000_s260613_manifest.json",
+        "exact_manifest_sha256": "581a65224d0595ecbaa45e6561816136dec7e883c0ac0ee148057dfc277d94fe",
+        "source_provenance": {
+          "raw_source": {
+            "path": "runs/geometry_optimization_20260704/step02_decay_source_s3d_o8_all8_activation_m50000_20260713/gamma/activation_decay_day15.source",
+            "size_bytes": 2321,
+            "sha256": "d4dd1a22c04d144519f45c22d0703f2bd25230abae533d7a89357674ad36eca5"
+          },
+          "inventory": {
+            "path": "runs/geometry_optimization_20260704/step02_decay_source_s3d_o8_all8_activation_m50000_20260713/gamma/activation_inventory_day15.csv",
+            "size_bytes": 382,
+            "sha256": "a59924eda73b41d0ba09f50ebb75caedc5687fcda9df610dda6b9dd0dee04e93"
+          },
+          "fixed_source": {
+            "path": "runs/geometry_optimization_20260704/step02_delay_fix_s3d_o8_all8_activation_m50000_20260713/gamma/activation_decay_day15_groundstate_fixed.source",
+            "size_bytes": 2320,
+            "sha256": "ea8d77f8c7643e343e9b3da840746f11cad71516b35f7f0092e1efeb79904296"
+          },
+          "fixed_summary": {
+            "path": "runs/geometry_optimization_20260704/step02_delay_fix_s3d_o8_all8_activation_m50000_20260713/gamma/source_fix_summary.json",
+            "size_bytes": 3099,
+            "sha256": "2a7689463b5ec7c83f4bbf2f5cd2a40e39a64ce5786272147ef8f71e43414526"
+          },
+          "groundstate_corrections": {
+            "path": "runs/geometry_optimization_20260704/step02_delay_fix_s3d_o8_all8_activation_m50000_20260713/gamma/groundstate_activity_corrections.csv",
+            "size_bytes": 720,
+            "sha256": "dd4fc7e125f20b75d5458143ed02053c90c17e23b3bb03ff7955dfb656457a53"
+          },
+          "fixed_normalization": {
+            "path": "runs/geometry_optimization_20260704/step02_delay_fix_s3d_o8_all8_activation_m50000_20260713/gamma/normalization_audit_groundstate_fix.json",
+            "size_bytes": 522,
+            "sha256": "b0354dbf949dbfee15e018d6e32f6d37ca910150a232267fbfc501bffbb82c4c"
+          },
+          "volume_map_audit": {
+            "path": "engineering/geometry_optimization_20260704/44_s3d_o8_all8_activation_20260713/data/s3d_o8_gamma_volume_map_audit.json",
+            "size_bytes": 1958,
+            "sha256": "ab168120ea0edf6da735d4cbecf46f0d7ed90154f3faf2cde02334295c31b98c"
+          },
+          "activity_completeness_audit": {
+            "path": "engineering/geometry_optimization_20260704/44_s3d_o8_all8_activation_20260713/data/s3d_o8_gamma_activity_completeness_audit.json",
+            "size_bytes": 981,
+            "sha256": "0bdce76d47bf7800ddfd914f18639bfd455c2e7e4cb3b878bc8ff10d11bf078a"
+          },
+          "exact_source": {
+            "path": "runs/geometry_optimization_20260704/step02_delay_exactpos_s3d_o8_all8_activation_m50000_20260713/gamma/activation_decay_day15_groundstate_fixed_exactpos_m50000.source",
+            "size_bytes": 7350688,
+            "sha256": "f0447812d02670d011769b00bec660041c3cfb8572cb63e04df716326c04aef1"
+          },
+          "weighted_table": {
+            "path": "runs/geometry_optimization_20260704/step02_delay_exactpos_s3d_o8_all8_activation_m50000_20260713/gamma/exactpos_weighted_rpip_table_m50000_s260613.csv",
+            "size_bytes": 900,
+            "sha256": "3ca03b19682b2e901868d5cf0e7978c458c329e9e5509fa4b1030bb5fc0944f7"
+          },
+          "nubase": {
+            "path": "inputs/nubase/nubase_2020.txt",
+            "size_bytes": 761906,
+            "sha256": "1585a5eea86c5e17e90307c7e6e786d060049c4039e392a261ff6db977df9859"
+          },
+          "geometry_setup": {
+            "path": "engineering/geometry_optimization_20260704/43_geoopt_s3d_o8_fallback_20260712/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup",
+            "size_bytes": 219,
+            "sha256": "86a9e56e54dc86834dfe2a9b03a5f71373fb40f2ef24e3889fa66f216058fbec"
+          },
+          "geometry_source": {
+            "path": "engineering/geometry_optimization_20260704/43_geoopt_s3d_o8_fallback_20260712/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo",
+            "size_bytes": 650588,
+            "sha256": "ff4e8402df702501e0112fe377d837a74c39100317146b09e9569b7bd615c37c"
+          }
+        },
+        "transport_provenance": {
+          "status": "PASS",
+          "size_bytes": 379952459,
+          "sha256": "54bb3cc8c98e280cbe017b30f74ed2617df6586178402ea05bc709ba4b945d2e",
+          "seed": 260613,
+          "source_sha256": "f0447812d02670d011769b00bec660041c3cfb8572cb63e04df716326c04aef1",
+          "sim_header_and_terminator": {
+            "geometry_values": [
+              "/home/ubuntu/TES_511_Balloon/engineering/geometry_optimization_20260704/43_geoopt_s3d_o8_fallback_20260712/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup"
+            ],
+            "geometry": "/home/ubuntu/TES_511_Balloon/engineering/geometry_optimization_20260704/43_geoopt_s3d_o8_fallback_20260712/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup",
+            "seed_values": [
+              260613
+            ],
+            "seed": 260613,
+            "SE": 1000000,
+            "ID": 1000000,
+            "TS": 1,
+            "TE": 1,
+            "TE_values_s": [
+              183019346.724261
+            ],
+            "TE_s": 183019346.724261
+          }
+        },
+        "TE_times_activity": 993209.2548494735,
+        "TE_activity_relative_delta_to_SE": 0.00679074515052652,
+        "TE_activity_diagnostic": "WITHIN_COARSE_10_PERCENT_DIAGNOSTIC",
+        "normalization_contract": "each retained detector event carries 1/TE_s for its incident family"
+      },
+      {
+        "family": "muminus",
+        "status": "PASS",
+        "activity_Bq": 3.942402891823467,
+        "production": {
+          "family": "muminus",
+          "files": 8,
+          "division": 8.0,
+          "tt_lines": 8,
+          "tt_mean_s": 183.20412499999998,
+          "rp_raw_total": 6218.0,
+          "rp_scaled_total": 777.25,
+          "zero_production": false
+        },
+        "fixed_summary": "runs/geometry_optimization_20260704/step02_delay_fix_s3d_o8_all8_activation_m50000_20260713/muminus/source_fix_summary.json",
+        "fixed_summary_sha256": "8c8d57057a2a87eaa0266d24cc2410904874166760a764beed4af1f74bca0d47",
+        "fixed_source": {
+          "path": "runs/geometry_optimization_20260704/step02_delay_fix_s3d_o8_all8_activation_m50000_20260713/muminus/activation_decay_day15_groundstate_fixed.source",
+          "size_bytes": 647513,
+          "sha256": "4e5acf1b885a5206eac24eaeb78ce966d1fb2f6adb237b51d134015895656009"
+        },
+        "groundstate_corrections": {
+          "path": "runs/geometry_optimization_20260704/step02_delay_fix_s3d_o8_all8_activation_m50000_20260713/muminus/groundstate_activity_corrections.csv",
+          "size_bytes": 39866,
+          "sha256": "a2cc8255a62ae5c646277e3cdedc7235fa75150d4c1afa7a53acee6d91a7b44e"
+        },
+        "inventory": {
+          "path": "runs/geometry_optimization_20260704/step02_decay_source_s3d_o8_all8_activation_m50000_20260713/muminus/activation_inventory_day15.csv",
+          "size_bytes": 22312,
+          "sha256": "fc663e750aad9c2e33fc0989b8d61fe9f80451830173e6a1010681c1d5599c17"
+        },
+        "audit_evidence": {
+          "family_source_validation_status": "PASS",
+          "volume_map": {
+            "path": "engineering/geometry_optimization_20260704/44_s3d_o8_all8_activation_20260713/data/s3d_o8_muminus_volume_map_audit.json",
+            "sha256": "dce2301122e6714c4c9b1ae3b030ebaa7f7e8ff69f937db29c8c69b49cd0cb9c",
+            "status": "PASS"
+          },
+          "fixed_normalization": {
+            "path": "runs/geometry_optimization_20260704/step02_delay_fix_s3d_o8_all8_activation_m50000_20260713/muminus/normalization_audit_groundstate_fix.json",
+            "sha256": "ae9b2c280f12d64bb12e824f7322288273a21b92c86f8c515165d39f98b90f81",
+            "status": "PASS",
+            "rows": [
+              {
+                "tag": "muminus",
+                "files": 8,
+                "division": 8.0,
+                "is_gamma": false,
+                "gamma_div_mode": "",
+                "tt_count": 8,
+                "tt_files": 8,
+                "tt_line_count": 8,
+                "tt_sum_s": 1465.6329999999998,
+                "tt_mean_s": 183.20412499999998,
+                "tt_min_s": 181.454,
+                "tt_max_s": 185.815,
+                "tt_relative_spread": 0.02380404917192771,
+                "rp_raw_total": 6218.0,
+                "rp_scaled_total": 777.25,
+                "warnings": "tag=muminus TT spread is 0.0238; rate uses mean TT"
+              }
+            ]
+          },
+          "activity_completeness": {
+            "path": "engineering/geometry_optimization_20260704/44_s3d_o8_all8_activation_20260713/data/s3d_o8_muminus_activity_completeness_audit.json",
+            "sha256": "cbdf927471f99f091cbb63303de29131658d7e0a4ae6fe09c57c157641d829d6",
+            "status": "PASS",
+            "expected_activity_keys": 249,
+            "fixed_source_activity_keys": 244
+          }
+        },
+        "sim": "runs/geometry_optimization_20260704/step02_delayed_transport_s3d_o8_all8_activation_m50000_20260713/muminus/DelayedDecayS3dO8MuMinusM50000.inc1.id1.sim.gz",
+        "sim_size_bytes": 558750972,
+        "sim_sha256": "f97d06cb0fd119af0ccd93edcbee2e42fc47ee7054d0d59ac3bb7853637f12e7",
+        "SE": 1000000,
+        "ID": 1000000,
+        "TE_s": 237581.250236,
+        "event_weight_hz": 4.209086361009783e-06,
+        "geometry_header": "/home/ubuntu/TES_511_Balloon/engineering/geometry_optimization_20260704/43_geoopt_s3d_o8_fallback_20260712/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup",
+        "exact_manifest": "runs/geometry_optimization_20260704/step02_delay_exactpos_s3d_o8_all8_activation_m50000_20260713/muminus/s3d_o8_muminus_exactpos_m50000_s260613_manifest.json",
+        "exact_manifest_sha256": "01e393fcbba8d53085910c5e2bc7d0077f1c831ff3a074c8977a9682288a72f8",
+        "source_provenance": {
+          "raw_source": {
+            "path": "runs/geometry_optimization_20260704/step02_decay_source_s3d_o8_all8_activation_m50000_20260713/muminus/activation_decay_day15.source",
+            "size_bytes": 648046,
+            "sha256": "c8689e635309c459775545bb5391dae6429b01d882794d7980764b47437fb0f5"
+          },
+          "inventory": {
+            "path": "runs/geometry_optimization_20260704/step02_decay_source_s3d_o8_all8_activation_m50000_20260713/muminus/activation_inventory_day15.csv",
+            "size_bytes": 22312,
+            "sha256": "fc663e750aad9c2e33fc0989b8d61fe9f80451830173e6a1010681c1d5599c17"
+          },
+          "fixed_source": {
+            "path": "runs/geometry_optimization_20260704/step02_delay_fix_s3d_o8_all8_activation_m50000_20260713/muminus/activation_decay_day15_groundstate_fixed.source",
+            "size_bytes": 647513,
+            "sha256": "4e5acf1b885a5206eac24eaeb78ce966d1fb2f6adb237b51d134015895656009"
+          },
+          "fixed_summary": {
+            "path": "runs/geometry_optimization_20260704/step02_delay_fix_s3d_o8_all8_activation_m50000_20260713/muminus/source_fix_summary.json",
+            "size_bytes": 16688,
+            "sha256": "8c8d57057a2a87eaa0266d24cc2410904874166760a764beed4af1f74bca0d47"
+          },
+          "groundstate_corrections": {
+            "path": "runs/geometry_optimization_20260704/step02_delay_fix_s3d_o8_all8_activation_m50000_20260713/muminus/groundstate_activity_corrections.csv",
+            "size_bytes": 39866,
+            "sha256": "a2cc8255a62ae5c646277e3cdedc7235fa75150d4c1afa7a53acee6d91a7b44e"
+          },
+          "fixed_normalization": {
+            "path": "runs/geometry_optimization_20260704/step02_delay_fix_s3d_o8_all8_activation_m50000_20260713/muminus/normalization_audit_groundstate_fix.json",
+            "size_bytes": 570,
+            "sha256": "ae9b2c280f12d64bb12e824f7322288273a21b92c86f8c515165d39f98b90f81"
+          },
+          "volume_map_audit": {
+            "path": "engineering/geometry_optimization_20260704/44_s3d_o8_all8_activation_20260713/data/s3d_o8_muminus_volume_map_audit.json",
+            "size_bytes": 2041,
+            "sha256": "dce2301122e6714c4c9b1ae3b030ebaa7f7e8ff69f937db29c8c69b49cd0cb9c"
+          },
+          "activity_completeness_audit": {
+            "path": "engineering/geometry_optimization_20260704/44_s3d_o8_all8_activation_20260713/data/s3d_o8_muminus_activity_completeness_audit.json",
+            "size_bytes": 1066,
+            "sha256": "cbdf927471f99f091cbb63303de29131658d7e0a4ae6fe09c57c157641d829d6"
+          },
+          "exact_source": {
+            "path": "runs/geometry_optimization_20260704/step02_delay_exactpos_s3d_o8_all8_activation_m50000_20260713/muminus/activation_decay_day15_groundstate_fixed_exactpos_m50000.source",
+            "size_bytes": 7398697,
+            "sha256": "08dff2b3a9c8668dfd015e82dea5f1718ddb852a0ed3f7188c096562b63aa911"
+          },
+          "weighted_table": {
+            "path": "runs/geometry_optimization_20260704/step02_delay_exactpos_s3d_o8_all8_activation_m50000_20260713/muminus/exactpos_weighted_rpip_table_m50000_s260613.csv",
+            "size_bytes": 1686501,
+            "sha256": "b548b2fd6ce2a6b960872f77d58cc88305c9268e9c0a2efb606942f6330a9f94"
+          },
+          "nubase": {
+            "path": "inputs/nubase/nubase_2020.txt",
+            "size_bytes": 761906,
+            "sha256": "1585a5eea86c5e17e90307c7e6e786d060049c4039e392a261ff6db977df9859"
+          },
+          "geometry_setup": {
+            "path": "engineering/geometry_optimization_20260704/43_geoopt_s3d_o8_fallback_20260712/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup",
+            "size_bytes": 219,
+            "sha256": "86a9e56e54dc86834dfe2a9b03a5f71373fb40f2ef24e3889fa66f216058fbec"
+          },
+          "geometry_source": {
+            "path": "engineering/geometry_optimization_20260704/43_geoopt_s3d_o8_fallback_20260712/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo",
+            "size_bytes": 650588,
+            "sha256": "ff4e8402df702501e0112fe377d837a74c39100317146b09e9569b7bd615c37c"
+          }
+        },
+        "transport_provenance": {
+          "status": "PASS",
+          "size_bytes": 558750972,
+          "sha256": "f97d06cb0fd119af0ccd93edcbee2e42fc47ee7054d0d59ac3bb7853637f12e7",
+          "seed": 260613,
+          "source_sha256": "08dff2b3a9c8668dfd015e82dea5f1718ddb852a0ed3f7188c096562b63aa911",
+          "sim_header_and_terminator": {
+            "geometry_values": [
+              "/home/ubuntu/TES_511_Balloon/engineering/geometry_optimization_20260704/43_geoopt_s3d_o8_fallback_20260712/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup"
+            ],
+            "geometry": "/home/ubuntu/TES_511_Balloon/engineering/geometry_optimization_20260704/43_geoopt_s3d_o8_fallback_20260712/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup",
+            "seed_values": [
+              260613
+            ],
+            "seed": 260613,
+            "SE": 1000000,
+            "ID": 1000000,
+            "TS": 1,
+            "TE": 1,
+            "TE_values_s": [
+              237581.250236
+            ],
+            "TE_s": 237581.250236
+          }
+        },
+        "TE_times_activity": 936641.0079734412,
+        "TE_activity_relative_delta_to_SE": 0.06335899202655884,
+        "TE_activity_diagnostic": "WITHIN_COARSE_10_PERCENT_DIAGNOSTIC",
+        "normalization_contract": "each retained detector event carries 1/TE_s for its incident family"
+      },
+      {
+        "family": "muplus",
+        "status": "PASS",
+        "activity_Bq": 0.0005519391501331987,
+        "production": {
+          "family": "muplus",
+          "files": 8,
+          "division": 8.0,
+          "tt_lines": 8,
+          "tt_mean_s": 184.05825000000002,
+          "rp_raw_total": 8.0,
+          "rp_scaled_total": 1.0,
+          "zero_production": false
+        },
+        "fixed_summary": "runs/geometry_optimization_20260704/step02_delay_fix_s3d_o8_all8_activation_m50000_20260713/muplus/source_fix_summary.json",
+        "fixed_summary_sha256": "d89eda2389b6c96379cbf0da028a302a4a9c0709fe232d906d46d700784eab20",
+        "fixed_source": {
+          "path": "runs/geometry_optimization_20260704/step02_delay_fix_s3d_o8_all8_activation_m50000_20260713/muplus/activation_decay_day15_groundstate_fixed.source",
+          "size_bytes": 5159,
+          "sha256": "85ef47febef723d6ba7ba619205dff265b03f0f1698f69e5c0e08113ce40ac36"
+        },
+        "groundstate_corrections": {
+          "path": "runs/geometry_optimization_20260704/step02_delay_fix_s3d_o8_all8_activation_m50000_20260713/muplus/groundstate_activity_corrections.csv",
+          "size_bytes": 690,
+          "sha256": "d9d777ea8a5497c4293344791bfd56acf678614f63a6e9a8fa4bc9c687c1353d"
+        },
+        "inventory": {
+          "path": "runs/geometry_optimization_20260704/step02_decay_source_s3d_o8_all8_activation_m50000_20260713/muplus/activation_inventory_day15.csv",
+          "size_bytes": 361,
+          "sha256": "4be6d5ad9f9e06261e431aa0d8072fec82ec863012df57d972145376563c5e9b"
+        },
+        "audit_evidence": {
+          "family_source_validation_status": "PASS",
+          "volume_map": {
+            "path": "engineering/geometry_optimization_20260704/44_s3d_o8_all8_activation_20260713/data/s3d_o8_muplus_volume_map_audit.json",
+            "sha256": "0da41809e82936cf210560ec1c3537fa48498e44d9e7bc7603521877b4d6771e",
+            "status": "PASS"
+          },
+          "fixed_normalization": {
+            "path": "runs/geometry_optimization_20260704/step02_delay_fix_s3d_o8_all8_activation_m50000_20260713/muplus/normalization_audit_groundstate_fix.json",
+            "sha256": "9552450af0151c9f6c282d1365f2a2957857f5b05ed6c09a3d12993c609fd739",
+            "status": "PASS",
+            "rows": [
+              {
+                "tag": "muplus",
+                "files": 8,
+                "division": 8.0,
+                "is_gamma": false,
+                "gamma_div_mode": "",
+                "tt_count": 8,
+                "tt_files": 8,
+                "tt_line_count": 8,
+                "tt_sum_s": 1472.4660000000001,
+                "tt_mean_s": 184.05825000000002,
+                "tt_min_s": 180.625,
+                "tt_max_s": 188.296,
+                "tt_relative_spread": 0.04167702344230694,
+                "rp_raw_total": 8.0,
+                "rp_scaled_total": 1.0,
+                "warnings": "tag=muplus TT spread is 0.0417; rate uses mean TT"
+              }
+            ]
+          },
+          "activity_completeness": {
+            "path": "engineering/geometry_optimization_20260704/44_s3d_o8_all8_activation_20260713/data/s3d_o8_muplus_activity_completeness_audit.json",
+            "sha256": "63f241ae366b4575e966250d651ef5deaae5dbeff681e0d18154cbf03ca4f744",
+            "status": "PASS",
+            "expected_activity_keys": 3,
+            "fixed_source_activity_keys": 3
+          }
+        },
+        "sim": "runs/geometry_optimization_20260704/step02_delayed_transport_s3d_o8_all8_activation_m50000_20260713/muplus/DelayedDecayS3dO8MuPlusM50000.inc1.id1.sim.gz",
+        "sim_size_bytes": 2741401329,
+        "sim_sha256": "38dc24b968b1fe65a016c0d1054e67a0fb98bfc5d9b20ed8f3d2e4265f387fae",
+        "SE": 1000000,
+        "ID": 1000000,
+        "TE_s": 1258991152.384783,
+        "event_weight_hz": 7.942867573817325e-10,
+        "geometry_header": "/home/ubuntu/TES_511_Balloon/engineering/geometry_optimization_20260704/43_geoopt_s3d_o8_fallback_20260712/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup",
+        "exact_manifest": "runs/geometry_optimization_20260704/step02_delay_exactpos_s3d_o8_all8_activation_m50000_20260713/muplus/s3d_o8_muplus_exactpos_m50000_s260613_manifest.json",
+        "exact_manifest_sha256": "1ff16abaf4be966af224dbda55b44702eb170e1cdfcc529d817b9b03c636c983",
+        "source_provenance": {
+          "raw_source": {
+            "path": "runs/geometry_optimization_20260704/step02_decay_source_s3d_o8_all8_activation_m50000_20260713/muplus/activation_decay_day15.source",
+            "size_bytes": 5160,
+            "sha256": "941605285049c059e25ea1e021842af3ca9e7e784f2e8cc8f5fedd27dcf7668f"
+          },
+          "inventory": {
+            "path": "runs/geometry_optimization_20260704/step02_decay_source_s3d_o8_all8_activation_m50000_20260713/muplus/activation_inventory_day15.csv",
+            "size_bytes": 361,
+            "sha256": "4be6d5ad9f9e06261e431aa0d8072fec82ec863012df57d972145376563c5e9b"
+          },
+          "fixed_source": {
+            "path": "runs/geometry_optimization_20260704/step02_delay_fix_s3d_o8_all8_activation_m50000_20260713/muplus/activation_decay_day15_groundstate_fixed.source",
+            "size_bytes": 5159,
+            "sha256": "85ef47febef723d6ba7ba619205dff265b03f0f1698f69e5c0e08113ce40ac36"
+          },
+          "fixed_summary": {
+            "path": "runs/geometry_optimization_20260704/step02_delay_fix_s3d_o8_all8_activation_m50000_20260713/muplus/source_fix_summary.json",
+            "size_bytes": 2647,
+            "sha256": "d89eda2389b6c96379cbf0da028a302a4a9c0709fe232d906d46d700784eab20"
+          },
+          "groundstate_corrections": {
+            "path": "runs/geometry_optimization_20260704/step02_delay_fix_s3d_o8_all8_activation_m50000_20260713/muplus/groundstate_activity_corrections.csv",
+            "size_bytes": 690,
+            "sha256": "d9d777ea8a5497c4293344791bfd56acf678614f63a6e9a8fa4bc9c687c1353d"
+          },
+          "fixed_normalization": {
+            "path": "runs/geometry_optimization_20260704/step02_delay_fix_s3d_o8_all8_activation_m50000_20260713/muplus/normalization_audit_groundstate_fix.json",
+            "size_bytes": 562,
+            "sha256": "9552450af0151c9f6c282d1365f2a2957857f5b05ed6c09a3d12993c609fd739"
+          },
+          "volume_map_audit": {
+            "path": "engineering/geometry_optimization_20260704/44_s3d_o8_all8_activation_20260713/data/s3d_o8_muplus_volume_map_audit.json",
+            "size_bytes": 1573,
+            "sha256": "0da41809e82936cf210560ec1c3537fa48498e44d9e7bc7603521877b4d6771e"
+          },
+          "activity_completeness_audit": {
+            "path": "engineering/geometry_optimization_20260704/44_s3d_o8_all8_activation_20260713/data/s3d_o8_muplus_activity_completeness_audit.json",
+            "size_bytes": 1044,
+            "sha256": "63f241ae366b4575e966250d651ef5deaae5dbeff681e0d18154cbf03ca4f744"
+          },
+          "exact_source": {
+            "path": "runs/geometry_optimization_20260704/step02_delay_exactpos_s3d_o8_all8_activation_m50000_20260713/muplus/activation_decay_day15_groundstate_fixed_exactpos_m50000.source",
+            "size_bytes": 7350631,
+            "sha256": "987091f2cf92e3b1cc61032f6acedbdeb334f8937cbcf068fb98566cc6fcc136"
+          },
+          "weighted_table": {
+            "path": "runs/geometry_optimization_20260704/step02_delay_exactpos_s3d_o8_all8_activation_m50000_20260713/muplus/exactpos_weighted_rpip_table_m50000_s260613.csv",
+            "size_bytes": 2260,
+            "sha256": "304b43598d59605e856a5b72c3b693c2f24d27ffc3bfd1a877fa4a15a91e9836"
+          },
+          "nubase": {
+            "path": "inputs/nubase/nubase_2020.txt",
+            "size_bytes": 761906,
+            "sha256": "1585a5eea86c5e17e90307c7e6e786d060049c4039e392a261ff6db977df9859"
+          },
+          "geometry_setup": {
+            "path": "engineering/geometry_optimization_20260704/43_geoopt_s3d_o8_fallback_20260712/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup",
+            "size_bytes": 219,
+            "sha256": "86a9e56e54dc86834dfe2a9b03a5f71373fb40f2ef24e3889fa66f216058fbec"
+          },
+          "geometry_source": {
+            "path": "engineering/geometry_optimization_20260704/43_geoopt_s3d_o8_fallback_20260712/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo",
+            "size_bytes": 650588,
+            "sha256": "ff4e8402df702501e0112fe377d837a74c39100317146b09e9569b7bd615c37c"
+          }
+        },
+        "transport_provenance": {
+          "status": "PASS",
+          "size_bytes": 2741401329,
+          "sha256": "38dc24b968b1fe65a016c0d1054e67a0fb98bfc5d9b20ed8f3d2e4265f387fae",
+          "seed": 260613,
+          "source_sha256": "987091f2cf92e3b1cc61032f6acedbdeb334f8937cbcf068fb98566cc6fcc136",
+          "sim_header_and_terminator": {
+            "geometry_values": [
+              "/home/ubuntu/TES_511_Balloon/engineering/geometry_optimization_20260704/43_geoopt_s3d_o8_fallback_20260712/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup"
+            ],
+            "geometry": "/home/ubuntu/TES_511_Balloon/engineering/geometry_optimization_20260704/43_geoopt_s3d_o8_fallback_20260712/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup",
+            "seed_values": [
+              260613
+            ],
+            "seed": 260613,
+            "SE": 1000000,
+            "ID": 1000000,
+            "TS": 1,
+            "TE": 1,
+            "TE_values_s": [
+              1258991152.384783
+            ],
+            "TE_s": 1258991152.384783
+          }
+        },
+        "TE_times_activity": 694886.5066724736,
+        "TE_activity_relative_delta_to_SE": 0.30511349332752635,
+        "TE_activity_diagnostic": "OUTSIDE_COARSE_10_PERCENT_DIAGNOSTIC_NONBLOCKING",
+        "normalization_contract": "each retained detector event carries 1/TE_s for its incident family"
+      },
+      {
+        "family": "n",
+        "status": "PASS",
+        "activity_Bq": 30.55975311534999,
+        "production": {
+          "family": "n",
+          "files": 8,
+          "division": 8.0,
+          "tt_lines": 8,
+          "tt_mean_s": 184.19075,
+          "rp_raw_total": 61368.0,
+          "rp_scaled_total": 7671.0,
+          "zero_production": false
+        },
+        "fixed_summary": "runs/geometry_optimization_20260704/step02_delay_fix_s3d_o8_all8_activation_m50000_20260713/n/source_fix_summary.json",
+        "fixed_summary_sha256": "06790b010f6289d8cfac3daad1727afeee6cfafe5e9e22cf678d87334b33e411",
+        "fixed_source": {
+          "path": "runs/geometry_optimization_20260704/step02_delay_fix_s3d_o8_all8_activation_m50000_20260713/n/activation_decay_day15_groundstate_fixed.source",
+          "size_bytes": 7132735,
+          "sha256": "35df4e41468648c24f2cb41c598fc2d844b63a5e06875a13cb620ce2997cd2b6"
+        },
+        "groundstate_corrections": {
+          "path": "runs/geometry_optimization_20260704/step02_delay_fix_s3d_o8_all8_activation_m50000_20260713/n/groundstate_activity_corrections.csv",
+          "size_bytes": 278928,
+          "sha256": "67193cdd4eebae3b0c8ba48632cf9b86db95117d0ab45739f722665c080b651f"
+        },
+        "inventory": {
+          "path": "runs/geometry_optimization_20260704/step02_decay_source_s3d_o8_all8_activation_m50000_20260713/n/activation_inventory_day15.csv",
+          "size_bytes": 160311,
+          "sha256": "11dfe07cc3a38829f77ea6764a25eb9e7a4fd8cd909db1606d80578dc96ac795"
+        },
+        "audit_evidence": {
+          "family_source_validation_status": "PASS",
+          "volume_map": {
+            "path": "engineering/geometry_optimization_20260704/44_s3d_o8_all8_activation_20260713/data/s3d_o8_n_volume_map_audit.json",
+            "sha256": "2768377dad184e5d3df5a8c2f29f67f0014771f1ddfe40ad66610796b7dc819f",
+            "status": "PASS"
+          },
+          "fixed_normalization": {
+            "path": "runs/geometry_optimization_20260704/step02_delay_fix_s3d_o8_all8_activation_m50000_20260713/n/normalization_audit_groundstate_fix.json",
+            "sha256": "6958e4cfd7a29a5df15b4a68dc2c9634cbd29185f2089953c030fab987045d5e",
+            "status": "PASS",
+            "rows": [
+              {
+                "tag": "n",
+                "files": 8,
+                "division": 8.0,
+                "is_gamma": false,
+                "gamma_div_mode": "",
+                "tt_count": 8,
+                "tt_files": 8,
+                "tt_line_count": 8,
+                "tt_sum_s": 1473.526,
+                "tt_mean_s": 184.19075,
+                "tt_min_s": 183.931,
+                "tt_max_s": 184.446,
+                "tt_relative_spread": 0.0027960144578377923,
+                "rp_raw_total": 61368.0,
+                "rp_scaled_total": 7671.0,
+                "warnings": ""
+              }
+            ]
+          },
+          "activity_completeness": {
+            "path": "engineering/geometry_optimization_20260704/44_s3d_o8_all8_activation_20260713/data/s3d_o8_n_activity_completeness_audit.json",
+            "sha256": "1a164da5f7472b6459752b5613f21d9a27e19e41c8d6b77a9db9802e7a09be84",
+            "status": "PASS",
+            "expected_activity_keys": 1666,
+            "fixed_source_activity_keys": 1629
+          }
+        },
+        "sim": "runs/geometry_optimization_20260704/step02_delayed_transport_s3d_o8_all8_activation_m50000_20260713/n/DelayedDecayS3dO8NM50000.inc1.id1.sim.gz",
+        "sim_size_bytes": 929573699,
+        "sim_sha256": "60443f8587266aec37b939eb97b503afcb4088a43ce7b2d75723d02999e4dc9c",
+        "SE": 1000000,
+        "ID": 1000000,
+        "TE_s": 30484.193888,
+        "event_weight_hz": 3.280388530771176e-05,
+        "geometry_header": "/home/ubuntu/TES_511_Balloon/engineering/geometry_optimization_20260704/43_geoopt_s3d_o8_fallback_20260712/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup",
+        "exact_manifest": "runs/geometry_optimization_20260704/step02_delay_exactpos_s3d_o8_all8_activation_m50000_20260713/n/s3d_o8_n_exactpos_m50000_s260613_manifest.json",
+        "exact_manifest_sha256": "7e2af93e35d0dfae024bba44fb7d3cdae6e6f8a3dbfbff1debe10c2440482fb7",
+        "source_provenance": {
+          "raw_source": {
+            "path": "runs/geometry_optimization_20260704/step02_decay_source_s3d_o8_all8_activation_m50000_20260713/n/activation_decay_day15.source",
+            "size_bytes": 7167688,
+            "sha256": "66fa979c7ec3284c971ce92b8d04b7afecbde054bb29e7a85985d60f9ce6155b"
+          },
+          "inventory": {
+            "path": "runs/geometry_optimization_20260704/step02_decay_source_s3d_o8_all8_activation_m50000_20260713/n/activation_inventory_day15.csv",
+            "size_bytes": 160311,
+            "sha256": "11dfe07cc3a38829f77ea6764a25eb9e7a4fd8cd909db1606d80578dc96ac795"
+          },
+          "fixed_source": {
+            "path": "runs/geometry_optimization_20260704/step02_delay_fix_s3d_o8_all8_activation_m50000_20260713/n/activation_decay_day15_groundstate_fixed.source",
+            "size_bytes": 7132735,
+            "sha256": "35df4e41468648c24f2cb41c598fc2d844b63a5e06875a13cb620ce2997cd2b6"
+          },
+          "fixed_summary": {
+            "path": "runs/geometry_optimization_20260704/step02_delay_fix_s3d_o8_all8_activation_m50000_20260713/n/source_fix_summary.json",
+            "size_bytes": 16873,
+            "sha256": "06790b010f6289d8cfac3daad1727afeee6cfafe5e9e22cf678d87334b33e411"
+          },
+          "groundstate_corrections": {
+            "path": "runs/geometry_optimization_20260704/step02_delay_fix_s3d_o8_all8_activation_m50000_20260713/n/groundstate_activity_corrections.csv",
+            "size_bytes": 278928,
+            "sha256": "67193cdd4eebae3b0c8ba48632cf9b86db95117d0ab45739f722665c080b651f"
+          },
+          "fixed_normalization": {
+            "path": "runs/geometry_optimization_20260704/step02_delay_fix_s3d_o8_all8_activation_m50000_20260713/n/normalization_audit_groundstate_fix.json",
+            "size_bytes": 498,
+            "sha256": "6958e4cfd7a29a5df15b4a68dc2c9634cbd29185f2089953c030fab987045d5e"
+          },
+          "volume_map_audit": {
+            "path": "engineering/geometry_optimization_20260704/44_s3d_o8_all8_activation_20260713/data/s3d_o8_n_volume_map_audit.json",
+            "size_bytes": 78965,
+            "sha256": "2768377dad184e5d3df5a8c2f29f67f0014771f1ddfe40ad66610796b7dc819f"
+          },
+          "activity_completeness_audit": {
+            "path": "engineering/geometry_optimization_20260704/44_s3d_o8_all8_activation_20260713/data/s3d_o8_n_activity_completeness_audit.json",
+            "size_bytes": 968,
+            "sha256": "1a164da5f7472b6459752b5613f21d9a27e19e41c8d6b77a9db9802e7a09be84"
+          },
+          "exact_source": {
+            "path": "runs/geometry_optimization_20260704/step02_delay_exactpos_s3d_o8_all8_activation_m50000_20260713/n/activation_decay_day15_groundstate_fixed_exactpos_m50000.source",
+            "size_bytes": 7355652,
+            "sha256": "7c01db33f29517d8e225b616f11233c92039ff753f6fd677e4dbb881713acbf0"
+          },
+          "weighted_table": {
+            "path": "runs/geometry_optimization_20260704/step02_delay_exactpos_s3d_o8_all8_activation_m50000_20260713/n/exactpos_weighted_rpip_table_m50000_s260613.csv",
+            "size_bytes": 15290079,
+            "sha256": "2f85d8e5cd8e12f40b9ccd67b90419e5a863249a95bcd2cf363821d7de81ef4b"
+          },
+          "nubase": {
+            "path": "inputs/nubase/nubase_2020.txt",
+            "size_bytes": 761906,
+            "sha256": "1585a5eea86c5e17e90307c7e6e786d060049c4039e392a261ff6db977df9859"
+          },
+          "geometry_setup": {
+            "path": "engineering/geometry_optimization_20260704/43_geoopt_s3d_o8_fallback_20260712/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup",
+            "size_bytes": 219,
+            "sha256": "86a9e56e54dc86834dfe2a9b03a5f71373fb40f2ef24e3889fa66f216058fbec"
+          },
+          "geometry_source": {
+            "path": "engineering/geometry_optimization_20260704/43_geoopt_s3d_o8_fallback_20260712/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo",
+            "size_bytes": 650588,
+            "sha256": "ff4e8402df702501e0112fe377d837a74c39100317146b09e9569b7bd615c37c"
+          }
+        },
+        "transport_provenance": {
+          "status": "PASS",
+          "size_bytes": 929573699,
+          "sha256": "60443f8587266aec37b939eb97b503afcb4088a43ce7b2d75723d02999e4dc9c",
+          "seed": 260613,
+          "source_sha256": "7c01db33f29517d8e225b616f11233c92039ff753f6fd677e4dbb881713acbf0",
+          "sim_header_and_terminator": {
+            "geometry_values": [
+              "/home/ubuntu/TES_511_Balloon/engineering/geometry_optimization_20260704/43_geoopt_s3d_o8_fallback_20260712/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup"
+            ],
+            "geometry": "/home/ubuntu/TES_511_Balloon/engineering/geometry_optimization_20260704/43_geoopt_s3d_o8_fallback_20260712/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup",
+            "seed_values": [
+              260613
+            ],
+            "seed": 260613,
+            "SE": 1000000,
+            "ID": 1000000,
+            "TS": 1,
+            "TE": 1,
+            "TE_values_s": [
+              30484.193888
+            ],
+            "TE_s": 30484.193888
+          }
+        },
+        "TE_times_activity": 931589.4391377412,
+        "TE_activity_relative_delta_to_SE": 0.06841056086225877,
+        "TE_activity_diagnostic": "WITHIN_COARSE_10_PERCENT_DIAGNOSTIC",
+        "normalization_contract": "each retained detector event carries 1/TE_s for its incident family"
+      },
+      {
+        "family": "p",
+        "status": "PASS",
+        "activity_Bq": 1.690880658894676,
+        "production": {
+          "family": "p",
+          "files": 8,
+          "division": 8.0,
+          "tt_lines": 8,
+          "tt_mean_s": 184.490125,
+          "rp_raw_total": 4328.0,
+          "rp_scaled_total": 541.0,
+          "zero_production": false
+        },
+        "fixed_summary": "runs/geometry_optimization_20260704/step02_delay_fix_s3d_o8_all8_activation_m50000_20260713/p/source_fix_summary.json",
+        "fixed_summary_sha256": "bc784370eee57389ef22ce62cf85c1ebf10a61257928505630e27361a027d524",
+        "fixed_source": {
+          "path": "runs/geometry_optimization_20260704/step02_delay_fix_s3d_o8_all8_activation_m50000_20260713/p/activation_decay_day15_groundstate_fixed.source",
+          "size_bytes": 1387303,
+          "sha256": "1a65835f6e095b18c62da64f2f018c148a732942c8ff9d756f97105019a11655"
+        },
+        "groundstate_corrections": {
+          "path": "runs/geometry_optimization_20260704/step02_delay_fix_s3d_o8_all8_activation_m50000_20260713/p/groundstate_activity_corrections.csv",
+          "size_bytes": 93349,
+          "sha256": "da61938b60453c47e82f300a81bdad56131f5b56cce16a5cc246d661fd0c98cc"
+        },
+        "inventory": {
+          "path": "runs/geometry_optimization_20260704/step02_decay_source_s3d_o8_all8_activation_m50000_20260713/p/activation_inventory_day15.csv",
+          "size_bytes": 53482,
+          "sha256": "13412980ea6ab26afd991353d0d985cefa0f3ed1135bd52b5145fde84c689eb2"
+        },
+        "audit_evidence": {
+          "family_source_validation_status": "PASS",
+          "volume_map": {
+            "path": "engineering/geometry_optimization_20260704/44_s3d_o8_all8_activation_20260713/data/s3d_o8_p_volume_map_audit.json",
+            "sha256": "56d65da8fb96e072804eb4a3ceffdddfa1afd6539048a8c467a98efc846782aa",
+            "status": "PASS"
+          },
+          "fixed_normalization": {
+            "path": "runs/geometry_optimization_20260704/step02_delay_fix_s3d_o8_all8_activation_m50000_20260713/p/normalization_audit_groundstate_fix.json",
+            "sha256": "0e6fa2724aa548fb385a838e2d49640742e83ef625e2e3c772aaf253f980d953",
+            "status": "PASS",
+            "rows": [
+              {
+                "tag": "p",
+                "files": 8,
+                "division": 8.0,
+                "is_gamma": false,
+                "gamma_div_mode": "",
+                "tt_count": 8,
+                "tt_files": 8,
+                "tt_line_count": 8,
+                "tt_sum_s": 1475.921,
+                "tt_mean_s": 184.490125,
+                "tt_min_s": 183.701,
+                "tt_max_s": 184.954,
+                "tt_relative_spread": 0.006791691425218636,
+                "rp_raw_total": 4328.0,
+                "rp_scaled_total": 541.0,
+                "warnings": ""
+              }
+            ]
+          },
+          "activity_completeness": {
+            "path": "engineering/geometry_optimization_20260704/44_s3d_o8_all8_activation_20260713/data/s3d_o8_p_activity_completeness_audit.json",
+            "sha256": "8abd1c7c00e2748cfc1c89d6f29bc112533df95e540ed64f812291f6c9c21c5f",
+            "status": "PASS",
+            "expected_activity_keys": 569,
+            "fixed_source_activity_keys": 559
+          }
+        },
+        "sim": "runs/geometry_optimization_20260704/step02_delayed_transport_s3d_o8_all8_activation_m50000_20260713/p/DelayedDecayS3dO8PM50000.inc1.id1.sim.gz",
+        "sim_size_bytes": 1276958314,
+        "sim_sha256": "b385864ba8058c2d7de8430d0889de7ebee417f996bcbd7e72dda559dabb89a5",
+        "SE": 1000000,
+        "ID": 1000000,
+        "TE_s": 445369.147711,
+        "event_weight_hz": 2.2453284093421305e-06,
+        "geometry_header": "/home/ubuntu/TES_511_Balloon/engineering/geometry_optimization_20260704/43_geoopt_s3d_o8_fallback_20260712/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup",
+        "exact_manifest": "runs/geometry_optimization_20260704/step02_delay_exactpos_s3d_o8_all8_activation_m50000_20260713/p/s3d_o8_p_exactpos_m50000_s260613_manifest.json",
+        "exact_manifest_sha256": "1c4fde8861143f8ee187dedc6ed912369690388834f28652a8c78a3a6e2ccbf0",
+        "source_provenance": {
+          "raw_source": {
+            "path": "runs/geometry_optimization_20260704/step02_decay_source_s3d_o8_all8_activation_m50000_20260713/p/activation_decay_day15.source",
+            "size_bytes": 1390770,
+            "sha256": "73912555187a2518978734e69c852c4a84806cdd9421760b9c9c330822de8bb9"
+          },
+          "inventory": {
+            "path": "runs/geometry_optimization_20260704/step02_decay_source_s3d_o8_all8_activation_m50000_20260713/p/activation_inventory_day15.csv",
+            "size_bytes": 53482,
+            "sha256": "13412980ea6ab26afd991353d0d985cefa0f3ed1135bd52b5145fde84c689eb2"
+          },
+          "fixed_source": {
+            "path": "runs/geometry_optimization_20260704/step02_delay_fix_s3d_o8_all8_activation_m50000_20260713/p/activation_decay_day15_groundstate_fixed.source",
+            "size_bytes": 1387303,
+            "sha256": "1a65835f6e095b18c62da64f2f018c148a732942c8ff9d756f97105019a11655"
+          },
+          "fixed_summary": {
+            "path": "runs/geometry_optimization_20260704/step02_delay_fix_s3d_o8_all8_activation_m50000_20260713/p/source_fix_summary.json",
+            "size_bytes": 16746,
+            "sha256": "bc784370eee57389ef22ce62cf85c1ebf10a61257928505630e27361a027d524"
+          },
+          "groundstate_corrections": {
+            "path": "runs/geometry_optimization_20260704/step02_delay_fix_s3d_o8_all8_activation_m50000_20260713/p/groundstate_activity_corrections.csv",
+            "size_bytes": 93349,
+            "sha256": "da61938b60453c47e82f300a81bdad56131f5b56cce16a5cc246d661fd0c98cc"
+          },
+          "fixed_normalization": {
+            "path": "runs/geometry_optimization_20260704/step02_delay_fix_s3d_o8_all8_activation_m50000_20260713/p/normalization_audit_groundstate_fix.json",
+            "size_bytes": 496,
+            "sha256": "0e6fa2724aa548fb385a838e2d49640742e83ef625e2e3c772aaf253f980d953"
+          },
+          "volume_map_audit": {
+            "path": "engineering/geometry_optimization_20260704/44_s3d_o8_all8_activation_20260713/data/s3d_o8_p_volume_map_audit.json",
+            "size_bytes": 2103,
+            "sha256": "56d65da8fb96e072804eb4a3ceffdddfa1afd6539048a8c467a98efc846782aa"
+          },
+          "activity_completeness_audit": {
+            "path": "engineering/geometry_optimization_20260704/44_s3d_o8_all8_activation_20260713/data/s3d_o8_p_activity_completeness_audit.json",
+            "size_bytes": 978,
+            "sha256": "8abd1c7c00e2748cfc1c89d6f29bc112533df95e540ed64f812291f6c9c21c5f"
+          },
+          "exact_source": {
+            "path": "runs/geometry_optimization_20260704/step02_delay_exactpos_s3d_o8_all8_activation_m50000_20260713/p/activation_decay_day15_groundstate_fixed_exactpos_m50000.source",
+            "size_bytes": 7339582,
+            "sha256": "99f8423885c8d0b858f0b5462c19fe1aa4e2152dbece0b47b284d34bf955f477"
+          },
+          "weighted_table": {
+            "path": "runs/geometry_optimization_20260704/step02_delay_exactpos_s3d_o8_all8_activation_m50000_20260713/p/exactpos_weighted_rpip_table_m50000_s260613.csv",
+            "size_bytes": 1127435,
+            "sha256": "cb515398e90128d9237821e1b7f7232050957a463ece7b4cce3a4eef586e8cc0"
+          },
+          "nubase": {
+            "path": "inputs/nubase/nubase_2020.txt",
+            "size_bytes": 761906,
+            "sha256": "1585a5eea86c5e17e90307c7e6e786d060049c4039e392a261ff6db977df9859"
+          },
+          "geometry_setup": {
+            "path": "engineering/geometry_optimization_20260704/43_geoopt_s3d_o8_fallback_20260712/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup",
+            "size_bytes": 219,
+            "sha256": "86a9e56e54dc86834dfe2a9b03a5f71373fb40f2ef24e3889fa66f216058fbec"
+          },
+          "geometry_source": {
+            "path": "engineering/geometry_optimization_20260704/43_geoopt_s3d_o8_fallback_20260712/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo",
+            "size_bytes": 650588,
+            "sha256": "ff4e8402df702501e0112fe377d837a74c39100317146b09e9569b7bd615c37c"
+          }
+        },
+        "transport_provenance": {
+          "status": "PASS",
+          "size_bytes": 1276958314,
+          "sha256": "b385864ba8058c2d7de8430d0889de7ebee417f996bcbd7e72dda559dabb89a5",
+          "seed": 260613,
+          "source_sha256": "99f8423885c8d0b858f0b5462c19fe1aa4e2152dbece0b47b284d34bf955f477",
+          "sim_header_and_terminator": {
+            "geometry_values": [
+              "/home/ubuntu/TES_511_Balloon/engineering/geometry_optimization_20260704/43_geoopt_s3d_o8_fallback_20260712/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup"
+            ],
+            "geometry": "/home/ubuntu/TES_511_Balloon/engineering/geometry_optimization_20260704/43_geoopt_s3d_o8_fallback_20260712/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup",
+            "seed_values": [
+              260613
+            ],
+            "seed": 260613,
+            "SE": 1000000,
+            "ID": 1000000,
+            "TS": 1,
+            "TE": 1,
+            "TE_values_s": [
+              445369.147711
+            ],
+            "TE_s": 445369.147711
+          }
+        },
+        "TE_times_activity": 753066.077932936,
+        "TE_activity_relative_delta_to_SE": 0.24693392206706397,
+        "TE_activity_diagnostic": "OUTSIDE_COARSE_10_PERCENT_DIAGNOSTIC_NONBLOCKING",
+        "normalization_contract": "each retained detector event carries 1/TE_s for its incident family"
+      }
+    ],
+    "positive_families": [
+      "alpha",
+      "eplus",
+      "gamma",
+      "muminus",
+      "muplus",
+      "n",
+      "p"
+    ],
+    "audited_zero_families": [
+      "eminus"
+    ],
+    "normalization": {
+      "positive_family_event_weight": "1 / that family's delayed SIM TE_s",
+      "TE_activity_relative_tolerance": 0.1,
+      "TE_activity_check_scope": "nonblocking diagnostic only because daughter-chain source timing need not satisfy SE/activity; recorded SIM TE is the event-weight authority",
+      "zero_family_rule": "finite buildup campaign observed no production/activity; assign no fictitious transport exposure, but do not claim a physical zero"
+    },
+    "lineage_key": [
+      "stream",
+      "tag_as_incident_family",
+      "source_file",
+      "local_id"
+    ],
+    "problems": [],
+    "claim_boundary": "This is a day-15 component authority only. Garwood intervals downstream cover transport counting for transported families only; they do not cover buildup yield, exact-position M sampling, or upper limits for zero-observed families. Paper claims remain blocked on Step05, the 420 eV response ensemble, and the family-by-nuclide fold.",
+    "authority_fingerprint": "5b779082b275f769cb160f3ff80ad00d44b8ad6e47815f488a4bd63fe8f7f26b"
+  },
+  "geometry_bundle": {
+    "status": "PASS_RETAINED_PACKAGE43_O8_GEOMETRY_BUNDLE",
+    "authority": "engineering/geometry_optimization_20260704/43_geoopt_s3d_o8_fallback_20260712/fullchain/step05/step05_s3d_o8_fullchain_l1_response_summary.json",
+    "authority_sha256": "ee2559b92509ca719930351145451c5b6056a9650e50633f5575b4fc2fb13fe7",
+    "required_exact_file_set": [
+      "DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup",
+      "DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo",
+      "DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.det",
+      "Intro_DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo",
+      "Materials_DEMO2_DR_v3p5.geo"
+    ],
+    "files": {
+      "DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup": {
+        "path": "engineering/geometry_optimization_20260704/43_geoopt_s3d_o8_fallback_20260712/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup",
+        "size_bytes": 219,
+        "sha256": "86a9e56e54dc86834dfe2a9b03a5f71373fb40f2ef24e3889fa66f216058fbec",
+        "authority_sha256": "86a9e56e54dc86834dfe2a9b03a5f71373fb40f2ef24e3889fa66f216058fbec",
+        "matches_authority": true
+      },
+      "DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo": {
+        "path": "engineering/geometry_optimization_20260704/43_geoopt_s3d_o8_fallback_20260712/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo",
+        "size_bytes": 650588,
+        "sha256": "ff4e8402df702501e0112fe377d837a74c39100317146b09e9569b7bd615c37c",
+        "authority_sha256": "ff4e8402df702501e0112fe377d837a74c39100317146b09e9569b7bd615c37c",
+        "matches_authority": true
+      },
+      "DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.det": {
+        "path": "engineering/geometry_optimization_20260704/43_geoopt_s3d_o8_fallback_20260712/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.det",
+        "size_bytes": 57508,
+        "sha256": "dd2c1d68cd474f8b0c7489f2cbbfc924eb69beb14d3ce360d9437c319a33d6cb",
+        "authority_sha256": "dd2c1d68cd474f8b0c7489f2cbbfc924eb69beb14d3ce360d9437c319a33d6cb",
+        "matches_authority": true
+      },
+      "Intro_DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo": {
+        "path": "engineering/geometry_optimization_20260704/43_geoopt_s3d_o8_fallback_20260712/geometry/Intro_DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo",
+        "size_bytes": 500,
+        "sha256": "f4ea834bf385f68a85690e018fd52d692e94e19dd93959e35e6f91efd3dbfd52",
+        "authority_sha256": "f4ea834bf385f68a85690e018fd52d692e94e19dd93959e35e6f91efd3dbfd52",
+        "matches_authority": true
+      },
+      "Materials_DEMO2_DR_v3p5.geo": {
+        "path": "engineering/geometry_optimization_20260704/43_geoopt_s3d_o8_fallback_20260712/geometry/Materials_DEMO2_DR_v3p5.geo",
+        "size_bytes": 1897,
+        "sha256": "751cd83f08631085496ee86efa4418e4f001a639b15573554b93e73ff95678bf",
+        "authority_sha256": "751cd83f08631085496ee86efa4418e4f001a639b15573554b93e73ff95678bf",
+        "matches_authority": true
+      }
+    },
+    "problems": []
+  },
+  "pending": [],
+  "problems": [],
+  "production_launched": false,
+  "postprocess_confirmation": {
+    "flag": "--allow-postprocess",
+    "token": "RUN_S3D_O8_ALL8_STEP05_POSTPROCESS_20260713",
+    "required_for": [
+      "catalog",
+      "step05",
+      "all"
+    ]
+  }
+}

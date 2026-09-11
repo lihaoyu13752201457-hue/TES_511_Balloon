@@ -1,0 +1,1139 @@
+{
+  "authorities": {
+    "opt_v3_det": {
+      "path": "/home/ubuntu/TES_511_Balloon/engineering/geometry_optimization_20260815/sh3/assembly_opt_v3/geometry/SH3_Assembly_OptV3.det",
+      "sha256": "12d3a6831f3d00da6668f48487e5d83f7a0354419fdec75cfec211b28373cae9"
+    },
+    "opt_v3_geo": {
+      "path": "/home/ubuntu/TES_511_Balloon/engineering/geometry_optimization_20260815/sh3/assembly_opt_v3/geometry/SH3_Assembly_OptV3.geo",
+      "sha256": "a270ab2caf340a34858b448374b3dad955878ebbb9df9169f97d80df46026934"
+    },
+    "opt_v3_setup": {
+      "path": "/home/ubuntu/TES_511_Balloon/engineering/geometry_optimization_20260815/sh3/assembly_opt_v3/geometry/SH3_Assembly_OptV3.geo.setup",
+      "sha256": "52397889d6ac0d08296549942633ff09216cf1494fedb985127c48120d46eaea"
+    },
+    "sg3b_det": {
+      "path": "/home/ubuntu/.codex/worktrees/4f50/TES_511_Balloon/engineering/geometry_optimization_20260815/55_geoopt_sg3b_bi_halfcylinder_al_harness_20260816/geometry/DEMO2_DR_v3p5_SG3B.det",
+      "sha256": "0a4e6cb6b17949d5593f46faae87d80b383f5c9c08cb5b3240b91131e8515e21"
+    },
+    "sg3b_geo": {
+      "path": "/home/ubuntu/.codex/worktrees/4f50/TES_511_Balloon/engineering/geometry_optimization_20260815/55_geoopt_sg3b_bi_halfcylinder_al_harness_20260816/geometry/DEMO2_DR_v3p5_SG3B.geo",
+      "sha256": "5f0482e307bf8701204f1d6df1b74396b7105d853dccb885e4df401146f552d9"
+    },
+    "sg3b_setup": {
+      "path": "/home/ubuntu/.codex/worktrees/4f50/TES_511_Balloon/engineering/geometry_optimization_20260815/55_geoopt_sg3b_bi_halfcylinder_al_harness_20260816/geometry/DEMO2_DR_v3p5_SG3B.geo.setup",
+      "sha256": "49324ca4baebd8e6323b4a478b168dff8798e2bd7f0d0775e2f179769aad0469"
+    }
+  },
+  "closed_findings": [
+    "all 69 SG3B-only declared volumes are classified into authorized/replaced design families; none is unclassified",
+    "all 2,496 copy placements shared by SG3B and OptV3 have byte-identical placement blocks",
+    "of 168 common declared volumes, 38 have explicitly classified attribute changes: 37 share the required (-35.55, 0, +2.40) cm chimney translation and 1 is the NF2 top-mount optical cutout; no unexpected common-volume attribute drift remains",
+    "all 624 SG3B-only copy placements belong to the explicitly removed old W multihole collimator",
+    "OptV3 retains six TES layers, 2,256 Ta pixel copies, and the inherited TES/substrate/copper-support geometry",
+    "OptV3 passes its separate full Geant4 construction/overlap receipt"
+  ],
+  "common_declared_volume_attribute_drift": [
+    {
+      "changed_keys": [
+        "Position"
+      ],
+      "classification": "required_common_rigid_translation_into_chimney",
+      "opt_v3": {
+        "Position": "-35.2575 1.95 -0.85"
+      },
+      "position_delta_cm": [
+        -35.55,
+        0.0,
+        2.4
+      ],
+      "sg3b": {
+        "Position": "0.2925 1.95 -3.25"
+      },
+      "volume": "Cu_SubstrateSupport_EdgeRod_1"
+    },
+    {
+      "changed_keys": [
+        "Position"
+      ],
+      "classification": "required_common_rigid_translation_into_chimney",
+      "opt_v3": {
+        "Position": "-35.2575 -1.95 -0.85"
+      },
+      "position_delta_cm": [
+        -35.55,
+        0.0,
+        2.4
+      ],
+      "sg3b": {
+        "Position": "0.2925 -1.95 -3.25"
+      },
+      "volume": "Cu_SubstrateSupport_EdgeRod_2"
+    },
+    {
+      "changed_keys": [
+        "Position"
+      ],
+      "classification": "required_common_rigid_translation_into_chimney",
+      "opt_v3": {
+        "Position": "-35.2575 1.95 -4.75"
+      },
+      "position_delta_cm": [
+        -35.55,
+        0.0,
+        2.4
+      ],
+      "sg3b": {
+        "Position": "0.2925 1.95 -7.15"
+      },
+      "volume": "Cu_SubstrateSupport_EdgeRod_3"
+    },
+    {
+      "changed_keys": [
+        "Position"
+      ],
+      "classification": "required_common_rigid_translation_into_chimney",
+      "opt_v3": {
+        "Position": "-35.2575 -1.95 -4.75"
+      },
+      "position_delta_cm": [
+        -35.55,
+        0.0,
+        2.4
+      ],
+      "sg3b": {
+        "Position": "0.2925 -1.95 -7.15"
+      },
+      "volume": "Cu_SubstrateSupport_EdgeRod_4"
+    },
+    {
+      "changed_keys": [
+        "Position"
+      ],
+      "classification": "required_common_rigid_translation_into_chimney",
+      "opt_v3": {
+        "Position": "-38.2 -2.025 -2.8"
+      },
+      "position_delta_cm": [
+        -35.55,
+        0.0,
+        2.4
+      ],
+      "sg3b": {
+        "Position": "-2.65 -2.025 -5.2"
+      },
+      "volume": "Cu_SubstrateSupport_OpenRing_L1_YM_panel"
+    },
+    {
+      "changed_keys": [
+        "Position"
+      ],
+      "classification": "required_common_rigid_translation_into_chimney",
+      "opt_v3": {
+        "Position": "-38.2 2.025 -2.8"
+      },
+      "position_delta_cm": [
+        -35.55,
+        0.0,
+        2.4
+      ],
+      "sg3b": {
+        "Position": "-2.65 2.025 -5.2"
+      },
+      "volume": "Cu_SubstrateSupport_OpenRing_L1_YP_panel"
+    },
+    {
+      "changed_keys": [
+        "Position"
+      ],
+      "classification": "required_common_rigid_translation_into_chimney",
+      "opt_v3": {
+        "Position": "-38.2 0 -4.825"
+      },
+      "position_delta_cm": [
+        -35.55,
+        0.0,
+        2.4
+      ],
+      "sg3b": {
+        "Position": "-2.65 0 -7.225"
+      },
+      "volume": "Cu_SubstrateSupport_OpenRing_L1_ZM_panel"
+    },
+    {
+      "changed_keys": [
+        "Position"
+      ],
+      "classification": "required_common_rigid_translation_into_chimney",
+      "opt_v3": {
+        "Position": "-38.2 0 -0.775"
+      },
+      "position_delta_cm": [
+        -35.55,
+        0.0,
+        2.4
+      ],
+      "sg3b": {
+        "Position": "-2.65 0 -3.175"
+      },
+      "volume": "Cu_SubstrateSupport_OpenRing_L1_ZP_panel"
+    },
+    {
+      "changed_keys": [
+        "Position"
+      ],
+      "classification": "required_common_rigid_translation_into_chimney",
+      "opt_v3": {
+        "Position": "-37 -2.025 -2.8"
+      },
+      "position_delta_cm": [
+        -35.55,
+        0.0,
+        2.4
+      ],
+      "sg3b": {
+        "Position": "-1.45 -2.025 -5.2"
+      },
+      "volume": "Cu_SubstrateSupport_OpenRing_L2_YM_panel"
+    },
+    {
+      "changed_keys": [
+        "Position"
+      ],
+      "classification": "required_common_rigid_translation_into_chimney",
+      "opt_v3": {
+        "Position": "-37 2.025 -2.8"
+      },
+      "position_delta_cm": [
+        -35.55,
+        0.0,
+        2.4
+      ],
+      "sg3b": {
+        "Position": "-1.45 2.025 -5.2"
+      },
+      "volume": "Cu_SubstrateSupport_OpenRing_L2_YP_panel"
+    },
+    {
+      "changed_keys": [
+        "Position"
+      ],
+      "classification": "required_common_rigid_translation_into_chimney",
+      "opt_v3": {
+        "Position": "-37 0 -4.825"
+      },
+      "position_delta_cm": [
+        -35.55,
+        0.0,
+        2.4
+      ],
+      "sg3b": {
+        "Position": "-1.45 0 -7.225"
+      },
+      "volume": "Cu_SubstrateSupport_OpenRing_L2_ZM_panel"
+    },
+    {
+      "changed_keys": [
+        "Position"
+      ],
+      "classification": "required_common_rigid_translation_into_chimney",
+      "opt_v3": {
+        "Position": "-37 0 -0.775"
+      },
+      "position_delta_cm": [
+        -35.55,
+        0.0,
+        2.4
+      ],
+      "sg3b": {
+        "Position": "-1.45 0 -3.175"
+      },
+      "volume": "Cu_SubstrateSupport_OpenRing_L2_ZP_panel"
+    },
+    {
+      "changed_keys": [
+        "Position"
+      ],
+      "classification": "required_common_rigid_translation_into_chimney",
+      "opt_v3": {
+        "Position": "-35.8 -2.025 -2.8"
+      },
+      "position_delta_cm": [
+        -35.55,
+        0.0,
+        2.4
+      ],
+      "sg3b": {
+        "Position": "-0.25 -2.025 -5.2"
+      },
+      "volume": "Cu_SubstrateSupport_OpenRing_L3_YM_panel"
+    },
+    {
+      "changed_keys": [
+        "Position"
+      ],
+      "classification": "required_common_rigid_translation_into_chimney",
+      "opt_v3": {
+        "Position": "-35.8 2.025 -2.8"
+      },
+      "position_delta_cm": [
+        -35.55,
+        0.0,
+        2.4
+      ],
+      "sg3b": {
+        "Position": "-0.25 2.025 -5.2"
+      },
+      "volume": "Cu_SubstrateSupport_OpenRing_L3_YP_panel"
+    },
+    {
+      "changed_keys": [
+        "Position"
+      ],
+      "classification": "required_common_rigid_translation_into_chimney",
+      "opt_v3": {
+        "Position": "-35.8 0 -4.825"
+      },
+      "position_delta_cm": [
+        -35.55,
+        0.0,
+        2.4
+      ],
+      "sg3b": {
+        "Position": "-0.25 0 -7.225"
+      },
+      "volume": "Cu_SubstrateSupport_OpenRing_L3_ZM_panel"
+    },
+    {
+      "changed_keys": [
+        "Position"
+      ],
+      "classification": "required_common_rigid_translation_into_chimney",
+      "opt_v3": {
+        "Position": "-35.8 0 -0.775"
+      },
+      "position_delta_cm": [
+        -35.55,
+        0.0,
+        2.4
+      ],
+      "sg3b": {
+        "Position": "-0.25 0 -3.175"
+      },
+      "volume": "Cu_SubstrateSupport_OpenRing_L3_ZP_panel"
+    },
+    {
+      "changed_keys": [
+        "Position"
+      ],
+      "classification": "required_common_rigid_translation_into_chimney",
+      "opt_v3": {
+        "Position": "-34.6 -2.025 -2.8"
+      },
+      "position_delta_cm": [
+        -35.55,
+        0.0,
+        2.4
+      ],
+      "sg3b": {
+        "Position": "0.95 -2.025 -5.2"
+      },
+      "volume": "Cu_SubstrateSupport_OpenRing_L4_YM_panel"
+    },
+    {
+      "changed_keys": [
+        "Position"
+      ],
+      "classification": "required_common_rigid_translation_into_chimney",
+      "opt_v3": {
+        "Position": "-34.6 2.025 -2.8"
+      },
+      "position_delta_cm": [
+        -35.55,
+        0.0,
+        2.4
+      ],
+      "sg3b": {
+        "Position": "0.95 2.025 -5.2"
+      },
+      "volume": "Cu_SubstrateSupport_OpenRing_L4_YP_panel"
+    },
+    {
+      "changed_keys": [
+        "Position"
+      ],
+      "classification": "required_common_rigid_translation_into_chimney",
+      "opt_v3": {
+        "Position": "-34.6 0 -4.825"
+      },
+      "position_delta_cm": [
+        -35.55,
+        0.0,
+        2.4
+      ],
+      "sg3b": {
+        "Position": "0.95 0 -7.225"
+      },
+      "volume": "Cu_SubstrateSupport_OpenRing_L4_ZM_panel"
+    },
+    {
+      "changed_keys": [
+        "Position"
+      ],
+      "classification": "required_common_rigid_translation_into_chimney",
+      "opt_v3": {
+        "Position": "-34.6 0 -0.775"
+      },
+      "position_delta_cm": [
+        -35.55,
+        0.0,
+        2.4
+      ],
+      "sg3b": {
+        "Position": "0.95 0 -3.175"
+      },
+      "volume": "Cu_SubstrateSupport_OpenRing_L4_ZP_panel"
+    },
+    {
+      "changed_keys": [
+        "Position"
+      ],
+      "classification": "required_common_rigid_translation_into_chimney",
+      "opt_v3": {
+        "Position": "-33.4 -2.025 -2.8"
+      },
+      "position_delta_cm": [
+        -35.55,
+        0.0,
+        2.4
+      ],
+      "sg3b": {
+        "Position": "2.15 -2.025 -5.2"
+      },
+      "volume": "Cu_SubstrateSupport_OpenRing_L5_YM_panel"
+    },
+    {
+      "changed_keys": [
+        "Position"
+      ],
+      "classification": "required_common_rigid_translation_into_chimney",
+      "opt_v3": {
+        "Position": "-33.4 2.025 -2.8"
+      },
+      "position_delta_cm": [
+        -35.55,
+        0.0,
+        2.4
+      ],
+      "sg3b": {
+        "Position": "2.15 2.025 -5.2"
+      },
+      "volume": "Cu_SubstrateSupport_OpenRing_L5_YP_panel"
+    },
+    {
+      "changed_keys": [
+        "Position"
+      ],
+      "classification": "required_common_rigid_translation_into_chimney",
+      "opt_v3": {
+        "Position": "-33.4 0 -4.825"
+      },
+      "position_delta_cm": [
+        -35.55,
+        0.0,
+        2.4
+      ],
+      "sg3b": {
+        "Position": "2.15 0 -7.225"
+      },
+      "volume": "Cu_SubstrateSupport_OpenRing_L5_ZM_panel"
+    },
+    {
+      "changed_keys": [
+        "Position"
+      ],
+      "classification": "required_common_rigid_translation_into_chimney",
+      "opt_v3": {
+        "Position": "-33.4 0 -0.775"
+      },
+      "position_delta_cm": [
+        -35.55,
+        0.0,
+        2.4
+      ],
+      "sg3b": {
+        "Position": "2.15 0 -3.175"
+      },
+      "volume": "Cu_SubstrateSupport_OpenRing_L5_ZP_panel"
+    },
+    {
+      "changed_keys": [
+        "Shape"
+      ],
+      "classification": "required_optical_axis_cutout",
+      "opt_v3": {
+        "Shape": "SH3_OptV2_NF2_TopMount_WithOpticalCutShape"
+      },
+      "sg3b": {
+        "Shape": "PCON 0 360 2 -0.25 34.9765777 48.8250037 0.25 34.9765777 48.8250037"
+      },
+      "volume": "NF2_OuterSupport_Al_TopMountAnnulus"
+    },
+    {
+      "changed_keys": [
+        "Position"
+      ],
+      "classification": "required_common_rigid_translation_into_chimney",
+      "opt_v3": {
+        "Position": "-32.13 0 -2.8"
+      },
+      "position_delta_cm": [
+        -35.55,
+        0.0,
+        2.4
+      ],
+      "sg3b": {
+        "Position": "3.42 0 -5.2"
+      },
+      "volume": "SG3_Cu_SubstrateSupport_L0_HeatSinkRing_10mm"
+    },
+    {
+      "changed_keys": [
+        "Position"
+      ],
+      "classification": "required_common_rigid_translation_into_chimney",
+      "opt_v3": {
+        "Position": "-38.37 0 -2.8"
+      },
+      "position_delta_cm": [
+        -35.55,
+        0.0,
+        2.4
+      ],
+      "sg3b": {
+        "Position": "-2.82 0 -5.2"
+      },
+      "volume": "Si_Substrate_Stack_side_entry_L0"
+    },
+    {
+      "changed_keys": [
+        "Position"
+      ],
+      "classification": "required_common_rigid_translation_into_chimney",
+      "opt_v3": {
+        "Position": "-37.17 0 -2.8"
+      },
+      "position_delta_cm": [
+        -35.55,
+        0.0,
+        2.4
+      ],
+      "sg3b": {
+        "Position": "-1.62 0 -5.2"
+      },
+      "volume": "Si_Substrate_Stack_side_entry_L1"
+    },
+    {
+      "changed_keys": [
+        "Position"
+      ],
+      "classification": "required_common_rigid_translation_into_chimney",
+      "opt_v3": {
+        "Position": "-35.97 0 -2.8"
+      },
+      "position_delta_cm": [
+        -35.55,
+        0.0,
+        2.4
+      ],
+      "sg3b": {
+        "Position": "-0.42 0 -5.2"
+      },
+      "volume": "Si_Substrate_Stack_side_entry_L2"
+    },
+    {
+      "changed_keys": [
+        "Position"
+      ],
+      "classification": "required_common_rigid_translation_into_chimney",
+      "opt_v3": {
+        "Position": "-34.77 0 -2.8"
+      },
+      "position_delta_cm": [
+        -35.55,
+        0.0,
+        2.4
+      ],
+      "sg3b": {
+        "Position": "0.78 0 -5.2"
+      },
+      "volume": "Si_Substrate_Stack_side_entry_L3"
+    },
+    {
+      "changed_keys": [
+        "Position"
+      ],
+      "classification": "required_common_rigid_translation_into_chimney",
+      "opt_v3": {
+        "Position": "-33.57 0 -2.8"
+      },
+      "position_delta_cm": [
+        -35.55,
+        0.0,
+        2.4
+      ],
+      "sg3b": {
+        "Position": "1.98 0 -5.2"
+      },
+      "volume": "Si_Substrate_Stack_side_entry_L4"
+    },
+    {
+      "changed_keys": [
+        "Position"
+      ],
+      "classification": "required_common_rigid_translation_into_chimney",
+      "opt_v3": {
+        "Position": "-32.37 0 -2.8"
+      },
+      "position_delta_cm": [
+        -35.55,
+        0.0,
+        2.4
+      ],
+      "sg3b": {
+        "Position": "3.18 0 -5.2"
+      },
+      "volume": "Si_Substrate_Stack_side_entry_L5"
+    },
+    {
+      "changed_keys": [
+        "Position"
+      ],
+      "classification": "required_common_rigid_translation_into_chimney",
+      "opt_v3": {
+        "Position": "-38.55 0 -2.8"
+      },
+      "position_delta_cm": [
+        -35.55,
+        0.0,
+        2.4
+      ],
+      "sg3b": {
+        "Position": "-3 0 -5.2"
+      },
+      "volume": "TES_L0"
+    },
+    {
+      "changed_keys": [
+        "Position"
+      ],
+      "classification": "required_common_rigid_translation_into_chimney",
+      "opt_v3": {
+        "Position": "-37.35 0 -2.8"
+      },
+      "position_delta_cm": [
+        -35.55,
+        0.0,
+        2.4
+      ],
+      "sg3b": {
+        "Position": "-1.8 0 -5.2"
+      },
+      "volume": "TES_L1"
+    },
+    {
+      "changed_keys": [
+        "Position"
+      ],
+      "classification": "required_common_rigid_translation_into_chimney",
+      "opt_v3": {
+        "Position": "-36.15 0 -2.8"
+      },
+      "position_delta_cm": [
+        -35.55,
+        0.0,
+        2.4
+      ],
+      "sg3b": {
+        "Position": "-0.6 0 -5.2"
+      },
+      "volume": "TES_L2"
+    },
+    {
+      "changed_keys": [
+        "Position"
+      ],
+      "classification": "required_common_rigid_translation_into_chimney",
+      "opt_v3": {
+        "Position": "-34.95 0 -2.8"
+      },
+      "position_delta_cm": [
+        -35.55,
+        0.0,
+        2.4
+      ],
+      "sg3b": {
+        "Position": "0.6 0 -5.2"
+      },
+      "volume": "TES_L3"
+    },
+    {
+      "changed_keys": [
+        "Position"
+      ],
+      "classification": "required_common_rigid_translation_into_chimney",
+      "opt_v3": {
+        "Position": "-33.75 0 -2.8"
+      },
+      "position_delta_cm": [
+        -35.55,
+        0.0,
+        2.4
+      ],
+      "sg3b": {
+        "Position": "1.8 0 -5.2"
+      },
+      "volume": "TES_L4"
+    },
+    {
+      "changed_keys": [
+        "Position"
+      ],
+      "classification": "required_common_rigid_translation_into_chimney",
+      "opt_v3": {
+        "Position": "-32.55 0 -2.8"
+      },
+      "position_delta_cm": [
+        -35.55,
+        0.0,
+        2.4
+      ],
+      "sg3b": {
+        "Position": "3 0 -5.2"
+      },
+      "volume": "TES_L5"
+    }
+  ],
+  "copy_drift_names": [],
+  "detector_map_counts": {
+    "omitted_sg3b_definitions_on_retained_geometry": 56,
+    "opt_v3_sensitive_definitions": 9,
+    "sg3b_definitions_on_geometry_retained_in_opt_v3": 62,
+    "sg3b_sensitive_definitions": 125
+  },
+  "generated_at_utc": "2026-08-18T10:00:58.784541+00:00",
+  "geometry_counts": {
+    "common_copy_blocks_byte_identical": 2496,
+    "common_copy_blocks_drift": 0,
+    "common_copy_placements": 2496,
+    "common_declared_volume_attribute_blocks_drift": 38,
+    "common_declared_volume_attribute_blocks_identical": 130,
+    "common_declared_volumes": 168,
+    "opt_v3_copy_placements": 2496,
+    "opt_v3_declared_volumes": 219,
+    "opt_v3_only_copy_placements": 0,
+    "required_common_rigid_translations": 37,
+    "required_optical_axis_cutouts": 1,
+    "sg3b_copy_placements": 3120,
+    "sg3b_declared_volumes": 237,
+    "sg3b_only_copy_placements": 624,
+    "unexpected_common_volume_attribute_drift": 0
+  },
+  "omitted_retained_scorers": [
+    {
+      "detector": "Si_Substrate_Stack_side_entry_L0_SD",
+      "sensitive_volume": "Si_Substrate_Stack_side_entry_L0"
+    },
+    {
+      "detector": "Si_Substrate_Stack_side_entry_L1_SD",
+      "sensitive_volume": "Si_Substrate_Stack_side_entry_L1"
+    },
+    {
+      "detector": "Si_Substrate_Stack_side_entry_L2_SD",
+      "sensitive_volume": "Si_Substrate_Stack_side_entry_L2"
+    },
+    {
+      "detector": "Si_Substrate_Stack_side_entry_L3_SD",
+      "sensitive_volume": "Si_Substrate_Stack_side_entry_L3"
+    },
+    {
+      "detector": "Si_Substrate_Stack_side_entry_L4_SD",
+      "sensitive_volume": "Si_Substrate_Stack_side_entry_L4"
+    },
+    {
+      "detector": "Si_Substrate_Stack_side_entry_L5_SD",
+      "sensitive_volume": "Si_Substrate_Stack_side_entry_L5"
+    },
+    {
+      "detector": "Cu_SubstrateSupport_OpenRing_L1_ZP_panel_SD",
+      "sensitive_volume": "Cu_SubstrateSupport_OpenRing_L1_ZP_panel"
+    },
+    {
+      "detector": "Cu_SubstrateSupport_OpenRing_L1_ZM_panel_SD",
+      "sensitive_volume": "Cu_SubstrateSupport_OpenRing_L1_ZM_panel"
+    },
+    {
+      "detector": "Cu_SubstrateSupport_OpenRing_L1_YP_panel_SD",
+      "sensitive_volume": "Cu_SubstrateSupport_OpenRing_L1_YP_panel"
+    },
+    {
+      "detector": "Cu_SubstrateSupport_OpenRing_L1_YM_panel_SD",
+      "sensitive_volume": "Cu_SubstrateSupport_OpenRing_L1_YM_panel"
+    },
+    {
+      "detector": "Cu_SubstrateSupport_OpenRing_L2_ZP_panel_SD",
+      "sensitive_volume": "Cu_SubstrateSupport_OpenRing_L2_ZP_panel"
+    },
+    {
+      "detector": "Cu_SubstrateSupport_OpenRing_L2_ZM_panel_SD",
+      "sensitive_volume": "Cu_SubstrateSupport_OpenRing_L2_ZM_panel"
+    },
+    {
+      "detector": "Cu_SubstrateSupport_OpenRing_L2_YP_panel_SD",
+      "sensitive_volume": "Cu_SubstrateSupport_OpenRing_L2_YP_panel"
+    },
+    {
+      "detector": "Cu_SubstrateSupport_OpenRing_L2_YM_panel_SD",
+      "sensitive_volume": "Cu_SubstrateSupport_OpenRing_L2_YM_panel"
+    },
+    {
+      "detector": "Cu_SubstrateSupport_OpenRing_L3_ZP_panel_SD",
+      "sensitive_volume": "Cu_SubstrateSupport_OpenRing_L3_ZP_panel"
+    },
+    {
+      "detector": "Cu_SubstrateSupport_OpenRing_L3_ZM_panel_SD",
+      "sensitive_volume": "Cu_SubstrateSupport_OpenRing_L3_ZM_panel"
+    },
+    {
+      "detector": "Cu_SubstrateSupport_OpenRing_L3_YP_panel_SD",
+      "sensitive_volume": "Cu_SubstrateSupport_OpenRing_L3_YP_panel"
+    },
+    {
+      "detector": "Cu_SubstrateSupport_OpenRing_L3_YM_panel_SD",
+      "sensitive_volume": "Cu_SubstrateSupport_OpenRing_L3_YM_panel"
+    },
+    {
+      "detector": "Cu_SubstrateSupport_OpenRing_L4_ZP_panel_SD",
+      "sensitive_volume": "Cu_SubstrateSupport_OpenRing_L4_ZP_panel"
+    },
+    {
+      "detector": "Cu_SubstrateSupport_OpenRing_L4_ZM_panel_SD",
+      "sensitive_volume": "Cu_SubstrateSupport_OpenRing_L4_ZM_panel"
+    },
+    {
+      "detector": "Cu_SubstrateSupport_OpenRing_L4_YP_panel_SD",
+      "sensitive_volume": "Cu_SubstrateSupport_OpenRing_L4_YP_panel"
+    },
+    {
+      "detector": "Cu_SubstrateSupport_OpenRing_L4_YM_panel_SD",
+      "sensitive_volume": "Cu_SubstrateSupport_OpenRing_L4_YM_panel"
+    },
+    {
+      "detector": "Cu_SubstrateSupport_OpenRing_L5_ZP_panel_SD",
+      "sensitive_volume": "Cu_SubstrateSupport_OpenRing_L5_ZP_panel"
+    },
+    {
+      "detector": "Cu_SubstrateSupport_OpenRing_L5_ZM_panel_SD",
+      "sensitive_volume": "Cu_SubstrateSupport_OpenRing_L5_ZM_panel"
+    },
+    {
+      "detector": "Cu_SubstrateSupport_OpenRing_L5_YP_panel_SD",
+      "sensitive_volume": "Cu_SubstrateSupport_OpenRing_L5_YP_panel"
+    },
+    {
+      "detector": "Cu_SubstrateSupport_OpenRing_L5_YM_panel_SD",
+      "sensitive_volume": "Cu_SubstrateSupport_OpenRing_L5_YM_panel"
+    },
+    {
+      "detector": "SG3_Cu_SubstrateSupport_L0_HeatSinkRing_10mm_SD",
+      "sensitive_volume": "SG3_Cu_SubstrateSupport_L0_HeatSinkRing_10mm"
+    },
+    {
+      "detector": "Cu_SubstrateSupport_EdgeRod_1_SD",
+      "sensitive_volume": "Cu_SubstrateSupport_EdgeRod_1"
+    },
+    {
+      "detector": "Cu_SubstrateSupport_EdgeRod_2_SD",
+      "sensitive_volume": "Cu_SubstrateSupport_EdgeRod_2"
+    },
+    {
+      "detector": "Cu_SubstrateSupport_EdgeRod_3_SD",
+      "sensitive_volume": "Cu_SubstrateSupport_EdgeRod_3"
+    },
+    {
+      "detector": "Cu_SubstrateSupport_EdgeRod_4_SD",
+      "sensitive_volume": "Cu_SubstrateSupport_EdgeRod_4"
+    },
+    {
+      "detector": "ColdPlate_MXC_50mK_SD_anchor_SD",
+      "sensitive_volume": "ColdPlate_MXC_50mK_SD_anchor"
+    },
+    {
+      "detector": "ColdPlate_CP_100mK_intercept_SD",
+      "sensitive_volume": "ColdPlate_CP_100mK_intercept"
+    },
+    {
+      "detector": "ColdPlate_Still_0p7K_SD",
+      "sensitive_volume": "ColdPlate_Still_0p7K"
+    },
+    {
+      "detector": "ColdPlate_4K_SD",
+      "sensitive_volume": "ColdPlate_4K"
+    },
+    {
+      "detector": "ColdPlate_60K_SD",
+      "sensitive_volume": "ColdPlate_60K"
+    },
+    {
+      "detector": "Plate_300K_Top_Service_Lid_SD",
+      "sensitive_volume": "Plate_300K_Top_Service_Lid"
+    },
+    {
+      "detector": "DR_MixingChamber_Cu_SD",
+      "sensitive_volume": "DR_MixingChamber_Cu"
+    },
+    {
+      "detector": "DR_MXC_Sinter_HEX_AgProxy_SD",
+      "sensitive_volume": "DR_MXC_Sinter_HEX_AgProxy"
+    },
+    {
+      "detector": "DR_Continuous_HEX_CuNi_MXC_to_CP_SD",
+      "sensitive_volume": "DR_Continuous_HEX_CuNi_MXC_to_CP"
+    },
+    {
+      "detector": "DR_Continuous_HEX_CuNi_CP_to_Still_SD",
+      "sensitive_volume": "DR_Continuous_HEX_CuNi_CP_to_Still"
+    },
+    {
+      "detector": "DR_Still_Pot_Cu_SD",
+      "sensitive_volume": "DR_Still_Pot_Cu"
+    },
+    {
+      "detector": "DR_Still_Heater_SS_ring_SD",
+      "sensitive_volume": "DR_Still_Heater_SS_ring"
+    },
+    {
+      "detector": "DR_4K_Condenser_Cu_SD",
+      "sensitive_volume": "DR_4K_Condenser_Cu"
+    },
+    {
+      "detector": "DR_60K_Charcoal_Trap_SD",
+      "sensitive_volume": "DR_60K_Charcoal_Trap"
+    },
+    {
+      "detector": "DR_Capillary_CuNi_MXC_CP_SD",
+      "sensitive_volume": "DR_Capillary_CuNi_MXC_CP"
+    },
+    {
+      "detector": "DR_Capillary_CuNi_CP_Still_SD",
+      "sensitive_volume": "DR_Capillary_CuNi_CP_Still"
+    },
+    {
+      "detector": "DR_Capillary_CuNi_Still_4K_SD",
+      "sensitive_volume": "DR_Capillary_CuNi_Still_4K"
+    },
+    {
+      "detector": "DR_Capillary_CuNi_4K_60K_SD",
+      "sensitive_volume": "DR_Capillary_CuNi_4K_60K"
+    },
+    {
+      "detector": "DR_Still_PumpLine_SS_to_300K_top_SD",
+      "sensitive_volume": "DR_Still_PumpLine_SS_to_300K_top"
+    },
+    {
+      "detector": "PreCool_FlexLink_Cu_remote_interface_SD",
+      "sensitive_volume": "PreCool_FlexLink_Cu_remote_interface"
+    },
+    {
+      "detector": "G10_Support_Ring_MXC_CP_SD",
+      "sensitive_volume": "G10_Support_Ring_MXC_CP"
+    },
+    {
+      "detector": "G10_Support_Ring_CP_Still_SD",
+      "sensitive_volume": "G10_Support_Ring_CP_Still"
+    },
+    {
+      "detector": "G10_Support_Ring_Still_4K_SD",
+      "sensitive_volume": "G10_Support_Ring_Still_4K"
+    },
+    {
+      "detector": "G10_Support_Ring_4K_60K_SD",
+      "sensitive_volume": "G10_Support_Ring_4K_60K"
+    },
+    {
+      "detector": "G10_Support_Ring_60K_Top_SD",
+      "sensitive_volume": "G10_Support_Ring_60K_Top"
+    }
+  ],
+  "removed_declared_volume_categories": {
+    "near_tes_bi_al_readout_and_cable_proxies": [
+      "SE3_Al_Shield_Inner_Back_ColdFingerCap_2mm",
+      "SE3_Al_Shield_Inner_Cylinder_2mm",
+      "SG3B_Al_Bundle_4K_60K",
+      "SG3B_Al_Bundle_CP_Still",
+      "SG3B_Al_Bundle_MXC_CP",
+      "SG3B_Al_Bundle_Still_4K",
+      "SG3B_Al_Bundle_bay_to_MXC",
+      "SG3B_Bi_MXC_TES_UpperHalfCylinder_Aft_4p796mm",
+      "SG3B_Bi_MXC_TES_UpperHalfCylinder_Main_4p796mm",
+      "SQUID_uMUX_Box_Al_relocated_offbeam_minimal"
+    ],
+    "old_four_branch_cold_finger_and_clamps": [
+      "Cu_ColdFinger_OffAxis_YM_ZM_from_Disk_to_Stem",
+      "Cu_ColdFinger_OffAxis_YM_ZP_from_Disk_to_Stem",
+      "Cu_ColdFinger_OffAxis_YP_ZM_from_Disk_to_Stem",
+      "Cu_ColdFinger_OffAxis_YP_ZP_from_Disk_to_Stem",
+      "Cu_ColdFinger_Stem_YM_ZM_to_MXC",
+      "Cu_ColdFinger_Stem_YM_ZP_to_MXC",
+      "Cu_ColdFinger_Stem_YP_ZM_to_MXC",
+      "Cu_ColdFinger_Stem_YP_ZP_to_MXC",
+      "Cu_MXC_Clamp_Pad_YM_ZM_for_OffAxisStem",
+      "Cu_MXC_Clamp_Pad_YM_ZP_for_OffAxisStem",
+      "Cu_MXC_Clamp_Pad_YP_ZM_for_OffAxisStem",
+      "Cu_MXC_Clamp_Pad_YP_ZP_for_OffAxisStem"
+    ],
+    "old_outer_active_and_mechanical_shield": [
+      "ActiveShield_S3C_BGO_Kapton_BottomCap_0p3mm",
+      "ActiveShield_S3C_BGO_Kapton_SideWrap_WindowCut_0p3mm",
+      "ActiveShield_S3C_BGO_Kapton_TopAnnulus_0p3mm",
+      "BGO_S3C_FullWrap_SideShell_WindowCut_40mm",
+      "BGO_S3D_O8_FullWrap_BottomCap_30mm",
+      "BGO_S3D_O8_FullWrap_TopAnnulus_10mm",
+      "Outer_Al_S3C_BGO_Mechanical_BottomCap_3mm",
+      "Outer_Al_S3C_BGO_Mechanical_SideShell_WindowCut_3mm",
+      "Outer_Al_S3C_BGO_Mechanical_TopAnnulus_3mm"
+    ],
+    "old_outer_plastic_and_bpe": [
+      "GeoOpt_S2B_CryoShell_BPE5_BottomCap_20mm",
+      "GeoOpt_S2B_CryoShell_BPE5_SideShell_20mm",
+      "GeoOpt_S2B_CryoShell_BPE5_TopCap_20mm",
+      "GeoOpt_S2B_CryoShell_Plastic_BottomCap_10mm",
+      "GeoOpt_S2B_CryoShell_Plastic_SideSkin_10mm",
+      "GeoOpt_S2B_CryoShell_Plastic_TopCap_10mm"
+    ],
+    "old_w_bottom_and_multihole_collimator": [
+      "Passive_W_Bottom_Plate_detector_bay",
+      "W_Multihole_CollimatorVac",
+      "W_Multihole_Collimator_HBar",
+      "W_Multihole_Collimator_VBar_Center",
+      "W_Multihole_Collimator_VBar_Edge"
+    ],
+    "replaced_side_window_shell_and_foil_stack": [
+      "SG3A_Al_50mK_StillLike_Can_bottom_cap_2mm",
+      "SG3A_Al_50mK_StillLike_Can_side_wall_above_side_port",
+      "SG3A_Al_50mK_StillLike_Can_side_wall_below_side_port",
+      "SG3A_Al_50mK_StillLike_Can_side_wall_rectcut_window_band",
+      "Shield_4K_Al_side_window_bottom_cap",
+      "Shield_4K_Al_side_window_side_wall_above_side_port",
+      "Shield_4K_Al_side_window_side_wall_below_side_port",
+      "Shield_4K_Al_side_window_side_wall_rectcut_window_band",
+      "Shield_60K_Al_side_window_bottom_cap",
+      "Shield_60K_Al_side_window_side_wall_above_side_port",
+      "Shield_60K_Al_side_window_side_wall_below_side_port",
+      "Shield_60K_Al_side_window_side_wall_rectcut_window_band",
+      "Still_Shield_Al_side_window_bottom_cap",
+      "Still_Shield_Al_side_window_side_wall_above_side_port",
+      "Still_Shield_Al_side_window_side_wall_below_side_port",
+      "Still_Shield_Al_side_window_side_wall_rectcut_window_band",
+      "Vacuum_Jacket_Al_266mmClass_side_port_bottom_cap",
+      "Vacuum_Jacket_Al_266mmClass_side_port_side_wall_above_side_port",
+      "Vacuum_Jacket_Al_266mmClass_side_port_side_wall_below_side_port",
+      "Vacuum_Jacket_Al_266mmClass_side_port_side_wall_rectcut_window_band",
+      "Win_4K_Al_foil_side",
+      "Win_50mK_Al_foil_side",
+      "Win_60K_Al_foil_side",
+      "Win_Be_Vacuum_150um_side",
+      "Win_MagShield_Al_foil_side",
+      "Win_Outer_Al_Filter_side",
+      "Win_Still_Al_foil_side"
+    ]
+  },
+  "required_common_rigid_translation_names": [
+    "Cu_SubstrateSupport_EdgeRod_1",
+    "Cu_SubstrateSupport_EdgeRod_2",
+    "Cu_SubstrateSupport_EdgeRod_3",
+    "Cu_SubstrateSupport_EdgeRod_4",
+    "Cu_SubstrateSupport_OpenRing_L1_YM_panel",
+    "Cu_SubstrateSupport_OpenRing_L1_YP_panel",
+    "Cu_SubstrateSupport_OpenRing_L1_ZM_panel",
+    "Cu_SubstrateSupport_OpenRing_L1_ZP_panel",
+    "Cu_SubstrateSupport_OpenRing_L2_YM_panel",
+    "Cu_SubstrateSupport_OpenRing_L2_YP_panel",
+    "Cu_SubstrateSupport_OpenRing_L2_ZM_panel",
+    "Cu_SubstrateSupport_OpenRing_L2_ZP_panel",
+    "Cu_SubstrateSupport_OpenRing_L3_YM_panel",
+    "Cu_SubstrateSupport_OpenRing_L3_YP_panel",
+    "Cu_SubstrateSupport_OpenRing_L3_ZM_panel",
+    "Cu_SubstrateSupport_OpenRing_L3_ZP_panel",
+    "Cu_SubstrateSupport_OpenRing_L4_YM_panel",
+    "Cu_SubstrateSupport_OpenRing_L4_YP_panel",
+    "Cu_SubstrateSupport_OpenRing_L4_ZM_panel",
+    "Cu_SubstrateSupport_OpenRing_L4_ZP_panel",
+    "Cu_SubstrateSupport_OpenRing_L5_YM_panel",
+    "Cu_SubstrateSupport_OpenRing_L5_YP_panel",
+    "Cu_SubstrateSupport_OpenRing_L5_ZM_panel",
+    "Cu_SubstrateSupport_OpenRing_L5_ZP_panel",
+    "SG3_Cu_SubstrateSupport_L0_HeatSinkRing_10mm",
+    "Si_Substrate_Stack_side_entry_L0",
+    "Si_Substrate_Stack_side_entry_L1",
+    "Si_Substrate_Stack_side_entry_L2",
+    "Si_Substrate_Stack_side_entry_L3",
+    "Si_Substrate_Stack_side_entry_L4",
+    "Si_Substrate_Stack_side_entry_L5",
+    "TES_L0",
+    "TES_L1",
+    "TES_L2",
+    "TES_L3",
+    "TES_L4",
+    "TES_L5"
+  ],
+  "required_optical_axis_cutout_names": [
+    "NF2_OuterSupport_Al_TopMountAnnulus"
+  ],
+  "review_blockers": [
+    {
+      "evidence": "56 SG3B diagnostic scorers point to geometry still retained in OptV3 but are absent from the OptV3 detector map",
+      "id": "retained_passive_lineage_scorers_missing",
+      "required_decision": "restore a matched diagnostic detector map, or explicitly validate a lean-map catalog/lineage contract before production"
+    },
+    {
+      "evidence": "SQUID_uMUX_Box_Al_relocated_offbeam_minimal and five SG3B_Al_Bundle_* volumes are absent, with no SH3 replacement volumes",
+      "id": "readout_and_cable_mass_not_replaced",
+      "required_decision": "restore, reroute, or explicitly exclude these activation-relevant mass proxies"
+    },
+    {
+      "evidence": "the SG3B Bi half-cylinder and outer plastic positron-veto geometry are absent from OptV3; the chimney has BGO but no passive Bi or plastic scorer",
+      "id": "bi_and_plastic_design_boundary_unconfirmed",
+      "required_decision": "user must confirm exclusion or authorize chimney-compatible replacements"
+    },
+    {
+      "evidence": "OptV3 replaces the SG3B active-shield names/topology with SH3_BGO40_SideShield, SH3_BGO40_FrontOpticalAnnulus, and SH3_BGO40_RearColdPortAnnulus, but no mature common-response mapping receipt yet binds those names to the group-summed veto contract",
+      "id": "new_bgo_response_mapping_not_closed",
+      "required_decision": "freeze the three-volume BGO map and validate that the downstream 50 keV common-group veto remains observable despite native detector thresholds before background production"
+    },
+    {
+      "evidence": "OptV3 introduces 46 non-vacuum, non-BGO passive material volumes (30 Al, 11 Cu, 4 W, and 1 Be), including chimney thermal shells whose stage ownership is not yet authoritative",
+      "id": "new_passive_mass_activation_lineage_not_closed",
+      "required_decision": "assign volume/material/thermal-stage/activation-lineage ownership and ensure the compact catalog can retain those paths before BUILDUP"
+    },
+    {
+      "evidence": "SG3B uses 'SurroundingSphere 60 5 0 9 60' while OptV3 currently uses 'SurroundingSphere 95 0 0 8 95'",
+      "id": "source_surface_contract_not_matched",
+      "required_decision": "validate the smallest enclosing source surface and regenerate corrected source cards/TT normalization; equal raw histories alone are not equal exposure"
+    },
+    {
+      "evidence": "the four-bar W frame has an inner square half-width of exactly 2.70 cm, tangent to the declared r=2.70 cm optical circle and therefore providing zero analytic/alignment margin",
+      "id": "w_frame_full_envelope_clearance_not_closed",
+      "required_decision": "before background production, run the frozen 37,194-ray full-envelope signal transport and record a dedicated W-intercept/aperture receipt; enlarge the opening if any optical ray intersects W or the accepted mechanical tolerance requires positive margin"
+    }
+  ],
+  "scope": "Compact geometry/detector-map comparison only; no SIM scan or transport.",
+  "sg3b_only_copy_contract": {
+    "all_old_multihole_w": true,
+    "count": 624
+  },
+  "status": "REVIEW_REQUIRED__NOT_OPT_V3_PRODUCTION_AUTHORITY",
+  "unclassified_removed_declared_volumes": [],
+  "unexpected_common_volume_attribute_drift": [],
+  "verdict": "No unclassified geometry deletion was found, but missing diagnostic scorers, unresolved readout/cable/Bi/plastic mass choices, and the unmatched source-surface contract prevent claiming that OptV3 is already a minimal-change, equal-statistics production authority."
+}

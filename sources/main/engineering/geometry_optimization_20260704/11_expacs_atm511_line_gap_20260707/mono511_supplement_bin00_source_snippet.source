@@ -1,0 +1,15 @@
+# Example only: keep the original EXPACS continuum source unchanged.
+# Add a separate mono-511 source for each angular bin.
+# Replace L00_PH_CM2_S with the selected atmospheric-line model value.
+
+BalloonPrompt.Source Atm511_gamma_bin00_down
+
+Atm511_gamma_bin00_down.ParticleType 1
+Atm511_gamma_bin00_down.Beam FarFieldAreaSource 0.000 25.842 0.000 360.000
+Atm511_gamma_bin00_down.Spectrum Mono 511
+Atm511_gamma_bin00_down.Flux L00_PH_CM2_S
+
+# If using the EXPACS-continuum angular-shape diagnostic:
+# L00_PH_CM2_S = F511_TOTAL * 3.922270909477e-03
+# For the project Harris Rc~11-13 placeholder F511_TOTAL=2.33016000e-02,
+# L00_PH_CM2_S = 9.139518782427e-05

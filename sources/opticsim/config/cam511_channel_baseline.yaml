@@ -1,0 +1,56 @@
+system: cam511_channel_baseline
+energy_keV: 511.0
+focal_length_m: 12.0
+lens_outer_diameter_cm: 9.0
+
+rings:
+  - id: 0
+    radius_cm: 2.25
+    bending_angle_deg: 0.11
+    length_cm: 2.1
+    width_cm: 1.0
+    thickness_mm: 7.5
+  - id: 1
+    radius_cm: 3.0
+    bending_angle_deg: 0.14
+    length_cm: 2.7
+    width_cm: 1.0
+    thickness_mm: 7.5
+  - id: 2
+    radius_cm: 3.75
+    bending_angle_deg: 0.18
+    length_cm: 3.5
+    width_cm: 1.0
+    thickness_mm: 7.5
+  - id: 3
+    radius_cm: 4.5
+    bending_angle_deg: 0.22
+    length_cm: 4.6
+    width_cm: 1.0
+    thickness_mm: 7.5
+
+multilayer:
+  high_Z_material: W
+  low_Z_material: Si
+  high_Z_thickness_nm: 30.0
+  low_Z_thickness_nm: 150.0
+  total_stack_thickness_um: 5.4
+  open_fraction: 0.8333333333
+  roughness_nm: 5.0
+
+raytrace:
+  model: calibrated_axisymmetric_effective_channel
+  seed_default: 12345
+  total_transmissivity: 0.80
+  loss_absorb_fraction: 0.75
+  spot_d90_cm: 3.6
+  use_accept_reject: true
+  open_fraction_policy: already_in_total_transmissivity
+  warning: "Toy/calibrated effective channel model; replace with IMD/Parratt R(E,theta) table for physical reflectivity."
+
+expected:
+  focused_beam_diameter_cm: 3.6
+  transmissivity: 0.80
+  effective_area_cm2: 50.89
+  fov_radius_arcmin: 4.47
+

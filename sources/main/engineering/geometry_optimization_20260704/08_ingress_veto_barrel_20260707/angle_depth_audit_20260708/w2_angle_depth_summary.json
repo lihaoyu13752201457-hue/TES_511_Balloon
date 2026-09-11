@@ -1,0 +1,138 @@
+{
+  "status": "PASS_W2_ANGLE_DEPTH_AUDIT",
+  "scope": "Current geo-opt W2 raw TES background candidates only.",
+  "w2_window": "w2_510p58_511p42",
+  "angle_definition": {
+    "frame": "local detector frame after rotate_y(world_direction, -45 deg)",
+    "theta_local_deg": "acos(dir_local_z), 0 deg is +local z",
+    "phi_local_deg": "atan2(dir_local_y, dir_local_x), 0..360 deg; side-window axis proxy is local phi=180 deg +/-15 deg"
+  },
+  "source_counts": {
+    "activation": 42,
+    "atm511": 114,
+    "eplus": 62,
+    "gamma": 1,
+    "muminus": 1,
+    "muplus": 8,
+    "n": 60,
+    "p": 1
+  },
+  "entry_counts_by_source_family": {
+    "activation": {
+      "side_window": 2,
+      "side_wall": 19,
+      "top": 12,
+      "bottom": 7,
+      "envelope_miss": 2
+    },
+    "atm511": {
+      "side_window": 2,
+      "side_wall": 80,
+      "top": 25,
+      "bottom": 7
+    },
+    "eplus": {
+      "side_window": 4,
+      "side_wall": 31,
+      "top": 14,
+      "envelope_miss": 13
+    },
+    "gamma": {
+      "side_wall": 1
+    },
+    "muminus": {
+      "side_wall": 1
+    },
+    "muplus": {
+      "side_wall": 4,
+      "top": 1,
+      "envelope_miss": 3
+    },
+    "n": {
+      "side_wall": 29,
+      "top": 13,
+      "bottom": 10,
+      "envelope_miss": 8
+    },
+    "p": {
+      "top": 1
+    }
+  },
+  "atm511_source_definition": {
+    "source_card": "runs/geometry_optimization_20260704/p2_atm511_sidecar_s1_nominal_geo_opt_s1_bpe_w5_20260708/Atm511SidecarS1Nominal3M_GeoOptS1BpeW5.source",
+    "name": "Atm511SidecarS1Nominal3M_GeoOptS1BpeW5",
+    "particle_type": "gamma (MEGAlib ParticleType 1)",
+    "spectrum": "Mono 511 keV",
+    "beam_model": "FarFieldAreaSource",
+    "theta_deg_range": [
+      0.0,
+      180.0
+    ],
+    "phi_deg_range": [
+      0.0,
+      360.0
+    ],
+    "number_of_theta_bins": 20,
+    "flux_per_bin": [
+      0.0004319337401899,
+      0.0004743906443078,
+      0.0005259683059061
+    ],
+    "total_declared_flux": 0.051555854113024394,
+    "interpretation": "EXPACS-like 4pi atmospheric 511-keV sidecar with upward albedo and downward residual-atmosphere components."
+  },
+  "atm511_w2_conditional_diagnostics": {
+    "w2_raw_count": 114,
+    "theta_local_deg_min_max": [
+      18.23852375016873,
+      150.96451372941868
+    ],
+    "phi_local_deg_min_max": [
+      9.26076443389323,
+      358.037723516867
+    ],
+    "entry_class_counts": {
+      "bottom": 7,
+      "side_wall": 80,
+      "side_window": 2,
+      "top": 25
+    },
+    "xz_start_quadrant_counts": {
+      "left_lower": 22,
+      "left_upper": 14,
+      "right_lower": 69,
+      "right_upper": 9
+    }
+  },
+  "neutron_depth_proxy": {
+    "rows_total": 60,
+    "rows_plotted_positive_energy_and_depth": 42,
+    "rows_not_plotted": 18,
+    "depth_proxy_definition": "Projected distance from outer-envelope entry proxy to first recorded hit along the initial neutron direction.",
+    "limitation": "This is a first-hit depth proxy, not a continuous kinetic-energy-vs-depth scorer."
+  },
+  "outputs": {
+    "angle_events_csv": "engineering/geometry_optimization_20260704/08_ingress_veto_barrel_20260707/angle_depth_audit_20260708/w2_incident_angle_events.csv",
+    "entry_counts_csv": "engineering/geometry_optimization_20260704/08_ingress_veto_barrel_20260707/angle_depth_audit_20260708/w2_entry_class_counts.csv",
+    "neutron_depth_csv": "engineering/geometry_optimization_20260704/08_ingress_veto_barrel_20260707/angle_depth_audit_20260708/w2_neutron_energy_depth_with_entry.csv",
+    "summary_json": "engineering/geometry_optimization_20260704/08_ingress_veto_barrel_20260707/angle_depth_audit_20260708/w2_angle_depth_summary.json",
+    "figures": {
+      "theta_by_particle_entry": {
+        "png": "engineering/geometry_optimization_20260704/08_ingress_veto_barrel_20260707/figures/w2_angle_depth_audit_20260708/w2_incident_theta_by_particle_entry.png",
+        "svg": "engineering/geometry_optimization_20260704/08_ingress_veto_barrel_20260707/figures/w2_angle_depth_audit_20260708/w2_incident_theta_by_particle_entry.svg"
+      },
+      "phi_by_particle_entry": {
+        "png": "engineering/geometry_optimization_20260704/08_ingress_veto_barrel_20260707/figures/w2_angle_depth_audit_20260708/w2_incident_phi_by_particle_entry.png",
+        "svg": "engineering/geometry_optimization_20260704/08_ingress_veto_barrel_20260707/figures/w2_angle_depth_audit_20260708/w2_incident_phi_by_particle_entry.svg"
+      },
+      "entry_class_by_particle": {
+        "png": "engineering/geometry_optimization_20260704/08_ingress_veto_barrel_20260707/figures/w2_angle_depth_audit_20260708/w2_entry_class_by_particle.png",
+        "svg": "engineering/geometry_optimization_20260704/08_ingress_veto_barrel_20260707/figures/w2_angle_depth_audit_20260708/w2_entry_class_by_particle.svg"
+      },
+      "neutron_energy_vs_depth": {
+        "png": "engineering/geometry_optimization_20260704/08_ingress_veto_barrel_20260707/figures/w2_angle_depth_audit_20260708/w2_neutron_energy_vs_depth_entry_status.png",
+        "svg": "engineering/geometry_optimization_20260704/08_ingress_veto_barrel_20260707/figures/w2_angle_depth_audit_20260708/w2_neutron_energy_vs_depth_entry_status.svg"
+      }
+    }
+  }
+}

@@ -1,0 +1,99 @@
+{
+  "amended_schedule": {
+    "campaign_deadline": "2026-08-13T03:18:34.874118+00:00",
+    "stage10_seven_family": {
+      "hard_end_s_from_frozen_t0": 43200,
+      "start": "immediately when this amendment controller passes preflight",
+      "stop_launch_s_from_frozen_t0": 41700
+    },
+    "stage20_proton": {
+      "hard_end_s_from_frozen_t0": 57600,
+      "start": "immediately after Stage10 returns",
+      "stop_launch_s_from_frozen_t0": 55800
+    }
+  },
+  "authorization": {
+    "instruction": "start production now; no need to wait because the independent session has audited the data as sufficient",
+    "scope": "remove idle stage-start waits only",
+    "source": "direct user instruction in the controlling Codex thread",
+    "source_thread_id": "019ff59f-61a0-7852-9bad-322556e62ff4"
+  },
+  "batch_id": "m05_16h_90gb_campaign_batch0006",
+  "controller": {
+    "path": "engineering/particle_source_unit_repair_20260811/m05_16h_90gb_campaign_batch0006_20260812/code/resume_m05_campaign_batch0006_recovery0002_early_stages.py",
+    "sha256": "5cfd4542dc791a385fa8bc95477a3787611811d7b30bceb36cccfaf2065de2e2"
+  },
+  "created_at": "2026-08-12T12:44:43.399295+00:00",
+  "global_contract": "runs/particle_source_unit_repair_20260811/m05_16h_90gb_campaign_batch0006_v1/global_contract.json",
+  "global_contract_sha256": "4586fb62a16c0145401a997f70a878bfaebd94529fe04c45da51a1abcf102275",
+  "independent_analysis": {
+    "scope": "corrected-keV smoke and analysis-pipeline compatibility; partial screening only, not final delayed response/sensitivity/promotion",
+    "thread_id": "019ff5e1-6885-78b2-a9b4-8e6b2d060453",
+    "verdict": "ANALYSIS_READY_CONTINUE"
+  },
+  "original_schedule": {
+    "stage00_mergeable_smoke": {
+      "declared_cap": 2000000000,
+      "hard_end_s": 7200,
+      "id": "stage00_mergeable_smoke",
+      "start_s": 0,
+      "stop_launch_s": 5700
+    },
+    "stage10_seven_family": {
+      "declared_cap": 1500000000,
+      "hard_end_s": 43200,
+      "id": "stage10_seven_family",
+      "start_s": 7200,
+      "stop_launch_s": 41700
+    },
+    "stage20_proton": {
+      "declared_cap": 2000000000,
+      "hard_end_s": 57600,
+      "id": "stage20_proton",
+      "start_s": 43200,
+      "stop_launch_s": 55800
+    }
+  },
+  "planned_events": 6149560,
+  "planned_jobs": 638,
+  "planned_jobs_sha256": "d1d1abb26be31ebadf8932af57b61c744866b8293b437bd43e1b9c58805dc0ea",
+  "post_mainline_statistics_intent": {
+    "authorized": true,
+    "executed_by_this_amendment": false,
+    "rule": "after the frozen mainline is complete, assess time/disk/memory and use a separate write-once continuation with fresh collision-free seeds and the same physics contract if extra statistics are safe"
+  },
+  "publication_namespace": {
+    "final": "runs/particle_source_unit_repair_20260811/m05_16h_90gb_campaign_batch0006_v1/final_umbrella.recovery0002.json",
+    "stage00": "recovery0001 immutable authority",
+    "stage10": "runs/particle_source_unit_repair_20260811/m05_16h_90gb_campaign_batch0006_v1/seven_family_ledger.recovery0002.json",
+    "stage20": "runs/particle_source_unit_repair_20260811/m05_16h_90gb_campaign_batch0006_v1/proton_ledger.recovery0002.json"
+  },
+  "recovery0001_authority": "runs/particle_source_unit_repair_20260811/m05_16h_90gb_campaign_batch0006_v1/recovery0001_authority.json",
+  "recovery0001_authority_sha256": "50a3e6a81e57f2d16f43732fd4c30b07742a60658ae5f188ced7798c5827e654",
+  "recovery0001_controller": {
+    "path": "engineering/particle_source_unit_repair_20260811/m05_16h_90gb_campaign_batch0006_20260812/code/resume_m05_campaign_batch0006_recovery0001.py",
+    "sha256": "ec8891d13840841b9c455ab3d225fb708b3c53aa4901945093f7cf3ab099b4f1"
+  },
+  "recovery0001_smoke_decision": "runs/particle_source_unit_repair_20260811/m05_16h_90gb_campaign_batch0006_v1/smoke_decision.recovery0001.json",
+  "recovery0001_smoke_decision_sha256": "cd6a25b2ea58ec7217bc545640a6ca3dbb7f3ec160cdf1abc32ce43c1b36be21",
+  "recovery0001_smoke_ledger": "runs/particle_source_unit_repair_20260811/m05_16h_90gb_campaign_batch0006_v1/checkpoint_authority/smoke_ledger.recovery0001.json",
+  "recovery0001_smoke_ledger_sha256": "a98053b01edde18ba87ae803c065af27764d682f8ed0548d5218184132d300d9",
+  "recovery0001_smoke_validation": "runs/particle_source_unit_repair_20260811/m05_16h_90gb_campaign_batch0006_v1/checkpoint_authority/smoke_validation.recovery0001.json",
+  "recovery0001_smoke_validation_sha256": "1d387ecc885af6f0aa3d52ab4c98d60e1b71a30849919aa1d7e87fa718be05a1",
+  "recovery_id": "batch0006_recovery0002_user_authorized_early_stages",
+  "schema_version": 1,
+  "status": "PASS__USER_AUTHORIZED_SCHEDULING_ONLY_AMENDMENT",
+  "unchanged": {
+    "cosima_and_g4_fingerprint": true,
+    "deadline": "2026-08-13T03:18:34.874118+00:00",
+    "disk_rss_and_merge_gates": true,
+    "events": true,
+    "geometries": true,
+    "jobs": true,
+    "physics_and_cut": true,
+    "seeds": true,
+    "source_cards": true,
+    "t0": "2026-08-12T11:18:34.874118+00:00",
+    "validation_and_retry": true
+  }
+}

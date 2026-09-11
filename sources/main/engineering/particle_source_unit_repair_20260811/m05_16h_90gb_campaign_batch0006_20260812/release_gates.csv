@@ -1,0 +1,7 @@
+gate,pass_condition,failure_action
+01 Source,"160 spectra, 24 cards, 480 corrected refs, 0 legacy; source SHA fixed","do not launch transport"
+02 Compact,"separate authorization plus all-cell physics, consumer and resource equivalence","global fallback to F; never count C"
+03 Disk,"free >= 20 GiB + active caps and campaign bytes within dynamic cap","stop-launch; keep completed prefix"
+04 Memory,"p95 active RSS + 2 GiB < MemAvailable","reduce future concurrency; do not kill based on physics outcome"
+05 Shard,"requested = generated = IA INIT; geometry, source, TT, RP and hashes PASS","quarantine and exact same-seed retry"
+06 Deadline,"complete and validated before hard stage boundary","quarantine incomplete attempt; mark cell partial or missing"

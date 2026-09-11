@@ -1,0 +1,80 @@
+{
+  "schema_version": 1,
+  "status": "RECORDED__NO_TRANSPORT_AUTHORITY",
+  "created_at": "2026-08-12T14:51:32+00:00",
+  "campaign": "m05_16h_90gb_campaign_batch0006",
+  "purpose": "Record the user-authorized priority for optional statistics after the frozen 638-job mainline. This file cannot launch transport.",
+  "user_direction": "If the mainline finishes inside the original 16-hour window and disk remains, continue statistics in this order: parallel non-gamma replication, paper-style de-weighting, then incremental gamma.",
+  "bound_authority": {
+    "global_contract_path": "global_contract.json",
+    "global_contract_sha256": "4586fb62a16c0145401a997f70a878bfaebd94529fe04c45da51a1abcf102275",
+    "recovery0004_authority_path": "recovery0004_live_memory_dynamic_authority.json",
+    "recovery0004_authority_sha256": "ff4d69cfe202710e86537d6d7ea1d0b62444fe25bce80b55ffb25a50a22f56e6",
+    "recovery0004_cutover_receipt_path": "recovery0004_cutover_receipt.json",
+    "recovery0004_cutover_receipt_sha256": "a11ae6468117ae77d310e6797ae97a13c46ef1bf9a8571aaf44a0c2344a4fda2"
+  },
+  "mandatory_preconditions": [
+    "The recovery0004 mainline is terminal and final_umbrella.recovery0004.json has PASS status and complete hash closure.",
+    "The current time is still before the original 16-hour hard deadline, with enough time to finish and validate the next complete shard or matched wave.",
+    "The original campaign byte cap and filesystem reserve remain satisfied; at least 20 GiB filesystem free space and the campaign emergency reserve are retained.",
+    "A separate write-once continuation authority freezes the new job plan, fresh collision-free seed registry, events, source hashes, geometry hashes, physics fingerprint, deadlines, resource caps, and publication namespace before any additional Cosima launch.",
+    "No mainline registry, receipt, seed, source, artifact, ledger, or authority is modified or overwritten."
+  ],
+  "ordered_phases": [
+    {
+      "ordinal": 1,
+      "name": "parallel_non_gamma_replication",
+      "families": [
+        "alpha",
+        "eminus",
+        "eplus",
+        "muminus",
+        "muplus",
+        "n",
+        "p"
+      ],
+      "contract": [
+        "Allocate additional analogue Monte Carlo counts to non-photon families before any gamma increment, matching the M05 replicated-sample strategy for minority families.",
+        "Schedule balanced round-robin matched waves across family, geometry, and instant/BUILDUP mode so a wall-clock stop yields a valid balanced prefix rather than a single-family tail bias.",
+        "Keep the corrected full-support source cards unchanged; do not truncate energy tails, condition on detector outcomes, add track-level biasing, or change source flux, geometry, cuts, detector, materials, or physics.",
+        "Use fresh globally collision-free seeds. A matched Mass_model_511/S3d_O8 pair may share only its newly registered family/mode/ordinal seed under the continuation authority; failed exact retry keeps the same seed, source, and event count."
+      ]
+    },
+    {
+      "ordinal": 2,
+      "name": "paper_style_deweight_and_precision_check",
+      "contract": [
+        "Replication changes sampling allocation, not physical flux. De-weight each independently normalized geometry/mode/family component by its own accumulated transported exposure.",
+        "For prompt observables, merge only within a fixed geometry/mode/family pool using sum(selected contribution) divided by sum(TT).",
+        "For BUILDUP, merge only within fixed geometry/mode/family/volume/isotope-state pools using sum(RP) divided by sum(TT); positive-TT zero-RP shards remain in the denominator.",
+        "Recompute rate weights, weighted uncertainty, effective sample size, zero-count limits, and geometry-pair precision closure before authorizing gamma increments.",
+        "Never pool raw event counts across families and never interpret replicated counts as additional physical exposure without this de-weighting."
+      ]
+    },
+    {
+      "ordinal": 3,
+      "name": "incremental_gamma",
+      "families": [
+        "gamma"
+      ],
+      "contract": [
+        "Start gamma increments only after phases 1 and 2 have a validated continuation prefix and published de-weighting/precision checkpoint.",
+        "Use matched geometry/mode waves, fresh seeds, the same corrected full-spectrum analogue gamma source, and per-component TT normalization.",
+        "The retained unit_only_total_gamma spectrum already contains the broadband annihilation bump; do not add a mono-511 component."
+      ]
+    }
+  ],
+  "resource_policy": {
+    "scheduler": "Reuse the independently audited recovery0004 live-MemAvailable admission policy unless a new continuation controller is separately frozen and audited.",
+    "normal_target": 6,
+    "absolute_worker_cap": 8,
+    "projected_memavailable_floor_bytes": 1610612736,
+    "no_forced_worker_count": true,
+    "stop_rule": "Stop launching early enough to validate and publish the last complete continuation prefix before the original hard deadline; incomplete attempts remain preserved and non-mergeable."
+  },
+  "write_scope": {
+    "engineering": "Only the batch0006 engineering package may receive new continuation controller, validator, and plan files.",
+    "transport": "Only a new append-only continuation namespace below this batch0006 run root may receive additional transport artifacts."
+  },
+  "transport_authorized_by_this_file": false
+}

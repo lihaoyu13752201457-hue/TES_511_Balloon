@@ -1,0 +1,134 @@
+{
+  "schema_version": 1,
+  "scope": "86 BGO<50 keV, Si-positive SH3 neutron events from 10^7 incident-neutron transport",
+  "sample_livetime_s": 1911.8824,
+  "roi_keV": {
+    "low_inclusive": 510.58,
+    "high_exclusive": 511.42
+  },
+  "diagnostic_band_keV": [
+    480.0,
+    550.0
+  ],
+  "reporting_threshold_keV_not_hardware_trigger": 0.42,
+  "strict_recoil_spectrum_10m": {
+    "count": 533,
+    "min": 0.5224525,
+    "q50": 29.14737,
+    "q90": 140.477042,
+    "q99": 549.251507199997,
+    "max": 1407.3428
+  },
+  "single_pixel": {
+    "strict_dominant_pixel_keV": {
+      "q50": 0.5174710551515419,
+      "q90": 17.216578483303763,
+      "q99": 497.5849195,
+      "max": 505.60808099999997
+    },
+    "all86_dominant_pixel_keV": {
+      "q50": 0.23239716775541952,
+      "q90": 497.5849195,
+      "q99": 3718.2882668514467,
+      "max": 4444.653646235195
+    },
+    "single_channels_in_480_550": 4,
+    "single_channels_in_roi": 0,
+    "gaussian_fwhm_keV": 0.42,
+    "gaussian_expected_roi_count_for_86_events": 0.0004615572304691451,
+    "zoom_channels": [
+      {
+        "event_order": 84,
+        "channel": "L0:P168",
+        "energy_keV": 489.56175800000005,
+        "strict": true
+      },
+      {
+        "event_order": 16,
+        "channel": "L4:P346",
+        "energy_keV": 505.60808099999997,
+        "strict": true
+      },
+      {
+        "event_order": 20,
+        "channel": "L4:P104",
+        "energy_keV": 509.989107,
+        "strict": false
+      },
+      {
+        "event_order": 29,
+        "channel": "L3:P55",
+        "energy_keV": 542.0662448885814,
+        "strict": false
+      }
+    ]
+  },
+  "multipixel_event_sum": {
+    "strict_event_sum_keV": {
+      "q50": 1.0088763897901571,
+      "q90": 57.636041202968116,
+      "q99": 651.3847605064915,
+      "max": 666.5259690733028
+    },
+    "all86_event_sum_keV": {
+      "q50": 0.6508721493255332,
+      "q90": 651.3847605064915,
+      "q99": 5601.090192165968,
+      "max": 6232.396697336601
+    },
+    "events_in_480_550": 2,
+    "events_in_roi": 1,
+    "zoom_events": [
+      {
+        "event_order": 44,
+        "candidate": "C",
+        "event_sum_keV": 510.96428477483937,
+        "dominant_channel": "L1:P231",
+        "dominant_channel_keV": 433.54379,
+        "strict": false
+      },
+      {
+        "event_order": 29,
+        "candidate": "",
+        "event_sum_keV": 544.6066754295687,
+        "dominant_channel": "L3:P55",
+        "dominant_channel_keV": 542.0662448885814,
+        "strict": false
+      }
+    ]
+  },
+  "candidate_C_event_order": 44,
+  "all86_event_sum_reference_validation": {
+    "validated_non_C_event_count": 85,
+    "max_abs_difference_keV": 6.366462912410498e-12,
+    "candidate_C_five_replicate_mean_keV": 510.96428477483937,
+    "candidate_C_single_all86_realization_keV": 514.9513257741494
+  },
+  "g4cmp_model": {
+    "status": "comparative uncalibrated endpoint; not an absolute detector-efficiency prediction",
+    "all86_scenario": "tuned_c_area0p12",
+    "candidate_C_sensor_allocation": "arithmetic mean of five independent 8192-packet replicates, including zeros",
+    "other_85_sensor_allocation": "single accepted all86 run"
+  },
+  "inputs": {
+    "outputs/unvetoed_events.csv": "bd5c36f9c5e135381d460e09e492fcc4946ccbc8425945c3bd06b4ffc5f47b93",
+    "outputs/neutron_energy_band/direct_tes_channels_all86.csv": "4daf71893307a27a46e91e52907efe0dd2db800710bbe5d7e55e378180a32186",
+    "runs/staircase/04_all86/tuned_c_area0p12/channels.csv": "0048f82562cb634c5ea5cdf91ecf910ac0538dcf4700187b6c374f7b0cf0f4f9",
+    "runs/staircase/04_all86/tuned_c_area0p12/events.csv": "8d958d54446dd90c039d1aeb828c8eafe3ab754580caebe81a67f40eff59dfce",
+    "input_snapshot/results/strict_si_elastic_recoil_events_10m.csv": "52de89be0a4d781647b5dd000171dbcaa28202d39359008cbf37bf5fe86735c3",
+    "runs/staircase/02c_candidate_C_replicates/rep1/channels.csv": "32685eda2a52eb6860b060c06bbc79a02b3e2dc87e9e308c263a016cb6a57532",
+    "runs/staircase/02c_candidate_C_replicates/rep2/channels.csv": "206124df0a9444ed4248a0ab634de751f3ed8e9661fae67932db0df33f5dbbe7",
+    "runs/staircase/02c_candidate_C_replicates/rep3/channels.csv": "62cffa65aa2212e36d92cb8bc7c5d0015b557fbb383fc28e3b3eecec208b6ba8",
+    "runs/staircase/02c_candidate_C_replicates/rep4/channels.csv": "53013dd501b5cf65f8fc85b421f6c8dd77ec67985d8b8db5ec64df9aa8712d5c",
+    "runs/staircase/02c_candidate_C_replicates/rep5/channels.csv": "bab70dcb1e7d268697b53fdedc0ab77a8751f149c4fbcf7491ca2d2e562db779"
+  },
+  "plotting_code_sha256": "89ebf22dd3884a5d201688a0dcda3c8462ff5b1f6ce6726ff6ac1283c66f55c7",
+  "outputs": {
+    "outputs/neutron_energy_band/single_pixel_combined_all86.csv": "2dcb6d24fb7043fe99834b5b8384e464d895a86729a002dd7b4d5b32a66a48fd",
+    "outputs/neutron_energy_band/multipixel_event_sums_all86.csv": "327fb7c8823cb78d0a75f41fcd037c79fb255d0b655cf3238a43a1bab1b293f0",
+    "outputs/neutron_energy_band/sh3_neutron_single_pixel_spectrum.png": "5a38fa5c39be32090ef3cd7b1d6a54b07deada10b039675996d2009e03ec796a",
+    "outputs/neutron_energy_band/sh3_neutron_single_pixel_spectrum.pdf": "747280dc52c12dc5a78688ccdb960c5acf43816fef3ca584fc6e6b3e2937a33f",
+    "outputs/neutron_energy_band/sh3_neutron_multipixel_sum_spectrum.png": "c17e5297f4d8081170bedd543d9a5a0bf2fe79cd2367af3eda7f1584dbc1ba8c",
+    "outputs/neutron_energy_band/sh3_neutron_multipixel_sum_spectrum.pdf": "83cb45102e2b60cdf560f44be628d797f1e4e14402945f0d5d1029f8b543bdaf"
+  }
+}

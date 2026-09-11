@@ -1,0 +1,103 @@
+{
+  "schema_version": 1,
+  "generated_at_local": "2026-09-03T18:00:00+08:00",
+  "status": "PASS_WITH_DOCUMENTED_CUSTOM_APP_TEARDOWN_WORKAROUND",
+  "workspace_root": "/home/ubuntu/neutron_fen",
+  "write_boundary": "All source, archive, build, install, configuration, run and output paths are under workspace_root. Existing MEGAlib and Geant4 installations were read/link-only and were not overwritten.",
+  "source": {
+    "project": "G4CMP/G4CMP",
+    "official_repository": "https://github.com/G4CMP/G4CMP",
+    "download_url": "https://api.github.com/repos/G4CMP/G4CMP/tarball/refs/tags/g4cmp-V10-05-00",
+    "tag": "g4cmp-V10-05-00",
+    "tag_date": "2026-08-18",
+    "annotated_tag_object": "e0929d9b1d60",
+    "commit": "1bd1e8aa1b799abc99f1994f2e2b8da4c62c76c8",
+    "archive_path": "/home/ubuntu/neutron_fen/src/G4CMP-g4cmp-V10-05-00.tar.gz",
+    "archive_sha256": "1de5c665dc302ba6a28fb0960c632d69b27c464113957d67da5f94fd267e0bc4",
+    "source_dir": "/home/ubuntu/neutron_fen/src/G4CMP",
+    "runtime_version": "g4cmp-V10-05-00"
+  },
+  "compatibility_gate": {
+    "official_change_history": [
+      "g4cmp-V10-01-00: compilation and link compatibility with Geant4 v11",
+      "g4cmp-V10-05-00: includes PhysicsModelCatalog update for Geant4 11.4.2"
+    ],
+    "documentation_inconsistency": "The repository README still states the older Geant4 10.4-10.7 support boundary. Compatibility was therefore accepted only after local configure, build, install, deterministic official-example smoke and stress tests.",
+    "host_geant4": {
+      "version": "11.4.0",
+      "prefix": "/home/ubuntu/software/geant4-11.4.0-install",
+      "use": "read/link/run only",
+      "shared_libraries": true,
+      "multithreading": true,
+      "gdml": true,
+      "qt": true,
+      "opengl_x11": true
+    },
+    "decision": "Compatible for the validated phonon workflows on this host. This is an empirical host/tag pairing, not a claim that the stale README support matrix was formally updated."
+  },
+  "toolchain": {
+    "gcc": "11.4.0",
+    "cmake": "3.22.1",
+    "ninja": "1.10.1",
+    "cxx_standard": 17
+  },
+  "build": {
+    "type": "Release",
+    "build_dir": "/home/ubuntu/neutron_fen/build/G4CMP-g4cmp-V10-05-00",
+    "install_prefix": "/home/ubuntu/neutron_fen/install/G4CMP-g4cmp-V10-05-00-g4.11.4.0",
+    "geant4_dir": "/home/ubuntu/software/geant4-11.4.0-install/lib/cmake/Geant4",
+    "install_examples": true,
+    "install_validation": true,
+    "configure_log": "/home/ubuntu/neutron_fen/logs/g4cmp_configure.log",
+    "build_log": "/home/ubuntu/neutron_fen/logs/g4cmp_build.log",
+    "install_log": "/home/ubuntu/neutron_fen/logs/g4cmp_install.log"
+  },
+  "isolated_environment": {
+    "path": "/home/ubuntu/neutron_fen/env/g4cmp.sh",
+    "sha256": "e4ff688b3b41ee18d131b14d611aa32128f39876cf558a6f05761f72342d2c0a",
+    "reason": "The login environment inherited Geant4 10.2.3 MEGAlib dataset variables; all Geant4 11.4.0 dataset variables are explicitly rebound."
+  },
+  "official_phonon_smoke": {
+    "macro": "/home/ubuntu/neutron_fen/config/g4cmp_official_phonon_smoke.mac",
+    "macro_sha256": "a8e33ae58dce77981319209a15ffef7aefb2d2ce3f4544f4af0507a99435823a",
+    "seeds": [240903, 511420],
+    "events": 100,
+    "input_weighted_eV": 0.27,
+    "terminal_hit_rows": 430,
+    "collected_weighted_eV": 0.2699999978365,
+    "final_time_range_ns": [3546.1, 901617.0],
+    "repeat_1": "/home/ubuntu/neutron_fen/runs/official_smoke_repeat1",
+    "repeat_2": "/home/ubuntu/neutron_fen/runs/official_smoke_repeat2",
+    "hit_sha256_both": "c9867a8d3124a921fb9121bcfa73fd3dbb3119765752dcf4317e91c3725014ea",
+    "log_sha256_both": "406446961870f1ba586d7e5c353a2424148e4e66aff710e0d06bf9f771669bf8",
+    "byte_identical_repeats": true,
+    "energy_closure_relative_error": 8.013e-09
+  },
+  "official_phonon_stress": {
+    "macro": "/home/ubuntu/neutron_fen/config/g4cmp_official_phonon_stress.mac",
+    "macro_sha256": "befcd9cdf3b0bf925b13b53faffd4ebc8e5ceb17bf06391ae23092cd28bad6ea",
+    "events": 10000,
+    "terminal_hit_rows": 45106,
+    "exit_code": 0,
+    "run_dir": "/home/ubuntu/neutron_fen/runs/smoke_official_phonon_stress2",
+    "hit_sha256": "67b632b24eeae8ffabd5a85a2f67bfd2281b763a8dc7cab2c374e07011d5b586"
+  },
+  "custom_application": {
+    "source_dir": "/home/ubuntu/neutron_fen/code/g4cmp_si_tes",
+    "build_dir": "/home/ubuntu/neutron_fen/build/g4cmp_si_tes",
+    "binary": "/home/ubuntu/neutron_fen/build/g4cmp_si_tes/sh3_g4cmp_si_tes",
+    "binary_sha256": "0ab174d7b2b5436680e4a45a99e1e7815e7ebfd9d4614e9fc8cf02635470302b",
+    "teardown_note": "Some high-multiplicity custom-primary runs segfaulted only in G4CMPPhononBoundaryProcess process-global static destruction after COMPLETE outputs and energy closure were written. The app now explicitly destroys the run manager, flushes output streams, and calls std::_Exit(0) to bypass only residual static teardown. Every accepted chunk requires status COMPLETE and |closure-1|<1e-9 before merge.",
+    "deterministic_smoke": {
+      "events": 30,
+      "packet_energy_meV": 62.0,
+      "packets_per_event_layer_group": 32,
+      "repeat_1": "/home/ubuntu/neutron_fen/runs/custom_app_smoke_repeat1",
+      "repeat_2": "/home/ubuntu/neutron_fen/runs/custom_app_smoke_repeat2",
+      "hit_sha256_both": "b21ffd7b0b0e7423036cbf07733114c02a67a4c9a7b5a07198f4ce7cb9319e80",
+      "event_map_sha256_both": "80bb1b6401ab35cdddc6c4b63472a998437b8f24b1f28fc767b2e0c5a9ca5218",
+      "byte_identical_repeats": true,
+      "analysis_self_checks": "PASS"
+    }
+  }
+}

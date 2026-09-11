@@ -1,0 +1,131 @@
+{
+  "status": "PASS_EVENT_LEVEL_SPOT_R90_DIAGNOSTIC_WITHDRAWN_AS_STRATEGY",
+  "inputs": {
+    "prompt_eplus_records": "outputs/reports/prompt511_entry_audit_20260617/current_eplus_prompt_final_records.json",
+    "spatial_cuts_csv": "stepwise_maintenance/step09_optics_bridge/outputs_f10m_a1_v3p5/detector_coupled_spatial_line_cuts.csv",
+    "focus_response": "stepwise_maintenance/step09_optics_bridge/outputs_f10m_a1_v3p5/detector_coupled_focus_response.json"
+  },
+  "spot_r90_radius_cm": 1.0516422148529696,
+  "spot_center_local_yz_cm": [
+    0.0,
+    -5.2
+  ],
+  "prompt": {
+    "event_level_scope": "current final W2 prompt-eplus selected events only; validates the dominant prompt stream",
+    "event_level_eplus_keep_r90": 0.32500000000000007,
+    "event_level_eplus_keep_count": 26,
+    "event_level_eplus_total_count": 80,
+    "table_all_prompt_keep_r90": 0.3218775410312208,
+    "eplus_spot_radius_cm_median": 1.2569081883807292,
+    "eplus_spot_radius_cm_max": 1.7144044970535148
+  },
+  "signal": {
+    "psf_fraction_in_spot_r90": 0.9000037465815031,
+    "spatial_support_vs_hardwindow": 0.8993796575135935,
+    "signal_keep_vs_hardwindow": 0.8094450613614232,
+    "spatial_mappable_focal_signal_cps_at_reference_flux": 0.001062316339232761,
+    "hardwindow_signal_cps_at_reference_flux": 0.0011811656293957314,
+    "scintillator_only_W2_signal_cps_at_reference_flux": 0.0012033296691650694
+  },
+  "delayed": {
+    "keep_r90_from_fullstat_v2_table": 0.30436331831273233,
+    "caveat": "exactpos M50000 delayed per-event positions are not in this verifier; delayed is a small share of B'."
+  },
+  "folded": {
+    "prompt_p_cps": 0.019017402122135423,
+    "delayed_p_cps": 0.001186297794007052,
+    "B_p_cps": 0.020203699916142473,
+    "S_p_cps": 0.0009560886853642319,
+    "Z20d": 8.761186694205797,
+    "prompt_reduction_factor": 3.106771590202387,
+    "codex_smoke_Z20d": 8.760949682270843,
+    "codex_smoke_B_cps": 0.0202037
+  },
+  "psf_broadening_scan": {
+    "method": "E_broadened(R)=E_base(R/f); cumulative prompt/delayed rates linearly interpolated vs ROI radius; best focal-ROI radius constrained to the 1.8 cm full aperture, with hard-window fallback reported separately.",
+    "csv": "outputs/reports/prompt511_spatial_roi_smoke_20260618/verify_roi_psf_broadening_scan.csv",
+    "rows": [
+      {
+        "psf_broadening_factor": 1.0,
+        "cut_radius_cm": 1.051642,
+        "signal_keep_vs_hardwindow": 0.8094448510718438,
+        "prompt_cps": 0.01901739779155013,
+        "delayed_cps": 0.0011862973356415222,
+        "background_cps": 0.02020369512719165,
+        "background_keep_vs_hardwindow": 0.3207935702015557,
+        "Z20d": 8.76118545644213,
+        "gain_vs_hardwindow_Z": 1.4291388895706427,
+        "F3_20d_ph_cm2_s": 3.424194151482195e-05,
+        "hardwindow_fallback_Z20d": 6.130394687582996,
+        "hardwindow_fallback_preferred": false,
+        "detector_limit_cm": 1.8,
+        "recommended_Z20d_with_hardwindow_fallback": 8.76118545644213
+      },
+      {
+        "psf_broadening_factor": 1.15,
+        "cut_radius_cm": 1.051642,
+        "signal_keep_vs_hardwindow": 0.6751876055820029,
+        "prompt_cps": 0.01901739779155013,
+        "delayed_cps": 0.0011862973356415222,
+        "background_cps": 0.02020369512719165,
+        "background_keep_vs_hardwindow": 0.3207935702015557,
+        "Z20d": 7.308025769219443,
+        "gain_vs_hardwindow_Z": 1.192097106573206,
+        "F3_20d_ph_cm2_s": 4.1050758368089675e-05,
+        "hardwindow_fallback_Z20d": 6.130394687582996,
+        "hardwindow_fallback_preferred": false,
+        "detector_limit_cm": 1.8,
+        "recommended_Z20d_with_hardwindow_fallback": 7.308025769219443
+      },
+      {
+        "psf_broadening_factor": 1.3,
+        "cut_radius_cm": 1.367135,
+        "signal_keep_vs_hardwindow": 0.8094451099251719,
+        "prompt_cps": 0.037431053355652145,
+        "delayed_cps": 0.0022568238154354906,
+        "background_cps": 0.039687877171087634,
+        "background_keep_vs_hardwindow": 0.6301627366322141,
+        "Z20d": 6.250999737643267,
+        "gain_vs_hardwindow_Z": 1.0196732928639252,
+        "F3_20d_ph_cm2_s": 4.799232324285861e-05,
+        "hardwindow_fallback_Z20d": 6.130394687582996,
+        "hardwindow_fallback_preferred": false,
+        "detector_limit_cm": 1.8,
+        "recommended_Z20d_with_hardwindow_fallback": 6.250999737643267
+      },
+      {
+        "psf_broadening_factor": 1.5,
+        "cut_radius_cm": 1.577463,
+        "signal_keep_vs_hardwindow": 0.8094448510718438,
+        "prompt_cps": 0.05013823947241053,
+        "delayed_cps": 0.0031980212509071858,
+        "background_cps": 0.053336260723317715,
+        "background_keep_vs_hardwindow": 0.8468712971027894,
+        "Z20d": 5.392212442692406,
+        "gain_vs_hardwindow_Z": 0.879586505843455,
+        "F3_20d_ph_cm2_s": 5.56357901674597e-05,
+        "hardwindow_fallback_Z20d": 6.130394687582996,
+        "hardwindow_fallback_preferred": true,
+        "detector_limit_cm": 1.8,
+        "recommended_Z20d_with_hardwindow_fallback": 6.130394687582996
+      },
+      {
+        "psf_broadening_factor": 2.0,
+        "cut_radius_cm": 1.8,
+        "signal_keep_vs_hardwindow": 0.6610236658925018,
+        "prompt_cps": 0.05908272463250492,
+        "delayed_cps": 0.0038976372073461713,
+        "background_cps": 0.06298036183985109,
+        "background_keep_vs_hardwindow": 1.0,
+        "Z20d": 4.05233596975403,
+        "gain_vs_hardwindow_Z": 0.6610236658925018,
+        "F3_20d_ph_cm2_s": 7.403137406156616e-05,
+        "hardwindow_fallback_Z20d": 6.130394687582996,
+        "hardwindow_fallback_preferred": true,
+        "detector_limit_cm": 1.8,
+        "recommended_Z20d_with_hardwindow_fallback": 6.130394687582996
+      }
+    ]
+  },
+  "verdict": "spot_r90 is event-level checked for the dominant prompt-eplus stream and signal support accounting, but remains diagnostic only. Prompt-fix strategy should focus on local side-port/side-wall geometry closure."
+}

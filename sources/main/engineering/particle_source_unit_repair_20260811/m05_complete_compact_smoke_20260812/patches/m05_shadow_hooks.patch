@@ -1,0 +1,245 @@
+--- a/inc/MCSource.hh
++++ b/inc/MCSource.hh
+@@ -118,6 +118,11 @@
+   G4ParticleDefinition* GetEventListNextParticle() { return (m_EventListSize > 0) ? m_EventList[0]->m_ParticleDefinition : nullptr; }
+   /// Return the next volume in the event list
+   MString GetEventListNextVolume() { return (m_EventListSize > 0) ? m_EventList[0]->m_VolumeName : ""; }
++  /// Return provenance fields before GenerateParticles consumes the row
++  long GetEventListNextID() const { return (m_EventListSize > 0) ? m_EventList[0]->m_ID : -1; }
++  double GetEventListNextExcitation() const { return (m_EventListSize > 0) ? m_EventList[0]->m_ParticleExcitation : 0.0; }
++  bool GetEventListNextIsSuccessor() const { return (m_EventListSize > 0) ? m_EventList[0]->m_IsSuccessor : false; }
++  bool IsFileEventList() const { return m_IsFileEventList; }
+ 
+   /// Set entries of the event list from file 
+   bool SetEventListFromFile(MString FileName);
+--- a/inc/MCRun.hh
++++ b/inc/MCRun.hh
+@@ -170,9 +170,13 @@
+   bool SkipOneEvent(G4ParticleDefinition* ParticleType, MString VolumeName); 
+ 
+   /// Add an element to the radioactive particle store
+-  void AddIsotope(G4Ions* Ion, G4TouchableHistory* Hist);
++  unsigned long AddIsotope(G4Ions* Ion, G4TouchableHistory* Hist);
++  /// Number of native AddIsotope commits in this run
++  unsigned long GetNAddedIsotopes() const { return m_NAddedIsotopes; }
+   /// Set isotope store name
+   void SetIsotopeStoreFileName(MString Name) { m_IsotopeStoreName = Name; }
++  /// Get the exact native isotope store target
++  MString GetIsotopeStoreFileName() const { return m_IsotopeStoreName; }
+   /// Add an element to the radioactive particle store
+   void SaveIsotopeStore();
+ 
+--- a/inc/MCMain.hh
++++ b/inc/MCMain.hh
+@@ -67,6 +67,8 @@
+ 
+   /// Get the parameter file
+   MCParameterFile& GetParameterFile() { return m_RunParameters; }
++  /// Get the actual command-line seed applied to CLHEP and ROOT
++  long GetSeed() const { return m_Seed; }
+   
+   // protected methods:
+ protected:
+--- a/src/MCRun.cc
++++ b/src/MCRun.cc
+@@ -23,6 +23,7 @@
+ #include "MCRunManager.hh"
+ #include "MCSteppingAction.hh"
+ #include "MCTrackingAction.hh"
++#include "M05CompactScorer.hh"
+ 
+ // Geant4:
+ #include "G4SystemOfUnits.hh"
+@@ -289,7 +290,7 @@
+ /******************************************************************************
+  * Add an element to the radioactive particle store
+  */
+-void MCRun::AddIsotope(G4Ions* Particle, G4TouchableHistory* Hist)
++unsigned long MCRun::AddIsotope(G4Ions* Particle, G4TouchableHistory* Hist)
+ {
+   G4LogicalVolume* V = Hist->GetVolume(0)->GetLogicalVolume();
+ 
+@@ -308,6 +309,7 @@
+   if (m_NAddedIsotopes % 10000 == 0) {
+     SaveIsotopeStore();
+   }
++  return m_NAddedIsotopes;
+ }
+ 
+ 
+@@ -703,6 +705,18 @@
+         }
+       }
+ 
++      long M05EventListID = -1;
++      double M05EventListExcitation = 0.0;
++      if (M05CompactScorer::Instance().IsConfigured()) {
++        if (!NextSource->IsFileEventList() || NextSource->GetEventListNextIsSuccessor()) {
++          throw std::runtime_error("M05 scorer requires one non-successor file EventList row per event");
++        }
++        M05EventListID = NextSource->GetEventListNextID();
++        M05EventListExcitation = NextSource->GetEventListNextExcitation();
++        M05CompactScorer::Instance().BeginGeneratedEvent(Event->GetEventID()+1);
++      }
++
++      const int M05VertexCountBefore = Event->GetNumberOfPrimaryVertex();
+       GenerationSuccessful = NextSource->GenerateParticles(ParticleGun);
+       if (GenerationSuccessful == false) {
+         HasSuccessor = false;
+@@ -739,6 +753,21 @@
+                          ParticleGun->GetParticleMomentumDirection(),
+                          ParticleGun->GetParticlePolarization(),
+                          ParticleGun->GetParticleEnergy());
++      if (M05CompactScorer::Instance().IsConfigured()) {
++        M05CompactScorer::Instance().RecordGenerated(
++          M05EventListID,
++          NextSource->GetName().Data(),
++          m_SimulatedTime/s,
++          NextSource->GetParticleType(),
++          M05EventListExcitation,
++          Event,
++          M05VertexCountBefore,
++          ParticleGun,
++          ParticleGun->GetParticlePosition(),
++          ParticleGun->GetParticleMomentumDirection(),
++          ParticleGun->GetParticlePolarization(),
++          ParticleGun->GetParticleEnergy()/keV);
++      }
+       
+       if (NextSource->GetSuccessor() != "") {
+         for (unsigned int so = 0; so < m_SourceList.size(); ++so) {
+--- a/src/MCEventAction.cc
++++ b/src/MCEventAction.cc
+@@ -24,6 +24,7 @@
+ #include "MCDetectorConstruction.hh"
+ #include "MCSteppingAction.hh"
+ #include "MCRun.hh"
++#include "M05CompactScorer.hh"
+ 
+ // MEGAlib:
+ #include "MAssert.h"
+@@ -351,6 +352,9 @@
+   MCEventAction::ClearTrackMeta();   // <-- 新增：每个 event 开头清空 track-meta
+ 
+   ++m_ID;  
++  if (M05CompactScorer::Instance().IsConfigured()) {
++    M05CompactScorer::Instance().ConfirmEventStarted(m_ID);
++  }
+   
+   mdebug<<"Starting event "<<m_ID<< "... Please stand by..."<<endl;
+   
+@@ -491,6 +495,7 @@
+   G4String Text;
+   
+   MCRun& Run = m_RunParameters.GetCurrentRun();
++  bool M05NativeEventPopulated = false;
+ 
+   if (m_IsAborted == false) {
+     // Make a list of all collections:
+@@ -748,6 +753,7 @@
+         mout<<"Storing uncalibrated data is no longer supported..."<<endl;
+       }
+     
++      M05NativeEventPopulated = true;
+     
+       if (m_StoreOneHitPerEvent == true && m_Event->GetNHTs() > 1) {
+         vector<MSimEvent*> E = m_Event->CreateSingleHitEvents();
+@@ -826,6 +832,10 @@
+     }
+   }
+   
++  if (M05CompactScorer::Instance().IsConfigured()) {
++    M05CompactScorer::Instance().EndEvent(
++      m_Event, m_IsAborted || Event->IsAborted(), M05NativeEventPopulated);
++  }
+   Reset();
+ 
+   m_TotalTime += m_Timer.ElapsedTime();
+--- a/src/MCSteppingAction.cc
++++ b/src/MCSteppingAction.cc
+@@ -24,6 +24,7 @@
+ #include "MCPrimaryGeneratorAction.hh"
+ #include "MCSD.hh"
+ #include "MCSource.hh"
++#include "M05CompactScorer.hh"
+ 
+ // Geant4:
+ #include "G4SystemOfUnits.hh"
+@@ -1049,17 +1050,28 @@
+           //cout<<"NE: "<<Nucleus->GetExcitationEnergy()/keV<<"keV"<<endl;
+ 
+           G4TouchableHistory* Hist = (G4TouchableHistory*) (Step->GetPreStepPoint()->GetTouchable());
+-          EmitIsotopeProductionFromStoredIonCC(EventAction, "RP",
+-                                     Step,
+-                                     Step->GetPreStepPoint()->GetPosition(),  // or PostStepPoint, but be consistent
+-                                     Time,
+-                                     Nucleus);
++          if (!M05CompactScorer::Instance().IsConfigured() || !M05CompactScorer::Instance().IsCompactArm()) {
++            EmitIsotopeProductionFromStoredIonCC(EventAction, "RP",
++                                       Step,
++                                       Step->GetPreStepPoint()->GetPosition(),  // or PostStepPoint, but be consistent
++                                       Time,
++                                       Nucleus);
++          }
+ 
+-          MCRunManager::GetMCRunManager()->GetCurrentRun().AddIsotope(Nucleus, Hist);
++          const unsigned long M05ProductionSerial =
++            MCRunManager::GetMCRunManager()->GetCurrentRun().AddIsotope(Nucleus, Hist);
++          if (M05CompactScorer::Instance().IsConfigured()) {
++            M05CompactScorer::Instance().RecordCommittedIsotope(
++              M05ProductionSerial, Step, Hist, Nucleus, Time,
++              Step->GetPostStepPoint()->GetProcessDefinedStep() == nullptr ? "none" :
++                Step->GetPostStepPoint()->GetProcessDefinedStep()->GetProcessName());
++          }
+ 
+           //mout<<"Storing isotope: "<<Nucleus->GetParticleName()<<endl;
+           
+-          EventAction->AddComment("Storing isotope: " + Nucleus->GetParticleName());
++          if (!M05CompactScorer::Instance().IsConfigured() || !M05CompactScorer::Instance().IsCompactArm()) {
++            EventAction->AddComment("Storing isotope: " + Nucleus->GetParticleName());
++          }
+         }
+         
+         if (Keep == true) {
+@@ -1462,7 +1474,14 @@
+       dynamic_cast<MCSD*>(Sensitive)->PostProcessHits(Step);
+ 
+       // NEW: prompt attribution for deposits in sensitive detectors
+-      EmitEnergyDepositCC(EventAction, Step, Time);
++      if (M05CompactScorer::Instance().IsConfigured() && M05CompactScorer::Instance().IsCompactArm()) {
++        M05CompactScorer::Instance().RecordSensitiveDeposit(
++          Step, Time,
++          Step->GetPostStepPoint()->GetProcessDefinedStep() == nullptr ? "none" :
++            Step->GetPostStepPoint()->GetProcessDefinedStep()->GetProcessName());
++      } else {
++        EmitEnergyDepositCC(EventAction, Step, Time);
++      }
+     }
+   }
+ 
+--- a/src/MCRunManager.cc
++++ b/src/MCRunManager.cc
+@@ -23,6 +23,7 @@
+ #include "MCSteppingAction.hh"
+ #include "MCDetectorConstruction.hh"
+ #include "MCCrossSections.hh"
++#include "M05CompactScorer.hh"
+ 
+ // Megalib:
+ #include "MStreams.h"
+@@ -135,6 +136,15 @@
+ 
+     m_RunParameters.GetCurrentRun().DumpRunStatistics(RunTimer.GetElapsed());
+     m_RunParameters.GetCurrentRun().SaveIsotopeStore();
++    if (M05CompactScorer::Instance().IsConfigured()) {
++      M05CompactScorer::Instance().EndRun(
++        m_RunParameters.GetCurrentRun().GetSimulatedTime()/s,
++        m_RunParameters.GetCurrentRun().GetNAddedIsotopes(),
++        m_RunParameters.GetCurrentRun().CheckStopConditions(),
++        m_RunParameters.GetCurrentRun().GetIsotopeStoreFileName().Data(),
++        m_RunParameters.GetCurrentRun().GetParallelID(),
++        m_RunParameters.GetCurrentRun().GetIncarnationID());
++    }
+ 
+     if (m_RunParameters.GetCurrentRun().CheckStopConditions() == false) {
+       cout<<endl;

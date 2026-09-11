@@ -1,0 +1,1111 @@
+{
+  "surface": "report",
+  "manifest": {
+    "version": 1,
+    "surface": "report",
+    "title": "W-grid 后大气 511 keV 如何耦合进入 SH3 TES",
+    "description": "用既有输运的逐事件 IA 折线、角方向和共同响应结果闭合前网格后的残余单能路径。",
+    "generatedAt": "2026-08-25T08:28:58Z",
+    "sources": [
+      {
+        "id": "entry_coupling_bundle",
+        "label": "W-grid 后大气 511 keV 进入 TES 的逐事件路径闭合",
+        "path": "engineering/geometry_optimization_20260815/71_wgrid_mono511_entry_coupling_20260825/outputs/01_entry_path_diagnosis_20260825/entry_coupling_summary.json"
+      },
+      {
+        "id": "source_headline",
+        "label": "从 151 个 W2 末级幸存事件提取的四项标题结论。",
+        "path": "engineering/geometry_optimization_20260815/71_wgrid_mono511_entry_coupling_20260825/outputs/01_entry_path_diagnosis_20260825/entry_coupling.sqlite",
+        "query": {
+          "engine": "sqlite3",
+          "language": "sql",
+          "sql": "SELECT * FROM \"headline\" ORDER BY _row_order",
+          "description": "从 151 个 W2 末级幸存事件提取的四项标题结论。",
+          "executed_at": "2026-08-25T08:28:58Z",
+          "tables_used": [
+            "headline"
+          ],
+          "filters": [
+            "Final W2 selection only",
+            "No sampling or truncation"
+          ],
+          "metric_definitions": [
+            "All displayed values come from entry_coupling_summary.json."
+          ]
+        }
+      },
+      {
+        "id": "source_route_composition",
+        "label": "逐事件 IA 折线与完整 W-grid 包络求交后的互斥路径类别。",
+        "path": "engineering/geometry_optimization_20260815/71_wgrid_mono511_entry_coupling_20260825/outputs/01_entry_path_diagnosis_20260825/entry_coupling.sqlite",
+        "query": {
+          "engine": "sqlite3",
+          "language": "sql",
+          "sql": "SELECT * FROM \"route_composition\" ORDER BY _row_order",
+          "description": "逐事件 IA 折线与完整 W-grid 包络求交后的互斥路径类别。",
+          "executed_at": "2026-08-25T08:28:58Z",
+          "tables_used": [
+            "route_composition"
+          ],
+          "filters": [
+            "Final W2 selection only",
+            "No sampling or truncation"
+          ],
+          "metric_definitions": [
+            "Actual route uses the IA INIT -> pre-TES IA -> first TES IA polyline intersected with the grid AABB."
+          ]
+        }
+      },
+      {
+        "id": "source_angle_summary",
+        "label": "相对 global 大气竖直轴和 local W-grid/TES 法线的入射角宽锥计数。",
+        "path": "engineering/geometry_optimization_20260815/71_wgrid_mono511_entry_coupling_20260825/outputs/01_entry_path_diagnosis_20260825/entry_coupling.sqlite",
+        "query": {
+          "engine": "sqlite3",
+          "language": "sql",
+          "sql": "SELECT * FROM \"angle_summary\" ORDER BY _row_order",
+          "description": "相对 global 大气竖直轴和 local W-grid/TES 法线的入射角宽锥计数。",
+          "executed_at": "2026-08-25T08:28:58Z",
+          "tables_used": [
+            "angle_summary"
+          ],
+          "filters": [
+            "Final W2 selection only",
+            "No sampling or truncation"
+          ],
+          "metric_definitions": [
+            "Atmospheric vertical uses |global dz|; grid normal uses |local dx|.",
+            "Wilson95 is a binomial interval over the 151 selected survivors."
+          ]
+        }
+      },
+      {
+        "id": "source_angle_wide_cone",
+        "label": "对两个参考轴采用共同 |cos|≥0.8 阈值的可比宽锥计数。",
+        "path": "engineering/geometry_optimization_20260815/71_wgrid_mono511_entry_coupling_20260825/outputs/01_entry_path_diagnosis_20260825/entry_coupling.sqlite",
+        "query": {
+          "engine": "sqlite3",
+          "language": "sql",
+          "sql": "SELECT * FROM \"angle_wide_cone\" ORDER BY _row_order",
+          "description": "对两个参考轴采用共同 |cos|≥0.8 阈值的可比宽锥计数。",
+          "executed_at": "2026-08-25T08:28:58Z",
+          "tables_used": [
+            "angle_wide_cone"
+          ],
+          "filters": [
+            "Final W2 selection only",
+            "No sampling or truncation"
+          ],
+          "metric_definitions": [
+            "Both rows use the same absolute direction-cosine threshold 0.8 (36.87 degrees)."
+          ]
+        }
+      },
+      {
+        "id": "source_mechanism_summary",
+        "label": "首次 TES 相互作用前的物理过程互斥分解。",
+        "path": "engineering/geometry_optimization_20260815/71_wgrid_mono511_entry_coupling_20260825/outputs/01_entry_path_diagnosis_20260825/entry_coupling.sqlite",
+        "query": {
+          "engine": "sqlite3",
+          "language": "sql",
+          "sql": "SELECT * FROM \"mechanism_summary\" ORDER BY _row_order",
+          "description": "首次 TES 相互作用前的物理过程互斥分解。",
+          "executed_at": "2026-08-25T08:28:58Z",
+          "tables_used": [
+            "mechanism_summary"
+          ],
+          "filters": [
+            "Final W2 selection only",
+            "No sampling or truncation"
+          ],
+          "metric_definitions": [
+            "Direct means no recorded physical IA between INIT and the first TES IA."
+          ]
+        }
+      },
+      {
+        "id": "source_first_tes_process",
+        "label": "151 个事件在 TES 内的首次物理过程。",
+        "path": "engineering/geometry_optimization_20260815/71_wgrid_mono511_entry_coupling_20260825/outputs/01_entry_path_diagnosis_20260825/entry_coupling.sqlite",
+        "query": {
+          "engine": "sqlite3",
+          "language": "sql",
+          "sql": "SELECT * FROM \"first_tes_process\" ORDER BY _row_order",
+          "description": "151 个事件在 TES 内的首次物理过程。",
+          "executed_at": "2026-08-25T08:28:58Z",
+          "tables_used": [
+            "first_tes_process"
+          ],
+          "filters": [
+            "Final W2 selection only",
+            "No sampling or truncation"
+          ],
+          "metric_definitions": [
+            "PHOT, COMP, and RAYL are the process labels in the first IA geometrically inside a TES layer."
+          ]
+        }
+      },
+      {
+        "id": "source_hemisphere_summary",
+        "label": "PARMA 80 个等 μ 分量的 down/up 通量与选后响应。",
+        "path": "engineering/geometry_optimization_20260815/71_wgrid_mono511_entry_coupling_20260825/outputs/01_entry_path_diagnosis_20260825/entry_coupling.sqlite",
+        "query": {
+          "engine": "sqlite3",
+          "language": "sql",
+          "sql": "SELECT * FROM \"hemisphere_summary\" ORDER BY _row_order",
+          "description": "PARMA 80 个等 μ 分量的 down/up 通量与选后响应。",
+          "executed_at": "2026-08-25T08:28:58Z",
+          "tables_used": [
+            "hemisphere_summary"
+          ],
+          "filters": [
+            "Final W2 selection only",
+            "No sampling or truncation"
+          ],
+          "metric_definitions": [
+            "Suppression compares independent W-grid and open-SH3 transports with matched source normalization."
+          ]
+        }
+      }
+    ],
+    "cards": [
+      {
+        "id": "card_vertical",
+        "dataset": "headline",
+        "sourceId": "source_headline",
+        "description": "|global dz|≥0.8。",
+        "metrics": [
+          {
+            "label": "大多大气竖直？",
+            "field": "vertical_verdict"
+          },
+          {
+            "label": "证据",
+            "field": "vertical_context"
+          }
+        ]
+      },
+      {
+        "id": "card_grid",
+        "dataset": "headline",
+        "sourceId": "source_headline",
+        "description": "|local dx′|≥0.8。",
+        "metrics": [
+          {
+            "label": "接近网格法线",
+            "field": "grid_normal_share"
+          },
+          {
+            "label": "多数检验",
+            "field": "grid_normal_context"
+          }
+        ]
+      },
+      {
+        "id": "card_bypass",
+        "dataset": "headline",
+        "sourceId": "source_headline",
+        "description": "完整 IA 折线与网格包络求交。",
+        "metrics": [
+          {
+            "label": "绕开前网格",
+            "field": "bypass_share"
+          },
+          {
+            "label": "路径",
+            "field": "bypass_context"
+          }
+        ]
+      },
+      {
+        "id": "card_direct",
+        "dataset": "headline",
+        "sourceId": "source_headline",
+        "description": "INIT 后首个物理 IA 位于 TES。",
+        "metrics": [
+          {
+            "label": "直接耦合",
+            "field": "direct_share"
+          },
+          {
+            "label": "机制",
+            "field": "direct_context"
+          }
+        ]
+      }
+    ],
+    "charts": [
+      {
+        "id": "route_split",
+        "title": "实际预‑TES 路径组成",
+        "subtitle": "IA 折线 × 完整 W-grid 包络；事件数",
+        "showDescription": true,
+        "intent": "composition",
+        "question": "残余事件是穿过前网格还是从其他方向绕入？",
+        "rationale": "down/up 的堆叠计数直接显示前网格覆盖边界。",
+        "comparisonContext": {
+          "grain": "source hemisphere",
+          "unit": "selected events",
+          "denominator": "events within each displayed sample"
+        },
+        "type": "stackedBar",
+        "dataset": "route_composition",
+        "sourceId": "source_route_composition",
+        "encodings": {
+          "x": {
+            "field": "sample",
+            "type": "nominal",
+            "label": "样本"
+          },
+          "y": {
+            "field": "selected_events",
+            "type": "quantitative",
+            "aggregate": "sum",
+            "label": "选后事件数",
+            "unit": "events"
+          },
+          "color": {
+            "field": "route",
+            "type": "nominal",
+            "label": "路径"
+          },
+          "tooltip": [
+            {
+              "field": "route",
+              "type": "text",
+              "label": "路径"
+            },
+            {
+              "field": "selected_events",
+              "type": "quantitative",
+              "label": "事件数"
+            },
+            {
+              "field": "within_sample_fraction",
+              "type": "quantitative",
+              "format": "percent",
+              "label": "行内占比"
+            }
+          ]
+        },
+        "xAxisTitle": "样本",
+        "yAxisTitle": "选后事件数",
+        "palette": {
+          "kind": "categorical"
+        },
+        "unit": "events",
+        "layout": "full",
+        "maxRows": 20,
+        "surface": {
+          "surface": "export",
+          "showControls": false,
+          "viewMode": "both"
+        }
+      },
+      {
+        "id": "near_axis_fraction",
+        "title": "相对大气竖直轴与网格法线的近锥占比",
+        "subtitle": "共同宽锥阈值 0.8；36.87°，N=151",
+        "showDescription": true,
+        "intent": "comparison",
+        "question": "残余事件大多垂直吗？",
+        "rationale": "相同余弦阈值可直接比较两个物理轴。",
+        "comparisonContext": {
+          "grain": "axis definition",
+          "unit": "fraction",
+          "denominator": "151 selected survivors"
+        },
+        "type": "bar",
+        "dataset": "angle_wide_cone",
+        "sourceId": "source_angle_wide_cone",
+        "encodings": {
+          "x": {
+            "field": "axis",
+            "type": "nominal",
+            "label": "参考轴"
+          },
+          "y": {
+            "field": "selected_fraction",
+            "type": "quantitative",
+            "label": "选后占比",
+            "unit": "fraction"
+          },
+          "color": {
+            "field": "axis",
+            "type": "nominal",
+            "label": "参考轴"
+          },
+          "tooltip": [
+            {
+              "field": "selected_events",
+              "type": "quantitative",
+              "label": "事件数"
+            },
+            {
+              "field": "selected_fraction",
+              "type": "quantitative",
+              "format": "percent",
+              "label": "占比"
+            },
+            {
+              "field": "wilson95_high",
+              "type": "quantitative",
+              "format": "percent",
+              "label": "95%上限"
+            }
+          ]
+        },
+        "xAxisTitle": "参考轴",
+        "yAxisTitle": "选后占比",
+        "palette": {
+          "kind": "categorical"
+        },
+        "valueFormat": "percent",
+        "unit": "fraction",
+        "layout": "full",
+        "maxRows": 10,
+        "surface": {
+          "surface": "export",
+          "showControls": false,
+          "viewMode": "both"
+        }
+      },
+      {
+        "id": "mechanism_split",
+        "title": "首次到达 TES 前的物理过程",
+        "subtitle": "与几何路径分解独立；N=151",
+        "showDescription": true,
+        "intent": "composition",
+        "question": "511 keV 线是直接到 TES，还是先在周围结构发生能损？",
+        "rationale": "互斥计数直接区分直接耦合和 TES 前弹性散射。",
+        "comparisonContext": {
+          "grain": "pre-TES process class",
+          "unit": "selected events",
+          "denominator": "151 selected survivors"
+        },
+        "type": "bar",
+        "dataset": "mechanism_summary",
+        "sourceId": "source_mechanism_summary",
+        "encodings": {
+          "x": {
+            "field": "mechanism",
+            "type": "nominal",
+            "label": "机制"
+          },
+          "y": {
+            "field": "selected_events",
+            "type": "quantitative",
+            "label": "选后事件数",
+            "unit": "events"
+          },
+          "color": {
+            "field": "mechanism",
+            "type": "nominal",
+            "label": "机制"
+          },
+          "tooltip": [
+            {
+              "field": "selected_events",
+              "type": "quantitative",
+              "label": "事件数"
+            },
+            {
+              "field": "selected_fraction",
+              "type": "quantitative",
+              "format": "percent",
+              "label": "占比"
+            },
+            {
+              "field": "interpretation",
+              "type": "text",
+              "label": "解释"
+            }
+          ]
+        },
+        "xAxisTitle": "机制",
+        "yAxisTitle": "选后事件数",
+        "palette": {
+          "kind": "categorical"
+        },
+        "unit": "events",
+        "layout": "full",
+        "maxRows": 10,
+        "surface": {
+          "surface": "export",
+          "showControls": false,
+          "viewMode": "both"
+        }
+      }
+    ],
+    "tables": [
+      {
+        "id": "angle_detail",
+        "title": "入射角阈值与多数检验",
+        "subtitle": "大气竖直与网格法线是不同轴；N=151",
+        "showDescription": true,
+        "dataset": "angle_summary",
+        "defaultSort": {
+          "field": "axis",
+          "direction": "asc"
+        },
+        "density": "dense",
+        "sourceId": "source_angle_summary",
+        "layout": "full",
+        "columns": [
+          {
+            "field": "axis",
+            "label": "参考轴",
+            "type": "text"
+          },
+          {
+            "field": "definition",
+            "label": "定义",
+            "type": "text"
+          },
+          {
+            "field": "selected_events",
+            "label": "事件数",
+            "format": "number"
+          },
+          {
+            "field": "selected_fraction",
+            "label": "占比",
+            "format": "percent"
+          },
+          {
+            "field": "wilson95_low",
+            "label": "95%低",
+            "format": "percent"
+          },
+          {
+            "field": "wilson95_high",
+            "label": "95%高",
+            "format": "percent"
+          },
+          {
+            "field": "majority",
+            "label": "可称多数？",
+            "type": "text"
+          }
+        ]
+      },
+      {
+        "id": "hemisphere_detail",
+        "title": "PARMA 半球通量与 W-grid 残余",
+        "subtitle": "共同 80 等 μ 源；W-grid/open 为独立种子率比",
+        "showDescription": true,
+        "dataset": "hemisphere_summary",
+        "defaultSort": {
+          "field": "hemisphere",
+          "direction": "asc"
+        },
+        "density": "dense",
+        "sourceId": "source_hemisphere_summary",
+        "layout": "full",
+        "columns": [
+          {
+            "field": "hemisphere",
+            "label": "半球",
+            "type": "text"
+          },
+          {
+            "field": "parma_flux_ph_cm2_s",
+            "label": "PARMA 通量",
+            "format": "number"
+          },
+          {
+            "field": "parma_flux_share",
+            "label": "源通量占比",
+            "format": "percent"
+          },
+          {
+            "field": "selected_events",
+            "label": "W-grid选后数",
+            "format": "number"
+          },
+          {
+            "field": "selected_residual_share",
+            "label": "残余占比",
+            "format": "percent"
+          },
+          {
+            "field": "wgrid_over_open_ratio",
+            "label": "W-grid/open",
+            "format": "number"
+          },
+          {
+            "field": "suppression_fraction",
+            "label": "抑制中心值",
+            "format": "percent"
+          },
+          {
+            "field": "difference_z",
+            "label": "差值 z",
+            "format": "number"
+          }
+        ]
+      }
+    ],
+    "blocks": [
+      {
+        "id": "title",
+        "type": "markdown",
+        "body": "# W-grid 后大气 511 keV 如何耦合进入 SH3 TES"
+      },
+      {
+        "id": "technical_summary",
+        "type": "markdown",
+        "sourceId": "entry_coupling_bundle",
+        "body": "## 技术结论\n\n**不是大多沿大气竖直方向入射，也不是大多垂直网络板。** 在 151 个 W2 末级幸存事件中，只有 21 个（13.91%）位于大气竖直轴两侧的 36.87° 锥内；相对网格双侧法线，57 个（37.75%）位于同样宽的锥内。两者都低于多数，且网格法线比例的 95% Wilson 上限为 45.69%，仍小于 50%。\n\n实际 IA 折线显示，42 个完整跨越前网格包络、2 个部分或掠过；其余 107 个绕开这个 5.4 cm 前向包络，其中 42 个朝前但从边外进入，65 个从后方或侧方进入。全部 91 个 up 残余都绕开前网格。"
+      },
+      {
+        "id": "headline_strip",
+        "type": "metric-strip",
+        "cardIds": [
+          "card_vertical",
+          "card_grid",
+          "card_bypass",
+          "card_direct"
+        ]
+      },
+      {
+        "id": "route_heading",
+        "type": "markdown",
+        "body": "## 几何路径：前网格只控制有限孔径，不是 4π 准直器"
+      },
+      {
+        "id": "route_chart",
+        "type": "chart",
+        "chartId": "route_split"
+      },
+      {
+        "id": "route_text",
+        "type": "markdown",
+        "sourceId": "entry_coupling_bundle",
+        "body": "InstrumentFrame 绕 global y 轴旋转 45°，因此网格/TES 的 local +x′ 法线在世界坐标中是约 (+0.707, 0, −0.707)：**网格正入射本身就不是大气竖直，而是相差 45°。** 网格中心至 TES L0 中心约 6.15 cm，网格厚 0.798 cm、横向包络仅 5.4×5.4 cm；它只能约束一侧前孔径。down 的 60 个残余可拆成 42 完整跨越、2 掠过、8 前向绕边、8 后/侧绕行；up 的 91 个全部绕行。"
+      },
+      {
+        "id": "angle_heading",
+        "type": "markdown",
+        "body": "## 入射角：两种‘垂直’都不是多数"
+      },
+      {
+        "id": "angle_chart",
+        "type": "chart",
+        "chartId": "near_axis_fraction"
+      },
+      {
+        "id": "angle_table",
+        "type": "table",
+        "tableId": "angle_detail"
+      },
+      {
+        "id": "mechanism_heading",
+        "type": "markdown",
+        "body": "## 物理过程：窄线主要直接到达 TES"
+      },
+      {
+        "id": "mechanism_chart",
+        "type": "chart",
+        "chartId": "mechanism_split"
+      },
+      {
+        "id": "mechanism_text",
+        "type": "markdown",
+        "sourceId": "entry_coupling_bundle",
+        "body": "131/151（86.75%）的初级 511 keV 光子在 TES 前没有任何可记录的物理相互作用，首次相互作用就在 TES。其余 20 个在 TES 前只有弹性 Rayleigh（17 个一次、3 个两次）；没有 TES 前 Compton 或光电能损。TES 内首次过程合计为 82 次光电、66 次 Compton、3 次 Rayleigh。因此残余线项主要是直接或近直接的远场光子耦合，不是前网格诱发的活化或能损级联。"
+      },
+      {
+        "id": "response_context",
+        "type": "markdown",
+        "sourceId": "entry_coupling_bundle",
+        "body": "## 为什么加网格后仍保留大量 511 keV\n\n共同 PARMA 510.99895 keV 源和共同选择下，W-grid/open-SH3 末级率比为 0.8122±0.0890，中心值抑制 18.78%，差值为 -1.90σ。逐事件路径说明了这个有限抑制的几何原因：前网格没有覆盖多数幸存路径，尤其没有覆盖任何 up 残余。路径组成与独立 open run 不能逐事件配对，所以不能把 42/2/42/65 直接解释成全体入射的吸收概率。"
+      },
+      {
+        "id": "hemisphere_table",
+        "type": "table",
+        "tableId": "hemisphere_detail"
+      },
+      {
+        "id": "scope",
+        "type": "markdown",
+        "sourceId": "entry_coupling_bundle",
+        "body": "## 数据、坐标与方法\n\n数值源严格为同一 day-15 大气状态下的 PARMA 专用线参数化：510.99895 keV、全空间通量 0.16651547160226118 ph cm⁻² s⁻¹、80 个等 μ 分量。这里没有使用 Mahoney/Harris 文献数值归一。逐事件源方向来自原始 SIM 的 IA INIT；TES 前相互作用位置来自后续 IA；路径按 INIT→预‑TES IA→首次 TES IA 的折线与网格 AABB x′=[−45.1,−44.3] cm、y′=[−2.7,2.7] cm、z′=[−5.5,−0.1] cm 求交。大气竖直用 |global dz|，网格法线用 |local dx′|。"
+      },
+      {
+        "id": "limitations",
+        "type": "markdown",
+        "sourceId": "entry_coupling_bundle",
+        "body": "## 局限性与稳健性\n\n- 比例是 **W-grid 最终幸存者组成**，存在 survivor bias；不能当作所有入射光子的透射率或吸收率。\n- SIM 没有被动体边界 crossing/step 日志；‘进入网格包络’是 IA 折线与几何盒求交。无相互作用的穿越者不能进一步区分真空孔道和穿过薄 W 筋但未相互作用。\n- open 与 W-grid 使用独立随机种子，不能对事件做一一去向配对。\n- 151 个等权选后事件给出总线率 8.14% MC 相对误差；宽锥比例用 Wilson 区间。路径结论对‘大多垂直’已足够，因为网格法线宽锥的 95% 上限仍低于 50%。"
+      },
+      {
+        "id": "next_steps",
+        "type": "markdown",
+        "body": "## 建议的最小后续验证\n\n若设计目标是继续压低该线项，优先补的是覆盖侧/后向和 up 半球的被动/主动视场控制，而不是只继续缩小当前前网格孔。若需要把各绕行口的贡献分解到具体开口，应在不改变现有物理选择的前提下增加边界 crossing 或进入面 tally；现有 SIM 仅能可靠闭合到包络级。"
+      },
+      {
+        "id": "questions",
+        "type": "markdown",
+        "body": "## 尚待回答的问题\n\n- 侧向、后向和 up 半球中，哪一个具体结构开口贡献最大？\n- 若封闭这些路径，信号视场和有效面积会损失多少？这需要与信号响应一起评估，不能只看本底线率。"
+      }
+    ]
+  },
+  "snapshot": {
+    "version": 1,
+    "generatedAt": "2026-08-25T08:28:58Z",
+    "status": "ready",
+    "datasets": {
+      "headline": [
+        {
+          "_row_order": 0,
+          "vertical_verdict": "不是",
+          "vertical_context": "大气竖直近锥仅 21/151",
+          "grid_normal_share": "37.7%",
+          "grid_normal_context": "95% Wilson 上限仍 <50%",
+          "bypass_share": "107/151",
+          "bypass_context": "实际预‑TES 折线路径绕开前网格包络",
+          "direct_share": "86.8%",
+          "direct_context": "首次物理相互作用就在 TES"
+        }
+      ],
+      "route_composition": [
+        {
+          "_row_order": 0,
+          "sample": "全部幸存",
+          "sample_key": "all",
+          "route": "完整跨越前网格包络",
+          "route_key": "full_grid_envelope_crossing",
+          "selected_events": 42,
+          "within_sample_fraction": 0.2781456953642384,
+          "rate_cps": 0.005036078043429962
+        },
+        {
+          "_row_order": 1,
+          "sample": "全部幸存",
+          "sample_key": "all",
+          "route": "部分/掠过前网格包络",
+          "route_key": "partial_or_grazing_grid_envelope_contact",
+          "selected_events": 2,
+          "within_sample_fraction": 0.013245033112582781,
+          "rate_cps": 0.00023981324016333154
+        },
+        {
+          "_row_order": 2,
+          "sample": "全部幸存",
+          "sample_key": "all",
+          "route": "朝前但从包络外绕过",
+          "route_key": "grid_facing_bypass_outside_envelope",
+          "selected_events": 42,
+          "within_sample_fraction": 0.2781456953642384,
+          "rate_cps": 0.005036078043429962
+        },
+        {
+          "_row_order": 3,
+          "sample": "全部幸存",
+          "sample_key": "all",
+          "route": "从后方或侧方绕过",
+          "route_key": "rear_or_side_bypass",
+          "selected_events": 65,
+          "within_sample_fraction": 0.4304635761589404,
+          "rate_cps": 0.007793930305308275
+        },
+        {
+          "_row_order": 4,
+          "sample": "down",
+          "sample_key": "down",
+          "route": "完整跨越前网格包络",
+          "route_key": "full_grid_envelope_crossing",
+          "selected_events": 42,
+          "within_sample_fraction": 0.7,
+          "rate_cps": 0.005036078043429962
+        },
+        {
+          "_row_order": 5,
+          "sample": "down",
+          "sample_key": "down",
+          "route": "部分/掠过前网格包络",
+          "route_key": "partial_or_grazing_grid_envelope_contact",
+          "selected_events": 2,
+          "within_sample_fraction": 0.03333333333333333,
+          "rate_cps": 0.00023981324016333154
+        },
+        {
+          "_row_order": 6,
+          "sample": "down",
+          "sample_key": "down",
+          "route": "朝前但从包络外绕过",
+          "route_key": "grid_facing_bypass_outside_envelope",
+          "selected_events": 8,
+          "within_sample_fraction": 0.13333333333333333,
+          "rate_cps": 0.0009592529606533262
+        },
+        {
+          "_row_order": 7,
+          "sample": "down",
+          "sample_key": "down",
+          "route": "从后方或侧方绕过",
+          "route_key": "rear_or_side_bypass",
+          "selected_events": 8,
+          "within_sample_fraction": 0.13333333333333333,
+          "rate_cps": 0.0009592529606533262
+        },
+        {
+          "_row_order": 8,
+          "sample": "up",
+          "sample_key": "up",
+          "route": "完整跨越前网格包络",
+          "route_key": "full_grid_envelope_crossing",
+          "selected_events": 0,
+          "within_sample_fraction": 0.0,
+          "rate_cps": 0.0
+        },
+        {
+          "_row_order": 9,
+          "sample": "up",
+          "sample_key": "up",
+          "route": "部分/掠过前网格包络",
+          "route_key": "partial_or_grazing_grid_envelope_contact",
+          "selected_events": 0,
+          "within_sample_fraction": 0.0,
+          "rate_cps": 0.0
+        },
+        {
+          "_row_order": 10,
+          "sample": "up",
+          "sample_key": "up",
+          "route": "朝前但从包络外绕过",
+          "route_key": "grid_facing_bypass_outside_envelope",
+          "selected_events": 34,
+          "within_sample_fraction": 0.37362637362637363,
+          "rate_cps": 0.004076825082776636
+        },
+        {
+          "_row_order": 11,
+          "sample": "up",
+          "sample_key": "up",
+          "route": "从后方或侧方绕过",
+          "route_key": "rear_or_side_bypass",
+          "selected_events": 57,
+          "within_sample_fraction": 0.6263736263736264,
+          "rate_cps": 0.006834677344654949
+        }
+      ],
+      "angle_summary": [
+        {
+          "_row_order": 0,
+          "axis": "大气竖直",
+          "definition": "|μz| ≥ 0.8（距任一竖直方向 ≤36.87°）",
+          "selected_events": 21,
+          "selected_fraction": 0.1390728476821192,
+          "wilson95_low": 0.09279487195064118,
+          "wilson95_high": 0.20325929319241898,
+          "majority": "否"
+        },
+        {
+          "_row_order": 1,
+          "axis": "大气竖直",
+          "definition": "|μz| ≥ 0.9（≤25.84°）",
+          "selected_events": 4,
+          "selected_fraction": 0.026490066225165563,
+          "wilson95_low": 0.010348630256959545,
+          "wilson95_high": 0.06612610016008266,
+          "majority": "否"
+        },
+        {
+          "_row_order": 2,
+          "axis": "大气竖直",
+          "definition": "距任一竖直方向 ≤30°",
+          "selected_events": 11,
+          "selected_fraction": 0.0728476821192053,
+          "wilson95_low": 0.04116107175903339,
+          "wilson95_high": 0.12572872001578092,
+          "majority": "否"
+        },
+        {
+          "_row_order": 3,
+          "axis": "大气竖直",
+          "definition": "距任一竖直方向 ≤20°",
+          "selected_events": 0,
+          "selected_fraction": 0.0,
+          "wilson95_low": -1.734723475976807e-18,
+          "wilson95_high": 0.02480898106974387,
+          "majority": "否"
+        },
+        {
+          "_row_order": 4,
+          "axis": "网格双侧法线",
+          "definition": "|cos α| ≥ 0.8（≤36.87°）",
+          "selected_events": 57,
+          "selected_fraction": 0.37748344370860926,
+          "wilson95_low": 0.3041089933271009,
+          "wilson95_high": 0.4569369159416444,
+          "majority": "否"
+        },
+        {
+          "_row_order": 5,
+          "axis": "网格双侧法线",
+          "definition": "|cos α| ≥ 0.9（≤25.84°）",
+          "selected_events": 50,
+          "selected_fraction": 0.33112582781456956,
+          "wilson95_low": 0.2610706705841452,
+          "wilson95_high": 0.4095601773268281,
+          "majority": "否"
+        },
+        {
+          "_row_order": 6,
+          "axis": "网格双侧法线",
+          "definition": "α < 10°",
+          "selected_events": 16,
+          "selected_fraction": 0.10596026490066225,
+          "wilson95_low": 0.06628109838274067,
+          "wilson95_high": 0.16519088007619653,
+          "majority": "否"
+        }
+      ],
+      "angle_wide_cone": [
+        {
+          "_row_order": 0,
+          "axis": "大气竖直",
+          "definition": "|μz| ≥ 0.8（距任一竖直方向 ≤36.87°）",
+          "selected_events": 21,
+          "selected_fraction": 0.1390728476821192,
+          "wilson95_low": 0.09279487195064118,
+          "wilson95_high": 0.20325929319241898,
+          "majority": "否"
+        },
+        {
+          "_row_order": 1,
+          "axis": "网格双侧法线",
+          "definition": "|cos α| ≥ 0.8（≤36.87°）",
+          "selected_events": 57,
+          "selected_fraction": 0.37748344370860926,
+          "wilson95_low": 0.3041089933271009,
+          "wilson95_high": 0.4569369159416444,
+          "majority": "否"
+        }
+      ],
+      "mechanism_summary": [
+        {
+          "_row_order": 0,
+          "mechanism": "首次物理相互作用就在 TES",
+          "selected_events": 131,
+          "selected_fraction": 0.8675496688741722,
+          "interpretation": "直接/未在 TES 前发生可记录相互作用"
+        },
+        {
+          "_row_order": 1,
+          "mechanism": "TES 前仅有 Rayleigh",
+          "selected_events": 20,
+          "selected_fraction": 0.13245033112582782,
+          "interpretation": "17 条一次、3 条两次；无 TES 前 Compton/光电能损"
+        }
+      ],
+      "first_tes_process": [
+        {
+          "_row_order": 0,
+          "process": "PHOT",
+          "selected_events": 82,
+          "selected_fraction": 0.543046357615894
+        },
+        {
+          "_row_order": 1,
+          "process": "COMP",
+          "selected_events": 66,
+          "selected_fraction": 0.4370860927152318
+        },
+        {
+          "_row_order": 2,
+          "process": "RAYL",
+          "selected_events": 3,
+          "selected_fraction": 0.019867549668874173
+        }
+      ],
+      "hemisphere_summary": [
+        {
+          "_row_order": 0,
+          "hemisphere": "down",
+          "parma_flux_ph_cm2_s": 0.029436646183696555,
+          "parma_flux_share": 0.17678024690707972,
+          "selected_events": 60,
+          "selected_residual_share": 0.3973509933774834,
+          "wgrid_over_open_ratio": 0.7503421817184587,
+          "suppression_fraction": 0.24965781828154132,
+          "difference_z": -1.687664902580637
+        },
+        {
+          "_row_order": 1,
+          "hemisphere": "up",
+          "parma_flux_ph_cm2_s": 0.13707882541856461,
+          "parma_flux_share": 0.8232197530929202,
+          "selected_events": 91,
+          "selected_residual_share": 0.6026490066225165,
+          "wgrid_over_open_ratio": 0.8588822457406257,
+          "suppression_fraction": 0.14111775425937434,
+          "difference_z": -1.0655231231705897
+        }
+      ]
+    }
+  },
+  "sources": [
+    {
+      "id": "entry_coupling_bundle",
+      "label": "W-grid 后大气 511 keV 进入 TES 的逐事件路径闭合",
+      "path": "engineering/geometry_optimization_20260815/71_wgrid_mono511_entry_coupling_20260825/outputs/01_entry_path_diagnosis_20260825/entry_coupling_summary.json"
+    },
+    {
+      "id": "source_headline",
+      "label": "从 151 个 W2 末级幸存事件提取的四项标题结论。",
+      "path": "engineering/geometry_optimization_20260815/71_wgrid_mono511_entry_coupling_20260825/outputs/01_entry_path_diagnosis_20260825/entry_coupling.sqlite",
+      "query": {
+        "engine": "sqlite3",
+        "language": "sql",
+        "sql": "SELECT * FROM \"headline\" ORDER BY _row_order",
+        "description": "从 151 个 W2 末级幸存事件提取的四项标题结论。",
+        "executed_at": "2026-08-25T08:28:58Z",
+        "tables_used": [
+          "headline"
+        ],
+        "filters": [
+          "Final W2 selection only",
+          "No sampling or truncation"
+        ],
+        "metric_definitions": [
+          "All displayed values come from entry_coupling_summary.json."
+        ]
+      }
+    },
+    {
+      "id": "source_route_composition",
+      "label": "逐事件 IA 折线与完整 W-grid 包络求交后的互斥路径类别。",
+      "path": "engineering/geometry_optimization_20260815/71_wgrid_mono511_entry_coupling_20260825/outputs/01_entry_path_diagnosis_20260825/entry_coupling.sqlite",
+      "query": {
+        "engine": "sqlite3",
+        "language": "sql",
+        "sql": "SELECT * FROM \"route_composition\" ORDER BY _row_order",
+        "description": "逐事件 IA 折线与完整 W-grid 包络求交后的互斥路径类别。",
+        "executed_at": "2026-08-25T08:28:58Z",
+        "tables_used": [
+          "route_composition"
+        ],
+        "filters": [
+          "Final W2 selection only",
+          "No sampling or truncation"
+        ],
+        "metric_definitions": [
+          "Actual route uses the IA INIT -> pre-TES IA -> first TES IA polyline intersected with the grid AABB."
+        ]
+      }
+    },
+    {
+      "id": "source_angle_summary",
+      "label": "相对 global 大气竖直轴和 local W-grid/TES 法线的入射角宽锥计数。",
+      "path": "engineering/geometry_optimization_20260815/71_wgrid_mono511_entry_coupling_20260825/outputs/01_entry_path_diagnosis_20260825/entry_coupling.sqlite",
+      "query": {
+        "engine": "sqlite3",
+        "language": "sql",
+        "sql": "SELECT * FROM \"angle_summary\" ORDER BY _row_order",
+        "description": "相对 global 大气竖直轴和 local W-grid/TES 法线的入射角宽锥计数。",
+        "executed_at": "2026-08-25T08:28:58Z",
+        "tables_used": [
+          "angle_summary"
+        ],
+        "filters": [
+          "Final W2 selection only",
+          "No sampling or truncation"
+        ],
+        "metric_definitions": [
+          "Atmospheric vertical uses |global dz|; grid normal uses |local dx|.",
+          "Wilson95 is a binomial interval over the 151 selected survivors."
+        ]
+      }
+    },
+    {
+      "id": "source_angle_wide_cone",
+      "label": "对两个参考轴采用共同 |cos|≥0.8 阈值的可比宽锥计数。",
+      "path": "engineering/geometry_optimization_20260815/71_wgrid_mono511_entry_coupling_20260825/outputs/01_entry_path_diagnosis_20260825/entry_coupling.sqlite",
+      "query": {
+        "engine": "sqlite3",
+        "language": "sql",
+        "sql": "SELECT * FROM \"angle_wide_cone\" ORDER BY _row_order",
+        "description": "对两个参考轴采用共同 |cos|≥0.8 阈值的可比宽锥计数。",
+        "executed_at": "2026-08-25T08:28:58Z",
+        "tables_used": [
+          "angle_wide_cone"
+        ],
+        "filters": [
+          "Final W2 selection only",
+          "No sampling or truncation"
+        ],
+        "metric_definitions": [
+          "Both rows use the same absolute direction-cosine threshold 0.8 (36.87 degrees)."
+        ]
+      }
+    },
+    {
+      "id": "source_mechanism_summary",
+      "label": "首次 TES 相互作用前的物理过程互斥分解。",
+      "path": "engineering/geometry_optimization_20260815/71_wgrid_mono511_entry_coupling_20260825/outputs/01_entry_path_diagnosis_20260825/entry_coupling.sqlite",
+      "query": {
+        "engine": "sqlite3",
+        "language": "sql",
+        "sql": "SELECT * FROM \"mechanism_summary\" ORDER BY _row_order",
+        "description": "首次 TES 相互作用前的物理过程互斥分解。",
+        "executed_at": "2026-08-25T08:28:58Z",
+        "tables_used": [
+          "mechanism_summary"
+        ],
+        "filters": [
+          "Final W2 selection only",
+          "No sampling or truncation"
+        ],
+        "metric_definitions": [
+          "Direct means no recorded physical IA between INIT and the first TES IA."
+        ]
+      }
+    },
+    {
+      "id": "source_first_tes_process",
+      "label": "151 个事件在 TES 内的首次物理过程。",
+      "path": "engineering/geometry_optimization_20260815/71_wgrid_mono511_entry_coupling_20260825/outputs/01_entry_path_diagnosis_20260825/entry_coupling.sqlite",
+      "query": {
+        "engine": "sqlite3",
+        "language": "sql",
+        "sql": "SELECT * FROM \"first_tes_process\" ORDER BY _row_order",
+        "description": "151 个事件在 TES 内的首次物理过程。",
+        "executed_at": "2026-08-25T08:28:58Z",
+        "tables_used": [
+          "first_tes_process"
+        ],
+        "filters": [
+          "Final W2 selection only",
+          "No sampling or truncation"
+        ],
+        "metric_definitions": [
+          "PHOT, COMP, and RAYL are the process labels in the first IA geometrically inside a TES layer."
+        ]
+      }
+    },
+    {
+      "id": "source_hemisphere_summary",
+      "label": "PARMA 80 个等 μ 分量的 down/up 通量与选后响应。",
+      "path": "engineering/geometry_optimization_20260815/71_wgrid_mono511_entry_coupling_20260825/outputs/01_entry_path_diagnosis_20260825/entry_coupling.sqlite",
+      "query": {
+        "engine": "sqlite3",
+        "language": "sql",
+        "sql": "SELECT * FROM \"hemisphere_summary\" ORDER BY _row_order",
+        "description": "PARMA 80 个等 μ 分量的 down/up 通量与选后响应。",
+        "executed_at": "2026-08-25T08:28:58Z",
+        "tables_used": [
+          "hemisphere_summary"
+        ],
+        "filters": [
+          "Final W2 selection only",
+          "No sampling or truncation"
+        ],
+        "metric_definitions": [
+          "Suppression compares independent W-grid and open-SH3 transports with matched source normalization."
+        ]
+      }
+    }
+  ]
+}

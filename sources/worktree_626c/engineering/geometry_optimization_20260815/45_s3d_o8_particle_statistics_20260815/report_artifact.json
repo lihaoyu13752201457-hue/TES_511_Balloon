@@ -1,0 +1,1304 @@
+{
+  "manifest": {
+    "blocks": [
+      {
+        "body": "# S3d-O8 当前八粒子统计基线",
+        "id": "title",
+        "type": "markdown"
+      },
+      {
+        "body": "## 技术摘要",
+        "id": "technical_summary_heading",
+        "type": "markdown"
+      },
+      {
+        "body": "当前权威是 **2026-08-13 corrected-keV M05**。W2 最终 prompt 为 **2 events / 0.0338429281309 ± 0.0239305639766 cps**，且两条都属于 gamma；delayed 为 **420 events / 0.0544797522273 ± 0.0101598793116 cps**。常环境 day-15 总背景为 **0.0883226803582 cps**。",
+        "id": "technical_summary",
+        "sourceId": "current_record",
+        "type": "markdown"
+      },
+      {
+        "body": "## 关键结果与可视证据",
+        "id": "key_findings_heading",
+        "type": "markdown"
+      },
+      {
+        "chartId": "w2_rate_by_family_stream",
+        "id": "w2_chart_block",
+        "layout": "full",
+        "type": "chart"
+      },
+      {
+        "body": "## W2 最终逐族统计",
+        "id": "w2_table_heading",
+        "type": "markdown"
+      },
+      {
+        "id": "w2_table_block",
+        "layout": "full",
+        "tableId": "w2_family_exact",
+        "type": "table"
+      },
+      {
+        "body": "## 范围、定义与输入统计",
+        "id": "scope_heading",
+        "type": "markdown"
+      },
+      {
+        "body": "W2 定义为 510.58–511.42 keV；measured response 使用 0.42-keV FWHM、0.3-keV pixel threshold、50-keV active veto，最终执行 retained Step05 side-Compton/FoV。Prompt 在每族内用 `N_selected/sum(instant TT)`；activation 用 `sum(RP)/sum(buildup TT)`；delayed 用 `N_selected × day-15 ground Bq/250000 triggers`。禁止跨族合并 TT。",
+        "id": "scope_text",
+        "sourceId": "current_record",
+        "type": "markdown"
+      },
+      {
+        "id": "input_table_block",
+        "layout": "full",
+        "tableId": "input_activation_exact",
+        "type": "table"
+      },
+      {
+        "body": "## 20 日任务积分",
+        "id": "mission_heading",
+        "type": "markdown"
+      },
+      {
+        "body": "20 日、81-node forward-analytic family-scalar fold 给出 prompt **55398.979434025**、delayed **88804.862651876**、总背景 **144203.842085901** counts；signal 为 **1645.387753066** counts。Signal 使用 post-Be-window Aeff、45° slant transmission 和 top-of-atmosphere 1e-4 ph cm^-2 s^-1；day 0 inventory=0，排除 pre-flight/ground activation。背景 gamma 为 `unit_only_total_gamma`，无 additive mono-511。",
+        "id": "mission_text",
+        "sourceId": "current_record",
+        "type": "markdown"
+      },
+      {
+        "id": "mission_table_block",
+        "layout": "full",
+        "tableId": "mission_counts_exact",
+        "type": "table"
+      },
+      {
+        "body": "## Focused 511-keV signal（单列，不混入八族背景）",
+        "id": "signal_heading",
+        "type": "markdown"
+      },
+      {
+        "id": "signal_table_block",
+        "layout": "full",
+        "tableId": "signal_exact",
+        "type": "table"
+      },
+      {
+        "body": "## 方法与复现",
+        "id": "method_heading",
+        "type": "markdown"
+      },
+      {
+        "body": "生成器在提取前逐一核对 20 个上游文件的 SHA256，并对输入规模、活度、双 seed、cutflow、budget、focused signal、81-bin 积分、mission exclusions 及总量执行 46 个闭合门。它只读取已有产物，不启动 transport。",
+        "id": "method_text",
+        "sourceId": "authority_ledger",
+        "type": "markdown"
+      },
+      {
+        "body": "## 限制与稳健性",
+        "id": "limitations_heading",
+        "type": "markdown"
+      },
+      {
+        "body": "Prompt 只有 2 个 gamma survivor，统计支持很低；所有零 survivor 必须解释为带 95% 上限的未观测，而不是物理零。Delayed 区间仅覆盖 transport counting。20 日逐族 counts 没有可靠累计 MC 方差传播。大型 SIM 未在本次记录中重新逐字节哈希，而是继承 terminal ledger/receipt 声明。旧 package-43 结果和 frozen pixel/L3 diagnostic 与当前口径不同，禁止混算。\n\n**Mission authority 的完整 known exclusions：**\n\n- PARMA driver gives W=114.6 while the corrected source contract records W=118.3; only driver-internal relative ratios are used\n- family scalar transport holds the within-family energy spectrum, angular distribution, detector response, and activation yield fixed across trajectory bins; no corrected multipoint transport validates that approximation\n- zero inventory at mission day 0 excludes pre-flight and ground activation\n- non-day15 delayed occupancy uses a family-total-activity proxy because active-only parent lineage is unavailable\n- 10k exact-position source-mixture uncertainty (parent-ZA TV up to 6.19%)\n- 0.0998092689784 Bq S3d excited-state holdout and unresolved NUBASE rows\n- optics effective-area systematic and source visibility/duty-cycle history\n- full-envelope BPE/plastic optical transmission outside the post-Be EventList scope\n- the 81-bin altitude/position profile is synthetic rather than flight telemetry\n- T3/T5 values beyond 20 d are labeled sqrt-time extrapolations, not trajectory crossings",
+        "id": "limitations_text",
+        "sourceId": "current_record",
+        "type": "markdown"
+      },
+      {
+        "body": "## 建议的下一步",
+        "id": "next_heading",
+        "type": "markdown"
+      },
+      {
+        "body": "把这份 corrected M05 八族表作为后续 S3d-O8 与 SE3 的同口径基线；任何 SE3 统计都应复用相同粒子源合同、W2 response、逐族 TT 归一和 family-resolved 上限规则。",
+        "id": "next_text",
+        "type": "markdown"
+      },
+      {
+        "body": "## 后续待回答问题",
+        "id": "questions_heading",
+        "type": "markdown"
+      },
+      {
+        "body": "SE3 是否需要对 prompt gamma、delayed p/n/alpha 三个低统计分量追加等精度 transport？source-position mixture 与 buildup-yield 系统学如何纳入统一区间？这些属于下一阶段统计设计，不在本次只读记录范围。",
+        "id": "questions_text",
+        "type": "markdown"
+      }
+    ],
+    "cards": [],
+    "charts": [
+      {
+        "dataset": "w2_rates",
+        "encodings": {
+          "color": {
+            "field": "stream_label",
+            "label": "Stream",
+            "type": "nominal"
+          },
+          "x": {
+            "field": "particle_label",
+            "label": "Incident particle family",
+            "type": "ordinal"
+          },
+          "y": {
+            "field": "rate_cps",
+            "format": ".6g",
+            "label": "Final W2 rate (cps)",
+            "type": "quantitative"
+          }
+        },
+        "id": "w2_rate_by_family_stream",
+        "layout": "full",
+        "sourceId": "family_table",
+        "subtitle": "Prompt 仅 gamma 有 2 个 survivor；delayed 的 n+p 占 82.65%。零 survivor 仍保留 95% 上限。",
+        "title": "S3d-O8 W2 最终率（按入射粒子族与流）",
+        "type": "bar",
+        "valueFormat": ".6g",
+        "yAxisTitle": "Final W2 rate (cps)"
+      }
+    ],
+    "description": "2026-08-13 corrected-keV M05 全八族输入、活化、W2 response 与 20 日任务积分的可复核记录。",
+    "generatedAt": "2026-08-15T00:00:00+08:00",
+    "sources": [
+      {
+        "id": "current_record",
+        "label": "S3d-O8 current all-particle statistics summary",
+        "path": "data/s3d_o8_particle_statistics_summary.json",
+        "query": {
+          "description": "Hash-pinned deterministic extraction from the 2026-08-13 corrected-keV M05 authority.",
+          "engine": "filesystem-python",
+          "executed_at": "2026-08-15T00:00:00+08:00",
+          "language": "python",
+          "metric_definitions": [
+            "W2 final means measured 0.42-keV FWHM response, pixel threshold 0.3 keV, 50-keV active veto, and retained Step05 side-Compton/FoV pass.",
+            "Prompt is normalized within family as N_selected/sum(instant TT); activation as sum(RP)/sum(buildup TT); delayed as N_selected x day-15 ground activity/250000 triggers."
+          ],
+          "tables_used": [
+            "data/s3d_o8_particle_statistics_summary.json",
+            "audit/s3d_o8_particle_statistics_validation.json"
+          ]
+        }
+      },
+      {
+        "id": "family_table",
+        "label": "Eight-family input, activation, response, and mission statistics",
+        "path": "data/s3d_o8_particle_family_statistics.csv",
+        "query": {
+          "description": "Exact eight-row current S3d-O8 particle-family record.",
+          "engine": "csv-snapshot",
+          "executed_at": "2026-08-15T00:00:00+08:00",
+          "filters": [
+            "model_identity=S3d-O8",
+            "authority=M05 corrected-keV 2026-08-13"
+          ],
+          "language": "sql",
+          "metric_definitions": [
+            "Prompt and delayed rates are central weighted Monte Carlo rates in cps.",
+            "Garwood 95% bounds are componentwise count intervals; zero-survivor upper limits are not physical-zero claims."
+          ],
+          "sql": "SELECT * FROM s3d_o8_particle_family_statistics ORDER BY family",
+          "tables_used": [
+            "data/s3d_o8_particle_family_statistics.csv"
+          ]
+        }
+      },
+      {
+        "id": "mission_table",
+        "label": "S3d-O8 20-day family-scalar mission counts",
+        "path": "data/s3d_o8_mission20_counts_by_family.csv",
+        "query": {
+          "description": "Per-family integration of each timeline rate times accidental live factor and quadrature weight over 81 bins.",
+          "engine": "csv-snapshot",
+          "executed_at": "2026-08-15T00:00:00+08:00",
+          "language": "sql",
+          "metric_definitions": [
+            "20-day family counts are forward-analytic family-scalar integrals, not independent re-transports at every timeline point.",
+            "No reliable per-family cumulative Monte Carlo variance was propagated."
+          ],
+          "sql": "SELECT * FROM s3d_o8_mission20_counts_by_family ORDER BY total_background_counts_20d DESC",
+          "tables_used": [
+            "data/s3d_o8_mission20_counts_by_family.csv"
+          ]
+        }
+      },
+      {
+        "id": "signal_table",
+        "label": "Focused 511-keV signal acceptance",
+        "path": "data/s3d_o8_focused_511_signal_statistics.csv",
+        "query": {
+          "description": "Post-Be-window focused gamma EventList acceptance and mission signal, kept separate from broadband atmospheric gamma background.",
+          "engine": "csv-snapshot",
+          "executed_at": "2026-08-15T00:00:00+08:00",
+          "language": "sql",
+          "metric_definitions": [
+            "Acceptance=selected_events/trials after measured W2, veto50, and retained Step05.",
+            "Selected effective area=input optics effective area x acceptance."
+          ],
+          "sql": "SELECT * FROM s3d_o8_focused_511_signal_statistics",
+          "tables_used": [
+            "data/s3d_o8_focused_511_signal_statistics.csv"
+          ]
+        }
+      },
+      {
+        "id": "authority_ledger",
+        "label": "Pinned upstream authority ledger",
+        "path": "data/s3d_o8_authority_sources.csv",
+        "query": {
+          "description": "Absolute paths, SHA256 hashes, and sizes checked before extraction.",
+          "engine": "csv-snapshot",
+          "executed_at": "2026-08-15T00:00:00+08:00",
+          "language": "sql",
+          "sql": "SELECT id, path, sha256, size_bytes FROM s3d_o8_authority_sources ORDER BY id",
+          "tables_used": [
+            "data/s3d_o8_authority_sources.csv"
+          ]
+        }
+      }
+    ],
+    "surface": "report",
+    "tables": [
+      {
+        "columns": [
+          {
+            "field": "particle_label",
+            "label": "Particle",
+            "type": "text"
+          },
+          {
+            "field": "prompt_w2_final_events",
+            "format": ".0f",
+            "label": "Prompt N"
+          },
+          {
+            "field": "prompt_w2_final_rate_cps",
+            "format": ".8g",
+            "label": "Prompt cps"
+          },
+          {
+            "field": "prompt_w2_final_stat_sigma_cps",
+            "format": ".8g",
+            "label": "Prompt sigma"
+          },
+          {
+            "field": "prompt_w2_final_upper95_cps",
+            "format": ".8g",
+            "label": "Prompt upper95"
+          },
+          {
+            "field": "delayed_w2_final_events",
+            "format": ".0f",
+            "label": "Delayed N"
+          },
+          {
+            "field": "delayed_w2_final_rate_cps",
+            "format": ".8g",
+            "label": "Delayed cps"
+          },
+          {
+            "field": "delayed_w2_final_stat_sigma_cps",
+            "format": ".8g",
+            "label": "Delayed sigma"
+          },
+          {
+            "field": "delayed_w2_final_lower95_cps",
+            "format": ".8g",
+            "label": "Delayed lower95"
+          },
+          {
+            "field": "delayed_w2_final_upper95_cps",
+            "format": ".8g",
+            "label": "Delayed upper95"
+          },
+          {
+            "field": "delayed_support_flag",
+            "label": "Delayed support",
+            "type": "text"
+          }
+        ],
+        "dataset": "family_stats",
+        "defaultSort": {
+          "direction": "desc",
+          "field": "delayed_w2_final_rate_cps"
+        },
+        "id": "w2_family_exact",
+        "sourceId": "family_table",
+        "title": "逐粒子族 W2 最终统计与 95% 区间"
+      },
+      {
+        "columns": [
+          {
+            "field": "particle_label",
+            "label": "Particle",
+            "type": "text"
+          },
+          {
+            "field": "source_flux_sum_cm_2_s_1",
+            "format": ".8g",
+            "label": "Source flux"
+          },
+          {
+            "field": "prompt_jobs",
+            "format": ".0f",
+            "label": "Instant jobs"
+          },
+          {
+            "field": "prompt_histories",
+            "format": ".0f",
+            "label": "Instant histories"
+          },
+          {
+            "field": "prompt_TT_s",
+            "format": ".8g",
+            "label": "Instant TT (s)"
+          },
+          {
+            "field": "activation_jobs",
+            "format": ".0f",
+            "label": "Buildup files"
+          },
+          {
+            "field": "activation_histories",
+            "format": ".0f",
+            "label": "Buildup histories"
+          },
+          {
+            "field": "activation_RP",
+            "format": ".0f",
+            "label": "RP"
+          },
+          {
+            "field": "day15_ground_activity_Bq",
+            "format": ".9g",
+            "label": "Day-15 ground Bq"
+          },
+          {
+            "field": "transported_ground_unique_ZA",
+            "format": ".0f",
+            "label": "Unique ground ZA"
+          },
+          {
+            "field": "delayed_transport_triggers",
+            "format": ".0f",
+            "label": "Delayed triggers"
+          },
+          {
+            "field": "delayed_source_sampling_seed",
+            "format": ".0f",
+            "label": "Source seed"
+          },
+          {
+            "field": "delayed_transport_seed",
+            "format": ".0f",
+            "label": "Transport seed"
+          }
+        ],
+        "dataset": "family_stats",
+        "defaultSort": {
+          "direction": "desc",
+          "field": "prompt_histories"
+        },
+        "id": "input_activation_exact",
+        "sourceId": "family_table",
+        "title": "逐粒子族输入与活化统计"
+      },
+      {
+        "columns": [
+          {
+            "field": "particle_label",
+            "label": "Particle",
+            "type": "text"
+          },
+          {
+            "field": "prompt_counts_20d",
+            "format": ".9g",
+            "label": "Prompt counts"
+          },
+          {
+            "field": "delayed_counts_20d",
+            "format": ".9g",
+            "label": "Delayed counts"
+          },
+          {
+            "field": "total_background_counts_20d",
+            "format": ".9g",
+            "label": "Total B counts"
+          },
+          {
+            "field": "uncertainty_status",
+            "label": "Uncertainty status",
+            "type": "text"
+          }
+        ],
+        "dataset": "mission_counts",
+        "defaultSort": {
+          "direction": "desc",
+          "field": "total_background_counts_20d"
+        },
+        "id": "mission_counts_exact",
+        "sourceId": "mission_table",
+        "title": "逐粒子族 20 日任务积分 counts"
+      },
+      {
+        "columns": [
+          {
+            "field": "component",
+            "label": "Component",
+            "type": "text"
+          },
+          {
+            "field": "trials",
+            "format": ".0f",
+            "label": "Trials"
+          },
+          {
+            "field": "selected_events",
+            "format": ".0f",
+            "label": "Selected"
+          },
+          {
+            "field": "acceptance",
+            "format": "percent",
+            "label": "Acceptance"
+          },
+          {
+            "field": "acceptance_lower95",
+            "format": "percent",
+            "label": "Acceptance lower95"
+          },
+          {
+            "field": "acceptance_upper95",
+            "format": "percent",
+            "label": "Acceptance upper95"
+          },
+          {
+            "field": "selected_effective_area_cm2",
+            "format": ".8g",
+            "label": "Aeff (cm2)"
+          },
+          {
+            "field": "mission20_signal_counts",
+            "format": ".9g",
+            "label": "20d signal counts"
+          },
+          {
+            "field": "mission20_signal_lower95_counts",
+            "format": ".9g",
+            "label": "20d signal lower95"
+          },
+          {
+            "field": "scope",
+            "label": "Scope",
+            "type": "text"
+          }
+        ],
+        "dataset": "signal_stats",
+        "defaultSort": {
+          "direction": "asc",
+          "field": "component"
+        },
+        "id": "signal_exact",
+        "sourceId": "signal_table",
+        "title": "Focused 511-keV signal（独立于背景 gamma）"
+      }
+    ],
+    "title": "S3d-O8 当前八粒子统计基线",
+    "version": 1
+  },
+  "package_info": {
+    "local_package": "/home/ubuntu/.codex/worktrees/626c/TES_511_Balloon/engineering/geometry_optimization_20260815/45_s3d_o8_particle_statistics_20260815",
+    "model_identity": "S3d-O8",
+    "record_status": "PASS_S3D_O8_CURRENT_ALL8_PARTICLE_STATISTICS_RECORDED"
+  },
+  "snapshot": {
+    "datasets": {
+      "family_stats": [
+        {
+          "activation_RP": 25882,
+          "activation_TT_s": 20.0382191,
+          "activation_histories": 25448,
+          "activation_jobs": 19,
+          "activation_production_rate_s_1": 1291.6317498494664,
+          "day15_ground_activity_Bq": 762.5385368235,
+          "day15_holdout_activity_Bq": 0.09980926897839938,
+          "delayed_equivalent_time_s": 327.85228277304225,
+          "delayed_event_weight_cps": 0.0030501541472939997,
+          "delayed_fraction_of_stream": 0.39190851937046334,
+          "delayed_source_sampling_seed": 1970688221,
+          "delayed_support_flag": "LOW_MC_SUPPORT",
+          "delayed_transport_seed": 2068810001,
+          "delayed_transport_triggers": 250000,
+          "delayed_w2_final_events": 7,
+          "delayed_w2_final_lower95_cps": 0.008584241133584315,
+          "delayed_w2_final_rate_cps": 0.021351079031058,
+          "delayed_w2_final_stat_sigma_cps": 0.008069949334152199,
+          "delayed_w2_final_upper95_cps": 0.04399138306957149,
+          "delayed_w2_pre_events": 37,
+          "delayed_w2_pre_rate_cps": 0.11285570344987798,
+          "delayed_w2_veto50_events": 8,
+          "delayed_w2_veto50_rate_cps": 0.024401233178351998,
+          "family": "p",
+          "mission20_delayed_counts": 34906.51796542028,
+          "mission20_prompt_counts": 0.0,
+          "mission20_total_background_counts": 34906.51796542028,
+          "mission_day15_delayed_cps_noacc": 0.021046520202540192,
+          "mission_day15_prompt_cps_noacc": 0.0,
+          "particle_label": "p (proton)",
+          "prompt_TT_s": 20.038741599999998,
+          "prompt_event_weight_cps": 0.04990333325122572,
+          "prompt_histories": 25448,
+          "prompt_jobs": 19,
+          "prompt_support_flag": "ZERO_MC_SURVIVOR__USE_UPPER_LIMIT",
+          "prompt_w2_final_events": 0,
+          "prompt_w2_final_lower95_cps": 0.0,
+          "prompt_w2_final_rate_cps": 0.0,
+          "prompt_w2_final_stat_sigma_cps": 0.0,
+          "prompt_w2_final_upper95_cps": 0.18408738072224734,
+          "prompt_w2_pre_events": 28,
+          "prompt_w2_pre_rate_cps": 1.3972933310343203,
+          "prompt_w2_veto50_events": 0,
+          "prompt_w2_veto50_rate_cps": 0.0,
+          "source_flux_sum_cm_2_s_1": 0.1123007216313341,
+          "transported_ground_unique_ZA": 804
+        },
+        {
+          "activation_RP": 27314,
+          "activation_TT_s": 44.5656746,
+          "activation_histories": 232991,
+          "activation_jobs": 50,
+          "activation_production_rate_s_1": 612.8932243292015,
+          "day15_ground_activity_Bq": 348.2221636466,
+          "day15_holdout_activity_Bq": 0.0,
+          "delayed_equivalent_time_s": 717.9324755839417,
+          "delayed_event_weight_cps": 0.0013928886545864,
+          "delayed_fraction_of_stream": 0.43464050697567896,
+          "delayed_source_sampling_seed": 1970098319,
+          "delayed_support_flag": "FINITE_MC_SUPPORT",
+          "delayed_transport_seed": 2068910001,
+          "delayed_transport_triggers": 250000,
+          "delayed_w2_final_events": 17,
+          "delayed_w2_final_lower95_cps": 0.013793952504450268,
+          "delayed_w2_final_rate_cps": 0.0236791071279688,
+          "delayed_w2_final_stat_sigma_cps": 0.0057430270475842,
+          "delayed_w2_final_upper95_cps": 0.037912544343070564,
+          "delayed_w2_pre_events": 52,
+          "delayed_w2_pre_rate_cps": 0.0724302100384928,
+          "delayed_w2_veto50_events": 18,
+          "delayed_w2_veto50_rate_cps": 0.0250719957825552,
+          "family": "n",
+          "mission20_delayed_counts": 38280.450439105574,
+          "mission20_prompt_counts": 0.0,
+          "mission20_total_background_counts": 38280.450439105574,
+          "mission_day15_delayed_cps_noacc": 0.023446192043750626,
+          "mission_day15_prompt_cps_noacc": 0.0,
+          "particle_label": "n (neutron)",
+          "prompt_TT_s": 44.6833145,
+          "prompt_event_weight_cps": 0.022379718496487094,
+          "prompt_histories": 232991,
+          "prompt_jobs": 38,
+          "prompt_support_flag": "ZERO_MC_SURVIVOR__USE_UPPER_LIMIT",
+          "prompt_w2_final_events": 0,
+          "prompt_w2_final_lower95_cps": 0.0,
+          "prompt_w2_final_rate_cps": 0.0,
+          "prompt_w2_final_stat_sigma_cps": 0.0,
+          "prompt_w2_final_upper95_cps": 0.08255608375054485,
+          "prompt_w2_pre_events": 15,
+          "prompt_w2_pre_rate_cps": 0.3356957774473064,
+          "prompt_w2_veto50_events": 0,
+          "prompt_w2_veto50_rate_cps": 0.0,
+          "source_flux_sum_cm_2_s_1": 0.462239182229625,
+          "transported_ground_unique_ZA": 709
+        },
+        {
+          "activation_RP": 16076,
+          "activation_TT_s": 33.6719935,
+          "activation_histories": 4343,
+          "activation_jobs": 14,
+          "activation_production_rate_s_1": 477.4294102901867,
+          "day15_ground_activity_Bq": 280.4144637195,
+          "day15_holdout_activity_Bq": 0.0,
+          "delayed_equivalent_time_s": 891.5374645227866,
+          "delayed_event_weight_cps": 0.001121657854878,
+          "delayed_fraction_of_stream": 0.08235410838132323,
+          "delayed_source_sampling_seed": 1970294953,
+          "delayed_support_flag": "LOW_MC_SUPPORT",
+          "delayed_transport_seed": 2069010001,
+          "delayed_transport_triggers": 250000,
+          "delayed_w2_final_events": 4,
+          "delayed_w2_final_lower95_cps": 0.0012224560570875136,
+          "delayed_w2_final_rate_cps": 0.004486631419512,
+          "delayed_w2_final_stat_sigma_cps": 0.002243315709756,
+          "delayed_w2_final_upper95_cps": 0.011487558384196125,
+          "delayed_w2_pre_events": 27,
+          "delayed_w2_pre_rate_cps": 0.030284762081706003,
+          "delayed_w2_veto50_events": 5,
+          "delayed_w2_veto50_rate_cps": 0.00560828927439,
+          "family": "alpha",
+          "mission20_delayed_counts": 7574.6814399485,
+          "mission20_prompt_counts": 0.0,
+          "mission20_total_background_counts": 7574.6814399485,
+          "mission_day15_delayed_cps_noacc": 0.004477172969960137,
+          "mission_day15_prompt_cps_noacc": 0.0,
+          "particle_label": "alpha",
+          "prompt_TT_s": 45.46774725,
+          "prompt_event_weight_cps": 0.021993612186273423,
+          "prompt_histories": 5958,
+          "prompt_jobs": 21,
+          "prompt_support_flag": "ZERO_MC_SURVIVOR__USE_UPPER_LIMIT",
+          "prompt_w2_final_events": 0,
+          "prompt_w2_final_lower95_cps": 0.0,
+          "prompt_w2_final_rate_cps": 0.0,
+          "prompt_w2_final_stat_sigma_cps": 0.0,
+          "prompt_w2_final_upper95_cps": 0.0811317841156939,
+          "prompt_w2_pre_events": 8,
+          "prompt_w2_pre_rate_cps": 0.17594889749018738,
+          "prompt_w2_veto50_events": 0,
+          "prompt_w2_veto50_rate_cps": 0.0,
+          "source_flux_sum_cm_2_s_1": 0.01148709645023202,
+          "transported_ground_unique_ZA": 721
+        },
+        {
+          "activation_RP": 1256,
+          "activation_TT_s": 43.4225402,
+          "activation_histories": 2356499,
+          "activation_jobs": 78,
+          "activation_production_rate_s_1": 28.925069657716616,
+          "day15_ground_activity_Bq": 8.17011637922,
+          "day15_holdout_activity_Bq": 0.0,
+          "delayed_equivalent_time_s": 30599.319323755764,
+          "delayed_event_weight_cps": 3.268046551688e-05,
+          "delayed_fraction_of_stream": 0.014396746320233094,
+          "delayed_source_sampling_seed": 1970000002,
+          "delayed_support_flag": "FINITE_MC_SUPPORT",
+          "delayed_transport_seed": 2071010001,
+          "delayed_transport_triggers": 250000,
+          "delayed_w2_final_events": 24,
+          "delayed_w2_final_lower95_cps": 0.0005025357816619254,
+          "delayed_w2_final_rate_cps": 0.00078433117240512,
+          "delayed_w2_final_stat_sigma_cps": 0.00016010093014595382,
+          "delayed_w2_final_upper95_cps": 0.0011670226130170713,
+          "delayed_w2_pre_events": 113,
+          "delayed_w2_pre_rate_cps": 0.00369289260340744,
+          "delayed_w2_veto50_events": 30,
+          "delayed_w2_veto50_rate_cps": 0.0009804139655064,
+          "family": "gamma",
+          "mission20_delayed_counts": 1258.0114851465244,
+          "mission20_prompt_counts": 55398.97943402516,
+          "mission20_total_background_counts": 56656.99091917169,
+          "mission_day15_delayed_cps_noacc": 0.0007710761938940531,
+          "mission_day15_prompt_cps_noacc": 0.032374067208008096,
+          "particle_label": "gamma",
+          "prompt_TT_s": 59.0965413,
+          "prompt_event_weight_cps": 0.016921464065444387,
+          "prompt_histories": 3207738,
+          "prompt_jobs": 132,
+          "prompt_support_flag": "LOW_MC_SUPPORT",
+          "prompt_w2_final_events": 2,
+          "prompt_w2_final_lower95_cps": 0.004098535603198913,
+          "prompt_w2_final_rate_cps": 0.03384292813088877,
+          "prompt_w2_final_stat_sigma_cps": 0.023930563976560425,
+          "prompt_w2_final_upper95_cps": 0.1222522927534502,
+          "prompt_w2_pre_events": 120,
+          "prompt_w2_pre_rate_cps": 2.0305756878533265,
+          "prompt_w2_veto50_events": 3,
+          "prompt_w2_veto50_rate_cps": 0.05076439219633316,
+          "source_flux_sum_cm_2_s_1": 4.7996615777852,
+          "transported_ground_unique_ZA": 97
+        },
+        {
+          "activation_RP": 428,
+          "activation_TT_s": 130.6802652,
+          "activation_histories": 295341,
+          "activation_jobs": 17,
+          "activation_production_rate_s_1": 3.2751693558699633,
+          "day15_ground_activity_Bq": 0.780764247894,
+          "day15_holdout_activity_Bq": 0.0,
+          "delayed_equivalent_time_s": 320199.08784801466,
+          "delayed_event_weight_cps": 3.123056991576e-06,
+          "delayed_fraction_of_stream": 0.006363085584875923,
+          "delayed_source_sampling_seed": 1970393270,
+          "delayed_support_flag": "FINITE_MC_SUPPORT",
+          "delayed_transport_seed": 2071110001,
+          "delayed_transport_triggers": 250000,
+          "delayed_w2_final_events": 111,
+          "delayed_w2_final_lower95_cps": 0.0002851767270290387,
+          "delayed_w2_final_rate_cps": 0.000346659326064936,
+          "delayed_w2_final_stat_sigma_cps": 3.2903447113670665e-05,
+          "delayed_w2_final_upper95_cps": 0.000417467249169506,
+          "delayed_w2_pre_events": 417,
+          "delayed_w2_pre_rate_cps": 0.001302314765487192,
+          "delayed_w2_veto50_events": 124,
+          "delayed_w2_veto50_rate_cps": 0.000387259066955424,
+          "family": "eminus",
+          "mission20_delayed_counts": 563.6350303752598,
+          "mission20_prompt_counts": 0.0,
+          "mission20_total_background_counts": 563.6350303752598,
+          "mission_day15_delayed_cps_noacc": 0.00033746560345497133,
+          "mission_day15_prompt_cps_noacc": 0.0,
+          "particle_label": "e-",
+          "prompt_TT_s": 131.2704446,
+          "prompt_event_weight_cps": 0.0076178609971737695,
+          "prompt_histories": 295341,
+          "prompt_jobs": 17,
+          "prompt_support_flag": "ZERO_MC_SURVIVOR__USE_UPPER_LIMIT",
+          "prompt_w2_final_events": 0,
+          "prompt_w2_final_lower95_cps": 0.0,
+          "prompt_w2_final_rate_cps": 0.0,
+          "prompt_w2_final_stat_sigma_cps": 0.0,
+          "prompt_w2_final_upper95_cps": 0.028101370916770216,
+          "prompt_w2_pre_events": 53,
+          "prompt_w2_pre_rate_cps": 0.4037466328502098,
+          "prompt_w2_veto50_events": 0,
+          "prompt_w2_veto50_rate_cps": 0.0,
+          "source_flux_sum_cm_2_s_1": 0.199002044572142,
+          "transported_ground_unique_ZA": 50
+        },
+        {
+          "activation_RP": 586,
+          "activation_TT_s": 45.5149018,
+          "activation_histories": 60184,
+          "activation_jobs": 24,
+          "activation_production_rate_s_1": 12.87490419236717,
+          "day15_ground_activity_Bq": 3.754845926094,
+          "day15_holdout_activity_Bq": 0.0,
+          "delayed_equivalent_time_s": 66580.62805257736,
+          "delayed_event_weight_cps": 1.5019383704376001e-05,
+          "delayed_fraction_of_stream": 0.07030029851528927,
+          "delayed_source_sampling_seed": 1970196636,
+          "delayed_support_flag": "FINITE_MC_SUPPORT",
+          "delayed_transport_seed": 2071310001,
+          "delayed_transport_triggers": 250000,
+          "delayed_w2_final_events": 255,
+          "delayed_w2_final_lower95_cps": 0.0033742476952841006,
+          "delayed_w2_final_rate_cps": 0.0038299428446158805,
+          "delayed_w2_final_stat_sigma_cps": 0.00023984032427662203,
+          "delayed_w2_final_upper95_cps": 0.004330021802822951,
+          "delayed_w2_pre_events": 610,
+          "delayed_w2_pre_rate_cps": 0.00916182405966936,
+          "delayed_w2_veto50_events": 286,
+          "delayed_w2_veto50_rate_cps": 0.004295543739451536,
+          "family": "eplus",
+          "mission20_delayed_counts": 6218.419275969384,
+          "mission20_prompt_counts": 0.0,
+          "mission20_total_background_counts": 6218.419275969384,
+          "mission_day15_delayed_cps_noacc": 0.0037580809533635517,
+          "mission_day15_prompt_cps_noacc": 0.0,
+          "particle_label": "e+",
+          "prompt_TT_s": 45.5375569,
+          "prompt_event_weight_cps": 0.02195989570094833,
+          "prompt_histories": 60184,
+          "prompt_jobs": 21,
+          "prompt_support_flag": "ZERO_MC_SURVIVOR__USE_UPPER_LIMIT",
+          "prompt_w2_final_events": 0,
+          "prompt_w2_final_lower95_cps": 0.0,
+          "prompt_w2_final_rate_cps": 0.0,
+          "prompt_w2_final_stat_sigma_cps": 0.0,
+          "prompt_w2_final_upper95_cps": 0.08100740806571323,
+          "prompt_w2_pre_events": 37,
+          "prompt_w2_pre_rate_cps": 0.8125161409350883,
+          "prompt_w2_veto50_events": 0,
+          "prompt_w2_veto50_rate_cps": 0.0,
+          "source_flux_sum_cm_2_s_1": 0.116980545722762,
+          "transported_ground_unique_ZA": 56
+        },
+        {
+          "activation_RP": 510,
+          "activation_TT_s": 1207.1250407,
+          "activation_histories": 67690,
+          "activation_jobs": 12,
+          "activation_production_rate_s_1": 0.4224914427292934,
+          "day15_ground_activity_Bq": 0.2501632053108,
+          "day15_holdout_activity_Bq": 0.0,
+          "delayed_equivalent_time_s": 999347.6046543407,
+          "delayed_event_weight_cps": 1.0006528212432e-06,
+          "delayed_fraction_of_stream": 3.6734852136217e-05,
+          "delayed_source_sampling_seed": 1970589904,
+          "delayed_support_flag": "LOW_MC_SUPPORT",
+          "delayed_transport_seed": 2071210001,
+          "delayed_transport_triggers": 250000,
+          "delayed_w2_final_events": 2,
+          "delayed_w2_final_lower95_cps": 2.4236739790629857e-07,
+          "delayed_w2_final_rate_cps": 2.0013056424864e-06,
+          "delayed_w2_final_stat_sigma_cps": 1.4151367910290337e-06,
+          "delayed_w2_final_upper95_cps": 7.229404097308935e-06,
+          "delayed_w2_pre_events": 11,
+          "delayed_w2_pre_rate_cps": 1.1007181033675199e-05,
+          "delayed_w2_veto50_events": 3,
+          "delayed_w2_veto50_rate_cps": 3.0019584637296e-06,
+          "family": "muminus",
+          "mission20_delayed_counts": 3.147015910404363,
+          "mission20_prompt_counts": 0.0,
+          "mission20_total_background_counts": 3.147015910404363,
+          "mission_day15_delayed_cps_noacc": 1.8414865773632632e-06,
+          "mission_day15_prompt_cps_noacc": 0.0,
+          "particle_label": "mu-",
+          "prompt_TT_s": 185.45438284,
+          "prompt_event_weight_cps": 0.005392161590824984,
+          "prompt_histories": 10443,
+          "prompt_jobs": 8,
+          "prompt_support_flag": "ZERO_MC_SURVIVOR__USE_UPPER_LIMIT",
+          "prompt_w2_final_events": 0,
+          "prompt_w2_final_lower95_cps": 0.0,
+          "prompt_w2_final_rate_cps": 0.0,
+          "prompt_w2_final_stat_sigma_cps": 0.0,
+          "prompt_w2_final_upper95_cps": 0.019891034105656596,
+          "prompt_w2_pre_events": 0,
+          "prompt_w2_pre_rate_cps": 0.0,
+          "prompt_w2_veto50_events": 0,
+          "prompt_w2_veto50_rate_cps": 0.0,
+          "source_flux_sum_cm_2_s_1": 0.0049689300223750696,
+          "transported_ground_unique_ZA": 79
+        },
+        {
+          "activation_RP": 2,
+          "activation_TT_s": 61.669547439999995,
+          "activation_histories": 3972,
+          "activation_jobs": 9,
+          "activation_production_rate_s_1": 0.03243091741423683,
+          "day15_ground_activity_Bq": 1.477831292402e-05,
+          "day15_holdout_activity_Bq": 0.0,
+          "delayed_equivalent_time_s": 16916680630.957632,
+          "delayed_event_weight_cps": 5.911325169608001e-11,
+          "delayed_fraction_of_stream": 0.0,
+          "delayed_source_sampling_seed": 1970491587,
+          "delayed_support_flag": "ZERO_MC_SURVIVOR__USE_UPPER_LIMIT",
+          "delayed_transport_seed": 2071410001,
+          "delayed_transport_triggers": 250000,
+          "delayed_w2_final_events": 0,
+          "delayed_w2_final_lower95_cps": 0.0,
+          "delayed_w2_final_rate_cps": 0.0,
+          "delayed_w2_final_stat_sigma_cps": 0.0,
+          "delayed_w2_final_upper95_cps": 2.180616596475353e-10,
+          "delayed_w2_pre_events": 0,
+          "delayed_w2_pre_rate_cps": 0.0,
+          "delayed_w2_veto50_events": 0,
+          "delayed_w2_veto50_rate_cps": 0.0,
+          "family": "muplus",
+          "mission20_delayed_counts": 0.0,
+          "mission20_prompt_counts": 0.0,
+          "mission20_total_background_counts": 0.0,
+          "mission_day15_delayed_cps_noacc": 0.0,
+          "mission_day15_prompt_cps_noacc": 0.0,
+          "particle_label": "mu+",
+          "prompt_TT_s": 61.54175222,
+          "prompt_event_weight_cps": 0.016249131100869393,
+          "prompt_histories": 3972,
+          "prompt_jobs": 9,
+          "prompt_support_flag": "ZERO_MC_SURVIVOR__USE_UPPER_LIMIT",
+          "prompt_w2_final_events": 0,
+          "prompt_w2_final_lower95_cps": 0.0,
+          "prompt_w2_final_rate_cps": 0.0,
+          "prompt_w2_final_stat_sigma_cps": 0.0,
+          "prompt_w2_final_upper95_cps": 0.059941085865200854,
+          "prompt_w2_pre_events": 0,
+          "prompt_w2_pre_rate_cps": 0.0,
+          "prompt_w2_veto50_events": 0,
+          "prompt_w2_veto50_rate_cps": 0.0,
+          "source_flux_sum_cm_2_s_1": 0.00557001176606214,
+          "transported_ground_unique_ZA": 1
+        }
+      ],
+      "mission_counts": [
+        {
+          "delayed_counts_20d": 34906.51796542028,
+          "family": "p",
+          "particle_label": "p (proton)",
+          "prompt_counts_20d": 0.0,
+          "total_background_counts_20d": 34906.51796542028,
+          "uncertainty_status": "NO_RELIABLE_FAMILY_CUMULATIVE_MC_VARIANCE_PROPAGATED"
+        },
+        {
+          "delayed_counts_20d": 38280.450439105574,
+          "family": "n",
+          "particle_label": "n (neutron)",
+          "prompt_counts_20d": 0.0,
+          "total_background_counts_20d": 38280.450439105574,
+          "uncertainty_status": "NO_RELIABLE_FAMILY_CUMULATIVE_MC_VARIANCE_PROPAGATED"
+        },
+        {
+          "delayed_counts_20d": 7574.6814399485,
+          "family": "alpha",
+          "particle_label": "alpha",
+          "prompt_counts_20d": 0.0,
+          "total_background_counts_20d": 7574.6814399485,
+          "uncertainty_status": "NO_RELIABLE_FAMILY_CUMULATIVE_MC_VARIANCE_PROPAGATED"
+        },
+        {
+          "delayed_counts_20d": 1258.0114851465244,
+          "family": "gamma",
+          "particle_label": "gamma",
+          "prompt_counts_20d": 55398.97943402516,
+          "total_background_counts_20d": 56656.99091917169,
+          "uncertainty_status": "NO_RELIABLE_FAMILY_CUMULATIVE_MC_VARIANCE_PROPAGATED"
+        },
+        {
+          "delayed_counts_20d": 563.6350303752598,
+          "family": "eminus",
+          "particle_label": "e-",
+          "prompt_counts_20d": 0.0,
+          "total_background_counts_20d": 563.6350303752598,
+          "uncertainty_status": "NO_RELIABLE_FAMILY_CUMULATIVE_MC_VARIANCE_PROPAGATED"
+        },
+        {
+          "delayed_counts_20d": 6218.419275969384,
+          "family": "eplus",
+          "particle_label": "e+",
+          "prompt_counts_20d": 0.0,
+          "total_background_counts_20d": 6218.419275969384,
+          "uncertainty_status": "NO_RELIABLE_FAMILY_CUMULATIVE_MC_VARIANCE_PROPAGATED"
+        },
+        {
+          "delayed_counts_20d": 3.147015910404363,
+          "family": "muminus",
+          "particle_label": "mu-",
+          "prompt_counts_20d": 0.0,
+          "total_background_counts_20d": 3.147015910404363,
+          "uncertainty_status": "NO_RELIABLE_FAMILY_CUMULATIVE_MC_VARIANCE_PROPAGATED"
+        },
+        {
+          "delayed_counts_20d": 0.0,
+          "family": "muplus",
+          "particle_label": "mu+",
+          "prompt_counts_20d": 0.0,
+          "total_background_counts_20d": 0.0,
+          "uncertainty_status": "NO_RELIABLE_FAMILY_CUMULATIVE_MC_VARIANCE_PROPAGATED"
+        }
+      ],
+      "signal_stats": [
+        {
+          "acceptance": 0.7489111146959186,
+          "acceptance_lower95": 0.7444713694373133,
+          "acceptance_upper95": 0.7533119661048375,
+          "background_family_member": false,
+          "component": "focused_511_signal",
+          "input_optics_aeff_cm2": 20.084760000000003,
+          "mission20_signal_counts": 1645.3877530659986,
+          "mission20_signal_lower95_counts": 1635.6334546827939,
+          "particle": "gamma",
+          "reference_flux_ph_cm2_s": 0.0001,
+          "reference_flux_surface": "top_of_atmosphere",
+          "scope": "post-Be-window focused EventList acceptance; kept separate from broadband atmospheric gamma background",
+          "selected_effective_area_cm2": 15.041700000000004,
+          "selected_effective_area_lower95_cm2": 14.952528782019774,
+          "selected_effective_area_upper95_cm2": 15.130090044343799,
+          "selected_events": 27855,
+          "source_elevation_deg": 45.0,
+          "trials": 37194
+        }
+      ],
+      "w2_rates": [
+        {
+          "family": "gamma",
+          "family_rank": 1,
+          "lower95_cps": 0.004098535603198913,
+          "particle_label": "gamma",
+          "rate_cps": 0.03384292813088877,
+          "selected_events": 2,
+          "stat_sigma_cps": 0.023930563976560425,
+          "stream": "prompt",
+          "stream_label": "Prompt",
+          "support_flag": "LOW_MC_SUPPORT",
+          "upper95_cps": 0.1222522927534502
+        },
+        {
+          "family": "gamma",
+          "family_rank": 1,
+          "lower95_cps": 0.0005025357816619254,
+          "particle_label": "gamma",
+          "rate_cps": 0.00078433117240512,
+          "selected_events": 24,
+          "stat_sigma_cps": 0.00016010093014595382,
+          "stream": "delayed",
+          "stream_label": "Delayed",
+          "support_flag": "FINITE_MC_SUPPORT",
+          "upper95_cps": 0.0011670226130170713
+        },
+        {
+          "family": "n",
+          "family_rank": 2,
+          "lower95_cps": 0.0,
+          "particle_label": "n (neutron)",
+          "rate_cps": 0.0,
+          "selected_events": 0,
+          "stat_sigma_cps": 0.0,
+          "stream": "prompt",
+          "stream_label": "Prompt",
+          "support_flag": "ZERO_MC_SURVIVOR__USE_UPPER_LIMIT",
+          "upper95_cps": 0.08255608375054485
+        },
+        {
+          "family": "n",
+          "family_rank": 2,
+          "lower95_cps": 0.013793952504450268,
+          "particle_label": "n (neutron)",
+          "rate_cps": 0.0236791071279688,
+          "selected_events": 17,
+          "stat_sigma_cps": 0.0057430270475842,
+          "stream": "delayed",
+          "stream_label": "Delayed",
+          "support_flag": "FINITE_MC_SUPPORT",
+          "upper95_cps": 0.037912544343070564
+        },
+        {
+          "family": "p",
+          "family_rank": 3,
+          "lower95_cps": 0.0,
+          "particle_label": "p (proton)",
+          "rate_cps": 0.0,
+          "selected_events": 0,
+          "stat_sigma_cps": 0.0,
+          "stream": "prompt",
+          "stream_label": "Prompt",
+          "support_flag": "ZERO_MC_SURVIVOR__USE_UPPER_LIMIT",
+          "upper95_cps": 0.18408738072224734
+        },
+        {
+          "family": "p",
+          "family_rank": 3,
+          "lower95_cps": 0.008584241133584315,
+          "particle_label": "p (proton)",
+          "rate_cps": 0.021351079031058,
+          "selected_events": 7,
+          "stat_sigma_cps": 0.008069949334152199,
+          "stream": "delayed",
+          "stream_label": "Delayed",
+          "support_flag": "LOW_MC_SUPPORT",
+          "upper95_cps": 0.04399138306957149
+        },
+        {
+          "family": "alpha",
+          "family_rank": 4,
+          "lower95_cps": 0.0,
+          "particle_label": "alpha",
+          "rate_cps": 0.0,
+          "selected_events": 0,
+          "stat_sigma_cps": 0.0,
+          "stream": "prompt",
+          "stream_label": "Prompt",
+          "support_flag": "ZERO_MC_SURVIVOR__USE_UPPER_LIMIT",
+          "upper95_cps": 0.0811317841156939
+        },
+        {
+          "family": "alpha",
+          "family_rank": 4,
+          "lower95_cps": 0.0012224560570875136,
+          "particle_label": "alpha",
+          "rate_cps": 0.004486631419512,
+          "selected_events": 4,
+          "stat_sigma_cps": 0.002243315709756,
+          "stream": "delayed",
+          "stream_label": "Delayed",
+          "support_flag": "LOW_MC_SUPPORT",
+          "upper95_cps": 0.011487558384196125
+        },
+        {
+          "family": "eplus",
+          "family_rank": 5,
+          "lower95_cps": 0.0,
+          "particle_label": "e+",
+          "rate_cps": 0.0,
+          "selected_events": 0,
+          "stat_sigma_cps": 0.0,
+          "stream": "prompt",
+          "stream_label": "Prompt",
+          "support_flag": "ZERO_MC_SURVIVOR__USE_UPPER_LIMIT",
+          "upper95_cps": 0.08100740806571323
+        },
+        {
+          "family": "eplus",
+          "family_rank": 5,
+          "lower95_cps": 0.0033742476952841006,
+          "particle_label": "e+",
+          "rate_cps": 0.0038299428446158805,
+          "selected_events": 255,
+          "stat_sigma_cps": 0.00023984032427662203,
+          "stream": "delayed",
+          "stream_label": "Delayed",
+          "support_flag": "FINITE_MC_SUPPORT",
+          "upper95_cps": 0.004330021802822951
+        },
+        {
+          "family": "eminus",
+          "family_rank": 6,
+          "lower95_cps": 0.0,
+          "particle_label": "e-",
+          "rate_cps": 0.0,
+          "selected_events": 0,
+          "stat_sigma_cps": 0.0,
+          "stream": "prompt",
+          "stream_label": "Prompt",
+          "support_flag": "ZERO_MC_SURVIVOR__USE_UPPER_LIMIT",
+          "upper95_cps": 0.028101370916770216
+        },
+        {
+          "family": "eminus",
+          "family_rank": 6,
+          "lower95_cps": 0.0002851767270290387,
+          "particle_label": "e-",
+          "rate_cps": 0.000346659326064936,
+          "selected_events": 111,
+          "stat_sigma_cps": 3.2903447113670665e-05,
+          "stream": "delayed",
+          "stream_label": "Delayed",
+          "support_flag": "FINITE_MC_SUPPORT",
+          "upper95_cps": 0.000417467249169506
+        },
+        {
+          "family": "muminus",
+          "family_rank": 7,
+          "lower95_cps": 0.0,
+          "particle_label": "mu-",
+          "rate_cps": 0.0,
+          "selected_events": 0,
+          "stat_sigma_cps": 0.0,
+          "stream": "prompt",
+          "stream_label": "Prompt",
+          "support_flag": "ZERO_MC_SURVIVOR__USE_UPPER_LIMIT",
+          "upper95_cps": 0.019891034105656596
+        },
+        {
+          "family": "muminus",
+          "family_rank": 7,
+          "lower95_cps": 2.4236739790629857e-07,
+          "particle_label": "mu-",
+          "rate_cps": 2.0013056424864e-06,
+          "selected_events": 2,
+          "stat_sigma_cps": 1.4151367910290337e-06,
+          "stream": "delayed",
+          "stream_label": "Delayed",
+          "support_flag": "LOW_MC_SUPPORT",
+          "upper95_cps": 7.229404097308935e-06
+        },
+        {
+          "family": "muplus",
+          "family_rank": 8,
+          "lower95_cps": 0.0,
+          "particle_label": "mu+",
+          "rate_cps": 0.0,
+          "selected_events": 0,
+          "stat_sigma_cps": 0.0,
+          "stream": "prompt",
+          "stream_label": "Prompt",
+          "support_flag": "ZERO_MC_SURVIVOR__USE_UPPER_LIMIT",
+          "upper95_cps": 0.059941085865200854
+        },
+        {
+          "family": "muplus",
+          "family_rank": 8,
+          "lower95_cps": 0.0,
+          "particle_label": "mu+",
+          "rate_cps": 0.0,
+          "selected_events": 0,
+          "stat_sigma_cps": 0.0,
+          "stream": "delayed",
+          "stream_label": "Delayed",
+          "support_flag": "ZERO_MC_SURVIVOR__USE_UPPER_LIMIT",
+          "upper95_cps": 2.180616596475353e-10
+        }
+      ]
+    },
+    "generatedAt": "2026-08-15T00:00:00+08:00",
+    "status": "ready",
+    "version": 1
+  },
+  "sources": [
+    {
+      "id": "current_record",
+      "label": "S3d-O8 current all-particle statistics summary",
+      "path": "data/s3d_o8_particle_statistics_summary.json",
+      "query": {
+        "description": "Hash-pinned deterministic extraction from the 2026-08-13 corrected-keV M05 authority.",
+        "engine": "filesystem-python",
+        "executed_at": "2026-08-15T00:00:00+08:00",
+        "language": "python",
+        "metric_definitions": [
+          "W2 final means measured 0.42-keV FWHM response, pixel threshold 0.3 keV, 50-keV active veto, and retained Step05 side-Compton/FoV pass.",
+          "Prompt is normalized within family as N_selected/sum(instant TT); activation as sum(RP)/sum(buildup TT); delayed as N_selected x day-15 ground activity/250000 triggers."
+        ],
+        "tables_used": [
+          "data/s3d_o8_particle_statistics_summary.json",
+          "audit/s3d_o8_particle_statistics_validation.json"
+        ]
+      }
+    },
+    {
+      "id": "family_table",
+      "label": "Eight-family input, activation, response, and mission statistics",
+      "path": "data/s3d_o8_particle_family_statistics.csv",
+      "query": {
+        "description": "Exact eight-row current S3d-O8 particle-family record.",
+        "engine": "csv-snapshot",
+        "executed_at": "2026-08-15T00:00:00+08:00",
+        "filters": [
+          "model_identity=S3d-O8",
+          "authority=M05 corrected-keV 2026-08-13"
+        ],
+        "language": "sql",
+        "metric_definitions": [
+          "Prompt and delayed rates are central weighted Monte Carlo rates in cps.",
+          "Garwood 95% bounds are componentwise count intervals; zero-survivor upper limits are not physical-zero claims."
+        ],
+        "sql": "SELECT * FROM s3d_o8_particle_family_statistics ORDER BY family",
+        "tables_used": [
+          "data/s3d_o8_particle_family_statistics.csv"
+        ]
+      }
+    },
+    {
+      "id": "mission_table",
+      "label": "S3d-O8 20-day family-scalar mission counts",
+      "path": "data/s3d_o8_mission20_counts_by_family.csv",
+      "query": {
+        "description": "Per-family integration of each timeline rate times accidental live factor and quadrature weight over 81 bins.",
+        "engine": "csv-snapshot",
+        "executed_at": "2026-08-15T00:00:00+08:00",
+        "language": "sql",
+        "metric_definitions": [
+          "20-day family counts are forward-analytic family-scalar integrals, not independent re-transports at every timeline point.",
+          "No reliable per-family cumulative Monte Carlo variance was propagated."
+        ],
+        "sql": "SELECT * FROM s3d_o8_mission20_counts_by_family ORDER BY total_background_counts_20d DESC",
+        "tables_used": [
+          "data/s3d_o8_mission20_counts_by_family.csv"
+        ]
+      }
+    },
+    {
+      "id": "signal_table",
+      "label": "Focused 511-keV signal acceptance",
+      "path": "data/s3d_o8_focused_511_signal_statistics.csv",
+      "query": {
+        "description": "Post-Be-window focused gamma EventList acceptance and mission signal, kept separate from broadband atmospheric gamma background.",
+        "engine": "csv-snapshot",
+        "executed_at": "2026-08-15T00:00:00+08:00",
+        "language": "sql",
+        "metric_definitions": [
+          "Acceptance=selected_events/trials after measured W2, veto50, and retained Step05.",
+          "Selected effective area=input optics effective area x acceptance."
+        ],
+        "sql": "SELECT * FROM s3d_o8_focused_511_signal_statistics",
+        "tables_used": [
+          "data/s3d_o8_focused_511_signal_statistics.csv"
+        ]
+      }
+    },
+    {
+      "id": "authority_ledger",
+      "label": "Pinned upstream authority ledger",
+      "path": "data/s3d_o8_authority_sources.csv",
+      "query": {
+        "description": "Absolute paths, SHA256 hashes, and sizes checked before extraction.",
+        "engine": "csv-snapshot",
+        "executed_at": "2026-08-15T00:00:00+08:00",
+        "language": "sql",
+        "sql": "SELECT id, path, sha256, size_bytes FROM s3d_o8_authority_sources ORDER BY id",
+        "tables_used": [
+          "data/s3d_o8_authority_sources.csv"
+        ]
+      }
+    }
+  ],
+  "surface": "report"
+}

@@ -1,0 +1,224 @@
+{
+  "angular_response_coefficients": {
+    "artifacts": {
+      "20": {
+        "bytes": 7318,
+        "path": "engineering/m04_validation_geometry_handoff_20260810/02_parma_atm511_repair_20260810/transport/campaigns/o8_parma511_line_nominal_180m_20260810/parsed/batch_0030/response/angular_response_coefficients_20bins.csv",
+        "sha256": "2e177014bb00288ce5af18d3b7ecd2999fc68dfc0de72618dd7bd17159222461"
+      },
+      "40": {
+        "bytes": 13177,
+        "path": "engineering/m04_validation_geometry_handoff_20260810/02_parma_atm511_repair_20260810/transport/campaigns/o8_parma511_line_nominal_180m_20260810/parsed/batch_0030/response/angular_response_coefficients_40bins.csv",
+        "sha256": "1df07a2467d85c4884e0263e2fe95fda60a258669e8a2193a7991569ad8e362f"
+      },
+      "80": {
+        "bytes": 23898,
+        "path": "engineering/m04_validation_geometry_handoff_20260810/02_parma_atm511_repair_20260810/transport/campaigns/o8_parma511_line_nominal_180m_20260810/parsed/batch_0030/response/angular_response_coefficients_80bins.csv",
+        "sha256": "1ee3750ae11238bc83ccf8c8290ce983c149661b99b09917d8dcaae564ba8713"
+      }
+    },
+    "definition": "q=N_stage/N_init in each INIT-direction bin; response_cm2=q*SIM start area. importance_response_cm2 uses the same-event target/proposal rate divided by the target bin flux. Intervals are two-sided 95% Wilson; zero-count upper limits are exact one-sided 95%.",
+    "start_area_cm2": 11309.7,
+    "summaries": {
+      "20": {
+        "N_TES": 77,
+        "N_init": 3000000,
+        "N_primary_W2": 10,
+        "N_unsmeared_W2": 10,
+        "bins_with_zero_primary_W2": 12,
+        "bins_with_zero_unsmeared_W2": 12,
+        "importance_rate_primary_cps": 0.006636592483439163,
+        "importance_rate_unsmeared_cps": 0.006636592483439163
+      },
+      "40": {
+        "N_TES": 77,
+        "N_init": 3000000,
+        "N_primary_W2": 10,
+        "N_unsmeared_W2": 10,
+        "bins_with_zero_primary_W2": 31,
+        "bins_with_zero_unsmeared_W2": 31,
+        "importance_rate_primary_cps": 0.006275645274324106,
+        "importance_rate_unsmeared_cps": 0.006275645274324106
+      },
+      "80": {
+        "N_TES": 77,
+        "N_init": 3000000,
+        "N_primary_W2": 10,
+        "N_unsmeared_W2": 10,
+        "bins_with_zero_primary_W2": 70,
+        "bins_with_zero_unsmeared_W2": 70,
+        "importance_rate_primary_cps": 0.006277832992295497,
+        "importance_rate_unsmeared_cps": 0.006277832992295497
+      }
+    }
+  },
+  "artifacts": {
+    "engineering/m04_validation_geometry_handoff_20260810/02_parma_atm511_repair_20260810/transport/campaigns/o8_parma511_line_nominal_180m_20260810/parsed/batch_0030/response/angular_response_coefficients_20bins.csv": {
+      "bytes": 7318,
+      "sha256": "2e177014bb00288ce5af18d3b7ecd2999fc68dfc0de72618dd7bd17159222461"
+    },
+    "engineering/m04_validation_geometry_handoff_20260810/02_parma_atm511_repair_20260810/transport/campaigns/o8_parma511_line_nominal_180m_20260810/parsed/batch_0030/response/angular_response_coefficients_40bins.csv": {
+      "bytes": 13177,
+      "sha256": "1df07a2467d85c4884e0263e2fe95fda60a258669e8a2193a7991569ad8e362f"
+    },
+    "engineering/m04_validation_geometry_handoff_20260810/02_parma_atm511_repair_20260810/transport/campaigns/o8_parma511_line_nominal_180m_20260810/parsed/batch_0030/response/angular_response_coefficients_80bins.csv": {
+      "bytes": 23898,
+      "sha256": "1ee3750ae11238bc83ccf8c8290ce983c149661b99b09917d8dcaae564ba8713"
+    },
+    "engineering/m04_validation_geometry_handoff_20260810/02_parma_atm511_repair_20260810/transport/campaigns/o8_parma511_line_nominal_180m_20260810/parsed/batch_0030/response/primary_event_response.csv": {
+      "bytes": 5802,
+      "sha256": "386e5f34483d7398349767979b9b909680b4f59190dacda73f63f2a2a37b6b9e"
+    },
+    "engineering/m04_validation_geometry_handoff_20260810/02_parma_atm511_repair_20260810/transport/campaigns/o8_parma511_line_nominal_180m_20260810/parsed/batch_0030/response/response_seed_replicas.csv": {
+      "bytes": 16152,
+      "sha256": "d608ff9bcd413dfe2cb7313772c052c528f8ab3e44bf492001784c503298a043"
+    }
+  },
+  "claim_boundary": "20/40/80 are paired offline weights on the same transported events. Low W2 statistics can diagnose but cannot establish a detector-rate PASS.",
+  "created_at_utc": "2026-08-10T16:14:39.076990+00:00",
+  "detector_response": {
+    "active_shield_named_passive_kapton_wrappers_in_o8": [
+      "ActiveShield_S3C_BGO_Kapton_BottomCap_0p3mm",
+      "ActiveShield_S3C_BGO_Kapton_SideWrap_WindowCut_0p3mm",
+      "ActiveShield_S3C_BGO_Kapton_TopAnnulus_0p3mm"
+    ],
+    "active_threshold_keV": 50.0,
+    "active_veto_predicate_blocker": "The frozen predicate counts BGO and the S1/S2B plastic volumes, but also matches any name containing ACTIVE_SHIELD. In O8 that unintentionally includes all three passive Kapton wrapper volumes named ActiveShield_S3C_BGO_Kapton_*. This harness preserves, rather than repairs, that frozen selection.",
+    "fwhm_keV": 0.42,
+    "primary_seed": 1026071308,
+    "replicas": 64,
+    "seed_stride": 7919,
+    "sigma_keV": 0.178357578060484,
+    "step05_implementation": "old/code/tools/build_v3p5_centerfinger_step05_l1_response.py",
+    "step05_sha256": "0c1e69e4a73bd8653e999b1d8d2aff404a37a44457e40f134388c819ad4b91ab",
+    "step09_summary": "stepwise_maintenance/step09_optics_bridge/outputs_f10m_a1_v3p5/step09_optics_bridge_summary.json",
+    "step09_summary_sha256": "8d147e21928b4830a215ab034f29379383b4368b4177f8a16a2f45769df73a25",
+    "tes_threshold_keV": 0.3,
+    "topology_contract": "broad 480<=E<550, active<50; single keep; multiplicity>MAX_ENUM_HITS reject_kept; otherwise frozen side_keep_from_hits(...,'keep')"
+  },
+  "ensemble": {
+    "final_w2_count_mean": 9.265625,
+    "final_w2_count_sample_std": 0.8016290457463021,
+    "note": "Response seeds are not independent transported photons.",
+    "rate_80bin_cps_mean": 0.005816804631923797,
+    "rate_80bin_cps_sample_std": 0.0005032493270968493
+  },
+  "input_parse": {
+    "path": "engineering/m04_validation_geometry_handoff_20260810/02_parma_atm511_repair_20260810/transport/campaigns/o8_parma511_line_nominal_180m_20260810/parsed/batch_0030/provenance.json",
+    "sha256": "f88cb4f7821b39c6e992e26faad2245cf1ab6d19bd39bb129f0bcb6c6bef78fe"
+  },
+  "primary_420eV": {
+    "paired_reweight": {
+      "20": {
+        "importance_effective_sample_size": 9.926021900393124,
+        "importance_weighted_rate_cps": 0.006636592483439163,
+        "mc_relative_sigma": 0.31740399263945324,
+        "mc_stat_sigma_cps": 0.0021064809517645747,
+        "selected_events": 10
+      },
+      "40": {
+        "importance_effective_sample_size": 9.995404926896034,
+        "importance_weighted_rate_cps": 0.006275645274324107,
+        "mc_relative_sigma": 0.3163004455504976,
+        "mc_stat_sigma_cps": 0.0019849893963855897,
+        "selected_events": 10
+      },
+      "80": {
+        "importance_effective_sample_size": 10.000000000000004,
+        "importance_weighted_rate_cps": 0.006277832992295497,
+        "mc_relative_sigma": 0.3162277660168379,
+        "mc_stat_sigma_cps": 0.0019852251025804057,
+        "selected_events": 10
+      },
+      "paired_diagnostics": {
+        "absolute_relative_40_vs_80": 0.00034848298355107734,
+        "combined_definition": "abs(rate40-rate80)/rate80 + sqrt(sum_i((w40_i-w80_i)^2))/rate80; the second term preserves same-event pairing",
+        "combined_relative_40_vs_80_error": 0.007127270798969784,
+        "paired_40_minus_80_mc_sigma_cps": 4.255609779540628e-05,
+        "paired_relative_40_minus_80_mc_sigma": 0.006778787815418707,
+        "relative_20_minus_80": 0.0571470269412957,
+        "relative_40_minus_80": -0.0003484829835510572
+      }
+    },
+    "pixel_hits_before_response": 106,
+    "response_seed": 1026071308,
+    "tes_events": 77,
+    "topology_class_counts": {
+      "keep": 7,
+      "not_evaluated": 59,
+      "single": 9,
+      "veto": 2
+    },
+    "w2_active_veto_pass_events": 12,
+    "w2_final_active_energy_max_keV": 0.0,
+    "w2_frozen_step05_pass_events": 10,
+    "w2_raw_events": 12
+  },
+  "primary_detector_rate_gate": {
+    "combined_relative_40_vs_80_error": 0.007127270798969784,
+    "importance_effective_sample_size_80bin": 10.000000000000004,
+    "passes_angular_paired_error": true,
+    "passes_count_or_rse": false,
+    "passes_detector_rate_gate": false,
+    "relative_standard_error_80bin": 0.3162277660168379,
+    "required_combined_relative_40_vs_80_error": "<0.015",
+    "required_final_events_or_rse": ">=400 final events OR RSE<=0.05",
+    "selected_events_80bin": 10,
+    "status": "DIAGNOSTIC_ONLY_FAIL_LINE_MODULE_RATE_GATE"
+  },
+  "proposal": "parma80",
+  "schema": "o8-parma511-line-step05-response-v1",
+  "scope": "atmospheric annihilation mono line only",
+  "status": "DIAGNOSTIC_ONLY_LINE_MODULE_RESPONSE_NOT_MANUSCRIPT_PASS",
+  "transport_footer": {
+    "TE_s": 1592.906344,
+    "TS": 3000000
+  },
+  "unsmeared": {
+    "paired_reweight": {
+      "20": {
+        "importance_effective_sample_size": 9.926021900393124,
+        "importance_weighted_rate_cps": 0.006636592483439163,
+        "mc_relative_sigma": 0.31740399263945324,
+        "mc_stat_sigma_cps": 0.0021064809517645747,
+        "selected_events": 10
+      },
+      "40": {
+        "importance_effective_sample_size": 9.995404926896034,
+        "importance_weighted_rate_cps": 0.006275645274324107,
+        "mc_relative_sigma": 0.3163004455504976,
+        "mc_stat_sigma_cps": 0.0019849893963855897,
+        "selected_events": 10
+      },
+      "80": {
+        "importance_effective_sample_size": 10.000000000000004,
+        "importance_weighted_rate_cps": 0.006277832992295497,
+        "mc_relative_sigma": 0.3162277660168379,
+        "mc_stat_sigma_cps": 0.0019852251025804057,
+        "selected_events": 10
+      },
+      "paired_diagnostics": {
+        "absolute_relative_40_vs_80": 0.00034848298355107734,
+        "combined_definition": "abs(rate40-rate80)/rate80 + sqrt(sum_i((w40_i-w80_i)^2))/rate80; the second term preserves same-event pairing",
+        "combined_relative_40_vs_80_error": 0.007127270798969784,
+        "paired_40_minus_80_mc_sigma_cps": 4.255609779540628e-05,
+        "paired_relative_40_minus_80_mc_sigma": 0.006778787815418707,
+        "relative_20_minus_80": 0.0571470269412957,
+        "relative_40_minus_80": -0.0003484829835510572
+      }
+    },
+    "pixel_hits_before_response": 106,
+    "response_seed": null,
+    "tes_events": 77,
+    "topology_class_counts": {
+      "keep": 7,
+      "not_evaluated": 59,
+      "single": 9,
+      "veto": 2
+    },
+    "w2_active_veto_pass_events": 12,
+    "w2_final_active_energy_max_keV": 0.0,
+    "w2_frozen_step05_pass_events": 10,
+    "w2_raw_events": 12
+  }
+}

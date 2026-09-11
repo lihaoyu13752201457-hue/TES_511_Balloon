@@ -1,0 +1,244 @@
+{
+  "manifest": {
+    "version": 1,
+    "surface": "report",
+    "title": "S3d-O8 BPE 净收益首轮判决",
+    "description": "权威几何、accepted 20 mm watched-volume transport、current activation/W2 coupling、511 keV XCOM break-even 与最小 0/20 配对验证的统一技术报告。",
+    "generatedAt": "2026-08-14T00:00:00+08:00",
+    "sources": [
+      {
+        "id": "bpe-report",
+        "label": "BPE 净收益完整技术报告",
+        "path": "engineering/s3d_o8_bpe_net_benefit_20260814/REPORT.md"
+      },
+      {
+        "id": "candidate-screen",
+        "label": "BPE candidate analytic screen",
+        "path": "engineering/s3d_o8_bpe_net_benefit_20260814/data/bpe_candidate_analytic_screen.csv"
+      },
+      {
+        "id": "evidence-matrix",
+        "label": "BPE evidence-level matrix",
+        "path": "engineering/s3d_o8_bpe_net_benefit_20260814/data/evidence_level_matrix.csv"
+      },
+      {
+        "id": "isotope-ledger",
+        "label": "Priority neutron isotope ledger",
+        "path": "engineering/s3d_o8_bpe_net_benefit_20260814/data/priority_neutron_isotope_ledger.csv"
+      },
+      {
+        "id": "xcom",
+        "label": "NIST XCOM photon cross sections",
+        "href": "https://www.nist.gov/pml/xcom-photon-cross-sections-database"
+      }
+    ],
+    "charts": [
+      {
+        "id": "candidate-break-even-chart",
+        "title": "BPE thickness signal and background break-even",
+        "subtitle": "20 mm must reduce total B by more than 31.0% to offset its 17.0% focused-line loss.",
+        "type": "line",
+        "dataset": "candidate_trade",
+        "sourceId": "candidate-screen",
+        "source": {
+          "id": "candidate-screen",
+          "label": "BPE candidate analytic screen",
+          "path": "engineering/s3d_o8_bpe_net_benefit_20260814/data/bpe_candidate_analytic_screen.csv",
+          "query": {
+            "language": "sql",
+            "engine": "bounded-snapshot",
+            "sql": "SELECT thickness_mm, metric, relative_value FROM candidate_trade ORDER BY thickness_mm, metric",
+            "description": "XCOM narrow-line signal retention and the corresponding total-background ratio required for equal F3, relative to 0 mm BPE.",
+            "tables_used": ["candidate_trade"],
+            "metric_definitions": [
+              "signal_retention = exp[-(mu/rho)_BPE * rho_BPE * thickness]",
+              "background_break_even = signal_retention squared because F3 is proportional to sqrt(B)/S"
+            ]
+          }
+        },
+        "encodings": {
+          "x": {
+            "field": "thickness_mm",
+            "type": "quantitative",
+            "title": "BPE thickness (mm)"
+          },
+          "y": {
+            "field": "relative_value",
+            "type": "quantitative",
+            "title": "Relative to 0 mm"
+          },
+          "color": {
+            "field": "metric",
+            "type": "nominal",
+            "title": "Metric"
+          }
+        }
+      }
+    ],
+    "tables": [
+      {
+        "id": "candidate-table",
+        "title": "BPE thickness analytic screen",
+        "dataset": "candidate_table",
+        "sourceId": "candidate-screen",
+        "source": {
+          "id": "candidate-screen",
+          "label": "BPE candidate analytic screen",
+          "path": "engineering/s3d_o8_bpe_net_benefit_20260814/data/bpe_candidate_analytic_screen.csv",
+          "query": {
+            "language": "sql",
+            "engine": "bounded-snapshot",
+            "sql": "SELECT thickness_mm, mass_kg, signal_retention, required_background_reduction_pct, status FROM candidate_table ORDER BY thickness_mm",
+            "description": "Fixed-outer-interface BPE mass and 511-keV signal/background break-even screen.",
+            "tables_used": ["candidate_table"],
+            "metric_definitions": [
+              "mass_kg is raw/pre-relief analytic mass, not exact BOM",
+              "required_background_reduction_pct = 100 * (1 - signal_retention squared)"
+            ]
+          }
+        },
+        "columns": [
+          {"field": "thickness_mm", "label": "BPE (mm)", "format": "number"},
+          {"field": "mass_kg", "label": "Raw mass (kg)", "format": "number"},
+          {"field": "signal_retention", "label": "Relative S20", "format": "number"},
+          {"field": "required_background_reduction_pct", "label": "Required total-B reduction (%)", "format": "number"},
+          {"field": "status", "label": "Decision"}
+        ],
+        "defaultSort": {"field": "thickness_mm", "direction": "asc"}
+      },
+      {
+        "id": "isotope-table",
+        "title": "Current n-induced activation and selected-W2 support",
+        "dataset": "isotope_table",
+        "sourceId": "isotope-ledger",
+        "source": {
+          "id": "isotope-ledger",
+          "label": "Priority neutron isotope ledger",
+          "path": "engineering/s3d_o8_bpe_net_benefit_20260814/data/priority_neutron_isotope_ledger.csv",
+          "query": {
+            "language": "sql",
+            "engine": "bounded-snapshot",
+            "sql": "SELECT isotope, day15_Bq, selected_W2_cps, selected_Neff, hotspot FROM isotope_table ORDER BY selected_W2_cps DESC",
+            "description": "Current 20 mm geometry only; no 0 mm causal comparator.",
+            "tables_used": ["isotope_table"],
+            "metric_definitions": [
+              "day15_Bq is current-geometry inventory production",
+              "selected_W2_cps is the common-response event-weight sum",
+              "selected_Neff below two or null is non-decisive support"
+            ]
+          }
+        },
+        "columns": [
+          {"field": "isotope", "label": "Isotope"},
+          {"field": "day15_Bq", "label": "Day-15 Bq", "format": "number"},
+          {"field": "selected_W2_cps", "label": "Selected W2 (cps)", "format": "number"},
+          {"field": "selected_Neff", "label": "Neff", "format": "number"},
+          {"field": "hotspot", "label": "Current hotspot"}
+        ],
+        "defaultSort": {"field": "selected_W2_cps", "direction": "desc"}
+      }
+    ],
+    "blocks": [
+      {
+        "id": "title",
+        "type": "markdown",
+        "body": "# S3d-O8 BPE 净收益首轮判决"
+      },
+      {
+        "id": "verdict",
+        "type": "markdown",
+        "body": "## 单一判决\n\n**REMOVE**：删除 side `r=27–29,z=-24.5–46 cm`、bottom `r=0–29,z=-26.5–-24.5 cm`、top `r=0–29,z=46–48 cm` 三个 5 wt% natural-B BPE 实体；其余 geometry 冻结。解析/raw-pre-relief 质量变化 **−33.6056 kg**，Boolean-net 诊断约 −33.16 kg。它是当前证据下的工程条件最优方案，而不是已通过完整 0/20 physics promotion 的飞行定版。"
+      },
+      {
+        "id": "break-even-chart-block",
+        "type": "chart",
+        "chartId": "candidate-break-even-chart"
+      },
+      {
+        "id": "evidence-level",
+        "type": "markdown",
+        "body": "## 证据等级\n\n20 mm 的正收益证据只到 **boundary moderation / direct-Cu current proxy**。100,000 source n 中 34,031 个首次接触 BPE，22,988 个到达内表面，条件通过率 67.5502%（Wilson95 67.0508–68.0456%）。Cu-61/62 indices 为 0.88476±0.01271、0.84215±0.01026；Cu-64 为 0.89656±0.09706，不显著。没有 matched 0 mm 的 activation production、selected W2、prompt、focused S20 或 F3。"
+      },
+      {
+        "id": "candidate-table-block",
+        "type": "table",
+        "tableId": "candidate-table"
+      },
+      {
+        "id": "coupling",
+        "type": "markdown",
+        "body": "## Production 与 detector coupling\n\n当前 n inventory 为 348.222 Bq，n selected delayed W2 为 0.0236791 cps；但 active scintillator 占约 69.8% n-Bq 而无 current selected survivor，cold plates/near-TES Cu/Nb/Mu 的 W2/Bq 高得多。full delayed Neff≈28.75，frozen Neff≈12.04；Nb-89 与 Co-54 各只有一个 n survivor。因此不能把边界电流下降直接写成 selected W2 收益。"
+      },
+      {
+        "id": "isotope-table-block",
+        "type": "table",
+        "tableId": "isotope-table"
+      },
+      {
+        "id": "signal-prompt",
+        "type": "markdown",
+        "body": "## Signal 与 prompt guard\n\n权威 card 的 BPE/plastic 没有随 BGO/Al signal window 开孔；现有 focused EventList 从 post-Be plane 起算。NIST XCOM 给 20 mm BPE 的法向 narrow-line T511=0.83069；20 mm 必须把总 B 降低 >31.0% 才净改善 F3。watched-volume run 另有 3,876 条约 478 keV inward track-first-exits/100,000 source n，提示 capture-secondary 必须在 BGO/plastic veto 前后单列。"
+      },
+      {
+        "id": "blocker",
+        "type": "markdown",
+        "body": "## 唯一阻断证据与下一步\n\n只做 matched corrected-keV **0 mm vs 20 mm**：固定 plastic/BGO/Cu/Nb/Mu，比较 volume×isotope day-15 Bq、capture/prompt guard、exact-position selected W2，并从外包络之外重放各自 focused S20。预注册最终条件 `sqrt(B0/B20)/(S0/S20)<1`，且 weighted/compound-MC 单侧上界也小于 1。未通过前不做 10/30 mm 或局部重分配大扫描。"
+      }
+    ]
+  },
+  "snapshot": {
+    "version": 1,
+    "status": "ready",
+    "generatedAt": "2026-08-14T00:00:00+08:00",
+    "datasets": {
+      "candidate_trade": [
+        {"thickness_mm": 0, "metric": "signal retention", "relative_value": 1.0},
+        {"thickness_mm": 0, "metric": "background break-even", "relative_value": 1.0},
+        {"thickness_mm": 10, "metric": "signal retention", "relative_value": 0.911423},
+        {"thickness_mm": 10, "metric": "background break-even", "relative_value": 0.830691},
+        {"thickness_mm": 20, "metric": "signal retention", "relative_value": 0.830691},
+        {"thickness_mm": 20, "metric": "background break-even", "relative_value": 0.690048},
+        {"thickness_mm": 30, "metric": "signal retention", "relative_value": 0.757111},
+        {"thickness_mm": 30, "metric": "background break-even", "relative_value": 0.573217}
+      ],
+      "candidate_table": [
+        {"thickness_mm": 0, "mass_kg": 0.0, "signal_retention": 1.0, "required_background_reduction_pct": 0.0, "status": "REMOVE — selected"},
+        {"thickness_mm": 10, "mass_kg": 17.0132, "signal_retention": 0.911423, "required_background_reduction_pct": 16.9309, "status": "THIN eliminated"},
+        {"thickness_mm": 20, "mass_kg": 33.6056, "signal_retention": 0.830691, "required_background_reduction_pct": 30.9952, "status": "KEEP eliminated"},
+        {"thickness_mm": 30, "mass_kg": 49.7772, "signal_retention": 0.757111, "required_background_reduction_pct": 42.6783, "status": "THICKEN invalid: mechanics overlap"}
+      ],
+      "isotope_table": [
+        {"isotope": "Cu-62", "day15_Bq": 10.748182, "selected_W2_cps": 0.00835733, "selected_Neff": 6.0, "hotspot": "MXC anchor / L0 disk / 50mK can"},
+        {"isotope": "Cu-64", "day15_Bq": 23.044642, "selected_W2_cps": 0.00696444, "selected_Neff": 5.0, "hotspot": "near-TES Cu supports and can"},
+        {"isotope": "Cu-61", "day15_Bq": 3.208748, "selected_W2_cps": 0.00278578, "selected_Neff": 2.0, "hotspot": "MXC anchor"},
+        {"isotope": "Nb-89", "day15_Bq": 0.067316, "selected_W2_cps": 0.00139289, "selected_Neff": 1.0, "hotspot": "Nb inner cylinder"},
+        {"isotope": "Co-54", "day15_Bq": 0.067316, "selected_W2_cps": 0.00139289, "selected_Neff": 1.0, "hotspot": "MuMetal outer cylinder"},
+        {"isotope": "Y-85", "day15_Bq": 0.044878, "selected_W2_cps": 0.0, "selected_Neff": null, "hotspot": "zero survivor is not zero coupling"},
+        {"isotope": "Nb-90", "day15_Bq": 0.067316, "selected_W2_cps": 0.0, "selected_Neff": null, "hotspot": "zero survivor is not zero coupling"}
+      ]
+    }
+  },
+  "sources": [
+    {
+      "id": "bpe-report",
+      "label": "BPE 净收益完整技术报告",
+      "path": "engineering/s3d_o8_bpe_net_benefit_20260814/REPORT.md"
+    },
+    {
+      "id": "candidate-screen",
+      "label": "BPE candidate analytic screen",
+      "path": "engineering/s3d_o8_bpe_net_benefit_20260814/data/bpe_candidate_analytic_screen.csv"
+    },
+    {
+      "id": "isotope-ledger",
+      "label": "Priority neutron isotope ledger",
+      "path": "engineering/s3d_o8_bpe_net_benefit_20260814/data/priority_neutron_isotope_ledger.csv"
+    },
+    {
+      "id": "xcom",
+      "label": "NIST XCOM photon cross sections",
+      "href": "https://www.nist.gov/pml/xcom-photon-cross-sections-database"
+    }
+  ],
+  "surface": "report"
+}

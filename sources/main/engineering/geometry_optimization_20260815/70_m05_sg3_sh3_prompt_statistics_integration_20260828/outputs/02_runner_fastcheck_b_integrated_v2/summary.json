@@ -1,0 +1,647 @@
+{
+  "analysis_scenario": {
+    "disabled_catalog_event_templates": 650363,
+    "disabled_category_ids": [
+      1540
+    ],
+    "disabled_components": [
+      "atm511"
+    ],
+    "enabled_catalog_event_templates": 8702985,
+    "enabled_components": [
+      "other",
+      "gamma_continuum"
+    ],
+    "group_response_noise_gate": {
+      "adapter_scope": "multi-event groups only; singleton stored flags unchanged",
+      "anchor_nodes_checked": [
+        0,
+        20,
+        40,
+        60,
+        80
+      ],
+      "distinct_anchor_values": 5,
+      "key": "(sh3_optv3,mature_timeline,seed,node,multi_serial,pixel_code)",
+      "repeatability_mismatches": 0,
+      "status": "PASS__MODEL_B_GROUP_RESPONSE_NODE_KEYED"
+    },
+    "grouping_then_response_contract": "Poisson arrivals -> common sorted axis -> adjacent-gap <=1 us transitive groups -> raw TES/active sums -> response -> veto -> Compton",
+    "scenario_id": "M05_SECTION4_SG3_SH3_BACKGROUND_SCOPE_20260828_V2",
+    "scope_applied_at": "category_rate_matrix_before_poisson_arrivals",
+    "singleton_stored_flag_gate": {
+      "compton_keep_parity_available": true,
+      "sample_events": 8653,
+      "sample_events_with_raw_tes": 2268,
+      "sample_index_sha256": "fff80266ef596e124430b48d1510ef93675c46b57e21d2e4360b8ae8e08dd623",
+      "scope": "deterministic bounded compact-catalog sample; no SIM scan and no search over the full NPZ event axis",
+      "status": "PASS__BOUNDED_SINGLETON_STORED_FLAG_PARITY",
+      "stored_flag_provenance": "immutable catalog measured_total/active deposits/flags, with catalog audit and response-code hashes bound by the input fingerprint",
+      "windows": {
+        "broad_480_550": {
+          "final_parity_mismatches": 0,
+          "response_prefix_mismatches": 0,
+          "sample_final": 2,
+          "sample_pre_veto": 44,
+          "unknown_flag_bits": 0
+        },
+        "w2_510p58_511p42": {
+          "final_parity_mismatches": 0,
+          "response_prefix_mismatches": 0,
+          "sample_final": 0,
+          "sample_pre_veto": 23,
+          "unknown_flag_bits": 0
+        }
+      }
+    }
+  },
+  "anchors": {
+    "0": {
+      "receipt": "/home/ubuntu/TES_511_Balloon/engineering/geometry_optimization_20260815/70_m05_sg3_sh3_prompt_statistics_integration_20260828/outputs/02_runner_fastcheck_b_integrated_v2/receipts/anchor_000.json",
+      "signal_probe": {
+        "binomial_standard_error": 0.00014253690048545277,
+        "conditional_signal_accidental_survival": 0.99592,
+        "day_mid": 0.0,
+        "node": 0,
+        "one_sided_exp_minus_Rtau": 0.9977042019428934,
+        "passed": 199184,
+        "proxy_boundary": "W2-selected signal is lost by any coincident raw-TES deposit; active-only deposits from both transitive side chains are summed",
+        "sampled_neighbor_event_instances": 912,
+        "total_background_rate_cps": 2298.4374419028827,
+        "trials": 200000,
+        "two_sided_isolation_exp_minus_2Rtau": 0.9954136745745059
+      },
+      "timeline_to_direct_ratio": 0.8419878382859948,
+      "timeline_to_direct_ratio_standard_error": 0.3437400955716209
+    },
+    "20": {
+      "receipt": "/home/ubuntu/TES_511_Balloon/engineering/geometry_optimization_20260815/70_m05_sg3_sh3_prompt_statistics_integration_20260828/outputs/02_runner_fastcheck_b_integrated_v2/receipts/anchor_020.json",
+      "signal_probe": {
+        "binomial_standard_error": 0.00014974486593870225,
+        "conditional_signal_accidental_survival": 0.995495,
+        "day_mid": 5.0,
+        "node": 20,
+        "one_sided_exp_minus_Rtau": 0.9975715166888455,
+        "passed": 199099,
+        "proxy_boundary": "W2-selected signal is lost by any coincident raw-TES deposit; active-only deposits from both transitive side chains are summed",
+        "sampled_neighbor_event_instances": 993,
+        "total_background_rate_cps": 2431.4368594816056,
+        "trials": 200000,
+        "two_sided_isolation_exp_minus_2Rtau": 0.9951489309088835
+      },
+      "timeline_to_direct_ratio": 0.6555759054402737,
+      "timeline_to_direct_ratio_standard_error": 0.24778440161728002
+    },
+    "40": {
+      "receipt": "/home/ubuntu/TES_511_Balloon/engineering/geometry_optimization_20260815/70_m05_sg3_sh3_prompt_statistics_integration_20260828/outputs/02_runner_fastcheck_b_integrated_v2/receipts/anchor_040.json",
+      "signal_probe": {
+        "binomial_standard_error": 0.00014941360003359737,
+        "conditional_signal_accidental_survival": 0.995515,
+        "day_mid": 10.0,
+        "node": 40,
+        "one_sided_exp_minus_Rtau": 0.9975372182092496,
+        "passed": 199103,
+        "proxy_boundary": "W2-selected signal is lost by any coincident raw-TES deposit; active-only deposits from both transitive side chains are summed",
+        "sampled_neighbor_event_instances": 999,
+        "total_background_rate_cps": 2465.819426205338,
+        "trials": 200000,
+        "two_sided_isolation_exp_minus_2Rtau": 0.995080501712648
+      },
+      "timeline_to_direct_ratio": 0.9214281824474039,
+      "timeline_to_direct_ratio_standard_error": 0.29138117568029787
+    },
+    "60": {
+      "receipt": "/home/ubuntu/TES_511_Balloon/engineering/geometry_optimization_20260815/70_m05_sg3_sh3_prompt_statistics_integration_20260828/outputs/02_runner_fastcheck_b_integrated_v2/receipts/anchor_060.json",
+      "signal_probe": {
+        "binomial_standard_error": 0.0001499928264951356,
+        "conditional_signal_accidental_survival": 0.99548,
+        "day_mid": 15.0,
+        "node": 60,
+        "one_sided_exp_minus_Rtau": 0.9975542443666017,
+        "passed": 199096,
+        "proxy_boundary": "W2-selected signal is lost by any coincident raw-TES deposit; active-only deposits from both transitive side chains are summed",
+        "sampled_neighbor_event_instances": 1005,
+        "total_background_rate_cps": 2448.751379279226,
+        "trials": 200000,
+        "two_sided_isolation_exp_minus_2Rtau": 0.9951144704538216
+      },
+      "timeline_to_direct_ratio": 0.8374278662857918,
+      "timeline_to_direct_ratio_standard_error": 0.27914262209526397
+    },
+    "80": {
+      "receipt": "/home/ubuntu/TES_511_Balloon/engineering/geometry_optimization_20260815/70_m05_sg3_sh3_prompt_statistics_integration_20260828/outputs/02_runner_fastcheck_b_integrated_v2/receipts/anchor_080.json",
+      "signal_probe": {
+        "binomial_standard_error": 0.00014614369469806107,
+        "conditional_signal_accidental_survival": 0.99571,
+        "day_mid": 20.0,
+        "node": 80,
+        "one_sided_exp_minus_Rtau": 0.9975701165623617,
+        "passed": 199142,
+        "proxy_boundary": "W2-selected signal is lost by any coincident raw-TES deposit; active-only deposits from both transitive side chains are summed",
+        "sampled_neighbor_event_instances": 969,
+        "total_background_rate_cps": 2432.8403954115274,
+        "trials": 200000,
+        "two_sided_isolation_exp_minus_2Rtau": 0.995146137458244
+      },
+      "timeline_to_direct_ratio": 0.7500433488380657,
+      "timeline_to_direct_ratio_standard_error": 0.26518036907363174
+    }
+  },
+  "authority_boundary": {
+    "background": "derived Section-4 component scope applied before common-time generation; immutable P67 source and response products are read-only",
+    "model_A_signal": "engineering/geometry_optimization_20260815/63_m05new_sg3b_signal_statistics_20260820/outputs/01_signal/summary.json",
+    "model_A_timeline": "engineering/geometry_optimization_20260815/63_m05new_sg3b_signal_statistics_20260820/code/run_candidate_timeline.py",
+    "model_B_signal": "DEEPSEEK_CODE/outputs/05_mature_timeline_m05_fixed_20260820/summary.json",
+    "model_B_timeline": "DEEPSEEK_CODE/modified/run_mature_timeline_sh3_optv3_B.py",
+    "no_transport_or_simulation_started": true,
+    "systematics_excluded": "geometry, response-model, source-model, atmospheric, and cross-component transport systematics"
+  },
+  "candidate": "SH3_OPTV3_60cm",
+  "day15_W2_final_component_rates": {
+    "atm511": {
+      "effective_sample_size": "",
+      "rate_cps": 0.0,
+      "selected_raw": 0,
+      "sum_wi2_cps2": 0.0,
+      "transport_sigma_cps": 0.0
+    },
+    "gamma_continuum": {
+      "effective_sample_size": 11.840862540372532,
+      "rate_cps": 0.005355349386222926,
+      "selected_raw": 12,
+      "sum_wi2_cps2": 2.4221011730126847e-06,
+      "transport_sigma_cps": 0.001556310114666317
+    },
+    "other": {
+      "effective_sample_size": 21.0369557524722,
+      "rate_cps": 0.005391844924276097,
+      "selected_raw": 114,
+      "sum_wi2_cps2": 1.3819486065147739e-06,
+      "transport_sigma_cps": 0.0011755631018855492
+    },
+    "total": {
+      "effective_sample_size": 30.362953231902853,
+      "rate_cps": 0.010747194310499024,
+      "selected_raw": 126,
+      "sum_wi2_cps2": 3.8040497795274586e-06,
+      "transport_sigma_cps": 0.001950397338884428
+    }
+  },
+  "day15_product_schema": {
+    "closure_checks": [
+      "direct cutflow component rows=direct stats for selected_raw/sumw/sumw2",
+      "spectrum prompt+delayed=all for selected_raw/sumw/sumw2",
+      "spectrum named components=all for selected_raw/sumw/sumw2",
+      "spectrum broad histogram totals=direct cutflow",
+      "multiplicity named components=all for selected_raw/sumw/sumw2",
+      "multiplicity broad/W2 histogram totals=direct cutflow"
+    ],
+    "closure_status": "PASS__DAY15_PRODUCTS_ADDITIVE_CUTFLOW_CLOSED",
+    "direct_cutflow_day15.csv": {
+      "grain": "stream x family x component x window_id x stage",
+      "stages": [
+        "pre_veto",
+        "plastic_positron_veto",
+        "bgo_active_scintillator_veto",
+        "combined_active_veto",
+        "compton_trajectory_veto"
+      ],
+      "windows": [
+        "broad_480_550",
+        "w2_510p58_511p42"
+      ]
+    },
+    "direct_hit_multiplicity_day15.csv": {
+      "components": [
+        "all",
+        "other",
+        "gamma_continuum",
+        "atm511"
+      ],
+      "grain": "window_id x stage x component x retained hit_multiplicity",
+      "rows": 300,
+      "stages": [
+        "pre_veto",
+        "plastic_positron_veto",
+        "bgo_active_scintillator_veto",
+        "combined_active_veto",
+        "compton_trajectory_veto"
+      ],
+      "windows": [
+        "broad_480_550",
+        "w2_510p58_511p42"
+      ]
+    },
+    "direct_measured_energy_day15_0p25keV.csv": {
+      "components": [
+        "all",
+        "other",
+        "gamma_continuum",
+        "atm511"
+      ],
+      "energy_bin_width_keV": 0.25,
+      "energy_range_keV": [
+        480.0,
+        550.0
+      ],
+      "grain": "stage x stream x component x 0.25-keV energy bin",
+      "rows": 10080,
+      "stages": [
+        "pre_veto",
+        "combined_active_veto",
+        "compton_trajectory_veto"
+      ],
+      "streams": [
+        "all",
+        "prompt",
+        "delayed"
+      ]
+    },
+    "schema_version": 2
+  },
+  "elapsed_s": 3.5937340259552,
+  "input_fingerprint": {
+    "analysis_scenario": {
+      "disabled_catalog_event_templates": 650363,
+      "disabled_category_ids": [
+        1540
+      ],
+      "disabled_components": [
+        "atm511"
+      ],
+      "enabled_catalog_event_templates": 8702985,
+      "enabled_components": [
+        "other",
+        "gamma_continuum"
+      ],
+      "group_response_noise_gate": {
+        "adapter_scope": "multi-event groups only; singleton stored flags unchanged",
+        "anchor_nodes_checked": [
+          0,
+          20,
+          40,
+          60,
+          80
+        ],
+        "distinct_anchor_values": 5,
+        "key": "(sh3_optv3,mature_timeline,seed,node,multi_serial,pixel_code)",
+        "repeatability_mismatches": 0,
+        "status": "PASS__MODEL_B_GROUP_RESPONSE_NODE_KEYED"
+      },
+      "grouping_then_response_contract": "Poisson arrivals -> common sorted axis -> adjacent-gap <=1 us transitive groups -> raw TES/active sums -> response -> veto -> Compton",
+      "scenario_id": "M05_SECTION4_SG3_SH3_BACKGROUND_SCOPE_20260828_V2",
+      "scope_applied_at": "category_rate_matrix_before_poisson_arrivals",
+      "singleton_stored_flag_gate": {
+        "compton_keep_parity_available": true,
+        "sample_events": 8653,
+        "sample_events_with_raw_tes": 2268,
+        "sample_index_sha256": "fff80266ef596e124430b48d1510ef93675c46b57e21d2e4360b8ae8e08dd623",
+        "scope": "deterministic bounded compact-catalog sample; no SIM scan and no search over the full NPZ event axis",
+        "status": "PASS__BOUNDED_SINGLETON_STORED_FLAG_PARITY",
+        "stored_flag_provenance": "immutable catalog measured_total/active deposits/flags, with catalog audit and response-code hashes bound by the input fingerprint",
+        "windows": {
+          "broad_480_550": {
+            "final_parity_mismatches": 0,
+            "response_prefix_mismatches": 0,
+            "sample_final": 2,
+            "sample_pre_veto": 44,
+            "unknown_flag_bits": 0
+          },
+          "w2_510p58_511p42": {
+            "final_parity_mismatches": 0,
+            "response_prefix_mismatches": 0,
+            "sample_final": 0,
+            "sample_pre_veto": 23,
+            "unknown_flag_bits": 0
+          }
+        }
+      }
+    },
+    "candidate": "SH3_OPTV3_60cm",
+    "catalog_categories": 1541,
+    "catalog_events": 9353348,
+    "catalog_hits": 1299094,
+    "catalog_npz": {
+      "arrays": {
+        "bgo_keV": {
+          "dtype": "float32",
+          "shape": [
+            9353348
+          ]
+        },
+        "broad_flags": {
+          "dtype": "uint8",
+          "shape": [
+            9353348
+          ]
+        },
+        "compton_keep": {
+          "dtype": "uint8",
+          "shape": [
+            9353348
+          ]
+        },
+        "continuum_importance_weight": {
+          "dtype": "float64",
+          "shape": [
+            9353348
+          ]
+        },
+        "event_base_weight_cps": {
+          "dtype": "float64",
+          "shape": [
+            9353348
+          ]
+        },
+        "event_category": {
+          "dtype": "uint16",
+          "shape": [
+            9353348
+          ]
+        },
+        "event_component": {
+          "dtype": "uint8",
+          "shape": [
+            9353348
+          ]
+        },
+        "hit_code": {
+          "dtype": "int32",
+          "shape": [
+            1299094
+          ]
+        },
+        "hit_count": {
+          "dtype": "uint16",
+          "shape": [
+            9353348
+          ]
+        },
+        "hit_energy_keV": {
+          "dtype": "float32",
+          "shape": [
+            1299094
+          ]
+        },
+        "hit_layer": {
+          "dtype": "uint8",
+          "shape": [
+            1299094
+          ]
+        },
+        "hit_start": {
+          "dtype": "int64",
+          "shape": [
+            9353348
+          ]
+        },
+        "hit_x_cm": {
+          "dtype": "float32",
+          "shape": [
+            1299094
+          ]
+        },
+        "hit_y_cm": {
+          "dtype": "float32",
+          "shape": [
+            1299094
+          ]
+        },
+        "hit_z_cm": {
+          "dtype": "float32",
+          "shape": [
+            1299094
+          ]
+        },
+        "measured_total_keV": {
+          "dtype": "float32",
+          "shape": [
+            9353348
+          ]
+        },
+        "plastic_keV": {
+          "dtype": "float32",
+          "shape": [
+            9353348
+          ]
+        },
+        "source_bin80": {
+          "dtype": "uint8",
+          "shape": [
+            9353348
+          ]
+        },
+        "w2_flags": {
+          "dtype": "uint8",
+          "shape": [
+            9353348
+          ]
+        }
+      },
+      "bytes": 60317997,
+      "mtime_ns": 1787934940293250978,
+      "path": "/home/ubuntu/TES_511_Balloon/engineering/geometry_optimization_20260815/70_m05_sg3_sh3_prompt_statistics_integration_20260828/outputs/01_integrated_catalog_b/combined_event_catalog.npz"
+    },
+    "component_event_counts": {
+      "atm511": 650363,
+      "gamma_continuum": 4189660,
+      "other": 4513325
+    },
+    "continuum_weight_contract": "PASS__event_base_weight_equals_proposal_times_importance__importance_not_applied_again",
+    "file_sha256": {
+      "/home/ubuntu/TES_511_Balloon/engineering/geometry_optimization_20260815/70_m05_sg3_sh3_prompt_statistics_integration_20260828/code/run_section4_common_axis.py": "9a50306da18c7ec2678135627067a575931390c1ab4005d7106cdc403f2ad8d8",
+      "/home/ubuntu/TES_511_Balloon/engineering/geometry_optimization_20260815/70_m05_sg3_sh3_prompt_statistics_integration_20260828/outputs/01_integrated_catalog_b/audit.json": "93a284d4fe9014a9e162824014c3807bb0206253d7bc6028c1934a29e71ca9a8",
+      "/home/ubuntu/TES_511_Balloon/engineering/geometry_optimization_20260815/70_m05_sg3_sh3_prompt_statistics_integration_20260828/outputs/01_integrated_catalog_b/category_registry.json": "b747a4d06f07bd25c2de7d6b1b61b362d466489904ecd1a7a9fd96f181e36383",
+      "/home/ubuntu/TES_511_Balloon/engineering/geometry_optimization_20260815/70_m05_sg3_sh3_prompt_statistics_integration_20260828/outputs/01_integrated_catalog_b/summary.json": "bd4ebc1f736b398a6dbb699270f211dcec55c60710323ff95b0ad07e8d7bc321",
+      "/media/ubuntu/903261CE3261BA3C/TES_Balloon_511_data/SH3/sh3_optv3_m05_delayed_activation_v1/generated/activation/manifest.json": "7b44224ee28d206c946b3ca36dd374f0f9766796e0308232c23eda383cfbf23c",
+      "DEEPSEEK_CODE/modified/analysis_inputs_optv3_B.json": "e2780f3ff5fa85f45403661ac939eaa94331daa6dfa79fe62a062229bce84d53",
+      "DEEPSEEK_CODE/modified/build_event_catalog_sh3_step05.py": "f6d968e8804ed3b64e127786da9c376502d2c7bb85405a7949a8c1c4bb80b401",
+      "DEEPSEEK_CODE/modified/run_mature_timeline_sh3_optv3_B.py": "66561291e2f1a10658519860486b5c2b24ce55a62f9bb2d4c932635dbe61d8a8",
+      "DEEPSEEK_CODE/modified/step05_side_compton.py": "c6d98aedbd08500d15d9e65062df76c20de9b13464378c7a09d3860ea2dc5622",
+      "DEEPSEEK_CODE/outputs/05_mature_timeline_m05_fixed_20260820/summary.json": "a9511504391e85206fac1d88c88d16bc6c3fcfb968661ceca3a30027be4b5006",
+      "engineering/geometry_optimization_20260704/43_geoopt_s3d_o8_fallback_20260712/fullchain/step06/atmosphere_transmission_511_by_time.csv": "c73f52c2675fa49cf7424cb552a28afcce4cab1bd4acdc239d3762ce0c581a02",
+      "engineering/geometry_optimization_20260815/58_sg3b_m05_common_time_response_20260817/code/analyze_sg3b_common_time.py": "ebdf710b37ea65bc9d7186f712a03285c193e83745acbd2bae841af906facaba",
+      "engineering/geometry_optimization_20260815/67_m05_mono511_flux_closure_20260823/code/run_fluxclosed_timeline.py": "dcffe0e4994352de65c898bcd68fec174e84eb264d72b3ef67832f917db4c864",
+      "engineering/geometry_optimization_20260815/67_m05_mono511_flux_closure_20260823/outputs/00_source_closure/mono511_target_81x80.csv": "92ee53428dceb36f4d6c1eb0b7efd72ad239dd233f25af73618aa654ee6cdd90",
+      "engineering/geometry_optimization_20260815/67_m05_mono511_flux_closure_20260823/outputs/00_source_closure/source_closure.json": "acfa91b0cfc36b6492e218a9164473cef51f2cca2c47a186d45ec96f5983cbae",
+      "engineering/geometry_optimization_20260815/67_m05_mono511_flux_closure_20260823/outputs/00_source_closure/trajectory_component_scales_81nodes.csv": "e72d4707be4fcb4b54ebf304a6dcb61748198326c8858f987264c864cc7f42fa",
+      "engineering/particle_source_unit_repair_20260811/m05_corrected_reanalysis_20260813/data/parma_energy_integrated_family_scales_81bins.csv": "b9f955e2172809fb6867d8b983481cc015889787fd155bec8cb5aa4139f66eb4"
+    },
+    "model": "b",
+    "parameters": {
+      "analysis_scenario_id": "M05_SECTION4_SG3_SH3_BACKGROUND_SCOPE_20260828_V2",
+      "anchor_time_bin_ids": [
+        0,
+        20,
+        40,
+        60,
+        80
+      ],
+      "chunk_events": 1000000,
+      "coincidence_window_s": 1e-06,
+      "exposure_s_per_anchor": 1000.0,
+      "seed": 2026081802,
+      "signal_probe_trials_per_anchor": 200000
+    },
+    "schema_version": 1
+  },
+  "input_fingerprint_sha256": "e14d7c29eedf9d6221f8e19e33c4a7a449f34ea0df3b66904ebbd80b7a37a3e7",
+  "method": {
+    "arrival_process": "chronological exponential inter-arrivals at the exact summed event-level physical rate",
+    "component_scope": "fixed in the category-rate matrix before Poisson arrival generation",
+    "continuum_scale": "trajectory_component_scales_81nodes.csv gamma_continuum_scale_to_reference, verified node-by-node equal to scale_gamma_to_parma_reference",
+    "delayed_scale": "exact isotope-resolved activity curve divided by its day15 activity, using the retained NUBASE-corrected activation manifest",
+    "event_mark_law": "ordinary categories use validated constant within-category weights; the broadband gamma continuum uses exact rejection sampling from its event-level physical weights; only enabled categories enter the common Poisson axis",
+    "grouping": "adjacent gaps <=1 microsecond form transitive groups; raw TES pixels, plastic, and BGO are combined before response/veto/Compton",
+    "transport_uncertainty": "true event-level sum(W_i^2); mission weights for each finite transport template are integrated before squaring"
+  },
+  "mission_final_20day": {
+    "Fmin_3sigma_gaussian_ph_cm2_s": 2.1824546800263566e-05,
+    "Fmin_3sigma_poisson_asimov_ph_cm2_s": 2.1913736454556716e-05,
+    "Fmin_5sigma_gaussian_ph_cm2_s": 3.637424466710594e-05,
+    "Fmin_5sigma_poisson_asimov_ph_cm2_s": 3.6621660656226944e-05,
+    "T_atm_511_slant45": 0.6520342542373311,
+    "conditional_signal_Aeff_cm2": 15.085439999999998,
+    "conditional_signal_accidental_survival": 0.99571,
+    "conditional_signal_kernel_cm2": 9.794026220911164,
+    "cumulative_atm511_background_counts": 0.0,
+    "cumulative_atm511_sum_W_i2_counts2": 0.0,
+    "cumulative_background_counts": 14908.461634094258,
+    "cumulative_gamma_continuum_background_counts": 7512.923756111315,
+    "cumulative_gamma_continuum_sum_W_i2_counts2": 4766884.437066182,
+    "cumulative_other_background_counts": 7395.537877982946,
+    "cumulative_other_sum_W_i2_counts2": 2666522.62901501,
+    "cumulative_signal_counts_per_unit_flux": 16783882.73888507,
+    "cumulative_transport_effective_sample_size": 29.90045161248443,
+    "cumulative_transport_sigma_counts": 2726.427528118287,
+    "cumulative_transport_sum_W_i2_counts2": 7433407.066081191,
+    "day_mid": 20.0,
+    "direct_W2_final_no_coincidence_cps": 0.01066605018549028,
+    "direct_atm511_cps": 0.0,
+    "direct_atm511_sum_W_i2_cps2": 0.0,
+    "direct_gamma_continuum_cps": 0.005322568508205347,
+    "direct_gamma_continuum_sum_W_i2_cps2": 2.3925398532367394e-06,
+    "direct_other_cps": 0.005343481677284931,
+    "direct_other_sum_W_i2_cps2": 1.3582828931256585e-06,
+    "direct_sum_W_i2_cps2": 3.750822746362398e-06,
+    "direct_transport_effective_sample_size": 30.33057924950674,
+    "direct_transport_sigma_cps": 0.0019367040936504466,
+    "interpolated_background_timeline_ratio": 0.7500433488380657,
+    "mature_background_W2_final_cps": 0.008,
+    "mature_background_sum_W_i2_cps2": 2.110081692588869e-06,
+    "time_bin_id": 80
+  },
+  "mission_transport_components": {
+    "atm511": {
+      "component": "atm511",
+      "integrated_background_counts": 0.0,
+      "mission_day": 20.0,
+      "model": "b",
+      "selected_raw": 0,
+      "sum_W_i2_counts2": 0.0,
+      "transport_effective_sample_size": "",
+      "transport_sigma_counts": 0.0
+    },
+    "gamma_continuum": {
+      "component": "gamma_continuum",
+      "integrated_background_counts": 7512.923756111315,
+      "mission_day": 20.0,
+      "model": "b",
+      "selected_raw": 12,
+      "sum_W_i2_counts2": 4766884.437066182,
+      "transport_effective_sample_size": 11.84086254037253,
+      "transport_sigma_counts": 2183.319591142392
+    },
+    "other": {
+      "component": "other",
+      "integrated_background_counts": 7395.537877982946,
+      "mission_day": 20.0,
+      "model": "b",
+      "selected_raw": 114,
+      "sum_W_i2_counts2": 2666522.62901501,
+      "transport_effective_sample_size": 20.511350591794518,
+      "transport_sigma_counts": 1632.94905891611
+    },
+    "total": {
+      "component": "total",
+      "integrated_background_counts": 14908.461634094261,
+      "mission_day": 20.0,
+      "model": "b",
+      "selected_raw": 126,
+      "sum_W_i2_counts2": 7433407.066081191,
+      "transport_effective_sample_size": 29.90045161248443,
+      "transport_sigma_counts": 2726.427528118287
+    }
+  },
+  "model": "b",
+  "outputs": [
+    "anchor_timeline_rates.csv",
+    "anchor_transport_components.csv",
+    "mission_timeline_81nodes.csv",
+    "mission_transport_components.csv",
+    "direct_cutflow_day15.csv",
+    "direct_measured_energy_day15_0p25keV.csv",
+    "direct_hit_multiplicity_day15.csv",
+    "summary.json"
+  ],
+  "run_parameters": {
+    "analysis_scenario_id": "M05_SECTION4_SG3_SH3_BACKGROUND_SCOPE_20260828_V2",
+    "anchor_time_bin_ids": [
+      0,
+      20,
+      40,
+      60,
+      80
+    ],
+    "chunk_events": 1000000,
+    "coincidence_window_s": 1e-06,
+    "exposure_s_per_anchor": 1000.0,
+    "seed": 2026081802,
+    "signal_probe_trials_per_anchor": 200000
+  },
+  "schema_version": 3,
+  "signal_proxy": {
+    "aeff_cm2": 15.085439999999998,
+    "aeff_sigma_cm2": 0.045029592386366724,
+    "authority": "DEEPSEEK_CODE/outputs/05_mature_timeline_m05_fixed_20260820/summary.json",
+    "input_rays": 37194,
+    "optical_aperture_cm2": 20.08476,
+    "scope": "current SH3 OptV3-B focal-z=-2.8 37,194-ray signal",
+    "stage_count": 27936
+  },
+  "statistical_uncertainty": {
+    "Fmin": {
+      "Fmin_3sigma_gaussian_ph_cm2_s": {
+        "relative_standard_error": 0.12226180825302833,
+        "standard_error": 2.668308556103067e-06,
+        "value": 2.1824546800263566e-05
+      },
+      "Fmin_3sigma_poisson_asimov_ph_cm2_s": {
+        "relative_standard_error": 0.12176550303127821,
+        "standard_error": 2.6683371426839577e-06,
+        "value": 2.1913736454556716e-05
+      },
+      "Fmin_5sigma_gaussian_ph_cm2_s": {
+        "relative_standard_error": 0.12226180825302833,
+        "standard_error": 4.447180926838445e-06,
+        "value": 3.637424466710594e-05
+      },
+      "Fmin_5sigma_poisson_asimov_ph_cm2_s": {
+        "relative_standard_error": 0.12143906778653647,
+        "standard_error": 4.44730033088708e-06,
+        "value": 3.6621660656226944e-05
+      }
+    },
+    "background_combined_relative_sigma": 0.2444506887824837,
+    "background_combined_sigma_counts": 3644.3837151415737,
+    "background_timeline_replay_sigma_counts": 2418.2898083372697,
+    "background_transport_MC_sigma_counts": 2726.427528118287,
+    "model": "event-level finite-template sum(W_i^2), independent anchor replay Poisson terms, signal-Aeff binomial term, and accidental-probe binomial terms; each transport template is fully correlated over the 81 mission nodes",
+    "signal_Aeff_relative_sigma": 0.002984970434164779,
+    "signal_Aeff_sigma_cm2": 0.045029592386366724,
+    "signal_accidental_probe_relative_sigma": 6.998035262855104e-05,
+    "signal_accidental_probe_sigma_counts_per_unit_flux": 1174.5420325434284,
+    "signal_combined_relative_sigma": 0.0029857906394440796
+  },
+  "status": "PASS__M05_SECTION4_COMMON_TIME_TIMELINE"
+}

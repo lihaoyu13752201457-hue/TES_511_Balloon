@@ -1,0 +1,97 @@
+{
+  "status": "PASS__TWO_NON_MANUSCRIPT_BPE_FACTOR1000_EXPLAINER_FIGURES",
+  "scope": "Mechanism illustration only; no manuscript integration and no new transport.",
+  "current_case": {
+    "description": "Accepted corrected-keV, 20-bin integrated, 20 mm 5 wt% BPE boundary transport.",
+    "population": "all boundary crossings, including secondary neutrons and repeated crossings",
+    "cu_fold": "event-wise current indices for E<=100 MeV"
+  },
+  "factor1000_case": {
+    "transform": "E_old = E_current / 1000; dJ/dlog10(E) unchanged",
+    "post_bpe_status": "attenuation-only screening proxy; not a transported output spectrum",
+    "proxy_definition": "piecewise multiplication by corrected-run primary first-passage reach fraction",
+    "energy_redistribution": "not represented",
+    "uncertainty": "not assigned"
+  },
+  "transmission_proxy": [
+    {
+      "range": "E<=0.5 eV",
+      "reach_fraction": 0.0161
+    },
+    {
+      "range": "0.5 eV<E<100 keV",
+      "reach_fraction": 0.2781
+    },
+    {
+      "range": "0.1<=E<1 MeV",
+      "reach_fraction": 0.5994
+    },
+    {
+      "range": "1<=E<10 MeV",
+      "reach_fraction": 0.7609
+    },
+    {
+      "range": "10<=E<20 MeV",
+      "reach_fraction": 0.8083
+    },
+    {
+      "range": "20<=E<39 MeV",
+      "reach_fraction": 0.8133
+    },
+    {
+      "range": "E>=39 MeV",
+      "reach_fraction": 0.8555
+    }
+  ],
+  "cross_sections": {
+    "library": "G4NDL4.5",
+    "natural_abundance": {
+      "Cu63": 0.6915,
+      "Cu65": 0.3085
+    },
+    "fold_range": "0<E<=100 MeV",
+    "products": {
+      "Cu61": [
+        "63Cu(n,3n)",
+        "65Cu(n,5n)"
+      ],
+      "Cu62": [
+        "63Cu(n,2n)",
+        "65Cu(n,4n)"
+      ],
+      "Cu64": [
+        "63Cu(n,gamma)",
+        "65Cu(n,2n)"
+      ]
+    },
+    "note": "Cu64 is a mixed beta+/EC/beta- decay product; the figure is not beta+-branch weighted."
+  },
+  "corrected_kernel_closure_factors": {
+    "Cu61:input": 0.9973026695058568,
+    "Cu61:output": 0.9986862498772568,
+    "Cu62:input": 1.0014118244617418,
+    "Cu62:output": 0.9996758753637538,
+    "Cu64:input": 1.007679353948312,
+    "Cu64:output": 0.9891161815579328
+  },
+  "inputs": {
+    "/home/ubuntu/.codex/worktrees/ebb2/TES_511_Balloon/engineering/particle_source_unit_repair_20260811/bpe_neutron_boundary_20260813/outputs/boundary_spectrum.csv": "8bdbe5567e6d4de91b9bea8a50357671415f07bd1d68335faed3a8f5b846bd4c",
+    "/home/ubuntu/.codex/worktrees/ebb2/TES_511_Balloon/engineering/particle_source_unit_repair_20260811/bpe_neutron_boundary_20260813/outputs/cu_reaction_fold.csv": "3301b3da77be417a5da5f934de57544190c5ea1ebb51cc983eaabbc7e74f3acc",
+    "/home/ubuntu/.codex/worktrees/ebb2/TES_511_Balloon/engineering/particle_source_unit_repair_20260811/bpe_neutron_boundary_20260813/outputs/summary.json": "1fd18d239a1aa60409ae3fd82cdce93fa027f800ef7bd6b7d00f23ecc75c2eb3",
+    "/home/ubuntu/.codex/worktrees/ebb2/TES_511_Balloon/engineering/geometry_optimization_20260704/39_mass511_to_s3_html_presentation_20260710/data/bpe_evidence_summary.json": "9802bf48bb41df5aebddd2ae4c8e5bf1004dc1a42679b022704227f293952b57",
+    "/home/ubuntu/MEGAlib_Install/megalib-main/external/geant4_v10.02.p03/share/Geant4-10.2.3/data/G4NDL4.5/IsotopeProduction/CrossSection/29_63_Copper": "d210649a2c64bfce3832d575e080426fbc5753bf3331f81a15f0bea4a3b2764c",
+    "/home/ubuntu/MEGAlib_Install/megalib-main/external/geant4_v10.02.p03/share/Geant4-10.2.3/data/G4NDL4.5/IsotopeProduction/CrossSection/29_65_Copper": "0db1076cb10f9036b4940c5c4784a5c2e355dbdb6c8ca849cca2f1303c5d4174",
+    "/home/ubuntu/MEGAlib_Install/megalib-main/external/geant4_v10.02.p03/share/Geant4-10.2.3/data/G4NDL4.5/Capture/CrossSection/29_63_Copper.z": "564449c74ed9e9685ffe72c3f10a33f76ff594a7bceaf4e7c15699d134c28aae"
+  },
+  "outputs": [
+    "figure_1_bpe_neutron_spectra_current_vs_factor1000.png",
+    "figure_1_bpe_neutron_spectra_current_vs_factor1000.pdf",
+    "figure_2_natural_cu_beta_plus_overlap.png",
+    "figure_2_natural_cu_beta_plus_overlap.pdf",
+    "spectra_for_figures.csv",
+    "cu_kernel_for_figures.csv",
+    "integrated_cu_indices.csv",
+    "natural_cu_cross_sections.csv"
+  ],
+  "historical_full_stack_caveat": "The historical S3 comparison includes BPE, plastic, CsI and geometry changes. It is used only as qualitative context, not as a BPE-only causal estimate."
+}

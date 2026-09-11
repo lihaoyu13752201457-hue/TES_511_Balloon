@@ -1,0 +1,78 @@
+{
+  "bad_lines": [],
+  "check_for_overlaps": {
+    "samples": 10000,
+    "tolerance_cm": 0.0001
+  },
+  "checks": {
+    "authority_current": true,
+    "beam_on_absent": true,
+    "cosima_returncode_zero": true,
+    "event_payload_absent": true,
+    "exact_overlap_directive": true,
+    "geant4_constructed": true,
+    "generated_particle_summary_absent": true,
+    "geometry_stage12_complete": true,
+    "interactive_idle_exit_seen": true,
+    "overlap_bad_lines_absent": true,
+    "transport_markers_absent": true
+  },
+  "command": [
+    "/home/ubuntu/MEGAlib_Install/megalib-main/bin/cosima",
+    "-i",
+    "-u",
+    "/tmp/sh3_assembly_overlap_x3e0x14b/assembly_overlap_no_transport.source"
+  ],
+  "component_identity": "SH3_Chimney_DR_Assembly",
+  "evidence_role": "Full assembled geometry construction/overlap audit only; no physics claim.",
+  "finished_at_utc": "2026-08-18T08:57:04.927129+00:00",
+  "initialized_sim_artifacts": [
+    {
+      "bytes": 21,
+      "event_record_line_count": 0,
+      "path": "/tmp/sh3_assembly_overlap_x3e0x14b/parser_init_empty.inc1.id1.sim",
+      "sha256": "591f66cb6424c0d5199568557d5355749631ad517f9e03afac02b8596280af6b"
+    }
+  ],
+  "log": {
+    "bytes": 4408,
+    "line_count": 105,
+    "path": "/home/ubuntu/TES_511_Balloon/engineering/geometry_optimization_20260815/sh3/assembly/audit/assembly_overlap_cosima.log",
+    "sha256": "1d8ca36d137d4125829739e4aefa8a19c941ed6570b959cf95d22bec4b04b668"
+  },
+  "returncode": 0,
+  "source_authority": {
+    "Materials_SH3_Assembly.geo": {
+      "bytes": 2065,
+      "manifest_sha256": "56f6c2b58f072f4350a1fed8707490ed4f0b196769a9a4e22e0acb2ebe58ae0a",
+      "path": "/home/ubuntu/TES_511_Balloon/engineering/geometry_optimization_20260815/sh3/assembly/geometry/Materials_SH3_Assembly.geo",
+      "sha256": "56f6c2b58f072f4350a1fed8707490ed4f0b196769a9a4e22e0acb2ebe58ae0a"
+    },
+    "SH3_Assembly.det": {
+      "bytes": 3103,
+      "manifest_sha256": "12d3a6831f3d00da6668f48487e5d83f7a0354419fdec75cfec211b28373cae9",
+      "path": "/home/ubuntu/TES_511_Balloon/engineering/geometry_optimization_20260815/sh3/assembly/geometry/SH3_Assembly.det",
+      "sha256": "12d3a6831f3d00da6668f48487e5d83f7a0354419fdec75cfec211b28373cae9"
+    },
+    "SH3_Assembly.geo": {
+      "bytes": 421356,
+      "manifest_sha256": "fec3b0ef3aa13d6f86342f3472828efe4c6f5b5588ea7557a78564aed7fbc617",
+      "path": "/home/ubuntu/TES_511_Balloon/engineering/geometry_optimization_20260815/sh3/assembly/geometry/SH3_Assembly.geo",
+      "sha256": "fec3b0ef3aa13d6f86342f3472828efe4c6f5b5588ea7557a78564aed7fbc617"
+    },
+    "SH3_Assembly.geo.setup": {
+      "bytes": 119,
+      "manifest_sha256": "8b5a777fd0a6b719b2d7b9d59bc31eb7aa21a9fc8f5a99f7e9ef066b598b7c8b",
+      "path": "/home/ubuntu/TES_511_Balloon/engineering/geometry_optimization_20260815/sh3/assembly/geometry/SH3_Assembly.geo.setup",
+      "sha256": "8b5a777fd0a6b719b2d7b9d59bc31eb7aa21a9fc8f5a99f7e9ef066b598b7c8b"
+    }
+  },
+  "source_card": {
+    "sha256": "14331f1af3e3072e76c11dd1ce471edef7d93abd5c6b87081bef4988de630871",
+    "text": "Version 1\nGeometry /home/ubuntu/TES_511_Balloon/engineering/geometry_optimization_20260815/sh3/assembly/geometry/SH3_Assembly.geo.setup\nCheckForOverlaps 10000 0.0001\nPhysicsListEM LivermorePol\nStoreSimulationInfo init-only\n\n# Parser scaffold only; interactive mode exits before StartBeam.\nRun AssemblyGeometryOnly\nAssemblyGeometryOnly.FileName /tmp/sh3_assembly_overlap_x3e0x14b/parser_init_empty\nAssemblyGeometryOnly.NEvents 1\nAssemblyGeometryOnly.Source AssemblyGeometryOnlySource\nAssemblyGeometryOnlySource.ParticleType 1\nAssemblyGeometryOnlySource.Beam PointSource 0 0 0\nAssemblyGeometryOnlySource.Spectrum Mono 511\nAssemblyGeometryOnlySource.Flux 1.0\n"
+  },
+  "started_at_utc": "2026-08-18T08:56:03.378453+00:00",
+  "status": "PASS__SH3_ASSEMBLY_OVERLAP_NO_TRANSPORT",
+  "transport_launched": false,
+  "transport_lines": []
+}

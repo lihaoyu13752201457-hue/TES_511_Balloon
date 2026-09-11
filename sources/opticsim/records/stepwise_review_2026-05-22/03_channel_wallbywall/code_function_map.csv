@@ -1,0 +1,13 @@
+file,line,symbol,role,review_focus
+external_baseline/channel_raytrace_py/geometry.py,75,load_channel_config,读取 CAM511 public geometry YAML。,四环半径、长度、弯角、W/Si 厚度。
+external_baseline/channel_raytrace_py/parratt_reflectivity.py,90,compute_reflectivity_rows,用 xraydb multilayer reflectivity 生成 R/A/T(theta)。,511 keV、W/Si 30/150 nm、roughness。
+external_baseline/channel_raytrace_py/parratt_reflectivity.py,142,manual_parratt_reflectivity_s,独立 Parratt recursion 交叉核验。,不要只相信一个库函数。
+external_baseline/channel_raytrace_py/wallbywall_channel.py,86,simulate_wallbywall_channel,主 Monte Carlo loop：采样入口、trace、汇总 history。,没有输入固定反射次数。
+external_baseline/channel_raytrace_py/wallbywall_channel.py,325,_sample_entrance,按 ring 面积和 W/Si 周期采样入口点。,W 层 entry blocked，Si spacer 才进入。
+external_baseline/channel_raytrace_py/wallbywall_channel.py,399,_trace_one_event,在弯曲 channel 内逐墙求交、查 R/A/T、反射/吸收/泄漏。,反射次数由几何自然产生。
+external_baseline/channel_raytrace_py/wallbywall_channel.py,628,_next_wall_hit,解二次方程找下一次撞墙位置。,弯曲项和正根选择。
+external_baseline/channel_raytrace_py/wallbywall_channel.py,662,_global_position_direction,把局部 channel 坐标转为全局 x/y/z 和方向。,焦平面投影和 ring/tile 方位。
+external_baseline/channel_raytrace_py/wallbywall_channel.py,125,summarize_wallbywall,计算 transmissivity、Aeff、D90、bounce/grazing-angle 统计。,性能数值的来源。
+analysis/run_channel_wallbywall_rebuild.py,23,main,CLI runner，连接 config、reflectivity table 和 wall-by-wall 核心。,默认是否含 Si path absorption。
+analysis/build_channel_independent_closure.py,121,optical_constant_checks,低能 CXRO/Henke 范围和 511 keV electron-density/xraydb 检查。,光学常数闭合边界。
+analysis/build_channel_independent_closure.py,184,run_wallbywall_variant,扫描 roughness 和 Si path absorption 的 no-fudge variants。,与 CAM511 0.80 headline 的差距来自哪里。

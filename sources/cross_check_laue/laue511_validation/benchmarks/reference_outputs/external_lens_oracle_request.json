@@ -1,0 +1,109 @@
+{
+  "comparison_targets": {
+    "current_opticsim_observed_diffracted_area_cm2": 0.5684893167746538,
+    "current_opticsim_spot_d90_cm": 0.21941501207548417,
+    "geometric_area_cm2": 2.3040000000000003,
+    "python_reference_diffracted_area_cm2": 0.566854076473241
+  },
+  "coordinate_convention": {
+    "focal_plane_z_mm": 8300.0,
+    "incident_direction": "+z",
+    "lens_entry_z_mm": "approximately -thickness_mm/2 per tile in current opticsim output",
+    "source": "parallel on-axis 480-550 keV photons, one design energy per ring"
+  },
+  "physics": {
+    "crystal_shape": "flat mosaic tile",
+    "crystallite_thickness_um": 5.0,
+    "hkl": [
+      1,
+      1,
+      1
+    ],
+    "material": "Ge",
+    "mosaic_fwhm_arcsec": 30.0
+  },
+  "purpose": "external_full_lens_oracle_request",
+  "requested_hit_table_schema": "EXTERNAL_LENS_HITS_SCHEMA.md",
+  "requested_lens_observables": [
+    {
+      "metric": "diffracted_area_cm2",
+      "scope": "lens",
+      "unit": "cm2"
+    },
+    {
+      "metric": "spot_d90_cm",
+      "scope": "lens",
+      "unit": "cm"
+    }
+  ],
+  "requested_observables_schema": "EXTERNAL_LENS_OBSERVABLES_SCHEMA.md",
+  "requested_tile_table": "external_lens_oracle_tiles.csv",
+  "rings": [
+    {
+      "d_spacing_A": 3.266590088,
+      "design_energy_keV": 480.0,
+      "h": 1,
+      "k": 1,
+      "l": 1,
+      "material": "Ge",
+      "n_tiles": 72,
+      "radius_mm": 65.644327,
+      "ring_id": 0,
+      "thickness_mm": 9.452263,
+      "tile_size_mm": 0.8
+    },
+    {
+      "d_spacing_A": 3.266590088,
+      "design_energy_keV": 500.0,
+      "h": 1,
+      "k": 1,
+      "l": 1,
+      "material": "Ge",
+      "n_tiles": 72,
+      "radius_mm": 63.018438,
+      "ring_id": 1,
+      "thickness_mm": 9.947306,
+      "tile_size_mm": 0.8
+    },
+    {
+      "d_spacing_A": 3.266590088,
+      "design_energy_keV": 511.0,
+      "h": 1,
+      "k": 1,
+      "l": 1,
+      "material": "Ge",
+      "n_tiles": 72,
+      "radius_mm": 61.66182,
+      "ring_id": 2,
+      "thickness_mm": 10.218801,
+      "tile_size_mm": 0.8
+    },
+    {
+      "d_spacing_A": 3.266590088,
+      "design_energy_keV": 530.0,
+      "h": 1,
+      "k": 1,
+      "l": 1,
+      "material": "Ge",
+      "n_tiles": 72,
+      "radius_mm": 59.451215,
+      "ring_id": 3,
+      "thickness_mm": 10.686285,
+      "tile_size_mm": 0.8
+    },
+    {
+      "d_spacing_A": 3.266590088,
+      "design_energy_keV": 550.0,
+      "h": 1,
+      "k": 1,
+      "l": 1,
+      "material": "Ge",
+      "n_tiles": 72,
+      "radius_mm": 57.289274,
+      "ring_id": 4,
+      "thickness_mm": 11.17625,
+      "tile_size_mm": 0.8
+    }
+  ],
+  "status": "input_pack_for_LLL_HEART_or_equivalent_external_Laue_lens_run"
+}

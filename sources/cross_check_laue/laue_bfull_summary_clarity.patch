@@ -1,0 +1,21 @@
+--- a/geant4_app/src/laue_multiring_bfull_demo.cc	2026-05-29 08:28:28.867565750 +0800
++++ b/geant4_app/src/laue_multiring_bfull_demo.cc	2026-05-29 08:30:12.834777695 +0800
+@@ -667,13 +667,18 @@
+     summary << "  \"mosaic_fwhm_arcsec\": " << opt_.mosaicFwhmArcsec << ",\n";
+     summary << "  \"crystallite_thickness_um\": " << opt_.crystalliteThicknessUm << ",\n";
+     summary << "  \"n_primaries\": " << opt_.nEvents << ",\n";
++    summary << "  \"custom_laue_only_branch_counters\": true,\n";
++    summary << "  \"standard_em_losses_are_not_written_to_optics_history\": true,\n";
+     summary << "  \"n_rings\": " << rings_.size() << ",\n";
++    summary << "  \"n_laue_interactions\": " << nDiff_ << ",\n";
++    summary << "  \"laue_interaction_fraction\": " << (n ? nDiff_ / n : 0.0) << ",\n";
+     summary << "  \"n_diffracted\": " << nDiff_ << ",\n";
+     summary << "  \"n_absorbed\": " << nAbs_ << ",\n";
+     summary << "  \"n_transmitted\": " << nTrans_ << ",\n";
+     summary << "  \"diffraction_fraction\": " << (n ? nDiff_ / n : 0.0) << ",\n";
+     summary << "  \"absorption_fraction\": " << (n ? nAbs_ / n : 0.0) << ",\n";
+     summary << "  \"transmission_fraction\": " << (n ? nTrans_ / n : 0.0) << ",\n";
++    summary << "  \"non_focal_event_estimate\": " << (opt_.nEvents - nFocalCrossings_) << ",\n";
+     summary << "  \"focal_crossings\": " << nFocalCrossings_ << ",\n";
+     summary << "  \"primary_or_transmitted_focal_crossings\": " << nPrimaryFocalCrossings_ << ",\n";
+     summary << "  \"laue_diffracted_focal_crossings\": " << nLaueFocalCrossings_ << ",\n";

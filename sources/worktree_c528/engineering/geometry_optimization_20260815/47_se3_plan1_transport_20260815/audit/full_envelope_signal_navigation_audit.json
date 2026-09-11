@@ -1,0 +1,344 @@
+{
+  "coordinate_contract": {
+    "bpe_zero_tolerance_cm": 1e-09,
+    "chord_closure_tolerance_cm": 2e-05,
+    "injection_plane_xprime_cm": -30.0001,
+    "instrument_rotation_y_deg": 45,
+    "shell_radii_cm": {
+      "bpe_inner": 27,
+      "plastic_inner_bpe_outer": 29,
+      "plastic_outer": 30
+    }
+  },
+  "driver_invocation": {
+    "command": [
+      "/home/ubuntu/MEGAlib_Install/megalib-main/external/root_v6.36.6/bin/root",
+      "-l",
+      "-b",
+      "-n",
+      "-q",
+      "-e",
+      "gSystem->SetBuildDir(\"/tmp/paired_full_envelope_navigation_a3vhuabm/aclic\", kTRUE);",
+      "/home/ubuntu/.codex/worktrees/c528/TES_511_Balloon/engineering/geometry_optimization_20260815/47_se3_plan1_transport_20260815/code/paired_full_envelope_navigation_audit.C+(\"/home/ubuntu/.codex/worktrees/104d/TES_511_Balloon/engineering/geometry_optimization_20260704/43_geoopt_s3d_o8_fallback_20260712/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup\",\"/home/ubuntu/.codex/worktrees/c528/TES_511_Balloon/engineering/geometry_optimization_20260815/47_se3_plan1_transport_20260815/config/signal_eventlists/signal_full_envelope_s3d_o8.eventlist.dat\",\"/home/ubuntu/.codex/worktrees/626c/TES_511_Balloon/engineering/geometry_optimization_20260815/44_geoopt_se3_minimal_20260815/geometry/DEMO2_DR_v3p5_SE3.geo.setup\",\"/home/ubuntu/.codex/worktrees/c528/TES_511_Balloon/engineering/geometry_optimization_20260815/47_se3_plan1_transport_20260815/config/signal_eventlists/signal_full_envelope_se3.eventlist.dat\",\"/tmp/paired_full_envelope_navigation_a3vhuabm/native.json\")"
+    ],
+    "cwd": "/home/ubuntu/.codex/worktrees/c528/TES_511_Balloon/engineering/geometry_optimization_20260815/47_se3_plan1_transport_20260815/code",
+    "engine": "ROOT ACLiC + MEGAlib MDGeometryQuest",
+    "returncode": 0,
+    "stderr_sha256": "c2b0507a0cc1ad3586456d10da0b28f4e58b86a9f770fdd81503f18ccafbc9fc",
+    "stderr_tail": "Info in <TUnixSystem::ACLiC>: creating shared library /tmp/paired_full_envelope_navigation_a3vhuabm/aclic/paired_full_envelope_navigation_audit_C.so\nIn file included from /home/ubuntu/MEGAlib_Install/megalib-main/include/MPhysicalEvent.h:33,\n                 from /home/ubuntu/MEGAlib_Install/megalib-main/include/MComptonEvent.h:26,\n                 from /home/ubuntu/MEGAlib_Install/megalib-main/include/MDGeometryQuest.h:24,\n                 from /home/ubuntu/.codex/worktrees/c528/TES_511_Balloon/engineering/geometry_optimization_20260815/47_se3_plan1_transport_20260815/code/paired_full_envelope_navigation_audit.C:14,\n                 from /tmp/paired_full_envelope_navigation_a3vhuabm/aclic/paired_full_envelope_navigation_audit_C_ACLiC_dict.cxx:41:\n/home/ubuntu/MEGAlib_Install/megalib-main/include/MFile.h:58:16: warning: \u2018virtual bool MFile::Open(MString)\u2019 was hidden [-Woverloaded-virtual]\n   58 |   virtual bool Open(MString FileName) { return Open(FileName, c_Read, false); }\n      |                ^~~~\nIn file included from /home/ubuntu/MEGAlib_Install/megalib-main/include/MFileResponse.h:23,\n                 from /home/ubuntu/MEGAlib_Install/megalib-main/include/MResponseMatrixOx.h:26,\n                 from /home/ubuntu/MEGAlib_Install/megalib-main/include/MResponseMatrixO1.h:27,\n                 from /home/ubuntu/MEGAlib_Install/megalib-main/include/MDMaterial.h:26,\n                 from /home/ubuntu/MEGAlib_Install/megalib-main/include/MDGeometry.h:27,\n                 from /home/ubuntu/MEGAlib_Install/megalib-main/include/MDGeometryQuest.h:25,\n                 from /home/ubuntu/.codex/worktrees/c528/TES_511_Balloon/engineering/geometry_optimization_20260815/47_se3_plan1_transport_20260815/code/paired_full_envelope_navigation_audit.C:14,\n                 from /tmp/paired_full_envelope_navigation_a3vhuabm/aclic/paired_full_envelope_navigation_audit_C_ACLiC_dict.cxx:41:\n/home/ubuntu/MEGAlib_Install/megalib-main/include/MParser.h:53:16: note:   by \u2018virtual bool MParser::Open(MString, unsigned int)\u2019\n   53 |   virtual bool Open(MString FileName, unsigned int Way = 1);\n      |                ^~~~\nIn file included from /home/ubuntu/MEGAlib_Install/megalib-main/include/MPhysicalEvent.h:33,\n                 from /home/ubuntu/MEGAlib_Install/megalib-main/include/MComptonEvent.h:26,\n                 from /home/ubuntu/MEGAlib_Install/megalib-main/include/MDGeometryQuest.h:24,\n                 from /home/ubuntu/.codex/worktrees/c528/TES_511_Balloon/engineering/geometry_optimization_20260815/47_se3_plan1_transport_20260815/code/paired_full_envelope_navigation_audit.C:14,\n                 from /tmp/paired_full_envelope_navigation_a3vhuabm/aclic/paired_full_envelope_navigation_audit_C_ACLiC_dict.cxx:41:\n/home/ubuntu/MEGAlib_Install/megalib-main/include/MFile.h:54:16: warning: \u2018virtual bool MFile::Open(MString, unsigned int, bool)\u2019 was hidden [-Woverloaded-virtual]\n   54 |   virtual bool Open(MString FileName, unsigned int Way, bool IsBinary);\n      |                ^~~~\nIn file included from /home/ubuntu/MEGAlib_Install/megalib-main/include/MFileResponse.h:23,\n                 from /home/ubuntu/MEGAlib_Install/megalib-main/include/MResponseMatrixOx.h:26,\n                 from /home/ubuntu/MEGAlib_Install/megalib-main/include/MResponseMatrixO1.h:27,\n                 from /home/ubuntu/MEGAlib_Install/megalib-main/include/MDMaterial.h:26,\n                 from /home/ubuntu/MEGAlib_Install/megalib-main/include/MDGeometry.h:27,\n                 from /home/ubuntu/MEGAlib_Install/megalib-main/include/MDGeometryQuest.h:25,\n                 from /home/ubuntu/.codex/worktrees/c528/TES_511_Balloon/engineering/geometry_optimization_20260815/47_se3_plan1_transport_20260815/code/paired_full_envelope_navigation_audit.C:14,\n                 from /tmp/paired_full_envelope_navigation_a3vhuabm/aclic/paired_full_envelope_navigation_audit_C_ACLiC_dict.cxx:41:\n/home/ubuntu/MEGAlib_Install/megalib-main/include/MParser.h:53:16: note:   by \u2018virtual bool MParser::Open(MString, unsigned int)\u2019\n   53 |   virtual bool Open(MString FileName, unsigned int Way = 1);\n      |                ^~~~\nIn file included from /home/ubuntu/MEGAlib_Install/megalib-main/include/MPhysicalEvent.h:33,\n                 from /home/ubuntu/MEGAlib_Install/megalib-main/include/MComptonEvent.h:26,\n                 from /home/ubuntu/MEGAlib_Install/megalib-main/include/MDGeometryQuest.h:24,\n                 from /home/ubuntu/.codex/worktrees/c528/TES_511_Balloon/engineering/geometry_optimization_20260815/47_se3_plan1_transport_20260815/code/paired_full_envelope_navigation_audit.C:14,\n                 from /tmp/paired_full_envelope_navigation_a3vhuabm/aclic/paired_full_envelope_navigation_audit_C_ACLiC_dict.cxx:41:\n/home/ubuntu/MEGAlib_Install/megalib-main/include/MFile.h:58:16: warning: \u2018virtual bool MFile::Open(MString)\u2019 was hidden [-Woverloaded-virtual]\n   58 |   virtual bool Open(MString FileName) { return Open(FileName, c_Read, false); }\n      |                ^~~~\nIn file included from /home/ubuntu/MEGAlib_Install/megalib-main/include/MFileResponse.h:23,\n                 from /home/ubuntu/MEGAlib_Install/megalib-main/include/MResponseMatrixOx.h:26,\n                 from /home/ubuntu/MEGAlib_Install/megalib-main/include/MResponseMatrixO1.h:27,\n                 from /home/ubuntu/MEGAlib_Install/megalib-main/include/MDMaterial.h:26,\n                 from /home/ubuntu/MEGAlib_Install/megalib-main/include/MDGeometry.h:27,\n                 from /home/ubuntu/MEGAlib_Install/megalib-main/include/MDGeometryQuest.h:25,\n                 from /home/ubuntu/.codex/worktrees/c528/TES_511_Balloon/engineering/geometry_optimization_20260815/47_se3_plan1_transport_20260815/code/paired_full_envelope_navigation_audit.C:14,\n                 from /tmp/paired_full_envelope_navigation_a3vhuabm/aclic/paired_full_envelope_navigation_audit_C_ACLiC_dict.cxx:41:\n/home/ubuntu/MEGAlib_Install/megalib-main/include/MParser.h:53:16: note:   by \u2018virtual bool MParser::Open(MString, unsigned int)\u2019\n   53 |   virtual bool Open(MString FileName, unsigned int Way = 1);\n      |                ^~~~\nIn file included from /home/ubuntu/MEGAlib_Install/megalib-main/include/MPhysicalEvent.h:33,\n                 from /home/ubuntu/MEGAlib_Install/megalib-main/include/MComptonEvent.h:26,\n                 from /home/ubuntu/MEGAlib_Install/megalib-main/include/MDGeometryQuest.h:24,\n                 from /home/ubuntu/.codex/worktrees/c528/TES_511_Balloon/engineering/geometry_optimization_20260815/47_se3_plan1_transport_20260815/code/paired_full_envelope_navigation_audit.C:14,\n                 from /tmp/paired_full_envelope_navigation_a3vhuabm/aclic/paired_full_envelope_navigation_audit_C_ACLiC_dict.cxx:41:\n/home/ubuntu/MEGAlib_Install/megalib-main/include/MFile.h:54:16: warning: \u2018virtual bool MFile::Open(MString, unsigned int, bool)\u2019 was hidden [-Woverloaded-virtual]\n   54 |   virtual bool Open(MString FileName, unsigned int Way, bool IsBinary);\n      |                ^~~~\nIn file included from /home/ubuntu/MEGAlib_Install/megalib-main/include/MFileResponse.h:23,\n                 from /home/ubuntu/MEGAlib_Install/megalib-main/include/MResponseMatrixOx.h:26,\n                 from /home/ubuntu/MEGAlib_Install/megalib-main/include/MResponseMatrixO1.h:27,\n                 from /home/ubuntu/MEGAlib_Install/megalib-main/include/MDMaterial.h:26,\n                 from /home/ubuntu/MEGAlib_Install/megalib-main/include/MDGeometry.h:27,\n                 from /home/ubuntu/MEGAlib_Install/megalib-main/include/MDGeometryQuest.h:25,\n                 from /home/ubuntu/.codex/worktrees/c528/TES_511_Balloon/engineering/geometry_optimization_20260815/47_se3_plan1_transport_20260815/code/paired_full_envelope_navigation_audit.C:14,\n                 from /tmp/paired_full_envelope_navigation_a3vhuabm/aclic/paired_full_envelope_navigation_audit_C_ACLiC_dict.cxx:41:\n/home/ubuntu/MEGAlib_Install/megalib-main/include/MParser.h:53:16: note:   by \u2018virtual bool MParser::Open(MString, unsigned int)\u2019\n   53 |   virtual bool Open(MString FileName, unsigned int Way = 1);\n      |                ^~~~\n",
+    "stdout_sha256": "6cdc22c787183ce46b1e25e302d0e473462f2ac6ad471f9646ea3413454df668",
+    "stdout_tail": "_L4_ZP_panel_SD\nNo noise threshold defined --- setting it to zero\n   ***  Info  ***  for detector Cu_SubstrateSupport_OpenRing_L4_ZM_panel_SD\nNo noise threshold defined --- setting it to zero\n   ***  Info  ***  for detector Cu_SubstrateSupport_OpenRing_L4_YP_panel_SD\nNo noise threshold defined --- setting it to zero\n   ***  Info  ***  for detector Cu_SubstrateSupport_OpenRing_L4_YM_panel_SD\nNo noise threshold defined --- setting it to zero\n   ***  Info  ***  for detector Cu_SubstrateSupport_OpenRing_L5_ZP_panel_SD\nNo noise threshold defined --- setting it to zero\n   ***  Info  ***  for detector Cu_SubstrateSupport_OpenRing_L5_ZM_panel_SD\nNo noise threshold defined --- setting it to zero\n   ***  Info  ***  for detector Cu_SubstrateSupport_OpenRing_L5_YP_panel_SD\nNo noise threshold defined --- setting it to zero\n   ***  Info  ***  for detector Cu_SubstrateSupport_OpenRing_L5_YM_panel_SD\nNo noise threshold defined --- setting it to zero\n   ***  Info  ***  for detector Cu_SubstrateSupport_SolidDisk_L0_deepest_SD\nNo noise threshold defined --- setting it to zero\n   ***  Info  ***  for detector Cu_SubstrateSupport_EdgeRod_1_SD\nNo noise threshold defined --- setting it to zero\n   ***  Info  ***  for detector Cu_SubstrateSupport_EdgeRod_2_SD\nNo noise threshold defined --- setting it to zero\n   ***  Info  ***  for detector Cu_SubstrateSupport_EdgeRod_3_SD\nNo noise threshold defined --- setting it to zero\n   ***  Info  ***  for detector Cu_SubstrateSupport_EdgeRod_4_SD\nNo noise threshold defined --- setting it to zero\n   ***  Info  ***  for detector Cu_ColdFinger_OffAxis_YP_ZP_from_Disk_to_Stem_SD\nNo noise threshold defined --- setting it to zero\n   ***  Info  ***  for detector Cu_ColdFinger_OffAxis_YM_ZP_from_Disk_to_Stem_SD\nNo noise threshold defined --- setting it to zero\n   ***  Info  ***  for detector Cu_ColdFinger_OffAxis_YP_ZM_from_Disk_to_Stem_SD\nNo noise threshold defined --- setting it to zero\n   ***  Info  ***  for detector Cu_ColdFinger_OffAxis_YM_ZM_from_Disk_to_Stem_SD\nNo noise threshold defined --- setting it to zero\n   ***  Info  ***  for detector Cu_ColdFinger_Stem_YP_ZP_to_MXC_SD\nNo noise threshold defined --- setting it to zero\n   ***  Info  ***  for detector Cu_ColdFinger_Stem_YM_ZP_to_MXC_SD\nNo noise threshold defined --- setting it to zero\n   ***  Info  ***  for detector Cu_ColdFinger_Stem_YP_ZM_to_MXC_SD\nNo noise threshold defined --- setting it to zero\n   ***  Info  ***  for detector Cu_ColdFinger_Stem_YM_ZM_to_MXC_SD\nNo noise threshold defined --- setting it to zero\n   ***  Info  ***  for detector Cu_MXC_Clamp_Pad_YP_ZP_for_OffAxisStem_SD\nNo noise threshold defined --- setting it to zero\n   ***  Info  ***  for detector Cu_MXC_Clamp_Pad_YM_ZP_for_OffAxisStem_SD\nNo noise threshold defined --- setting it to zero\n   ***  Info  ***  for detector Cu_MXC_Clamp_Pad_YP_ZM_for_OffAxisStem_SD\nNo noise threshold defined --- setting it to zero\n   ***  Info  ***  for detector Cu_MXC_Clamp_Pad_YM_ZM_for_OffAxisStem_SD\nNo noise threshold defined --- setting it to zero\n   ***  Info  ***  for detector ColdPlate_MXC_50mK_SD_anchor_SD\nNo noise threshold defined --- setting it to zero\n   ***  Info  ***  for detector ColdPlate_CP_100mK_intercept_SD\nNo noise threshold defined --- setting it to zero\n   ***  Info  ***  for detector ColdPlate_Still_0p7K_SD\nNo noise threshold defined --- setting it to zero\n   ***  Info  ***  for detector ColdPlate_4K_SD\nNo noise threshold defined --- setting it to zero\n   ***  Info  ***  for detector ColdPlate_60K_SD\nNo noise threshold defined --- setting it to zero\n   ***  Info  ***  for detector Plate_300K_Top_Service_Lid_SD\nNo noise threshold defined --- setting it to zero\n   ***  Info  ***  for detector Still_Shield_Al_side_window_bottom_cap_SD\nNo noise threshold defined --- setting it to zero\n   ***  Info  ***  for detector Still_Shield_Al_side_window_side_wall_below_side_port_SD\nNo noise threshold defined --- setting it to zero\n   ***  Info  ***  for detector Still_Shield_Al_side_window_side_wall_above_side_port_SD\nNo noise threshold defined --- setting it to zero\n   ***  Info  ***  for detector Shield_4K_Al_side_window_bottom_cap_SD\nNo noise threshold defined --- setting it to zero\n   ***  Info  ***  for detector Shield_4K_Al_side_window_side_wall_below_side_port_SD\nNo noise threshold defined --- setting it to zero\n   ***  Info  ***  for detector Shield_4K_Al_side_window_side_wall_above_side_port_SD\nNo noise threshold defined --- setting it to zero\n   ***  Info  ***  for detector Shield_60K_Al_side_window_bottom_cap_SD\nNo noise threshold defined --- setting it to zero\n   ***  Info  ***  for detector Shield_60K_Al_side_window_side_wall_below_side_port_SD\nNo noise threshold defined --- setting it to zero\n   ***  Info  ***  for detector Shield_60K_Al_side_window_side_wall_above_side_port_SD\nNo noise threshold defined --- setting it to zero\n   ***  Info  ***  for detector Vacuum_Jacket_Al_266mmClass_side_port_bottom_cap_SD\nNo noise threshold defined --- setting it to zero\n   ***  Info  ***  for detector Vacuum_Jacket_Al_266mmClass_side_port_side_wall_below_side_port_SD\nNo noise threshold defined --- setting it to zero\n   ***  Info  ***  for detector Vacuum_Jacket_Al_266mmClass_side_port_side_wall_above_side_port_SD\nNo noise threshold defined --- setting it to zero\n   ***  Info  ***  for detector Win_50mK_Al_foil_side_SD\nNo noise threshold defined --- setting it to zero\n   ***  Info  ***  for detector Win_Still_Al_foil_side_SD\nNo noise threshold defined --- setting it to zero\n   ***  Info  ***  for detector Win_4K_Al_foil_side_SD\nNo noise threshold defined --- setting it to zero\n   ***  Info  ***  for detector Win_60K_Al_foil_side_SD\nNo noise threshold defined --- setting it to zero\n   ***  Info  ***  for detector Win_Be_Vacuum_150um_side_SD\nNo noise threshold defined --- setting it to zero\n   ***  Info  ***  for detector Win_Outer_Al_Filter_side_SD\nNo noise threshold defined --- setting it to zero\n   ***  Info  ***  for detector DR_MixingChamber_Cu_SD\nNo noise threshold defined --- setting it to zero\n   ***  Info  ***  for detector DR_MXC_Sinter_HEX_AgProxy_SD\nNo noise threshold defined --- setting it to zero\n   ***  Info  ***  for detector DR_Continuous_HEX_CuNi_MXC_to_CP_SD\nNo noise threshold defined --- setting it to zero\n   ***  Info  ***  for detector DR_Continuous_HEX_CuNi_CP_to_Still_SD\nNo noise threshold defined --- setting it to zero\n   ***  Info  ***  for detector DR_Still_Pot_Cu_SD\nNo noise threshold defined --- setting it to zero\n   ***  Info  ***  for detector DR_Still_Heater_SS_ring_SD\nNo noise threshold defined --- setting it to zero\n   ***  Info  ***  for detector DR_4K_Condenser_Cu_SD\nNo noise threshold defined --- setting it to zero\n   ***  Info  ***  for detector DR_60K_Charcoal_Trap_SD\nNo noise threshold defined --- setting it to zero\n   ***  Info  ***  for detector DR_Capillary_CuNi_MXC_CP_SD\nNo noise threshold defined --- setting it to zero\n   ***  Info  ***  for detector DR_Capillary_CuNi_CP_Still_SD\nNo noise threshold defined --- setting it to zero\n   ***  Info  ***  for detector DR_Capillary_CuNi_Still_4K_SD\nNo noise threshold defined --- setting it to zero\n   ***  Info  ***  for detector DR_Capillary_CuNi_4K_60K_SD\nNo noise threshold defined --- setting it to zero\n   ***  Info  ***  for detector DR_Still_PumpLine_SS_to_300K_top_SD\nNo noise threshold defined --- setting it to zero\n   ***  Info  ***  for detector PreCool_FlexLink_Cu_remote_interface_SD\nNo noise threshold defined --- setting it to zero\n   ***  Info  ***  for detector SQUID_uMUX_Box_Al_relocated_offbeam_minimal_SD\nNo noise threshold defined --- setting it to zero\n   ***  Info  ***  for detector NbTi_Bundle_bay_to_MXC_SD\nNo noise threshold defined --- setting it to zero\n   ***  Info  ***  for detector NbTi_Bundle_MXC_CP_SD\nNo noise threshold defined --- setting it to zero\n   ***  Info  ***  for detector NbTi_Bundle_CP_Still_SD\nNo noise threshold defined --- setting it to zero\n   ***  Info  ***  for detector NbTi_Bundle_Still_4K_SD\nNo noise threshold defined --- setting it to zero\n   ***  Info  ***  for detector NbTi_Bundle_4K_60K_SD\nNo noise threshold defined --- setting it to zero\n   ***  Info  ***  for detector G10_Support_Ring_MXC_CP_SD\nNo noise threshold defined --- setting it to zero\n   ***  Info  ***  for detector G10_Support_Ring_CP_Still_SD\nNo noise threshold defined --- setting it to zero\n   ***  Info  ***  for detector G10_Support_Ring_Still_4K_SD\nNo noise threshold defined --- setting it to zero\n   ***  Info  ***  for detector G10_Support_Ring_4K_60K_SD\nNo noise threshold defined --- setting it to zero\n   ***  Info  ***  for detector G10_Support_Ring_60K_Top_SD\nNo noise threshold defined --- setting it to zero\n   ***  Info  ***  for detector Passive_W_Bottom_Plate_detector_bay_SD\nNo noise threshold defined --- setting it to zero\n   ***  Info  ***  for detector SE3_Al_Shield_Inner_Cylinder_2mm_SD\nNo noise threshold defined --- setting it to zero\n   ***  Info  ***  for detector W_Multihole_Collimator_HBar_SD\nNo noise threshold defined --- setting it to zero\n   ***  Info  ***  for detector W_Multihole_Collimator_VBar_Center_SD\nNo noise threshold defined --- setting it to zero\n   ***  Info  ***  for detector W_Multihole_Collimator_VBar_Edge_SD\nNo noise threshold defined --- setting it to zero\n   ***  Info  ***  for detector Cu_50mK_StillLike_Can_bottom_cap_2mm_SD\nNo noise threshold defined --- setting it to zero\n   ***  Info  ***  for detector Cu_50mK_StillLike_Can_side_wall_below_side_port_SD\nNo noise threshold defined --- setting it to zero\n   ***  Info  ***  for detector Cu_50mK_StillLike_Can_side_wall_above_side_port_SD\nNo noise threshold defined --- setting it to zero\n   ***  Info  ***  for detector Cu_50mK_StillLike_Can_side_wall_rectcut_window_band_SD\nNo noise threshold defined --- setting it to zero\n   ***  Info  ***  for detector Still_Shield_Al_side_window_side_wall_rectcut_window_band_SD\nNo noise threshold defined --- setting it to zero\n   ***  Info  ***  for detector Shield_4K_Al_side_window_side_wall_rectcut_window_band_SD\nNo noise threshold defined --- setting it to zero\n   ***  Info  ***  for detector Shield_60K_Al_side_window_side_wall_rectcut_window_band_SD\nNo noise threshold defined --- setting it to zero\n   ***  Info  ***  for detector Vacuum_Jacket_Al_266mmClass_side_port_side_wall_rectcut_window_band_SD\nNo noise threshold defined --- setting it to zero\n   ***  Info  ***  for detector SE3_Al_Shield_Inner_Back_ColdFingerCap_2mm_SD\nNo noise threshold defined --- setting it to zero\n   ***  Info  ***  for detector Win_MagShield_Al_foil_side_SD\nNo noise threshold defined --- setting it to zero\n   ***  Info  ***  for detector GeoOpt_S2B_CryoShell_Plastic_SideSkin_10mm_SD\nNo noise threshold defined --- setting it to zero\n   ***  Info  ***  for detector GeoOpt_S2B_CryoShell_Plastic_BottomCap_10mm_SD\nNo noise threshold defined --- setting it to zero\n   ***  Info  ***  for detector GeoOpt_S2B_CryoShell_Plastic_TopCap_10mm_SD\nNo noise threshold defined --- setting it to zero\n   ***  Info  ***  for detector ActiveShield_S3C_BGO_Kapton_SideWrap_WindowCut_0p3mm_SD\nNo noise threshold defined --- setting it to zero\n   ***  Info  ***  for detector ActiveShield_S3C_BGO_Kapton_BottomCap_0p3mm_SD\nNo noise threshold defined --- setting it to zero\n   ***  Info  ***  for detector ActiveShield_S3C_BGO_Kapton_TopAnnulus_0p3mm_SD\nNo noise threshold defined --- setting it to zero\n   ***  Info  ***  for detector Outer_Al_S3C_BGO_Mechanical_SideShell_WindowCut_3mm_SD\nNo noise threshold defined --- setting it to zero\n   ***  Info  ***  for detector Outer_Al_S3C_BGO_Mechanical_BottomCap_3mm_SD\nNo noise threshold defined --- setting it to zero\n   ***  Info  ***  for detector Outer_Al_S3C_BGO_Mechanical_TopAnnulus_3mm_SD\nNo noise threshold defined --- setting it to zero\n   ***  Warning  ***  \nYou have not defined any trigger criteria!!\nStage 11 (validation & post-processing) finished after 1.80275 sec\nStage 12 (volume tree optimization) finished after 1.80303 sec\n",
+    "temporary_build_directory": true,
+    "timeout_seconds": 3600.0,
+    "transport_launched": false
+  },
+  "driver_validation": {
+    "checks": {
+      "S3d_O8.analytic_start_outside_passes": true,
+      "S3d_O8.bpe_full": true,
+      "S3d_O8.bpe_positive": true,
+      "S3d_O8.bpe_probe_passes": true,
+      "S3d_O8.bpe_probe_queries": true,
+      "S3d_O8.energy_511kev_passes": true,
+      "S3d_O8.forward_direction_passes": true,
+      "S3d_O8.get_path_lengths_calls": true,
+      "S3d_O8.id_passes": true,
+      "S3d_O8.input_plane_passes": true,
+      "S3d_O8.logical_rows": true,
+      "S3d_O8.material_map_passes": true,
+      "S3d_O8.native_start_outside_passes": true,
+      "S3d_O8.observed_order": true,
+      "S3d_O8.ordered_intersection_passes": true,
+      "S3d_O8.parsed_rows": true,
+      "S3d_O8.plastic_full": true,
+      "S3d_O8.plastic_positive": true,
+      "S3d_O8.plastic_probe_passes": true,
+      "S3d_O8.plastic_probe_queries": true,
+      "S3d_O8.status": true,
+      "SE3.analytic_start_outside_passes": true,
+      "SE3.bpe_probe_passes": true,
+      "SE3.bpe_probe_queries": true,
+      "SE3.bpe_zero": true,
+      "SE3.energy_511kev_passes": true,
+      "SE3.forward_direction_passes": true,
+      "SE3.get_path_lengths_calls": true,
+      "SE3.id_passes": true,
+      "SE3.input_plane_passes": true,
+      "SE3.logical_rows": true,
+      "SE3.material_map_passes": true,
+      "SE3.native_start_outside_passes": true,
+      "SE3.observed_order": true,
+      "SE3.ordered_intersection_passes": true,
+      "SE3.parsed_rows": true,
+      "SE3.plastic_full": true,
+      "SE3.plastic_positive": true,
+      "SE3.plastic_probe_passes": true,
+      "SE3.plastic_probe_queries": true,
+      "SE3.port_clearance_passes": true,
+      "SE3.status": true,
+      "failure_count": true,
+      "mglobal_initialized": true,
+      "native_status": true,
+      "no_negative_path_length_warning": true,
+      "root_returncode": true,
+      "transport_not_launched": true
+    },
+    "status": "PASS"
+  },
+  "elapsed_seconds": 68.40806611799962,
+  "engine": "MEGAlib MDGeometryQuest",
+  "failure_count": 0,
+  "failure_samples": [],
+  "failure_samples_truncated": false,
+  "gamma_production_canary": {
+    "active_directory_exists": false,
+    "receipt_path": "/home/ubuntu/.codex/worktrees/c528/TES_511_Balloon/runs/geometry_optimization_20260815/se3_plan1_one_third_transport_v1/receipts/se3_instant_gamma_shard0001.json",
+    "receipt_status": "PASS",
+    "state": "PASS"
+  },
+  "generated_utc": "2026-08-15T11:30:25.611595+00:00",
+  "geometries": {
+    "S3d_O8": {
+      "analytic_start_outside_passes": 37194,
+      "bpe": {
+        "absolute_closure_error_cm": {
+          "count": 37194,
+          "max": 1.0000001138266157e-07,
+          "mean": 9.99999998756002e-08,
+          "min": 9.999998829002266e-08
+        },
+        "expectation": "POSITIVE_COMPLETE_SHELL_CHORD",
+        "expected_full_shell_chord_cm": {
+          "count": 37194,
+          "max": 2.0026113008912025,
+          "mean": 2.0003857629200135,
+          "min": 2.0000000000128604
+        },
+        "full_chord_passes": 37194,
+        "material": "BoratedPolyethylene5wtB",
+        "native_chord_cm": {
+          "count": 37194,
+          "max": 2.0026112008911987,
+          "mean": 2.0003856629200136,
+          "min": 1.9999999000128597
+        },
+        "positive_chord_passes": 37194,
+        "probe_passes": 185970,
+        "probe_queries": 185970,
+        "zero_chord_passes": 0
+      },
+      "energy_511kev_passes": 37194,
+      "eventlist": "/home/ubuntu/.codex/worktrees/c528/TES_511_Balloon/engineering/geometry_optimization_20260815/47_se3_plan1_transport_20260815/config/signal_eventlists/signal_full_envelope_s3d_o8.eventlist.dat",
+      "expected_rows": 37194,
+      "focused_port": {
+        "center_z_cm": -5.2,
+        "clearance_cm": {
+          "count": 0,
+          "max": null,
+          "mean": null,
+          "min": null
+        },
+        "half_width_cm": 1.898,
+        "positive_clearance_passes": 0,
+        "y_clearance_cm": {
+          "count": 0,
+          "max": null,
+          "mean": null,
+          "min": null
+        },
+        "z_clearance_cm": {
+          "count": 0,
+          "max": null,
+          "mean": null,
+          "min": null
+        }
+      },
+      "forward_direction_passes": 37194,
+      "geometry_loaded": true,
+      "get_path_lengths_calls": 37194,
+      "id_passes": 37194,
+      "input_plane_passes": 37194,
+      "logical_rows": 37194,
+      "material_map_passes": 37194,
+      "native_start_outside_passes": 37194,
+      "observed_order": "PLASTIC_THEN_BPE",
+      "ordered_intersection_passes": 37194,
+      "outside_clearance_cm": {
+        "count": 37194,
+        "max": 0.030390698237702907,
+        "mean": 0.004818310147094658,
+        "min": 0.0001000000240907184
+      },
+      "parsed_rows": 37194,
+      "plastic": {
+        "absolute_closure_error_cm": {
+          "count": 37194,
+          "max": 1.0000001204879538e-07,
+          "mean": 9.999999986475288e-08,
+          "min": 9.999998895615647e-08
+        },
+        "continuity_probe_passes": 185970,
+        "continuity_probe_queries": 185970,
+        "expected_full_chord_cm": {
+          "count": 37194,
+          "max": 1.0011759686887565,
+          "mean": 1.0001749660612353,
+          "min": 1.0000000000057854
+        },
+        "full_chord_passes": 37194,
+        "material": "PlasticScintillator",
+        "native_chord_cm": {
+          "count": 37194,
+          "max": 1.0011758686887582,
+          "mean": 1.0001748660612355,
+          "min": 0.9999999000057862
+        },
+        "positive_chord_passes": 37194
+      },
+      "setup": "/home/ubuntu/.codex/worktrees/104d/TES_511_Balloon/engineering/geometry_optimization_20260704/43_geoopt_s3d_o8_fallback_20260712/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup",
+      "status": "PASS"
+    },
+    "SE3": {
+      "analytic_start_outside_passes": 37194,
+      "bpe": {
+        "absolute_closure_error_cm": {
+          "count": 37194,
+          "max": 0,
+          "mean": 0,
+          "min": 0
+        },
+        "expectation": "ZERO_CHORD_THROUGH_PORT",
+        "expected_full_shell_chord_cm": {
+          "count": 37194,
+          "max": 2.0026113008912025,
+          "mean": 2.0003857629200135,
+          "min": 2.0000000000128604
+        },
+        "full_chord_passes": 0,
+        "material": "BoratedPolyethylene5wtB",
+        "native_chord_cm": {
+          "count": 37194,
+          "max": 0,
+          "mean": 0,
+          "min": 0
+        },
+        "positive_chord_passes": 0,
+        "probe_passes": 185970,
+        "probe_queries": 185970,
+        "zero_chord_passes": 37194
+      },
+      "energy_511kev_passes": 37194,
+      "eventlist": "/home/ubuntu/.codex/worktrees/c528/TES_511_Balloon/engineering/geometry_optimization_20260815/47_se3_plan1_transport_20260815/config/signal_eventlists/signal_full_envelope_se3.eventlist.dat",
+      "expected_rows": 37194,
+      "focused_port": {
+        "center_z_cm": -5.2,
+        "clearance_cm": {
+          "count": 37194,
+          "max": 1.889475710939201,
+          "mean": 1.2802024740166544,
+          "min": 0.556732031386598
+        },
+        "half_width_cm": 1.898,
+        "positive_clearance_passes": 37194,
+        "y_clearance_cm": {
+          "count": 37194,
+          "max": 1.8974484845106798,
+          "mean": 1.4367978206116123,
+          "min": 0.556732031386598
+        },
+        "z_clearance_cm": {
+          "count": 37194,
+          "max": 1.8968340464924325,
+          "mean": 1.436172596687327,
+          "min": 0.5866673192644261
+        }
+      },
+      "forward_direction_passes": 37194,
+      "geometry_loaded": true,
+      "get_path_lengths_calls": 37194,
+      "id_passes": 37194,
+      "input_plane_passes": 37194,
+      "logical_rows": 37194,
+      "material_map_passes": 37194,
+      "native_start_outside_passes": 37194,
+      "observed_order": "PLASTIC_THEN_BPE_PORT",
+      "ordered_intersection_passes": 37194,
+      "outside_clearance_cm": {
+        "count": 37194,
+        "max": 0.030390698237702907,
+        "mean": 0.004818310147094658,
+        "min": 0.0001000000240907184
+      },
+      "parsed_rows": 37194,
+      "plastic": {
+        "absolute_closure_error_cm": {
+          "count": 37194,
+          "max": 1.0000001204879538e-07,
+          "mean": 9.999999986475288e-08,
+          "min": 9.999998895615647e-08
+        },
+        "continuity_probe_passes": 185970,
+        "continuity_probe_queries": 185970,
+        "expected_full_chord_cm": {
+          "count": 37194,
+          "max": 1.0011759686887565,
+          "mean": 1.0001749660612353,
+          "min": 1.0000000000057854
+        },
+        "full_chord_passes": 37194,
+        "material": "PlasticScintillator",
+        "native_chord_cm": {
+          "count": 37194,
+          "max": 1.0011758686887582,
+          "mean": 1.0001748660612355,
+          "min": 0.9999999000057862
+        },
+        "positive_chord_passes": 37194
+      },
+      "setup": "/home/ubuntu/.codex/worktrees/626c/TES_511_Balloon/engineering/geometry_optimization_20260815/44_geoopt_se3_minimal_20260815/geometry/DEMO2_DR_v3p5_SE3.geo.setup",
+      "status": "PASS"
+    }
+  },
+  "mglobal_initialized": true,
+  "paired_bank_integrity": {
+    "byte_identical": true,
+    "bytes_each": 5819305,
+    "energy_keV": 511.0,
+    "field_count": 15,
+    "ids": {
+      "first": 0,
+      "last": 37193,
+      "zero_based_sequential": true
+    },
+    "injection_xprime_cm": {
+      "max": -30.000099999999986,
+      "min": -30.00010000000001,
+      "target": -30.0001
+    },
+    "maximum_direction_norm_error": 7.049916206369744e-13,
+    "minimum_analytic_outside_clearance_cm": 0.0001000000240907184,
+    "minimum_direction_xprime": 0.9999677994276772,
+    "no_resampling": true,
+    "paths": {
+      "S3d_O8": "/home/ubuntu/.codex/worktrees/c528/TES_511_Balloon/engineering/geometry_optimization_20260815/47_se3_plan1_transport_20260815/config/signal_eventlists/signal_full_envelope_s3d_o8.eventlist.dat",
+      "SE3": "/home/ubuntu/.codex/worktrees/c528/TES_511_Balloon/engineering/geometry_optimization_20260815/47_se3_plan1_transport_20260815/config/signal_eventlists/signal_full_envelope_se3.eventlist.dat"
+    },
+    "rows": 37194,
+    "shared_sha256": "a709a6dcbf5eaebda60be7ec419f4c214979d4cb215254134568eccebe27e57e",
+    "status": "PASS"
+  },
+  "schema_version": 1,
+  "sim_policy": "NO_SIM_DISCOVERY_OPEN_OR_HASH",
+  "started_utc": "2026-08-15T11:29:17.203528+00:00",
+  "static_preflight": {
+    "path": "/home/ubuntu/.codex/worktrees/c528/TES_511_Balloon/engineering/geometry_optimization_20260815/47_se3_plan1_transport_20260815/audit/full_envelope_signal_navigation_preflight.json",
+    "status": "PASS__STATIC_PREFLIGHT_NATIVE_DEFERRED"
+  },
+  "status": "PASS",
+  "transport_launched": false,
+  "wording_interpretation": {
+    "frozen_forward_encounter_order": "outer plastic r=29..30 cm precedes BPE r=27..29 cm",
+    "handoff_requirement": "complete BPE then continuous plastic",
+    "resolution": "report physical forward navigator order; interpret handoff phrase as layer-coverage requirements, not an instruction to reverse the frozen geometry"
+  }
+}

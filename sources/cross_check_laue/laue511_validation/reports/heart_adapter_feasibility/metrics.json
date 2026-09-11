@@ -1,0 +1,52 @@
+{
+  "direct_heart_runner_is_current_lens_oracle": false,
+  "full_lens_runner_ready": false,
+  "heart_commit": "d54196aaa787eaefef6df7c66255803f50ea8517",
+  "heart_source": "/tmp/laue511_heart_src_DDcqrF/HEART",
+  "missing_files": [],
+  "ok": true,
+  "reason": "HEART's flat-crystal model uses the crystal surface normal as the mean mosaic crystallite/diffracting-plane normal, while the current Laue lens needs a mechanical slab normal separate from each tile's Ge(111) diffracting-plane normal.",
+  "required_adapter_capability": "The external runner must map external_lens_oracle_tiles.csv ideal_plane_normal_* to the Ge(111) diffracting-plane normal independently of slab_normal_*.",
+  "source_evidence": {
+    "flat_axis_n_is_surface_normal": {
+      "file": "HEART/components/FlatCrystal.py",
+      "found": true,
+      "line": 53,
+      "needle": "Surface normal of the crystal"
+    },
+    "miller_indices_do_not_define_orientation": {
+      "file": "docs/files/start.rst",
+      "found": true,
+      "line": 178,
+      "needle": "used to calculate the Bragg angles and structure factors"
+    },
+    "mosaic_distribution_centered_on_surface_normal": {
+      "file": "docs/files/start.rst",
+      "found": true,
+      "line": 205,
+      "needle": "angle between the crystallite surface normal"
+    },
+    "ray_tracer_reads_crystal_surface_normal": {
+      "file": "HEART/ray_tracer.py",
+      "found": true,
+      "line": 498,
+      "needle": "photon.c_norm[:] = get_crystal_normal(crystal, pos)"
+    },
+    "ray_tracer_rotates_crystallite_from_surface_normal": {
+      "file": "HEART/ray_tracer.py",
+      "found": true,
+      "line": 729,
+      "needle": "rodrigues_rotation(k=cross(photon.c_norm, photon.ray)"
+    }
+  },
+  "status": "audited_not_directly_comparable",
+  "tile_geometry": {
+    "focal_z_mm": 8300.0,
+    "interpretation": "The current tile table intentionally separates slab_normal_* from ideal_plane_normal_*; their near-orthogonality is expected for this transmission Laue geometry.",
+    "max_abs_angle_slab_to_ideal_plane_normal_deg": 89.80239920963648,
+    "mean_abs_angle_slab_to_ideal_plane_normal_deg": 89.78816465034899,
+    "min_abs_angle_slab_to_ideal_plane_normal_deg": 89.77355878466732,
+    "ok": true,
+    "tile_rows": 360
+  }
+}

@@ -1,0 +1,377 @@
+{
+  "aeff_w2_final_cm2": 15.085439999999998,
+  "candidate": "SH3_OPTV3_60cm",
+  "duration_days": 20.0,
+  "exposure_s_per_anchor": 200000.0,
+  "fmin_3sigma_gaussian_relative_standard_error": 0.09358000089729192,
+  "fmin_3sigma_gaussian_standard_error_ph_cm2_s": 2.086243579556387e-06,
+  "fmin_ph_cm2_s": {
+    "fmin_3sigma_asimov_ph_cm2_s": 2.2382897213915505e-05,
+    "fmin_3sigma_gauss_ph_cm2_s": 2.2293690527382333e-05,
+    "fmin_5sigma_asimov_ph_cm2_s": 3.740362097462753e-05,
+    "fmin_5sigma_gauss_ph_cm2_s": 3.715615087897055e-05
+  },
+  "integrated_background_counts_20d": 15551.676334958727,
+  "mission_final_20day": {
+    "T_atm_511_slant45": 0.6520342542373311,
+    "conditional_signal_Aeff_cm2": 15.085439999999998,
+    "conditional_signal_accidental_survival": 0.995395,
+    "conditional_signal_kernel_cm2": 9.790927810470787,
+    "cumulative_background_counts": 15551.676334958727,
+    "cumulative_signal_counts_per_unit_flux": 16781388.47714417,
+    "day_mid": 20.0,
+    "direct_w2_final_no_coincidence_cps": 0.009055999411634253,
+    "fmin_3sigma_asimov_ph_cm2_s": 2.2382897213915505e-05,
+    "fmin_3sigma_gauss_ph_cm2_s": 2.2293690527382333e-05,
+    "fmin_5sigma_asimov_ph_cm2_s": 3.740362097462753e-05,
+    "fmin_5sigma_gauss_ph_cm2_s": 3.715615087897055e-05,
+    "interpolated_background_timeline_ratio": 1.008171443592485,
+    "mature_background_w2_final_cps": 0.00913,
+    "time_bin_id": 80
+  },
+  "n_anchors": 5,
+  "notes": [
+    "MODIFIED 2026-08-19 option B + real Step05: signal SIM re-pointed to chimney focal plane z=-2.8.",
+    "COMPTON/FOV = real side-entry rule (port of build_v3p5_centerfinger_step05_l1_response.py):",
+    "  2-hit dual-order back-projected cone vs side disk; 3-6 hit CSR enumeration; >6 hit reject_kept.",
+    "Side disk: local (-46.0, 0, -2.8), r=1.9 cm, rot_y=45 deg.",
+    "Background catalog uses catalog_schema=step05_exactpos_v2; round005 is excluded for canary seed reuse.",
+    "PLASTIC veto = IDENTITY_PASS (OptV3 has no plastic layer); plastic_pass always True.",
+    "BGO veto threshold = 50 keV offline; native trigger 80 keV.",
+    "Delayed lineage is exact-position resolved and mission activity is isotope-specific A_(family,ZA)(t).",
+    "Signal kernel includes 45-degree slant atmospheric transmission and common-time accidental survival.",
+    "Statistical error excludes response/geometry/atmosphere/model systematics."
+  ],
+  "per_anchor": {
+    "0": {
+      "direct_w2_final_cps": 0.005513793653609471,
+      "signal_probe": {
+        "binomial_standard_error": 4.657527344927786e-05,
+        "conditional_signal_accidental_survival": 0.9956425,
+        "passed": 1991285,
+        "proxy_boundary": "W2 signal is conservatively lost by any coincident raw-TES background deposit; active-only deposits are summed",
+        "sampled_neighbor_event_instances": 9664,
+        "total_background_rate_cps": 2379.244211767424,
+        "trials": 2000000
+      },
+      "timeline": {
+        "anchor_node": 0,
+        "expected_arrivals": 475848842.3534848,
+        "multi_event_groups": 1126148,
+        "multi_groups_with_tes": 69032,
+        "n_groups": 474733087,
+        "sampled_arrivals": 475861873,
+        "stage_counts": {
+          "broad_480_550": {
+            "bgo_active_scintillator_veto": 13873,
+            "combined_active_veto": 13873,
+            "compton_trajectory_veto": 13145,
+            "plastic_positron_veto": 930254,
+            "pre_veto": 930254
+          },
+          "w2_510p58_511p42": {
+            "bgo_active_scintillator_veto": 1071,
+            "combined_active_veto": 1071,
+            "compton_trajectory_veto": 1071,
+            "plastic_positron_veto": 427655,
+            "pre_veto": 427655
+          }
+        },
+        "stage_rates_cps": {
+          "broad_480_550": {
+            "bgo_active_scintillator_veto": 0.069365,
+            "combined_active_veto": 0.069365,
+            "compton_trajectory_veto": 0.065725,
+            "plastic_positron_veto": 4.65127,
+            "pre_veto": 4.65127
+          },
+          "w2_510p58_511p42": {
+            "bgo_active_scintillator_veto": 0.005355,
+            "combined_active_veto": 0.005355,
+            "compton_trajectory_veto": 0.005355,
+            "plastic_positron_veto": 2.138275,
+            "pre_veto": 2.138275
+          }
+        },
+        "total_rate_cps_at_node": 2379.244211767424
+      },
+      "timeline_to_direct_ratio": 0.971200653563537,
+      "timeline_to_direct_ratio_standard_error": 0.02967660598115036
+    },
+    "20": {
+      "direct_w2_final_cps": 0.009058390850506961,
+      "signal_probe": {
+        "binomial_standard_error": 4.7624750660764786e-05,
+        "conditional_signal_accidental_survival": 0.995443,
+        "passed": 1990886,
+        "proxy_boundary": "W2 signal is conservatively lost by any coincident raw-TES background deposit; active-only deposits are summed",
+        "sampled_neighbor_event_instances": 10084,
+        "total_background_rate_cps": 2512.5028968639817,
+        "trials": 2000000
+      },
+      "timeline": {
+        "anchor_node": 20,
+        "expected_arrivals": 502500579.37279636,
+        "multi_event_groups": 1258437,
+        "multi_groups_with_tes": 76464,
+        "n_groups": 501251383,
+        "sampled_arrivals": 502513022,
+        "stage_counts": {
+          "broad_480_550": {
+            "bgo_active_scintillator_veto": 17121,
+            "combined_active_veto": 17121,
+            "compton_trajectory_veto": 15992,
+            "plastic_positron_veto": 973618,
+            "pre_veto": 973618
+          },
+          "w2_510p58_511p42": {
+            "bgo_active_scintillator_veto": 1882,
+            "combined_active_veto": 1882,
+            "compton_trajectory_veto": 1803,
+            "plastic_positron_veto": 453548,
+            "pre_veto": 453548
+          }
+        },
+        "stage_rates_cps": {
+          "broad_480_550": {
+            "bgo_active_scintillator_veto": 0.085605,
+            "combined_active_veto": 0.085605,
+            "compton_trajectory_veto": 0.07996,
+            "plastic_positron_veto": 4.86809,
+            "pre_veto": 4.86809
+          },
+          "w2_510p58_511p42": {
+            "bgo_active_scintillator_veto": 0.00941,
+            "combined_active_veto": 0.00941,
+            "compton_trajectory_veto": 0.009015,
+            "plastic_positron_veto": 2.26774,
+            "pre_veto": 2.26774
+          }
+        },
+        "total_rate_cps_at_node": 2512.5028968639817
+      },
+      "timeline_to_direct_ratio": 0.9952098721259601,
+      "timeline_to_direct_ratio_standard_error": 0.023437798275588805
+    },
+    "40": {
+      "direct_w2_final_cps": 0.009213418311926503,
+      "signal_probe": {
+        "binomial_standard_error": 4.7798678380003626e-05,
+        "conditional_signal_accidental_survival": 0.9954095,
+        "passed": 1990819,
+        "proxy_boundary": "W2 signal is conservatively lost by any coincident raw-TES background deposit; active-only deposits are summed",
+        "sampled_neighbor_event_instances": 10216,
+        "total_background_rate_cps": 2547.6262212789643,
+        "trials": 2000000
+      },
+      "timeline": {
+        "anchor_node": 40,
+        "expected_arrivals": 509525244.25579286,
+        "multi_event_groups": 1292921,
+        "multi_groups_with_tes": 78552,
+        "n_groups": 508239540,
+        "sampled_arrivals": 509535654,
+        "stage_counts": {
+          "broad_480_550": {
+            "bgo_active_scintillator_veto": 17530,
+            "combined_active_veto": 17530,
+            "compton_trajectory_veto": 16310,
+            "plastic_positron_veto": 987386,
+            "pre_veto": 987386
+          },
+          "w2_510p58_511p42": {
+            "bgo_active_scintillator_veto": 1819,
+            "combined_active_veto": 1819,
+            "compton_trajectory_veto": 1741,
+            "plastic_positron_veto": 459363,
+            "pre_veto": 459363
+          }
+        },
+        "stage_rates_cps": {
+          "broad_480_550": {
+            "bgo_active_scintillator_veto": 0.08765,
+            "combined_active_veto": 0.08765,
+            "compton_trajectory_veto": 0.08155,
+            "plastic_positron_veto": 4.93693,
+            "pre_veto": 4.93693
+          },
+          "w2_510p58_511p42": {
+            "bgo_active_scintillator_veto": 0.009095,
+            "combined_active_veto": 0.009095,
+            "compton_trajectory_veto": 0.008705,
+            "plastic_positron_veto": 2.296815,
+            "pre_veto": 2.296815
+          }
+        },
+        "total_rate_cps_at_node": 2547.6262212789643
+      },
+      "timeline_to_direct_ratio": 0.9448176241744749,
+      "timeline_to_direct_ratio_standard_error": 0.022643762975592865
+    },
+    "60": {
+      "direct_w2_final_cps": 0.0091230786478024,
+      "signal_probe": {
+        "binomial_standard_error": 4.815232974114528e-05,
+        "conditional_signal_accidental_survival": 0.995341,
+        "passed": 1990682,
+        "proxy_boundary": "W2 signal is conservatively lost by any coincident raw-TES background deposit; active-only deposits are summed",
+        "sampled_neighbor_event_instances": 10384,
+        "total_background_rate_cps": 2529.9970089311137,
+        "trials": 2000000
+      },
+      "timeline": {
+        "anchor_node": 60,
+        "expected_arrivals": 505999401.78622276,
+        "multi_event_groups": 1275335,
+        "multi_groups_with_tes": 77209,
+        "n_groups": 504726774,
+        "sampled_arrivals": 506005235,
+        "stage_counts": {
+          "broad_480_550": {
+            "bgo_active_scintillator_veto": 17209,
+            "combined_active_veto": 17209,
+            "compton_trajectory_veto": 16018,
+            "plastic_positron_veto": 977712,
+            "pre_veto": 977712
+          },
+          "w2_510p58_511p42": {
+            "bgo_active_scintillator_veto": 1935,
+            "combined_active_veto": 1935,
+            "compton_trajectory_veto": 1856,
+            "plastic_positron_veto": 454867,
+            "pre_veto": 454867
+          }
+        },
+        "stage_rates_cps": {
+          "broad_480_550": {
+            "bgo_active_scintillator_veto": 0.086045,
+            "combined_active_veto": 0.086045,
+            "compton_trajectory_veto": 0.08009,
+            "plastic_positron_veto": 4.88856,
+            "pre_veto": 4.88856
+          },
+          "w2_510p58_511p42": {
+            "bgo_active_scintillator_veto": 0.009675,
+            "combined_active_veto": 0.009675,
+            "compton_trajectory_veto": 0.00928,
+            "plastic_positron_veto": 2.274335,
+            "pre_veto": 2.274335
+          }
+        },
+        "total_rate_cps_at_node": 2529.9970089311137
+      },
+      "timeline_to_direct_ratio": 1.0172004822336371,
+      "timeline_to_direct_ratio_standard_error": 0.023611173442779437
+    },
+    "80": {
+      "direct_w2_final_cps": 0.009055999411634253,
+      "signal_probe": {
+        "binomial_standard_error": 4.78737609500234e-05,
+        "conditional_signal_accidental_survival": 0.995395,
+        "passed": 1990790,
+        "proxy_boundary": "W2 signal is conservatively lost by any coincident raw-TES background deposit; active-only deposits are summed",
+        "sampled_neighbor_event_instances": 10190,
+        "total_background_rate_cps": 2513.5681465842385,
+        "trials": 2000000
+      },
+      "timeline": {
+        "anchor_node": 80,
+        "expected_arrivals": 502713629.3168477,
+        "multi_event_groups": 1258360,
+        "multi_groups_with_tes": 76284,
+        "n_groups": 501450320,
+        "sampled_arrivals": 502711853,
+        "stage_counts": {
+          "broad_480_550": {
+            "bgo_active_scintillator_veto": 17690,
+            "combined_active_veto": 17690,
+            "compton_trajectory_veto": 16380,
+            "plastic_positron_veto": 970654,
+            "pre_veto": 970654
+          },
+          "w2_510p58_511p42": {
+            "bgo_active_scintillator_veto": 1902,
+            "combined_active_veto": 1902,
+            "compton_trajectory_veto": 1826,
+            "plastic_positron_veto": 452134,
+            "pre_veto": 452134
+          }
+        },
+        "stage_rates_cps": {
+          "broad_480_550": {
+            "bgo_active_scintillator_veto": 0.08845,
+            "combined_active_veto": 0.08845,
+            "compton_trajectory_veto": 0.0819,
+            "plastic_positron_veto": 4.85327,
+            "pre_veto": 4.85327
+          },
+          "w2_510p58_511p42": {
+            "bgo_active_scintillator_veto": 0.00951,
+            "combined_active_veto": 0.00951,
+            "compton_trajectory_veto": 0.00913,
+            "plastic_positron_veto": 2.26067,
+            "pre_veto": 2.26067
+          }
+        },
+        "total_rate_cps_at_node": 2513.5681465842385
+      },
+      "timeline_to_direct_ratio": 1.008171443592485,
+      "timeline_to_direct_ratio_standard_error": 0.023593045502821864
+    }
+  },
+  "signal_aeff": {
+    "aeff_cm2": {
+      "broad_480_550": {
+        "bgo_active_scintillator_veto": 16.370639999999998,
+        "combined_active_veto": 16.370639999999998,
+        "compton_trajectory_veto": 16.05636,
+        "plastic_positron_veto": 16.370639999999998,
+        "pre_veto": 16.370639999999998
+      },
+      "w2_510p58_511p42": {
+        "bgo_active_scintillator_veto": 15.354359999999998,
+        "combined_active_veto": 15.354359999999998,
+        "compton_trajectory_veto": 15.085439999999998,
+        "plastic_positron_veto": 15.354359999999998,
+        "pre_veto": 15.354359999999998
+      }
+    },
+    "input_rays": 37194,
+    "optical_aperture_cm2": 20.08476,
+    "signal_sim_path": "/mnt/data/TES_Balloon_511_data/SH3/sh3_optv3_signal_37194_focal_z2p8_v1/full/SH3_OptV3_Signal37194_focal_z2p8.inc1.id1.sim.gz",
+    "stage_counts": {
+      "broad_480_550": {
+        "bgo_active_scintillator_veto": 30316,
+        "combined_active_veto": 30316,
+        "compton_trajectory_veto": 29734,
+        "plastic_positron_veto": 30316,
+        "pre_veto": 30316
+      },
+      "w2_510p58_511p42": {
+        "bgo_active_scintillator_veto": 28434,
+        "combined_active_veto": 28434,
+        "compton_trajectory_veto": 27936,
+        "plastic_positron_veto": 28434,
+        "pre_veto": 28434
+      }
+    }
+  },
+  "signal_counts_per_flux_cm2_s": 16781388.47714417,
+  "statistical_uncertainty": {
+    "background_combined_relative_sigma": 0.18706475900815533,
+    "background_combined_sigma_counts": 2909.1705857718866,
+    "background_timeline_replay_relative_sigma": 0.011258337527114429,
+    "background_timeline_replay_sigma_counts": 175.08602129140323,
+    "background_transport_MC_relative_sigma": 0.18672566481045072,
+    "background_transport_MC_sigma_counts": 2903.897102562122,
+    "fmin_3sigma_gaussian_relative_sigma": 0.09358000089729192,
+    "model": "delta-method propagation; transport-template Poisson, anchor replay Poisson, signal Aeff binomial, and accidental-probe binomial terms treated as independent",
+    "signal_Aeff_relative_sigma": 0.002984970434164779,
+    "signal_Aeff_sigma_cm2": 0.045029592386366724,
+    "signal_accidental_probe_relative_sigma": 2.2444364762459282e-05,
+    "signal_accidental_probe_sigma_counts_per_unit_flux": 376.6476042015548,
+    "signal_combined_relative_sigma": 0.0029850548139602833,
+    "weighted_effective_transport_survivors": 28.680846904665383
+  },
+  "status": "PASS__SH3_OPTV3_M05_FIXED_MATURE_TIMELINE_20D"
+}

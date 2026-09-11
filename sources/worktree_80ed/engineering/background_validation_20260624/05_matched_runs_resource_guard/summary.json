@@ -1,0 +1,92 @@
+{
+  "artifact_type": "wp05_matched_runs_resource_guard",
+  "status": "BLOCKED_RESOURCE_APPROVAL",
+  "created_utc": "2026-06-23T17:56:01Z",
+  "inputs": {
+    "g1_prompt_normalization_audit": "engineering/background_validation_20260624/01_prompt_source_audit/prompt_normalization_audit.json",
+    "g4_bgo_geometry_manifest": "engineering/background_validation_20260624/04_bgo_variant/bgo_geometry_manifest.json",
+    "csi_source_dir": "config/megalib_sources_fullsphere20_fix5_tilt45"
+  },
+  "derived_sources": {
+    "bgo_source_dir": "engineering/background_validation_20260624/05_matched_runs_resource_guard/config_bgo_sources_fullsphere20_fix5_tilt45",
+    "manifest_csv": "engineering/background_validation_20260624/05_matched_runs_resource_guard/bgo_source_card_manifest.csv",
+    "source_card_count": 8,
+    "physics_source_hash_equal_excluding_geometry": true,
+    "flux_sums_equal": true,
+    "all_geometry_lines_point_to_bgo_setup": true
+  },
+  "matched_matrix": {
+    "farfield_radius_cm": 60.0,
+    "generated_by_particle": {
+      "alpha": 191464,
+      "eminus": 3316936,
+      "eplus": 1949816,
+      "gamma": 10000000,
+      "muminus": 82824,
+      "muplus": 92840,
+      "n": 7704528,
+      "p": 1871808
+    },
+    "total_prompt_events_per_mode": 25210216,
+    "gamma_events": 10000000,
+    "gamma_splits": 12,
+    "non_gamma_replicas": 8,
+    "per_variant_prompt_plus_buildup_events": 50420432,
+    "two_variant_prompt_plus_buildup_events": 100840864,
+    "delayed_decays_per_fullstat_variant_nominal": 1000000,
+    "position_sample_M": 50000,
+    "common_random_seed_policy": {
+      "prompt_instant": "reuse fix5 fullstat seed matrix",
+      "activation_buildup": "reuse fix5 fullstat seed matrix",
+      "position_sampling": "use existing seed 260613 first; PI-02 seeds 260614/260615/260617 for convergence if approved",
+      "delayed_transport": "same seed tags as position sampling for paired audit",
+      "science_replay": "reuse fix5 focused signal source pattern with BGO setup"
+    }
+  },
+  "resource_guard": {
+    "max_events_without_approval_per_launch_batch": 5000000,
+    "max_estimated_output_without_approval_bytes": 107374182400,
+    "max_estimated_cpu_without_approval_cpu_days": 7.0,
+    "max_single_existing_fullstat_launch_events": 25210216,
+    "full_matched_production_exceeds_event_guard": true
+  },
+  "requested_approval": {
+    "needed": true,
+    "minimum_to_continue": "Approve a staged matched CsI/BGO run plan. Recommended next approved action is P0/P1 only, not full P2 production.",
+    "recommended_first_batch": {
+      "stage": "P0 syntax/geometry smoke",
+      "gamma_events": 1000,
+      "gamma_splits": 1,
+      "non_gamma_replicas": 1,
+      "delayed_decays": 1000,
+      "purpose": "parser/syntax/isotope-store sanity only; no material conclusion"
+    },
+    "full_p2_requires_separate_approval": true
+  },
+  "failure_contract": {
+    "status": "BLOCKED_RESOURCE_APPROVAL",
+    "evidence": [
+      "engineering/background_validation_20260624/05_matched_runs_resource_guard/bgo_source_card_manifest.csv",
+      "engineering/background_validation_20260624/05_matched_runs_resource_guard/matched_run_resource_plan.json",
+      "engineering/background_validation_20260624/05_matched_runs_resource_guard/RESOURCE_APPROVAL_REQUIRED.md",
+      "engineering/background_validation_20260624/01_prompt_source_audit/prompt_normalization_audit.json",
+      "engineering/background_validation_20260624/04_bgo_variant/bgo_geometry_manifest.json"
+    ],
+    "affected_claim": "No CsI/BGO material-comparison rate, ratio, uncertainty, or design preference can be claimed until matched CsI/BGO transport and identical Step05 selection are run.",
+    "minimal_next_action": "Approve and run the staged P0 syntax/geometry smoke batch, then review P0 before any P1/P2 escalation.",
+    "requires_user_decision": true,
+    "unexecuted_phases": [
+      "WP05 P0/P1/P2 matched prompt instant transport",
+      "WP05 matched activation buildup transport",
+      "WP05 matched delayed source and delayed decay transport",
+      "WP05 matched focused science replay",
+      "WP06 CsI/BGO comparison"
+    ]
+  },
+  "outputs": {
+    "summary_json": "engineering/background_validation_20260624/05_matched_runs_resource_guard/summary.json",
+    "summary_md": "engineering/background_validation_20260624/05_matched_runs_resource_guard/summary.md",
+    "resource_approval_required_md": "engineering/background_validation_20260624/05_matched_runs_resource_guard/RESOURCE_APPROVAL_REQUIRED.md"
+  },
+  "problems": []
+}

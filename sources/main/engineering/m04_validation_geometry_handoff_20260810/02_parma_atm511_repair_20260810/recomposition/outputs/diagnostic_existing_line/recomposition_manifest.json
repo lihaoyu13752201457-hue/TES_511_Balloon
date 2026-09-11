@@ -1,0 +1,267 @@
+{
+  "schema": "o8-parma511-modular-recomposition-manifest-v1",
+  "status": "DIAGNOSTIC_ONLY_MODULAR_RECOMPOSITION__NOT_PAPER_AUTHORITY",
+  "generated_at_utc": "2026-08-10T16:37:05Z",
+  "scope": "offline replacement of only the atmospheric annihilation mono-line module",
+  "script": {
+    "path": "engineering/m04_validation_geometry_handoff_20260810/02_parma_atm511_repair_20260810/recomposition/code/build_modular_recomposition.py",
+    "sha256": "c944f2382b3e3f57830e69cccabd78cf76dc7397672bc334dba7429f4531a581"
+  },
+  "config": {
+    "path": "engineering/m04_validation_geometry_handoff_20260810/02_parma_atm511_repair_20260810/recomposition/config/modular_recomposition_config.json",
+    "sha256": "6d80b8bbcb1429c3313b2ab52228a1ac4684017b0f31b72416f64157660bd7f3"
+  },
+  "input_authorities": {
+    "mission_timeline": {
+      "path": "engineering/ea_peer_review_p02_slant_transmission_20260714/outputs/w2_all8_family_nuclide_mission_timeline_slant45.csv",
+      "sha256": "00f3c8edab23f0569b2981ebe256407a856f6f6df08425f4aa255bae33b1f8ce",
+      "matches_config": true
+    },
+    "mission_summary": {
+      "path": "engineering/ea_peer_review_p02_slant_transmission_20260714/data/slant45_signal_refold_summary.json",
+      "sha256": "f7ec57c9a8b06c44172e3fc925501ca359b6a0c524e421568da07ee7d8c148ba",
+      "matches_config": true
+    },
+    "mission_fold_code": {
+      "path": "engineering/ea_s3d_o8_all8_family_nuclide_mission_fold_20260713/code/build_s3d_o8_all8_family_nuclide_mission_fold.py",
+      "sha256": "987b26bfef7f3d5039a7a1fb0926a77308de1c47b2491d422abac9a75f7808a8",
+      "matches_config": true
+    },
+    "o8_response_summary": {
+      "path": "engineering/ea_s3d_o8_all8_detector_response_closure_20260713/data/s3d_o8_all8_energy_response_summary.json",
+      "sha256": "8c86ba7f4ebca3b5e4c9dfe084651751eddc031ed9b7d8203220073763beaf43",
+      "matches_config": true
+    },
+    "trajectory": {
+      "path": "engineering/geometry_optimization_20260704/43_geoopt_s3d_o8_fallback_20260712/fullchain/step06/trajectory_profile.csv",
+      "sha256": "c73f52c2675fa49cf7424cb552a28afcce4cab1bd4acdc239d3762ce0c581a02",
+      "matches_config": true
+    },
+    "day15_environment": {
+      "path": "engineering/m04_validation_geometry_handoff_20260810/02_parma_atm511_repair_20260810/config/day15_environment_authority.json",
+      "sha256": "b4e5e4bb165735c3cf4add6af62090382aa88b839a0bea71e0da800eaafff6d2",
+      "matches_config": true
+    },
+    "parma_line_source_closure": {
+      "path": "engineering/m04_validation_geometry_handoff_20260810/02_parma_atm511_repair_20260810/data/parma_line_closure.json",
+      "sha256": "dee071a7ec7f7714f8515c7df7de687a0de2c9c9648ecbb67eeb20e89cfc041b",
+      "matches_config": true
+    },
+    "prompt_gamma_line_dedup": {
+      "path": "engineering/m04_validation_geometry_handoff_20260810/02_parma_atm511_repair_20260810/data/o8_prompt_gamma_line_dedup_audit.json",
+      "sha256": "60c5c96d9c666c5fe0e6ac03dcd786712dc3d63af45aa4e4cc9801c9a10d6c10",
+      "matches_config": true
+    },
+    "default_diagnostic_line_input": {
+      "path": "engineering/m04_validation_geometry_handoff_20260810/02_parma_atm511_repair_20260810/data/existing_o8_line_module_reweight_summary.json",
+      "sha256": "2af3e9a69ee783ad8828cbdd6babcfdfb8867585b077134cd1c2804fed8ecb1e",
+      "matches_config": true
+    },
+    "frozen_step05_selection": {
+      "path": "old/code/tools/build_v3p5_centerfinger_step05_l1_response.py",
+      "sha256": "0c1e69e4a73bd8653e999b1d8d2aff404a37a44457e40f134388c819ad4b91ab",
+      "matches_config": true
+    }
+  },
+  "protected_files_after_run": {
+    "m04_en_tex": {
+      "path": "core_md/balloon511_ea_latex_drafts/balloon511_ea_draft_en_m04_atm511_revision_20260804.tex",
+      "sha256": "3eb0c1edccd7af7b198ab397371d633392c6a316a4ee3fbdf258057f54c7c53e",
+      "matches_config": true
+    },
+    "m04_zh_tex": {
+      "path": "core_md/balloon511_ea_latex_drafts/balloon511_ea_draft_zh_m04_atm511_revision_20260804.tex",
+      "sha256": "66df5babd3ecf5107c6f15e0eab525b25aaaea4fe5a641879962cd753524ba19",
+      "matches_config": true
+    },
+    "m04_en_pdf": {
+      "path": "core_md/balloon511_ea_latex_drafts/balloon511_ea_draft_en_m04_atm511_revision_20260804.pdf",
+      "sha256": "9217af3b62fe0bd4a48c0db81d5a7770d2df20a78989a57fca972a5a41879694",
+      "matches_config": true
+    },
+    "m04_zh_pdf": {
+      "path": "core_md/balloon511_ea_latex_drafts/balloon511_ea_draft_zh_m04_atm511_revision_20260804.pdf",
+      "sha256": "5acce4670bed2d6366242276b878891fe48c7f51039991b6fe840a35f54ff56f",
+      "matches_config": true
+    },
+    "m04_fig2_en_pdf": {
+      "path": "core_md/balloon511_ea_latex_drafts/paper_source_figure_table/fig_simulation_workflow_m04_en_20260810.pdf",
+      "sha256": "f739b3af1a6f3eb194f26596e1cc2b1bbfcebd14a68ab2c2b9a86a8f323ff2b2",
+      "matches_config": true
+    },
+    "m04_fig2_zh_pdf": {
+      "path": "core_md/balloon511_ea_latex_drafts/paper_source_figure_table/fig_simulation_workflow_m04_zh_20260810.pdf",
+      "sha256": "41a3b31f4ea79c0aab3d9e0616bec5fbd76a9377e3a2f061db739db17558edea",
+      "matches_config": true
+    }
+  },
+  "line_input": {
+    "input_kind": "existing_low_stat_angular_reweight_diagnostic",
+    "input_path": "engineering/m04_validation_geometry_handoff_20260810/02_parma_atm511_repair_20260810/data/existing_o8_line_module_reweight_summary.json",
+    "input_sha256": "2af3e9a69ee783ad8828cbdd6babcfdfb8867585b077134cd1c2804fed8ecb1e",
+    "response_summary_path": null,
+    "response_summary_sha256": null,
+    "response_grade": "DIAGNOSTIC_ONLY_FAILS_PARMA511_RATE_STATISTICS",
+    "passes_detector_rate_gate": false,
+    "passes_final_input_gate": false,
+    "campaign_receipt": null,
+    "w2_rate_day15_cps": 0.004174895515607628,
+    "w2_mc_sigma_day15_cps": 0.0015090038309995824,
+    "w2_upper95_day15_cps": 0.007132488676899776,
+    "w2_upper95_method": "diagnostic normal approximation rate + 1.95996*importance-weighted MC sigma; not an exact coverage endpoint",
+    "w2_selected_events": 8,
+    "w2_importance_effective_sample_size": 7.65438913521842,
+    "broad_rate_day15_cps": null,
+    "broad_upper95_day15_cps": null,
+    "broad_selected_events": null,
+    "line_occupancy_day15_hz": 653.9602599842195,
+    "line_occupancy_events": null,
+    "line_occupancy_method": "DIAGNOSTIC scalar old-sidecar occupancy multiplied by total PARMA/legacy flux; angular occupancy reweight is unavailable in the compact cache",
+    "transport_TE_s": 5143.83,
+    "detector_gate": {
+      "handoff_required_final_w2_events_or_relative_error": ">=400 final events or <=5% pure-counting relative standard error",
+      "handoff_required_40_vs_80_combined_count_error": "<1.5%",
+      "actual_unsmeared_events": 9,
+      "actual_primary_events": 8,
+      "actual_unsmeared_80bin_relative_mc_sigma": 0.3400468660245954,
+      "actual_primary_80bin_relative_mc_sigma": 0.36144708900097033,
+      "passes_PASS_PARMA_511_detector_response": false,
+      "decision": "Existing transport supports a zero-simulation angular-reweight diagnostic only. If paper-authority PASS_PARMA_511 is required, transport only the corrected atmospheric 510.99895-keV mono-line module; reuse and recompose every other retained module."
+    },
+    "selection_frozen": true,
+    "active_veto_kapton_blocker_preserved": true
+  },
+  "parma_flux_evaluation": {
+    "status": "PASS_OFFICIAL_PARMA_LINE_FLUX_EVALUATION",
+    "subprocess_allowlist": "only the hash-locked local parma511_driver; no Cosima/transport executable",
+    "driver": "engineering/m04_validation_geometry_handoff_20260810/02_parma_atm511_repair_20260810/code/parma511_driver",
+    "driver_sha256": "62c3f94df965c13fba9cb3194728dd2317ad11c80491bc858aebdb213f8f69b5",
+    "working_directory": "engineering/m04_validation_geometry_handoff_20260810/02_parma_atm511_repair_20260810/vendor/parma_cpp_official_20260810",
+    "unique_depth_calls": 17,
+    "stdout_sha256_by_depth": {
+      "3.4614689720143224": "70aac1cd1032e7925c49371d35285f3995c13a7938ecd0a0492f19798c5f6433",
+      "3.089730493727418": "09fd46dda1e1964a147fff515ba5f6283f5c533466937947222a9a5128f351c9",
+      "2.7887557765281525": "6d96c7b8921389ad4d15ccc075b8e747d1f14081958c1170a9e9d16a0c50e6eb",
+      "2.570911072066955": "77ade029b59da6ae0b1868083af20c1feb6ccc59ec58e1d79008be6f44a21352",
+      "2.44010220656668": "0fb727ab68af840962fe0450d31f044b7d37dd8ebea2b6aa7fabd3d8cc2931af",
+      "2.3965878546996042": "e6e23d5e7984c344941accc74b879408d6a7b922a2b91faf6e56f315bd34b6b0",
+      "2.788755776528155": "4db3663b6424bddeaefced9f1621b19ac129b6aa87d5c7897ac4bfa19d300386",
+      "3.0897304937274215": "f51705079593281eaf92e979368cd6a42647a49433393d2fa880adb4486b70bb",
+      "3.8779328710198326": "47b1f6db04b35e00f7250c2f1c73697b53cb81e670b0cf4ca5f86c426eba58c4",
+      "4.296456342668533": "e481bc8454e57f5bbb17ab8709f93e1e503919983cf5c9294500a010e5314059",
+      "4.660514155623752": "0203b9566bb53d5bd9b9783dfbbe3b17e7763ad6d4a3242a85ae0ebe6c6a419e",
+      "4.910354743327211": "125ad2c18e5dd9744cbbaa5fa226aa69a72bc7a7a45c92ea9077b1d2ba46ee81",
+      "4.999511042635957": "49b6c48a9b3c42233d73abed919a8f1f7d49bfa1739a8d52354e3135d2ce3180",
+      "3.877932871019828": "ce5b6c600ea5ff078ffdeae23a32805e159c0eb428ffb47ec02adcefd0de8939",
+      "2.570911072066957": "61e8fdb4809902c70cdd9711f8440b2c9050b10008170e0efd9a0cd7c07e28e7",
+      "4.6605141556237575": "e15ebc02cde67445a90217039c9bf8150afef4de9212962095f734f333b1866a",
+      "4.296456342668528": "dedb587da864a3677c8bc9c97fcad1e3995a96543e6631680753cdf0e78b0879"
+    },
+    "day15_flux_ph_cm2_s": 0.16651547160226118
+  },
+  "formula_identity_self_test": {
+    "status": "PASS_RETAINED_81BIN_FORMULA_IDENTITY",
+    "max_absolute_residuals": {
+      "live_factor": 0.0,
+      "cumulative_source_counts": 0.0,
+      "cumulative_background_counts": 0.0,
+      "cumulative_source_lower_counts": 0.0,
+      "cumulative_background_upper_counts": 0.0,
+      "counting_Z": 0.0,
+      "conditional_Z": 0.0
+    },
+    "final": {
+      "source_counts": 1650.2917035214023,
+      "background_counts": 11789.0822455626,
+      "source_lower_counts": 1640.6156225021045,
+      "background_upper_counts": 83798.34065348787
+    }
+  },
+  "prompt_gamma_line_occupancy_dedup_provenance": {
+    "status": "PASS_PROMPT_GAMMA_LINE_TERM_OCCUPANCY_SCALE_SEMANTICS",
+    "provenance_path": "affected_events.step05_catalog.removed_rate_sum_cps",
+    "affected_rows": 317048,
+    "tes_nonzero_rows": 0,
+    "active_volume_nonzero_rows": 317048,
+    "removed_event_rate_day15_hz": 737.844505175763,
+    "day15_prompt_gamma_occupancy_before_dedup_hz": 19731.813033759743,
+    "removed_fraction_of_day15_prompt_gamma_occupancy": 0.03739364973271148,
+    "scale_field": "prompt_scale_gamma",
+    "scale_min": 0.849039217915,
+    "scale_max": 1.20169595615,
+    "scaled_removal_min_hz": 626.45892161731,
+    "scaled_removal_max_hz": 886.6647581372121,
+    "corrected_prompt_occupancy_min_hz": 19561.46850711005,
+    "formula": "lambda(t) = prompt_event_rate_hz(t) - removed_prompt_gamma_line_occupancy_hz(t) + delayed_event_rate_hz(t) + corrected_PARMA511_event_rate_hz(t)",
+    "sidecar_subtracted_from_prompt": false
+  },
+  "recomposed_occupancy_formula_validation": {
+    "status": "PASS_81BIN_PROMPT_GAMMA_LINE_OCCUPANCY_DEDUP_FORMULA",
+    "checked_bins": 81,
+    "max_absolute_residuals": {
+      "scaled_line_term_removal_hz": 0.0,
+      "prompt_after_dedup_hz": 0.0,
+      "total_occupancy_hz": 0.0,
+      "pre_fix_total_occupancy_hz": 0.0,
+      "live_factor": 0.0,
+      "pre_fix_live_factor": 0.0
+    },
+    "minimum_prompt_occupancy_after_dedup_hz": 19561.46850711005,
+    "minimum_total_occupancy_hz": 20142.5413420411,
+    "day15_removed_prompt_gamma_line_occupancy_hz": 737.844505175763,
+    "legacy_sidecar_occupancy_omitted_separately_once": true,
+    "legacy_sidecar_subtracted_from_prompt_occupancy": false,
+    "formula": "lambda(t) = prompt_event_rate_hz(t) - removed_prompt_gamma_line_occupancy_hz(t) + delayed_event_rate_hz(t) + corrected_PARMA511_event_rate_hz(t)"
+  },
+  "invariants": {
+    "time_bins_81": true,
+    "elapsed_days_20": true,
+    "day15_index_60": true,
+    "legacy_sidecar_removed": true,
+    "legacy_sidecar_occupancy_omitted_separately_once": true,
+    "legacy_sidecar_not_subtracted_from_prompt_occupancy": true,
+    "day15_prompt_gamma_line_occupancy_removal_matches_audit": true,
+    "prompt_occupancy_nonnegative_after_dedup_all_81_bins": true,
+    "total_occupancy_nonnegative_all_81_bins": true,
+    "recomposed_occupancy_formula_passes_all_81_bins": true,
+    "w2_prompt_gamma_line_dedup_delta_zero": true,
+    "broad_prompt_gamma_line_dedup_delta_zero": true,
+    "all_other_modules_reused": true
+  },
+  "execution_attestation": {
+    "cosima_launched": false,
+    "transport_launched": false,
+    "continuum_rerun": false,
+    "other_particle_rerun": false,
+    "m_sampling_rerun": false,
+    "retained_product_modified": false,
+    "m04_modified": false
+  },
+  "outputs": {
+    "parma511_line_flux_by_time.csv": {
+      "path": "engineering/m04_validation_geometry_handoff_20260810/02_parma_atm511_repair_20260810/recomposition/outputs/diagnostic_existing_line/parma511_line_flux_by_time.csv",
+      "sha256": "a3159bbda4a00a640fe6022301b6c0a450f04366dec7575b7ce580f970cfd4c4",
+      "bytes": 7634
+    },
+    "w2_modular_recomposition_by_time.csv": {
+      "path": "engineering/m04_validation_geometry_handoff_20260810/02_parma_atm511_repair_20260810/recomposition/outputs/diagnostic_existing_line/w2_modular_recomposition_by_time.csv",
+      "sha256": "ad8ca74f29348f0aece28d9845159e0b133ba0e764968143d375498d55091f14",
+      "bytes": 59459
+    },
+    "day15_modular_recomposition.json": {
+      "path": "engineering/m04_validation_geometry_handoff_20260810/02_parma_atm511_repair_20260810/recomposition/outputs/diagnostic_existing_line/day15_modular_recomposition.json",
+      "sha256": "0064acfb66a381bb95c6c9b9660c3607664e0ebc3f7af62a44ef2e28368053aa",
+      "bytes": 9130
+    },
+    "mission_20d_modular_recomposition.json": {
+      "path": "engineering/m04_validation_geometry_handoff_20260810/02_parma_atm511_repair_20260810/recomposition/outputs/diagnostic_existing_line/mission_20d_modular_recomposition.json",
+      "sha256": "3fc10d1bedd8fa041365de6c601fdc53c86e6a23d0f50a16e73f9b572f91f85a",
+      "bytes": 7484
+    },
+    "RECOMPOSITION_RESULT.md": {
+      "path": "engineering/m04_validation_geometry_handoff_20260810/02_parma_atm511_repair_20260810/recomposition/outputs/diagnostic_existing_line/RECOMPOSITION_RESULT.md",
+      "sha256": "4afdeda58825ed936dfe6466307a7f11acd29ca41a096de25d93a0527e3a45fe",
+      "bytes": 1787
+    }
+  }
+}

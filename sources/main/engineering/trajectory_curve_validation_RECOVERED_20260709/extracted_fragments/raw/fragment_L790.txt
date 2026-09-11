@@ -1,0 +1,42 @@
+47:PROMPT_ATTEN_DEPTH_G_CM2 = 30.0
+214:    depth_ref = vertical_depth_g_cm2(ALT_REF_KM)
+215:    mu_eff = -math.log(t_ref) / depth_ref
+187-
+188-
+189:def vertical_depth_g_cm2(altitude_km: float) -> float:
+190-    return DEPTH_AT_38KM_G_CM2 * math.exp(-(altitude_km - 38.0) / SCALE_HEIGHT_KM)
+191-
+192-
+193-def bin_centers() -> list[float]:
+194-    n = int(round(MISSION_DAYS / STEP_DAY))
+195-    return [i * STEP_DAY for i in range(n + 1)]
+--
+213-    widths = bin_widths(days)
+214-    depth_ref = vertical_depth_g_cm2(ALT_REF_KM)
+215:    mu_eff = -math.log(t_ref) / depth_ref
+216-    rows: list[dict[str, Any]] = []
+217-    for idx, (day, dt_s) in enumerate(zip(days, widths)):
+218-        phase = 2.0 * math.pi * (day - DAY15)
+219-        alt_offset = ALT_AMP_KM * math.sin(phase / 5.0)
+220-        lat_offset = LAT_AMP_DEG * math.sin(phase / 7.0)
+221-        lon_offset = LON_AMP_DEG * math.sin(phase / 9.0)
+--
+226-        rc = 11.0 - 0.08 * lat_offset + 0.03 * lon_offset
+227-        prompt_scale = math.exp((depth - depth_ref) / PROMPT_ATTEN_DEPTH_G_CM2) * (11.0 / rc) ** 0.2
+228:        t_atm = math.exp(-mu_eff * depth)
+229-        rows.append(
+230-            {
+231-                "time_bin_id": idx,
+232-                "time_mid_s": day * SECONDS_PER_DAY,
+233-                "day_mid": day,
+234-                "dt_s": dt_s,
+--
+247-            }
+248-        )
+249:    return rows, {"depth_ref_g_cm2": depth_ref, "mu_eff_cm2_g": mu_eff}
+250-
+251-
+252-def integrate_activity(trajectory: list[dict[str, Any]]) -> tuple[list[dict[str, Any]], list[dict[str, Any]], dict[str, Any]]:
+253-    correction_rows = read_csv(GROUNDSTATE)
+254-    days = [float(row["day_mid"]) for row in trajectory]
+255-    day15_index = min(range(len(days)), key=lambda i: abs(days[i] - DAY15))

@@ -1,0 +1,26 @@
+{
+  "schema_version": 1,
+  "charts": [
+    {
+      "id": "gamma_active_shield_cutflow",
+      "report_segment": "active-shield cutflow",
+      "analytical_question": "How much of the inclusive corrected-keV gamma TES count survives an explicit physical active-shield veto in each energy selection?",
+      "supported_takeaway": "Inclusive counts fall from 101 to 12 for Mass_model_511 and from 99 to 3 for S3d-O8; strict W2 survivors are zero in both geometries in this diagnostic sample.",
+      "family": "comparison",
+      "type": "bar",
+      "variant": "grouped vertical bars with exact value labels",
+      "dataset": "cutflow_chart",
+      "fields": {
+        "x": "category",
+        "y": "event_count",
+        "color": "geometry"
+      },
+      "palette_policy": "hard two-root categorical; shared reader blue/orange roots plus neutrals",
+      "non_color_distinction": "x-axis category labels, legend labels, and exact value labels",
+      "scale": "absolute event counts; zero baseline",
+      "sample": "100000 corrected-keV instant gamma primaries per geometry; TT 1.840462 s and 1.851504 s",
+      "delivery": "artifact.json native chart -> self-contained report.html",
+      "qa_surface": "portable enhanced reader at desktop and 390 px narrow viewport plus semantic fallback"
+    }
+  ]
+}

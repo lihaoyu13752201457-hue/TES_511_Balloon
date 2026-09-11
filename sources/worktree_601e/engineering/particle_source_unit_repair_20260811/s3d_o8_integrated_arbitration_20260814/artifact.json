@@ -1,0 +1,195 @@
+{
+  "surface": "report",
+  "manifest": {
+    "version": 1,
+    "surface": "report",
+    "title": "S3d–O8 综合物理仲裁",
+    "description": "PORT-20 一级工程条件最优、证据冲突、统一物理图、配置与 go/no-go 门。",
+    "generatedAt": "2026-08-14T21:40:00+08:00",
+    "cards": [
+      {
+        "id": "verdict",
+        "description": "当前仲裁状态。",
+        "dataset": "summary",
+        "sourceId": "integrated_audit",
+        "metrics": [
+          { "label": "一级配置", "field": "candidate" },
+          { "label": "状态", "field": "status" }
+        ]
+      },
+      {
+        "id": "baseline",
+        "description": "官方 mission 基线与中心目标差距。",
+        "dataset": "summary",
+        "sourceId": "mission",
+        "metrics": [
+          { "label": "Official central F3", "field": "f3_display" },
+          { "label": "Required B reduction", "field": "required_reduction", "format": "percent" }
+        ]
+      },
+      {
+        "id": "geometry_change",
+        "description": "模型中共注册光学口的解析质量变化。",
+        "dataset": "summary",
+        "sourceId": "geometry",
+        "metrics": [
+          { "label": "Model mass delta", "field": "mass_delta_display" },
+          { "label": "Focused rays clear", "field": "rays_clear" }
+        ]
+      }
+    ],
+    "charts": [
+      {
+        "id": "budget_gap",
+        "title": "两套 response 口径都未达到中心背景门",
+        "subtitle": "官方 mission 与 frozen diagnostic 不得交叉混算；候选必须重跑自身 S20/P20/D20。",
+        "type": "bar",
+        "dataset": "budget",
+        "sourceId": "mission",
+        "encodings": {
+          "x": { "field": "policy", "type": "ordinal", "label": "Policy" },
+          "y": { "field": "counts", "type": "quantitative", "label": "20-day counts", "format": ".1f" },
+          "color": { "field": "series", "type": "nominal", "label": "Series" }
+        },
+        "yAxisTitle": "20-day counts",
+        "valueFormat": ".1f",
+        "layout": "full"
+      }
+    ],
+    "tables": [
+      {
+        "id": "conflicts",
+        "title": "前两个 session 的冲突由缺失分母决定",
+        "dataset": "conflicts",
+        "sourceId": "handoff_set",
+        "columns": [
+          { "field": "issue", "label": "冲突", "type": "text" },
+          { "field": "positions", "label": "两份 handoff", "type": "text" },
+          { "field": "decision", "label": "仲裁与决定量", "type": "text" }
+        ]
+      },
+      {
+        "id": "candidate_matrix",
+        "title": "候选决策矩阵",
+        "dataset": "candidates",
+        "sourceId": "integrated_audit",
+        "columns": [
+          { "field": "candidate", "label": "候选", "type": "text" },
+          { "field": "physics_evidence", "label": "物理与统计证据", "type": "text" },
+          { "field": "tradeoffs", "label": "Signal/工程/迁移", "type": "text" },
+          { "field": "verdict", "label": "判决", "type": "text" }
+        ]
+      },
+      {
+        "id": "materials",
+        "title": "Delayed exact-material 口径",
+        "dataset": "materials",
+        "sourceId": "delayed",
+        "columns": [
+          { "field": "material", "label": "Material", "type": "text" },
+          { "field": "rows", "label": "Rows", "format": ".0f" },
+          { "field": "rate", "label": "Observed W2 cps", "format": ".9f" },
+          { "field": "share", "label": "Share", "format": "percent" },
+          { "field": "bq", "label": "Day-15 Bq", "format": ".6f" },
+          { "field": "note", "label": "审计说明", "type": "text" }
+        ]
+      },
+      {
+        "id": "gates",
+        "title": "最小证伪与 promotion 门",
+        "dataset": "gates",
+        "sourceId": "integrated_audit",
+        "columns": [
+          { "field": "stage", "label": "Stage", "type": "text" },
+          { "field": "test", "label": "Test", "type": "text" },
+          { "field": "decision", "label": "GO / NO-GO", "type": "text" }
+        ]
+      }
+    ],
+    "sources": [
+      { "id": "handoff_set", "label": "Five required handoffs", "path": "source-index/five-handoffs.md", "query": { "engine": "filesystem-audit", "sql": "SELECT sequence, document, finding FROM reviewed_handoffs ORDER BY sequence", "description": "Logical provenance query over a direct document review; no database engine was used.", "executed_at": "2026-08-14T21:00:00+08:00", "tables_used": ["five_required_handoffs"] } },
+      { "id": "integrated_audit", "label": "Independent evidence ledger", "path": "evidence_ledger.csv", "query": { "engine": "snapshot", "sql": "SELECT * FROM evidence_ledger ORDER BY id", "description": "Reviewed evidence ledger assembled from deterministic local audits.", "executed_at": "2026-08-14T21:40:00+08:00", "tables_used": ["evidence_ledger.csv"] } },
+      { "id": "geometry", "label": "S3d–O8 geometry and focused ray-bank audit", "path": "source-index/geometry-and-ray-bank.md", "query": { "engine": "filesystem-audit", "sql": "SELECT ray_id, bpe_chord_cm, plastic_chord_cm, port_clearance_cm FROM transformed_focused_rays JOIN parsed_authority_geometry ON 1=1", "description": "Logical provenance query for the deterministic geometry and ray-intersection audit; no database engine was used.", "executed_at": "2026-08-14T20:30:00+08:00", "tables_used": ["authority_geometry", "focused_eventlist"] } },
+      { "id": "mission", "label": "Official mission summary and frozen diagnostic", "path": "source-index/mission-and-response.md", "query": { "engine": "snapshot", "sql": "SELECT policy, S20, P20, D20, B20 FROM reviewed_mission_response", "description": "Direct review and arithmetic recomputation of official and frozen summaries.", "executed_at": "2026-08-14T20:45:00+08:00", "tables_used": ["mission_summary", "frozen_diagnostic"] } },
+      { "id": "prompt", "label": "Prompt event summary and raw lineage audit", "path": "source-index/prompt.md", "query": { "engine": "snapshot", "sql": "SELECT * FROM prompt_w2_event_summary WHERE pass_veto50 = true", "description": "Prompt cutflow plus raw SIM event-block ancestry review.", "executed_at": "2026-08-14T20:50:00+08:00", "tables_used": ["prompt_w2_event_summary", "raw_prompt_sim"] } },
+      { "id": "bpe", "label": "Accepted BPE neutron boundary diagnostic", "path": "source-index/bpe-boundary.md", "query": { "engine": "snapshot", "sql": "SELECT stage, isotope, current_index FROM accepted_bpe_boundary WHERE energy_MeV > 0 AND energy_MeV <= 100", "description": "Accepted 100k incident-neutron boundary diagnostic.", "executed_at": "2026-08-14T20:55:00+08:00", "tables_used": ["accepted_bpe_boundary"] } },
+      { "id": "delayed", "label": "Activation inventory and selected delayed lineage", "path": "source-index/delayed.md", "query": { "engine": "snapshot", "sql": "SELECT material, COUNT(*) AS rows, SUM(event_weight_cps) AS rate FROM delayed_lineage JOIN geometry_material_map USING (volume) GROUP BY material", "description": "Exact-material inventory and selected delayed lineage join.", "executed_at": "2026-08-14T21:10:00+08:00", "tables_used": ["day15_inventory", "delayed_lineage", "geometry_material_map"] } }
+    ],
+    "blocks": [
+      {
+        "id": "decision",
+        "type": "markdown",
+        "sourceId": "integrated_audit",
+        "body": "# 一级推荐：PORT-20\n\n**ENGINEERING-CONDITIONAL OPTIMUM — NOT PHYSICS PROMOTED.** 窗口外保持 20 mm BPE、10 mm plastic、全部 BGO 与 cold-core Cu/Nb/Mu；仅给 BPE/plastic 切与既有 BGO/Al/Be 窗共注册的 **3.796 × 3.796 cm²** focused 方口。模型减重 **42.251 g**。KEEP-20 缺 full-envelope signal 分母，REMOVE 缺 matched total-background 分母；旧 `0.83069` 只是窄束 proxy。最终必须满足 matched 0/20 比较和 candidate-specific central + conservative `F3<=3e-5`；完整证据、共同物理图、矩阵、配置与 V0–V6 门见同目录 `REPORT.md`。"
+      },
+      { "id": "budget_chart", "type": "chart", "chartId": "budget_gap", "layout": "full" }
+    ]
+  },
+  "snapshot": {
+    "version": 1,
+    "generatedAt": "2026-08-14T21:40:00+08:00",
+    "status": "ready",
+    "datasets": {
+      "summary": [
+        {
+          "candidate": "PORT-20",
+          "status": "ENGINEERING-CONDITIONAL",
+          "f3_display": "6.92375e-5",
+          "required_reduction": 0.812258757,
+          "mass_delta_display": "−0.042251 kg",
+          "rays_clear": "37,194 / 37,194"
+        }
+      ],
+      "budget": [
+        { "policy": "Official mission", "series": "Current B20", "counts": 144203.842086 },
+        { "policy": "Official mission", "series": "Bmax", "counts": 27073.008579 },
+        { "policy": "Frozen diagnostic", "series": "Current B20", "counts": 65469.990346 },
+        { "policy": "Frozen diagnostic", "series": "Bmax", "counts": 22224.912885 }
+      ],
+      "conflicts": [
+        { "issue": "BPE default", "positions": "LOOP: KEEP-20; BPE: REMOVE prior", "decision": "PORT-20; needs flight CAD, candidate S20 and matched total B" },
+        { "issue": "0.83069", "positions": "Not mission data; early BPE report corrected", "decision": "Narrow-beam proxy only; needs full-envelope scatter/veto replay" },
+        { "issue": "Delayed benefit", "positions": "Safest baseline vs modest mechanism", "decision": "Retain without credit; needs production Bq × exact-position coupling" },
+        { "issue": "Cold-core mass", "positions": "Proxies fail/constrained; boundary test cannot decide", "decision": "Freeze Cu/Nb/Mu; needs host-migration and engineering closure" }
+      ],
+      "candidates": [
+        { "candidate": "KEEP-20 full panel", "physics_evidence": "Direct-n moderation prior; no shown prompt reduction; no matched total B", "tradeoffs": "Official S20 excludes panel cost; baseline engineering", "verdict": "not primary" },
+        { "candidate": "REMOVE-0", "physics_evidence": "Delayed benefit may be lost; prompt and migration unknown", "tradeoffs": "Potential signal recovery; plastic remains; about −33.6 kg and shell rework", "verdict": "matched falsifier only" },
+        { "candidate": "THIN-10", "physics_evidence": "No candidate data; background cannot be linearly interpolated", "tradeoffs": "Possible partial signal recovery; about −16.8 kg; requalify shell", "verdict": "sensitivity only" },
+        { "candidate": "PORT-20", "physics_evidence": "Retains almost all BPE prior; known prompt leaks unchanged; no total B yet", "tradeoffs": "All sampled rays clear; −42.251 g; cold core frozen", "verdict": "PRIMARY conditional" },
+        { "candidate": "Cold Cu reduction", "physics_evidence": "Host substitution shown; legal proxy only 10.22% D and low Neff", "tradeoffs": "Unknown scatter; mK thermal/structural hard risk", "verdict": "reject in primary" },
+        { "candidate": "Nb/Mu reduction", "physics_evidence": "Migration to Cu/Mu/L0; high coupling but sparse 1–2 event paths", "tradeoffs": "Magnetic hard gate; nominal signal neutral", "verdict": "reject in primary" }
+      ],
+      "materials": [
+        { "material": "Copper", "rows": 373, "rate": 0.0363761284, "share": 0.667700, "bq": 161.957683, "note": "60 exact-material volumes" },
+        { "material": "Nb", "rows": 25, "rate": 0.00920149266, "share": 0.168897, "bq": 1.164130, "note": "near-field, sparse coupling" },
+        { "material": "MuMetal", "rows": 20, "rate": 0.00776545392, "share": 0.142538, "bq": 1.361424, "note": "magnetic hard constraint" },
+        { "material": "SilverSinterProxy", "rows": 1, "rate": 0.00112165785, "share": 0.0205885, "bq": 4.561510, "note": "single selected row" },
+        { "material": "CuNi", "rows": 1, "rate": 0.0000150194, "share": 0.0002757, "bq": 1.726465, "note": "must not be folded into Copper" }
+      ],
+      "gates": [
+        { "stage": "V0", "test": "Flight CAD/BOM", "decision": "GO: single authority, manufacturable, clearance >=5.0 mm. NO-GO: authority or support/light/alignment conflict." },
+        { "stage": "V1", "test": "Geometry navigator", "decision": "GO: 37194/37194 zero BPE/plastic chord, no overlap. NO-GO: clipping, alias or wrong geometry header." },
+        { "stage": "V2", "test": "Full-envelope signal", "decision": "GO: L95(S_PORT20/S_PORT0)>=0.98 and absolute S20. NO-GO: post-Be S20 reuse or lower bound <0.98." },
+        { "stage": "V3", "test": "Paired prompt", "decision": "GO: U95(P_PORT20/P_PORT0)<=1.10 and no aperture cell. NO-GO: ratio >1.10 or untallied migration." },
+        { "stage": "V4", "test": "n/p/alpha production×coupling", "decision": "GO: activity central <=0.90, U95<1, key host <=1.20. NO-GO: ancestry or sparse-stat gate fails." },
+        { "stage": "V5", "test": "Matched 0/20 total B", "decision": "GO: U95(B20/B0)<[L95(S20/S0)]². NO-GO: inequality fails or an unbounded family is omitted." },
+        { "stage": "V6", "test": "Final eight-family", "decision": "GO: central and conservative candidate-specific F3 gates pass. NO-GO: any gate/header/normalization audit fails." }
+      ]
+    }
+  },
+  "sources": [
+    { "id": "handoff_set", "label": "Five required handoffs", "path": "source-index/five-handoffs.md", "query": { "engine": "filesystem-audit", "sql": "SELECT sequence, document, finding FROM reviewed_handoffs ORDER BY sequence", "description": "Logical provenance query over a direct document review; no database engine was used.", "executed_at": "2026-08-14T21:00:00+08:00", "tables_used": ["five_required_handoffs"] } },
+    { "id": "integrated_audit", "label": "Independent evidence ledger", "path": "evidence_ledger.csv", "query": { "engine": "snapshot", "sql": "SELECT * FROM evidence_ledger ORDER BY id", "description": "Reviewed evidence ledger assembled from deterministic local audits.", "executed_at": "2026-08-14T21:40:00+08:00", "tables_used": ["evidence_ledger.csv"] } },
+    { "id": "geometry", "label": "S3d–O8 geometry and focused ray-bank audit", "path": "source-index/geometry-and-ray-bank.md", "query": { "engine": "filesystem-audit", "sql": "SELECT ray_id, bpe_chord_cm, plastic_chord_cm, port_clearance_cm FROM transformed_focused_rays JOIN parsed_authority_geometry ON 1=1", "description": "Logical provenance query for the deterministic geometry and ray-intersection audit; no database engine was used.", "executed_at": "2026-08-14T20:30:00+08:00", "tables_used": ["authority_geometry", "focused_eventlist"] } },
+    { "id": "mission", "label": "Official mission summary and frozen diagnostic", "path": "source-index/mission-and-response.md", "query": { "engine": "snapshot", "sql": "SELECT policy, S20, P20, D20, B20 FROM reviewed_mission_response", "description": "Direct review and arithmetic recomputation of official and frozen summaries.", "executed_at": "2026-08-14T20:45:00+08:00", "tables_used": ["mission_summary", "frozen_diagnostic"] } },
+    { "id": "prompt", "label": "Prompt event summary and raw lineage audit", "path": "source-index/prompt.md", "query": { "engine": "snapshot", "sql": "SELECT * FROM prompt_w2_event_summary WHERE pass_veto50 = true", "description": "Prompt cutflow plus raw SIM event-block ancestry review.", "executed_at": "2026-08-14T20:50:00+08:00", "tables_used": ["prompt_w2_event_summary", "raw_prompt_sim"] } },
+    { "id": "bpe", "label": "Accepted BPE neutron boundary diagnostic", "path": "source-index/bpe-boundary.md", "query": { "engine": "snapshot", "sql": "SELECT stage, isotope, current_index FROM accepted_bpe_boundary WHERE energy_MeV > 0 AND energy_MeV <= 100", "description": "Accepted 100k incident-neutron boundary diagnostic.", "executed_at": "2026-08-14T20:55:00+08:00", "tables_used": ["accepted_bpe_boundary"] } },
+    { "id": "delayed", "label": "Activation inventory and selected delayed lineage", "path": "source-index/delayed.md", "query": { "engine": "snapshot", "sql": "SELECT material, COUNT(*) AS rows, SUM(event_weight_cps) AS rate FROM delayed_lineage JOIN geometry_material_map USING (volume) GROUP BY material", "description": "Exact-material inventory and selected delayed lineage join.", "executed_at": "2026-08-14T21:10:00+08:00", "tables_used": ["day15_inventory", "delayed_lineage", "geometry_material_map"] } }
+  ],
+  "package_info": {
+    "root": "s3d_o8_integrated_arbitration_20260814",
+    "manifestPath": "artifact.json",
+    "snapshotPath": "artifact.json"
+  }
+}

@@ -1,0 +1,291 @@
+# Test geometry for if and for conditions
+
+Name IfForTest
+Version 2.0
+
+SurroundingSphere 10  0.0  0.0  0.0  10.0
+
+Material Vacuum
+Vacuum.Density 1E-12
+Vacuum.Component H 1
+
+
+
+
+#------------------------------------------------------------
+# Volume section:
+
+
+Volume WorldVolume             
+WorldVolume.Material Vacuum
+WorldVolume.Visibility 0   
+WorldVolume.Shape BRIK 5000. 5000. 5000.
+WorldVolume.Mother 0
+
+Volume GeWafer
+GeWafer.Material Vacuum
+GeWafer.Shape BOX 4.0 4.0 0.5
+GeWafer.Position 0 0 0 
+GeWafer.Mother WorldVolume
+
+
+
+Echo "Simple true / false"
+If { true }
+  Echo "Test (is true): Passed"
+Else
+  Echo "Test (is true): Not passed"
+Endif 
+
+If { false }
+  Echo "Test (is false): NOT Passed"
+Else
+  Echo "Test (is false): Passed"
+Endif
+
+
+
+Echo "Equal/unequal test series
+If { 1 == 1 }
+  Echo "Test (1 == 1): Passed (true if-path)"
+Else
+  Echo "Test (1 == 1): Not passed (false if-path)"
+Endif
+
+If { 1 != 1 }
+  Echo "Test (1 != 1): Not passed (true if-path)"
+Else
+  Echo "Test (1 != 1): Passed (false if-path)"
+Endif
+
+If { 1 == 2 }
+  Echo "Test (1 == 2): Not passed (true if-path)"
+Else
+  Echo "Test (1 == 2): Passed (false if-path)"
+Endif
+
+If { 1 != 2 }
+  Echo "Test (1 != 2): Passed (true if-path)"
+Else
+  Echo "Test (1 != 2): Not passed (false if-path)"
+Endif
+
+
+
+Echo "Lower equal, larger eqal tests"
+If { 1 <= 2 }
+  Echo "Test (1 <= 2): Passed (true if-path)"
+Else
+  Echo "Test (1 == 2): Not passed (false if-path)"
+Endif
+
+If { 2 <= 1 }
+  Echo "Test (2 <= 1): Not passed (true if-path)"
+Else
+  Echo "Test (2 <= 1): Passed (false if-path)"
+Endif
+
+If { 1 >= 2 }
+  Echo "Test (1 >= 2): Not passed (true if-path)"
+Else
+  Echo "Test (1 >= 2): Passed (false if-path)"
+Endif
+
+If { 2 >= 1 }
+  Echo "Test (2 >= 1): Passed (true if-path)"
+Else
+  Echo "Test (2 >= 1): Not passed (false if-path)"
+Endif
+
+
+
+
+
+Echo "OR test series"
+If { 1 == 2 || 1 == 2 }
+  Echo "Test (1 == 2 || 1 == 2): Not passed (true if-path)"
+Else
+  Echo "Test (1 == 2 || 1 == 2): Passed (false if-path)"
+Endif
+
+If { 1 == 2 || 2 == 2 }
+  Echo "Test (1 == 2 || 2 == 2): Passed (true if-path)"
+Else
+  Echo "Test (1 == 2 || 2 == 2): Not passed (false if-path)"
+Endif
+
+If { 1 == 1 || 1 == 2 }
+  Echo "Test (1 == 1 || 1 == 2): Passed (true if-path)"
+Else
+  Echo "Test (1 == 1 || 1 == 2): Not passed (false if-path)"
+Endif 
+
+If { 1 == 1 || 2 == 2 }
+  Echo "Test (1 == 1 || 2 == 2): Passed (true if-path)"
+Else
+  Echo "Test (1 == 1 || 2 == 2): Not passed (false if-path)"
+Endif
+
+
+Echo "AND test series"
+If { 1 == 2 && 1 == 2 }
+  Echo "Test (1 == 2 && 1 == 2): Not passed (true if-path)"
+Else
+  Echo "Test (1 == 2 && 1 == 2): Passed (false if-path)"
+Endif
+
+If { 1 == 2 && 2 == 2 }
+  Echo "Test (1 == 2 && 2 == 2): Not passed (true if-path)"
+Else
+  Echo "Test (1 == 2 && 2 == 2): Passed (false if-path)"
+Endif
+
+If { 1 == 1 && 1 == 2 }
+  Echo "Test (1 == 1 && 1 == 2): Not assed (true if-path)"
+Else
+  Echo "Test (1 == 1 && 1 == 2): Passed (false if-path)"
+Endif 
+
+If { 1 == 1 && 2 == 2 }
+  Echo "Test (1 == 1 && 2 == 2): Passed (true if-path)"
+Else
+  Echo "Test (1 == 1 && 2 == 2): Not passed (false if-path)"
+Endif
+
+
+
+
+
+
+
+Echo "If in for-loop:"
+For I 5 0 1
+  If { $I > 3 }
+    Echo "Test: Passed if $I > 3"
+  Else
+    Echo "Test: Passed if $I <= 3"
+  EndIf
+Done
+
+
+Echo "For-loop in if"
+Constant TestE 0
+If { TestE > 0 }
+   For I { TestE } -1.0 1.0
+       Echo "Test: NOT passed"
+   Done
+Else
+  Echo "Test: Passed"
+EndIf
+
+
+Echo "Double for-loop"
+Constant TestF 2
+If { TestF > 0 }
+   For I { TestF } -1.0 1.0
+     For J { TestF } -1.0 1.0
+       Echo "Test: Passed at I=$I J=$J"
+     Done
+   Done
+Else
+  Echo "Test: NOT passed"
+EndIf
+
+
+Echo "Another double for-loop"
+Constant TestGMax 1
+For X 2 0 1
+  For Y 2 0 1
+    Echo "Test: Testing X = $X and Y = $Y"
+    If { $X < TestGMax && $Y < TestGMax }
+      Echo "Test: Passed if $X < TestGMax && $Y < TestGMax"
+    Else
+      Echo "Test: Passed if $X >= TestGMax || $Y >= TestGMax"
+    EndIf
+  Done
+Done
+
+
+
+Echo "AND and OR test with variable"
+Constant TestH_A 4
+Constant TestH_B 5
+
+If { TestH_A != 5 && TestH_B != 6 }
+  Echo "Test (4 != 5 && 5 != 6): Passed (true if-path)"    
+Else
+  Echo "Test H1 (4 != 5 && 5 != 6): Not passed (false if-path)"
+EndIf
+
+If { TestH_A != 5 && TestH_B != 5 }
+  Echo "Test (4 != 5 && 5 != 5): Not passed (true if-path)"
+Else
+  Echo "Test (4 != 5 && 5 != 5): Passed (false if-path)"
+EndIf
+
+If { TestH_A != 5 || TestH_B != 6 }
+  Echo "Test (4 != 5 || 5 != 6): Passed (true if-path)"
+Else
+  Echo "Test (4 != 5 || 5 != 6): Not passed (false if-path)"
+EndIf
+
+If { TestH_A != 5 && TestH_B != 5 }
+  Echo "Test (4 != 5 || 5 != 5): Not passed (true if-path)"
+Else
+  Echo "Test (4 != 5 || 5 != 5): Passed (false if-path)"
+EndIf
+
+
+#------------------------------------------------------------
+# Detector and trigger section:
+
+
+MDStrip3D                  ActiveDetector
+
+ActiveDetector.DetectorVolume      GeWafer
+ActiveDetector.SensitiveVolume     GeWafer
+
+ActiveDetector.StructuralPitch     0.0   0.0    0.0
+ActiveDetector.StructuralOffset    0.0   0.0    CryoTotalHeight
+
+ActiveDetector.Offset              1.0   1.0
+ActiveDetector.StripNumber         40    40
+
+ActiveDetector.NoiseThreshold      15
+ActiveDetector.TriggerThreshold    30
+
+ActiveDetector.DepthResolution     10  0.02
+ActiveDetector.DepthResolution     100  0.02
+ActiveDetector.DepthResolution     1000  0.02
+
+ActiveDetector.EnergyResolution Gaus 10      10        0.417   
+ActiveDetector.EnergyResolution Gaus 20      20        0.425           
+ActiveDetector.EnergyResolution Gaus 50      50        0.4375    
+ActiveDetector.EnergyResolution Gaus 100     100       0.454     
+ActiveDetector.EnergyResolution Gaus 200     200       0.492     
+ActiveDetector.EnergyResolution Gaus 500     500       0.5875      
+ActiveDetector.EnergyResolution Gaus 1000    1000      0.7217       
+ActiveDetector.EnergyResolution Gaus 2000    2000      0.9317      
+ActiveDetector.EnergyResolution Gaus 5000    5000      1.3819       
+ActiveDetector.EnergyResolution Gaus 10000   10000     1.9094                     
+ActiveDetector.EnergyResolution Gaus 100000  100000    5.907      
+   
+ActiveDetector.GuardringEnergyResolution 100 1.5
+ActiveDetector.GuardringEnergyResolution 1000 1.5
+ActiveDetector.GuardringTriggerThreshold 40
+
+
+
+// Trigger: at least one hit in one Germanium detector  
+Trigger ActiveDetectorTrigger
+ActiveDetectorTrigger.Veto false
+ActiveDetectorTrigger.TriggerByDetector true
+ActiveDetectorTrigger.Detector ActiveDetector 1
+
+Trigger Detector7_GRTrigger
+Detector7_GRTrigger.Veto true
+Detector7_GRTrigger.TriggerByDetector True
+Detector7_GRTrigger.GuardringDetector ActiveDetector 1
+
+
+

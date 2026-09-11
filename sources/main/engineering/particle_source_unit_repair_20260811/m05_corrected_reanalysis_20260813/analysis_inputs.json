@@ -1,0 +1,287 @@
+{
+  "schema_version": 1,
+  "profile_id": "m05_corrected_reanalysis_20260813",
+  "authority_boundary": "INPUT_SELECTION_ONLY__NO_PHYSICS_RATES",
+  "repo_root_policy": "repo_relative",
+  "source": {
+    "contract_path": "engineering/particle_source_unit_repair_20260811/data/source_contract_manifest.json",
+    "contract_sha256": "5424eeca35b20affb153c0e07c31a6582e575f511922bf55f40a5a0f77ab4326",
+    "static_validation_path": "engineering/particle_source_unit_repair_20260811/data/static_validation.json",
+    "required_static_status": "PASS",
+    "energy_unit": "keV_total",
+    "gamma_profile": "unit_only_total_gamma",
+    "additive_mono511": false,
+    "forbidden_legacy_token": "cosima_spectra_dp_2602units"
+  },
+  "transport_inputs": [
+    {
+      "id": "batch0000",
+      "path": "runs/particle_source_unit_repair_20260811/mergeable_smoke_v1_ledger.json",
+      "selector": "campaign_jobs",
+      "required_status": "PASS__BATCH0000_MERGE_ELIGIBLE",
+      "expected_jobs": 32,
+      "expected_histories": 4752,
+      "scope": "Mass_model_511 and S3d_O8; instant and buildup; eight-family smoke"
+    },
+    {
+      "id": "batch0001",
+      "path": "runs/particle_source_unit_repair_20260811/seven_family_batch0001_v1_ledger.json",
+      "selector": "campaign_jobs",
+      "required_status": "PASS__BATCH0001_MERGE_ELIGIBLE",
+      "expected_jobs": 40,
+      "expected_histories": 466692,
+      "scope": "Mass_model_511 and S3d_O8; instant and buildup; seven non-proton families"
+    },
+    {
+      "id": "batch0002",
+      "path": "runs/particle_source_unit_repair_20260811/muminus_instant_pair_batch0002_v1_ledger.json",
+      "selector": "campaign_jobs",
+      "required_status": "PASS__BATCH0002_MERGE_ELIGIBLE",
+      "expected_jobs": 2,
+      "expected_histories": 20000,
+      "scope": "paired instant muminus top-up"
+    },
+    {
+      "id": "batch0003_prefix76",
+      "path": "runs/particle_source_unit_repair_20260811/gamma_instant_batch0003_prefix_checkpoints_20260811/gamma_instant_batch0003_prefix_shard0076_v1_ledger.json",
+      "selector": "campaign_jobs",
+      "required_status": "PARTIAL_PREFIX_MERGE_ELIGIBLE",
+      "expected_jobs": 152,
+      "expected_histories": 3800000,
+      "scope": "ordinal-76 instant-gamma prefix; prior credited events are metadata only"
+    },
+    {
+      "id": "batch0004_partial97",
+      "path": "runs/particle_source_unit_repair_20260811/seven_family_1m_screening_batch0004_partial_checkpoint_20260812/batch0004_partial_through_ordinal0097_v1_ledger.json",
+      "selector": "campaign_jobs",
+      "required_status": "PASS__BATCH0004_PARTIAL_CHECKPOINT_THROUGH_GLOBAL_ORDINAL0097_MERGE_ELIGIBLE",
+      "expected_jobs": 194,
+      "expected_histories": 2235468,
+      "scope": "mergeable partial screening checkpoint; not a canonical batch0004 final"
+    },
+    {
+      "id": "batch0005",
+      "path": "runs/particle_source_unit_repair_20260811/reduced_breadth_continuation_batch0005_v1_ledger.json",
+      "selector": "campaign_jobs",
+      "required_status": "PASS__BATCH0005_REDUCED_BREADTH_ADDON_MERGE_ELIGIBLE",
+      "expected_jobs": 16,
+      "expected_histories": 27340,
+      "scope": "reduced-breadth addon; not a seven-family total"
+    },
+    {
+      "id": "batch0006_mainline",
+      "path": "runs/particle_source_unit_repair_20260811/m05_16h_90gb_campaign_batch0006_v1/recovery0008_current_attempt_disk_admission/final_ledger.json",
+      "selector": "selected_receipts_path",
+      "required_status": "PASS__REPLANNED_MAINLINE_EVENT_TARGET_COMPLETE",
+      "expected_jobs": 488,
+      "expected_histories": 6149560,
+      "scope": "mainline terminal selector; structural declarations closure; includes stage00 smoke"
+    },
+    {
+      "id": "continuation0001",
+      "path": "runs/particle_source_unit_repair_20260811/m05_16h_90gb_campaign_batch0006_v1/continuation0001_recovery0005_finish_proton_wave/final_ledger.json",
+      "selector": "selected_receipts_receipt",
+      "required_status": "PASS__CONTINUATION0001_NON_GAMMA_DEWEIGHT_COMPLETE__GAMMA_LOCKED",
+      "expected_jobs": 28,
+      "expected_histories": 65280,
+      "scope": "non-gamma deweight continuation; gamma remains locked"
+    },
+    {
+      "id": "batch0007",
+      "path": "runs/particle_source_unit_repair_20260811/m05_paper_closure_topup_batch0007_3h_v1/final_ledger.json",
+      "selector": "selected_receipts_path",
+      "required_status": "PASS__BATCH0007_SUPPLEMENTAL_TRANSPORT_COMPLETE",
+      "expected_jobs": 24,
+      "expected_histories": 1008000,
+      "scope": "supplemental eminus instant/buildup and muminus buildup top-up"
+    }
+  ],
+  "selection": {
+    "geometries": [
+      "Mass_model_511",
+      "S3d_O8"
+    ],
+    "geometry_aliases": {
+      "mass_model_511": "Mass_model_511",
+      "Mass_model_511": "Mass_model_511",
+      "s3d_o8": "S3d_O8",
+      "S3d_O8": "S3d_O8"
+    },
+    "modes": [
+      "instant",
+      "buildup"
+    ],
+    "families": [
+      "alpha",
+      "eminus",
+      "eplus",
+      "gamma",
+      "muminus",
+      "muplus",
+      "n",
+      "p"
+    ],
+    "family_aliases": {
+      "n": "n",
+      "neutron": "n",
+      "p": "p",
+      "proton": "p"
+    },
+    "pooling_key": [
+      "geometry",
+      "mode",
+      "family"
+    ],
+    "prior_events_credited_are_metadata_only": true,
+    "deduplicate_by": "selected_simulation_artifact_path"
+  },
+  "geometries": {
+    "Mass_model_511": {
+      "setup": "outputs/geometry/DEMO2_DR_v3p5_Mass_model_511_stage_diam_300_300_300_350_350_400_20260701_megalib_proxy/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup",
+      "expected_active_veto_count": 24,
+      "active_veto_volumes": [
+        "CsI_Side_Segment_00",
+        "CsI_Side_Segment_01",
+        "CsI_Side_Segment_02",
+        "CsI_Side_Segment_03_below_side_port",
+        "CsI_Side_Segment_03_above_side_port",
+        "CsI_Side_Segment_03_rectcut_window_band",
+        "CsI_Side_Segment_04_below_side_port",
+        "CsI_Side_Segment_04_above_side_port",
+        "CsI_Side_Segment_04_rectcut_window_band",
+        "CsI_Side_Segment_05",
+        "CsI_Side_Segment_06",
+        "CsI_Side_Segment_07",
+        "CsI_Bottom_Quadrant_00",
+        "CsI_Bottom_Quadrant_01",
+        "CsI_Bottom_Quadrant_02",
+        "CsI_Bottom_Quadrant_03",
+        "CsI_TopAnnulus_Segment_00",
+        "CsI_TopAnnulus_Segment_01",
+        "CsI_TopAnnulus_Segment_02",
+        "CsI_TopAnnulus_Segment_03",
+        "CsI_TopAnnulus_Segment_04",
+        "CsI_TopAnnulus_Segment_05",
+        "CsI_TopAnnulus_Segment_06",
+        "CsI_TopAnnulus_Segment_07"
+      ]
+    },
+    "S3d_O8": {
+      "setup": "engineering/geometry_optimization_20260704/43_geoopt_s3d_o8_fallback_20260712/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup",
+      "expected_active_veto_count": 6,
+      "active_veto_volumes": [
+        "BGO_S3C_FullWrap_SideShell_WindowCut_40mm",
+        "BGO_S3D_O8_FullWrap_BottomCap_30mm",
+        "BGO_S3D_O8_FullWrap_TopAnnulus_10mm",
+        "GeoOpt_S2B_CryoShell_Plastic_SideSkin_10mm",
+        "GeoOpt_S2B_CryoShell_Plastic_BottomCap_10mm",
+        "GeoOpt_S2B_CryoShell_Plastic_TopCap_10mm"
+      ]
+    }
+  },
+  "analysis": {
+    "energy_unit": "keV",
+    "response": {
+      "fwhm_keV": 0.42,
+      "measured_pixel_threshold_keV": 0.3,
+      "implementation": "engineering/particle_source_unit_repair_20260811/seven_family_tes_activation_postprocess_20260812/code/analyze_seven_family_tes_activation.py",
+      "rng_namespace": "TES511_CORRECTED_SEVEN_FAMILY_PROMPT_KEYED_PIXEL_RESPONSE_V1",
+      "rng_key": [
+        "geometry",
+        "mode",
+        "family",
+        "batch_id",
+        "transport_seed",
+        "job_name",
+        "local_event_id",
+        "pixel_uid"
+      ],
+      "seed_policy": "no separate response seed; transport_seed is one keyed field"
+    },
+    "energy_windows_keV": {
+      "broad": [
+        480.0,
+        550.0
+      ],
+      "W2": [
+        510.58,
+        511.42
+      ]
+    },
+    "veto_thresholds_keV": [
+      50.0,
+      70.0,
+      80.0
+    ],
+    "compton_fov": {
+      "implementation": "old/code/tools/build_v3p5_centerfinger_step05_l1_response.py",
+      "reject_policy": "keep"
+    },
+    "normalization": {
+      "prompt": "sum(selected) / sum(TT) within one geometry, mode, and family",
+      "buildup": "sum(RP) / sum(TT) within one geometry, family, volume, and isotope state",
+      "zero_RP_TT_included": true
+    },
+    "mission": {
+      "reference_flux_ph_cm2_s": 0.0001,
+      "reference_flux_surface": "top_of_atmosphere",
+      "duration_days": 20.0,
+      "time_bins": 81,
+      "source_elevation_deg": 45.0,
+      "coincidence_window_s": 1e-06,
+      "family_scale_authority": "engineering/particle_source_unit_repair_20260811/m05_corrected_reanalysis_20260813/data/parma_energy_integrated_family_scales_81bins.csv",
+      "family_scale_metadata": "engineering/particle_source_unit_repair_20260811/m05_corrected_reanalysis_20260813/data/parma_energy_integrated_family_scales_81bins.json",
+      "family_scale_reference_environment": {
+        "latitude_deg": 34.0,
+        "longitude_deg": 100.0,
+        "altitude_km": 38.0,
+        "date": "2025-08-31",
+        "parma_driver_solar_modulation_w": 114.6,
+        "corrected_source_contract_solar_modulation_w": 118.3,
+        "use": "relative_family_flux_ratio_denominator_only"
+      },
+      "family_scale_method": "per equal-mu angular bin, trapezoidal integral of differential flux over the 64 PARMA energy points, then sum 2pi*dmu; normalized to the PARMA driver at the corrected source spatial/date coordinates; absolute PARMA flux is not substituted for source-card flux",
+      "atmosphere_authority": "engineering/geometry_optimization_20260704/43_geoopt_s3d_o8_fallback_20260712/fullchain/step06/atmosphere_transmission_511_by_time.csv",
+      "signal_scope": "post-Be-window selected effective area times top-of-atmosphere flux and fixed-45-degree slant transmission",
+      "significance": "cumulative_signal_counts / sqrt(cumulative_background_counts)",
+      "background_model": "corrected unit_only_total_gamma prompt plus delayed; no additive atmospheric mono-511 stream"
+    }
+  },
+  "expected_selection_summary": {
+    "totals": {
+      "jobs": 976,
+      "histories": 13777092
+    },
+    "by_mode": {
+      "instant": {
+        "jobs": 530,
+        "histories": 7684156
+      },
+      "buildup": {
+        "jobs": 446,
+        "histories": 6092936
+      }
+    },
+    "by_geometry": {
+      "Mass_model_511": {
+        "jobs": 488,
+        "histories": 6888549
+      },
+      "S3d_O8": {
+        "jobs": 488,
+        "histories": 6888543
+      }
+    }
+  },
+  "outputs": {
+    "root": "engineering/particle_source_unit_repair_20260811/m05_corrected_reanalysis_20260813/outputs",
+    "input_audit": "engineering/particle_source_unit_repair_20260811/m05_corrected_reanalysis_20260813/outputs/00_input_audit/input_audit.json",
+    "prompt": "engineering/particle_source_unit_repair_20260811/m05_corrected_reanalysis_20260813/outputs/01_prompt",
+    "activation": "engineering/particle_source_unit_repair_20260811/m05_corrected_reanalysis_20260813/outputs/02_activation",
+    "delayed": "engineering/particle_source_unit_repair_20260811/m05_corrected_reanalysis_20260813/outputs/03_delayed",
+    "common_response": "engineering/particle_source_unit_repair_20260811/m05_corrected_reanalysis_20260813/outputs/04_common_response",
+    "matched_comparison": "engineering/particle_source_unit_repair_20260811/m05_corrected_reanalysis_20260813/outputs/05_matched_comparison",
+    "mission": "engineering/particle_source_unit_repair_20260811/m05_corrected_reanalysis_20260813/outputs/06_mission",
+    "paper_registry": "engineering/particle_source_unit_repair_20260811/m05_corrected_reanalysis_20260813/outputs/07_paper_registry"
+  }
+}

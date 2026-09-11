@@ -1,0 +1,93 @@
+{
+  "document_type": "multiband_optics_geometry_migration_statement",
+  "generated_at_utc": "2026-07-07T14:58:08.744178+00:00",
+  "status": "OPTICS_GEOMETRY_MIGRATED_AND_MC_SMOKE_VERIFIED_IN_REPO",
+  "repo_head": "455999408676e9a2c9b1e531a6c8562fe880792d",
+  "model": "balloon511_f10m_ge111_multiband (unified / \u4e00\u4f53: tiles + support)",
+  "what_was_migrated": {
+    "core_geometry_file": "engineering/Mass_model_511_nearfield_migration_20260701/05_optics_migration/geometry/MultibandUnified_TilesAndSupport_f10m.geo",
+    "description": "Six coplanar Ge(111) rings (451-551 keV, 511 exact) as 1245 real Ge tiles on a single shared template MB_Tile, plus G10 carrier + Al outer mount + 4 Al brackets.",
+    "optical_axis": "+x, lens plane at x=0",
+    "provenance_design_dir": "/home/ubuntu/opticsim/opticsim_full/designs/f10m_multiband_20260701"
+  },
+  "no_overlap_evidence": {
+    "analytic_ledger": "engineering/Mass_model_511_nearfield_migration_20260701/05_optics_migration/geometry/overlap_ledger.json",
+    "all_clearances_positive": true,
+    "min_tangential_gap_lower_bound_um": 65.66579709086105,
+    "min_radial_gap_um": 394.65499999999486,
+    "geant4_check": "cosima CheckForOverlaps 500 0.0001 on all 1245 tiles + support",
+    "geant4_overlap_clean": true
+  },
+  "in_repo_mc_verification": {
+    "log": "engineering/Mass_model_511_nearfield_migration_20260701/05_optics_migration/verify/cosima_migrated_verify.log",
+    "log_exists": true,
+    "overlap_clean": true,
+    "overlap_bad_lines": [],
+    "generated_primaries": 9144,
+    "triggered_events": 200,
+    "distinct_tile_hit_positions": 263,
+    "sim": "engineering/Mass_model_511_nearfield_migration_20260701/05_optics_migration/verify/multiband_unified_migrated.inc1.id1.sim.gz"
+  },
+  "files": [
+    {
+      "path": "engineering/Mass_model_511_nearfield_migration_20260701/05_optics_migration/geometry/MultibandUnified_TilesAndSupport_f10m.geo",
+      "exists": true,
+      "role": "MIGRATED_OPTICS_CORE_GEOMETRY",
+      "sha256": "c466b5c3dd0e5cdab3b88a4cd06603b1d4c1ae2854cfd7c9c72eb35ff4839e23",
+      "size": 197199
+    },
+    {
+      "path": "engineering/Mass_model_511_nearfield_migration_20260701/05_optics_migration/geometry/overlap_ledger.json",
+      "exists": true,
+      "role": "NO_OVERLAP_ANALYTIC_LEDGER",
+      "sha256": "193ea982cf3d93fc439f622ba7474f3e88acce7d5d2ae3fc9470fae73596331b",
+      "size": 3273
+    },
+    {
+      "path": "engineering/Mass_model_511_nearfield_migration_20260701/05_optics_migration/geometry/multiband_unified_migrated.setup",
+      "exists": true,
+      "role": "REPO_LOCAL_RUNNABLE_SETUP",
+      "sha256": "d0e3fa637a372da89ae485ed15f23852a20be698058221eb3d181bb83c4368a8",
+      "size": 1736
+    },
+    {
+      "path": "engineering/Mass_model_511_nearfield_migration_20260701/05_optics_migration/geometry/multiband_unified_migrated.source",
+      "exists": true,
+      "role": "REPO_LOCAL_VERIFICATION_SOURCE",
+      "sha256": "486972b3ea9356d052546ffe36fa090be8495f8d97c0c49fa69c4f444b7a2fdd",
+      "size": 801
+    },
+    {
+      "path": "engineering/Mass_model_511_nearfield_migration_20260701/05_optics_migration/verify/cosima_migrated_verify.log",
+      "exists": true,
+      "role": "IN_REPO_COSIMA_VERIFY_LOG",
+      "sha256": "30d44fc13187382a01d4aa850da49dffaba527b43c862a518ac8968be24ba0dc",
+      "size": 55821
+    },
+    {
+      "path": "engineering/Mass_model_511_nearfield_migration_20260701/05_optics_migration/verify/multiband_unified_migrated.inc1.id1.sim.gz",
+      "exists": true,
+      "role": "IN_REPO_COSIMA_VERIFY_SIM",
+      "sha256": "89ac56e5101c195df5ce4a6dabefe6669bae21839299253076399899a19cd800",
+      "size": 103590
+    },
+    {
+      "path": "engineering/Mass_model_511_nearfield_migration_20260701/05_optics_migration/MC_SMOKE_UNIFIED.md",
+      "exists": true,
+      "role": "UPSTREAM_MC_SMOKE_SUMMARY",
+      "sha256": "9acee72b0f06d06b446cc5e6c143e67a2bcd7930f05f2ce10826c8564c2e207e",
+      "size": 3186
+    }
+  ],
+  "boundary_and_non_claims": [
+    "This is an available optics mass/geometry model migrated into the repo; it is loadable and MC-runnable in-repo.",
+    "It is NOT coupled into the detector background transport chain.",
+    "It does NOT change the main package detector-only state: G5 remains OPTICS_BRIDGE_NOT_REQUIRED_DETECTOR_ONLY for the detector background branch.",
+    "No background rate, no optics-to-detector bridge, and no no-effect claim is made.",
+    "Per-energy effective area in the design summary remains a design-stage estimate; only the 511 ring has an external XOP curve."
+  ],
+  "allowed_next_steps": [
+    "If an optics-coupled background is ever required, build an explicit optics-to-detector bridge (do not fold this into the detector-only G5).",
+    "Extract transported per-ring A_eff and generate external XOP/CRYSTAL curves for the 5 non-511 energies before any publication-grade optics number."
+  ]
+}

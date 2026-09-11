@@ -1,0 +1,81 @@
+{
+  "label": "fix5_1of10",
+  "status": "DRAFT_PRE_MC_ALIGNMENT_EVIDENCE",
+  "generated_by": "Subagent A - Builder",
+  "generated_at_utc": "2026-06-22T00:00:00Z",
+  "new_geo_re_source_or_report_paths": [
+    "core_md/fix5_benchmarks.json",
+    "core_md/HANDOFF_20260617.md",
+    "core_md/PROMPT511_NEW_GEO_RE_DIFF_AUDIT_20260619.md",
+    "outputs/reports/prompt511_entry_audit_20260617/prompt511_old_vs_v3p5_decomposition_summary.json",
+    "outputs/reports/prompt511_entry_audit_20260617/prompt511_entry_audit.md"
+  ],
+  "line_window_definition": {
+    "fix5_planned": "W2 line window 510.58-511.42 keV, inherited from current v3p5 exact-position authority.",
+    "current_v3p5_evidence": [
+      "core_md/Project_Memory.md",
+      "outputs/reports/v3p5_fullstat_performance_w2_closure_fullstat_v2_exactpos_20260613/summaries/w2_background_source_breakdown_summary.json"
+    ],
+    "old_new_geo_re_status": "UNVERIFIED in fix5_benchmarks.json; old values are described as hard-window/narrow-line context but the exact selection contract is not repo-local proven equivalent here."
+  },
+  "active_shield_thresholds": {
+    "fix5_planned": "CsI active-shield post-processing threshold 50 keV, same as current v3p5 CsI chain unless Runner/Verifier proves otherwise.",
+    "current_v3p5_evidence": [
+      "core_md/Project_Memory.md active-shield veto section",
+      "outputs/reports/v3p5_fullstat_performance_w2_closure_fullstat_v2_exactpos_20260613/summaries/step05_v3p5_centerfinger_l1_response_summary.json"
+    ],
+    "old_new_geo_re_status": "PENDING; exact old threshold and veto implementation not proven equivalent in this Phase 1 evidence file."
+  },
+  "compton_fov_definition": {
+    "fix5_planned": "Current Step05 side-entry Compton/FoV classifier against the tilted Be disk, after common Poisson time-axis grouping.",
+    "current_v3p5_evidence": [
+      "core_md/METHOD_FIX5_SIM_CLOSURE.md",
+      "core_md/Project_Memory.md custom Compton/FoV veto section"
+    ],
+    "old_new_geo_re_status": "PENDING; old new_geo_re exact Compton/FoV selection equivalence was not proven by Builder."
+  },
+  "source_surface_or_far_field_normalization": {
+    "fix5_source_cards": {
+      "source_dir": "config/megalib_sources_fullsphere20_fix5_tilt45",
+      "source_surface": "FarFieldAreaSource",
+      "radius_cm": 60.0,
+      "area_cm2": 11309.733552923255,
+      "matches_current_v3p5_templates": true
+    },
+    "old_new_geo_re_evidence": {
+      "audit_path": "core_md/PROMPT511_NEW_GEO_RE_DIFF_AUDIT_20260619.md",
+      "old_setup_sphere_cm": 35.0,
+      "current_setup_sphere_cm": 60.0,
+      "surface_area_ratio_current_over_old": 2.9387755102,
+      "status": "NOT_ALIGNED"
+    }
+  },
+  "rate_units_and_time_normalization": {
+    "fix5_expected": "cps / s^-1 after Step05; prompt normalized by 1/sum(TT) from fix5 SIM TimeTags; delayed requires fix5 activation-derived ground-state-corrected source and M-sampling audit.",
+    "new_geo_re_benchmark_values": {
+      "prompt_total_cps": 0.0323247092031,
+      "prompt_eplus_cps": 0.0244744226824,
+      "delayed_total_cps": 0.151456825339,
+      "sigma_cps": null
+    },
+    "old_new_geo_re_status": "Rate units are cps, but uncertainty and exact normalization equivalence are not quantified in the repo-local fix5 contract."
+  },
+  "selection_equivalence_status": {
+    "status": "PENDING",
+    "blocking": true,
+    "reason": "Line window, active shield, and Compton/FoV equivalence to old new_geo_re were not deterministically proven in Phase 1."
+  },
+  "normalization_equivalence_status": {
+    "status": "NOT_ALIGNED",
+    "blocking": true,
+    "reason": "Source-surface/far-field normalization differs: audit records old new_geo_re sphere 35 cm versus current/fix5 60 cm, with area ratio 2.9387755102."
+  },
+  "decision": "NOT_ALIGNED",
+  "decision_rule": "Because decision != ALIGNED, old new_geo_re prompt/delayed numbers may be reported as historical context only and must not be used for pass/fail gating.",
+  "next_required_evidence_for_alignment": [
+    "Deterministic old new_geo_re source-card/source-surface provenance",
+    "Old new_geo_re Step05 selection definition including line window, active-shield threshold, and Compton/FoV implementation",
+    "Rate normalization audit with comparable TimeTag/exposure accounting",
+    "Uncertainty or selected-event support for old benchmark values"
+  ]
+}

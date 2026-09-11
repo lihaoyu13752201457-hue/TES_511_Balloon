@@ -1,0 +1,68 @@
+
+
+Name GradedZShield
+Version 1.0
+
+# The thicknesses (not half thickness) of the graded-Z shield layers
+Constant Material1 BGO
+Constant ZSizeMaterial1 2.5
+
+Constant Material2 Copper
+Constant ZSizeMaterial2  0.0
+
+Constant Material3 Alu6061
+Constant ZSizeMaterial3  0.0
+
+
+# The surrounding sphere is not required for this example
+SurroundingSphere 1000  0.0  0.0  0.0  1000
+
+Include $(MEGALIB)/resource/examples/geomega/materials/Materials.geo
+
+
+Volume WorldVolume             
+WorldVolume.Material Vacuum
+WorldVolume.Visibility 0   
+WorldVolume.Shape BRIK 100. 100. 100.
+WorldVolume.Mother 0
+
+If { ZSizeMaterial1 > 0 }
+	Volume GradedZ_Material1
+	GradedZ_Material1.Material Material1
+	GradedZ_Material1.Visibility 1
+	GradedZ_Material1.Color 2
+	GradedZ_Material1.Shape BOX 100.0 100.0 { ZSizeMaterial1/2 }
+	GradedZ_Material1.Position 0.0  0.0  { ZSizeMaterial3 + ZSizeMaterial2 + ZSizeMaterial1/2 }
+	GradedZ_Material1.Mother WorldVolume
+EndIf
+
+If { ZSizeMaterial2 > 0 }
+	Volume GradedZ_Material2
+	GradedZ_Material2.Material Material2
+	GradedZ_Material2.Visibility 1
+	GradedZ_Material2.Color 3
+	GradedZ_Material2.Shape BOX 100.0 100.0 { ZSizeMaterial2/2 }
+	GradedZ_Material2.Position 0.0 0.0 { ZSizeMaterial3 + ZSizeMaterial2/2 }
+	GradedZ_Material2.Mother WorldVolume
+EndIf
+
+If { ZSizeMaterial3 > 0 }
+	Volume GradedZ_Material3
+	GradedZ_Material3.Material Material3
+	GradedZ_Material3.Visibility 1
+	GradedZ_Material3.Color 4
+	GradedZ_Material3.Shape BOX 100.0 100.0 { ZSizeMaterial3/2 }
+	GradedZ_Material3.Position 0.0 0.0 { ZSizeMaterial3/2} 
+	GradedZ_Material3.Mother WorldVolume
+EndIf
+
+Volume Blacky
+Blacky.Material Air
+Blacky.Visibility 1
+Blacky.Color 7
+Blacky.Shape BOX 100.0 100.0 1.0
+Blacky.Position 0.0 0.0 -2 
+Blacky.Mother WorldVolume
+
+
+

@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "status": "ARITHMETIC_GATE_NOT_CANDIDATE_BACKGROUND_PERFORMANCE",
+  "suppression_definition": "s_i = 1 - candidate_term_i / baseline_term_i",
+  "formula": "P*(1-sPrompt) + C*(1-sCu) + M*(1-sNbMu) + O + Delta_new <= G_candidate",
+  "baseline_mission_counts": {
+    "P_prompt": 55398.97943402516,
+    "C_exact_48_volume_Cu": 59252.57645915347,
+    "M_Nb_plus_MuMetal": 27605.141950180394,
+    "O_fixed_other": 1947.144242542067
+  },
+  "candidate_focused_signal": {
+    "S20_counts": 1653.5393779061749,
+    "G_candidate_counts": 27341.9247428634,
+    "signal_retention_ratio": 1.00495422724825,
+    "evidence": "MEASURED_POST_BE_FOCUSED_SIGNAL"
+  },
+  "central_screen_assumptions": {
+    "sCu": 0.95,
+    "sNbMu": 0.75,
+    "Delta_new_counts": 0.0,
+    "assumption_guard": "All three are unmeasured candidate-background assumptions; Delta_new=0 is not an activation result."
+  },
+  "central_prompt_requirement": {
+    "delayed_residual_counts": 11811.058553044839,
+    "prompt_headroom_counts": 15530.866189818562,
+    "maximum_prompt_survival": 0.28034570940633174,
+    "minimum_prompt_suppression": 0.7196542905936683
+  },
+  "preregistered_prompt_target": {
+    "minimum_prompt_suppression": 0.8,
+    "maximum_prompt_survival": 0.2,
+    "joint_residual_counts": 22890.85443984987,
+    "joint_margin_counts": 4451.07030301353
+  },
+  "zero_candidate_equal_exposure_equal_weight_one_sided_95pct": {
+    "method": "exact conditional independent-Poisson rate ratio; r_upper=0.05^(-1/n_baseline)-1 when n_candidate=0",
+    "central_gate": {
+      "minimum_baseline_events": 13,
+      "rate_ratio_upper": 0.25915510457657276,
+      "approximate_current_exposure_multiplier": 6.5,
+      "approximate_histories": 20850297,
+      "approximate_TT_s": 384.12751845
+    },
+    "preregistered_sPrompt_0p80": {
+      "minimum_baseline_events": 17,
+      "rate_ratio_upper": 0.19269988180425845,
+      "approximate_current_exposure_multiplier": 8.5,
+      "approximate_histories": 27265773,
+      "approximate_TT_s": 502.32060105
+    },
+    "guard": "Do not use the zero-candidate count formula for nonzero candidate counts or unequal history weights."
+  }
+}

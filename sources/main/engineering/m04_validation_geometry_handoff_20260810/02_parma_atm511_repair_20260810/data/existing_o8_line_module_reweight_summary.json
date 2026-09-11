@@ -1,0 +1,160 @@
+{
+  "status": "DIAGNOSTIC_REWEIGHT_REPRODUCED_BUT_FAILS_PASS_PARMA_511_STATISTICS",
+  "audited_at_utc": "2026-08-10T13:13:54Z",
+  "scope": {
+    "simulation_launched": false,
+    "transport_launched": false,
+    "other_particle_modules_changed": false,
+    "allowed_use": "offline diagnostic/cross-check of the retained O8 mono-line SIM",
+    "not_allowed_use": "paper-authority PASS_PARMA_511 detector response"
+  },
+  "input_authorities": {
+    "old_source": {
+      "path": "runs/geometry_optimization_20260704/s3d_o8_atm511_sidecar_3m_20260712/Atm511SidecarS3dO8_3M.source",
+      "sha256": "323621f39737171ddc77a377f58dabc7a8c7148bfe195c101961b95d68008b2e"
+    },
+    "old_sim": {
+      "path": "runs/geometry_optimization_20260704/s3d_o8_atm511_sidecar_3m_20260712/Atm511SidecarS3dO8_3M.inc1.id1.sim.gz",
+      "sha256": "f07b1c8073764257ba95e25eb340726d27e2740c4f17bffe108a13ecc15b234c",
+      "size_bytes": 809084946
+    },
+    "old_log": {
+      "path": "runs/geometry_optimization_20260704/s3d_o8_atm511_sidecar_3m_20260712/cosima_Atm511SidecarS3dO8_3M.log",
+      "sha256": "185d2f7d98f6928f818b7599db18ce93fb5b2f3e3c20658e0c7bb3a8bff4a450"
+    },
+    "old_replay_summary": {
+      "path": "engineering/geometry_optimization_20260704/43_geoopt_s3d_o8_fallback_20260712/data/s3d_o8_atm511_replay_summary.json",
+      "sha256": "b2c4e6ab26ca0f1210fc828086b574435a52100712cbc2f9a9209d324b31ec80"
+    },
+    "atm_compact_catalog": {
+      "path": "engineering/ea_s3d_o8_all8_detector_response_closure_20260713/data/s3d_o8_all8_atm511_compact_catalog.pkl",
+      "sha256": "c7c803309598944838d49c2874b75ab5b645de8688d08109bb2613ed89f893ed",
+      "size_bytes": 10896
+    },
+    "energy_response_summary": {
+      "path": "engineering/ea_detector_response_closure_20260713/data/o8_energy_response_closure_summary.json",
+      "sha256": "810b1e3182e5247f5caacd346f24415ddce7833921840b601dde0a38da1779bd"
+    },
+    "parma20": {
+      "path": "engineering/m04_validation_geometry_handoff_20260810/02_parma_atm511_repair_20260810/line/parma511_day15_20bins.csv",
+      "sha256": "3e4c73e50f6a5e97c2cd613b9b85a666f27723d7faaa26e105803774936a7ecd"
+    },
+    "parma40": {
+      "path": "engineering/m04_validation_geometry_handoff_20260810/02_parma_atm511_repair_20260810/line/parma511_day15_40bins.csv",
+      "sha256": "093175c5b73a72bfba510f23e7bfecb4aa8c93bed19f80a7a5271bccab18daa5"
+    },
+    "parma80": {
+      "path": "engineering/m04_validation_geometry_handoff_20260810/02_parma_atm511_repair_20260810/line/parma511_day15_80bins.csv",
+      "sha256": "2f4ae904bf89179fe1709e3a8123ff864f4450e8bcf443389898ea43cd6a5a32"
+    }
+  },
+  "old_module": {
+    "line_energy_keV": 511.0,
+    "total_flux_ph_cm2_s": 0.051555854113024394,
+    "observation_time_s": 5143.83,
+    "start_area_cm2": 11309.7,
+    "generated_events": 3000000,
+    "source_bins": [
+      {"bin_id": 0, "source_name": "Atm511_bin00_down", "theta_deg": [0.0, 25.841933], "flux_ph_cm2_s": 0.0004319337401899, "generated_events": 25283, "parma20_flux_ph_cm2_s": 0.0006392381455014711, "parma_to_old_ratio": 1.4799449221550267, "unsmeared_w2": 0, "primary_420eV_w2": 0},
+      {"bin_id": 1, "source_name": "Atm511_bin01_down", "theta_deg": [25.841933, 36.869898], "flux_ph_cm2_s": 0.0004743906443078, "generated_events": 27734, "parma20_flux_ph_cm2_s": 0.0009762637531259073, "parma_to_old_ratio": 2.057932138502453, "unsmeared_w2": 1, "primary_420eV_w2": 1},
+      {"bin_id": 2, "source_name": "Atm511_bin02_down", "theta_deg": [36.869898, 45.572996], "flux_ph_cm2_s": 0.0005259683059061, "generated_events": 30384, "parma20_flux_ph_cm2_s": 0.0013422537398926238, "parma_to_old_ratio": 2.551966962306382, "unsmeared_w2": 0, "primary_420eV_w2": 0},
+      {"bin_id": 3, "source_name": "Atm511_bin03_down", "theta_deg": [45.572996, 53.130102], "flux_ph_cm2_s": 0.0005898787018953, "generated_events": 34519, "parma20_flux_ph_cm2_s": 0.0017441504087646273, "parma_to_old_ratio": 2.9567950210112923, "unsmeared_w2": 2, "primary_420eV_w2": 1},
+      {"bin_id": 4, "source_name": "Atm511_bin04_down", "theta_deg": [53.130102, 60.0], "flux_ph_cm2_s": 0.0006709636345901, "generated_events": 39276, "parma20_flux_ph_cm2_s": 0.0021919910061572773, "parma_to_old_ratio": 3.266929671227848, "unsmeared_w2": 0, "primary_420eV_w2": 0},
+      {"bin_id": 5, "source_name": "Atm511_bin05_down", "theta_deg": [60.0, 66.421822], "flux_ph_cm2_s": 0.0007767544252245, "generated_events": 45104, "parma20_flux_ph_cm2_s": 0.0027011903251425596, "parma_to_old_ratio": 3.477534517247009, "unsmeared_w2": 0, "primary_420eV_w2": 0},
+      {"bin_id": 6, "source_name": "Atm511_bin06_down", "theta_deg": [66.421822, 72.542397], "flux_ph_cm2_s": 0.0009191584642227, "generated_events": 53355, "parma20_flux_ph_cm2_s": 0.0032975265639396427, "parma_to_old_ratio": 3.587549581810406, "unsmeared_w2": 0, "primary_420eV_w2": 0},
+      {"bin_id": 7, "source_name": "Atm511_bin07_down", "theta_deg": [72.542397, 78.463041], "flux_ph_cm2_s": 0.001115716672684, "generated_events": 64584, "parma20_flux_ph_cm2_s": 0.004030134446145174, "parma_to_old_ratio": 3.61214862591429, "unsmeared_w2": 0, "primary_420eV_w2": 0},
+      {"bin_id": 8, "source_name": "Atm511_bin08_down", "theta_deg": [78.463041, 84.26083], "flux_ph_cm2_s": 0.001375453637814, "generated_events": 80401, "parma20_flux_ph_cm2_s": 0.005017461626757169, "parma_to_old_ratio": 3.6478595052693956, "unsmeared_w2": 0, "primary_420eV_w2": 0},
+      {"bin_id": 9, "source_name": "Atm511_bin09_down", "theta_deg": [84.26083, 90.0], "flux_ph_cm2_s": 0.001572848918801, "generated_events": 92049, "parma20_flux_ph_cm2_s": 0.007496608312518569, "parma_to_old_ratio": 4.766260905868388, "unsmeared_w2": 0, "primary_420eV_w2": 0},
+      {"bin_id": 10, "source_name": "Atm511_bin10_up", "theta_deg": [90.0, 95.73917], "flux_ph_cm2_s": 0.002527919982697, "generated_events": 146628, "parma20_flux_ph_cm2_s": 0.014390690529063702, "parma_to_old_ratio": 5.69270017546619, "unsmeared_w2": 0, "primary_420eV_w2": 0},
+      {"bin_id": 11, "source_name": "Atm511_bin11_up", "theta_deg": [95.73917, 101.536959], "flux_ph_cm2_s": 0.002924000081064, "generated_events": 169753, "parma20_flux_ph_cm2_s": 0.015062415817671856, "parma_to_old_ratio": 5.151304856390725, "unsmeared_w2": 0, "primary_420eV_w2": 0},
+      {"bin_id": 12, "source_name": "Atm511_bin12_up", "theta_deg": [101.536959, 107.457603], "flux_ph_cm2_s": 0.003320079481728, "generated_events": 193115, "parma20_flux_ph_cm2_s": 0.014636633512980038, "parma_to_old_ratio": 4.408519010925039, "unsmeared_w2": 0, "primary_420eV_w2": 0},
+      {"bin_id": 13, "source_name": "Atm511_bin13_up", "theta_deg": [107.457603, 113.578178], "flux_ph_cm2_s": 0.003716158973758, "generated_events": 215928, "parma20_flux_ph_cm2_s": 0.014256922545531294, "parma_to_old_ratio": 3.8364673433531427, "unsmeared_w2": 1, "primary_420eV_w2": 1},
+      {"bin_id": 14, "source_name": "Atm511_bin14_up", "theta_deg": [113.578178, 120.0], "flux_ph_cm2_s": 0.00411223916414, "generated_events": 239084, "parma20_flux_ph_cm2_s": 0.013905637820760739, "parma_to_old_ratio": 3.381524582038469, "unsmeared_w2": 1, "primary_420eV_w2": 1},
+      {"bin_id": 15, "source_name": "Atm511_bin15_up", "theta_deg": [120.0, 126.869898], "flux_ph_cm2_s": 0.004508318761478, "generated_events": 262147, "parma20_flux_ph_cm2_s": 0.013574461868332968, "parma_to_old_ratio": 3.0109809413482416, "unsmeared_w2": 0, "primary_420eV_w2": 0},
+      {"bin_id": 16, "source_name": "Atm511_bin16_up", "theta_deg": [126.869898, 134.427004], "flux_ph_cm2_s": 0.004904397959536, "generated_events": 285675, "parma20_flux_ph_cm2_s": 0.013258614480279648, "parma_to_old_ratio": 2.703413260846808, "unsmeared_w2": 0, "primary_420eV_w2": 0},
+      {"bin_id": 17, "source_name": "Atm511_bin17_up", "theta_deg": [134.427004, 143.130102], "flux_ph_cm2_s": 0.005300477653389, "generated_events": 308731, "parma20_flux_ph_cm2_s": 0.012955023365330396, "parma_to_old_ratio": 2.444123758742245, "unsmeared_w2": 1, "primary_420eV_w2": 1},
+      {"bin_id": 18, "source_name": "Atm511_bin18_up", "theta_deg": [143.130102, 154.158067], "flux_ph_cm2_s": 0.005696557618543, "generated_events": 331291, "parma20_flux_ph_cm2_s": 0.012661564077307369, "parma_to_old_ratio": 2.2226693601926204, "unsmeared_w2": 3, "primary_420eV_w2": 3},
+      {"bin_id": 19, "source_name": "Atm511_bin19_up", "theta_deg": [154.158067, 180.0], "flux_ph_cm2_s": 0.006092637291056, "generated_events": 354959, "parma20_flux_ph_cm2_s": 0.012376689257058173, "parma_to_old_ratio": 2.031417375727777, "unsmeared_w2": 0, "primary_420eV_w2": 0}
+    ]
+  },
+  "parma_module": {
+    "line_energy_keV": 510.99895,
+    "old_minus_parma_energy_keV": 0.0010500000000206455,
+    "total_flux_ph_cm2_s": 0.16651547160226118,
+    "total_flux_ratio_to_old": 3.229807254035869,
+    "angular_grids_equal_mu_bins": [20, 40, 80]
+  },
+  "sim_lineage": {
+    "explicit_source_name_or_source_id_present": false,
+    "only_source_related_header_match": "BeamType FarFieldAreaSource 0 25.8419 0 360",
+    "ia_init_records": 3000000,
+    "source_direction_formula": "mu_source=cos(theta_source)=-IA_INIT.dir_z",
+    "old_bin_formula": "floor((1+dir_z)*10), clipped to [0,19]",
+    "parma_bin_formula": "floor((1+dir_z)*G/2), clipped to [0,G-1]",
+    "log_source_counts": [25283, 27734, 30384, 34519, 39276, 45104, 53355, 64584, 80401, 92049, 146628, 169753, 193115, 215928, 239084, 262147, 285675, 308731, 331291, 354959],
+    "direction_inferred_counts": [25284, 27736, 30379, 34519, 39277, 45105, 53352, 64585, 80401, 92046, 146620, 169761, 193113, 215923, 239082, 262149, 285680, 308720, 331293, 354975],
+    "direction_minus_log_counts": [1, 2, -5, 0, 1, 1, -3, 1, 0, -3, -8, 8, -2, -5, -2, 2, 5, -11, 2, 16],
+    "max_abs_bin_count_delta": 16,
+    "rounded_boundary_candidates_total": 271,
+    "rounded_boundary_candidates_by_internal_edge": [3, 4, 5, 4, 2, 4, 5, 5, 6, 11, 18, 12, 21, 27, 29, 23, 28, 32, 32],
+    "w2_boundary_ambiguous_events": 0,
+    "minimum_w2_source_edge_margin_deg": 0.4844338933627199
+  },
+  "compact_catalog": {
+    "top_level_fields": ["metadata", "catalog"],
+    "catalog_fields": ["label", "event_id", "stream", "tag", "rate_hz", "active_keV", "raw_total_keV", "hit_start", "hit_count", "hit_uid", "hit_layer", "hit_e_keV", "hit_x_cm", "hit_y_cm", "hit_z_cm", "active_only_rate_by_stream", "active_only_events_by_stream", "generated_events"],
+    "tes_events": 69,
+    "pixel_hits": 84,
+    "active_only_events": 1041436,
+    "direction_or_source_bin_fields_present": false,
+    "raw_sim_join_key": "catalog.event_id -> SIM ID/local_id"
+  },
+  "w2_angular_distribution": {
+    "unsmeared_9_by_old20_bin": {"1": 1, "3": 2, "13": 1, "14": 1, "17": 1, "18": 3},
+    "primary_420eV_8_by_old20_bin": {"1": 1, "3": 1, "13": 1, "14": 1, "17": 1, "18": 3},
+    "primary_response_seed": 1026071308,
+    "detector_sigma_keV": 0.178357578060484,
+    "removed_event_id": 1733826,
+    "removed_event_primary_total_keV": 510.5766502223496,
+    "event_rows": "response/existing_o8_line_module_reweight_events.csv",
+    "parma_flux_share_in_bins_with_at_least_one_unsmeared_w2_event": 0.33930517943566935,
+    "parma_flux_share_in_bins_with_zero_unsmeared_w2_events": 0.6606948205643306
+  },
+  "offline_reweight": {
+    "formula": "event_weight_G=(G/20)*PARMA_flux_G_bin/old_flux_20_bin/5143.83",
+    "unsmeared_9": {
+      "20": {"rate_cps": 0.004724426340924322, "mc_sigma_cps": 0.0016109824268067995, "relative_mc_sigma": 0.3409900611322929, "ess": 8.600358571287048},
+      "40": {"rate_cps": 0.004746352893506243, "mc_sigma_cps": 0.0016157544560292652, "relative_mc_sigma": 0.3404202115354447, "ess": 8.629175972023994},
+      "80": {"rate_cps": 0.004766653533022961, "mc_sigma_cps": 0.001620885595329523, "relative_mc_sigma": 0.3400468660245954, "ess": 8.648134727444079},
+      "relative_40_vs_80": -0.0042588871576415555
+    },
+    "primary_420eV_8": {
+      "20": {"rate_cps": 0.00414960271319726, "mc_sigma_cps": 0.0015049392600656765, "relative_mc_sigma": 0.36267068538378794, "ess": 7.602826747108092},
+      "40": {"rate_cps": 0.004136709932888986, "mc_sigma_cps": 0.0014963281467473145, "relative_mc_sigma": 0.3617193786904735, "ess": 7.642869560083318},
+      "80": {"rate_cps": 0.004174895515607628, "mc_sigma_cps": 0.0015090038309995824, "relative_mc_sigma": 0.36144708900097033, "ess": 7.65438913521842},
+      "relative_40_vs_80": -0.009146476259318859
+    },
+    "naive_total_flux_scalar_unsmeared_cps": 0.005651093696005276,
+    "naive_total_flux_scalar_primary_cps": 0.005023194396449136,
+    "angular80_vs_naive_scalar_unsmeared_fractional_difference": -0.15650778602512305,
+    "angular80_vs_naive_scalar_primary_fractional_difference": -0.1688763790310731
+  },
+  "gate": {
+    "handoff_required_final_w2_events_or_relative_error": ">=400 final events or <=5% pure-counting relative standard error",
+    "handoff_required_40_vs_80_combined_count_error": "<1.5%",
+    "actual_unsmeared_events": 9,
+    "actual_primary_events": 8,
+    "actual_unsmeared_80bin_relative_mc_sigma": 0.3400468660245954,
+    "actual_primary_80bin_relative_mc_sigma": 0.36144708900097033,
+    "passes_PASS_PARMA_511_detector_response": false,
+    "decision": "Existing transport supports a zero-simulation angular-reweight diagnostic only. If paper-authority PASS_PARMA_511 is required, transport only the corrected atmospheric 510.99895-keV mono-line module; reuse and recompose every other retained module."
+  },
+  "limitations": [
+    "The SIM has IA INIT direction but no explicit source name or source-bin ID.",
+    "IA INIT direction is printed to five decimals; full-stream boundary lineage is not exact.",
+    "The compact atmospheric cache omits direction/source-bin fields and aggregates active-only events.",
+    "Fourteen of twenty old bins have zero unsmeared W2 survivors and contain 66.0694820564% of the new line flux.",
+    "The retained transport used 511.0 keV, 0.00105 keV above the PARMA mono energy.",
+    "The primary count of eight is one deterministic detector-response realization, not a high-stat response coefficient."
+  ]
+}

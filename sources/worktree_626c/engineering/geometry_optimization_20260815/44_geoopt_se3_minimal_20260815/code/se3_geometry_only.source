@@ -1,0 +1,16 @@
+Version 1
+Geometry ../geometry/DEMO2_DR_v3p5_SE3.geo.setup
+PhysicsListHD qgsp-bic-hp
+PhysicsListEM LivermorePol
+StoreSimulationInfo all
+
+# Geometry-only source card.  The matching export macro deliberately contains
+# no /run/beamOn command, so this card loads SE3 without particle transport.
+Run GeometryOnly
+GeometryOnly.FileName /tmp/se3_geometry_visualization_no_transport
+GeometryOnly.NEvents 1
+GeometryOnly.Source DummyPhoton
+DummyPhoton.ParticleType 1
+DummyPhoton.Beam PointSource 0 0 0
+DummyPhoton.Spectrum Mono 511
+DummyPhoton.Flux 1.0

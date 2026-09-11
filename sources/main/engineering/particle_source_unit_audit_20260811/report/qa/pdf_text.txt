@@ -1,0 +1,265 @@
+TES-511             粒子源单位实证审计
+     手册、实现源码、项目 raw/DP/source cards 与保留 SIM 事件的可复核单位审计。审计日期：2026-08-
+MEGAlib
+11；本机版本：MEGAlib 4.02.00。
+
+技术摘要
+结论：当前三套保留的八族连续谱输入单位不正确。 Cosima 的 Spectrum File 把 DP 横轴直接当作总动能
+keV；项目 active 源卡却全部引用 cosima_spectra_dp_2602units/。该目录的每个 x 都是正确值的 0.001，y
+完全不变。因此 α、e⁻、e⁺、γ、μ⁻、μ⁺、n、p 的实际入射总动能均低 1000 倍，并非只有 γ。
+这会使 prompt 响应、活化反应阈值与截面采样、同位素库存、delayed 源以及基于它们的几何优选/灵敏度结论失去
+物理权威。显式 Flux、角箱、R=60 cm 面积和局部 delayed Bq/TT 账目本身可以闭合，但这些局部 PASS 不能修复
+错误的入射能量。独立 PARMA 511-keV mono 源及 Optics EventList 的单位格式通过，其适用范围在报告中单独限
+定。
+
+    受影响粒子族                                          错误谱引用                                     能量缩小因子
+    8                                               480                                       1,000
+    八类连续谱全部受同一个 legacy 横                            三套保留包合计 480/480 个                         实际送入 Cosima 的总动能是正确
+    轴错误影响（8/8）。                                     Spectrum File 引用指向 legacy 目               值的 1/1000。
+                                                    录。
+
+    γ 事件 <1 keV
+    7,639,501
+    保留的 1000 万 γ 主粒子 IA INIT 扫
+    描中的 <1 keV 事件数。
+     扫描总事件 10,000,000
+
+关键结论与判定边界
+本审计把“语法/算术闭合”和“物理输入正确”分开。源卡能够被 Cosima 解析、hash 完全匹配、Flux 总和闭合，都只
+说明同一输入被稳定复现；不能证明该输入使用了正确的物理单位。
+单位判定总表
+组件                            MEGAlib/  物理期望                   实测                              判定与边界
+八类 EXPACS/PARMA 连续谱能量         DP x =   总动能 keV                 active x = correct x × 0.001       ｜     、活化库存与 delayed 物理率失效
+                                                                                               FAIL prompt
+
+独立 PARMA 大气 511-keV 单线        0.51099895 MeV→510.99895 keV           ；      箱 flux 闭合
+                                                               ×1000 20/40/80                  PASS｜仅 source-level；不替代探测器响应闭环
+
+角度、立体角与 R=60 cm 面积              ； 箱总和4π；A=πR²
+                              deg 20                           源卡及 runner 算术闭合                 PASS｜只证明归一化结构，不证明谱物理正确
+
+显式 FarField Flux              每角箱已积分 particles cm⁻² s⁻¹        卡片和 manifest 相对差 ≤3.1×10⁻¹⁶     PASS｜修复能量时不要把 Flux 再乘/除1000
+
+正确 DP 目录的 raw 转换              MeV×1000；α 为 MeV/n×4×1000        160/160 文件逐点闭合                  PASS｜可作为修复输入；不等于旧输运已修复
+
+Delayed PointSource / Bq 账目   cm、s⁻¹(Bq)、TT与NUBASE审计           局部单位及守恒检查存在                     条件 PASS｜上游库存由错误初级能谱生成，物理权威
+                                                                                               FAIL
+
+Optics EventList              15列；s、cm、keV                     37,194   行均15列、511 keV          PASS   （格式）｜1 ns 时间仅排序；从 Be 窗注入
+MEGAlib       官方契约：Cosima 实际读取什么
+本机安装为 MEGAlib 4.02.00。Cosima 手册 PDF 第27页明确规定：Spectrum File 的第一个 DP 数是 keV，第
+二个数是 每 keV 的微分形状；形状的整体归一化任意，绝对率由 .Flux 给出。源码与手册一致：
+MCSource::SetEnergy 对 x 执行 ScaleX(keV)，随机抽样得到的 x 随后直接进入 Geant4 粒子枪。
+
+由此得到两个硬约束：
+     非 α 原始 MeV 谱必须写成 E_total_keV = E_raw × 1000。
+     α 原始谱是 MeV/n，而粒子枪需要整颗 α 的动能，所以必须写成 E_total_keV = E_raw × 4 × 1000。
+
+MFunction::GetRandom() 用累计积分抽样，统一乘在 y 上的常数会在归一化时消掉。所以错误 legacy DP 的 y
+虽未除以1000，也不能据此把卡片 .Flux 再乘或除1000。
+审计方法与可复现定义
+审计只读遍历 8 族 × 20 角箱的 160 组 raw/correct/legacy 文件，并遍历三套保留包的24张源卡。原始谱在 raw 坐
+标上的梯形积分记为 I，变量变换倍率记为 B：非 α 为1000，α 为4000。
+ raw EXPACS/PARMA:   E_raw, f(E_raw)
+                 （
+         │ B=1000 α: 4×1000  ）
+         ▼
+ correct DP: x = B·E_raw, p(x) = f(E_raw)/(I·B),    ∫p dx = 1
+         │ legacy    又把 除
+                       x     ， 不变
+                           1000 y
+         ▼
+                            把当
+ active source card → Cosima x keV → ParticleGun   总动能低1000倍
+      的全部节点重建最大能量残差为 3.638×10⁻¹² keV，最大 PDF 相对差为 8.543×10⁻¹¹，与文本科学计
+raw→correct
+数法舍入一致。随后 correct→legacy 的全部节点满足 x 比例0.001且 y 最大绝对差0。
+全八族的直接数值证据
+下图不是由文件夹名称推断，而是先从 raw 文件独立重建正确 DP，再逐点比较 active legacy DP。
+
+
+
+
+图1｜应有总动能/实际载入总动能。对数轴上的正确基线为1；八类实测均为1000。来源：全160个DP文件、12,800个节点的穷举审
+计。
+图的解释
+八根柱都等于1000，说明同一错误横跨所有粒子族。α 的正确 raw→total-keV 倍率为4000，但 legacy 目录是在已
+经正确换算后的 keV 横轴上再除1000，所以 α 的最终错误仍然也是精确的1000倍。中子有2,800个节点，其余各
+1,600个，合计12,800个节点。
+
+
+全八族 raw→correct→legacy 对照
+族        raw 单位          转总keV       穷举覆盖               raw→correct   重建          active legacy   关系                    active 判定
+e⁺       MeV             ×1000       20 文件 / 1,600 节点       ； 最大相对差 6.764e-11
+                                                        PASS PDF                                     ； 完全相同
+                                                                                  x = 0.001 × correct y                 FAIL：实际能量 /1000
+e⁻       MeV             ×1000       20 文件 / 1,600 节点   PASS；PDF最大相对差 6.928e-11   x = 0.001 × correct；y 完全相同            FAIL：实际能量 /1000
+
+n        MeV             ×1000       20 文件 / 2,800 节点   PASS；PDF最大相对差 7.444e-11   x = 0.001 × correct；y 完全相同            FAIL：实际能量 /1000
+
+p        MeV             ×1000       20 文件 / 1,600 节点   PASS；PDF最大相对差 6.879e-11   x = 0.001 × correct；y 完全相同            FAIL：实际能量 /1000
+
+α        MeV/n           ×4000       20 文件 / 1,600 节点   PASS；PDF最大相对差 8.542e-11   x = 0.001 × correct；y 完全相同            FAIL：实际能量 /1000
+
+γ        MeV             ×1000       20 文件 / 1,600 节点   PASS；PDF最大相对差 6.716e-11   x = 0.001 × correct；y 完全相同            FAIL：实际能量 /1000
+
+μ⁺       MeV             ×1000       20 文件 / 1,600 节点   PASS；PDF最大相对差 7.163e-11   x = 0.001 × correct；y 完全相同            FAIL：实际能量 /1000
+
+μ⁻       MeV             ×1000       20 文件 / 1,600 节点   PASS；PDF最大相对差 7.644e-11   x = 0.001 × correct；y 完全相同            FAIL：实际能量 /1000
+
+
+
+
+三套保留源包的覆盖范围
+Mass_model_511、S3c package 32 和 S3d/O8 package 43 均为八族全覆盖。某些 runner 对 legacy 目录和树
+hash     的强制检查，只证明错误输入被稳定锁定；它不是单位验证器。
+三套保留源包的引用覆盖
+保留包                              覆盖                           legacy /   全部引用                     正确目录引用 判定
+Mass_model_511                   8 源卡 / 160 角箱                160 / 160                                   0     ：        指向 legacy
+                                                                                                              FAIL 160/160
+
+     （
+S3c package 32   ）               8 源卡 / 160 角箱                160 / 160                                   0 FAIL：160/160 指向 legacy
+
+         （
+S3d/O8 package 43    ）           8 源卡 / 160 角箱                160 / 160                                   0 FAIL：160/160 指向 legacy
+
+
+
+
+输运文件的事件级反证
+保留的 γ IA INIT 审计扫描了 10,000,000 个主粒子，其中 7,639,501 个低于1 keV。正确 DP 的 449.65、566.08
+、712.64 keV 节点在实际输运中对应为 0.44965、0.56608、0.71264 keV。这把“卡片引用错误”与“Geant4 实际收
+到低1000倍能量”连接起来。
+完整 raw SIM 扫描目前只对 γ 保留；其余七族的结论来自更直接的源级穷举：它们的 active 卡片引用、
+legacy/correct DP 节点关系和 Cosima 读取语义均完全相同。
+
+
+哪些单位确实正确
+Flux 与角度。 每族20个 .Flux 的和与 manifest 至多相差3.1×10⁻¹⁶（相对），20个 equal-μ 角箱总立体角为4π；
+theta/phi 在源卡中按度输入。FarField 的粒子数换算使用 N=t·πR²·F，R=60 cm 的 runner 算术正确。
+
+PARMA 511 mono。 0.51099895 MeV 正确转换为 510.99895 keV，20/40/80箱 flux 都闭合；判定为独立
+source-level PASS。
+
+EventList。 保留文件有 37,194 行，全部15列，能量均为 511 keV，时间范围 0.0–3.7193e-05 s。代码把 optics
+mm×0.1 转 cm。这里的1 ns步进只是事件排序，不能拿37.193 μs当气球曝光；物理权重仍应来自 flux×Aeff×T。
+    局部账目。 PointSource cm、Bq(=s⁻¹)、NUBASE ground-state、TT 除法与 trigger 计数的实现链条局部
+Delayed
+合理。但是这些源的库存来自错误的初级能量，局部守恒不等于物理正确。
+对项目权威性的影响
+最重要的边界是：几何文件仍可作为结构定义保留，但用错误能谱得到的性能排序不能随几何一起保留为物理结
+论。
+对现有项目产品的权威性影响
+产品                               单位链                      当前权威性               必要动作
+活化 buildup / isotope inventory   上游反应阈值与截面采样错误            不可作为生产库存权威          用修复 prompt 重新生产
+几何与材料定义本身                        不依赖该谱能量轴                 可保留为结构输入            不要把旧性能排序一并视为有效
+三套八族 prompt 输运                   能量整体 /1000               不可作为物理率/响应权威        八族全部重跑
+Delayed source 与 delayed         局部 Bq/cm/TT 可闭合，上游库存错误   局部账目可参考，物理结果不可发布    库存重建后重新生成并输运
+transport
+
+Optics EventList   桥             格式 PASS；人工时钟非曝光          仅 Be-plane 注入范围有效   物理权重继续用 flux×Aeff×T
+PARMA 511-keV mono     模块        source-level PASS        可独立保留，响应闭环仍需完成      保持与 broadband 修复分离
+
+修复与重跑要求
+     1. 在新的日期目录建立修复包；不要覆盖现有保留产品。把八族全部源卡改指向已验证的
+        cosima_spectra_dp/。
+     2. 保持现有 `.Flux` 数值不变。 错误只在 DP x；y形状的整体尺度会在抽样中归一化。
+     3. 在启动输运前执行静态 gate：检查 raw 单位、α×4、MeV→keV、DP积分、20箱 flux/4π闭合、几何头与
+        source card geometry 一致。
+     4. 每族先做小型 IA INIT smoke，直接验证写入 SIM 的主粒子能量范围，再运行全量 prompt。
+     5. 由修复后的 prompt 重新做 isotope production、buildup、NUBASE/TT guarded delayed source 和 delayed
+        transport；旧 inventory 不可复用。
+     6. 最后重做探测器响应、Step05/选区闭环、S3c-LW1 与参考几何的性能比较及任务期折叠。
+
+
+局限性与稳健性
+            本审计为只读单位与证据审计，没有发起新的 Geant4 transport；因此它确认输入错误与权威边界，不给出修
+            复后计数率。
+            仓库中未找到最初 raw→DP 生成器，也未找到 _2602units 生成器。legacy 文件头指向的旧外部路径当前
+            不存在；这是 provenance gap。不过 raw→correct 和 correct→legacy 均已在全部文件、全部节点上独立数
+            值闭合。
+            事件级 1000 万条全扫描仅有 γ 保留；全八族结论依赖更强的源级穷举与同一 MEGAlib 读取代码。
+            现有 M04 文本称“七个非光子族不受影响”，与本次 480/480 引用和全八族 DP 比较的实证冲突，应视为已被
+            本报告推翻。
+证据定位与可复核材料
+下表给出最关键的手册页码、源码行号、项目路径和内容哈希前缀。完整审计脚本、CSV、JSON及525项 SHA-256
+清单随 PDF 一起保存在同一工程包中。
+核心实质证据定位
+证据层                证明事项                                  路径/页码/行号                                                                       SHA-256 前缀
+采样源码               累计积分归一化，统一 y 比例不会改变显式                 MEGAlib/src/global/misc/src/MFunction.cxx:791-813                              59709dd47088
+                   Flux
+
+参数解析源码             FarField Flux为cm⁻²s⁻¹ 、角度为 deg、    MEGAlib/src/cosima/src/MCParameterFile.cc:1326-1334,1463-1469,2834-2846           36ea3cdf3fd2
+                              为
+                   PointSource cm
+
+错误 DP              文件头自述把 archived keV 除以1000；首节点 expacs_fullsphere_20bin_sources/cosima_spectra_dp_2602units/gamma_bin00_thet          7ef2e1b76d86
+                   变0.011294                          a18.19_pdf.dat:1-6
+
+
+官方手册               Spectrum File 的 x 是 keV，y 是每keV形状； MEGAlib/doc/Cosima.pdf，PDF p.27                                                   1e15aed3039b
+                   Flux定绝对率
+
+归一化 runner         从卡片求 Flux，并用 t=N/(FπR²)            code/tools/run_equiv2602_pipeline_NEW_GEO.py:354-380,433-447                      22d1eb345c9b
+
+旧结论冲突              旧文称七个非γ族不受影响；本次穷举证明相反 engineering/m04_validation_geometry_handoff_20260810/00_review/FROZEN_PREFIX
+                                                      _CORRECTION_PROPOSAL.md:164-180
+                                                                                                                                        —
+
+
+事件级 γ 审计           1000   万 IA INIT，线节点按 /1000 实际输运      engineering/m04_validation_geometry_handoff_20260810/02_parma_atm511_repair_
+                                                         20260810/data/o8_prompt_gamma_line_dedup_audit.json
+                                                                                                                                        60c5c96d9c66
+
+
+原始 α 谱             header   明示 MeV/n；需转总 α 动能            expacs_fullsphere_20bin_sources/raw_expacs/spectrum_alpha_bin00_theta18.19_B
+                                                         HNo.dat:8-11
+                                                                                                                                        b332e23077b7
+
+
+原始 γ 谱             header   明示 MeV 与每MeV每sr              expacs_fullsphere_20bin_sources/raw_expacs/spectrum_gamma_bin00_theta18.19_B
+                                                         HNo.dat:8-11
+                                                                                                                                        29807cb6783e
+
+
+正确 DP              γ   首节点 0.011294 MeV→11.294 keV       expacs_fullsphere_20bin_sources/cosima_spectra_dp/gamma_bin00_theta18.19_pdf
+                                                         .dat:1-4
+                                                                                                                                        d3e2edfa7175
+
+
+active   源卡                   、
+                   Beam(deg) legacy Spectrum、独立 Flux 同   engineering/geometry_optimization_20260704/43_geoopt_s3d_o8_fallback_2026071   eec96f3d779a
+                   时可见                                   2/config/full_prompt_all8/source_cards/Background_gamma_fullsphere20.source:
+                                                         47-55
+
+
+MEGAlib   源码       File 谱 x 乘 keV；采样值直送 ParticleGun      MEGAlib/src/cosima/src/MCSource.cc:1909-1918,2727-2729,2775-2778               1322cb460bd0
+
+
+
+
+后续问题
+          _2602units        是在哪一次外部迁移中生成、为何在正确 keV 转换后再次除1000？是否还能找回原始生成脚本
+          和审阅记录？
+          修复重跑应以 S3c-LW1 与 S3c-C0 为最小比较集，还是同步重算 S3d/O8 全链？
+          在修复 transport 完成前，哪些对外文档、图表或表格引用了旧 prompt/delayed 率，需要统一撤销或加
+          blocker？
+
+
+
+
+来源材料
+1. 全八族单位审计数据与查询
+     queries/evidence.sql · DuckDB + Python 3 · 2026-08-11T12:00:00+08:00
+
+   只读 Python 审计生成 CSV/JSON；该 SQL 从已复核 CSV 提取报告行和闭合计数。
+2. MEGAlib 4.02.00 手册与源代码契约
+     evidence/MEGALIB_CONTRACT.md · local filesystem review · 2026-08-11T12:00:00+08:00
+
+   核对本机安装的官方 Cosima/Geomega 手册与实现源代码，并记录页码、行号和 SHA-256。
+3. 项目源卡、生成代码与输运证据链
+     evidence/PROJECT_SOURCE_CHAIN.md · Python 3 + filesystem review · 2026-08-11T12:00:00+08:00
+
+   穷举 raw、correct DP、legacy DP、三套 source cards，并读取保留的事件级与归一化审计。
+

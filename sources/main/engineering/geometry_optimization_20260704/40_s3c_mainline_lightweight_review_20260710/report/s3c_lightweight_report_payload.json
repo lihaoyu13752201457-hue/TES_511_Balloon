@@ -1,0 +1,222 @@
+{
+  "charts": [
+    {
+      "id": "s3c-background-components",
+      "height": 340,
+      "type": "bar",
+      "dataset": {
+        "id": "s3c-background-components",
+        "title": "W2 background component rates",
+        "data": [
+          {
+            "component": "宇宙线 e+",
+            "rate_cps": 0.0013599733989203171,
+            "rate_1e3_cps": 1.359973398920317
+          },
+          {
+            "component": "宇宙线中子",
+            "rate_cps": 0.0013567020743296366,
+            "rate_1e3_cps": 1.3567020743296365
+          },
+          {
+            "component": "大气 511 keV",
+            "rate_cps": 0.001166883836714055,
+            "rate_1e3_cps": 1.166883836714055
+          },
+          {
+            "component": "沿用 S3 的其余项",
+            "rate_cps": 0.0011674256177452956,
+            "rate_1e3_cps": 1.1674256177452955
+          }
+        ],
+        "chart_spec": {
+          "id": "s3c-background-components",
+          "dataset": "s3c-background-components",
+          "title": "W2 background component rates",
+          "type": "bar",
+          "encodings": {
+            "x": {
+              "field": "component",
+              "type": "nominal"
+            },
+            "y": {
+              "field": "rate_1e3_cps",
+              "label": "Rate (×10⁻³ cps)",
+              "type": "quantitative"
+            },
+            "tooltip": [
+              {
+                "field": "component",
+                "type": "nominal"
+              },
+              {
+                "field": "rate_1e3_cps",
+                "label": "Rate (×10⁻³ cps)",
+                "type": "quantitative"
+              }
+            ]
+          },
+          "xAxisTitle": "",
+          "yAxisTitle": "",
+          "valueFormat": "number",
+          "settings": {
+            "orientation": "horizontal",
+            "groupMode": "grouped"
+          }
+        }
+      }
+    },
+    {
+      "id": "s3c-activation-volume-classes",
+      "height": 430,
+      "type": "bar",
+      "dataset": {
+        "id": "s3c-activation-volume-classes",
+        "title": "Neutron-delayed activity by volume class",
+        "data": [
+          {
+            "volume_class": "窗口组件",
+            "activity_bq": 31.821756233187223
+          },
+          {
+            "volume_class": "低温恒温器/冷结构",
+            "activity_bq": 8.145178622133207
+          },
+          {
+            "volume_class": "S3c 外层 W 壳",
+            "activity_bq": 7.155029643424839
+          },
+          {
+            "volume_class": "NF2 支撑",
+            "activity_bq": 6.962298361798235
+          },
+          {
+            "volume_class": "S3c BGO 主动壳",
+            "activity_bq": 1.4782140966436441
+          },
+          {
+            "volume_class": "保留的被动 W/准直器",
+            "activity_bq": 1.0717347842335958
+          },
+          {
+            "volume_class": "其他",
+            "activity_bq": 1.0516305021728325
+          },
+          {
+            "volume_class": "S3c Al 机械壳",
+            "activity_bq": 0.1384241772831776
+          }
+        ],
+        "chart_spec": {
+          "id": "s3c-activation-volume-classes",
+          "dataset": "s3c-activation-volume-classes",
+          "title": "Neutron-delayed activity by volume class",
+          "type": "bar",
+          "encodings": {
+            "x": {
+              "field": "volume_class",
+              "type": "nominal"
+            },
+            "y": {
+              "field": "activity_bq",
+              "label": "Activity (Bq)",
+              "type": "quantitative"
+            },
+            "tooltip": [
+              {
+                "field": "volume_class",
+                "type": "nominal"
+              },
+              {
+                "field": "activity_bq",
+                "label": "Activity (Bq)",
+                "type": "quantitative"
+              }
+            ]
+          },
+          "xAxisTitle": "",
+          "yAxisTitle": "",
+          "valueFormat": "number",
+          "settings": {
+            "orientation": "horizontal",
+            "groupMode": "grouped"
+          }
+        }
+      }
+    },
+    {
+      "id": "s3c-lightweight-mass",
+      "height": 410,
+      "type": "bar",
+      "dataset": {
+        "id": "s3c-lightweight-mass",
+        "title": "S3c design-family pre-relief mass",
+        "data": [
+          {
+            "variant": "S3c-C0",
+            "mass_kg": 391.1988469732331
+          },
+          {
+            "variant": "S3c-LW1",
+            "mass_kg": 356.5708524357474
+          },
+          {
+            "variant": "S3c-LW2",
+            "mass_kg": 345.0800754955423
+          },
+          {
+            "variant": "S3c-LW3",
+            "mass_kg": 337.3221722472147
+          },
+          {
+            "variant": "S3c-LW4 graded",
+            "mass_kg": 317.53466996284266
+          },
+          {
+            "variant": "S3c-LW5 uniform30",
+            "mass_kg": 253.05172522593736
+          },
+          {
+            "variant": "S3c-LW6 uniform20",
+            "mass_kg": 168.3301099996074
+          }
+        ],
+        "chart_spec": {
+          "id": "s3c-lightweight-mass",
+          "dataset": "s3c-lightweight-mass",
+          "title": "S3c design-family pre-relief mass",
+          "type": "bar",
+          "encodings": {
+            "x": {
+              "field": "variant",
+              "type": "nominal"
+            },
+            "y": {
+              "field": "mass_kg",
+              "label": "Mass (kg)",
+              "type": "quantitative"
+            },
+            "tooltip": [
+              {
+                "field": "variant",
+                "type": "nominal"
+              },
+              {
+                "field": "mass_kg",
+                "label": "Mass (kg)",
+                "type": "quantitative"
+              }
+            ]
+          },
+          "xAxisTitle": "",
+          "yAxisTitle": "",
+          "valueFormat": "number",
+          "settings": {
+            "orientation": "horizontal",
+            "groupMode": "grouped"
+          }
+        }
+      }
+    }
+  ]
+}

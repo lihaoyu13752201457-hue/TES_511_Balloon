@@ -1,0 +1,1316 @@
+{
+  "surface": "report",
+  "manifest": {
+    "version": 1,
+    "surface": "report",
+    "title": "corrected-keV 小样本资源审计与 M05 优化方案",
+    "description": "基于已验收 corrected-keV 小批次，补回质子并区分七族历史子预算、严格八族 r1、单事件资源强度与 M05 物理信息保留需求。",
+    "generatedAt": "2026-08-12T16:00:00+08:00",
+    "sources": [
+      {
+        "id": "resource_aggregation",
+        "label": "436 个 merge-eligible jobs 的八族前缀资源聚合",
+        "path": "engineering/particle_source_unit_repair_20260811/composite_partial_postprocess_20260812/data/composite_partial_authorities.json",
+        "query": {
+          "description": "对 composite authorities 固定的 batch0000–0005 ledger 逐 job 去重；七族聚合另加 batch0000 的四个 merge-eligible proton jobs；后续 256-event proton smoke 只用于成本率；从 log 读取 Total CPU time spent in run，从 SIM 文件读取压缩字节。",
+          "sql": "SELECT * FROM read_csv_auto('engineering/particle_source_unit_repair_20260811/small_batch_resource_optimization_review_20260812/summary_metrics.csv') LIMIT 1",
+          "language": "python",
+          "executed_at": "2026-08-12",
+          "tables_used": [
+            "mergeable_smoke_v1_ledger.json",
+            "seven_family_batch0001_v1_ledger.json",
+            "muminus_instant_pair_batch0002_v1_ledger.json",
+            "gamma_instant_batch0003_prefix_shard0076_v1_ledger.json",
+            "batch0004_partial_through_ordinal0097_v1_ledger.json",
+            "reduced_breadth_continuation_batch0005_v1_ledger.json"
+          ],
+          "filters": [
+            "corrected-keV only",
+            "ledger-owned selected artifacts only",
+            "deduplicate by SIM path",
+            "include batch0000 p credit but never merge the later 256-event resource smoke"
+          ],
+          "metric_definitions": [
+            "ms_per_primary = 1000 × sum(Cosima run-phase seconds) / sum(IA INIT primaries)",
+            "kB_per_primary = sum(compressed SIM bytes) / 1000 / sum(primaries)",
+            "run-phase is Cosima BeamOn steady-clock time, not OS CPU time"
+          ]
+        }
+      },
+      {
+        "id": "family_resource_combined",
+        "label": "七族 accepted aggregate + proton resource diagnostic",
+        "query": {
+          "description": "七族来自 accepted ledger aggregate；proton 仅来自 4×64-primary 非合并资源诊断，单独标记证据类别。",
+          "sql": "SELECT * FROM read_csv_auto('engineering/particle_source_unit_repair_20260811/small_batch_resource_optimization_review_20260812/family_resource.csv') ORDER BY ms_per_primary DESC",
+          "language": "python",
+          "executed_at": "2026-08-12",
+          "tables_used": [
+            "composite_partial_authorities.json",
+            "proton_fullsphere20_resource_smoke_20260812/resource_summary.json"
+          ],
+          "filters": [
+            "do not merge proton diagnostic into seven-family statistics"
+          ],
+          "metric_definitions": [
+            "proton mean = four diagnostic cells combined; N=256",
+            "accepted family means = sum resource / sum primary over both geometries and modes"
+          ]
+        }
+      },
+      {
+        "id": "full_target_projection",
+        "label": "严格八族 r1 与历史七族 r8 的实测率投影",
+        "path": "engineering/particle_source_unit_repair_20260811/SEVEN_FAMILY_BATCH0001.md",
+        "query": {
+          "description": "用每个 family×geometry×mode 当前 sample 的 seconds/primary 与 bytes/primary 外推尚未完成的严格八族 r1；gamma 每 cell 固定 10M，所有非 gamma（含 proton）采用同一 batch flux-scaled convention。",
+          "sql": "SELECT * FROM read_csv_auto('engineering/particle_source_unit_repair_20260811/small_batch_resource_optimization_review_20260812/summary_metrics.csv') LIMIT 1",
+          "language": "formula",
+          "executed_at": "2026-08-12",
+          "filters": [
+            "subtract current accepted credits",
+            "proton target = 234000 per cell; subtract only the 23/cell mergeable batch0000 credit",
+            "no compact, cut, delayed, response or sensitivity benefit"
+          ],
+          "metric_definitions": [
+            "r1 is a sequential checkpoint, not an automatic final sample size",
+            "projection uses current small-batch per-cell rates"
+          ]
+        }
+      },
+      {
+        "id": "r1_family_projection",
+        "label": "r1 checkpoint family-level projection",
+        "path": "engineering/particle_source_unit_repair_20260811/small_batch_resource_optimization_review_20260812/r1_projection.csv",
+        "query": {
+          "description": "Current accepted credits are subtracted cell by cell; the remaining event count is multiplied by the observed seconds/primary and compressed bytes/primary in that cell.",
+          "sql": "SELECT * FROM read_csv_auto('engineering/particle_source_unit_repair_20260811/small_batch_resource_optimization_review_20260812/r1_projection.csv') ORDER BY run_hours DESC",
+          "language": "sql",
+          "executed_at": "2026-08-12",
+          "tables_used": [
+            "r1_projection.csv"
+          ],
+          "filters": [
+            "r1 target",
+            "current accepted credits subtracted",
+            "strict eight-family r1; proton cost is an N=256 heavy-tail point estimate"
+          ],
+          "metric_definitions": [
+            "run_hours and sim_gb are planning projections, not completed output",
+            "no compact or cut benefit included"
+          ]
+        }
+      },
+      {
+        "id": "record_audit",
+        "label": "batch0001 SIM 流式记录审计",
+        "path": "runs/particle_source_unit_repair_20260811/seven_family_batch0001_v1_ledger.json",
+        "query": {
+          "description": "按 ledger 路径流式解压 40 个 SIM；逐行统计 CC HIT、IA、HTsim 的行数与字节。",
+          "sql": "SELECT * FROM read_csv_auto('engineering/particle_source_unit_repair_20260811/small_batch_resource_optimization_review_20260812/record_composition.csv') ORDER BY raw_byte_share DESC",
+          "language": "python",
+          "executed_at": "2026-08-12",
+          "metric_definitions": [
+            "raw byte share is measured before gzip",
+            "compressed-size saving cannot be assumed equal to raw-byte share"
+          ]
+        }
+      },
+      {
+        "id": "gamma_cutflow",
+        "label": "corrected-keV prompt gamma prefix76 cutflow",
+        "path": "engineering/particle_source_unit_repair_20260811/gamma5m_postprocess_20260811/results_gamma_prefix76_2p001m_diagnostic/gamma_prefix76_2p001m_diagnostic_prompt_tes_summary.json"
+      },
+      {
+        "id": "proton_smoke",
+        "label": "proton full-sphere resource diagnostic",
+        "path": "runs/particle_source_unit_repair_20260811/proton_fullsphere20_resource_smoke_20260812/resource_summary.json"
+      },
+      {
+        "id": "proton_mergeable_credit",
+        "label": "batch0000 merge-eligible all-eight-family ledger",
+        "path": "runs/particle_source_unit_repair_20260811/mergeable_smoke_v1_ledger.json"
+      },
+      {
+        "id": "proton_weighted_pilot",
+        "label": "proton six-band weighted P0 plan and WAIT gates",
+        "path": "engineering/particle_source_unit_repair_20260811/proton_p0_sixband_pilot_20260812/README.md"
+      },
+      {
+        "id": "m05_method",
+        "label": "M05 paper method and data dependencies",
+        "path": "core_md/balloon511_ea_latex_drafts/m05_atm511_source_revision_20260811/balloon511_ea_draft_en_m05_atm511_source_revision_20260811.tex"
+      },
+      {
+        "id": "compact_status",
+        "label": "M05 compact smoke status and gates",
+        "path": "engineering/particle_source_unit_repair_20260811/m05_complete_compact_smoke_20260812/EXECUTOR_REPORT.md",
+        "query": {
+          "description": "Decision table built from the measured resource audit and the compact-smoke release gates.",
+          "sql": "SELECT * FROM read_csv_auto('engineering/particle_source_unit_repair_20260811/small_batch_resource_optimization_review_20260812/optimization_plan.csv') ORDER BY priority ASC",
+          "language": "sql",
+          "executed_at": "2026-08-12",
+          "tables_used": [
+            "optimization_plan.csv",
+            "EXECUTOR_REPORT.md"
+          ],
+          "metric_definitions": [
+            "only measured effects receive numeric claims",
+            "compact and cut gains remain unmeasured until paired transport"
+          ]
+        }
+      },
+      {
+        "id": "local_capacity",
+        "label": "2026-08-12 local filesystem capacity check",
+        "query": {
+          "description": "Read-only df measurement; subtract 20 GiB reserve, then divide by the required 2× capacity gate.",
+          "sql": "SELECT safe_point_output_gb, r1_required_compaction FROM read_csv_auto('engineering/particle_source_unit_repair_20260811/small_batch_resource_optimization_review_20260812/summary_metrics.csv') LIMIT 1",
+          "language": "shell",
+          "query": "df -B1 /home/ubuntu/TES_511_Balloon",
+          "executed_at": "2026-08-12",
+          "metric_definitions": [
+            "safe point-output limit = (free bytes - 20 GiB) / 2"
+          ]
+        }
+      },
+      {
+        "id": "capacity_16h_80gb",
+        "label": "16 h / 80 GB 容量情景",
+        "path": "engineering/particle_source_unit_repair_20260811/small_batch_resource_optimization_review_20260812/capacity_16h_80gb.csv",
+        "query": {
+          "description": "用七族 accepted cell rate 与 proton resource-smoke cell rate，将严格八族剩余 r1 工作按相同比例推进；另给出墙钟校准、安全容量门、proton screening-first 阶段方案和纯 prompt-gamma 上界。",
+          "sql": "SELECT * FROM read_csv_auto('engineering/particle_source_unit_repair_20260811/small_batch_resource_optimization_review_20260812/capacity_16h_80gb.csv') ORDER BY new_primaries DESC",
+          "language": "formula",
+          "executed_at": "2026-08-12",
+          "tables_used": [
+            "capacity_16h_80gb.csv",
+            "r1_projection.csv"
+          ],
+          "filters": [
+            "corrected-keV accepted rates only",
+            "proton included at strict batch-convention r1 target; N=256 resource rate is a planning point",
+            "compact reduces bytes only until a wall-time speedup is measured"
+          ],
+          "metric_definitions": [
+            "balanced scale = min(time budget / 107.4578 h, storage budget / 305.0013 GB, 1)",
+            "16 wall-hour range uses observed controller-span and summed subprocess-wall calibrations",
+            "r1 total completion includes current accepted primaries"
+          ]
+        }
+      },
+      {
+        "id": "paper_readiness",
+        "label": "M05 统计放行门",
+        "path": "engineering/particle_source_unit_repair_20260811/small_batch_resource_optimization_review_20260812/paper_readiness_gates.csv",
+        "query": {
+          "description": "按最终选后有效计数定义探索性、定量与强结论门槛；primary 总数本身不是论文充分性指标。",
+          "sql": "SELECT * FROM read_csv_auto('engineering/particle_source_unit_repair_20260811/small_batch_resource_optimization_review_20260812/paper_readiness_gates.csv')",
+          "language": "formula",
+          "executed_at": "2026-08-12",
+          "tables_used": [
+            "paper_readiness_gates.csv"
+          ],
+          "metric_definitions": [
+            "single-count Poisson relative standard error is approximately 1/sqrt(N)",
+            "matched ratio relative error is approximately sqrt(1/N_A + 1/N_B)",
+            "zero observations require an exact one-sided upper limit"
+          ]
+        }
+      }
+    ],
+    "cards": [
+      {
+        "id": "accepted_events",
+        "description": "七族 432 jobs + batch0000 proton 4 jobs；后续 proton resource smoke 不合并。",
+        "dataset": "summary",
+        "metrics": [
+          {
+            "label": "已验收 primaries",
+            "field": "accepted_events",
+            "format": "compact"
+          },
+          {
+            "label": "Jobs",
+            "field": "accepted_jobs",
+            "format": "number"
+          }
+        ],
+        "sourceId": "resource_aggregation"
+      },
+      {
+        "id": "r1_disk",
+        "description": "按当前小样本 bytes/primary 外推；不含 compact 收益。",
+        "dataset": "summary",
+        "metrics": [
+          {
+            "label": "r1 rich SIM (GB)",
+            "field": "r1_sim_gb",
+            "format": "number"
+          },
+          {
+            "label": "七族历史 r8 (GB)",
+            "field": "r8_sim_gb",
+            "format": "number"
+          }
+        ],
+        "sourceId": "full_target_projection"
+      },
+      {
+        "id": "r1_time",
+        "description": "Cosima BeamOn steady-clock 累加，不是 OS CPU-hour。",
+        "dataset": "summary",
+        "metrics": [
+          {
+            "label": "r1 run-phase (h)",
+            "field": "r1_run_hours",
+            "format": "number"
+          },
+          {
+            "label": "七族历史 r8 (h)",
+            "field": "r8_run_hours",
+            "format": "number"
+          }
+        ],
+        "sourceId": "full_target_projection"
+      },
+      {
+        "id": "safe_output",
+        "description": "free space 扣除 20 GiB reserve 后，再应用 2× 容量门。",
+        "dataset": "summary",
+        "metrics": [
+          {
+            "label": "安全点输出 (GB)",
+            "field": "safe_point_output_gb",
+            "format": "number"
+          },
+          {
+            "label": "r1 需减容",
+            "field": "r1_required_compaction",
+            "format": "number"
+          }
+        ],
+        "sourceId": "local_capacity"
+      },
+      {
+        "id": "budget_16h_events",
+        "description": "严格八族 16 小时实际墙钟的临时估计；端点沿用七族 wall/run 校准，proton 生产吞吐尚未实测。",
+        "dataset": "capacity_summary",
+        "metrics": [
+          {
+            "label": "墙钟上点 primaries",
+            "field": "wall_central_new_events",
+            "format": "compact"
+          },
+          {
+            "label": "保守值",
+            "field": "wall_conservative_new_events",
+            "format": "compact"
+          }
+        ],
+        "sourceId": "capacity_16h_80gb"
+      },
+      {
+        "id": "budget_16h_disk",
+        "description": "严格八族 16 个 run-phase 小时的 rich 输出点估；5× compact 只表示磁盘目标。",
+        "dataset": "capacity_summary",
+        "metrics": [
+          {
+            "label": "rich SIM (GB)",
+            "field": "ideal_rich_gb",
+            "format": "number"
+          },
+          {
+            "label": "5× compact (GB)",
+            "field": "ideal_compact5_gb",
+            "format": "number"
+          }
+        ],
+        "sourceId": "capacity_16h_80gb"
+      },
+      {
+        "id": "budget_paper_scope",
+        "description": "16 小时后可支持的方法/限定分量范围；不等于完整 M05 authority。",
+        "dataset": "capacity_summary",
+        "metrics": [
+          {
+            "label": "严格八族 r1 完成度",
+            "field": "r1_completion",
+            "format": "percent"
+          },
+          {
+            "label": "prompt γ W2 (Mass/O8)",
+            "field": "balanced_w2_label",
+            "format": "number"
+          }
+        ],
+        "sourceId": "capacity_16h_80gb"
+      }
+    ],
+    "charts": [
+      {
+        "id": "per_event_runtime",
+        "title": "每个初级粒子的实测 run-phase",
+        "subtitle": "α 最重；p* 为每 cell 64-event 的非合并资源诊断，重尾不确定性很高。",
+        "type": "bar",
+        "dataset": "family_resource_with_proton",
+        "encodings": {
+          "x": {
+            "field": "family",
+            "type": "nominal",
+            "label": "粒子族"
+          },
+          "y": {
+            "field": "ms_per_primary",
+            "type": "quantitative",
+            "label": "ms / primary"
+          },
+          "color": {
+            "field": "evidence_class",
+            "type": "nominal",
+            "label": "证据类别"
+          }
+        },
+        "sourceId": "family_resource_combined"
+      },
+      {
+        "id": "r1_family_runtime",
+        "title": "r1 checkpoint 的新增 run-phase 投影",
+        "subtitle": "总预算与单事件排序不同：严格 r1 中 p 仅占剩余事件 2.28%，却占约 37.8% 时间。",
+        "type": "bar",
+        "dataset": "r1_projection",
+        "encodings": {
+          "x": {
+            "field": "family",
+            "type": "nominal",
+            "label": "粒子族"
+          },
+          "y": {
+            "field": "run_hours",
+            "type": "quantitative",
+            "label": "新增 run-phase (h)"
+          }
+        },
+        "sourceId": "r1_family_projection"
+      },
+      {
+        "id": "record_bytes",
+        "title": "rich SIM 未压缩记录字节构成",
+        "subtitle": "CC HIT 与 IA 合计约 99.2%；这是结构机会，不是已测 compact 收益。",
+        "type": "bar",
+        "dataset": "record_composition",
+        "encodings": {
+          "x": {
+            "field": "record_type",
+            "type": "nominal",
+            "label": "记录类型"
+          },
+          "y": {
+            "field": "raw_byte_share",
+            "type": "quantitative",
+            "format": "percent",
+            "label": "未压缩字节占比"
+          }
+        },
+        "sourceId": "record_audit"
+      },
+      {
+        "id": "capacity_scenarios",
+        "title": "16 h / 80 GB 情景的新增初级粒子数",
+        "subtitle": "严格八族 run-phase 点为 6.11M；21.33M 是全部预算投向 prompt γ 的条件上界，不代表全链闭合。",
+        "type": "bar",
+        "dataset": "capacity_scenarios",
+        "encodings": {
+          "x": {
+            "field": "scenario_short",
+            "type": "nominal",
+            "label": "预算情景"
+          },
+          "y": {
+            "field": "new_primaries_million",
+            "type": "quantitative",
+            "label": "新增 primaries (million)"
+          }
+        },
+        "sourceId": "capacity_16h_80gb"
+      }
+    ],
+    "tables": [
+      {
+        "id": "family_priority",
+        "title": "粒子族负担与优先优化方向",
+        "subtitle": "七族为 accepted composite 聚合；p* 单列非合并诊断。",
+        "dataset": "family_priority",
+        "columns": [
+          {
+            "field": "family",
+            "label": "粒子族",
+            "type": "text"
+          },
+          {
+            "field": "ms_per_primary",
+            "label": "ms/primary",
+            "type": "number"
+          },
+          {
+            "field": "kb_per_primary",
+            "label": "kB/primary",
+            "type": "number"
+          },
+          {
+            "field": "o8_runtime_multiplier",
+            "label": "O8/Mass 时间",
+            "type": "number"
+          },
+          {
+            "field": "r1_run_hours",
+            "label": "r1 新增 h",
+            "type": "number"
+          },
+          {
+            "field": "r1_sim_gb",
+            "label": "r1 新增 GB",
+            "type": "number"
+          },
+          {
+            "field": "priority_action",
+            "label": "首要动作",
+            "type": "text"
+          },
+          {
+            "field": "evidence",
+            "label": "证据边界",
+            "type": "text"
+          }
+        ],
+        "defaultSort": {
+          "field": "ms_per_primary",
+          "direction": "desc"
+        },
+        "sourceId": "family_resource_combined"
+      },
+      {
+        "id": "optimization_plan",
+        "title": "推荐实施顺序与放行门",
+        "subtitle": "收益只在有实测时给数；未跑的 compact/cut 不作承诺。",
+        "dataset": "optimization_plan",
+        "columns": [
+          {
+            "field": "priority",
+            "label": "顺序",
+            "type": "text"
+          },
+          {
+            "field": "action",
+            "label": "动作",
+            "type": "text"
+          },
+          {
+            "field": "why",
+            "label": "依据",
+            "type": "text"
+          },
+          {
+            "field": "expected_effect",
+            "label": "可量化影响",
+            "type": "text"
+          },
+          {
+            "field": "release_gate",
+            "label": "放行条件",
+            "type": "text"
+          }
+        ],
+        "defaultSort": {
+          "field": "priority",
+          "direction": "asc"
+        },
+        "sourceId": "compact_status"
+      },
+      {
+        "id": "balanced_16h_allocation",
+        "title": "16 run-phase 小时平衡方案的新增统计",
+        "subtitle": "按严格八族剩余 r1 工作同比例推进；proton 使用同一 batch flux-scaled convention。",
+        "dataset": "balanced_16h_allocation",
+        "columns": [
+          {
+            "field": "family",
+            "label": "粒子族",
+            "type": "text"
+          },
+          {
+            "field": "new_primaries",
+            "label": "新增 primaries",
+            "type": "number"
+          },
+          {
+            "field": "share_of_new",
+            "label": "新增占比",
+            "type": "percent"
+          },
+          {
+            "field": "purpose",
+            "label": "主要统计用途",
+            "type": "text"
+          }
+        ],
+        "defaultSort": {
+          "field": "new_primaries",
+          "direction": "desc"
+        },
+        "sourceId": "capacity_16h_80gb"
+      },
+      {
+        "id": "paper_readiness_gates",
+        "title": "论文统计充分性按最终端点判定",
+        "subtitle": "门槛针对 W2/TES/RP 或延迟选后有效计数，不针对总 primary 数。",
+        "dataset": "paper_readiness_gates",
+        "columns": [
+          {
+            "field": "endpoint",
+            "label": "端点",
+            "type": "text"
+          },
+          {
+            "field": "exploratory_gate",
+            "label": "探索门",
+            "type": "text"
+          },
+          {
+            "field": "quantitative_gate",
+            "label": "定量门",
+            "type": "text"
+          },
+          {
+            "field": "current_status",
+            "label": "当前/预算后状态",
+            "type": "text"
+          },
+          {
+            "field": "interpretation",
+            "label": "可支持结论",
+            "type": "text"
+          }
+        ],
+        "defaultSort": {
+          "field": "endpoint",
+          "direction": "asc"
+        },
+        "sourceId": "paper_readiness"
+      }
+    ],
+    "blocks": [
+      {
+        "id": "report_title",
+        "type": "markdown",
+        "body": "# corrected-keV 小样本资源审计与 M05 优化方案"
+      },
+      {
+        "id": "technical_summary",
+        "type": "markdown",
+        "body": "## Technical Summary\n\n上一版把 proton-excluded 七族 ledger 误当成完整八族预算。质子属于 corrected-keV 八族主线，不能省略：batch0000 已有 92 个可合并质子事件；后续 N=256 样本只是非合并资源诊断。\n\n严格 r1 按与其他非 γ 粒子相同的 batch flux convention，每个 geometry×mode 需要 234,000 个 proton。扣除 23/cell 的可合并 credit 后还需 935,908；其线性点估约 40.62 run-phase h、106.69 GB。质子只占剩余事件 2.28%，却占约 37.8% 时间和 35.0% 磁盘，且存在 500 GeV 级高能 shower 重尾。\n\n因此，16 个 Cosima run-phase 小时按严格八族同比推进只得到约 6.11M primaries、45.41 GB rich SIM；加现有 prefix 后只到严格八族 r1 的约 26.6%。这足以形成 corrected-keV 修复/方法和限定分量证据，不足以恢复完整 M05 本底、灵敏度或几何晋级结论。\n\n第一优先级仍是输出合同与质子 full-support 分层 pilot：所有事件保留紧凑 TES/VETO/分体积/时间/TT 摘要；所有 raw TES-positive、所有 RP，以及预注册 QA controls 保留完整 IA/CC/HT ancestry。r1 作为 sequential checkpoint，按端点置信区间决定追加。"
+      },
+      {
+        "id": "headline_metrics",
+        "type": "metric-strip",
+        "cardIds": [
+          "accepted_events",
+          "r1_disk",
+          "r1_time",
+          "safe_output"
+        ]
+      },
+      {
+        "id": "sample_quality",
+        "type": "markdown",
+        "body": "## 实测样本说明\n\n资源聚合严格使用 corrected-keV ledgers，按 SIM 路径去重。七族覆盖 432 jobs/6,554,160 primaries；另有 batch0000 的 4 个 merge-eligible proton jobs/92 primaries。后续 4×64 proton smoke 虽通过资源验证但不可合并，只用于成本点估。RSS 只有 batches 0003–0005 的 362 个七族 jobs 有记录，因此 4.98 GB 是已观察最大值，不是总体上界。OS user/sys CPU 不可用，所以本文不把 run-phase 称为 CPU time。"
+      },
+      {
+        "id": "per_event_runtime_block",
+        "type": "chart",
+        "chartId": "per_event_runtime"
+      },
+      {
+        "id": "r1_runtime_block",
+        "type": "chart",
+        "chartId": "r1_family_runtime"
+      },
+      {
+        "id": "family_priority_block",
+        "type": "table",
+        "tableId": "family_priority"
+      },
+      {
+        "id": "attribution_contract",
+        "type": "markdown",
+        "body": "## 为什么不能简单删除无 TES 事件\n\n如果只是事后删除，确实会失去屏蔽层 occupancy、veto-only、被动材料 shower、pair/annihilation ancestry 与活化来源证据。可行方案是在事件结束时先生成固定 schema 的因果摘要，再决定是否保留完整逐 step truth。摘要必须覆盖 primary/root、能量方向时间、TES pixel、每个 CsI/BGO/plastic block 的能量与时间、分体积沉积、first interaction/lineage、所有 TT 与 exact RP。只有这样，几何优化所需的‘哪个部件贡献大’仍可计算并可由抽样 full truth 审计。"
+      },
+      {
+        "id": "record_bytes_block",
+        "type": "chart",
+        "chartId": "record_bytes"
+      },
+      {
+        "id": "optimization_architecture",
+        "type": "markdown",
+        "body": "## 推荐优化架构\n\n### 1. 输出层\n用 typed Parquet/HDF5/Arrow+Zstd sidecar 保存全事件固定长度摘要；原生 .sim.gz 只保存所有 raw TES-positive、所有 activation RP 对应事件、pair/ANNI 等预注册候选和与结果无关的分层 QA control。保留 zero-RP jobs 的 TT，避免 activation 归一偏差。\n\n### 2. 统计层\nr1 是检查点，不是终点。预注册 family×geometry×mode 的置信区间门；只有未收敛的 cell 追加 r2/r4/r8。gamma 当前 2.001M/geometry 的 veto50 W2 只有 3 vs 1，不能直接减样本；应保留 analog control，并另做 flux-closed 的能量/方向 importance arm。\n\n### 3. 调度层\nO8 α/e+/n 和 gamma 的已测峰值 RSS 达约 4–5 GB；11 GiB 主机不应并行多个重 O8 job。采用 family-aware queue：一个重 O8 job 独占重槽，轻 Mass/muon job 只有在 RSS gate 允许时并行；保留现有小 shard，proton 用约 64-event 资源门与能段分层。\n\n### 4. 物理层\n当前全局 production cut 落在 5 μm。只在输出层通过后，配对测试远端大块被动材料的 50 μm→0.1→0.5→1 mm region cuts；TES、薄窗、近场高 Z、所有 active veto 保持 5 μm。QGSP_BIC_HP 与 LivermorePol 先保持基线；physics-list 更换只作为后续系统学臂。"
+      },
+      {
+        "id": "optimization_plan_block",
+        "type": "table",
+        "tableId": "optimization_plan"
+      },
+      {
+        "id": "budget_envelope",
+        "type": "markdown",
+        "body": "## 预算与可实现程度\n\n198 GB/66.8 h 是七族历史子预算，不是完整八族 r1。补回严格 proton r1 后，新增 rich SIM 点估约 305.00 GB、run-phase 约 107.46 h；其中 proton 单独约 106.69 GB/40.62 h。当前本地磁盘在 20 GiB reserve 与 2× gate 下只允许约 43.3 GB point output，因此严格八族 r1 需要约 7.0× 的实测额外减容。\n\n只聚合 CC、仍完整保存 IA，结构上约能触及 3.3–3.5×，还不够安全；必须连 IA 也改为全事件摘要 + candidate/control full truth，并对 proton 做 full-support 带权分层。CPU/RSS 收益尚无因果测量，不能把磁盘倍数等同于提速倍数。"
+      },
+      {
+        "id": "budget_16h_scope",
+        "type": "markdown",
+        "body": "## 16 小时与 80 GB：能得到多少统计\n\n主口径假设 80 GB 是本轮可新增输出额度、16 小时是累计 Cosima run-phase。严格八族同比推进为 6.112M 新 primaries、45.413 GB rich SIM，其中 proton 139,353；加现有 merge-eligible prefix 后为 12.667M，约完成严格八族 r1 的 26.6%。\n\n若 16 小时指真实墙钟，沿用七族 wall/run 校准只给出临时 5.10–6.04M 范围；proton 的 production-sized shard 吞吐尚未测量，不能承诺该范围。若继续执行 2× 容量门，40 GB point cap 对应约 14.09 run-phase h、5.384M 新 primaries。实测 5× compact 后，16 run-phase h 的输出约 9.08 GB，但事件数不能乘 5。\n\n阶段性方案可先补齐 93,508 个 proton 的 1M-γ-equivalent screening，再把剩余时间分给七族，合计约 7.26M/46.09 GB；这不是严格 proton r1。旧 9.60M 数字只适用于明确排除 proton 的七族子预算。"
+      },
+      {
+        "id": "budget_16h_metrics",
+        "type": "metric-strip",
+        "cardIds": [
+          "budget_16h_events",
+          "budget_16h_disk",
+          "budget_paper_scope"
+        ]
+      },
+      {
+        "id": "capacity_scenarios_block",
+        "type": "chart",
+        "chartId": "capacity_scenarios"
+      },
+      {
+        "id": "balanced_16h_allocation_block",
+        "type": "table",
+        "tableId": "balanced_16h_allocation"
+      },
+      {
+        "id": "paper_sufficiency",
+        "type": "markdown",
+        "body": "## 这是否足够放进论文\n\n足够支持 corrected-keV 单位修复、资源模型、proton 分层设计、compact 等价性方法，以及明确限定范围的单分量中期结果；不足以恢复完整 M05 的 all-eight-family prompt、activation inventory、delayed transport、common response、mission sensitivity 或几何晋级 authority。\n\n原因是论文精度取决于最终选后有效计数，而不是 primary 总数。严格八族平衡分配还会降低 gamma 曝光；即使把 16 小时全部投给 matched prompt γ，累计也只约 19/6 个 W2，几何 rate ratio 的近似 1σ 相对误差仍约 46%。proton smoke 更没有可发表的 TES/VETO/W2 science cutflow。因此当前结果只能作为方法、稀疏机制图或上限。"
+      },
+      {
+        "id": "paper_readiness_gates_block",
+        "type": "table",
+        "tableId": "paper_readiness_gates"
+      },
+      {
+        "id": "physics_boundary",
+        "type": "markdown",
+        "body": "## 物理与数据边界\n\n目前 corrected-keV 的完整 prompt cutflow 只对 gamma prefix76 可用：两几何各 2.001M primaries，50 keV veto 后 W2 为 3 vs 1。非 gamma corrected prompt cutflow、完整 buildup→inventory→decay→TES/VETO/W2、mission fold 与 geometry promotion 尚未闭合。RP 只是 isotope-production 记录，不是 delayed activity 或 511-keV background。\n\nProton 不能被删掉：batch0000 的 92 个事件可合并，但远不足科学统计；后续 256-primary smoke 仅是资源诊断。其平均约 156 ms 与 114 kB/primary，单个 502.7 GeV 事件产生 61.6 MB 未压缩文本，说明尾部极重。六能段 full-support weighted P0 目前仍为 WAIT/zero transport，运行前必须冻结 flux closure、TT 与 estimator 合同。"
+      }
+    ]
+  },
+  "snapshot": {
+    "version": 1,
+    "status": "ready",
+    "generatedAt": "2026-08-12T16:00:00+08:00",
+    "datasets": {
+      "summary": [
+        {
+          "accepted_events": 6554252,
+          "accepted_jobs": 436,
+          "current_run_hours": 8.369,
+          "current_sim_gb": 24.4774,
+          "r1_run_hours": 107.5,
+          "r1_sim_gb": 305.0,
+          "r8_run_hours": 387.3,
+          "r8_sim_gb": 1165.6,
+          "safe_point_output_gb": 43.3,
+          "r1_required_compaction": 7.0
+        }
+      ],
+      "capacity_summary": [
+        {
+          "wall_central_new_events": 6041000,
+          "wall_conservative_new_events": 5097000,
+          "ideal_runphase_new_events": 6112309,
+          "ideal_rich_gb": 45.413,
+          "ideal_compact5_gb": 9.083,
+          "total_accepted_after_ideal": 12666561,
+          "r1_completion": 0.2661,
+          "balanced_w2_label": "~5 / ~2"
+        }
+      ],
+      "capacity_scenarios": [
+        {
+          "scenario_short": "八族墙钟下点",
+          "scenario": "16 wall h; legacy seven-family subprocess calibration",
+          "new_primaries": 5097000,
+          "new_primaries_million": 5.097,
+          "rich_sim_gb": 37.87,
+          "compact5_sim_gb": 7.57,
+          "scientific_scope": "strict eight-family provisional lower point"
+        },
+        {
+          "scenario_short": "八族墙钟上点",
+          "scenario": "16 wall h; legacy seven-family controller calibration",
+          "new_primaries": 6041000,
+          "new_primaries_million": 6.041,
+          "rich_sim_gb": 44.89,
+          "compact5_sim_gb": 8.98,
+          "scientific_scope": "strict eight-family provisional upper point"
+        },
+        {
+          "scenario_short": "八族 run-phase",
+          "scenario": "16 Cosima run-phase h",
+          "new_primaries": 6112309,
+          "new_primaries_million": 6.112,
+          "rich_sim_gb": 45.413,
+          "compact5_sim_gb": 9.083,
+          "scientific_scope": "strict eight-family run-phase point estimate"
+        },
+        {
+          "scenario_short": "p 筛查优先",
+          "scenario": "16 Cosima run-phase h; close 1M-equivalent proton screen first",
+          "new_primaries": 7260707,
+          "new_primaries_million": 7.261,
+          "rich_sim_gb": 46.091,
+          "compact5_sim_gb": 9.218,
+          "scientific_scope": "staged proton screening; not strict proton r1"
+        },
+        {
+          "scenario_short": "prompt γ 上界",
+          "scenario": "16 Cosima run-phase h; matched prompt gamma only",
+          "new_primaries": 21331340,
+          "new_primaries_million": 21.331,
+          "rich_sim_gb": 44.76,
+          "compact5_sim_gb": 8.95,
+          "scientific_scope": "event-count upper bound; incomplete family coverage"
+        }
+      ],
+      "balanced_16h_allocation": [
+        {
+          "family": "γ",
+          "new_primaries": 5062156,
+          "share_of_new": 0.8282,
+          "purpose": "prompt W2 + gamma buildup checkpoint"
+        },
+        {
+          "family": "n",
+          "new_primaries": 516245,
+          "share_of_new": 0.0845,
+          "purpose": "prompt and activation-dominant screening"
+        },
+        {
+          "family": "e+",
+          "new_primaries": 130629,
+          "share_of_new": 0.0214,
+          "purpose": "annihilation and PAIR/ANNI ancestry"
+        },
+        {
+          "family": "α",
+          "new_primaries": 13376,
+          "share_of_new": 0.0022,
+          "purpose": "heavy-tail buildup and isotope-volume convergence"
+        },
+        {
+          "family": "e−",
+          "new_primaries": 241457,
+          "share_of_new": 0.0395,
+          "purpose": "complete current screening deficit"
+        },
+        {
+          "family": "μ+",
+          "new_primaries": 6218,
+          "share_of_new": 0.001,
+          "purpose": "upper-limit and low-priority control"
+        },
+        {
+          "family": "μ−",
+          "new_primaries": 2875,
+          "share_of_new": 0.0005,
+          "purpose": "capture/buildup precision check"
+        },
+        {
+          "family": "p",
+          "new_primaries": 139353,
+          "share_of_new": 0.0228,
+          "purpose": "strict r1 progress; full-support heavy-tail stratification required"
+        }
+      ],
+      "paper_readiness_gates": [
+        {
+          "endpoint": "单一选后分量",
+          "exploratory_gate": "N_eff ≥ 25 (~20% RSE)",
+          "quantitative_gate": "N_eff ≥ 100 (~10% RSE)",
+          "current_status": "prompt γ W2 = 3 / 1",
+          "interpretation": "当前不满足探索门"
+        },
+        {
+          "endpoint": "matched geometry rate ratio",
+          "exploratory_gate": "两边约各 50 (~20% ratio RSE)",
+          "quantitative_gate": "两边约各 90 (~15% ratio RSE)",
+          "current_status": "γ-only 16 h 点估约 19 / 6",
+          "interpretation": "可做稀疏计数；不能做强几何比较"
+        },
+        {
+          "endpoint": "零选后事件",
+          "exploratory_gate": "给单侧 95% 上限约 3/exposure",
+          "quantitative_gate": "上限低于总预算的 5–10%",
+          "current_status": "若干 cell 为零或近零",
+          "interpretation": "不得把零观测写成物理零"
+        },
+        {
+          "endpoint": "完整 M05 chain",
+          "exploratory_gate": "dominant prompt/delayed endpoints 过门",
+          "quantitative_gate": "common response + mission fold 闭合",
+          "current_status": "未满足",
+          "interpretation": "16 h 不足以恢复完整 authority"
+        }
+      ],
+      "family_resource_with_proton": [
+        {
+          "family": "α",
+          "particle": "alpha",
+          "evidence_class": "accepted composite",
+          "events": 5762,
+          "run_hours": 0.6947,
+          "sim_gb": 2.077,
+          "ms_per_primary": 434.025,
+          "kb_per_primary": 360.385,
+          "run_share": 0.0831,
+          "disk_share": 0.0849,
+          "rp_sum": 2113
+        },
+        {
+          "family": "p*",
+          "particle": "proton",
+          "evidence_class": "resource diagnostic",
+          "events": 256,
+          "run_hours": 0.0111,
+          "sim_gb": 0.0292,
+          "ms_per_primary": 156.249,
+          "kb_per_primary": 113.995,
+          "run_share": null,
+          "disk_share": null,
+          "rp_sum": 0
+        },
+        {
+          "family": "e+",
+          "particle": "eplus",
+          "evidence_class": "accepted composite",
+          "events": 97480,
+          "run_hours": 1.2685,
+          "sim_gb": 4.02,
+          "ms_per_primary": 46.847,
+          "kb_per_primary": 41.24,
+          "run_share": 0.1517,
+          "disk_share": 0.1643,
+          "rp_sum": 324
+        },
+        {
+          "family": "n",
+          "particle": "neutron",
+          "evidence_class": "accepted composite",
+          "events": 385240,
+          "run_hours": 1.7926,
+          "sim_gb": 5.158,
+          "ms_per_primary": 16.751,
+          "kb_per_primary": 13.39,
+          "run_share": 0.2143,
+          "disk_share": 0.2109,
+          "rp_sum": 16927
+        },
+        {
+          "family": "μ−",
+          "particle": "muminus",
+          "evidence_class": "accepted composite",
+          "events": 22290,
+          "run_hours": 0.0628,
+          "sim_gb": 0.205,
+          "ms_per_primary": 10.14,
+          "kb_per_primary": 9.215,
+          "run_share": 0.0075,
+          "disk_share": 0.0084,
+          "rp_sum": 10
+        },
+        {
+          "family": "μ+",
+          "particle": "muplus",
+          "evidence_class": "accepted composite",
+          "events": 4640,
+          "run_hours": 0.0121,
+          "sim_gb": 0.04,
+          "ms_per_primary": 9.397,
+          "kb_per_primary": 8.71,
+          "run_share": 0.0014,
+          "disk_share": 0.0017,
+          "rp_sum": 1
+        },
+        {
+          "family": "e−",
+          "particle": "eminus",
+          "evidence_class": "accepted composite",
+          "events": 36748,
+          "run_hours": 0.0898,
+          "sim_gb": 0.3,
+          "ms_per_primary": 8.793,
+          "kb_per_primary": 8.176,
+          "run_share": 0.0107,
+          "disk_share": 0.0123,
+          "rp_sum": 27
+        },
+        {
+          "family": "γ",
+          "particle": "gamma",
+          "evidence_class": "accepted composite",
+          "events": 6002000,
+          "run_hours": 4.4435,
+          "sim_gb": 12.66,
+          "ms_per_primary": 2.665,
+          "kb_per_primary": 2.109,
+          "run_share": 0.5313,
+          "disk_share": 0.5176,
+          "rp_sum": 765
+        }
+      ],
+      "r1_projection": [
+        {
+          "family": "p",
+          "particle": "proton",
+          "new_events": 935908,
+          "run_hours": 40.6207,
+          "sim_gb": 106.6889,
+          "run_share": 0.378,
+          "disk_share": 0.3498
+        },
+        {
+          "family": "γ",
+          "particle": "gamma",
+          "new_events": 33998000,
+          "run_hours": 24.98,
+          "sim_gb": 71.93,
+          "run_share": 0.2325,
+          "disk_share": 0.2358
+        },
+        {
+          "family": "n",
+          "particle": "neutron",
+          "new_events": 3467160,
+          "run_hours": 16.13,
+          "sim_gb": 46.43,
+          "run_share": 0.1501,
+          "disk_share": 0.1522
+        },
+        {
+          "family": "e+",
+          "particle": "eplus",
+          "new_events": 877320,
+          "run_hours": 11.42,
+          "sim_gb": 36.18,
+          "run_share": 0.1063,
+          "disk_share": 0.1186
+        },
+        {
+          "family": "α",
+          "particle": "alpha",
+          "new_events": 89838,
+          "run_hours": 10.19,
+          "sim_gb": 29.97,
+          "run_share": 0.0948,
+          "disk_share": 0.0983
+        },
+        {
+          "family": "e−",
+          "particle": "eminus",
+          "new_events": 1621652,
+          "run_hours": 3.96,
+          "sim_gb": 13.26,
+          "run_share": 0.0369,
+          "disk_share": 0.0435
+        },
+        {
+          "family": "μ+",
+          "particle": "muplus",
+          "new_events": 41760,
+          "run_hours": 0.11,
+          "sim_gb": 0.36,
+          "run_share": 0.001,
+          "disk_share": 0.0012
+        },
+        {
+          "family": "μ−",
+          "particle": "muminus",
+          "new_events": 19310,
+          "run_hours": 0.05,
+          "sim_gb": 0.18,
+          "run_share": 0.0005,
+          "disk_share": 0.0006
+        }
+      ],
+      "record_composition": [
+        {
+          "record_type": "CC HIT",
+          "raw_byte_share": 0.718,
+          "line_count": 52798878,
+          "role": "per-step sensitive-detector hit"
+        },
+        {
+          "record_type": "IA",
+          "raw_byte_share": 0.274,
+          "line_count": 20385024,
+          "role": "interaction ancestry"
+        },
+        {
+          "record_type": "HTsim",
+          "raw_byte_share": 0.0058,
+          "line_count": 315504,
+          "role": "detector hit summary"
+        },
+        {
+          "record_type": "other",
+          "raw_byte_share": 0.0022,
+          "line_count": null,
+          "role": "headers, SE, ID, comments"
+        }
+      ],
+      "family_priority": [
+        {
+          "family": "α",
+          "ms_per_primary": 434.025,
+          "kb_per_primary": 360.385,
+          "o8_runtime_multiplier": 4.7,
+          "r1_run_hours": 10.19,
+          "r1_sim_gb": 29.97,
+          "priority_action": "小 shard；补齐 buildup；能段分层 pilot",
+          "evidence": "N小且重尾，投影不稳"
+        },
+        {
+          "family": "p*",
+          "ms_per_primary": 156.249,
+          "kb_per_primary": 113.995,
+          "o8_runtime_multiplier": null,
+          "r1_run_hours": 40.6207,
+          "r1_sim_gb": 106.6889,
+          "priority_action": "64-event资源门；六能段带权抽样",
+          "evidence": "r1成本由256-event非合并诊断线性外推，无可信尾部CI"
+        },
+        {
+          "family": "e+",
+          "ms_per_primary": 46.847,
+          "kb_per_primary": 41.24,
+          "o8_runtime_multiplier": 3.32,
+          "r1_run_hours": 11.42,
+          "r1_sim_gb": 36.18,
+          "priority_action": "O8重槽；保PAIR/ANNI；优先compact",
+          "evidence": "accepted，仍非full chain"
+        },
+        {
+          "family": "n",
+          "ms_per_primary": 16.751,
+          "kb_per_primary": 13.39,
+          "o8_runtime_multiplier": 4.69,
+          "r1_run_hours": 16.13,
+          "r1_sim_gb": 46.43,
+          "priority_action": "保留HP；prompt+buildup；exact RP",
+          "evidence": "RP多，delayed尚未闭合"
+        },
+        {
+          "family": "μ−",
+          "ms_per_primary": 10.14,
+          "kb_per_primary": 9.215,
+          "o8_runtime_multiplier": 2.51,
+          "r1_run_hours": 0.05,
+          "r1_sim_gb": 0.18,
+          "priority_action": "检查俘获；buildup按CI追加",
+          "evidence": "总预算小，RP稀少"
+        },
+        {
+          "family": "μ+",
+          "ms_per_primary": 9.397,
+          "kb_per_primary": 8.71,
+          "o8_runtime_multiplier": 2.27,
+          "r1_run_hours": 0.11,
+          "r1_sim_gb": 0.36,
+          "priority_action": "低优先；零计数给可信上限",
+          "evidence": "样本小"
+        },
+        {
+          "family": "e−",
+          "ms_per_primary": 8.793,
+          "kb_per_primary": 8.176,
+          "o8_runtime_multiplier": 2.13,
+          "r1_run_hours": 3.96,
+          "r1_sim_gb": 13.26,
+          "priority_action": "先补screening再决定停止",
+          "evidence": "当前约22% screening reference"
+        },
+        {
+          "family": "γ",
+          "ms_per_primary": 2.665,
+          "kb_per_primary": 2.109,
+          "o8_runtime_multiplier": 2.72,
+          "r1_run_hours": 24.98,
+          "r1_sim_gb": 71.93,
+          "priority_action": "保analog；W2稀有臂；全事件摘要",
+          "evidence": "W2仅3 vs 1"
+        }
+      ],
+      "optimization_plan": [
+        {
+          "priority": "P0.1",
+          "action": "r1 sequential checkpoint + family CI",
+          "why": "历史r8把重族重复8次；不是固定物理要求",
+          "expected_effect": "相对r8投影，rich disk/run-phase约降83%",
+          "release_gate": "预注册W2/TES/RP/材料贡献置信区间"
+        },
+        {
+          "priority": "P0.2",
+          "action": "M05-complete compact sidecar",
+          "why": "CC+IA约99.2% raw bytes",
+          "expected_effect": "严格八族r1需实测约7.0×才过本地安全门",
+          "release_gate": "F/C同EventList逐event物理闭合；全八族压力cell"
+        },
+        {
+          "priority": "P0.3",
+          "action": "family-aware scheduler与小shard",
+          "why": "O8重job峰值约4–5 GB；swap已满",
+          "expected_effect": "避免OOM/重跑；不减少总transport",
+          "release_gate": "RSS tail gate；重O8单槽"
+        },
+        {
+          "priority": "P1",
+          "action": "gamma/p/alpha带权分层抽样",
+          "why": "W2极稀有且高能重尾",
+          "expected_effect": "潜在降方差；当前无可承诺倍数",
+          "release_gate": "full-support、逐bin flux closure、analog control"
+        },
+        {
+          "priority": "P2",
+          "action": "远端被动区 region cut pilot",
+          "why": "当前全局默认约5 μm，可能过细",
+          "expected_effect": "未测，不计入预算",
+          "release_gate": "TES/VETO/W2/RP/material paired closure"
+        },
+        {
+          "priority": "P3",
+          "action": "physics-list系统学臂",
+          "why": "影响shower、n HP与activation",
+          "expected_effect": "不作为首轮性能手段",
+          "release_gate": "全链物理等价与系统学评估"
+        }
+      ]
+    }
+  },
+  "sources": [
+    {
+      "id": "resource_aggregation",
+      "label": "436 个 merge-eligible jobs 的八族前缀资源聚合",
+      "path": "engineering/particle_source_unit_repair_20260811/composite_partial_postprocess_20260812/data/composite_partial_authorities.json",
+      "query": {
+        "sql": "SELECT * FROM read_csv_auto('engineering/particle_source_unit_repair_20260811/small_batch_resource_optimization_review_20260812/summary_metrics.csv') LIMIT 1",
+        "description": "Accepted corrected-keV seven-family aggregate plus four merge-eligible batch0000 proton jobs.",
+        "language": "sql"
+      }
+    },
+    {
+      "id": "family_resource_combined",
+      "label": "七族 accepted aggregate + proton resource diagnostic",
+      "query": {
+        "sql": "SELECT * FROM read_csv_auto('engineering/particle_source_unit_repair_20260811/small_batch_resource_optimization_review_20260812/family_resource.csv') ORDER BY ms_per_primary DESC",
+        "description": "Accepted seven-family costs plus separately marked proton diagnostic.",
+        "language": "sql"
+      }
+    },
+    {
+      "id": "full_target_projection",
+      "label": "严格八族 r1 与历史七族 r8 的实测率投影",
+      "path": "engineering/particle_source_unit_repair_20260811/SEVEN_FAMILY_BATCH0001.md",
+      "query": {
+        "sql": "SELECT * FROM read_csv_auto('engineering/particle_source_unit_repair_20260811/small_batch_resource_optimization_review_20260812/summary_metrics.csv') LIMIT 1",
+        "description": "Strict eight-family R1 plus explicitly proton-excluded historical R8 planning summary.",
+        "language": "sql"
+      }
+    },
+    {
+      "id": "r1_family_projection",
+      "label": "r1 checkpoint family-level projection",
+      "path": "engineering/particle_source_unit_repair_20260811/small_batch_resource_optimization_review_20260812/r1_projection.csv",
+      "query": {
+        "sql": "SELECT * FROM read_csv_auto('engineering/particle_source_unit_repair_20260811/small_batch_resource_optimization_review_20260812/r1_projection.csv') ORDER BY run_hours DESC",
+        "description": "Family-level remaining R1 work.",
+        "language": "sql"
+      }
+    },
+    {
+      "id": "record_audit",
+      "label": "batch0001 SIM 流式记录审计",
+      "path": "runs/particle_source_unit_repair_20260811/seven_family_batch0001_v1_ledger.json",
+      "query": {
+        "sql": "SELECT * FROM read_csv_auto('engineering/particle_source_unit_repair_20260811/small_batch_resource_optimization_review_20260812/record_composition.csv') ORDER BY raw_byte_share DESC",
+        "description": "Raw SIM record byte composition.",
+        "language": "sql"
+      }
+    },
+    {
+      "id": "gamma_cutflow",
+      "label": "corrected-keV prompt gamma prefix76 cutflow",
+      "path": "engineering/particle_source_unit_repair_20260811/gamma5m_postprocess_20260811/results_gamma_prefix76_2p001m_diagnostic/gamma_prefix76_2p001m_diagnostic_prompt_tes_summary.json"
+    },
+      {
+        "id": "proton_smoke",
+        "label": "proton full-sphere resource diagnostic",
+        "path": "runs/particle_source_unit_repair_20260811/proton_fullsphere20_resource_smoke_20260812/resource_summary.json"
+      },
+    {
+      "id": "proton_mergeable_credit",
+      "label": "batch0000 merge-eligible all-eight-family ledger",
+      "path": "runs/particle_source_unit_repair_20260811/mergeable_smoke_v1_ledger.json"
+    },
+    {
+      "id": "proton_weighted_pilot",
+      "label": "proton six-band weighted P0 plan and WAIT gates",
+      "path": "engineering/particle_source_unit_repair_20260811/proton_p0_sixband_pilot_20260812/README.md"
+    },
+    {
+      "id": "m05_method",
+      "label": "M05 paper method and data dependencies",
+      "path": "core_md/balloon511_ea_latex_drafts/m05_atm511_source_revision_20260811/balloon511_ea_draft_en_m05_atm511_source_revision_20260811.tex"
+    },
+    {
+      "id": "compact_status",
+      "label": "M05 compact smoke status and gates",
+      "path": "engineering/particle_source_unit_repair_20260811/m05_complete_compact_smoke_20260812/EXECUTOR_REPORT.md",
+      "query": {
+        "sql": "SELECT * FROM read_csv_auto('engineering/particle_source_unit_repair_20260811/small_batch_resource_optimization_review_20260812/optimization_plan.csv') ORDER BY priority ASC",
+        "description": "Prioritized optimization actions and release gates.",
+        "language": "sql"
+      }
+    },
+    {
+      "id": "local_capacity",
+      "label": "2026-08-12 local filesystem capacity check",
+      "query": {
+        "sql": "SELECT safe_point_output_gb, r1_required_compaction FROM read_csv_auto('engineering/particle_source_unit_repair_20260811/small_batch_resource_optimization_review_20260812/summary_metrics.csv') LIMIT 1",
+        "description": "Capacity point limit after reserve and 2x gate.",
+        "language": "sql"
+      }
+    },
+    {
+      "id": "capacity_16h_80gb",
+      "label": "16 h / 80 GB 容量情景",
+      "path": "engineering/particle_source_unit_repair_20260811/small_batch_resource_optimization_review_20260812/capacity_16h_80gb.csv",
+      "query": {
+        "sql": "SELECT * FROM read_csv_auto('engineering/particle_source_unit_repair_20260811/small_batch_resource_optimization_review_20260812/capacity_16h_80gb.csv') ORDER BY new_primaries DESC",
+        "description": "Strict eight-family, proton-screening-first, historical seven-family, safety-gate, and prompt-gamma-only capacity scenarios.",
+        "language": "sql"
+      }
+    },
+    {
+      "id": "paper_readiness",
+      "label": "M05 统计放行门",
+      "path": "engineering/particle_source_unit_repair_20260811/small_batch_resource_optimization_review_20260812/paper_readiness_gates.csv",
+      "query": {
+        "sql": "SELECT * FROM read_csv_auto('engineering/particle_source_unit_repair_20260811/small_batch_resource_optimization_review_20260812/paper_readiness_gates.csv')",
+        "description": "Endpoint-level effective-count gates for paper claims.",
+        "language": "sql"
+      }
+    }
+  ]
+}

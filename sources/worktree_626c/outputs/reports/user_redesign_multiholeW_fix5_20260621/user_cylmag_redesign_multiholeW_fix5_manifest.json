@@ -1,0 +1,238 @@
+{
+  "status": "TOPOLOGY_FIXES_APPLIED_NOT_MC_VALIDATED",
+  "parent_geometry_dir": "outputs/geometry/DEMO2_DR_v3p5_user_cylmag_redesign_multiholeW_20260621_megalib_proxy",
+  "geometry_dir": "outputs/geometry/DEMO2_DR_v3p5_user_cylmag_redesign_multiholeW_fix5_20260621_megalib_proxy",
+  "setup": "outputs/geometry/DEMO2_DR_v3p5_user_cylmag_redesign_multiholeW_fix5_20260621_megalib_proxy/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup",
+  "geo": "outputs/geometry/DEMO2_DR_v3p5_user_cylmag_redesign_multiholeW_fix5_20260621_megalib_proxy/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo",
+  "det": "outputs/geometry/DEMO2_DR_v3p5_user_cylmag_redesign_multiholeW_fix5_20260621_megalib_proxy/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.det",
+  "materials": "outputs/geometry/DEMO2_DR_v3p5_user_cylmag_redesign_multiholeW_fix5_20260621_megalib_proxy/Materials_DEMO2_DR_v3p5.geo",
+  "geometry": {
+    "removed_volumes": [
+      "ActiveShield_Flex_Kapton_detector_bay_side_port_band_00",
+      "ActiveShield_Flex_Kapton_detector_bay_side_port_band_01",
+      "CsI_Side_Segment_03_side_port_band_00",
+      "CsI_Side_Segment_04_side_port_band_00",
+      "Cu_50mK_Local_Can_Cylinder_2mm",
+      "Outer_Al_Mechanical_Shell_detector_bay_side_wall_side_port_band_00",
+      "Outer_Al_Mechanical_Shell_detector_bay_side_wall_side_port_band_01",
+      "Shield_4K_Al_side_window_side_wall_side_port_band_00",
+      "Shield_4K_Al_side_window_side_wall_side_port_band_01",
+      "Shield_60K_Al_side_window_side_wall_side_port_band_00",
+      "Shield_60K_Al_side_window_side_wall_side_port_band_01",
+      "Still_Shield_Al_side_window_side_wall_side_port_band_00",
+      "Still_Shield_Al_side_window_side_wall_side_port_band_01",
+      "Vacuum_Jacket_Al_266mmClass_side_port_side_wall_side_port_band_00",
+      "Vacuum_Jacket_Al_266mmClass_side_port_side_wall_side_port_band_01"
+    ],
+    "added_volumes": [
+      "Cu_50mK_StillLike_Can_bottom_cap_2mm",
+      "Cu_50mK_StillLike_Can_side_wall_below_side_port",
+      "Cu_50mK_StillLike_Can_side_wall_above_side_port",
+      "Cu_50mK_StillLike_Can_side_wall_rectcut_window_band",
+      "Still_Shield_Al_side_window_side_wall_rectcut_window_band",
+      "Shield_4K_Al_side_window_side_wall_rectcut_window_band",
+      "Shield_60K_Al_side_window_side_wall_rectcut_window_band",
+      "Vacuum_Jacket_Al_266mmClass_side_port_side_wall_rectcut_window_band",
+      "CsI_Side_Segment_03_rectcut_window_band",
+      "CsI_Side_Segment_04_rectcut_window_band",
+      "ActiveShield_Flex_Kapton_detector_bay_rectcut_window_band",
+      "Outer_Al_Mechanical_Shell_detector_bay_side_wall_rectcut_window_band",
+      "Nb_MagShield_Inner_Back_ColdFingerCap_2mm",
+      "MuMetal_MagShield_Outer_Back_ColdFingerCap_2mm",
+      "Win_MagShield_Al_foil_side"
+    ],
+    "changed_existing_volumes": [
+      "Win_50mK_Al_foil_side",
+      "ColdPlate_MXC_50mK_SD_anchor",
+      "CsI_Side_Segment_00",
+      "CsI_Side_Segment_01",
+      "CsI_Side_Segment_02",
+      "CsI_Side_Segment_03_below_side_port",
+      "CsI_Side_Segment_04_below_side_port",
+      "CsI_Side_Segment_05",
+      "CsI_Side_Segment_06",
+      "CsI_Side_Segment_07"
+    ],
+    "side_wall_opening_model": "Boolean rectcut: full cylindrical side band minus BRIK through-window box with y/z half-size 1.898 cm and x extent from outside shell to cylinder center.",
+    "side_wall_rectcut_replacements": [
+      {
+        "new": "Still_Shield_Al_side_window_side_wall_rectcut_window_band",
+        "material": "Aluminium",
+        "phi0": 0.0,
+        "dphi": 360.0,
+        "rin": 8.5,
+        "rout": 8.8,
+        "old": [
+          "Still_Shield_Al_side_window_side_wall_side_port_band_00",
+          "Still_Shield_Al_side_window_side_wall_side_port_band_01"
+        ]
+      },
+      {
+        "new": "Shield_4K_Al_side_window_side_wall_rectcut_window_band",
+        "material": "Aluminium",
+        "phi0": 0.0,
+        "dphi": 360.0,
+        "rin": 9.9,
+        "rout": 10.2,
+        "old": [
+          "Shield_4K_Al_side_window_side_wall_side_port_band_00",
+          "Shield_4K_Al_side_window_side_wall_side_port_band_01"
+        ]
+      },
+      {
+        "new": "Shield_60K_Al_side_window_side_wall_rectcut_window_band",
+        "material": "Aluminium",
+        "phi0": 0.0,
+        "dphi": 360.0,
+        "rin": 11.4,
+        "rout": 11.7,
+        "old": [
+          "Shield_60K_Al_side_window_side_wall_side_port_band_00",
+          "Shield_60K_Al_side_window_side_wall_side_port_band_01"
+        ]
+      },
+      {
+        "new": "Vacuum_Jacket_Al_266mmClass_side_port_side_wall_rectcut_window_band",
+        "material": "Aluminium",
+        "phi0": 0.0,
+        "dphi": 360.0,
+        "rin": 12.9,
+        "rout": 13.4,
+        "old": [
+          "Vacuum_Jacket_Al_266mmClass_side_port_side_wall_side_port_band_00",
+          "Vacuum_Jacket_Al_266mmClass_side_port_side_wall_side_port_band_01"
+        ]
+      },
+      {
+        "new": "CsI_Side_Segment_03_rectcut_window_band",
+        "material": "CsI",
+        "phi0": 135.0,
+        "dphi": 45.0,
+        "rin": 14.0,
+        "rout": 18.0,
+        "old": [
+          "CsI_Side_Segment_03_side_port_band_00"
+        ]
+      },
+      {
+        "new": "CsI_Side_Segment_04_rectcut_window_band",
+        "material": "CsI",
+        "phi0": 180.0,
+        "dphi": 45.0,
+        "rin": 14.0,
+        "rout": 18.0,
+        "old": [
+          "CsI_Side_Segment_04_side_port_band_00"
+        ]
+      },
+      {
+        "new": "ActiveShield_Flex_Kapton_detector_bay_rectcut_window_band",
+        "material": "Kapton",
+        "phi0": 0.0,
+        "dphi": 360.0,
+        "rin": 18.17,
+        "rout": 18.2,
+        "old": [
+          "ActiveShield_Flex_Kapton_detector_bay_side_port_band_00",
+          "ActiveShield_Flex_Kapton_detector_bay_side_port_band_01"
+        ]
+      },
+      {
+        "new": "Outer_Al_Mechanical_Shell_detector_bay_side_wall_rectcut_window_band",
+        "material": "Aluminium",
+        "phi0": 0.0,
+        "dphi": 360.0,
+        "rin": 18.3,
+        "rout": 19.1,
+        "old": [
+          "Outer_Al_Mechanical_Shell_detector_bay_side_wall_side_port_band_00",
+          "Outer_Al_Mechanical_Shell_detector_bay_side_wall_side_port_band_01"
+        ]
+      }
+    ],
+    "cu50_can": {
+      "model": "z-axis Still-like Copper local cold shield",
+      "rin_cm": 7.45,
+      "rout_cm": 7.65,
+      "side_window_x_cm": -7.550000000000001,
+      "bottom_z_range_cm": [
+        -9.9,
+        -9.7
+      ],
+      "top_edge_z_cm": -0.3,
+      "cold_plate_rout_cm": 7.8,
+      "closed_by": "ColdPlate_MXC_50mK_SD_anchor lower face at z=-0.3 cm"
+    },
+    "magnetic_caps": {
+      "incident_side": "open magnetic science aperture with thin Aluminium foil Win_MagShield_Al_foil_side; no MuMetal/Nb incident cap in the line of sight",
+      "incident_al_foil_x_cm": -4.351249999999999,
+      "incident_al_foil_half_thickness_cm": 0.00125,
+      "back_cold_finger_hole_radius_cm": 1.85,
+      "back_nb_xmax_cm": 4.1,
+      "back_mumetal_xmax_cm": 4.3,
+      "front_mumetal_xmin_cm": -4.35,
+      "front_nb_xmin_cm": -3.85,
+      "cap_thickness_cm": 0.2
+    },
+    "csi_bottom_side_seam": {
+      "model": "side CsI lower edges moved to touch the bottom CsI upper face",
+      "bottom_top_z_cm": -14.4,
+      "side_inner_outer_r_cm": [
+        14.0,
+        18.0
+      ]
+    }
+  },
+  "detector_map": {
+    "removed_detector_sensitive_volumes": [
+      "ActiveShield_Flex_Kapton_detector_bay_side_port_band_00",
+      "ActiveShield_Flex_Kapton_detector_bay_side_port_band_01",
+      "CsI_Side_Segment_03_side_port_band_00",
+      "CsI_Side_Segment_04_side_port_band_00",
+      "Cu_50mK_Local_Can_Cylinder_2mm",
+      "Outer_Al_Mechanical_Shell_detector_bay_side_wall_side_port_band_00",
+      "Outer_Al_Mechanical_Shell_detector_bay_side_wall_side_port_band_01",
+      "Shield_4K_Al_side_window_side_wall_side_port_band_00",
+      "Shield_4K_Al_side_window_side_wall_side_port_band_01",
+      "Shield_60K_Al_side_window_side_wall_side_port_band_00",
+      "Shield_60K_Al_side_window_side_wall_side_port_band_01",
+      "Still_Shield_Al_side_window_side_wall_side_port_band_00",
+      "Still_Shield_Al_side_window_side_wall_side_port_band_01",
+      "Vacuum_Jacket_Al_266mmClass_side_port_side_wall_side_port_band_00",
+      "Vacuum_Jacket_Al_266mmClass_side_port_side_wall_side_port_band_01"
+    ],
+    "added_detector_sensitive_volumes": [
+      "Cu_50mK_StillLike_Can_bottom_cap_2mm",
+      "Cu_50mK_StillLike_Can_side_wall_below_side_port",
+      "Cu_50mK_StillLike_Can_side_wall_above_side_port",
+      "Cu_50mK_StillLike_Can_side_wall_rectcut_window_band",
+      "Still_Shield_Al_side_window_side_wall_rectcut_window_band",
+      "Shield_4K_Al_side_window_side_wall_rectcut_window_band",
+      "Shield_60K_Al_side_window_side_wall_rectcut_window_band",
+      "Vacuum_Jacket_Al_266mmClass_side_port_side_wall_rectcut_window_band",
+      "CsI_Side_Segment_03_rectcut_window_band",
+      "CsI_Side_Segment_04_rectcut_window_band",
+      "ActiveShield_Flex_Kapton_detector_bay_rectcut_window_band",
+      "Outer_Al_Mechanical_Shell_detector_bay_side_wall_rectcut_window_band",
+      "Nb_MagShield_Inner_Back_ColdFingerCap_2mm",
+      "MuMetal_MagShield_Outer_Back_ColdFingerCap_2mm",
+      "Win_MagShield_Al_foil_side"
+    ]
+  },
+  "artifacts": {
+    "wrl_from_geo": "outputs/reports/user_redesign_multiholeW_fix5_20260621/user_cylmag_redesign_multiholeW_fix5.wrl",
+    "xz_projection_zoom_png": "outputs/reports/user_redesign_multiholeW_fix5_20260621/user_cylmag_redesign_multiholeW_fix5_xz_projection_zoom.png",
+    "xz_projection_zoom_svg": "outputs/reports/user_redesign_multiholeW_fix5_20260621/user_cylmag_redesign_multiholeW_fix5_xz_projection_zoom.svg",
+    "xz_projection_full_png": "outputs/reports/user_redesign_multiholeW_fix5_20260621/user_cylmag_redesign_multiholeW_fix5_xz_projection_full.png",
+    "xz_projection_full_svg": "outputs/reports/user_redesign_multiholeW_fix5_20260621/user_cylmag_redesign_multiholeW_fix5_xz_projection_full.svg",
+    "yz_side_window_face_png": "outputs/reports/user_redesign_multiholeW_fix5_20260621/user_cylmag_redesign_multiholeW_fix5_yz_side_window_face.png",
+    "yz_side_window_face_svg": "outputs/reports/user_redesign_multiholeW_fix5_20260621/user_cylmag_redesign_multiholeW_fix5_yz_side_window_face.svg",
+    "mass_delta_csv": "outputs/reports/user_redesign_multiholeW_fix5_20260621/user_cylmag_redesign_multiholeW_fix5_mass_delta.csv",
+    "summary_md": "outputs/reports/user_redesign_multiholeW_fix5_20260621/USER_CYLMAG_REDESIGN_MULTIHOLEW_FIX5_SUMMARY.md",
+    "overlap_source": "outputs/geometry/DEMO2_DR_v3p5_user_cylmag_redesign_multiholeW_fix5_20260621_megalib_proxy/overlap_check.source",
+    "det_reference_check_json": "outputs/reports/user_redesign_multiholeW_fix5_20260621/geometry_det_reference_check.json",
+    "side_window_material_path_audit_json": "outputs/reports/user_redesign_multiholeW_fix5_20260621/side_window_material_path_audit_fix5.json",
+    "cosima_overlap_log": "outputs/reports/user_redesign_multiholeW_fix5_20260621/cosima_overlap_fix5_20260621.log",
+    "prompt511_constraint_log": "outputs/reports/user_redesign_multiholeW_fix5_20260621/check_prompt511_constraints_fix5.log"
+  }
+}

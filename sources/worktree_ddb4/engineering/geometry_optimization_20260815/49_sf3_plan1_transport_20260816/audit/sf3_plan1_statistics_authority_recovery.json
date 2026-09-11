@@ -1,0 +1,29 @@
+{
+  "schema_version": 1,
+  "status": "PASS__PREMATURE_INCOMPLETE_STATISTICS_REMOVED_FROM_CANONICAL_AUTHORITY_PATH",
+  "audited_at": "2026-08-15T19:20:57Z",
+  "canonical_path": "engineering/geometry_optimization_20260815/49_sf3_plan1_transport_20260816/audit/sf3_plan1_statistics_validation.json",
+  "canonical_state_after_recovery": "ABSENT__PENDING_COMPLETE_PASS_BACKGROUND_OR_ALL_VALIDATION",
+  "non_authoritative_snapshot": {
+    "path": "engineering/geometry_optimization_20260815/49_sf3_plan1_transport_20260816/audit/non_authoritative/sf3_plan1_statistics_validation_premature_background_20260815T181814Z.json",
+    "sha256": "7442533cdb16ed9baba798139957a973e4e57f131b1708550fa85073d3d2ad96",
+    "scope": "background",
+    "status": "FAIL",
+    "planned_jobs_in_scope": 21,
+    "validated_jobs_in_scope": 1,
+    "missing_receipts": 20,
+    "classification": "EARLY_INCOMPLETE_OPERATIONAL_CALL__NOT_PHYSICS_OR_STATISTICS_AUTHORITY"
+  },
+  "publication_contract": {
+    "eligible_scopes": [
+      "background",
+      "all"
+    ],
+    "required_status": "PASS",
+    "required_receipt_closure": "validated_jobs_in_scope == planned_jobs_in_scope",
+    "partial_or_failed_action": "WRITE_SCOPE_SNAPSHOT_ONLY__PRESERVE_EXISTING_CANONICAL_AUTHORITY",
+    "complete_pass_action": "ATOMICALLY_REPLACE_CANONICAL_PATH"
+  },
+  "transport_interference": "NONE__NO_CONTROLLER_OR_COSIMA_PROCESS_WAS_SIGNALLED_OR_STOPPED",
+  "sim_payload_access": "NONE__NO_SIM_OPEN_SCAN_OR_HASH"
+}

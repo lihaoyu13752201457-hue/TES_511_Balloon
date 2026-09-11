@@ -1,0 +1,94 @@
+{
+  "actual_pre_tes_geometric_route_by_hemisphere": {
+    "down": {
+      "full_grid_envelope_crossing": 42,
+      "grid_facing_bypass_outside_envelope": 8,
+      "partial_or_grazing_grid_envelope_contact": 2,
+      "rear_or_side_bypass": 8
+    },
+    "up": {
+      "grid_facing_bypass_outside_envelope": 34,
+      "rear_or_side_bypass": 57
+    }
+  },
+  "actual_pre_tes_geometric_route_counts": {
+    "full_grid_envelope_crossing": 42,
+    "grid_facing_bypass_outside_envelope": 42,
+    "partial_or_grazing_grid_envelope_contact": 2,
+    "rear_or_side_bypass": 65
+  },
+  "atmospheric_near_vertical_abs_mu_ge_0p8": {
+    "count": 21,
+    "fraction": 0.1390728476821192,
+    "wilson95": [
+      0.09279487195064118,
+      0.20325929319241898
+    ]
+  },
+  "coupling_counts": {
+    "direct_grid_facing_side_path_not_through_grid_envelope": 33,
+    "direct_rear_entry": 55,
+    "direct_through_grid_envelope_no_recorded_grid_interaction": 43,
+    "pre_tes_interaction_elsewhere": 20
+  },
+  "definitions": {
+    "actual_pre_tes_geometric_route": "piecewise-linear IA INIT -> pre-TES IA positions -> first TES IA, intersected with the full x'/y'/z' grid envelope",
+    "atmospheric_vertical": "absolute initial world-z direction cosine >= 0.8",
+    "direct": "the first recorded physical interaction after IA INIT is inside a TES layer",
+    "grid_envelope": "straight initial ray intersects x'=-44.7 cm within y'=+-2.7 cm and z'=-2.8+-2.7 cm",
+    "grid_near_normal": "absolute initial or last-segment InstrumentFrame-x direction cosine >= 0.8"
+  },
+  "direct_through_grid_envelope_without_recorded_grid_interaction": {
+    "count": 43,
+    "fraction": 0.2847682119205298,
+    "wilson95": [
+      0.21882333465147735,
+      0.3613924519017238
+    ]
+  },
+  "direct_to_tes": {
+    "count": 131,
+    "fraction": 0.8675496688741722,
+    "wilson95": [
+      0.8042658408928933,
+      0.9125964313008712
+    ]
+  },
+  "event_weight_cps": 0.00011990662008166577,
+  "initial_grid_facing_near_normal_ldx_ge_0p8": {
+    "count": 47,
+    "fraction": 0.31125827814569534,
+    "wilson95": [
+      0.24286279733030897,
+      0.38901873857019037
+    ]
+  },
+  "initial_near_either_grid_normal_abs_ldx_ge_0p8": {
+    "count": 57,
+    "fraction": 0.37748344370860926,
+    "wilson95": [
+      0.3041089933271009,
+      0.4569369159416444
+    ]
+  },
+  "last_segment_near_either_grid_normal_abs_ldx_ge_0p8": {
+    "count": 57,
+    "fraction": 0.37748344370860926,
+    "wilson95": [
+      0.3041089933271009,
+      0.4569369159416444
+    ]
+  },
+  "selected_events": 151,
+  "selected_rate_cps": 0.018105899632331533,
+  "source_hemisphere_counts": {
+    "down": 60,
+    "up": 91
+  },
+  "sources": {
+    "event_catalog": "/home/ubuntu/.codex/worktrees/ebb2/TES_511_Balloon/engineering/geometry_optimization_20260815/68_sh3_wgrid_mono511_statistics_20260824/outputs/01_wgrid_mono511_response_comparison_20260825/response/mono_line_event_catalog.npz",
+    "geometry": "/home/ubuntu/.codex/worktrees/ebb2/TES_511_Balloon/engineering/geometry_optimization_20260815/68_sh3_wgrid_mono511_statistics_20260824/transport_authority/geometry/SH3_Assembly_OptV3.geo",
+    "receipts": "/home/ubuntu/.codex/worktrees/ebb2/TES_511_Balloon/engineering/geometry_optimization_20260815/68_sh3_wgrid_mono511_statistics_20260824/transport_full/run/receipts"
+  },
+  "status": "PASS__EXISTING_WGRID_SELECTED_PATHS_EXTRACTED"
+}

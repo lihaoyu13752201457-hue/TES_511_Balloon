@@ -1,0 +1,586 @@
+{
+  "step": "step04_opticsim",
+  "status": "PASS_BFULL_XOPMAP_EVENTLIST_READY",
+  "created_from": "/home/ubuntu/codex_tes_511_sim/new_geo_re/stepwise_maintenance/step04_opticsim/code/build_step04_opticsim_audit.py",
+  "scope": {
+    "scheme": "Laue optics only",
+    "channel_optics_used": false,
+    "nominal_backend": "B-FULL external per-ring XOP/CRYSTAL rocking-curve map",
+    "detector_geometry_modified": false,
+    "optics_hardware_mass_in_new_geo_re": false
+  },
+  "opticsim_latest_commit": {
+    "repo": "/home/ubuntu/opticsim",
+    "commit": "792fb9f8995275637441dcf608135a14bdbe8d3d",
+    "date": "2026-06-01 23:49:09 +0800",
+    "subject": "Update 511 line lens to f9m design",
+    "tracked_worktree_clean": false,
+    "status_short": "?? data/laue/ge111_balloon511_f20m_480_550keV_multiring_config.csv\n?? data/laue/ge111_balloon511_f35m_480_511_550keV_three_ring_config.csv\n?? data/laue/ge111_balloon511_f8p3m_507_515keV_line_config.csv"
+  },
+  "opticsim_source_evidence": {
+    "laue_bfull_demo": {
+      "path": "/home/ubuntu/opticsim/geant4_app/src/laue_multiring_bfull_demo.cc",
+      "exists": true,
+      "size_bytes": 70111,
+      "line_count": 1498,
+      "sha256": "5dbb1eb60435185d0a93906898ea343d25e0f3af05e7c599c3535208a3eb11f4"
+    },
+    "cmake_bfull_target": {
+      "path": "/home/ubuntu/opticsim/CMakeLists.txt",
+      "exists": true,
+      "size_bytes": 4168,
+      "line_count": 98,
+      "sha256": "1118b550e4aff4bf025657a89babcf9556a82c557d42f6312297851a2031ab25"
+    },
+    "ring_config": {
+      "path": "/home/ubuntu/opticsim/data/laue/ge111_balloon511_f9m_511keV_line_config.csv",
+      "exists": true,
+      "size_bytes": 180,
+      "line_count": 2,
+      "sha256": "afa99fde0ebacaffcc5b235e886f85a261cc7131d0c080a67d79cc9c1daa76f3"
+    },
+    "xop_rocking_curve_map": {
+      "path": "stepwise_maintenance/step04_opticsim/ge111_balloon511_f9m_511keV_xop_map.csv",
+      "exists": true,
+      "size_bytes": 196,
+      "line_count": 2,
+      "sha256": "f41b3e3541a055ca225d9a064d893de961f34bea5af63a658afe10531a88c3a2"
+    }
+  },
+  "cross_check_evidence": {
+    "validation_status": {
+      "path": "/home/ubuntu/cross_check_laue/laue511_validation/reports/validation_status.md",
+      "exists": true,
+      "size_bytes": 14510,
+      "line_count": 319,
+      "sha256": "deb71f3b82ad0d7030465d1b8743e94a4d0dcf4c45d2a2c9f9ddd9876fe31945"
+    },
+    "crosscheck_summary": {
+      "path": "/home/ubuntu/cross_check_laue/laue511_validation/reports/laue511_crosscheck_summary.md",
+      "exists": true,
+      "size_bytes": 2701,
+      "line_count": 34,
+      "sha256": "f2f72af9c70c42c2f23028a6cfba0f04c7db3d87b5a38fbb1237cd1742564cdf"
+    }
+  },
+  "bfull_nominal_xopmap": {
+    "directory": "stepwise_maintenance/step04_opticsim/outputs/opticsim_laue_bfull_xopmap_real",
+    "summary": {
+      "system": "geant4_laue_bfull_process",
+      "model": "bfull_fixed_tile_orientation_geant4_discrete_competing_laue_mfp_v4",
+      "warning": "B-FULL: standard Geant4 EM physics is enabled; the Laue process is a non-forced G4VDiscreteProcess with a finite equivalent diffraction mean free path that competes with the standard EM processes. The tile geometry/lattice-plane evaluation remains application-level code, not a Geant4 toolkit source patch.",
+      "geant4_bottom_code_modified": false,
+      "model_process_split": true,
+      "registered_process": "BFullLaueBraggProcess derives from G4VDiscreteProcess and is added to the gamma G4ProcessManager as a non-forced finite-MFP post-step process competing with standard EM",
+      "registered_in_geant4_em_category": false,
+      "geant4_process_base_class": "G4VDiscreteProcess",
+      "geant4_builds_on_geant4_11": true,
+      "standard_geant4_em_enabled": true,
+      "uses_external_efficiency_table_for_physics": false,
+      "uses_external_rocking_curve_for_laue_mfp": true,
+      "rocking_curve_backend": "external_per_ring_csv_map",
+      "rocking_curve_csv": "",
+      "rocking_curve_map_csv": "/home/ubuntu/codex_tes_511_sim/new_geo_re/stepwise_maintenance/step04_opticsim/ge111_balloon511_f9m_511keV_xop_map.csv",
+      "rocking_curve_map_required": true,
+      "rocking_curve_map_covered_ring_ids": [
+        0
+      ],
+      "online_physics_backend": "Darwin-Hamilton mosaic formula or external rocking-curve CSV converted to an equivalent finite diffraction mean free path; Geant4 standard EM processes remain enabled",
+      "vector_diagnostics_in_optics_history": true,
+      "plane_normal_diagnostic_model": "bfull_fixed_tile_plane_normal_em_competing; emitted DIFFRACT direction is reflected across a perturbed fixed tile plane normal",
+      "mosaic_fwhm_arcsec": 30,
+      "crystallite_thickness_um": 5,
+      "only_ring_id": -1,
+      "only_tile_id": -1,
+      "n_primaries": 50000,
+      "custom_laue_only_branch_counters": true,
+      "custom_laue_branch_scope": "DIFFRACT is the only sampled custom Laue branch; ABSORB/TRANSMIT probabilities are backend diagnostics while standard Geant4 EM processes compete independently",
+      "standard_em_losses_are_not_written_to_optics_history": true,
+      "transmitted_space_source": "actual primary gamma focal-plane crossings recorded by BFullFocalPlaneSteppingAction",
+      "n_rings": 1,
+      "n_laue_interactions": 16038,
+      "laue_interaction_fraction": 0.32076,
+      "n_diffracted": 16038,
+      "n_custom_laue_diffracted": 16038,
+      "n_custom_laue_absorbed": 0,
+      "n_custom_laue_transmitted": 0,
+      "n_absorbed": 0,
+      "n_transmitted": 0,
+      "n_absorbed_field_scope": "custom Laue branch only; not total Geant4 EM absorption",
+      "n_transmitted_field_scope": "custom Laue branch only; use primary_or_transmitted_focal_crossings/transmitted_space.csv for tracked transmitted primaries",
+      "diffraction_fraction": 0.32076,
+      "absorption_fraction": 0,
+      "transmission_fraction": 0,
+      "non_focal_event_estimate": 17743,
+      "estimated_standard_em_or_nonfocal_losses": 17743,
+      "focal_crossings": 32257,
+      "primary_or_transmitted_focal_crossings": 19652,
+      "transmitted_space_rows": 19652,
+      "laue_diffracted_focal_crossings": 12605,
+      "other_gamma_focal_crossings": 0,
+      "analytic_reference_focal_diffraction_fraction": 0.257481,
+      "emergent_focal_diffraction_fraction": 0.2521,
+      "emergent_minus_analytic_focal_diffraction": -0.00538123,
+      "diffraction_validation_note": "emergent EM-competing focal-plane diffracted fraction (laue_diffracted_focal_crossings/n_primaries) vs the absorption-included mosaic-Laue reference at the Bragg peak (Darwin-Hamilton closed form or external XOP/CRYSTAL curve); they should agree within Monte-Carlo and thick-crystal point-diffraction error, which is the gate that the EM-competing process reproduces the validated diffraction physics",
+      "projected_interaction_spot_d90_cm": 0.368551,
+      "focal_crossing_spot_d90_cm": 0.367386,
+      "energy_min_keV": 511,
+      "energy_max_keV": 511,
+      "focal_length_mm": 9000,
+      "world_half_xy_mm": 160,
+      "world_half_z_mm": 9110.22,
+      "ring_config": "/home/ubuntu/opticsim/data/laue/ge111_balloon511_f9m_511keV_line_config.csv",
+      "benchmark_efficiency_table_not_used_for_physics": "data/laue/Ge111_480_550keV_darwin_mosaic_table.csv",
+      "visualization_wrl": "/home/ubuntu/codex_tes_511_sim/new_geo_re/stepwise_maintenance/step04_opticsim/outputs/opticsim_laue_bfull_xopmap_real/laue_multiring_scene.wrl"
+    },
+    "phase_space_stats": {
+      "rows": 16038,
+      "energy_min_keV": 511.0,
+      "energy_max_keV": 511.0,
+      "r50_cm": 0.07553024191716098,
+      "r90_cm": 0.18427550597056191,
+      "r95_cm": 0.21844862151573363,
+      "r99_cm": 0.29130728648288406,
+      "rmax_cm": 24.780785834682526,
+      "be_radius_cm": 1.898,
+      "rmax_within_be": false
+    },
+    "phase_space_projection_note": "phase_space.csv is the analytic projection (one row per diffraction interaction); it overcounts focused flux and is NOT bridged. Use focal_crossing_stats.",
+    "focal_crossing_stats": {
+      "diffracted_focal_rows": 12605,
+      "within_be_rows": 12592,
+      "scattered_outside_be_rows": 13,
+      "r50_cm": 0.07499827612424245,
+      "r90_cm": 0.1836930343309159,
+      "r95_cm": 0.21910820009595977,
+      "r99_cm": 0.2914104898226177,
+      "rmax_cm": 17.763666886140175,
+      "be_radius_cm": 1.898,
+      "r99_within_be": true
+    },
+    "history_rows": 16038,
+    "transmitted_rows": 19652,
+    "source_files": {
+      "summary_json": {
+        "path": "stepwise_maintenance/step04_opticsim/outputs/opticsim_laue_bfull_xopmap_real/summary.json",
+        "exists": true,
+        "size_bytes": 4353,
+        "line_count": 66,
+        "sha256": "cd529c3515a411a0024a94b5ae4b1ac914d76764e278ad9c46cebdd8a15fe003"
+      },
+      "per_ring_summary_json": {
+        "path": "stepwise_maintenance/step04_opticsim/outputs/opticsim_laue_bfull_xopmap_real/per_ring_summary.json",
+        "exists": true,
+        "size_bytes": 547,
+        "line_count": 3,
+        "sha256": "2fd2b17e4df26067099eafd23c0ed1cc64c968e36ddc4d990d933935aa9d75d0"
+      },
+      "optics_history": {
+        "path": "stepwise_maintenance/step04_opticsim/outputs/opticsim_laue_bfull_xopmap_real/optics_history.csv",
+        "exists": true,
+        "size_bytes": 10876542,
+        "line_count": 16039,
+        "sha256": "e6aa65fa5673bb7a0bc2876b74a518d14e99438704f38cc85d14fd8ca90f45f5"
+      },
+      "phase_space": {
+        "path": "stepwise_maintenance/step04_opticsim/outputs/opticsim_laue_bfull_xopmap_real/phase_space.csv",
+        "exists": true,
+        "size_bytes": 2284011,
+        "line_count": 16039,
+        "sha256": "6b15a425fc68a15a03d8fe65d76a3b748f9b1d279573bcd02d0b69cfb1b97f3a"
+      },
+      "transmitted_space": {
+        "path": "stepwise_maintenance/step04_opticsim/outputs/opticsim_laue_bfull_xopmap_real/transmitted_space.csv",
+        "exists": true,
+        "size_bytes": 2156993,
+        "line_count": 19653,
+        "sha256": "576f2545eebb9a7cbef09d336d94e13e3bab1df87aaff360ceaec134c2d15a15"
+      },
+      "focal_crossings": {
+        "path": "stepwise_maintenance/step04_opticsim/outputs/opticsim_laue_bfull_xopmap_real/focal_crossings.csv",
+        "exists": true,
+        "size_bytes": 3484852,
+        "line_count": 32258,
+        "sha256": "3957554d6ab90f51870567b363869f02fe2cf7e0ee73bebf4dac66b59e55e56e"
+      },
+      "wrl": {
+        "path": "stepwise_maintenance/step04_opticsim/outputs/opticsim_laue_bfull_xopmap_real/laue_multiring_scene.wrl",
+        "exists": true,
+        "size_bytes": 42053,
+        "line_count": 1770,
+        "sha256": "9240c81b37b945dcdcfa020291f18457eb6d96d6f8b13878754e64eae34c95b4"
+      }
+    }
+  },
+  "bfull_online_crosscheck": {
+    "directory": "stepwise_maintenance/step04_opticsim/outputs/opticsim_laue_bfull_xopmap_real",
+    "summary": {
+      "system": "geant4_laue_bfull_process",
+      "model": "bfull_fixed_tile_orientation_geant4_discrete_competing_laue_mfp_v4",
+      "warning": "B-FULL: standard Geant4 EM physics is enabled; the Laue process is a non-forced G4VDiscreteProcess with a finite equivalent diffraction mean free path that competes with the standard EM processes. The tile geometry/lattice-plane evaluation remains application-level code, not a Geant4 toolkit source patch.",
+      "geant4_bottom_code_modified": false,
+      "model_process_split": true,
+      "registered_process": "BFullLaueBraggProcess derives from G4VDiscreteProcess and is added to the gamma G4ProcessManager as a non-forced finite-MFP post-step process competing with standard EM",
+      "registered_in_geant4_em_category": false,
+      "geant4_process_base_class": "G4VDiscreteProcess",
+      "geant4_builds_on_geant4_11": true,
+      "standard_geant4_em_enabled": true,
+      "uses_external_efficiency_table_for_physics": false,
+      "uses_external_rocking_curve_for_laue_mfp": true,
+      "rocking_curve_backend": "external_per_ring_csv_map",
+      "rocking_curve_csv": "",
+      "rocking_curve_map_csv": "/home/ubuntu/codex_tes_511_sim/new_geo_re/stepwise_maintenance/step04_opticsim/ge111_balloon511_f9m_511keV_xop_map.csv",
+      "rocking_curve_map_required": true,
+      "rocking_curve_map_covered_ring_ids": [
+        0
+      ],
+      "online_physics_backend": "Darwin-Hamilton mosaic formula or external rocking-curve CSV converted to an equivalent finite diffraction mean free path; Geant4 standard EM processes remain enabled",
+      "vector_diagnostics_in_optics_history": true,
+      "plane_normal_diagnostic_model": "bfull_fixed_tile_plane_normal_em_competing; emitted DIFFRACT direction is reflected across a perturbed fixed tile plane normal",
+      "mosaic_fwhm_arcsec": 30,
+      "crystallite_thickness_um": 5,
+      "only_ring_id": -1,
+      "only_tile_id": -1,
+      "n_primaries": 50000,
+      "custom_laue_only_branch_counters": true,
+      "custom_laue_branch_scope": "DIFFRACT is the only sampled custom Laue branch; ABSORB/TRANSMIT probabilities are backend diagnostics while standard Geant4 EM processes compete independently",
+      "standard_em_losses_are_not_written_to_optics_history": true,
+      "transmitted_space_source": "actual primary gamma focal-plane crossings recorded by BFullFocalPlaneSteppingAction",
+      "n_rings": 1,
+      "n_laue_interactions": 16038,
+      "laue_interaction_fraction": 0.32076,
+      "n_diffracted": 16038,
+      "n_custom_laue_diffracted": 16038,
+      "n_custom_laue_absorbed": 0,
+      "n_custom_laue_transmitted": 0,
+      "n_absorbed": 0,
+      "n_transmitted": 0,
+      "n_absorbed_field_scope": "custom Laue branch only; not total Geant4 EM absorption",
+      "n_transmitted_field_scope": "custom Laue branch only; use primary_or_transmitted_focal_crossings/transmitted_space.csv for tracked transmitted primaries",
+      "diffraction_fraction": 0.32076,
+      "absorption_fraction": 0,
+      "transmission_fraction": 0,
+      "non_focal_event_estimate": 17743,
+      "estimated_standard_em_or_nonfocal_losses": 17743,
+      "focal_crossings": 32257,
+      "primary_or_transmitted_focal_crossings": 19652,
+      "transmitted_space_rows": 19652,
+      "laue_diffracted_focal_crossings": 12605,
+      "other_gamma_focal_crossings": 0,
+      "analytic_reference_focal_diffraction_fraction": 0.257481,
+      "emergent_focal_diffraction_fraction": 0.2521,
+      "emergent_minus_analytic_focal_diffraction": -0.00538123,
+      "diffraction_validation_note": "emergent EM-competing focal-plane diffracted fraction (laue_diffracted_focal_crossings/n_primaries) vs the absorption-included mosaic-Laue reference at the Bragg peak (Darwin-Hamilton closed form or external XOP/CRYSTAL curve); they should agree within Monte-Carlo and thick-crystal point-diffraction error, which is the gate that the EM-competing process reproduces the validated diffraction physics",
+      "projected_interaction_spot_d90_cm": 0.368551,
+      "focal_crossing_spot_d90_cm": 0.367386,
+      "energy_min_keV": 511,
+      "energy_max_keV": 511,
+      "focal_length_mm": 9000,
+      "world_half_xy_mm": 160,
+      "world_half_z_mm": 9110.22,
+      "ring_config": "/home/ubuntu/opticsim/data/laue/ge111_balloon511_f9m_511keV_line_config.csv",
+      "benchmark_efficiency_table_not_used_for_physics": "data/laue/Ge111_480_550keV_darwin_mosaic_table.csv",
+      "visualization_wrl": "/home/ubuntu/codex_tes_511_sim/new_geo_re/stepwise_maintenance/step04_opticsim/outputs/opticsim_laue_bfull_xopmap_real/laue_multiring_scene.wrl"
+    },
+    "phase_space_stats": {
+      "rows": 16038,
+      "energy_min_keV": 511.0,
+      "energy_max_keV": 511.0,
+      "r50_cm": 0.07553024191716098,
+      "r90_cm": 0.18427550597056191,
+      "r95_cm": 0.21844862151573363,
+      "r99_cm": 0.29130728648288406,
+      "rmax_cm": 24.780785834682526,
+      "be_radius_cm": 1.898,
+      "rmax_within_be": false
+    },
+    "phase_space_projection_note": "phase_space.csv is the analytic projection (one row per diffraction interaction); it overcounts focused flux and is NOT bridged. Use focal_crossing_stats.",
+    "focal_crossing_stats": {
+      "diffracted_focal_rows": 12605,
+      "within_be_rows": 12592,
+      "scattered_outside_be_rows": 13,
+      "r50_cm": 0.07499827612424245,
+      "r90_cm": 0.1836930343309159,
+      "r95_cm": 0.21910820009595977,
+      "r99_cm": 0.2914104898226177,
+      "rmax_cm": 17.763666886140175,
+      "be_radius_cm": 1.898,
+      "r99_within_be": true
+    },
+    "history_rows": 16038,
+    "transmitted_rows": 19652,
+    "source_files": {
+      "summary_json": {
+        "path": "stepwise_maintenance/step04_opticsim/outputs/opticsim_laue_bfull_xopmap_real/summary.json",
+        "exists": true,
+        "size_bytes": 4353,
+        "line_count": 66,
+        "sha256": "cd529c3515a411a0024a94b5ae4b1ac914d76764e278ad9c46cebdd8a15fe003"
+      },
+      "per_ring_summary_json": {
+        "path": "stepwise_maintenance/step04_opticsim/outputs/opticsim_laue_bfull_xopmap_real/per_ring_summary.json",
+        "exists": true,
+        "size_bytes": 547,
+        "line_count": 3,
+        "sha256": "2fd2b17e4df26067099eafd23c0ed1cc64c968e36ddc4d990d933935aa9d75d0"
+      },
+      "optics_history": {
+        "path": "stepwise_maintenance/step04_opticsim/outputs/opticsim_laue_bfull_xopmap_real/optics_history.csv",
+        "exists": true,
+        "size_bytes": 10876542,
+        "line_count": 16039,
+        "sha256": "e6aa65fa5673bb7a0bc2876b74a518d14e99438704f38cc85d14fd8ca90f45f5"
+      },
+      "phase_space": {
+        "path": "stepwise_maintenance/step04_opticsim/outputs/opticsim_laue_bfull_xopmap_real/phase_space.csv",
+        "exists": true,
+        "size_bytes": 2284011,
+        "line_count": 16039,
+        "sha256": "6b15a425fc68a15a03d8fe65d76a3b748f9b1d279573bcd02d0b69cfb1b97f3a"
+      },
+      "transmitted_space": {
+        "path": "stepwise_maintenance/step04_opticsim/outputs/opticsim_laue_bfull_xopmap_real/transmitted_space.csv",
+        "exists": true,
+        "size_bytes": 2156993,
+        "line_count": 19653,
+        "sha256": "576f2545eebb9a7cbef09d336d94e13e3bab1df87aaff360ceaec134c2d15a15"
+      },
+      "focal_crossings": {
+        "path": "stepwise_maintenance/step04_opticsim/outputs/opticsim_laue_bfull_xopmap_real/focal_crossings.csv",
+        "exists": true,
+        "size_bytes": 3484852,
+        "line_count": 32258,
+        "sha256": "3957554d6ab90f51870567b363869f02fe2cf7e0ee73bebf4dac66b59e55e56e"
+      },
+      "wrl": {
+        "path": "stepwise_maintenance/step04_opticsim/outputs/opticsim_laue_bfull_xopmap_real/laue_multiring_scene.wrl",
+        "exists": true,
+        "size_bytes": 42053,
+        "line_count": 1770,
+        "sha256": "9240c81b37b945dcdcfa020291f18457eb6d96d6f8b13878754e64eae34c95b4"
+      }
+    }
+  },
+  "smoke5000": {
+    "directory": "stepwise_maintenance/step04_opticsim/outputs/opticsim_laue_bfull_xopmap_real",
+    "summary": {
+      "system": "geant4_laue_bfull_process",
+      "model": "bfull_fixed_tile_orientation_geant4_discrete_competing_laue_mfp_v4",
+      "warning": "B-FULL: standard Geant4 EM physics is enabled; the Laue process is a non-forced G4VDiscreteProcess with a finite equivalent diffraction mean free path that competes with the standard EM processes. The tile geometry/lattice-plane evaluation remains application-level code, not a Geant4 toolkit source patch.",
+      "geant4_bottom_code_modified": false,
+      "model_process_split": true,
+      "registered_process": "BFullLaueBraggProcess derives from G4VDiscreteProcess and is added to the gamma G4ProcessManager as a non-forced finite-MFP post-step process competing with standard EM",
+      "registered_in_geant4_em_category": false,
+      "geant4_process_base_class": "G4VDiscreteProcess",
+      "geant4_builds_on_geant4_11": true,
+      "standard_geant4_em_enabled": true,
+      "uses_external_efficiency_table_for_physics": false,
+      "uses_external_rocking_curve_for_laue_mfp": true,
+      "rocking_curve_backend": "external_per_ring_csv_map",
+      "rocking_curve_csv": "",
+      "rocking_curve_map_csv": "/home/ubuntu/codex_tes_511_sim/new_geo_re/stepwise_maintenance/step04_opticsim/ge111_balloon511_f9m_511keV_xop_map.csv",
+      "rocking_curve_map_required": true,
+      "rocking_curve_map_covered_ring_ids": [
+        0
+      ],
+      "online_physics_backend": "Darwin-Hamilton mosaic formula or external rocking-curve CSV converted to an equivalent finite diffraction mean free path; Geant4 standard EM processes remain enabled",
+      "vector_diagnostics_in_optics_history": true,
+      "plane_normal_diagnostic_model": "bfull_fixed_tile_plane_normal_em_competing; emitted DIFFRACT direction is reflected across a perturbed fixed tile plane normal",
+      "mosaic_fwhm_arcsec": 30,
+      "crystallite_thickness_um": 5,
+      "only_ring_id": -1,
+      "only_tile_id": -1,
+      "n_primaries": 50000,
+      "custom_laue_only_branch_counters": true,
+      "custom_laue_branch_scope": "DIFFRACT is the only sampled custom Laue branch; ABSORB/TRANSMIT probabilities are backend diagnostics while standard Geant4 EM processes compete independently",
+      "standard_em_losses_are_not_written_to_optics_history": true,
+      "transmitted_space_source": "actual primary gamma focal-plane crossings recorded by BFullFocalPlaneSteppingAction",
+      "n_rings": 1,
+      "n_laue_interactions": 16038,
+      "laue_interaction_fraction": 0.32076,
+      "n_diffracted": 16038,
+      "n_custom_laue_diffracted": 16038,
+      "n_custom_laue_absorbed": 0,
+      "n_custom_laue_transmitted": 0,
+      "n_absorbed": 0,
+      "n_transmitted": 0,
+      "n_absorbed_field_scope": "custom Laue branch only; not total Geant4 EM absorption",
+      "n_transmitted_field_scope": "custom Laue branch only; use primary_or_transmitted_focal_crossings/transmitted_space.csv for tracked transmitted primaries",
+      "diffraction_fraction": 0.32076,
+      "absorption_fraction": 0,
+      "transmission_fraction": 0,
+      "non_focal_event_estimate": 17743,
+      "estimated_standard_em_or_nonfocal_losses": 17743,
+      "focal_crossings": 32257,
+      "primary_or_transmitted_focal_crossings": 19652,
+      "transmitted_space_rows": 19652,
+      "laue_diffracted_focal_crossings": 12605,
+      "other_gamma_focal_crossings": 0,
+      "analytic_reference_focal_diffraction_fraction": 0.257481,
+      "emergent_focal_diffraction_fraction": 0.2521,
+      "emergent_minus_analytic_focal_diffraction": -0.00538123,
+      "diffraction_validation_note": "emergent EM-competing focal-plane diffracted fraction (laue_diffracted_focal_crossings/n_primaries) vs the absorption-included mosaic-Laue reference at the Bragg peak (Darwin-Hamilton closed form or external XOP/CRYSTAL curve); they should agree within Monte-Carlo and thick-crystal point-diffraction error, which is the gate that the EM-competing process reproduces the validated diffraction physics",
+      "projected_interaction_spot_d90_cm": 0.368551,
+      "focal_crossing_spot_d90_cm": 0.367386,
+      "energy_min_keV": 511,
+      "energy_max_keV": 511,
+      "focal_length_mm": 9000,
+      "world_half_xy_mm": 160,
+      "world_half_z_mm": 9110.22,
+      "ring_config": "/home/ubuntu/opticsim/data/laue/ge111_balloon511_f9m_511keV_line_config.csv",
+      "benchmark_efficiency_table_not_used_for_physics": "data/laue/Ge111_480_550keV_darwin_mosaic_table.csv",
+      "visualization_wrl": "/home/ubuntu/codex_tes_511_sim/new_geo_re/stepwise_maintenance/step04_opticsim/outputs/opticsim_laue_bfull_xopmap_real/laue_multiring_scene.wrl"
+    },
+    "phase_space_stats": {
+      "rows": 16038,
+      "energy_min_keV": 511.0,
+      "energy_max_keV": 511.0,
+      "r50_cm": 0.07553024191716098,
+      "r90_cm": 0.18427550597056191,
+      "r95_cm": 0.21844862151573363,
+      "r99_cm": 0.29130728648288406,
+      "rmax_cm": 24.780785834682526,
+      "be_radius_cm": 1.898,
+      "rmax_within_be": false
+    },
+    "phase_space_projection_note": "phase_space.csv is the analytic projection (one row per diffraction interaction); it overcounts focused flux and is NOT bridged. Use focal_crossing_stats.",
+    "focal_crossing_stats": {
+      "diffracted_focal_rows": 12605,
+      "within_be_rows": 12592,
+      "scattered_outside_be_rows": 13,
+      "r50_cm": 0.07499827612424245,
+      "r90_cm": 0.1836930343309159,
+      "r95_cm": 0.21910820009595977,
+      "r99_cm": 0.2914104898226177,
+      "rmax_cm": 17.763666886140175,
+      "be_radius_cm": 1.898,
+      "r99_within_be": true
+    },
+    "history_rows": 16038,
+    "transmitted_rows": 19652,
+    "source_files": {
+      "summary_json": {
+        "path": "stepwise_maintenance/step04_opticsim/outputs/opticsim_laue_bfull_xopmap_real/summary.json",
+        "exists": true,
+        "size_bytes": 4353,
+        "line_count": 66,
+        "sha256": "cd529c3515a411a0024a94b5ae4b1ac914d76764e278ad9c46cebdd8a15fe003"
+      },
+      "per_ring_summary_json": {
+        "path": "stepwise_maintenance/step04_opticsim/outputs/opticsim_laue_bfull_xopmap_real/per_ring_summary.json",
+        "exists": true,
+        "size_bytes": 547,
+        "line_count": 3,
+        "sha256": "2fd2b17e4df26067099eafd23c0ed1cc64c968e36ddc4d990d933935aa9d75d0"
+      },
+      "optics_history": {
+        "path": "stepwise_maintenance/step04_opticsim/outputs/opticsim_laue_bfull_xopmap_real/optics_history.csv",
+        "exists": true,
+        "size_bytes": 10876542,
+        "line_count": 16039,
+        "sha256": "e6aa65fa5673bb7a0bc2876b74a518d14e99438704f38cc85d14fd8ca90f45f5"
+      },
+      "phase_space": {
+        "path": "stepwise_maintenance/step04_opticsim/outputs/opticsim_laue_bfull_xopmap_real/phase_space.csv",
+        "exists": true,
+        "size_bytes": 2284011,
+        "line_count": 16039,
+        "sha256": "6b15a425fc68a15a03d8fe65d76a3b748f9b1d279573bcd02d0b69cfb1b97f3a"
+      },
+      "transmitted_space": {
+        "path": "stepwise_maintenance/step04_opticsim/outputs/opticsim_laue_bfull_xopmap_real/transmitted_space.csv",
+        "exists": true,
+        "size_bytes": 2156993,
+        "line_count": 19653,
+        "sha256": "576f2545eebb9a7cbef09d336d94e13e3bab1df87aaff360ceaec134c2d15a15"
+      },
+      "focal_crossings": {
+        "path": "stepwise_maintenance/step04_opticsim/outputs/opticsim_laue_bfull_xopmap_real/focal_crossings.csv",
+        "exists": true,
+        "size_bytes": 3484852,
+        "line_count": 32258,
+        "sha256": "3957554d6ab90f51870567b363869f02fe2cf7e0ee73bebf4dac66b59e55e56e"
+      },
+      "wrl": {
+        "path": "stepwise_maintenance/step04_opticsim/outputs/opticsim_laue_bfull_xopmap_real/laue_multiring_scene.wrl",
+        "exists": true,
+        "size_bytes": 42053,
+        "line_count": 1770,
+        "sha256": "9240c81b37b945dcdcfa020291f18457eb6d96d6f8b13878754e64eae34c95b4"
+      }
+    }
+  },
+  "rings": [
+    {
+      "ring_id": 0,
+      "design_energy_keV": 511.0,
+      "radius_mm": 66.850136,
+      "n_tiles": 27,
+      "material": "Ge",
+      "hkl": [
+        1,
+        1,
+        1
+      ],
+      "d_spacing_A": 3.266590088,
+      "tile_size_mm": 15.0,
+      "thickness_mm": 10.218801,
+      "z_offset_mm": 0.0
+    }
+  ],
+  "be_window_fit": {
+    "be_radius_cm": 1.898,
+    "new_geo_re_science_beam_z_cm": 16.051,
+    "handoff_source": "tracked diffracted focal crossings (focal_crossings.csv), not phase_space projection",
+    "diffracted_focal_rows": 12605,
+    "focused_signal_within_be_rows": 12592,
+    "scattered_outside_be_rows": 13,
+    "spot_r95_cm": 0.21910820009595977,
+    "spot_r99_cm": 0.2914104898226177,
+    "spot_rmax_cm": 17.763666886140175,
+    "margin_r99_cm": 1.6065895101773822,
+    "pass": true,
+    "note": "Be-window fit uses tracked r99 (a few Compton-scattered diffracted gammas reach large radius and miss the TES; they are not focused signal). phase_space projection rmax is not used."
+  },
+  "generated_visuals": {
+    "wrl_particles": {
+      "path": "stepwise_maintenance/step04_opticsim/outputs/laue_bfull_xopmap_real_particles.wrl",
+      "histories_used": 16038,
+      "phase_space_rows": 16038,
+      "line_count": 64584,
+      "size_bytes": 2689797,
+      "sha256": "8a972b2ef21e8f7649bd2135dcd3664b29fbb0e403f37a3f2326261a42566e34"
+    },
+    "schematic_2d": {
+      "path": "stepwise_maintenance/step04_opticsim/outputs/laue_bfull_xopmap_real_2d_schematic.png",
+      "size_bytes": 134948,
+      "sha256": "7ef180f5724e4ee8edae900f3419460a6f1952f4928190506e5bbabd835a00ce"
+    },
+    "stage_summary_csv": {
+      "path": "stepwise_maintenance/step04_opticsim/outputs/laue_bfull_xopmap_stage_summary.csv",
+      "exists": true,
+      "size_bytes": 43,
+      "line_count": 2,
+      "sha256": "1132cda7262e8502ea05e8b41fc2fd6e84e48f4165626e100360def5db86edd6"
+    }
+  },
+  "checks": {
+    "channel_optics_used": false,
+    "bfull_source_exists": true,
+    "standard_geant4_em_enabled": true,
+    "process_base_is_g4vdiscreteprocess": true,
+    "external_xop_map_used": true,
+    "required_511_xop_map_present": true,
+    "energy_window_511_line": true,
+    "spot_inside_be_window": true,
+    "online_crosscheck_close_to_analytic": true,
+    "xopmap_crosscheck_close_to_analytic": true
+  },
+  "conclusion": {
+    "selected_model": "B-FULL Ge(111) 511-keV line-focused Laue model, non-forced finite-MFP G4VDiscreteProcess competing with standard Geant4 EM, driven by the external 511-keV XOP/CRYSTAL rocking curve.",
+    "material_choice": "Ge(111) crystal tiles for the optical element; existing new_geo_re detector entrance remains Be radius 1.898 cm with low-Z Al thermal foils and W aperture stop already present in the detector mass model.",
+    "geometry_choice": "One full-azimuth Ge(111) ring at 511 keV, focal length 9000 mm, 15 mm tile size, thickness 10.2188 mm. The 480-550 keV interval is retained as the TES spectral analysis window, not as an equal-weight optical band.",
+    "be_window_requirement": "B-FULL XOP-map tracked diffracted focal spot (r99) is inside the 1.898 cm Be aperture, so the focused signal is not larger than the Be window. A few Compton-scattered diffracted gammas reach larger radius and miss the TES.",
+    "next_step": "Step09 replays the tracked diffracted focal crossings (focal_crossings.csv, within the Be window) as the new_geo_re EventList source, NOT the phase_space.csv projection, to avoid overcounting focused flux by ~28%."
+  }
+}

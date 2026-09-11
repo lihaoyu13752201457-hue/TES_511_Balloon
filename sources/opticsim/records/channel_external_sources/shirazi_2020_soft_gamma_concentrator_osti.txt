@@ -1,0 +1,641 @@
+LA-UR-20-24692 (Accepted Manuscript)
+
+Performance simulation of the soft gamma-ray concentrator
+Shirazi, Farzane
+Bloser, Peter Forbes
+Legere, Jason S.
+McConnell, Mark L.
+
+Provided by the author(s) and the Los Alamos National Laboratory (2020-11-13).
+To be published in: Journal of Astronomical Telescopes, Instruments, and Systems
+DOI to publisher's version: 10.1117/1.JATIS.6.2.024001
+Permalink to record: http://permalink.lanl.gov/object/view?what=info:lanl-repo/lareport/LA-UR-20-24692
+
+Disclaimer:
+Los Alamos National Laboratory, an affirmative action/equal opportunity employer, is operated by Triad National Security, LLC for the National
+Nuclear Security Administration of U.S. Department of Energy under contract 89233218CNA000001. By approving this article, the publisher
+recognizes that the U.S. Government retains nonexclusive, royalty-free license to publish or reproduce the published form of this contribution, or
+to allow others to do so, for U.S. Government purposes. Los Alamos National Laboratory requests that the publisher identify this article as work
+performed under the auspices of the U.S. Department of Energy. Los Alamos National Laboratory strongly supports academic freedom and a
+researcher's right to publish; as an institution, however, the Laboratory does not endorse the viewpoint of a publication or guarantee its technical
+correctness.
+
+Performance simulation of the soft gamma-ray concentrator
+Farzane Shirazia,* , Peter F. Bloserb , Jason S. Legerec , Mark L. McConnellc,d
+a
+
+Clemson University, Department of Physics and Astronomy, Clemson, South Carolina, United States, 29634
+
+b
+
+Los Alamos National Laboratory, Intelligence and Space Research Division, Los Alamos, New Mexico, United
+
+States, 87545
+c
+
+University of New Hampshire, Space Science Center, Durham, New Hampshire, United States, 03824
+
+d
+
+Southwest Research Institute, Department of Earth, Oceans, and Space, Durham, New Hampshire, United States,
+
+03824
+
+Abstract. The soft gamma-ray concentrator is a telescope mission concept utilizing a suitable arrangement of bent
+multilayer structures of alternating low and high-density materials. This lens is able to channel gamma-ray photons
+via total external reflection and concentrate the incident radiation to a point. The channeling technique offers the
+potential for concentrating gamma rays with focal lengths less than 10 m and energies greater than 100 keV, beyond
+the reach of current grazing-incidence hard X-ray mirrors. For performance estimation of such an instrument, we have
+developed a flexible set of computer modeling tools to compute the optical properties of multilayer structures, predict
+the channeling efficiency for a given multilayer configuration, and aid in the optimization of potential gamma-ray
+concentrator-based telescope designs. This modeling includes the multilayer optical properties calculated by the IMD
+software, the ray tracing using an IDL code, and the focal plane detector simulation by MEGAlib. We illustrate the
+potential of this approach by presenting simulated astronomical observations from a balloon-borne platform. The final
+result, including simulated effective area, instrument sensitivity, and polarization performance, shows the gamma-ray
+concentrator will provide greatly increased sensitivity for next-generation soft gamma-ray missions with modest cost
+and complexity.
+
+Keywords: gamma-ray astronomy, soft gamma-rays, focusing optics, multilayer thin-film, focal plane detector, MEGAlib.
+
+* Address all correspondence to fshiraz@clemson.edu.
+
+1
+
+1 Introduction
+Non-thermal emission processes are common features of typical gamma-ray sources, which have a
+variety of origins and may either emit mono-energetic photons or a broadband continuum gammaray spectrum. For low- and medium-energy gamma-ray astronomy (∼100 keV-10 MeV), exploration has only started1 and important steps need to be taken to bring the non-thermal phenomenology into the light and deepen our understanding of gamma-ray sources. Recent studies of bright
+compact gamma-ray sources such as Crab Nebula2 and Cygnus X-13 indicate that multiple spectral components are present above 100 keV and understanding the physics and geometry of these
+sources, requires improvement in astronomical mission sensitivity. On the other hand, in recent
+years, detection of soft gamma-ray polarization4, 5 confirms that polarimetry would benefit from
+high sensitivity due to the fact that the detected events must be binned according to energy and azimuthal scatter angle. Also, Hotokezaka, k. et al.6 have shown for observing gamma-ray emissions
+resulting from radioactive decays outside the photosphere in a Neutron Star Mergers (NSM) ejecta,
+new detectors with a sensitivity higher than current ones by at least a factor of ten are required.
+Compared to the energy ranges adjacent to the MeV regime, the available instruments used in
+the 80 keV to 1 MeV range are less sensitive. In coded aperture imaging systems, such as INTEGRAL,7 Swift8 and AstroSat,9 masks of dimensions greater than or equal to the detector dimensions are employed to optimize the sensitive area of the detector. In collimated detectors like Soft
+Gamma-ray Detector (SGD) on Astro-H,10 the sensitivity depends on the root of the detector area
+and, considering the limited size of practical instruments, it is very difficult to reach higher sensitivity than has already been achieved. But compared to the coded mask and collimator telescopes,
+focusing optics used in hard X-ray missions such as NuSTAR11 allow a drastic improvement in
+
+2
+
+both sensitivity and angular resolution, with decoupling of collecting area and detector volume.
+While Laue diffraction optics12 and advanced multilayer mirrors13 have promised to extend this
+ability above 100 keV, they are limited due to required large focal lengths in the range of 20-100
+m.
+A new approach for gamma-ray optics over much shorter focal lengths based on channeling
+in layered structures consisting of alternating layers of a high-density reflecting material and a
+low-density spacer material was introduced by Los Alamos National Laboratory.14, 15 Low-density
+layers keep high-density metal layers separated and parallel and a suitable arrangement of bent
+structures can concentrate gamma rays to a small, shielded detector. This approach was further
+refined into a concept for an astronomical telescope by the University of New Hampshire.16 We
+assumed a theoretical example of a 20 cm diameter lens that could be assembled from many small
+(∼ cm scale) multilayer structures arranged in concentric circles, each curved and aligned according to its distance from the centerline, suitable for either a balloon or spaceflight payload as shown
+in Figure 1. The mechanism of soft gamma-ray channeling is based on total external reflection
+between layers with sharply differing indices of refraction.17 Since the photons can reflect multiple times within the structure, much larger bending angles can be achieved than mirrors or Laue
+diffraction optics, resulting in much shorter focal lengths. The channeling process is also effective
+over a broad energy band, as long as the angle of incidence is less than the critical angle and the
+photons are not excessively absorbed.
+The successful development of this approach will enable future telescopes for higher energies
+with same mission parameters already proven by NuSTAR. This technology would give a significant increase to the sensitivity of next-generation instruments in soft gamma-ray astronomy, and
+develop gamma-ray concentrating instruments for balloon-borne pathfinder missions over short
+3
+
+focal lengths, as was done for hard X-ray balloon experiments.18, 19 Experimental results regarding
+this concentrator effort have been described previously in the literature and include a description
+of the deposition conditions of multilayer structures, fabrication issues, and concentrator characterization.20, 21 Many single and multilayer samples were grown to determine optimum coating
+conditions in order to minimize roughness/stress and keep deposition rate high. We concluded that
+the magnetron sputtered W/Si multilayer is one of the best-suited materials for the soft gammaray concentrator, due to their high theoretical reflectivity, relatively sharp interfaces, low residual
+stress, and long-term structural stability. Table 1 contains the coated W/Si multilayer properties.
+In this paper, we present the modeling tools development and simulation results of astronomical
+observations from a balloon platform.
+
+2 Optical Properties of Periodic Multilayer
+Reflections in multilayer structures occur at each interface due to the discontinuity in the refractive index of constituting materials. The first step to consider the channeling technique was the
+study of gamma-ray’s behavior in contact with a reflector surface and for this purpose, we used
+IMD software.22 We were looking for the reflectivity of soft gamma-ray beams traveling inside
+of the lower-density spacer layer and because IMD is not able to simulate the bent layers, during
+our modeling, we assumed a low-density material as ambient for incident photons. We also calculated optical constants using data from the NIST database23 which covers energies up to 433
+keV. We chose coating materials and their combinations to have high optical contrast and minimal
+absorption. They also had to be formed smooth with good uniformity during deposition.
+In Figure 2, we have plotted the simulated reflectance of four different material combinations
+as a function of grazing incidence angle for a 122 keV photon. The thickness of 30 and 150 nm was
+4
+
+assumed for high and low-density layers. We specified the number of bilayers to be 280 to obtain
+50 µm total thickness. During the optimizations, an interfacial roughness of 0.3 nm for substrate
+surface, 1 nm for other interfaces (this is the value we measured for a deposited multilayer in our
+initial experimental works)16 and zero boundary position errors were assumed. The boundaries
+were assumed to be sharp since experimentally achievable tolerances do not have major effects.
+The result shows that all these combinations have more than 95% reflectivity for grazing incident
+angle less than 0.025 degree. However, Ir/Si has a larger critical angle for a minimum required
+reflectivity of 95%, also W/Si provide nearly as good performance as Ir/B, with an only slightly
+lower value.
+The high reflectivity required for a multilayer reflecting interface may be seriously hampered
+by the roughness of the reflecting surface. As interface roughness increase, the reflectivity of the
+multilayers deteriorates drastically due to increased scattering. The influence of surface roughness
+on the reflectivity for a ray with wavelength λ and a grazing incidence angle θi from an ambient
+with refractive index n can be defined as Debye-Waller formula:24
+
+R(θi ) = R0 exp[−(
+
+4π
+σnsinθi )2 ]
+λ
+
+(1)
+
+where R is absolute reflectivity, R0 is theoretical reflectance for an ideal interface and σ is average
+interface roughness. This equation shows the reflectivity decreases as the exponential of the square
+of the roughness and also the reflection at larger grazing incidence angles is more sensitive to the
+roughness effect. This is demonstrated in Figure 3, showing modelings of reflectivities versus
+interface roughness for W/Si multilayer at 122 keV and different grazing incidence angle. It is
+clear that, in order to maintain a reflectivity of greater than 90% for grazing incidence angles less
+5
+
+than 0.03◦ , a roughness of less than 2.5 nm is required. As shown in Table 1, we have met this
+requirement in our experimental work.
+High-energy radiation (above 100 keV) traveling in a medium of low density ρ1 impinging
+on denser material of density ρ2 at small grazing incidence angle totally reflects if the grazing
+incidence angle is less than the critical angle:
+
+θc =
+
+q
+2
+2
+− ωp1
+ωp2
+ω
+
+√
+−2
+
+≈ 2.038 × 10
+
+ρ2 − ρ1 [g/cm3 ]
+E[keV ]
+
+(2)
+
+where ω = E/~ (~ = 6.58 × 10−16 eV.s) is the angular frequency of incoming radiation and
+q
+2
+ωp = εN0eme 0 is the plasma frequency of material. Here Ne is the number density of electrons, e is
+the electric charge, ε0 is the permittivity of free space and m0 is the effective mass of the electron.
+The critical angle increases for a larger reflecting layer density and decreases in proportion to
+the increasing photon energy. This implies that, at a fixed grazing incidence angle, only gammaray energies below a cut-off value Ec can be totally reflected, and this is the main reason why
+single-layer optics can not be used in X-ray/gamma-ray focusing optics. We have shown this in
+Figure 4 for W/Si multilayer where the reflectivity suddenly drops at Ec and for increasing grazing
+incidence angle the cut-off energy decreases.
+
+3 Gamma-Ray Tracing Code
+We developed a ray tracing model for the gamma-ray concentrator, using IMD reflectivities and
+absorption/scattering coefficients. We have assumed 1 nm roughness in all the modelings, for
+consistency with the previous section. This modeling lets us track photons inside of multilayer and
+compare channeling efficiency for different energy bands, incident angles, material combinations
+
+6
+
+and lens geometries. To illustrate the efficiency of the channeling technique, we examined the 20
+cm diameter lens constructed of 30 nm/150 nm bilayers of W/Si, with an 8 m focal length. We
+divided the lens concept into concentric rings so that the channeling length may be adjusted based
+on the required bending angle (that is, the angle normally-incident radiation on the lens must be
+deflected to hit the focal point) at each radius. We chose eighteen rings, each 5 mm thick, starting
+at an inner radius of 1.5 cm and extending out to 10 cm. The required bending angle varies from
+∼0.11◦ for the inner ring to ∼0.72◦ for the outer ring (see Figure 5).
+Figure 6 displays tracking of outgoing 122 keV beams from a series of multilayers located at
+these rings and the focused spot histogram at the focal plane. The size of the focal spot diameter,
+concentrated at 8 m focal length for the parallel beams, is <1 cm.
+By this modeling we can also consider the sensitivity of focal spot shape to the incident angle
+on the concentrator of incoming gamma rays which leads to the instrument Field Of View (FOV).
+Figure 7 indicates the radial profile beam illuminated by 122 keV gamma-ray beams with 0, 1.2,
+2.4 and 3.6 arcmin incident angle. The shape of the profile beam spreads, as the incident angle
+increase resulting in a 3.6 arcmin FOV for 1 cm focal spot. Figure 8 also illustrates the FOV and
+shows the channeling probability as a function of photon incidence angle at 122 keV for a 0.11◦
+bending angle. For incidence angles on the concentrator larger than 3.6 arcmin the calculated
+probability is less than 5%, and the FWHM of the FOV is ±2.5 arcmin. We note that modern
+scientific balloon platforms, such as the Wallops Arc Second Pointer (WASP), are easily capable
+of keeping sources within this FOV during pointed observations.
+In addition, the simulation code calculates the channeling probability and consider the lens
+
+7
+
+effective area through each ring using the relation of:
+
+P (E) = R1 (E)R2 (E)...Rn (E)×e(−µE ρSi d1 ) e(−µE ρSi d2 ) ...e(−µE ρSi dn ) ×OpenF raction×60% (3)
+
+where Rn and the exponential terms are the reflectance and absorption respectively, µE is the
+attenuation coefficient, ρSi is the mass density of channeling layer, n represents the number of
+reflections and the dn is the distance between two sequential reflection points. The number of
+reflections varies from 17 to 38 for a parallel beam and it depends on the length and radius of each
+ring. The open fraction term is equivalent of the ratio of spacer layer thickness to the period of
+bilayers which is equal to 150/180. We also assume that 40% of the geometric area of the lens will
+be taken up by mounting and alignment hardware. The resulting effective area for each ring, and
+the total for the complete lens which was calculated by summing the contributions from each ring,
+are reported in Figure 9.
+
+4 Design and Simulation of Focal Plane Detector
+The primary simulation to estimate the performance of potential focal plane detectors for the soft
+gamma-ray concentrator was made using the ”MEGAlib” software tools25 and it contains the instrument geometry, gamma-ray propagation through the detector setup, and dominant background
+components. This simulation allows us to determine the detector performance and optimize the
+design of a full-scale telescope configuration with respect to the desired scientific requirements.
+
+4.1 Geometry Design
+We were able to construct a completely flexible and scalable geometry with two different detectors
+that can be part of the focal plane assembly: The first is a single multi-pixel CZT based detector
+8
+
+which has high detection efficiency and good spatial resolution, and the other is a Compton camera
+made of a Silicon tracker+CZT absorber which is capable of detecting the polarized radiations. We
+were looking to compare a simple example vs. a more complex one, while both geometries should
+have a higher performance than a scintillation detector.
+The first geometry is a single 11 by 11 pixel CZT crystal of 20×20×15 mm3 size with a
+pixel pitch of 1.72 mm, such as been developed by Orion Radiation Measurement Group.26 The
+CZT detector has a Gaussian energy resolution of 1.25% FWHM at 662 keV with 10 keV trigger
+threshold and 1 keV noise threshold . An active BGO shield surrounding the central CZT is
+assumed as the instrument shielding to greatly reduce the background. The shield is 5 cm thick
+at the bottom and 2 cm thick on the sides. An energy resolution of 20% FWHM at 100 keV and
+a trigger threshold of 70 keV is used for the BGO. The detector assembly is placed inside of an
+aluminum vessel with a window covering by Mylar plastic sheet of 0.5 mm thickness.
+The second geometry is a polarimeter that includs a Silicon tracker in which the first Compton
+interaction takes place and the CZT absorber surrounding the tracker. This geometry is a more
+compact version of SGD on the ASTRO-H mission.10 The Silicon tracker consists of 32 layers
+of double-sided Silicon pixel (10 by 10 pixel) detectors with a size of 20×20×0.6 mm3 and has
+energy resolution, trigger and noise thresholds similar to the CZT detector. The absorber detector
+is one CZT detector at the bottom and four at the sides. This model includes a PEEK frame for the
+Silicon tracker as a passive material to support the wafers structure and a larger BGO than previous
+geometry with same thickness. Both proposed instruments with shielding and support structure are
+represented in Figure 10 .
+
+9
+
+4.2 Source and Background Modeling
+At soft gamma-ray energies, the Crab is considered a strong source due to its large and nearly constant luminosity. Therefore, we chose a Crab-like source observed by INTEGRAL/SPI,27 which
+E
+has a power low spectrum in the form of F (E) = K( 1keV
+)−α with a spectral index α=2.17±0.01
+
+and a normalization K=14.44±0.44 ph/s/cm2 /keV. We modified the input spectrum for the effects
+of atmospheric absorption using the Mass Attenuation Coefficients from NIST28 for a balloon payload at an atmospheric depth of 3.5 g/cm2 and 30 deg zenith angle. Additionally, the effects of
+concentrator were taken into account using the calculated lens effective area (see Figure 9). For
+the beam type, we used a 2D beam profile given by the concentrated radial beam on focal plane
+(see Figure 7). The initial position was randomly chosen within the extent of this profile and the
+direction was set to the -z direction, towards the instrument aperture. For our purposes, an effective
+observation time of 6 hr was assumed for a balloon flight. The source flux was integrated over 10
+keV to 430 keV and an intensity of ∼ 6.15 ph/s was estimated. Figure 11 displays the incidence
+energy histogram for a 6 hr observation time of a balloon flight.
+To predict the sensitivity of the detector, we also modeled the dominant background components during a balloon flight and their effects on instrument performance. We followed the model
+developed by Gehrels29 for shield leakage from the gamma-ray background. The zenith angle
+distribution of the total gamma-ray flux in the atmosphere was applied to 20 keV-10 MeV energy range. We also added the neutron flux induced in the earth’s atmosphere by galactic protons
+and alpha particles during solar minimum for a geomagnetic latitude of 42◦ N.30 Additionally, the
+background simulation included cosmic electrons, positrons, and protons as well as secondary particles produced in the atmosphere through cosmic ray induced air showers which were modeled by
+
+10
+
+Mizuno et al.31 However, due to the complex detector geometries, the good background suppression, and very low flux, collecting enough statistics for a performance estimate for charged particle
+backgrounds required several days to run. In the end, the detected counts were only gamma-ray
+and neutron counts.
+
+5 Results Analysis
+5.1 Source to Background Ratio
+The voxelization of CZT and Silicon allowed us to select events within the radial profile of the
+concentrator beam. An IDL code was written to select events that have at least one hit within the
+radius of input beam (5 mm). As it is shown in Figure 12 (a) in the CZT detector for gamma-ray
+background, the valid background counts fall within the expected radial beam which will cause
+improvement in signal to noise ratio and sensitivity calculations. The detected backgrounds and
+Crab-like source as well as the statistical uncertainties coming from the number of simulated events
+are represented in Figure 12 (b) which implies high signal to noise ratio for this detector geometry.
+
+5.2 Effective Area
+The instrument efficiency is one of the key element of the detector response which can be described
+in terms of the telescope effective area. The complete telescope effective area for both geometries
+as a function of energy is given in Figure 13. The influence of materials absorption edge on
+instrument efficiency around 70 keV is evident. The effective area of the polarimeter is slightly
+less than single CZT for energies above 60 keV , since the Compton scatter events need to deposit
+enough energy for a trigger in both tracker and absorber detectors, and also there are some gaps in
+CZT, so the scatter photons can escape. Also plotted is the effective area of the SGD instrument
+
+11
+
+on ASTROH/Hitomi,10 which peaks at ∼25 cm2 around 110 keV; the strawman concentrator has
+approximately double the effective area at this energy.
+
+5.3 Continuum Sensitivity
+Another important parameter to explain the ability of any gamma-ray telescope is its sensitivity
+which can be described as a quantitative description of the minimum flux that can be detected
+within a certain significance. The detection continuum sensitivity depends upon the effective area
+of the instrument (Aef f ), the observation time (Tobs ), and the background conditions by:32
+√
+√
+z NS + NB
+z 2 + z z 2 + 4NB
+Fmin =
+=
+Aef f Tobs
+2Aef f Tobs
+
+(4)
+
+where z is the number of standard deviations, NB is a detected background counts, and NS the
+number of detectable source counts. The 3σ sensitivity estimate of CZT geometry for different
+observation time is shown in Figure 14 (a). As a reference, the flux of a Crab-like source scaled
+by different factors is reported by the orange dashed line. The concentrator+detector system can
+achieve a sensitivity between two and three orders of magnitude better than 100 mCrab for energies
+below 300 keV for 6 hr observation time which is approximately the maximum time from a balloon
+flight in a day for any one source. For longer observation times, it is significantly improved to better
+than 1 mCrab below 200 keV.
+In addition, we compared the gamma-ray flux from the radioactive decay of the r-process nuclei
+in NSM ejecta with the sensitivity of Astro-H (prelaunch) mission and gamma-ray concentrator in
+the 300 keV-1 MeV range. Figure 14 (b) shows the gamma-ray fluxes for an observer at a distance
+of 3 Mpc on time-scales from a day to several months. Here, the four different ejecta models are
+
+12
+
+illustrated.6 For 300 keV≤ Eγ ≤1 MeV, the gamma-ray flux peaks around 1-10 days. Because
+more energy is released in gamma-ray at higher energies and they escape from the ejecta at earlier
+times than at lower energies, so the detections may be easier at the higher energy bands. Hence we
+performed an extrapolation on the effective area (see Figure 9) similar to work done by Ferreira et
+al.33 and then calculated the 3σ sensitivity for energies up to 1 MeV assuming 100 ks observation.
+The resultant broadband sensitivity show that concentrator is capable of gamma rays detection of
+neutron star mergers even better than SGD at 300 keV-1 MeV for an event at a distance of 3 Mpc
+with an ejecta mass of 0.1 MJ .
+5.4 Polarization Sensitivity
+As part of our simulations, we estimated the minimum detectable polarization (MDP) that could
+be achieved by the polarimeter geometry, placed at the focus of the soft gamma-ray lens, for
+observations of the Crab and also Cygnus X-1 from a balloon payload. The MDP represents the
+minimum level of polarization that can be detected from a source and at a confidence level of 99%
+can be expressed as:34
+4.29
+M DP =
+µ100 NS
+
+r
+
+NS + NB
+Tobs
+
+(5)
+
+where µ100 is the modulation of the azimuthal scattering angle distribution of a 100% linearly polarized signals. Figure 15 (a) reports the calculated MDP of the Crab (total emission) in the presence of background for each energy band-pass, compared with results from other phase-integrated
+polarimetry studies.35–38 The polarization sensitivity falls off at high energies due to lower modulation factor resulting from more forward scattering at higher energies. This simulation shows that
+it is potentially possible to measure degrees of polarization lower than 10% for a 6 hr observation
+times in the energy range between 20 keV and 230 keV, and polarization degrees lower than 40%
+13
+
+in the energy range between 230 keV and 430 keV, and a longer observation time would improve
+these values.
+We also used INTEGRAL/SPI observations to compare the simulated MDP with the polarized
+emission in the gamma-ray energy spectrum of Cygnus X-1 (Figure 15 (b)). Jourdain et al.3 have
+reported polarization fraction of Cygnus X-1 in three energy bands. They have shown that the
+source emission is strongly polarized above 200 keV, with the fraction of polarization increasing
+with energy up to 850 keV. We also added the recent report of the low polarization fraction, ∼
+8.6% (upper limit at a 90% confidence level), on the linear polarization of hard X-ray emission
+(19-181 keV) from Cygnus X-1.39 Once again, this shows a single-day balloon observation of the
+soft gamma-ray concentrator could confirm reported result on Cygnus X-1 polarimetry, even in the
+lower energy band where the emission is weakly polarized.
+
+6 Summary
+In this paper, we have reported the simulation result for a soft gamma-ray concentrator instrument which utilizes thin-film multilayer structures to form optics capable of concentrating gamma
+rays with energies greater than 100 keV. The whole process of concentrator+detector simulation
+is illustrated in Figure 16. The first step was the calculation of reflectance functions within the
+multilayer as a function of the material combination, photon energy, incidence angle or any of the
+multilayer parameters, by IMD software. Coating materials and their combinations were chosen
+to achieve maximum reflectivity with a large difference in the atomic number/mass density. By
+using calculated reflectivities, we built a custom ray-tracing IDL code, which can model the lens
+effective area and the focused beam profile. We utilized these results to modify the input spectrum
+and identify source properties for detector performance simulation using MEGAlib tools. This
+14
+
+process contained several steps including creation of a realistic geometry of a simple CZT detector
+with proper energy resolution and thresholds, utilizing the Crab-like source in order to perform
+photon propagation, adding all expected background components for a balloon-borne gamma-ray
+instrument and building a mass model for a polarimeter containing a reasonable amount of passive material to determine the polarization sensitivity. The obtained simulation results for both
+spectroscopy and polarimetry performances compared to current telescopes show the focal plane
+detector of the soft gamma-ray concentrator is potentially well suited to the task of performing
+very sensitive measurements. Even a balloon-borne pathfinder mission would be capable of unprecedented observations and exciting new science. The developed modeling tools can motivate
+continued future work on multilayer depositions and also have the capability to be used for different lens/detector configuration to find the optimal concentrator design with high channeling
+probability.
+
+Acknowledgments
+This work was supported by NASA grants NNX14AH57G and NNX17AC85G.
+
+References
+1 J. Knödlseder, “The Future of Gamma-Ray Astronomy,” Comptes Rendus Physique 17(6),
+663–678 (2016).
+2 E. Jourdain and J. P. Roques, “The High Energy Emission of The Crab Nebula from 20 keV
+to 6 MeV with INTEGRAL,” The Astrophysical Journal 704, 17–24 (2009).
+3 E. Jourdain, J. P. Roques, and J. Malzac, “The Emission of Cygnus X-1: Observations with
+INTEGRAL SPI from 20 keV to 2 MeV,” The Astrophysical Journal 744, 64 (2012).
+
+15
+
+4 A. J. Dean, D. J. Clark, J. B. Stephen, et al., “Polarized Gamma-Ray Emission from The
+Crab,” Science 321(5893), 1183–1185 (2008).
+5 P. Laurent, J. Rodriguez, J. Wilms, et al., “Polarized Gamma-Ray Emission from The Galactic Black Hole Cygnus X-1,” Science 332, 438–439 (2011).
+6 K. Hotokezaka, S. Wanajo, M. Tanaka, et al., “Radioactive Decay Products in Neutron Star
+Merger Ejecta: Heating Efficiency and Gamma-Ray Emission,” Monthly Notices of the Royal
+Astronomical Society 459(1), 35–43 (2016).
+7 A. Goldwurm, P. Goldoni, A. Gros, et al., “Gamma-Ray Imaging with The Coded Mask
+IBIS Telescope,” Exploring the Gamma-Ray Universe, Proceedings of the Fourth INTEGRAL
+Workshop 459, 497–500 (2001).
+8 S. D. Barthelmy, L. M. Barbier, J. R. Cummings, et al., “The Burst Alert Telescope (BAT) on
+The SWIFT Midex Mission,” Space Science Reviews 120(3), 143–164 (2005).
+9 R. K. Manchanda, “ASTROSAT: Status and Science,” Proceedings of the 29th Meeting of the
+Astronomical Society of India 3, 53–63 (2011).
+10 S. Watanabe, H. Tajima, Y. F. ukazawa, et al., “The Si/CdTe Semiconductor Compton Camera
+of The ASTRO-H Soft Gamma-ray Detector (SGD),” Nuclear Instruments and Methods in
+Physics Research, Section A: Accelerators, Spectrometers, Detectors and Associated Equipment 765, 192–201 (2014).
+11 F. A. Harrison, W. W. Craig, F. E. Christensen, et al., “The Nuclear Spectroscopic Telescope
+Array (NuSTAR) High-energy X-Ray Mission,” The Astrophysical Journal 770(2), 1263–
+1267 (2013).
+
+16
+
+12 N. M. Barrière, J. A. Tomsick, S. E. Boggs, et al., “Developing a Method for Soft GammaRay Laue Lens Assembly and Calibration,” Nuclear Instruments and Methods in Physics
+Research Section A 741, 47–56 (2014).
+13 N. F. Brejnholt, M. Descalle, R. Soufli, et al., “Next Generation Hard X-Ray/Soft GammaRay Optic Design and Implementation,” Proc. SPIE 9144, 914419 (2014).
+14 D. M. Tournear, M. A. Hoffbauer, E. A. Akhadov, et al., “Gamma-Ray Waveguides,” Applied
+Physics Letters 92(15), 153502–1 (2008).
+15 D. Tournear, R. Epstein, and R. M. Kippen, “Gamma-Ray Channeling in Layered Structures,”
+IEEE Symposium Conference Record Nuclear Science 2004 7, 4282–4285 (2004).
+16 P. F. Bloser, P. H. Aliotta, O. Echt, et al., “A Soft Gamma-Ray Concentrator Using Thin-Film
+Multilayer Structures,” Proc. SPIE 9603, 96031E–1 (2015).
+17 P. F. Bloser, F. Shirazi, O. Echt, et al., “A Concept for A Soft Gamma-Ray Concentrator
+Using Thin-Film Multilayer Structures,” Proc. SPIE 9905, 99056L–11 (2016).
+18 F. A. Harrison, S. E. Boggs, A. E. Bolotnikov, et al., “Development of The High-Energy
+Focusing Telescope (HEFT) Balloon Experiment,” Proc. SPIE 4012, 693 (2000).
+19 Y. Ogasaka, J. Tueller, K. Yamashita, et al., “First Light of A Hard-X-Ray Imaging Experiment: The InFOCuS Balloon Flight,” Proc. SPIE 5900, 59000R–1 (2005).
+20 F. Shirazi, P. F. Bloser, J. E. Krzanowski, et al., “Simulation and Optimization of A
+Soft Gamma-Ray Concentrator Using Thin Film Multilayer Structures,” Proc. SPIE 10399,
+10399–1A (2017).
+21 F. Shirazi, P. F. Bloser, J. E. Krzanowski, et al., “Modeling and Development of Soft GammaRay Channeling,” Proc. SPIE 10699, 106995V–1 (2018).
+
+17
+
+22 D. L. Windt, “IMD-Software for Modeling The Optical Properties of Multilayer Films,” Computers in Physics 12(4), 360–370 (1998).
+23 C. T. Chantler, K. Olsen, R. A. Dragoset, et al., “X-Ray Form Factor, Attenuation and Scattering Tables (Version 2.1),” National Institute of Standards and Technology (2005).
+24 E. Spiller, “Characterization of Multilayer Coatings by X-Ray Reflection,” Revue de Physique
+Appliquee 23(10), 1687–1700 (1988).
+25 A. Zoglauer, R. Andritschke, and F. Schopper, “MEGAlib-The Medium Energy Gamma-ray
+Astronomy Library,” New Astronomy Reviews 50(7), 629–632 (2006).
+26 J. C. Kim, S. E. Anderson, W. Kaye, et al., “Charge Sharing in Common-Grid Pixelated
+CdZnTe Detectors,” Nuclear Instruments and Methods in Physics Research Section A: Accelerators, Spectrometers, Detectors and Associated Equipment 654(1), 233–243 (2011).
+27 P. Sizun, C. R. Shrader, D. Attie, et al., “The INTEGRAL/SPI Response and The Crab Observations,” European Space Agency, Special Publication (2004).
+28 J. H. Hubbell and S. M. Seltzer, “X-Ray Mass Attenuation Coefficients,” National Institute
+of Standards and Technology (2004).
+29 N. Gehrels, “Instrumental Background in Balloon-Borne Gamma-Ray Spectrometers and
+Techniques for Its Reduction,” Nuclear Instruments and Methods in Physics Research Section A: Accelerators, Spectrometers, Detectors and Associated Equipment 239(2), 324–349
+(1985).
+30 T. W. Armstrong, K. C. Chandler, and J. Barish, “Calculations of Neutron Flux spectra Induced in The Earth’s Atmosphere by Galactic Cosmic Rays,” Journal of Geophysical Research 78(16), 2715–2726 (1973).
+
+18
+
+31 T. Mizuno, T. Kamae, G. Godfrey, et al., “Cosmic-Ray Background Flux Model Based on
+A Gamma-Ray Large Area Space Telescope Balloon Flight Engineering Model,” The Astrophysical Journal 614(2), 1113–1123 (2004).
+32 A. Jacobson, R. Bishop, G. Culp, et al., “A Balloon-Borne Ge(Li) Spectrometer for GammaRay Astronomy,” Nuclear Instruments and Methods 127(1), 115–124 (1975).
+33 D. D. M. Ferreira, F. E. Christensen, M. J. Pivovaroff, et al., “Hard X-ray/Soft Gamma-Ray
+Telescope Designs for Future Astrophysics Missions,” Proc. SPIE 8861, 886116–1 (2013).
+34 M. C. Weisskopf, R. F. Elsner, and S. L. O’Dell, “On Understanding The Figures of Merit
+for Detection and Measurement of X-Ray Polarization,” Proc. SPIE Int. Soc. Opt. Eng. 7732,
+77320E–1 (2010).
+35 M. Chauvin, H. G. Floren, M. Friis, et al., “Shedding New Light on The Crab with Polarized
+X-Rays,” Scientific Reports 7(7816), 1–6 (2017).
+36 M. Chauvin, J. P. Roques, D. J. Clark, et al., “Polarimetry in The Hard X-Ray Domain with
+INTEGRAL/SPI,” The Astrophysical Journal 769(2), 1–8 (2013).
+37 M. Forot, P. Laurent, I. A. Grenier, et al., “Polarization of The Crab Pulsar and Nebula as
+Observed by The INTEGRAL/IBIS Telescope,” The Astrophysical Journal Letters 688(1),
+L29–L32 (2008).
+38 S. V. Vadawale, T. Chattopadhyay, N. P. S. Mithun, et al., “Phase-Resolved X-Ray Polarimetry of The Crab Pulsar with The AstroSat CZT Imager,” Nature Astronomy 2, 50–55 (2018).
+39 M. Chauvin, H. G. Floren, M. Friis, et al., “Accretion Geometry of The Black-Hole Binary
+Cygnus X-1 from X-Ray Polarimetry,” Nature Astronomy 2, 652?655 (2018).
+
+19
+
+40 T. Takahashi, K. Mitsuda, R. Kelley, et al., “The ASTRO-H X-ray observatory,” Proceedings
+of SPIE-The International Society for Optical Engineering 8443, 84431Z–1 (2012).
+
+Biographies of the Authors
+Farzane Shirazi received her Ph.D. degree in physics from University of New Hampshire in
+2018. She was a member of the team that studied the development of the soft gamma-ray concentrator using thin-film multilayer structures and worked on both material science and astrophysics
+parts of the project. She is currently a postdoctoral fellow in the high energy astrophysics group at
+Clemson University.
+Peter Bloser is a member of the technical staff in the Space Science and Applications Group at
+Los Alamos National Laboratory. He has over 20 years of experience in experimental high-energy
+astrophysics, solar physics, and Special Nuclear Materials detection. He previously was on the
+Research Faculty in the Space Science Center at the University of New Hampshire, where he was
+the PI of the Advanced Scintillator Compton Telescope (ASCOT) project.
+Jason Legere has over fifteen years of experience with gamma-ray and neutron detection instrument development. He most recently managed the construction and testing of the FIND instrument, a hybrid neutron/gamma-ray camera, overseeing the detector design and calibration,
+electronics design, readout and data acquisition, and calibration measurements. He played a key
+role in the successful science balloon flight of the ASCOT payload from Palestine, TX, and is
+currently preparing the GRAPE instrument for balloon flight.
+Mark McConnell has more than 35 years experience in developing and using instrumentation
+for high energy astrophysics experiments. He served as a co-investigator on the CGRO/COMPTEL
+experiment, concentrating on studies of X-ray binaries and solar flares. He has been a guest in-
+
+20
+
+vestigator on the RHESSI, INTEGRAL, and Fermi missions. Currently, he serves as PI for the
+GRAPE balloon experiment, designed to measure gamma-ray polarization from GRBs and solar
+flares.
+
+Property
+
+Value
+
+Number of bilayers
+
+30
+
+Si average thickness
+
+150 nm
+
+W average thickness
+
+30 nm
+
+Total thickness
+
+∼ 5.4 µm
+
+Si single layer roughness (1 µm scan)
+
+Ra =0.170 nm, Rq =0.227 nm
+
+W single layer roughness (1 µm scan)
+
+Ra =0.163 nm, Rq =0.198 nm
+
+Multilayer surface roughness (1 µm scan) Ra =1.938 nm, Rq =2.156 nm
+Table 1: The properties of coated W/Si multilayer (Ra and Rq are arithmetic and root mean square
+roughness.)
+
+21
+
+Fig 1: Schematic of ”concentrator” concept, consisting of multilayer structures of low- and highdensity material, gamma-ray internal reflections through layered structure and incident radiations
+focusing to a small detector with a focal length of 8-10 m.16
+
+Fig 2: Reflectance as a function of grazing incidence angle for four material combinations for a
+122 keV photon.
+22
+
+Fig 3: Reflectivity dependence on interface roughness for W/Si multilayer at 122 keV.
+
+Fig 4: Simulated gamma-ray reflectivity curves in W/Si for fixed incidence angles.
+
+23
+
+Fig 5: Conceptual representation of the strawman lens, illustrating the relative length of each ring
+(rings would actually consist of 1 cm wide segments).
+
+Fig 6: Ray-tracing routine for 122 keV parallel beams showing the concentrator rings, spacer layer
+and reflections as well as the intersection with a detector plane at 8 m focal length.
+
+24
+
+Fig 7: Transformation of the radial profile beam for different incident angles.
+
+25
+
+Fig 8: Modeled channeling probability of W/Si structure for 122 keV photons vs. incidence angle
+at 0.11◦ bending angle.
+
+Fig 9: Calculated effective area of the strawman soft gamma-ray concentrator consist of W/Si
+multilayer structures. The dashed line shows the extrapolation curve up to 1 MeV which is used to
+calculate broadband sensitivity in Figure 14 (b).
+
+26
+
+Fig 10: (a) Assembly of a single multi-pixel CZT detector. (b) Schematic design of polarimeter
+mass model with shielding and passive materials.
+
+Fig 11: Incidence energy histogram: Crab spectrum modified by atmospheric and concentrator
+effects for a 6 hr observation time.
+
+27
+
+Fig 12: (a) Detected counts of simulated gamma-ray background before (yellow) and after (green)
+event selections within the radial beam in the CZT detector. (b) 6 hr detected spectra of simulated
+Crab-like source and backgrounds for pixelated CZT geometry.
+
+Fig 13: Computed effective area of the complete telescope as a function of energy for single CZT
+detector and polarimeter.
+
+28
+
+Fig 14: (a) Comparison of the simulated continuum sensitivities as a function of energy different
+observation times along with Crab spectra corresponding to 100%,10%, 1% and 0.1%. (b) Light
+curves of nuclear gamma ray for NSM-solar in the ranges of 300 keV-1 MeV at a distance of
+3Mpc. The broadband sensitivity is also given with exposure at 100 ks of Astro-H40 mission and
+the concentrator of the Crab flux.
+
+Fig 15: Calculated MDP for a simulated 6 hr observation of the (a) Crab, (b) Cygnus X-1, using the
+polarimeter focal plane detector, compared with reported results from various polarimetry studies.
+
+29
+
+Fig 16: An illustration of concentrator+detector simulation flowchart.
+
+30
+
+

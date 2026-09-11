@@ -1,0 +1,978 @@
+{
+  "status": "PASS_GEOMETRY_CORRECTED_KNOB0_ALGORITHM_TEST",
+  "as_of": "2026-07-11",
+  "question": "Does geometry-corrected, monotonic fluorescence merging and/or long-arm tightening improve Mass_model_511 prompt+delayed S/sqrt(B) without unacceptable focused-signal loss, and does it help S3c atmospheric-511?",
+  "scope": {
+    "transport": "No new transport; retained transformed event catalog and retained S3c 3M event truth only.",
+    "authority": "Exploratory replay; no retained authority or baseline is overwritten.",
+    "mass_background": "Prompt plus delayed only; atmospheric-511 is a separate S3c geometry sample and is not combined into the Mass_model significance proxy.",
+    "response_limit": "CC HIT energies are unsmeared. TES sigma enters tag windows and angular uncertainty, but this is not a full detector-response convolution."
+  },
+  "inputs": {
+    "mass_catalog": "stepwise_maintenance/step05_veto_time_axis/outputs_Mass_model_511_fullstat_v1_l1/work/event_catalog.pkl",
+    "mass_summary": "stepwise_maintenance/step05_veto_time_axis/outputs_Mass_model_511_fullstat_v1_l1/step05_Mass_model_511_fullstat_v1_l1_response_summary.json",
+    "s3c_truth": "engineering/compton_veto_knob0_20260710/01_s3c_atm511_knob0_replay_20260710/data/s3c_atm511_w2_event_truth.json",
+    "s3c_replay_summary": "engineering/compton_veto_knob0_20260710/01_s3c_atm511_knob0_replay_20260710/data/s3c_atm511_knob0_summary.json",
+    "step05_script": "old/code/tools/build_v3p5_centerfinger_step05_l1_response.py",
+    "step09_summary": "stepwise_maintenance/step09_optics_bridge/outputs_f10m_a1_v3p5/step09_optics_bridge_summary.json",
+    "sha256": {
+      "mass_catalog": "615880de7097b22359bcd99a29eee1d8345b88bf1634e27c373612320802ed30",
+      "mass_geometry": "df452c1de3a8f45749402126b5dffc9d743106c839dcb833151f8601857a3922",
+      "s3c_truth": "b1dfb80b220a794f1f6160c0c8815c65ea0b40e8fe298345c62d43cb89fd9136",
+      "s3c_geometry": "010fc59398ff2710ef1a4cf95219a506d39e56ac170f36bf722ffa567e279410"
+    }
+  },
+  "frozen_definitions": {
+    "w2_keV": [
+      510.58,
+      511.42
+    ],
+    "active_veto_threshold_keV": 50.0,
+    "tes_sigma_keV": 0.14,
+    "runtime_k_lines_keV": {
+      "Kalpha2_runtime": 56.402,
+      "Kalpha1_runtime": 57.686,
+      "Kbeta_runtime": 65.381,
+      "Kbeta2_runtime": 67.523
+    },
+    "k_tag_half_width_keV": 0.42000000000000004,
+    "fluorescence_merge_rule": "same layer, runtime K window, nearest non-tag hit within 3.2 mm; merge energy into parent and conserve event energy",
+    "max_fluorescence_merge_distance_mm": 3.2,
+    "long_arm_boundary_mm": 20.0,
+    "doppler_sigma_deg_assumed": 3.0,
+    "k_values": [
+      2.0,
+      2.5,
+      3.0
+    ],
+    "monotonic_rule": "all candidate policies are geometry_current AND candidate_pass; no geometry-current veto can be resurrected",
+    "position_rule": "pixel UID center plus exact InstrumentFrame-rotated voxel corners; tight-cut sigma uses the largest projected eigenvalue of the two-hit covariance"
+  },
+  "geometry": {
+    "Mass_model_511": {
+      "geometry": "outputs/geometry/DEMO2_DR_v3p5_Mass_model_511_stage_diam_300_300_300_350_350_400_20260701_megalib_proxy/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo",
+      "intro": "outputs/geometry/DEMO2_DR_v3p5_Mass_model_511_stage_diam_300_300_300_350_350_400_20260701_megalib_proxy/Intro_DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo",
+      "detector": "outputs/geometry/DEMO2_DR_v3p5_Mass_model_511_stage_diam_300_300_300_350_350_400_20260701_megalib_proxy/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.det",
+      "instrument_rotation_deg": [
+        0.0,
+        45.0,
+        0.0
+      ],
+      "pixel_half_local_cm": [
+        0.15,
+        0.075,
+        0.075
+      ],
+      "pixel_count": 2256,
+      "representative_points": 9,
+      "tes_sigma_kev_from_detector_file": 0.14,
+      "structural_pitch_cm": [
+        0.155,
+        0.155,
+        0.1
+      ],
+      "in_plane_pixel_gap_mm": 0.050000000000000044
+    },
+    "S3c": {
+      "geometry": "engineering/geometry_optimization_20260704/29_geoopt_s3c_bgo_w2mm_al3mm_shell_20260709/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo",
+      "intro": "engineering/geometry_optimization_20260704/29_geoopt_s3c_bgo_w2mm_al3mm_shell_20260709/geometry/Intro_DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo",
+      "detector": "engineering/geometry_optimization_20260704/29_geoopt_s3c_bgo_w2mm_al3mm_shell_20260709/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.det",
+      "instrument_rotation_deg": [
+        0.0,
+        45.0,
+        0.0
+      ],
+      "pixel_half_local_cm": [
+        0.15,
+        0.075,
+        0.075
+      ],
+      "pixel_count": 2256,
+      "representative_points": 9,
+      "tes_sigma_kev_from_detector_file": 0.14,
+      "structural_pitch_cm": [
+        0.155,
+        0.155,
+        0.1
+      ],
+      "in_plane_pixel_gap_mm": 0.050000000000000044
+    }
+  },
+  "data_quality": {
+    "catalog_quality": {
+      "event_count": 1765451,
+      "event_field_lengths": {
+        "stream": 1765451,
+        "tag": 1765451,
+        "source_file": 1765451,
+        "local_id": 1765451,
+        "rate_hz": 1765451,
+        "tes_total_keV": 1765451,
+        "bgo_total_keV": 1765451,
+        "pix_start": 1765451,
+        "pix_count": 1765451
+      },
+      "event_lengths_equal": true,
+      "pixel_count": 69622,
+      "pixel_field_lengths": {
+        "pix_uid": 69622,
+        "pix_layer": 69622,
+        "pix_e": 69622,
+        "pix_x": 69622,
+        "pix_y": 69622,
+        "pix_z": 69622
+      },
+      "pixel_lengths_equal": true,
+      "pixel_spans_valid": true,
+      "duplicate_composite_event_keys": 0,
+      "unknown_pixel_uid_count": 0,
+      "unknown_pixel_uids_sample": [],
+      "finite_nonnegative_energies": true,
+      "pass": true
+    },
+    "selected_indices": {
+      "prompt": 71,
+      "delayed": 28,
+      "science": 30305
+    },
+    "event_quality": {
+      "event_count": 8,
+      "unique_event_ids": true,
+      "all_pixels_mapped": true,
+      "tes_sums_close": true,
+      "pass": true
+    },
+    "legacy_reproduction": {
+      "mass_expected": {
+        "prompt": 65,
+        "delayed": 28,
+        "science": 29687
+      },
+      "mass_observed": {
+        "prompt": 65,
+        "delayed": 28,
+        "science": 29687
+      },
+      "mass_ok": true,
+      "s3c_expected": 6,
+      "s3c_observed": 6,
+      "s3c_ok": true
+    },
+    "monotonic_violation_count": 0,
+    "monotonic_violations": [],
+    "merge_shape_violation_count": 0
+  },
+  "counts": {
+    "mass_w2_active_events": 30404,
+    "s3c_w2_active_events": 8,
+    "tag_candidate_events": 2674,
+    "merge_eligible_events": 2231,
+    "geometry_changed_events": 751
+  },
+  "policy_yields": [
+    {
+      "dataset": "Mass_model_511",
+      "stream": "delayed",
+      "policy": "legacy_current",
+      "active_events": 28,
+      "active_rate_hz": 0.003984600717591324,
+      "selected_events": 28,
+      "selected_rate_hz": 0.003984600717591324,
+      "survival_fraction_events": 1.0,
+      "survival_fraction_rate": 1.0,
+      "geometry_current_selected_events": 27,
+      "geometry_current_to_rejected": 0,
+      "geometry_current_to_resurrected": 1,
+      "selected_effective_n": 27.999999999999993
+    },
+    {
+      "dataset": "Mass_model_511",
+      "stream": "delayed",
+      "policy": "geometry_current",
+      "active_events": 28,
+      "active_rate_hz": 0.003984600717591324,
+      "selected_events": 27,
+      "selected_rate_hz": 0.0038422935491059193,
+      "survival_fraction_events": 0.9642857142857143,
+      "survival_fraction_rate": 0.9642857142857143,
+      "geometry_current_selected_events": 27,
+      "geometry_current_to_rejected": 0,
+      "geometry_current_to_resurrected": 0,
+      "selected_effective_n": 26.999999999999993
+    },
+    {
+      "dataset": "Mass_model_511",
+      "stream": "delayed",
+      "policy": "geometry_fluorescence_merge",
+      "active_events": 28,
+      "active_rate_hz": 0.003984600717591324,
+      "selected_events": 27,
+      "selected_rate_hz": 0.0038422935491059193,
+      "survival_fraction_events": 0.9642857142857143,
+      "survival_fraction_rate": 0.9642857142857143,
+      "geometry_current_selected_events": 27,
+      "geometry_current_to_rejected": 0,
+      "geometry_current_to_resurrected": 0,
+      "selected_effective_n": 26.999999999999993
+    },
+    {
+      "dataset": "Mass_model_511",
+      "stream": "delayed",
+      "policy": "geometry_tight_k2",
+      "active_events": 28,
+      "active_rate_hz": 0.003984600717591324,
+      "selected_events": 27,
+      "selected_rate_hz": 0.0038422935491059193,
+      "survival_fraction_events": 0.9642857142857143,
+      "survival_fraction_rate": 0.9642857142857143,
+      "geometry_current_selected_events": 27,
+      "geometry_current_to_rejected": 0,
+      "geometry_current_to_resurrected": 0,
+      "selected_effective_n": 26.999999999999993
+    },
+    {
+      "dataset": "Mass_model_511",
+      "stream": "delayed",
+      "policy": "geometry_tight_k2.5",
+      "active_events": 28,
+      "active_rate_hz": 0.003984600717591324,
+      "selected_events": 27,
+      "selected_rate_hz": 0.0038422935491059193,
+      "survival_fraction_events": 0.9642857142857143,
+      "survival_fraction_rate": 0.9642857142857143,
+      "geometry_current_selected_events": 27,
+      "geometry_current_to_rejected": 0,
+      "geometry_current_to_resurrected": 0,
+      "selected_effective_n": 26.999999999999993
+    },
+    {
+      "dataset": "Mass_model_511",
+      "stream": "delayed",
+      "policy": "geometry_tight_k3",
+      "active_events": 28,
+      "active_rate_hz": 0.003984600717591324,
+      "selected_events": 27,
+      "selected_rate_hz": 0.0038422935491059193,
+      "survival_fraction_events": 0.9642857142857143,
+      "survival_fraction_rate": 0.9642857142857143,
+      "geometry_current_selected_events": 27,
+      "geometry_current_to_rejected": 0,
+      "geometry_current_to_resurrected": 0,
+      "selected_effective_n": 26.999999999999993
+    },
+    {
+      "dataset": "Mass_model_511",
+      "stream": "delayed",
+      "policy": "geometry_fluorescence_merge_tight_k2",
+      "active_events": 28,
+      "active_rate_hz": 0.003984600717591324,
+      "selected_events": 27,
+      "selected_rate_hz": 0.0038422935491059193,
+      "survival_fraction_events": 0.9642857142857143,
+      "survival_fraction_rate": 0.9642857142857143,
+      "geometry_current_selected_events": 27,
+      "geometry_current_to_rejected": 0,
+      "geometry_current_to_resurrected": 0,
+      "selected_effective_n": 26.999999999999993
+    },
+    {
+      "dataset": "Mass_model_511",
+      "stream": "delayed",
+      "policy": "geometry_fluorescence_merge_tight_k2.5",
+      "active_events": 28,
+      "active_rate_hz": 0.003984600717591324,
+      "selected_events": 27,
+      "selected_rate_hz": 0.0038422935491059193,
+      "survival_fraction_events": 0.9642857142857143,
+      "survival_fraction_rate": 0.9642857142857143,
+      "geometry_current_selected_events": 27,
+      "geometry_current_to_rejected": 0,
+      "geometry_current_to_resurrected": 0,
+      "selected_effective_n": 26.999999999999993
+    },
+    {
+      "dataset": "Mass_model_511",
+      "stream": "delayed",
+      "policy": "geometry_fluorescence_merge_tight_k3",
+      "active_events": 28,
+      "active_rate_hz": 0.003984600717591324,
+      "selected_events": 27,
+      "selected_rate_hz": 0.0038422935491059193,
+      "survival_fraction_events": 0.9642857142857143,
+      "survival_fraction_rate": 0.9642857142857143,
+      "geometry_current_selected_events": 27,
+      "geometry_current_to_rejected": 0,
+      "geometry_current_to_resurrected": 0,
+      "selected_effective_n": 26.999999999999993
+    },
+    {
+      "dataset": "Mass_model_511",
+      "stream": "prompt",
+      "policy": "legacy_current",
+      "active_events": 71,
+      "active_rate_hz": 0.04816009251370224,
+      "selected_events": 65,
+      "selected_rate_hz": 0.044088948071811976,
+      "survival_fraction_events": 0.9154929577464789,
+      "survival_fraction_rate": 0.9154664322803789,
+      "geometry_current_selected_events": 63,
+      "geometry_current_to_rejected": 1,
+      "geometry_current_to_resurrected": 3,
+      "selected_effective_n": 64.99993686791527
+    },
+    {
+      "dataset": "Mass_model_511",
+      "stream": "prompt",
+      "policy": "geometry_current",
+      "active_events": 71,
+      "active_rate_hz": 0.04816009251370224,
+      "selected_events": 63,
+      "selected_rate_hz": 0.04273217604009,
+      "survival_fraction_events": 0.8873239436619719,
+      "survival_fraction_rate": 0.8872943096596435,
+      "geometry_current_selected_events": 63,
+      "geometry_current_to_rejected": 0,
+      "geometry_current_to_resurrected": 0,
+      "selected_effective_n": 62.99993692134676
+    },
+    {
+      "dataset": "Mass_model_511",
+      "stream": "prompt",
+      "policy": "geometry_fluorescence_merge",
+      "active_events": 71,
+      "active_rate_hz": 0.04816009251370224,
+      "selected_events": 63,
+      "selected_rate_hz": 0.04273217604009,
+      "survival_fraction_events": 0.8873239436619719,
+      "survival_fraction_rate": 0.8872943096596435,
+      "geometry_current_selected_events": 63,
+      "geometry_current_to_rejected": 0,
+      "geometry_current_to_resurrected": 0,
+      "selected_effective_n": 62.99993692134676
+    },
+    {
+      "dataset": "Mass_model_511",
+      "stream": "prompt",
+      "policy": "geometry_tight_k2",
+      "active_events": 71,
+      "active_rate_hz": 0.04816009251370224,
+      "selected_events": 63,
+      "selected_rate_hz": 0.04273217604009,
+      "survival_fraction_events": 0.8873239436619719,
+      "survival_fraction_rate": 0.8872943096596435,
+      "geometry_current_selected_events": 63,
+      "geometry_current_to_rejected": 0,
+      "geometry_current_to_resurrected": 0,
+      "selected_effective_n": 62.99993692134676
+    },
+    {
+      "dataset": "Mass_model_511",
+      "stream": "prompt",
+      "policy": "geometry_tight_k2.5",
+      "active_events": 71,
+      "active_rate_hz": 0.04816009251370224,
+      "selected_events": 63,
+      "selected_rate_hz": 0.04273217604009,
+      "survival_fraction_events": 0.8873239436619719,
+      "survival_fraction_rate": 0.8872943096596435,
+      "geometry_current_selected_events": 63,
+      "geometry_current_to_rejected": 0,
+      "geometry_current_to_resurrected": 0,
+      "selected_effective_n": 62.99993692134676
+    },
+    {
+      "dataset": "Mass_model_511",
+      "stream": "prompt",
+      "policy": "geometry_tight_k3",
+      "active_events": 71,
+      "active_rate_hz": 0.04816009251370224,
+      "selected_events": 63,
+      "selected_rate_hz": 0.04273217604009,
+      "survival_fraction_events": 0.8873239436619719,
+      "survival_fraction_rate": 0.8872943096596435,
+      "geometry_current_selected_events": 63,
+      "geometry_current_to_rejected": 0,
+      "geometry_current_to_resurrected": 0,
+      "selected_effective_n": 62.99993692134676
+    },
+    {
+      "dataset": "Mass_model_511",
+      "stream": "prompt",
+      "policy": "geometry_fluorescence_merge_tight_k2",
+      "active_events": 71,
+      "active_rate_hz": 0.04816009251370224,
+      "selected_events": 63,
+      "selected_rate_hz": 0.04273217604009,
+      "survival_fraction_events": 0.8873239436619719,
+      "survival_fraction_rate": 0.8872943096596435,
+      "geometry_current_selected_events": 63,
+      "geometry_current_to_rejected": 0,
+      "geometry_current_to_resurrected": 0,
+      "selected_effective_n": 62.99993692134676
+    },
+    {
+      "dataset": "Mass_model_511",
+      "stream": "prompt",
+      "policy": "geometry_fluorescence_merge_tight_k2.5",
+      "active_events": 71,
+      "active_rate_hz": 0.04816009251370224,
+      "selected_events": 63,
+      "selected_rate_hz": 0.04273217604009,
+      "survival_fraction_events": 0.8873239436619719,
+      "survival_fraction_rate": 0.8872943096596435,
+      "geometry_current_selected_events": 63,
+      "geometry_current_to_rejected": 0,
+      "geometry_current_to_resurrected": 0,
+      "selected_effective_n": 62.99993692134676
+    },
+    {
+      "dataset": "Mass_model_511",
+      "stream": "prompt",
+      "policy": "geometry_fluorescence_merge_tight_k3",
+      "active_events": 71,
+      "active_rate_hz": 0.04816009251370224,
+      "selected_events": 63,
+      "selected_rate_hz": 0.04273217604009,
+      "survival_fraction_events": 0.8873239436619719,
+      "survival_fraction_rate": 0.8872943096596435,
+      "geometry_current_selected_events": 63,
+      "geometry_current_to_rejected": 0,
+      "geometry_current_to_resurrected": 0,
+      "selected_effective_n": 62.99993692134676
+    },
+    {
+      "dataset": "Mass_model_511",
+      "stream": "science",
+      "policy": "legacy_current",
+      "active_events": 30305,
+      "active_rate_hz": 0.8147819540789702,
+      "selected_events": 29687,
+      "selected_rate_hz": 0.7981663709203692,
+      "survival_fraction_events": 0.979607325523841,
+      "survival_fraction_rate": 0.9796073255238167,
+      "geometry_current_selected_events": 29186,
+      "geometry_current_to_rejected": 122,
+      "geometry_current_to_resurrected": 623,
+      "selected_effective_n": 29687.0
+    },
+    {
+      "dataset": "Mass_model_511",
+      "stream": "science",
+      "policy": "geometry_current",
+      "active_events": 30305,
+      "active_rate_hz": 0.8147819540789702,
+      "selected_events": 29186,
+      "selected_rate_hz": 0.7846964564180082,
+      "survival_fraction_events": 0.9630754000989936,
+      "survival_fraction_rate": 0.9630754000989495,
+      "geometry_current_selected_events": 29186,
+      "geometry_current_to_rejected": 0,
+      "geometry_current_to_resurrected": 0,
+      "selected_effective_n": 29186.000000000004
+    },
+    {
+      "dataset": "Mass_model_511",
+      "stream": "science",
+      "policy": "geometry_fluorescence_merge",
+      "active_events": 30305,
+      "active_rate_hz": 0.8147819540789702,
+      "selected_events": 29143,
+      "selected_rate_hz": 0.7835403559716978,
+      "survival_fraction_events": 0.9616564923279987,
+      "survival_fraction_rate": 0.961656492327953,
+      "geometry_current_selected_events": 29186,
+      "geometry_current_to_rejected": 43,
+      "geometry_current_to_resurrected": 0,
+      "selected_effective_n": 29143.0
+    },
+    {
+      "dataset": "Mass_model_511",
+      "stream": "science",
+      "policy": "geometry_tight_k2",
+      "active_events": 30305,
+      "active_rate_hz": 0.8147819540789702,
+      "selected_events": 29181,
+      "selected_rate_hz": 0.7845620261335535,
+      "survival_fraction_events": 0.9629104108232965,
+      "survival_fraction_rate": 0.9629104108232522,
+      "geometry_current_selected_events": 29186,
+      "geometry_current_to_rejected": 5,
+      "geometry_current_to_resurrected": 0,
+      "selected_effective_n": 29181.000000000004
+    },
+    {
+      "dataset": "Mass_model_511",
+      "stream": "science",
+      "policy": "geometry_tight_k2.5",
+      "active_events": 30305,
+      "active_rate_hz": 0.8147819540789702,
+      "selected_events": 29186,
+      "selected_rate_hz": 0.7846964564180082,
+      "survival_fraction_events": 0.9630754000989936,
+      "survival_fraction_rate": 0.9630754000989495,
+      "geometry_current_selected_events": 29186,
+      "geometry_current_to_rejected": 0,
+      "geometry_current_to_resurrected": 0,
+      "selected_effective_n": 29186.000000000004
+    },
+    {
+      "dataset": "Mass_model_511",
+      "stream": "science",
+      "policy": "geometry_tight_k3",
+      "active_events": 30305,
+      "active_rate_hz": 0.8147819540789702,
+      "selected_events": 29186,
+      "selected_rate_hz": 0.7846964564180082,
+      "survival_fraction_events": 0.9630754000989936,
+      "survival_fraction_rate": 0.9630754000989495,
+      "geometry_current_selected_events": 29186,
+      "geometry_current_to_rejected": 0,
+      "geometry_current_to_resurrected": 0,
+      "selected_effective_n": 29186.000000000004
+    },
+    {
+      "dataset": "Mass_model_511",
+      "stream": "science",
+      "policy": "geometry_fluorescence_merge_tight_k2",
+      "active_events": 30305,
+      "active_rate_hz": 0.8147819540789702,
+      "selected_events": 29139,
+      "selected_rate_hz": 0.783432811744134,
+      "survival_fraction_events": 0.961524500907441,
+      "survival_fraction_rate": 0.9615245009073952,
+      "geometry_current_selected_events": 29186,
+      "geometry_current_to_rejected": 47,
+      "geometry_current_to_resurrected": 0,
+      "selected_effective_n": 29139.0
+    },
+    {
+      "dataset": "Mass_model_511",
+      "stream": "science",
+      "policy": "geometry_fluorescence_merge_tight_k2.5",
+      "active_events": 30305,
+      "active_rate_hz": 0.8147819540789702,
+      "selected_events": 29143,
+      "selected_rate_hz": 0.7835403559716978,
+      "survival_fraction_events": 0.9616564923279987,
+      "survival_fraction_rate": 0.961656492327953,
+      "geometry_current_selected_events": 29186,
+      "geometry_current_to_rejected": 43,
+      "geometry_current_to_resurrected": 0,
+      "selected_effective_n": 29143.0
+    },
+    {
+      "dataset": "Mass_model_511",
+      "stream": "science",
+      "policy": "geometry_fluorescence_merge_tight_k3",
+      "active_events": 30305,
+      "active_rate_hz": 0.8147819540789702,
+      "selected_events": 29143,
+      "selected_rate_hz": 0.7835403559716978,
+      "survival_fraction_events": 0.9616564923279987,
+      "survival_fraction_rate": 0.961656492327953,
+      "geometry_current_selected_events": 29186,
+      "geometry_current_to_rejected": 43,
+      "geometry_current_to_resurrected": 0,
+      "selected_effective_n": 29143.0
+    },
+    {
+      "dataset": "S3c_atm511_3M",
+      "stream": "atm511",
+      "policy": "legacy_current",
+      "active_events": 8,
+      "active_rate_hz": 0.0015558451156187402,
+      "selected_events": 6,
+      "selected_rate_hz": 0.001166883836714055,
+      "survival_fraction_events": 0.75,
+      "survival_fraction_rate": 0.75,
+      "geometry_current_selected_events": 7,
+      "geometry_current_to_rejected": 1,
+      "geometry_current_to_resurrected": 0,
+      "selected_effective_n": 5.999999999999999
+    },
+    {
+      "dataset": "S3c_atm511_3M",
+      "stream": "atm511",
+      "policy": "geometry_current",
+      "active_events": 8,
+      "active_rate_hz": 0.0015558451156187402,
+      "selected_events": 7,
+      "selected_rate_hz": 0.0013613644761663977,
+      "survival_fraction_events": 0.875,
+      "survival_fraction_rate": 0.875,
+      "geometry_current_selected_events": 7,
+      "geometry_current_to_rejected": 0,
+      "geometry_current_to_resurrected": 0,
+      "selected_effective_n": 6.999999999999999
+    },
+    {
+      "dataset": "S3c_atm511_3M",
+      "stream": "atm511",
+      "policy": "geometry_fluorescence_merge",
+      "active_events": 8,
+      "active_rate_hz": 0.0015558451156187402,
+      "selected_events": 7,
+      "selected_rate_hz": 0.0013613644761663977,
+      "survival_fraction_events": 0.875,
+      "survival_fraction_rate": 0.875,
+      "geometry_current_selected_events": 7,
+      "geometry_current_to_rejected": 0,
+      "geometry_current_to_resurrected": 0,
+      "selected_effective_n": 6.999999999999999
+    },
+    {
+      "dataset": "S3c_atm511_3M",
+      "stream": "atm511",
+      "policy": "geometry_tight_k2",
+      "active_events": 8,
+      "active_rate_hz": 0.0015558451156187402,
+      "selected_events": 7,
+      "selected_rate_hz": 0.0013613644761663977,
+      "survival_fraction_events": 0.875,
+      "survival_fraction_rate": 0.875,
+      "geometry_current_selected_events": 7,
+      "geometry_current_to_rejected": 0,
+      "geometry_current_to_resurrected": 0,
+      "selected_effective_n": 6.999999999999999
+    },
+    {
+      "dataset": "S3c_atm511_3M",
+      "stream": "atm511",
+      "policy": "geometry_tight_k2.5",
+      "active_events": 8,
+      "active_rate_hz": 0.0015558451156187402,
+      "selected_events": 7,
+      "selected_rate_hz": 0.0013613644761663977,
+      "survival_fraction_events": 0.875,
+      "survival_fraction_rate": 0.875,
+      "geometry_current_selected_events": 7,
+      "geometry_current_to_rejected": 0,
+      "geometry_current_to_resurrected": 0,
+      "selected_effective_n": 6.999999999999999
+    },
+    {
+      "dataset": "S3c_atm511_3M",
+      "stream": "atm511",
+      "policy": "geometry_tight_k3",
+      "active_events": 8,
+      "active_rate_hz": 0.0015558451156187402,
+      "selected_events": 7,
+      "selected_rate_hz": 0.0013613644761663977,
+      "survival_fraction_events": 0.875,
+      "survival_fraction_rate": 0.875,
+      "geometry_current_selected_events": 7,
+      "geometry_current_to_rejected": 0,
+      "geometry_current_to_resurrected": 0,
+      "selected_effective_n": 6.999999999999999
+    },
+    {
+      "dataset": "S3c_atm511_3M",
+      "stream": "atm511",
+      "policy": "geometry_fluorescence_merge_tight_k2",
+      "active_events": 8,
+      "active_rate_hz": 0.0015558451156187402,
+      "selected_events": 7,
+      "selected_rate_hz": 0.0013613644761663977,
+      "survival_fraction_events": 0.875,
+      "survival_fraction_rate": 0.875,
+      "geometry_current_selected_events": 7,
+      "geometry_current_to_rejected": 0,
+      "geometry_current_to_resurrected": 0,
+      "selected_effective_n": 6.999999999999999
+    },
+    {
+      "dataset": "S3c_atm511_3M",
+      "stream": "atm511",
+      "policy": "geometry_fluorescence_merge_tight_k2.5",
+      "active_events": 8,
+      "active_rate_hz": 0.0015558451156187402,
+      "selected_events": 7,
+      "selected_rate_hz": 0.0013613644761663977,
+      "survival_fraction_events": 0.875,
+      "survival_fraction_rate": 0.875,
+      "geometry_current_selected_events": 7,
+      "geometry_current_to_rejected": 0,
+      "geometry_current_to_resurrected": 0,
+      "selected_effective_n": 6.999999999999999
+    },
+    {
+      "dataset": "S3c_atm511_3M",
+      "stream": "atm511",
+      "policy": "geometry_fluorescence_merge_tight_k3",
+      "active_events": 8,
+      "active_rate_hz": 0.0015558451156187402,
+      "selected_events": 7,
+      "selected_rate_hz": 0.0013613644761663977,
+      "survival_fraction_events": 0.875,
+      "survival_fraction_rate": 0.875,
+      "geometry_current_selected_events": 7,
+      "geometry_current_to_rejected": 0,
+      "geometry_current_to_resurrected": 0,
+      "selected_effective_n": 6.999999999999999
+    }
+  ],
+  "mass_significance_proxy": [
+    {
+      "policy": "legacy_current",
+      "signal_rate_hz": 0.7981663709203692,
+      "prompt_plus_delayed_rate_hz": 0.0480735487894033,
+      "s_over_sqrt_b_proxy": 3.640326475782694,
+      "relative_z_vs_geometry_current": 1.0011810058789532,
+      "signal_retention_vs_geometry_current": 1.017165764407614,
+      "background_retention_vs_geometry_current": 1.0321867154565543
+    },
+    {
+      "policy": "geometry_current",
+      "signal_rate_hz": 0.7846964564180082,
+      "prompt_plus_delayed_rate_hz": 0.046574469589195915,
+      "s_over_sqrt_b_proxy": 3.6360323002600237,
+      "relative_z_vs_geometry_current": 1.0,
+      "signal_retention_vs_geometry_current": 1.0,
+      "background_retention_vs_geometry_current": 1.0
+    },
+    {
+      "policy": "geometry_fluorescence_merge",
+      "signal_rate_hz": 0.7835403559716978,
+      "prompt_plus_delayed_rate_hz": 0.046574469589195915,
+      "s_over_sqrt_b_proxy": 3.630675300708479,
+      "relative_z_vs_geometry_current": 0.9985266908791868,
+      "signal_retention_vs_geometry_current": 0.9985266908791869,
+      "background_retention_vs_geometry_current": 1.0
+    },
+    {
+      "policy": "geometry_tight_k2",
+      "signal_rate_hz": 0.7845620261335535,
+      "prompt_plus_delayed_rate_hz": 0.046574469589195915,
+      "s_over_sqrt_b_proxy": 3.6354093933354257,
+      "relative_z_vs_geometry_current": 0.999828684985952,
+      "signal_retention_vs_geometry_current": 0.999828684985952,
+      "background_retention_vs_geometry_current": 1.0
+    },
+    {
+      "policy": "geometry_tight_k2.5",
+      "signal_rate_hz": 0.7846964564180082,
+      "prompt_plus_delayed_rate_hz": 0.046574469589195915,
+      "s_over_sqrt_b_proxy": 3.6360323002600237,
+      "relative_z_vs_geometry_current": 1.0,
+      "signal_retention_vs_geometry_current": 1.0,
+      "background_retention_vs_geometry_current": 1.0
+    },
+    {
+      "policy": "geometry_tight_k3",
+      "signal_rate_hz": 0.7846964564180082,
+      "prompt_plus_delayed_rate_hz": 0.046574469589195915,
+      "s_over_sqrt_b_proxy": 3.6360323002600237,
+      "relative_z_vs_geometry_current": 1.0,
+      "signal_retention_vs_geometry_current": 1.0,
+      "background_retention_vs_geometry_current": 1.0
+    },
+    {
+      "policy": "geometry_fluorescence_merge_tight_k2",
+      "signal_rate_hz": 0.783432811744134,
+      "prompt_plus_delayed_rate_hz": 0.046574469589195915,
+      "s_over_sqrt_b_proxy": 3.630176975168801,
+      "relative_z_vs_geometry_current": 0.9983896388679484,
+      "signal_retention_vs_geometry_current": 0.9983896388679484,
+      "background_retention_vs_geometry_current": 1.0
+    },
+    {
+      "policy": "geometry_fluorescence_merge_tight_k2.5",
+      "signal_rate_hz": 0.7835403559716978,
+      "prompt_plus_delayed_rate_hz": 0.046574469589195915,
+      "s_over_sqrt_b_proxy": 3.630675300708479,
+      "relative_z_vs_geometry_current": 0.9985266908791868,
+      "signal_retention_vs_geometry_current": 0.9985266908791869,
+      "background_retention_vs_geometry_current": 1.0
+    },
+    {
+      "policy": "geometry_fluorescence_merge_tight_k3",
+      "signal_rate_hz": 0.7835403559716978,
+      "prompt_plus_delayed_rate_hz": 0.046574469589195915,
+      "s_over_sqrt_b_proxy": 3.630675300708479,
+      "relative_z_vs_geometry_current": 0.9985266908791868,
+      "signal_retention_vs_geometry_current": 0.9985266908791869,
+      "background_retention_vs_geometry_current": 1.0
+    }
+  ],
+  "geometry_current_strata": [
+    {
+      "dataset": "Mass_model_511",
+      "stream": "delayed",
+      "stratum": "single",
+      "events": 20,
+      "rate_hz": 0.0028461433697080886,
+      "share_of_geometry_current_events": 0.7407407407407407
+    },
+    {
+      "dataset": "Mass_model_511",
+      "stream": "delayed",
+      "stratum": "unreconstructable",
+      "events": 0,
+      "rate_hz": 0,
+      "share_of_geometry_current_events": 0.0
+    },
+    {
+      "dataset": "Mass_model_511",
+      "stream": "delayed",
+      "stratum": "S1_short_lt8mm",
+      "events": 6,
+      "rate_hz": 0.000853843010912427,
+      "share_of_geometry_current_events": 0.2222222222222222
+    },
+    {
+      "dataset": "Mass_model_511",
+      "stream": "delayed",
+      "stratum": "S2_medium_8to20mm",
+      "events": 1,
+      "rate_hz": 0.0001423071684854045,
+      "share_of_geometry_current_events": 0.037037037037037035
+    },
+    {
+      "dataset": "Mass_model_511",
+      "stream": "delayed",
+      "stratum": "S3_long_ge20mm",
+      "events": 0,
+      "rate_hz": 0,
+      "share_of_geometry_current_events": 0.0
+    },
+    {
+      "dataset": "Mass_model_511",
+      "stream": "prompt",
+      "stratum": "single",
+      "events": 43,
+      "rate_hz": 0.029163776456477292,
+      "share_of_geometry_current_events": 0.6825396825396826
+    },
+    {
+      "dataset": "Mass_model_511",
+      "stream": "prompt",
+      "stratum": "unreconstructable",
+      "events": 0,
+      "rate_hz": 0,
+      "share_of_geometry_current_events": 0.0
+    },
+    {
+      "dataset": "Mass_model_511",
+      "stream": "prompt",
+      "stratum": "S1_short_lt8mm",
+      "events": 19,
+      "rate_hz": 0.012889956962219047,
+      "share_of_geometry_current_events": 0.30158730158730157
+    },
+    {
+      "dataset": "Mass_model_511",
+      "stream": "prompt",
+      "stratum": "S2_medium_8to20mm",
+      "events": 1,
+      "rate_hz": 0.0006784426213937381,
+      "share_of_geometry_current_events": 0.015873015873015872
+    },
+    {
+      "dataset": "Mass_model_511",
+      "stream": "prompt",
+      "stratum": "S3_long_ge20mm",
+      "events": 0,
+      "rate_hz": 0,
+      "share_of_geometry_current_events": 0.0
+    },
+    {
+      "dataset": "Mass_model_511",
+      "stream": "science",
+      "stratum": "single",
+      "events": 17589,
+      "rate_hz": 0.4728988546538313,
+      "share_of_geometry_current_events": 0.6026519564174604
+    },
+    {
+      "dataset": "Mass_model_511",
+      "stream": "science",
+      "stratum": "unreconstructable",
+      "events": 0,
+      "rate_hz": 0,
+      "share_of_geometry_current_events": 0.0
+    },
+    {
+      "dataset": "Mass_model_511",
+      "stream": "science",
+      "stratum": "S1_short_lt8mm",
+      "events": 8088,
+      "rate_hz": 0.21745442813353635,
+      "share_of_geometry_current_events": 0.2771191667237717
+    },
+    {
+      "dataset": "Mass_model_511",
+      "stream": "science",
+      "stratum": "S2_medium_8to20mm",
+      "events": 2575,
+      "rate_hz": 0.06923159649406058,
+      "share_of_geometry_current_events": 0.08822723223463304
+    },
+    {
+      "dataset": "Mass_model_511",
+      "stream": "science",
+      "stratum": "S3_long_ge20mm",
+      "events": 934,
+      "rate_hz": 0.025111577136096918,
+      "share_of_geometry_current_events": 0.03200164462413486
+    },
+    {
+      "dataset": "S3c_atm511_3M",
+      "stream": "atm511",
+      "stratum": "single",
+      "events": 3,
+      "rate_hz": 0.0005834419183570275,
+      "share_of_geometry_current_events": 0.42857142857142855
+    },
+    {
+      "dataset": "S3c_atm511_3M",
+      "stream": "atm511",
+      "stratum": "unreconstructable",
+      "events": 0,
+      "rate_hz": 0,
+      "share_of_geometry_current_events": 0.0
+    },
+    {
+      "dataset": "S3c_atm511_3M",
+      "stream": "atm511",
+      "stratum": "S1_short_lt8mm",
+      "events": 3,
+      "rate_hz": 0.0005834419183570275,
+      "share_of_geometry_current_events": 0.42857142857142855
+    },
+    {
+      "dataset": "S3c_atm511_3M",
+      "stream": "atm511",
+      "stratum": "S2_medium_8to20mm",
+      "events": 0,
+      "rate_hz": 0,
+      "share_of_geometry_current_events": 0.0
+    },
+    {
+      "dataset": "S3c_atm511_3M",
+      "stream": "atm511",
+      "stratum": "S3_long_ge20mm",
+      "events": 1,
+      "rate_hz": 0.00019448063945234253,
+      "share_of_geometry_current_events": 0.14285714285714285
+    }
+  ],
+  "decision": {
+    "outcome": "NO_OBSERVED_KNOB0_ALGORITHM_BENEFIT",
+    "promotion": "DO_NOT_PROMOTE_FLUORESCENCE_MERGE_OR_LONG_ARM_TIGHTENING",
+    "best_candidate_by_mass_prompt_delayed_z": "geometry_tight_k2.5",
+    "best_candidate_relative_z": 1.0,
+    "best_candidate_is_noop": true,
+    "mechanism_evidence": {
+      "geometry_current_prompt_plus_delayed_long_arm_survivors": 0,
+      "geometry_current_signal_long_arm_survivors": 934,
+      "fluorescence_merge_background_rejections": 0,
+      "fluorescence_merge_signal_rejections": 43,
+      "tight_k2_background_rejections": 0,
+      "tight_k2_signal_rejections": 5,
+      "s3c_geometry_current_events": 7,
+      "s3c_best_candidate_events": 7
+    },
+    "geometry_correction": "Required as a correctness repair, not promoted as a sensitivity optimization; it changes many event decisions and requires independent response-level validation before replacing authority.",
+    "interpretation": "The retained Mass_model W2 prompt/delayed survivors contain no S3 long-arm target events, while the signal contains 934. Fluorescence merging and k=2 tightening reject signal only. k=2.5/3 are no-ops. The S3c atmospheric-511 candidates remain 7->7 after geometry correction."
+  }
+}

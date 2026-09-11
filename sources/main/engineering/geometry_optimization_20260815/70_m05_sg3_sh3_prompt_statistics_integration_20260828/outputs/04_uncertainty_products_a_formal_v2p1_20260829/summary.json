@@ -1,0 +1,122 @@
+{
+  "created_utc": "2026-08-28T16:58:47.895488+00:00",
+  "day15_diagnostic_closure": {
+    "direct_cutflow_rows": 170,
+    "direct_hit_multiplicity_rows": 240,
+    "direct_measured_energy_rows": 10080,
+    "measured_energy_contract": "prompt+delayed and named-component binwise closure plus 480--550 keV totals equal direct cutflow",
+    "multiplicity_contract": "named components sum to all and all cells close to direct cutflow",
+    "status": "PASS__DAY15_DIAGNOSTIC_CSV_SHA_AND_ADDITIVE_CLOSURE"
+  },
+  "input_binding": {
+    "anchor_receipt_file_sha256": {
+      "anchor_000.json": "37d9c73bac4b2ae2b1b5a1c605fd1ed41a936b28b58ad2655264ad3c6a342383",
+      "anchor_020.json": "e684ee06871a169b1202dd76998a603d8c320161e679dd85cc79ec6b046f6d22",
+      "anchor_040.json": "cf1173a971334d129c046ac3b0d6bd6887213bf0fd8b3a9781f8064ff4aee742",
+      "anchor_060.json": "16494324523a4f3367df44491c8d20ed861f465c8d126796cff491d629600a60",
+      "anchor_080.json": "9732ed8c265f771f12fde7232caa9f26757ac3eb8b2486ecf95c5e02d8874bb6"
+    },
+    "catalog_dir": "/home/ubuntu/TES_511_Balloon/engineering/geometry_optimization_20260815/70_m05_sg3_sh3_prompt_statistics_integration_20260828/outputs/01_integrated_catalog_a",
+    "catalog_metadata_file_sha256": {
+      "audit.json": "b29fd1972b215482969a490c40a2410023aa787891301312198f88d294ba1aa3",
+      "category_registry.json": "cc8908695824780d8be184e36b5b077530928fff0a0734afc2cf9be26e061c5f",
+      "integration_provenance.json": "2d8d1028de4b986a47db41d9434833147590b06dd3793a35888e8eea4e09c834",
+      "summary.json": "56c21d15e25424633b1f112081f7d3211cd52386831708962ae67878b472377c"
+    },
+    "family_scales_csv": "/home/ubuntu/TES_511_Balloon/engineering/particle_source_unit_repair_20260811/m05_corrected_reanalysis_20260813/data/parma_energy_integrated_family_scales_81bins.csv",
+    "family_scales_csv_sha256": "b9f955e2172809fb6867d8b983481cc015889787fd155bec8cb5aa4139f66eb4",
+    "integrated_catalog_metadata_fingerprint_sha256": "8fccad93c7ce117490f651cdb232bb68e4d7e5f4611b7888bcf356e58700d72b",
+    "script": "/home/ubuntu/TES_511_Balloon/engineering/geometry_optimization_20260815/70_m05_sg3_sh3_prompt_statistics_integration_20260828/code/build_section4_uncertainty_products.py",
+    "script_sha256": "85207916c0c468746996440ed294e916502100ad7b1d92095aa9044b0aee2af4",
+    "timeline_dir": "/home/ubuntu/TES_511_Balloon/engineering/geometry_optimization_20260815/70_m05_sg3_sh3_prompt_statistics_integration_20260828/outputs/03_section4_timeline_a_authority_v2",
+    "timeline_file_sha256": {
+      "anchor_timeline_rates.csv": "54866e320056c2888589398f39c522c4c6ad7f55daf85e79bc6a459fdb13e3b2",
+      "direct_cutflow_day15.csv": "569737c3a8d1cb7ffbe0e388e3f6e1cc92b8de8acb71abe0025099ecb0813b0f",
+      "direct_hit_multiplicity_day15.csv": "a3213a50846e80ccb5cb88ce8dfb146e9f658527f8518250ff33efca858a1cbc",
+      "direct_measured_energy_day15_0p25keV.csv": "05e0666f1960d639b7fb2107e647e5a34ac1312520ecd4100498fa7808d1fa88",
+      "mission_timeline_81nodes.csv": "41182e5d0bb7ebb791777ffbf631fc520f1d362ed4bf93369d4b102915d4e9e3",
+      "mission_transport_components.csv": "bb2f88310f9066bd5f57de212439a05468cb3217732f8c9cecb6970d632894a9",
+      "summary.json": "7652d497fe558e1fda6a8ae317a2c2c113b3c17b6c79e850dd7fcf9b33b1dc62"
+    },
+    "timeline_input_fingerprint_sha256": "1c47814c383ec6ed7bdcd11237f74dca51a3d480dd46164349f524fd00eff83c"
+  },
+  "method_boundaries": {
+    "conditionality": "all prompt-family intervals are conditional on the selected response/veto/Compton chain and the retained day15 family scales",
+    "delayed": "excluded from Garwood because isotope/category contributions carry heterogeneous normalizations and time-dependent activity weights",
+    "exact_garwood_applies_to": "seven retained prompt families with one constant unified family weight and a common day15 family scale",
+    "excluded_systematics": "geometry, detector response, atmospheric/source model, activation inventory, and cross-component systematics",
+    "finite_template_vs_replay_MC": "reported in separate layers; this product does not claim a joint propagation or independence-based combined interval",
+    "gamma_continuum": "excluded from Garwood because selected templates have non-equal event-level importance weights"
+  },
+  "methods": {
+    "anchor_dispersion": "Pearson diagnostics across the five independent anchor replay counts, shown both against fixed direct expectations and after fitting one pooled ratio",
+    "bonferroni_familywise_95_upper": "per-family alpha=0.05/7 and upper=0.5*chi2_ppf(1-alpha,2(n+1)); union-bound simultaneous coverage >=95%",
+    "garwood_central_95": "[0.5*chi2_ppf(0.025,2n), 0.5*chi2_ppf(0.975,2(n+1))], with lower=0 for n=0; multiply by day15 scale/T_total",
+    "poisson_one_sided_95_upper": "0.5*chi2_ppf(0.95,2(n+1)); multiply by day15 scale/T_total",
+    "prompt_family_rate": "rate_hat = selected_raw * day15_family_scale / T_total",
+    "quantile_engine": "scipy 1.17.0 scipy.stats.chi2.ppf",
+    "replay_MC_standard_error": "sqrt(timeline_count)/anchor_exposure; conditional on the finite catalog and response model",
+    "unified_weight": "w = 1 / (T_old + T_new) = 1 / T_total"
+  },
+  "model": "a",
+  "no_overwrite_policy": "output directory must not exist; private sibling staging directory renamed only after closure",
+  "outputs": {
+    "day15_prompt_family_exact_intervals.csv": {
+      "rows": 7,
+      "sha256": "854ba3d16d79153cc3f2c9e0c7b6bfde72b4f3197d197d576d2fca50f94bd412"
+    },
+    "five_anchor_replay_dispersion.csv": {
+      "rows": 10,
+      "sha256": "bfbbd8d2430d38a7c6f95accb68bff87b57fb9acb7410f66bf68849b6ad5b2c9"
+    },
+    "five_anchor_replay_mc.csv": {
+      "rows": 50,
+      "sha256": "70a183b688f01a368a03f6bf26a7462009e6bda88126c1e5c21927e6c6f17502"
+    },
+    "summary.json": {
+      "self_hash": "not_embedded"
+    }
+  },
+  "scenario_id": "M05_SECTION4_SG3_SH3_BACKGROUND_SCOPE_20260828_V2",
+  "schema": "m05_section4_uncertainty_products_v1",
+  "schema_version": 1,
+  "scope": {
+    "day15_prompt_families": [
+      "alpha",
+      "eminus",
+      "eplus",
+      "muminus",
+      "muplus",
+      "n",
+      "p"
+    ],
+    "input_policy": "small JSON/CSV authorities only; integrated NPZ and SIM files not opened",
+    "mono511_catalog_component_disabled_before_poisson": true,
+    "stage": "compton_trajectory_veto",
+    "window_id": "w2_510p58_511p42"
+  },
+  "status": "PASS__SECTION4_UNCERTAINTY_PRODUCTS",
+  "timeline_receipts": {
+    "anchor_time_bin_ids": [
+      0,
+      20,
+      40,
+      60,
+      80
+    ],
+    "expected_formal_config": {
+      "exposure_s_per_anchor": 20000.0,
+      "signal_probe_trials_per_anchor": 2000000
+    },
+    "exposure_s_per_anchor": 20000.0,
+    "formal_authority_config_match": true,
+    "run_classification": "FORMAL_AUTHORITY_CONFIG_MATCH",
+    "signal_probe_trials_per_anchor": 2000000,
+    "status": "PASS__FIVE_ANCHOR_RECEIPTS_COMPLETE"
+  },
+  "unresolved": [
+    "joint propagation of finite-template uncertainty, common-axis replay MC, signal efficiency, and model/source/response systematics",
+    "a valid non-equal-weight interval construction for gamma-continuum and delayed mixtures",
+    "quality-model-B conditional sensitivity remains conditional until the joint uncertainty treatment is completed"
+  ]
+}

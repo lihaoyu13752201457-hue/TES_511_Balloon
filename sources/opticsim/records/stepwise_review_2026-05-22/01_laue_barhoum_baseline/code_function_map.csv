@@ -1,0 +1,11 @@
+file,line,symbol,role,review_focus
+external_baseline/laue_raytrace_py/mosaic_darwin.py,56,bragg_angle_rad,由能量和晶面间距计算 Bragg 角。,能量单位 keV、d-spacing 单位 Angstrom 是否一致。
+external_baseline/laue_raytrace_py/mosaic_darwin.py,132,darwin_mosaic_probabilities,给出 p_diff、p_abs、p_trans 的物理概率。,吸收项、mosaic 权重、概率归一化。
+external_baseline/laue_raytrace_py/build_mosaic_darwin_table.py,104,_write_table,扫描 delta-theta 并写出 Darwin 概率表。,delta 网格范围、mosaic arcsec、厚度。
+geant4_app/src/optics/LaueEfficiencyTable.cc,55,ValidateProbabilities,检查三分支概率非负且和为 1。,这是防止表损坏的第一道闸。
+geant4_app/src/optics/LaueEfficiencyTable.cc,156,LaueEfficiencyTable::Lookup,按材料/晶面/能量找最近能量，并按 delta-theta 插值。,是否误用最近能量、是否 clamp 到表边界。
+geant4_app/src/laue_multiring_table_demo.cc,191,LoadRingConfig,读取五环 Ge(111) 配置并核对半径与 Bragg 半径。,半径是否由 F*tan(2thetaB) 支持。
+geant4_app/src/laue_multiring_table_demo.cc,300,MultiRingRunState::Record,记录 ABSORB/TRANSMIT/DIFFRACT，写 phase_space 和 history。,输出 schema 和 stage 语义。
+geant4_app/src/laue_multiring_table_demo.cc,504,MultiRingProcess::PostStepDoIt,Geant4 离散过程：边界触发、查表、抽样、生成二次 gamma。,只作用 primary gamma 和 LaueCrystal 边界。
+geant4_app/src/laue_multiring_table_demo.cc,566,MultiRingDetectorConstruction::Construct,把 ring/tile 放进 Geant4 world。,copy number 与 ring/tile 对应。
+geant4_app/src/laue_multiring_table_demo.cc,650,main,装配 options、geometry、table、process、primary generator，并 BeamOn。,输入文件和 seed 是否是记录中的版本。

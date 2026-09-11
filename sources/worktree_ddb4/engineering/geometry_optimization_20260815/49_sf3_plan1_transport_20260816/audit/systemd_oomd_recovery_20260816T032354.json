@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "status": "PASS__SF3_SYSTEMD_OOMD_INTERRUPTION_AUDITED_FOR_FOUR_WORKER_RECOVERY",
+  "audited_at": "2026-08-15T19:29:03Z",
+  "root_cause": "SYSTEMD_OOMD_KILLED_12_PROCESSES_IN_SF3_PLAN1_SERVICE_CGROUP",
+  "systemd_unit": "sf3-plan1-bg.service",
+  "systemd_result": "signal",
+  "main_process_signal": "KILL",
+  "completed_receipts_preserved": 8,
+  "isolated_interrupted_jobs": [
+    "sf3_buildup_gamma_shard0003",
+    "sf3_instant_alpha_shard0001",
+    "sf3_instant_eminus_shard0001",
+    "sf3_instant_eplus_shard0001",
+    "sf3_instant_n_shard0001",
+    "sf3_instant_p_shard0001"
+  ],
+  "partial_artifact_bytes_retained": 1873981816,
+  "partial_sim_digest_policy": "NOT_HASHED_BY_CONTRACT",
+  "statistics_policy": "INTERRUPTED_PARTIALS_EXCLUDED",
+  "retry_policy": "RETRY_WHOLE_JOB_FROM_EVENT_ZERO_WITH_REGISTERED_SEED; INFRASTRUCTURE_INTERRUPTION_DOES_NOT_CONSUME_ATTEMPT_ORDINAL",
+  "stability_policy_change": {
+    "old_controller_cpu_budget": 6,
+    "intermediate_systemd_cpu_quota_cores": 5,
+    "new_controller_cpu_budget": 4,
+    "new_systemd_cpu_quota_cores": 4,
+    "global_oom_protection_disabled": false
+  },
+  "resource_snapshot_after_kill": {
+    "mem_available_bytes": 9628336128,
+    "swap_free_bytes": 14314020864,
+    "disk_free_bytes": 63269269504,
+    "memory_psi_some_avg10": 0.0,
+    "memory_psi_full_avg10": 0.0,
+    "io_psi_some_avg10": 0.0,
+    "io_psi_full_avg10": 0.0,
+    "mem_floor_bytes": 1610612736,
+    "swap_floor_bytes": 8589934592,
+    "disk_reserve_bytes": 8589934592,
+    "pass": true
+  }
+}

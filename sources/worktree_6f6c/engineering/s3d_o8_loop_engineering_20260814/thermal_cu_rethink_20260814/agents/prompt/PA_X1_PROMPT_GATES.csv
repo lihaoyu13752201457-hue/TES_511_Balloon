@@ -1,0 +1,41 @@
+section,metric,value,unit,evidence_class,decision_use
+signal,focused_eventlist_rows,37194,rays,FACT,full denominator
+signal,theta_from_plus_IFx_max,0.4598017220,deg,FACT,narrow signal cone
+signal,ray_only_min_square_halfwidth,1.4373777925,cm,FACT,mathematical footprint only
+signal,square_halfwidth_1p45_acceptance,1.0000000000,fraction,FACT,straight INIT rays; no alignment or transport margin
+signal,geometry_preserving_square_halfwidth,1.8500000000,cm,GEOMETRY_BOUND,preserves Si/support clear aperture
+prompt_4to8MeV,incident_histories,111410,histories,FACT,complete incident denominator
+prompt_4to8MeV,straight_TES_box_intersections,273,histories,GEOMETRY_OPPORTUNITY,not a leakage denominator
+prompt_4to8MeV,straight_TES_front_face,20,histories,GEOMETRY_OPPORTUNITY,7.3260 percent of direct TES aims
+prompt_4to8MeV,straight_TES_nonfront_faces,253,histories,GEOMETRY_OPPORTUNITY,92.6740 percent of direct TES aims
+prompt_leaks,event_3883_TES511_entry,side_z+,class,FACT,Nb pair; MuMetal annihilation
+prompt_leaks,event_19932_TES511_entry,side_z+,class,FACT,Cu pair and annihilation
+prompt_leaks,event_8081_TES511_entry,direct_to_L5_then_in_TES_COMP,class,FACT,full-six-layer erratum; prior L0-L4 analysis box omitted L5
+joint_gate,baseline_preserving_G20,27073.008579,counts,FACT,do not use stale AF1 gate 27341.924743
+joint_gate,P20,55398.979434,counts,FACT,baseline prompt planning term
+joint_gate,D20,88804.862652,counts,FACT,official selected delayed
+joint_gate,P_after_4cm_BGO_proxy,18367.102776,counts,SCALING_ONLY,P20*exp(-0.276*4)
+joint_gate,D_allowed_after_4cm_BGO,8705.905803,counts,SCALING_ONLY,G20-P_after
+PA_X1_ideal,ray_footprint_plus_unknown_bypass_fraction,0.0031483522,fraction,GEOMETRY_OPPORTUNITY,optimistic lower bound
+PA_X1_ideal,Cu_minimum_chord_after_4cm_BGO,3.140091,cm,SCALING_ONLY,uses mu511_Cu=0.749 cm^-1 and ignores buildup/self-activation
+PA_X1_ideal,Cu_minimum_chord_after_BG_TAU5,2.308064,cm,SCALING_ONLY,still exceeds worst geometric clearance
+PA_X1_physical_aperture,xminus_plus_unknown_bypass_fraction,0.0776747277,fraction,GEOMETRY_OPPORTUNITY,all observed xminus entries fit preserved aperture
+PA_X1_physical_aperture,Cu_required_rejected_chord_after_4cm_BGO,5.091263,cm,SCALING_ONLY,uses mu511_Cu=0.749 cm^-1
+geometry,Nb_inner_radius,4.000000,cm,FACT,frozen magnetic shield
+geometry,preserved_clear_halfwidth,1.850000,cm,FACT,Si substrate/support envelope
+geometry,max_face_center_radial_thickness,2.150000,cm,FACT,R_Nb-inner minus clear halfwidth
+geometry,max_square_corner_radial_thickness,1.383705,cm,FACT,R_Nb-inner minus sqrt(2)*clear halfwidth
+geometry,max_xplus_extra_thickness,0.410000,cm,FACT,L5/L0/cold-finger zero-gap envelope
+geometry,zplus_Mu_to_MXC_gap,0.450000,cm,FACT,no continuous outward Cu layer
+geometry,zminus_Mu_to_can_gap,0.050000,cm,FACT,no continuous outward Cu layer
+geometry_crosscheck,max_fill_plus_L0_can_delayed_suppression,0.6277476523,fraction,OPTIMISTIC_CEILING,two missing lineages fully deleted and any interaction credited
+geometry_crosscheck,delayed_residual_even_prompt_zero,0.0202802157,cps,OPTIMISTIC_CEILING,still above baseline-S20 gate equivalent 0.0160095493 cps
+material_scale,Al_chord_for_0p90197_any_interaction_511,10.288337,cm,SCALING_ONLY,low-Z cannot fit
+material_scale,BPEproxy_chord_for_0p90197_any_interaction_511,19.033271,cm,SCALING_ONLY,low-Z cannot fit
+material_scale,Cu_5p77MeV_pair_probability_at_3p140091cm,0.2534403,fraction,SCALING_ONLY,new near-TES pair-host risk
+material_scale,Cu_5p77MeV_total_interaction_at_3p140091cm,0.5828835,fraction,SCALING_ONLY,host migration risk
+material_scale,Cu_511_any_interaction_at_3p140091cm,0.9019783,fraction,SCALING_ONLY,optimistic removal proxy only
+activation,baseline_structural_Cu_D20,59252.576459,counts,FACT,not a per-mass coefficient; candidate production/coupling remains unknown
+verdict,angular_separation_mechanism,KEEP,,DECISION,real signal/background phase-space separation
+verdict,PA_X1_nearfield_passive_implementation,KILL,,DECISION,required uniform chord cannot fit; low-Z alternative is thicker
+verdict,focused_transport,DO_NOT_RUN,,DECISION,analytic geometry/material gate already fails

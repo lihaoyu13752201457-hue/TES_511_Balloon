@@ -1,0 +1,185 @@
+{
+  "document_type": "mass_model_511_fullchain_product_locator",
+  "generated_at_utc": "2026-07-02T15:54:10Z",
+  "status": "MASS_MODEL_511_FULLCHAIN_PARTIAL_ONLY_FIX5_FULLCHAIN_COMPLETE",
+  "topline_conclusion": "The complete publication full-chain located in the workspace is fix5_fullstat_v2_exactpos_m50000_s260613. For Mass_model_511, full-stat prompt and buildup transports are present and certified; full-stat delayed transport and downstream Step05-Step08/P1-P3 replay are not located.",
+  "no_new_simulation_run": true,
+  "mass_model_511": {
+    "geometry": "outputs/geometry/DEMO2_DR_v3p5_Mass_model_511_stage_diam_300_300_300_350_350_400_20260701_megalib_proxy/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup",
+    "smoke_closure": {
+      "status": "PASS_SMOKE_MATRIX_CLOSURE",
+      "path": "engineering/Mass_model_511_nearfield_migration_20260701/06_smoke_closure/mass_model_511_smoke_closure.json",
+      "claim_boundary": "smoke-matrix Step05 closure only"
+    },
+    "fullstat_prompt": {
+      "scope": "Mass_model_511 fullstat instant",
+      "status": "PASS_LOCATED_AND_CERTIFIED",
+      "run_dir": "runs/Mass_model_511_nearfield_migration_20260701/step02_instant_candidate_Mass_model_511_fullstat_v1",
+      "exists": true,
+      "run_summary": "runs/Mass_model_511_nearfield_migration_20260701/step02_instant_candidate_Mass_model_511_fullstat_v1/run_summary.json",
+      "normalization": "runs/Mass_model_511_nearfield_migration_20260701/step02_instant_candidate_Mass_model_511_fullstat_v1/normalization.json",
+      "sim_count": 68,
+      "dat_count": 68,
+      "run_summary_rows": 68,
+      "status_counts": {
+        "SKIP": 68
+      },
+      "pass_or_skip_rows": 68,
+      "events_requested": 25210216,
+      "events_generated": 25210216,
+      "unique_geometry_headers": [
+        {
+          "geometry": "  /home/ubuntu/TES_511_Balloon/outputs/geometry/DEMO2_DR_v3p5_Mass_model_511_stage_diam_300_300_300_350_350_400_20260701_megalib_proxy/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup",
+          "count": 68
+        }
+      ],
+      "bad_geometry_examples": [],
+      "evidence": [
+        "engineering/Mass_model_511_nearfield_migration_20260701/07_fullchain_execution_20260702/fullchain_execution_manifest.json",
+        "engineering/Mass_model_511_nearfield_migration_20260701/12_review_20260702/stage1_transport_postrun_review_20260702.json"
+      ],
+      "claim_boundary": "Transport output presence only; not Step05 rate authority by itself."
+    },
+    "fullstat_buildup": {
+      "scope": "Mass_model_511 fullstat buildup",
+      "status": "PASS_LOCATED_AND_CERTIFIED",
+      "run_dir": "runs/Mass_model_511_nearfield_migration_20260701/step02_buildup_candidate_Mass_model_511_fullstat_v1",
+      "exists": true,
+      "run_summary": "runs/Mass_model_511_nearfield_migration_20260701/step02_buildup_candidate_Mass_model_511_fullstat_v1/run_summary.json",
+      "normalization": "runs/Mass_model_511_nearfield_migration_20260701/step02_buildup_candidate_Mass_model_511_fullstat_v1/normalization.json",
+      "sim_count": 68,
+      "dat_count": 68,
+      "run_summary_rows": 68,
+      "status_counts": {
+        "PASS": 68
+      },
+      "pass_or_skip_rows": 68,
+      "events_requested": 25210216,
+      "events_generated": 25210216,
+      "unique_geometry_headers": [
+        {
+          "geometry": "  /home/ubuntu/TES_511_Balloon/outputs/geometry/DEMO2_DR_v3p5_Mass_model_511_stage_diam_300_300_300_350_350_400_20260701_megalib_proxy/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup",
+          "count": 68
+        }
+      ],
+      "bad_geometry_examples": [],
+      "evidence": [
+        "engineering/Mass_model_511_nearfield_migration_20260701/07_fullchain_execution_20260702/fullchain_execution_manifest.json",
+        "engineering/Mass_model_511_nearfield_migration_20260701/12_review_20260702/stage1_transport_postrun_review_20260702.json"
+      ],
+      "claim_boundary": "Transport output presence only; not Step05 rate authority by itself."
+    },
+    "stage1_review": {
+      "status": "PASS_STAGE1_PROMPT_BUILDUP_TRANSPORT",
+      "review_decision": {
+        "stage1_prompt_buildup_transport": "PASS",
+        "instant_skip_summary": "ACCEPTED_WITH_CSV_BOOLEAN_CAVEAT",
+        "full_stat_detector_background_campaign": "NOT_PASS_DELAYED_NOT_PREPARED",
+        "enter_stage2_delayed_fullstat": "YES"
+      },
+      "path": "engineering/Mass_model_511_nearfield_migration_20260701/12_review_20260702/stage1_transport_postrun_review_20260702.json"
+    },
+    "missing_or_not_located_standard_products": [
+      {
+        "path": "runs/Mass_model_511_nearfield_migration_20260701/step02_decay_source_candidate_Mass_model_511_fullstat_v1",
+        "exists": false,
+        "kind": "dir"
+      },
+      {
+        "path": "runs/Mass_model_511_nearfield_migration_20260701/step02_delay_fix_candidate_Mass_model_511_fullstat_v1",
+        "exists": false,
+        "kind": "dir"
+      },
+      {
+        "path": "runs/Mass_model_511_nearfield_migration_20260701/step02_delay_exactpos_candidate_Mass_model_511_fullstat_v1",
+        "exists": false,
+        "kind": "dir"
+      },
+      {
+        "path": "runs/Mass_model_511_nearfield_migration_20260701/step02_delayed_transport_candidate_Mass_model_511_fullstat_v1",
+        "exists": false,
+        "kind": "dir"
+      },
+      {
+        "path": "stepwise_maintenance/step05_veto_time_axis/outputs_Mass_model_511_fullstat_v1_l1",
+        "exists": false,
+        "kind": "dir"
+      },
+      {
+        "path": "stepwise_maintenance/step06_mission_time_variation/outputs_Mass_model_511_fullstat_v1",
+        "exists": false,
+        "kind": "dir"
+      },
+      {
+        "path": "stepwise_maintenance/step07_source_cases/outputs_Mass_model_511_fullstat_v1",
+        "exists": false,
+        "kind": "dir"
+      },
+      {
+        "path": "stepwise_maintenance/step08_significance/outputs_Mass_model_511_fullstat_v1",
+        "exists": false,
+        "kind": "dir"
+      }
+    ]
+  },
+  "fix5_paper_authority": {
+    "scope": "paper authority complete chain, not Mass_model_511 geometry",
+    "status": "PASS_FIX5_FULLSTAT_CLOSURE",
+    "decision": "PASS_FIX5_REPLACES_V3P5",
+    "label": "fix5_fullstat_v2_exactpos_m50000_s260613",
+    "geometry": "outputs/geometry/DEMO2_DR_v3p5_user_cylmag_redesign_multiholeW_fix5_20260621_megalib_proxy/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup",
+    "evidence_paths": [
+      "outputs/reports/fix5_fullstat_v2_exactpos_m50000_s260613/fix5_final_closure_report.json",
+      "outputs/reports/fix5_fullstat_v2_exactpos_m50000_s260613/fix5_promotion_decision.json",
+      "runs/step02_instant_fix5_fullstat_v2",
+      "runs/step02_buildup_fix5_fullstat_v2",
+      "runs/step02_decay_source_fix5_fullstat_v2",
+      "runs/step02_delay_fix_fix5_fullstat_v2",
+      "runs/step02_delayed_transport_fix5_fullstat_v2_exactpos_m50000_s260613",
+      "stepwise_maintenance/step05_veto_time_axis/outputs_fix5_fullstat_v2_exactpos_m50000_s260613_l1",
+      "stepwise_maintenance/step06_mission_time_variation/outputs_fix5_fullstat_v2_exactpos_m50000_s260613",
+      "stepwise_maintenance/step07_source_cases/outputs_fix5_fullstat_v2_exactpos_m50000_s260613",
+      "stepwise_maintenance/step08_significance/outputs_fix5_fullstat_v2_exactpos_m50000_s260613",
+      "stepwise_maintenance/step09_optics_bridge/outputs_fix5_fullstat_v2_exactpos_m50000_s260613"
+    ],
+    "can_support_current_paper_numbers": true,
+    "can_support_mass_model_511_replacement_claim": false
+  },
+  "p1_p2_p3_updates": {
+    "status": "FOUND_FIX5_DERIVED_NOT_MASS_MODEL_511_REPLAY",
+    "paths": [
+      "engineering/paper_review_p1_p2_p3_data_check_20260702/outputs/p1_linewidth_sensitivity_summary.json",
+      "engineering/paper_review_p1_p2_p3_data_check_20260702/outputs/p2_atm511_transfer_summary.json",
+      "engineering/paper_review_p1_p2_p3_data_check_20260702/outputs/paper_data_sufficiency_summary_20260702.md"
+    ],
+    "claim_boundary": "These update the fix5 paper authority; they are carry-forward inputs, not Mass_model_511 full-chain replay products."
+  },
+  "excluded_found_products": [
+    {
+      "scope": "nearfield_mass_impact_20260625 fullstat products",
+      "status": "FOUND_BUT_EXCLUDED_OLD_NF2_BRANCH",
+      "path": "engineering/nearfield_mass_impact_20260625/05_detector_fullstat",
+      "reason": "AGENTS and package bootstrap say not to overwrite or reinterpret this branch as Mass_model_511."
+    },
+    {
+      "scope": "BGO matched P2 products",
+      "status": "FOUND_BUT_EXCLUDED_BGO_BRANCH",
+      "path": "engineering/background_validation_20260624/06_bgo_matched_runs/p2",
+      "reason": "Different BGO validation branch, not Mass_model_511 candidate geometry."
+    }
+  ],
+  "accepted_next_use": {
+    "do_not_rerun": [
+      "Mass_model_511 full-stat prompt transport",
+      "Mass_model_511 full-stat buildup transport",
+      "fix5 paper-authority full chain"
+    ],
+    "remaining_mass_model_511_gaps_if_replacement_is_required": [
+      "Mass_model_511 full-stat delayed source and delayed transport",
+      "Mass_model_511 full-stat Step05 detector-response release",
+      "Mass_model_511 no-material-effect/replacement comparison against fix5 authority",
+      "Mass_model_511 Step06-Step08 mission/source/significance regeneration",
+      "Mass_model_511-specific P1/P2/P3 replay"
+    ]
+  }
+}

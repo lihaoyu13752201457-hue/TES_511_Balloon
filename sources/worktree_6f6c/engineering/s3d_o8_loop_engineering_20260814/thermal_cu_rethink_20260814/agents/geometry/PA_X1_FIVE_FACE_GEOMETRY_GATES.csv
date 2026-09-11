@@ -1,0 +1,26 @@
+scope,face_or_metric,value,unit,gate_tau5_cm,gate_plus4cm_cm,verdict,note
+focused_signal,retained_eventlist_rays,37194,rows,,,PASS,post-Be denominator
+focused_signal,max_abs_y_over_xspan,1.4434481169,cm,,,PASS,x_IF=-3.80 to 3.235 cm
+focused_signal,max_abs_zrel_over_xspan,1.3612391399,cm,,,PASS,zrel=z_IF+5.2 cm
+focused_signal,square_clear_halfwidth,1.85,cm,,,PASS,Si halfwidth=1.8 cm and support inner face=1.85 cm
+focused_signal,intersected_rays,0,rows,,,PASS,0 of 37194
+real_envelope,Nb_inner_radius,4.0,cm,2.308064,3.140091,FACT,baseline closed Nb cylinder
+real_envelope,face_center_available_Cu,2.15,cm,2.308064,3.140091,KILL,4.0-1.85
+real_envelope,square_corner_available_Cu,1.3837049096,cm,2.308064,3.140091,KILL,4.0-sqrt(2)*1.85
+real_envelope,xplus_L0_baseline_chord,0.35,cm,2.308064,3.140091,KILL,L0 x=3.245 to 3.595 cm
+real_envelope,xplus_L0_zero_clearance_limit,0.41,cm,2.308064,3.140091,KILL,adds all 0.05 cm front and 0.01 cm back gaps
+real_envelope,zplus_Mu_to_MXC_gap,0.45,cm,2.308064,3.140091,KILL,Mu top z_IF=-0.75 to MXC lower=-0.30 cm
+real_envelope,zminus_Mu_to_can_gap,0.05,cm,2.308064,3.140091,KILL,Mu bottom z_IF=-9.65 to can top=-9.70 cm
+required_envelope,tau5_min_outer_radius_from_corner,4.9243590904,cm,2.308064,3.140091,KILL,exceeds Nb inner radius by 0.924359 cm
+required_envelope,plus4_min_outer_radius_from_corner,5.7563860904,cm,2.308064,3.140091,KILL,exceeds Nb inner radius by 1.756386 cm
+mass_lower_bound,tau5_ideal_side_Cu,3.4441966174,kg,2.308064,3.140091,KILL,does not include back wall services or clearance
+mass_lower_bound,plus4_ideal_side_Cu,5.2028086412,kg,2.308064,3.140091,KILL,does not include back wall services or clearance
+max_bore_counterfactual,R4_full_fill_gross_Cu,2.3039404799,kg,2.308064,3.140091,KILL,zero-clearance cylinder minus 3.7 cm square bore
+max_bore_counterfactual,R4_full_fill_net_added_Cu,2.2346651727,kg,2.308064,3.140091,KILL,replaces 20 panels plus 4 edge rods
+weighted_W2_crosscheck,traceable_rows,418,rows,,,FACT,99.9672 percent mission counts of all420
+weighted_W2_crosscheck,simple_square_tube_positive_chord_rows,300,rows,,,FACT,not a transport efficiency
+weighted_W2_crosscheck,simple_square_tube_mission_fraction,0.7872381444,fraction,,,CEILING,Neff=20.8179
+weighted_W2_crosscheck,simple_square_tube_exp_scale_suppression,0.4209480401,fraction,,,KILL,mu=0.749 cm^-1 and any interaction credited as deletion
+weighted_W2_crosscheck,max_fill_plus_L0_can_exp_scale_traceable,0.6276253728,fraction,,,KILL,intentionally overcredited geometry
+weighted_W2_crosscheck,max_fill_plus_L0_can_exp_scale_all420,0.6277476523,fraction,,,KILL,two missing lineages assumed fully deleted
+weighted_W2_crosscheck,delayed_residual_even_prompt_zero,0.0202802157,cps,,,KILL,above baseline-S20 gate-equivalent 0.0160095493 cps

@@ -1,0 +1,80 @@
+{
+  "schema_version": 1,
+  "package": "seven_family_tes_activation_postprocess_20260812",
+  "status": "PASS__IMPLEMENTED_AND_TESTED__WAITING_FOR_CANONICAL_BATCH0004_FINAL_PASS__NOT_RUN",
+  "prepared_date": "2026-08-12",
+  "authority_state_at_freeze": {
+    "canonical_pin_present": false,
+    "canonical_results_present": false,
+    "pin_probe_exit_code": 2,
+    "pin_probe_status": "WAIT",
+    "authority_written": false,
+    "reason": "batch0004 global contract, all checkpoint authorities, and final PASS authority are not yet published"
+  },
+  "execution_state": {
+    "cosima_started_by_this_package_work": false,
+    "live_attempt_consumed": false,
+    "canonical_postprocess_run": false,
+    "synthetic_transaction_test_run": true,
+    "paper_values_written": false
+  },
+  "implementation_files": [
+    {
+      "role": "analyzer",
+      "path": "engineering/particle_source_unit_repair_20260811/seven_family_tes_activation_postprocess_20260812/code/analyze_seven_family_tes_activation.py",
+      "sha256": "f33e6615cae9ed03af5464cd731a3b7a63c8cdd791ea2dc3e063789deb03bec0",
+      "size_bytes": 96348
+    },
+    {
+      "role": "tests",
+      "path": "engineering/particle_source_unit_repair_20260811/seven_family_tes_activation_postprocess_20260812/tests/test_seven_family_tes_activation.py",
+      "sha256": "39376cad00ccef6d5d901e860c562c109df569f228f1228d9764606ff1d41e0b",
+      "size_bytes": 17134
+    },
+    {
+      "role": "readme",
+      "path": "engineering/particle_source_unit_repair_20260811/seven_family_tes_activation_postprocess_20260812/README.md",
+      "sha256": "ff2d8e4c42daf27ccb5e6019d745ac1c586e18c61393962e7f2d75a62f9e46b8",
+      "size_bytes": 6665
+    }
+  ],
+  "frozen_dependency": {
+    "role": "gamma_prompt_core",
+    "path": "engineering/particle_source_unit_repair_20260811/gamma5m_postprocess_20260811/code/analyze_gamma5m_prompt_tes.py",
+    "sha256": "537d14c017a563299291f3f362f8b7b4ce341295515c94029de6fa52c2c8d33d",
+    "size_bytes": 103561
+  },
+  "test": {
+    "command": "PYTHONDONTWRITEBYTECODE=1 python3 -m unittest -v engineering.particle_source_unit_repair_20260811.seven_family_tes_activation_postprocess_20260812.tests.test_seven_family_tes_activation",
+    "tests_run": 10,
+    "failures": 0,
+    "errors": 0,
+    "result": "PASS"
+  },
+  "canonical_commands_after_independent_final_PASS": [
+    "python3 engineering/particle_source_unit_repair_20260811/seven_family_tes_activation_postprocess_20260812/code/analyze_seven_family_tes_activation.py --pin-authorities",
+    "python3 engineering/particle_source_unit_repair_20260811/seven_family_tes_activation_postprocess_20260812/code/analyze_seven_family_tes_activation.py --check-inputs-only",
+    "python3 engineering/particle_source_unit_repair_20260811/seven_family_tes_activation_postprocess_20260812/code/analyze_seven_family_tes_activation.py --run"
+  ],
+  "scope": {
+    "geometries": [
+      "mass_model_511",
+      "s3d_o8"
+    ],
+    "families": [
+      "gamma",
+      "n",
+      "eplus",
+      "alpha",
+      "eminus",
+      "muplus",
+      "muminus"
+    ],
+    "prompt_mode": "instant_only",
+    "activation_mode": "buildup_only",
+    "normalization_grain": "geometry/mode/family",
+    "transactional_publication": true,
+    "strict_json": true,
+    "kapton_excluded": true
+  }
+}

@@ -1,0 +1,409 @@
+{
+  "status": "PASS",
+  "claim": "BGO current-v3p5 equal-attenuation total-interaction efficiency match to CsI",
+  "method": "per-part minimax absolute relative slab total-interaction efficiency difference",
+  "tolerance": {
+    "metric": "maximum absolute relative difference in slab total-interaction efficiency",
+    "relative_tolerance": 0.1
+  },
+  "inputs": {
+    "csi_bounds": "geo_refer/DEMO2_DR_v3p5_minpatch_centerfinger_bounds.json",
+    "csi_xsection": {
+      "path": "/home/ubuntu/MEGAlib_Install/megalib-main/resource/examples/geomega/materials/Xsection.Total.CsI.rsp",
+      "name": "Total cross section for CsI",
+      "source_note": "Derived from Geant4 version 1023",
+      "x_note": "X: Energy in keV",
+      "y_note": "Y: Macroscopic cross section in 1/cm",
+      "energy_min_keV": 1.0,
+      "energy_max_keV": 100000000.0
+    },
+    "bgo_xsection": {
+      "path": "/home/ubuntu/MEGAlib_Install/megalib-main/resource/examples/geomega/materials/Xsection.Total.BGO.rsp",
+      "name": "Total cross section for BGO",
+      "source_note": "Derived from Geant4 version 1023",
+      "x_note": "X: Energy in keV",
+      "y_note": "Y: Macroscopic cross section in 1/cm",
+      "energy_min_keV": 1.0,
+      "energy_max_keV": 100000000.0
+    }
+  },
+  "energies": [
+    {
+      "energy_keV": 511.0,
+      "label": "annihilation_line"
+    },
+    {
+      "energy_keV": 662.0,
+      "label": "Cs137_reference"
+    },
+    {
+      "energy_keV": 1173.2,
+      "label": "Co60_line"
+    },
+    {
+      "energy_keV": 1332.5,
+      "label": "Co60_line"
+    },
+    {
+      "energy_keV": 1460.8,
+      "label": "K40_background_line"
+    },
+    {
+      "energy_keV": 1764.5,
+      "label": "Bi214_background_line"
+    },
+    {
+      "energy_keV": 2614.5,
+      "label": "Tl208_background_line"
+    }
+  ],
+  "source_csi_thickness_cm": {
+    "side": 4.0,
+    "bottom": 5.999999999999998,
+    "top": 3.0
+  },
+  "recommended_bgo_thickness_cm": {
+    "side": 2.137,
+    "bottom": 3.287,
+    "top": 1.582
+  },
+  "step_cm": 0.001,
+  "max_abs_relative_difference": 0.07311828916996332,
+  "by_part": {
+    "side": {
+      "csi_thickness_cm": 4.0,
+      "bgo_thickness_cm": 2.137,
+      "max_abs_relative_difference": 0.05828736512969403,
+      "passes_tolerance": true
+    },
+    "bottom": {
+      "csi_thickness_cm": 5.999999999999998,
+      "bgo_thickness_cm": 3.287,
+      "max_abs_relative_difference": 0.03428649648314885,
+      "passes_tolerance": true
+    },
+    "top": {
+      "csi_thickness_cm": 3.0,
+      "bgo_thickness_cm": 1.582,
+      "max_abs_relative_difference": 0.07311828916996332,
+      "passes_tolerance": true
+    }
+  },
+  "rows": [
+    {
+      "part": "side",
+      "energy_keV": 511.0,
+      "energy_label": "annihilation_line",
+      "mu_csi_cm_inv": 0.43121842494295587,
+      "mu_bgo_cm_inv": 0.953652858071438,
+      "mu_csi_over_mu_bgo": 0.4521754654151662,
+      "csi_thickness_cm": 4.0,
+      "bgo_thickness_cm": 2.137,
+      "csi_efficiency": 0.8218044435088622,
+      "bgo_efficiency": 0.8697052591728682,
+      "relative_difference": 0.05828736512969403,
+      "abs_relative_difference": 0.05828736512969403,
+      "within_tolerance": true
+    },
+    {
+      "part": "side",
+      "energy_keV": 662.0,
+      "energy_label": "Cs137_reference",
+      "mu_csi_cm_inv": 0.3476580542391637,
+      "mu_bgo_cm_inv": 0.7045086818029105,
+      "mu_csi_over_mu_bgo": 0.4934758977695929,
+      "csi_thickness_cm": 4.0,
+      "bgo_thickness_cm": 2.137,
+      "csi_efficiency": 0.7510821152324069,
+      "bgo_efficiency": 0.7781014654159335,
+      "relative_difference": 0.03597389637638496,
+      "abs_relative_difference": 0.03597389637638496,
+      "within_tolerance": true
+    },
+    {
+      "part": "side",
+      "energy_keV": 1173.2,
+      "energy_label": "Co60_line",
+      "mu_csi_cm_inv": 0.23773231431061512,
+      "mu_bgo_cm_inv": 0.4262020485449081,
+      "mu_csi_over_mu_bgo": 0.5577925191168238,
+      "csi_thickness_cm": 4.0,
+      "bgo_thickness_cm": 2.137,
+      "csi_efficiency": 0.6136181915150953,
+      "bgo_efficiency": 0.5977951639570924,
+      "relative_difference": -0.02578643817409324,
+      "abs_relative_difference": 0.02578643817409324,
+      "within_tolerance": true
+    },
+    {
+      "part": "side",
+      "energy_keV": 1332.5,
+      "energy_label": "Co60_line",
+      "mu_csi_cm_inv": 0.22138832100136493,
+      "mu_bgo_cm_inv": 0.3910385621733405,
+      "mu_csi_over_mu_bgo": 0.5661547029298543,
+      "csi_thickness_cm": 4.0,
+      "bgo_thickness_cm": 2.137,
+      "csi_efficiency": 0.5875141117128112,
+      "bgo_efficiency": 0.5664071883813644,
+      "relative_difference": -0.0359258150751693,
+      "abs_relative_difference": 0.0359258150751693,
+      "within_tolerance": true
+    },
+    {
+      "part": "side",
+      "energy_keV": 1460.8,
+      "energy_label": "K40_background_line",
+      "mu_csi_cm_inv": 0.21111389575642084,
+      "mu_bgo_cm_inv": 0.37026116447951535,
+      "mu_csi_over_mu_bgo": 0.5701756381963216,
+      "csi_thickness_cm": 4.0,
+      "bgo_thickness_cm": 2.137,
+      "csi_efficiency": 0.5702087198022359,
+      "bgo_efficiency": 0.5467212989140404,
+      "relative_difference": -0.04119091846989209,
+      "abs_relative_difference": 0.04119091846989209,
+      "within_tolerance": true
+    },
+    {
+      "part": "side",
+      "energy_keV": 1764.5,
+      "energy_label": "Bi214_background_line",
+      "mu_csi_cm_inv": 0.19380237876063594,
+      "mu_bgo_cm_inv": 0.337005774205966,
+      "mu_csi_over_mu_bgo": 0.5750713892581282,
+      "csi_thickness_cm": 4.0,
+      "bgo_thickness_cm": 2.137,
+      "csi_efficiency": 0.5393927332623625,
+      "bgo_efficiency": 0.5133360034374137,
+      "relative_difference": -0.04830752848180232,
+      "abs_relative_difference": 0.04830752848180232,
+      "within_tolerance": true
+    },
+    {
+      "part": "side",
+      "energy_keV": 2614.5,
+      "energy_label": "Tl208_background_line",
+      "mu_csi_cm_inv": 0.171484882722537,
+      "mu_bgo_cm_inv": 0.294855113882506,
+      "mu_csi_over_mu_bgo": 0.5815903291094703,
+      "csi_thickness_cm": 4.0,
+      "bgo_thickness_cm": 2.137,
+      "csi_efficiency": 0.49638315635210895,
+      "bgo_efficiency": 0.46746431969031976,
+      "relative_difference": -0.05825910144556886,
+      "abs_relative_difference": 0.05825910144556886,
+      "within_tolerance": true
+    },
+    {
+      "part": "bottom",
+      "energy_keV": 511.0,
+      "energy_label": "annihilation_line",
+      "mu_csi_cm_inv": 0.43121842494295587,
+      "mu_bgo_cm_inv": 0.953652858071438,
+      "mu_csi_over_mu_bgo": 0.4521754654151662,
+      "csi_thickness_cm": 5.999999999999998,
+      "bgo_thickness_cm": 3.287,
+      "csi_efficiency": 0.9247779256834512,
+      "bgo_efficiency": 0.9564853207800905,
+      "relative_difference": 0.03428649648314885,
+      "abs_relative_difference": 0.03428649648314885,
+      "within_tolerance": true
+    },
+    {
+      "part": "bottom",
+      "energy_keV": 662.0,
+      "energy_label": "Cs137_reference",
+      "mu_csi_cm_inv": 0.3476580542391637,
+      "mu_bgo_cm_inv": 0.7045086818029105,
+      "mu_csi_over_mu_bgo": 0.4934758977695929,
+      "csi_thickness_cm": 5.999999999999998,
+      "bgo_thickness_cm": 3.287,
+      "csi_efficiency": 0.8758107075596782,
+      "bgo_efficiency": 0.9013049057165209,
+      "relative_difference": 0.029109256071872747,
+      "abs_relative_difference": 0.029109256071872747,
+      "within_tolerance": true
+    },
+    {
+      "part": "bottom",
+      "energy_keV": 1173.2,
+      "energy_label": "Co60_line",
+      "mu_csi_cm_inv": 0.23773231431061512,
+      "mu_bgo_cm_inv": 0.4262020485449081,
+      "mu_csi_over_mu_bgo": 0.5577925191168238,
+      "csi_thickness_cm": 5.999999999999998,
+      "bgo_thickness_cm": 3.287,
+      "csi_efficiency": 0.7598265446030545,
+      "bgo_efficiency": 0.7536313120608973,
+      "relative_difference": -0.008153482641743908,
+      "abs_relative_difference": 0.008153482641743908,
+      "within_tolerance": true
+    },
+    {
+      "part": "bottom",
+      "energy_keV": 1332.5,
+      "energy_label": "Co60_line",
+      "mu_csi_cm_inv": 0.22138832100136493,
+      "mu_bgo_cm_inv": 0.3910385621733405,
+      "mu_csi_over_mu_bgo": 0.5661547029298543,
+      "csi_thickness_cm": 5.999999999999998,
+      "bgo_thickness_cm": 3.287,
+      "csi_efficiency": 0.7350806730662437,
+      "bgo_efficiency": 0.7234444997314913,
+      "relative_difference": -0.015829790880250494,
+      "abs_relative_difference": 0.015829790880250494,
+      "within_tolerance": true
+    },
+    {
+      "part": "bottom",
+      "energy_keV": 1460.8,
+      "energy_label": "K40_background_line",
+      "mu_csi_cm_inv": 0.21111389575642084,
+      "mu_bgo_cm_inv": 0.37026116447951535,
+      "mu_csi_over_mu_bgo": 0.5701756381963216,
+      "csi_thickness_cm": 5.999999999999998,
+      "bgo_thickness_cm": 3.287,
+      "csi_efficiency": 0.7182354186308892,
+      "bgo_efficiency": 0.7038971585425378,
+      "relative_difference": -0.01996317602337585,
+      "abs_relative_difference": 0.01996317602337585,
+      "within_tolerance": true
+    },
+    {
+      "part": "bottom",
+      "energy_keV": 1764.5,
+      "energy_label": "Bi214_background_line",
+      "mu_csi_cm_inv": 0.19380237876063594,
+      "mu_bgo_cm_inv": 0.337005774205966,
+      "mu_csi_over_mu_bgo": 0.5750713892581282,
+      "csi_thickness_cm": 5.999999999999998,
+      "bgo_thickness_cm": 3.287,
+      "csi_efficiency": 0.6873948144134762,
+      "bgo_efficiency": 0.6696947261336393,
+      "relative_difference": -0.025749522557774213,
+      "abs_relative_difference": 0.025749522557774213,
+      "within_tolerance": true
+    },
+    {
+      "part": "bottom",
+      "energy_keV": 2614.5,
+      "energy_label": "Tl208_background_line",
+      "mu_csi_cm_inv": 0.171484882722537,
+      "mu_bgo_cm_inv": 0.294855113882506,
+      "mu_csi_over_mu_bgo": 0.5815903291094703,
+      "csi_thickness_cm": 5.999999999999998,
+      "bgo_thickness_cm": 3.287,
+      "csi_efficiency": 0.6426034381994867,
+      "bgo_efficiency": 0.6206093095462892,
+      "relative_difference": -0.03422659660026554,
+      "abs_relative_difference": 0.03422659660026554,
+      "within_tolerance": true
+    },
+    {
+      "part": "top",
+      "energy_keV": 511.0,
+      "energy_label": "annihilation_line",
+      "mu_csi_cm_inv": 0.43121842494295587,
+      "mu_bgo_cm_inv": 0.953652858071438,
+      "mu_csi_over_mu_bgo": 0.4521754654151662,
+      "csi_thickness_cm": 3.0,
+      "bgo_thickness_cm": 1.582,
+      "csi_efficiency": 0.7257335705622199,
+      "bgo_efficiency": 0.7787979676349382,
+      "relative_difference": 0.07311828916996332,
+      "abs_relative_difference": 0.07311828916996332,
+      "within_tolerance": true
+    },
+    {
+      "part": "top",
+      "energy_keV": 662.0,
+      "energy_label": "Cs137_reference",
+      "mu_csi_cm_inv": 0.3476580542391637,
+      "mu_bgo_cm_inv": 0.7045086818029105,
+      "mu_csi_over_mu_bgo": 0.4934758977695929,
+      "csi_thickness_cm": 3.0,
+      "bgo_thickness_cm": 1.582,
+      "csi_efficiency": 0.6475949880601559,
+      "bgo_efficiency": 0.6719314618368663,
+      "relative_difference": 0.03757977474410239,
+      "abs_relative_difference": 0.03757977474410239,
+      "within_tolerance": true
+    },
+    {
+      "part": "top",
+      "energy_keV": 1173.2,
+      "energy_label": "Co60_line",
+      "mu_csi_cm_inv": 0.23773231431061512,
+      "mu_bgo_cm_inv": 0.4262020485449081,
+      "mu_csi_over_mu_bgo": 0.5577925191168238,
+      "csi_thickness_cm": 3.0,
+      "bgo_thickness_cm": 1.582,
+      "csi_efficiency": 0.509925051245276,
+      "bgo_efficiency": 0.49046240488992077,
+      "relative_difference": -0.03816766073332924,
+      "abs_relative_difference": 0.03816766073332924,
+      "within_tolerance": true
+    },
+    {
+      "part": "top",
+      "energy_keV": 1332.5,
+      "energy_label": "Co60_line",
+      "mu_csi_cm_inv": 0.22138832100136493,
+      "mu_bgo_cm_inv": 0.3910385621733405,
+      "mu_csi_over_mu_bgo": 0.5661547029298543,
+      "csi_thickness_cm": 3.0,
+      "bgo_thickness_cm": 1.582,
+      "csi_efficiency": 0.4852968555237338,
+      "bgo_efficiency": 0.461314305560959,
+      "relative_difference": -0.04941830899953552,
+      "abs_relative_difference": 0.04941830899953552,
+      "within_tolerance": true
+    },
+    {
+      "part": "top",
+      "energy_keV": 1460.8,
+      "energy_label": "K40_background_line",
+      "mu_csi_cm_inv": 0.21111389575642084,
+      "mu_bgo_cm_inv": 0.37026116447951535,
+      "mu_csi_over_mu_bgo": 0.5701756381963216,
+      "csi_thickness_cm": 3.0,
+      "bgo_thickness_cm": 1.582,
+      "csi_efficiency": 0.4691849838511436,
+      "bgo_efficiency": 0.4433135712976043,
+      "relative_difference": -0.055141177667671105,
+      "abs_relative_difference": 0.055141177667671105,
+      "within_tolerance": true
+    },
+    {
+      "part": "top",
+      "energy_keV": 1764.5,
+      "energy_label": "Bi214_background_line",
+      "mu_csi_cm_inv": 0.19380237876063594,
+      "mu_bgo_cm_inv": 0.337005774205966,
+      "mu_csi_over_mu_bgo": 0.5750713892581282,
+      "csi_thickness_cm": 3.0,
+      "bgo_thickness_cm": 1.582,
+      "csi_efficiency": 0.44088893269179175,
+      "bgo_efficiency": 0.4132421906240388,
+      "relative_difference": -0.06270681801640898,
+      "abs_relative_difference": 0.06270681801640898,
+      "within_tolerance": true
+    },
+    {
+      "part": "top",
+      "energy_keV": 2614.5,
+      "energy_label": "Tl208_background_line",
+      "mu_csi_cm_inv": 0.171484882722537,
+      "mu_bgo_cm_inv": 0.294855113882506,
+      "mu_csi_over_mu_bgo": 0.5815903291094703,
+      "csi_thickness_cm": 3.0,
+      "bgo_thickness_cm": 1.582,
+      "csi_efficiency": 0.4021734684705661,
+      "bgo_efficiency": 0.3727817985274915,
+      "relative_difference": -0.0730820709154406,
+      "abs_relative_difference": 0.0730820709154406,
+      "within_tolerance": true
+    }
+  ]
+}

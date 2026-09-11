@@ -1,0 +1,24 @@
+{
+  "components": [
+    {
+      "component": "other",
+      "component_id": 0,
+      "time_scaling": "retained mature prompt-family or delayed-isotope policy"
+    },
+    {
+      "component": "gamma_continuum",
+      "component_id": 1,
+      "reference_weight": "pooled prompt-gamma proposal weight times per-event Jcont/Jtotal",
+      "time_scaling": "gamma_continuum_scale_to_reference from trajectory_component_scales_81nodes.csv"
+    },
+    {
+      "component": "atm511",
+      "component_id": 2,
+      "reference_weight": "1/sum(Cosima observation time over independent line shards)",
+      "time_scaling": "source_bin80-specific importance_ratio from mono511_target_81x80.csv"
+    }
+  ],
+  "event_component_dtype": "uint8",
+  "schema_version": 1,
+  "source_bin80_not_applicable": 255
+}

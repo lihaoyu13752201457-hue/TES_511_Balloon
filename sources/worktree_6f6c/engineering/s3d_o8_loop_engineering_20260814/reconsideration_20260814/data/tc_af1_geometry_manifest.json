@@ -1,0 +1,128 @@
+{
+  "base_geometry": "/home/ubuntu/.codex/worktrees/104d/TES_511_Balloon/engineering/geometry_optimization_20260704/43_geoopt_s3d_o8_fallback_20260712/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo",
+  "candidate": "TC-AF1",
+  "copper_material_substitution_count": 60,
+  "copper_material_substitution_volumes": [
+    "Cu_SubstrateSupport_OpenRing_L1_ZP_panel",
+    "Cu_SubstrateSupport_OpenRing_L1_ZM_panel",
+    "Cu_SubstrateSupport_OpenRing_L1_YP_panel",
+    "Cu_SubstrateSupport_OpenRing_L1_YM_panel",
+    "Cu_SubstrateSupport_OpenRing_L2_ZP_panel",
+    "Cu_SubstrateSupport_OpenRing_L2_ZM_panel",
+    "Cu_SubstrateSupport_OpenRing_L2_YP_panel",
+    "Cu_SubstrateSupport_OpenRing_L2_YM_panel",
+    "Cu_SubstrateSupport_OpenRing_L3_ZP_panel",
+    "Cu_SubstrateSupport_OpenRing_L3_ZM_panel",
+    "Cu_SubstrateSupport_OpenRing_L3_YP_panel",
+    "Cu_SubstrateSupport_OpenRing_L3_YM_panel",
+    "Cu_SubstrateSupport_OpenRing_L4_ZP_panel",
+    "Cu_SubstrateSupport_OpenRing_L4_ZM_panel",
+    "Cu_SubstrateSupport_OpenRing_L4_YP_panel",
+    "Cu_SubstrateSupport_OpenRing_L4_YM_panel",
+    "Cu_SubstrateSupport_OpenRing_L5_ZP_panel",
+    "Cu_SubstrateSupport_OpenRing_L5_ZM_panel",
+    "Cu_SubstrateSupport_OpenRing_L5_YP_panel",
+    "Cu_SubstrateSupport_OpenRing_L5_YM_panel",
+    "Cu_SubstrateSupport_SolidDisk_L0_deepest",
+    "Cu_SubstrateSupport_EdgeRod_1",
+    "Cu_SubstrateSupport_EdgeRod_2",
+    "Cu_SubstrateSupport_EdgeRod_3",
+    "Cu_SubstrateSupport_EdgeRod_4",
+    "Cu_ColdFinger_OffAxis_YP_ZP_from_Disk_to_Stem",
+    "Cu_ColdFinger_OffAxis_YM_ZP_from_Disk_to_Stem",
+    "Cu_ColdFinger_OffAxis_YP_ZM_from_Disk_to_Stem",
+    "Cu_ColdFinger_OffAxis_YM_ZM_from_Disk_to_Stem",
+    "Cu_ColdFinger_Stem_YP_ZP_to_MXC",
+    "Cu_ColdFinger_Stem_YM_ZP_to_MXC",
+    "Cu_ColdFinger_Stem_YP_ZM_to_MXC",
+    "Cu_ColdFinger_Stem_YM_ZM_to_MXC",
+    "Cu_MXC_Clamp_Pad_YP_ZP_for_OffAxisStem",
+    "Cu_MXC_Clamp_Pad_YM_ZP_for_OffAxisStem",
+    "Cu_MXC_Clamp_Pad_YP_ZM_for_OffAxisStem",
+    "Cu_MXC_Clamp_Pad_YM_ZM_for_OffAxisStem",
+    "Cu_50mK_StillLike_Can_bottom_cap_2mm",
+    "Cu_50mK_StillLike_Can_side_wall_below_side_port",
+    "Cu_50mK_StillLike_Can_side_wall_above_side_port",
+    "Cu_50mK_StillLike_Can_side_wall_rectcut_window_band",
+    "ColdPlate_MXC_50mK_SD_anchor",
+    "ColdPlate_CP_100mK_intercept",
+    "ColdPlate_Still_0p7K",
+    "ColdPlate_4K",
+    "XS400_Group2_Cu_Coarse_LowerOpenCollar_4K60K",
+    "XS400_Group2_Cu_Coarse_MainVerticalStack_4K60K",
+    "XS400_Group2_Cu_Coarse_SideSleeve_4K60K",
+    "XS400_Group2_Cu_Coarse_NorthContactBlock_4K60K",
+    "XS400_Group2_Cu_Coarse_TopOpenCollar_4K60K",
+    "XS400_Group2_Cu_Coarse_ServiceCan_60K300K",
+    "XS400_Group2_Cu_Coarse_OffAxisContactBlock_60K300K",
+    "XS400_Group2_Cu_Coarse_CurvedManifoldArc_60K300K",
+    "XS400_Group3_Cu_Coarse_LowerFlange_4K60K",
+    "XS400_Group3_Cu_Coarse_DualThermalTabs_4K60K",
+    "XS400_Group3_Cu_Coarse_TopFlange_4K60K",
+    "DR_MixingChamber_Cu",
+    "DR_Still_Pot_Cu",
+    "DR_4K_Condenser_Cu",
+    "PreCool_FlexLink_Cu_remote_interface"
+  ],
+  "declared_edits": [
+    {
+      "label": "all 60 explicitly modeled passive Copper volumes -> Aluminium in place",
+      "new": "<same 60 volume-specific .Material Aluminium declarations>",
+      "old": "<60 volume-specific .Material Copper declarations>"
+    },
+    {
+      "label": "Nb sleeve wall 2.0 -> 0.5 mm at fixed r=4.0 cm bore",
+      "new": "Nb_MagShield_Inner_Cylinder_2mm.Shape PCON 0 360 2 -3.85 4 4.05 4.1 4 4.05",
+      "old": "Nb_MagShield_Inner_Cylinder_2mm.Shape PCON 0 360 2 -3.85 4 4.2 4.1 4 4.2"
+    },
+    {
+      "label": "Nb back cap 2.0 -> 0.5 mm with unchanged r=1.85 cm opening",
+      "new": "Nb_MagShield_Inner_Back_ColdFingerCap_2mm.Shape PCON 0 360 2 4.1 1.85 4.05 4.15 1.85 4.05",
+      "old": "Nb_MagShield_Inner_Back_ColdFingerCap_2mm.Shape PCON 0 360 2 4.1 1.85 4.2 4.3 1.85 4.2"
+    },
+    {
+      "label": "MuMetal sleeve wall 2.0 -> 0.5 mm at fixed r=4.25 cm bore",
+      "new": "MuMetal_MagShield_Outer_Cylinder_2mm.Shape PCON 0 360 2 -4.35 4.25 4.3 4.3 4.25 4.3",
+      "old": "MuMetal_MagShield_Outer_Cylinder_2mm.Shape PCON 0 360 2 -4.35 4.25 4.45 4.3 4.25 4.45"
+    },
+    {
+      "label": "MuMetal back cap 2.0 -> 0.5 mm with unchanged r=1.85 cm opening",
+      "new": "MuMetal_MagShield_Outer_Back_ColdFingerCap_2mm.Shape PCON 0 360 2 4.3 1.85 4.3 4.35 1.85 4.3",
+      "old": "MuMetal_MagShield_Outer_Back_ColdFingerCap_2mm.Shape PCON 0 360 2 4.3 1.85 4.45 4.5 1.85 4.45"
+    },
+    {
+      "label": "existing top BGO channel inner radius 20.9 -> 4.0 cm at fixed 10 mm thickness",
+      "new": "BGO_S3D_O8_FullWrap_TopAnnulus_10mm_BasePconShape.Parameters 0 360 2 -0.5 4 25.2 0.5 4 25.2",
+      "old": "BGO_S3D_O8_FullWrap_TopAnnulus_10mm_BasePconShape.Parameters 0 360 2 -0.5 20.9 25.2 0.5 20.9 25.2"
+    }
+  ],
+  "detector": "engineering/s3d_o8_loop_engineering_20260814/reconsideration_20260814/geometry/DEMO2_DR_v3p5_S3d_O8_TC_AF1_AlCu_Mag0p5_TopBGO4cm_20260814.det",
+  "engineering_falsifiers": [
+    "Any substituted Cu volume is an irreplaceable readout conductor rather than passive thermal/structural bulk.",
+    "Aluminium at the relevant thermal stage cannot meet heat-flow, contact, stiffness, magnetic, or launch requirements.",
+    "0.5 mm Nb or MuMetal fails the agreed magnetic field/noise/field-cool qualification.",
+    "The as-built top service keep-out requires radius greater than 4 cm or cannot share the existing top-BGO readout."
+  ],
+  "geometry": "engineering/s3d_o8_loop_engineering_20260814/reconsideration_20260814/geometry/DEMO2_DR_v3p5_S3d_O8_TC_AF1_AlCu_Mag0p5_TopBGO4cm_20260814.geo",
+  "known_proxy_mass_kg": {
+    "Mu_0p5mm": 0.12166092440383625,
+    "Mu_baseline": 0.5009109264923597,
+    "Nb_0p5mm": 0.10362498992869698,
+    "Nb_baseline": 0.4275847559488427,
+    "known_net_candidate_minus_baseline": -5.185720435078556,
+    "named_Cu_baseline": 19.8563,
+    "same_named_volume_as_Al": 5.987492740674559,
+    "top_BGO_added_pre_relief": 9.386296592355556
+  },
+  "mass_boundary": "Named 19.8563 kg Cu is a lower-bound proxy census.  Additional coarse Copper volumes are substituted too but lack a configuration-controlled post-CSG mass; therefore the true candidate mass saving is larger in this transport proxy.",
+  "overlap_source": "engineering/s3d_o8_loop_engineering_20260814/reconsideration_20260814/geometry/overlap_check_tc_af1.source",
+  "physics_falsifiers": [
+    "Al activation or source-host migration prevents >=95% net suppression of baseline Copper delayed counts.",
+    "Candidate Nb+Mu production-times-coupling suppression is <75% after exact inventory and decay transport.",
+    "Candidate prompt suppression is <80% after denominator-complete gamma transport.",
+    "Candidate signal retention is <95% or central F3 remains above 3e-5 photon cm^-2 s^-1."
+  ],
+  "schema_version": 1,
+  "setup": "engineering/s3d_o8_loop_engineering_20260814/reconsideration_20260814/geometry/DEMO2_DR_v3p5_S3d_O8_TC_AF1_AlCu_Mag0p5_TopBGO4cm_20260814.geo.setup",
+  "status": "BUILT_PROXY_FOR_FOCUSED_FALSIFICATION__NOT_ENGINEERING_RELEASE"
+}

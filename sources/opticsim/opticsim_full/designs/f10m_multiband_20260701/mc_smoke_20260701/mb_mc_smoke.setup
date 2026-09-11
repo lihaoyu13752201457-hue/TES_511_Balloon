@@ -1,0 +1,44 @@
+// MC-smoke geometry: multiband lens+support MASS PROXY as a standalone,
+// cosima-runnable setup. The Ge annulus is declared as a single-volume
+// Scintillator (calorimeter) purely so cosima has a trigger; this proves the
+// support-inclusive geometry loads and transports particles under Monte Carlo.
+// Materials GeProxy/G10 (+ standard Vacuum/Aluminium) come from the project
+// optics materials file, exactly as the real optics near-field model uses them.
+
+Name multiband_mc_smoke
+Version 1
+
+SurroundingSphere 18 0 0 0 18
+
+Include /home/ubuntu/TES_511_Balloon/add_mass/TES_511_Balloon_nearfield_mass_proxy_v2/optics/Materials_OpticsNearfield_v2.geo
+
+Volume WorldVolume
+WorldVolume.Material Vacuum
+WorldVolume.Visibility 0
+WorldVolume.Shape BRIK 100.0 100.0 100.0
+WorldVolume.Mother 0
+
+Volume InstrumentFrame
+InstrumentFrame.Material Vacuum
+InstrumentFrame.Visibility 0
+InstrumentFrame.Shape BRIK 60.0 60.0 60.0
+InstrumentFrame.Position 0 0 0
+InstrumentFrame.Mother WorldVolume
+
+Include /home/ubuntu/opticsim/opticsim_full/designs/f10m_multiband_20260701/OpticsMultiband_GeAndSupport_f10m.geo
+
+//------------------------------------------------------------
+// Detector: make the Ge mass-proxy annulus a simple calorimeter.
+
+Scintillator GeDetector
+GeDetector.DetectorVolume  MB_GeActiveMass_EqualVolumeAnnulus
+GeDetector.SensitiveVolume MB_GeActiveMass_EqualVolumeAnnulus
+GeDetector.NoiseThreshold   0.000001
+GeDetector.TriggerThreshold 0.000001
+GeDetector.EnergyResolution ideal
+GeDetector.FailureRate 0.0
+
+Trigger TN01
+TN01.Veto false
+TN01.TriggerByChannel true
+TN01.Detector GeDetector 1

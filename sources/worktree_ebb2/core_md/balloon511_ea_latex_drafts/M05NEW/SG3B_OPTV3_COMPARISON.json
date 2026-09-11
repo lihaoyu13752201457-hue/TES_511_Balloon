@@ -1,0 +1,117 @@
+{
+  "schema_version": 2,
+  "status": "HOLD__OPEN_FRAME_MODEL_B_NOT_A_MATCHED_OPTICAL_ACCEPTANCE",
+  "paper_logic": "SG3B auditable baseline -> background diagnosis -> SH3 OptV3 geometry -> matched feasibility comparison",
+  "interpretation_boundary": {
+    "numerical_chain": "PASS for each simulated geometry",
+    "controlled_same_aperture_comparison": "FAIL",
+    "model_a_collimation": "1.898 cm entrance envelope with 624-copy W multihole collimator",
+    "model_b_collimation": "2.70 cm optical opening with four-bar W frame and no multihole grid",
+    "allowed_use": "Complete-design comparison only unless a physically collimation-matched model B is transported"
+  },
+  "public_labels": {
+    "SG3B": "Model A",
+    "OptV3": "Model B"
+  },
+  "matching_contract": {
+    "source": "broadband total - coarse-bin line contribution + PARMA monoenergetic 510.99895 keV line",
+    "day15_PARMA_line_flux_ph_cm2_s": 0.16651547160226118,
+    "line_angular_bins_equal_mu": 80,
+    "detector_response": "common",
+    "selection": "common W2 and final topology policy",
+    "mission": "common 20 day, five-anchor, 81-node clock",
+    "physical_PARMA_source_systematic": "EXCLUDED"
+  },
+  "SG3B": {
+    "public_label": "Model A",
+    "Aeff_W2_final_cm2": 15.12324,
+    "Aeff_standard_error_cm2": 0.044915201457359104,
+    "signal_kernel_cm2": 9.53801575351885,
+    "day15_background_cps": 0.060595953980508585,
+    "day15_background_transport_sigma_cps": 0.008057707305293689,
+    "day15_background_transport_ESS": 56.55412388386845,
+    "cumulative_background_counts_20d": 99923.14165545377,
+    "cumulative_signal_counts_per_unit_flux": 16350529.192505842,
+    "line_incident_photons": 3000000,
+    "line_final_selected_events": 12,
+    "line_mission_integrated_ESS": 11.99999641339194,
+    "topup_decision": "NO_TOPUP",
+    "Fmin": {
+      "3sigma_gaussian": {
+        "value": 5.799926385676048e-05,
+        "standard_error": 3.9118488171314315e-06,
+        "relative_standard_error": 0.06744652530060449
+      },
+      "3sigma_asimov": {
+        "value": 5.8090931634870914e-05,
+        "standard_error": 3.9118656792848405e-06,
+        "relative_standard_error": 0.06734038462100718
+      },
+      "5sigma_gaussian": {
+        "value": 9.666543976126748e-05,
+        "standard_error": 6.519748028552386e-06,
+        "relative_standard_error": 0.06744652530060449
+      },
+      "5sigma_asimov": {
+        "value": 9.691993901792263e-05,
+        "standard_error": 6.519803791578569e-06,
+        "relative_standard_error": 0.06726999477757527
+      }
+    }
+  },
+  "OptV3": {
+    "public_label": "Model B",
+    "Aeff_W2_final_cm2": 15.08544,
+    "Aeff_standard_error_cm2": 0.045029592386366724,
+    "signal_kernel_cm2": 9.791193388508535,
+    "day15_background_cps": 0.03122834776990912,
+    "day15_background_transport_sigma_cps": 0.0023199640605819243,
+    "day15_background_transport_ESS": 181.19053198166895,
+    "cumulative_background_counts_20d": 54805.970088911905,
+    "cumulative_signal_counts_per_unit_flux": 16781213.415433664,
+    "line_incident_photons": 15709417,
+    "line_final_selected_events": 186,
+    "line_mission_integrated_ESS": 185.89988254230673,
+    "topup_decision": "NO_TOPUP",
+    "Fmin": {
+      "3sigma_gaussian": {
+        "value": 4.185157715646857e-05,
+        "standard_error": 1.562885154090927e-06,
+        "relative_standard_error": 0.03734351869818048
+      },
+      "3sigma_asimov": {
+        "value": 4.194086769692741e-05,
+        "standard_error": 1.5629100000512787e-06,
+        "relative_standard_error": 0.03726460814652572
+      },
+      "5sigma_gaussian": {
+        "value": 6.975262859411428e-05,
+        "standard_error": 2.604808590151545e-06,
+        "relative_standard_error": 0.03734351869818048
+      },
+      "5sigma_asimov": {
+        "value": 7.000048270238174e-05,
+        "standard_error": 2.604884047380261e-06,
+        "relative_standard_error": 0.037212372641133674
+      }
+    }
+  },
+  "ratios_OptV3_over_SG3B": {
+    "Aeff": 0.9975005355995143,
+    "signal_kernel": 1.0265440571217634,
+    "day15_background": 0.5153536782332711,
+    "cumulative_background_20d": 0.5484812545014752,
+    "Fmin_3sigma_gaussian": 0.7215880749767531,
+    "Fmin_3sigma_asimov": 0.7219864876766942,
+    "Fmin_5sigma_gaussian": 0.721588074976753,
+    "Fmin_5sigma_asimov": 0.7222505855006481
+  },
+  "improvement_factors_SG3B_over_OptV3": {
+    "day15_background": 1.940414985351783,
+    "cumulative_background_20d": 1.823216366635754,
+    "Fmin_3sigma_gaussian": 1.3858322146360529,
+    "Fmin_3sigma_asimov": 1.3850674729632895,
+    "Fmin_5sigma_gaussian": 1.385832214636053,
+    "Fmin_5sigma_asimov": 1.3845610098146506
+  }
+}

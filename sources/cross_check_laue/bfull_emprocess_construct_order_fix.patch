@@ -1,0 +1,50 @@
+--- a/geant4_app/src/laue_multiring_bfull_demo.cc
++++ b/geant4_app/src/laue_multiring_bfull_demo.cc
+@@ -1327,20 +1327,32 @@
+ 
+ class MultiRingPhysicsList : public G4VModularPhysicsList {
+  public:
+-  explicit MultiRingPhysicsList(GuanStyleLaueBraggProcess* process) : process_(process) {
++  MultiRingPhysicsList(
++      MultiRingRunState* state,
++      const Options& opt,
++      const std::vector<RingSpec>& rings,
++      const RockingCurveLibrary& rockingCurves)
++      : state_(state), opt_(opt), rings_(rings), rockingCurves_(rockingCurves) {
+     defaultCutValue = 0.1 * mm;
+     RegisterPhysics(new G4EmStandardPhysics());
+   }
++
+   void ConstructParticle() override {
+     G4VModularPhysicsList::ConstructParticle();
+     G4Gamma::GammaDefinition();
+   }
++
+   void ConstructProcess() override {
+     G4VModularPhysicsList::ConstructProcess();
+-    G4Gamma::GammaDefinition()->GetProcessManager()->AddDiscreteProcess(process_);
++    GuanStyleLaueBraggProcess* process = new GuanStyleLaueBraggProcess(state_, opt_, rings_, rockingCurves_);
++    G4Gamma::GammaDefinition()->GetProcessManager()->AddDiscreteProcess(process);
+   }
++
+  private:
+-  GuanStyleLaueBraggProcess* process_;
++  MultiRingRunState* state_;
++  Options opt_;
++  std::vector<RingSpec> rings_;
++  RockingCurveLibrary rockingCurves_;
+ };
+ 
+ class MultiRingPrimaryGenerator : public G4VUserPrimaryGeneratorAction {
+@@ -1435,10 +1447,9 @@
+     ValidateRockingCurveCoverage(rings, opt, rockingCurves);
+     CLHEP::HepRandom::setTheSeed(opt.seed);
+     MultiRingRunState state(opt, rings, rockingCurves);
+-    GuanStyleLaueBraggProcess* process = new GuanStyleLaueBraggProcess(&state, opt, rings, rockingCurves);
+     G4RunManager* runManager = new G4RunManager;
+     runManager->SetUserInitialization(new MultiRingDetectorConstruction(rings, opt.focalLengthMm));
+-    runManager->SetUserInitialization(new MultiRingPhysicsList(process));
++    runManager->SetUserInitialization(new MultiRingPhysicsList(&state, opt, rings, rockingCurves));
+     runManager->SetUserAction(new MultiRingPrimaryGenerator(opt, rings));
+     runManager->SetUserAction(new BFullFocalPlaneSteppingAction(&state, opt.focalLengthMm));
+     runManager->Initialize();

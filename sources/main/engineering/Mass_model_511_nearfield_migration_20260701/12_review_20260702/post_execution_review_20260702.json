@@ -1,0 +1,125 @@
+{
+  "review_role": "review_subagent",
+  "generated_local_date": "2026-07-02",
+  "scope": "Stage-1 full-stat preflight artifacts",
+  "status": "PARTIAL_PRE_MC_READY_STAGE1_NOT_RUN_TRANSPORT",
+  "overall_conclusion": "The new Stage-1 artifacts are sufficient to move the prompt/buildup portion of the Mass_model_511 full-stat detector background campaign from pure NOT_RUN to PRE_MC_READY / NOT_RUN_TRANSPORT. They are not sufficient to close TODO 1 as a full detector background campaign because delayed full-stat source/transport is not prepared in Stage-1.",
+  "recommended_status": {
+    "full_stat_detector_background": "PARTIAL_PRE_MC_READY_STAGE1 / NOT_RUN_TRANSPORT",
+    "prompt_instant_fullstat_transport": "PRE_MC_READY / NOT_RUN_TRANSPORT",
+    "prompt_buildup_fullstat_transport": "PRE_MC_READY / NOT_RUN_TRANSPORT",
+    "delayed_fullstat_transport": "NOT_PREPARED_IN_STAGE1",
+    "full_stat_physics_closure": "NOT_CLAIMED"
+  },
+  "false_closure_review": {
+    "result": "PASS_NO_FALSE_CLOSURE_FOUND",
+    "notes": [
+      "Manifest claim_boundary states execution preflight only, no full-stat detector-rate, no replacement, no manuscript-readiness claim.",
+      "Status markdown says Cosima full-stat transport was not started.",
+      "Step05, replacement, Step06-Step08, and P1/P2/P3 remain blocked in todo_status."
+    ]
+  },
+  "geometry_review": {
+    "source_card_audit": "PASS",
+    "source_cards": 8,
+    "job_source_audit": "PASS",
+    "job_sources_with_mass_model_geometry": 136,
+    "job_sources_with_forbidden_fix5_or_nf2_geometry": 0,
+    "mass_model_geometry": "outputs/geometry/DEMO2_DR_v3p5_Mass_model_511_stage_diam_300_300_300_350_350_400_20260701_megalib_proxy/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup"
+  },
+  "run_manifest_review": {
+    "instant": {
+      "status": "PASS_PREFLIGHT_READY",
+      "jobs": 68,
+      "events_requested_total": 25210216,
+      "existing_sim_outputs": 0,
+      "existing_dat_outputs": 0,
+      "statistics_profile": {
+        "gamma_events": 10000000,
+        "gamma_splits": 12,
+        "non_gamma_replicas": 8,
+        "farfield_radius_cm": 60.0
+      }
+    },
+    "buildup": {
+      "status": "PASS_PREFLIGHT_READY",
+      "jobs": 68,
+      "events_requested_total": 25210216,
+      "existing_sim_outputs": 0,
+      "existing_dat_outputs": 0,
+      "statistics_profile": {
+        "gamma_events": 10000000,
+        "gamma_splits": 12,
+        "non_gamma_replicas": 8,
+        "farfield_radius_cm": 60.0
+      }
+    }
+  },
+  "runner_review": {
+    "status": "PASS_WITH_HEAVY_RUN_CAVEAT",
+    "runner": "engineering/Mass_model_511_nearfield_migration_20260701/07_fullchain_execution_20260702/RUN_FULLSTAT_TRANSPORT_STAGE1.sh",
+    "commands": [
+      "instant full-stat transport with --allow-heavy-run",
+      "buildup full-stat transport with --allow-heavy-run",
+      "rebuild fullchain execution manifest"
+    ],
+    "boundary": "Runner intentionally stops before delayed source construction and Step05. Running it is the heavy MC step and should require explicit operator ownership/approval."
+  },
+  "issues_or_caveats": [
+    {
+      "severity": "low",
+      "item": "todo_status precision",
+      "detail": "todo_status.csv keeps full_stat_detector_background as NOT_RUN with preflight_status=PASS. This is not false, but a distinct combined status such as PARTIAL_PRE_MC_READY_STAGE1_NOT_RUN_TRANSPORT would be clearer."
+    },
+    {
+      "severity": "low",
+      "item": "normalization resource estimate label",
+      "detail": "normalization.json files contain legacy-looking resource_estimate_from_smoke.source values with zero estimates, while the execution manifest uses Mass_model_511 smoke summaries for planning estimates. This does not block preflight readiness because it is not physics normalization."
+    }
+  ],
+  "todo_status_after_review": [
+    {
+      "todo_id": 1,
+      "todo": "Full-stat detector background campaign",
+      "status": "PARTIAL_PRE_MC_READY_STAGE1 / NOT_RUN_TRANSPORT",
+      "reason": "Prompt instant and buildup preflight are ready; transport outputs are absent as expected; delayed full-stat source/transport is not prepared."
+    },
+    {
+      "todo_id": 2,
+      "todo": "Full-stat Step05 detector-response release",
+      "status": "BLOCKED",
+      "reason": "Requires completed prompt, buildup, delayed transport and full-stat Step05 retarget."
+    },
+    {
+      "todo_id": 3,
+      "todo": "No-material-effect / replacement release",
+      "status": "BLOCKED",
+      "reason": "Requires full-stat Step05 and Step08 comparison evidence."
+    },
+    {
+      "todo_id": 4,
+      "todo": "Step06--Step08 mission-axis regeneration",
+      "status": "BLOCKED",
+      "reason": "Requires validated full-stat Step05."
+    },
+    {
+      "todo_id": 5,
+      "todo": "Optics integration decision",
+      "status": "UNCHANGED_OPEN_FOR_MANUSCRIPT_SCOPE_DECISION",
+      "reason": "Stage-1 does not touch optics coupling."
+    },
+    {
+      "todo_id": 6,
+      "todo": "P1/P2/P3 replay on Mass_model_511",
+      "status": "UNCHANGED_BLOCKED",
+      "reason": "No Mass_model_511 Step05/Step08 products exist from Stage-1 preflight."
+    }
+  ],
+  "next_review_gate": [
+    "68/68 instant SIM and DAT outputs plus 68/68 buildup SIM and DAT outputs",
+    "log-error scan with no blocking errors",
+    "SIM headers sampled or fully audited for Mass_model_511 geometry",
+    "run summary with generated event counts matching manifests",
+    "no Step05/full-stat rate claim until delayed full-stat source/transport and full-stat Step05 replay are also complete"
+  ]
+}

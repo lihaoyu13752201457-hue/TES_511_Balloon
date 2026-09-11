@@ -1,0 +1,63 @@
+{
+  "status": "POINTS_FROZEN",
+  "source_trajectory": "stepwise_maintenance/step06_mission_time_variation/outputs_Mass_model_511_fullstat_v1/trajectory_profile.csv",
+  "points": [
+    {
+      "point_id": "L1",
+      "day_mid": 3.75,
+      "time_bin_id": 15,
+      "altitude_km": 36.25,
+      "latitude_deg": 34.155872450464685,
+      "longitude_deg": 99.75,
+      "Rc_GV": 10.980030203962825,
+      "depth_g_cm2": 4.999511042635957,
+      "T_atm_511": 0.6461225723909806,
+      "analytic_prompt_scale_to_day15": 1.0529876305340695,
+      "analytic_delayed_production_scale_to_day15": 1.0529876305340695,
+      "science_atm_scale_to_day15": 0.8742699771764703
+    },
+    {
+      "point_id": "H1",
+      "day_mid": 6.25,
+      "time_bin_id": 25,
+      "altitude_km": 41.25,
+      "latitude_deg": 33.75,
+      "longitude_deg": 100.04341204441673,
+      "Rc_GV": 11.021302361332502,
+      "depth_g_cm2": 2.3965878546996042,
+      "T_atm_511": 0.8110949791979928,
+      "analytic_prompt_scale_to_day15": 0.9647531838829096,
+      "analytic_delayed_production_scale_to_day15": 0.9647531838829096,
+      "science_atm_scale_to_day15": 1.0974945300661616
+    },
+    {
+      "point_id": "REF",
+      "day_mid": 15.0,
+      "time_bin_id": 60,
+      "altitude_km": 38.75,
+      "latitude_deg": 34.0,
+      "longitude_deg": 100.0,
+      "Rc_GV": 11.0,
+      "depth_g_cm2": 3.4614689720143224,
+      "T_atm_511": 0.7390423888027,
+      "analytic_prompt_scale_to_day15": 1.0,
+      "analytic_delayed_production_scale_to_day15": 1.0,
+      "science_atm_scale_to_day15": 1.0
+    },
+    {
+      "point_id": "L2",
+      "day_mid": 18.75,
+      "time_bin_id": 75,
+      "altitude_km": 36.25,
+      "latitude_deg": 33.944369766510924,
+      "longitude_deg": 100.125,
+      "Rc_GV": 11.008200418679126,
+      "depth_g_cm2": 4.999511042635957,
+      "T_atm_511": 0.6461225723909806,
+      "analytic_prompt_scale_to_day15": 1.0524481545725202,
+      "analytic_delayed_production_scale_to_day15": 1.0524481545725202,
+      "science_atm_scale_to_day15": 0.8742699771764703
+    }
+  ],
+  "rule": "REF day15 + L1 min-alt early + L2 min-alt late + H1 max-alt"
+}

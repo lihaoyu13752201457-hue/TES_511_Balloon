@@ -1,0 +1,1193 @@
+{
+  "surface": "report",
+  "manifest": {
+    "version": 1,
+    "surface": "report",
+    "title": "PARMA 511 keV 单能线为何显著抬高 SH3 最小可分辨通量",
+    "description": "源级守恒、事件互斥、角分箱、几何响应与 Fmin 的可复算诊断。",
+    "generatedAt": "2026-08-25T07:39:40Z",
+    "sources": [
+      {
+        "id": "diagnostic_bundle",
+        "label": "PARMA 511 keV 守恒与灵敏度诊断包",
+        "path": "engineering/geometry_optimization_20260815/70_parma511_fmin_overlap_diagnosis_20260825/outputs/01_diagnosis_20260825/diagnostic_summary.json"
+      },
+      {
+        "id": "source_headline",
+        "label": "从复算诊断摘要提取的四项标题指标。",
+        "path": "engineering/geometry_optimization_20260815/70_parma511_fmin_overlap_diagnosis_20260825/outputs/01_diagnosis_20260825/diagnosis.sqlite",
+        "query": {
+          "engine": "sqlite3",
+          "language": "sql",
+          "sql": "SELECT * FROM \"headline\" ORDER BY _row_order",
+          "description": "从复算诊断摘要提取的四项标题指标。",
+          "executed_at": "2026-08-25T07:39:40Z",
+          "tables_used": [
+            "headline"
+          ],
+          "filters": [
+            "Frozen authority inputs listed in diagnostic_summary.json",
+            "No row sampling or truncation"
+          ],
+          "metric_definitions": [
+            "Headline strings are formatted from diagnostic_summary.json without additional calculation."
+          ]
+        }
+      },
+      {
+        "id": "source_background_budget",
+        "label": "现有混合态去线+PARMA mono 的 SG3、开放 SH3 与条件 W-grid 20 日本底组成。",
+        "path": "engineering/geometry_optimization_20260815/70_parma511_fmin_overlap_diagnosis_20260825/outputs/01_diagnosis_20260825/diagnosis.sqlite",
+        "query": {
+          "engine": "sqlite3",
+          "language": "sql",
+          "sql": "SELECT * FROM \"background_budget\" ORDER BY _row_order",
+          "description": "现有混合态去线+PARMA mono 的 SG3、开放 SH3 与条件 W-grid 20 日本底组成。",
+          "executed_at": "2026-08-25T07:39:40Z",
+          "tables_used": [
+            "background_budget"
+          ],
+          "filters": [
+            "Frozen authority inputs listed in diagnostic_summary.json",
+            "No row sampling or truncation"
+          ],
+          "metric_definitions": [
+            "background_counts is the component count; non-line = other + de-lined gamma continuum.",
+            "total_counts = non-line counts + mono511 counts."
+          ]
+        }
+      },
+      {
+        "id": "source_closure_checks",
+        "label": "源通量、角分箱唯一性与互斥事件目录的守恒检查。",
+        "path": "engineering/geometry_optimization_20260815/70_parma511_fmin_overlap_diagnosis_20260825/outputs/01_diagnosis_20260825/diagnosis.sqlite",
+        "query": {
+          "engine": "sqlite3",
+          "language": "sql",
+          "sql": "SELECT * FROM \"closure_checks\" ORDER BY _row_order",
+          "description": "源通量、角分箱唯一性与互斥事件目录的守恒检查。",
+          "executed_at": "2026-08-25T07:39:40Z",
+          "tables_used": [
+            "closure_checks"
+          ],
+          "filters": [
+            "Frozen authority inputs listed in diagnostic_summary.json",
+            "No row sampling or truncation"
+          ],
+          "metric_definitions": [
+            "residual = observed - expected; PASS requires the authority-specific floating-point tolerance."
+          ]
+        }
+      },
+      {
+        "id": "source_geometry_response",
+        "label": "共同 PARMA 单线和共同选择下的 SG3、开放 SH3、W-grid 响应。",
+        "path": "engineering/geometry_optimization_20260815/70_parma511_fmin_overlap_diagnosis_20260825/outputs/01_diagnosis_20260825/diagnosis.sqlite",
+        "query": {
+          "engine": "sqlite3",
+          "language": "sql",
+          "sql": "SELECT * FROM \"geometry_response\" ORDER BY _row_order",
+          "description": "共同 PARMA 单线和共同选择下的 SG3、开放 SH3、W-grid 响应。",
+          "executed_at": "2026-08-25T07:39:40Z",
+          "tables_used": [
+            "geometry_response"
+          ],
+          "filters": [
+            "Frozen authority inputs listed in diagnostic_summary.json",
+            "No row sampling or truncation"
+          ],
+          "metric_definitions": [
+            "area_normalized_ratio_vs_sg3 = absolute line-rate ratio / (aperture_span/3.796 cm)^2."
+          ]
+        }
+      },
+      {
+        "id": "source_hemisphere_response",
+        "label": "80 等 mu 角分量按源表 down/up 标签互斥聚合后的响应。",
+        "path": "engineering/geometry_optimization_20260815/70_parma511_fmin_overlap_diagnosis_20260825/outputs/01_diagnosis_20260825/diagnosis.sqlite",
+        "query": {
+          "engine": "sqlite3",
+          "language": "sql",
+          "sql": "SELECT * FROM \"hemisphere_response\" ORDER BY _row_order",
+          "description": "80 等 mu 角分量按源表 down/up 标签互斥聚合后的响应。",
+          "executed_at": "2026-08-25T07:39:40Z",
+          "tables_used": [
+            "hemisphere_response"
+          ],
+          "filters": [
+            "Frozen authority inputs listed in diagnostic_summary.json",
+            "No row sampling or truncation"
+          ],
+          "metric_definitions": [
+            "suppression_fraction = 1 - W-grid rate/open-SH3 rate for the same angular subset."
+          ]
+        }
+      },
+      {
+        "id": "source_scenario_decomposition",
+        "label": "旧粗表示、现有混合态算术闭合与条件 W-grid 的任务本底和 Fmin。",
+        "path": "engineering/geometry_optimization_20260815/70_parma511_fmin_overlap_diagnosis_20260825/outputs/01_diagnosis_20260825/diagnosis.sqlite",
+        "query": {
+          "engine": "sqlite3",
+          "language": "sql",
+          "sql": "SELECT * FROM \"scenario_decomposition\" ORDER BY _row_order",
+          "description": "旧粗表示、现有混合态算术闭合与条件 W-grid 的任务本底和 Fmin。",
+          "executed_at": "2026-08-25T07:39:40Z",
+          "tables_used": [
+            "scenario_decomposition"
+          ],
+          "filters": [
+            "Frozen authority inputs listed in diagnostic_summary.json",
+            "No row sampling or truncation"
+          ],
+          "metric_definitions": [
+            "Fmin_3sigma = 3*sqrt(total_counts)/signal_K.",
+            "line_share = mono511_counts/total_counts."
+          ]
+        }
+      },
+      {
+        "id": "source_target_budget",
+        "label": "冻结 SH3 非线本底与信号核时，各目标 Fmin 允许的单能线预算。",
+        "path": "engineering/geometry_optimization_20260815/70_parma511_fmin_overlap_diagnosis_20260825/outputs/01_diagnosis_20260825/diagnosis.sqlite",
+        "query": {
+          "engine": "sqlite3",
+          "language": "sql",
+          "sql": "SELECT * FROM \"target_budget\" ORDER BY _row_order",
+          "description": "冻结 SH3 非线本底与信号核时，各目标 Fmin 允许的单能线预算。",
+          "executed_at": "2026-08-25T07:39:40Z",
+          "tables_used": [
+            "target_budget"
+          ],
+          "filters": [
+            "Frozen authority inputs listed in diagnostic_summary.json",
+            "No row sampling or truncation"
+          ],
+          "metric_definitions": [
+            "allowed_total_counts = (target_fmin*signal_K/3)^2.",
+            "allowed_line_counts = allowed_total_counts - frozen_non_line_counts."
+          ]
+        }
+      }
+    ],
+    "cards": [
+      {
+        "id": "card_fmin",
+        "dataset": "headline",
+        "sourceId": "source_headline",
+        "description": "用户指定的冻结 SH3 非线/信号条件近似。",
+        "metrics": [
+          {
+            "label": "W-grid 3σ Fmin",
+            "field": "wgrid_fmin_display"
+          },
+          {
+            "label": "变化",
+            "field": "wgrid_vs_old_display"
+          }
+        ]
+      },
+      {
+        "id": "card_line_share",
+        "dataset": "headline",
+        "sourceId": "source_headline",
+        "description": "20 日 W-grid 条件近似中 PARMA 线占总本底的比例。",
+        "metrics": [
+          {
+            "label": "PARMA 线占比",
+            "field": "line_share_display"
+          },
+          {
+            "label": "范围",
+            "field": "line_share_context"
+          }
+        ]
+      },
+      {
+        "id": "card_overlap",
+        "dataset": "headline",
+        "sourceId": "source_headline",
+        "description": "减线/重组恒等式、81×80 唯一性和事件目录互斥均通过。",
+        "metrics": [
+          {
+            "label": "重复计数证据",
+            "field": "overlap_verdict"
+          },
+          {
+            "label": "审计",
+            "field": "overlap_context"
+          }
+        ]
+      },
+      {
+        "id": "card_area_ratio",
+        "dataset": "headline",
+        "sourceId": "source_headline",
+        "description": "用 5.40/3.796 的包络面积尺度归一，不是有效面积标定。",
+        "metrics": [
+          {
+            "label": "面积归一线响应比",
+            "field": "area_ratio_display"
+          },
+          {
+            "label": "比较",
+            "field": "area_ratio_context"
+          }
+        ]
+      }
+    ],
+    "charts": [
+      {
+        "id": "background_budget",
+        "title": "现有去线 + PARMA mono 算术闭合后的 20 日本底预算",
+        "subtitle": "SG3、开放 SH3 与 SH3+W-grid；counts，W-grid 为冻结非线/信号的条件近似",
+        "showDescription": true,
+        "intent": "composition",
+        "question": "PARMA 511 keV 线在不同几何的总本底中占多大比例？",
+        "rationale": "堆叠柱能同时显示绝对本底和线/非线组成。",
+        "comparisonContext": {
+          "grain": "geometry scenario",
+          "unit": "20-day counts",
+          "denominator": "total background counts"
+        },
+        "type": "stackedBar",
+        "dataset": "background_budget",
+        "sourceId": "source_background_budget",
+        "encodings": {
+          "x": {
+            "field": "scenario",
+            "type": "nominal",
+            "label": "情形"
+          },
+          "y": {
+            "field": "background_counts",
+            "type": "quantitative",
+            "aggregate": "sum",
+            "label": "20 日本底计数",
+            "unit": "counts"
+          },
+          "color": {
+            "field": "component",
+            "type": "nominal",
+            "label": "本底分量"
+          },
+          "tooltip": [
+            {
+              "field": "component",
+              "type": "text",
+              "label": "分量"
+            },
+            {
+              "field": "background_counts",
+              "type": "quantitative",
+              "label": "分量本底"
+            },
+            {
+              "field": "total_counts",
+              "type": "quantitative",
+              "label": "总本底"
+            },
+            {
+              "field": "fmin_3sigma_display",
+              "type": "text",
+              "label": "3σ Fmin"
+            },
+            {
+              "field": "line_share",
+              "type": "quantitative",
+              "format": "percent",
+              "label": "线占比"
+            },
+            {
+              "field": "scope",
+              "type": "text",
+              "label": "范围"
+            }
+          ]
+        },
+        "xAxisTitle": "情形",
+        "yAxisTitle": "20 日本底计数",
+        "palette": {
+          "kind": "categorical"
+        },
+        "valueFormat": "compact",
+        "unit": "counts",
+        "layout": "full",
+        "maxRows": 10,
+        "surface": {
+          "surface": "export",
+          "showControls": false,
+          "viewMode": "both"
+        }
+      }
+    ],
+    "tables": [
+      {
+        "id": "closure_checks",
+        "title": "源级与事件级守恒检查",
+        "subtitle": "残差为浮点复算值；全部检查使用冻结权威文件",
+        "showDescription": true,
+        "dataset": "closure_checks",
+        "defaultSort": {
+          "field": "check",
+          "direction": "asc"
+        },
+        "density": "dense",
+        "sourceId": "source_closure_checks",
+        "layout": "full",
+        "columns": [
+          {
+            "field": "check",
+            "label": "检查",
+            "type": "text"
+          },
+          {
+            "field": "observed",
+            "label": "观测/复算",
+            "format": "number"
+          },
+          {
+            "field": "expected",
+            "label": "期望",
+            "format": "number"
+          },
+          {
+            "field": "residual",
+            "label": "残差",
+            "format": "number"
+          },
+          {
+            "field": "verdict",
+            "label": "结论",
+            "type": "text"
+          }
+        ]
+      },
+      {
+        "id": "geometry_response",
+        "title": "PARMA 单能线几何响应",
+        "subtitle": "共同 510.99895 keV 源与选择；SG3 样本量仅 12",
+        "showDescription": true,
+        "dataset": "geometry_response",
+        "defaultSort": {
+          "field": "line_rate_cps",
+          "direction": "desc"
+        },
+        "density": "dense",
+        "sourceId": "source_geometry_response",
+        "layout": "full",
+        "columns": [
+          {
+            "field": "design",
+            "label": "几何",
+            "type": "text"
+          },
+          {
+            "field": "aperture_span_cm",
+            "label": "包络宽/cm",
+            "format": "number"
+          },
+          {
+            "field": "envelope_area_scale_vs_sg3",
+            "label": "面积尺度/SG3",
+            "format": "number"
+          },
+          {
+            "field": "line_rate_cps",
+            "label": "线率/cps",
+            "format": "number"
+          },
+          {
+            "field": "line_sigma_cps",
+            "label": "MC σ/cps",
+            "format": "number"
+          },
+          {
+            "field": "selected_events",
+            "label": "选后数",
+            "format": "number"
+          },
+          {
+            "field": "area_normalized_ratio_vs_sg3",
+            "label": "面积归一比/SG3",
+            "format": "number"
+          },
+          {
+            "field": "area_normalized_ratio_sigma",
+            "label": "比值 σ",
+            "format": "number"
+          }
+        ]
+      },
+      {
+        "id": "hemisphere_response",
+        "title": "W-grid 对两个 PARMA 半球的响应",
+        "subtitle": "down/up 为源表方向标签；同一 80 等 μ 分量的互斥聚合",
+        "showDescription": true,
+        "dataset": "hemisphere_response",
+        "defaultSort": {
+          "field": "parma_flux",
+          "direction": "desc"
+        },
+        "density": "dense",
+        "sourceId": "source_hemisphere_response",
+        "layout": "full",
+        "columns": [
+          {
+            "field": "hemisphere",
+            "label": "半球",
+            "type": "text"
+          },
+          {
+            "field": "parma_flux",
+            "label": "PARMA 通量/ph cm⁻² s⁻¹",
+            "format": "number"
+          },
+          {
+            "field": "parma_flux_share",
+            "label": "通量占比",
+            "format": "percent"
+          },
+          {
+            "field": "open_rate_cps",
+            "label": "开放 SH3/cps",
+            "format": "number"
+          },
+          {
+            "field": "wgrid_rate_cps",
+            "label": "W-grid/cps",
+            "format": "number"
+          },
+          {
+            "field": "suppression_fraction",
+            "label": "抑制",
+            "format": "percent"
+          },
+          {
+            "field": "difference_z",
+            "label": "差值 z",
+            "format": "number"
+          },
+          {
+            "field": "wgrid_residual_share",
+            "label": "W-grid 残余占比",
+            "format": "percent"
+          }
+        ]
+      },
+      {
+        "id": "scenario_decomposition",
+        "title": "20 日任务本底与 Fmin 精确值",
+        "subtitle": "旧粗表示不可唯一拆成物理单能线与非线项，故留空",
+        "showDescription": true,
+        "dataset": "scenario_decomposition",
+        "defaultSort": {
+          "field": "total_counts",
+          "direction": "desc"
+        },
+        "density": "dense",
+        "sourceId": "source_scenario_decomposition",
+        "layout": "full",
+        "columns": [
+          {
+            "field": "scenario",
+            "label": "情形",
+            "type": "text"
+          },
+          {
+            "field": "representation",
+            "label": "谱表示",
+            "type": "text"
+          },
+          {
+            "field": "non_line_counts",
+            "label": "非线 counts",
+            "format": "number"
+          },
+          {
+            "field": "mono511_counts",
+            "label": "511 线 counts",
+            "format": "number"
+          },
+          {
+            "field": "total_counts",
+            "label": "总 B20",
+            "format": "number"
+          },
+          {
+            "field": "signal_K",
+            "label": "信号 K",
+            "format": "number"
+          },
+          {
+            "field": "fmin_3sigma_display",
+            "label": "3σ Fmin",
+            "type": "text"
+          },
+          {
+            "field": "line_share",
+            "label": "线占比",
+            "format": "percent"
+          }
+        ]
+      },
+      {
+        "id": "target_budget",
+        "title": "目标阈值对应的单能线预算",
+        "subtitle": "冻结 SH3 非线本底和信号核；负预算表示仅压线不可达",
+        "showDescription": true,
+        "dataset": "target_budget",
+        "defaultSort": {
+          "field": "target_fmin_display",
+          "direction": "desc"
+        },
+        "density": "dense",
+        "sourceId": "source_target_budget",
+        "layout": "full",
+        "columns": [
+          {
+            "field": "target",
+            "label": "目标",
+            "type": "text"
+          },
+          {
+            "field": "target_fmin_display",
+            "label": "目标 Fmin",
+            "type": "text"
+          },
+          {
+            "field": "allowed_total_counts",
+            "label": "允许总 B20",
+            "format": "number"
+          },
+          {
+            "field": "allowed_line_counts",
+            "label": "允许线 counts",
+            "format": "number"
+          },
+          {
+            "field": "required_line_suppression_fraction",
+            "label": "相对当前需抑制",
+            "format": "percent"
+          },
+          {
+            "field": "feasibility",
+            "label": "可达性",
+            "type": "text"
+          }
+        ]
+      }
+    ],
+    "blocks": [
+      {
+        "id": "title",
+        "type": "markdown",
+        "body": "# PARMA 511 keV 单能线为何显著抬高 SH3 最小可分辨通量"
+      },
+      {
+        "id": "summary",
+        "type": "markdown",
+        "sourceId": "diagnostic_bundle",
+        "body": "## 技术摘要\n\n**结论：现有闭合中没有发现单能 511 keV 被重复相加，也没有发现 20/80 角分箱或两个能窗被求和两次。** 真正的跳变来自旧宽带能谱的表示误差：相近的线总面积过去被摊在 449.65–566.08–712.64 keV 的粗 IP-LIN 帽上，只有 0.3366% 的粗线面积位于 W2 源能区；物理 PARMA 单能线则把 0.16651547 ph cm⁻² s⁻¹ 集中在 510.99895 keV。因此，守恒总线面积并不等于守恒 0.84 keV 科学窗内的计数。\n\nW-grid 也确实工作：它把开放 SH3 的末级单能线率降低 18.78%。但它复制的是 SG3 的孔距、筋宽和深度，不是相同总口径或完整的全空间屏蔽拓扑。SH3 的 5.40 cm 网格包络面积尺度是 SG3 3.796 cm 包络的 2.024 倍；按这一启发式面积尺度归一后，W-grid/SG3 线响应为 1.187±0.356，与 1 统计相容。绝对差与约 2.024 倍包络尺度相容，但现有统计不能把口径、完整遮蔽和质量拓扑的贡献分别识别出来。\n\n**同时必须保留一个独立的闭合风险：** 当前连续谱去线采用 W=118.3、g=0 状态，而正确单能线采用 W=114.6、g=0.15 和逐节点 Rc/depth；所以现有包不能被称为严格同一大气状态闭合。这个混合状态不是大退化的来源，但论文定稿前必须重建同态连续谱。"
+      },
+      {
+        "id": "headline_strip",
+        "type": "metric-strip",
+        "cardIds": [
+          "card_fmin",
+          "card_line_share",
+          "card_overlap",
+          "card_area_ratio"
+        ]
+      },
+      {
+        "id": "key_findings",
+        "type": "markdown",
+        "sourceId": "diagnostic_bundle",
+        "body": "## 关键发现\n\n**SH3 的大退化几乎完全是正确窄化后的大气线背景，而不是信号响应的变化。** 旧 SH3 的整个粗表示 20 日本底为 15,551.68 counts；通量闭合后的非线本底为 15,376.17 counts，两者仅差 −1.13%，但这不是同定义的“非线前后差”；信号核 K 仅差 −0.0010%。新增的物理单能线却贡献 39,429.80 counts，使总本底增至 54,805.97，Gaussian 3σ 阈值按 √B/K 从 2.229×10⁻⁵ 升至 4.185×10⁻⁵。"
+      },
+      {
+        "id": "budget_chart",
+        "type": "chart",
+        "chartId": "background_budget"
+      },
+      {
+        "id": "budget_explain",
+        "type": "markdown",
+        "sourceId": "diagnostic_bundle",
+        "body": "图中只画现有混合态算术闭合后可严格拆分的三种任务分量；它们不是严格同一大气状态闭合。SG3 的单能线只占总本底 12.56%，所以旧到新只退化 7.29%；开放 SH3 中线占 71.94%，W-grid 条件近似中仍占 67.53%。这正是“A 没有明显退化、B 却退化很多”的差别：SG3 原先的非线本底很大，而 SH3 压低近场/活化本底后，大气窄线成为新的本底地板。"
+      },
+      {
+        "id": "overlap",
+        "type": "markdown",
+        "sourceId": "diagnostic_bundle",
+        "body": "## 重复计数与分箱重叠审计\n\n闭合流程是“宽带总量 − 粗线贡献 + PARMA 单能线”，不是把单能线直接加到原宽带。参考状态重组通量比原宽带还低 0.002660 ph cm⁻² s⁻¹；day-15 重组也低 0.002269 ph cm⁻² s⁻¹（−0.0494%）。若存在直接重复加线，总通量应高出约 0.1665，而不是略低。\n\n20 个 bin 是宽带连续谱去线时的等 μ 角分区；80 个 bin 是单能线的等 μ 角分区。它们覆盖同一角域，但属于已经谱分离的两个物理分量。每个事件只映射到一个角箱，81×80 表中 6,480 个 node/bin 对全部唯一。W2=[510.58,511.42) keV 与 480–550 keV 只是嵌套的 cut-flow 诊断窗，不参与相加；510.99895 keV 只在 W2 内计一次。\n\n反事实也能区分错误：若 W-grid 结果把开放 SH3 的旧单能线和新 W-grid 单能线同时保留，会得到约 5.266×10⁻⁵，而不是当前 3.890×10⁻⁵。当前和式明确是冻结非线本底 + 新 W-grid 线，旧线已被替换。另一方面，若只犯“旧粗宽带直接加物理 mono”错误，会得到 4.1919×10⁻⁵，仅比正确 4.1852×10⁻⁵ 高 0.16%；所以最终阈值本身不能排除这个错误，排除证据来自前述减线恒等式和互斥事件目录。"
+      },
+      {
+        "id": "closure_table",
+        "type": "table",
+        "tableId": "closure_checks"
+      },
+      {
+        "id": "spectral",
+        "type": "markdown",
+        "sourceId": "diagnostic_bundle",
+        "body": "## 为什么总通量守恒仍会让窄窗本底暴涨\n\n旧粗线总面积是 0.176443 ph cm⁻² s⁻¹，和物理 PARMA 线面积同量级；但旧线帽跨越约 263 keV，落在 W2 源能范围的面积只有 5.939×10⁻⁴ ph cm⁻² s⁻¹。按 day-15 旧宽带缩放后，W2 内被扣粗线只有 5.681×10⁻⁴ ph cm⁻² s⁻¹，物理单能线是它的 293.09 倍；这是**源空间通量比**，不是探测器选后计数或响应倍数。对 0.420 keV FWHM 的高斯响应，理想未散射单能事件约 98.15% 落入 ±0.420 keV。所以旧 2.23×10⁻⁵ 本质上是粗能量网格把窄线摊宽后的乐观值，不是“已经正确包含物理 511 线”的基线。"
+      },
+      {
+        "id": "geometry",
+        "type": "markdown",
+        "sourceId": "diagnostic_bundle",
+        "body": "## W-grid 已接近 SG3 的孔结构，为何绝对线率仍高\n\nW-grid/open-SH3 的末级线率比为 0.8122±0.0890；网格法向开孔率为 0.8443，两者只差 0.36σ。该比值与“既有几何先限定可达路径、网格近似施加开孔率因子”的简单图景相容；当前统计不能排除 off-axis 拒止、绕行和散射的混合产生相同比值。\n\n绝对 W-grid/SG3 线率为 2.402±0.720，但口径包络面积尺度本身就是 2.024。按面积归一后比值降为 1.187±0.356，仅偏离 1 约 0.52σ。按包络面积尺度归一后的中心值与 SG3 统计相容，说明当前尚无可分辨的单位包络响应差异；但这是一阶误差传播下的启发式尺度，不能证明单位口径传输等价，也不能分解口径与全局拓扑各自贡献。"
+      },
+      {
+        "id": "geometry_table",
+        "type": "table",
+        "tableId": "geometry_response"
+      },
+      {
+        "id": "hemisphere_explain",
+        "type": "markdown",
+        "sourceId": "diagnostic_bundle",
+        "body": "PARMA day-15 线通量中 up 半球占 82.32%。中心值显示 W-grid 对 down 抑制 24.97%、对 up 抑制 14.11%，但两项差异分别只有 −1.69σ 和 −1.07σ，尚不能宣称半球抑制差异已显著测得；它只提供方向性提示。最终残余线率有 60.3% 来自 up，这是同权重事件的算术分解，不是入射路径追踪。局部孔结构或近场几何接近 SG3，只说明局部构型接近；它不保证包含侧向、后向和散射贡献的 4π 远场单能响应相同。"
+      },
+      {
+        "id": "hemisphere_table",
+        "type": "table",
+        "tableId": "hemisphere_response"
+      },
+      {
+        "id": "fmin",
+        "type": "markdown",
+        "sourceId": "diagnostic_bundle",
+        "body": "## (F_{min}) 分解与当前结论\n\n在用户指定的条件近似下，W-grid 把 20 日单能线从 39,429.80 降到 31,975.64 counts，总本底从 54,805.97 降到 47,351.81，Gaussian 3σ (F_{min}) 为 (3.890±0.160)×10⁻⁵ ph cm⁻² s⁻¹（MC/statistical only）。这比开放 SH3 的 4.185×10⁻⁵ 改善 7.05%，但仍比旧粗线基线高 74.5%。"
+      },
+      {
+        "id": "scenario_table",
+        "type": "table",
+        "tableId": "scenario_decomposition"
+      },
+      {
+        "id": "targets",
+        "type": "markdown",
+        "sourceId": "diagnostic_bundle",
+        "body": "## 能否靠进一步压低单能线恢复 2×10⁻⁵\n\n不能。冻结的非线本底 15,376.17 counts 自身已经给出 2.217×10⁻⁵ 的 Gaussian 3σ 地板。要恢复旧 2.229×10⁻⁵，留给 W-grid 单能线的任务预算只有约 175 counts，意味着相对当前线项还要抑制 99.45%。若把 SH3 的绝对线计数压到 SG3 水平，阈值约为 2.988×10⁻⁵；达到 3.0×10⁻⁵ 所需的线项也恰好接近 SG3 水平。要达到 2.0×10⁻⁵，即使先把线项清零，仍必须再把非线本底降低约 18.6%或把信号核提高约 10.8%。"
+      },
+      {
+        "id": "targets_table",
+        "type": "table",
+        "tableId": "target_budget"
+      },
+      {
+        "id": "scope_method",
+        "type": "markdown",
+        "sourceId": "diagnostic_bundle",
+        "body": "## 范围、数据与计算方法\n\n单能线严格使用 PARMA 专用线参数化：510.99895 keV、day-15 全空间通量 0.16651547160226118 ph cm⁻² s⁻¹、80 个等 μ 分量。[33,34] 类型的大气观测文献不参与数值归一。Gaussian 阈值统一复算为 (F_{min}=3\\sqrt{B_{20}}/K)。源级检查覆盖参考状态和 day-15 的减线/重组恒等式；事件级检查覆盖三个互斥目录分量；几何检查使用匹配入射数和共同响应/选择的独立输运。现有连续谱去线仍是 W=118.3/g=0 与 W=114.6/g=0.15 单线的混合状态，因此这里只能验证实现守恒和退化来源，不能宣称严格同一大气状态已经完成。"
+      },
+      {
+        "id": "limitations",
+        "type": "markdown",
+        "sourceId": "diagnostic_bundle",
+        "body": "## 局限性、不确定度与稳健性\n\n- W-grid (F_{min}) 是条件近似：非线本底、信号响应和时间轴偶合修正冻结为 SH3；它不是完整 W-grid 宽带/活化/信号闭合。\n- **严格同态风险：** 当前连续谱去线与单能线不是同一 PARMA 大气状态。正确单线归一必须保留，但同态宽带连续谱仍需重建。\n- SG3 单能线末级只有 12 个事件，线率相对统计误差 28.9%；因此不能过读单个角箱。不过 W-grid 与 SG3 的绝对差约 4.0σ，面积归一后与 1 相容。\n- 现有 Monte Carlo 误差不含 PARMA 源模型系统学，也不含连续谱去线状态与单能目标状态混合口径的系统误差。\n- 口径归一使用几何包络面积尺度，不是有效面积标定；它用于解释 2.024 倍几何尺度，不替代完整响应模拟。"
+      },
+      {
+        "id": "recommendations",
+        "type": "markdown",
+        "sourceId": "diagnostic_bundle",
+        "body": "## 建议的下一步\n\n1. 把“未见重复计数”作为当前实现结论保留；不要回退到把单能线直接加在含粗线面积的宽带上。\n2. 论文数值闭合前，保留当前正确的 PARMA 单线归一，重建与任务节点相同 W、g、Rc/depth 的宽带连续谱并重新去线；这一步解决同态口径，不是为了把线改回文献归一。\n3. 若目标是 3×10⁻⁵，设计指标应针对全空间线响应的绝对值，而不只是网格孔结构；需要控制主导半球、侧/后向和散射路径，或同步提升信号核。\n4. W-grid 当前线项 151 个选后事件给出 8.14% 率误差，可报告中心值、误差和当前 3.89×10⁻⁵ 条件近似；但 W-grid/open 差异只有 1.90σ，尚不足以把“19% 抑制”写成高显著性几何结论。若论文要求抑制比 <10% 相对误差或更强显著性，再补最小增量统计。\n5. 在任何论文回填前，仍应把条件 W-grid 近似明确标注为近似；不要把它写成完整本底闭合。"
+      },
+      {
+        "id": "questions",
+        "type": "markdown",
+        "body": "## 尚待回答的问题\n\n- 设计目标是把 W-grid 的绝对线响应压到 SG3 水平（约 3×10⁻⁵），还是坚持恢复旧粗表示的 2.23×10⁻⁵？后者要求近乎完全消除物理线，并仍受非线地板限制。\n- 是否需要为 W-grid 补完整宽带、信号和潜在材料本底闭合，以把当前条件近似升级为论文可报告结果？"
+      }
+    ]
+  },
+  "snapshot": {
+    "version": 1,
+    "generatedAt": "2026-08-25T07:39:40Z",
+    "status": "ready",
+    "datasets": {
+      "headline": [
+        {
+          "_row_order": 0,
+          "wgrid_fmin_display": "3.890×10⁻⁵",
+          "wgrid_vs_old_display": "+74.5% vs 旧粗表示",
+          "line_share_display": "67.5%",
+          "line_share_context": "W-grid 条件近似总本底",
+          "overlap_verdict": "未发现",
+          "overlap_context": "源级与事件级守恒均通过",
+          "area_ratio_display": "1.187 ± 0.356",
+          "area_ratio_context": "W-grid / SG3，按口径面积归一"
+        }
+      ],
+      "background_budget": [
+        {
+          "_row_order": 0,
+          "scenario": "SG3 通量闭合",
+          "component": "非线本底",
+          "background_counts": 87370.98650037171,
+          "total_counts": 99923.14165545377,
+          "signal_K": 16350529.192505842,
+          "fmin_3sigma": 5.799926385676048e-05,
+          "fmin_3sigma_display": "5.799926 × 10⁻⁵",
+          "line_share": 0.12561809954257955,
+          "scope": "现有混合态算术/任务折叠闭合"
+        },
+        {
+          "_row_order": 1,
+          "scenario": "SG3 通量闭合",
+          "component": "PARMA 511 单能线",
+          "background_counts": 12552.15515508207,
+          "total_counts": 99923.14165545377,
+          "signal_K": 16350529.192505842,
+          "fmin_3sigma": 5.799926385676048e-05,
+          "fmin_3sigma_display": "5.799926 × 10⁻⁵",
+          "line_share": 0.12561809954257955,
+          "scope": "现有混合态算术/任务折叠闭合"
+        },
+        {
+          "_row_order": 2,
+          "scenario": "SH3 开放框通量闭合",
+          "component": "非线本底",
+          "background_counts": 15376.168094300125,
+          "total_counts": 54805.970088911905,
+          "signal_K": 16781213.415433664,
+          "fmin_3sigma": 4.185157715646857e-05,
+          "fmin_3sigma_display": "4.185158 × 10⁻⁵",
+          "line_share": 0.7194435557046922,
+          "scope": "现有混合态算术/任务折叠闭合"
+        },
+        {
+          "_row_order": 3,
+          "scenario": "SH3 开放框通量闭合",
+          "component": "PARMA 511 单能线",
+          "background_counts": 39429.801994611786,
+          "total_counts": 54805.970088911905,
+          "signal_K": 16781213.415433664,
+          "fmin_3sigma": 4.185157715646857e-05,
+          "fmin_3sigma_display": "4.185158 × 10⁻⁵",
+          "line_share": 0.7194435557046922,
+          "scope": "现有混合态算术/任务折叠闭合"
+        },
+        {
+          "_row_order": 4,
+          "scenario": "SH3 + W-grid 条件近似",
+          "component": "非线本底",
+          "background_counts": 15376.168094300125,
+          "total_counts": 47351.81259552783,
+          "signal_K": 16781213.415433664,
+          "fmin_3sigma": 3.890148662146553e-05,
+          "fmin_3sigma_display": "3.890149 × 10⁻⁵",
+          "line_share": 0.6752781519550037,
+          "scope": "用户指定条件近似"
+        },
+        {
+          "_row_order": 5,
+          "scenario": "SH3 + W-grid 条件近似",
+          "component": "PARMA 511 单能线",
+          "background_counts": 31975.644501227704,
+          "total_counts": 47351.81259552783,
+          "signal_K": 16781213.415433664,
+          "fmin_3sigma": 3.890148662146553e-05,
+          "fmin_3sigma_display": "3.890149 × 10⁻⁵",
+          "line_share": 0.6752781519550037,
+          "scope": "用户指定条件近似"
+        }
+      ],
+      "closure_checks": [
+        {
+          "_row_order": 0,
+          "check": "参考宽带 = 连续谱 + 被移除粗线",
+          "observed": 4.7996615777852,
+          "expected": 4.7996615777852,
+          "residual": 1.6653345369377348e-16,
+          "verdict": "PASS"
+        },
+        {
+          "_row_order": 1,
+          "check": "参考重组 = 连续谱 + 同状态 PARMA 线",
+          "observed": 4.7970018744868055,
+          "expected": 4.7970018744868055,
+          "residual": -1.6653345369377348e-16,
+          "verdict": "PASS"
+        },
+        {
+          "_row_order": 2,
+          "check": "day-15 宽带 = 连续谱 + 被移除粗线",
+          "observed": 4.591345225624589,
+          "expected": 4.591345225624588,
+          "residual": 9.43689570931383e-16,
+          "verdict": "PASS"
+        },
+        {
+          "_row_order": 3,
+          "check": "day-15 重组 = 连续谱 + PARMA 单能线",
+          "observed": 4.589076082023869,
+          "expected": 4.589076082023869,
+          "residual": -4.163336342344337e-16,
+          "verdict": "PASS"
+        },
+        {
+          "_row_order": 4,
+          "check": "20 角箱 W2 = 粗线 + 连续谱",
+          "observed": 0.0014810264670661224,
+          "expected": 0.0014810264670661222,
+          "residual": 1.0842021724855044e-19,
+          "verdict": "PASS"
+        },
+        {
+          "_row_order": 5,
+          "check": "day-15 缩放 W2 = 粗线 + 连续谱",
+          "observed": 0.0014167465118916788,
+          "expected": 0.0014167465118916788,
+          "residual": 1.0842021724855044e-19,
+          "verdict": "PASS"
+        },
+        {
+          "_row_order": 6,
+          "check": "81×80 唯一 node/bin 对",
+          "observed": 6480.0,
+          "expected": 6480.0,
+          "residual": 0.0,
+          "verdict": "PASS"
+        },
+        {
+          "_row_order": 7,
+          "check": "day-15 80 箱通量和",
+          "observed": 0.1665154716022612,
+          "expected": 0.16651547160226118,
+          "residual": 2.7755575615628914e-17,
+          "verdict": "PASS"
+        },
+        {
+          "_row_order": 8,
+          "check": "事件目录三个互斥分量求和",
+          "observed": 8709361.0,
+          "expected": 8709361.0,
+          "residual": 0.0,
+          "verdict": "PASS"
+        }
+      ],
+      "geometry_response": [
+        {
+          "_row_order": 0,
+          "design": "SG3",
+          "aperture_span_cm": 3.796,
+          "envelope_area_scale_vs_sg3": 1.0,
+          "line_rate_cps": 0.007538837736129749,
+          "line_sigma_cps": 0.0021762749981657096,
+          "selected_events": 12,
+          "incident_photons": 3000000,
+          "rate_per_square_envelope_cps_cm2": 0.0005231810296769706,
+          "area_normalized_ratio_vs_sg3": 1.0,
+          "area_normalized_ratio_sigma": null
+        },
+        {
+          "_row_order": 1,
+          "design": "开放 SH3",
+          "aperture_span_cm": 5.4,
+          "envelope_area_scale_vs_sg3": 2.0236486523998978,
+          "line_rate_cps": 0.02229246057190028,
+          "line_sigma_cps": 0.0016345625147982216,
+          "selected_events": 186,
+          "incident_photons": 15709417,
+          "rate_per_square_envelope_cps_cm2": 0.00076448767393348,
+          "area_normalized_ratio_vs_sg3": 1.461229728466073,
+          "area_normalized_ratio_sigma": 0.43521514435746783
+        },
+        {
+          "_row_order": 2,
+          "design": "SH3 + W-grid",
+          "aperture_span_cm": 5.4,
+          "envelope_area_scale_vs_sg3": 2.0236486523998978,
+          "line_rate_cps": 0.018105899632331533,
+          "line_sigma_cps": 0.0014734372156460379,
+          "selected_events": 151,
+          "incident_photons": 15709417,
+          "rate_per_square_envelope_cps_cm2": 0.0006209156252514242,
+          "area_normalized_ratio_vs_sg3": 1.1868083703929369,
+          "area_normalized_ratio_sigma": 0.35595517087098427
+        }
+      ],
+      "hemisphere_response": [
+        {
+          "_row_order": 0,
+          "hemisphere": "down",
+          "parma_flux": 0.029436646183696555,
+          "parma_flux_share": 0.17678024690707972,
+          "open_rate_cps": 0.009588155084688292,
+          "wgrid_rate_cps": 0.007194397204899946,
+          "suppression_fraction": 0.24965781828154132,
+          "difference_z": -1.687664902580637,
+          "wgrid_selected": 60,
+          "open_selected": 80,
+          "wgrid_residual_share": 0.3973509933774834
+        },
+        {
+          "_row_order": 1,
+          "hemisphere": "up",
+          "parma_flux": 0.13707882541856461,
+          "parma_flux_share": 0.8232197530929202,
+          "open_rate_cps": 0.012704305487211987,
+          "wgrid_rate_cps": 0.010911502427431585,
+          "suppression_fraction": 0.14111775425937434,
+          "difference_z": -1.0655231231705897,
+          "wgrid_selected": 91,
+          "open_selected": 106,
+          "wgrid_residual_share": 0.6026490066225165
+        }
+      ],
+      "scenario_decomposition": [
+        {
+          "_row_order": 0,
+          "scenario": "旧 SH3 粗线表示",
+          "representation": "宽带粗 IP-LIN 帽；未物理窄化",
+          "non_line_counts": null,
+          "mono511_counts": null,
+          "total_counts": 15551.676334958727,
+          "signal_K": 16781388.47714417,
+          "fmin_3sigma": 2.2293690527382333e-05,
+          "line_share": null,
+          "scope": "旧基线",
+          "fmin_3sigma_display": "2.229369 × 10⁻⁵"
+        },
+        {
+          "_row_order": 1,
+          "scenario": "SG3 通量闭合",
+          "representation": "去粗线 + PARMA 单能线（现有混合状态）",
+          "non_line_counts": 87370.98650037171,
+          "mono511_counts": 12552.15515508207,
+          "total_counts": 99923.14165545377,
+          "signal_K": 16350529.192505842,
+          "fmin_3sigma": 5.799926385676048e-05,
+          "line_share": 0.12561809954257955,
+          "scope": "现有混合态算术/任务折叠闭合",
+          "fmin_3sigma_display": "5.799926 × 10⁻⁵"
+        },
+        {
+          "_row_order": 2,
+          "scenario": "SH3 开放框通量闭合",
+          "representation": "去粗线 + PARMA 单能线（现有混合状态）",
+          "non_line_counts": 15376.168094300125,
+          "mono511_counts": 39429.801994611786,
+          "total_counts": 54805.970088911905,
+          "signal_K": 16781213.415433664,
+          "fmin_3sigma": 4.185157715646857e-05,
+          "line_share": 0.7194435557046922,
+          "scope": "现有混合态算术/任务折叠闭合",
+          "fmin_3sigma_display": "4.185158 × 10⁻⁵"
+        },
+        {
+          "_row_order": 3,
+          "scenario": "SH3 + W-grid 条件近似",
+          "representation": "W-grid 单能线 + 冻结 SH3 非线/信号",
+          "non_line_counts": 15376.168094300125,
+          "mono511_counts": 31975.644501227704,
+          "total_counts": 47351.81259552783,
+          "signal_K": 16781213.415433664,
+          "fmin_3sigma": 3.890148662146553e-05,
+          "line_share": 0.6752781519550037,
+          "scope": "用户指定条件近似",
+          "fmin_3sigma_display": "3.890149 × 10⁻⁵"
+        }
+      ],
+      "target_budget": [
+        {
+          "_row_order": 0,
+          "target": "恢复旧 SH3 阈值",
+          "target_fmin": 2.2293690527382333e-05,
+          "target_fmin_display": "2.229369 × 10⁻⁵",
+          "allowed_total_counts": 15551.351869690108,
+          "allowed_line_counts": 175.18377538998357,
+          "required_line_suppression_fraction": 0.9945213371576214,
+          "feasibility": "仅压线可达"
+        },
+        {
+          "_row_order": 1,
+          "target": "达到 3.0e-5",
+          "target_fmin": 3e-05,
+          "target_fmin_display": "3.000000 × 10⁻⁵",
+          "allowed_total_counts": 28160.912369433074,
+          "allowed_line_counts": 12784.744275132949,
+          "required_line_suppression_fraction": 0.6001724289046909,
+          "feasibility": "仅压线可达"
+        },
+        {
+          "_row_order": 2,
+          "target": "达到 2.0e-5",
+          "target_fmin": 2e-05,
+          "target_fmin_display": "2.000000 × 10⁻⁵",
+          "allowed_total_counts": 12515.961053081372,
+          "allowed_line_counts": -2860.207041218753,
+          "required_line_suppression_fraction": null,
+          "feasibility": "非线本底已超预算"
+        }
+      ]
+    }
+  },
+  "sources": [
+    {
+      "id": "diagnostic_bundle",
+      "label": "PARMA 511 keV 守恒与灵敏度诊断包",
+      "path": "engineering/geometry_optimization_20260815/70_parma511_fmin_overlap_diagnosis_20260825/outputs/01_diagnosis_20260825/diagnostic_summary.json"
+    },
+    {
+      "id": "source_headline",
+      "label": "从复算诊断摘要提取的四项标题指标。",
+      "path": "engineering/geometry_optimization_20260815/70_parma511_fmin_overlap_diagnosis_20260825/outputs/01_diagnosis_20260825/diagnosis.sqlite",
+      "query": {
+        "engine": "sqlite3",
+        "language": "sql",
+        "sql": "SELECT * FROM \"headline\" ORDER BY _row_order",
+        "description": "从复算诊断摘要提取的四项标题指标。",
+        "executed_at": "2026-08-25T07:39:40Z",
+        "tables_used": [
+          "headline"
+        ],
+        "filters": [
+          "Frozen authority inputs listed in diagnostic_summary.json",
+          "No row sampling or truncation"
+        ],
+        "metric_definitions": [
+          "Headline strings are formatted from diagnostic_summary.json without additional calculation."
+        ]
+      }
+    },
+    {
+      "id": "source_background_budget",
+      "label": "现有混合态去线+PARMA mono 的 SG3、开放 SH3 与条件 W-grid 20 日本底组成。",
+      "path": "engineering/geometry_optimization_20260815/70_parma511_fmin_overlap_diagnosis_20260825/outputs/01_diagnosis_20260825/diagnosis.sqlite",
+      "query": {
+        "engine": "sqlite3",
+        "language": "sql",
+        "sql": "SELECT * FROM \"background_budget\" ORDER BY _row_order",
+        "description": "现有混合态去线+PARMA mono 的 SG3、开放 SH3 与条件 W-grid 20 日本底组成。",
+        "executed_at": "2026-08-25T07:39:40Z",
+        "tables_used": [
+          "background_budget"
+        ],
+        "filters": [
+          "Frozen authority inputs listed in diagnostic_summary.json",
+          "No row sampling or truncation"
+        ],
+        "metric_definitions": [
+          "background_counts is the component count; non-line = other + de-lined gamma continuum.",
+          "total_counts = non-line counts + mono511 counts."
+        ]
+      }
+    },
+    {
+      "id": "source_closure_checks",
+      "label": "源通量、角分箱唯一性与互斥事件目录的守恒检查。",
+      "path": "engineering/geometry_optimization_20260815/70_parma511_fmin_overlap_diagnosis_20260825/outputs/01_diagnosis_20260825/diagnosis.sqlite",
+      "query": {
+        "engine": "sqlite3",
+        "language": "sql",
+        "sql": "SELECT * FROM \"closure_checks\" ORDER BY _row_order",
+        "description": "源通量、角分箱唯一性与互斥事件目录的守恒检查。",
+        "executed_at": "2026-08-25T07:39:40Z",
+        "tables_used": [
+          "closure_checks"
+        ],
+        "filters": [
+          "Frozen authority inputs listed in diagnostic_summary.json",
+          "No row sampling or truncation"
+        ],
+        "metric_definitions": [
+          "residual = observed - expected; PASS requires the authority-specific floating-point tolerance."
+        ]
+      }
+    },
+    {
+      "id": "source_geometry_response",
+      "label": "共同 PARMA 单线和共同选择下的 SG3、开放 SH3、W-grid 响应。",
+      "path": "engineering/geometry_optimization_20260815/70_parma511_fmin_overlap_diagnosis_20260825/outputs/01_diagnosis_20260825/diagnosis.sqlite",
+      "query": {
+        "engine": "sqlite3",
+        "language": "sql",
+        "sql": "SELECT * FROM \"geometry_response\" ORDER BY _row_order",
+        "description": "共同 PARMA 单线和共同选择下的 SG3、开放 SH3、W-grid 响应。",
+        "executed_at": "2026-08-25T07:39:40Z",
+        "tables_used": [
+          "geometry_response"
+        ],
+        "filters": [
+          "Frozen authority inputs listed in diagnostic_summary.json",
+          "No row sampling or truncation"
+        ],
+        "metric_definitions": [
+          "area_normalized_ratio_vs_sg3 = absolute line-rate ratio / (aperture_span/3.796 cm)^2."
+        ]
+      }
+    },
+    {
+      "id": "source_hemisphere_response",
+      "label": "80 等 mu 角分量按源表 down/up 标签互斥聚合后的响应。",
+      "path": "engineering/geometry_optimization_20260815/70_parma511_fmin_overlap_diagnosis_20260825/outputs/01_diagnosis_20260825/diagnosis.sqlite",
+      "query": {
+        "engine": "sqlite3",
+        "language": "sql",
+        "sql": "SELECT * FROM \"hemisphere_response\" ORDER BY _row_order",
+        "description": "80 等 mu 角分量按源表 down/up 标签互斥聚合后的响应。",
+        "executed_at": "2026-08-25T07:39:40Z",
+        "tables_used": [
+          "hemisphere_response"
+        ],
+        "filters": [
+          "Frozen authority inputs listed in diagnostic_summary.json",
+          "No row sampling or truncation"
+        ],
+        "metric_definitions": [
+          "suppression_fraction = 1 - W-grid rate/open-SH3 rate for the same angular subset."
+        ]
+      }
+    },
+    {
+      "id": "source_scenario_decomposition",
+      "label": "旧粗表示、现有混合态算术闭合与条件 W-grid 的任务本底和 Fmin。",
+      "path": "engineering/geometry_optimization_20260815/70_parma511_fmin_overlap_diagnosis_20260825/outputs/01_diagnosis_20260825/diagnosis.sqlite",
+      "query": {
+        "engine": "sqlite3",
+        "language": "sql",
+        "sql": "SELECT * FROM \"scenario_decomposition\" ORDER BY _row_order",
+        "description": "旧粗表示、现有混合态算术闭合与条件 W-grid 的任务本底和 Fmin。",
+        "executed_at": "2026-08-25T07:39:40Z",
+        "tables_used": [
+          "scenario_decomposition"
+        ],
+        "filters": [
+          "Frozen authority inputs listed in diagnostic_summary.json",
+          "No row sampling or truncation"
+        ],
+        "metric_definitions": [
+          "Fmin_3sigma = 3*sqrt(total_counts)/signal_K.",
+          "line_share = mono511_counts/total_counts."
+        ]
+      }
+    },
+    {
+      "id": "source_target_budget",
+      "label": "冻结 SH3 非线本底与信号核时，各目标 Fmin 允许的单能线预算。",
+      "path": "engineering/geometry_optimization_20260815/70_parma511_fmin_overlap_diagnosis_20260825/outputs/01_diagnosis_20260825/diagnosis.sqlite",
+      "query": {
+        "engine": "sqlite3",
+        "language": "sql",
+        "sql": "SELECT * FROM \"target_budget\" ORDER BY _row_order",
+        "description": "冻结 SH3 非线本底与信号核时，各目标 Fmin 允许的单能线预算。",
+        "executed_at": "2026-08-25T07:39:40Z",
+        "tables_used": [
+          "target_budget"
+        ],
+        "filters": [
+          "Frozen authority inputs listed in diagnostic_summary.json",
+          "No row sampling or truncation"
+        ],
+        "metric_definitions": [
+          "allowed_total_counts = (target_fmin*signal_K/3)^2.",
+          "allowed_line_counts = allowed_total_counts - frozen_non_line_counts."
+        ]
+      }
+    }
+  ]
+}

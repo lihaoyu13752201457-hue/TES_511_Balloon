@@ -1,0 +1,229 @@
+{
+  "contract_checks": [
+    {
+      "detail": "510.99895 keV",
+      "name": "canonical_line_energy",
+      "status": "PASS"
+    },
+    {
+      "detail": "0.16651547160226118 ph cm^-2 s^-1",
+      "name": "canonical_parma_flux",
+      "status": "PASS"
+    },
+    {
+      "detail": "80",
+      "name": "equal_mu_components",
+      "status": "PASS"
+    },
+    {
+      "detail": "True",
+      "name": "common_parma_source",
+      "status": "PASS"
+    },
+    {
+      "detail": "True",
+      "name": "common_response_selection_time",
+      "status": "PASS"
+    },
+    {
+      "detail": "required for the reported quadrature uncertainty",
+      "name": "independent_mc_samples",
+      "status": "PASS"
+    },
+    {
+      "detail": "open=15709417, grid=15709417",
+      "name": "matched_incident_photons",
+      "status": "PASS"
+    },
+    {
+      "detail": "open=8343.62808 s, grid=8339.8231 s; each independent run uses its own 1/sum(T)",
+      "name": "matched_source_exposure_realizations",
+      "status": "PASS"
+    },
+    {
+      "detail": "comparison=0.02229246057190028, cutflow=0.02229246057190028",
+      "name": "open_comparison_cutflow_rate",
+      "status": "PASS"
+    },
+    {
+      "detail": "comparison=0.001634562514798222, cutflow=0.001634562514798222",
+      "name": "open_comparison_cutflow_sigma",
+      "status": "PASS"
+    },
+    {
+      "detail": "comparison=186, cutflow=186",
+      "name": "open_comparison_cutflow_selected",
+      "status": "PASS"
+    },
+    {
+      "detail": "bin_sum=0.02229246057190028, final=0.02229246057190028",
+      "name": "open_bin80_rate_closure",
+      "status": "PASS"
+    },
+    {
+      "detail": "bin_sum=186, final=186",
+      "name": "open_bin80_count_closure",
+      "status": "PASS"
+    },
+    {
+      "detail": "selected counts cannot increase after a cut",
+      "name": "open_cutflow_monotone",
+      "status": "PASS"
+    },
+    {
+      "detail": "comparison=0.01810589963233153, cutflow=0.01810589963233153",
+      "name": "grid_comparison_cutflow_rate",
+      "status": "PASS"
+    },
+    {
+      "detail": "comparison=0.001473437215646038, cutflow=0.001473437215646038",
+      "name": "grid_comparison_cutflow_sigma",
+      "status": "PASS"
+    },
+    {
+      "detail": "comparison=151, cutflow=151",
+      "name": "grid_comparison_cutflow_selected",
+      "status": "PASS"
+    },
+    {
+      "detail": "bin_sum=0.01810589963233153, final=0.01810589963233153",
+      "name": "grid_bin80_rate_closure",
+      "status": "PASS"
+    },
+    {
+      "detail": "bin_sum=151, final=151",
+      "name": "grid_bin80_count_closure",
+      "status": "PASS"
+    },
+    {
+      "detail": "selected counts cannot increase after a cut",
+      "name": "grid_cutflow_monotone",
+      "status": "PASS"
+    }
+  ],
+  "derived": {
+    "bin80_diagnostic": {
+      "grid_occupied_bins": 62,
+      "interpretation": "descriptive only; sparse selected counts make binwise inference underpowered",
+      "largest_absolute_rate_difference_bin": 18,
+      "largest_signed_grid_minus_open_rate_cps": -0.0009587061454227049,
+      "normalized_shape_total_variation": 0.40340383109022293,
+      "open_occupied_bins": 64
+    },
+    "final": {
+      "difference_sigma_cps": 0.002200638962491175,
+      "difference_z_independent_mc": -1.902429708337738,
+      "grid_minus_open_cps": -0.004186560939568748,
+      "grid_over_open_ratio": 0.8121983472364679,
+      "ratio_sigma": 0.08896764730697831,
+      "suppression_fraction": 0.1878016527635321,
+      "suppression_sigma": 0.08896764730697831
+    },
+    "stage_ratios": [
+      {
+        "grid_over_open_ratio": 0.8064902361327652,
+        "grid_rate_cps": 0.01894524597290319,
+        "grid_selected_events": 158,
+        "grid_sigma_cps": 0.001507202843424405,
+        "open_rate_cps": 0.023490979957486315,
+        "open_selected_events": 196,
+        "open_sigma_cps": 0.001677927139820451,
+        "ratio_sigma": 0.08622717657395312,
+        "stage": "pre_veto",
+        "stage_label_zh": "能窗内（主动 veto 前）"
+      },
+      {
+        "grid_over_open_ratio": 0.8064902361327652,
+        "grid_rate_cps": 0.01894524597290319,
+        "grid_selected_events": 158,
+        "grid_sigma_cps": 0.001507202843424405,
+        "open_rate_cps": 0.023490979957486315,
+        "open_selected_events": 196,
+        "open_sigma_cps": 0.001677927139820451,
+        "ratio_sigma": 0.08622717657395312,
+        "stage": "plastic_positron_veto",
+        "stage_label_zh": "塑料/正电子 veto 后"
+      },
+      {
+        "grid_over_open_ratio": 0.8064902361327652,
+        "grid_rate_cps": 0.01894524597290319,
+        "grid_selected_events": 158,
+        "grid_sigma_cps": 0.001507202843424405,
+        "open_rate_cps": 0.023490979957486315,
+        "open_selected_events": 196,
+        "open_sigma_cps": 0.001677927139820451,
+        "ratio_sigma": 0.08622717657395312,
+        "stage": "bgo_active_scintillator_veto",
+        "stage_label_zh": "BGO veto 后"
+      },
+      {
+        "grid_over_open_ratio": 0.8064902361327652,
+        "grid_rate_cps": 0.01894524597290319,
+        "grid_selected_events": 158,
+        "grid_sigma_cps": 0.001507202843424405,
+        "open_rate_cps": 0.023490979957486315,
+        "open_selected_events": 196,
+        "open_sigma_cps": 0.001677927139820451,
+        "ratio_sigma": 0.08622717657395312,
+        "stage": "combined_active_veto",
+        "stage_label_zh": "联合主动 veto 后"
+      },
+      {
+        "grid_over_open_ratio": 0.8121983472364679,
+        "grid_rate_cps": 0.018105899632331533,
+        "grid_selected_events": 151,
+        "grid_sigma_cps": 0.0014734372156460379,
+        "open_rate_cps": 0.02229246057190028,
+        "open_selected_events": 186,
+        "open_sigma_cps": 0.0016345625147982216,
+        "ratio_sigma": 0.08896764730697831,
+        "stage": "compton_trajectory_veto",
+        "stage_label_zh": "Compton 轨迹 veto 后"
+      }
+    ]
+  },
+  "metadata": {
+    "angular_components_equal_mu": 80,
+    "common_parma_source": true,
+    "common_response_selection_time": true,
+    "data_status": "actual",
+    "independent_mc_samples": true,
+    "line_energy_keV": 510.99895,
+    "line_transport_contract_sha256": "87e034405d46c0a928f4e4c2aa2c36030f110f7dc8ab4c843436bf195bf9357f",
+    "parma_day15_full_space_flux_ph_cm2_s": 0.16651547160226118,
+    "response_selection_contract": "package-67 model-B response and selection, unchanged",
+    "source_contract_sha256": "5424eeca35b20affb153c0e07c31a6582e575f511922bf55f40a5a0f77ab4326",
+    "source_fragment_sha256": "fc386a44b096d33d12d4a096532a3a57da5743681d93e779e653ae1349f776e6",
+    "window_id": "w2_510p58_511p42",
+    "window_keV": [
+      510.58,
+      511.42
+    ]
+  },
+  "open_frame": {
+    "effective_selected_events": 186.0,
+    "geometry_id": "/home/ubuntu/.codex/worktrees/e3cf/TES_511_Balloon/engineering/geometry_optimization_20260815/sh3/assembly_opt_v3/geometry/SH3_Assembly_OptV3_60cm.geo.setup",
+    "incident_photons": 15709417,
+    "label": "SH3 开放框",
+    "physical_exposure_s": 8343.628079999999,
+    "rate_cps": 0.02229246057190028,
+    "role": "open_frame",
+    "selected_events": 186,
+    "sigma_cps": 0.0016345625147982216
+  },
+  "schema_version": 1,
+  "scope": "PARMA monoenergetic atmospheric 511-keV line response only",
+  "script_version": "1.0.0",
+  "w_grid": {
+    "effective_selected_events": 151.0,
+    "geometry_id": "/home/ubuntu/.codex/worktrees/ebb2/TES_511_Balloon/engineering/geometry_optimization_20260815/68_sh3_wgrid_mono511_statistics_20260824/transport_authority/geometry/SH3_Assembly_OptV3_WGrid_60cm.geo.setup",
+    "incident_photons": 15709417,
+    "label": "SH3 + W-grid",
+    "physical_exposure_s": 8339.8231,
+    "rate_cps": 0.018105899632331533,
+    "role": "w_grid",
+    "selected_events": 151,
+    "sigma_cps": 0.0014734372156460379
+  },
+  "warnings": []
+}

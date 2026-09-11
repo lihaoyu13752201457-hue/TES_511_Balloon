@@ -1,0 +1,251 @@
+{
+  "checks": {
+    "all_rays_inside_square_at_grid_center": true,
+    "all_rays_inside_square_through_full_front_bgo_depth": true,
+    "all_rays_inside_square_through_grid_w_depth": true,
+    "locked_eventlist_sha256_and_row_count": true,
+    "locked_smallap_geometry_sha256": true,
+    "microgrid_result_is_explicitly_non_transport": true,
+    "signal_replay_is_explicitly_required": true
+  },
+  "component_identity": "SH3_Chimney_DR_Assembly_OptV3_BGO_SmallAp_SG3Grid",
+  "conclusion": {
+    "focused_bundle_envelope": "All 37,194 locked focused rays clear the 3.796 cm square at the grid and across the full front-BGO depth under straight-line propagation.",
+    "microgrid": "The aperture edge does not clip the bundle, but the deep 25 x 25 W microgrid is not signal-neutral. Its straight-ray web-contact estimate cannot replace signal transport.",
+    "required_next_physics_step": "Replay this exact EventList through the small-aperture mass model before using a signal effective area or Fmin for the variant."
+  },
+  "coordinate_method": {
+    "aperture_center_local_cm": [
+      -44.7,
+      0.0,
+      -2.8
+    ],
+    "projection": "linear propagation to fixed local-x planes",
+    "square_half_width_cm": 1.898,
+    "world_to_instrument": "x_local=(x_world-z_world)/sqrt(2), y_local=y_world, z_local=(x_world+z_world)/sqrt(2)"
+  },
+  "generated_at_utc": "2026-08-25T10:01:04.942058+00:00",
+  "geometry_authority": {
+    "aperture_contract": {
+      "central_grid_normal_open_area_cm2": 12.158848,
+      "central_grid_pitch_cm": 0.155,
+      "central_grid_w_depth_cm": 0.798,
+      "central_grid_web_cm": 0.013,
+      "grid_to_tes_l0_center_distance_cm": 6.15,
+      "new_active_bgo_square_opening_cm": 3.796,
+      "old_active_bgo_square_opening_cm": 6.0,
+      "perforated_grid_square_cm": 3.796,
+      "required_outer_filter_position_change_cm": {
+        "from_x": -42.15,
+        "reason": "avoid overlap with active BGO restored outside the 3.796 cm square cut",
+        "to_x": -41.65
+      }
+    },
+    "expected_geometry_sha256": "ae015378ca7731eb52545f19e2e7e7df2f88f75026b51d7f5f2dc598bcf1e973",
+    "geometry": {
+      "bytes": 592084,
+      "path": "/home/ubuntu/.codex/worktrees/a61c/TES_511_Balloon/engineering/geometry_optimization_20260815/sh3/assembly_opt_v3_bgo_smallap_sg3grid_20260825/geometry/SH3_Assembly_OptV3.geo",
+      "sha256": "ae015378ca7731eb52545f19e2e7e7df2f88f75026b51d7f5f2dc598bcf1e973"
+    },
+    "manifest": {
+      "bytes": 5469,
+      "path": "/home/ubuntu/.codex/worktrees/a61c/TES_511_Balloon/engineering/geometry_optimization_20260815/sh3/assembly_opt_v3_bgo_smallap_sg3grid_20260825/data/bgo_smallap_sg3grid_manifest.json",
+      "sha256": "7ec24745e3cc607f37f632c246eb7b165bd39f8c422775ad46f366e4f18c846b"
+    },
+    "manifest_status": "PASS__SH3_OPTV3_BGO_SMALLAP_SG3GRID_BUILT"
+  },
+  "not_claimed": [
+    "particle transport or detector response",
+    "tungsten absorption, transmission, or scattering probability",
+    "selected signal effective area, background, activation, or sensitivity",
+    "off-axis pointing or attitude-jitter acceptance beyond the locked EventList"
+  ],
+  "results": {
+    "full_front_bgo_region_tested_as_same_square_corridor": {
+      "front_plane": {
+        "inside_square_count": 37194,
+        "local_x_cm": -45.7,
+        "maximum_radius_cm": 1.5556643675469963,
+        "maximum_radius_event_id": 6995,
+        "maximum_square_norm_cm": 1.3393436766657063,
+        "maximum_square_norm_event_id": 275,
+        "minimum_circular_edge_margin_cm": 0.3423356324530036,
+        "minimum_square_edge_margin_cm": 0.5586563233342936,
+        "minimum_square_edge_margin_mm": 5.586563233342936,
+        "r99_nearest_rank_cm": 1.2334411932307965,
+        "total_count": 37194,
+        "y_range_cm": [
+          -1.2283686999736496,
+          1.3393436766657063
+        ],
+        "z_relative_range_cm": [
+          -1.237975927524496,
+          1.2025236064899756
+        ]
+      },
+      "inside_square_for_entire_interval_count": 37194,
+      "local_x_interval_cm": [
+        -45.7,
+        -41.7
+      ],
+      "maximum_endpoint_radius_cm": 1.5837472851648566,
+      "maximum_endpoint_radius_event_id": 6995,
+      "maximum_square_norm_cm": 1.3653129788728202,
+      "maximum_square_norm_event_id": 275,
+      "minimum_circular_edge_margin_cm": 0.3142527148351433,
+      "minimum_square_edge_margin_cm": 0.5326870211271797,
+      "minimum_square_edge_margin_mm": 5.326870211271797,
+      "rear_plane": {
+        "inside_square_count": 37194,
+        "local_x_cm": -41.7,
+        "maximum_radius_cm": 1.5837472851648566,
+        "maximum_radius_event_id": 6995,
+        "maximum_square_norm_cm": 1.3653129788728202,
+        "maximum_square_norm_event_id": 275,
+        "minimum_circular_edge_margin_cm": 0.3142527148351433,
+        "minimum_square_edge_margin_cm": 0.5326870211271797,
+        "minimum_square_edge_margin_mm": 5.326870211271797,
+        "r99_nearest_rank_cm": 1.2354813790483954,
+        "total_count": 37194,
+        "y_range_cm": [
+          -1.2004388329581215,
+          1.3653129788728202
+        ],
+        "z_relative_range_cm": [
+          -1.2687244681759227,
+          1.2279404268609757
+        ]
+      },
+      "total_count": 37194
+    },
+    "grid_center": {
+      "inside_square_count": 37194,
+      "local_x_cm": -44.7,
+      "maximum_radius_cm": 1.5626736244649477,
+      "maximum_radius_event_id": 6995,
+      "maximum_square_norm_cm": 1.345836002217485,
+      "maximum_square_norm_event_id": 275,
+      "minimum_circular_edge_margin_cm": 0.3353263755350522,
+      "minimum_square_edge_margin_cm": 0.552163997782515,
+      "minimum_square_edge_margin_mm": 5.52163997782515,
+      "r99_nearest_rank_cm": 1.23343673468484,
+      "total_count": 37194,
+      "y_range_cm": [
+        -1.2213862332197676,
+        1.345836002217485
+      ],
+      "z_relative_range_cm": [
+        -1.2456630626873526,
+        1.20472354834679
+      ]
+    },
+    "grid_full_w_depth": {
+      "front_plane": {
+        "inside_square_count": 37194,
+        "local_x_cm": -45.099000000000004,
+        "maximum_radius_cm": 1.5598759999045777,
+        "maximum_radius_event_id": 6995,
+        "maximum_square_norm_cm": 1.3432455643223251,
+        "maximum_square_norm_event_id": 275,
+        "minimum_circular_edge_margin_cm": 0.3381240000954222,
+        "minimum_square_edge_margin_cm": 0.5547544356776748,
+        "minimum_square_edge_margin_mm": 5.547544356776748,
+        "r99_nearest_rank_cm": 1.2331156713424696,
+        "total_count": 37194,
+        "y_range_cm": [
+          -1.2241722374545665,
+          1.3432455643223251
+        ],
+        "z_relative_range_cm": [
+          -1.2425958957573728,
+          1.2016357035044032
+        ]
+      },
+      "inside_square_for_entire_interval_count": 37194,
+      "local_x_interval_cm": [
+        -45.099000000000004,
+        -44.301
+      ],
+      "maximum_endpoint_radius_cm": 1.5654724775157716,
+      "maximum_endpoint_radius_event_id": 6995,
+      "maximum_square_norm_cm": 1.3484264401126445,
+      "maximum_square_norm_event_id": 275,
+      "minimum_circular_edge_margin_cm": 0.33252752248422834,
+      "minimum_square_edge_margin_cm": 0.5495735598873555,
+      "minimum_square_edge_margin_mm": 5.495735598873555,
+      "rear_plane": {
+        "inside_square_count": 37194,
+        "local_x_cm": -44.301,
+        "maximum_radius_cm": 1.5654724775157716,
+        "maximum_radius_event_id": 6995,
+        "maximum_square_norm_cm": 1.3484264401126445,
+        "maximum_square_norm_event_id": 275,
+        "minimum_circular_edge_margin_cm": 0.33252752248422834,
+        "minimum_square_edge_margin_cm": 0.5495735598873555,
+        "minimum_square_edge_margin_mm": 5.495735598873555,
+        "r99_nearest_rank_cm": 1.2338871796776092,
+        "total_count": 37194,
+        "y_range_cm": [
+          -1.2186002289849687,
+          1.3484264401126445
+        ],
+        "z_relative_range_cm": [
+          -1.2487302296173324,
+          1.2078113931891765
+        ]
+      },
+      "total_count": 37194
+    },
+    "incident_direction": {
+      "maximum_off_axis_deg": 0.45980172202530967,
+      "median_off_axis_deg": 0.4255978415561036,
+      "p90_off_axis_deg": 0.4346203876086136,
+      "p99_off_axis_deg": 0.4419551244183487
+    },
+    "microgrid_straight_ray_estimate": {
+      "center_plane_direct_clear_count": 31244,
+      "center_plane_direct_clear_fraction": 0.8400279614991666,
+      "center_plane_w_web_contact_count": 5950,
+      "center_plane_w_web_contact_fraction": 0.15997203850083347,
+      "finite_grid_normal_open_fraction_from_manifest": 0.8438009729058709,
+      "full_depth_any_w_web_contact_count": 7596,
+      "full_depth_any_w_web_contact_fraction": 0.20422648814324892,
+      "full_depth_categories": {
+        "both_horizontal_and_vertical_contact": 123,
+        "direct_clear": 29598,
+        "horizontal_only_contact": 3855,
+        "vertical_only_contact": 3618
+      },
+      "full_depth_direct_clear_count": 29598,
+      "full_depth_direct_clear_fraction": 0.795773511856751,
+      "full_w_depth_local_x_interval_cm": [
+        -45.099000000000004,
+        -44.301
+      ],
+      "interpretation": "Geometric estimate only. A web contact is not an absorbed event, and a direct-clear ray is not necessarily a selected TES event. Tungsten attenuation/scattering and the selected signal effective area require a dedicated signal EventList replay.",
+      "method": "Exact straight-ray intersections with the 24 horizontal and 600 segmented vertical W-bar boxes over the 0.798 cm W depth."
+    }
+  },
+  "scope": "Focused EventList straight-line clearance against the 3.796 cm square aperture.",
+  "script": {
+    "bytes": 22423,
+    "path": "/home/ubuntu/.codex/worktrees/a61c/TES_511_Balloon/engineering/geometry_optimization_20260815/sh3/assembly_opt_v3_bgo_smallap_sg3grid_20260825/code/audit_bgo_smallap_signal_clearance.py",
+    "sha256": "5ee27ef928cf0f444448e34fccbe49d2f6369ff278717b1de6f3cb05fefa81de"
+  },
+  "source_authority": {
+    "bytes": 4889448,
+    "energy_values_keV": [
+      511.0
+    ],
+    "event_id_contract": "exact integer sequence 0..37193",
+    "expected_sha256": "2cfbeaf78d31df292cb36e36ec97ed116356606537c61ead93fae6fc84bad4d2",
+    "injection_local_x_cm": -46.0,
+    "maximum_abs_local_x_residual_cm": 4.410338760862942e-11,
+    "maximum_direction_norm_error": 7.049916206369744e-13,
+    "path": "/home/ubuntu/TES_511_Balloon/DEEPSEEK_CODE/outputs/eventlists/Opticsim_laue_f10m_a1_v3p5_centerfinger_optv3_focal_z2p8.eventlist.dat",
+    "row_count": 37194,
+    "sha256": "2cfbeaf78d31df292cb36e36ec97ed116356606537c61ead93fae6fc84bad4d2"
+  },
+  "status": "PASS__SH3_OPTV3_BGO_SMALLAP_SIGNAL_CLEARANCE_AUDIT",
+  "transport_launched": false
+}

@@ -1,0 +1,29 @@
+<system-reminder>This memory is 3 days old. Memories are point-in-time observations, not live state — claims about code behavior or file:line citations may be outdated. Verify against current code before asserting as fact.</system-reminder>
+1	---
+2	name: balloon511-nima-paper-editing
+3	description: "编辑 balloon511 论文(NIM-A + EA 双目录,各自 en/zh 双稿)的约束:数字锁定证据清单、EA 稿编号陷阱、多波段光学口径、abstract 显著度用 Z_{20d}、诚实措辞"
+4	metadata: 
+5	  node_type: memory
+6	  type: project
+7	  originSessionId: ad7de536-13ce-472f-b30a-d52f1a4765aa
+8	---
+9	
+10	编辑 `core_md/balloon511_nima_latex_drafts/` 的 NIM A 手稿时:
+11	
+12	- **双稿同步**:`balloon511_nima_draft_en.tex`(投稿稿)+ `_zh.tex`(内部对照稿)必须同改。编译用 `latexmk -pdfxe`(XeLaTeX);参考文献是内嵌 `thebibliography`,reviewer 建议的新引用(DeCesare2011/Roques2015/Gallego2025Balloon/Beechert2022/Ciabattoni2025ACS/Cowan2011/Sleator2019 等)**已存在为 \bibitem**,引言只用了其中一个子集。
+13	- **数字锁定**于 `paper_evidence_manifest_20260623.md`(fix5 full-stat closure authority):signal 1.19e-3 cps、background 3.92e-2 cps、93.4% 瞬发 / 6.6% 延迟、Z20d=7.80、F3σ(20d)=3.85e-5、S/B~3%、A_sel=11.9 cm²(=S/F0)、透镜 Aeff=20.1 cm²。改稿前对照 manifest + `source_normalization_audit_20260623.md`,勿凭记忆复述。内部自洽检查:F3σ = (3/Z20d)·F0。
+14	- **abstract 显著度必须写 `Z_{20d}=7.80`(diagnostic counting significance)**,与正文 §9(~line 556)+结论+表一致;"S/√B" 在正文里只是该指标的**类型名**(如 "replace the diagnostic S/√B metric"),绝不写成 "S/√B=7.80"——7.80 是 20d 折叠后的累积计数显著度,不是 day-15 率的 S/√B。2026-06-25 已修此处(原 abstract 误写 S/√B=7.80)。
+15	- **通量口径**:F0=1e-4 是入射(大气层顶/above-atmosphere)流量,大气透过率 T=0.739 单独施加到信号上。reviewer 想要显式 "top-of-atmosphere",但需先核归一化代码,暂未写入正文。
+16	- **诚实措辞是刻意的(对应 reviewer C8)**:"statistical benchmark, not flight prediction";仅 1% 本底归一化系统误差就把 Z 从 ~7.8 降到 ~2.8。润色时务必保留这些 hedge,勿弱化。**2026-06-27 更新(部分推翻上句)**:作者定调"本工作本来就是飞行性能估计,只是模拟未完全完成",据此已删去引言 §1 倒数第二段的"统计基准/非飞行预测"否定式 hedge,改为正面收尾于"把当前估计推进到完整飞行性能评估的优化方向"(屏蔽几何/侧入射准直/屏蔽材料——为后续 CsI↔BGO 对比留口、验证延迟活化、事例重建、上游光学自本底)。口径要点:用"估计/estimate"本身承载"模拟≠完全现实"的 caveat,**不特意罗列"系统误差待完善/未包含项"**(作者:这不是终稿,模拟数据未完全引入)。落点是"估计飞行本底+点源性能"+"对设计方案的优化方向性指导"。**进度(2026-06-27):引言 §1 末段 + abstract 末句已对齐(abstract 删掉了"统计基准/非飞行预测"句和"未含…系统不确定度"清单,换成正面"飞行灵敏度估计 + 设计优化方向");仍待对齐:§7 显著度段(zh~482"不是最终飞行发现似然"+"1%本底归一化→Z 7.8→2.8")与 §10 讨论(zh~579"投稿级飞行灵敏度应取代诊断性 S/√B"),按节推进时处理。** 注:§4(zh~160)/§10 边界一(zh~577)里"质量模型是工程代理、非最终飞行 CAD"是几何事实描述,保留不动。C8 那个定量事实(仅 1% 本底归一化误差就把 Z 从 ~7.8 拉到 ~2.8)仍真,留在讨论里。
+17	- **语言润色模式(2026-06-27 起)**:用户评价 codex/GPT 行文"不说人话"(僵硬、长句堆叠、与 abstract/方法节重复),要的是**让语言通顺自然**而非改科学内容/数字/hedge。**先理中文逻辑,改时中英两版一起改**。已用此法重排引言倒数第二段(zh line 74 / en line 73):修掉"二者…分层处理"指代错位→"光学与探测器分阶段耦合",拆成 abstract 同款"信号链中…/本底链中…(On the signal/background side)"并列,补点睛句"三类流走同一套响应/选择/轨迹"。常见手法:拆 run-on、去机械重复、把组件细节让位给后文对应节。
+18	
+19	- **EA(Experimental Astronomy/Springer)稿(2026-06-28 起,`core_md/balloon511_ea_latex_drafts/`)**:NIM-A 稿的 5 节重排版,en 用官方 sn-jnl.cls(**pdfLaTeX**),zh 用 article+ctex(XeLaTeX)——两稿编译器不同。用户 0628–0701 在 EA 稿上手改了 §1/§2 并加 `\textcolor{red}{}` 红字新内容。**编号陷阱**:README 声称 3.1=workflow/3.2=光学/3.3=源模型,但 tex 缺 `\subsection{Simulation workflow}`,实际编译 3.1=光学/3.2=源模型;用户红字"见3.2.3点源构建"按补上 workflow 小节后的编号成立。2026-07-02 已交付 `rewrite_sec32_sec33_20260702.md`(review+中英重写提案,未落 tex):新增 3.1 流程/3.2.1–3.2.3(衍射过程/质量输运+焦面接口/点源构建)/3.3 重排。
+20	- **多波段光学口径(易错!)**:论文全部率数字锚定**单能 511 keV 环** f10m_a1(25×18mm、81cm²几何、Aeff=20.1cm²、自然通带≈501–521 keV,`optics_aeff_authority_f10m_a1.json`);另有**六环多波段**几何(451–551 keV、1245×2.2mm 片,`engineering/Mass_model_511_nearfield_migration_20260701/05_optics_migration/`)0701 已入库但**明确未接入率链、无 Aeff 权威**(其 511 环几何仅 ~10cm²,不可能 20cm²)。写稿时二者不可混装;多波段只能写"已设计+几何验证的扩展"。
+21	- 信号归一化链(核稿快查):F0(1e-4)×Aeff(20.08)×T(0.739)=1.484e-3 焦面率;单位重放 30323/37194=0.81527(预veto)、29715/37194=0.79892(选后);×焦面率=1.186e-3=S。上游三源"焦面截取平行束"表述超实现范围:实际=信号焦面事例表回放(保留逐光子方向,非平行束)+上游本底走 §4.4 联合几何 Ge 代理(延迟 0 事例、瞬发未分离)。
+22	- **0702 三项汇报 HTML**:`engineering/report_html_20260702_curve_atm511_revan/report.html`(0703 v3:15 页白底幻灯;页5=修复前后解析公式对照;正文去内部代号——用户明确要求"不要用项目内自己约定的名词",汇报类产物正文只许说人话,代号只留页脚证据路径)。**Revan 部分(页11–14)按用户定调只证三命题:①找点一致 ②自研覆盖⊇Revan ③对本体系自研更优**;逐事例证据 `derive_claims.py`→`claims_metrics.json`(门 30323/17663/12660 精确复现):分类混淆矩阵分歧 2/30,323;单选结局 77.8%更优/17.5%更差(像素基指向中位差5.2°)/4.7%与真值像素能量不符(475个=Revan双簇挤同像素的边界事例);像素中心基中位|ARM| 穷举16.9° vs 单选20.4°;累计接受曲线穷举≥单选处处成立(按构造)。注意:P2 大气 511 线修正实际落在 `engineering/paper_review_p1_p2_p3_data_check_20260702/`(3e6 事例 transfer=0.3768 cps/单位通量,Harris 基准 +0.00878 cps → F3σ 3.85→4.26e-5,组成瞬发76.3/延迟5.4/大气线18.3),用户常误记为 Mass_model_511 包(那里只是 TODO 记录);P1 线宽(重开窗后 3.41–3.97e-5)与 P3 几何框架同包。轨迹曲线:full4(REF/L1/L2/H1,544 jobs)证伪旧单标量(活化16.6%/W2 60.7%),五层拆分+粒子族(×能角)response 后一致(1.1%/4.4%/W2 LOO~1σ);Step06 补丁仍为 plan 未晋升,延迟层未回放。
+23	- **0702 fullrecon 第一遍**:`engineering/fullrecon_firstpass_20260702/`——revan 扩到延迟+瞬发全 68 文件,TES-only 真值基精确对账(30323/17663/12660/54→33/60=52e⁺+8n/B=0.043545 五位);双通道(量热+npix=2 双序 ARM)重建层 **Z_20d≈8.3–10(θ=20°)、F3σ≈3.0–3.6e-5,不劣于 selected-rate,方向一致性有增益**(信号 2 像素 70.7%<20°,本底 5/28);瓶颈=ch2 本底 5 事例统计。**教训:代理几何把 Si/Cu 板/CsI 都声明为探测器 → revan 总能≠谱仪观测量,原生工具必须限定 TES-only 基**。未闭:likelihood/systematics envelope/最终响应/≥3像素定序/Mimrec。论文别写死 9.99,等全统计 ARM 本底。
+24	- **0702 Revan smoke**:`engineering/revan_compton_crosscheck_smoke_20260702/`——自定义 2 点穷举双序 veto 设计被验证(revan KN 选序仅 78.4% 指向源更优序→穷举才对;2 点≥1 有效序=100%;不可定序 0.16%);窗内 CO |ARM| 中位数≈24°(mm 杠杆臂)→FoV veto 本质宽松;**S6 稿件 bug:59.2%/66.8%/0.724="仅留单点"而非"弃 unreconstructed"(reject_kept 全信号流只有 1 个)**;跑重放 sim 必须 -C CoincidenceAlgorithm=0(1 ns 人工时戳)+ UseComptelTypeEvents=true。
+25	- **0702 物理审查记录**:`core_md/balloon511_ea_latex_drafts/physics_review_publishability_20260702.md`——无硬错误;P1=模拟本底 511 是 δ 线(54/54 单 bin 实锤,G4 无 Doppler/源线宽≥1.3 keV vs ±0.42 窗;粗算 Z 7.8→6–7 仍成立,分析级可修);P2=EXPACS 光子输入无大气 511 线(449.65→566.08 keV 线性插值实锤,需补线源 run 或上限);P3=银心 34°N 最大仰角 27° vs 45° 窗(V404 δ+33.9° 恰过天顶→改叙事);投稿前清单 6 项在该文件 §4。EA 期刊体裁对口,补强后可投。
+26	
+27	相关:[[review-fix-loop-workflow]] [[tes511-balloon-project-state]]
+28	

@@ -1,0 +1,93 @@
+{
+  "base_authority": "engineering/geometry_optimization_20260704/29_geoopt_s3c_bgo_w2mm_al3mm_shell_20260709/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup",
+  "design_decision": "O9 is the Pareto-knee candidate: it retains continuous 30 mm active BGO while removing the high-Z passive W shell. O10 saves only 8.88 kg more but thins the top active shield to 10 mm and is retained only as a later stress test.",
+  "generated_geometry": "engineering/geometry_optimization_20260704/42_geoopt_s3d_lightweight_20260712/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup",
+  "literature_design_check": {
+    "alignment": [
+      "remove high-Z passive material close to the detector",
+      "retain low-Z Al structural shell",
+      "retain continuous active anticoincidence coverage",
+      "preserve aperture geometry and segmented detector topology"
+    ],
+    "nasa_report": "https://ntrs.nasa.gov/citations/19850010602",
+    "open_boundary": "native 80 keV versus analysis-level 50 keV active-veto threshold requires a matched-threshold systematic study",
+    "reference": "N. Gehrels, NIM A 239 (1985) 324-349, doi:10.1016/0168-9002(85)90732-6"
+  },
+  "mass_ledger": "engineering/geometry_optimization_20260704/42_geoopt_s3d_lightweight_20260712/data/s3d_mass_ledger.json",
+  "new_bgo_volumes": [
+    {
+      "mass_kg_pre_relief": 183.96441437005527,
+      "name": "BGO_S3D_FullWrap_SideShell_WindowCut_30mm",
+      "r_inner_cm": 21.2,
+      "r_outer_cm": 24.2,
+      "trigger_threshold_keV": 80.0,
+      "z_max_cm": 40.9,
+      "z_min_cm": -19.4
+    },
+    {
+      "mass_kg_pre_relief": 42.67384140295581,
+      "name": "BGO_S3D_FullWrap_BottomCap_30mm",
+      "r_inner_cm": 0.0,
+      "r_outer_cm": 25.2,
+      "trigger_threshold_keV": 80.0,
+      "z_max_cm": -19.4,
+      "z_min_cm": -22.4
+    },
+    {
+      "mass_kg_pre_relief": 13.32079173171443,
+      "name": "BGO_S3D_FullWrap_TopAnnulus_30mm",
+      "r_inner_cm": 20.9,
+      "r_outer_cm": 25.2,
+      "trigger_threshold_keV": 80.0,
+      "z_max_cm": 43.9,
+      "z_min_cm": 40.9
+    }
+  ],
+  "overlap_source": "engineering/geometry_optimization_20260704/42_geoopt_s3d_lightweight_20260712/geometry/overlap_check_s3d.source",
+  "overlap_validation": {
+    "hash_match": true,
+    "hashes": {
+      "det": true,
+      "geo": true,
+      "setup": true,
+      "source": true
+    },
+    "reported_status": "PASS",
+    "status": "PASS",
+    "summary": "engineering/geometry_optimization_20260704/42_geoopt_s3d_lightweight_20260712/data/cosima_overlap_s3d_summary.json"
+  },
+  "physical_changes": [
+    "BGO side 40 to 30 mm, inner radius fixed at 21.2 cm",
+    "BGO bottom 40 to 30 mm, cavity-side z fixed at -19.4 cm",
+    "BGO top annulus 40 to 30 mm, cavity-side z fixed at 40.9 cm",
+    "remove three 2 mm W mechanical-shell volumes and detector scorers"
+  ],
+  "promotion_guardrails": {
+    "dominant_w2_subset_cps_max": 0.0052,
+    "fallback_if_failed": "O8 side40/bottom30/top10/noW/Al3",
+    "focused_signal_acceptance_loss_fraction_max": 0.02,
+    "full_closure_f3_95pct_upper_ratio_max": 1.1,
+    "full_closure_f3_central_ratio_max": 1.05,
+    "neutron_only_delayed_activity_bq_max": 57.8243
+  },
+  "static_diff_audit": "engineering/geometry_optimization_20260704/42_geoopt_s3d_lightweight_20260712/data/s3c_to_s3d_static_diff_summary.json",
+  "static_diff_status": "PASS",
+  "status": "S3D_O9_GEOMETRY_VALIDATED_COSIMA_OVERLAP_PASS",
+  "structural_model_boundary": {
+    "bgo_to_retained_kapton_clearance_cm": 1.17,
+    "interpretation": "The unchanged outer envelope creates a deliberate service/vacuum gap after BGO thinning. This is a minimal-delta transport model, not a manufacturing or structural qualification.",
+    "retained_kapton_to_al_clearance_cm": 0.3
+  },
+  "threshold_boundary": {
+    "native_bgo_trigger_keV": 80.0,
+    "note": "C0 and S3d comparisons must freeze the same effective selection. Gehrels' below-50-keV recommendation is not claimed as implemented hardware performance.",
+    "screening_active_veto_keV": 50.0
+  },
+  "unchanged": [
+    "Al3 and Kapton volume IDs, placements, shapes, materials, and scorers",
+    "top service opening, side window, pump-line relief, and NF2 relief scheme",
+    "TES/cryostat/BPE/plastic geometry, InstrumentFrame, materials, response, and thresholds",
+    "source sphere center and radius"
+  ],
+  "variant": "s3d_o9_uniform_bgo30_no_w_al3"
+}

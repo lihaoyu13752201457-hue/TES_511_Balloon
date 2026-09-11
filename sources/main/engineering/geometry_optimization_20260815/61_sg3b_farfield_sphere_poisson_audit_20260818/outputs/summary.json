@@ -1,0 +1,277 @@
+{
+  "authority_boundary": {
+    "SIM_payloads_opened": 0,
+    "detector_response_rerun": false,
+    "mass_model_envelope": "retained exact inherited mesh plus SG3B analytic local overlays",
+    "new_transport_started": false,
+    "paper_modified": false
+  },
+  "common_time_model": {
+    "coincidence_window_s": 1e-06,
+    "day15_delayed_occupancy_cps": 1221.3960746172315,
+    "day15_prompt_occupancy_cps": 20237.81596464487,
+    "day15_total_occupancy_cps": 21459.2120392621,
+    "implemented_method": [
+      "Prompt event templates are weighted by 1/sum(TT_family).",
+      "Delayed day-15 event templates are weighted by A_family(day15)/1e6 and then ZA-rescaled over mission time.",
+      "Independent prompt and delayed occupancy rates are summed analytically at each of 81 mission nodes.",
+      "The common-axis factor is exp[-tau*(R_prompt+R_delayed)] and the mission integral is trapezoidal."
+    ],
+    "implemented_one_sided_group_live_factor": 0.9787693986627941,
+    "model_boundary": {
+      "exp_minus_2Rtau": "two-sided isolated-event requirement; diagnostic only",
+      "exp_minus_Rtau": "one-sided guard interval, equivalently Poisson coincidence-group count divided by event count",
+      "one_over_1_plus_Rtau": "nonparalyzable dead-time reference; diagnostic only"
+    },
+    "nonparalyzable_deadtime_reference_not_implemented": 0.9789916114257559,
+    "package58_current_output_boundary": [
+      "Package 58 does not invoke the retained literal event/deposit timeline replay for its 20-day SG3B output.",
+      "Its explicit toy validation merges only two aggregate day-15 Poisson streams for 46.6 s.",
+      "Its analytic occupancy rate includes any positive TES/plastic/BGO deposit rather than replaying thresholded candidate groups."
+    ],
+    "retained_mature_method": {
+      "draw": "For each stream, draw N~Poisson(sum(rate_i)*T), sample event templates with probabilities rate_i/sum(rate_i), assign uniform times in [0,T], merge and stable-sort. This is equivalent to exponential interarrival sampling on a fixed interval.",
+      "implementations": [
+        "old/code/tools/make_complete_day15_report_ADR.py",
+        "old/code/tools/build_v3p5_centerfinger_step05_l1_response.py"
+      ],
+      "sg3b_reuse_boundary": "Adapt existing catalog channels to separate plastic and BGO deposits and SG3B family/ZA time-dependent rates; do not rebuild the algorithm from scratch.",
+      "status": "AVAILABLE_AND_METHOD_CORRECT__REUSE_FOR_SG3B",
+      "veto": "Group adjacent arrivals with gaps <= tau, sum TES hits by pixel and sum active-shield energy within each group, then apply the active-veto threshold and Compton/FoV selection."
+    },
+    "symmetric_isolation_reference_not_implemented": 0.9579895357587276,
+    "toy_common_axis_validation": {
+      "absolute_difference": 0.0001326265725820619,
+      "analytic_one_window_live_factor": 0.9787693986627941,
+      "coincidence_window_s": 1e-06,
+      "component_rates_cps": {
+        "delayed": 1221.3960746172315,
+        "prompt": 20237.81596464487
+      },
+      "duration_s": 46.600033504044085,
+      "merged_adjacent_time_groups": 977985,
+      "model": "independent Poisson streams sampled on one axis, merged and sorted; adjacent gaps <= tau form a coincidence group",
+      "observed_one_window_live_fraction": 0.978636772090212,
+      "realized_component_events": {
+        "delayed": 57162,
+        "prompt": 942172
+      },
+      "realized_total_events": 999334,
+      "reference_node_day": 15.0,
+      "seed": 20260817,
+      "status": "PASS__SUPERPOSED_POISSON_COMMON_AXIS_VALIDATION"
+    },
+    "verdict": "MATURE_COMMON_AXIS_METHOD_VALID__PACKAGE58_CURRENT_OUTPUT_USES_ANALYTIC_EXPECTATION_NOT_EVENT_LEVEL_REPLAY"
+  },
+  "enclosure": {
+    "center_instrument_cm": [
+      -2.82842712474619,
+      0.0,
+      9.899494936611665
+    ],
+    "max_nonvacuum_distance_cm": 58.02829923382211,
+    "max_vertex_instrument_cm": [
+      49.94075992418417,
+      23.159399999999998,
+      16.706741208416435
+    ],
+    "max_vertex_material": "Aluminium",
+    "max_vertex_solid": "NF2_OuterSupport_Al_BaseMountAnnulus",
+    "max_vertex_world_cm": [
+      47.1269,
+      23.159399999999998,
+      -23.5
+    ],
+    "minimum_radial_clearance_cm": 1.9717007661778894
+  },
+  "farfield_source": {
+    "beam_count": 20,
+    "beams_deg": [
+      [
+        0.0,
+        25.842,
+        0.0,
+        360.0
+      ],
+      [
+        25.842,
+        36.87,
+        0.0,
+        360.0
+      ],
+      [
+        36.87,
+        45.573,
+        0.0,
+        360.0
+      ],
+      [
+        45.573,
+        53.13,
+        0.0,
+        360.0
+      ],
+      [
+        53.13,
+        60.0,
+        0.0,
+        360.0
+      ],
+      [
+        60.0,
+        66.422,
+        0.0,
+        360.0
+      ],
+      [
+        66.422,
+        72.542,
+        0.0,
+        360.0
+      ],
+      [
+        72.542,
+        78.463,
+        0.0,
+        360.0
+      ],
+      [
+        78.463,
+        84.261,
+        0.0,
+        360.0
+      ],
+      [
+        84.261,
+        90.0,
+        0.0,
+        360.0
+      ],
+      [
+        90.0,
+        95.739,
+        0.0,
+        360.0
+      ],
+      [
+        95.739,
+        101.537,
+        0.0,
+        360.0
+      ],
+      [
+        101.537,
+        107.458,
+        0.0,
+        360.0
+      ],
+      [
+        107.458,
+        113.578,
+        0.0,
+        360.0
+      ],
+      [
+        113.578,
+        120.0,
+        0.0,
+        360.0
+      ],
+      [
+        120.0,
+        126.87,
+        0.0,
+        360.0
+      ],
+      [
+        126.87,
+        134.427,
+        0.0,
+        360.0
+      ],
+      [
+        134.427,
+        143.13,
+        0.0,
+        360.0
+      ],
+      [
+        143.13,
+        154.158,
+        0.0,
+        360.0
+      ],
+      [
+        154.158,
+        180.0,
+        0.0,
+        360.0
+      ]
+    ],
+    "comment_radius_cm": 60.0,
+    "fluxes_cm-2_s-1": [
+      0.04323745326736,
+      0.05695983240931,
+      0.07120765493338,
+      0.08612491504375,
+      0.1019197897684,
+      0.1189113247918,
+      0.1376301465793,
+      0.1590750875935,
+      0.1855743690582,
+      0.2261108736236,
+      0.4652308488518,
+      0.4170179593624,
+      0.3895986108144,
+      0.3697937703255,
+      0.3542574628794,
+      0.341568543059,
+      0.3309762940732,
+      0.3220307329032,
+      0.314438649056,
+      0.3079972593917
+    ],
+    "job_events": 267312,
+    "total_flux_cm-2_s-1": 4.7996615777852
+  },
+  "figures": [
+    "/home/ubuntu/TES_511_Balloon/engineering/geometry_optimization_20260815/61_sg3b_farfield_sphere_poisson_audit_20260818/outputs/sg3b_farfield_sphere_mass_model_relation.png",
+    "/home/ubuntu/TES_511_Balloon/engineering/geometry_optimization_20260815/61_sg3b_farfield_sphere_poisson_audit_20260818/outputs/sg3b_farfield_sphere_mass_model_relation.svg",
+    "/home/ubuntu/TES_511_Balloon/engineering/geometry_optimization_20260815/61_sg3b_farfield_sphere_poisson_audit_20260818/outputs/sg3b_farfield_sphere_mass_model_relation.pdf"
+  ],
+  "gamma_time_contract": {
+    "analytic_expected_TT_s": 59.09298100963339,
+    "analytic_generation_rate_s-1": 54282.89358895385,
+    "combined_gamma_events": 3207738,
+    "combined_gamma_receipt_TT_s": 59.105470000000004,
+    "equivalent_time_formula": "T_eq=N/(Phi*pi*R^2)",
+    "expected_TT_stochastic_sigma_s": 0.032994112774997475,
+    "hypothetical_two_mm_clearance": {
+      "analytic_generation_rate_s-1": 51124.45596578691,
+      "area_and_generation_rate_change_percent_vs_R60": -5.818476898235314,
+      "clearance_cm": 0.2,
+      "combined_gamma_expected_TT_s": 62.743709236664664,
+      "combined_gamma_time_gain_s": 3.650728227031273,
+      "projected_launch_area_cm2": 10651.679318894448,
+      "radius_cm": 58.22829923382211,
+      "ten_million_gamma_expected_TT_s": 195.60110344630598,
+      "ten_million_gamma_time_gain_s": 11.38100501671667,
+      "time_gain_factor_vs_R60": 1.0617793884257782,
+      "time_gain_percent_vs_R60": 6.177938842577824
+    },
+    "projected_launch_area_cm2": 11309.733552923255,
+    "radius_scaling_at_fixed_flux_and_N": "T_eq proportional to R^-2",
+    "receipt_minus_expectation_s": 0.012488990366612995,
+    "receipt_residual_sigma": 0.37852178210644283
+  },
+  "status": "PASS__SG3B_FARFIELD_SPHERE_ENCLOSURE__CONDITIONAL_POISSON_MODEL_AUDIT",
+  "surrounding_sphere": {
+    "center_world_cm": [
+      5.0,
+      0.0,
+      9.0
+    ],
+    "distance_cm": 60.0,
+    "radius_cm": 60.0
+  }
+}

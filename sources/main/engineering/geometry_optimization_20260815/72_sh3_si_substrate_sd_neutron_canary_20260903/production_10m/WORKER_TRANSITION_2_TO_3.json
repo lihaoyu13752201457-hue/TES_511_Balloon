@@ -1,0 +1,29 @@
+{
+  "schema_version": 1,
+  "status": "AUTHORIZED__THREE_WORKER_RESUME_PENDING",
+  "date": "2026-09-03",
+  "reason": "user explicitly requested three concurrent Cosima processes",
+  "completed_receipts_before_transition": 39,
+  "combined_histories_before_transition": 4000000,
+  "interrupted_attempts_preserved": [
+    "sh3_sisd_n10m_shard0040/failed/attempt01",
+    "sh3_sisd_n10m_shard0041/failed/attempt01"
+  ],
+  "old": {
+    "workers": 2,
+    "launch_worker_reservation_bytes": 3221225472,
+    "aggregate_worker_rss_ceiling_bytes": 7516192768
+  },
+  "new": {
+    "workers": 3,
+    "launch_worker_reservation_bytes": 2684354560,
+    "aggregate_worker_rss_ceiling_bytes": 9663676416
+  },
+  "unchanged_guards": {
+    "runtime_mem_floor_bytes": 2147483648,
+    "launch_swap_free_bytes": 8589934592,
+    "runtime_swap_floor_bytes": 4294967296,
+    "dynamic_reserve_bytes": 32212254720
+  },
+  "accounting": "Only PASS receipts count. Interrupted attempt01 artifacts are excluded; the same registered seeds are retried without minting new seeds."
+}

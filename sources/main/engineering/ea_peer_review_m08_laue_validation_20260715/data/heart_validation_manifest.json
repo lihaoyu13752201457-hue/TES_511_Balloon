@@ -1,0 +1,238 @@
+{
+  "artifacts": {
+    "bfull_full_lens_xop_map_scan": "reports/bfull_full_lens_xop_map_scan",
+    "bfull_offaxis_scan": "reports/bfull_offaxis_scan",
+    "bfull_rocking_curve_map_status": "reports/bfull_rocking_curve_map_status",
+    "bfull_single_tile_xop_scan": "reports/bfull_single_tile_xop_scan",
+    "cosima_bridge_diffract": "reports/cosima_bridge_current_audit",
+    "cosima_bridge_transmit": "reports/cosima_bridge_transmitted_current_audit",
+    "crystalpy": "benchmarks/crystalpy",
+    "external_lens_handoff": "reports/external_lens_handoff",
+    "external_lens_hits_schema": "benchmarks/reference_outputs/EXTERNAL_LENS_HITS_SCHEMA.md",
+    "external_lens_observables": "benchmarks/reference_outputs/external_lens_observables",
+    "external_lens_request": "benchmarks/reference_outputs/external_lens_oracle_request.json",
+    "external_lens_schema": "benchmarks/reference_outputs/EXTERNAL_LENS_OBSERVABLES_SCHEMA.md",
+    "external_lens_tile_table": "benchmarks/reference_outputs/external_lens_oracle_tiles.csv",
+    "external_source_status": "benchmarks/reference_outputs/EXTERNAL_SOURCE_STATUS.md",
+    "focal_convention": "reports/focal_convention_audit",
+    "full_lens_observables": "reports/full_lens_observables",
+    "heart_adapter_feasibility": "reports/heart_adapter_feasibility",
+    "heart_adapter_request": "benchmarks/reference_outputs/heart_lens_adapter_request.json",
+    "heart_independent_plane_normal_patch": "benchmarks/reference_outputs/heart_independent_plane_normal.patch",
+    "heart_patched_full_lens_guan_direction_hdf5": "benchmarks/reference_outputs/heart_patched_full_lens_guan_direction.h5",
+    "heart_patched_full_lens_guan_direction_run_summary": "benchmarks/reference_outputs/heart_patched_full_lens_guan_direction_run_summary.json",
+    "heart_patched_full_lens_hdf5": "benchmarks/reference_outputs/heart_patched_full_lens.h5",
+    "heart_patched_full_lens_run_summary": "benchmarks/reference_outputs/heart_patched_full_lens_run_summary.json",
+    "historical_geant4": "reports/geant4_current_crosscheck",
+    "kohnle1998": "benchmarks/kohnle1998",
+    "lll_status": "benchmarks/reference_outputs/LLL_NOT_AVAILABLE.md",
+    "opticsim_table_lens": "benchmarks/opticsim_table_lens",
+    "python_full_lens_reference": "reports/python_full_lens_reference",
+    "pytte": "benchmarks/xrt_pytte",
+    "rebuilt_geant4_smoke": "reports/geant4_rebuilt_5k_crosscheck",
+    "xop_crystal": "benchmarks/xop_crystal"
+  },
+  "checks": {
+    "bfull_full_lens_xop_map_scan": {
+      "all_per_ring_sources_external": true,
+      "all_process_base_g4vemprocess": true,
+      "all_registered_in_geant4_em_category": true,
+      "all_transmitted_space_rows_match_summary": true,
+      "evidence": "reports/bfull_full_lens_xop_map_scan/summary.json",
+      "max_recorded_p_reflect_minus_xop_map": 7.272712987393959e-11,
+      "n_per_offset": 5000,
+      "observed_peak_to_min_ratio": 27.333333333333336,
+      "ok": true,
+      "status": "imported"
+    },
+    "bfull_offaxis_scan": {
+      "all_process_base_g4vemprocess": true,
+      "all_registered_in_geant4_em_category": true,
+      "all_transmitted_space_rows_match_summary": true,
+      "evidence": "reports/bfull_offaxis_scan/summary.json",
+      "n_per_offset": 1000,
+      "observed_peak_to_min_ratio": 23.857142857142858,
+      "ok": true,
+      "ring2_observed_peak_to_min_ratio": 16.0,
+      "ring2_xop_peak_to_min_ratio": 24.71633205758415,
+      "status": "imported"
+    },
+    "bfull_rocking_curve_map_status": {
+      "coverage_csv": "/home/ubuntu/cross_check_laue/laue511_validation/reports/bfull_rocking_curve_map_status/rocking_curve_coverage.csv",
+      "covered_ring_ids": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "evidence": "reports/bfull_rocking_curve_map_status/summary.json",
+      "map_csv": "/home/ubuntu/cross_check_laue/laue511_validation/reports/bfull_rocking_curve_map_status/available_rocking_curve_map.csv",
+      "missing_ring_ids": [],
+      "ok": true,
+      "status": "ready"
+    },
+    "bfull_single_tile_xop_scan": {
+      "all_process_base_g4vemprocess": true,
+      "all_registered_in_geant4_em_category": true,
+      "all_transmitted_space_rows_match_summary": true,
+      "evidence": "reports/bfull_single_tile_xop_scan/summary.json",
+      "max_recorded_p_reflect_minus_xop": 6.75896075219562e-11,
+      "n_per_offset": 5000,
+      "observed_peak_interaction_fraction": 0.2128,
+      "ok": true,
+      "ring_id": 2,
+      "status": "imported",
+      "tile_id": 0,
+      "xop_peak_reflectivity_in_scan": 0.25718870249845527
+    },
+    "cosima_bridge_diffract": {
+      "history_joined_rows": 24675,
+      "missing_ring_id_rows": 0,
+      "missing_tile_id_rows": 0,
+      "n_rows": 24675,
+      "ok": true
+    },
+    "cosima_bridge_transmit": {
+      "history_joined_rows": 39560,
+      "missing_ring_id_rows": 0,
+      "missing_tile_id_rows": 0,
+      "n_rows": 39560,
+      "ok": true
+    },
+    "crystalpy_curve": {
+      "evidence": "benchmarks/crystalpy/summary.json",
+      "max_flux_conservation_residual": 9.00010968529763e-13,
+      "n_rows": 101,
+      "ok": true,
+      "peak_reflectivity": 0.570730706965,
+      "status": "imported"
+    },
+    "external_lens_curve": {
+      "diffracted_area_cm2": 0.5831040000000001,
+      "diffracted_area_minus_current_observed_cm2": 0.014614683225346314,
+      "evidence": "benchmarks/reference_outputs/external_lens_observables/summary.json",
+      "n_rows": 2,
+      "ok": true,
+      "source_tools": [
+        "HEART-detector-image"
+      ],
+      "source_versions": [
+        "2.1.3"
+      ],
+      "spot_d90_cm": 0.22192341021172157,
+      "spot_d90_minus_current_observed_cm": 0.0025083981362374053,
+      "status": "imported"
+    },
+    "external_lens_handoff": {
+      "agreement_checks": {
+        "diffracted_area_vs_current": true,
+        "diffracted_area_vs_python_reference": true,
+        "spot_d90_vs_current": true
+      },
+      "import_ok": true,
+      "n_rows": 2,
+      "ok": true,
+      "work_dir_removed": true
+    },
+    "external_lens_import_ready": {
+      "evidence": "benchmarks/reference_outputs/EXTERNAL_LENS_OBSERVABLES_SCHEMA.md",
+      "missing": [],
+      "ok": true,
+      "status": "ready"
+    },
+    "external_lens_request_ready": {
+      "comparison_targets_ok": true,
+      "coordinate_ok": true,
+      "evidence": "benchmarks/reference_outputs/external_lens_oracle_request.json",
+      "heart_adapter_ok": true,
+      "missing": [],
+      "ok": true,
+      "request_rings_ok": true,
+      "rings_csv_ok": true,
+      "status": "ready",
+      "tiles_csv_ok": true
+    },
+    "focal_convention": {
+      "max_abs_delta_theta_entry_arcsec": 0.3503347216893383,
+      "max_abs_p_diff_delta": 4.1297438747867066e-05,
+      "ok": true
+    },
+    "full_lens_observables": {
+      "effective_area_delta_cm2": 0.0026210415662576425,
+      "expected_diffracted_area_cm2": 0.5658682752083961,
+      "max_phase_intersection_delta_mm": 1.4030737623023524e-08,
+      "observed_diffracted_area_cm2": 0.5684893167746538,
+      "ok": true,
+      "spot_d90_cm": 0.21941501207548417
+    },
+    "historical_probability_kernel": {
+      "max_branch_z": 1.3642874008461188,
+      "max_probability_delta": 5.142675174596434e-11,
+      "ok": true,
+      "rows_checked": 100000,
+      "vector_ok": null,
+      "vector_required": false
+    },
+    "kohnle1998_check": {
+      "endpoint_max_abs_error": 0.013488488646812957,
+      "n_cases": 7,
+      "ok": true
+    },
+    "opticsim_table_lens_closure": {
+      "delta_diffraction_fraction": 0.0003700000000000092,
+      "delta_spot_d90_cm": -0.0011670000000000014,
+      "evidence": "benchmarks/opticsim_table_lens/summary.json",
+      "max_abs_delta_mean_p_diff_by_ring": 0.0006309999999999927,
+      "max_abs_delta_sampled_diffraction_fraction_by_ring": 0.0028489999999999904,
+      "ok": true,
+      "status": "imported"
+    },
+    "python_full_lens_reference": {
+      "diffracted_area_delta_cm2": 0.0016352403014127104,
+      "diffracted_area_reference_cm2": 0.566854076473241,
+      "max_abs_branch_z": 1.2419063003911597,
+      "observed_diffracted_area_cm2": 0.5684893167746538,
+      "ok": true
+    },
+    "pytte_check": {
+      "n_cases": 4,
+      "ok": true
+    },
+    "rebuilt_probability_kernel_and_vectors": {
+      "max_branch_z": 1.255074150907316,
+      "max_probability_delta": 5.087538723635987e-11,
+      "ok": true,
+      "rows_checked": 5000,
+      "vector_ok": true,
+      "vector_required": true
+    },
+    "xop_crystal_curve": {
+      "evidence": "benchmarks/xop_crystal/summary.json",
+      "max_flux_conservation_residual": 0.0,
+      "n_rows": 101,
+      "ok": true,
+      "peak_reflectivity": 0.25748122500000004,
+      "status": "imported"
+    }
+  },
+  "production_validation_ready": false,
+  "required_now": [
+    "historical_probability_kernel",
+    "rebuilt_probability_kernel_and_vectors",
+    "focal_convention",
+    "external_lens_handoff",
+    "full_lens_observables",
+    "python_full_lens_reference",
+    "cosima_bridge_diffract",
+    "cosima_bridge_transmit",
+    "pytte_check",
+    "kohnle1998_check",
+    "opticsim_table_lens_closure",
+    "crystalpy_curve",
+    "xop_crystal_curve",
+    "external_lens_import_ready",
+    "external_lens_request_ready"
+  ],
+  "status": "crosscheck_pass_external_lens_observables_imported"
+}

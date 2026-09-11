@@ -1,0 +1,92 @@
+{
+  "status": "PASS_FIX5_SELECTED_W_ACTIVATION_W2_AUDIT",
+  "label": "fix5_fullstat_v2_exactpos_m50000_s260613",
+  "generated_at_utc": "2026-06-21T20:11:52Z",
+  "method": "Recompute the Step05 W2 delayed final selection from event_catalog.pkl, parse IA INIT for those delayed SIM event IDs, and match source ZA/x/y/z back to exactpos_weighted_rpip_table_m50000_s260613.csv.",
+  "source_position_match": {
+    "key": [
+      "ZA",
+      "x_cm",
+      "y_cm",
+      "z_cm"
+    ],
+    "coordinate_decimals": 5,
+    "rationale": "Cosima IA INIT lines round the exactpos source coordinates to approximately five decimal places, while exactpos_weighted_rpip_table stores six decimal places.",
+    "nearest_tolerance_cm": 1e-05
+  },
+  "inputs": {
+    "step05_summary": "stepwise_maintenance/step05_veto_time_axis/outputs_fix5_fullstat_v2_exactpos_m50000_s260613_l1/step05_fix5_fullstat_v2_exactpos_m50000_s260613_l1_response_summary.json",
+    "event_catalog": "stepwise_maintenance/step05_veto_time_axis/outputs_fix5_fullstat_v2_exactpos_m50000_s260613_l1/work/event_catalog.pkl",
+    "delayed_sim": "runs/step02_delayed_transport_fix5_fullstat_v2_exactpos_m50000_s260613/DelayedDecayFix5FullstatV2ExactposM50000S260613.inc1.id1.sim.gz",
+    "exactpos_table": "runs/step02_delay_fix_fix5_fullstat_v2/exactpos_weighted_rpip_table_m50000_s260613.csv"
+  },
+  "selection": {
+    "stream": "delayed",
+    "window_keV": [
+      510.58,
+      511.42
+    ],
+    "active_veto_threshold_keV": 50.0,
+    "side_compton_fov_policy": "same side_keep_from_hits/event_hits/side_entry_disk implementation as Step05"
+  },
+  "checks": {
+    "selected_events": 30,
+    "expected_step05_delayed_selected_events": 30,
+    "selected_rate_hz": 0.0025752034889400762,
+    "expected_step05_delayed_rate_hz": 0.0025752034889400762,
+    "rate_abs_delta_hz": 0.0,
+    "events_match_step05": true,
+    "rate_matches_step05": true,
+    "ia_init_matches": 30,
+    "exactpos_match_failures": 0,
+    "w_or_collimator_selected_events": 0,
+    "w_or_collimator_selected_rate_hz": 0,
+    "w_or_collimator_fraction_of_delayed_selected_rate": 0.0,
+    "w_or_collimator_dominant_threshold_fraction": 0.5,
+    "w_or_collimator_is_dominant_component": false
+  },
+  "top_source_volumes": [
+    {
+      "VN": "ColdPlate_MXC_50mK_SD_anchor",
+      "events": 13,
+      "rate_hz": 0.0011159215118740325
+    },
+    {
+      "VN": "Cu_SubstrateSupport_SolidDisk_L0_deepest",
+      "events": 6,
+      "rate_hz": 0.000515040697788015
+    },
+    {
+      "VN": "Cu_50mK_StillLike_Can_bottom_cap_2mm",
+      "events": 3,
+      "rate_hz": 0.00025752034889400756
+    },
+    {
+      "VN": "ColdPlate_CP_100mK_intercept",
+      "events": 2,
+      "rate_hz": 0.00017168023259600502
+    },
+    {
+      "VN": "Window",
+      "events": 2,
+      "rate_hz": 0.00017168023259600502
+    },
+    {
+      "VN": "Cu_50mK_StillLike_Can_side_wall_above_side_port",
+      "events": 2,
+      "rate_hz": 0.00017168023259600502
+    },
+    {
+      "VN": "DR_MixingChamber_Cu",
+      "events": 1,
+      "rate_hz": 8.584011629800251e-05
+    },
+    {
+      "VN": "ColdPlate_Still_0p7K",
+      "events": 1,
+      "rate_hz": 8.584011629800251e-05
+    }
+  ],
+  "event_table": "outputs/reports/fix5_fullstat_v2_exactpos_m50000_s260613/fix5_w_activation_selected_w2_events.csv",
+  "problems": []
+}

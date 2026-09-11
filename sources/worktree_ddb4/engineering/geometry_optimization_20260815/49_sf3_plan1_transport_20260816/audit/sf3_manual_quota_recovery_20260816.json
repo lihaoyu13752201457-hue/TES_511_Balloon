@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "status": "PASS__SF3_MANUAL_QUOTA_PRESSURE_RECOVERY_AUDITED",
+  "audited_at": "2026-08-15T20:17:06Z",
+  "authority_basis": "CONTROLLER_RUNTIME_OBSERVATION_TRANSCRIBED_AFTER_RECOVERY",
+  "scope": "ONE_COMPLETED_BACKGROUND_SERVICE_PRESSURE_EPISODE__NOT_A_REQUIREMENT_TO_FORCE_FUTURE_THROTTLING",
+  "systemd_unit": "sf3-plan1-bg4.service",
+  "actual_controller_workers": 4,
+  "quota_recovery": {
+    "quota_core_sequence": [4, 3, 4],
+    "normal_quota_cores": 4,
+    "temporary_quota_cores": 3,
+    "restored_quota_cores": 4,
+    "action": "AGGREGATE_SYSTEMD_CPUQUOTA_ONLY",
+    "worker_count_changed": false,
+    "job_terminated_by_recovery_action": false
+  },
+  "pressure_recovery": {
+    "metric": "cgroup_memory_pressure_avg10_percent",
+    "pre_throttle_avg10_percent": 43.42,
+    "systemd_oomd_kill_gate_percent": 50.0,
+    "margin_below_kill_gate_percentage_points": 6.58,
+    "approximately_20_seconds_later_avg10_percent": 3.67,
+    "later_avg10_percent": 0.0,
+    "kill_gate_reached": false
+  },
+  "hard_resource_contract": {
+    "MemAvailable_floor_bytes": 1610612736,
+    "SwapFree_floor_bytes": 8589934592,
+    "dynamic_disk_reserve_bytes": 8589934592,
+    "global_oom_protection_disabled": false
+  },
+  "pressure_guard_log_relation": "THE_APPEND_ONLY_BACKGROUND_GUARD_JSONL_BEGINS_AFTER_THIS_MANUAL_4_TO_3_TO_4_RECOVERY; ABSENCE_OF_A_300_PERCENT_ROW_IN_THAT_LATER_LOG_IS_NOT_A_CONTRADICTION",
+  "interpretation": "THIS_AUDITS_AN_EVENT_THAT_OCCURRED; A SAFE ALL_400_PERCENT_GUARD_SESSION_IS ALSO PASSING AND MUST_NOT_BE_ARTIFICIALLY_THROTTLED",
+  "sim_access_policy": "NO_SIM_OPEN_STAT_OR_HASH",
+  "SIM_accessed": false,
+  "transport_launched_by_audit": false,
+  "service_mutated_by_audit": false
+}

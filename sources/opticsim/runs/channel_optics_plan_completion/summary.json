@@ -1,0 +1,224 @@
+{
+  "claim": {
+    "high_confidence": [
+      "Wall-by-wall Python reconstruction no longer forces n_bounce or grazing angle.",
+      "Geant4 calibrated multibounce remains parameterized and should not be described as full wall-by-wall geometry.",
+      "Wall-by-wall optics-only phase_space/optics_history contract passes.",
+      "Wall-by-wall phase_space can drive the Geant4 detector-only scaffold and passes full source/detector contract in the 1k smoke run."
+    ],
+    "medium_confidence": [
+      "The public-geometry wall-by-wall result is a useful IDL/IMD-style truth-generator direction.",
+      "The remaining 0.80-vs-public-geometry throughput gap is a model/provenance issue rather than simple plumbing."
+    ],
+    "open": [
+      "Original IDL source, IMD reflectivity export, and exact path/open-area/absorption accounting are not available locally.",
+      "The detector-only run is a handoff smoke test, not a validated TES/BGO flight mass-model claim."
+    ]
+  },
+  "comparisons": {
+    "strict_geant4_minus_wallbywall_transmissivity": 0.005899999999999961,
+    "wallbywall_minus_geant4_calibrated_transmissivity": -0.51055,
+    "wallbywall_no_si_minus_geant4_calibrated_transmissivity": -0.20694999999999997,
+    "wallbywall_no_si_survivor_mean_bounces": 21.4014819804648,
+    "wallbywall_survivor_mean_bounces": 19.623880082701586
+  },
+  "completion_standard": "Completed to the current evidence-backed stage: public-geometry wall-by-wall truth generator, parameterized Geant4 handoff, strict pressure test, and explicit open provenance gaps.",
+  "contract": {
+    "wallbywall_detector_1k": {
+      "n_tables": 6,
+      "ok": true,
+      "results": [
+        {
+          "errors": [],
+          "extra_columns": [
+            "particle_name",
+            "pdg_encoding",
+            "track_id",
+            "parent_id"
+          ],
+          "n_rows": 5804,
+          "ok": true,
+          "path": "runs/channel_wallbywall_rebuild/phase_space.csv",
+          "table": "phase_space",
+          "warnings": []
+        },
+        {
+          "errors": [],
+          "extra_columns": [],
+          "n_rows": 209969,
+          "ok": true,
+          "path": "runs/channel_wallbywall_rebuild/optics_history.csv",
+          "table": "optics_history",
+          "warnings": []
+        },
+        {
+          "errors": [],
+          "extra_columns": [],
+          "n_rows": 7102,
+          "ok": true,
+          "path": "runs/geant4_detector_wallbywall_1k/hits.csv",
+          "table": "hits",
+          "warnings": []
+        },
+        {
+          "errors": [],
+          "extra_columns": [],
+          "n_rows": 1000,
+          "ok": true,
+          "path": "runs/geant4_detector_wallbywall_1k/event_summary.csv",
+          "table": "event_summary",
+          "warnings": []
+        },
+        {
+          "errors": [],
+          "extra_columns": [],
+          "n_rows": 1000,
+          "ok": true,
+          "path": "runs/geant4_detector_wallbywall_1k/hits.csv + runs/geant4_detector_wallbywall_1k/event_summary.csv",
+          "table": "detector_crosslinks",
+          "warnings": []
+        },
+        {
+          "errors": [],
+          "extra_columns": [],
+          "n_rows": 1000,
+          "ok": true,
+          "path": "runs/channel_wallbywall_rebuild/phase_space.csv + runs/geant4_detector_wallbywall_1k/event_summary.csv",
+          "table": "source_detector_event_ids",
+          "warnings": [
+            "event_summary has 1000 rows for 5804 phase-space photons; treating as an allowed subset run"
+          ]
+        }
+      ]
+    },
+    "wallbywall_optics_only": {
+      "n_tables": 2,
+      "ok": true,
+      "results": [
+        {
+          "errors": [],
+          "extra_columns": [
+            "particle_name",
+            "pdg_encoding",
+            "track_id",
+            "parent_id"
+          ],
+          "n_rows": 5804,
+          "ok": true,
+          "path": "runs/channel_wallbywall_rebuild/phase_space.csv",
+          "table": "phase_space",
+          "warnings": []
+        },
+        {
+          "errors": [],
+          "extra_columns": [],
+          "n_rows": 209969,
+          "ok": true,
+          "path": "runs/channel_wallbywall_rebuild/optics_history.csv",
+          "table": "optics_history",
+          "warnings": []
+        }
+      ]
+    }
+  },
+  "metrics": {
+    "geant4_calibrated_parameterized": {
+      "effective_area_cm2": 50.9415,
+      "mean_bounces_per_survivor": null,
+      "mean_grazing_angle_rad": null,
+      "model": "paper_parameterized_multibounce_table_process_v1",
+      "n_primaries": 100000,
+      "n_survived": 80075,
+      "spot_d90_cm": 3.61328,
+      "system": "geant4_channel_4ring_multibounce",
+      "transmissivity": 0.80075,
+      "warning": "Geant4 app-level multi-bounce channel optics. It records per-bounce table-driven reflection, but it is still a parameterized path model, not a full wall-by-wall IDL geometry reproduction."
+    },
+    "geant4_detector_wallbywall_1k": {
+      "bgo_veto_fraction": 0.132,
+      "model": "geant4_emstandard_tes_bgo_minimal_geometry",
+      "n_bgo_veto": 132,
+      "n_hits": 7102,
+      "n_input_photons": 5804,
+      "n_simulated": 1000,
+      "n_tes_detected": 895,
+      "system": "geant4_detector_only_demo",
+      "tes_detection_fraction": 0.895,
+      "warning": "Standalone detector-only Geant4 prototype; geometry/source/hit contract scaffold, not yet a validated TES/BGO flight mass model."
+    },
+    "geant4_strict_public_parameter_pressure_test": {
+      "effective_area_cm2": 18.8371,
+      "mean_bounces_per_survivor": null,
+      "mean_grazing_angle_rad": null,
+      "model": "paper_parameterized_multibounce_table_process_v1",
+      "n_primaries": 20000,
+      "n_survived": 5922,
+      "spot_d90_cm": 3.59982,
+      "system": "geant4_channel_4ring_multibounce",
+      "transmissivity": 0.2961,
+      "warning": "Geant4 app-level multi-bounce channel optics. It records per-bounce table-driven reflection, but it is still a parameterized path model, not a full wall-by-wall IDL geometry reproduction."
+    },
+    "wallbywall_with_si_path_absorption": {
+      "effective_area_cm2": 18.4617263084531,
+      "mean_bounces_per_survivor": 19.623880082701586,
+      "mean_grazing_angle_rad": 7.548658982019764e-05,
+      "model": "bilayer_spacer_wall_by_wall_raytrace_v1",
+      "n_primaries": 20000,
+      "n_survived": 5804,
+      "spot_d90_cm": 1.0329284470889708,
+      "system": "channel_wallbywall_rebuild",
+      "transmissivity": 0.2902,
+      "warning": "Wall-by-wall reconstruction using the public 30 nm W / 150 nm Si bilayer geometry. It does not use calibrated n_bounce or theta values, but it is still a reconstruction because the original 511-CAM IDL source and exact assembly tolerances are not public."
+    },
+    "wallbywall_without_si_path_absorption": {
+      "effective_area_cm2": 37.775923783457785,
+      "mean_bounces_per_survivor": 21.4014819804648,
+      "mean_grazing_angle_rad": 7.186374667838855e-05,
+      "model": "bilayer_spacer_wall_by_wall_raytrace_v1",
+      "n_primaries": 5000,
+      "n_survived": 2969,
+      "spot_d90_cm": 1.0387031141338237,
+      "system": "channel_wallbywall_rebuild",
+      "transmissivity": 0.5938,
+      "warning": "Wall-by-wall reconstruction using the public 30 nm W / 150 nm Si bilayer geometry. It does not use calibrated n_bounce or theta values, but it is still a reconstruction because the original 511-CAM IDL source and exact assembly tolerances are not public."
+    }
+  },
+  "next_checks": [
+    "Add an independent IMD/DarpanX/CXRO-derived W/Si reflectivity table and compare against the current Parratt grid.",
+    "If Geant4 full wall-by-wall remains required, port the Python wall-intersection kernel into a dedicated Geant4 geometry/process target rather than modeling nanolayers.",
+    "Replace the detector-only scaffold with audited TES/BGO mass model and reconstruction before claiming detector performance."
+  ],
+  "plan_rows": [
+    {
+      "claim_boundary": "Natural bounce count and grazing angles are generated by 30/150 nm W/Si spacer geometry; not an exact original IDL reproduction because the original IDL/IMD artifacts are unavailable.",
+      "evidence": "Python wall-by-wall run writes phase_space/optics_history and passes optics-only IO contract",
+      "item": "A. Public-geometry wall-by-wall channel optics",
+      "status": "DONE_CURRENT_STAGE"
+    },
+    {
+      "claim_boundary": "This remains a parameterized table-driven path model, not full Geant4 wall-by-wall channel geometry.",
+      "evidence": "Geant4 4-ring multibounce run reproduces headline optics scale and writes contract outputs.",
+      "item": "B. Geant4 channel optics handoff",
+      "status": "DONE_PARAMETERIZED"
+    },
+    {
+      "claim_boundary": "Lower throughput is retained as a model-gap diagnostic, not tuned away.",
+      "evidence": "Geant4 strict mode includes paper-bend, open-fraction, and Si path-absorption terms.",
+      "item": "C. Strict public-parameter pressure test",
+      "status": "DONE_DIAGNOSTIC"
+    },
+    {
+      "claim_boundary": "Publication-grade closure still needs original IDL path accounting or independent IMD/DarpanX/CXRO export comparison.",
+      "evidence": "Local public-geometry reconstruction and dense Parratt table exist.",
+      "item": "D. IDL/IMD provenance recovery",
+      "status": "OPEN_EXTERNAL_PROVENANCE"
+    },
+    {
+      "claim_boundary": "Detector result is still a minimal TES/BGO scaffold, not validated flight detector performance.",
+      "evidence": "Wall-by-wall phase_space drives a 1k detector-only Geant4 smoke run and full contract passes.",
+      "item": "E. Optics-to-detector handoff",
+      "status": "DONE_END_TO_END_SMOKE"
+    }
+  ],
+  "status": "CHANNEL_PLAN_COMPLETE_CURRENT_STAGE"
+}

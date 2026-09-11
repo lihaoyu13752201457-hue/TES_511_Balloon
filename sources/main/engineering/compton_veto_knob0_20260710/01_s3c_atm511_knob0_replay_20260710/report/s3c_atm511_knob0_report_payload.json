@@ -1,0 +1,166 @@
+{
+  "charts": [
+    {
+      "id": "policy-final-events",
+      "height": 320,
+      "type": "bar",
+      "dataset": {
+        "id": "policy-final-events",
+        "title": "W2 final atmospheric-511 events",
+        "data": [
+          {
+            "policy": "现行选择",
+            "final_events": 6
+          },
+          {
+            "policy": "简报字面规则（k=2.5）",
+            "final_events": 7
+          },
+          {
+            "policy": "单调冻结规则（k=2.5）",
+            "final_events": 6
+          }
+        ],
+        "chart_spec": {
+          "id": "policy-final-events",
+          "dataset": "policy-final-events",
+          "title": "W2 final atmospheric-511 events",
+          "type": "bar",
+          "encodings": {
+            "x": {
+              "field": "policy",
+              "type": "nominal"
+            },
+            "y": {
+              "field": "final_events",
+              "label": "Final events",
+              "type": "quantitative"
+            },
+            "tooltip": [
+              {
+                "field": "policy",
+                "type": "nominal"
+              },
+              {
+                "field": "final_events",
+                "label": "Final events",
+                "type": "quantitative"
+              }
+            ]
+          },
+          "xAxisTitle": "",
+          "yAxisTitle": "",
+          "valueFormat": "number",
+          "settings": {
+            "orientation": "horizontal",
+            "groupMode": "grouped"
+          }
+        }
+      }
+    },
+    {
+      "id": "w2-strata-current-outcome",
+      "height": 370,
+      "type": "bar",
+      "dataset": {
+        "id": "w2-strata-current-outcome",
+        "title": "W2 Knob0 strata and current disposition",
+        "data": [
+          {
+            "stratum": "单击",
+            "outcome": "现行保留",
+            "events": 3
+          },
+          {
+            "stratum": "单击",
+            "outcome": "现行拒绝",
+            "events": 0
+          },
+          {
+            "stratum": "S0 Ta K 标签",
+            "outcome": "现行保留",
+            "events": 1
+          },
+          {
+            "stratum": "S0 Ta K 标签",
+            "outcome": "现行拒绝",
+            "events": 0
+          },
+          {
+            "stratum": "S1 短臂",
+            "outcome": "现行保留",
+            "events": 1
+          },
+          {
+            "stratum": "S1 短臂",
+            "outcome": "现行拒绝",
+            "events": 1
+          },
+          {
+            "stratum": "S2 中臂",
+            "outcome": "现行保留",
+            "events": 0
+          },
+          {
+            "stratum": "S2 中臂",
+            "outcome": "现行拒绝",
+            "events": 1
+          },
+          {
+            "stratum": "S3 长臂",
+            "outcome": "现行保留",
+            "events": 1
+          },
+          {
+            "stratum": "S3 长臂",
+            "outcome": "现行拒绝",
+            "events": 0
+          }
+        ],
+        "chart_spec": {
+          "id": "w2-strata-current-outcome",
+          "dataset": "w2-strata-current-outcome",
+          "title": "W2 Knob0 strata and current disposition",
+          "type": "bar",
+          "encodings": {
+            "x": {
+              "field": "stratum",
+              "type": "nominal"
+            },
+            "y": {
+              "field": "events",
+              "label": "Events",
+              "type": "quantitative"
+            },
+            "color": {
+              "field": "outcome",
+              "type": "nominal"
+            },
+            "tooltip": [
+              {
+                "field": "stratum",
+                "type": "nominal"
+              },
+              {
+                "field": "outcome",
+                "type": "nominal"
+              },
+              {
+                "field": "events",
+                "label": "Events",
+                "type": "quantitative"
+              }
+            ]
+          },
+          "xAxisTitle": "",
+          "yAxisTitle": "",
+          "valueFormat": "number",
+          "settings": {
+            "orientation": "horizontal",
+            "groupMode": "stacked"
+          }
+        }
+      }
+    }
+  ]
+}

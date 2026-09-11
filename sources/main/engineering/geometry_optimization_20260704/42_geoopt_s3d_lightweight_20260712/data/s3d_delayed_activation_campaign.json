@@ -1,0 +1,249 @@
+{
+  "generated_at_utc": "2026-07-12T08:58:20Z",
+  "document_type": "s3d_o9_full_prompt_and_neutron_only_delayed_chain",
+  "geometry_setup": "engineering/geometry_optimization_20260704/42_geoopt_s3d_lightweight_20260712/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup",
+  "source_cards": {
+    "status": "PASS_S3D_O9_ALL8_SOURCE_CARDS",
+    "manifest": "engineering/geometry_optimization_20260704/42_geoopt_s3d_lightweight_20260712/config/full_prompt_all8/source_cards/source_migration_manifest.json"
+  },
+  "prepared_jobs": {
+    "status": "PASS_S3D_O9_FULL_PROMPT_DELAYED_PREFLIGHT",
+    "audit": "engineering/geometry_optimization_20260704/42_geoopt_s3d_lightweight_20260712/data/s3d_full_prompt_and_delayed_preflight.json"
+  },
+  "full_prompt": {
+    "run_dir": "runs/geometry_optimization_20260704/s3d_o9_fullstat_prompt_all8_20260712",
+    "summary_exists": false,
+    "expected_jobs": 68
+  },
+  "assembled_neutron_instant": {},
+  "neutron_buildup": {
+    "status": "PASS",
+    "run_dir": "runs/geometry_optimization_20260704/step02_buildup_s3d_o9_neutron_delayed_m50000_20260712",
+    "jobs": 8,
+    "events_requested": 7704528,
+    "events_generated": 7704528,
+    "normalization": {
+      "mode": "buildup",
+      "source_dir": "engineering/geometry_optimization_20260704/42_geoopt_s3d_lightweight_20260712/config/full_prompt_all8/source_cards",
+      "outdir": "runs/geometry_optimization_20260704/step02_buildup_s3d_o9_neutron_delayed_m50000_20260712",
+      "gamma_events": 10000000,
+      "gamma_splits": 12,
+      "non_gamma_replicas": 8,
+      "gamma_flux_cm2_s": 4.7996615777852,
+      "gamma_norm_factor_cm2_s_per_count": 4.7996615777852e-07,
+      "non_gamma_combined_norm_factor_cm2_s_per_count": 5.9995769722315e-08,
+      "farfield_radius_cm": 60.0,
+      "farfield_area_cm2": 11309.733552923255,
+      "gamma_prompt_time_s_with_farfield_area": 184.2200984295893,
+      "flux_by_particle_cm2_s": {
+        "alpha": 0.011487096450232017,
+        "eminus": 0.19900204457214196,
+        "eplus": 0.11698054572276201,
+        "gamma": 4.7996615777852,
+        "muminus": 0.0049689300223750696,
+        "muplus": 0.0055700117660621405,
+        "n": 0.462239182229625,
+        "p": 0.11230072163133409
+      },
+      "base_events_by_particle": {
+        "gamma": 10000000,
+        "alpha": 23933,
+        "eminus": 414617,
+        "eplus": 243727,
+        "muminus": 10353,
+        "muplus": 11605,
+        "n": 963066,
+        "p": 233976
+      },
+      "selected_particles": [
+        "n"
+      ],
+      "jobs": 8,
+      "store_isotopes": true,
+      "source_migration_manifest": {
+        "path": "engineering/geometry_optimization_20260704/42_geoopt_s3d_lightweight_20260712/config/full_prompt_all8/source_cards/source_migration_manifest.json",
+        "status": "PASS_S3D_O9_ALL8_SOURCE_CARDS",
+        "geometry_setup": "engineering/geometry_optimization_20260704/42_geoopt_s3d_lightweight_20260712/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup",
+        "geometry_status": "S3d O9: uniform 30 mm BGO, no outer W, retained 3 mm Al/Kapton and unchanged inner detector",
+        "farfield_radius_cm": 60.0,
+        "pointing_policy": "unchanged 20-bin full-sphere source cards; only geometry metadata repointed"
+      },
+      "resource_estimate_from_smoke": {
+        "source": "runs/smoke_buildup_100/run_summary.csv",
+        "total_events": 7704528.0,
+        "estimated_cpu_s": 0.0,
+        "estimated_sim_bytes": 0.0,
+        "estimated_dat_bytes": 0.0,
+        "by_particle": {
+          "n": {
+            "events": 7704528.0,
+            "estimated_cpu_s": 0.0,
+            "estimated_sim_bytes": 0.0,
+            "estimated_dat_bytes": 0.0,
+            "has_smoke_rate": 0.0
+          }
+        },
+        "estimated_cpu_days": 0.0,
+        "estimated_sim_gb": 0.0,
+        "estimated_dat_gb": 0.0,
+        "estimated_total_gb": 0.0
+      }
+    },
+    "sim_headers": [
+      {
+        "job_name": "Background_n_fullsphere20_rep01_part01",
+        "path": "runs/geometry_optimization_20260704/step02_buildup_s3d_o9_neutron_delayed_m50000_20260712/Background_n_fullsphere20_rep01_part01.inc1.id1.sim.gz",
+        "exists": true,
+        "geometry": "/home/ubuntu/TES_511_Balloon/engineering/geometry_optimization_20260704/42_geoopt_s3d_lightweight_20260712/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup",
+        "SE": 0,
+        "ID": 0,
+        "TS": 0,
+        "TE_s": null,
+        "geometry_match": true
+      },
+      {
+        "job_name": "Background_n_fullsphere20_rep02_part01",
+        "path": "runs/geometry_optimization_20260704/step02_buildup_s3d_o9_neutron_delayed_m50000_20260712/Background_n_fullsphere20_rep02_part01.inc1.id1.sim.gz",
+        "exists": true,
+        "geometry": "/home/ubuntu/TES_511_Balloon/engineering/geometry_optimization_20260704/42_geoopt_s3d_lightweight_20260712/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup",
+        "SE": 0,
+        "ID": 0,
+        "TS": 0,
+        "TE_s": null,
+        "geometry_match": true
+      },
+      {
+        "job_name": "Background_n_fullsphere20_rep03_part01",
+        "path": "runs/geometry_optimization_20260704/step02_buildup_s3d_o9_neutron_delayed_m50000_20260712/Background_n_fullsphere20_rep03_part01.inc1.id1.sim.gz",
+        "exists": true,
+        "geometry": "/home/ubuntu/TES_511_Balloon/engineering/geometry_optimization_20260704/42_geoopt_s3d_lightweight_20260712/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup",
+        "SE": 0,
+        "ID": 0,
+        "TS": 0,
+        "TE_s": null,
+        "geometry_match": true
+      },
+      {
+        "job_name": "Background_n_fullsphere20_rep04_part01",
+        "path": "runs/geometry_optimization_20260704/step02_buildup_s3d_o9_neutron_delayed_m50000_20260712/Background_n_fullsphere20_rep04_part01.inc1.id1.sim.gz",
+        "exists": true,
+        "geometry": "/home/ubuntu/TES_511_Balloon/engineering/geometry_optimization_20260704/42_geoopt_s3d_lightweight_20260712/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup",
+        "SE": 0,
+        "ID": 0,
+        "TS": 0,
+        "TE_s": null,
+        "geometry_match": true
+      },
+      {
+        "job_name": "Background_n_fullsphere20_rep05_part01",
+        "path": "runs/geometry_optimization_20260704/step02_buildup_s3d_o9_neutron_delayed_m50000_20260712/Background_n_fullsphere20_rep05_part01.inc1.id1.sim.gz",
+        "exists": true,
+        "geometry": "/home/ubuntu/TES_511_Balloon/engineering/geometry_optimization_20260704/42_geoopt_s3d_lightweight_20260712/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup",
+        "SE": 0,
+        "ID": 0,
+        "TS": 0,
+        "TE_s": null,
+        "geometry_match": true
+      },
+      {
+        "job_name": "Background_n_fullsphere20_rep06_part01",
+        "path": "runs/geometry_optimization_20260704/step02_buildup_s3d_o9_neutron_delayed_m50000_20260712/Background_n_fullsphere20_rep06_part01.inc1.id1.sim.gz",
+        "exists": true,
+        "geometry": "/home/ubuntu/TES_511_Balloon/engineering/geometry_optimization_20260704/42_geoopt_s3d_lightweight_20260712/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup",
+        "SE": 0,
+        "ID": 0,
+        "TS": 0,
+        "TE_s": null,
+        "geometry_match": true
+      },
+      {
+        "job_name": "Background_n_fullsphere20_rep07_part01",
+        "path": "runs/geometry_optimization_20260704/step02_buildup_s3d_o9_neutron_delayed_m50000_20260712/Background_n_fullsphere20_rep07_part01.inc1.id1.sim.gz",
+        "exists": true,
+        "geometry": "/home/ubuntu/TES_511_Balloon/engineering/geometry_optimization_20260704/42_geoopt_s3d_lightweight_20260712/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup",
+        "SE": 0,
+        "ID": 0,
+        "TS": 0,
+        "TE_s": null,
+        "geometry_match": true
+      },
+      {
+        "job_name": "Background_n_fullsphere20_rep08_part01",
+        "path": "runs/geometry_optimization_20260704/step02_buildup_s3d_o9_neutron_delayed_m50000_20260712/Background_n_fullsphere20_rep08_part01.inc1.id1.sim.gz",
+        "exists": true,
+        "geometry": "/home/ubuntu/TES_511_Balloon/engineering/geometry_optimization_20260704/42_geoopt_s3d_lightweight_20260712/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup",
+        "SE": 0,
+        "ID": 0,
+        "TS": 0,
+        "TE_s": null,
+        "geometry_match": true
+      }
+    ],
+    "problems": []
+  },
+  "groundstate_fix": {
+    "status": null,
+    "audit": "runs/geometry_optimization_20260704/step02_delay_fix_s3d_o9_neutron_delayed_m50000_20260712/normalization_audit_groundstate_fix.json",
+    "nubase": "inputs/nubase/nubase_2020.txt",
+    "nubase_sha256": "1585a5eea86c5e17e90307c7e6e786d060049c4039e392a261ff6db977df9859"
+  },
+  "exact_position_source": {
+    "status": "FAIL",
+    "source": "runs/geometry_optimization_20260704/step02_delay_exactpos_s3d_o9_neutron_delayed_m50000_20260712/activation_decay_day15_groundstate_fixed_exactpos_m50000.source",
+    "manifest": "runs/geometry_optimization_20260704/step02_delay_exactpos_s3d_o9_neutron_delayed_m50000_20260712/s3d_o9_neutron_delayed_m50000_20260712_exactpos_m50000_s260613_delayed_source_manifest.json",
+    "summary": "engineering/geometry_optimization_20260704/42_geoopt_s3d_lightweight_20260712/fullchain/delayed_source/delayed_source_exactpos_summary.json",
+    "weighted_table": "runs/geometry_optimization_20260704/step02_delay_exactpos_s3d_o9_neutron_delayed_m50000_20260712/exactpos_weighted_rpip_table_m50000_s260613.csv",
+    "weighted_rows": 0,
+    "m_pointsource_blocks": null,
+    "seed": null,
+    "sampling_status": null,
+    "transport": {},
+    "problems": [
+      "missing exact-position source",
+      "exact-position source geometry mismatch",
+      "exact-position trigger count mismatch",
+      "exact-position PointSource block count mismatch",
+      "exact-position manifest M/seed mismatch",
+      "sampling audit=None problems=None",
+      "sampled points do not fully map to the weighted table",
+      "empty exact-position weighted table"
+    ]
+  },
+  "delayed_transport": {
+    "status": "FAIL",
+    "source": "runs/geometry_optimization_20260704/step02_delay_exactpos_s3d_o9_neutron_delayed_m50000_20260712/activation_decay_day15_groundstate_fixed_exactpos_m50000.source",
+    "manifest": "runs/geometry_optimization_20260704/step02_delay_exactpos_s3d_o9_neutron_delayed_m50000_20260712/s3d_o9_neutron_delayed_m50000_20260712_exactpos_m50000_s260613_delayed_source_manifest.json",
+    "summary": "engineering/geometry_optimization_20260704/42_geoopt_s3d_lightweight_20260712/fullchain/delayed_source/delayed_source_exactpos_summary.json",
+    "weighted_table": "runs/geometry_optimization_20260704/step02_delay_exactpos_s3d_o9_neutron_delayed_m50000_20260712/exactpos_weighted_rpip_table_m50000_s260613.csv",
+    "weighted_rows": 0,
+    "m_pointsource_blocks": null,
+    "seed": null,
+    "sampling_status": null,
+    "transport": {},
+    "problems": [
+      "missing exact-position source",
+      "exact-position source geometry mismatch",
+      "exact-position trigger count mismatch",
+      "exact-position PointSource block count mismatch",
+      "exact-position manifest M/seed mismatch",
+      "sampling audit=None problems=None",
+      "sampled points do not fully map to the weighted table",
+      "empty exact-position weighted table",
+      "delayed SE/ID=None/None",
+      "delayed SIM geometry mismatch",
+      "delayed manifest status=None"
+    ]
+  },
+  "statistics": {
+    "gamma_events": 10000000,
+    "gamma_splits": 12,
+    "non_gamma_replicas": 8,
+    "non_gamma_div": 8,
+    "n_sample": 2000000,
+    "raw_triggers": 1000000,
+    "m_blocks": 50000,
+    "seed": 260613
+  },
+  "claim_boundary": "No detector-selected delayed rate or Step05-Step08 sensitivity claim is valid until the downstream closure consumes this transport.",
+  "status": "S3D_O9_NEUTRON_DELAYED_CHAIN_INCOMPLETE"
+}

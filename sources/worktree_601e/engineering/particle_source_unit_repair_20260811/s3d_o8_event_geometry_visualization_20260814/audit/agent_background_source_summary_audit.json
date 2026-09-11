@@ -1,0 +1,83 @@
+{
+  "dataset_grain": {
+    "delayed_selected_event_ledger": "one selected S3d-O8 W2 detector event per row",
+    "delayed_source_point_ledger": "one unique delayed source coordinate/key per row",
+    "prompt_events": "one traced active-veto W2 prompt survivor per row",
+    "verified_origin_links": "one exact selected-event to activation-production-origin link per row"
+  },
+  "facts": {
+    "delayed_rows": 420,
+    "delayed_total_w2_rate_cps": 0.05447975222726652,
+    "delayed_event_neff": 28.753661082548955,
+    "delayed_event_key_duplicates": 0,
+    "delayed_essential_null_cells": 0,
+    "delayed_event_weight_equals_w2_rate_all_rows": true,
+    "source_point_rows": 66,
+    "source_point_key_duplicates": 0,
+    "delayed_source_point_orphan_ids": [],
+    "event_vs_point_rate_residual_cps": 3.608224830031759e-16,
+    "verified_origin_link_rows": 25,
+    "verified_origin_unique_selected_events": 25,
+    "verified_origin_selected_event_coverage": 0.05952380952380952,
+    "unknown_or_unlinked_selected_events": 395,
+    "prompt_traced_active_veto_w2_rows": 3,
+    "prompt_step05_rows": 2,
+    "prompt_step05_rate_cps": 0.0338429281308886,
+    "prompt_step05_event_neff": 2.0,
+    "prompt_step05_active_deposit_zero_all_rows": true,
+    "combined_delayed_plus_prompt_step05_rate_cps": 0.08832268035815512
+  },
+  "risk_findings": [
+    {
+      "severity": "HIGH",
+      "confidence": "HIGH",
+      "finding": "Activation projectile/channel ancestry is exact for only 25/420 selected delayed events (5.95%).",
+      "impact": "The verified-origin projectile distribution cannot be treated as the projectile mix of all delayed W2 background.",
+      "required_label": "UNKNOWN for the remaining 395 rows"
+    },
+    {
+      "severity": "HIGH",
+      "confidence": "HIGH",
+      "finding": "Delayed weighted evidence is low-Neff and quantized: family-specific selected rows carry one constant event weight.",
+      "impact": "Single p/n/alpha events create large equal-height ranking steps; the apparent ordering among equal-rate source points is not resolved."
+    },
+    {
+      "severity": "HIGH",
+      "confidence": "HIGH",
+      "finding": "Official Step05 prompt evidence contains only two equal-weight events.",
+      "impact": "Prompt-host fractions are mechanism examples, not stable population fractions."
+    }
+  ],
+  "near_field_figure_recommendation": {
+    "tes_centroid_IF_cm": [
+      0.0,
+      -0.0775,
+      -5.2
+    ],
+    "axial_exact_section": "Instrument-frame y'=0 exact mesh section",
+    "axial_plot_range_cm": {
+      "x_prime": [
+        -5.1,
+        5.1
+      ],
+      "z_prime": [
+        -10.2,
+        2.5
+      ]
+    },
+    "point_semantics": "Plot source coordinates by orthographic x'-z' projection and state each point's true y'; do not imply the point lies in the y'=0 section.",
+    "top10_point_ids_by_selected_w2_rate": [
+      "P0060",
+      "P0061",
+      "P0062",
+      "P0063",
+      "P0064",
+      "P0065",
+      "P0066",
+      "P0046",
+      "P0055",
+      "P0056"
+    ],
+    "top10_tie_warning": "P0060/P0061/P0062/P0063/P0064/P0065/P0066 are equal-weight single-p events; their internal rank is arbitrary."
+  }
+}

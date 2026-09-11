@@ -1,0 +1,378 @@
+{
+  "manifest": {
+    "version": 1,
+    "surface": "report",
+    "title": "S3d-O8 本底来源与首轮优化结果",
+    "description": "corrected-keV 共同响应、事件级 lineage、冻结信号选择、结构读出上限和 LG1 新输运的统一技术摘要。",
+    "generatedAt": "2026-08-14T00:00:00+08:00",
+    "sources": [
+      {
+        "id": "optimization-summary",
+        "label": "首轮优化机器可读汇总",
+        "path": "engineering/particle_source_unit_repair_20260811/s3d_o8_lg1_screening_20260813/data/optimization_summary.json"
+      },
+      {
+        "id": "lg1-diagnostic",
+        "label": "LG1 物理 smoke 诊断",
+        "path": "engineering/particle_source_unit_repair_20260811/s3d_o8_lg1_screening_20260813/data/lg1_smoke_diagnostic.json"
+      },
+      {
+        "id": "common-response-lineage",
+        "label": "共同响应 W2 背景 lineage",
+        "path": "engineering/particle_source_unit_repair_20260811/m05_corrected_reanalysis_20260813/outputs/04_common_response/selected_background_w2_lineage.csv"
+      },
+      {
+        "id": "mission-summary",
+        "label": "M05 mission 情景汇总",
+        "path": "engineering/particle_source_unit_repair_20260811/m05_corrected_reanalysis_20260813/outputs/06_mission/summary.json"
+      },
+      {
+        "id": "hitomi-sxs",
+        "label": "Hitomi SXS anti-coincidence",
+        "href": "https://academic.oup.com/pasj/article/70/2/18/4969724"
+      },
+      {
+        "id": "cryoac",
+        "label": "Athena X-IFU CryoAC prototype",
+        "href": "https://link.springer.com/article/10.1007/s10909-023-03034-5"
+      },
+      {
+        "id": "spi",
+        "label": "INTEGRAL/SPI in-flight background rejection",
+        "href": "https://arxiv.org/abs/astro-ph/0310793"
+      }
+    ],
+    "charts": [
+      {
+        "id": "f3-scenario-chart",
+        "title": "统一口径 F3 方案比较",
+        "subtitle": "50 keV 设计上限跨过目标，80 keV 已略超；LG1 仍需完整率闭环。",
+        "type": "bar",
+        "dataset": "scenario_f3",
+        "sourceId": "optimization-summary",
+        "source": {
+          "id": "optimization-summary",
+          "label": "首轮优化机器可读汇总",
+          "path": "engineering/particle_source_unit_repair_20260811/s3d_o8_lg1_screening_20260813/data/optimization_summary.json",
+          "query": {
+            "language": "sql",
+            "engine": "bounded-snapshot",
+            "sql": "SELECT scenario, f3_1e5, aeff_cm2, background_cps, evidence FROM scenario_f3 ORDER BY display_order",
+            "description": "把共同响应基线、冻结选择、两级结构读出上限和最低设计门统一换算到 20-day 3-sigma F3 口径。",
+            "tables_used": [
+              "scenario_f3"
+            ],
+            "metric_definitions": [
+              "f3_1e5 = F3 / 1e-5, unit ph cm^-2 s^-1",
+              "background_cps = prompt plus delayed W2 rate",
+              "aeff_cm2 = selected focused-signal effective area"
+            ]
+          }
+        },
+        "encodings": {
+          "x": {
+            "field": "scenario",
+            "type": "nominal",
+            "title": "方案"
+          },
+          "y": {
+            "field": "f3_1e5",
+            "type": "quantitative",
+            "title": "F3（×10⁻⁵ ph cm⁻² s⁻¹）"
+          },
+          "color": {
+            "field": "evidence",
+            "type": "nominal",
+            "title": "证据等级"
+          }
+        }
+      }
+    ],
+    "tables": [
+      {
+        "id": "source-priority-table",
+        "title": "延迟活化首要空间源",
+        "dataset": "delayed_sources",
+        "sourceId": "common-response-lineage",
+        "source": {
+          "id": "common-response-lineage",
+          "label": "共同响应 W2 背景 lineage",
+          "path": "engineering/particle_source_unit_repair_20260811/m05_corrected_reanalysis_20260813/outputs/04_common_response/selected_background_w2_lineage.csv",
+          "query": {
+            "language": "sql",
+            "engine": "bounded-snapshot",
+            "sql": "SELECT rank, source, rate_cps, fraction_pct FROM delayed_sources ORDER BY rank ASC",
+            "description": "S3d-O8 delayed W2 按 source volume 聚合并取前五项。",
+            "tables_used": [
+              "delayed_sources"
+            ],
+            "metric_definitions": [
+              "rate_cps = sum of event_weight_cps for selected delayed W2 rows",
+              "fraction_pct = 100 * rate_cps / 0.054479752227267225"
+            ]
+          }
+        },
+        "columns": [
+          {
+            "field": "rank",
+            "label": "排序",
+            "format": "number"
+          },
+          {
+            "field": "source",
+            "label": "源体积"
+          },
+          {
+            "field": "rate_cps",
+            "label": "W2 rate (cps)",
+            "format": "number"
+          },
+          {
+            "field": "fraction_pct",
+            "label": "delayed 占比 (%)",
+            "format": "number"
+          }
+        ],
+        "defaultSort": {
+          "field": "rank",
+          "direction": "asc"
+        }
+      },
+      {
+        "id": "lg1-path-table",
+        "title": "LG1 已知路径条件截获",
+        "dataset": "lg1_paths",
+        "sourceId": "lg1-diagnostic",
+        "source": {
+          "id": "lg1-diagnostic",
+          "label": "LG1 物理 smoke 诊断",
+          "path": "engineering/particle_source_unit_repair_20260811/s3d_o8_lg1_screening_20260813/data/lg1_smoke_diagnostic.json",
+          "query": {
+            "language": "sql",
+            "engine": "bounded-snapshot",
+            "sql": "SELECT path, old_six_pass_raw_w2, lg1_ge80, role FROM lg1_paths ORDER BY old_six_pass_raw_w2 DESC",
+            "description": "冻结的定向根路径与 forced-511 cassette 在 LG1 候选中的条件截获计数。",
+            "tables_used": [
+              "lg1_paths"
+            ],
+            "metric_definitions": [
+              "old_six_pass_raw_w2 = candidate raw-W2 events with zero energy in the retained six active volumes",
+              "lg1_ge80 = those events with at least 80 keV in either LG1 active volume"
+            ]
+          }
+        },
+        "columns": [
+          {
+            "field": "path",
+            "label": "定向根路径"
+          },
+          {
+            "field": "old_six_pass_raw_w2",
+            "label": "原六主动体漏过 raw-W2",
+            "format": "number"
+          },
+          {
+            "field": "lg1_ge80",
+            "label": "LG1 ≥80 keV",
+            "format": "number"
+          },
+          {
+            "field": "role",
+            "label": "工程含义"
+          }
+        ],
+        "defaultSort": {
+          "field": "old_six_pass_raw_w2",
+          "direction": "desc"
+        }
+      }
+    ],
+    "blocks": [
+      {
+        "id": "title",
+        "type": "markdown",
+        "body": "# S3d-O8 本底来源与首轮优化结果"
+      },
+      {
+        "id": "executive-summary",
+        "type": "markdown",
+        "body": "## 核心结论\n\n现有 W2 本底为 **0.08832 cps**，其中瞬发 0.03384、延迟 0.05448 cps。冻结的像素中心/层深选择将同口径 F3 从 **6.92×10⁻⁵** 降到 **5.15×10⁻⁵**。pair-host 有效阈值在 50 keV 时约为 **2.66×10⁻⁵**，能跨过目标；80 keV 时约为 **3.02×10⁻⁵**，已略超目标。LG1 新输运证明局部 BGO 能处理 Nb/MuMetal 路径，但没有截获冻结后关键的 mixing-chamber Cu 路径，因此下一代应优先做 ≤50 keV 的源侧覆盖、宿主读出或减耦。"
+      },
+      {
+        "id": "f3-chart-block",
+        "type": "chart",
+        "chartId": "f3-scenario-chart"
+      },
+      {
+        "id": "origin-summary",
+        "type": "markdown",
+        "body": "## 本底从哪里来\n\n瞬发最终事件是 4–6 MeV gamma 在内层 Nb 或 mixing-chamber Cu 中成对产生，随后一个湮没 511 keV gamma 被 TES 全吸收；现有 BGO/plastic 在这些事件中精确零沉积，所以单纯降阈值无效。延迟本底则由 n/p 主导的近 TES 活化与几何耦合共同形成，Cu-61/62/64 合计占 delayed 的 64.24%。"
+      },
+      {
+        "id": "source-table-block",
+        "type": "table",
+        "tableId": "source-priority-table"
+      },
+      {
+        "id": "lg1-summary",
+        "type": "markdown",
+        "body": "## LG1 实体首轮结果\n\nLG1 是 5 mm BGO 开口侧套加 3 mm 后环，解析质量 0.563 kg。16 个 write-once jobs 共 8192 events 全部通过。4.15 MeV Nb/MuMetal cassette 中的 5 个候选事件全部在 80 keV 被截获，且 50 keV 下对旧六主动体漏过事件的条件命中为 94/301；5.77 MeV mixing-chamber Cu cassette 为 0/2、宽分母条件命中仅 6/118。focused first-1000 raw-W2 为 826 对 817，配对不一致精确检验 p=0.63。小分母和随机历史迁移只支持机制判断，不支持天空率或 promotion。"
+      },
+      {
+        "id": "lg1-table-block",
+        "type": "table",
+        "tableId": "lg1-path-table"
+      },
+      {
+        "id": "engineering-direction",
+        "type": "markdown",
+        "body": "## 优化排序\n\n1. P0：实现有效阈值 ≤50 keV 的 pair-host 读出、复现 event 19932 真实 ANNI 方向的源侧分段 guard，或减少/移开高耦合 Cu/Nb/MuMetal。\n2. P1：优先压低 MXC plate、L0 disk、Cu can bottom 与近 TES rings 的 Cu 活化和立体角耦合。\n3. P2：并行评估近 TES Si CryoAC 与 Nb 低 Z liner；它们补充带电次级抑制，但不能代替 511 gamma guard。\n4. P3：共同优化阈值、时序、误符合、dead time 与冻结像素选择。"
+      },
+      {
+        "id": "claim-boundary",
+        "type": "markdown",
+        "body": "## 验证边界\n\n最低 promotion budget 建议为 **Aeff ≥13.35 cm²、prompt+delayed ≤0.0131 cps、F3 ≤3×10⁻⁵**；拉伸预算为 **B ≤0.0058 cps、F3 ≤2×10⁻⁵**。LG1 尚未完成 broadband 八族 prompt、BUILDUP→inventory→delayed、共同响应、新材料自身活化、误符合、热、磁和任务级闭环，不能据本次 smoke 直接 promotion。"
+      }
+    ]
+  },
+  "snapshot": {
+    "version": 1,
+    "status": "ready",
+    "generatedAt": "2026-08-14T00:00:00+08:00",
+    "datasets": {
+      "scenario_f3": [
+        {
+          "display_order": 1,
+          "scenario": "当前基线",
+          "f3_1e5": 6.923750509,
+          "aeff_cm2": 15.0417,
+          "background_cps": 0.0883226804,
+          "evidence": "共同响应"
+        },
+        {
+          "display_order": 2,
+          "scenario": "冻结选择",
+          "f3_1e5": 5.14899369,
+          "aeff_cm2": 13.62852,
+          "background_cps": 0.0401271381,
+          "evidence": "信号先验重放"
+        },
+        {
+          "display_order": 4,
+          "scenario": "pair-host 80keV",
+          "f3_1e5": 3.01767241,
+          "aeff_cm2": 13.62852,
+          "background_cps": 0.0137887861,
+          "evidence": "设计上限"
+        },
+        {
+          "display_order": 5,
+          "scenario": "pair-host 50keV",
+          "f3_1e5": 2.65657195,
+          "aeff_cm2": 13.62852,
+          "background_cps": 0.0106935738,
+          "evidence": "设计上限"
+        },
+        {
+          "display_order": 6,
+          "scenario": "pair-host 5keV",
+          "f3_1e5": 2.23573862,
+          "aeff_cm2": 13.62852,
+          "background_cps": 0.00758334209,
+          "evidence": "设计上限"
+        },
+        {
+          "display_order": 7,
+          "scenario": "pair-host+近TES Cu",
+          "f3_1e5": 0.140535528,
+          "aeff_cm2": 13.62852,
+          "background_cps": 0.0000300387674,
+          "evidence": "设计上限"
+        },
+        {
+          "display_order": 3,
+          "scenario": "最低目标",
+          "f3_1e5": 3.0,
+          "aeff_cm2": 13.35,
+          "background_cps": 0.0131,
+          "evidence": "设计门"
+        }
+      ],
+      "delayed_sources": [
+        {
+          "rank": 1,
+          "source": "MXC 50 mK cold plate",
+          "rate_cps": 0.0167715,
+          "fraction_pct": 30.78
+        },
+        {
+          "rank": 2,
+          "source": "Nb inner magnetic cylinder",
+          "rate_cps": 0.0078086,
+          "fraction_pct": 14.33
+        },
+        {
+          "rank": 3,
+          "source": "MuMetal outer cylinder",
+          "rate_cps": 0.00776545,
+          "fraction_pct": 14.25
+        },
+        {
+          "rank": 4,
+          "source": "L0 deepest Cu disk",
+          "rate_cps": 0.00584951,
+          "fraction_pct": 10.74
+        },
+        {
+          "rank": 5,
+          "source": "Cu can bottom",
+          "rate_cps": 0.00401569,
+          "fraction_pct": 7.37
+        }
+      ],
+      "lg1_paths": [
+        {
+          "path": "4148 keV / Nb-MuMetal",
+          "old_six_pass_raw_w2": 5,
+          "lg1_ge80": 5,
+          "role": "保留侧/后局部 guard"
+        },
+        {
+          "path": "5769 keV / mixing-chamber Cu",
+          "old_six_pass_raw_w2": 2,
+          "lg1_ge80": 0,
+          "role": "转向源侧覆盖/宿主读出"
+        },
+        {
+          "path": "forced back-to-back 511",
+          "old_six_pass_raw_w2": 1,
+          "lg1_ge80": 0,
+          "role": "需扩大几何 cassette"
+        }
+      ]
+    }
+  },
+  "sources": [
+    {
+      "id": "optimization-summary",
+      "label": "首轮优化机器可读汇总",
+      "path": "engineering/particle_source_unit_repair_20260811/s3d_o8_lg1_screening_20260813/data/optimization_summary.json"
+    },
+    {
+      "id": "lg1-diagnostic",
+      "label": "LG1 物理 smoke 诊断",
+      "path": "engineering/particle_source_unit_repair_20260811/s3d_o8_lg1_screening_20260813/data/lg1_smoke_diagnostic.json"
+    },
+    {
+      "id": "common-response-lineage",
+      "label": "共同响应 W2 背景 lineage",
+      "path": "engineering/particle_source_unit_repair_20260811/m05_corrected_reanalysis_20260813/outputs/04_common_response/selected_background_w2_lineage.csv"
+    },
+    {
+      "id": "mission-summary",
+      "label": "M05 mission 情景汇总",
+      "path": "engineering/particle_source_unit_repair_20260811/m05_corrected_reanalysis_20260813/outputs/06_mission/summary.json"
+    }
+  ],
+  "surface": "report"
+}

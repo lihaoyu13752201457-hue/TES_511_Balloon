@@ -1,0 +1,75 @@
+{
+  "schema_version": 1,
+  "status": "PASS__SH3_OPTV3_SIGNAL_37194_GATE",
+  "profile_id": "SH3_OPTV3_SIGNAL_37194_20260818_V1",
+  "candidate": "SH3_OPTV3",
+  "gate": "stage_3_full_envelope_signal",
+  "generated_at_utc": "2026-08-18T15:47:00+00:00",
+  "authority": {
+    "geo_sha256": "a270ab2caf340a34858b448374b3dad955878ebbb9df9169f97d80df46026934",
+    "setup_sha256": "36e44e7bc1af3f3ae296e5f3e82ac0388d7ff28182e2897a30abfca6616b5768",
+    "det_sha256": "12d3a6831f3d00da6668f48487e5d83f7a0354419fdec75cfec211b28373cae9",
+    "eventlist_sha256": "ee538d20d818baab94a5c3ebe01392a3ae9f278a231aa5b8938cdf23870f62b5",
+    "eventlist_rows": 37194,
+    "seed": 83718194,
+    "surrounding_sphere": "60 5 0 9 60"
+  },
+  "smoke": {
+    "sim_path": "/mnt/data/TES_Balloon_511_data/SH3/sh3_optv3_signal_37194_v1/smoke/SH3_OptV3_Signal37194_smoke1000.inc1.id1.sim.gz",
+    "sim_bytes": 108541,
+    "log_path": "/mnt/data/TES_Balloon_511_data/SH3/sh3_optv3_signal_37194_v1/logs/smoke1000.log",
+    "returncode": 0,
+    "generated_particles": 1000,
+    "stored_events": 1000,
+    "cosima_cpu_s": 0.165696,
+    "wall_s": 13.795,
+    "observation_time_s": 9.99e-07
+  },
+  "full": {
+    "sim_path": "/mnt/data/TES_Balloon_511_data/SH3/sh3_optv3_signal_37194_v1/full/SH3_OptV3_Signal37194.inc1.id1.sim.gz",
+    "sim_bytes": 4118390,
+    "log_path": "/mnt/data/TES_Balloon_511_data/SH3/sh3_optv3_signal_37194_v1/logs/full37194.log",
+    "returncode": 0,
+    "generated_particles": 37194,
+    "stored_events": 37194,
+    "cosima_cpu_s": 5.33128,
+    "wall_s": 13.266,
+    "observation_time_s": 3.7193e-05,
+    "matches_step09_reference_observation_time": true
+  },
+  "gate_checks": {
+    "eventlist_rows_written": {"target": 37194, "actual": 37194, "pass": true},
+    "stored_events_full": {"target": 37194, "actual": 37194, "pass": true},
+    "geometric_clipping_events": {"target_max": 0, "actual": 0, "pass": true},
+    "w_direct_first_hit_events": {"target_max": 0, "actual": 0, "pass": true, "evidence": "no Tungsten PM deposit in any of 37,194 events; all passive-material energy deposits fall in Aluminium/Copper/StainlessSteel/G10/CuNi/SilverSinterProxy"},
+    "cosima_return_code": {"target": 0, "actual": 0, "pass": true},
+    "no_overlap_or_clip_warnings": {"pass": true, "evidence": "only Visualization Manager verbosity=3 warning; no overlap/clip/error in cosima log"}
+  },
+  "passive_material_breakdown": {
+    "Aluminium":        {"events_with_deposit": 11229, "sum_edep_keV": 2477639.9},
+    "Copper":           {"events_with_deposit":   948, "sum_edep_keV":  116778.2},
+    "StainlessSteel":   {"events_with_deposit":   113, "sum_edep_keV":   15049.4},
+    "G10":              {"events_with_deposit":   102, "sum_edep_keV":    6912.2},
+    "CuNi":             {"events_with_deposit":    43, "sum_edep_keV":    3649.0},
+    "SilverSinterProxy":{"events_with_deposit":    11, "sum_edep_keV":    1663.9}
+  },
+  "ia_interaction_summary": {
+    "INIT": 37194,
+    "ESCP": 35958,
+    "COMP": 21383,
+    "PHOT":  4336,
+    "RAYL":   678,
+    "BREM":   394
+  },
+  "physics_boundaries": {
+    "aeff_final_not_computed_here": true,
+    "reason": "stage 3 gate proves W-box clearance + geometry admissibility, not final W2 Aeff.  Final Aeff_W2 requires stage 8 common-response (revan reconstruction + TES 0.42 keV FWHM + 0.3 keV pixel threshold + 50 keV plastic/BGO veto + Step05 Compton/FoV).",
+    "non_additive_to_backgrounds": true,
+    "not_atmospheric_TT": true
+  },
+  "excludes": {
+    "background_transport": true,
+    "activation_lineage": true,
+    "monoline_addition_to_broadband": true
+  }
+}

@@ -1,0 +1,511 @@
+{
+  "status": "PASS_S3D_O8_ALL8_ONLY_N_GENERALIZED_MISSION_REGRESSION",
+  "generated_at_utc": "2026-07-13T22:45:11Z",
+  "scope": {
+    "new_monte_carlo_transport": false,
+    "retained_authorities_modified": false,
+    "prompt_model": "retained all-eight-family prompt response and occupancy",
+    "delayed_model": "retained neutron positive component plus seven explicit finite-buildup zero observations",
+    "purpose": "executable regression of the generalized all-family equations, not a final all8 production result"
+  },
+  "input_authorities": {
+    "regression_implementation": {
+      "path": "engineering/ea_s3d_o8_all8_family_nuclide_mission_fold_20260713/code/validate_only_n_generalized_regression.py",
+      "size_bytes": 35230,
+      "sha256": "ab04e28ad40534de272b7d6da95d250e705cdeecf506e6ad0e97297622eabbc7"
+    },
+    "generalized_mission_implementation": {
+      "path": "engineering/ea_s3d_o8_all8_family_nuclide_mission_fold_20260713/code/build_s3d_o8_all8_family_nuclide_mission_fold.py",
+      "size_bytes": 86096,
+      "sha256": "987b26bfef7f3d5039a7a1fb0926a77308de1c47b2491d422abac9a75f7808a8"
+    },
+    "retained_summary": {
+      "path": "engineering/ea_s3d_family_nuclide_mission_fold_20260713/data/s3d_family_nuclide_mission_summary.json",
+      "size_bytes": 8408,
+      "sha256": "f7b6c8409d184ce876d748a729d81e74000669149caa23faa2cbfb86249e2440"
+    },
+    "retained_selected": {
+      "path": "engineering/ea_s3d_family_nuclide_mission_fold_20260713/data/selected_delayed_nuclides_primary_seed.json",
+      "size_bytes": 2225,
+      "sha256": "6957401a765d0341bde66fd97389d3f95805e71ecffa4cb2991f7d615304f2fb"
+    },
+    "retained_activity": {
+      "path": "engineering/ea_s3d_family_nuclide_mission_fold_20260713/outputs/nuclide_activity_by_time.csv",
+      "size_bytes": 656787,
+      "sha256": "af641b6a0c980a7a9cf9763d62b85eaab142a6588a3ee24cec5129dc439ec05b"
+    },
+    "retained_timeline": {
+      "path": "engineering/ea_s3d_family_nuclide_mission_fold_20260713/outputs/w2_family_nuclide_mission_timeline.csv",
+      "size_bytes": 53065,
+      "sha256": "fcbd4590c45d29f6551767aacf2f8bbefca65af3f9a058dd1bc2ba89c4c0c0fe"
+    },
+    "retained_response": {
+      "path": "engineering/ea_detector_response_closure_20260713/data/o8_energy_response_closure_summary.json",
+      "size_bytes": 78399,
+      "sha256": "810b1e3182e5247f5caacd346f24415ddce7833921840b601dde0a38da1779bd"
+    },
+    "fixed_summary": {
+      "path": "runs/geometry_optimization_20260704/step02_delay_fix_s3d_o8_neutron_delayed_m50000_20260712/source_fix_summary.json",
+      "size_bytes": 16572,
+      "sha256": "8f615c2a566aa9592d3743c64446176a94a1ffb2b58aa53fbc18004d93141a9c"
+    },
+    "fixed_source": {
+      "path": "runs/geometry_optimization_20260704/step02_delay_fix_s3d_o8_neutron_delayed_m50000_20260712/activation_decay_day15_groundstate_fixed.source",
+      "size_bytes": 4154144,
+      "sha256": "fcb9d306853492e25bb6fe7fdc805453df3917d2902fb0dd58cdcc8d36a281d5"
+    },
+    "groundstate_corrections": {
+      "path": "runs/geometry_optimization_20260704/step02_delay_fix_s3d_o8_neutron_delayed_m50000_20260712/groundstate_activity_corrections.csv",
+      "size_bytes": 38266,
+      "sha256": "7c59048f5117eb3cb0fb5e18b8a1b9be6715b9adf8e2db3946595bc7d9dc7eb0"
+    },
+    "inventory": {
+      "path": "runs/geometry_optimization_20260704/step02_decay_source_s3d_o8_neutron_delayed_m50000_20260712/activation_inventory_day15.csv",
+      "size_bytes": 20239,
+      "sha256": "bc32070223a39c97cfb175113b724e04cec2b06638767d5ce04b89b59ad5ecbb"
+    },
+    "exactpos_manifest": {
+      "path": "runs/geometry_optimization_20260704/step02_delay_exactpos_s3d_o8_neutron_delayed_m50000_20260712/s3d_o8_neutron_delayed_m50000_20260712_exactpos_m50000_s260613_delayed_source_manifest.json",
+      "size_bytes": 14963,
+      "sha256": "620820d4c16747b546e47eec04527eace93a2d43eb601e63cf5b720d0e9a2bd5"
+    },
+    "weighted_table": {
+      "path": "runs/geometry_optimization_20260704/step02_delay_exactpos_s3d_o8_neutron_delayed_m50000_20260712/exactpos_weighted_rpip_table_m50000_s260613.csv",
+      "size_bytes": 12843007,
+      "sha256": "3640369feb3bfaa30760806f1d92b0d453b42f3a7fffbbcdb6753982c1e68611"
+    },
+    "delayed_sim": {
+      "path": "runs/geometry_optimization_20260704/step02_delayed_transport_s3d_o8_neutron_delayed_m50000_20260712/DelayedDecayS3dO8NeutronM50000.inc1.id1.sim.gz",
+      "size_bytes": 910935364,
+      "sha256": "a8286c947ae1463a2d8e48cc0d2de3aeeab57aae8aefd9bf4990042e08ca5f5e"
+    },
+    "base_step06": {
+      "path": "engineering/geometry_optimization_20260704/43_geoopt_s3d_o8_fallback_20260712/fullchain/step06/background_time_variation.csv",
+      "size_bytes": 103757,
+      "sha256": "7db55a31eafc2929add31a8b43e6c43198c914c294cb7ff699c9b592f9ed59ec"
+    },
+    "all8_scales": {
+      "path": "engineering/ea_s3d_family_nuclide_mission_fold_20260713/data/live_parma_all8_scales_81bins.csv",
+      "size_bytes": 29060,
+      "sha256": "399295fa96d62b9f08b32d384328299e9d2a51b9d1f7c246bb8fd0e52e23acfa"
+    }
+  },
+  "retained_neutron_transport": {
+    "status": "PASS_RETAINED_NEUTRON_FIXED_SOURCE_SIM_AND_TE",
+    "fixed_total_activity_Bq": 29.23316595493284,
+    "TE_s": 32178.402129,
+    "event_weight_cps": 3.107674507861205e-05,
+    "SE": 1000000,
+    "ID": 1000000,
+    "sim": {
+      "path": "runs/geometry_optimization_20260704/step02_delayed_transport_s3d_o8_neutron_delayed_m50000_20260712/DelayedDecayS3dO8NeutronM50000.inc1.id1.sim.gz",
+      "size_bytes": 910935364,
+      "sha256": "a8286c947ae1463a2d8e48cc0d2de3aeeab57aae8aefd9bf4990042e08ca5f5e"
+    },
+    "fixed_summary": {
+      "path": "runs/geometry_optimization_20260704/step02_delay_fix_s3d_o8_neutron_delayed_m50000_20260712/source_fix_summary.json",
+      "size_bytes": 16572,
+      "sha256": "8f615c2a566aa9592d3743c64446176a94a1ffb2b58aa53fbc18004d93141a9c"
+    },
+    "groundstate_corrections": {
+      "path": "runs/geometry_optimization_20260704/step02_delay_fix_s3d_o8_neutron_delayed_m50000_20260712/groundstate_activity_corrections.csv",
+      "size_bytes": 38266,
+      "sha256": "7c59048f5117eb3cb0fb5e18b8a1b9be6715b9adf8e2db3946595bc7d9dc7eb0"
+    },
+    "normalization_division": 8.0
+  },
+  "retained_neutron_inventory": {
+    "status": "PASS_FAMILY_NUBASE_GROUNDSTATE_INVENTORY",
+    "family": "n",
+    "fixed_summary": "runs/geometry_optimization_20260704/step02_delay_fix_s3d_o8_neutron_delayed_m50000_20260712/source_fix_summary.json",
+    "fixed_summary_size_bytes": 16572,
+    "fixed_summary_sha256": "8f615c2a566aa9592d3743c64446176a94a1ffb2b58aa53fbc18004d93141a9c",
+    "fixed_source": {
+      "path": "runs/geometry_optimization_20260704/step02_delay_fix_s3d_o8_neutron_delayed_m50000_20260712/activation_decay_day15_groundstate_fixed.source",
+      "size_bytes": 4154144,
+      "sha256": "fcb9d306853492e25bb6fe7fdc805453df3917d2902fb0dd58cdcc8d36a281d5"
+    },
+    "groundstate_corrections": "runs/geometry_optimization_20260704/step02_delay_fix_s3d_o8_neutron_delayed_m50000_20260712/groundstate_activity_corrections.csv",
+    "groundstate_corrections_sha256": "7c59048f5117eb3cb0fb5e18b8a1b9be6715b9adf8e2db3946595bc7d9dc7eb0",
+    "groundstate_corrections_artifact": {
+      "path": "runs/geometry_optimization_20260704/step02_delay_fix_s3d_o8_neutron_delayed_m50000_20260712/groundstate_activity_corrections.csv",
+      "size_bytes": 38266,
+      "sha256": "7c59048f5117eb3cb0fb5e18b8a1b9be6715b9adf8e2db3946595bc7d9dc7eb0"
+    },
+    "inventory_artifact": {
+      "path": "runs/geometry_optimization_20260704/step02_decay_source_s3d_o8_neutron_delayed_m50000_20260712/activation_inventory_day15.csv",
+      "size_bytes": 20239,
+      "sha256": "bc32070223a39c97cfb175113b724e04cec2b06638767d5ce04b89b59ad5ecbb"
+    },
+    "source_provenance_verified": true,
+    "nuclides": 81,
+    "day15_activity_Bq": 29.233165954932495,
+    "division": 8.0,
+    "tt_count": 8,
+    "loader": "generalized_mission_runner.load_family_inventory"
+  },
+  "retained_selected_lineage": {
+    "status": "PASS_FRESH_RETAINED_NEUTRON_SOURCE_PARENT_LINEAGE_SCAN",
+    "selected_events": 29,
+    "selected_nuclides": 2,
+    "by_ZA": {
+      "29062": 5,
+      "29064": 24
+    },
+    "sim_initial_by_ZA": {
+      "29062": 5,
+      "29064": 24
+    },
+    "daughter_or_chain_events": 0,
+    "max_source_parent_position_delta_cm": 4.999999999977245e-06,
+    "source_parent_index": {
+      "status": "PASS_TOLERANCE_BOUNDED_UNIQUE_EXACT_POSITION_SOURCE_PARENT_INDEX",
+      "family": "n",
+      "weighted_table": "runs/geometry_optimization_20260704/step02_delay_exactpos_s3d_o8_neutron_delayed_m50000_20260712/exactpos_weighted_rpip_table_m50000_s260613.csv",
+      "weighted_table_size_bytes": 12843007,
+      "weighted_table_sha256": "3640369feb3bfaa30760806f1d92b0d453b42f3a7fffbbcdb6753982c1e68611",
+      "position_decimals": 5,
+      "position_match_tolerance_cm_per_axis": 1.01e-05,
+      "position_bucket_cm": 0.0001,
+      "rows": 55021,
+      "unique_positions": 55021
+    },
+    "ta182_to_w182_mapper_fixture": {
+      "status": "PASS_TA182_TO_W182_SOURCE_PARENT_FIXTURE",
+      "sim_initial_ZA": 74182,
+      "source_parent_ZA": 73182,
+      "source_parent_position_max_abs_delta_cm": 8.000000000008e-06
+    },
+    "delayed_sim": {
+      "path": "runs/geometry_optimization_20260704/step02_delayed_transport_s3d_o8_neutron_delayed_m50000_20260712/DelayedDecayS3dO8NeutronM50000.inc1.id1.sim.gz",
+      "size_bytes": 910935364,
+      "sha256": "a8286c947ae1463a2d8e48cc0d2de3aeeab57aae8aefd9bf4990042e08ca5f5e"
+    }
+  },
+  "time_authority": {
+    "status": "PASS_ALL8_PARMA_81BIN_AND_RETAINED_THREE_FAMILY_PARITY",
+    "bins": 81,
+    "day15_index": 60,
+    "max_abs_eplus_n_gamma_scale_delta": 1.000000082740371e-11,
+    "targeted_direct_transport_audit": "engineering/trajectory_transport_validation_20260709/11_analytic_agreement_20260709/analytic_agreement_summary.json",
+    "targeted_direct_transport_status": "PASS_ANALYTIC_AGREEMENT_AUDIT_BUILT"
+  },
+  "generalized_activity_audit": {
+    "status": "PASS_ALL8_FAMILY_BY_NUCLIDE_ACTIVITY_INTEGRATION",
+    "long_life_integrator_regression": {
+      "status": "PASS_LONG_LIFE_EXPM1_INVENTORY_REGRESSION",
+      "half_life_s": 1e+30,
+      "dt_s": 43200.0,
+      "lambda_dt": 2.9943958200189636e-26,
+      "stable_one_minus_exp_neg": 2.9943958200189636e-26,
+      "naive_one_minus_exp_neg": 0.0,
+      "stable_inventory_number": 86400.00000000001,
+      "expected_no_decay_inventory_number": 86400.0
+    },
+    "day15_anchor": "each family/nuclide curve is anchored to its NUBASE-corrected day-15 inventory",
+    "families": [
+      {
+        "family": "alpha",
+        "status": "PASS_ZERO_PRODUCTION",
+        "nuclides": 0,
+        "day15_activity_Bq": 0.0
+      },
+      {
+        "family": "eminus",
+        "status": "PASS_ZERO_PRODUCTION",
+        "nuclides": 0,
+        "day15_activity_Bq": 0.0
+      },
+      {
+        "family": "eplus",
+        "status": "PASS_ZERO_PRODUCTION",
+        "nuclides": 0,
+        "day15_activity_Bq": 0.0
+      },
+      {
+        "family": "gamma",
+        "status": "PASS_ZERO_PRODUCTION",
+        "nuclides": 0,
+        "day15_activity_Bq": 0.0
+      },
+      {
+        "family": "muminus",
+        "status": "PASS_ZERO_PRODUCTION",
+        "nuclides": 0,
+        "day15_activity_Bq": 0.0
+      },
+      {
+        "family": "muplus",
+        "status": "PASS_ZERO_PRODUCTION",
+        "nuclides": 0,
+        "day15_activity_Bq": 0.0
+      },
+      {
+        "family": "n",
+        "status": "PASS_FAMILY_NUCLIDE_ACTIVITY_DRIVER",
+        "driver": "live-PARMA scale_n",
+        "nuclides": 81,
+        "day15_activity_Bq": 29.23316595493249,
+        "selected_nuclides": 2
+      },
+      {
+        "family": "p",
+        "status": "PASS_ZERO_PRODUCTION",
+        "nuclides": 0,
+        "day15_activity_Bq": 0.0
+      }
+    ]
+  },
+  "generalized_mission_audit": {
+    "status": "PASS_MISSION_DAY15_AND_COMPONENT_CLOSURE",
+    "day15_index": 60,
+    "delayed_family_sum_cps": 0.0009012256072797493,
+    "time_bins": 81,
+    "elapsed_days": 20.0
+  },
+  "activity_regression": {
+    "status": "PASS_6561_RETAINED_NEUTRON_ACTIVITY_ROWS_WITH_BOUNDED_EXPM1_STABILITY_DELTA",
+    "rows": 6561,
+    "key": [
+      "time_bin_id",
+      "ZA"
+    ],
+    "common_numeric_field_deltas": {
+      "day_mid": {
+        "max_abs_delta": 0.0,
+        "max_rel_delta": 0.0
+      },
+      "half_life_s": {
+        "max_abs_delta": 0.0,
+        "max_rel_delta": 0.0
+      },
+      "day15_activity_Bq": {
+        "max_abs_delta": 0.0,
+        "max_rel_delta": 0.0
+      },
+      "activity_Bq": {
+        "max_abs_delta": 1.7763568394002505e-15,
+        "max_rel_delta": 6.492718197010007e-07
+      },
+      "activity_scale_to_day15": {
+        "max_abs_delta": 2.9671074486259386e-09,
+        "max_rel_delta": 6.492718198162061e-07
+      },
+      "selection_response_cps_per_Bq": {
+        "max_abs_delta": 0.0,
+        "max_rel_delta": 0.0
+      },
+      "selected_rate_cps": {
+        "max_abs_delta": 2.168404344971009e-19,
+        "max_rel_delta": 3.1594903158064194e-16
+      }
+    },
+    "new_fields": {
+      "incident_family": "n for all 6561 rows",
+      "event_weight_cps": "exactly 1/retained TE_s for all 6561 rows"
+    },
+    "floating_point_contract": "non-integrated fields rtol=2e-10; expm1-stabilized activity/scale/selected-rate rows rtol=1e-8, relaxed to rtol=1e-4 only for half-life >=1e12 s, with atol=5e-15; all deltas are reported field by field and mission headlines remain tightly gated"
+  },
+  "timeline_regression": {
+    "status": "PASS_RETAINED_81BIN_COMMON_NUMERICS_AND_NEW_N_FIELDS",
+    "bins": 81,
+    "common_numeric_fields": 28,
+    "common_numeric_field_deltas": {
+      "accidental_live_factor": {
+        "max_abs_delta": 0.0,
+        "max_rel_delta": 0.0
+      },
+      "atm511_event_rate_hz": {
+        "max_abs_delta": 2.842170943040401e-14,
+        "max_rel_delta": 1.583012797488032e-16
+      },
+      "atm511_final_cps_noacc": {
+        "max_abs_delta": 0.0,
+        "max_rel_delta": 0.0
+      },
+      "atm511_final_upper95_cps_noacc": {
+        "max_abs_delta": 0.0,
+        "max_rel_delta": 0.0
+      },
+      "background_final_cps_noacc": {
+        "max_abs_delta": 1.734723475976807e-18,
+        "max_rel_delta": 2.876486248301508e-16
+      },
+      "coincidence_occupancy_rate_hz": {
+        "max_abs_delta": 3.637978807091713e-12,
+        "max_rel_delta": 1.3301586837839834e-16
+      },
+      "counting_Z": {
+        "max_abs_delta": 0.0,
+        "max_rel_delta": 0.0
+      },
+      "cumulative_background_counts": {
+        "max_abs_delta": 0.0,
+        "max_rel_delta": 0.0
+      },
+      "cumulative_source_counts": {
+        "max_abs_delta": 0.0,
+        "max_rel_delta": 0.0
+      },
+      "day_mid": {
+        "max_abs_delta": 0.0,
+        "max_rel_delta": 0.0
+      },
+      "delayed_event_rate_hz": {
+        "max_abs_delta": 1.0658141036401503e-14,
+        "max_rel_delta": 7.026540114270057e-16
+      },
+      "delayed_final_cps_noacc": {
+        "max_abs_delta": 2.168404344971009e-19,
+        "max_rel_delta": 2.870922043995306e-16
+      },
+      "delayed_final_upper95_cps_noacc": {
+        "max_abs_delta": 6.505213034913027e-19,
+        "max_rel_delta": 4.940922567883566e-16
+      },
+      "dt_s": {
+        "max_abs_delta": 0.0,
+        "max_rel_delta": 0.0
+      },
+      "elapsed_stop_day": {
+        "max_abs_delta": 0.0,
+        "max_rel_delta": 0.0
+      },
+      "prompt_event_rate_hz": {
+        "max_abs_delta": 0.0,
+        "max_rel_delta": 0.0
+      },
+      "prompt_final_cps_noacc": {
+        "max_abs_delta": 0.0,
+        "max_rel_delta": 0.0
+      },
+      "prompt_final_upper95_cps_noacc": {
+        "max_abs_delta": 0.0,
+        "max_rel_delta": 0.0
+      },
+      "prompt_scale_alpha": {
+        "max_abs_delta": 0.0,
+        "max_rel_delta": 0.0
+      },
+      "prompt_scale_eminus": {
+        "max_abs_delta": 0.0,
+        "max_rel_delta": 0.0
+      },
+      "prompt_scale_eplus": {
+        "max_abs_delta": 0.0,
+        "max_rel_delta": 0.0
+      },
+      "prompt_scale_gamma": {
+        "max_abs_delta": 0.0,
+        "max_rel_delta": 0.0
+      },
+      "prompt_scale_muminus": {
+        "max_abs_delta": 0.0,
+        "max_rel_delta": 0.0
+      },
+      "prompt_scale_muplus": {
+        "max_abs_delta": 0.0,
+        "max_rel_delta": 0.0
+      },
+      "prompt_scale_n": {
+        "max_abs_delta": 0.0,
+        "max_rel_delta": 0.0
+      },
+      "prompt_scale_p": {
+        "max_abs_delta": 0.0,
+        "max_rel_delta": 0.0
+      },
+      "signal_final_cps_noacc": {
+        "max_abs_delta": 0.0,
+        "max_rel_delta": 0.0
+      },
+      "signal_final_lower95_cps_noacc": {
+        "max_abs_delta": 0.0,
+        "max_rel_delta": 0.0
+      }
+    },
+    "new_n_fields_checked": [
+      "delayed_n_activity_Bq",
+      "delayed_n_selected_cps",
+      "delayed_n conditional componentwise transport-counting endpoint"
+    ],
+    "explicit_zero_family_fields_checked": 1701
+  },
+  "headline_regression": {
+    "status": "PASS_ALL_RETAINED_MISSION_HEADLINES",
+    "headline_scalars": 15,
+    "day15_rate_scalars": 7,
+    "numeric_deltas": {
+      "reference_flux_ph_cm2_s": {
+        "max_abs_delta": 0.0,
+        "max_rel_delta": 0.0
+      },
+      "source_counts_20d": {
+        "max_abs_delta": 0.0,
+        "max_rel_delta": 0.0
+      },
+      "background_counts_20d": {
+        "max_abs_delta": 0.0,
+        "max_rel_delta": 0.0
+      },
+      "source_lower95_counts_20d": {
+        "max_abs_delta": 0.0,
+        "max_rel_delta": 0.0
+      },
+      "background_upper95_counts_20d": {
+        "max_abs_delta": 0.0,
+        "max_rel_delta": 0.0
+      },
+      "Z20d": {
+        "max_abs_delta": 0.0,
+        "max_rel_delta": 0.0
+      },
+      "Z20d_conservative95": {
+        "max_abs_delta": 0.0,
+        "max_rel_delta": 0.0
+      },
+      "flux_3sigma_20d_ph_cm2_s": {
+        "max_abs_delta": 0.0,
+        "max_rel_delta": 0.0
+      },
+      "flux_3sigma_20d_conservative95_ph_cm2_s": {
+        "max_abs_delta": 0.0,
+        "max_rel_delta": 0.0
+      },
+      "T3_day": {
+        "max_abs_delta": 0.0,
+        "max_rel_delta": 0.0
+      },
+      "T5_day": {
+        "max_abs_delta": 0.0,
+        "max_rel_delta": 0.0
+      },
+      "T3_day_conservative95": {
+        "max_abs_delta": 0.0,
+        "max_rel_delta": 0.0
+      },
+      "T5_day_conservative95": {
+        "max_abs_delta": 0.0,
+        "max_rel_delta": 0.0
+      },
+      "accidental_loss_min": {
+        "max_abs_delta": 0.0,
+        "max_rel_delta": 0.0
+      },
+      "accidental_loss_max": {
+        "max_abs_delta": 0.0,
+        "max_rel_delta": 0.0
+      }
+    },
+    "delayed_by_incident_family": {
+      "alpha": 0.0,
+      "eminus": 0.0,
+      "eplus": 0.0,
+      "gamma": 0.0,
+      "muminus": 0.0,
+      "muplus": 0.0,
+      "n": 0.0009012256072797493,
+      "p": 0.0
+    }
+  }
+}

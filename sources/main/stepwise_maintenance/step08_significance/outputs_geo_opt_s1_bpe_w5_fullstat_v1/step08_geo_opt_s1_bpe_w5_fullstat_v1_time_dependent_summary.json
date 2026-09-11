@@ -1,0 +1,42 @@
+{
+  "status": "PASS_GEO_OPT_S1_BPE_W5_STEP08_TIME_DEPENDENT_GEO_OPT_S1_BPE_W5_FULLSTAT_V1_SIGNAL_REPLAYED_NOT_PROMOTION",
+  "statistics_label": "geo_opt_s1_bpe_w5_fullstat_v1",
+  "claim_level": "GEO_OPT_S1_BPE_W5_L1_COUNTING_TIME_DEP_WITH_ANALYTIC_ACCIDENTAL_GEO_OPT_S1_BPE_W5_FULLSTAT_V1_SIGNAL_REPLAYED_NOT_PROMOTION",
+  "inputs": {
+    "step05_summary": "stepwise_maintenance/step05_veto_time_axis/outputs_geo_opt_s1_bpe_w5_fullstat_v1_l1/step05_geo_opt_s1_bpe_w5_fullstat_v1_l1_response_summary.json",
+    "step06_summary": "stepwise_maintenance/step06_mission_time_variation/outputs_geo_opt_s1_bpe_w5_fullstat_v1/step06_geo_opt_s1_bpe_w5_fullstat_v1_summary.json",
+    "step06_background_time_variation": "stepwise_maintenance/step06_mission_time_variation/outputs_geo_opt_s1_bpe_w5_fullstat_v1/background_time_variation.csv",
+    "step07_summary": "stepwise_maintenance/step07_source_cases/outputs_geo_opt_s1_bpe_w5_fullstat_v1/source_case_summary.json",
+    "step07_source_case_rates": "stepwise_maintenance/step07_source_cases/outputs_geo_opt_s1_bpe_w5_fullstat_v1/source_case_rates.csv"
+  },
+  "checks": {
+    "A_reference_w2_Z20d_time_dependent": 8.164513995796844,
+    "A_reference_w2_T3_day": 2.253256761157534,
+    "A_reference_w2_T5_day": 7.089931096536265,
+    "A_reference_w2_flux_3sigma_20d_ph_cm2_s": 3.674437941492199e-05,
+    "A_reference_w2_source_counts": 2010.7920735805571,
+    "A_reference_w2_background_counts": 60655.98413538436,
+    "accidental_loss_min": 0.010318140549050114,
+    "accidental_loss_max": 0.011255426557986725,
+    "w2_low_stat_background_events": 74,
+    "step06_status": "PASS_GEO_OPT_S1_BPE_W5_STEP06_TIME_AXIS_GEO_OPT_S1_BPE_W5_FULLSTAT_V1_NOT_PROMOTION",
+    "step07_status": "PASS_GEO_OPT_S1_BPE_W5_STEP07_SOURCE_CASES_GEO_OPT_S1_BPE_W5_FULLSTAT_V1_SIGNAL_REPLAYED_NOT_PROMOTION"
+  },
+  "outputs": {
+    "summary_json": "stepwise_maintenance/step08_significance/outputs_geo_opt_s1_bpe_w5_fullstat_v1/step08_geo_opt_s1_bpe_w5_fullstat_v1_time_dependent_summary.json",
+    "readme": "stepwise_maintenance/step08_significance/outputs_geo_opt_s1_bpe_w5_fullstat_v1/step08_geo_opt_s1_bpe_w5_fullstat_v1_time_dependent.md",
+    "cumulative_significance": "stepwise_maintenance/step08_significance/outputs_geo_opt_s1_bpe_w5_fullstat_v1/cumulative_significance_by_case.csv",
+    "t3_t5_summary": "stepwise_maintenance/step08_significance/outputs_geo_opt_s1_bpe_w5_fullstat_v1/t3_t5_summary.csv",
+    "accidental_veto_by_time": "stepwise_maintenance/step08_significance/outputs_geo_opt_s1_bpe_w5_fullstat_v1/accidental_veto_by_time.csv",
+    "figures": "stepwise_maintenance/step08_significance/outputs_geo_opt_s1_bpe_w5_fullstat_v1/figures"
+  },
+  "method_caveats": [
+    "Step08 inherits the Step05 bounded high-rate Poisson timeline approximation through Step06 event-rate folds; it applies only an analytic accidental live factor.",
+    "The time-dependent significance is a counting projection from Step06/Step07 rates, not new per-bin Cosima transport or a spatial/profile-likelihood analysis."
+  ],
+  "pending": [
+    "no promotion/replacement decision is made by this time-dependent fold",
+    "compare against Mass_model_511/fix5 with identical selection and active-veto assumptions before making a geometry decision",
+    "no spatial/profile likelihood gain is applied"
+  ]
+}

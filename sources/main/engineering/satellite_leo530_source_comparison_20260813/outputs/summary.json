@@ -1,0 +1,251 @@
+{
+  "balloon_authority": {
+    "legacy_references": 0,
+    "source_contract_path": "engineering/particle_source_unit_repair_20260811/data/source_contract_manifest.json",
+    "source_contract_sha256": "5424eeca35b20affb153c0e07c31a6582e575f511922bf55f40a5a0f77ab4326",
+    "spectrum_files": 160,
+    "static_validation_path": "engineering/particle_source_unit_repair_20260811/data/static_validation.json",
+    "static_validation_status": "PASS"
+  },
+  "balloon_flux_closure_cm2_s": {
+    "alpha": {
+      "down_flux_cm2_s": 0.0112237865746313,
+      "full_flux_cm2_s": 0.01148709645023202,
+      "spectrum_count": 20,
+      "up_flux_cm2_s": 0.00026330987560072
+    },
+    "eminus": {
+      "down_flux_cm2_s": 0.07748130318558501,
+      "full_flux_cm2_s": 0.199002044572142,
+      "spectrum_count": 20,
+      "up_flux_cm2_s": 0.121520741386557
+    },
+    "eplus": {
+      "down_flux_cm2_s": 0.048218077148594,
+      "full_flux_cm2_s": 0.11698054572276201,
+      "spectrum_count": 20,
+      "up_flux_cm2_s": 0.068762468574168
+    },
+    "gamma": {
+      "down_flux_cm2_s": 1.1867514470686,
+      "full_flux_cm2_s": 4.7996615777852,
+      "spectrum_count": 20,
+      "up_flux_cm2_s": 3.6129101307166
+    },
+    "muminus": {
+      "down_flux_cm2_s": 0.0041332555935915,
+      "full_flux_cm2_s": 0.00496893002237507,
+      "spectrum_count": 20,
+      "up_flux_cm2_s": 0.00083567442878357
+    },
+    "muplus": {
+      "down_flux_cm2_s": 0.0046484288086802,
+      "full_flux_cm2_s": 0.00557001176606214,
+      "spectrum_count": 20,
+      "up_flux_cm2_s": 0.00092158295738194
+    },
+    "n": {
+      "down_flux_cm2_s": 0.124592840265625,
+      "full_flux_cm2_s": 0.462239182229625,
+      "spectrum_count": 20,
+      "up_flux_cm2_s": 0.337646341964
+    },
+    "p": {
+      "down_flux_cm2_s": 0.08926878476715999,
+      "full_flux_cm2_s": 0.11230072163133409,
+      "spectrum_count": 20,
+      "up_flux_cm2_s": 0.0230319368641741
+    }
+  },
+  "interpretation_boundary": [
+    "This package compares source inputs, not detector count rates, activation, delayed background, sensitivity, or geometry ranking.",
+    "The LEO baseline is a COSI DC4 proxy for a future 511-CAM satellite, not a final orbit definition.",
+    "No orbit-time weighting, SAA residence, pointing history, Earth-limb history, or solar-cycle ensemble is applied.",
+    "The balloon broadband gamma table already contains a coarse annihilation bump and cannot provide a line-only atmospheric-511 normalization."
+  ],
+  "satellite_atmospheric_511_line": {
+    "angular_domain": "earth_visible_cone",
+    "comparison_grade": "C",
+    "component_id": "atmospheric_511_line",
+    "dc4_deweight_factor": 1000.0,
+    "family": "gamma",
+    "line_energy_keV_total": 511.0,
+    "physical_line_flux_cm2_s": 0.028207,
+    "simulation_line_flux_cm2_s": 2.8207e-05,
+    "solid_angle_sr": 3.958990876756658
+  },
+  "satellite_baseline": {
+    "altitude_km": 530.0,
+    "commit": "eec0dbf1aaabc79fea2706946434e30f7060a59a",
+    "dc4_flux_deweight_factor": 1000.0,
+    "deweight_evidence": "The pinned run_parallel_flux_sims.py launches 1000 parallel simulations and explicitly says the source flux must be scaled by the number of parallel simulations. Continuum filenames end in fluxdividedby1000, continuum source-card Flux values are reduced by 1e3, and the atmospheric-511 comment specifies 29.9e-3 scaled by 500/530 while the card uses 28.207e-6. Physical comparison values restore the common factor 1000.",
+    "inclination_deg": 0.0,
+    "profile": "static_nominal_environment_outside_SAA_no_orbit_weighting",
+    "proxy_for": "future 511-CAM satellite iteration; not a final mission orbit",
+    "reference_cutoff_rigidity_gv": 12.6,
+    "repository_url": "https://github.com/cositools/cosi-sim",
+    "solar_modulation_mv": 520.0,
+    "source_library": "cositools/cosi-sim DC4 backgrounds"
+  },
+  "satellite_physical_flux_cm2_s": {
+    "albedo_neutrons_10gv_proxy": 0.039067890668122704,
+    "albedo_photons_continuum": 0.7568194027630226,
+    "atmospheric_511_line": 0.028207,
+    "cosmic_photons": 1.2235089686672167,
+    "primary_alpha": 0.017755030668705027,
+    "primary_electron": 0.0006419376852490416,
+    "primary_positron": 4.1571911328815755e-05,
+    "primary_proton": 0.09113187635181248,
+    "secondary_electron": 0.06460216831003572,
+    "secondary_positron": 0.21318715542311786,
+    "secondary_proton": 0.046913580599957344
+  },
+  "schema_version": 1,
+  "selected_environment_contrasts": [
+    {
+      "balloon_full_flux_cm2_s": 0.271021775088507,
+      "band": "450_600_keV_annihilation_region_proxy",
+      "comparison_grade": "C",
+      "family": "gamma",
+      "interpretation": "Broad annihilation-region proxy, not a line-flux ratio; satellite delta line is included.",
+      "satellite_flux_cm2_s": 0.10230190572139408,
+      "satellite_model_validity_coverage": "complete",
+      "satellite_profile": "satellite_nominal_gamma_continuum_plus_atmospheric_511",
+      "satellite_to_balloon_ratio": 0.3774674772460094
+    },
+    {
+      "balloon_full_flux_cm2_s": 0.011483549859086785,
+      "band": "450_600_keV_annihilation_region_proxy",
+      "comparison_grade": "C",
+      "family": "n",
+      "interpretation": "Diagnostic only: pinned DC4 neutron card has a 12.6-GV/10-GV dangling reference.",
+      "satellite_flux_cm2_s": 0.0013021254113674355,
+      "satellite_model_validity_coverage": "complete",
+      "satellite_profile": "satellite_diagnostic_neutron_proxy",
+      "satellite_to_balloon_ratio": 0.1133904957391795
+    },
+    {
+      "balloon_full_flux_cm2_s": 2.459351743236118e-06,
+      "band": "450_600_keV_annihilation_region_proxy",
+      "comparison_grade": "NA",
+      "family": "p",
+      "interpretation": "Band is outside the cited validity/support of the available satellite component(s); no zero is imputed.",
+      "satellite_flux_cm2_s": "",
+      "satellite_model_validity_coverage": "none",
+      "satellite_profile": "satellite_nominal_continuum",
+      "satellite_to_balloon_ratio": ""
+    },
+    {
+      "balloon_full_flux_cm2_s": 4.3339690261288947e-07,
+      "band": "450_600_keV_annihilation_region_proxy",
+      "comparison_grade": "NA",
+      "family": "alpha",
+      "interpretation": "Band is outside the cited validity/support of the available satellite component(s); no zero is imputed.",
+      "satellite_flux_cm2_s": "",
+      "satellite_model_validity_coverage": "none",
+      "satellite_profile": "satellite_nominal_continuum",
+      "satellite_to_balloon_ratio": ""
+    },
+    {
+      "balloon_full_flux_cm2_s": 0.005228588279017192,
+      "band": "450_600_keV_annihilation_region_proxy",
+      "comparison_grade": "NA",
+      "family": "eminus",
+      "interpretation": "Band is outside the cited validity/support of the available satellite component(s); no zero is imputed.",
+      "satellite_flux_cm2_s": "",
+      "satellite_model_validity_coverage": "none",
+      "satellite_profile": "satellite_nominal_continuum",
+      "satellite_to_balloon_ratio": ""
+    },
+    {
+      "balloon_full_flux_cm2_s": 0.00046114360394962107,
+      "band": "450_600_keV_annihilation_region_proxy",
+      "comparison_grade": "NA",
+      "family": "eplus",
+      "interpretation": "Band is outside the cited validity/support of the available satellite component(s); no zero is imputed.",
+      "satellite_flux_cm2_s": "",
+      "satellite_model_validity_coverage": "none",
+      "satellite_profile": "satellite_nominal_continuum",
+      "satellite_to_balloon_ratio": ""
+    },
+    {
+      "balloon_full_flux_cm2_s": 0.6591113748188199,
+      "band": "1_10_MeV",
+      "comparison_grade": "B",
+      "family": "gamma",
+      "interpretation": "Environment contrast only; orbit, angular support, epoch, and model differ.",
+      "satellite_flux_cm2_s": 0.19786062530215817,
+      "satellite_model_validity_coverage": "complete",
+      "satellite_profile": "satellite_nominal_continuum",
+      "satellite_to_balloon_ratio": 0.3001930066167454
+    },
+    {
+      "balloon_full_flux_cm2_s": 0.12388547469151476,
+      "band": "1_10_MeV",
+      "comparison_grade": "C",
+      "family": "n",
+      "interpretation": "Diagnostic only: pinned DC4 neutron card has a 12.6-GV/10-GV dangling reference.",
+      "satellite_flux_cm2_s": 0.011712195657356808,
+      "satellite_model_validity_coverage": "complete",
+      "satellite_profile": "satellite_diagnostic_neutron_proxy",
+      "satellite_to_balloon_ratio": 0.09454050756572681
+    },
+    {
+      "balloon_full_flux_cm2_s": 0.0005300277299675707,
+      "band": "1_10_MeV",
+      "comparison_grade": "B",
+      "family": "p",
+      "interpretation": "Environment contrast only; orbit, angular support, epoch, and model differ. Only components within cited validity contribute to this band value.",
+      "satellite_flux_cm2_s": 0.011413125475505497,
+      "satellite_model_validity_coverage": "partial_or_mixed",
+      "satellite_profile": "satellite_nominal_continuum",
+      "satellite_to_balloon_ratio": 21.533072385106717
+    },
+    {
+      "balloon_full_flux_cm2_s": 2.3284690190582725e-05,
+      "band": "1_10_MeV",
+      "comparison_grade": "NA",
+      "family": "alpha",
+      "interpretation": "Band is outside the cited validity/support of the available satellite component(s); no zero is imputed.",
+      "satellite_flux_cm2_s": "",
+      "satellite_model_validity_coverage": "none",
+      "satellite_profile": "satellite_nominal_continuum",
+      "satellite_to_balloon_ratio": ""
+    },
+    {
+      "balloon_full_flux_cm2_s": 0.05817662988211229,
+      "band": "1_10_MeV",
+      "comparison_grade": "B",
+      "family": "eminus",
+      "interpretation": "Environment contrast only; orbit, angular support, epoch, and model differ. Only components within cited validity contribute to this band value.",
+      "satellite_flux_cm2_s": 0.026997892131285728,
+      "satellite_model_validity_coverage": "partial_or_mixed",
+      "satellite_profile": "satellite_nominal_continuum",
+      "satellite_to_balloon_ratio": 0.4640676537295749
+    },
+    {
+      "balloon_full_flux_cm2_s": 0.019594714489854243,
+      "band": "1_10_MeV",
+      "comparison_grade": "B",
+      "family": "eplus",
+      "interpretation": "Environment contrast only; orbit, angular support, epoch, and model differ. Only components within cited validity contribute to this band value.",
+      "satellite_flux_cm2_s": 0.08909304403324288,
+      "satellite_model_validity_coverage": "partial_or_mixed",
+      "satellite_profile": "satellite_nominal_continuum",
+      "satellite_to_balloon_ratio": 4.5467895987651925
+    }
+  ],
+  "status": "BUILT__SOURCE_INPUT_COMPARISON__NOT_TRANSPORT_AUTHORITY",
+  "upstream_issues": [
+    {
+      "detail": "AlbedoNeutrons.source declares a 12.6-GV spectrum filename, but the pinned DC4 directory contains only the 10-GV file. The 10-GV spectrum is diagnostic-only.",
+      "id": "cosi_dc4_neutron_dangling_reference",
+      "severity": "material_for_neutron_baseline"
+    },
+    {
+      "detail": "The DC4 normal-background source rates are per one of 1000 intentional parallel simulation shards. Outputs retain both per-shard card rates and merged physical rates; plots use the latter.",
+      "id": "dc4_1000_way_parallel_shard_flux_scaling",
+      "severity": "must_restore_for_physical_comparison"
+    }
+  ]
+}

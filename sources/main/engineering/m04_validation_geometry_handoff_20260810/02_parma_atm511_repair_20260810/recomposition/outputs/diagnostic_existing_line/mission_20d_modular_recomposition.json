@@ -1,0 +1,135 @@
+{
+  "schema": "o8-parma511-20d-modular-recomposition-v1",
+  "status": "DIAGNOSTIC_ONLY_MODULAR_RECOMPOSITION__NOT_PAPER_AUTHORITY",
+  "scope": "W2-only offline mission recomposition; only the atmospheric mono-line module is replaced",
+  "time_bins": 81,
+  "elapsed_days": 20.0,
+  "reference_flux_ph_cm2_s": 0.0001,
+  "metrics_20d": {
+    "source_counts": 1650.7921722407589,
+    "background_counts": 16014.9666333618,
+    "source_transport_counting_lower_endpoint_counts": 1641.11315684576,
+    "background_componentwise_endpoint_counts": 90275.4627697907,
+    "Z20d": 13.044558410630023,
+    "Z20d_componentwise_endpoint_conditional": 5.462024773032179,
+    "flux_3sigma_20d_ph_cm2_s": 2.299809549363739e-05,
+    "flux_3sigma_20d_componentwise_endpoint_conditional_ph_cm2_s": 5.4924686808671965e-05,
+    "T3_day": 0.7718173708290536,
+    "T5_day": 2.0060427491789836,
+    "T3_day_componentwise_endpoint_conditional": 5.825354285303242,
+    "T5_day_componentwise_endpoint_conditional": 16.329699594688506,
+    "accidental_loss_min": 0.019941035570222754,
+    "accidental_loss_max": 0.027928873980891944
+  },
+  "comparison_to_retained_old_sidecar_fold": {
+    "old_source_counts_20d": 1650.2917035214023,
+    "old_background_counts_20d": 11789.0822455626,
+    "old_Z20d": 15.199199574829539,
+    "old_conditional_Z20d": 5.667468738464053,
+    "delta_source_counts_20d_from_live_factor_only": 0.5004687193566042,
+    "delta_background_counts_20d": 4225.8843877992,
+    "delta_Z20d": -2.154641164199516
+  },
+  "comparison_to_pre_fix_recomposition_without_prompt_gamma_occupancy_dedup": {
+    "pre_fix_source_counts_20d": 1649.575134659866,
+    "pre_fix_background_counts_20d": 16002.847809124269,
+    "pre_fix_source_lower_endpoint_counts_20d": 1639.9032550665013,
+    "pre_fix_background_upper_endpoint_counts_20d": 90207.07379167125,
+    "pre_fix_Z20d": 13.03987607320387,
+    "pre_fix_Z20d_componentwise_endpoint_conditional": 5.460066477624157,
+    "corrected_minus_pre_fix_source_counts_20d": 1.217037580892793,
+    "corrected_minus_pre_fix_background_counts_20d": 12.118824237531953,
+    "corrected_minus_pre_fix_Z20d": 0.004682337426153538
+  },
+  "formula_audit": {
+    "status": "PASS_RETAINED_81BIN_FORMULA_IDENTITY",
+    "max_absolute_residuals": {
+      "live_factor": 0.0,
+      "cumulative_source_counts": 0.0,
+      "cumulative_background_counts": 0.0,
+      "cumulative_source_lower_counts": 0.0,
+      "cumulative_background_upper_counts": 0.0,
+      "counting_Z": 0.0,
+      "conditional_Z": 0.0
+    },
+    "final": {
+      "source_counts": 1650.2917035214023,
+      "background_counts": 11789.0822455626,
+      "source_lower_counts": 1640.6156225021045,
+      "background_upper_counts": 83798.34065348787
+    }
+  },
+  "prompt_gamma_line_occupancy_dedup_audit": {
+    "status": "PASS_PROMPT_GAMMA_LINE_TERM_OCCUPANCY_SCALE_SEMANTICS",
+    "provenance_path": "affected_events.step05_catalog.removed_rate_sum_cps",
+    "affected_rows": 317048,
+    "tes_nonzero_rows": 0,
+    "active_volume_nonzero_rows": 317048,
+    "removed_event_rate_day15_hz": 737.844505175763,
+    "day15_prompt_gamma_occupancy_before_dedup_hz": 19731.813033759743,
+    "removed_fraction_of_day15_prompt_gamma_occupancy": 0.03739364973271148,
+    "scale_field": "prompt_scale_gamma",
+    "scale_min": 0.849039217915,
+    "scale_max": 1.20169595615,
+    "scaled_removal_min_hz": 626.45892161731,
+    "scaled_removal_max_hz": 886.6647581372121,
+    "corrected_prompt_occupancy_min_hz": 19561.46850711005,
+    "formula": "lambda(t) = prompt_event_rate_hz(t) - removed_prompt_gamma_line_occupancy_hz(t) + delayed_event_rate_hz(t) + corrected_PARMA511_event_rate_hz(t)",
+    "sidecar_subtracted_from_prompt": false
+  },
+  "recomposed_occupancy_formula_validation": {
+    "status": "PASS_81BIN_PROMPT_GAMMA_LINE_OCCUPANCY_DEDUP_FORMULA",
+    "checked_bins": 81,
+    "max_absolute_residuals": {
+      "scaled_line_term_removal_hz": 0.0,
+      "prompt_after_dedup_hz": 0.0,
+      "total_occupancy_hz": 0.0,
+      "pre_fix_total_occupancy_hz": 0.0,
+      "live_factor": 0.0,
+      "pre_fix_live_factor": 0.0
+    },
+    "minimum_prompt_occupancy_after_dedup_hz": 19561.46850711005,
+    "minimum_total_occupancy_hz": 20142.5413420411,
+    "day15_removed_prompt_gamma_line_occupancy_hz": 737.844505175763,
+    "legacy_sidecar_occupancy_omitted_separately_once": true,
+    "legacy_sidecar_subtracted_from_prompt_occupancy": false,
+    "formula": "lambda(t) = prompt_event_rate_hz(t) - removed_prompt_gamma_line_occupancy_hz(t) + delayed_event_rate_hz(t) + corrected_PARMA511_event_rate_hz(t)"
+  },
+  "line_flux_time_policy": "Hold W=114.6 MV and Rc=11.6 GV at the frozen line authority; evaluate official get511fluxCpp at each retained trajectory depth; hold the day-15 detector angular response fixed.",
+  "trajectory_Rc_policy": "The trajectory Rc is retained only inside the already-folded prompt/delayed modules and is not substituted into the corrected line authority.",
+  "frozen_modules": [
+    "all retained prompt particle-family selected W2 rates; only the audited misplaced prompt-gamma line-term occupancy is subtracted offline",
+    "all delayed/activation family-by-nuclide selected rates",
+    "focused science signal with the retained 45-degree slant refold",
+    "geometry, detector response, 50-keV veto implementation, topology selection",
+    "81-bin timing and trajectory"
+  ],
+  "line_input_grade": "DIAGNOSTIC_ONLY_FAILS_PARMA511_RATE_STATISTICS",
+  "scientific_blockers": [
+    {
+      "id": "LEGACY_PROMPT_GAMMA_AXIS_FACTOR_1000",
+      "severity": "SCIENTIFIC_BLOCKER",
+      "statement": "The complete retained O8 prompt-photon DP abscissa is 1000 times below the correct Cosima-keV axis. The selected W2 rate delta is zero and the active-only misplaced-line occupancy is removed offline, but neither operation repairs absolute prompt-gamma continuum fidelity.",
+      "scope_action": "Freeze the user-directed legacy prompt-gamma module; do not launch a continuum rerun from this recomposition."
+    },
+    {
+      "id": "FROZEN_ACTIVE_SHIELD_NAME_MATCH_INCLUDES_PASSIVE_KAPTON",
+      "severity": "SCIENTIFIC_BLOCKER",
+      "statement": "The frozen final predicate matches the substring ACTIVE_SHIELD and therefore includes three passive ActiveShield_S3C_BGO_Kapton_* scorer volumes in the 50-keV veto; it is not a BGO-plus-plastic-only mask.",
+      "scope_action": "Preserve the historical selection exactly; do not repair the predicate and do not rerun transport in this work package."
+    },
+    {
+      "id": "DAY15_ANGULAR_RESPONSE_HELD_FIXED_ACROSS_MISSION",
+      "severity": "CONDITIONAL_MODEL_QUALIFICATION",
+      "statement": "Only the day-15 line detector response is available. The 20-day fold holds that angular response fixed while evaluating PARMA line flux at retained depths with fixed W and Rc.",
+      "scope_action": "Report the mission result as a conditional modular fold, not as new transport authority."
+    },
+    {
+      "id": "LINE_RESPONSE_INPUT_NOT_FINAL_RATE_GATE_AUTHORITY",
+      "severity": "DIAGNOSTIC_BLOCKER",
+      "statement": "The supplied line response is low-stat, direct-without-complete-aggregate, partial, or fails the detector-rate gate.",
+      "scope_action": "Keep every reported number labeled DIAGNOSTIC; replace only this JSON input with the completed line campaign aggregate when available."
+    }
+  ],
+  "claim_boundary": "These values are diagnostic/conditional and are not paper authority while any listed blocker remains."
+}

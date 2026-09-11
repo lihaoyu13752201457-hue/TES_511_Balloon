@@ -1,0 +1,68 @@
+{
+  "status": "PASS_PROMPT511_TRACK_INTERACTION_FIGURE",
+  "png": "outputs/reports/prompt511_entry_audit_20260617/prompt511_track_interactions_xz_comparison.png",
+  "svg": "outputs/reports/prompt511_entry_audit_20260617/prompt511_track_interactions_xz_comparison.svg",
+  "interaction_points_csv": "outputs/reports/prompt511_entry_audit_20260617/prompt511_track_interaction_points.csv",
+  "panel_stats": {
+    "old_selected": {
+      "events": 32,
+      "segments": 173,
+      "process_counts": {
+        "ANNI": 64,
+        "PHOT": 133,
+        "COMP": 21,
+        "RAYL": 9,
+        "BREM": 10
+      },
+      "shield_edep_keV": 1609.6435233
+    },
+    "current_selected": {
+      "events": 32,
+      "segments": 146,
+      "process_counts": {
+        "ANNI": 64,
+        "COMP": 20,
+        "PHOT": 125,
+        "BREM": 7,
+        "RAYL": 3
+      },
+      "shield_edep_keV": 9421.863485223
+    },
+    "old_shielded": {
+      "events": 100,
+      "segments": 557,
+      "process_counts": {
+        "ANNI": 200,
+        "COMP": 158,
+        "PHOT": 380,
+        "BREM": 55,
+        "RAYL": 32
+      },
+      "shield_edep_keV": 86118.46864552128
+    },
+    "current_shielded": {
+      "events": 100,
+      "segments": 408,
+      "process_counts": {
+        "ANNI": 198,
+        "COMP": 164,
+        "PHOT": 284,
+        "BREM": 36,
+        "RAYL": 10
+      },
+      "shield_edep_keV": 64500.24343975979
+    }
+  },
+  "shield_sample_policy": {
+    "max_per_case": 100,
+    "selection": "SIM e+ events not in final selected set, no TP_L TES CC hit, at least one shield/side-material CC HIT with positive edep, and at least one visible non-INIT/non-ESCP IA point"
+  },
+  "selected_track_sample_policy": {
+    "max_per_case": 32,
+    "selection": "round-robin low-local-id sample across source files from the final W2 selected prompt e+ records; rate/count conclusions remain in prompt511_entry_audit_summary.json"
+  },
+  "coordinate_policy": {
+    "old_panels": "old global x-z cm",
+    "current_panels": "current v3p5 local side-entry x-z cm, global coordinates rotated by -45 deg about y"
+  }
+}

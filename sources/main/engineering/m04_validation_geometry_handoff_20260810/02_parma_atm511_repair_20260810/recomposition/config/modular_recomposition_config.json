@@ -1,0 +1,145 @@
+{
+  "schema": "o8-parma511-modular-recomposition-config-v1",
+  "scope_contract": {
+    "only_replaced_module": "atmospheric annihilation 510.99895-keV mono line",
+    "cosima_or_transport_allowed": false,
+    "continuum_rerun_allowed": false,
+    "m_sampling_transport_allowed": false,
+    "retained_products_writable": false,
+    "m04_writable": false
+  },
+  "mission": {
+    "selection_id": "w2_510p58_511p42",
+    "window_keV": [510.58, 511.42],
+    "day15_day_mid": 15.0,
+    "expected_day15_index_zero_based": 60,
+    "expected_time_bins": 81,
+    "expected_elapsed_days": 20.0,
+    "seconds_per_day": 86400.0,
+    "coincidence_window_s": 1e-6,
+    "reference_flux_ph_cm2_s": 0.0001,
+    "diagnostic_gaussian_z_two_sided_95": 1.959963984540054
+  },
+  "authorities": {
+    "mission_timeline": {
+      "path": "engineering/ea_peer_review_p02_slant_transmission_20260714/outputs/w2_all8_family_nuclide_mission_timeline_slant45.csv",
+      "sha256": "00f3c8edab23f0569b2981ebe256407a856f6f6df08425f4aa255bae33b1f8ce"
+    },
+    "mission_summary": {
+      "path": "engineering/ea_peer_review_p02_slant_transmission_20260714/data/slant45_signal_refold_summary.json",
+      "sha256": "f7ec57c9a8b06c44172e3fc925501ca359b6a0c524e421568da07ee7d8c148ba"
+    },
+    "mission_fold_code": {
+      "path": "engineering/ea_s3d_o8_all8_family_nuclide_mission_fold_20260713/code/build_s3d_o8_all8_family_nuclide_mission_fold.py",
+      "sha256": "987b26bfef7f3d5039a7a1fb0926a77308de1c47b2491d422abac9a75f7808a8"
+    },
+    "o8_response_summary": {
+      "path": "engineering/ea_s3d_o8_all8_detector_response_closure_20260713/data/s3d_o8_all8_energy_response_summary.json",
+      "sha256": "8c86ba7f4ebca3b5e4c9dfe084651751eddc031ed9b7d8203220073763beaf43"
+    },
+    "trajectory": {
+      "path": "engineering/geometry_optimization_20260704/43_geoopt_s3d_o8_fallback_20260712/fullchain/step06/trajectory_profile.csv",
+      "sha256": "c73f52c2675fa49cf7424cb552a28afcce4cab1bd4acdc239d3762ce0c581a02"
+    },
+    "day15_environment": {
+      "path": "engineering/m04_validation_geometry_handoff_20260810/02_parma_atm511_repair_20260810/config/day15_environment_authority.json",
+      "sha256": "b4e5e4bb165735c3cf4add6af62090382aa88b839a0bea71e0da800eaafff6d2"
+    },
+    "parma_line_source_closure": {
+      "path": "engineering/m04_validation_geometry_handoff_20260810/02_parma_atm511_repair_20260810/data/parma_line_closure.json",
+      "sha256": "dee071a7ec7f7714f8515c7df7de687a0de2c9c9648ecbb67eeb20e89cfc041b"
+    },
+    "prompt_gamma_line_dedup": {
+      "path": "engineering/m04_validation_geometry_handoff_20260810/02_parma_atm511_repair_20260810/data/o8_prompt_gamma_line_dedup_audit.json",
+      "sha256": "60c5c96d9c666c5fe0e6ac03dcd786712dc3d63af45aa4e4cc9801c9a10d6c10"
+    },
+    "default_diagnostic_line_input": {
+      "path": "engineering/m04_validation_geometry_handoff_20260810/02_parma_atm511_repair_20260810/data/existing_o8_line_module_reweight_summary.json",
+      "sha256": "2af3e9a69ee783ad8828cbdd6babcfdfb8867585b077134cd1c2804fed8ecb1e"
+    },
+    "frozen_step05_selection": {
+      "path": "old/code/tools/build_v3p5_centerfinger_step05_l1_response.py",
+      "sha256": "0c1e69e4a73bd8653e999b1d8d2aff404a37a44457e40f134388c819ad4b91ab"
+    }
+  },
+  "parma_line_fold": {
+    "driver": {
+      "path": "engineering/m04_validation_geometry_handoff_20260810/02_parma_atm511_repair_20260810/code/parma511_driver",
+      "sha256": "62c3f94df965c13fba9cb3194728dd2317ad11c80491bc858aebdb213f8f69b5",
+      "working_directory": "engineering/m04_validation_geometry_handoff_20260810/02_parma_atm511_repair_20260810/vendor/parma_cpp_official_20260810"
+    },
+    "solar_modulation_MV": 114.6,
+    "cutoff_rigidity_GV": 11.6,
+    "local_geometry_g": 0.15,
+    "line_energy_keV": 510.99895,
+    "expected_day15_flux_ph_cm2_s": 0.16651547160226118,
+    "time_policy": "Hold W=114.6 MV and Rc=11.6 GV at the frozen line authority; evaluate official get511fluxCpp at each retained trajectory depth; hold the day-15 detector angular response fixed.",
+    "trajectory_Rc_policy": "The trajectory Rc is retained only inside the already-folded prompt/delayed modules and is not substituted into the corrected line authority."
+  },
+  "prompt_gamma_line_occupancy_dedup": {
+    "day15_removed_event_rate_hz": 737.844505175763,
+    "audit_json_path": "affected_events.step05_catalog.removed_rate_sum_cps",
+    "affected_rows_expected": 317048,
+    "tes_nonzero_rows_expected": 0,
+    "active_volume_nonzero_rows_expected": 317048,
+    "mission_scale_field": "prompt_scale_gamma",
+    "mission_scale_semantics": "The retained mission fold constructs prompt_event_rate_hz by summing each day-15 prompt-family occupancy rate_hz times that family's prompt_scale_<family>; the removed term belongs to gamma and therefore uses prompt_scale_gamma.",
+    "formula": "removed_prompt_gamma_line_occupancy_hz(t) = 737.844505175763 * prompt_scale_gamma(t)",
+    "corrected_total_occupancy_formula": "lambda(t) = prompt_event_rate_hz(t) - removed_prompt_gamma_line_occupancy_hz(t) + delayed_event_rate_hz(t) + corrected_PARMA511_event_rate_hz(t)",
+    "unit_note": "The audit labels the summed source-normalized event rate cps; for accidental-coincidence occupancy this event rate is numerically Hz.",
+    "sidecar_note": "The legacy sidecar occupancy is omitted once, independently. It is not part of prompt_event_rate_hz and must not be subtracted from that prompt term."
+  },
+  "protected_files": {
+    "m04_en_tex": {
+      "path": "core_md/balloon511_ea_latex_drafts/balloon511_ea_draft_en_m04_atm511_revision_20260804.tex",
+      "sha256": "3eb0c1edccd7af7b198ab397371d633392c6a316a4ee3fbdf258057f54c7c53e"
+    },
+    "m04_zh_tex": {
+      "path": "core_md/balloon511_ea_latex_drafts/balloon511_ea_draft_zh_m04_atm511_revision_20260804.tex",
+      "sha256": "66df5babd3ecf5107c6f15e0eab525b25aaaea4fe5a641879962cd753524ba19"
+    },
+    "m04_en_pdf": {
+      "path": "core_md/balloon511_ea_latex_drafts/balloon511_ea_draft_en_m04_atm511_revision_20260804.pdf",
+      "sha256": "9217af3b62fe0bd4a48c0db81d5a7770d2df20a78989a57fca972a5a41879694"
+    },
+    "m04_zh_pdf": {
+      "path": "core_md/balloon511_ea_latex_drafts/balloon511_ea_draft_zh_m04_atm511_revision_20260804.pdf",
+      "sha256": "5acce4670bed2d6366242276b878891fe48c7f51039991b6fe840a35f54ff56f"
+    },
+    "m04_fig2_en_pdf": {
+      "path": "core_md/balloon511_ea_latex_drafts/paper_source_figure_table/fig_simulation_workflow_m04_en_20260810.pdf",
+      "sha256": "f739b3af1a6f3eb194f26596e1cc2b1bbfcebd14a68ab2c2b9a86a8f323ff2b2"
+    },
+    "m04_fig2_zh_pdf": {
+      "path": "core_md/balloon511_ea_latex_drafts/paper_source_figure_table/fig_simulation_workflow_m04_zh_20260810.pdf",
+      "sha256": "41a3b31f4ea79c0aab3d9e0616bec5fbd76a9377e3a2f061db739db17558edea"
+    }
+  },
+  "frozen_modules": [
+    "all retained prompt particle-family selected W2 rates; only the audited misplaced prompt-gamma line-term occupancy is subtracted offline",
+    "all delayed/activation family-by-nuclide selected rates",
+    "focused science signal with the retained 45-degree slant refold",
+    "geometry, detector response, 50-keV veto implementation, topology selection",
+    "81-bin timing and trajectory"
+  ],
+  "scientific_blockers": [
+    {
+      "id": "LEGACY_PROMPT_GAMMA_AXIS_FACTOR_1000",
+      "severity": "SCIENTIFIC_BLOCKER",
+      "statement": "The complete retained O8 prompt-photon DP abscissa is 1000 times below the correct Cosima-keV axis. The selected W2 rate delta is zero and the active-only misplaced-line occupancy is removed offline, but neither operation repairs absolute prompt-gamma continuum fidelity.",
+      "scope_action": "Freeze the user-directed legacy prompt-gamma module; do not launch a continuum rerun from this recomposition."
+    },
+    {
+      "id": "FROZEN_ACTIVE_SHIELD_NAME_MATCH_INCLUDES_PASSIVE_KAPTON",
+      "severity": "SCIENTIFIC_BLOCKER",
+      "statement": "The frozen final predicate matches the substring ACTIVE_SHIELD and therefore includes three passive ActiveShield_S3C_BGO_Kapton_* scorer volumes in the 50-keV veto; it is not a BGO-plus-plastic-only mask.",
+      "scope_action": "Preserve the historical selection exactly; do not repair the predicate and do not rerun transport in this work package."
+    },
+    {
+      "id": "DAY15_ANGULAR_RESPONSE_HELD_FIXED_ACROSS_MISSION",
+      "severity": "CONDITIONAL_MODEL_QUALIFICATION",
+      "statement": "Only the day-15 line detector response is available. The 20-day fold holds that angular response fixed while evaluating PARMA line flux at retained depths with fixed W and Rc.",
+      "scope_action": "Report the mission result as a conditional modular fold, not as new transport authority."
+    }
+  ]
+}

@@ -1,0 +1,66 @@
+{
+  "status": "PASS_FIX5_STEP06_TIME_AXIS_FIX5_FULLSTAT_V2_EXACTPOS_M50000_S260613_NOT_PROMOTION",
+  "statistics_label": "fix5_fullstat_v2_exactpos_m50000_s260613",
+  "claim_level": "FIX5_L1_MISSION_RATE_FOLD_FIX5_FULLSTAT_V2_EXACTPOS_M50000_S260613_NO_NEW_TRANSPORT_NOT_FINAL_PROMOTION",
+  "inputs": {
+    "step05_summary": "stepwise_maintenance/step05_veto_time_axis/outputs_fix5_fullstat_v2_exactpos_m50000_s260613_l1/step05_fix5_fullstat_v2_exactpos_m50000_s260613_l1_response_summary.json",
+    "step02_summary": "outputs/reports/fix5_fullstat_v2_exactpos_m50000_s260613/fix5_delayed_source_exactpos_summary.json",
+    "groundstate_activity_corrections": "runs/step02_delay_fix_fix5_fullstat_v2/groundstate_activity_corrections.csv"
+  },
+  "normalization": {
+    "reference_flux_ph_cm2_s": 0.0001,
+    "T_ref": 0.7390423888027,
+    "reference_injection_rate_s-1": 0.0014843489008928919,
+    "coincidence_window_s": 1e-06
+  },
+  "trajectory": {
+    "mission_days": 20.0,
+    "step_day": 0.25,
+    "bins": 81,
+    "altitude_ref_km": 38.75,
+    "altitude_range_km": [
+      36.25,
+      41.25
+    ]
+  },
+  "activity": {
+    "groundstate_corrections": "runs/step02_delay_fix_fix5_fullstat_v2/groundstate_activity_corrections.csv",
+    "rows_used": 234,
+    "rows_skipped": 0,
+    "reference_total_activity_Bq": 85.44920253876789,
+    "day15_index": 60,
+    "day15_mid": 15.0,
+    "activity_scale_min": 0.8437640406750008,
+    "activity_scale_max": 1.0521935679921557
+  },
+  "atmosphere_model": {
+    "depth_ref_g_cm2": 3.4614689720143224,
+    "mu_eff_cm2_g": 0.08736175376550424
+  },
+  "checks": {
+    "T_ref": 0.7390423888027,
+    "T_day15": 0.7390423888027,
+    "T_day15_abs_error": 0.0,
+    "activity_scale_min": 0.8437640406750008,
+    "activity_scale_max": 1.0521935679921557,
+    "w2_day15_background_final_cps": 0.0392162265186315,
+    "w2_day15_science_final_cps_at_ref_flux": 0.00118587480749719,
+    "w2_dt_weighted_background_final_cps": 0.03935462874339332,
+    "w2_dt_weighted_science_final_cps_at_ref_flux": 0.001177483126730607,
+    "step02_fixed_source_activity_Bq": 85.44920253876245
+  },
+  "outputs": {
+    "summary_json": "stepwise_maintenance/step06_mission_time_variation/outputs_fix5_fullstat_v2_exactpos_m50000_s260613/step06_fix5_fullstat_v2_exactpos_m50000_s260613_summary.json",
+    "readme": "stepwise_maintenance/step06_mission_time_variation/outputs_fix5_fullstat_v2_exactpos_m50000_s260613/README.md",
+    "trajectory_profile": "stepwise_maintenance/step06_mission_time_variation/outputs_fix5_fullstat_v2_exactpos_m50000_s260613/trajectory_profile.csv",
+    "atmosphere_transmission": "stepwise_maintenance/step06_mission_time_variation/outputs_fix5_fullstat_v2_exactpos_m50000_s260613/atmosphere_transmission_511_by_time.csv",
+    "activity_by_time_nuclide_volume": "stepwise_maintenance/step06_mission_time_variation/outputs_fix5_fullstat_v2_exactpos_m50000_s260613/activity_by_time_nuclide_volume.csv",
+    "total_activity_by_time": "stepwise_maintenance/step06_mission_time_variation/outputs_fix5_fullstat_v2_exactpos_m50000_s260613/total_activity_by_time.csv",
+    "background_time_variation": "stepwise_maintenance/step06_mission_time_variation/outputs_fix5_fullstat_v2_exactpos_m50000_s260613/background_time_variation.csv",
+    "figures": "stepwise_maintenance/step06_mission_time_variation/outputs_fix5_fullstat_v2_exactpos_m50000_s260613/figures"
+  },
+  "pending": [
+    "Run Step07/Step08 from this Step06 output and refresh the promotion decision artifact before any final replacement claim.",
+    "Old new_geo_re prompt/delayed numbers remain blocked as pass/fail gates while benchmark alignment is NOT_ALIGNED."
+  ]
+}

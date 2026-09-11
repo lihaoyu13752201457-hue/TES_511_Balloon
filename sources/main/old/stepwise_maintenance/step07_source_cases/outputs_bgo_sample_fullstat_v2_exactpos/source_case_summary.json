@@ -1,0 +1,40 @@
+{
+  "status": "PASS_BGO_SAMPLE_STEP07_SOURCE_CASES_FULLSTAT_V2_EXACTPOS",
+  "statistics_label": "bgo_sample_fullstat_v2_exactpos",
+  "claim_level": "BGO_SAMPLE_L1_SOURCE_CASE_FOCUSED_EVENTLIST_RATE_FOLDING_FULLSTAT_V2_EXACTPOS",
+  "inputs": {
+    "step05_summary": "stepwise_maintenance/step05_veto_time_axis/outputs_bgo_sample_fullstat_v2_exactpos_l1/step05_bgo_sample_l1_response_summary.json",
+    "step06_summary": "stepwise_maintenance/step06_mission_time_variation/outputs_bgo_sample_fullstat_v2_exactpos/step06_bgo_sample_fullstat_v2_exactpos_summary.json",
+    "step09_summary": "Bgo_sample/step09_focus_summary.json"
+  },
+  "authority": {
+    "optics_design_name": "balloon511_f10m_ge111_511line_a1",
+    "optics_profile": "f10m_a1_v3p5",
+    "aeff_511_cm2": 20.084760000000003,
+    "T_atm_ref": 0.7390423888027,
+    "reference_flux_ph_cm2_s": 0.0001,
+    "reference_injection_rate_s-1": 0.0014843489008928919,
+    "eventlist_rows": 37194,
+    "step06_status": "PASS_BGO_SAMPLE_STEP06_TIME_AXIS_FULLSTAT_V2_EXACTPOS"
+  },
+  "checks": {
+    "source_case_rows": 48,
+    "w2_response_cps_per_ph_cm2_s": 11.859546240751808,
+    "w2_background_final_cps": 0.05784553549642035,
+    "w2_low_stat_background_events": 248,
+    "A_reference_w2_final_rate_day15_cps": 0.0011859546240751808,
+    "B_diffuse_proxy_w2_final_rate_day15_cps": 7.426898518715931e-06,
+    "B_diffuse_proxy_flux_ph_cm2_s": 6.26238e-07
+  },
+  "outputs": {
+    "summary_json": "stepwise_maintenance/step07_source_cases/outputs_bgo_sample_fullstat_v2_exactpos/source_case_summary.json",
+    "readme": "stepwise_maintenance/step07_source_cases/outputs_bgo_sample_fullstat_v2_exactpos/README.md",
+    "v3p5_response_authority": "stepwise_maintenance/step07_source_cases/outputs_bgo_sample_fullstat_v2_exactpos/v3p5_response_authority.csv",
+    "source_case_rates": "stepwise_maintenance/step07_source_cases/outputs_bgo_sample_fullstat_v2_exactpos/source_case_rates.csv"
+  },
+  "pending": [
+    "Downstream Step08 and the BGO-vs-CsI hard-window comparison are closed for this label.",
+    "Optional: run BGO spatial/profile-likelihood sidecars before claiming spatial-analysis gains.",
+    "Optional: add BGO material-uncertainty or detector-threshold sensitivity scans before claiming robustness against those choices."
+  ]
+}

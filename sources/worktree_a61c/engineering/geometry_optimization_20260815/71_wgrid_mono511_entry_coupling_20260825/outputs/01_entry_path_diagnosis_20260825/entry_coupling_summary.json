@@ -1,0 +1,96 @@
+{
+  "answer": {
+    "actual_routes": {
+      "full_grid_envelope_crossing": 42,
+      "grid_facing_bypass_outside_envelope": 42,
+      "partial_or_grazing_grid_envelope_contact": 2,
+      "rear_or_side_bypass": 65
+    },
+    "atmospheric_near_vertical_abs_mu_ge_0p8": {
+      "count": 21,
+      "fraction": 0.1390728476821192,
+      "wilson95": [
+        0.09279487195064118,
+        0.20325929319241898
+      ]
+    },
+    "bypass_front_grid_envelope": {
+      "count": 107,
+      "fraction": 0.7086092715231788
+    },
+    "first_interaction_in_tes": {
+      "count": 131,
+      "fraction": 0.8675496688741722
+    },
+    "grid_near_normal_abs_cos_ge_0p8": {
+      "count": 57,
+      "fraction": 0.37748344370860926,
+      "wilson95": [
+        0.3041089933271009,
+        0.4569369159416444
+      ]
+    },
+    "mostly_atmospheric_vertical": false,
+    "mostly_grid_normal": false,
+    "pre_tes_rayleigh_only": {
+      "count": 20,
+      "fraction": 0.13245033112582782
+    }
+  },
+  "generated_at": "2026-08-25T08:28:58Z",
+  "geometry": {
+    "grid_depth_cm": 0.798,
+    "grid_envelope_local_cm": {
+      "x": [
+        -45.1,
+        -44.3
+      ],
+      "y": [
+        -2.7,
+        2.7
+      ],
+      "z": [
+        -5.5,
+        -0.1
+      ]
+    },
+    "grid_normal_world": [
+      0.7071067811865476,
+      0.0,
+      -0.7071067811865476
+    ],
+    "grid_to_first_tes_layer_center_cm": 6.15,
+    "instrument_frame_rotation_y_deg": 45.0
+  },
+  "limitations": [
+    "The route fractions describe final W2-selected survivors and are not incident-photon absorption probabilities.",
+    "Cosima SIM does not record passive-volume boundary crossings; grid-envelope contact is reconstructed by IA-polyline/AABB intersection.",
+    "Envelope contact cannot distinguish a vacuum-hole path from transmission through a thin W web without a recorded interaction.",
+    "The open and W-grid runs use independent seeds, so no event-by-event absorption pairing exists."
+  ],
+  "line_source": {
+    "angular_components": 80,
+    "day15_full_space_flux_ph_cm2_s": 0.16651547160226118,
+    "energy_keV": 510.99895,
+    "provider": "PARMA dedicated atmospheric line parameterization"
+  },
+  "response_context": {
+    "difference_z": -1.902429708337738,
+    "ratio_sigma": 0.08896764730697833,
+    "suppression_fraction": 0.1878016527635321,
+    "wgrid_over_open_ratio": 0.8121983472364679
+  },
+  "selected": {
+    "common_weight_cps": 0.00011990662008166577,
+    "events": 151,
+    "rate_cps": 0.018105899632331533
+  },
+  "sources": {
+    "catalog": "engineering/geometry_optimization_20260815/68_sh3_wgrid_mono511_statistics_20260824/outputs/01_wgrid_mono511_response_comparison_20260825/response/mono_line_event_catalog.npz",
+    "comparison": "engineering/geometry_optimization_20260815/68_sh3_wgrid_mono511_statistics_20260824/outputs/01_wgrid_mono511_response_comparison_20260825/comparison_summary.json",
+    "events": "engineering/geometry_optimization_20260815/71_wgrid_mono511_entry_coupling_20260825/outputs/01_entry_path_diagnosis_20260825/selected_event_paths.csv",
+    "geometry": "engineering/geometry_optimization_20260815/68_sh3_wgrid_mono511_statistics_20260824/transport_authority/geometry/SH3_Assembly_OptV3.geo",
+    "parma": "engineering/geometry_optimization_20260815/68_sh3_wgrid_mono511_statistics_20260824/outputs/01_wgrid_mono511_response_comparison_20260825/frozen_parma_authority/parma511_day15_80bins.csv"
+  },
+  "status": "PASS__WGRID_TES_ENTRY_COUPLING_CLOSED_FROM_EXISTING_TRANSPORT"
+}

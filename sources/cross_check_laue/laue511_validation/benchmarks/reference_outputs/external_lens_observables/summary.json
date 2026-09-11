@@ -1,0 +1,65 @@
+{
+  "agreement_checks": {
+    "diffracted_area_vs_current": true,
+    "diffracted_area_vs_python_reference": true,
+    "spot_d90_vs_current": true
+  },
+  "agreement_thresholds": {
+    "max_abs_diffracted_area_delta_cm2": 0.05,
+    "max_abs_spot_d90_delta_cm": 0.05
+  },
+  "comparison": {
+    "diffracted_area_minus_current_observed_cm2": 0.014614683225346314,
+    "diffracted_area_minus_python_reference_cm2": 0.016249923526759025,
+    "spot_d90_minus_current_observed_cm": 0.0025083981362374053
+  },
+  "errors": [],
+  "heart_hdf5": {
+    "detector_hit_model": "guan_direction_perturbation_from_heart_tile_summary",
+    "detector_l_dataset": "Detector/detector_L_pos",
+    "detector_w_dataset": "Detector/detector_W_pos",
+    "detector_weight": 45555.0,
+    "heart_version": "2.1.3",
+    "image_dataset": "Results/detector_image",
+    "image_shape": [
+      400,
+      400
+    ],
+    "input_hdf5": "benchmarks/reference_outputs/heart_patched_full_lens_guan_direction.h5",
+    "nonzero_detector_pixels": 3241,
+    "number_of_photons": 180000.0,
+    "source_jitter_mm": 0.3
+  },
+  "hit_summary": {
+    "diffracted_weight": 45555.0,
+    "errors": [],
+    "geometric_area_cm2": 2.3040000000000003,
+    "incident_weight": 180000.0,
+    "lens_metrics": {
+      "diffracted_area_cm2": 0.5831040000000001,
+      "spot_d90_cm": 0.22192341021172157
+    },
+    "n_hits": 3241,
+    "note": "Effective area is geometric_area_cm2 * sum(hit weights) / incident_weight; spot_d90_cm is the weighted 90% containment diameter in the detector plane.",
+    "ok": true,
+    "position_unit": "mm",
+    "weight_column": "weight",
+    "x_column": "x_mm",
+    "y_column": "y_mm"
+  },
+  "input_hits_csv": "/home/ubuntu/cross_check_laue/laue511_validation/benchmarks/reference_outputs/external_lens_observables/external_lens_hits.csv",
+  "lens_metrics": {
+    "diffracted_area_cm2": 0.5831040000000001,
+    "spot_d90_cm": 0.22192341021172157
+  },
+  "n_rows": 2,
+  "note": "Imported external full-lens observables are compared with the current opticsim sampled observables and the Python-only full-lens reference. The thresholds are deliberately broad; failures indicate a convention or physics mismatch that needs review.",
+  "observables_csv": "/home/ubuntu/cross_check_laue/laue511_validation/benchmarks/reference_outputs/external_lens_observables/external_lens_observables.csv",
+  "ok": true,
+  "source_tools": [
+    "HEART-detector-image"
+  ],
+  "source_versions": [
+    "2.1.3"
+  ]
+}

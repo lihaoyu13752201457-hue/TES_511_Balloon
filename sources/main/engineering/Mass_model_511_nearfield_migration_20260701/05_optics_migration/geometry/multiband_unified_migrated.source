@@ -1,0 +1,21 @@
+# In-repo cosima verification of the migrated unified multiband optics geometry.
+# CheckForOverlaps makes Geant4 confirm no tile/support overlap at construction;
+# the run then transports 511 keV gammas through the migrated tiles. Smoke only.
+
+Version 1
+Geometry /home/ubuntu/TES_511_Balloon/engineering/Mass_model_511_nearfield_migration_20260701/05_optics_migration/geometry/multiband_unified_migrated.setup
+
+CheckForOverlaps 500 0.0001
+
+PhysicsListEM Livermore
+StoreSimulationInfo all
+Seed 12345
+
+Run Verify
+Verify.FileName /home/ubuntu/TES_511_Balloon/engineering/Mass_model_511_nearfield_migration_20260701/05_optics_migration/verify/multiband_unified_migrated
+Verify.NTriggers 200
+Verify.Source S511
+S511.ParticleType 1
+S511.Beam FarFieldPointSource 90 0
+S511.Spectrum Mono 511
+S511.Flux 1000.0

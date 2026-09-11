@@ -1,0 +1,2238 @@
+{
+  "actual_execution": {
+    "controller_workers": 4,
+    "guard_sessions": {
+      "actual_controller_workers": 4,
+      "all_quotas_within_3_to_4_cores": true,
+      "all_required_exact_label_stage_bindings_pass": true,
+      "all_sampled_hard_floors_pass": true,
+      "all_sessions_closed": true,
+      "all_throttled_sessions_restored_to_four": true,
+      "allowed_quota_core_interval": [
+        3,
+        4
+      ],
+      "artificial_throttle_required": false,
+      "log_count": 2,
+      "observed_closed_exact_label_stage_coverage": {
+        "background_transport": [
+          "background"
+        ],
+        "transport_delayed": [
+          "delayed"
+        ],
+        "transport_signal": [
+          "signal"
+        ]
+      },
+      "observed_closed_followup_session_labels": [
+        "analyze_delayed",
+        "build_common_response",
+        "build_prompt",
+        "transport_delayed",
+        "transport_signal"
+      ],
+      "observed_closed_stage_coverage": [
+        "background",
+        "delayed",
+        "signal"
+      ],
+      "required_exact_label_stage_coverage": {
+        "background_transport": "background",
+        "transport_delayed": "delayed",
+        "transport_signal": "signal"
+      },
+      "required_followup_session_labels": [
+        "analyze_delayed",
+        "build_common_response",
+        "build_prompt",
+        "transport_delayed",
+        "transport_signal"
+      ],
+      "required_stage_coverage": [
+        "background",
+        "delayed",
+        "signal"
+      ],
+      "safe_all_four_core_session_is_PASS": true,
+      "session_count": 7,
+      "sessions": [
+        {
+          "all_sampled_hard_floors_pass": true,
+          "closed": true,
+          "closed_at": "2026-08-15T21:03:25.755017+00:00",
+          "closure": "UNIT_INACTIVE",
+          "covered_job_ids": [
+            "sf3_buildup_alpha_shard0001",
+            "sf3_buildup_eminus_shard0001",
+            "sf3_buildup_eplus_shard0001",
+            "sf3_buildup_muminus_shard0001",
+            "sf3_buildup_muplus_shard0001",
+            "sf3_buildup_n_shard0001",
+            "sf3_buildup_p_shard0001",
+            "sf3_instant_eminus_shard0001",
+            "sf3_instant_eplus_shard0001",
+            "sf3_instant_n_shard0001",
+            "sf3_instant_p_shard0001"
+          ],
+          "covered_stages": [
+            "background"
+          ],
+          "minimum_MemAvailable_bytes": 2341810176,
+          "minimum_SwapFree_bytes": 12979630080,
+          "peak_full_avg10_percent": 1.02,
+          "peak_some_avg10_percent": 1.02,
+          "quota_core_sequence": [
+            4.0,
+            3.0,
+            4.0
+          ],
+          "quota_percent_sequence": [
+            400,
+            300,
+            400
+          ],
+          "quota_within_3_to_4_cores": true,
+          "sample_count": 723,
+          "session_label": "background_transport",
+          "session_ordinal_in_log": 1,
+          "source_log": "background_pressure_guard_metrics",
+          "started_at": "2026-08-15T20:02:51.333129+00:00",
+          "terminal_four_core_quota": true,
+          "throttle_observed": true,
+          "unit": "sf3-plan1-bg4.service"
+        },
+        {
+          "all_sampled_hard_floors_pass": true,
+          "closed": true,
+          "closed_at": "2026-08-15T23:41:00.588437+00:00",
+          "closure": "GUARD_EXIT_RESTORE_NORMAL",
+          "covered_job_ids": [],
+          "covered_stages": [],
+          "minimum_MemAvailable_bytes": 6106808320,
+          "minimum_SwapFree_bytes": 13850189824,
+          "peak_full_avg10_percent": 0.0,
+          "peak_some_avg10_percent": 0.0,
+          "quota_core_sequence": [
+            4.0
+          ],
+          "quota_percent_sequence": [
+            400
+          ],
+          "quota_within_3_to_4_cores": true,
+          "sample_count": 1852,
+          "session_label": "build_prompt",
+          "session_ordinal_in_log": 1,
+          "source_log": "followup_pressure_guard_metrics",
+          "started_at": "2026-08-15T21:05:36.409939+00:00",
+          "terminal_four_core_quota": true,
+          "throttle_observed": false,
+          "unit": "sf3-plan1-followup.service"
+        },
+        {
+          "all_sampled_hard_floors_pass": true,
+          "closed": true,
+          "closed_at": "2026-08-16T00:09:01.535613+00:00",
+          "closure": "GUARD_EXIT_RESTORE_NORMAL",
+          "covered_job_ids": [],
+          "covered_stages": [],
+          "minimum_MemAvailable_bytes": 7189323776,
+          "minimum_SwapFree_bytes": 13882335232,
+          "peak_full_avg10_percent": 0.0,
+          "peak_some_avg10_percent": 0.0,
+          "quota_core_sequence": [
+            4.0
+          ],
+          "quota_percent_sequence": [
+            400
+          ],
+          "quota_within_3_to_4_cores": true,
+          "sample_count": 306,
+          "session_label": "build_prompt",
+          "session_ordinal_in_log": 2,
+          "source_log": "followup_pressure_guard_metrics",
+          "started_at": "2026-08-15T23:43:21.628178+00:00",
+          "terminal_four_core_quota": true,
+          "throttle_observed": false,
+          "unit": "sf3-plan1-followup.service"
+        },
+        {
+          "all_sampled_hard_floors_pass": true,
+          "closed": true,
+          "closed_at": "2026-08-16T00:29:36.628253+00:00",
+          "closure": "GUARD_EXIT_RESTORE_NORMAL",
+          "covered_job_ids": [
+            "sf3_delayed_alpha",
+            "sf3_delayed_eminus",
+            "sf3_delayed_eplus",
+            "sf3_delayed_gamma",
+            "sf3_delayed_muminus",
+            "sf3_delayed_n",
+            "sf3_delayed_p"
+          ],
+          "covered_stages": [
+            "delayed"
+          ],
+          "minimum_MemAvailable_bytes": 7247970304,
+          "minimum_SwapFree_bytes": 13891772416,
+          "peak_full_avg10_percent": 0.0,
+          "peak_some_avg10_percent": 0.0,
+          "quota_core_sequence": [
+            4.0
+          ],
+          "quota_percent_sequence": [
+            400
+          ],
+          "quota_within_3_to_4_cores": true,
+          "sample_count": 79,
+          "session_label": "transport_delayed",
+          "session_ordinal_in_log": 3,
+          "source_log": "followup_pressure_guard_metrics",
+          "started_at": "2026-08-16T00:22:58.993079+00:00",
+          "terminal_four_core_quota": true,
+          "throttle_observed": false,
+          "unit": "sf3-plan1-followup.service"
+        },
+        {
+          "all_sampled_hard_floors_pass": true,
+          "closed": true,
+          "closed_at": "2026-08-16T00:31:14.529257+00:00",
+          "closure": "GUARD_EXIT_RESTORE_NORMAL",
+          "covered_job_ids": [],
+          "covered_stages": [],
+          "minimum_MemAvailable_bytes": 8897298432,
+          "minimum_SwapFree_bytes": 13897539584,
+          "peak_full_avg10_percent": 0.0,
+          "peak_some_avg10_percent": 0.0,
+          "quota_core_sequence": [
+            4.0
+          ],
+          "quota_percent_sequence": [
+            400
+          ],
+          "quota_within_3_to_4_cores": true,
+          "sample_count": 19,
+          "session_label": "analyze_delayed",
+          "session_ordinal_in_log": 4,
+          "source_log": "followup_pressure_guard_metrics",
+          "started_at": "2026-08-16T00:29:38.887460+00:00",
+          "terminal_four_core_quota": true,
+          "throttle_observed": false,
+          "unit": "sf3-plan1-followup.service"
+        },
+        {
+          "all_sampled_hard_floors_pass": true,
+          "closed": true,
+          "closed_at": "2026-08-16T00:32:15.501373+00:00",
+          "closure": "GUARD_EXIT_RESTORE_NORMAL",
+          "covered_job_ids": [
+            "signal_full_envelope_sf3"
+          ],
+          "covered_stages": [
+            "signal"
+          ],
+          "minimum_MemAvailable_bytes": 8828784640,
+          "minimum_SwapFree_bytes": 13901209600,
+          "peak_full_avg10_percent": 0.0,
+          "peak_some_avg10_percent": 0.0,
+          "quota_core_sequence": [
+            4.0
+          ],
+          "quota_percent_sequence": [
+            400
+          ],
+          "quota_within_3_to_4_cores": true,
+          "sample_count": 12,
+          "session_label": "transport_signal",
+          "session_ordinal_in_log": 5,
+          "source_log": "followup_pressure_guard_metrics",
+          "started_at": "2026-08-16T00:31:15.100174+00:00",
+          "terminal_four_core_quota": true,
+          "throttle_observed": false,
+          "unit": "sf3-plan1-followup.service"
+        },
+        {
+          "all_sampled_hard_floors_pass": true,
+          "closed": true,
+          "closed_at": "2026-08-16T00:33:13.170373+00:00",
+          "closure": "GUARD_EXIT_RESTORE_NORMAL",
+          "covered_job_ids": [],
+          "covered_stages": [],
+          "minimum_MemAvailable_bytes": 8725307392,
+          "minimum_SwapFree_bytes": 13901209600,
+          "peak_full_avg10_percent": 0.0,
+          "peak_some_avg10_percent": 0.0,
+          "quota_core_sequence": [
+            4.0
+          ],
+          "quota_percent_sequence": [
+            400
+          ],
+          "quota_within_3_to_4_cores": true,
+          "sample_count": 11,
+          "session_label": "build_common_response",
+          "session_ordinal_in_log": 6,
+          "source_log": "followup_pressure_guard_metrics",
+          "started_at": "2026-08-16T00:32:17.466100+00:00",
+          "terminal_four_core_quota": true,
+          "throttle_observed": false,
+          "unit": "sf3-plan1-followup.service"
+        }
+      ]
+    },
+    "manual_historical_quota_core_sequence": [
+      4,
+      3,
+      4
+    ],
+    "summary": "MAX_CPU_6__ACTUAL_4_WORKERS__QUOTA_BOUNDED_3_TO_4__HISTORICAL_MANUAL_4_TO_3_TO_4_RECORDED_SEPARATELY",
+    "worker_evidence": "SYSTEMD_OOMD_RECOVERY_NEW_CONTROLLER_CPU_BUDGET_AND_BG4_GUARD_UNIT"
+  },
+  "authorities": {
+    "analysis_inputs": {
+      "bytes": 9354,
+      "path": "/home/ubuntu/.codex/worktrees/ddb4/TES_511_Balloon/engineering/geometry_optimization_20260815/49_sf3_plan1_transport_20260816/analysis_inputs.json",
+      "sha256": "7c8a5c80420f53f7e6dbee4baaa62a2ffb655e54108baad59ff90269d3e8e891"
+    },
+    "background_pressure_guard_metrics": {
+      "bytes": 374279,
+      "path": "/home/ubuntu/.codex/worktrees/ddb4/TES_511_Balloon/runs/geometry_optimization_20260816/sf3_plan1_one_third_transport_v1/pressure_guard_metrics.jsonl",
+      "sha256": "b1e49730b4b15a881927ac407d10f97c754da9f9f2095ab591122937be17bfd3"
+    },
+    "canonical_30_row_plan": {
+      "bytes": 14854,
+      "path": "/home/ubuntu/.codex/worktrees/ddb4/TES_511_Balloon/engineering/geometry_optimization_20260815/49_sf3_plan1_transport_20260816/data/sf3_plan1_job_plan.csv",
+      "sha256": "c2bd75cc0b3592c23179d4b4b2fd9ec7a8685f65b3622ffe4d634efeda15f38c"
+    },
+    "completion_resource_metrics": {
+      "bytes": 6436,
+      "path": "/home/ubuntu/.codex/worktrees/ddb4/TES_511_Balloon/runs/geometry_optimization_20260816/sf3_plan1_one_third_transport_v1/resource_metrics.jsonl",
+      "sha256": "62225bfd7a4dc07e86ec10faf7a1af8fe3dd7e2f6e43a61ba4463a81b7f19f70"
+    },
+    "followup_execution_manifest": {
+      "bytes": 7065,
+      "path": "/home/ubuntu/.codex/worktrees/ddb4/TES_511_Balloon/engineering/geometry_optimization_20260815/49_sf3_plan1_transport_20260816/data/sf3_plan1_followup_execution_manifest.json",
+      "sha256": "fe69c04f6bad3ca5b1004d67767abb0b57a57aabb8a78dbf30fff7823cca4fc8"
+    },
+    "followup_pressure_guard_metrics": {
+      "bytes": 1338964,
+      "path": "/home/ubuntu/.codex/worktrees/ddb4/TES_511_Balloon/engineering/geometry_optimization_20260815/49_sf3_plan1_transport_20260816/audit/sf3_plan1_followup_pressure_guard.jsonl",
+      "sha256": "3966da9f04ccc990183b1a9e0e7fae225ad414b187df8781b688f71e7ff4c760"
+    },
+    "manual_quota_recovery": {
+      "bytes": 1736,
+      "path": "/home/ubuntu/.codex/worktrees/ddb4/TES_511_Balloon/engineering/geometry_optimization_20260815/49_sf3_plan1_transport_20260816/audit/sf3_manual_quota_recovery_20260816.json",
+      "sha256": "b8a11c35e19a0340a16922f71cce3c510d737ad94162463cad62e1a01c58415b"
+    },
+    "pressure_guard_code": {
+      "bytes": 21605,
+      "path": "/home/ubuntu/.codex/worktrees/ddb4/TES_511_Balloon/engineering/geometry_optimization_20260815/49_sf3_plan1_transport_20260816/code/guard_sf3_service_pressure.py",
+      "sha256": "803a323f0d92d4b38738fb58a09fb58015d9727894a44af9eb6cfc339ee8f8d9"
+    },
+    "recovery_controller_external_recovery": {
+      "bytes": 2069,
+      "path": "/home/ubuntu/.codex/worktrees/ddb4/TES_511_Balloon/engineering/geometry_optimization_20260815/49_sf3_plan1_transport_20260816/audit/controller_interruption_recovery_20260816T031021.json",
+      "sha256": "e18a1befb504175095bfcb656bc8a4f5ba0d1647e21a689695464b5aae8d2877"
+    },
+    "recovery_controller_gui_recovery": {
+      "bytes": 1359,
+      "path": "/home/ubuntu/.codex/worktrees/ddb4/TES_511_Balloon/engineering/geometry_optimization_20260815/49_sf3_plan1_transport_20260816/audit/controller_interruption_recovery_20260816.json",
+      "sha256": "e9210d0826438671b79bd59cd0c1dd09e801faddc4e1a2246fd9ff040ea499fc"
+    },
+    "recovery_systemd_oomd_recovery": {
+      "bytes": 1553,
+      "path": "/home/ubuntu/.codex/worktrees/ddb4/TES_511_Balloon/engineering/geometry_optimization_20260815/49_sf3_plan1_transport_20260816/audit/systemd_oomd_recovery_20260816T032354.json",
+      "sha256": "4548d5f0089bc5f4dc427fe3162244cf2d1bd58a42ab551404e5299bd2f9df57"
+    },
+    "stage02_activation_summary": {
+      "bytes": 4212,
+      "path": "/home/ubuntu/.codex/worktrees/ddb4/TES_511_Balloon/engineering/geometry_optimization_20260815/49_sf3_plan1_transport_20260816/outputs/02_activation/day15_summary.json",
+      "sha256": "9579c444b219700ef7fab9dfcce49ab4874aa61e9195d025b044c7ddf7c321cd"
+    },
+    "stage02_delayed_source_index": {
+      "bytes": 8416,
+      "path": "/home/ubuntu/.codex/worktrees/ddb4/TES_511_Balloon/engineering/geometry_optimization_20260815/49_sf3_plan1_transport_20260816/outputs/02_activation/delayed_source_index.csv",
+      "sha256": "fcfddc8d2c1de100b7e6c1b23aaf6250bcdebab205358bd441e5129ee47025d1"
+    },
+    "transport_receipt_sf3_buildup_alpha_shard0001": {
+      "bytes": 2778,
+      "path": "/home/ubuntu/.codex/worktrees/ddb4/TES_511_Balloon/runs/geometry_optimization_20260816/sf3_plan1_one_third_transport_v1/receipts/sf3_buildup_alpha_shard0001.json",
+      "sha256": "31d14051ce273136b8fe97ad28e0222fc52bd97b2f1467cbe164c605c552bb91"
+    },
+    "transport_receipt_sf3_buildup_eminus_shard0001": {
+      "bytes": 2794,
+      "path": "/home/ubuntu/.codex/worktrees/ddb4/TES_511_Balloon/runs/geometry_optimization_20260816/sf3_plan1_one_third_transport_v1/receipts/sf3_buildup_eminus_shard0001.json",
+      "sha256": "62bf9bfec2f4f03b4851a54a69ff07e2f573e2b2ed58931714ea9baf2a0b8177"
+    },
+    "transport_receipt_sf3_buildup_eplus_shard0001": {
+      "bytes": 2781,
+      "path": "/home/ubuntu/.codex/worktrees/ddb4/TES_511_Balloon/runs/geometry_optimization_20260816/sf3_plan1_one_third_transport_v1/receipts/sf3_buildup_eplus_shard0001.json",
+      "sha256": "da02bfa394af2809cf61b76dbbe1373b741a2c53f330bfc132564ff72670d7ef"
+    },
+    "transport_receipt_sf3_buildup_gamma_shard0001": {
+      "bytes": 2783,
+      "path": "/home/ubuntu/.codex/worktrees/ddb4/TES_511_Balloon/runs/geometry_optimization_20260816/sf3_plan1_one_third_transport_v1/receipts/sf3_buildup_gamma_shard0001.json",
+      "sha256": "5c34ec7b0af58ceb340e945f48900ff15df8ef225e91839c88b352dec708e8aa"
+    },
+    "transport_receipt_sf3_buildup_gamma_shard0002": {
+      "bytes": 2785,
+      "path": "/home/ubuntu/.codex/worktrees/ddb4/TES_511_Balloon/runs/geometry_optimization_20260816/sf3_plan1_one_third_transport_v1/receipts/sf3_buildup_gamma_shard0002.json",
+      "sha256": "521a85b70aef0cd76accfc9290acf2605898381a1954e8153b09c406aea413b1"
+    },
+    "transport_receipt_sf3_buildup_gamma_shard0003": {
+      "bytes": 2785,
+      "path": "/home/ubuntu/.codex/worktrees/ddb4/TES_511_Balloon/runs/geometry_optimization_20260816/sf3_plan1_one_third_transport_v1/receipts/sf3_buildup_gamma_shard0003.json",
+      "sha256": "634846cd4729326b349b5f13b7e8d83feba1455d721235f2a89f872732c6aaae"
+    },
+    "transport_receipt_sf3_buildup_muminus_shard0001": {
+      "bytes": 2803,
+      "path": "/home/ubuntu/.codex/worktrees/ddb4/TES_511_Balloon/runs/geometry_optimization_20260816/sf3_plan1_one_third_transport_v1/receipts/sf3_buildup_muminus_shard0001.json",
+      "sha256": "d25541039979ca699a840c5ab08c6fbb00918d14db3d178db5ccbb8658524729"
+    },
+    "transport_receipt_sf3_buildup_muplus_shard0001": {
+      "bytes": 2782,
+      "path": "/home/ubuntu/.codex/worktrees/ddb4/TES_511_Balloon/runs/geometry_optimization_20260816/sf3_plan1_one_third_transport_v1/receipts/sf3_buildup_muplus_shard0001.json",
+      "sha256": "303a0d27b44264c1d19055743e7e315168b910df8d4d88a066c848f97e01e3fd"
+    },
+    "transport_receipt_sf3_buildup_n_shard0001": {
+      "bytes": 2746,
+      "path": "/home/ubuntu/.codex/worktrees/ddb4/TES_511_Balloon/runs/geometry_optimization_20260816/sf3_plan1_one_third_transport_v1/receipts/sf3_buildup_n_shard0001.json",
+      "sha256": "1ce607a60bbcec5ef6e987085d211138dec373bb2cd76c945439b4c51573541d"
+    },
+    "transport_receipt_sf3_buildup_p_shard0001": {
+      "bytes": 2743,
+      "path": "/home/ubuntu/.codex/worktrees/ddb4/TES_511_Balloon/runs/geometry_optimization_20260816/sf3_plan1_one_third_transport_v1/receipts/sf3_buildup_p_shard0001.json",
+      "sha256": "3b367cea6ee5c9f9da75c8e714b869fcb4c68b6b93ce4abf1334bb93de4d1ca7"
+    },
+    "transport_receipt_sf3_delayed_alpha": {
+      "bytes": 2594,
+      "path": "/home/ubuntu/.codex/worktrees/ddb4/TES_511_Balloon/runs/geometry_optimization_20260816/sf3_plan1_one_third_transport_v1/receipts/sf3_delayed_alpha.json",
+      "sha256": "00d2885e8e2a6e6b4e0e558ec727f653564ddff8f205e8a5b066867de9a1eeea"
+    },
+    "transport_receipt_sf3_delayed_eminus": {
+      "bytes": 2602,
+      "path": "/home/ubuntu/.codex/worktrees/ddb4/TES_511_Balloon/runs/geometry_optimization_20260816/sf3_plan1_one_third_transport_v1/receipts/sf3_delayed_eminus.json",
+      "sha256": "28be825f27cfe86329da6f19cd2a676c1ecd576a2dc0219ef8b60ffcd688478f"
+    },
+    "transport_receipt_sf3_delayed_eplus": {
+      "bytes": 2591,
+      "path": "/home/ubuntu/.codex/worktrees/ddb4/TES_511_Balloon/runs/geometry_optimization_20260816/sf3_plan1_one_third_transport_v1/receipts/sf3_delayed_eplus.json",
+      "sha256": "d21f803443a3fb8d9e84b2643d4540f938e540e32024c25fab203fa1645014da"
+    },
+    "transport_receipt_sf3_delayed_gamma": {
+      "bytes": 2593,
+      "path": "/home/ubuntu/.codex/worktrees/ddb4/TES_511_Balloon/runs/geometry_optimization_20260816/sf3_plan1_one_third_transport_v1/receipts/sf3_delayed_gamma.json",
+      "sha256": "31015ac6eb4d9fd937b6355d30b8f5f07cc13ff7f753081faaaefe230941e229"
+    },
+    "transport_receipt_sf3_delayed_muminus": {
+      "bytes": 2611,
+      "path": "/home/ubuntu/.codex/worktrees/ddb4/TES_511_Balloon/runs/geometry_optimization_20260816/sf3_plan1_one_third_transport_v1/receipts/sf3_delayed_muminus.json",
+      "sha256": "c39dd64c1c8f0d500166b76036dded99d2b3db7fdfceeadd49180b3ae1e6c199"
+    },
+    "transport_receipt_sf3_delayed_n": {
+      "bytes": 2562,
+      "path": "/home/ubuntu/.codex/worktrees/ddb4/TES_511_Balloon/runs/geometry_optimization_20260816/sf3_plan1_one_third_transport_v1/receipts/sf3_delayed_n.json",
+      "sha256": "d361c9744e2467fbe04b473469662d0c454acf7b94929da38f67dfb6b643c0ff"
+    },
+    "transport_receipt_sf3_delayed_p": {
+      "bytes": 2563,
+      "path": "/home/ubuntu/.codex/worktrees/ddb4/TES_511_Balloon/runs/geometry_optimization_20260816/sf3_plan1_one_third_transport_v1/receipts/sf3_delayed_p.json",
+      "sha256": "a8d00f23a457cc91d027159b25fd46138cdb7e7860b5b25581263c20dc580889"
+    },
+    "transport_receipt_sf3_instant_alpha_shard0001": {
+      "bytes": 2780,
+      "path": "/home/ubuntu/.codex/worktrees/ddb4/TES_511_Balloon/runs/geometry_optimization_20260816/sf3_plan1_one_third_transport_v1/receipts/sf3_instant_alpha_shard0001.json",
+      "sha256": "905bad85bd15518ef583ee4cb6151e4e39e4bd81b8f2f84367031078b6a30f4f"
+    },
+    "transport_receipt_sf3_instant_eminus_shard0001": {
+      "bytes": 2793,
+      "path": "/home/ubuntu/.codex/worktrees/ddb4/TES_511_Balloon/runs/geometry_optimization_20260816/sf3_plan1_one_third_transport_v1/receipts/sf3_instant_eminus_shard0001.json",
+      "sha256": "9f72e0558e186a58295033e52a5fdcfc02ff361fa2e3421814b5bdb9ebad2ec9"
+    },
+    "transport_receipt_sf3_instant_eplus_shard0001": {
+      "bytes": 2778,
+      "path": "/home/ubuntu/.codex/worktrees/ddb4/TES_511_Balloon/runs/geometry_optimization_20260816/sf3_plan1_one_third_transport_v1/receipts/sf3_instant_eplus_shard0001.json",
+      "sha256": "7c5a2d524e83ef211577050691da11d73d39ab2499e46085bfa3224c08b97c74"
+    },
+    "transport_receipt_sf3_instant_gamma_shard0001": {
+      "bytes": 2783,
+      "path": "/home/ubuntu/.codex/worktrees/ddb4/TES_511_Balloon/runs/geometry_optimization_20260816/sf3_plan1_one_third_transport_v1/receipts/sf3_instant_gamma_shard0001.json",
+      "sha256": "afd5c00ba4fec778fce6c2a6d1fae604b387ac408687ae0add604d6a0b894b26"
+    },
+    "transport_receipt_sf3_instant_gamma_shard0002": {
+      "bytes": 2783,
+      "path": "/home/ubuntu/.codex/worktrees/ddb4/TES_511_Balloon/runs/geometry_optimization_20260816/sf3_plan1_one_third_transport_v1/receipts/sf3_instant_gamma_shard0002.json",
+      "sha256": "accc74b7cc86783077ddd0e988115a5048fe86d8c8d95e9bdb80c52a5159d19c"
+    },
+    "transport_receipt_sf3_instant_gamma_shard0003": {
+      "bytes": 2778,
+      "path": "/home/ubuntu/.codex/worktrees/ddb4/TES_511_Balloon/runs/geometry_optimization_20260816/sf3_plan1_one_third_transport_v1/receipts/sf3_instant_gamma_shard0003.json",
+      "sha256": "349d0f797cae4daa2b7760f93659f44e9b48e026023ae329d4a74dec82919a4c"
+    },
+    "transport_receipt_sf3_instant_gamma_shard0004": {
+      "bytes": 2778,
+      "path": "/home/ubuntu/.codex/worktrees/ddb4/TES_511_Balloon/runs/geometry_optimization_20260816/sf3_plan1_one_third_transport_v1/receipts/sf3_instant_gamma_shard0004.json",
+      "sha256": "7d970b851e810482a62bfbf316bc9e3725647e218b39da10c5949682986e3d82"
+    },
+    "transport_receipt_sf3_instant_muminus_shard0001": {
+      "bytes": 2793,
+      "path": "/home/ubuntu/.codex/worktrees/ddb4/TES_511_Balloon/runs/geometry_optimization_20260816/sf3_plan1_one_third_transport_v1/receipts/sf3_instant_muminus_shard0001.json",
+      "sha256": "90af2932ea066f9e4652ceb29d7a11624ed6fcddf4838a256fff9c4029cb95db"
+    },
+    "transport_receipt_sf3_instant_muplus_shard0001": {
+      "bytes": 2784,
+      "path": "/home/ubuntu/.codex/worktrees/ddb4/TES_511_Balloon/runs/geometry_optimization_20260816/sf3_plan1_one_third_transport_v1/receipts/sf3_instant_muplus_shard0001.json",
+      "sha256": "2e36816939cc25c9a89ab842f97ea8fb704660a8e4f8f11b821a102b66b0c54b"
+    },
+    "transport_receipt_sf3_instant_n_shard0001": {
+      "bytes": 2743,
+      "path": "/home/ubuntu/.codex/worktrees/ddb4/TES_511_Balloon/runs/geometry_optimization_20260816/sf3_plan1_one_third_transport_v1/receipts/sf3_instant_n_shard0001.json",
+      "sha256": "755f5a051430a160fd7041a47432ed5ce494e3660da94514533c0e17cd3c3ef6"
+    },
+    "transport_receipt_sf3_instant_p_shard0001": {
+      "bytes": 2736,
+      "path": "/home/ubuntu/.codex/worktrees/ddb4/TES_511_Balloon/runs/geometry_optimization_20260816/sf3_plan1_one_third_transport_v1/receipts/sf3_instant_p_shard0001.json",
+      "sha256": "816a4ced476fad5a8560c5261cfa483a040fcb9e538da335260ca2746fa48988"
+    },
+    "transport_receipt_signal_full_envelope_sf3": {
+      "bytes": 2648,
+      "path": "/home/ubuntu/.codex/worktrees/ddb4/TES_511_Balloon/runs/geometry_optimization_20260816/sf3_plan1_one_third_transport_v1/receipts/signal_full_envelope_sf3.json",
+      "sha256": "b23e758b37feebee7f611df509f48a17ece489d540409e2f2d2019ccada40589"
+    }
+  },
+  "background_receipts": {
+    "all_canonical_PASS": true,
+    "jobs_by_stage": {
+      "background": 21,
+      "delayed": 0,
+      "signal": 0
+    },
+    "maximum_peak_rss": {
+      "GiB": 3.7223281860351562,
+      "bytes": 3996819456,
+      "family": "eplus",
+      "job_id": "sf3_buildup_eplus_shard0001",
+      "mode": "buildup"
+    },
+    "per_family_max_peak_rss": {
+      "alpha": {
+        "GiB": 3.4487762451171875,
+        "bytes": 3703095296,
+        "job_id": "sf3_buildup_alpha_shard0001"
+      },
+      "eminus": {
+        "GiB": 0.9059829711914062,
+        "bytes": 972791808,
+        "job_id": "sf3_instant_eminus_shard0001"
+      },
+      "eplus": {
+        "GiB": 3.7223281860351562,
+        "bytes": 3996819456,
+        "job_id": "sf3_buildup_eplus_shard0001"
+      },
+      "gamma": {
+        "GiB": 3.1371116638183594,
+        "bytes": 3368448000,
+        "job_id": "sf3_buildup_gamma_shard0003"
+      },
+      "muminus": {
+        "GiB": 0.6656837463378906,
+        "bytes": 714772480,
+        "job_id": "sf3_buildup_muminus_shard0001"
+      },
+      "muplus": {
+        "GiB": 0.6384963989257812,
+        "bytes": 685580288,
+        "job_id": "sf3_buildup_muplus_shard0001"
+      },
+      "n": {
+        "GiB": 3.2936782836914062,
+        "bytes": 3536560128,
+        "job_id": "sf3_instant_n_shard0001"
+      },
+      "p": {
+        "GiB": 1.5335807800292969,
+        "bytes": 1646669824,
+        "job_id": "sf3_buildup_p_shard0001"
+      }
+    },
+    "per_mode_family_max_peak_rss": [
+      {
+        "family": "alpha",
+        "jobs": 1,
+        "max_GiB": 3.4487762451171875,
+        "max_bytes": 3703095296,
+        "mode": "buildup"
+      },
+      {
+        "family": "eminus",
+        "jobs": 1,
+        "max_GiB": 0.6838150024414062,
+        "max_bytes": 734240768,
+        "mode": "buildup"
+      },
+      {
+        "family": "eplus",
+        "jobs": 1,
+        "max_GiB": 3.7223281860351562,
+        "max_bytes": 3996819456,
+        "mode": "buildup"
+      },
+      {
+        "family": "gamma",
+        "jobs": 3,
+        "max_GiB": 3.1371116638183594,
+        "max_bytes": 3368448000,
+        "mode": "buildup"
+      },
+      {
+        "family": "muminus",
+        "jobs": 1,
+        "max_GiB": 0.6656837463378906,
+        "max_bytes": 714772480,
+        "mode": "buildup"
+      },
+      {
+        "family": "muplus",
+        "jobs": 1,
+        "max_GiB": 0.6384963989257812,
+        "max_bytes": 685580288,
+        "mode": "buildup"
+      },
+      {
+        "family": "n",
+        "jobs": 1,
+        "max_GiB": 3.2218246459960938,
+        "max_bytes": 3459407872,
+        "mode": "buildup"
+      },
+      {
+        "family": "p",
+        "jobs": 1,
+        "max_GiB": 1.5335807800292969,
+        "max_bytes": 1646669824,
+        "mode": "buildup"
+      },
+      {
+        "family": "alpha",
+        "jobs": 1,
+        "max_GiB": 1.6338157653808594,
+        "max_bytes": 1754296320,
+        "mode": "instant"
+      },
+      {
+        "family": "eminus",
+        "jobs": 1,
+        "max_GiB": 0.9059829711914062,
+        "max_bytes": 972791808,
+        "mode": "instant"
+      },
+      {
+        "family": "eplus",
+        "jobs": 1,
+        "max_GiB": 3.5216827392578125,
+        "max_bytes": 3781378048,
+        "mode": "instant"
+      },
+      {
+        "family": "gamma",
+        "jobs": 4,
+        "max_GiB": 1.6986045837402344,
+        "max_bytes": 1823862784,
+        "mode": "instant"
+      },
+      {
+        "family": "muminus",
+        "jobs": 1,
+        "max_GiB": 0.6167335510253906,
+        "max_bytes": 662212608,
+        "mode": "instant"
+      },
+      {
+        "family": "muplus",
+        "jobs": 1,
+        "max_GiB": 0.6047477722167969,
+        "max_bytes": 649342976,
+        "mode": "instant"
+      },
+      {
+        "family": "n",
+        "jobs": 1,
+        "max_GiB": 3.2936782836914062,
+        "max_bytes": 3536560128,
+        "mode": "instant"
+      },
+      {
+        "family": "p",
+        "jobs": 1,
+        "max_GiB": 1.4285354614257812,
+        "max_bytes": 1533878272,
+        "mode": "instant"
+      }
+    ],
+    "planned_jobs": 21,
+    "receipt_records": [
+      {
+        "artifact_bytes": 1721886168,
+        "attempt": 1,
+        "ended_at": "2026-08-15T20:11:03.945773+00:00",
+        "events": 8483,
+        "family": "p",
+        "job_id": "sf3_instant_p_shard0001",
+        "mode": "instant",
+        "peak_process_group_rss_GiB": 1.4285354614257812,
+        "peak_process_group_rss_bytes": 1533878272,
+        "receipt_path": "/home/ubuntu/.codex/worktrees/ddb4/TES_511_Balloon/runs/geometry_optimization_20260816/sf3_plan1_one_third_transport_v1/receipts/sf3_instant_p_shard0001.json",
+        "receipt_sha256": "816a4ced476fad5a8560c5261cfa483a040fcb9e538da335260ca2746fa48988",
+        "seed": 240143578,
+        "sim_accessed_or_hashed": false,
+        "sim_bytes_metadata": 1715220335,
+        "sim_path_metadata": "/home/ubuntu/.codex/worktrees/ddb4/TES_511_Balloon/runs/geometry_optimization_20260816/sf3_plan1_one_third_transport_v1/jobs/sf3_instant_p_shard0001/attempts/attempt01/sf3_instant_p_shard0001.inc1.id1.sim.gz",
+        "stage": "background",
+        "started_at": "2026-08-15T19:30:52.060616+00:00"
+      },
+      {
+        "artifact_bytes": 1664727297,
+        "attempt": 1,
+        "ended_at": "2026-08-15T20:12:08.707319+00:00",
+        "events": 77664,
+        "family": "n",
+        "job_id": "sf3_instant_n_shard0001",
+        "mode": "instant",
+        "peak_process_group_rss_GiB": 3.2936782836914062,
+        "peak_process_group_rss_bytes": 3536560128,
+        "receipt_path": "/home/ubuntu/.codex/worktrees/ddb4/TES_511_Balloon/runs/geometry_optimization_20260816/sf3_plan1_one_third_transport_v1/receipts/sf3_instant_n_shard0001.json",
+        "receipt_sha256": "755f5a051430a160fd7041a47432ed5ce494e3660da94514533c0e17cd3c3ef6",
+        "seed": 1869729926,
+        "sim_accessed_or_hashed": false,
+        "sim_bytes_metadata": 1650808316,
+        "sim_path_metadata": "/home/ubuntu/.codex/worktrees/ddb4/TES_511_Balloon/runs/geometry_optimization_20260816/sf3_plan1_one_third_transport_v1/jobs/sf3_instant_n_shard0001/attempts/attempt01/sf3_instant_n_shard0001.inc1.id1.sim.gz",
+        "stage": "background",
+        "started_at": "2026-08-15T19:30:52.578637+00:00"
+      },
+      {
+        "artifact_bytes": 1037058612,
+        "attempt": 1,
+        "ended_at": "2026-08-15T19:56:03.501554+00:00",
+        "events": 1986,
+        "family": "alpha",
+        "job_id": "sf3_instant_alpha_shard0001",
+        "mode": "instant",
+        "peak_process_group_rss_GiB": 1.6338157653808594,
+        "peak_process_group_rss_bytes": 1754296320,
+        "receipt_path": "/home/ubuntu/.codex/worktrees/ddb4/TES_511_Balloon/runs/geometry_optimization_20260816/sf3_plan1_one_third_transport_v1/receipts/sf3_instant_alpha_shard0001.json",
+        "receipt_sha256": "905bad85bd15518ef583ee4cb6151e4e39e4bd81b8f2f84367031078b6a30f4f",
+        "seed": 1682482957,
+        "sim_accessed_or_hashed": false,
+        "sim_bytes_metadata": 1034467722,
+        "sim_path_metadata": "/home/ubuntu/.codex/worktrees/ddb4/TES_511_Balloon/runs/geometry_optimization_20260816/sf3_plan1_one_third_transport_v1/jobs/sf3_instant_alpha_shard0001/attempts/attempt01/sf3_instant_alpha_shard0001.inc1.id1.sim.gz",
+        "stage": "background",
+        "started_at": "2026-08-15T19:30:53.107503+00:00"
+      },
+      {
+        "artifact_bytes": 742471296,
+        "attempt": 1,
+        "ended_at": "2026-08-15T18:17:58.618088+00:00",
+        "events": 267312,
+        "family": "gamma",
+        "job_id": "sf3_instant_gamma_shard0001",
+        "mode": "instant",
+        "peak_process_group_rss_GiB": 1.2265129089355469,
+        "peak_process_group_rss_bytes": 1316958208,
+        "receipt_path": "/home/ubuntu/.codex/worktrees/ddb4/TES_511_Balloon/runs/geometry_optimization_20260816/sf3_plan1_one_third_transport_v1/receipts/sf3_instant_gamma_shard0001.json",
+        "receipt_sha256": "afd5c00ba4fec778fce6c2a6d1fae604b387ac408687ae0add604d6a0b894b26",
+        "seed": 1307150012,
+        "sim_accessed_or_hashed": false,
+        "sim_bytes_metadata": 711508545,
+        "sim_path_metadata": "/home/ubuntu/.codex/worktrees/ddb4/TES_511_Balloon/runs/geometry_optimization_20260816/sf3_plan1_one_third_transport_v1/jobs/sf3_instant_gamma_shard0001/attempts/attempt01/sf3_instant_gamma_shard0001.inc1.id1.sim.gz",
+        "stage": "background",
+        "started_at": "2026-08-15T18:00:15.159541+00:00"
+      },
+      {
+        "artifact_bytes": 873296512,
+        "attempt": 2,
+        "ended_at": "2026-08-15T19:04:05.181319+00:00",
+        "events": 267312,
+        "family": "gamma",
+        "job_id": "sf3_instant_gamma_shard0002",
+        "mode": "instant",
+        "peak_process_group_rss_GiB": 1.6986045837402344,
+        "peak_process_group_rss_bytes": 1823862784,
+        "receipt_path": "/home/ubuntu/.codex/worktrees/ddb4/TES_511_Balloon/runs/geometry_optimization_20260816/sf3_plan1_one_third_transport_v1/receipts/sf3_instant_gamma_shard0002.json",
+        "receipt_sha256": "accc74b7cc86783077ddd0e988115a5048fe86d8c8d95e9bdb80c52a5159d19c",
+        "seed": 1976330421,
+        "sim_accessed_or_hashed": false,
+        "sim_bytes_metadata": 842327710,
+        "sim_path_metadata": "/home/ubuntu/.codex/worktrees/ddb4/TES_511_Balloon/runs/geometry_optimization_20260816/sf3_plan1_one_third_transport_v1/jobs/sf3_instant_gamma_shard0002/attempts/attempt02/sf3_instant_gamma_shard0002.inc1.id1.sim.gz",
+        "stage": "background",
+        "started_at": "2026-08-15T18:41:43.553908+00:00"
+      },
+      {
+        "artifact_bytes": 779344290,
+        "attempt": 2,
+        "ended_at": "2026-08-15T19:00:19.317617+00:00",
+        "events": 267311,
+        "family": "gamma",
+        "job_id": "sf3_instant_gamma_shard0003",
+        "mode": "instant",
+        "peak_process_group_rss_GiB": 1.1743087768554688,
+        "peak_process_group_rss_bytes": 1260904448,
+        "receipt_path": "/home/ubuntu/.codex/worktrees/ddb4/TES_511_Balloon/runs/geometry_optimization_20260816/sf3_plan1_one_third_transport_v1/receipts/sf3_instant_gamma_shard0003.json",
+        "receipt_sha256": "349d0f797cae4daa2b7760f93659f44e9b48e026023ae329d4a74dec82919a4c",
+        "seed": 854514258,
+        "sim_accessed_or_hashed": false,
+        "sim_bytes_metadata": 748332148,
+        "sim_path_metadata": "/home/ubuntu/.codex/worktrees/ddb4/TES_511_Balloon/runs/geometry_optimization_20260816/sf3_plan1_one_third_transport_v1/jobs/sf3_instant_gamma_shard0003/attempts/attempt02/sf3_instant_gamma_shard0003.inc1.id1.sim.gz",
+        "stage": "background",
+        "started_at": "2026-08-15T18:41:43.612694+00:00"
+      },
+      {
+        "artifact_bytes": 685864452,
+        "attempt": 2,
+        "ended_at": "2026-08-15T18:57:36.381121+00:00",
+        "events": 267311,
+        "family": "gamma",
+        "job_id": "sf3_instant_gamma_shard0004",
+        "mode": "instant",
+        "peak_process_group_rss_GiB": 0.7546424865722656,
+        "peak_process_group_rss_bytes": 810291200,
+        "receipt_path": "/home/ubuntu/.codex/worktrees/ddb4/TES_511_Balloon/runs/geometry_optimization_20260816/sf3_plan1_one_third_transport_v1/receipts/sf3_instant_gamma_shard0004.json",
+        "receipt_sha256": "7d970b851e810482a62bfbf316bc9e3725647e218b39da10c5949682986e3d82",
+        "seed": 58529966,
+        "sim_accessed_or_hashed": false,
+        "sim_bytes_metadata": 655050765,
+        "sim_path_metadata": "/home/ubuntu/.codex/worktrees/ddb4/TES_511_Balloon/runs/geometry_optimization_20260816/sf3_plan1_one_third_transport_v1/jobs/sf3_instant_gamma_shard0004/attempts/attempt02/sf3_instant_gamma_shard0004.inc1.id1.sim.gz",
+        "stage": "background",
+        "started_at": "2026-08-15T18:41:43.678249+00:00"
+      },
+      {
+        "artifact_bytes": 1027768144,
+        "attempt": 1,
+        "ended_at": "2026-08-15T20:16:58.355639+00:00",
+        "events": 98447,
+        "family": "eminus",
+        "job_id": "sf3_instant_eminus_shard0001",
+        "mode": "instant",
+        "peak_process_group_rss_GiB": 0.9059829711914062,
+        "peak_process_group_rss_bytes": 972791808,
+        "receipt_path": "/home/ubuntu/.codex/worktrees/ddb4/TES_511_Balloon/runs/geometry_optimization_20260816/sf3_plan1_one_third_transport_v1/receipts/sf3_instant_eminus_shard0001.json",
+        "receipt_sha256": "9f72e0558e186a58295033e52a5fdcfc02ff361fa2e3421814b5bdb9ebad2ec9",
+        "seed": 1979263323,
+        "sim_accessed_or_hashed": false,
+        "sim_bytes_metadata": 1004615336,
+        "sim_path_metadata": "/home/ubuntu/.codex/worktrees/ddb4/TES_511_Balloon/runs/geometry_optimization_20260816/sf3_plan1_one_third_transport_v1/jobs/sf3_instant_eminus_shard0001/attempts/attempt01/sf3_instant_eminus_shard0001.inc1.id1.sim.gz",
+        "stage": "background",
+        "started_at": "2026-08-15T19:55:22.024564+00:00"
+      },
+      {
+        "artifact_bytes": 1233207980,
+        "attempt": 1,
+        "ended_at": "2026-08-15T20:22:56.410020+00:00",
+        "events": 20062,
+        "family": "eplus",
+        "job_id": "sf3_instant_eplus_shard0001",
+        "mode": "instant",
+        "peak_process_group_rss_GiB": 3.5216827392578125,
+        "peak_process_group_rss_bytes": 3781378048,
+        "receipt_path": "/home/ubuntu/.codex/worktrees/ddb4/TES_511_Balloon/runs/geometry_optimization_20260816/sf3_plan1_one_third_transport_v1/receipts/sf3_instant_eplus_shard0001.json",
+        "receipt_sha256": "7c5a2d524e83ef211577050691da11d73d39ab2499e46085bfa3224c08b97c74",
+        "seed": 986850353,
+        "sim_accessed_or_hashed": false,
+        "sim_bytes_metadata": 1225171450,
+        "sim_path_metadata": "/home/ubuntu/.codex/worktrees/ddb4/TES_511_Balloon/runs/geometry_optimization_20260816/sf3_plan1_one_third_transport_v1/jobs/sf3_instant_eplus_shard0001/attempts/attempt01/sf3_instant_eplus_shard0001.inc1.id1.sim.gz",
+        "stage": "background",
+        "started_at": "2026-08-15T19:56:07.256382+00:00"
+      },
+      {
+        "artifact_bytes": 47949219,
+        "attempt": 1,
+        "ended_at": "2026-08-15T19:03:28.003399+00:00",
+        "events": 3481,
+        "family": "muminus",
+        "job_id": "sf3_instant_muminus_shard0001",
+        "mode": "instant",
+        "peak_process_group_rss_GiB": 0.6167335510253906,
+        "peak_process_group_rss_bytes": 662212608,
+        "receipt_path": "/home/ubuntu/.codex/worktrees/ddb4/TES_511_Balloon/runs/geometry_optimization_20260816/sf3_plan1_one_third_transport_v1/receipts/sf3_instant_muminus_shard0001.json",
+        "receipt_sha256": "90af2932ea066f9e4652ceb29d7a11624ed6fcddf4838a256fff9c4029cb95db",
+        "seed": 886129825,
+        "sim_accessed_or_hashed": false,
+        "sim_bytes_metadata": 46259483,
+        "sim_path_metadata": "/home/ubuntu/.codex/worktrees/ddb4/TES_511_Balloon/runs/geometry_optimization_20260816/sf3_plan1_one_third_transport_v1/jobs/sf3_instant_muminus_shard0001/attempts/attempt01/sf3_instant_muminus_shard0001.inc1.id1.sim.gz",
+        "stage": "background",
+        "started_at": "2026-08-15T19:01:01.928202+00:00"
+      },
+      {
+        "artifact_bytes": 18016031,
+        "attempt": 1,
+        "ended_at": "2026-08-15T18:43:02.219891+00:00",
+        "events": 1324,
+        "family": "muplus",
+        "job_id": "sf3_instant_muplus_shard0001",
+        "mode": "instant",
+        "peak_process_group_rss_GiB": 0.6047477722167969,
+        "peak_process_group_rss_bytes": 649342976,
+        "receipt_path": "/home/ubuntu/.codex/worktrees/ddb4/TES_511_Balloon/runs/geometry_optimization_20260816/sf3_plan1_one_third_transport_v1/receipts/sf3_instant_muplus_shard0001.json",
+        "receipt_sha256": "2e36816939cc25c9a89ab842f97ea8fb704660a8e4f8f11b821a102b66b0c54b",
+        "seed": 1369089672,
+        "sim_accessed_or_hashed": false,
+        "sim_bytes_metadata": 17324346,
+        "sim_path_metadata": "/home/ubuntu/.codex/worktrees/ddb4/TES_511_Balloon/runs/geometry_optimization_20260816/sf3_plan1_one_third_transport_v1/jobs/sf3_instant_muplus_shard0001/attempts/attempt01/sf3_instant_muplus_shard0001.inc1.id1.sim.gz",
+        "stage": "background",
+        "started_at": "2026-08-15T18:42:14.302357+00:00"
+      },
+      {
+        "artifact_bytes": 1593700531,
+        "attempt": 1,
+        "ended_at": "2026-08-15T20:45:43.177678+00:00",
+        "events": 8483,
+        "family": "p",
+        "job_id": "sf3_buildup_p_shard0001",
+        "mode": "buildup",
+        "peak_process_group_rss_GiB": 1.5335807800292969,
+        "peak_process_group_rss_bytes": 1646669824,
+        "receipt_path": "/home/ubuntu/.codex/worktrees/ddb4/TES_511_Balloon/runs/geometry_optimization_20260816/sf3_plan1_one_third_transport_v1/receipts/sf3_buildup_p_shard0001.json",
+        "receipt_sha256": "3b367cea6ee5c9f9da75c8e714b869fcb4c68b6b93ce4abf1334bb93de4d1ca7",
+        "seed": 682070755,
+        "sim_accessed_or_hashed": false,
+        "sim_bytes_metadata": 1587399258,
+        "sim_path_metadata": "/home/ubuntu/.codex/worktrees/ddb4/TES_511_Balloon/runs/geometry_optimization_20260816/sf3_plan1_one_third_transport_v1/jobs/sf3_buildup_p_shard0001/attempts/attempt01/sf3_buildup_p_shard0001.inc1.id1.sim.gz",
+        "stage": "background",
+        "started_at": "2026-08-15T20:11:09.102285+00:00"
+      },
+      {
+        "artifact_bytes": 1772726834,
+        "attempt": 1,
+        "ended_at": "2026-08-15T20:54:41.631511+00:00",
+        "events": 77664,
+        "family": "n",
+        "job_id": "sf3_buildup_n_shard0001",
+        "mode": "buildup",
+        "peak_process_group_rss_GiB": 3.2218246459960938,
+        "peak_process_group_rss_bytes": 3459407872,
+        "receipt_path": "/home/ubuntu/.codex/worktrees/ddb4/TES_511_Balloon/runs/geometry_optimization_20260816/sf3_plan1_one_third_transport_v1/receipts/sf3_buildup_n_shard0001.json",
+        "receipt_sha256": "1ce607a60bbcec5ef6e987085d211138dec373bb2cd76c945439b4c51573541d",
+        "seed": 309998490,
+        "sim_accessed_or_hashed": false,
+        "sim_bytes_metadata": 1758643206,
+        "sim_path_metadata": "/home/ubuntu/.codex/worktrees/ddb4/TES_511_Balloon/runs/geometry_optimization_20260816/sf3_plan1_one_third_transport_v1/jobs/sf3_buildup_n_shard0001/attempts/attempt01/sf3_buildup_n_shard0001.inc1.id1.sim.gz",
+        "stage": "background",
+        "started_at": "2026-08-15T20:12:10.122247+00:00"
+      },
+      {
+        "artifact_bytes": 906626619,
+        "attempt": 1,
+        "ended_at": "2026-08-15T20:38:08.754710+00:00",
+        "events": 1448,
+        "family": "alpha",
+        "job_id": "sf3_buildup_alpha_shard0001",
+        "mode": "buildup",
+        "peak_process_group_rss_GiB": 3.4487762451171875,
+        "peak_process_group_rss_bytes": 3703095296,
+        "receipt_path": "/home/ubuntu/.codex/worktrees/ddb4/TES_511_Balloon/runs/geometry_optimization_20260816/sf3_plan1_one_third_transport_v1/receipts/sf3_buildup_alpha_shard0001.json",
+        "receipt_sha256": "31d14051ce273136b8fe97ad28e0222fc52bd97b2f1467cbe164c605c552bb91",
+        "seed": 1484780271,
+        "sim_accessed_or_hashed": false,
+        "sim_bytes_metadata": 904500193,
+        "sim_path_metadata": "/home/ubuntu/.codex/worktrees/ddb4/TES_511_Balloon/runs/geometry_optimization_20260816/sf3_plan1_one_third_transport_v1/jobs/sf3_buildup_alpha_shard0001/attempts/attempt01/sf3_buildup_alpha_shard0001.inc1.id1.sim.gz",
+        "stage": "background",
+        "started_at": "2026-08-15T20:17:01.496671+00:00"
+      },
+      {
+        "artifact_bytes": 764062580,
+        "attempt": 2,
+        "ended_at": "2026-08-15T19:00:26.112531+00:00",
+        "events": 261834,
+        "family": "gamma",
+        "job_id": "sf3_buildup_gamma_shard0001",
+        "mode": "buildup",
+        "peak_process_group_rss_GiB": 0.9056625366210938,
+        "peak_process_group_rss_bytes": 972447744,
+        "receipt_path": "/home/ubuntu/.codex/worktrees/ddb4/TES_511_Balloon/runs/geometry_optimization_20260816/sf3_plan1_one_third_transport_v1/receipts/sf3_buildup_gamma_shard0001.json",
+        "receipt_sha256": "5c34ec7b0af58ceb340e945f48900ff15df8ef225e91839c88b352dec708e8aa",
+        "seed": 1364805253,
+        "sim_accessed_or_hashed": false,
+        "sim_bytes_metadata": 733660568,
+        "sim_path_metadata": "/home/ubuntu/.codex/worktrees/ddb4/TES_511_Balloon/runs/geometry_optimization_20260816/sf3_plan1_one_third_transport_v1/jobs/sf3_buildup_gamma_shard0001/attempts/attempt02/sf3_buildup_gamma_shard0001.inc1.id1.sim.gz",
+        "stage": "background",
+        "started_at": "2026-08-15T18:41:43.744535+00:00"
+      },
+      {
+        "artifact_bytes": 696878270,
+        "attempt": 2,
+        "ended_at": "2026-08-15T18:58:29.442493+00:00",
+        "events": 261833,
+        "family": "gamma",
+        "job_id": "sf3_buildup_gamma_shard0002",
+        "mode": "buildup",
+        "peak_process_group_rss_GiB": 0.7917366027832031,
+        "peak_process_group_rss_bytes": 850120704,
+        "receipt_path": "/home/ubuntu/.codex/worktrees/ddb4/TES_511_Balloon/runs/geometry_optimization_20260816/sf3_plan1_one_third_transport_v1/receipts/sf3_buildup_gamma_shard0002.json",
+        "receipt_sha256": "521a85b70aef0cd76accfc9290acf2605898381a1954e8153b09c406aea413b1",
+        "seed": 2091287065,
+        "sim_accessed_or_hashed": false,
+        "sim_bytes_metadata": 666765653,
+        "sim_path_metadata": "/home/ubuntu/.codex/worktrees/ddb4/TES_511_Balloon/runs/geometry_optimization_20260816/sf3_plan1_one_third_transport_v1/jobs/sf3_buildup_gamma_shard0002/attempts/attempt02/sf3_buildup_gamma_shard0002.inc1.id1.sim.gz",
+        "stage": "background",
+        "started_at": "2026-08-15T18:41:43.814158+00:00"
+      },
+      {
+        "artifact_bytes": 942995902,
+        "attempt": 2,
+        "ended_at": "2026-08-15T19:55:19.813764+00:00",
+        "events": 261833,
+        "family": "gamma",
+        "job_id": "sf3_buildup_gamma_shard0003",
+        "mode": "buildup",
+        "peak_process_group_rss_GiB": 3.1371116638183594,
+        "peak_process_group_rss_bytes": 3368448000,
+        "receipt_path": "/home/ubuntu/.codex/worktrees/ddb4/TES_511_Balloon/runs/geometry_optimization_20260816/sf3_plan1_one_third_transport_v1/receipts/sf3_buildup_gamma_shard0003.json",
+        "receipt_sha256": "634846cd4729326b349b5f13b7e8d83feba1455d721235f2a89f872732c6aaae",
+        "seed": 1785827956,
+        "sim_accessed_or_hashed": false,
+        "sim_bytes_metadata": 912513887,
+        "sim_path_metadata": "/home/ubuntu/.codex/worktrees/ddb4/TES_511_Balloon/runs/geometry_optimization_20260816/sf3_plan1_one_third_transport_v1/jobs/sf3_buildup_gamma_shard0003/attempts/attempt02/sf3_buildup_gamma_shard0003.inc1.id1.sim.gz",
+        "stage": "background",
+        "started_at": "2026-08-15T19:30:51.542912+00:00"
+      },
+      {
+        "artifact_bytes": 1013686335,
+        "attempt": 1,
+        "ended_at": "2026-08-15T20:43:43.449271+00:00",
+        "events": 98447,
+        "family": "eminus",
+        "job_id": "sf3_buildup_eminus_shard0001",
+        "mode": "buildup",
+        "peak_process_group_rss_GiB": 0.6838150024414062,
+        "peak_process_group_rss_bytes": 734240768,
+        "receipt_path": "/home/ubuntu/.codex/worktrees/ddb4/TES_511_Balloon/runs/geometry_optimization_20260816/sf3_plan1_one_third_transport_v1/receipts/sf3_buildup_eminus_shard0001.json",
+        "receipt_sha256": "62bf9bfec2f4f03b4851a54a69ff07e2f573e2b2ed58931714ea9baf2a0b8177",
+        "seed": 1025843832,
+        "sim_accessed_or_hashed": false,
+        "sim_bytes_metadata": 990420550,
+        "sim_path_metadata": "/home/ubuntu/.codex/worktrees/ddb4/TES_511_Balloon/runs/geometry_optimization_20260816/sf3_plan1_one_third_transport_v1/jobs/sf3_buildup_eminus_shard0001/attempts/attempt01/sf3_buildup_eminus_shard0001.inc1.id1.sim.gz",
+        "stage": "background",
+        "started_at": "2026-08-15T20:23:00.497092+00:00"
+      },
+      {
+        "artifact_bytes": 1165482762,
+        "attempt": 1,
+        "ended_at": "2026-08-15T21:03:21.350955+00:00",
+        "events": 20062,
+        "family": "eplus",
+        "job_id": "sf3_buildup_eplus_shard0001",
+        "mode": "buildup",
+        "peak_process_group_rss_GiB": 3.7223281860351562,
+        "peak_process_group_rss_bytes": 3996819456,
+        "receipt_path": "/home/ubuntu/.codex/worktrees/ddb4/TES_511_Balloon/runs/geometry_optimization_20260816/sf3_plan1_one_third_transport_v1/receipts/sf3_buildup_eplus_shard0001.json",
+        "receipt_sha256": "da02bfa394af2809cf61b76dbbe1373b741a2c53f330bfc132564ff72670d7ef",
+        "seed": 821327555,
+        "sim_accessed_or_hashed": false,
+        "sim_bytes_metadata": 1157382699,
+        "sim_path_metadata": "/home/ubuntu/.codex/worktrees/ddb4/TES_511_Balloon/runs/geometry_optimization_20260816/sf3_plan1_one_third_transport_v1/jobs/sf3_buildup_eplus_shard0001/attempts/attempt01/sf3_buildup_eplus_shard0001.inc1.id1.sim.gz",
+        "stage": "background",
+        "started_at": "2026-08-15T20:38:13.164851+00:00"
+      },
+      {
+        "artifact_bytes": 299744544,
+        "attempt": 1,
+        "ended_at": "2026-08-15T20:50:19.106026+00:00",
+        "events": 22564,
+        "family": "muminus",
+        "job_id": "sf3_buildup_muminus_shard0001",
+        "mode": "buildup",
+        "peak_process_group_rss_GiB": 0.6656837463378906,
+        "peak_process_group_rss_bytes": 714772480,
+        "receipt_path": "/home/ubuntu/.codex/worktrees/ddb4/TES_511_Balloon/runs/geometry_optimization_20260816/sf3_plan1_one_third_transport_v1/receipts/sf3_buildup_muminus_shard0001.json",
+        "receipt_sha256": "d25541039979ca699a840c5ab08c6fbb00918d14db3d178db5ccbb8658524729",
+        "seed": 1746500136,
+        "sim_accessed_or_hashed": false,
+        "sim_bytes_metadata": 289254661,
+        "sim_path_metadata": "/home/ubuntu/.codex/worktrees/ddb4/TES_511_Balloon/runs/geometry_optimization_20260816/sf3_plan1_one_third_transport_v1/jobs/sf3_buildup_muminus_shard0001/attempts/attempt01/sf3_buildup_muminus_shard0001.inc1.id1.sim.gz",
+        "stage": "background",
+        "started_at": "2026-08-15T20:43:45.488637+00:00"
+      },
+      {
+        "artifact_bytes": 19163989,
+        "attempt": 1,
+        "ended_at": "2026-08-15T20:46:28.155567+00:00",
+        "events": 1324,
+        "family": "muplus",
+        "job_id": "sf3_buildup_muplus_shard0001",
+        "mode": "buildup",
+        "peak_process_group_rss_GiB": 0.6384963989257812,
+        "peak_process_group_rss_bytes": 685580288,
+        "receipt_path": "/home/ubuntu/.codex/worktrees/ddb4/TES_511_Balloon/runs/geometry_optimization_20260816/sf3_plan1_one_third_transport_v1/receipts/sf3_buildup_muplus_shard0001.json",
+        "receipt_sha256": "303a0d27b44264c1d19055743e7e315168b910df8d4d88a066c848f97e01e3fd",
+        "seed": 1648795656,
+        "sim_accessed_or_hashed": false,
+        "sim_bytes_metadata": 18460894,
+        "sim_path_metadata": "/home/ubuntu/.codex/worktrees/ddb4/TES_511_Balloon/runs/geometry_optimization_20260816/sf3_plan1_one_third_transport_v1/jobs/sf3_buildup_muplus_shard0001/attempts/attempt01/sf3_buildup_muplus_shard0001.inc1.id1.sim.gz",
+        "stage": "background",
+        "started_at": "2026-08-15T20:45:46.373738+00:00"
+      }
+    ],
+    "validated_jobs": 21
+  },
+  "built_at": "2026-08-16T00:33:21.573180+00:00",
+  "checked_at": "2026-08-16T00:33:21.568191+00:00",
+  "completion_resources": {
+    "all_completion_rows_pass_dynamic_reserve": true,
+    "all_effective_jobs_present": true,
+    "dynamic_disk_reserve_bytes": 8589934592,
+    "expected_jobs": 29,
+    "minimum_completion_free_bytes": 47754379264,
+    "records": [
+      {
+        "at": "2026-08-15T20:38:08.770102+00:00",
+        "dynamic_disk_reserve_pass": true,
+        "free_bytes": 51648765952,
+        "job_id": "sf3_buildup_alpha_shard0001",
+        "peak_rss_bytes": 3703095296,
+        "stage": "background"
+      },
+      {
+        "at": "2026-08-15T20:43:43.451914+00:00",
+        "dynamic_disk_reserve_pass": true,
+        "free_bytes": 50670690304,
+        "job_id": "sf3_buildup_eminus_shard0001",
+        "peak_rss_bytes": 734240768,
+        "stage": "background"
+      },
+      {
+        "at": "2026-08-15T21:03:21.355997+00:00",
+        "dynamic_disk_reserve_pass": true,
+        "free_bytes": 48824553472,
+        "job_id": "sf3_buildup_eplus_shard0001",
+        "peak_rss_bytes": 3996819456,
+        "stage": "background"
+      },
+      {
+        "at": "2026-08-15T19:00:26.126548+00:00",
+        "dynamic_disk_reserve_pass": true,
+        "free_bytes": 67030409216,
+        "job_id": "sf3_buildup_gamma_shard0001",
+        "peak_rss_bytes": 972447744,
+        "stage": "background"
+      },
+      {
+        "at": "2026-08-15T18:58:29.458065+00:00",
+        "dynamic_disk_reserve_pass": true,
+        "free_bytes": 67464478720,
+        "job_id": "sf3_buildup_gamma_shard0002",
+        "peak_rss_bytes": 850120704,
+        "stage": "background"
+      },
+      {
+        "at": "2026-08-15T19:55:19.839153+00:00",
+        "dynamic_disk_reserve_pass": true,
+        "free_bytes": 59314302976,
+        "job_id": "sf3_buildup_gamma_shard0003",
+        "peak_rss_bytes": 3368448000,
+        "stage": "background"
+      },
+      {
+        "at": "2026-08-15T20:50:19.107139+00:00",
+        "dynamic_disk_reserve_pass": true,
+        "free_bytes": 49637711872,
+        "job_id": "sf3_buildup_muminus_shard0001",
+        "peak_rss_bytes": 714772480,
+        "stage": "background"
+      },
+      {
+        "at": "2026-08-15T20:46:28.157911+00:00",
+        "dynamic_disk_reserve_pass": true,
+        "free_bytes": 50179407872,
+        "job_id": "sf3_buildup_muplus_shard0001",
+        "peak_rss_bytes": 685580288,
+        "stage": "background"
+      },
+      {
+        "at": "2026-08-15T20:54:41.636790+00:00",
+        "dynamic_disk_reserve_pass": true,
+        "free_bytes": 49226506240,
+        "job_id": "sf3_buildup_n_shard0001",
+        "peak_rss_bytes": 3459407872,
+        "stage": "background"
+      },
+      {
+        "at": "2026-08-15T20:45:43.181806+00:00",
+        "dynamic_disk_reserve_pass": true,
+        "free_bytes": 50297839616,
+        "job_id": "sf3_buildup_p_shard0001",
+        "peak_rss_bytes": 1646669824,
+        "stage": "background"
+      },
+      {
+        "at": "2026-08-16T00:26:34.703359+00:00",
+        "dynamic_disk_reserve_pass": true,
+        "free_bytes": 48128372736,
+        "job_id": "sf3_delayed_alpha",
+        "peak_rss_bytes": 736780288,
+        "stage": "delayed"
+      },
+      {
+        "at": "2026-08-16T00:29:25.253260+00:00",
+        "dynamic_disk_reserve_pass": true,
+        "free_bytes": 47800647680,
+        "job_id": "sf3_delayed_eminus",
+        "peak_rss_bytes": 697630720,
+        "stage": "delayed"
+      },
+      {
+        "at": "2026-08-16T00:29:30.066503+00:00",
+        "dynamic_disk_reserve_pass": true,
+        "free_bytes": 47793295360,
+        "job_id": "sf3_delayed_eplus",
+        "peak_rss_bytes": 701718528,
+        "stage": "delayed"
+      },
+      {
+        "at": "2026-08-16T00:26:19.776748+00:00",
+        "dynamic_disk_reserve_pass": true,
+        "free_bytes": 48164257792,
+        "job_id": "sf3_delayed_gamma",
+        "peak_rss_bytes": 698683392,
+        "stage": "delayed"
+      },
+      {
+        "at": "2026-08-16T00:29:31.031175+00:00",
+        "dynamic_disk_reserve_pass": true,
+        "free_bytes": 47793283072,
+        "job_id": "sf3_delayed_muminus",
+        "peak_rss_bytes": 700817408,
+        "stage": "delayed"
+      },
+      {
+        "at": "2026-08-16T00:26:36.597307+00:00",
+        "dynamic_disk_reserve_pass": true,
+        "free_bytes": 48128356352,
+        "job_id": "sf3_delayed_n",
+        "peak_rss_bytes": 735346688,
+        "stage": "delayed"
+      },
+      {
+        "at": "2026-08-16T00:26:35.769307+00:00",
+        "dynamic_disk_reserve_pass": true,
+        "free_bytes": 48128364544,
+        "job_id": "sf3_delayed_p",
+        "peak_rss_bytes": 740388864,
+        "stage": "delayed"
+      },
+      {
+        "at": "2026-08-15T19:56:03.503602+00:00",
+        "dynamic_disk_reserve_pass": true,
+        "free_bytes": 59202899968,
+        "job_id": "sf3_instant_alpha_shard0001",
+        "peak_rss_bytes": 1754296320,
+        "stage": "background"
+      },
+      {
+        "at": "2026-08-15T20:16:58.368026+00:00",
+        "dynamic_disk_reserve_pass": true,
+        "free_bytes": 55469662208,
+        "job_id": "sf3_instant_eminus_shard0001",
+        "peak_rss_bytes": 972791808,
+        "stage": "background"
+      },
+      {
+        "at": "2026-08-15T20:22:56.416088+00:00",
+        "dynamic_disk_reserve_pass": true,
+        "free_bytes": 54414802944,
+        "job_id": "sf3_instant_eplus_shard0001",
+        "peak_rss_bytes": 3781378048,
+        "stage": "background"
+      },
+      {
+        "at": "2026-08-15T18:17:58.653571+00:00",
+        "dynamic_disk_reserve_pass": true,
+        "free_bytes": 72158584832,
+        "job_id": "sf3_instant_gamma_shard0001",
+        "peak_rss_bytes": 1316958208,
+        "stage": "background"
+      },
+      {
+        "at": "2026-08-15T19:04:05.194902+00:00",
+        "dynamic_disk_reserve_pass": true,
+        "free_bytes": 66548617216,
+        "job_id": "sf3_instant_gamma_shard0002",
+        "peak_rss_bytes": 1823862784,
+        "stage": "background"
+      },
+      {
+        "at": "2026-08-15T19:00:19.330920+00:00",
+        "dynamic_disk_reserve_pass": true,
+        "free_bytes": 67053297664,
+        "job_id": "sf3_instant_gamma_shard0003",
+        "peak_rss_bytes": 1260904448,
+        "stage": "background"
+      },
+      {
+        "at": "2026-08-15T18:57:36.413937+00:00",
+        "dynamic_disk_reserve_pass": true,
+        "free_bytes": 67661008896,
+        "job_id": "sf3_instant_gamma_shard0004",
+        "peak_rss_bytes": 810291200,
+        "stage": "background"
+      },
+      {
+        "at": "2026-08-15T19:03:28.034465+00:00",
+        "dynamic_disk_reserve_pass": true,
+        "free_bytes": 66692190208,
+        "job_id": "sf3_instant_muminus_shard0001",
+        "peak_rss_bytes": 662212608,
+        "stage": "background"
+      },
+      {
+        "at": "2026-08-15T18:43:02.232813+00:00",
+        "dynamic_disk_reserve_pass": true,
+        "free_bytes": 71410012160,
+        "job_id": "sf3_instant_muplus_shard0001",
+        "peak_rss_bytes": 649342976,
+        "stage": "background"
+      },
+      {
+        "at": "2026-08-15T20:12:08.716307+00:00",
+        "dynamic_disk_reserve_pass": true,
+        "free_bytes": 56311779328,
+        "job_id": "sf3_instant_n_shard0001",
+        "peak_rss_bytes": 3536560128,
+        "stage": "background"
+      },
+      {
+        "at": "2026-08-15T20:11:03.960463+00:00",
+        "dynamic_disk_reserve_pass": true,
+        "free_bytes": 56486645760,
+        "job_id": "sf3_instant_p_shard0001",
+        "peak_rss_bytes": 1533878272,
+        "stage": "background"
+      },
+      {
+        "at": "2026-08-16T00:32:13.586860+00:00",
+        "dynamic_disk_reserve_pass": true,
+        "free_bytes": 47754379264,
+        "job_id": "signal_full_envelope_sf3",
+        "peak_rss_bytes": 651022336,
+        "stage": "signal"
+      }
+    ],
+    "validated_jobs": 29
+  },
+  "configuration": {
+    "MemAvailable_floor_bytes": 1610612736,
+    "SwapFree_floor_bytes": 8589934592,
+    "adaptive_design_workers": [
+      4,
+      6
+    ],
+    "dynamic_disk_reserve_bytes": 8589934592,
+    "maximum_cpu_budget_cores": 6,
+    "maximum_is_budget_not_observed_execution": true
+  },
+  "delayed_dispositions": {
+    "RUN_83334_families": [
+      "p",
+      "n",
+      "alpha",
+      "gamma",
+      "eminus",
+      "eplus",
+      "muminus"
+    ],
+    "SKIP_ZERO_A15_families": [
+      "muplus"
+    ],
+    "by_family": {
+      "alpha": "RUN_83334",
+      "eminus": "RUN_83334",
+      "eplus": "RUN_83334",
+      "gamma": "RUN_83334",
+      "muminus": "RUN_83334",
+      "muplus": "SKIP_ZERO_A15",
+      "n": "RUN_83334",
+      "p": "RUN_83334"
+    },
+    "registered_cells": 8,
+    "zero_A15_receipt_policy": "NO_TRANSPORT_AND_NO_RECEIPT__FINITE_UPPER_PROVENANCE_RETAINED"
+  },
+  "effective_transport_job_ids": [
+    "sf3_buildup_alpha_shard0001",
+    "sf3_buildup_eminus_shard0001",
+    "sf3_buildup_eplus_shard0001",
+    "sf3_buildup_gamma_shard0001",
+    "sf3_buildup_gamma_shard0002",
+    "sf3_buildup_gamma_shard0003",
+    "sf3_buildup_muminus_shard0001",
+    "sf3_buildup_muplus_shard0001",
+    "sf3_buildup_n_shard0001",
+    "sf3_buildup_p_shard0001",
+    "sf3_delayed_alpha",
+    "sf3_delayed_eminus",
+    "sf3_delayed_eplus",
+    "sf3_delayed_gamma",
+    "sf3_delayed_muminus",
+    "sf3_delayed_n",
+    "sf3_delayed_p",
+    "sf3_instant_alpha_shard0001",
+    "sf3_instant_eminus_shard0001",
+    "sf3_instant_eplus_shard0001",
+    "sf3_instant_gamma_shard0001",
+    "sf3_instant_gamma_shard0002",
+    "sf3_instant_gamma_shard0003",
+    "sf3_instant_gamma_shard0004",
+    "sf3_instant_muminus_shard0001",
+    "sf3_instant_muplus_shard0001",
+    "sf3_instant_n_shard0001",
+    "sf3_instant_p_shard0001",
+    "signal_full_envelope_sf3"
+  ],
+  "errors": [],
+  "followup_execution": {
+    "guarded_session_labels": [
+      "build_prompt",
+      "transport_delayed",
+      "analyze_delayed",
+      "transport_signal",
+      "build_common_response"
+    ],
+    "pressure_log_path": "/home/ubuntu/.codex/worktrees/ddb4/TES_511_Balloon/engineering/geometry_optimization_20260815/49_sf3_plan1_transport_20260816/audit/sf3_plan1_followup_pressure_guard.jsonl",
+    "service_unit": "sf3-plan1-followup.service",
+    "workers": 4
+  },
+  "manual_pressure_recovery_event": {
+    "actual_controller_workers": 4,
+    "approximately_20_seconds_later_avg10_percent": 3.67,
+    "event_is_not_a_requirement_to_force_future_throttling": true,
+    "event_occurred": true,
+    "job_terminated_by_recovery_action": false,
+    "later_avg10_percent": 0.0,
+    "oomd_kill_gate_percent": 50.0,
+    "peak_some_avg10_percent": 43.42,
+    "quota_core_sequence": [
+      4,
+      3,
+      4
+    ]
+  },
+  "missing": [],
+  "output_exists": false,
+  "output_path": "/home/ubuntu/.codex/worktrees/ddb4/TES_511_Balloon/engineering/geometry_optimization_20260815/49_sf3_plan1_transport_20260816/audit/sf3_resource_timeline_audit.json",
+  "package_root": "/home/ubuntu/.codex/worktrees/ddb4/TES_511_Balloon/engineering/geometry_optimization_20260815/49_sf3_plan1_transport_20260816",
+  "pending": [],
+  "pressure_guard_policy": {
+    "action_scope": "AGGREGATE_CPU_QUOTA_ONLY__FOUR_ADMITTED_WORKERS_REMAIN",
+    "normal_quota_percent": 400,
+    "restore_avg10_percent": 2.0,
+    "safe_samples_to_restore": 6,
+    "throttle_full_avg10_percent": 10.0,
+    "throttle_quota_percent": 300,
+    "throttle_some_avg10_percent": 15.0,
+    "worker_signal_or_termination_action": false
+  },
+  "profile_id": "SF3_PLAN1_APPROX_ONE_THIRD_PHYSICS_SCREEN",
+  "ready": true,
+  "recovery": {
+    "failed_or_interrupted_partials_excluded": true,
+    "global_oom_protection_disabled": false,
+    "initial_maximum_controller_budget_cores": 6,
+    "post_oomd_actual_controller_workers": 4,
+    "post_oomd_initial_quota_cores": 4,
+    "recovery_records": 3,
+    "whole_job_event_zero_retry_policy": true
+  },
+  "run_root": "/home/ubuntu/.codex/worktrees/ddb4/TES_511_Balloon/runs/geometry_optimization_20260816/sf3_plan1_one_third_transport_v1",
+  "schema_version": 1,
+  "sim_access_policy": "NO_SIM_OPEN_STAT_DISCOVERY_OR_HASH__RECEIPT_PATH_SIZE_HEADER_METADATA_ONLY",
+  "sim_opened_statted_discovered_or_hashed": false,
+  "status": "PASS__SF3_RESOURCE_TIMELINE_ALL_EFFECTIVE_TRANSPORT_RECEIPTS_AND_RESOURCE_SESSIONS",
+  "systemd_or_service_action_performed": false,
+  "transport_launched": false,
+  "transport_receipts": {
+    "all_canonical_PASS": true,
+    "jobs_by_stage": {
+      "background": 21,
+      "delayed": 7,
+      "signal": 1
+    },
+    "maximum_peak_rss": {
+      "GiB": 3.7223281860351562,
+      "bytes": 3996819456,
+      "family": "eplus",
+      "job_id": "sf3_buildup_eplus_shard0001",
+      "mode": "buildup"
+    },
+    "per_family_max_peak_rss": {
+      "alpha": {
+        "GiB": 3.4487762451171875,
+        "bytes": 3703095296,
+        "job_id": "sf3_buildup_alpha_shard0001"
+      },
+      "eminus": {
+        "GiB": 0.9059829711914062,
+        "bytes": 972791808,
+        "job_id": "sf3_instant_eminus_shard0001"
+      },
+      "eplus": {
+        "GiB": 3.7223281860351562,
+        "bytes": 3996819456,
+        "job_id": "sf3_buildup_eplus_shard0001"
+      },
+      "focused_gamma": {
+        "GiB": 0.6063117980957031,
+        "bytes": 651022336,
+        "job_id": "signal_full_envelope_sf3"
+      },
+      "gamma": {
+        "GiB": 3.1371116638183594,
+        "bytes": 3368448000,
+        "job_id": "sf3_buildup_gamma_shard0003"
+      },
+      "muminus": {
+        "GiB": 0.6656837463378906,
+        "bytes": 714772480,
+        "job_id": "sf3_buildup_muminus_shard0001"
+      },
+      "muplus": {
+        "GiB": 0.6384963989257812,
+        "bytes": 685580288,
+        "job_id": "sf3_buildup_muplus_shard0001"
+      },
+      "n": {
+        "GiB": 3.2936782836914062,
+        "bytes": 3536560128,
+        "job_id": "sf3_instant_n_shard0001"
+      },
+      "p": {
+        "GiB": 1.5335807800292969,
+        "bytes": 1646669824,
+        "job_id": "sf3_buildup_p_shard0001"
+      }
+    },
+    "per_mode_family_max_peak_rss": [
+      {
+        "family": "alpha",
+        "jobs": 1,
+        "max_GiB": 3.4487762451171875,
+        "max_bytes": 3703095296,
+        "mode": "buildup"
+      },
+      {
+        "family": "eminus",
+        "jobs": 1,
+        "max_GiB": 0.6838150024414062,
+        "max_bytes": 734240768,
+        "mode": "buildup"
+      },
+      {
+        "family": "eplus",
+        "jobs": 1,
+        "max_GiB": 3.7223281860351562,
+        "max_bytes": 3996819456,
+        "mode": "buildup"
+      },
+      {
+        "family": "gamma",
+        "jobs": 3,
+        "max_GiB": 3.1371116638183594,
+        "max_bytes": 3368448000,
+        "mode": "buildup"
+      },
+      {
+        "family": "muminus",
+        "jobs": 1,
+        "max_GiB": 0.6656837463378906,
+        "max_bytes": 714772480,
+        "mode": "buildup"
+      },
+      {
+        "family": "muplus",
+        "jobs": 1,
+        "max_GiB": 0.6384963989257812,
+        "max_bytes": 685580288,
+        "mode": "buildup"
+      },
+      {
+        "family": "n",
+        "jobs": 1,
+        "max_GiB": 3.2218246459960938,
+        "max_bytes": 3459407872,
+        "mode": "buildup"
+      },
+      {
+        "family": "p",
+        "jobs": 1,
+        "max_GiB": 1.5335807800292969,
+        "max_bytes": 1646669824,
+        "mode": "buildup"
+      },
+      {
+        "family": "alpha",
+        "jobs": 1,
+        "max_GiB": 0.6861801147460938,
+        "max_bytes": 736780288,
+        "mode": "delayed"
+      },
+      {
+        "family": "eminus",
+        "jobs": 1,
+        "max_GiB": 0.64971923828125,
+        "max_bytes": 697630720,
+        "mode": "delayed"
+      },
+      {
+        "family": "eplus",
+        "jobs": 1,
+        "max_GiB": 0.6535263061523438,
+        "max_bytes": 701718528,
+        "mode": "delayed"
+      },
+      {
+        "family": "gamma",
+        "jobs": 1,
+        "max_GiB": 0.6506996154785156,
+        "max_bytes": 698683392,
+        "mode": "delayed"
+      },
+      {
+        "family": "muminus",
+        "jobs": 1,
+        "max_GiB": 0.6526870727539062,
+        "max_bytes": 700817408,
+        "mode": "delayed"
+      },
+      {
+        "family": "n",
+        "jobs": 1,
+        "max_GiB": 0.684844970703125,
+        "max_bytes": 735346688,
+        "mode": "delayed"
+      },
+      {
+        "family": "p",
+        "jobs": 1,
+        "max_GiB": 0.6895408630371094,
+        "max_bytes": 740388864,
+        "mode": "delayed"
+      },
+      {
+        "family": "alpha",
+        "jobs": 1,
+        "max_GiB": 1.6338157653808594,
+        "max_bytes": 1754296320,
+        "mode": "instant"
+      },
+      {
+        "family": "eminus",
+        "jobs": 1,
+        "max_GiB": 0.9059829711914062,
+        "max_bytes": 972791808,
+        "mode": "instant"
+      },
+      {
+        "family": "eplus",
+        "jobs": 1,
+        "max_GiB": 3.5216827392578125,
+        "max_bytes": 3781378048,
+        "mode": "instant"
+      },
+      {
+        "family": "gamma",
+        "jobs": 4,
+        "max_GiB": 1.6986045837402344,
+        "max_bytes": 1823862784,
+        "mode": "instant"
+      },
+      {
+        "family": "muminus",
+        "jobs": 1,
+        "max_GiB": 0.6167335510253906,
+        "max_bytes": 662212608,
+        "mode": "instant"
+      },
+      {
+        "family": "muplus",
+        "jobs": 1,
+        "max_GiB": 0.6047477722167969,
+        "max_bytes": 649342976,
+        "mode": "instant"
+      },
+      {
+        "family": "n",
+        "jobs": 1,
+        "max_GiB": 3.2936782836914062,
+        "max_bytes": 3536560128,
+        "mode": "instant"
+      },
+      {
+        "family": "p",
+        "jobs": 1,
+        "max_GiB": 1.4285354614257812,
+        "max_bytes": 1533878272,
+        "mode": "instant"
+      },
+      {
+        "family": "focused_gamma",
+        "jobs": 1,
+        "max_GiB": 0.6063117980957031,
+        "max_bytes": 651022336,
+        "mode": "signal"
+      }
+    ],
+    "planned_jobs": 29,
+    "receipt_records": [
+      {
+        "artifact_bytes": 1721886168,
+        "attempt": 1,
+        "ended_at": "2026-08-15T20:11:03.945773+00:00",
+        "events": 8483,
+        "family": "p",
+        "job_id": "sf3_instant_p_shard0001",
+        "mode": "instant",
+        "peak_process_group_rss_GiB": 1.4285354614257812,
+        "peak_process_group_rss_bytes": 1533878272,
+        "receipt_path": "/home/ubuntu/.codex/worktrees/ddb4/TES_511_Balloon/runs/geometry_optimization_20260816/sf3_plan1_one_third_transport_v1/receipts/sf3_instant_p_shard0001.json",
+        "receipt_sha256": "816a4ced476fad5a8560c5261cfa483a040fcb9e538da335260ca2746fa48988",
+        "seed": 240143578,
+        "sim_accessed_or_hashed": false,
+        "sim_bytes_metadata": 1715220335,
+        "sim_path_metadata": "/home/ubuntu/.codex/worktrees/ddb4/TES_511_Balloon/runs/geometry_optimization_20260816/sf3_plan1_one_third_transport_v1/jobs/sf3_instant_p_shard0001/attempts/attempt01/sf3_instant_p_shard0001.inc1.id1.sim.gz",
+        "stage": "background",
+        "started_at": "2026-08-15T19:30:52.060616+00:00"
+      },
+      {
+        "artifact_bytes": 1664727297,
+        "attempt": 1,
+        "ended_at": "2026-08-15T20:12:08.707319+00:00",
+        "events": 77664,
+        "family": "n",
+        "job_id": "sf3_instant_n_shard0001",
+        "mode": "instant",
+        "peak_process_group_rss_GiB": 3.2936782836914062,
+        "peak_process_group_rss_bytes": 3536560128,
+        "receipt_path": "/home/ubuntu/.codex/worktrees/ddb4/TES_511_Balloon/runs/geometry_optimization_20260816/sf3_plan1_one_third_transport_v1/receipts/sf3_instant_n_shard0001.json",
+        "receipt_sha256": "755f5a051430a160fd7041a47432ed5ce494e3660da94514533c0e17cd3c3ef6",
+        "seed": 1869729926,
+        "sim_accessed_or_hashed": false,
+        "sim_bytes_metadata": 1650808316,
+        "sim_path_metadata": "/home/ubuntu/.codex/worktrees/ddb4/TES_511_Balloon/runs/geometry_optimization_20260816/sf3_plan1_one_third_transport_v1/jobs/sf3_instant_n_shard0001/attempts/attempt01/sf3_instant_n_shard0001.inc1.id1.sim.gz",
+        "stage": "background",
+        "started_at": "2026-08-15T19:30:52.578637+00:00"
+      },
+      {
+        "artifact_bytes": 1037058612,
+        "attempt": 1,
+        "ended_at": "2026-08-15T19:56:03.501554+00:00",
+        "events": 1986,
+        "family": "alpha",
+        "job_id": "sf3_instant_alpha_shard0001",
+        "mode": "instant",
+        "peak_process_group_rss_GiB": 1.6338157653808594,
+        "peak_process_group_rss_bytes": 1754296320,
+        "receipt_path": "/home/ubuntu/.codex/worktrees/ddb4/TES_511_Balloon/runs/geometry_optimization_20260816/sf3_plan1_one_third_transport_v1/receipts/sf3_instant_alpha_shard0001.json",
+        "receipt_sha256": "905bad85bd15518ef583ee4cb6151e4e39e4bd81b8f2f84367031078b6a30f4f",
+        "seed": 1682482957,
+        "sim_accessed_or_hashed": false,
+        "sim_bytes_metadata": 1034467722,
+        "sim_path_metadata": "/home/ubuntu/.codex/worktrees/ddb4/TES_511_Balloon/runs/geometry_optimization_20260816/sf3_plan1_one_third_transport_v1/jobs/sf3_instant_alpha_shard0001/attempts/attempt01/sf3_instant_alpha_shard0001.inc1.id1.sim.gz",
+        "stage": "background",
+        "started_at": "2026-08-15T19:30:53.107503+00:00"
+      },
+      {
+        "artifact_bytes": 742471296,
+        "attempt": 1,
+        "ended_at": "2026-08-15T18:17:58.618088+00:00",
+        "events": 267312,
+        "family": "gamma",
+        "job_id": "sf3_instant_gamma_shard0001",
+        "mode": "instant",
+        "peak_process_group_rss_GiB": 1.2265129089355469,
+        "peak_process_group_rss_bytes": 1316958208,
+        "receipt_path": "/home/ubuntu/.codex/worktrees/ddb4/TES_511_Balloon/runs/geometry_optimization_20260816/sf3_plan1_one_third_transport_v1/receipts/sf3_instant_gamma_shard0001.json",
+        "receipt_sha256": "afd5c00ba4fec778fce6c2a6d1fae604b387ac408687ae0add604d6a0b894b26",
+        "seed": 1307150012,
+        "sim_accessed_or_hashed": false,
+        "sim_bytes_metadata": 711508545,
+        "sim_path_metadata": "/home/ubuntu/.codex/worktrees/ddb4/TES_511_Balloon/runs/geometry_optimization_20260816/sf3_plan1_one_third_transport_v1/jobs/sf3_instant_gamma_shard0001/attempts/attempt01/sf3_instant_gamma_shard0001.inc1.id1.sim.gz",
+        "stage": "background",
+        "started_at": "2026-08-15T18:00:15.159541+00:00"
+      },
+      {
+        "artifact_bytes": 873296512,
+        "attempt": 2,
+        "ended_at": "2026-08-15T19:04:05.181319+00:00",
+        "events": 267312,
+        "family": "gamma",
+        "job_id": "sf3_instant_gamma_shard0002",
+        "mode": "instant",
+        "peak_process_group_rss_GiB": 1.6986045837402344,
+        "peak_process_group_rss_bytes": 1823862784,
+        "receipt_path": "/home/ubuntu/.codex/worktrees/ddb4/TES_511_Balloon/runs/geometry_optimization_20260816/sf3_plan1_one_third_transport_v1/receipts/sf3_instant_gamma_shard0002.json",
+        "receipt_sha256": "accc74b7cc86783077ddd0e988115a5048fe86d8c8d95e9bdb80c52a5159d19c",
+        "seed": 1976330421,
+        "sim_accessed_or_hashed": false,
+        "sim_bytes_metadata": 842327710,
+        "sim_path_metadata": "/home/ubuntu/.codex/worktrees/ddb4/TES_511_Balloon/runs/geometry_optimization_20260816/sf3_plan1_one_third_transport_v1/jobs/sf3_instant_gamma_shard0002/attempts/attempt02/sf3_instant_gamma_shard0002.inc1.id1.sim.gz",
+        "stage": "background",
+        "started_at": "2026-08-15T18:41:43.553908+00:00"
+      },
+      {
+        "artifact_bytes": 779344290,
+        "attempt": 2,
+        "ended_at": "2026-08-15T19:00:19.317617+00:00",
+        "events": 267311,
+        "family": "gamma",
+        "job_id": "sf3_instant_gamma_shard0003",
+        "mode": "instant",
+        "peak_process_group_rss_GiB": 1.1743087768554688,
+        "peak_process_group_rss_bytes": 1260904448,
+        "receipt_path": "/home/ubuntu/.codex/worktrees/ddb4/TES_511_Balloon/runs/geometry_optimization_20260816/sf3_plan1_one_third_transport_v1/receipts/sf3_instant_gamma_shard0003.json",
+        "receipt_sha256": "349d0f797cae4daa2b7760f93659f44e9b48e026023ae329d4a74dec82919a4c",
+        "seed": 854514258,
+        "sim_accessed_or_hashed": false,
+        "sim_bytes_metadata": 748332148,
+        "sim_path_metadata": "/home/ubuntu/.codex/worktrees/ddb4/TES_511_Balloon/runs/geometry_optimization_20260816/sf3_plan1_one_third_transport_v1/jobs/sf3_instant_gamma_shard0003/attempts/attempt02/sf3_instant_gamma_shard0003.inc1.id1.sim.gz",
+        "stage": "background",
+        "started_at": "2026-08-15T18:41:43.612694+00:00"
+      },
+      {
+        "artifact_bytes": 685864452,
+        "attempt": 2,
+        "ended_at": "2026-08-15T18:57:36.381121+00:00",
+        "events": 267311,
+        "family": "gamma",
+        "job_id": "sf3_instant_gamma_shard0004",
+        "mode": "instant",
+        "peak_process_group_rss_GiB": 0.7546424865722656,
+        "peak_process_group_rss_bytes": 810291200,
+        "receipt_path": "/home/ubuntu/.codex/worktrees/ddb4/TES_511_Balloon/runs/geometry_optimization_20260816/sf3_plan1_one_third_transport_v1/receipts/sf3_instant_gamma_shard0004.json",
+        "receipt_sha256": "7d970b851e810482a62bfbf316bc9e3725647e218b39da10c5949682986e3d82",
+        "seed": 58529966,
+        "sim_accessed_or_hashed": false,
+        "sim_bytes_metadata": 655050765,
+        "sim_path_metadata": "/home/ubuntu/.codex/worktrees/ddb4/TES_511_Balloon/runs/geometry_optimization_20260816/sf3_plan1_one_third_transport_v1/jobs/sf3_instant_gamma_shard0004/attempts/attempt02/sf3_instant_gamma_shard0004.inc1.id1.sim.gz",
+        "stage": "background",
+        "started_at": "2026-08-15T18:41:43.678249+00:00"
+      },
+      {
+        "artifact_bytes": 1027768144,
+        "attempt": 1,
+        "ended_at": "2026-08-15T20:16:58.355639+00:00",
+        "events": 98447,
+        "family": "eminus",
+        "job_id": "sf3_instant_eminus_shard0001",
+        "mode": "instant",
+        "peak_process_group_rss_GiB": 0.9059829711914062,
+        "peak_process_group_rss_bytes": 972791808,
+        "receipt_path": "/home/ubuntu/.codex/worktrees/ddb4/TES_511_Balloon/runs/geometry_optimization_20260816/sf3_plan1_one_third_transport_v1/receipts/sf3_instant_eminus_shard0001.json",
+        "receipt_sha256": "9f72e0558e186a58295033e52a5fdcfc02ff361fa2e3421814b5bdb9ebad2ec9",
+        "seed": 1979263323,
+        "sim_accessed_or_hashed": false,
+        "sim_bytes_metadata": 1004615336,
+        "sim_path_metadata": "/home/ubuntu/.codex/worktrees/ddb4/TES_511_Balloon/runs/geometry_optimization_20260816/sf3_plan1_one_third_transport_v1/jobs/sf3_instant_eminus_shard0001/attempts/attempt01/sf3_instant_eminus_shard0001.inc1.id1.sim.gz",
+        "stage": "background",
+        "started_at": "2026-08-15T19:55:22.024564+00:00"
+      },
+      {
+        "artifact_bytes": 1233207980,
+        "attempt": 1,
+        "ended_at": "2026-08-15T20:22:56.410020+00:00",
+        "events": 20062,
+        "family": "eplus",
+        "job_id": "sf3_instant_eplus_shard0001",
+        "mode": "instant",
+        "peak_process_group_rss_GiB": 3.5216827392578125,
+        "peak_process_group_rss_bytes": 3781378048,
+        "receipt_path": "/home/ubuntu/.codex/worktrees/ddb4/TES_511_Balloon/runs/geometry_optimization_20260816/sf3_plan1_one_third_transport_v1/receipts/sf3_instant_eplus_shard0001.json",
+        "receipt_sha256": "7c5a2d524e83ef211577050691da11d73d39ab2499e46085bfa3224c08b97c74",
+        "seed": 986850353,
+        "sim_accessed_or_hashed": false,
+        "sim_bytes_metadata": 1225171450,
+        "sim_path_metadata": "/home/ubuntu/.codex/worktrees/ddb4/TES_511_Balloon/runs/geometry_optimization_20260816/sf3_plan1_one_third_transport_v1/jobs/sf3_instant_eplus_shard0001/attempts/attempt01/sf3_instant_eplus_shard0001.inc1.id1.sim.gz",
+        "stage": "background",
+        "started_at": "2026-08-15T19:56:07.256382+00:00"
+      },
+      {
+        "artifact_bytes": 47949219,
+        "attempt": 1,
+        "ended_at": "2026-08-15T19:03:28.003399+00:00",
+        "events": 3481,
+        "family": "muminus",
+        "job_id": "sf3_instant_muminus_shard0001",
+        "mode": "instant",
+        "peak_process_group_rss_GiB": 0.6167335510253906,
+        "peak_process_group_rss_bytes": 662212608,
+        "receipt_path": "/home/ubuntu/.codex/worktrees/ddb4/TES_511_Balloon/runs/geometry_optimization_20260816/sf3_plan1_one_third_transport_v1/receipts/sf3_instant_muminus_shard0001.json",
+        "receipt_sha256": "90af2932ea066f9e4652ceb29d7a11624ed6fcddf4838a256fff9c4029cb95db",
+        "seed": 886129825,
+        "sim_accessed_or_hashed": false,
+        "sim_bytes_metadata": 46259483,
+        "sim_path_metadata": "/home/ubuntu/.codex/worktrees/ddb4/TES_511_Balloon/runs/geometry_optimization_20260816/sf3_plan1_one_third_transport_v1/jobs/sf3_instant_muminus_shard0001/attempts/attempt01/sf3_instant_muminus_shard0001.inc1.id1.sim.gz",
+        "stage": "background",
+        "started_at": "2026-08-15T19:01:01.928202+00:00"
+      },
+      {
+        "artifact_bytes": 18016031,
+        "attempt": 1,
+        "ended_at": "2026-08-15T18:43:02.219891+00:00",
+        "events": 1324,
+        "family": "muplus",
+        "job_id": "sf3_instant_muplus_shard0001",
+        "mode": "instant",
+        "peak_process_group_rss_GiB": 0.6047477722167969,
+        "peak_process_group_rss_bytes": 649342976,
+        "receipt_path": "/home/ubuntu/.codex/worktrees/ddb4/TES_511_Balloon/runs/geometry_optimization_20260816/sf3_plan1_one_third_transport_v1/receipts/sf3_instant_muplus_shard0001.json",
+        "receipt_sha256": "2e36816939cc25c9a89ab842f97ea8fb704660a8e4f8f11b821a102b66b0c54b",
+        "seed": 1369089672,
+        "sim_accessed_or_hashed": false,
+        "sim_bytes_metadata": 17324346,
+        "sim_path_metadata": "/home/ubuntu/.codex/worktrees/ddb4/TES_511_Balloon/runs/geometry_optimization_20260816/sf3_plan1_one_third_transport_v1/jobs/sf3_instant_muplus_shard0001/attempts/attempt01/sf3_instant_muplus_shard0001.inc1.id1.sim.gz",
+        "stage": "background",
+        "started_at": "2026-08-15T18:42:14.302357+00:00"
+      },
+      {
+        "artifact_bytes": 1593700531,
+        "attempt": 1,
+        "ended_at": "2026-08-15T20:45:43.177678+00:00",
+        "events": 8483,
+        "family": "p",
+        "job_id": "sf3_buildup_p_shard0001",
+        "mode": "buildup",
+        "peak_process_group_rss_GiB": 1.5335807800292969,
+        "peak_process_group_rss_bytes": 1646669824,
+        "receipt_path": "/home/ubuntu/.codex/worktrees/ddb4/TES_511_Balloon/runs/geometry_optimization_20260816/sf3_plan1_one_third_transport_v1/receipts/sf3_buildup_p_shard0001.json",
+        "receipt_sha256": "3b367cea6ee5c9f9da75c8e714b869fcb4c68b6b93ce4abf1334bb93de4d1ca7",
+        "seed": 682070755,
+        "sim_accessed_or_hashed": false,
+        "sim_bytes_metadata": 1587399258,
+        "sim_path_metadata": "/home/ubuntu/.codex/worktrees/ddb4/TES_511_Balloon/runs/geometry_optimization_20260816/sf3_plan1_one_third_transport_v1/jobs/sf3_buildup_p_shard0001/attempts/attempt01/sf3_buildup_p_shard0001.inc1.id1.sim.gz",
+        "stage": "background",
+        "started_at": "2026-08-15T20:11:09.102285+00:00"
+      },
+      {
+        "artifact_bytes": 1772726834,
+        "attempt": 1,
+        "ended_at": "2026-08-15T20:54:41.631511+00:00",
+        "events": 77664,
+        "family": "n",
+        "job_id": "sf3_buildup_n_shard0001",
+        "mode": "buildup",
+        "peak_process_group_rss_GiB": 3.2218246459960938,
+        "peak_process_group_rss_bytes": 3459407872,
+        "receipt_path": "/home/ubuntu/.codex/worktrees/ddb4/TES_511_Balloon/runs/geometry_optimization_20260816/sf3_plan1_one_third_transport_v1/receipts/sf3_buildup_n_shard0001.json",
+        "receipt_sha256": "1ce607a60bbcec5ef6e987085d211138dec373bb2cd76c945439b4c51573541d",
+        "seed": 309998490,
+        "sim_accessed_or_hashed": false,
+        "sim_bytes_metadata": 1758643206,
+        "sim_path_metadata": "/home/ubuntu/.codex/worktrees/ddb4/TES_511_Balloon/runs/geometry_optimization_20260816/sf3_plan1_one_third_transport_v1/jobs/sf3_buildup_n_shard0001/attempts/attempt01/sf3_buildup_n_shard0001.inc1.id1.sim.gz",
+        "stage": "background",
+        "started_at": "2026-08-15T20:12:10.122247+00:00"
+      },
+      {
+        "artifact_bytes": 906626619,
+        "attempt": 1,
+        "ended_at": "2026-08-15T20:38:08.754710+00:00",
+        "events": 1448,
+        "family": "alpha",
+        "job_id": "sf3_buildup_alpha_shard0001",
+        "mode": "buildup",
+        "peak_process_group_rss_GiB": 3.4487762451171875,
+        "peak_process_group_rss_bytes": 3703095296,
+        "receipt_path": "/home/ubuntu/.codex/worktrees/ddb4/TES_511_Balloon/runs/geometry_optimization_20260816/sf3_plan1_one_third_transport_v1/receipts/sf3_buildup_alpha_shard0001.json",
+        "receipt_sha256": "31d14051ce273136b8fe97ad28e0222fc52bd97b2f1467cbe164c605c552bb91",
+        "seed": 1484780271,
+        "sim_accessed_or_hashed": false,
+        "sim_bytes_metadata": 904500193,
+        "sim_path_metadata": "/home/ubuntu/.codex/worktrees/ddb4/TES_511_Balloon/runs/geometry_optimization_20260816/sf3_plan1_one_third_transport_v1/jobs/sf3_buildup_alpha_shard0001/attempts/attempt01/sf3_buildup_alpha_shard0001.inc1.id1.sim.gz",
+        "stage": "background",
+        "started_at": "2026-08-15T20:17:01.496671+00:00"
+      },
+      {
+        "artifact_bytes": 764062580,
+        "attempt": 2,
+        "ended_at": "2026-08-15T19:00:26.112531+00:00",
+        "events": 261834,
+        "family": "gamma",
+        "job_id": "sf3_buildup_gamma_shard0001",
+        "mode": "buildup",
+        "peak_process_group_rss_GiB": 0.9056625366210938,
+        "peak_process_group_rss_bytes": 972447744,
+        "receipt_path": "/home/ubuntu/.codex/worktrees/ddb4/TES_511_Balloon/runs/geometry_optimization_20260816/sf3_plan1_one_third_transport_v1/receipts/sf3_buildup_gamma_shard0001.json",
+        "receipt_sha256": "5c34ec7b0af58ceb340e945f48900ff15df8ef225e91839c88b352dec708e8aa",
+        "seed": 1364805253,
+        "sim_accessed_or_hashed": false,
+        "sim_bytes_metadata": 733660568,
+        "sim_path_metadata": "/home/ubuntu/.codex/worktrees/ddb4/TES_511_Balloon/runs/geometry_optimization_20260816/sf3_plan1_one_third_transport_v1/jobs/sf3_buildup_gamma_shard0001/attempts/attempt02/sf3_buildup_gamma_shard0001.inc1.id1.sim.gz",
+        "stage": "background",
+        "started_at": "2026-08-15T18:41:43.744535+00:00"
+      },
+      {
+        "artifact_bytes": 696878270,
+        "attempt": 2,
+        "ended_at": "2026-08-15T18:58:29.442493+00:00",
+        "events": 261833,
+        "family": "gamma",
+        "job_id": "sf3_buildup_gamma_shard0002",
+        "mode": "buildup",
+        "peak_process_group_rss_GiB": 0.7917366027832031,
+        "peak_process_group_rss_bytes": 850120704,
+        "receipt_path": "/home/ubuntu/.codex/worktrees/ddb4/TES_511_Balloon/runs/geometry_optimization_20260816/sf3_plan1_one_third_transport_v1/receipts/sf3_buildup_gamma_shard0002.json",
+        "receipt_sha256": "521a85b70aef0cd76accfc9290acf2605898381a1954e8153b09c406aea413b1",
+        "seed": 2091287065,
+        "sim_accessed_or_hashed": false,
+        "sim_bytes_metadata": 666765653,
+        "sim_path_metadata": "/home/ubuntu/.codex/worktrees/ddb4/TES_511_Balloon/runs/geometry_optimization_20260816/sf3_plan1_one_third_transport_v1/jobs/sf3_buildup_gamma_shard0002/attempts/attempt02/sf3_buildup_gamma_shard0002.inc1.id1.sim.gz",
+        "stage": "background",
+        "started_at": "2026-08-15T18:41:43.814158+00:00"
+      },
+      {
+        "artifact_bytes": 942995902,
+        "attempt": 2,
+        "ended_at": "2026-08-15T19:55:19.813764+00:00",
+        "events": 261833,
+        "family": "gamma",
+        "job_id": "sf3_buildup_gamma_shard0003",
+        "mode": "buildup",
+        "peak_process_group_rss_GiB": 3.1371116638183594,
+        "peak_process_group_rss_bytes": 3368448000,
+        "receipt_path": "/home/ubuntu/.codex/worktrees/ddb4/TES_511_Balloon/runs/geometry_optimization_20260816/sf3_plan1_one_third_transport_v1/receipts/sf3_buildup_gamma_shard0003.json",
+        "receipt_sha256": "634846cd4729326b349b5f13b7e8d83feba1455d721235f2a89f872732c6aaae",
+        "seed": 1785827956,
+        "sim_accessed_or_hashed": false,
+        "sim_bytes_metadata": 912513887,
+        "sim_path_metadata": "/home/ubuntu/.codex/worktrees/ddb4/TES_511_Balloon/runs/geometry_optimization_20260816/sf3_plan1_one_third_transport_v1/jobs/sf3_buildup_gamma_shard0003/attempts/attempt02/sf3_buildup_gamma_shard0003.inc1.id1.sim.gz",
+        "stage": "background",
+        "started_at": "2026-08-15T19:30:51.542912+00:00"
+      },
+      {
+        "artifact_bytes": 1013686335,
+        "attempt": 1,
+        "ended_at": "2026-08-15T20:43:43.449271+00:00",
+        "events": 98447,
+        "family": "eminus",
+        "job_id": "sf3_buildup_eminus_shard0001",
+        "mode": "buildup",
+        "peak_process_group_rss_GiB": 0.6838150024414062,
+        "peak_process_group_rss_bytes": 734240768,
+        "receipt_path": "/home/ubuntu/.codex/worktrees/ddb4/TES_511_Balloon/runs/geometry_optimization_20260816/sf3_plan1_one_third_transport_v1/receipts/sf3_buildup_eminus_shard0001.json",
+        "receipt_sha256": "62bf9bfec2f4f03b4851a54a69ff07e2f573e2b2ed58931714ea9baf2a0b8177",
+        "seed": 1025843832,
+        "sim_accessed_or_hashed": false,
+        "sim_bytes_metadata": 990420550,
+        "sim_path_metadata": "/home/ubuntu/.codex/worktrees/ddb4/TES_511_Balloon/runs/geometry_optimization_20260816/sf3_plan1_one_third_transport_v1/jobs/sf3_buildup_eminus_shard0001/attempts/attempt01/sf3_buildup_eminus_shard0001.inc1.id1.sim.gz",
+        "stage": "background",
+        "started_at": "2026-08-15T20:23:00.497092+00:00"
+      },
+      {
+        "artifact_bytes": 1165482762,
+        "attempt": 1,
+        "ended_at": "2026-08-15T21:03:21.350955+00:00",
+        "events": 20062,
+        "family": "eplus",
+        "job_id": "sf3_buildup_eplus_shard0001",
+        "mode": "buildup",
+        "peak_process_group_rss_GiB": 3.7223281860351562,
+        "peak_process_group_rss_bytes": 3996819456,
+        "receipt_path": "/home/ubuntu/.codex/worktrees/ddb4/TES_511_Balloon/runs/geometry_optimization_20260816/sf3_plan1_one_third_transport_v1/receipts/sf3_buildup_eplus_shard0001.json",
+        "receipt_sha256": "da02bfa394af2809cf61b76dbbe1373b741a2c53f330bfc132564ff72670d7ef",
+        "seed": 821327555,
+        "sim_accessed_or_hashed": false,
+        "sim_bytes_metadata": 1157382699,
+        "sim_path_metadata": "/home/ubuntu/.codex/worktrees/ddb4/TES_511_Balloon/runs/geometry_optimization_20260816/sf3_plan1_one_third_transport_v1/jobs/sf3_buildup_eplus_shard0001/attempts/attempt01/sf3_buildup_eplus_shard0001.inc1.id1.sim.gz",
+        "stage": "background",
+        "started_at": "2026-08-15T20:38:13.164851+00:00"
+      },
+      {
+        "artifact_bytes": 299744544,
+        "attempt": 1,
+        "ended_at": "2026-08-15T20:50:19.106026+00:00",
+        "events": 22564,
+        "family": "muminus",
+        "job_id": "sf3_buildup_muminus_shard0001",
+        "mode": "buildup",
+        "peak_process_group_rss_GiB": 0.6656837463378906,
+        "peak_process_group_rss_bytes": 714772480,
+        "receipt_path": "/home/ubuntu/.codex/worktrees/ddb4/TES_511_Balloon/runs/geometry_optimization_20260816/sf3_plan1_one_third_transport_v1/receipts/sf3_buildup_muminus_shard0001.json",
+        "receipt_sha256": "d25541039979ca699a840c5ab08c6fbb00918d14db3d178db5ccbb8658524729",
+        "seed": 1746500136,
+        "sim_accessed_or_hashed": false,
+        "sim_bytes_metadata": 289254661,
+        "sim_path_metadata": "/home/ubuntu/.codex/worktrees/ddb4/TES_511_Balloon/runs/geometry_optimization_20260816/sf3_plan1_one_third_transport_v1/jobs/sf3_buildup_muminus_shard0001/attempts/attempt01/sf3_buildup_muminus_shard0001.inc1.id1.sim.gz",
+        "stage": "background",
+        "started_at": "2026-08-15T20:43:45.488637+00:00"
+      },
+      {
+        "artifact_bytes": 19163989,
+        "attempt": 1,
+        "ended_at": "2026-08-15T20:46:28.155567+00:00",
+        "events": 1324,
+        "family": "muplus",
+        "job_id": "sf3_buildup_muplus_shard0001",
+        "mode": "buildup",
+        "peak_process_group_rss_GiB": 0.6384963989257812,
+        "peak_process_group_rss_bytes": 685580288,
+        "receipt_path": "/home/ubuntu/.codex/worktrees/ddb4/TES_511_Balloon/runs/geometry_optimization_20260816/sf3_plan1_one_third_transport_v1/receipts/sf3_buildup_muplus_shard0001.json",
+        "receipt_sha256": "303a0d27b44264c1d19055743e7e315168b910df8d4d88a066c848f97e01e3fd",
+        "seed": 1648795656,
+        "sim_accessed_or_hashed": false,
+        "sim_bytes_metadata": 18460894,
+        "sim_path_metadata": "/home/ubuntu/.codex/worktrees/ddb4/TES_511_Balloon/runs/geometry_optimization_20260816/sf3_plan1_one_third_transport_v1/jobs/sf3_buildup_muplus_shard0001/attempts/attempt01/sf3_buildup_muplus_shard0001.inc1.id1.sim.gz",
+        "stage": "background",
+        "started_at": "2026-08-15T20:45:46.373738+00:00"
+      },
+      {
+        "artifact_bytes": 138597225,
+        "attempt": 1,
+        "ended_at": "2026-08-16T00:26:35.763925+00:00",
+        "events": 83334,
+        "family": "p",
+        "job_id": "sf3_delayed_p",
+        "mode": "delayed",
+        "peak_process_group_rss_GiB": 0.6895408630371094,
+        "peak_process_group_rss_bytes": 740388864,
+        "receipt_path": "/home/ubuntu/.codex/worktrees/ddb4/TES_511_Balloon/runs/geometry_optimization_20260816/sf3_plan1_one_third_transport_v1/receipts/sf3_delayed_p.json",
+        "receipt_sha256": "a8d00f23a457cc91d027159b25fd46138cdb7e7860b5b25581263c20dc580889",
+        "seed": 1882338494,
+        "sim_accessed_or_hashed": false,
+        "sim_bytes_metadata": 120676548,
+        "sim_path_metadata": "/home/ubuntu/.codex/worktrees/ddb4/TES_511_Balloon/runs/geometry_optimization_20260816/sf3_plan1_one_third_transport_v1/jobs/sf3_delayed_p/attempts/attempt01/sf3_delayed_p.inc1.id1.sim.gz",
+        "stage": "delayed",
+        "started_at": "2026-08-16T00:23:00.049289+00:00"
+      },
+      {
+        "artifact_bytes": 139060846,
+        "attempt": 1,
+        "ended_at": "2026-08-16T00:26:36.590662+00:00",
+        "events": 83334,
+        "family": "n",
+        "job_id": "sf3_delayed_n",
+        "mode": "delayed",
+        "peak_process_group_rss_GiB": 0.684844970703125,
+        "peak_process_group_rss_bytes": 735346688,
+        "receipt_path": "/home/ubuntu/.codex/worktrees/ddb4/TES_511_Balloon/runs/geometry_optimization_20260816/sf3_plan1_one_third_transport_v1/receipts/sf3_delayed_n.json",
+        "receipt_sha256": "d361c9744e2467fbe04b473469662d0c454acf7b94929da38f67dfb6b643c0ff",
+        "seed": 1703395200,
+        "sim_accessed_or_hashed": false,
+        "sim_bytes_metadata": 121203407,
+        "sim_path_metadata": "/home/ubuntu/.codex/worktrees/ddb4/TES_511_Balloon/runs/geometry_optimization_20260816/sf3_plan1_one_third_transport_v1/jobs/sf3_delayed_n/attempts/attempt01/sf3_delayed_n.inc1.id1.sim.gz",
+        "stage": "delayed",
+        "started_at": "2026-08-16T00:23:00.174753+00:00"
+      },
+      {
+        "artifact_bytes": 138673333,
+        "attempt": 1,
+        "ended_at": "2026-08-16T00:26:34.701071+00:00",
+        "events": 83334,
+        "family": "alpha",
+        "job_id": "sf3_delayed_alpha",
+        "mode": "delayed",
+        "peak_process_group_rss_GiB": 0.6861801147460938,
+        "peak_process_group_rss_bytes": 736780288,
+        "receipt_path": "/home/ubuntu/.codex/worktrees/ddb4/TES_511_Balloon/runs/geometry_optimization_20260816/sf3_plan1_one_third_transport_v1/receipts/sf3_delayed_alpha.json",
+        "receipt_sha256": "00d2885e8e2a6e6b4e0e558ec727f653564ddff8f205e8a5b066867de9a1eeea",
+        "seed": 813493208,
+        "sim_accessed_or_hashed": false,
+        "sim_bytes_metadata": 120815041,
+        "sim_path_metadata": "/home/ubuntu/.codex/worktrees/ddb4/TES_511_Balloon/runs/geometry_optimization_20260816/sf3_plan1_one_third_transport_v1/jobs/sf3_delayed_alpha/attempts/attempt01/sf3_delayed_alpha.inc1.id1.sim.gz",
+        "stage": "delayed",
+        "started_at": "2026-08-16T00:23:00.309947+00:00"
+      },
+      {
+        "artifact_bytes": 126779371,
+        "attempt": 1,
+        "ended_at": "2026-08-16T00:26:19.768762+00:00",
+        "events": 83334,
+        "family": "gamma",
+        "job_id": "sf3_delayed_gamma",
+        "mode": "delayed",
+        "peak_process_group_rss_GiB": 0.6506996154785156,
+        "peak_process_group_rss_bytes": 698683392,
+        "receipt_path": "/home/ubuntu/.codex/worktrees/ddb4/TES_511_Balloon/runs/geometry_optimization_20260816/sf3_plan1_one_third_transport_v1/receipts/sf3_delayed_gamma.json",
+        "receipt_sha256": "31015ac6eb4d9fd937b6355d30b8f5f07cc13ff7f753081faaaefe230941e229",
+        "seed": 895365784,
+        "sim_accessed_or_hashed": false,
+        "sim_bytes_metadata": 108585519,
+        "sim_path_metadata": "/home/ubuntu/.codex/worktrees/ddb4/TES_511_Balloon/runs/geometry_optimization_20260816/sf3_plan1_one_third_transport_v1/jobs/sf3_delayed_gamma/attempts/attempt01/sf3_delayed_gamma.inc1.id1.sim.gz",
+        "stage": "delayed",
+        "started_at": "2026-08-16T00:23:00.499356+00:00"
+      },
+      {
+        "artifact_bytes": 117553658,
+        "attempt": 1,
+        "ended_at": "2026-08-16T00:29:25.244161+00:00",
+        "events": 83334,
+        "family": "eminus",
+        "job_id": "sf3_delayed_eminus",
+        "mode": "delayed",
+        "peak_process_group_rss_GiB": 0.64971923828125,
+        "peak_process_group_rss_bytes": 697630720,
+        "receipt_path": "/home/ubuntu/.codex/worktrees/ddb4/TES_511_Balloon/runs/geometry_optimization_20260816/sf3_plan1_one_third_transport_v1/receipts/sf3_delayed_eminus.json",
+        "receipt_sha256": "28be825f27cfe86329da6f19cd2a676c1ecd576a2dc0219ef8b60ffcd688478f",
+        "seed": 656329061,
+        "sim_accessed_or_hashed": false,
+        "sim_bytes_metadata": 99736854,
+        "sim_path_metadata": "/home/ubuntu/.codex/worktrees/ddb4/TES_511_Balloon/runs/geometry_optimization_20260816/sf3_plan1_one_third_transport_v1/jobs/sf3_delayed_eminus/attempts/attempt01/sf3_delayed_eminus.inc1.id1.sim.gz",
+        "stage": "delayed",
+        "started_at": "2026-08-16T00:26:21.858802+00:00"
+      },
+      {
+        "artifact_bytes": 111151420,
+        "attempt": 1,
+        "ended_at": "2026-08-16T00:29:30.064585+00:00",
+        "events": 83334,
+        "family": "eplus",
+        "job_id": "sf3_delayed_eplus",
+        "mode": "delayed",
+        "peak_process_group_rss_GiB": 0.6535263061523438,
+        "peak_process_group_rss_bytes": 701718528,
+        "receipt_path": "/home/ubuntu/.codex/worktrees/ddb4/TES_511_Balloon/runs/geometry_optimization_20260816/sf3_plan1_one_third_transport_v1/receipts/sf3_delayed_eplus.json",
+        "receipt_sha256": "d21f803443a3fb8d9e84b2643d4540f938e540e32024c25fab203fa1645014da",
+        "seed": 19660937,
+        "sim_accessed_or_hashed": false,
+        "sim_bytes_metadata": 93809556,
+        "sim_path_metadata": "/home/ubuntu/.codex/worktrees/ddb4/TES_511_Balloon/runs/geometry_optimization_20260816/sf3_plan1_one_third_transport_v1/jobs/sf3_delayed_eplus/attempts/attempt01/sf3_delayed_eplus.inc1.id1.sim.gz",
+        "stage": "delayed",
+        "started_at": "2026-08-16T00:26:37.636057+00:00"
+      },
+      {
+        "artifact_bytes": 105716151,
+        "attempt": 1,
+        "ended_at": "2026-08-16T00:29:31.027238+00:00",
+        "events": 83334,
+        "family": "muminus",
+        "job_id": "sf3_delayed_muminus",
+        "mode": "delayed",
+        "peak_process_group_rss_GiB": 0.6526870727539062,
+        "peak_process_group_rss_bytes": 700817408,
+        "receipt_path": "/home/ubuntu/.codex/worktrees/ddb4/TES_511_Balloon/runs/geometry_optimization_20260816/sf3_plan1_one_third_transport_v1/receipts/sf3_delayed_muminus.json",
+        "receipt_sha256": "c39dd64c1c8f0d500166b76036dded99d2b3db7fdfceeadd49180b3ae1e6c199",
+        "seed": 1681255834,
+        "sim_accessed_or_hashed": false,
+        "sim_bytes_metadata": 89197816,
+        "sim_path_metadata": "/home/ubuntu/.codex/worktrees/ddb4/TES_511_Balloon/runs/geometry_optimization_20260816/sf3_plan1_one_third_transport_v1/jobs/sf3_delayed_muminus/attempts/attempt01/sf3_delayed_muminus.inc1.id1.sim.gz",
+        "stage": "delayed",
+        "started_at": "2026-08-16T00:26:37.874502+00:00"
+      },
+      {
+        "artifact_bytes": 33512264,
+        "attempt": 1,
+        "ended_at": "2026-08-16T00:32:13.585796+00:00",
+        "events": 37194,
+        "family": "focused_gamma",
+        "job_id": "signal_full_envelope_sf3",
+        "mode": "signal",
+        "peak_process_group_rss_GiB": 0.6063117980957031,
+        "peak_process_group_rss_bytes": 651022336,
+        "receipt_path": "/home/ubuntu/.codex/worktrees/ddb4/TES_511_Balloon/runs/geometry_optimization_20260816/sf3_plan1_one_third_transport_v1/receipts/signal_full_envelope_sf3.json",
+        "receipt_sha256": "b23e758b37feebee7f611df509f48a17ece489d540409e2f2d2019ccada40589",
+        "seed": 1398272412,
+        "sim_accessed_or_hashed": false,
+        "sim_bytes_metadata": 25057559,
+        "sim_path_metadata": "/home/ubuntu/.codex/worktrees/ddb4/TES_511_Balloon/runs/geometry_optimization_20260816/sf3_plan1_one_third_transport_v1/jobs/signal_full_envelope_sf3/attempts/attempt01/signal_full_envelope_sf3.inc1.id1.sim.gz",
+        "stage": "signal",
+        "started_at": "2026-08-16T00:31:16.225164+00:00"
+      }
+    ],
+    "validated_jobs": 29
+  },
+  "write_contract": "ATOMIC_HARDLINK_PUBLICATION__WRITE_ONCE"
+}

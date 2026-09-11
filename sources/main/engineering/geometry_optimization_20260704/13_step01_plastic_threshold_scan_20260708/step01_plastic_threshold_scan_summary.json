@@ -1,0 +1,168 @@
+{
+  "inputs": {
+    "atm511_sidecar_summary_json": "engineering/geometry_optimization_20260704/12_atm511_sidecar_replay_20260708/p2_geo_opt_s1_bpe_w5_atm511_sidecar_summary.json",
+    "event_catalog_pkl": "stepwise_maintenance/step05_veto_time_axis/outputs_geo_opt_s1_bpe_w5_fullstat_v1_l1/work/event_catalog.pkl",
+    "event_flags_csv": "engineering/geometry_optimization_20260704/09_gpt_complement_ingress_veto_bpe_20260707/07_w2_event_veto_flags.csv",
+    "step05_summary_json": "stepwise_maintenance/step05_veto_time_axis/outputs_geo_opt_s1_bpe_w5_fullstat_v1_l1/step05_geo_opt_s1_bpe_w5_fullstat_v1_l1_response_summary.json",
+    "veto_summary_csv": "engineering/geometry_optimization_20260704/08_ingress_veto_barrel_20260707/veto_efficiency_summary.csv"
+  },
+  "interpretation": {
+    "atm511_result": "atm511 is unchanged by the plastic threshold scan because W2 atm511 has zero plastic-skin veto contribution.",
+    "best_low_risk_threshold_band": "5-10 keV if DAQ/noise supports it; this replay shows no W2 signal active false-veto in the existing signal catalog.",
+    "caveat": "This does not model electronics noise, dark counts, optical thresholds, or new transport. It reclassifies already-transported W2 events only.",
+    "delayed_result": "delayed activation W2 final is unchanged at 26 across the scanned plastic thresholds in this event-level replay.",
+    "eplus_result": "e+ W2 final falls from 35 at 50 keV to 24 at 10 keV, 22 at 5 keV, and 18 at 1 keV.",
+    "neutron_result": "neutron W2 final falls modestly, from 13 at 50 keV to 12 at 10/5 keV and 11 at 2/1 keV in this post-processing replay."
+  },
+  "key_results": {
+    "atm511_final_events_by_threshold": {
+      "1.0": 107,
+      "10.0": 107,
+      "2.0": 107,
+      "20.0": 107,
+      "5.0": 107,
+      "50.0": 107
+    },
+    "delayed_activation_final_events_by_threshold": {
+      "1.0": 26,
+      "10.0": 26,
+      "2.0": 26,
+      "20.0": 26,
+      "5.0": 26,
+      "50.0": 26
+    },
+    "eplus_final_events_by_threshold": {
+      "1.0": 18,
+      "10.0": 24,
+      "2.0": 20,
+      "20.0": 31,
+      "5.0": 22,
+      "50.0": 35
+    },
+    "eplus_final_rate_cps_by_threshold": {
+      "1.0": 0.012222689249669474,
+      "10.0": 0.016296918999559297,
+      "2.0": 0.013580765832966083,
+      "20.0": 0.02105018704109743,
+      "5.0": 0.01493884241626269,
+      "50.0": 0.023766340207690643
+    },
+    "neutron_final_events_by_threshold": {
+      "1.0": 11,
+      "10.0": 12,
+      "2.0": 11,
+      "20.0": 13,
+      "5.0": 12,
+      "50.0": 13
+    },
+    "science_final_events_by_threshold": {
+      "1.0": 29684,
+      "10.0": 29684,
+      "2.0": 29684,
+      "20.0": 29684,
+      "5.0": 29684,
+      "50.0": 29684
+    }
+  },
+  "rules": {
+    "non_plastic_active_veto": "active_other_keV >= 50 keV, held fixed",
+    "plastic_veto": "GeoOpt_S1_PlasticFullWrap* plastic_skin_keV >= scanned threshold",
+    "side_compton_fov": "unchanged from current Step05/replay classification",
+    "signal_note": "science W2 bgo_total_keV is zero for all raw signal W2 events in the Step05 catalog; active false-veto remains zero for all scanned thresholds."
+  },
+  "science_signal_check": {
+    "active_rate": 0.814755068021724,
+    "bgo_max_keV": 0.0,
+    "bgo_min_keV": 0.0,
+    "bgo_nonzero_events": 0,
+    "current_active_pass_events": 30304,
+    "current_final_events": 29684,
+    "current_raw_events": 30304,
+    "final_rate": 0.7980857127496964,
+    "raw_events": 30304,
+    "raw_rate": 0.814755068021724,
+    "side_compton_class_counts": {
+      "keep": 12260,
+      "single": 17424,
+      "veto": 620
+    }
+  },
+  "scope": "W2 post-processing replay; no geometry or transport changes.",
+  "status": "PASS_STEP01_POSTPROCESS_PLASTIC_THRESHOLD_SCAN",
+  "thresholds_keV": [
+    50.0,
+    20.0,
+    10.0,
+    5.0,
+    2.0,
+    1.0
+  ],
+  "total_budget_by_threshold": [
+    {
+      "approx_F3_20d_ph_cm2_s": 4.6298603601641105e-05,
+      "atm511_cps": 0.02079131350580408,
+      "delayed_cps": 0.002793390807181588,
+      "eplus_cps": 0.023766340207690643,
+      "neutron_cps": 0.008820885141897508,
+      "relative_F3_vs_50keV": 1.0000000000000002,
+      "relative_background_vs_50keV": 1.0000000000000004,
+      "threshold_keV": 50.0,
+      "total_background_cps": 0.05617192966257382
+    },
+    {
+      "approx_F3_20d_ph_cm2_s": 4.516536685609303e-05,
+      "atm511_cps": 0.02079131350580408,
+      "delayed_cps": 0.002793390807181588,
+      "eplus_cps": 0.02105018704109743,
+      "neutron_cps": 0.008820885141897508,
+      "relative_F3_vs_50keV": 0.9755233061606227,
+      "relative_background_vs_50keV": 0.951645720862552,
+      "threshold_keV": 20.0,
+      "total_background_cps": 0.05345577649598061
+    },
+    {
+      "approx_F3_20d_ph_cm2_s": 4.2809217580367646e-05,
+      "atm511_cps": 0.02079131350580408,
+      "delayed_cps": 0.002793390807181588,
+      "eplus_cps": 0.016296918999559297,
+      "neutron_cps": 0.0081423555155977,
+      "relative_F3_vs_50keV": 0.9246330180647228,
+      "relative_background_vs_50keV": 0.854946218095478,
+      "threshold_keV": 10.0,
+      "total_background_cps": 0.04802397882814267
+    },
+    {
+      "approx_F3_20d_ph_cm2_s": 4.219957279090684e-05,
+      "atm511_cps": 0.02079131350580408,
+      "delayed_cps": 0.002793390807181588,
+      "eplus_cps": 0.01493884241626269,
+      "neutron_cps": 0.0081423555155977,
+      "relative_F3_vs_50keV": 0.9114653468600734,
+      "relative_background_vs_50keV": 0.8307690785267539,
+      "threshold_keV": 5.0,
+      "total_background_cps": 0.04666590224484606
+    },
+    {
+      "approx_F3_20d_ph_cm2_s": 4.126845775654054e-05,
+      "atm511_cps": 0.02079131350580408,
+      "delayed_cps": 0.002793390807181588,
+      "eplus_cps": 0.013580765832966083,
+      "neutron_cps": 0.007463825889297892,
+      "relative_F3_vs_50keV": 0.8913542644097746,
+      "relative_background_vs_50keV": 0.7945124246814904,
+      "threshold_keV": 2.0,
+      "total_background_cps": 0.04462929603524964
+    },
+    {
+      "approx_F3_20d_ph_cm2_s": 4.063570399901e-05,
+      "atm511_cps": 0.02079131350580408,
+      "delayed_cps": 0.002793390807181588,
+      "eplus_cps": 0.012222689249669474,
+      "neutron_cps": 0.007463825889297892,
+      "relative_F3_vs_50keV": 0.8776874643702999,
+      "relative_background_vs_50keV": 0.7703352851127663,
+      "threshold_keV": 1.0,
+      "total_background_cps": 0.04327121945195304
+    }
+  ]
+}

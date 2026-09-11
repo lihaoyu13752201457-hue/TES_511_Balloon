@@ -1,0 +1,46 @@
+=== classify_tes 定义位置 ===
+engineering/ENGINEERING_20260627_CURVE_CHECK/scripts/build_curve_check_outputs.py:1795:def prediction_lookup(rows: list[dict[str, str]], stage: str = "side_compton_fov_pass", particle: str = "ALL") -> dict[str, dict[str, str]]:
+stepwise_maintenance/step09_optics_bridge/code/build_detector_coupled_focus_response.py:66:import make_complete_day15_report_ADR as complete  # noqa: E402
+stepwise_maintenance/step09_optics_bridge/code/build_detector_coupled_focus_response.py:316:def classify_tes(cat: dict[str, Any], idx: int, reject_policy: str) -> tuple[bool, str]:
+stepwise_maintenance/step08_significance/code/build_spatial_line_proxy.py:36:import make_complete_day15_report_ADR as complete  # noqa: E402
+stepwise_maintenance/step08_significance/code/build_line_window_sensitivity.py:41:import make_complete_day15_report_ADR as complete  # noqa: E402
+stepwise_maintenance/step08_significance/code/build_step08_significance.py:60:import make_complete_day15_report_ADR as complete  # noqa: E402
+stepwise_maintenance/step06_mission_time_variation/code/build_step06_mission_time_variation.py:226:        import make_complete_day15_report_ADR as complete  # noqa: PLC0415
+upload_20260623/delay_model/makedecaysourcewithplot_rpip.py:777:        from concurrent.futures import ThreadPoolExecutor, as_completed
+code/tools/makedecaysourcewithplot_rpip.py:777:        from concurrent.futures import ThreadPoolExecutor, as_completed
+code/tools/analyze_old_new_geo_re_delayed_w2.py:100:    import make_complete_day15_report_ADR as old_step05  # type: ignore
+
+=== 找共享模块(complete_*/veto/compton) ===
+./stepwise_maintenance/step09_optics_bridge/code/build_detector_coupled_focus_response.py
+
+=== 找像素角点/81 轨迹的常量与循环 ===
+engineering/background_anatomy_20260704/build_background_anatomy_r2.py:31:ATM511_TRANSFER = 0.38107886823349196
+engineering/background_anatomy_20260704/build_background_anatomy_r2.py:36:    "eplus": (45, 0.03052991796271818),
+engineering/background_anatomy_20260704/build_background_anatomy_r2.py:40:EXPECTED_PROMPT_TOTAL = (65, 0.044088948071812)
+engineering/background_anatomy_20260704/build_background_anatomy_r2.py:42:EXPECTED_ATM511_TOTAL = (101, 0.38107886823349196)
+engineering/background_anatomy_20260704/build_background_anatomy_r1.py:34:    "total_cps": 0.044088948071812,
+engineering/background_anatomy_20260704/build_background_anatomy_r1.py:36:        "eplus": {"events": 45, "cps": 0.03052991796271818},
+engineering/background_anatomy_20260704/build_background_anatomy_r1.py:47:NUCLEAR_CPROC = {"nCapture", "neutronInelastic", "hadElastic"}
+engineering/background_anatomy_20260704/build_background_anatomy_r3.py:36:ATM511_TRANSFER = 0.38107886823349196
+engineering/background_anatomy_20260704/build_background_anatomy_r3.py:41:    "eplus": (45, 0.03052991796271818),
+engineering/background_anatomy_20260704/build_background_anatomy_r3.py:134:    assert approx(float(prompt["rate_hz"].sum()), 0.044088948071812)
+engineering/crosscode_corrected_production_20260626/scripts/run_gate_e_corrected_full_delayed.py:616:        "local_id_offset_to_zero_based_event_id": offset,
+engineering/trajectory_transport_validation_20260626/scripts/run_g10_full4_stripped_extraction.py:30:EXPECTED_EVENTS = 201_681_728
+engineering/trajectory_transport_validation_20260626/scripts/run_history_model.py:62:FEATURES = ["intercept", "altitude_offset_km", "altitude_offset_km2", "Rc_offset_GV"]
+engineering/trajectory_transport_validation_20260626/scripts/run_history_model.py:197:    alt = fnum(row.get("altitude_offset_km"), fnum(row.get("altitude_km"), 38.75) - 38.75)
+engineering/trajectory_transport_validation_20260626/scripts/build_history_model_contract.py:114:            "features": ["intercept", "altitude_offset_km", "altitude_offset_km2", "Rc_offset_GV"],
+engineering/trajectory_transport_validation_20260626/scripts/build_history_model_contract.py:161:        check("trajectory_profile_frozen", len(trajectory) >= 81, {"rows": len(trajectory), "source": rel(POINTS_DIR / "trajectory_profile_frozen.csv")}),
+engineering/trajectory_transport_validation_20260626/scripts/run_g9_full4_prompt_activation.py:38:EXPECTED_EVENTS = 201_681_728
+engineering/trajectory_transport_validation_20260626/scripts/build_wp00_wp02_artifacts.py:48:    "eplus": 1949816,
+engineering/trajectory_transport_validation_20260626/scripts/build_section24_completion_audit.py:212:            "Construct a transport-informed, history-aware activity model over the frozen 81-bin trajectory.",
+engineering/ENGINEERING_20260627_CURVE_CHECK/scripts/build_curve_check_outputs.py:316:            "events_requested": 201681728,
+engineering/ENGINEERING_20260627_CURVE_CHECK/scripts/build_curve_check_outputs.py:317:            "events_generated": 201681728,
+engineering/paper_review_p1_p2_p3_data_check_20260702/code/build_p1_p2_data_check.py:324:    normal = np.asarray([0.7071067811865476, 0.0, -0.7071067811865475], dtype=float)
+engineering/report_html_20260702_curve_atm511_revan/gen_figs_v2.py:205:arrow(22.6, 81, 35.2, 85)
+engineering/nearfield_mass_impact_20260625/build_wp03_delayed_comparison.py:143:    81: "Tl",
+engineering/nearfield_mass_impact_20260625/build_wp05_detector_fullstat_verdict.py:322:source_manifest_hash: 3ee95ddd8b9e500b68f50d720330fcb3bdb2e5b818c9347125f738eb8b5573f6
+engineering/nearfield_mass_impact_20260625/12_presentation/build_nearfield_mass_impact_deck_white.py:721:.corner-tag { position: absolute; top: clamp(10px, 1vw, 14px); right: clamp(10px, 1vw, 14px); background: #dc2626; color: #fff; border-radius: 6px; padding: 6px 9px; font-weight: 800; font-size: clamp(12px, 1vw, 14px); line-height: 1.1; text-align: center; box-shadow: 0 6px 16px rgba(15, 23, 42, .18); }
+engineering/nearfield_mass_impact_20260625/12_presentation/build_nearfield_mass_impact_deck_white.py:761:      <figure class="geom"><div class="corner-tag">旧几何<br>漏光</div><img src="{image_src(old_leak_png)}" alt="旧几何漏光示意图"><figcaption class="caption"><span>旧几何</span><small>侧面开窗漏光</small></figcaption></figure>
+engineering/Mass_model_511_nearfield_migration_20260701/15_p1_p2_p3_replay_20260703/build_mass_model_511_p1_p2_p3_replay.py:98:    normal = np.asarray([0.7071067811865476, 0.0, -0.7071067811865475], dtype=float)
+stepwise_maintenance/step09_optics_bridge/code/build_step09_optics_bridge.py:366:    sc = ax.scatter(x, y, c=e, s=5, cmap="viridis", alpha=0.75)
+stepwise_maintenance/step07_source_cases/code/build_step07_source_cases.py:56:        return 500.99393711182086, 521.0060628881791, 510.58, 511.42

@@ -1,0 +1,512 @@
+{
+  "status": "PASS_GEO_OPT_S1_BPE_W5_STEP05_SIDE_ENTRY_COMPTON_TIME_AXIS_L1_FULLSTAT_V1_NOT_PROMOTION",
+  "statistics_label": "geo_opt_s1_bpe_w5_fullstat_v1",
+  "generated_at_utc": "2026-07-06T08:18:53Z",
+  "claim_level": "GEO_OPT_S1_BPE_W5_FULLSTAT_V1_L1_PROMPT_DELAYED_SIGNAL_NOT_STEP08_NOT_PROMOTION",
+  "preflight": {
+    "status": "PASS",
+    "problems": [],
+    "inputs": {
+      "geometry": "engineering/geometry_optimization_20260704/01_geo_opt_s1_bottomw_b4c/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup",
+      "campaign_manifest": "engineering/geometry_optimization_20260704/02_fullstat_prompt_delay_20260706/geo_opt_s1_bpe_w5_fullstat_v1_campaign_manifest.json",
+      "prompt_dir": "runs/geometry_optimization_20260704/step02_instant_geo_opt_s1_bpe_w5_fullstat_v1",
+      "prompt_norm": "runs/geometry_optimization_20260704/step02_instant_geo_opt_s1_bpe_w5_fullstat_v1/normalization.json",
+      "delayed_sim": "runs/geometry_optimization_20260704/step02_delayed_transport_geo_opt_s1_bpe_w5_fullstat_v1/DelayedDecayGeoOptS1BpeW5FullstatV1.inc1.id1.sim.gz",
+      "exactpos_source": "runs/geometry_optimization_20260704/step02_delay_exactpos_geo_opt_s1_bpe_w5_fullstat_v1/activation_decay_day15_groundstate_fixed_exactpos.source",
+      "delayed_summary": "engineering/geometry_optimization_20260704/02_fullstat_prompt_delay_20260706/delayed_source/delayed_source_exactpos_summary.json",
+      "signal_sim": "runs/geometry_optimization_20260704/step09_focus_geo_opt_s1_bpe_w5_fullstat_v1/Opticsim_laue_f10m_a1_geo_opt_s1_bpe_w5_fullstat_v1_signal.inc1.id1.sim.gz",
+      "signal_manifest": "engineering/geometry_optimization_20260704/03_step05_detector_response_20260706/signal_transport_manifest.json",
+      "bridge_summary_for_side_entry_disk": "stepwise_maintenance/step09_optics_bridge/outputs_fix5_fullstat_v2_exactpos_m50000_s260613/step09_focus_summary.json"
+    },
+    "prompt_sim_files": 68,
+    "prompt_dat_files": 68,
+    "campaign_status": "PASS_PROMPT_AND_DELAYED_TRANSPORT",
+    "delayed_summary_status": "PASS_GEO_OPT_S1_BPE_W5_FULLSTAT_V1_EXACTPOS_M50000_S260613_EXACTPOS_DELAYED_TRANSPORT",
+    "delayed_transport": {
+      "path": "runs/geometry_optimization_20260704/step02_delayed_transport_geo_opt_s1_bpe_w5_fullstat_v1/DelayedDecayGeoOptS1BpeW5FullstatV1.inc1.id1.sim.gz",
+      "exists": true,
+      "size_bytes": 781866891,
+      "SE": 1000000,
+      "ID": 1000000,
+      "TS": 1,
+      "TE_s": 9307.684386,
+      "geometry": "  /home/ubuntu/TES_511_Balloon/engineering/geometry_optimization_20260704/01_geo_opt_s1_bottomw_b4c/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup",
+      "status": "PASS"
+    },
+    "signal_header": {
+      "exists": true,
+      "SE": 37194,
+      "ID": 37194,
+      "TS": 1,
+      "TE_s": 3.7e-05,
+      "geometry": "/home/ubuntu/TES_511_Balloon/engineering/geometry_optimization_20260704/01_geo_opt_s1_bottomw_b4c/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup"
+    },
+    "active_veto_extension": "GeoOpt_S1_PlasticFullWrap* volumes are counted as active-veto energy in bgo_total_keV.",
+    "side_entry_bridge_reuse": "The f10m A1 EventList/side-entry disk bridge is reused from the fix5 Step09 summary; the signal detector transport SIM itself is rerun through the geo-opt geometry."
+  },
+  "inputs": {
+    "prompt_dir": "runs/geometry_optimization_20260704/step02_instant_geo_opt_s1_bpe_w5_fullstat_v1",
+    "prompt_files": 68,
+    "prompt_dat_files": 68,
+    "delayed_sim": "runs/geometry_optimization_20260704/step02_delayed_transport_geo_opt_s1_bpe_w5_fullstat_v1/DelayedDecayGeoOptS1BpeW5FullstatV1.inc1.id1.sim.gz",
+    "delayed_summary": "engineering/geometry_optimization_20260704/02_fullstat_prompt_delay_20260706/delayed_source/delayed_source_exactpos_summary.json",
+    "science_sim": "runs/geometry_optimization_20260704/step09_focus_geo_opt_s1_bpe_w5_fullstat_v1/Opticsim_laue_f10m_a1_geo_opt_s1_bpe_w5_fullstat_v1_signal.inc1.id1.sim.gz",
+    "signal_manifest": "engineering/geometry_optimization_20260704/03_step05_detector_response_20260706/signal_transport_manifest.json",
+    "side_entry_bridge_summary": "stepwise_maintenance/step09_optics_bridge/outputs_fix5_fullstat_v2_exactpos_m50000_s260613/step09_focus_summary.json"
+  },
+  "normalization": {
+    "prompt_time_s": 184.2200984295893,
+    "prompt_rate_rule": "per-tag event rate = 1 / sum(TT_s for prompt dat files with that tag)",
+    "prompt_cache_rates_refreshed": false,
+    "prompt_normalization_audit_csv": "stepwise_maintenance/step05_veto_time_axis/outputs_geo_opt_s1_bpe_w5_fullstat_v1_l1/prompt_normalization_audit.csv",
+    "prompt_normalization_audit_json": "stepwise_maintenance/step05_veto_time_axis/outputs_geo_opt_s1_bpe_w5_fullstat_v1_l1/prompt_normalization_audit.json",
+    "prompt_normalization_audit": {
+      "status": "PASS",
+      "problems": [],
+      "prompt_dir": "runs/geometry_optimization_20260704/step02_instant_geo_opt_s1_bpe_w5_fullstat_v1",
+      "prompt_norm": "runs/geometry_optimization_20260704/step02_instant_geo_opt_s1_bpe_w5_fullstat_v1/normalization.json",
+      "normalization_json": {
+        "non_gamma_replicas": 8,
+        "gamma_splits": 12,
+        "gamma_prompt_time_s_with_farfield_area": 184.2200984295893,
+        "non_gamma_combined_norm_factor": null
+      },
+      "rows": [
+        {
+          "tag": "alpha",
+          "files": 8,
+          "tt_files": 8,
+          "tt_line_count": 8,
+          "tt_sum_s": 1472.3600000000001,
+          "tt_mean_s": 184.04500000000002,
+          "tt_min_s": 182.461,
+          "tt_max_s": 186.63,
+          "rate_hz_per_event": 0.0006791817218615012,
+          "rate_times_tt_sum": 1.0,
+          "expected_files_from_normalization": 8,
+          "warnings": []
+        },
+        {
+          "tag": "eminus",
+          "files": 8,
+          "tt_files": 8,
+          "tt_line_count": 8,
+          "tt_sum_s": 1474.796,
+          "tt_mean_s": 184.3495,
+          "tt_min_s": 184.029,
+          "tt_max_s": 184.985,
+          "rate_hz_per_event": 0.0006780598808241953,
+          "rate_times_tt_sum": 1.0,
+          "expected_files_from_normalization": 8,
+          "warnings": []
+        },
+        {
+          "tag": "eplus",
+          "files": 8,
+          "tt_files": 8,
+          "tt_line_count": 8,
+          "tt_sum_s": 1472.671,
+          "tt_mean_s": 184.083875,
+          "tt_min_s": 183.605,
+          "tt_max_s": 184.622,
+          "rate_hz_per_event": 0.0006790382916483043,
+          "rate_times_tt_sum": 1.0,
+          "expected_files_from_normalization": 8,
+          "warnings": []
+        },
+        {
+          "tag": "gamma",
+          "files": 12,
+          "tt_files": 12,
+          "tt_line_count": 12,
+          "tt_sum_s": 184.23299999999998,
+          "tt_mean_s": 15.352749999999999,
+          "tt_min_s": 15.3183,
+          "tt_max_s": 15.3706,
+          "rate_hz_per_event": 0.005427909223646145,
+          "rate_times_tt_sum": 1.0,
+          "expected_files_from_normalization": 12,
+          "warnings": []
+        },
+        {
+          "tag": "muminus",
+          "files": 8,
+          "tt_files": 8,
+          "tt_line_count": 8,
+          "tt_sum_s": 1479.9009999999998,
+          "tt_mean_s": 184.98762499999998,
+          "tt_min_s": 182.613,
+          "tt_max_s": 187.671,
+          "rate_hz_per_event": 0.0006757208759234571,
+          "rate_times_tt_sum": 1.0,
+          "expected_files_from_normalization": 8,
+          "warnings": []
+        },
+        {
+          "tag": "muplus",
+          "files": 8,
+          "tt_files": 8,
+          "tt_line_count": 8,
+          "tt_sum_s": 1477.2890000000002,
+          "tt_mean_s": 184.66112500000003,
+          "tt_min_s": 182.075,
+          "tt_max_s": 188.015,
+          "rate_hz_per_event": 0.0006769156204371656,
+          "rate_times_tt_sum": 1.0,
+          "expected_files_from_normalization": 8,
+          "warnings": []
+        },
+        {
+          "tag": "n",
+          "files": 8,
+          "tt_files": 8,
+          "tt_line_count": 8,
+          "tt_sum_s": 1473.7749999999999,
+          "tt_mean_s": 184.22187499999998,
+          "tt_min_s": 183.984,
+          "tt_max_s": 184.465,
+          "rate_hz_per_event": 0.0006785296262998083,
+          "rate_times_tt_sum": 0.9999999999999999,
+          "expected_files_from_normalization": 8,
+          "warnings": []
+        },
+        {
+          "tag": "p",
+          "files": 8,
+          "tt_files": 8,
+          "tt_line_count": 8,
+          "tt_sum_s": 1473.679,
+          "tt_mean_s": 184.209875,
+          "tt_min_s": 183.646,
+          "tt_max_s": 185.038,
+          "rate_hz_per_event": 0.0006785738278146054,
+          "rate_times_tt_sum": 0.9999999999999999,
+          "expected_files_from_normalization": 8,
+          "warnings": []
+        }
+      ]
+    },
+    "delayed_time_s": 9307.684386,
+    "science_unit_injection_rate_s-1": 1.0,
+    "active_veto_threshold_keV": 50.0,
+    "active_veto_match": "geo-opt S1/BPE/W5 current geometry; active-veto volumes are CsI_ plus legacy BGO/ACTIVE_SHIELD/CEBR3 tokens plus GeoOpt_S1_PlasticFullWrap plastic skin",
+    "reject_policy": "keep",
+    "coincidence_window_s": 1e-06,
+    "rng_seed": 260512,
+    "side_entry_disk": {
+      "center_cm": [
+        -12.94005409571382,
+        0.0,
+        5.586143571373725
+      ],
+      "normal": [
+        0.7071067811865476,
+        0.0,
+        -0.7071067811865475
+      ],
+      "radius_cm": 1.898,
+      "local_center_cm": [
+        -13.1,
+        0.0,
+        -5.2
+      ],
+      "rotation_y_deg": 45.0,
+      "side_window_look_elevation_deg": 44.99999999999999
+    }
+  },
+  "science_physical_normalization": {
+    "reference_flux_ph_cm2_s": 0.0001,
+    "mission_days_for_direct_expectation": 20.0,
+    "optics_authority": "stepwise_maintenance/step04_opticsim/optics_aeff_authority_f10m_a1.json",
+    "optics_design_name": "balloon511_f10m_ge111_511line_a1",
+    "optics_profile": "f10m_a1_v3p5",
+    "aeff_511_cm2": 20.084760000000003,
+    "aeff_seed_pstdev_cm2": 0.22144082550424163,
+    "atmospheric_transmission": {
+      "ledger": "old/config/science_511_onaxis_source/metadata/science_rate_ledger.csv",
+      "source_id": "science_511_onaxis_v0",
+      "flux_ph_cm2_s": 0.0001,
+      "mainline_A_opt_cm2_in_ledger": 15.29928,
+      "T_atm": 0.7390423888027,
+      "note": "Only scalar T_atm is inherited from this mainline ledger; v3p5/f10m A1 uses the f10m_a1 A_eff authority below. A dedicated 45 deg side-entry LOS atmosphere sidecar is available in outputs/reports/v3p5_boundary_closure_fullstat_v2_exactpos_20260613/v3p5_boundary_closure_summary.json."
+    },
+    "rate_to_v3p5_injection_plane_s-1": 0.0014843489008928919,
+    "unit_eventlist_injection_rate_s-1": 1.0,
+    "scale_from_unit_eventlist_rate": 0.0014843489008928919
+  },
+  "catalog": {
+    "events_kept": 4949786,
+    "pixel_hits_kept": 66483,
+    "by_stream_events": {
+      "prompt": 4269774,
+      "delayed": 643341,
+      "science": 36671
+    },
+    "by_stream_tes_events": {
+      "prompt": 5758,
+      "delayed": 1806,
+      "science": 35720
+    }
+  },
+  "windows": {
+    "broad_480_550": {
+      "window_keV": [
+        480.0,
+        550.0
+      ],
+      "by_stream": {
+        "prompt": {
+          "raw_events": 271,
+          "active_veto_pass_events": 92,
+          "side_compton_fov_pass_events": 79,
+          "raw_rate_s-1": 0.20289626936098232,
+          "active_veto_pass_rate_s-1": 0.07194840941635137,
+          "side_compton_fov_pass_rate_s-1": 0.06312498094771131,
+          "active_veto_survival_fraction": 0.35460686213182446,
+          "side_compton_fov_survival_fraction_vs_active": 0.8773645096505107,
+          "side_compton_class_counts": {
+            "keep": 31,
+            "single": 48,
+            "veto": 13
+          }
+        },
+        "delayed": {
+          "raw_events": 61,
+          "active_veto_pass_events": 42,
+          "side_compton_fov_pass_events": 36,
+          "raw_rate_s-1": 0.006553724586079879,
+          "active_veto_pass_rate_s-1": 0.004512400534677949,
+          "side_compton_fov_pass_rate_s-1": 0.0038677718868668147,
+          "active_veto_survival_fraction": 0.6885245901639343,
+          "side_compton_fov_survival_fraction_vs_active": 0.8571428571428574,
+          "side_compton_class_counts": {
+            "keep": 6,
+            "single": 30,
+            "veto": 6
+          }
+        },
+        "science": {
+          "raw_events": 30366,
+          "active_veto_pass_events": 30366,
+          "side_compton_fov_pass_events": 29728,
+          "raw_rate_s-1": 0.8164220035489597,
+          "active_veto_pass_rate_s-1": 0.8164220035489597,
+          "side_compton_fov_pass_rate_s-1": 0.7992686992528978,
+          "active_veto_survival_fraction": 1.0,
+          "side_compton_fov_survival_fraction_vs_active": 0.978989659487989,
+          "side_compton_class_counts": {
+            "keep": 12286,
+            "single": 17442,
+            "veto": 638
+          }
+        }
+      },
+      "total": {
+        "raw": {
+          "events": 30698,
+          "rate_s-1": 1.0258719974960218
+        },
+        "active_veto_pass": {
+          "events": 30500,
+          "rate_s-1": 0.892882813499989
+        },
+        "side_compton_fov_pass": {
+          "events": 29843,
+          "rate_s-1": 0.8662614520874758
+        }
+      },
+      "physical_reference_flux": {
+        "reference_flux_ph_cm2_s": 0.0001,
+        "rate_to_v3p5_injection_plane_s-1": 0.0014843489008928919,
+        "prompt_background_cps": 0.06312498094771131,
+        "delayed_background_cps": 0.0038677718868668147,
+        "background_cps": 0.06699275283457812,
+        "signal_cps_at_reference_flux": 0.0011863936152541302,
+        "signal_to_background": 0.017709282945628957,
+        "mission_days": 20.0,
+        "source_counts_20d": 2050.088167159137,
+        "background_counts_20d": 115763.47689815098,
+        "Z20d_direct_s_over_sqrt_b": 6.025412136585101,
+        "T3_day_constant_rate_direct": 4.957914001150961,
+        "T5_day_constant_rate_direct": 13.771983336530445,
+        "flux_3sigma_20d_ph_cm2_s": 4.9789125324467e-05,
+        "low_stat_final_background_events": 115,
+        "low_stat_background_relative_poisson_sigma_approx": 0.09325048082403138,
+        "low_stat_prompt_final_events": 79,
+        "low_stat_delayed_final_events": 36,
+        "science_unit_rate_final_events": 29728,
+        "claim_note": "Direct expectation only. It uses the current Step05 selected-event rates and does not replace a full Step06-Step08 mission-axis regeneration."
+      }
+    },
+    "w2_510p58_511p42": {
+      "window_keV": [
+        510.58,
+        511.42
+      ],
+      "by_stream": {
+        "prompt": {
+          "raw_events": 133,
+          "active_veto_pass_events": 53,
+          "side_compton_fov_pass_events": 48,
+          "raw_rate_s-1": 0.0950096805510649,
+          "active_veto_pass_rate_s-1": 0.03598241680782968,
+          "side_compton_fov_pass_rate_s-1": 0.032587225349588134,
+          "active_veto_survival_fraction": 0.3787236900400922,
+          "side_compton_fov_survival_fraction_vs_active": 0.9056430401444641,
+          "side_compton_class_counts": {
+            "keep": 16,
+            "single": 32,
+            "veto": 5
+          }
+        },
+        "delayed": {
+          "raw_events": 42,
+          "active_veto_pass_events": 30,
+          "side_compton_fov_pass_events": 26,
+          "raw_rate_s-1": 0.004512400534677949,
+          "active_veto_pass_rate_s-1": 0.003223143239055678,
+          "side_compton_fov_pass_rate_s-1": 0.0027933908071815883,
+          "active_veto_survival_fraction": 0.7142857142857143,
+          "side_compton_fov_survival_fraction_vs_active": 0.8666666666666669,
+          "side_compton_class_counts": {
+            "keep": 5,
+            "single": 21,
+            "veto": 4
+          }
+        },
+        "science": {
+          "raw_events": 30304,
+          "active_veto_pass_events": 30304,
+          "side_compton_fov_pass_events": 29684,
+          "raw_rate_s-1": 0.814755068021724,
+          "active_veto_pass_rate_s-1": 0.814755068021724,
+          "side_compton_fov_pass_rate_s-1": 0.7980857127496964,
+          "active_veto_survival_fraction": 1.0,
+          "side_compton_fov_survival_fraction_vs_active": 0.9795406546994524,
+          "side_compton_class_counts": {
+            "keep": 12260,
+            "single": 17424,
+            "veto": 620
+          }
+        }
+      },
+      "total": {
+        "raw": {
+          "events": 30479,
+          "rate_s-1": 0.9142771491074669
+        },
+        "active_veto_pass": {
+          "events": 30387,
+          "rate_s-1": 0.8539606280686094
+        },
+        "side_compton_fov_pass": {
+          "events": 29758,
+          "rate_s-1": 0.8334663289064661
+        }
+      },
+      "physical_reference_flux": {
+        "reference_flux_ph_cm2_s": 0.0001,
+        "rate_to_v3p5_injection_plane_s-1": 0.0014843489008928919,
+        "prompt_background_cps": 0.032587225349588134,
+        "delayed_background_cps": 0.0027933908071815883,
+        "background_cps": 0.03538061615676972,
+        "signal_cps_at_reference_flux": 0.001184637650538332,
+        "signal_to_background": 0.0334826743912334,
+        "mission_days": 20.0,
+        "source_counts_20d": 2047.0538601302378,
+        "background_counts_20d": 61137.70471889807,
+        "Z20d_direct_s_over_sqrt_b": 8.278939416378053,
+        "T3_day_constant_rate_direct": 2.626171573325544,
+        "T5_day_constant_rate_direct": 7.294921037015399,
+        "flux_3sigma_20d_ph_cm2_s": 3.623652558762736e-05,
+        "low_stat_final_background_events": 74,
+        "low_stat_background_relative_poisson_sigma_approx": 0.11624763874381928,
+        "low_stat_prompt_final_events": 48,
+        "low_stat_delayed_final_events": 26,
+        "science_unit_rate_final_events": 29684,
+        "claim_note": "Direct expectation only. It uses the current Step05 selected-event rates and does not replace a full Step06-Step08 mission-axis regeneration."
+      }
+    }
+  },
+  "timeline": {
+    "obs_time_s": 465.00453933066007,
+    "n_event_instances": 5004244,
+    "n_candidates_total": 4950884,
+    "n_candidates_with_tes": 2500,
+    "n_mixed_candidates": 677,
+    "windows": {
+      "broad_480_550": {
+        "counts": {
+          "raw": 470,
+          "active_veto_pass": 408,
+          "side_compton_fov_pass": 397
+        },
+        "rates_s-1": {
+          "raw": 1.0107428212991867,
+          "active_veto_pass": 0.8774107895533366,
+          "side_compton_fov_pass": 0.8537551065016534
+        },
+        "side_compton_class_counts": {
+          "active_veto": 62,
+          "keep": 159,
+          "single": 238,
+          "veto": 11
+        }
+      },
+      "w2_510p58_511p42": {
+        "counts": {
+          "raw": 415,
+          "active_veto_pass": 390,
+          "side_compton_fov_pass": 383
+        },
+        "rates_s-1": {
+          "raw": 0.8924644060407713,
+          "active_veto_pass": 0.8387014900142188,
+          "side_compton_fov_pass": 0.823647873526784
+        },
+        "side_compton_class_counts": {
+          "active_veto": 25,
+          "keep": 155,
+          "single": 228,
+          "veto": 7
+        }
+      }
+    }
+  },
+  "timeline_draw_summary": {
+    "prompt": {
+      "lambda": 4967400.727307956,
+      "drawn": 4971593,
+      "rate_hz": 10682.477926899735
+    },
+    "delayed": {
+      "lambda": 32140.806771176893,
+      "drawn": 32197,
+      "rate_hz": 69.11933981857732
+    },
+    "science": {
+      "lambda": 458.4659208956993,
+      "drawn": 454,
+      "rate_hz": 0.9859385922460614
+    }
+  },
+  "timeline_model": {
+    "mode": "ADAPTIVE_BOUNDED_HIGH_RATE_POISSON_DRAW",
+    "full_obs_time_s": 9307.684386,
+    "timeline_obs_time_s": 465.00453933066007,
+    "total_catalog_rate_s-1": 10752.583205310497,
+    "full_interval_expected_instances": 100081650.80923435,
+    "max_timeline_draw_lambda": 5000000.0,
+    "bounded_fraction_of_full_interval": 0.04995920790246056,
+    "note": "The geo-opt active-skin catalog has a high active-only rate. When the full-interval draw would exceed max_timeline_draw_lambda, the same Poisson grouping/veto/Compton code is run on a bounded observation interval and rates are reported per second."
+  },
+  "downstream_status": {
+    "step06_step08": "NOT_RUN",
+    "promotion_review": "NOT_RUN",
+    "signal_transport": "PASS_SIGNAL_TRANSPORT_REUSED"
+  },
+  "pending": [
+    "Run Step06--Step08 for this geo-opt label before mission-mean Z20d/F3 claims.",
+    "Compare against Mass_model_511/fix5 with the same selection and active-veto assumptions before making a geometry decision."
+  ]
+}

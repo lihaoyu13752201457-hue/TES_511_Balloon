@@ -1,0 +1,70 @@
+{
+  "energy_keV": {
+    "L0_mean_tes_phonon": 52.57251396883943,
+    "L0_sensor_eta": 0.13571927379503212,
+    "L0_si_input": 387.3621815,
+    "L1_direct_by_pixel": {
+      "147": 24.847980806000002,
+      "231": 433.54379
+    },
+    "L1_direct_tes": 458.391770806,
+    "L2": 0.0,
+    "L3": 0.0,
+    "L4": 0.0,
+    "L5": 0.0,
+    "arithmetic_tes_sum": 510.9642847748394
+  },
+  "event": {
+    "event_id": 639,
+    "job_id": "sh3_sisd_n10m_shard0049"
+  },
+  "inputs": {
+    "direct_tes": {
+      "path": "/home/ubuntu/neutron_fen/outputs/candidate_direct_tes_channels.csv",
+      "sha256": "e69e8300066e866a6f18d6b3bc2d97bd2527c54ed8977c459257feadb0f959b5"
+    },
+    "g4cmp_hits": [
+      {
+        "path": "/home/ubuntu/neutron_fen/runs/staircase/02c_candidate_C_replicates/rep1/hits.csv",
+        "sha256": "bedb2abb9414df469182e5613b5d39b077da17bd370c36f4d222e245293c0f2b"
+      },
+      {
+        "path": "/home/ubuntu/neutron_fen/runs/staircase/02c_candidate_C_replicates/rep2/hits.csv",
+        "sha256": "8192745d8c69ce48c7c9db6c85e50c9de6363bd1f33250ec40a2644d8d0ecb2b"
+      },
+      {
+        "path": "/home/ubuntu/neutron_fen/runs/staircase/02c_candidate_C_replicates/rep3/hits.csv",
+        "sha256": "d586389e846381884fb144a0eef17f50477caa50fd197676769ffda85ef81171"
+      },
+      {
+        "path": "/home/ubuntu/neutron_fen/runs/staircase/02c_candidate_C_replicates/rep4/hits.csv",
+        "sha256": "4eff7e3f0ae67d6852abfe08666552521e2e8e1b6261cdbe14666adc504e1a7c"
+      },
+      {
+        "path": "/home/ubuntu/neutron_fen/runs/staircase/02c_candidate_C_replicates/rep5/hits.csv",
+        "sha256": "cbe0f053664c30f1155b39dbba689a07532c61690569a4cbd1382a189827d8b8"
+      }
+    ],
+    "pixel_map": {
+      "path": "/home/ubuntu/neutron_fen/outputs/tes_pixel_map.csv",
+      "sha256": "64fd7d155be57f09f81a74711c112e062760caebf0db2a245cc6871fb8d41564"
+    },
+    "si_deposits": {
+      "path": "/home/ubuntu/neutron_fen/outputs/g4cmp_inputs/02c_candidate_C.csv",
+      "sha256": "146d2bae0aa85b744df604fbbbb16e620e3936acf0534389ae1a9d5fa76bc393"
+    }
+  },
+  "interpretation": {
+    "L0": "Measured Si deposits plus per-pixel time-integrated G4CMP sensor energy",
+    "L1": "Measured direct pixel deposits only; pixel-to-Si backflow not modeled",
+    "L2-L5": "No Si or direct pixel deposits in candidate C",
+    "colors": "Athermal energy delivered/deposited per independent pixel, not temperature",
+    "display": "The full 1.5 mm pixel footprint is colored to make the per-channel energy readable; this does not claim full-area sensor coverage or a local heat-flux vector."
+  },
+  "outputs": {
+    "pdf": "/home/ubuntu/neutron_fen/outputs/figures/sh3_candidate_C_six_layer_matplotlib_map.pdf",
+    "png": "/home/ubuntu/neutron_fen/outputs/figures/sh3_candidate_C_six_layer_matplotlib_map.png"
+  },
+  "schema_version": 1,
+  "scope": "candidate C complete six-layer event record"
+}

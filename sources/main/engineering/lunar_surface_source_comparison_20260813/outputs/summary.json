@@ -1,0 +1,59 @@
+{
+  "schema_version": 1,
+  "status": "BUILT__SOURCE_INPUT_PROXY__VALIDATION_RECORDED_SEPARATELY",
+  "authority_boundary": "prompt incident source comparison only; not detector background, activation, delayed response, sensitivity, or geometry authority",
+  "lunar_model": {
+    "model": "REDMoon",
+    "epoch": "2019 solar minimum",
+    "soil": "Apollo-17 profile",
+    "geant4": "4.10.06.p01",
+    "physics_list": "FTFP_BERT_HP",
+    "public_dataset_doi": "10.5281/zenodo.5561427",
+    "paper_doi": "10.1029/2021JE006930",
+    "scope": "exposed lunar surface proxy; not final south-pole/base-site model"
+  },
+  "integrated_gamma_flux_cm2_s_100keV_10MeV": {
+    "balloon": 2.6627285489439507,
+    "leo": 1.940457167371874,
+    "lunar_regolith": 51.831749654384424,
+    "lunar_sky": 0.8921599323290782,
+    "lunar_total": 52.7239095867135
+  },
+  "ratios_100keV_10MeV": {
+    "lunar_total_to_balloon": 19.80070766418305,
+    "lunar_total_to_leo": 27.170870078066176
+  },
+  "annihilation_region_proxy_450_600keV": {
+    "balloon": 0.271021775088507,
+    "leo": 0.10230190572139408,
+    "lunar_regolith": 5.267800457262636,
+    "lunar_sky": 0.02338990670992838,
+    "lunar_total": 5.291190363972564,
+    "lunar_total_to_balloon": 19.523118990142514,
+    "lunar_total_to_leo": 51.72132744410874,
+    "warning": "broad-band proxy, not a narrow 511-keV line-flux ratio"
+  },
+  "leo_mono_511_integrated_flux_cm2_s": 0.028207,
+  "redmoon_peak_native_node": {
+    "energy_keV": 512.86,
+    "differential_flux_cm2_s_MeV": 325.06,
+    "warning": "finite tabulated node; not an intrinsic or detector line width"
+  },
+  "omissions": [
+    "activation and delayed radiation",
+    "SEP events",
+    "LEO SAA",
+    "local lunar base, lander, RTG, reactor, and structural materials",
+    "final south-pole soil, ice, terrain, and horizon model"
+  ],
+  "input_sha256": {
+    "engineering/lunar_surface_source_comparison_20260813/inputs/redmoon_zenodo_5561427/fig5.txt": "82d72b510ead4d136a289de0f32091bab5446418447c53168af32a3822f0c1f5",
+    "engineering/satellite_leo530_source_comparison_20260813/data/validation.json": "0c507ea29cf05d14e7af13d3d6c374e99cc28013986a6166cd6dfcd3ae5b51a7",
+    "engineering/satellite_leo530_source_comparison_20260813/outputs/tables/balloon_aggregated_spectra.csv": "b4a26f8f4b528c22f99d6396971331a10d88b3f23b00da07e998c1b8ac975611",
+    "engineering/satellite_leo530_source_comparison_20260813/outputs/tables/satellite_component_spectra.csv": "49aa2e4777fea53d7138081f9e8c2c34e11097567319cee9574b32141f59cd25",
+    "engineering/satellite_leo530_source_comparison_20260813/outputs/tables/satellite_profile_spectra.csv": "89f0d55e0d9706c4a963720a379e60108f70d9400a84a867ec37bca7f04f185f",
+    "engineering/satellite_leo530_source_comparison_20260813/outputs/tables/satellite_line_components.csv": "758c074f66ec34c7bba2243a64d4376680ee6b8b0ece9b9146d9d3413d4d24a1",
+    "engineering/satellite_leo530_source_comparison_20260813/outputs/tables/band_integrals.csv": "55376aadfed70ada5b9def0866443d195d8e202d9b593b35fe2b662d27824074",
+    "engineering/satellite_leo530_source_comparison_20260813/outputs/tables/environment_contrasts.csv": "d6ed13b188b66886d8c09ee64410cbe566980f2fc348ca5a7a1b4d597e722f03"
+  }
+}

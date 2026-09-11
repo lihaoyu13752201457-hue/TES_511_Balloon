@@ -1,0 +1,135 @@
+{
+  "f3_estimate": {
+    "authority": "PRETRANSPORT_CONDITIONAL_ESTIMATE_ONLY",
+    "headline_central_F3_ph_cm2_s": 5.217195345956161e-05,
+    "headline_range_F3_ph_cm2_s": [
+      5.092737612166943e-05,
+      5.507032999067618e-05
+    ],
+    "parent_sg3a_central_F3_ph_cm2_s": 5.769833354236724e-05,
+    "scenarios": {
+      "central": {
+        "accepted_prompt_increment_assumption_cps": 0.0,
+        "al_harness_suppression": 0.9,
+        "conditional_F3_ph_cm2_s": 5.217195345956161e-05,
+        "estimated_remaining_fraction_vs_se3": 0.5037352339177076,
+        "extra_baseline_background_reduction_fraction": 0.11236967947058783,
+        "new_bi_fraction": 0.8732913039450058,
+        "signal_retention_assumption": 1.0
+      },
+      "conservative": {
+        "accepted_prompt_increment_assumption_cps": 0.0,
+        "al_harness_suppression": 0.5,
+        "conditional_F3_ph_cm2_s": 5.507032999067618e-05,
+        "estimated_remaining_fraction_vs_se3": 0.5612592222404751,
+        "extra_baseline_background_reduction_fraction": 0.05484569114782035,
+        "new_bi_fraction": 0.65,
+        "signal_retention_assumption": 1.0
+      },
+      "optimistic": {
+        "accepted_prompt_increment_assumption_cps": 0.0,
+        "al_harness_suppression": 1.0,
+        "conditional_F3_ph_cm2_s": 5.092737612166943e-05,
+        "estimated_remaining_fraction_vs_se3": 0.4799883919313225,
+        "extra_baseline_background_reduction_fraction": 0.13611652145697292,
+        "new_bi_fraction": 1.0,
+        "signal_retention_assumption": 1.0
+      }
+    },
+    "unmodeled_risk": "410 g passive near-field Bi may create new accepted prompt/pair events; Al proxy produces a new activation inventory; either can move F3 outside this range"
+  },
+  "figure": {
+    "path": "/home/ubuntu/.codex/worktrees/4f50/TES_511_Balloon/engineering/geometry_optimization_20260815/55_geoopt_sg3b_bi_halfcylinder_al_harness_20260816/figures/sg3b_correct_bi_halfcylinder_sections.png",
+    "sha256": "b4e4a441b00966010f222f3673d66fa083ae268f68dea4a010d0eee446f39898"
+  },
+  "focused_signal": {
+    "intersections": 0,
+    "maximum_radial_distance_in_bi_x_ranges_cm": 1.6743802850620033,
+    "minimum_clearance_to_bi_inner_radius_cm": 1.8410197149379968,
+    "rays": 37194
+  },
+  "geometry": "/home/ubuntu/.codex/worktrees/4f50/TES_511_Balloon/engineering/geometry_optimization_20260815/55_geoopt_sg3b_bi_halfcylinder_al_harness_20260816/geometry/DEMO2_DR_v3p5_SG3B.geo",
+  "inputs": {
+    "eventlist_sha256": "a709a6dcbf5eaebda60be7ec419f4c214979d4cb215254134568eccebe27e57e",
+    "geo_sha256": "5f0482e307bf8701204f1d6df1b74396b7105d853dccb885e4df401146f552d9",
+    "mesh_sha256": "9ef8c6053146d6e055a5915d38de9a1a3eadc3c12ebaaa0bf7dbdf9c91985cb1",
+    "origins_sha256": "466bf835d96e503249adce675f58f14cb3f9e6f2860c3c4e19f4d3f2be072762"
+  },
+  "mass": {
+    "bi": {
+      "delta_g": 246.22364707707408,
+      "old_flat_mass_g": 164.08060812000002,
+      "upper_half_cylinder_mass_g": 410.3042551970741,
+      "upper_half_cylinder_volume_cm3": 42.095440155645235
+    },
+    "harness_proxy": {
+      "delta_g": -331.97246779200003,
+      "new_aluminium_mass_g": 235.725780208,
+      "old_nbti_proxy_mass_g": 567.698248,
+      "still_to_4k_new_mass_g": 66.30990377699999,
+      "still_to_4k_old_mass_g": 159.6940995,
+      "unchanged_volume_cm3": 87.338192
+    },
+    "net_candidate_minus_sg3a_g": -85.74882071492596
+  },
+  "mxc_geometric_screen": {
+    "flat_unweighted_fraction": 0.19250253292806488,
+    "flat_weighted_fraction": 0.21838167646730555,
+    "halfcylinder_unweighted_fraction": 0.6633738601823708,
+    "halfcylinder_weighted_fraction": 0.8732913039450058,
+    "method": "straight sightlines from 7 retained MXC origins to all 2,256 TES pixel centers; geometric screen only, not event tracks",
+    "per_origin": [
+      {
+        "family": "alpha",
+        "flat_fraction": 0.8457446808510638,
+        "halfcylinder_fraction": 0.7570921985815603,
+        "local_event_id": 62588,
+        "weight_cps": 0.0029990442803827836
+      },
+      {
+        "family": "alpha",
+        "flat_fraction": 0.2473404255319149,
+        "halfcylinder_fraction": 1.0,
+        "local_event_id": 68597,
+        "weight_cps": 0.0029990442803827836
+      },
+      {
+        "family": "eplus",
+        "flat_fraction": 0.10328014184397163,
+        "halfcylinder_fraction": 0.004875886524822695,
+        "local_event_id": 1952,
+        "weight_cps": 4.6436045455250025e-05
+      },
+      {
+        "family": "eplus",
+        "flat_fraction": 0.10328014184397163,
+        "halfcylinder_fraction": 0.004875886524822695,
+        "local_event_id": 7012,
+        "weight_cps": 4.6436045455250025e-05
+      },
+      {
+        "family": "gamma",
+        "flat_fraction": 0.0,
+        "halfcylinder_fraction": 1.0,
+        "local_event_id": 55360,
+        "weight_cps": 7.249199627073623e-05
+      },
+      {
+        "family": "gamma",
+        "flat_fraction": 0.047872340425531915,
+        "halfcylinder_fraction": 1.0,
+        "local_event_id": 63553,
+        "weight_cps": 7.249199627073623e-05
+      },
+      {
+        "family": "p",
+        "flat_fraction": 0.0,
+        "halfcylinder_fraction": 0.87677304964539,
+        "local_event_id": 70264,
+        "weight_cps": 0.008835250401802748
+      }
+    ]
+  },
+  "status": "PASS__SG3B_STATIC_RAY_AND_ESTIMATE",
+  "transport_launched": false
+}

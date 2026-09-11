@@ -1,0 +1,54 @@
+{
+  "schema_version": "m05-active-volume-whitelist-v1",
+  "detector_uid_scheme": "<detector_type>:<physical_volume>",
+  "active_detector_types": [
+    "mass_csi",
+    "o8_bgo",
+    "o8_plastic"
+  ],
+  "tes_physical_volume_regex": "^TP_L[0-5]_[0-9]+$",
+  "kapton_diagnostic_rule": "case-insensitive physical-volume substring KAPTON; diagnostic only and never veto/candidate by itself",
+  "mass_csi_physical_volumes": [
+    "CsI_Side_Segment_00",
+    "CsI_Side_Segment_01",
+    "CsI_Side_Segment_02",
+    "CsI_Side_Segment_03_below_side_port",
+    "CsI_Side_Segment_03_above_side_port",
+    "CsI_Side_Segment_03_rectcut_window_band",
+    "CsI_Side_Segment_04_below_side_port",
+    "CsI_Side_Segment_04_above_side_port",
+    "CsI_Side_Segment_04_rectcut_window_band",
+    "CsI_Side_Segment_05",
+    "CsI_Side_Segment_06",
+    "CsI_Side_Segment_07",
+    "CsI_Bottom_Quadrant_00",
+    "CsI_Bottom_Quadrant_01",
+    "CsI_Bottom_Quadrant_02",
+    "CsI_Bottom_Quadrant_03",
+    "CsI_TopAnnulus_Segment_00",
+    "CsI_TopAnnulus_Segment_01",
+    "CsI_TopAnnulus_Segment_02",
+    "CsI_TopAnnulus_Segment_03",
+    "CsI_TopAnnulus_Segment_04",
+    "CsI_TopAnnulus_Segment_05",
+    "CsI_TopAnnulus_Segment_06",
+    "CsI_TopAnnulus_Segment_07"
+  ],
+  "o8_bgo_physical_volumes": [
+    "BGO_S3C_FullWrap_SideShell_WindowCut_40mm",
+    "BGO_S3D_O8_FullWrap_BottomCap_30mm",
+    "BGO_S3D_O8_FullWrap_TopAnnulus_10mm"
+  ],
+  "o8_plastic_physical_volumes": [
+    "GeoOpt_S2B_CryoShell_Plastic_SideSkin_10mm",
+    "GeoOpt_S2B_CryoShell_Plastic_BottomCap_10mm",
+    "GeoOpt_S2B_CryoShell_Plastic_TopCap_10mm"
+  ],
+  "selection_rule": "native truth iff raw TES energy is positive or the tape root is a pre-registered control; veto-only events retain typed block summaries but do not select native truth; Kapton alone is excluded",
+  "passive_exclusions": [
+    "kapton",
+    "bpe",
+    "tungsten",
+    "aluminum"
+  ]
+}

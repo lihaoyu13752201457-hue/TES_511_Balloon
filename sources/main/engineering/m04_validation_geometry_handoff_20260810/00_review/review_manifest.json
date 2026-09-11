@@ -1,0 +1,145 @@
+{
+  "schema_version": "m04_wp0_review_manifest_v1",
+    "generated_at_utc": "2026-08-10T12:45:09Z",
+    "last_refreshed_at_utc": "2026-08-10T14:26:00Z",
+  "status": "WP0_AUDIT_COMPLETE_WITH_EXPLICIT_BLOCKERS",
+  "contract": {
+    "path": "engineering/m04_validation_geometry_handoff_20260810/SESSION_BOOTSTRAP.md",
+    "sha256": "f907243451a83bb9c496628e337c63fb328beb7a85e96c26c5342913b4af33f9"
+  },
+  "execution_scope": {
+    "review_only_through_wp0": true,
+    "simulations_started_during_wp0": 0,
+    "user_override_recorded_20260810": [
+      "finite-M validation uses retained source/event/response data and starts no new simulation",
+      "only the independent atmospheric-annihilation 511-keV monoenergetic module may be corrected or transported",
+      "prompt, delayed, continuum, signal, and other particle modules are retained and reused",
+      "downstream quantities are recomposed modularly; missing evidence weakens claims instead of triggering full reruns"
+    ],
+    "handoff_recommendations_not_authorized_in_this_execution": [
+      "Section 7.3B multi-run transport matrix",
+      "Section 8.4.6 continuum transport",
+      "Section 9.4 new other-particle geometry A/B transports"
+    ]
+  },
+  "git_snapshot_before_wp0": {
+    "branch": "delayed-source-authority-v2-20260624",
+    "head": "11ae2af2cdf5129b70d631565a0b306815a5ecfe",
+    "upstream": "origin/delayed-source-authority-v2-20260624",
+    "status_short_entries": 152,
+    "tracked_modified_entries": 20,
+    "untracked_entries": 132,
+    "handoff_package_preexisting_state": "untracked",
+    "destructive_git_operations": 0
+  },
+  "protected_baseline": {
+    "sha256_check_file": "engineering/m04_validation_geometry_handoff_20260810/00_review/protected_file_hashes.sha256",
+    "files_checked": 19,
+    "files_passed": 19,
+    "status": "PASS",
+    "english_frozen_prefix": {
+      "range": "lines 1-1199 before Results",
+      "sha256": "c72137b78a66e45add8c4d5c25dfd07261a873862b7c202916b73d0c125f5e50",
+      "status": "PASS"
+    },
+    "chinese_frozen_prefix": {
+      "range": "lines 1-669 before 结果",
+      "sha256": "1b11acad70efd5f10df6adba63a993462466954d052a2bab12f441f70276fc47",
+      "status": "PASS"
+    },
+    "m04_files_modified": false,
+    "m04_files_recompiled": false
+  },
+  "version_alignment": {
+    "english_tex_newer_than_pdf": true,
+    "chinese_tex_newer_than_pdf": true,
+    "english_figure2_tex_newer_than_pdf": true,
+    "chinese_figure2_tex_newer_than_pdf": true,
+    "same_name_pdfs_are_current_review_authority": false,
+    "status": "STALE_PDFS_RECORDED"
+  },
+  "bilingual_structure": {
+    "numbered_heading_pairs": 22,
+    "english_display_environments": 43,
+    "chinese_display_environments": 43,
+    "english_eq_tab_fig_labels": 17,
+    "chinese_eq_tab_fig_labels": 17,
+    "order_and_structure_status": "PASS",
+    "scientific_definition_status": "MATCHED_BILINGUALLY_BUT_CONTAINS_SHARED_BLOCKERS"
+  },
+  "claim_source_coverage": {
+    "matrix": "engineering/m04_validation_geometry_handoff_20260810/00_review/manuscript_claim_to_source_matrix.csv",
+    "headline_claim_clusters_expected": 28,
+    "headline_claim_clusters_recorded": 28,
+    "coverage_fraction": 1.0,
+    "coverage_status": "PASS_100_PERCENT_TRACEABILITY",
+    "validity_caveat": "Traceability does not validate the old atmospheric-511 model, the factor-1000 legacy prompt-photon energy axis, or single-M-dependent values."
+  },
+  "o8_geometry_authority": {
+    "setup": {
+      "path": "engineering/geometry_optimization_20260704/43_geoopt_s3d_o8_fallback_20260712/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup",
+      "sha256": "86a9e56e54dc86834dfe2a9b03a5f71373fb40f2ef24e3889fa66f216058fbec"
+    },
+    "geometry": {
+      "path": "engineering/geometry_optimization_20260704/43_geoopt_s3d_o8_fallback_20260712/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo",
+      "sha256": "ff4e8402df702501e0112fe377d837a74c39100317146b09e9569b7bd615c37c"
+    },
+    "detector": {
+      "path": "engineering/geometry_optimization_20260704/43_geoopt_s3d_o8_fallback_20260712/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.det",
+      "sha256": "dd2c1d68cd474f8b0c7489f2cbbfc924eb69beb14d3ce360d9437c319a33d6cb"
+    },
+    "status": "PASS"
+  },
+  "primary_numeric_authorities": {
+    "reference_response_background_breakdown": {
+      "path": "engineering/ea_detector_response_closure_20260713/data/reference_response_background_breakdown.json",
+      "sha256": "cdb2a69c551cf1ec3dc58bd3863541e43820fade118fdc1be58bc10591251e34"
+    },
+    "final_response_old_atm_model": {
+      "path": "engineering/ea_s3d_o8_all8_detector_response_closure_20260713/data/s3d_o8_all8_energy_response_summary.json",
+      "sha256": "8c86ba7f4ebca3b5e4c9dfe084651751eddc031ed9b7d8203220073763beaf43"
+    },
+    "slant45_mission_old_atm_model": {
+      "path": "engineering/ea_peer_review_p02_slant_transmission_20260714/data/slant45_signal_refold_summary.json",
+      "sha256": "f7ec57c9a8b06c44172e3fc925501ca359b6a0c524e421568da07ee7d8c148ba"
+    },
+        "offline_old_broadband_gamma_line_dedup": {
+            "path": "engineering/m04_validation_geometry_handoff_20260810/02_parma_atm511_repair_20260810/data/o8_prompt_gamma_line_dedup_audit.json",
+            "sha256": "60c5c96d9c666c5fe0e6ac03dcd786712dc3d63af45aa4e4cc9801c9a10d6c10",
+            "status": "PASS_OFFLINE_OLD_BROADBAND_GAMMA_LINE_TERM_DEDUP__ZERO_W511_DELTA",
+            "scope_note": "The retained _2602units photon abscissae are 1000x too low. The misplaced line term has zero Broad/W511 delta; this audit does not authorize continuum transport."
+        }
+  },
+  "blockers": [
+    "B01_STALE_M04_PDFS",
+    "B02_MISENERGIZED_BROAD_LINE_TERM_PLUS_LEGACY_SIDECAR",
+    "B03_NONUNIQUE_DAY15_ENVIRONMENT_METADATA",
+    "B04_SINGLE_M50000_SEED_DELAYED_SOURCE",
+    "B05_EXCITATION_STATE_MATCHING_CLAIM_EXCEEDS_BUILDER_KEY",
+    "B06_ACTIVE_MASK_INCLUDES_BGO_PLASTIC_AND_UNINTENDED_PASSIVE_KAPTON_BY_NAME",
+    "B07_FINAL_GEOMETRY_TABLE_OMITS_BPE_AND_PLASTIC",
+    "B08_OUTER_BPE_PLASTIC_OPTICAL_PATH_NOT_CUT_OR_VALIDATED",
+    "B09_FIVE_STALE_FIGURE_PROVENANCE_HASHES",
+    "B10_MASS_MODEL_STATUS_METADATA_CONFLICT",
+    "B11_CLEANED_LEGACY_INPUTS_NOT_RESTORABLE",
+    "B12_TRANSPORT_ENCLOSURE_NOT_STRUCTURAL_QUALIFICATION",
+    "B13_NO_OUTER_W2_DOES_NOT_MEAN_NO_TUNGSTEN",
+    "B14_DELAYED_TRIGGER_DECAY_TE_SEMANTICS_NEED_PRECISE_WORDING",
+    "B15_ROOT_BILINGUAL_VALIDATORS_DO_NOT_TARGET_M04",
+    "B16_RETAINED_O8_BROADBAND_GAMMA_ENERGY_AXIS_FACTOR_1000_LOW"
+    ],
+    "wp0_artifacts": {
+        "PROJECT_AND_M04_REVIEW.md": "6b11d65e4e09257aabdcc0100a5776e2445283cc2e69666224ea937ceacce3dd",
+        "manuscript_claim_to_source_matrix.csv": "f664d2e05c8dbba4bb1fcfeec43a385650555050981e9985fef7e3d7b5b4a613",
+        "protected_file_hashes.sha256": "81af1b574f0e70154c9ecaa0065ad3a8fea3ada522675a7adb6087c40d7ce0d6",
+        "FROZEN_PREFIX_CORRECTION_PROPOSAL.md": "c6e0b7d91e58a7ca9831a5d33754681a755a0facec2af691380d5f39b2104ace"
+    },
+  "next_actions": [
+    "run an offline-only finite-M audit over retained weighted tables, sources, catalogues, and response products",
+    "vendor and freeze the official PARMA source and one day-15 environment authority",
+    "rebuild only the atmospheric-annihilation 511-keV monoenergetic module",
+    "recompose retained prompt, delayed, signal, and corrected atmospheric-line modules without full-chain reruns; the offline broadband line-term W511 delta is exactly zero",
+    "retain the factor-1000 prompt-photon axis defect as an explicit publication blocker without inferring or launching a continuum rerun",
+    "do not create or edit M05 until the applicable modular evidence gates are satisfied"
+  ]
+}

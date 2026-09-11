@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "checked_on": "2026-08-13",
+  "status": "PASS__PRIMARY_PUBLICATION_AND_PINNED_DATA_LINKS_CROSS_CHECKED",
+  "figure": "02_full_spectrum_comparison",
+  "references": [
+    {
+      "id": 1,
+      "environment": "balloon_38km",
+      "short": "EXPACS/PARMA",
+      "citation": "Sato, T. (2015), Analytical Model for Estimating Terrestrial Cosmic Ray Fluxes Nearly Anytime and Anywhere in the World: Extension of PARMA/EXPACS, PLOS ONE 10, e0144679.",
+      "doi": "10.1371/journal.pone.0144679",
+      "url": "https://doi.org/10.1371/journal.pone.0144679",
+      "angular_citation": "Sato, T. (2016), Analytical Model for Estimating the Zenith Angle Dependence of Terrestrial Cosmic Ray Fluxes, PLOS ONE 11, e0160390.",
+      "angular_doi": "10.1371/journal.pone.0160390",
+      "angular_url": "https://doi.org/10.1371/journal.pone.0160390"
+    },
+    {
+      "id": 2,
+      "environment": "leo530_quiet_proxy",
+      "short": "COSI DC4",
+      "citation": "Gallego et al. (2026), Preflight Background Estimates for COSI, The Astrophysical Journal 997, 284.",
+      "doi": "10.3847/1538-4357/ae32f4",
+      "url": "https://doi.org/10.3847/1538-4357/ae32f4",
+      "data_url": "https://github.com/cositools/cosi-sim/tree/eec0dbf1aaabc79fea2706946434e30f7060a59a/cosi_sim/Source_Library/DC4/backgrounds",
+      "pinned_commit": "eec0dbf1aaabc79fea2706946434e30f7060a59a"
+    },
+    {
+      "id": 3,
+      "environment": "lunar_surface_proxy",
+      "short": "REDMoon",
+      "citation": "Dobynde, M. I. & Guo, J. (2021), Radiation Environment at the Surface and Subsurface of the Moon: Model Development and Validation, JGR: Planets 126, e2021JE006930.",
+      "doi": "10.1029/2021JE006930",
+      "url": "https://doi.org/10.1029/2021JE006930",
+      "data_doi": "10.5281/zenodo.5561427",
+      "data_url": "https://doi.org/10.5281/zenodo.5561427",
+      "note": "Lunar gamma additionally includes a 2pi COSI cosmic-sky proxy."
+    }
+  ],
+  "supporting_references": [
+    {
+      "role": "official_software_entry",
+      "citation": "JAEA/PHITS, EXPACS official distribution and documentation.",
+      "url": "https://phits.jaea.go.jp/expacs/"
+    },
+    {
+      "role": "leo_environment_model",
+      "citation": "Cumani, P. et al. (2019), Background for a gamma-ray satellite on a low-Earth orbit, Experimental Astronomy 47, 273–302.",
+      "doi": "10.1007/s10686-019-09624-0",
+      "url": "https://doi.org/10.1007/s10686-019-09624-0"
+    }
+  ],
+  "pinned_input_checks": {
+    "redmoon_fig5_sha256": "82d72b510ead4d136a289de0f32091bab5446418447c53168af32a3822f0c1f5",
+    "cosi_albedo_source_sha256": "6055789674d633f9050f2889cab46cc9172c59fa42ac3e8f385e902c476ee616"
+  },
+  "angular_scope": {
+    "quantity": "native-angular-support integrated E*dF/dE",
+    "balloon_38km": "strict 4pi sum of 20 equal-mu bins",
+    "leo530_quiet_proxy": "sum over each component's native support; not one common direction",
+    "lunar_surface_proxy": "regolith-up 2pi components; gamma also includes a sky-down 2pi proxy; some charged-particle proxy components do not define a strict common 4pi field"
+  }
+}

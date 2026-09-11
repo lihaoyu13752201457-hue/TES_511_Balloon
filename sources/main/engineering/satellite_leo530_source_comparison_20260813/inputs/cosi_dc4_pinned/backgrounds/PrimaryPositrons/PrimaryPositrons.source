@@ -1,0 +1,23 @@
+PhysicsListHD   qgsp-bic-hp
+
+#PreTriggerMode              EveryEventWithHits
+DecayMode	Buildup
+
+DefaultRangeCut 0.005
+
+Region Spacecraft
+Spacecraft.Volume SCbody
+Spacecraft.RangeCut 1.
+
+Region Pipebody
+Pipebody.Volume PIPbody
+Pipebody.RangeCut 1.
+
+DetectorTimeConstant 0.000002
+
+SpaceSim.Source PrimaryPositrons
+PrimaryPositrons.ParticleType  2
+PrimaryPositrons.Beam   FarFieldEarthOccultation false
+PrimaryPositrons.Spectrum File PrimaryPositrons_Spec_530.0km_0.0deg_12.600cutoff_520.0solarmod_fluxdividedby1000.dat
+PrimaryPositrons.Flux		      4.157191132881575e-08
+PrimaryPositron.LightCurve File false PrimaryPositrons_LightCurve.dat

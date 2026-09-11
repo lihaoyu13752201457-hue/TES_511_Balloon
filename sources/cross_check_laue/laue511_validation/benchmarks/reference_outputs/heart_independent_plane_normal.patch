@@ -1,0 +1,254 @@
+diff --git a/HEART/components/Crystal.py b/HEART/components/Crystal.py
+index 4235314..105f8ef 100644
+--- a/HEART/components/Crystal.py
++++ b/HEART/components/Crystal.py
+@@ -41,6 +41,14 @@ class Crystal:
+         if not hasattr(self, "axis_L"):
+             self.axis_L = np.array([1., 0., 0.])
+ 
++        # Optional independent mean diffracting-plane normal for flat-crystal
++        # geometries where the mechanical surface normal and lattice-plane
++        # normal are intentionally not parallel.
++        if not hasattr(self, "use_independent_diff_plane_norm"):
++            self.use_independent_diff_plane_norm = False
++        if not hasattr(self, "diff_plane_norm"):
++            self.diff_plane_norm = np.array([0., 0., 1.])
++
+         # Prepare a default crystal
+         self.physical_properties()
+         self.prepare_mosaic_crystal()
+@@ -685,4 +693,4 @@ def const_rc_center(photon: Photon, crystal: Crystal):
+     for iMiller in range(crystal.NMiller):
+         photon.rc_center[iMiller] = crystal.rc_center
+ 
+-    return
+\ No newline at end of file
++    return
+diff --git a/HEART/components/FlatCrystal.py b/HEART/components/FlatCrystal.py
+index 781c550..085f4dd 100644
+--- a/HEART/components/FlatCrystal.py
++++ b/HEART/components/FlatCrystal.py
+@@ -35,7 +35,8 @@ class FlatCrystal(Crystal):
+                        axis_L: ArrayLike, length: float,
+                        axis_W: ArrayLike, width: float,
+                        axis_N: ArrayLike, Tc_mm: float,
+-                       spectrometer: Spectrometer, MPI_rank: int):
++                       spectrometer: Spectrometer, MPI_rank: int,
++                       diff_plane_N: ArrayLike | None = None):
+         """
+         Parameters
+         ----------
+@@ -54,16 +55,19 @@ class FlatCrystal(Crystal):
+             Tc_mm: float
+                 Thickness of the crystal. Positive values builds crystal up along axis_N
+                 (i.e. top surface is higher), negative builds down along axis_N.
++            diff_plane_N: ArrayLike or None
++                Optional mean diffracting-plane normal. If None, the crystal surface normal
++                axis_N is also used as the mean mosaic crystallite normal.
+             spectrometer: Spectrometer
+                 Spectrometer object
+             MPI_rank: int
+                 Rank of the processor
+         """
+ 
+-        self.update_position(center, axis_L, length, axis_W, width, axis_N, Tc_mm)
++        self.update_position(center, axis_L, length, axis_W, width, axis_N, Tc_mm, diff_plane_N)
+         
+         self.save_info(spectrometer, MPI_rank, center,
+-                       axis_L, length, axis_W, width, axis_N, Tc_mm)
++                       axis_L, length, axis_W, width, axis_N, Tc_mm, diff_plane_N)
+ 
+         # Set up default crystal properties
+         super().__init__()
+@@ -72,7 +76,8 @@ class FlatCrystal(Crystal):
+     def update_position(self, center: ArrayLike,
+                               axis_L: ArrayLike, length: float,
+                               axis_W: ArrayLike, width: float,
+-                              axis_N: ArrayLike, Tc_mm: float
++                              axis_N: ArrayLike, Tc_mm: float,
++                              diff_plane_N: ArrayLike | None = None,
+                               ):
+         """
+         Defines a number of important properties that define the cylindrical crystal,
+@@ -100,6 +105,8 @@ class FlatCrystal(Crystal):
+             Tc_mm: float
+                 Thickness of the crystal. Positive values builds crystal up along axis_N
+                 (i.e. top surface is higher), negative builds down along axis_N.
++            diff_plane_N: ArrayLike or None
++                Optional mean diffracting-plane normal. If None, axis_N is used.
+         """
+ 
+         input_center = np.asarray(center, dtype=np.float64)
+@@ -115,14 +122,25 @@ class FlatCrystal(Crystal):
+             self.axis_W = np.zeros(3, dtype=np.float64)
+         if not hasattr(self, "obj_face_norm"):
+             self.obj_face_norm = np.zeros(3, dtype=np.float64)
++        if not hasattr(self, "diff_plane_norm"):
++            self.diff_plane_norm = np.zeros(3, dtype=np.float64)
+ 
+         ax_L /= norm(ax_L)
+         ax_W /= norm(ax_W)
+         ax_N /= norm(ax_N)
+ 
++        if diff_plane_N is None:
++            diff_N = np.array(ax_N, dtype=np.float64)
++            self.use_independent_diff_plane_norm = False
++        else:
++            diff_N = np.asarray(diff_plane_N, dtype=np.float64)
++            diff_N /= norm(diff_N)
++            self.use_independent_diff_plane_norm = True
++
+         self.axis_L[:] = ax_L
+         self.axis_W[:] = ax_W
+         self.obj_face_norm[:] = ax_N
++        self.diff_plane_norm[:] = diff_N
+         
+         length_2 = abs(length)/2.
+         width_2  = abs(width)/2.
+@@ -165,7 +183,8 @@ class FlatCrystal(Crystal):
+                         center: ArrayLike,
+                         axis_L: ArrayLike, length: float,
+                         axis_W: ArrayLike, width: float,
+-                        axis_N: ArrayLike, Tc_mm: float):
++                        axis_N: ArrayLike, Tc_mm: float,
++                        diff_plane_N: ArrayLike | None = None):
+         """
+         Saves data about the Crystal that is sufficient to re-create it.
+         Only called when the Crystal is created.
+@@ -190,6 +209,8 @@ class FlatCrystal(Crystal):
+                 Surface normal of the crystal.
+             Tc_mm: float
+                 Thickness of the crystal.
++            diff_plane_N: ArrayLike or None
++                Optional mean diffracting-plane normal.
+         """
+         
+         if (spectrometer.output_file is None) or (MPI_rank != 0):
+@@ -222,6 +243,12 @@ class FlatCrystal(Crystal):
+             g.create_dataset('axis_N', data=axis_N)
+             g.create_dataset('thickness', data=Tc_mm)
+             g['thickness'].attrs['Units'] = 'mm'
++            if diff_plane_N is None:
++                g.create_dataset('diff_plane_N', data=axis_N)
++                g.create_dataset('use_independent_diff_plane_norm', data=False)
++            else:
++                g.create_dataset('diff_plane_N', data=diff_plane_N)
++                g.create_dataset('use_independent_diff_plane_norm', data=True)
+ 
+             # Not necessary to create the crystal, but useful to store for debugging
+             g.create_dataset('corners', data=self.corners)
+@@ -271,23 +298,42 @@ def line_object_intersect(self: FlatCrystal, origin: np.ndarray, ray: np.ndarray
+     y0 = dot(origin, self.v_ax)
+     z0 = dot(origin, self.w_ax)
+ 
+-    # Projection of the ray direction on to the crystal axes
+-    inv_x0t = 1/dot(ray, self.u_ax)
+-    inv_y0t = 1/dot(ray, self.v_ax)
+-    inv_z0t = 1/dot(ray, self.w_ax)
+-
+-    # For each direction, find the min and max point along the axes where the intersection can occur
+-    x_int_m  = (self.um - x0) * inv_x0t
+-    x_int_M  = (self.uM - x0) * inv_x0t
+-    x_int_s, x_int_b  = order(x_int_m, x_int_M)
+-
+-    y_int_m  = (self.vm - y0) * inv_y0t
+-    y_int_M  = (self.vM - y0) * inv_y0t
+-    y_int_s, y_int_b  = order(y_int_m, y_int_M)
+-
+-    z_int_m  = (self.wm - z0) * inv_z0t
+-    z_int_M  = (self.wM - z0) * inv_z0t
+-    z_int_s, z_int_b  = order(z_int_m, z_int_M)
++    # Projection of the ray direction on to the crystal axes. If the ray is
++    # parallel to an axis slab, that slab either rejects the ray immediately or
++    # places no bound on the intersection interval.
++    dx = dot(ray, self.u_ax)
++    dy = dot(ray, self.v_ax)
++    dz = dot(ray, self.w_ax)
++
++    if dx == 0.:
++        if (x0 < self.um) or (x0 > self.uM):
++            return origin + 0. * ray, False
++        x_int_s, x_int_b = -np.inf, np.inf
++    else:
++        inv_x0t = 1/dx
++        x_int_m  = (self.um - x0) * inv_x0t
++        x_int_M  = (self.uM - x0) * inv_x0t
++        x_int_s, x_int_b  = order(x_int_m, x_int_M)
++
++    if dy == 0.:
++        if (y0 < self.vm) or (y0 > self.vM):
++            return origin + 0. * ray, False
++        y_int_s, y_int_b = -np.inf, np.inf
++    else:
++        inv_y0t = 1/dy
++        y_int_m  = (self.vm - y0) * inv_y0t
++        y_int_M  = (self.vM - y0) * inv_y0t
++        y_int_s, y_int_b  = order(y_int_m, y_int_M)
++
++    if dz == 0.:
++        if (z0 < self.wm) or (z0 > self.wM):
++            return origin + 0. * ray, False
++        z_int_s, z_int_b = -np.inf, np.inf
++    else:
++        inv_z0t = 1/dz
++        z_int_m  = (self.wm - z0) * inv_z0t
++        z_int_M  = (self.wM - z0) * inv_z0t
++        z_int_s, z_int_b  = order(z_int_m, z_int_M)
+ 
+     min_intersection = max(0., x_int_s, y_int_s, z_int_s)
+     max_intersection = min(    x_int_b, y_int_b, z_int_b)
+diff --git a/HEART/ray_tracer.py b/HEART/ray_tracer.py
+index d9b24be..08dedd2 100644
+--- a/HEART/ray_tracer.py
++++ b/HEART/ray_tracer.py
+@@ -495,7 +495,13 @@ def make_numba_ray_trace(spectrometer: Spectrometer) -> Callable:
+             pos: np.ndarray
+                 Position at which to evaluate the properties
+         """
+-        photon.c_norm[:] = get_crystal_normal(crystal, pos)
++        surface_norm = get_crystal_normal(crystal, pos)
++        if crystal.use_independent_diff_plane_norm:
++            photon.c_norm[:] = crystal.diff_plane_norm
++            if dot(surface_norm, photon.c_norm) < 0:
++                photon.c_norm[:] = -photon.c_norm
++        else:
++            photon.c_norm[:] = surface_norm
+         sin_alpha  = dot(photon.ray, photon.c_norm)
+         photon.ray_sgn = 1
+         if sin_alpha > 0:
+@@ -823,4 +829,4 @@ def make_numba_ray_trace(spectrometer: Spectrometer) -> Callable:
+                 return chi
+         
+     
+-    return numba_ray_trace
+\ No newline at end of file
++    return numba_ray_trace
+diff --git a/HEART/spectrometer.py b/HEART/spectrometer.py
+index 9677a42..c260cac 100644
+--- a/HEART/spectrometer.py
++++ b/HEART/spectrometer.py
+@@ -290,7 +290,8 @@ class Spectrometer:
+     def add_flat_crystal(self, x_center_mm: ArrayLike,
+                                axis_L: ArrayLike, length: float,
+                                axis_W: ArrayLike, width: float,
+-                               axis_N: ArrayLike, Tc_mm: float):
++                               axis_N: ArrayLike, Tc_mm: float,
++                               diff_plane_N: ArrayLike | None = None):
+         """
+         Add a flat crystal to the spectrometer.
+ 
+@@ -311,10 +312,13 @@ class Spectrometer:
+             Tc_mm: float
+                 Thickness of the crystal in mm. Positive values builds crystal up along axis_N
+                 (i.e. top surface is higher), negative builds down along axis_N.
++            diff_plane_N: ArrayLike or None
++                Optional mean diffracting-plane normal. If None, axis_N is used as in
++                previous HEART versions.
+         """
+ 
+         self.crystal = FlatCrystal(x_center_mm, axis_L, length, axis_W, width,
+-                                   axis_N, Tc_mm, self, MPI_rank)
++                                   axis_N, Tc_mm, self, MPI_rank, diff_plane_N)
+ 
+         self.set_ray_angles()
+         

@@ -1,0 +1,86 @@
+{
+  "status": "PASS_ANALYTIC_AGREEMENT_AUDIT_BUILT",
+  "claim_boundary": "Uses existing targeted prompt extraction only; not Step05 W2, not activation, not delayed, not Step06 promotion.",
+  "checks": [
+    {
+      "scope": "combined_species",
+      "metric": "band480_550",
+      "model": "live_parma_species_weighted",
+      "primary_subset": "all combined points",
+      "max_abs_z": 0.5059938725366442,
+      "chi2_sum_z2": 0.43530388268281456,
+      "dof": 3,
+      "verdict": "CONSISTENT_WITHIN_2SIGMA"
+    },
+    {
+      "scope": "combined_species",
+      "metric": "band480_550",
+      "model": "step06_prompt_scalar",
+      "primary_subset": "all combined points",
+      "max_abs_z": 4.754790839952927,
+      "chi2_sum_z2": 48.55534835655572,
+      "dof": 3,
+      "verdict": "REJECTED_GT_3SIGMA"
+    },
+    {
+      "scope": "combined_species",
+      "metric": "tes_any",
+      "model": "live_parma_species_weighted",
+      "primary_subset": "all combined points",
+      "max_abs_z": 8.785428490852757,
+      "chi2_sum_z2": 149.4333265019372,
+      "dof": 3,
+      "verdict": "REJECTED_GT_3SIGMA"
+    },
+    {
+      "scope": "combined_species",
+      "metric": "tes_any",
+      "model": "step06_prompt_scalar",
+      "primary_subset": "all combined points",
+      "max_abs_z": 26.41799462676409,
+      "chi2_sum_z2": 2019.551710203163,
+      "dof": 3,
+      "verdict": "REJECTED_GT_3SIGMA"
+    },
+    {
+      "scope": "per_particle",
+      "metric": "band480_550",
+      "model": "live_parma_particle_flux",
+      "primary_subset": "eplus only",
+      "max_abs_z": 0.9963207931070137,
+      "chi2_sum_z2": 1.2216688310253112,
+      "dof": 3,
+      "verdict": "CONSISTENT_WITHIN_2SIGMA"
+    },
+    {
+      "scope": "per_particle",
+      "metric": "band480_550",
+      "model": "step06_prompt_scalar",
+      "primary_subset": "eplus only",
+      "max_abs_z": 11.853868212117497,
+      "chi2_sum_z2": 317.93634851413475,
+      "dof": 3,
+      "verdict": "REJECTED_GT_3SIGMA"
+    },
+    {
+      "scope": "per_particle",
+      "metric": "tes_any",
+      "model": "live_parma_particle_flux",
+      "primary_subset": "eplus only",
+      "max_abs_z": 4.637233441763993,
+      "chi2_sum_z2": 44.58158191857216,
+      "dof": 3,
+      "verdict": "REJECTED_GT_3SIGMA"
+    },
+    {
+      "scope": "per_particle",
+      "metric": "tes_any",
+      "model": "step06_prompt_scalar",
+      "primary_subset": "eplus only",
+      "max_abs_z": 31.980951272670133,
+      "chi2_sum_z2": 2386.4021978520364,
+      "dof": 3,
+      "verdict": "REJECTED_GT_3SIGMA"
+    }
+  ]
+}

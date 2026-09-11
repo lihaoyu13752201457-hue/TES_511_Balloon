@@ -1,0 +1,687 @@
+\documentclass[11pt]{article}
+
+\usepackage[a4paper,top=2.35cm,bottom=2.45cm,left=2.15cm,right=2.15cm]{geometry}
+\usepackage{fontspec}
+\setmainfont{TeX Gyre Termes}
+\usepackage{amsmath,amssymb}
+\usepackage{booktabs,tabularx,array}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage[font=small,labelfont=bf]{caption}
+\usepackage[section]{placeins}
+\usepackage[round,authoryear]{natbib}
+\usepackage{microtype}
+\usepackage{xspace}
+\usepackage{lineno}
+\usepackage{hyperref}
+\hypersetup{
+  colorlinks=true,
+  linkcolor=black,
+  citecolor=blue!45!black,
+  urlcolor=blue!55!black,
+  pdftitle={Background suppression by a chimney-mounted TES focal plane and BGO anticoincidence},
+  pdfauthor={Authors omitted for review}
+}
+
+\renewcommand{\arraystretch}{1.13}
+\setlength{\emergencystretch}{3em}
+\setlength{\parindent}{1.25em}
+\setlength{\parskip}{0pt}
+\raggedbottom
+\newcolumntype{Y}{>{\raggedright\arraybackslash}X}
+\newcommand{\keV}{\ensuremath{\,\mathrm{keV}}\xspace}
+\newcommand{\MeV}{\ensuremath{\,\mathrm{MeV}}\xspace}
+\newcommand{\cm}{\ensuremath{\,\mathrm{cm}}\xspace}
+\newcommand{\cps}{\ensuremath{\,\mathrm{s^{-1}}}\xspace}
+\newcommand{\phflux}{\ensuremath{\,\mathrm{ph\,cm^{-2}\,s^{-1}}}\xspace}
+\newcommand{\aeff}{\ensuremath{A_{\mathrm{eff}}}}
+
+\title{\textbf{Background suppression by a chimney-mounted TES focal plane and BGO anticoincidence for a balloon-borne 511 keV Laue telescope}}
+\author{Authors omitted for review\\[0.25em]\small Affiliations omitted for review}
+\date{}
+
+\begin{document}
+\maketitle
+\linenumbers
+
+\begin{abstract}
+A balloon-borne Laue telescope can concentrate 511\keV photons onto a compact
+transition-edge-sensor focal plane, but detector and cryostat backgrounds can
+erase the benefit of focusing. We compare a reference detector assembly with a
+geometry that translates the transition-edge-sensor array laterally into an
+aluminum side chimney and surrounds it with a three-part bismuth germanate
+anticoincidence shield. Both assemblies are evaluated with the same
+eight-family atmospheric radiation field, activation treatment, detector
+response, event selection, and 20-day synthetic trajectory. The matched
+simulation finds that the fraction of selected delayed events originating in
+the central cold assembly falls from 32.18\% to 3.92\%. In the
+chimney geometry, a 50\keV offline bismuth-germanate veto reduces the prompt and
+delayed rates in the 510.58--511.42\keV window from 2.235 to 0.00579\cps and
+from 0.1275 to 0.00402\cps, respectively. The final focused-signal effective
+area is 15.085$\pm$0.045\,cm$^2$, 99.75\% of the reference value. At the
+day-15 trajectory state, the total background falls from 0.05128 to
+0.009280\cps. Over 20 days, a top-of-atmosphere line flux of
+$10^{-4}\phflux$ gives 1678 signal
+counts over 15552 background counts and an Asimov significance of 13.22. The
+Gaussian 3$\sigma$ line-flux threshold is
+$(2.229\pm0.209)\times10^{-5}\phflux$, a factor of 2.43 below the reference.
+The matched result is consistent with geometric decoupling of the focal plane
+from activation-prone cold structures while retaining BGO coverage and focused
+throughput.
+\end{abstract}
+
+\noindent\textbf{Keywords:} 511 keV annihilation line; balloon-borne telescope;
+Laue lens; transition-edge sensor; bismuth germanate; activation background
+
+\section{Introduction}
+\label{sec:introduction}
+
+The 511\keV line from electron--positron annihilation is a long-standing probe
+of positron production and transport in the Milky Way. Its line profile,
+positronium continuum, and spatial distribution constrain the thermal and
+ionization conditions in which positrons slow and annihilate
+\citep{Jean2006,Prantzos2011,Siegert2016}. Wide-field measurements have
+established a bright Galactic bulge and weaker disk, while a balloon-borne
+Compton telescope has independently detected the bulge emission
+\citep{Kierans2020}. These observations do not by themselves determine whether
+part of the emission is concentrated in unresolved sources or compact central
+structure. A search with INTEGRAL/IBIS found no compact Galactic line source and
+reported a $2\sigma$ limit near $1.6\times10^{-4}\phflux$ for a roughly 10\,Ms
+Galactic-centre exposure \citep{DeCesare2011}. A pointed instrument reaching
+well below this scale would provide a complementary test of localized
+annihilation emission.
+
+Laue diffraction optics offer a way to concentrate a narrow gamma-ray band
+onto a small focal plane \citep{Barriere2009}. Focusing reduces the
+detector area exposed to backgrounds for a given collecting area, but its
+benefit depends on the background generated within and immediately around the
+focal plane \citep{Weidenspointner2006}. Stacked transition-edge-sensor (TES)
+microcalorimeters are attractive at 511\keV because their fine energy response
+supports a narrow line window and line-profile measurements
+\citep{Gottardi2021,Shirazi2023,Hu2026}. The same dense absorbers and nearby
+cryogenic structures that provide stopping power and thermal control can,
+however, create prompt energy deposits and radioactive daughters. Passive mass
+added close to the detector may therefore exchange one background mechanism
+for another.
+
+This work tests a direct geometric remedy. The TES focal plane is moved
+laterally away from the projection of the central cold assembly and placed in a
+side chimney with a compact BGO anticoincidence enclosure. The question is not
+whether one shield material attenuates a selected particle in isolation. It is
+whether the complete detector--cryostat arrangement lowers prompt and delayed
+counts in the science window without sacrificing focused photons. We answer
+that question by comparing two complete assemblies under identical source,
+response, selection, and mission definitions. The design comparison is based on
+existing transport and activation data; no component-wise transport ablation is
+inferred.
+
+Section~\ref{sec:instrument} describes the optics, TES array, and compared
+geometries. Section~\ref{sec:methods} defines the atmospheric fields,
+activation normalization, event response, selection, and mission fold.
+Section~\ref{sec:results} presents the physical origin of the background
+change, the matched cut flow, and the resulting sensitivity. The implications
+and limits of the comparison are discussed in Section~\ref{sec:discussion}.
+
+\section{Instrument and compared geometries}
+\label{sec:instrument}
+
+\subsection{Focused signal and TES focal plane}
+
+The instrument concept combines a 10\,m-focal-length Ge(111) Laue optic with a
+stacked tantalum-absorber TES focal plane. The ray set used here began with
+150,000 photons incident on an illuminated crystal aperture of
+20.08476\,cm$^2$. Diffraction and downstream geometric acceptance produced
+37,194 focal-plane event-list entries. The same accepted-ray population was
+transported through both detector assemblies. This construction isolates the
+effect of the focal-plane environment from the upstream optical calculation.
+The optics treatment follows established Laue-lens concepts, while particle
+transport and detector interactions are represented with Geant4 and MEGAlib
+\citep{Barriere2009,Agostinelli2003,Allison2016,Zoglauer2006}.
+
+The absorber array contains six layers, each with 376 tantalum pixels, for a
+total of 2256 pixels. Each pixel is
+$1.5\times1.5\times3.0$\,mm$^3$, and adjacent layers are separated by 12\,mm.
+These dimensions and the optical input are fixed in the comparison. The
+reported effective-area change is therefore produced by the surrounding
+assembly and the shared event selection, not by changing the TES inventory or
+the incident ray sample.
+
+\subsection{Reference and chimney geometries}
+\label{sec:geometries}
+
+In the reference assembly, the TES stack lies beneath the projected footprint
+of the central cold stages and their support structures. This arrangement
+provides a compact axial package, but it places activated cryogenic material
+close to the line-sensitive absorber. The reference retains its established
+active anticoincidence enclosure and serves as an end-to-end performance
+baseline.
+
+In the optimized assembly, the entire TES stack is translated laterally by
+35.55\,cm and raised by 2.40\,cm into a side chimney. The chimney has aluminum
+inner and outer radii of 10.75 and 11.05\,cm, corresponding to a 3\,mm wall. Its
+lower end is separated from the adjacent cold-stage boundary by 2.5\,mm. A
+6.0\,cm upper optical opening preserves the focused beam, and 1.5\,cm cold-stage
+ports accommodate required penetrations. A tungsten frame surrounding the
+beam has 6.0 and 5.4\,cm outer and inner square dimensions and a 2.0\,cm axial
+depth.
+
+Three active BGO volumes enclose the chimney focal plane. The cylindrical side
+shield is 40\,mm thick radially and 130\,mm long. Front and rear BGO end pieces
+are each 40\,mm thick; the front piece contains a square optical recess, and the
+rear piece contains a circular cold-service opening. The transport geometry
+uses an 80\keV native detector trigger. Event analysis applies the more inclusive
+criterion that the summed BGO energy associated with the TES event be strictly
+below 50\keV. The lower offline threshold is used uniformly for the reported
+chimney results.
+
+Figure~\ref{fig:geometry} summarizes the geometric mechanism tested here. It is
+a sectional schematic rather than a fabrication drawing. Its relevant feature
+is the separation of the active TES volume from the central cold-stage
+projection while preserving a continuous BGO enclosure around the new focal
+plane location.
+
+\begin{figure}[t]
+  \centering
+  \IfFileExists{figures/fig_geometry_causal_section.pdf}{%
+    \includegraphics[width=0.98\textwidth]{figures/fig_geometry_causal_section.pdf}%
+  }{%
+    \fbox{\parbox[c][5.5cm][c]{0.93\textwidth}{\centering
+    Publication figure pending: reference and chimney geometry with selected
+    delayed-event origin fractions.}}%
+  }
+  \caption{Sectional comparison of the reference assembly and the
+  chimney-mounted TES assembly. The plotted percentages are the fractions of
+  selected delayed events whose production positions lie in the central
+  cryogenic-stage region. The physical comparison is between complete
+  detector assemblies.}
+  \label{fig:geometry}
+\end{figure}
+
+\section{Simulation and analysis}
+\label{sec:methods}
+
+\subsection{Atmospheric prompt fields}
+
+The prompt radiation field is based on the EXPACS/PARMA atmospheric model
+\citep{Sato2015,Sato2016}. The reference environment is latitude
+$34^{\circ}$, longitude $100^{\circ}$, altitude 38\,km, vertical cutoff
+rigidity 11.6\,GV, solar modulation index 118.3, and date 2025-08-31. Eight
+families are transported: alpha particles, electrons, positrons, photons,
+negative and positive muons, neutrons, and protons. Each family is divided into
+20 equal bins in the cosine of zenith angle over the full sphere. Particles are
+generated on a 60\,cm-radius far-field surface.
+
+The full-sphere integral fluxes are 4.79966 for photons, 0.462239 for neutrons,
+0.199002 for electrons, 0.116981 for positrons, 0.112301 for protons, 0.0114871
+for alpha particles, 0.00496893 for negative muons, and 0.00557001 for positive
+muons, all in cm$^{-2}$\,s$^{-1}$. The spectral axes supplied to transport are
+total kinetic energy in keV. Thus a tabulated non-alpha energy in MeV is
+multiplied by 1000, whereas an alpha-particle energy in MeV per nucleon is
+multiplied by $4\times1000$. The 160 angular spectra are individually
+normalized. The photon field is the total broadband EXPACS/PARMA component,
+including its tabulated annihilation bump.
+
+For prompt family $f$, accepted events carry a common normalization
+
+\begin{equation}
+  w_f^{\mathrm{prompt}}=\left(\sum_j T_{fj}\right)^{-1},
+  \label{eq:promptweight}
+\end{equation}
+
+where $T_{fj}$ is the simulated live-time equivalent of angular job $j$.
+Rates are sums of these event weights after each selection. The chimney
+transport sample contains 114.99 million primaries across the eight families,
+including 112.42 million photons. The reference sample has lower prompt
+statistics, but all rate comparisons use the same physical normalization.
+
+\subsection{Activation and delayed events}
+
+Prompt irradiation also produces radioactive nuclei in detector and cryostat
+materials. The inventory is evolved to a 15-day mature state using the time
+profile of each incident family. Nuclear identities and ground-state handling
+follow NUBASE2020 \citep{Kondev2021}. This bottom-up treatment follows the
+general strategy used for balloon gamma-ray-instrument background studies
+\citep{Gallego2025}. Production records retain the incident
+family, parent nuclide, material, and position. Delayed decays are sampled at
+their production positions, allowing selected detector events to be traced
+back to the structure in which the parent was created. The maximum accepted
+position-matching distance is $10^{-5}$\,cm.
+
+One million decays are transported for each family, for eight million delayed
+histories per geometry. A selected delayed event from family $f$ has weight
+
+\begin{equation}
+  w_f^{\mathrm{delayed}}(t)=\frac{A_f(t)}{N_f^{\mathrm{decay}}},
+  \label{eq:delayedweight}
+\end{equation}
+
+where $A_f(t)$ is the activity produced by that family and
+$N_f^{\mathrm{decay}}=10^6$. At day 15, the summed activities are 1352.30\,Bq
+for the reference assembly and 211.387\,Bq for the chimney assembly. Activity
+alone is not treated as a science-window background predictor: the parent
+location, decay emission, energy response, veto, and topology selection all
+remain necessary.
+
+\subsection{Detector response and event selection}
+\label{sec:selection}
+
+We assume independent Gaussian energy smearing for each TES pixel with a full
+width at half maximum of 0.420\keV, corresponding to
+$\sigma=0.17836\keV$. Hits below 0.300\keV after smearing are discarded. All
+primary results use the inclusive line window 510.58--511.42\keV. TES and BGO
+deposits within 1\,$\mu$s are associated with the same event. A chimney event
+passes anticoincidence only if the summed associated BGO energy is below
+50\keV.
+
+The final topology test uses the optical entrance as a directional constraint.
+A single-site TES event is retained because no Compton direction can be
+reconstructed. For two-site events, both interaction orders are tested, and an
+event is accepted if at least one physical Compton cone intersects the entrance
+aperture. For three to six sites, all admissible interaction sequences are
+enumerated and scored by their Compton-kinematic residuals; equal residuals are
+resolved in favor of the longer first lever arm, and the best sequence must
+intersect the aperture. Events with more than six sites are retained to
+avoid imposing an unvalidated high-multiplicity rejection. Nine representative
+positions per pixel, comprising its eight corners and centroid, give 81
+position pairs for the first two interactions. Each reconstructed cone is
+sampled at 24 azimuths for the aperture-intersection calculation.
+
+The focused-signal effective area after selection is
+
+\begin{equation}
+  \aeff=A_{\mathrm{ap}}\frac{N_{\mathrm{sel}}}{N_{\mathrm{in}}},
+  \label{eq:aeff}
+\end{equation}
+
+where $A_{\mathrm{ap}}=20.08476$\,cm$^2$ and
+$N_{\mathrm{in}}=37{,}194$. Its statistical uncertainty is evaluated as a
+binomial counting uncertainty propagated through Eq.~\eqref{eq:aeff}.
+
+\subsection{Trajectory fold and sensitivity}
+\label{sec:mission}
+
+Mission performance is evaluated on a synthetic 20-day balloon trajectory with
+81 nodes separated by 0.25\,d. The source remains at $45^{\circ}$ elevation.
+The trajectory spans an altitude envelope of $38.75\pm2.50$\,km, latitude
+$34.00^{\circ}\pm0.25^{\circ}$, and longitude
+$100.00^{\circ}\pm0.25^{\circ}$. Atmospheric depth and geomagnetic cutoff vary
+consistently with those coordinates. Five transport anchors at
+days 0, 5, 10, 15, and 20 set the time-dependent detector rates; interpolation
+between anchors provides the node rates. The reference anchors contain 20\,ks
+of replay exposure each, whereas the higher-statistics chimney anchors contain
+200\,ks each. Their physical definitions and selections are matched, and the
+finite replay uncertainty is propagated separately. The focused signal is attenuated by
+the atmospheric slant transmission and by accidental anticoincidence. The
+511\keV transmission is 0.65203 at days 15 and 20. It is calculated in a
+plane-parallel dry-air model as
+$\tau_{511}=\exp[-\mu_{\mathrm{air}}X_{\mathrm{vert}}/\cos45^{\circ}]$, with
+$\mu_{\mathrm{air}}=0.08736$\,cm$^2$\,g$^{-1}$ from XCOM data near 511\keV
+\citep{NISTXCOM}. At day 15 the simulated
+accidental-veto survival is 0.995341 in the chimney assembly and 0.967071 in the
+reference. At each anchor, prompt and delayed streams are represented as
+independent Poisson arrivals, adjacent events within 1\,$\mu$s are merged, and
+the response and selections are reapplied. Background-rate ratios and signal
+accidental-survival factors are linearly interpolated between anchors; the
+cumulative counts are integrated with the trapezoidal rule.
+
+For a top-of-atmosphere line flux $F$, the cumulative signal and background are
+
+\begin{align}
+  N_s(F,T) &= F\int_0^T \aeff(t)\,\tau_{511}(t)\,
+                   \epsilon_{\mathrm{acc}}(t)\,dt, \\
+  N_b(T) &= \int_0^T R_b(t)\,dt,
+  \label{eq:counts}
+\end{align}
+
+where $\tau_{511}$ is atmospheric transmission and
+$\epsilon_{\mathrm{acc}}$ is the accidental-veto survival. Two significance
+conventions are reported. The Gaussian counting approximation is
+$Z_G=N_s/\sqrt{N_b}$, and the background-known Asimov expression is
+
+\begin{equation}
+  Z_A=\left\{2\left[(N_s+N_b)\ln\left(1+\frac{N_s}{N_b}\right)-N_s\right]
+       \right\}^{1/2}
+  \label{eq:asimov}
+\end{equation}
+
+\citep{Cowan2011}. Equation~\eqref{eq:asimov} is the known-background,
+single-bin Asimov median discovery significance. The line-flux threshold at a
+specified $Z$ is obtained by solving the corresponding expression for $F$.
+Neither expression profiles nuisance parameters or includes a
+look-elsewhere correction. The threshold is a counting-statistics metric, not
+a confidence interval that includes instrumental or atmospheric systematics.
+
+Independent uncertainties from weighted transport counts, trajectory replay,
+effective area, and accidental-veto probes are propagated with the delta
+method. For the chimney assembly their relative one-standard-deviation
+contributions are 18.67\% for background transport, 1.13\% for trajectory
+replay, 0.30\% for effective area, and 0.002\% for the accidental probe. The
+combined background uncertainty is 18.71\%; because the weak-signal Gaussian
+threshold scales approximately as $\sqrt{N_b}$, the corresponding relative
+uncertainty of the 3$\sigma$ flux threshold is 9.36\%.
+
+\subsection{Use of generative artificial intelligence}
+
+An OpenAI language model assisted with English-language editing and manuscript
+assembly. It did not generate transport or activation data. The authors retain
+responsibility for the numerical values, scientific interpretation, and final
+text.
+
+\section{Results}
+\label{sec:results}
+
+\subsection{Geometric decoupling of delayed background}
+\label{sec:coupling}
+
+The clearest causal diagnostic is the production position of delayed events
+that survive all science selections. In the reference assembly, 32.18\% of the
+selected delayed rate originates in the central detector-refrigeration and
+cold-stage region. In the chimney assembly this fraction is 3.92\%. The
+corresponding rates are 0.01214 and $1.42\times10^{-4}\cps$, respectively. This
+factor of about 85 in rate is larger than the change in total activation, which
+shows that the improvement is not explained by inventory reduction alone.
+The result is consistent with the combined relocated-TES and BGO geometry
+reducing the probability that a decay photon reaches the TES and survives the
+active veto. Because several structural and active elements differ, this is not
+a single-variable causal measurement.
+
+The source distribution also changes qualitatively. TES-near structures account
+for 47.29\% of the selected delayed rate in the reference and 89.38\% in the
+chimney assembly. This rise in fractional share does not indicate a higher
+TES-near rate; it indicates that the remote cold-stage contribution has largely
+been removed from the residual. The largest identified volume-specific group
+in the chimney geometry is $^{62}$Cu produced in a copper support near the TES,
+contributing $4.22\times10^{-4}\cps$, or 11.6\% of the delayed total. The
+remaining optimization target is therefore local support and readout material,
+not the displaced central cold assembly.
+
+\subsection{Matched event cut flow}
+\label{sec:cutflow}
+
+Table~\ref{tab:cutflow} gives the simulated cut flow for both assemblies. Before
+anticoincidence, the chimney assembly has a prompt line-window rate of
+2.235\cps and a delayed rate of 0.1275\cps. The 50\keV BGO condition reduces
+these values to 0.005794 and 0.004019\cps. The topology condition removes no
+additional prompt events in the finite final sample and reduces the delayed
+rate to 0.003625\cps, leaving a total of 0.009419\cps. Thus the BGO condition is
+responsible for nearly all prompt rejection and most delayed rejection, whereas
+the directional topology test supplies a smaller, physically distinct cleanup
+of multi-site delayed events.
+
+\begin{table}[t]
+  \centering
+  \caption{Matched fixed-source-state line-window cut flow. Rates are direct
+  transport estimates before trajectory interpolation. Each column uses the
+  full active-veto logic of its complete assembly; Figure~\ref{fig:cutflow}
+  separately isolates the active-BGO stage. Signal effective areas use the same
+  37,194 focused input photons.}
+  \label{tab:cutflow}
+  \small
+  \begin{tabularx}{\textwidth}{@{}Yrrrr@{}}
+    \toprule
+    & \multicolumn{2}{c}{Reference assembly}
+    & \multicolumn{2}{c}{Chimney assembly} \\
+    \cmidrule(lr){2-3}\cmidrule(lr){4-5}
+    Quantity & Selected records & Rate or area & Selected records & Rate or area \\
+    \midrule
+    Prompt, before active veto & 1083 & 5.79018\cps & 3212 & 2.23515\cps \\
+    Prompt, after assembly veto & 7 & 0.018704\cps & 12 & 0.005794\cps \\
+    Prompt, final topology & 6 & 0.016032\cps & 12 & 0.005794\cps \\
+    Delayed, before active veto & 1295 & 0.169494\cps & 3249 & 0.127481\cps \\
+    Delayed, after assembly veto & 436 & 0.043412\cps & 122 & 0.004019\cps \\
+    Delayed, final topology & 394 & 0.038266\cps & 111 & 0.003625\cps \\
+    Total background, final & 400 & 0.054298\cps & 123 & 0.009419\cps \\
+    Focused signal, final & 28,006 & 15.12324\,cm$^2$ & 27,936 & 15.08544\,cm$^2$ \\
+    \bottomrule
+  \end{tabularx}
+\end{table}
+
+The reference and chimney rates cannot be read as a single-shield attenuation
+measurement because the complete assemblies differ. They do establish the
+system-level endpoint under a shared source and analysis. The direct final
+background falls by 82.7\%, while the focused effective area falls by only
+0.25\%. The ratio of final effective areas is 0.99750. Binomial counting gives
+15.123$\pm$0.045 and 15.085$\pm$0.045\,cm$^2$ for the reference and chimney
+assemblies. The difference is therefore small in both absolute and mission
+terms.
+
+Figure~\ref{fig:cutflow} displays the rate change on a logarithmic scale. In the
+chimney result, the final prompt component is entirely represented by 12
+weighted photon events. The final delayed component contains 111 events spread
+over several incident-family weights. The low effective number of weighted
+survivors, especially for prompt photons, is why the main sensitivity result
+retains a transport-counting uncertainty despite the large number of incident
+histories. The reference prompt endpoint contains only six raw photon survivors
+and has a 40.8\% relative component uncertainty.
+
+\begin{figure}[t]
+  \centering
+  \IfFileExists{figures/fig_matched_cutflow_performance.pdf}{%
+    \includegraphics[width=0.94\textwidth]{figures/fig_matched_cutflow_performance.pdf}%
+  }{%
+    \fbox{\parbox[c][5.5cm][c]{0.88\textwidth}{\centering
+    Publication figure pending: matched prompt and delayed cut-flow rates.}}%
+  }
+  \caption{Total prompt-plus-delayed 510.58--511.42\keV rates before
+  anticoincidence, after the active BGO veto, and after final topology
+  selection. Points show central weighted estimates; connecting lines guide
+  the eye. The different active enclosures are properties of the two complete
+  assemblies.}
+  \label{fig:cutflow}
+\end{figure}
+
+\subsection{Trajectory background and line sensitivity}
+\label{sec:sensitivity}
+
+Trajectory folding preserves the geometry advantage. At day 15 the mature
+background rate is 0.051280\cps for the reference and 0.009280\cps for the
+chimney assembly, an 81.9\% reduction. For a top-of-atmosphere line flux
+$F_0=10^{-4}\phflux$, the corresponding signal rates are
+$9.536\times10^{-4}$ and $9.790\times10^{-4}\cps$. The slightly higher
+chimney signal rate, despite its marginally smaller effective area, results from
+the higher simulated accidental-veto survival at that trajectory state.
+
+Over 20 days, the reference accumulates 86,806 background counts and 1635
+signal counts at $F_0$. The chimney assembly accumulates 15,552 background
+counts and 1678 signal counts. These counts give Gaussian significances of 5.55
+and 13.46 and Asimov significances of 5.53 and 13.22. The chimney assembly
+reaches 3$\sigma$ after 0.724\,d in the Gaussian approximation and 0.753\,d with
+the Asimov expression. It reaches 5$\sigma$ after 1.94 and 2.03\,d,
+respectively. The reference requires 5.52\,d for 3$\sigma$ and nearly 16\,d for
+5$\sigma$.
+
+\begin{table}[t]
+  \centering
+  \caption{Twenty-day performance for the two complete detector assemblies.
+  Signal quantities use $F_0=10^{-4}\phflux$. Quoted threshold uncertainties
+  contain transport, trajectory-replay, effective-area, and accidental-probe
+  counting terms only.}
+  \label{tab:mission}
+  \small
+  \begin{tabularx}{\textwidth}{@{}Yrr@{}}
+    \toprule
+    Metric & Reference assembly & Chimney assembly \\
+    \midrule
+    Day-15 background rate (s$^{-1}$) & 0.051280 & 0.009280 \\
+    Day-15 signal rate (s$^{-1}$) & $9.536\times10^{-4}$ & $9.790\times10^{-4}$ \\
+    Cumulative background counts & 86,806 & 15,552 \\
+    Cumulative signal counts & 1635 & 1678 \\
+    Gaussian significance & 5.55 & 13.46 \\
+    Asimov significance & 5.53 & 13.22 \\
+    Gaussian time to 3$\sigma$ (d) & 5.52 & 0.724 \\
+    Asimov time to 3$\sigma$ (d) & 5.55 & 0.753 \\
+    Gaussian time to 5$\sigma$ (d) & 15.93 & 1.94 \\
+    Asimov time to 5$\sigma$ (d) & 16.01 & 2.03 \\
+    Gaussian 3$\sigma$ flux ($\phflux$) &
+      $(5.406\pm0.401)\times10^{-5}$ &
+      $(2.229\pm0.209)\times10^{-5}$ \\
+    Asimov 3$\sigma$ flux ($\phflux$) &
+      $5.415\times10^{-5}$ & $2.238\times10^{-5}$ \\
+    Gaussian 5$\sigma$ flux ($\phflux$) &
+      $9.010\times10^{-5}$ & $3.716\times10^{-5}$ \\
+    Asimov 5$\sigma$ flux ($\phflux$) &
+      $9.035\times10^{-5}$ & $3.740\times10^{-5}$ \\
+    \bottomrule
+  \end{tabularx}
+\end{table}
+
+The Gaussian 3$\sigma$ flux threshold improves from
+$(5.406\pm0.401)\times10^{-5}$ to
+$(2.229\pm0.209)\times10^{-5}\phflux$. The ratio is 0.412, corresponding to a
+factor of 2.43 improvement. Asimov thresholds differ from the Gaussian values
+by less than 0.5\% at 20 days, as expected when the accumulated background is
+large. At shorter exposure the Asimov curve is modestly more conservative.
+Figure~\ref{fig:mission} shows the cumulative significance and flux threshold.
+
+\begin{figure}[t]
+  \centering
+  \IfFileExists{figures/fig_mission_significance_sensitivity.pdf}{%
+    \includegraphics[width=0.98\textwidth]{figures/fig_mission_significance_sensitivity.pdf}%
+  }{%
+    \fbox{\parbox[c][5.8cm][c]{0.92\textwidth}{\centering
+    Publication figure pending: cumulative significance and line-flux threshold
+    flux over the synthetic trajectory.}}%
+  }
+  \caption{Mission-folded line performance for a continuously observed source
+  at $45^{\circ}$ elevation. Left: cumulative Asimov significance for
+  $F_0=10^{-4}\phflux$. Right: Asimov 3$\sigma$ line-flux threshold. The
+  trajectory is a synthetic instrument benchmark, not a flight visibility
+  schedule. The grey IBIS scale is a linear Gaussian conversion of the
+  published $2\sigma$ limit and is not a reported IBIS $3\sigma$ result.}
+  \label{fig:mission}
+\end{figure}
+
+\section{Discussion}
+\label{sec:discussion}
+
+\subsection{Why the chimney geometry works}
+
+The result is consistent with two linked mechanisms. First, the lateral
+translation weakens
+the solid-angle coupling between the TES and activated material in the central
+cold stages. The 32.18\% to 3.92\% change in the selected delayed-source
+fraction provides a direct event-lineage measure of that decoupling. Second,
+the BGO enclosure is centered on the translated TES stack. It rejects events
+that reach the focal volume with accompanying energy deposition while leaving
+the optical opening unobstructed. The result is not simply proportional to
+total activity: day-15 activity decreases by a factor of 6.4, whereas the
+selected central-cold-stage delayed rate decreases by about 85. Geometry and
+event topology determine how much of the inventory becomes line-window
+background.
+
+The signal result is equally important. A shield configuration that lowers
+background by blocking the focused beam would not improve a pointing
+telescope. Here the final effective-area ratio is 0.9975, and the 20-day signal
+count is slightly higher after accidental-veto folding. The line sensitivity
+gain is therefore controlled by background suppression rather than a trade of
+signal acceptance for rejection. In the weak-source Gaussian limit,
+$F_{3\sigma}\propto\sqrt{N_b}/K_s$, where $K_s$ is the signal-count kernel. The
+simulated background and signal-kernel ratios predict the matched factor of
+2.43 to rounding.
+
+The residual source map also gives a disciplined next step. Once the central
+cold-stage contribution is geometrically suppressed, most selected delayed
+background is associated with material close to the TES. Copper activation,
+including $^{62}$Cu, is a measurable contributor. Future mechanical refinement
+should therefore examine the minimum necessary copper support mass, its
+placement relative to the active BGO, and material substitutions compatible
+with cryogenic and structural requirements. Those changes require dedicated
+transport and activation comparisons; the present data do not quantify their
+benefit.
+
+\subsection{Implications for a pointed 511 keV telescope}
+
+The 20-day chimney threshold of $2.23\times10^{-5}\phflux$ is about seven times
+below the published $2\sigma$ IBIS compact-source limit of
+$1.6\times10^{-4}\phflux$ \citep{DeCesare2011}, although the instruments,
+confidence conventions, exposure histories, and fields of view are different.
+The comparison is therefore a scale indicator rather than a forecast of a
+specific source detection. Within the present idealized mission fold, a source
+at $10^{-4}\phflux$ reaches the quoted significance rapidly under the
+continuous-exposure, known-background assumptions, leaving statistical margin
+for subdivision by time or energy. The assumed TES response of 0.420\keV FWHM
+would also support line-centroid and profile studies that are inaccessible to a
+broad window alone \citep{Jean2006,Siegert2016,Hu2026}.
+
+The reference-to-chimney ratio is less sensitive to shared modeling choices
+than either absolute sensitivity value. The atmospheric
+families, total-energy axes, focused rays, response function, science window,
+directional selection, and trajectory are matched. Their ratio consequently
+isolates the detector-assembly change more cleanly than an absolute rate can.
+The comparison nevertheless remains between complete geometries; it cannot
+assign a unique fraction of the improvement to lateral displacement, BGO
+thickness, or aperture details.
+
+\subsection{Limitations}
+\label{sec:limitations}
+
+The modeled domain ends at the detector and cryostat. It does not include a
+complete Laue-lens structure, balloon gondola, pressure vessel, flight train,
+telemetry hardware, or their prompt and activation backgrounds. The synthetic
+trajectory assumes continuous on-source exposure at fixed elevation and does
+not impose Earth occultation, target visibility, attitude excursions,
+dead-time losses, detector downtime, or a realistic observing schedule.
+Absolute mission sensitivity will change when these elements are added.
+
+The BGO response is an ideal deposited-energy veto. Light collection,
+photodetector response, channel thresholds, timing tails, pile-up, dead time,
+and threshold nonuniformity are not modeled. The 50\keV offline condition is
+more inclusive than the 80\keV native transport trigger, so hardware realization
+must demonstrate the lower analysis threshold with acceptable noise and timing.
+Likewise, the TES response is represented by an independent Gaussian width and
+a sharp post-noise threshold. Calibration tails, common-mode noise,
+nonlinearity, pixel-to-pixel resolution variation, and event reconstruction
+failures are outside the present uncertainty.
+
+The reported errors are statistical. They include finite weighted transport,
+trajectory replay, focused-ray acceptance, and accidental-veto probe counts,
+but not atmospheric-model uncertainty, nuclear production cross sections,
+decay data, material composition, geometry tolerances, or detector-response
+systematics. Weighted prompt survivors are sparse even after the expanded
+photon sample; exact component intervals are correspondingly asymmetric and
+can be much wider than the central rate. The quoted 9.36\% error on the chimney
+3$\sigma$ threshold should not be interpreted as total mission uncertainty.
+
+Finally, the chimney layout has passed geometric construction and overlap
+checks, but it is not mechanically qualified. Thermal conductance, vibration,
+weld design, BGO segmentation and support, cable routing, magnetic shielding,
+and cryogenic service loads require engineering closure. The performance gain
+reported here motivates that work; it does not replace it.
+
+\section{Conclusions}
+\label{sec:conclusions}
+
+Moving the TES focal plane into a lateral chimney and enclosing it with active
+BGO suppresses the modeled day-15 detector--cryostat background by 81.9\%
+while retaining 99.75\% of the focused effective area. The matched 20-day fold
+improves the Gaussian 3$\sigma$ 511\keV line-flux threshold by a factor
+of 2.43, to $(2.229\pm0.209)\times10^{-5}\phflux$.
+
+The production-position record identifies the physical reason: selected
+delayed events from the central cold assembly fall from 32.18\% to 3.92\%, so
+the residual becomes concentrated in TES-near structures that can be targeted
+by later material and mechanical studies. These results support the chimney
+TES and BGO enclosure as the detector-geometry baseline for a more complete
+payload simulation and engineering qualification.
+
+\section*{Data availability}
+
+The aggregate numerical inputs underlying the tables and figures are included
+with the manuscript source package. Event-level transport and activation
+products are available from the authors upon reasonable request. Publicly
+documented physics packages and data evaluations are cited in the text.
+
+\section*{Statements and declarations}
+
+\noindent\textbf{Competing interests.} The authors declare no competing
+interests.
+
+\noindent\textbf{Ethics approval and consent to participate.} Not applicable.
+
+\noindent\textbf{Funding and author contributions.} Details are withheld in
+this review manuscript and will be supplied with author identities.
+
+\bibliographystyle{plainnat}
+\bibliography{references}
+
+\end{document}

@@ -1,0 +1,64 @@
+{
+  "status": "RETAINED_CONCLUSION_SNAPSHOT_FOR_S3C_MAINLINE",
+  "as_of": "2026-07-10",
+  "scope": "Compact conclusion-only snapshot retained before deleting S3/S3a/S3b simulation and intermediate data.",
+  "claim_boundary": [
+    "S3a/S3b/S3c dominant-background values are equal-stat screening results, not regenerated full-chain Step05-Step08 products.",
+    "S3a/S3b/S3c delayed activities are neutron-only fixed-source activities; the retained S3 delayed value is full-particle and is not a strict denominator.",
+    "Mass values are replacement-package pre-relief bookkeeping, not complete payload masses or structural qualification."
+  ],
+  "design_points": {
+    "s3": {
+      "description": "CsI full-wrap S3 retained anchor",
+      "dominant_subset_w2_cps": 0.021066997,
+      "estimated_f3_20d_ph_cm2_s": 2.85291e-05,
+      "delayed_activity_bq": 96.9582,
+      "delayed_scope": "full-particle"
+    },
+    "s3a_rehomed_as_s3c_lw1": {
+      "description": "BGO 40 mm full-wrap plus 8 mm Al, no added W; retained as the first S3c lightweight design point",
+      "mass_kg_pre_relief": {
+        "scintillator": 325.34816948853427,
+        "kapton": 0.5806111066662691,
+        "aluminium": 30.642071840546866,
+        "w": 0.0,
+        "total": 356.5708524357474
+      },
+      "dominant_subset_w2_cps": 0.005140444,
+      "estimated_f3_20d_ph_cm2_s": 1.51955e-05,
+      "neutron_only_delayed_activity_bq": 31.30801127967641
+    },
+    "s3b_historical": {
+      "description": "CsI 40 mm full-wrap plus 2 mm W and 3 mm Al",
+      "mass_kg_pre_relief": {
+        "scintillator": 205.79526569330847,
+        "kapton": 0.5806111066662691,
+        "aluminium": 11.393391652014225,
+        "w": 53.876674726018365,
+        "total": 271.6459431780073
+      },
+      "dominant_subset_w2_cps": 0.01814276,
+      "estimated_f3_20d_ph_cm2_s": 2.65869e-05,
+      "neutron_only_delayed_activity_bq": 99.89483127710594
+    },
+    "s3c_current": {
+      "description": "BGO 40 mm full-wrap plus 2 mm W and 3 mm Al",
+      "mass_kg_pre_relief": {
+        "scintillator": 325.34816948853427,
+        "kapton": 0.5806111066662691,
+        "aluminium": 11.393391652014225,
+        "w": 53.876674726018365,
+        "total": 391.19884697323314
+      },
+      "dominant_subset_w2_cps": 0.00388355,
+      "estimated_f3_20d_ph_cm2_s": 1.35976e-05,
+      "neutron_only_delayed_activity_bq": 57.824266416603116
+    }
+  },
+  "source_documents": [
+    "engineering/geometry_optimization_20260704/S3ABC_DOMINANT_BACKGROUND_REVIEW_20260709.md",
+    "engineering/geometry_optimization_20260704/S3ABC_DOMINANT_BACKGROUND_20D3SIGMA_ESTIMATE_20260710.md",
+    "engineering/geometry_optimization_20260704/S3ABC_NEUTRON_DELAYED_REVIEW_20260710.md",
+    "engineering/geometry_optimization_20260704/39_mass511_to_s3_html_presentation_20260710/deck_evidence_summary.json"
+  ]
+}

@@ -1,0 +1,488 @@
+{
+  "status": "PASS_MASS_MODEL_511_STEP05_SIDE_ENTRY_COMPTON_TIME_AXIS_L1_FULLSTAT_V1_NOT_REPLACEMENT",
+  "statistics_label": "Mass_model_511_fullstat_v1",
+  "generated_at_utc": "2026-07-03T15:20:44Z",
+  "claim_level": "MASS_MODEL_511_FULLSTAT_V1_L1_PROMPT_DELAYED_SIGNAL_NOT_NO_EFFECT_DECISION",
+  "preflight": {
+    "status": "PASS",
+    "problems": [],
+    "inputs": {
+      "prompt_dir": "runs/Mass_model_511_nearfield_migration_20260701/step02_instant_candidate_Mass_model_511_fullstat_v1",
+      "prompt_norm": "runs/Mass_model_511_nearfield_migration_20260701/step02_instant_candidate_Mass_model_511_fullstat_v1/normalization.json",
+      "delayed_sim": "runs/Mass_model_511_nearfield_migration_20260701/step02_delayed_transport_candidate_Mass_model_511_fullstat_v1/DelayedDecayMassModel511CandidateFullstatV1.inc1.id1.sim.gz",
+      "exactpos_source": "runs/Mass_model_511_nearfield_migration_20260701/step02_delay_exactpos_candidate_Mass_model_511_fullstat_v1/activation_decay_day15_groundstate_fixed_exactpos.source",
+      "delayed_summary": "engineering/Mass_model_511_nearfield_migration_20260701/03_detector_transport/delayed/candidate_Mass_model_511/fullstat_v1/F1/delayed_source_exactpos_summary.json",
+      "signal_sim": "runs/Mass_model_511_nearfield_migration_20260701/step09_focus_candidate_Mass_model_511_Mass_model_511_smoke/Opticsim_laue_f10m_a1_candidate_Mass_model_511_Mass_model_511_signal_smoke.inc1.id1.sim.gz",
+      "signal_manifest": "engineering/Mass_model_511_nearfield_migration_20260701/06_smoke_closure/signal_transport_manifest.json",
+      "bridge_summary_for_side_entry_disk": "stepwise_maintenance/step09_optics_bridge/outputs_fix5_fullstat_v2_exactpos_m50000_s260613/step09_focus_summary.json"
+    },
+    "prompt_sim_files": 68,
+    "prompt_dat_files": 68,
+    "delayed_summary_status": "PASS_MASS_MODEL_511_CANDIDATE_MASS_MODEL_511_FULLSTAT_V1_EXACTPOS_DELAYED_TRANSPORT",
+    "signal_header": {
+      "exists": true,
+      "SE": 37194,
+      "ID": 37194,
+      "TS": 1,
+      "TE_s": 3.7e-05,
+      "geometry": "/home/ubuntu/TES_511_Balloon/outputs/geometry/DEMO2_DR_v3p5_Mass_model_511_stage_diam_300_300_300_350_350_400_20260701_megalib_proxy/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup"
+    },
+    "side_entry_bridge_reuse": "The f10m A1 EventList/side-entry disk bridge is reused from the fix5 Step09 summary; the detector transport SIM itself is the current Mass_model_511 geometry."
+  },
+  "inputs": {
+    "prompt_dir": "runs/Mass_model_511_nearfield_migration_20260701/step02_instant_candidate_Mass_model_511_fullstat_v1",
+    "prompt_files": 68,
+    "prompt_dat_files": 68,
+    "delayed_sim": "runs/Mass_model_511_nearfield_migration_20260701/step02_delayed_transport_candidate_Mass_model_511_fullstat_v1/DelayedDecayMassModel511CandidateFullstatV1.inc1.id1.sim.gz",
+    "delayed_summary": "engineering/Mass_model_511_nearfield_migration_20260701/03_detector_transport/delayed/candidate_Mass_model_511/fullstat_v1/F1/delayed_source_exactpos_summary.json",
+    "science_sim": "runs/Mass_model_511_nearfield_migration_20260701/step09_focus_candidate_Mass_model_511_Mass_model_511_smoke/Opticsim_laue_f10m_a1_candidate_Mass_model_511_Mass_model_511_signal_smoke.inc1.id1.sim.gz",
+    "signal_manifest": "engineering/Mass_model_511_nearfield_migration_20260701/06_smoke_closure/signal_transport_manifest.json",
+    "side_entry_bridge_summary": "stepwise_maintenance/step09_optics_bridge/outputs_fix5_fullstat_v2_exactpos_m50000_s260613/step09_focus_summary.json"
+  },
+  "normalization": {
+    "prompt_time_s": 184.2200984295893,
+    "prompt_rate_rule": "per-tag event rate = 1 / sum(TT_s for prompt dat files with that tag)",
+    "prompt_cache_rates_refreshed": false,
+    "prompt_normalization_audit_csv": "stepwise_maintenance/step05_veto_time_axis/outputs_Mass_model_511_fullstat_v1_l1/prompt_normalization_audit.csv",
+    "prompt_normalization_audit_json": "stepwise_maintenance/step05_veto_time_axis/outputs_Mass_model_511_fullstat_v1_l1/prompt_normalization_audit.json",
+    "prompt_normalization_audit": {
+      "status": "PASS",
+      "problems": [],
+      "prompt_dir": "runs/Mass_model_511_nearfield_migration_20260701/step02_instant_candidate_Mass_model_511_fullstat_v1",
+      "prompt_norm": "runs/Mass_model_511_nearfield_migration_20260701/step02_instant_candidate_Mass_model_511_fullstat_v1/normalization.json",
+      "normalization_json": {
+        "non_gamma_replicas": 8,
+        "gamma_splits": 12,
+        "gamma_prompt_time_s_with_farfield_area": 184.2200984295893,
+        "non_gamma_combined_norm_factor": null
+      },
+      "rows": [
+        {
+          "tag": "alpha",
+          "files": 8,
+          "tt_files": 8,
+          "tt_line_count": 8,
+          "tt_sum_s": 1478.291,
+          "tt_mean_s": 184.786375,
+          "tt_min_s": 183.514,
+          "tt_max_s": 186.134,
+          "rate_hz_per_event": 0.0006764568004540379,
+          "rate_times_tt_sum": 1.0,
+          "expected_files_from_normalization": 8,
+          "warnings": []
+        },
+        {
+          "tag": "eminus",
+          "files": 8,
+          "tt_files": 8,
+          "tt_line_count": 8,
+          "tt_sum_s": 1472.612,
+          "tt_mean_s": 184.0765,
+          "tt_min_s": 183.831,
+          "tt_max_s": 184.432,
+          "rate_hz_per_event": 0.0006790654972253383,
+          "rate_times_tt_sum": 1.0,
+          "expected_files_from_normalization": 8,
+          "warnings": []
+        },
+        {
+          "tag": "eplus",
+          "files": 8,
+          "tt_files": 8,
+          "tt_line_count": 8,
+          "tt_sum_s": 1473.9640000000002,
+          "tt_mean_s": 184.24550000000002,
+          "tt_min_s": 184.002,
+          "tt_max_s": 184.725,
+          "rate_hz_per_event": 0.0006784426213937381,
+          "rate_times_tt_sum": 1.0,
+          "expected_files_from_normalization": 8,
+          "warnings": []
+        },
+        {
+          "tag": "gamma",
+          "files": 12,
+          "tt_files": 12,
+          "tt_line_count": 12,
+          "tt_sum_s": 184.18179999999998,
+          "tt_mean_s": 15.348483333333332,
+          "tt_min_s": 15.3345,
+          "tt_max_s": 15.3622,
+          "rate_hz_per_event": 0.005429418107543742,
+          "rate_times_tt_sum": 0.9999999999999999,
+          "expected_files_from_normalization": 12,
+          "warnings": []
+        },
+        {
+          "tag": "muminus",
+          "files": 8,
+          "tt_files": 8,
+          "tt_line_count": 8,
+          "tt_sum_s": 1472.903,
+          "tt_mean_s": 184.112875,
+          "tt_min_s": 183.139,
+          "tt_max_s": 185.05,
+          "rate_hz_per_event": 0.0006789313349215801,
+          "rate_times_tt_sum": 1.0,
+          "expected_files_from_normalization": 8,
+          "warnings": []
+        },
+        {
+          "tag": "muplus",
+          "files": 8,
+          "tt_files": 8,
+          "tt_line_count": 8,
+          "tt_sum_s": 1482.469,
+          "tt_mean_s": 185.308625,
+          "tt_min_s": 183.124,
+          "tt_max_s": 187.212,
+          "rate_hz_per_event": 0.0006745503615927213,
+          "rate_times_tt_sum": 0.9999999999999999,
+          "expected_files_from_normalization": 8,
+          "warnings": []
+        },
+        {
+          "tag": "n",
+          "files": 8,
+          "tt_files": 8,
+          "tt_line_count": 8,
+          "tt_sum_s": 1474.2099999999996,
+          "tt_mean_s": 184.27624999999995,
+          "tt_min_s": 183.939,
+          "tt_max_s": 184.524,
+          "rate_hz_per_event": 0.0006783294103282438,
+          "rate_times_tt_sum": 1.0,
+          "expected_files_from_normalization": 8,
+          "warnings": []
+        },
+        {
+          "tag": "p",
+          "files": 8,
+          "tt_files": 8,
+          "tt_line_count": 8,
+          "tt_sum_s": 1474.262,
+          "tt_mean_s": 184.28275,
+          "tt_min_s": 183.844,
+          "tt_max_s": 184.826,
+          "rate_hz_per_event": 0.0006783054843711633,
+          "rate_times_tt_sum": 1.0,
+          "expected_files_from_normalization": 8,
+          "warnings": []
+        }
+      ]
+    },
+    "delayed_time_s": 7027.052893,
+    "science_unit_injection_rate_s-1": 1.0,
+    "active_veto_threshold_keV": 50.0,
+    "active_veto_match": "Mass_model_511 current geometry; volume name starts with CsI_ plus legacy BGO/ACTIVE_SHIELD/CEBR3 tokens",
+    "reject_policy": "keep",
+    "coincidence_window_s": 1e-06,
+    "rng_seed": 260512,
+    "side_entry_disk": {
+      "center_cm": [
+        -12.94005409571382,
+        0.0,
+        5.586143571373725
+      ],
+      "normal": [
+        0.7071067811865476,
+        0.0,
+        -0.7071067811865475
+      ],
+      "radius_cm": 1.898,
+      "local_center_cm": [
+        -13.1,
+        0.0,
+        -5.2
+      ],
+      "rotation_y_deg": 45.0,
+      "side_window_look_elevation_deg": 44.99999999999999
+    }
+  },
+  "science_physical_normalization": {
+    "reference_flux_ph_cm2_s": 0.0001,
+    "mission_days_for_direct_expectation": 20.0,
+    "optics_authority": "stepwise_maintenance/step04_opticsim/optics_aeff_authority_f10m_a1.json",
+    "optics_design_name": "balloon511_f10m_ge111_511line_a1",
+    "optics_profile": "f10m_a1_v3p5",
+    "aeff_511_cm2": 20.084760000000003,
+    "aeff_seed_pstdev_cm2": 0.22144082550424163,
+    "atmospheric_transmission": {
+      "ledger": "old/config/science_511_onaxis_source/metadata/science_rate_ledger.csv",
+      "source_id": "science_511_onaxis_v0",
+      "flux_ph_cm2_s": 0.0001,
+      "mainline_A_opt_cm2_in_ledger": 15.29928,
+      "T_atm": 0.7390423888027,
+      "note": "Only scalar T_atm is inherited from this mainline ledger; v3p5/f10m A1 uses the f10m_a1 A_eff authority below. A dedicated 45 deg side-entry LOS atmosphere sidecar is available in outputs/reports/v3p5_boundary_closure_fullstat_v2_exactpos_20260613/v3p5_boundary_closure_summary.json."
+    },
+    "rate_to_v3p5_injection_plane_s-1": 0.0014843489008928919,
+    "unit_eventlist_injection_rate_s-1": 1.0,
+    "scale_from_unit_eventlist_rate": 0.0014843489008928919
+  },
+  "catalog": {
+    "events_kept": 1765451,
+    "pixel_hits_kept": 69622,
+    "by_stream_events": {
+      "prompt": 1046280,
+      "delayed": 682475,
+      "science": 36696
+    },
+    "by_stream_tes_events": {
+      "prompt": 7493,
+      "delayed": 1746,
+      "science": 35757
+    }
+  },
+  "windows": {
+    "broad_480_550": {
+      "window_keV": [
+        480.0,
+        550.0
+      ],
+      "by_stream": {
+        "prompt": {
+          "raw_events": 318,
+          "active_veto_pass_events": 108,
+          "side_compton_fov_pass_events": 92,
+          "raw_rate_s-1": 0.22992026073076466,
+          "active_veto_pass_rate_s-1": 0.07325552054670129,
+          "side_compton_fov_pass_rate_s-1": 0.06240108200152845,
+          "active_veto_survival_fraction": 0.3186127238803156,
+          "side_compton_fov_survival_fraction_vs_active": 0.8518277057596908,
+          "side_compton_class_counts": {
+            "keep": 31,
+            "reject_kept": 1,
+            "single": 60,
+            "veto": 16
+          }
+        },
+        "delayed": {
+          "raw_events": 74,
+          "active_veto_pass_events": 45,
+          "side_compton_fov_pass_events": 43,
+          "raw_rate_s-1": 0.01053073046791993,
+          "active_veto_pass_rate_s-1": 0.006403822581843204,
+          "side_compton_fov_pass_rate_s-1": 0.006119208244872396,
+          "active_veto_survival_fraction": 0.6081081081081083,
+          "side_compton_fov_survival_fraction_vs_active": 0.9555555555555557,
+          "side_compton_class_counts": {
+            "keep": 15,
+            "single": 28,
+            "veto": 2
+          }
+        },
+        "science": {
+          "raw_events": 30364,
+          "active_veto_pass_events": 30364,
+          "side_compton_fov_pass_events": 29732,
+          "raw_rate_s-1": 0.8163682314351779,
+          "active_veto_pass_rate_s-1": 0.8163682314351779,
+          "side_compton_fov_pass_rate_s-1": 0.7993762434804615,
+          "active_veto_survival_fraction": 1.0,
+          "side_compton_fov_survival_fraction_vs_active": 0.9791858780138414,
+          "side_compton_class_counts": {
+            "keep": 12134,
+            "single": 17598,
+            "veto": 632
+          }
+        }
+      },
+      "total": {
+        "raw": {
+          "events": 30756,
+          "rate_s-1": 1.0568192226338624
+        },
+        "active_veto_pass": {
+          "events": 30517,
+          "rate_s-1": 0.8960275745637224
+        },
+        "side_compton_fov_pass": {
+          "events": 29867,
+          "rate_s-1": 0.8678965337268624
+        }
+      },
+      "physical_reference_flux": {
+        "reference_flux_ph_cm2_s": 0.0001,
+        "rate_to_v3p5_injection_plane_s-1": 0.0014843489008928919,
+        "prompt_background_cps": 0.06240108200152845,
+        "delayed_background_cps": 0.006119208244872396,
+        "background_cps": 0.06852029024640084,
+        "signal_cps_at_reference_flux": 0.0011865532484101118,
+        "signal_to_background": 0.017316815853278406,
+        "mission_days": 20.0,
+        "source_counts_20d": 2050.3640132526734,
+        "background_counts_20d": 118403.06154578066,
+        "Z20d_direct_s_over_sqrt_b": 5.95867233951368,
+        "T3_day_constant_rate_direct": 5.069597683152027,
+        "T5_day_constant_rate_direct": 14.082215786533407,
+        "flux_3sigma_20d_ph_cm2_s": 5.03467858117677e-05,
+        "low_stat_final_background_events": 135,
+        "low_stat_background_relative_poisson_sigma_approx": 0.08606629658238704,
+        "low_stat_prompt_final_events": 92,
+        "low_stat_delayed_final_events": 43,
+        "science_unit_rate_final_events": 29732,
+        "claim_note": "Direct expectation only. It uses the current Step05 selected-event rates and does not replace a full Step06-Step08 mission-axis regeneration."
+      }
+    },
+    "w2_510p58_511p42": {
+      "window_keV": [
+        510.58,
+        511.42
+      ],
+      "by_stream": {
+        "prompt": {
+          "raw_events": 153,
+          "active_veto_pass_events": 71,
+          "side_compton_fov_pass_events": 65,
+          "raw_rate_s-1": 0.1180156922864968,
+          "active_veto_pass_rate_s-1": 0.048160092513702304,
+          "side_compton_fov_pass_rate_s-1": 0.044088948071811976,
+          "active_veto_survival_fraction": 0.4080821082402168,
+          "side_compton_fov_survival_fraction_vs_active": 0.9154664322803777,
+          "side_compton_class_counts": {
+            "keep": 22,
+            "single": 43,
+            "veto": 6
+          }
+        },
+        "delayed": {
+          "raw_events": 43,
+          "active_veto_pass_events": 28,
+          "side_compton_fov_pass_events": 28,
+          "raw_rate_s-1": 0.006119208244872394,
+          "active_veto_pass_rate_s-1": 0.003984600717591325,
+          "side_compton_fov_pass_rate_s-1": 0.003984600717591324,
+          "active_veto_survival_fraction": 0.6511627906976742,
+          "side_compton_fov_survival_fraction_vs_active": 0.9999999999999996,
+          "side_compton_class_counts": {
+            "keep": 8,
+            "single": 20
+          }
+        },
+        "science": {
+          "raw_events": 30305,
+          "active_veto_pass_events": 30305,
+          "side_compton_fov_pass_events": 29687,
+          "raw_rate_s-1": 0.814781954078615,
+          "active_veto_pass_rate_s-1": 0.814781954078615,
+          "side_compton_fov_pass_rate_s-1": 0.7981663709203692,
+          "active_veto_survival_fraction": 1.0,
+          "side_compton_fov_survival_fraction_vs_active": 0.9796073255242438,
+          "side_compton_class_counts": {
+            "keep": 12098,
+            "single": 17589,
+            "veto": 618
+          }
+        }
+      },
+      "total": {
+        "raw": {
+          "events": 30501,
+          "rate_s-1": 0.9389168546099842
+        },
+        "active_veto_pass": {
+          "events": 30404,
+          "rate_s-1": 0.8669266473099086
+        },
+        "side_compton_fov_pass": {
+          "events": 29780,
+          "rate_s-1": 0.8462399197097725
+        }
+      },
+      "physical_reference_flux": {
+        "reference_flux_ph_cm2_s": 0.0001,
+        "rate_to_v3p5_injection_plane_s-1": 0.0014843489008928919,
+        "prompt_background_cps": 0.044088948071811976,
+        "delayed_background_cps": 0.003984600717591324,
+        "background_cps": 0.0480735487894033,
+        "signal_cps_at_reference_flux": 0.0011847573754053184,
+        "signal_to_background": 0.024644683099960176,
+        "mission_days": 20.0,
+        "source_counts_20d": 2047.2607447003902,
+        "background_counts_20d": 83071.0923080889,
+        "Z20d_direct_s_over_sqrt_b": 7.103104411180339,
+        "T3_day_constant_rate_direct": 3.567599611442422,
+        "T5_day_constant_rate_direct": 9.909998920673393,
+        "flux_3sigma_20d_ph_cm2_s": 4.223505422893655e-05,
+        "low_stat_final_background_events": 93,
+        "low_stat_background_relative_poisson_sigma_approx": 0.10369516947304253,
+        "low_stat_prompt_final_events": 65,
+        "low_stat_delayed_final_events": 28,
+        "science_unit_rate_final_events": 29687,
+        "claim_note": "Direct expectation only. It uses the current Step05 selected-event rates and does not replace a full Step06-Step08 mission-axis regeneration."
+      }
+    }
+  },
+  "timeline": {
+    "obs_time_s": 7027.052893,
+    "n_event_instances": 7215233,
+    "n_candidates_total": 7207769,
+    "n_candidates_with_tes": 45756,
+    "n_mixed_candidates": 1275,
+    "windows": {
+      "broad_480_550": {
+        "counts": {
+          "raw": 7291,
+          "active_veto_pass": 6172,
+          "side_compton_fov_pass": 5975
+        },
+        "rates_s-1": {
+          "raw": 1.037561565427084,
+          "active_veto_pass": 0.8783198438919164,
+          "side_compton_fov_pass": 0.8502853317002917
+        },
+        "side_compton_class_counts": {
+          "active_veto": 1119,
+          "keep": 2382,
+          "reject_kept": 5,
+          "single": 3588,
+          "veto": 197
+        }
+      },
+      "w2_510p58_511p42": {
+        "counts": {
+          "raw": 6435,
+          "active_veto_pass": 5954,
+          "side_compton_fov_pass": 5818
+        },
+        "rates_s-1": {
+          "raw": 0.9157466292035779,
+          "active_veto_pass": 0.8472968811620983,
+          "side_compton_fov_pass": 0.8279431062480833
+        },
+        "side_compton_class_counts": {
+          "active_veto": 481,
+          "keep": 2325,
+          "single": 3493,
+          "veto": 136
+        }
+      }
+    }
+  },
+  "timeline_draw_summary": {
+    "prompt": {
+      "lambda": 6520468.137994439,
+      "drawn": 6525272,
+      "rate_hz": 927.9093579172863
+    },
+    "delayed": {
+      "lambda": 682474.9999999995,
+      "drawn": 683170,
+      "rate_hz": 97.12108481207636
+    },
+    "science": {
+      "lambda": 6932.965880559446,
+      "drawn": 6791,
+      "rate_hz": 0.9866107436683338
+    }
+  },
+  "downstream_status": {
+    "step06_step08": "COMPLETED_SEPARATELY",
+    "replacement_review": "USER_REVIEW_REQUIRED_MASS_MODEL_511_NOT_AUTO_REPLACEMENT",
+    "p1_p2_p3_replay": "PASS_MASS_MODEL_511_P1_P2_P3_REPLAY_NOT_PAPER_APPLIED"
+  },
+  "pending": [
+    "User decision is required before replacing the paper-facing fix5 authority with Mass_model_511 values.",
+    "Manuscript application of accepted Mass_model_511 replacement/P1/P2/P3 values is not yet done."
+  ]
+}

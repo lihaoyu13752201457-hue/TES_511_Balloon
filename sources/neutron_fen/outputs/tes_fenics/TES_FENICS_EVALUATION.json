@@ -1,0 +1,747 @@
+{
+  "config": {
+    "path": "/home/ubuntu/neutron_fen/config/tes_lumped_fenics_model.json",
+    "sha256": "84907aeb1c44ededa4410e5f2e03748bee24b9239fe454fb3e9bd985a877e541"
+  },
+  "derived": {
+    "candidate_C_energy_offset_from_511_eV": -35.715225156479846,
+    "candidate_C_energy_only_separation_sigma": 0.20024506692896907,
+    "candidate_C_fixed_mean_detector_only_roi_probability": 0.9790940487803923,
+    "candidate_C_mean_energy_keV": 510.9642847748435,
+    "detector_sigma_keV_from_420eV_FWHM": 0.17835757806282815,
+    "largest_stable_scanned_G_nW_K": 8.0,
+    "primary_time_step_convergence": {
+      "candidate_A": {
+        "current_deficit_area_A_s": {
+          "coarse": 2.871692228285844e-07,
+          "refined": 2.8690362923931433e-07,
+          "relative_change": -0.0009248678763482999
+        },
+        "peak_summed_current_deficit_uA": {
+          "coarse": 70.33902958645355,
+          "refined": 70.42416205349232,
+          "relative_change": 0.0012103162005404026
+        },
+        "reference_template_residual_l2_fraction": {
+          "coarse": 0.13772439572072684,
+          "refined": 0.13807173042615828,
+          "relative_change": 0.0025219548331564617
+        }
+      },
+      "candidate_B": {
+        "current_deficit_area_A_s": {
+          "coarse": 2.85737032910525e-07,
+          "refined": 2.854819211132801e-07,
+          "relative_change": -0.0008928202083094884
+        },
+        "peak_summed_current_deficit_uA": {
+          "coarse": 67.10267744371583,
+          "refined": 67.1779882853181,
+          "relative_change": 0.0011223224537564667
+        },
+        "reference_template_residual_l2_fraction": {
+          "coarse": 0.11579672797078346,
+          "refined": 0.11609161727957078,
+          "relative_change": 0.002546611756264174
+        }
+      },
+      "candidate_C": {
+        "current_deficit_area_A_s": {
+          "coarse": 2.839482749808605e-07,
+          "refined": 2.837068683831829e-07,
+          "relative_change": -0.0008501780744886102
+        },
+        "peak_summed_current_deficit_uA": {
+          "coarse": 63.22329754734083,
+          "refined": 63.28594386110047,
+          "relative_change": 0.0009908738738711683
+        },
+        "reference_template_residual_l2_fraction": {
+          "coarse": 0.08842141177192946,
+          "refined": 0.08863826678173804,
+          "relative_change": 0.00245251693524113
+        }
+      },
+      "photon_511": {
+        "current_deficit_area_A_s": {
+          "coarse": 2.7889334175264105e-07,
+          "refined": 2.7869024351101106e-07,
+          "relative_change": -0.0007282290798111961
+        },
+        "peak_summed_current_deficit_uA": {
+          "coarse": 52.67337124888704,
+          "refined": 52.71176013086736,
+          "relative_change": 0.0007288100432936649
+        },
+        "reference_template_residual_l2_fraction": {
+          "coarse": 0.0,
+          "refined": 0.0,
+          "relative_change": 0.0
+        }
+      }
+    },
+    "stability_scan_step_nW_K": 0.1
+  },
+  "interpretation_guardrails": [
+    "A and B pulse shapes are counterfactual energy-matched tests, not predicted efficiencies",
+    "C uses a Monte-Carlo mean arrival stream; between-replicate spread is parameter-estimation uncertainty, not TES noise",
+    "No noise PSD or SQUID transfer function is available, so waveform residuals are not quoted as statistical sigma",
+    "Per-channel topology is a valid discriminator if the readout preserves layer and pixel identity"
+  ],
+  "outputs": {
+    "channel_csv": "/home/ubuntu/neutron_fen/outputs/tes_fenics/channel_summary.csv",
+    "figure_pdf": "/home/ubuntu/neutron_fen/outputs/figures/sh3_tes_fenics_pulse_comparison.pdf",
+    "figure_png": "/home/ubuntu/neutron_fen/outputs/figures/sh3_tes_fenics_pulse_comparison.png",
+    "trace_csv": "/home/ubuntu/neutron_fen/outputs/tes_fenics/pulse_traces.csv"
+  },
+  "provenance": {
+    "A_B_sensor_rescale_to_511": {
+      "A": 1.0247626314926135,
+      "B": 0.9839908638819258
+    },
+    "A_B_unscaled_high_collection_sensor_keV": {
+      "A": 481.93231761453023,
+      "B": 519.3137647478377
+    },
+    "candidate_A_B_high_collection_hits": {
+      "path": "/home/ubuntu/neutron_fen/runs/staircase/02_exact_ABC/tuned_high_bath0p06/hits.csv",
+      "sha256": "eb3fbb79fb3749e3d4d034147d9d4c09a3f2b6494f0cff6cddeccf37acb1b62a"
+    },
+    "candidate_C_hits": [
+      {
+        "path": "/home/ubuntu/neutron_fen/runs/staircase/02c_candidate_C_replicates/rep1/hits.csv",
+        "sha256": "bedb2abb9414df469182e5613b5d39b077da17bd370c36f4d222e245293c0f2b"
+      },
+      {
+        "path": "/home/ubuntu/neutron_fen/runs/staircase/02c_candidate_C_replicates/rep2/hits.csv",
+        "sha256": "8192745d8c69ce48c7c9db6c85e50c9de6363bd1f33250ec40a2644d8d0ecb2b"
+      },
+      {
+        "path": "/home/ubuntu/neutron_fen/runs/staircase/02c_candidate_C_replicates/rep3/hits.csv",
+        "sha256": "d586389e846381884fb144a0eef17f50477caa50fd197676769ffda85ef81171"
+      },
+      {
+        "path": "/home/ubuntu/neutron_fen/runs/staircase/02c_candidate_C_replicates/rep4/hits.csv",
+        "sha256": "4eff7e3f0ae67d6852abfe08666552521e2e8e1b6261cdbe14666adc504e1a7c"
+      },
+      {
+        "path": "/home/ubuntu/neutron_fen/runs/staircase/02c_candidate_C_replicates/rep5/hits.csv",
+        "sha256": "cbe0f053664c30f1155b39dbba689a07532c61690569a4cbd1382a189827d8b8"
+      }
+    ],
+    "direct_tes": {
+      "path": "/home/ubuntu/neutron_fen/outputs/candidate_direct_tes_channels.csv",
+      "sha256": "e69e8300066e866a6f18d6b3bc2d97bd2527c54ed8977c459257feadb0f959b5"
+    }
+  },
+  "runs": {
+    "linear_temperature_logistic_G1nW_K": {
+      "all_injections_consumed": true,
+      "device_count": 415,
+      "max_newton_iterations_per_step_bound": 15,
+      "metrics": {
+        "candidate_A": {
+          "active_channels": 56,
+          "channels_ge_0p42keV": 12,
+          "channels_ge_1keV": 8,
+          "current_deficit_area_A_s": 2.871807123761516e-07,
+          "dominant_channel": "candidate_A|L1:P83",
+          "dominant_channel_energy_keV": 369.9445877277347,
+          "input_to_TES_keV": 511.0000000000002,
+          "max_pixel_temperature_mK": 100.31374095028326,
+          "peak_summed_current_deficit_uA": 70.45408367834877,
+          "pulse_fwhm_ms": 3.50299999999999,
+          "reference_template_best_scale": 1.1781243380543884,
+          "reference_template_residual_l2_fraction": 0.13730290035515239,
+          "time_to_peak_ms": 0.73
+        },
+        "candidate_B": {
+          "active_channels": 45,
+          "channels_ge_0p42keV": 8,
+          "channels_ge_1keV": 7,
+          "current_deficit_area_A_s": 2.85751428526236e-07,
+          "dominant_channel": "candidate_B|L4:P369",
+          "dominant_channel_energy_keV": 394.42787335319014,
+          "input_to_TES_keV": 510.99999999999966,
+          "max_pixel_temperature_mK": 100.37279717684847,
+          "peak_summed_current_deficit_uA": 67.22422946866172,
+          "pulse_fwhm_ms": 3.683999999999989,
+          "reference_template_best_scale": 1.1472653764110026,
+          "reference_template_residual_l2_fraction": 0.11545317719139375,
+          "time_to_peak_ms": 0.72
+        },
+        "candidate_C": {
+          "active_channels": 313,
+          "channels_ge_0p42keV": 15,
+          "channels_ge_1keV": 10,
+          "current_deficit_area_A_s": 2.8396687703934655e-07,
+          "dominant_channel": "candidate_C|L1:P231",
+          "dominant_channel_energy_keV": 433.54379,
+          "input_to_TES_keV": 510.9642847748393,
+          "max_pixel_temperature_mK": 100.46702178916098,
+          "peak_summed_current_deficit_uA": 63.34168419789231,
+          "pulse_fwhm_ms": 3.939999999999988,
+          "reference_template_best_scale": 1.1078844600650422,
+          "reference_template_residual_l2_fraction": 0.08812944013695728,
+          "time_to_peak_ms": 0.72
+        },
+        "photon_511": {
+          "active_channels": 1,
+          "channels_ge_0p42keV": 1,
+          "channels_ge_1keV": 1,
+          "current_deficit_area_A_s": 2.789248489104553e-07,
+          "dominant_channel": "photon_511|Lx:P_ref",
+          "dominant_channel_energy_keV": 511.0,
+          "input_to_TES_keV": 511.0,
+          "max_pixel_temperature_mK": 100.65318564084396,
+          "peak_summed_current_deficit_uA": 52.8029077201515,
+          "pulse_fwhm_ms": 4.934999999999982,
+          "reference_template_best_scale": 1.0,
+          "reference_template_residual_l2_fraction": 0.0,
+          "time_to_peak_ms": 0.6299999999999999
+        }
+      },
+      "operating_point": {
+        "C_TES_J_K": 4e-14,
+        "C_Ta_J_K": 6.73362855e-11,
+        "C_total_J_K": 6.73762855e-11,
+        "G_Tc_W_K": 1e-09,
+        "G_at_T0_W_K": 9.882425348374932e-10,
+        "I0_A": 9.760554079985752e-05,
+        "Ibias_A": 0.001042175290475898,
+        "K_W_Kn": 3.333333333333333e-08,
+        "P0_W": 2.858052478449795e-11,
+        "R0_ohm": 0.003,
+        "T0_K": 0.09941038853346734,
+        "Ta_mass_kg": 0.0001124145,
+        "Vbias_V": 3.2307434004752836e-07,
+        "electrical_tau_s": 0.00030211480362537764,
+        "intrinsic_tau_s": 0.06817788460307404,
+        "linear_eigenvalues_per_s": [
+          {
+            "imag": 0.0,
+            "real": -498.639535455839
+          },
+          {
+            "imag": 0.0,
+            "real": -2399.319409354928
+          }
+        ],
+        "linearly_overdamped": true,
+        "linearly_stable": true,
+        "transition_width_K": 0.0006958727197342714
+      },
+      "time_grid_refinement": 1,
+      "time_step_count": 750,
+      "total_newton_iterations": 750
+    },
+    "normal_fraction_G0.5nW_K": {
+      "all_injections_consumed": true,
+      "device_count": 415,
+      "max_newton_iterations_per_step_bound": 15,
+      "metrics": {
+        "candidate_A": {
+          "active_channels": 56,
+          "channels_ge_0p42keV": 12,
+          "channels_ge_1keV": 8,
+          "current_deficit_area_A_s": 3.495696339630024e-07,
+          "dominant_channel": "candidate_A|L1:P83",
+          "dominant_channel_energy_keV": 369.9445877277347,
+          "input_to_TES_keV": 511.0000000000002,
+          "max_pixel_temperature_mK": 100.30006705184445,
+          "peak_summed_current_deficit_uA": 50.49402511542727,
+          "pulse_fwhm_ms": 6.673999999999971,
+          "reference_template_best_scale": 1.1802001406733957,
+          "reference_template_residual_l2_fraction": 0.12905647418779023,
+          "time_to_peak_ms": 0.87
+        },
+        "candidate_B": {
+          "active_channels": 45,
+          "channels_ge_0p42keV": 8,
+          "channels_ge_1keV": 7,
+          "current_deficit_area_A_s": 3.446273235730083e-07,
+          "dominant_channel": "candidate_B|L4:P369",
+          "dominant_channel_energy_keV": 394.42787335319014,
+          "input_to_TES_keV": 510.99999999999966,
+          "max_pixel_temperature_mK": 100.35870618960129,
+          "peak_summed_current_deficit_uA": 48.115124310883054,
+          "pulse_fwhm_ms": 7.079999999999968,
+          "reference_template_best_scale": 1.1491894772631803,
+          "reference_template_residual_l2_fraction": 0.10791018766584093,
+          "time_to_peak_ms": 0.85
+        },
+        "candidate_C": {
+          "active_channels": 313,
+          "channels_ge_0p42keV": 15,
+          "channels_ge_1keV": 10,
+          "current_deficit_area_A_s": 3.377294330627678e-07,
+          "dominant_channel": "candidate_C|L1:P231",
+          "dominant_channel_energy_keV": 433.54379,
+          "input_to_TES_keV": 510.9642847748393,
+          "max_pixel_temperature_mK": 100.45232902903342,
+          "peak_summed_current_deficit_uA": 45.28725703031598,
+          "pulse_fwhm_ms": 7.612999999999965,
+          "reference_template_best_scale": 1.109169014014147,
+          "reference_template_residual_l2_fraction": 0.08240482361193256,
+          "time_to_peak_ms": 0.85
+        },
+        "photon_511": {
+          "active_channels": 1,
+          "channels_ge_0p42keV": 1,
+          "channels_ge_1keV": 1,
+          "current_deficit_area_A_s": 3.189367119405386e-07,
+          "dominant_channel": "photon_511|Lx:P_ref",
+          "dominant_channel_energy_keV": 511.0,
+          "input_to_TES_keV": 511.0,
+          "max_pixel_temperature_mK": 100.63751173915627,
+          "peak_summed_current_deficit_uA": 37.55504142603509,
+          "pulse_fwhm_ms": 9.582999999999954,
+          "reference_template_best_scale": 1.0,
+          "reference_template_residual_l2_fraction": 0.0,
+          "time_to_peak_ms": 0.73
+        }
+      },
+      "operating_point": {
+        "C_TES_J_K": 4e-14,
+        "C_Ta_J_K": 6.73362855e-11,
+        "C_total_J_K": 6.73762855e-11,
+        "G_Tc_W_K": 5e-10,
+        "G_at_T0_W_K": 4.941039540634565e-10,
+        "I0_A": 6.901546163988465e-05,
+        "Ibias_A": 0.0007369070258968329,
+        "K_W_Kn": 1.6666666666666664e-08,
+        "P0_W": 1.4289401836099169e-11,
+        "R0_ohm": 0.003,
+        "T0_K": 0.09940864691398396,
+        "Ta_mass_kg": 0.0001124145,
+        "Vbias_V": 2.284411780280182e-07,
+        "electrical_tau_s": 0.00030211480362537764,
+        "intrinsic_tau_s": 0.13636054709925885,
+        "linear_eigenvalues_per_s": [
+          {
+            "imag": 0.0,
+            "real": -206.44093782943673
+          },
+          {
+            "imag": 0.0,
+            "real": -2897.547388055269
+          }
+        ],
+        "linearly_overdamped": true,
+        "linearly_stable": true,
+        "normal_fraction_exponent": 142.85714285714286
+      },
+      "time_grid_refinement": 1,
+      "time_step_count": 750,
+      "total_newton_iterations": 750
+    },
+    "normal_fraction_G1nW_K": {
+      "all_injections_consumed": true,
+      "device_count": 415,
+      "max_newton_iterations_per_step_bound": 15,
+      "metrics": {
+        "candidate_A": {
+          "active_channels": 56,
+          "channels_ge_0p42keV": 12,
+          "channels_ge_1keV": 8,
+          "current_deficit_area_A_s": 2.871692228285844e-07,
+          "dominant_channel": "candidate_A|L1:P83",
+          "dominant_channel_energy_keV": 369.9445877277347,
+          "input_to_TES_keV": 511.0000000000002,
+          "max_pixel_temperature_mK": 100.31192879941487,
+          "peak_summed_current_deficit_uA": 70.33902958645355,
+          "pulse_fwhm_ms": 3.50299999999999,
+          "reference_template_best_scale": 1.1787268294480973,
+          "reference_template_residual_l2_fraction": 0.13772439572072684,
+          "time_to_peak_ms": 0.73
+        },
+        "candidate_B": {
+          "active_channels": 45,
+          "channels_ge_0p42keV": 8,
+          "channels_ge_1keV": 7,
+          "current_deficit_area_A_s": 2.85737032910525e-07,
+          "dominant_channel": "candidate_B|L4:P369",
+          "dominant_channel_energy_keV": 394.42787335319014,
+          "input_to_TES_keV": 510.99999999999966,
+          "max_pixel_temperature_mK": 100.37098071033138,
+          "peak_summed_current_deficit_uA": 67.10267744371583,
+          "pulse_fwhm_ms": 3.708999999999989,
+          "reference_template_best_scale": 1.1477264202073747,
+          "reference_template_residual_l2_fraction": 0.11579672797078346,
+          "time_to_peak_ms": 0.72
+        },
+        "candidate_C": {
+          "active_channels": 313,
+          "channels_ge_0p42keV": 15,
+          "channels_ge_1keV": 10,
+          "current_deficit_area_A_s": 2.839482749808605e-07,
+          "dominant_channel": "candidate_C|L1:P231",
+          "dominant_channel_energy_keV": 433.54379,
+          "input_to_TES_keV": 510.9642847748393,
+          "max_pixel_temperature_mK": 100.46519999606959,
+          "peak_summed_current_deficit_uA": 63.22329754734083,
+          "pulse_fwhm_ms": 3.9649999999999874,
+          "reference_template_best_scale": 1.1082394197762906,
+          "reference_template_residual_l2_fraction": 0.08842141177192946,
+          "time_to_peak_ms": 0.72
+        },
+        "photon_511": {
+          "active_channels": 1,
+          "channels_ge_0p42keV": 1,
+          "channels_ge_1keV": 1,
+          "current_deficit_area_A_s": 2.7889334175264105e-07,
+          "dominant_channel": "photon_511|Lx:P_ref",
+          "dominant_channel_energy_keV": 511.0,
+          "input_to_TES_keV": 511.0,
+          "max_pixel_temperature_mK": 100.65135582266662,
+          "peak_summed_current_deficit_uA": 52.67337124888704,
+          "pulse_fwhm_ms": 4.934999999999982,
+          "reference_template_best_scale": 1.0,
+          "reference_template_residual_l2_fraction": 0.0,
+          "time_to_peak_ms": 0.6399999999999999
+        }
+      },
+      "operating_point": {
+        "C_TES_J_K": 4e-14,
+        "C_Ta_J_K": 6.73362855e-11,
+        "C_total_J_K": 6.73762855e-11,
+        "G_Tc_W_K": 1e-09,
+        "G_at_T0_W_K": 9.88207908126913e-10,
+        "I0_A": 9.760260186456496e-05,
+        "Ibias_A": 0.0010421439102313228,
+        "K_W_Kn": 3.333333333333333e-08,
+        "P0_W": 2.8578803672198338e-11,
+        "R0_ohm": 0.003,
+        "T0_K": 0.09940864691398396,
+        "Ta_mass_kg": 0.0001124145,
+        "Vbias_V": 3.2306461217171e-07,
+        "electrical_tau_s": 0.00030211480362537764,
+        "intrinsic_tau_s": 0.06818027354962942,
+        "linear_eigenvalues_per_s": [
+          {
+            "imag": 0.0,
+            "real": -498.6082081636778
+          },
+          {
+            "imag": 0.0,
+            "real": -2399.368443605733
+          }
+        ],
+        "linearly_overdamped": true,
+        "linearly_stable": true,
+        "normal_fraction_exponent": 142.85714285714286
+      },
+      "time_grid_refinement": 1,
+      "time_step_count": 750,
+      "total_newton_iterations": 750
+    },
+    "normal_fraction_G1nW_K_refined_dt2": {
+      "all_injections_consumed": true,
+      "device_count": 415,
+      "max_newton_iterations_per_step_bound": 15,
+      "metrics": {
+        "candidate_A": {
+          "active_channels": 56,
+          "channels_ge_0p42keV": 12,
+          "channels_ge_1keV": 8,
+          "current_deficit_area_A_s": 2.8690362923931433e-07,
+          "dominant_channel": "candidate_A|L1:P83",
+          "dominant_channel_energy_keV": 369.9445877277347,
+          "input_to_TES_keV": 511.0000000000002,
+          "max_pixel_temperature_mK": 100.31204363164014,
+          "peak_summed_current_deficit_uA": 70.42416205349232,
+          "pulse_fwhm_ms": 3.5039999999999902,
+          "reference_template_best_scale": 1.1788481870698215,
+          "reference_template_residual_l2_fraction": 0.13807173042615828,
+          "time_to_peak_ms": 0.7300000000000014
+        },
+        "candidate_B": {
+          "active_channels": 45,
+          "channels_ge_0p42keV": 8,
+          "channels_ge_1keV": 7,
+          "current_deficit_area_A_s": 2.854819211132801e-07,
+          "dominant_channel": "candidate_B|L4:P369",
+          "dominant_channel_energy_keV": 394.42787335319014,
+          "input_to_TES_keV": 510.99999999999966,
+          "max_pixel_temperature_mK": 100.37110283183769,
+          "peak_summed_current_deficit_uA": 67.1779882853181,
+          "pulse_fwhm_ms": 3.697499999999989,
+          "reference_template_best_scale": 1.1478073983680748,
+          "reference_template_residual_l2_fraction": 0.11609161727957078,
+          "time_to_peak_ms": 0.7150000000000013
+        },
+        "candidate_C": {
+          "active_channels": 313,
+          "channels_ge_0p42keV": 15,
+          "channels_ge_1keV": 10,
+          "current_deficit_area_A_s": 2.837068683831829e-07,
+          "dominant_channel": "candidate_C|L1:P231",
+          "dominant_channel_energy_keV": 433.54379,
+          "input_to_TES_keV": 510.9642847748393,
+          "max_pixel_temperature_mK": 100.46533092543304,
+          "peak_summed_current_deficit_uA": 63.28594386110047,
+          "pulse_fwhm_ms": 3.9534999999999885,
+          "reference_template_best_scale": 1.1083290631024094,
+          "reference_template_residual_l2_fraction": 0.08863826678173804,
+          "time_to_peak_ms": 0.7150000000000013
+        },
+        "photon_511": {
+          "active_channels": 1,
+          "channels_ge_0p42keV": 1,
+          "channels_ge_1keV": 1,
+          "current_deficit_area_A_s": 2.7869024351101106e-07,
+          "dominant_channel": "photon_511|Lx:P_ref",
+          "dominant_channel_energy_keV": 511.0,
+          "input_to_TES_keV": 511.0,
+          "max_pixel_temperature_mK": 100.65150401549775,
+          "peak_summed_current_deficit_uA": 52.71176013086736,
+          "pulse_fwhm_ms": 4.947499999999981,
+          "reference_template_best_scale": 1.0,
+          "reference_template_residual_l2_fraction": 0.0,
+          "time_to_peak_ms": 0.6300000000000011
+        }
+      },
+      "operating_point": {
+        "C_TES_J_K": 4e-14,
+        "C_Ta_J_K": 6.73362855e-11,
+        "C_total_J_K": 6.73762855e-11,
+        "G_Tc_W_K": 1e-09,
+        "G_at_T0_W_K": 9.88207908126913e-10,
+        "I0_A": 9.760260186456496e-05,
+        "Ibias_A": 0.0010421439102313228,
+        "K_W_Kn": 3.333333333333333e-08,
+        "P0_W": 2.8578803672198338e-11,
+        "R0_ohm": 0.003,
+        "T0_K": 0.09940864691398396,
+        "Ta_mass_kg": 0.0001124145,
+        "Vbias_V": 3.2306461217171e-07,
+        "electrical_tau_s": 0.00030211480362537764,
+        "intrinsic_tau_s": 0.06818027354962942,
+        "linear_eigenvalues_per_s": [
+          {
+            "imag": 0.0,
+            "real": -498.6082081636778
+          },
+          {
+            "imag": 0.0,
+            "real": -2399.368443605733
+          }
+        ],
+        "linearly_overdamped": true,
+        "linearly_stable": true,
+        "normal_fraction_exponent": 142.85714285714286
+      },
+      "time_grid_refinement": 2,
+      "time_step_count": 1500,
+      "total_newton_iterations": 1500
+    },
+    "normal_fraction_G2nW_K": {
+      "all_injections_consumed": true,
+      "device_count": 415,
+      "max_newton_iterations_per_step_bound": 15,
+      "metrics": {
+        "candidate_A": {
+          "active_channels": 56,
+          "channels_ge_0p42keV": 12,
+          "channels_ge_1keV": 8,
+          "current_deficit_area_A_s": 2.035097209402627e-07,
+          "dominant_channel": "candidate_A|L1:P83",
+          "dominant_channel_energy_keV": 369.9445877277347,
+          "input_to_TES_keV": 511.0000000000002,
+          "max_pixel_temperature_mK": 100.33610819322375,
+          "peak_summed_current_deficit_uA": 98.19549835838367,
+          "pulse_fwhm_ms": 1.9089999999999998,
+          "reference_template_best_scale": 1.1771620237479048,
+          "reference_template_residual_l2_fraction": 0.1378315778471049,
+          "time_to_peak_ms": 0.61
+        },
+        "candidate_B": {
+          "active_channels": 45,
+          "channels_ge_0p42keV": 8,
+          "channels_ge_1keV": 7,
+          "current_deficit_area_A_s": 2.0263120320270224e-07,
+          "dominant_channel": "candidate_B|L4:P369",
+          "dominant_channel_energy_keV": 394.42787335319014,
+          "input_to_TES_keV": 510.99999999999966,
+          "max_pixel_temperature_mK": 100.39596644541493,
+          "peak_summed_current_deficit_uA": 93.70707348955297,
+          "pulse_fwhm_ms": 2.012999999999999,
+          "reference_template_best_scale": 1.1466072282743984,
+          "reference_template_residual_l2_fraction": 0.11536071667580841,
+          "time_to_peak_ms": 0.6
+        },
+        "candidate_C": {
+          "active_channels": 313,
+          "channels_ge_0p42keV": 15,
+          "channels_ge_1keV": 10,
+          "current_deficit_area_A_s": 2.0174248691583804e-07,
+          "dominant_channel": "candidate_C|L1:P231",
+          "dominant_channel_energy_keV": 433.54379,
+          "input_to_TES_keV": 510.9642847748393,
+          "max_pixel_temperature_mK": 100.49134423779093,
+          "peak_summed_current_deficit_uA": 88.33834361573501,
+          "pulse_fwhm_ms": 2.1189999999999984,
+          "reference_template_best_scale": 1.1075445451423855,
+          "reference_template_residual_l2_fraction": 0.08838129271642471,
+          "time_to_peak_ms": 0.6
+        },
+        "photon_511": {
+          "active_channels": 1,
+          "channels_ge_0p42keV": 1,
+          "channels_ge_1keV": 1,
+          "current_deficit_area_A_s": 1.992948662585953e-07,
+          "dominant_channel": "photon_511|Lx:P_ref",
+          "dominant_channel_energy_keV": 511.0,
+          "input_to_TES_keV": 511.0,
+          "max_pixel_temperature_mK": 100.67937710960425,
+          "peak_summed_current_deficit_uA": 73.73317505464432,
+          "pulse_fwhm_ms": 2.6119999999999957,
+          "reference_template_best_scale": 1.0,
+          "reference_template_residual_l2_fraction": 0.0,
+          "time_to_peak_ms": 0.5499999999999999
+        }
+      },
+      "operating_point": {
+        "C_TES_J_K": 4e-14,
+        "C_Ta_J_K": 6.73362855e-11,
+        "C_total_J_K": 6.73762855e-11,
+        "G_Tc_W_K": 2e-09,
+        "G_at_T0_W_K": 1.976415816253826e-09,
+        "I0_A": 0.0001380309232797693,
+        "Ibias_A": 0.0014738140517936659,
+        "K_W_Kn": 6.666666666666665e-08,
+        "P0_W": 5.7157607344396675e-11,
+        "R0_ohm": 0.003,
+        "T0_K": 0.09940864691398396,
+        "Ta_mass_kg": 0.0001124145,
+        "Vbias_V": 4.568823560560364e-07,
+        "electrical_tau_s": 0.00030211480362537764,
+        "intrinsic_tau_s": 0.03409013677481471,
+        "linear_eigenvalues_per_s": [
+          {
+            "imag": 920.705514232189,
+            "real": -1242.9766517694115
+          },
+          {
+            "imag": -920.705514232189,
+            "real": -1242.9766517694115
+          }
+        ],
+        "linearly_overdamped": false,
+        "linearly_stable": true,
+        "normal_fraction_exponent": 142.85714285714286
+      },
+      "time_grid_refinement": 1,
+      "time_step_count": 750,
+      "total_newton_iterations": 538
+    },
+    "normal_fraction_G5nW_K": {
+      "all_injections_consumed": true,
+      "device_count": 415,
+      "max_newton_iterations_per_step_bound": 15,
+      "metrics": {
+        "candidate_A": {
+          "active_channels": 56,
+          "channels_ge_0p42keV": 12,
+          "channels_ge_1keV": 8,
+          "current_deficit_area_A_s": 1.2822485836485345e-07,
+          "dominant_channel": "candidate_A|L1:P83",
+          "dominant_channel_energy_keV": 369.9445877277347,
+          "input_to_TES_keV": 511.0000000000002,
+          "max_pixel_temperature_mK": 100.41223810618092,
+          "peak_summed_current_deficit_uA": 156.57217510028212,
+          "pulse_fwhm_ms": 0.9999999999999998,
+          "reference_template_best_scale": 1.1792080133279388,
+          "reference_template_residual_l2_fraction": 0.2490363574433797,
+          "time_to_peak_ms": 0.48
+        },
+        "candidate_B": {
+          "active_channels": 45,
+          "channels_ge_0p42keV": 8,
+          "channels_ge_1keV": 7,
+          "current_deficit_area_A_s": 1.2753035437110908e-07,
+          "dominant_channel": "candidate_B|L4:P369",
+          "dominant_channel_energy_keV": 394.42787335319014,
+          "input_to_TES_keV": 510.99999999999966,
+          "max_pixel_temperature_mK": 100.47433872611344,
+          "peak_summed_current_deficit_uA": 148.81612479663445,
+          "pulse_fwhm_ms": 1.024,
+          "reference_template_best_scale": 1.1480738415982747,
+          "reference_template_residual_l2_fraction": 0.20873727232324882,
+          "time_to_peak_ms": 0.47
+        },
+        "candidate_C": {
+          "active_channels": 313,
+          "channels_ge_0p42keV": 15,
+          "channels_ge_1keV": 10,
+          "current_deficit_area_A_s": 1.268742494571292e-07,
+          "dominant_channel": "candidate_C|L1:P231",
+          "dominant_channel_energy_keV": 433.54379,
+          "input_to_TES_keV": 510.9642847748393,
+          "max_pixel_temperature_mK": 100.57289022587501,
+          "peak_summed_current_deficit_uA": 139.95241263801506,
+          "pulse_fwhm_ms": 1.07,
+          "reference_template_best_scale": 1.1094355190395364,
+          "reference_template_residual_l2_fraction": 0.16133831497525042,
+          "time_to_peak_ms": 0.48
+        },
+        "photon_511": {
+          "active_channels": 1,
+          "channels_ge_0p42keV": 1,
+          "channels_ge_1keV": 1,
+          "current_deficit_area_A_s": 1.2464617280482665e-07,
+          "dominant_channel": "photon_511|Lx:P_ref",
+          "dominant_channel_energy_keV": 511.0,
+          "input_to_TES_keV": 511.0,
+          "max_pixel_temperature_mK": 100.76597208284873,
+          "peak_summed_current_deficit_uA": 115.36019885846082,
+          "pulse_fwhm_ms": 1.236,
+          "reference_template_best_scale": 1.0,
+          "reference_template_residual_l2_fraction": 0.0,
+          "time_to_peak_ms": 0.43999999999999995
+        }
+      },
+      "operating_point": {
+        "C_TES_J_K": 4e-14,
+        "C_Ta_J_K": 6.73362855e-11,
+        "C_total_J_K": 6.73762855e-11,
+        "G_Tc_W_K": 5e-09,
+        "G_at_T0_W_K": 4.9410395406345656e-09,
+        "I0_A": 0.00021824605255001497,
+        "Ibias_A": 0.002330304625614676,
+        "K_W_Kn": 1.6666666666666665e-07,
+        "P0_W": 1.428940183609917e-10,
+        "R0_ohm": 0.003,
+        "T0_K": 0.09940864691398396,
+        "Ta_mass_kg": 0.0001124145,
+        "Vbias_V": 7.223944339405495e-07,
+        "electrical_tau_s": 0.00030211480362537764,
+        "intrinsic_tau_s": 0.013636054709925884,
+        "linear_eigenvalues_per_s": [
+          {
+            "imag": 2364.565914024624,
+            "real": -624.941629423528
+          },
+          {
+            "imag": -2364.565914024624,
+            "real": -624.941629423528
+          }
+        ],
+        "linearly_overdamped": false,
+        "linearly_stable": true,
+        "normal_fraction_exponent": 142.85714285714286
+      },
+      "time_grid_refinement": 1,
+      "time_step_count": 750,
+      "total_newton_iterations": 634
+    }
+  },
+  "schema_version": 1,
+  "solver": {
+    "cache_dir": "/home/ubuntu/neutron_fen/build/fenics_cache/dijitso",
+    "meaning_of_mesh": "Each DG0 cell indexes one independent lumped TES pixel; it is not a spatial diffusion mesh",
+    "name": "FEniCS/dolfin mixed DG0 backward-Euler nonlinear variational solve",
+    "version": "2019.2.0.64.dev0"
+  },
+  "status": "PASS"
+}

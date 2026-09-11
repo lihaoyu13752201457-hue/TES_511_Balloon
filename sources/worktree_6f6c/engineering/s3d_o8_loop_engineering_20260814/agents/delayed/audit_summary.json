@@ -1,0 +1,54 @@
+{
+  "axis_definition": {
+    "component_coordinates": "Use component_r_cm/component_axial_cm together with component_axis_definition. Cold plates and can bottom use local_z; Nb/Mu/open-ring/L0 structures use local_x_about_z=-5.2.",
+    "frame": "InstrumentFrame = World Ry(+45 deg)",
+    "generic_cross_component_coordinates": "generic_radius_about_IF_x_axis_at_z_minus5p2_cm is only a common cross-component view; it is not MXC/cold-plate local radius."
+  },
+  "component_coordinate_matches_to_frozen_rows": 135,
+  "coordinate_matches_to_compact_catalog": 420,
+  "family_activity_Bq": {
+    "alpha": 280.41446371948086,
+    "eminus": 0.7807642478942108,
+    "eplus": 3.7548459260942404,
+    "gamma": 8.170116379222259,
+    "muminus": 0.25016320531079606,
+    "muplus": 1.4778312924018022e-05,
+    "n": 348.2221636465834,
+    "p": 762.5385368233059
+  },
+  "files": [
+    "delayed_key_flow.csv",
+    "delayed_component_summary.csv",
+    "delayed_component_family_summary.csv",
+    "delayed_material_summary.csv",
+    "delayed_family_isotope_summary.csv",
+    "delayed_position_bubbles.csv",
+    "delayed_production_to_w2_flow.csv",
+    "delayed_production_to_w2_flow_compact.csv"
+  ],
+  "known_excited_state_holdout_Bq": 0.09980926897839938,
+  "normalization": {
+    "coupling": "selected rows for one family/volume/ZA divided by that key's realized decay triggers",
+    "production": "sum(RP)/sum(TT) separately within S3d_O8 x BUILDUP x family; zero-RP DAT TT already retained by authority",
+    "source_mix_reweight": "full inventory Bq multiplied by selected/realized-trigger coupling"
+  },
+  "realized_triggers_by_family": {
+    "alpha": 250000,
+    "eminus": 250000,
+    "eplus": 250000,
+    "gamma": 250000,
+    "muminus": 250000,
+    "muplus": 250000,
+    "n": 250000,
+    "p": 250000
+  },
+  "scope": "S3d-O8 official full Step05-selected day-15 delayed W2 lineage",
+  "selected_Neff": 28.75366108254851,
+  "selected_rate_cps": 0.05447975222726722,
+  "selected_rows": 420,
+  "selected_source_position_Neff": 24.92801736376775,
+  "selected_unique_source_positions": 66,
+  "source_mix_warning": "Observed weighted W2 contributions follow the realized 250k-trigger source mix. Use selected/realized-trigger coupling and full inventory Bq for source-mix-corrected screening; do not call observed_rate/full_Bq a decay coupling when mix ratios differ.",
+  "status": "PASS__INDEPENDENT_DELAYED_DENOMINATOR_AUDIT",
+  "transported_ground_activity_Bq": 1404.1310687262162
+}

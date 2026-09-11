@@ -1,0 +1,236 @@
+--- a/geant4_app/src/laue_multiring_bfull_demo.cc	2026-05-29 08:45:00.755245486 +0800
++++ b/geant4_app/src/laue_multiring_bfull_demo.cc	2026-05-29 08:49:03.376411298 +0800
+@@ -69,6 +69,7 @@
+   long seed = 12345;
+   std::string efficiencyTablePath = "data/laue/Ge111_480_550keV_darwin_mosaic_table.csv";
+   std::string ringConfigPath = "data/laue/ge111_480_550keV_multiring_darwin_config.csv";
++  std::string rockingCurvePath;
+   double focalLengthMm = 8300.0;
+   double sourceJitterMm = 0.3;
+   double offAxisXArcmin = 0.0;
+@@ -186,6 +187,78 @@
+   return std::stoi(ReadString(row, key));
+ }
+ 
++double ReadOptionalDouble(const std::map<std::string, std::string>& row, const std::string& key, double fallback) {
++  const auto it = row.find(key);
++  if (it == row.end() || it->second.empty()) return fallback;
++  return std::stod(it->second);
++}
++
++struct RockingCurvePoint {
++  double deltaThetaRad = 0.0;
++  double reflectivity = 0.0;
++  double transmittivity = 1.0;
++  double absorption = 0.0;
++};
++
++struct RockingCurveTable {
++  bool enabled = false;
++  std::string path;
++  std::vector<RockingCurvePoint> points;
++};
++
++RockingCurveTable LoadRockingCurveTable(const std::string& path) {
++  RockingCurveTable table;
++  if (path.empty()) return table;
++  std::ifstream input(path.c_str());
++  if (!input) throw std::runtime_error("failed to open rocking curve CSV: " + path);
++  std::string line;
++  if (!std::getline(input, line)) throw std::runtime_error("empty rocking curve CSV: " + path);
++  const std::vector<std::string> headers = SplitCsvLine(line);
++  while (std::getline(input, line)) {
++    if (Trim(line).empty()) continue;
++    const std::vector<std::string> cells = SplitCsvLine(line);
++    std::map<std::string, std::string> row;
++    for (std::size_t i = 0; i < headers.size() && i < cells.size(); ++i) row[headers[i]] = cells[i];
++    RockingCurvePoint point;
++    point.deltaThetaRad = ReadDouble(row, "delta_theta_rad");
++    point.reflectivity = ReadDouble(row, "reflectivity");
++    point.absorption = ReadOptionalDouble(row, "absorption", 0.0);
++    point.transmittivity = ReadOptionalDouble(row, "transmittivity", std::max(0.0, 1.0 - point.reflectivity - point.absorption));
++    point.reflectivity = Clamp(point.reflectivity, 0.0, 0.999999999);
++    point.absorption = Clamp(point.absorption, 0.0, 1.0);
++    point.transmittivity = Clamp(point.transmittivity, 0.0, 1.0);
++    table.points.push_back(point);
++  }
++  if (table.points.size() < 2) throw std::runtime_error("rocking curve CSV needs at least two rows: " + path);
++  std::sort(table.points.begin(), table.points.end(), [](const RockingCurvePoint& a, const RockingCurvePoint& b) {
++    return a.deltaThetaRad < b.deltaThetaRad;
++  });
++  table.enabled = true;
++  table.path = path;
++  return table;
++}
++
++RockingCurvePoint InterpolateRockingCurve(const RockingCurveTable& table, double deltaThetaRad) {
++  if (!table.enabled || table.points.empty()) throw std::runtime_error("rocking curve table is not enabled");
++  if (deltaThetaRad <= table.points.front().deltaThetaRad) return table.points.front();
++  if (deltaThetaRad >= table.points.back().deltaThetaRad) return table.points.back();
++  auto upper = std::lower_bound(
++      table.points.begin(),
++      table.points.end(),
++      deltaThetaRad,
++      [](const RockingCurvePoint& point, double value) { return point.deltaThetaRad < value; });
++  if (upper == table.points.begin()) return *upper;
++  const auto lower = upper - 1;
++  const double span = upper->deltaThetaRad - lower->deltaThetaRad;
++  const double f = span != 0.0 ? (deltaThetaRad - lower->deltaThetaRad) / span : 0.0;
++  RockingCurvePoint out;
++  out.deltaThetaRad = deltaThetaRad;
++  out.reflectivity = lower->reflectivity + f * (upper->reflectivity - lower->reflectivity);
++  out.transmittivity = lower->transmittivity + f * (upper->transmittivity - lower->transmittivity);
++  out.absorption = lower->absorption + f * (upper->absorption - lower->absorption);
++  return out;
++}
++
+ double BraggAngleRad(double energyKeV, double dSpacingA) {
+   const double arg = (kHcKeVA / energyKeV) / (2.0 * dSpacingA);
+   if (arg <= 0.0 || arg >= 1.0) {
+@@ -276,6 +349,21 @@
+   return row;
+ }
+ 
++optics::LaueEfficiencyRow BFullBackendProbabilities(
++    const RingSpec& ring,
++    double deltaThetaRad,
++    const Options& opt,
++    const RockingCurveTable& rockingCurve) {
++  optics::LaueEfficiencyRow row = OnlineDarwinMosaicProbabilities(ring, deltaThetaRad, opt);
++  if (!rockingCurve.enabled) return row;
++  const RockingCurvePoint point = InterpolateRockingCurve(rockingCurve, deltaThetaRad);
++  row.pDiff = Clamp(point.reflectivity, 0.0, 0.999999999);
++  row.pAbs = Clamp(point.absorption, 0.0, 1.0);
++  row.pTrans = Clamp(point.transmittivity, 0.0, 1.0);
++  row.source = "external_rocking_curve_csv";
++  return row;
++}
++
+ G4ThreeVector ReflectAcrossPlane(const G4ThreeVector& inDir, const G4ThreeVector& planeNormal) {
+   const G4ThreeVector k = inDir.unit();
+   const G4ThreeVector n = planeNormal.unit();
+@@ -314,7 +402,8 @@
+     const RingSpec& ring,
+     double deltaThetaRad,
+     const G4ThreeVector& inDir,
+-    const Options& opt) {
++    const Options& opt,
++    const RockingCurveTable& rockingCurve) {
+   BFullInteractionScale scale;
+   scale.thetaBRad = BraggAngleRad(ring.designEnergyKeV, ring.dSpacingA);
+   scale.thetaLocalRad = scale.thetaBRad + deltaThetaRad;
+@@ -325,8 +414,12 @@
+   const double thicknessCm = ring.thicknessMm / 10.0;
+   const double zProjection = std::max(1.0e-6, std::fabs(inDir.unit().z()));
+   scale.pathLengthCm = thicknessCm / zProjection;
+-  scale.diffractionOnlyProbability = 0.5 * (1.0 - std::exp(-2.0 * scale.sigmaCmInv * thicknessCm));
+-  scale.diffractionOnlyProbability = Clamp(scale.diffractionOnlyProbability, 0.0, 0.499999999);
++  if (rockingCurve.enabled) {
++    scale.diffractionOnlyProbability = InterpolateRockingCurve(rockingCurve, deltaThetaRad).reflectivity;
++  } else {
++    scale.diffractionOnlyProbability = 0.5 * (1.0 - std::exp(-2.0 * scale.sigmaCmInv * thicknessCm));
++  }
++  scale.diffractionOnlyProbability = Clamp(scale.diffractionOnlyProbability, 0.0, 0.999999999);
+   if (scale.diffractionOnlyProbability > 1.0e-12) {
+     scale.meanFreePathCm = -scale.pathLengthCm / std::log(1.0 - scale.diffractionOnlyProbability);
+   } else {
+@@ -414,6 +507,8 @@
+       opt.efficiencyTablePath = requireValue(arg);
+     } else if (arg == "--ring-config") {
+       opt.ringConfigPath = requireValue(arg);
++    } else if (arg == "--rocking-curve-csv") {
++      opt.rockingCurvePath = requireValue(arg);
+     } else if (arg == "--focal-mm") {
+       opt.focalLengthMm = std::atof(requireValue(arg));
+     } else if (arg == "--source-jitter-mm") {
+@@ -434,7 +529,8 @@
+       std::cout << "Usage: " << argv[0] << " --n N --ring-config rings.csv --efficiency-table table.csv --out DIR"
+                 << " [--offaxis-x-arcmin X] [--offaxis-y-arcmin Y]"
+                 << " [--mosaic-fwhm-arcsec FWHM] [--crystallite-um UM]"
+-                << " [--only-ring-id ID] [--only-tile-id ID]\n";
++                << " [--only-ring-id ID] [--only-tile-id ID]"
++                << " [--rocking-curve-csv CSV]\n";
+       std::exit(0);
+     } else {
+       throw std::runtime_error("unknown option: " + arg);
+@@ -671,7 +767,10 @@
+     summary << "  \"registered_in_geant4_em_category\": false,\n";
+     summary << "  \"standard_geant4_em_enabled\": true,\n";
+     summary << "  \"uses_external_efficiency_table_for_physics\": false,\n";
+-    summary << "  \"online_physics_backend\": \"Darwin-Hamilton mosaic formula converted to an equivalent finite diffraction mean free path; Geant4 standard EM processes remain enabled\",\n";
++    summary << "  \"uses_external_rocking_curve_for_laue_mfp\": " << (!opt_.rockingCurvePath.empty() ? "true" : "false") << ",\n";
++    summary << "  \"rocking_curve_backend\": \"" << (!opt_.rockingCurvePath.empty() ? "external_csv" : "online_darwin_hamilton") << "\",\n";
++    summary << "  \"rocking_curve_csv\": \"" << opt_.rockingCurvePath << "\",\n";
++    summary << "  \"online_physics_backend\": \"Darwin-Hamilton mosaic formula or external rocking-curve CSV converted to an equivalent finite diffraction mean free path; Geant4 standard EM processes remain enabled\",\n";
+     summary << "  \"vector_diagnostics_in_optics_history\": true,\n";
+     summary << "  \"plane_normal_diagnostic_model\": \"bfull_fixed_tile_plane_normal_em_competing; emitted DIFFRACT direction is reflected across a perturbed fixed tile plane normal\",\n";
+     summary << "  \"mosaic_fwhm_arcsec\": " << opt_.mosaicFwhmArcsec << ",\n";
+@@ -875,7 +974,8 @@
+       int tileId,
+       const G4ThreeVector& pos,
+       const G4ThreeVector& inDir,
+-      const Options& opt) const {
++      const Options& opt,
++      const RockingCurveTable& rockingCurve) const {
+     CrystalDecision decision;
+     const double offAxisXRad = opt.offAxisXArcmin / 60.0 * kPi / 180.0;
+     const double offAxisYRad = opt.offAxisYArcmin / 60.0 * kPi / 180.0;
+@@ -895,7 +995,7 @@
+     decision.deltaThetaRad = decision.thetaLocalRad - decision.thetaBRad;
+     const double braggFromPlane = std::asin(std::fabs(inDir.unit().dot(decision.planeNormal)));
+     decision.planeMinusBraggAbsRad = std::fabs(braggFromPlane - decision.thetaBRad);
+-    decision.probs = OnlineDarwinMosaicProbabilities(ring, decision.deltaThetaRad, opt);
++    decision.probs = BFullBackendProbabilities(ring, decision.deltaThetaRad, opt, rockingCurve);
+     return decision;
+   }
+ };
+@@ -905,8 +1005,9 @@
+   GuanStyleLaueBraggProcess(
+       MultiRingRunState* state,
+       const Options& opt,
+-      const std::vector<RingSpec>& rings)
+-      : G4VDiscreteProcess("BFullLaueBraggProcess"), state_(state), opt_(opt), rings_(rings) {}
++      const std::vector<RingSpec>& rings,
++      const RockingCurveTable& rockingCurve)
++      : G4VDiscreteProcess("BFullLaueBraggProcess"), state_(state), opt_(opt), rings_(rings), rockingCurve_(rockingCurve) {}
+ 
+   G4bool IsApplicable(const G4ParticleDefinition& particle) override {
+     return &particle == G4Gamma::GammaDefinition();
+@@ -925,7 +1026,7 @@
+     const G4ThreeVector fixedPlaneNormal = FixedTilePlaneNormal(ring, tileId, opt_);
+     const double thetaLocal = std::asin(std::fabs(inDir.dot(fixedPlaneNormal)));
+     const double deltaTheta = thetaLocal - BraggAngleRad(ring.designEnergyKeV, ring.dSpacingA);
+-    const BFullInteractionScale scale = BFullEquivalentDiffractionScale(ring, deltaTheta, inDir, opt_);
++    const BFullInteractionScale scale = BFullEquivalentDiffractionScale(ring, deltaTheta, inDir, opt_, rockingCurve_);
+     if (!std::isfinite(scale.meanFreePathCm) || scale.meanFreePathCm <= 0.0 || scale.meanFreePathCm == DBL_MAX) {
+       return DBL_MAX;
+     }
+@@ -945,7 +1046,7 @@
+     const int eventId = event ? event->GetEventID() : -1;
+     const G4ThreeVector pos = step.GetPostStepPoint()->GetPosition();
+     const G4ThreeVector inDir = track.GetMomentumDirection().unit();
+-    const CrystalDecision decision = model_.Evaluate(ring, tileId, pos, inDir, opt_);
++    const CrystalDecision decision = model_.Evaluate(ring, tileId, pos, inDir, opt_, rockingCurve_);
+     const optics::LaueEfficiencyRow probs = decision.probs;
+     const G4ThreeVector outDir = decision.reflectedOutDir;
+     const LaueVectorDiagnostics diagnostics = MakeLaueVectorDiagnostics(
+@@ -973,6 +1074,7 @@
+   MultiRingRunState* state_;
+   Options opt_;
+   std::vector<RingSpec> rings_;
++  RockingCurveTable rockingCurve_;
+   GuanDarwinDynamicalModel model_;
+ };
+ 
+@@ -1120,9 +1222,10 @@
+   try {
+     const Options opt = ParseOptions(argc, argv);
+     const std::vector<RingSpec> rings = LoadRingConfig(opt.ringConfigPath, opt.focalLengthMm);
++    const RockingCurveTable rockingCurve = LoadRockingCurveTable(opt.rockingCurvePath);
+     CLHEP::HepRandom::setTheSeed(opt.seed);
+     MultiRingRunState state(opt, rings);
+-    GuanStyleLaueBraggProcess* process = new GuanStyleLaueBraggProcess(&state, opt, rings);
++    GuanStyleLaueBraggProcess* process = new GuanStyleLaueBraggProcess(&state, opt, rings, rockingCurve);
+     G4RunManager* runManager = new G4RunManager;
+     runManager->SetUserInitialization(new MultiRingDetectorConstruction(rings, opt.focalLengthMm));
+     runManager->SetUserInitialization(new MultiRingPhysicsList(process));

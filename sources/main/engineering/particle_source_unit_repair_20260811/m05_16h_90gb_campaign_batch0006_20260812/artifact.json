@@ -1,0 +1,82 @@
+{
+  "surface": "report",
+  "manifest": {
+    "version": 1,
+    "surface": "report",
+    "title": "M05 corrected-keV：16 小时 / 90 GB 执行方案",
+    "description": "batch0006 非覆盖式执行简报：2小时可合并smoke、10小时七族、4小时proton。",
+    "generatedAt": "2026-08-12T18:00:00+08:00",
+    "sources": [
+      {
+        "id": "phase_budget",
+        "label": "2/10/4 小时阶段预算",
+        "path": "phase_budget.csv",
+        "query": {
+          "description": "固定墙钟阶段与 corrected-keV 小样本资源点估。",
+          "sql": "SELECT * FROM read_csv_auto('phase_budget.csv') ORDER BY start_wall_h",
+          "language": "sql",
+          "executed_at": "2026-08-12",
+          "tables_used": ["phase_budget.csv"],
+          "metric_definitions": [
+            "wall_budget_h is real elapsed campaign time",
+            "rich_equivalent_gb_point is a planning point, not an upper bound"
+          ]
+        }
+      },
+      {
+        "id": "execution_brief",
+        "label": "完整执行合同",
+        "path": "README.md"
+      }
+    ],
+    "charts": [
+      {
+        "id": "phase_hours_chart",
+        "title": "16 小时阶段分配",
+        "subtitle": "真实墙钟硬边界；每阶段包含停止发射、排空和验证。",
+        "type": "bar",
+        "dataset": "phase_hours",
+        "encodings": {
+          "x": {"field": "phase", "type": "nominal", "label": "阶段"},
+          "y": {"field": "wall_hours", "type": "quantitative", "label": "墙钟 (h)"}
+        },
+        "sourceId": "phase_budget"
+      }
+    ],
+    "blocks": [
+      {"id": "title", "type": "markdown", "body": "# M05 corrected-keV：16 小时 / 90 GB 执行方案"},
+      {"id": "summary", "type": "markdown", "body": "## 执行摘要\n\n总墙钟16小时：smoke 2小时、七族10小时、质子4小时。旧代码、旧数据和论文只读；新代码与模拟产物全部进入batch0006新目录。"},
+      {"id": "phase_chart_block", "type": "chart", "chartId": "phase_hours_chart"}
+    ]
+  },
+  "snapshot": {
+    "version": 1,
+    "status": "ready",
+    "generatedAt": "2026-08-12T18:00:00+08:00",
+    "datasets": {
+      "phase_hours": [
+        {"phase": "Smoke", "wall_hours": 2, "events_point": 55424, "rich_gb_point": 1.14},
+        {"phase": "七族", "wall_hours": 10, "events_point": 6001652, "rich_gb_point": 29.669},
+        {"phase": "Proton", "wall_hours": 4, "events_point": 92484, "rich_gb_point": 10.543}
+      ]
+    },
+    "accessIssues": []
+  },
+  "sources": [
+    {
+      "id": "phase_budget",
+      "label": "2/10/4 小时阶段预算",
+      "path": "phase_budget.csv",
+      "query": {
+        "description": "Fixed wall-time phase budget with corrected-keV planning points.",
+        "sql": "SELECT * FROM read_csv_auto('phase_budget.csv') ORDER BY start_wall_h",
+        "language": "sql"
+      }
+    },
+    {
+      "id": "execution_brief",
+      "label": "完整执行合同",
+      "path": "README.md"
+    }
+  ]
+}

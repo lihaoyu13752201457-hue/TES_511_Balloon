@@ -1,0 +1,45 @@
+{
+  "status": "PASS_GEO_OPT_S1_BPE_W5_STEP07_SOURCE_CASES_GEO_OPT_S1_BPE_W5_FULLSTAT_V1_SIGNAL_REPLAYED_NOT_PROMOTION",
+  "statistics_label": "geo_opt_s1_bpe_w5_fullstat_v1",
+  "claim_level": "GEO_OPT_S1_BPE_W5_L1_SOURCE_CASE_RATE_FOLDING_GEO_OPT_S1_BPE_W5_FULLSTAT_V1_SIGNAL_REPLAYED_NOT_PROMOTION",
+  "inputs": {
+    "step05_summary": "stepwise_maintenance/step05_veto_time_axis/outputs_geo_opt_s1_bpe_w5_fullstat_v1_l1/step05_geo_opt_s1_bpe_w5_fullstat_v1_l1_response_summary.json",
+    "step06_summary": "stepwise_maintenance/step06_mission_time_variation/outputs_geo_opt_s1_bpe_w5_fullstat_v1/step06_geo_opt_s1_bpe_w5_fullstat_v1_summary.json",
+    "step09_summary": "engineering/geometry_optimization_20260704/03_step05_detector_response_20260706/signal_transport_manifest.json"
+  },
+  "authority": {
+    "optics_design_name": "balloon511_f10m_ge111_511line_a1",
+    "optics_profile": "f10m_a1_v3p5",
+    "aeff_511_cm2": 20.084760000000003,
+    "T_atm_ref": 0.7390423888027,
+    "reference_flux_ph_cm2_s": 0.0001,
+    "reference_injection_rate_s-1": 0.0014843489008928919,
+    "eventlist_rows": 37194,
+    "step06_status": "PASS_GEO_OPT_S1_BPE_W5_STEP06_TIME_AXIS_GEO_OPT_S1_BPE_W5_FULLSTAT_V1_NOT_PROMOTION"
+  },
+  "checks": {
+    "source_case_rows": 48,
+    "w2_response_cps_per_ph_cm2_s": 11.84637650538332,
+    "w2_background_final_cps": 0.03538061615676972,
+    "w2_low_stat_background_events": 74,
+    "A_reference_w2_final_rate_day15_cps": 0.001184637650538332,
+    "B_diffuse_proxy_w2_final_rate_day15_cps": 7.41865112997824e-06,
+    "B_diffuse_proxy_flux_ph_cm2_s": 6.26238e-07
+  },
+  "outputs": {
+    "summary_json": "stepwise_maintenance/step07_source_cases/outputs_geo_opt_s1_bpe_w5_fullstat_v1/source_case_summary.json",
+    "readme": "stepwise_maintenance/step07_source_cases/outputs_geo_opt_s1_bpe_w5_fullstat_v1/README.md",
+    "response_authority": "stepwise_maintenance/step07_source_cases/outputs_geo_opt_s1_bpe_w5_fullstat_v1/geo_opt_s1_bpe_w5_response_authority.csv",
+    "v3p5_response_authority": "stepwise_maintenance/step07_source_cases/outputs_geo_opt_s1_bpe_w5_fullstat_v1/geo_opt_s1_bpe_w5_response_authority.csv",
+    "source_case_rates": "stepwise_maintenance/step07_source_cases/outputs_geo_opt_s1_bpe_w5_fullstat_v1/source_case_rates.csv"
+  },
+  "method_caveats": [
+    "Step07 is a rate-level source-case fold from the geo-opt Step05 response; it does not rerun prompt, delayed, or focused Cosima transport.",
+    "It inherits the Step05 bounded high-rate Poisson timeline approximation through the selected geo-opt response summary.",
+    "The focused-signal provenance is the geo-opt signal_transport_manifest.json header, not the fix5 or Mass_model_511 Step09 summary."
+  ],
+  "pending": [
+    "Run Step08 from this source-case output before quoting final mission detection potential.",
+    "Compare against Mass_model_511/fix5 with the same selection and active-veto assumptions before making a geometry decision."
+  ]
+}

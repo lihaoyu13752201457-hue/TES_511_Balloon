@@ -1,0 +1,436 @@
+{
+  "status": "PASS_PROMPT511_ACTIVE_CSI_COLLAR_FOCUS_SMOKE",
+  "claim_level": "focused EventList transport plus Step05-like signal-retention smoke; not mission authority",
+  "source": "outputs/reports/prompt511_active_csi_collar_20260620/runs/active_csi_collar_focus_smoke/Opticsim_laue_f10m_a1_prompt511_active_csi_collar.source",
+  "geometry": "outputs/reports/prompt511_active_csi_collar_20260620/geometry_active_csi_collar/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy_prompt511_active_csi_collar_r4p25_5p95.geo.setup",
+  "eventlist": "stepwise_maintenance/step09_optics_bridge/outputs_f10m_a1_v3p5/eventlists/Opticsim_laue_f10m_a1_v3p5_centerfinger.eventlist.dat",
+  "outfile_prefix": "outputs/reports/prompt511_active_csi_collar_20260620/runs/active_csi_collar_focus_smoke/Opticsim_laue_f10m_a1_prompt511_active_csi_collar",
+  "triggers": 37194,
+  "seed": 260620,
+  "base_step09_summary": "stepwise_maintenance/step09_optics_bridge/outputs_f10m_a1_v3p5/step09_optics_bridge_summary.json",
+  "base_step09_status": "PASS_EVENTLIST_BRIDGE_FULL_TRANSPORTED",
+  "base_bridge": {
+    "rows_seen": 37194,
+    "rows_written": 37194,
+    "rows_skipped": 0,
+    "energy_min_keV": 511.0,
+    "energy_max_keV": 511.0,
+    "max_radius_cm": 1.553563110869786,
+    "direction_uz_min": -0.7126209939606248,
+    "direction_uz_max": -0.7015835132746447,
+    "direction_axis_dot_min": 0.9999677994273187,
+    "direction_axis_dot_max": 0.9999764594601863,
+    "r50_cm": 0.715087661019788,
+    "r90_cm": 1.026787318643811,
+    "r95_cm": 1.1033530744312212,
+    "r99_cm": 1.2340022534690078,
+    "n_diffracted_focal_total": 37256,
+    "n_within_be_window": 37194,
+    "n_scattered_outside_be": 62,
+    "axis_policy": "v3p5_side_entry_tilt45",
+    "x_plane_cm": -13.1,
+    "axis_y_cm": 0.0,
+    "axis_z_cm": -5.2,
+    "be_radius_cm": 1.898,
+    "xy_scale_cm_per_opticsim_mm": 0.1,
+    "instrument_rotation_y_deg": 45.0,
+    "side_window_look_elevation_deg": 44.99999999999999,
+    "eventlist": "stepwise_maintenance/step09_optics_bridge/outputs_f10m_a1_v3p5/eventlists/Opticsim_laue_f10m_a1_v3p5_centerfinger.eventlist.dat",
+    "source": "stepwise_maintenance/step09_optics_bridge/outputs_f10m_a1_v3p5/run_configs/Opticsim_laue_f10m_a1_v3p5_centerfinger.source",
+    "smoke_source": "stepwise_maintenance/step09_optics_bridge/outputs_f10m_a1_v3p5/run_configs/Opticsim_laue_f10m_a1_v3p5_centerfinger_smoke1000.source",
+    "incoming_photon_global_axis": [
+      0.7071067811865476,
+      -0.0,
+      -0.7071067811865475
+    ],
+    "coordinate_policy": "v3p5 side-entry local +x with InstrumentFrame tilt"
+  },
+  "boundary": [
+    "Focused EventList transport through active-CsI-collar geometry passed.",
+    "The signal-retention proxy uses the same W2 line window, 50 keV active-veto threshold, and side-Compton/FoV function as the prompt diagnostics.",
+    "This is not a Step05/06/07/08 authority because prompt, delayed, and signal are not rebuilt together on a common chain."
+  ],
+  "focused_transport": {
+    "path": "outputs/reports/prompt511_active_csi_collar_20260620/runs/active_csi_collar_focus_smoke/Opticsim_laue_f10m_a1_prompt511_active_csi_collar.inc1.id1.sim.gz",
+    "exists": true,
+    "size_bytes": 24065931,
+    "SE": 37194,
+    "ID": 37194,
+    "TS": 1,
+    "TE_s": 3.7e-05,
+    "geometry": "/home/ubuntu/TES_511_Balloon/outputs/reports/prompt511_active_csi_collar_20260620/geometry_active_csi_collar/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy_prompt511_active_csi_collar_r4p25_5p95.geo.setup"
+  },
+  "current_focused_transport": {
+    "path": "runs/step09_optics_bridge/Opticsim_laue_f10m_a1_v3p5_centerfinger.inc1.id1.sim.gz",
+    "exists": true,
+    "size_bytes": 23812925,
+    "SE": 37194,
+    "ID": 37194,
+    "TS": 1,
+    "TE_s": 3.7e-05,
+    "geometry": "/home/ubuntu/TES_511_Balloon/outputs/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup"
+  },
+  "focused_signal_proxy": {
+    "line_window_keV": [
+      510.58,
+      511.42
+    ],
+    "active_veto_threshold_keV": 50.0,
+    "current_baseline": {
+      "path": "runs/step09_optics_bridge/Opticsim_laue_f10m_a1_v3p5_centerfinger.inc1.id1.sim.gz",
+      "generated_events_seen": 37194,
+      "tes_events_kept": 35707,
+      "raw_events": 30234,
+      "active_veto_pass_events": 30234,
+      "side_compton_fov_pass_events": 29597,
+      "side_compton_class_counts": {
+        "keep": 12087,
+        "single": 17510,
+        "veto": 637
+      },
+      "selected_examples": [
+        {
+          "source_file": "runs/step09_optics_bridge/Opticsim_laue_f10m_a1_v3p5_centerfinger.inc1.id1.sim.gz",
+          "local_id": 2,
+          "tes_total_keV": 511.00000000000006,
+          "active_veto_keV": 0.0,
+          "side_compton_class": "single",
+          "rate_s-1": 1.0
+        },
+        {
+          "source_file": "runs/step09_optics_bridge/Opticsim_laue_f10m_a1_v3p5_centerfinger.inc1.id1.sim.gz",
+          "local_id": 3,
+          "tes_total_keV": 510.999953,
+          "active_veto_keV": 0.0,
+          "side_compton_class": "single",
+          "rate_s-1": 1.0
+        },
+        {
+          "source_file": "runs/step09_optics_bridge/Opticsim_laue_f10m_a1_v3p5_centerfinger.inc1.id1.sim.gz",
+          "local_id": 5,
+          "tes_total_keV": 510.9999680000001,
+          "active_veto_keV": 0.0,
+          "side_compton_class": "keep",
+          "rate_s-1": 1.0
+        },
+        {
+          "source_file": "runs/step09_optics_bridge/Opticsim_laue_f10m_a1_v3p5_centerfinger.inc1.id1.sim.gz",
+          "local_id": 6,
+          "tes_total_keV": 511.000051,
+          "active_veto_keV": 0.0,
+          "side_compton_class": "keep",
+          "rate_s-1": 1.0
+        },
+        {
+          "source_file": "runs/step09_optics_bridge/Opticsim_laue_f10m_a1_v3p5_centerfinger.inc1.id1.sim.gz",
+          "local_id": 7,
+          "tes_total_keV": 510.999963,
+          "active_veto_keV": 0.0,
+          "side_compton_class": "single",
+          "rate_s-1": 1.0
+        },
+        {
+          "source_file": "runs/step09_optics_bridge/Opticsim_laue_f10m_a1_v3p5_centerfinger.inc1.id1.sim.gz",
+          "local_id": 8,
+          "tes_total_keV": 511.0,
+          "active_veto_keV": 0.0,
+          "side_compton_class": "single",
+          "rate_s-1": 1.0
+        },
+        {
+          "source_file": "runs/step09_optics_bridge/Opticsim_laue_f10m_a1_v3p5_centerfinger.inc1.id1.sim.gz",
+          "local_id": 9,
+          "tes_total_keV": 511.0,
+          "active_veto_keV": 0.0,
+          "side_compton_class": "keep",
+          "rate_s-1": 1.0
+        },
+        {
+          "source_file": "runs/step09_optics_bridge/Opticsim_laue_f10m_a1_v3p5_centerfinger.inc1.id1.sim.gz",
+          "local_id": 10,
+          "tes_total_keV": 511.00000000000006,
+          "active_veto_keV": 0.0,
+          "side_compton_class": "single",
+          "rate_s-1": 1.0
+        },
+        {
+          "source_file": "runs/step09_optics_bridge/Opticsim_laue_f10m_a1_v3p5_centerfinger.inc1.id1.sim.gz",
+          "local_id": 11,
+          "tes_total_keV": 511.0,
+          "active_veto_keV": 0.0,
+          "side_compton_class": "single",
+          "rate_s-1": 1.0
+        },
+        {
+          "source_file": "runs/step09_optics_bridge/Opticsim_laue_f10m_a1_v3p5_centerfinger.inc1.id1.sim.gz",
+          "local_id": 13,
+          "tes_total_keV": 511.0000006845001,
+          "active_veto_keV": 0.0,
+          "side_compton_class": "keep",
+          "rate_s-1": 1.0
+        },
+        {
+          "source_file": "runs/step09_optics_bridge/Opticsim_laue_f10m_a1_v3p5_centerfinger.inc1.id1.sim.gz",
+          "local_id": 14,
+          "tes_total_keV": 511.0000030000001,
+          "active_veto_keV": 0.0,
+          "side_compton_class": "single",
+          "rate_s-1": 1.0
+        },
+        {
+          "source_file": "runs/step09_optics_bridge/Opticsim_laue_f10m_a1_v3p5_centerfinger.inc1.id1.sim.gz",
+          "local_id": 16,
+          "tes_total_keV": 511.000015,
+          "active_veto_keV": 0.0,
+          "side_compton_class": "single",
+          "rate_s-1": 1.0
+        },
+        {
+          "source_file": "runs/step09_optics_bridge/Opticsim_laue_f10m_a1_v3p5_centerfinger.inc1.id1.sim.gz",
+          "local_id": 17,
+          "tes_total_keV": 510.99995299999995,
+          "active_veto_keV": 0.0,
+          "side_compton_class": "single",
+          "rate_s-1": 1.0
+        },
+        {
+          "source_file": "runs/step09_optics_bridge/Opticsim_laue_f10m_a1_v3p5_centerfinger.inc1.id1.sim.gz",
+          "local_id": 18,
+          "tes_total_keV": 510.99999,
+          "active_veto_keV": 0.0,
+          "side_compton_class": "keep",
+          "rate_s-1": 1.0
+        },
+        {
+          "source_file": "runs/step09_optics_bridge/Opticsim_laue_f10m_a1_v3p5_centerfinger.inc1.id1.sim.gz",
+          "local_id": 19,
+          "tes_total_keV": 511.0,
+          "active_veto_keV": 0.0,
+          "side_compton_class": "single",
+          "rate_s-1": 1.0
+        },
+        {
+          "source_file": "runs/step09_optics_bridge/Opticsim_laue_f10m_a1_v3p5_centerfinger.inc1.id1.sim.gz",
+          "local_id": 20,
+          "tes_total_keV": 511.0,
+          "active_veto_keV": 0.0,
+          "side_compton_class": "keep",
+          "rate_s-1": 1.0
+        },
+        {
+          "source_file": "runs/step09_optics_bridge/Opticsim_laue_f10m_a1_v3p5_centerfinger.inc1.id1.sim.gz",
+          "local_id": 21,
+          "tes_total_keV": 510.99999,
+          "active_veto_keV": 0.0,
+          "side_compton_class": "single",
+          "rate_s-1": 1.0
+        },
+        {
+          "source_file": "runs/step09_optics_bridge/Opticsim_laue_f10m_a1_v3p5_centerfinger.inc1.id1.sim.gz",
+          "local_id": 22,
+          "tes_total_keV": 511.000005,
+          "active_veto_keV": 0.0,
+          "side_compton_class": "single",
+          "rate_s-1": 1.0
+        },
+        {
+          "source_file": "runs/step09_optics_bridge/Opticsim_laue_f10m_a1_v3p5_centerfinger.inc1.id1.sim.gz",
+          "local_id": 23,
+          "tes_total_keV": 510.99998,
+          "active_veto_keV": 0.0,
+          "side_compton_class": "single",
+          "rate_s-1": 1.0
+        },
+        {
+          "source_file": "runs/step09_optics_bridge/Opticsim_laue_f10m_a1_v3p5_centerfinger.inc1.id1.sim.gz",
+          "local_id": 25,
+          "tes_total_keV": 510.99995299999995,
+          "active_veto_keV": 0.0,
+          "side_compton_class": "single",
+          "rate_s-1": 1.0
+        }
+      ]
+    },
+    "active_csi_collar": {
+      "path": "outputs/reports/prompt511_active_csi_collar_20260620/runs/active_csi_collar_focus_smoke/Opticsim_laue_f10m_a1_prompt511_active_csi_collar.inc1.id1.sim.gz",
+      "generated_events_seen": 37194,
+      "tes_events_kept": 35761,
+      "raw_events": 30303,
+      "active_veto_pass_events": 30303,
+      "side_compton_fov_pass_events": 29706,
+      "side_compton_class_counts": {
+        "keep": 12271,
+        "single": 17435,
+        "veto": 597
+      },
+      "selected_examples": [
+        {
+          "source_file": "outputs/reports/prompt511_active_csi_collar_20260620/runs/active_csi_collar_focus_smoke/Opticsim_laue_f10m_a1_prompt511_active_csi_collar.inc1.id1.sim.gz",
+          "local_id": 1,
+          "tes_total_keV": 511.00000000000006,
+          "active_veto_keV": 0.0,
+          "side_compton_class": "keep",
+          "rate_s-1": 1.0
+        },
+        {
+          "source_file": "outputs/reports/prompt511_active_csi_collar_20260620/runs/active_csi_collar_focus_smoke/Opticsim_laue_f10m_a1_prompt511_active_csi_collar.inc1.id1.sim.gz",
+          "local_id": 3,
+          "tes_total_keV": 510.99998000000005,
+          "active_veto_keV": 0.0,
+          "side_compton_class": "keep",
+          "rate_s-1": 1.0
+        },
+        {
+          "source_file": "outputs/reports/prompt511_active_csi_collar_20260620/runs/active_csi_collar_focus_smoke/Opticsim_laue_f10m_a1_prompt511_active_csi_collar.inc1.id1.sim.gz",
+          "local_id": 4,
+          "tes_total_keV": 511.00005,
+          "active_veto_keV": 0.0,
+          "side_compton_class": "keep",
+          "rate_s-1": 1.0
+        },
+        {
+          "source_file": "outputs/reports/prompt511_active_csi_collar_20260620/runs/active_csi_collar_focus_smoke/Opticsim_laue_f10m_a1_prompt511_active_csi_collar.inc1.id1.sim.gz",
+          "local_id": 6,
+          "tes_total_keV": 511.0000160000001,
+          "active_veto_keV": 0.0,
+          "side_compton_class": "keep",
+          "rate_s-1": 1.0
+        },
+        {
+          "source_file": "outputs/reports/prompt511_active_csi_collar_20260620/runs/active_csi_collar_focus_smoke/Opticsim_laue_f10m_a1_prompt511_active_csi_collar.inc1.id1.sim.gz",
+          "local_id": 7,
+          "tes_total_keV": 510.99994,
+          "active_veto_keV": 0.0,
+          "side_compton_class": "keep",
+          "rate_s-1": 1.0
+        },
+        {
+          "source_file": "outputs/reports/prompt511_active_csi_collar_20260620/runs/active_csi_collar_focus_smoke/Opticsim_laue_f10m_a1_prompt511_active_csi_collar.inc1.id1.sim.gz",
+          "local_id": 8,
+          "tes_total_keV": 510.999973,
+          "active_veto_keV": 0.0,
+          "side_compton_class": "single",
+          "rate_s-1": 1.0
+        },
+        {
+          "source_file": "outputs/reports/prompt511_active_csi_collar_20260620/runs/active_csi_collar_focus_smoke/Opticsim_laue_f10m_a1_prompt511_active_csi_collar.inc1.id1.sim.gz",
+          "local_id": 9,
+          "tes_total_keV": 511.0,
+          "active_veto_keV": 0.0,
+          "side_compton_class": "keep",
+          "rate_s-1": 1.0
+        },
+        {
+          "source_file": "outputs/reports/prompt511_active_csi_collar_20260620/runs/active_csi_collar_focus_smoke/Opticsim_laue_f10m_a1_prompt511_active_csi_collar.inc1.id1.sim.gz",
+          "local_id": 10,
+          "tes_total_keV": 511.00000000000006,
+          "active_veto_keV": 0.0,
+          "side_compton_class": "single",
+          "rate_s-1": 1.0
+        },
+        {
+          "source_file": "outputs/reports/prompt511_active_csi_collar_20260620/runs/active_csi_collar_focus_smoke/Opticsim_laue_f10m_a1_prompt511_active_csi_collar.inc1.id1.sim.gz",
+          "local_id": 12,
+          "tes_total_keV": 510.999983,
+          "active_veto_keV": 0.0,
+          "side_compton_class": "single",
+          "rate_s-1": 1.0
+        },
+        {
+          "source_file": "outputs/reports/prompt511_active_csi_collar_20260620/runs/active_csi_collar_focus_smoke/Opticsim_laue_f10m_a1_prompt511_active_csi_collar.inc1.id1.sim.gz",
+          "local_id": 13,
+          "tes_total_keV": 511.00003464639997,
+          "active_veto_keV": 0.0,
+          "side_compton_class": "keep",
+          "rate_s-1": 1.0
+        },
+        {
+          "source_file": "outputs/reports/prompt511_active_csi_collar_20260620/runs/active_csi_collar_focus_smoke/Opticsim_laue_f10m_a1_prompt511_active_csi_collar.inc1.id1.sim.gz",
+          "local_id": 15,
+          "tes_total_keV": 510.999929,
+          "active_veto_keV": 0.0,
+          "side_compton_class": "keep",
+          "rate_s-1": 1.0
+        },
+        {
+          "source_file": "outputs/reports/prompt511_active_csi_collar_20260620/runs/active_csi_collar_focus_smoke/Opticsim_laue_f10m_a1_prompt511_active_csi_collar.inc1.id1.sim.gz",
+          "local_id": 16,
+          "tes_total_keV": 511.00000000000006,
+          "active_veto_keV": 0.0,
+          "side_compton_class": "single",
+          "rate_s-1": 1.0
+        },
+        {
+          "source_file": "outputs/reports/prompt511_active_csi_collar_20260620/runs/active_csi_collar_focus_smoke/Opticsim_laue_f10m_a1_prompt511_active_csi_collar.inc1.id1.sim.gz",
+          "local_id": 18,
+          "tes_total_keV": 510.99999,
+          "active_veto_keV": 0.0,
+          "side_compton_class": "single",
+          "rate_s-1": 1.0
+        },
+        {
+          "source_file": "outputs/reports/prompt511_active_csi_collar_20260620/runs/active_csi_collar_focus_smoke/Opticsim_laue_f10m_a1_prompt511_active_csi_collar.inc1.id1.sim.gz",
+          "local_id": 19,
+          "tes_total_keV": 510.99996,
+          "active_veto_keV": 0.0,
+          "side_compton_class": "single",
+          "rate_s-1": 1.0
+        },
+        {
+          "source_file": "outputs/reports/prompt511_active_csi_collar_20260620/runs/active_csi_collar_focus_smoke/Opticsim_laue_f10m_a1_prompt511_active_csi_collar.inc1.id1.sim.gz",
+          "local_id": 21,
+          "tes_total_keV": 510.99997101910003,
+          "active_veto_keV": 0.0,
+          "side_compton_class": "keep",
+          "rate_s-1": 1.0
+        },
+        {
+          "source_file": "outputs/reports/prompt511_active_csi_collar_20260620/runs/active_csi_collar_focus_smoke/Opticsim_laue_f10m_a1_prompt511_active_csi_collar.inc1.id1.sim.gz",
+          "local_id": 22,
+          "tes_total_keV": 511.000001,
+          "active_veto_keV": 0.0,
+          "side_compton_class": "keep",
+          "rate_s-1": 1.0
+        },
+        {
+          "source_file": "outputs/reports/prompt511_active_csi_collar_20260620/runs/active_csi_collar_focus_smoke/Opticsim_laue_f10m_a1_prompt511_active_csi_collar.inc1.id1.sim.gz",
+          "local_id": 23,
+          "tes_total_keV": 510.999986,
+          "active_veto_keV": 0.0,
+          "side_compton_class": "single",
+          "rate_s-1": 1.0
+        },
+        {
+          "source_file": "outputs/reports/prompt511_active_csi_collar_20260620/runs/active_csi_collar_focus_smoke/Opticsim_laue_f10m_a1_prompt511_active_csi_collar.inc1.id1.sim.gz",
+          "local_id": 24,
+          "tes_total_keV": 511.00001,
+          "active_veto_keV": 0.0,
+          "side_compton_class": "keep",
+          "rate_s-1": 1.0
+        },
+        {
+          "source_file": "outputs/reports/prompt511_active_csi_collar_20260620/runs/active_csi_collar_focus_smoke/Opticsim_laue_f10m_a1_prompt511_active_csi_collar.inc1.id1.sim.gz",
+          "local_id": 26,
+          "tes_total_keV": 511.0,
+          "active_veto_keV": 0.0,
+          "side_compton_class": "keep",
+          "rate_s-1": 1.0
+        },
+        {
+          "source_file": "outputs/reports/prompt511_active_csi_collar_20260620/runs/active_csi_collar_focus_smoke/Opticsim_laue_f10m_a1_prompt511_active_csi_collar.inc1.id1.sim.gz",
+          "local_id": 27,
+          "tes_total_keV": 511.0,
+          "active_veto_keV": 0.0,
+          "side_compton_class": "single",
+          "rate_s-1": 1.0
+        }
+      ]
+    },
+    "ratios_active_over_current": {
+      "raw_events": 1.002282198848978,
+      "active_veto_pass_events": 1.002282198848978,
+      "side_compton_fov_pass_events": 1.0036828056897658
+    }
+  },
+  "problems": []
+}

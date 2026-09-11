@@ -1,0 +1,53 @@
+{
+  "label": "fix5_fullstat_v2_exactpos_m50000_s260613",
+  "role": "Orchestrator",
+  "phase": "Full-stat exact-position delayed transport release",
+  "generated_at_utc": "2026-06-21T18:39:23Z",
+  "inputs": {
+    "source_manifest": "runs/step02_delay_fix_fix5_fullstat_v2/fix5_fullstat_v2_exactpos_m50000_s260613_delayed_source_manifest.json",
+    "source_summary": "outputs/reports/fix5_fullstat_v2_exactpos_m50000_s260613/fix5_delayed_source_exactpos_summary.json",
+    "groundstate_audit": "outputs/reports/fix5_fullstat_v2_exactpos_m50000_s260613/fix5_groundstate_half_life_audit_summary.json",
+    "fixed_source": "runs/step02_delay_fix_fix5_fullstat_v2/activation_decay_day15_groundstate_fixed.source",
+    "exactpos_source": "runs/step02_delay_fix_fix5_fullstat_v2/activation_decay_day15_groundstate_fixed_exactpos_m50000_s260613.source",
+    "fullstat_transport_summary": "outputs/reports/fix5_fullstat_v2/fix5_fullstat_transport_summary.json"
+  },
+  "release": {
+    "decision": "RELEASE_FULLSTAT_EXACTPOS_DELAYED_TRANSPORT",
+    "scope": [
+      "runs/step02_delayed_transport_fix5_fullstat_v2_exactpos_m50000_s260613"
+    ],
+    "basis": "Full-stat instant/buildup transport verified; delayed normalization audit PASS; exact-position M=50000 source audit PASS.",
+    "not_released": [
+      "Step05--Step08 full-stat closure",
+      "fix5 signal replay",
+      "promotion decision",
+      "append/merge"
+    ],
+    "append_merge_policy": "No append/merge. Delayed transport uses clean full-stat fix5 buildup-derived source."
+  },
+  "commands_released": [
+    "bash -lc 'source /home/ubuntu/MEGAlib_Install/megalib-main/bin/source-megalib.sh >/tmp/fix5_megalib_env.log && cosima -s 260613 runs/step02_delay_fix_fix5_fullstat_v2/activation_decay_day15_groundstate_fixed_exactpos_m50000_s260613.source'"
+  ],
+  "updated_at_utc": "2026-06-21T19:19:58Z",
+  "post_transport_result": {
+    "status": "PASS_FULLSTAT_EXACTPOS_DELAYED_TRANSPORT_VERIFIED",
+    "delayed_source_summary": "outputs/reports/fix5_fullstat_v2_exactpos_m50000_s260613/fix5_delayed_source_exactpos_summary.json",
+    "delayed_source_manifest": "runs/step02_delay_fix_fix5_fullstat_v2/fix5_fullstat_v2_exactpos_m50000_s260613_delayed_source_manifest.json",
+    "groundstate_audit": "outputs/reports/fix5_fullstat_v2_exactpos_m50000_s260613/fix5_groundstate_half_life_audit_summary.json",
+    "cosima_log": "runs/step02_delayed_transport_fix5_fullstat_v2_exactpos_m50000_s260613/cosima_fullstat_exactpos_m50000_s260613.log",
+    "transport_sim": "runs/step02_delayed_transport_fix5_fullstat_v2_exactpos_m50000_s260613/DelayedDecayFix5FullstatV2ExactposM50000S260613.inc1.id1.sim.gz",
+    "transport_size_bytes": 853661355,
+    "SE": 1000000,
+    "ID": 1000000,
+    "TS": 1,
+    "TE_s": 11649.564832,
+    "geometry": "/home/ubuntu/TES_511_Balloon/outputs/geometry/DEMO2_DR_v3p5_user_cylmag_redesign_multiholeW_fix5_20260621_megalib_proxy/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup",
+    "geometry_status": "PASS_FIX5_GEOMETRY",
+    "aborted_partial_retained_note": "runs/step02_delayed_transport_fix5_fullstat_v2_exactpos_m50000_s260613/aborted_stdout_pty_note.json",
+    "rate_claim_allowed": false,
+    "next_step": "Run Step05 detector/L1 response for fix5 full-stat prompt and exact-position delayed transport."
+  },
+  "commands_executed": [
+    "bash -lc 'source /home/ubuntu/MEGAlib_Install/megalib-main/bin/source-megalib.sh >/tmp/fix5_megalib_env.log && cosima -s 260613 runs/step02_delay_fix_fix5_fullstat_v2/activation_decay_day15_groundstate_fixed_exactpos_m50000_s260613.source > runs/step02_delayed_transport_fix5_fullstat_v2_exactpos_m50000_s260613/cosima_fullstat_exactpos_m50000_s260613.log 2>&1'"
+  ]
+}

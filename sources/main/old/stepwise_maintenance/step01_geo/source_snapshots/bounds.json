@@ -1,0 +1,307 @@
+{
+  "UNITS": "mm",
+  "VERSION": "ADR_v4c_mkflange_new_geo_re_step01",
+  "DESIGN_NOTE": "NEW_GEO_RE step01: ADR v4c geometry retained, but all axial aperture/window clear radii are matched to the Be cryostat-window radius; A4K is omitted, the Nb can window is retained, and the vacuum-jacket aperture is closed only by the Be window.",
+  "TES_LAYERS": [
+    {
+      "z_center": 11.65,
+      "r_max": 18.0,
+      "hz": 1.5
+    },
+    {
+      "z_center": 23.65,
+      "r_max": 18.0,
+      "hz": 1.5
+    },
+    {
+      "z_center": 35.65,
+      "r_max": 18.0,
+      "hz": 1.5
+    },
+    {
+      "z_center": 47.65,
+      "r_max": 18.0,
+      "hz": 1.5
+    },
+    {
+      "z_center": 59.65,
+      "r_max": 18.0,
+      "hz": 1.5
+    },
+    {
+      "z_center": 71.65,
+      "r_max": 18.0,
+      "hz": 1.5
+    }
+  ],
+  "SUBSTRATES": [
+    {
+      "name": "Substrate_L0",
+      "z_center": 10.0,
+      "hz": 0.15,
+      "r_max": 22.0
+    },
+    {
+      "name": "Substrate_L1",
+      "z_center": 22.0,
+      "hz": 0.15,
+      "r_max": 22.0
+    },
+    {
+      "name": "Substrate_L2",
+      "z_center": 34.0,
+      "hz": 0.15,
+      "r_max": 22.0
+    },
+    {
+      "name": "Substrate_L3",
+      "z_center": 46.0,
+      "hz": 0.15,
+      "r_max": 22.0
+    },
+    {
+      "name": "Substrate_L4",
+      "z_center": 58.0,
+      "hz": 0.15,
+      "r_max": 22.0
+    },
+    {
+      "name": "Substrate_L5",
+      "z_center": 70.0,
+      "hz": 0.15,
+      "r_max": 22.0
+    }
+  ],
+  "COLD_PLATES": [
+    {
+      "name": "ColdPlate_50mK",
+      "mat": "Copper",
+      "r": 45.0,
+      "h": 5.0,
+      "zc": 0.0,
+      "basis": "Model 103 supports 1 K and 50 mK stages; 45 mm plate radius gives margin for the 34 mm-ID sample box and mounting screws."
+    },
+    {
+      "name": "ColdPlate_1K",
+      "mat": "Copper",
+      "r": 55.0,
+      "h": 5.0,
+      "zc": -32.0,
+      "basis": "1 K intercept stage, separated from 50 mK plate to leave room for heat-switch/strap envelope."
+    },
+    {
+      "name": "ColdPlate_4K",
+      "mat": "Copper",
+      "r": 70.0,
+      "h": 6.0,
+      "zc": -72.0,
+      "basis": "4 K / 2.7 K pulse-tube stage analog; radius leaves routing margin."
+    },
+    {
+      "name": "ColdPlate_50K",
+      "mat": "Aluminium",
+      "r": 85.0,
+      "h": 6.0,
+      "zc": -108.0,
+      "basis": "50 K interface plate aligned with commercial 50 K radiation-shield stage."
+    }
+  ],
+  "SAMPLE_BOX": {
+    "name": "TES_SampleBox_Cu",
+    "mat": "Copper",
+    "r_in": 34.0,
+    "wall": 3.0,
+    "z_out_bot": 2.5,
+    "z_in_bot": 5.5,
+    "z_in_top": 84.0,
+    "z_out_top": 87.0,
+    "hole": 18.98,
+    "basis": "Engineering sample box: 3 mm Cu open/apertured cylinder; bottom disk contacts 50 mK plate; surrounds TES stack and Si substrates; top has Al window/foil placeholder.",
+    "r_out": 37.0,
+    "window": {
+      "name": "SampleBox_Al_Window",
+      "mat": "Aluminium",
+      "r": 18.98,
+      "thick": 0.05,
+      "zc": 85.5,
+      "basis": "Thin Al sample-box window/foil placeholder; radius matched to the Be cryostat-window clear radius."
+    }
+  },
+  "OPEN_BOTTOM_CANS": [
+    {
+      "name": "Nb_SC_Detector_Can",
+      "mat": "Nb",
+      "r_in": 45.05,
+      "wall": 0.3,
+      "z_in_bot": -2.5,
+      "z_in_top": 92.0,
+      "top_extra": 0.3,
+      "hole": 18.98,
+      "basis": "Thin removable superconducting detector can indexed to the 50 mK cold-plate flange. Inner radius is just outside the plate edge, and the lower lip starts at the plate bottom surface for light-tight seating without overlap.",
+      "r_out": 45.349999999999994,
+      "z_out_top": 92.3,
+      "window": "Win_Nb_SC_Detector_Can"
+    }
+  ],
+  "CRYOSTAT_SHELLS": [
+    {
+      "name": "Thermal_4K_Al_Shield",
+      "mat": "Aluminium",
+      "r_in": 73.0,
+      "wall": 0.8,
+      "z_in_bot": -90.0,
+      "z_in_top": 114.0,
+      "z_extra": 0.8,
+      "hole": 18.98,
+      "basis": "Commercial ADRs use nickel-plated aluminum radiation shields at 50 K and 4 K; 0.8 mm is mass-model baseline.",
+      "r_out": 73.8,
+      "z_out_bot": -90.8,
+      "z_out_top": 114.8
+    },
+    {
+      "name": "Thermal_50K_Al_Shield",
+      "mat": "Aluminium",
+      "r_in": 88.0,
+      "wall": 0.8,
+      "z_in_bot": -124.0,
+      "z_in_top": 122.0,
+      "z_extra": 0.8,
+      "hole": 18.98,
+      "basis": "50 K aluminum radiation shield enclosing colder stages.",
+      "r_out": 88.8,
+      "z_out_bot": -124.8,
+      "z_out_top": 122.8
+    },
+    {
+      "name": "Vacuum_Jacket_Al",
+      "mat": "Aluminium",
+      "r_in": 93.0,
+      "wall": 2.5,
+      "z_in_bot": -132.0,
+      "z_in_top": 126.0,
+      "z_extra": 2.5,
+      "hole": 18.98,
+      "basis": "Al cryostat vacuum jacket mass model; the aperture is closed only by the Be cryostat window. 2.5 mm is not pressure-vessel certification.",
+      "r_out": 95.5,
+      "z_out_bot": -134.5,
+      "z_out_top": 128.5
+    }
+  ],
+  "SERVICE_BLOCKS": [],
+  "ACTIVE_SHIELD": {
+    "name": "CeBr3_Active_Shield",
+    "mat": "CeBr3",
+    "r_in": 100.5,
+    "wall": 32.0,
+    "z_in_bot": -139.5,
+    "z_in_top": 133.5,
+    "z_out_bot": -214.5,
+    "z_out_top": 153.5,
+    "hole": 18.98,
+    "basis": "Active scintillator outside cryostat. CeBr3 is default no-O candidate; BGO control keeps CAM511-like dimensions.",
+    "r_out": 132.5,
+    "active_material_requested": "CeBr3",
+    "active_material_used": "CeBr3",
+    "recommended_veto_threshold_keV": 30.0,
+    "threshold_scan_keV": [
+      10,
+      20,
+      30,
+      50,
+      70,
+      100
+    ]
+  },
+  "OUTER_MECHANICAL_SHELL": {
+    "name": "Outer_Al_Mech_Shell",
+    "mat": "Aluminium",
+    "r_in": 134.5,
+    "wall": 2.0,
+    "z_in_bot": -216.5,
+    "z_in_top": 155.5,
+    "z_extra": 2.0,
+    "hole": 18.98,
+    "basis": "Outer cover outside scintillator, not the vacuum boundary; structural mass placeholder.",
+    "r_out": 136.5,
+    "z_out_bot": -218.5,
+    "z_out_top": 157.5
+  },
+  "WINDOWS": [
+    {
+      "name": "SampleBox_Al_Window",
+      "material": "Aluminium",
+      "z_center": 85.5,
+      "thick": 0.05,
+      "r_max": 18.98,
+      "basis": "Thin Al sample-box window/foil placeholder; radius matched to the Be cryostat-window clear radius."
+    },
+    {
+      "name": "Win_Nb_SC_Detector_Can",
+      "material": "Nb",
+      "parent": "Nb_SC_Detector_Can",
+      "z_center": 92.15,
+      "thick": 0.05,
+      "r_max": 18.98,
+      "basis": "NEW_GEO_RE step01 update: thin Nb window/foil placeholder across the Nb superconducting detector-can aperture; radius matched to Be window."
+    },
+    {
+      "name": "Win_4K_Al_Shield",
+      "material": "Aluminium",
+      "z_center": 114.4,
+      "thick": 0.05,
+      "r_max": 18.98,
+      "basis": "NEW_GEO_RE step01: added missing thin Al window across the 4 K thermal-shield aperture; radius matched to Be window."
+    },
+    {
+      "name": "Win_50K_Al_Shield",
+      "material": "Aluminium",
+      "z_center": 122.4,
+      "thick": 0.05,
+      "r_max": 18.98,
+      "basis": "NEW_GEO_RE step01: added missing thin Al window across the 50 K thermal-shield aperture; radius matched to Be window."
+    },
+    {
+      "name": "Win_Be_Cryostat",
+      "material": "Be",
+      "z_center": 128.425,
+      "thick": 0.15,
+      "r_max": 18.98,
+      "basis": "Matched to fix/code/geometry Win_Be: radius 1.898 cm and thickness 0.015 cm after cm scaling; radius is the NEW_GEO_RE aperture reference."
+    }
+  ],
+  "COLLIMATOR": {
+    "z_center": 160.0,
+    "r_max": 31.0,
+    "hz": 0.5,
+    "hole": 1.42,
+    "web": 0.13,
+    "pitch": 1.5499999999999998,
+    "basis": "Project W grid retained as first collimator baseline; compare with CAM511 W aperture/passive shield."
+  },
+  "META": {
+    "N_LAYERS": 6,
+    "TES_LAYER_PITCH": 12.0,
+    "n_pixels_per_layer": 376,
+    "active_material_requested": "CeBr3",
+    "active_material_used": "CeBr3",
+    "compat_materials": false,
+    "tes_top_mm": 73.15,
+    "sample_box_contact_z_mm": 2.5,
+    "mk_plate_bottom_z_mm": -2.5,
+    "can_bottom_seat_z_mm": -2.5,
+    "be_window_radius_reference_mm": 18.98,
+    "all_axial_holes_match_be_window": true,
+    "added_can_windows": [
+      "Win_Nb_SC_Detector_Can"
+    ],
+    "added_missing_al_windows": [
+      "Win_4K_Al_Shield",
+      "Win_50K_Al_Shield"
+    ],
+    "vacuum_jacket_window_policy": "Be only",
+    "omitted_a4k_for_background_simplicity": true,
+    "can_inner_radius_basis": "50mK plate outer radius + small non-overlap clearance",
+    "removed_internal_w_baffle": true,
+    "removed_heat_switch_block": true
+  }
+}

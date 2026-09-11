@@ -1,0 +1,107 @@
+{
+  "schema_version": 2,
+  "status": "FROZEN_IMPLEMENTATION__15_TESTS_PASS__WAITING_FOR_ONE_SELECTED_AUTHORITY_PAIR",
+  "frozen_date": "2026-08-11",
+  "entrypoint": "engineering/particle_source_unit_repair_20260811/gamma5m_postprocess_20260811/code/analyze_gamma5m_prompt_tes.py",
+  "canonical_input_gate": {
+    "explicit_mutually_exclusive_profiles": [
+      "stage5",
+      "prefix76"
+    ],
+    "batch0000_ledger": {
+      "path": "runs/particle_source_unit_repair_20260811/mergeable_smoke_v1_ledger.json",
+      "sha256": "036335b186bb1e8d9dbec53e0e8994dd8cb1fc055b930469b8d7d144f60b263f"
+    },
+    "batch0001_ledger": {
+      "path": "runs/particle_source_unit_repair_20260811/seven_family_batch0001_v1_ledger.json",
+      "sha256": "bb89c618d519a6a8570c8c746012c9ad0e81cb427b2a23145084a429c34c5df4"
+    },
+    "stage5": {
+      "ledger": "runs/particle_source_unit_repair_20260811/gamma_instant_batch0003_stage5m_v1_ledger.json",
+      "validation": "runs/particle_source_unit_repair_20260811/gamma_instant_batch0003_stage5m_v1_validation.json",
+      "cumulative_events_per_geometry": 5000000,
+      "full_checkpoint_authority": true
+    },
+    "prefix76": {
+      "ledger": "runs/particle_source_unit_repair_20260811/gamma_instant_batch0003_prefix_checkpoints_20260811/gamma_instant_batch0003_prefix_shard0076_v1_ledger.json",
+      "validation": "runs/particle_source_unit_repair_20260811/gamma_instant_batch0003_prefix_checkpoints_20260811/gamma_instant_batch0003_prefix_shard0076_v1_validation.json",
+      "prefix_ordinals_inclusive": [
+        1,
+        76
+      ],
+      "prior_events_per_geometry": 101000,
+      "new_events_per_geometry": 1900000,
+      "cumulative_events_per_geometry": 2001000,
+      "full_checkpoint_authority": false,
+      "required_label": "2.001M prefix diagnostic (ordinal 76; non-full)"
+    },
+    "write_once_profile_and_sha_pin": "engineering/particle_source_unit_repair_20260811/gamma5m_postprocess_20260811/data/canonical_gamma_authority.json",
+    "source_contract_sha256": "5424eeca35b20affb153c0e07c31a6582e575f511922bf55f40a5a0f77ab4326",
+    "ledger_path_overrides_in_canonical_cli": false,
+    "attempt_directories_consumed": false
+  },
+  "fixed_geometry_contracts": {
+    "mass_model_511": {
+      "geometry_setup_sha256": "f6ee8c36f45b6a66efa5544daf58a3431c6833289e5658eb8b4452f6792205b0",
+      "detector_map_sha256": "bdb084ed7ea776f04c6dee82d03ca1a2f9166dca5c575ea0b04f21c01dd0a06a"
+    },
+    "s3d_o8": {
+      "geometry_setup_sha256": "86a9e56e54dc86834dfe2a9b03a5f71373fb40f2ef24e3889fa66f216058fbec",
+      "detector_map_sha256": "dd2c1d68cd474f8b0c7489f2cbbfc924eb69beb14d3ce360d9437c319a33d6cb"
+    }
+  },
+  "publication_contract": {
+    "method": "build all outputs in a new sibling temporary directory; atomically rename only after strict-JSON PASS validation and final ledger rehash",
+    "failure_leaves_canonical_output": false,
+    "existing_target_overwritten": false
+  },
+  "files": [
+    {
+      "path": "engineering/particle_source_unit_repair_20260811/gamma5m_postprocess_20260811/code/analyze_gamma5m_prompt_tes.py",
+      "sha256": "537d14c017a563299291f3f362f8b7b4ce341295515c94029de6fa52c2c8d33d"
+    },
+    {
+      "path": "engineering/particle_source_unit_repair_20260811/gamma5m_postprocess_20260811/tests/test_gamma5m_prompt_tes.py",
+      "sha256": "d2177edea364d9f8a34c0594a9cfbe4bc7a2fe1e1ea0867af1b0e781c80d36ae"
+    },
+    {
+      "path": "engineering/particle_source_unit_repair_20260811/gamma5m_postprocess_20260811/README.md",
+      "sha256": "97af1027ddf1055da8df5aa814c4b8664342182f328db5193f64c6ffb39b4f5b"
+    }
+  ],
+  "test": {
+    "command": "PYTHONDONTWRITEBYTECODE=1 python3 -m unittest discover -s engineering/particle_source_unit_repair_20260811/gamma5m_postprocess_20260811/tests -p 'test_*.py' -v",
+    "result": "PASS",
+    "tests_run": 15,
+    "new_profile_coverage": [
+      "prefix76 strict selected-profile envelope and exact continuous ordinal list",
+      "prior plus selected job identity/artifact/seed non-overlap",
+      "prefix gap rejection",
+      "2.001M diagnostic non-full JSON status, filename, and SVG title",
+      "unpublished --pin-prefix76 equivalent leaves no pin/output",
+      "write-once profile selection is mutually exclusive"
+    ],
+    "retained_coverage": [
+      "geometry/source/SIM binding and DAT/log/ledger TT",
+      "transaction rollback and rerun",
+      "strict JSON and closure gates",
+      "real batch0000 gamma SIM read-only parse for both geometries"
+    ]
+  },
+  "real_unpublished_prefix_pin_check": {
+    "command": "PYTHONDONTWRITEBYTECODE=1 python3 engineering/particle_source_unit_repair_20260811/gamma5m_postprocess_20260811/code/analyze_gamma5m_prompt_tes.py --pin-prefix76",
+    "result": "EXPECTED_FAIL",
+    "authority_written": false,
+    "reason": "canonical prefix76 report/ledger pair is not published"
+  },
+  "unrelated_existing_suite_race": {
+    "cause": "The active batch0003 controller changes the live GLOBAL_CONTRACT/execution-state binding while copied mutation tests patch EXECUTION_STATE but still validate against the live contract. No old test or runner code was changed.",
+    "do_not_rerun_while_batch0003_active": true,
+    "affected_tests": [
+      "test_gamma_instant_batch0003_contract.GammaInstantBatch0003ContractTests.test_concurrent_state_updates_are_serialized_and_lossless",
+      "test_seven_family_1m_screening_batch0004_contract.GammaInstantBatch0003ContractTests.test_concurrent_state_updates_are_serialized_and_lossless"
+    ]
+  },
+  "transport_started_by_this_package": false,
+  "old_scripts_figures_or_paper_modified": false
+}

@@ -1,0 +1,12 @@
+stage,gate_id,metric,threshold_or_requirement,failure_action,scope
+geometry,G0,Cu material and per-stage thermal load path,Retain Cu/Ni material and baseline-or-better qualified thermal/load cross-section,KILL,TC-SK1
+geometry,G1,total pre-active Cu chord,L_Cu_total <= 0.30 cm on every preregistered reverse-TES ray,KILL,TC-SK1
+geometry,G2,event3883 and event8081 side BGO chord,>= 6.0 cm,KILL,TC-SK1
+geometry,G3,event19932-class top BGO chord,>= 3.0 cm in existing BGO channel,KILL,TC-SK1
+geometry,G4,continuous top service corridor,No continuous Cu/Ni/SS service-can chord between cold core and top catcher,KILL,TC-SK1
+geometry,G5,Nb Mu Ag topology,Identical to baseline; no thinning or new opening,KILL,TC-SK1
+geometry,G6,active/readout count,Identical to baseline; top catcher uses the existing BGO channel,KILL,TC-SK1
+mechanism,P1,first-pair and annihilation host migration,No new dominant single-event Cu/Nb/Mu/Ag/SS hotspot; report each root and weight,KILL,three frozen gamma cells
+mechanism,P2,final prompt candidate/baseline survival ratio,Exact one-sided 95% upper <= 0.20,KILL,three frozen gamma cells
+confirmation,P3,full corrected-gamma survival ratio,Exact one-sided 95% upper <= 0.20 with E x direction x active-grammage denominators,KILL,full gamma support
+confirmation,P4,normalization,Preserve geometry x mode x family TT and weight boundaries,KILL,all prompt outputs

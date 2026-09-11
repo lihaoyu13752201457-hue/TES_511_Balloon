@@ -1,0 +1,658 @@
+{
+  "authorization": {
+    "absolute_worker_cap": 10,
+    "live_mem_available_floor_bytes": 1610612736,
+    "minimum_target_workers": 6,
+    "no_repeated_artifact_validation_or_hashing": true,
+    "no_transport_input_changes": true,
+    "scheduler_only_change": true
+  },
+  "coordinator": {
+    "comm": "python3",
+    "pgid": 65069,
+    "pid": 65069,
+    "ppid": 8164,
+    "proc_starttime_ticks": 1334913,
+    "sid": 65069,
+    "state": "S"
+  },
+  "coordinator_parent_cgroup": "/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/app.slice/app-org.chromium.Chromium-3007.scope",
+  "created_at": "2026-08-12T17:14:26.113537+00:00",
+  "dedicated_freezer_cgroup": "/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/app.slice/app-org.chromium.Chromium-3007.scope/m05_recovery0007_cutover_65069_1334913",
+  "failed_attempt_declarations_before": [],
+  "initial_descendants": [
+    {
+      "comm": "python3",
+      "pgid": 65069,
+      "pid": 69175,
+      "ppid": 65069,
+      "proc_starttime_ticks": 1432807,
+      "sid": 65069,
+      "state": "S"
+    },
+    {
+      "comm": "cosima",
+      "pgid": 69176,
+      "pid": 69176,
+      "ppid": 69175,
+      "proc_starttime_ticks": 1432812,
+      "sid": 69176,
+      "state": "R"
+    },
+    {
+      "comm": "python3",
+      "pgid": 65069,
+      "pid": 72854,
+      "ppid": 65069,
+      "proc_starttime_ticks": 1498018,
+      "sid": 65069,
+      "state": "S"
+    },
+    {
+      "comm": "cosima",
+      "pgid": 72855,
+      "pid": 72855,
+      "ppid": 72854,
+      "proc_starttime_ticks": 1498023,
+      "sid": 72855,
+      "state": "R"
+    }
+  ],
+  "initial_direct_child_identities": [
+    [
+      69175,
+      1432807
+    ],
+    [
+      72854,
+      1498018
+    ]
+  ],
+  "method": [
+    "move coordinator only to a dedicated cgroup-v2 child and set cgroup.freeze=1",
+    "allow already-forked descendants to finish without signalling them",
+    "require cgroup.events frozen=1 and zero non-z descendants/partials",
+    "SIGKILL cgroup-frozen coordinator",
+    "acquire campaign flock exclusively before write-once completion"
+  ],
+  "partial_attempts_before": [
+    "runs/particle_source_unit_repair_20260811/m05_16h_90gb_campaign_batch0006_v1/recovery0006_six_to_one_replan/attempts/stage10_seven_family/Mass_model_511/instant/eminus/r6_s10_eminus_instant_Mass_model_511_bundle0002/.attempt01.partial",
+    "runs/particle_source_unit_repair_20260811/m05_16h_90gb_campaign_batch0006_v1/recovery0006_six_to_one_replan/attempts/stage10_seven_family/S3d_O8/instant/alpha/r6_s10_alpha_instant_S3d_O8_bundle0001/.attempt01.partial"
+  ],
+  "r6_declarations": {
+    "authority_path": "runs/particle_source_unit_repair_20260811/m05_16h_90gb_campaign_batch0006_v1/recovery0006_six_to_one_replan/authority.json",
+    "authority_status": "AUTHORIZED__EVENT_EXACT_BALANCED_UP_TO_SIX_REPLAN__TRANSPORT_PENDING",
+    "controller_declared_sha256": "43edf4c671b535ae6b4328afdf53cf75ac04aaf5361fa4a0a7521452be9cada0",
+    "controller_path": "engineering/particle_source_unit_repair_20260811/m05_16h_90gb_campaign_batch0006_20260812/code/resume_m05_campaign_batch0006_recovery0006_six_to_one_replan.py",
+    "effective_pending_plan_declared_sha256": "c802beb2aa110f462057e4de35e98f9966a7adbdd284bfba0fc1b19349409574",
+    "fresh_seed_registry_payload_declared_sha256": "a9c0b1399205906e5070328cc7e79fe3e5ef4d1963963775db49214cafa03737",
+    "inherited_pass_manifest_declared_sha256": "52c7f692ccc9df59bde3da979861e07d587cd4fe7bad0770d343069063040994",
+    "input_declarations": {
+      "cutover_intent": "runs/particle_source_unit_repair_20260811/m05_16h_90gb_campaign_batch0006_v1/recovery0006_six_to_one_replan_cutover_intent.json",
+      "cutover_intent_sha256": "e773c979e02d4f202f629a4eb590a80dbf014a8c3ede97d93100a3203bc25828",
+      "drain_completion": "runs/particle_source_unit_repair_20260811/m05_16h_90gb_campaign_batch0006_v1/recovery0006_six_to_one_replan_drain_completion.json",
+      "drain_completion_sha256": "f9f2f36ec3fd1f415517881825d79b7fc23cbe9a1aa25659946b81212512168d",
+      "global_contract": "runs/particle_source_unit_repair_20260811/m05_16h_90gb_campaign_batch0006_v1/global_contract.json",
+      "global_contract_sha256": "4586fb62a16c0145401a997f70a878bfaebd94529fe04c45da51a1abcf102275",
+      "original_plan_sha256": "d1d1abb26be31ebadf8932af57b61c744866b8293b437bd43e1b9c58805dc0ea",
+      "original_seed_registry": "runs/particle_source_unit_repair_20260811/m05_16h_90gb_campaign_batch0006_v1/seed_registry.json",
+      "original_seed_registry_sha256": "bb4020cfbd5195660ea5d599eef013e2b58d905592f2799fae3c5686b8caa0ec",
+      "orphan_evidence": "runs/particle_source_unit_repair_20260811/m05_16h_90gb_campaign_batch0006_v1/recovery0006_six_to_one_replan_cutover_orphan_evidence.json",
+      "orphan_evidence_sha256": "af380fc8b342e6efaf76f3e4a289893f72ac41c719c75017b3d43f9b0334a33d",
+      "recovery0004_authority_sha256": "ff4d69cfe202710e86537d6d7ea1d0b62444fe25bce80b55ffb25a50a22f56e6",
+      "recovery0004_cutover_sha256": "a11ae6468117ae77d310e6797ae97a13c46ef1bf9a8571aaf44a0c2344a4fda2"
+    },
+    "note": "all sha256 strings are copied declarations; this helper computed none",
+    "recovery_id": "batch0006_recovery0006_six_to_one_replan",
+    "seed_registry_path": "runs/particle_source_unit_repair_20260811/m05_16h_90gb_campaign_batch0006_v1/recovery0006_six_to_one_replan/seed_registry.json"
+  },
+  "r6_final_umbrella_absent_before": true,
+  "receipt_declarations_before": [
+    {
+      "declared_artifacts": {
+        "dat": {
+          "bytes": 21348,
+          "name": "r6_s10_alpha_buildup_Mass_model_511_bundle0001.dat.inc1.dat",
+          "sha256": "d7e2b45483dff66e582a64ddd2f102b324708f09dbea4e7349ad9f3f6d4623e3"
+        },
+        "log": {
+          "bytes": 796753,
+          "name": "r6_s10_alpha_buildup_Mass_model_511_bundle0001.log",
+          "sha256": "651f22c378d3e2ef9e9aa2de39eec50d459a34dfbcba4c8517679eb63224cf88"
+        },
+        "sim": {
+          "bytes": 118586968,
+          "name": "r6_s10_alpha_buildup_Mass_model_511_bundle0001.inc1.id1.sim.gz",
+          "sha256": "fbce38505a74d95a103484b82ee17f81541267e22cb87979a18992e38cda0302"
+        },
+        "source": {
+          "bytes": 8980,
+          "name": "r6_s10_alpha_buildup_Mass_model_511_bundle0001.source",
+          "sha256": "f36baff11515a8a6c8fe0d94352f8c280c2a4a848f6ba975254fc903bc9dcfec"
+        }
+      },
+      "declared_attempt_dir": "runs/particle_source_unit_repair_20260811/m05_16h_90gb_campaign_batch0006_v1/recovery0006_six_to_one_replan/attempts/stage10_seven_family/Mass_model_511/buildup/alpha/r6_s10_alpha_buildup_Mass_model_511_bundle0001/attempt01",
+      "declared_errors": [],
+      "declared_events": 1000,
+      "declared_recovery_authority_sha256": "b7bc0cd38aee223f4631ffda7f86894be923a44c5ba7cc1d6fd1c6c3fa9bd45d",
+      "declared_selected_attempt": 1,
+      "declared_status": "PASS",
+      "job_id": "r6_s10_alpha_buildup_Mass_model_511_bundle0001",
+      "receipt_path": "runs/particle_source_unit_repair_20260811/m05_16h_90gb_campaign_batch0006_v1/recovery0006_six_to_one_replan/job_receipts/stage10_seven_family/r6_s10_alpha_buildup_Mass_model_511_bundle0001.json"
+    },
+    {
+      "declared_artifacts": {
+        "dat": {
+          "bytes": 28701,
+          "name": "r6_s10_alpha_buildup_Mass_model_511_bundle0002.dat.inc1.dat",
+          "sha256": "813dae7fe3ebb0bca0aff85e283bc3760a48f41b7703b117e3b15c06637507f3"
+        },
+        "log": {
+          "bytes": 1096620,
+          "name": "r6_s10_alpha_buildup_Mass_model_511_bundle0002.log",
+          "sha256": "b5c63b9781c600d6600b59ca1a6cc56ba40750375bc0d8d7c152bb9abe86a077"
+        },
+        "sim": {
+          "bytes": 145282080,
+          "name": "r6_s10_alpha_buildup_Mass_model_511_bundle0002.inc1.id1.sim.gz",
+          "sha256": "886a37117e191605be5862e9c150fa5d178e7415654590f36902bc724cf78e66"
+        },
+        "source": {
+          "bytes": 8980,
+          "name": "r6_s10_alpha_buildup_Mass_model_511_bundle0002.source",
+          "sha256": "2bdb5e5690c4973c649bc2053139d63108d60479b310169f51fe8146871d9d53"
+        }
+      },
+      "declared_attempt_dir": "runs/particle_source_unit_repair_20260811/m05_16h_90gb_campaign_batch0006_v1/recovery0006_six_to_one_replan/attempts/stage10_seven_family/Mass_model_511/buildup/alpha/r6_s10_alpha_buildup_Mass_model_511_bundle0002/attempt01",
+      "declared_errors": [],
+      "declared_events": 1000,
+      "declared_recovery_authority_sha256": "b7bc0cd38aee223f4631ffda7f86894be923a44c5ba7cc1d6fd1c6c3fa9bd45d",
+      "declared_selected_attempt": 1,
+      "declared_status": "PASS",
+      "job_id": "r6_s10_alpha_buildup_Mass_model_511_bundle0002",
+      "receipt_path": "runs/particle_source_unit_repair_20260811/m05_16h_90gb_campaign_batch0006_v1/recovery0006_six_to_one_replan/job_receipts/stage10_seven_family/r6_s10_alpha_buildup_Mass_model_511_bundle0002.json"
+    },
+    {
+      "declared_artifacts": {
+        "dat": {
+          "bytes": 259,
+          "name": "r6_s10_alpha_instant_Mass_model_511_bundle0001.dat.inc1.dat",
+          "sha256": "1fe3f262a8517340154b627530628703ad2c6288fbb4c3cba458d2856f1664ca"
+        },
+        "log": {
+          "bytes": 1174295,
+          "name": "r6_s10_alpha_instant_Mass_model_511_bundle0001.log",
+          "sha256": "279aab4a50fe055884daa7a1a687da673bd544f7d15f7e6248ca8313bbff57ea"
+        },
+        "sim": {
+          "bytes": 221875854,
+          "name": "r6_s10_alpha_instant_Mass_model_511_bundle0001.inc1.id1.sim.gz",
+          "sha256": "b1bc4fa47c1c51066d4fe2c3be6634edce53dae237e7a9e6e67ba3e31dcf0275"
+        },
+        "source": {
+          "bytes": 8952,
+          "name": "r6_s10_alpha_instant_Mass_model_511_bundle0001.source",
+          "sha256": "fd9ef77a9797e37b328f1c1120b2efdcb42f71b1147c7aed1cd927a95177d7d2"
+        }
+      },
+      "declared_attempt_dir": "runs/particle_source_unit_repair_20260811/m05_16h_90gb_campaign_batch0006_v1/recovery0006_six_to_one_replan/attempts/stage10_seven_family/Mass_model_511/instant/alpha/r6_s10_alpha_instant_Mass_model_511_bundle0001/attempt01",
+      "declared_errors": [],
+      "declared_events": 1250,
+      "declared_recovery_authority_sha256": "b7bc0cd38aee223f4631ffda7f86894be923a44c5ba7cc1d6fd1c6c3fa9bd45d",
+      "declared_selected_attempt": 1,
+      "declared_status": "PASS",
+      "job_id": "r6_s10_alpha_instant_Mass_model_511_bundle0001",
+      "receipt_path": "runs/particle_source_unit_repair_20260811/m05_16h_90gb_campaign_batch0006_v1/recovery0006_six_to_one_replan/job_receipts/stage10_seven_family/r6_s10_alpha_instant_Mass_model_511_bundle0001.json"
+    },
+    {
+      "declared_artifacts": {
+        "dat": {
+          "bytes": 1383,
+          "name": "r6_s10_eminus_buildup_Mass_model_511_bundle0001.dat.inc1.dat",
+          "sha256": "4f4d7d57ef72f9c50eb5f8e710122480ba10da93f705ef7945221b9b59ebcc3f"
+        },
+        "log": {
+          "bytes": 5341446,
+          "name": "r6_s10_eminus_buildup_Mass_model_511_bundle0001.log",
+          "sha256": "77c918064ec56fb0e870969e934ff46984eb48756d576d87562007435f60b63a"
+        },
+        "sim": {
+          "bytes": 137600736,
+          "name": "r6_s10_eminus_buildup_Mass_model_511_bundle0001.inc1.id1.sim.gz",
+          "sha256": "23ad661fee77d4f23de1d74c7f363a7896983b27171782ceb51eecfa5748938f"
+        },
+        "source": {
+          "bytes": 9113,
+          "name": "r6_s10_eminus_buildup_Mass_model_511_bundle0001.source",
+          "sha256": "c50777185bee207e751444bd63c5dc7d5edf679776655f58114828dbae9e7918"
+        }
+      },
+      "declared_attempt_dir": "runs/particle_source_unit_repair_20260811/m05_16h_90gb_campaign_batch0006_v1/recovery0006_six_to_one_replan/attempts/stage10_seven_family/Mass_model_511/buildup/eminus/r6_s10_eminus_buildup_Mass_model_511_bundle0001/attempt01",
+      "declared_errors": [],
+      "declared_events": 25000,
+      "declared_recovery_authority_sha256": "b7bc0cd38aee223f4631ffda7f86894be923a44c5ba7cc1d6fd1c6c3fa9bd45d",
+      "declared_selected_attempt": 1,
+      "declared_status": "PASS",
+      "job_id": "r6_s10_eminus_buildup_Mass_model_511_bundle0001",
+      "receipt_path": "runs/particle_source_unit_repair_20260811/m05_16h_90gb_campaign_batch0006_v1/recovery0006_six_to_one_replan/job_receipts/stage10_seven_family/r6_s10_eminus_buildup_Mass_model_511_bundle0001.json"
+    },
+    {
+      "declared_artifacts": {
+        "dat": {
+          "bytes": 1000,
+          "name": "r6_s10_eminus_buildup_S3d_O8_bundle0001.dat.inc1.dat",
+          "sha256": "93d89f667828f64f66fa9bf86eade7548aaec5699b8ce285baa7b961184a38aa"
+        },
+        "log": {
+          "bytes": 6074508,
+          "name": "r6_s10_eminus_buildup_S3d_O8_bundle0001.log",
+          "sha256": "535d2da6109934ad39c9c245dcde4bbb2660eee2388fe1acf3eb3e4f08dbe2dd"
+        },
+        "sim": {
+          "bytes": 257115629,
+          "name": "r6_s10_eminus_buildup_S3d_O8_bundle0001.inc1.id1.sim.gz",
+          "sha256": "62959e6106c4c2ff34346c70b48ddb9ed17dbb7cf22efec1c1a237f9f64a8c79"
+        },
+        "source": {
+          "bytes": 9048,
+          "name": "r6_s10_eminus_buildup_S3d_O8_bundle0001.source",
+          "sha256": "23702d74663bc153f40f995b932c5c231bf3d9b75ae87e22bdda1c84453fc34b"
+        }
+      },
+      "declared_attempt_dir": "runs/particle_source_unit_repair_20260811/m05_16h_90gb_campaign_batch0006_v1/recovery0006_six_to_one_replan/attempts/stage10_seven_family/S3d_O8/buildup/eminus/r6_s10_eminus_buildup_S3d_O8_bundle0001/attempt01",
+      "declared_errors": [],
+      "declared_events": 25000,
+      "declared_recovery_authority_sha256": "b7bc0cd38aee223f4631ffda7f86894be923a44c5ba7cc1d6fd1c6c3fa9bd45d",
+      "declared_selected_attempt": 1,
+      "declared_status": "PASS",
+      "job_id": "r6_s10_eminus_buildup_S3d_O8_bundle0001",
+      "receipt_path": "runs/particle_source_unit_repair_20260811/m05_16h_90gb_campaign_batch0006_v1/recovery0006_six_to_one_replan/job_receipts/stage10_seven_family/r6_s10_eminus_buildup_S3d_O8_bundle0001.json"
+    },
+    {
+      "declared_artifacts": {
+        "dat": {
+          "bytes": 259,
+          "name": "r6_s10_eminus_instant_Mass_model_511_bundle0001.dat.inc1.dat",
+          "sha256": "111140d41b7d07b4a3eb12746815e86bfb5495a45b078868f52cf7e314e00b4c"
+        },
+        "log": {
+          "bytes": 5245273,
+          "name": "r6_s10_eminus_instant_Mass_model_511_bundle0001.log",
+          "sha256": "117c715e6fea7e811a8dfb5ffec19fbfffd4c353fbe03af15d76d79652c16366"
+        },
+        "sim": {
+          "bytes": 135737446,
+          "name": "r6_s10_eminus_instant_Mass_model_511_bundle0001.inc1.id1.sim.gz",
+          "sha256": "93280169b357e3aa77b2ad49f8b16b6ae0c486d743840e66072c62fe520725ef"
+        },
+        "source": {
+          "bytes": 9085,
+          "name": "r6_s10_eminus_instant_Mass_model_511_bundle0001.source",
+          "sha256": "65b66c052b0ae52ce1c7db183347c457284d08a06147a95862e3eec0ffa54d9e"
+        }
+      },
+      "declared_attempt_dir": "runs/particle_source_unit_repair_20260811/m05_16h_90gb_campaign_batch0006_v1/recovery0006_six_to_one_replan/attempts/stage10_seven_family/Mass_model_511/instant/eminus/r6_s10_eminus_instant_Mass_model_511_bundle0001/attempt01",
+      "declared_errors": [],
+      "declared_events": 25000,
+      "declared_recovery_authority_sha256": "b7bc0cd38aee223f4631ffda7f86894be923a44c5ba7cc1d6fd1c6c3fa9bd45d",
+      "declared_selected_attempt": 1,
+      "declared_status": "PASS",
+      "job_id": "r6_s10_eminus_instant_Mass_model_511_bundle0001",
+      "receipt_path": "runs/particle_source_unit_repair_20260811/m05_16h_90gb_campaign_batch0006_v1/recovery0006_six_to_one_replan/job_receipts/stage10_seven_family/r6_s10_eminus_instant_Mass_model_511_bundle0001.json"
+    },
+    {
+      "declared_artifacts": {
+        "dat": {
+          "bytes": 259,
+          "name": "r6_s10_eminus_instant_S3d_O8_bundle0001.dat.inc1.dat",
+          "sha256": "f5abbb63384288690d032089ddae13d11a4c8b3afead5b4a11b9d5bee7af216e"
+        },
+        "log": {
+          "bytes": 6149110,
+          "name": "r6_s10_eminus_instant_S3d_O8_bundle0001.log",
+          "sha256": "009ee7e6bf80ab7e1aeb62edaaab259ceb16a03229c121c39f34b0c009da70e4"
+        },
+        "sim": {
+          "bytes": 265520587,
+          "name": "r6_s10_eminus_instant_S3d_O8_bundle0001.inc1.id1.sim.gz",
+          "sha256": "2cfa8dd57dcf484a69f2479a3d3e7dee2291ec07c79bbf6d6484240a134465f6"
+        },
+        "source": {
+          "bytes": 9020,
+          "name": "r6_s10_eminus_instant_S3d_O8_bundle0001.source",
+          "sha256": "b02a8b17c8bc1cd399580f5a1a7703d639936310a125245a6063bf604c88b71d"
+        }
+      },
+      "declared_attempt_dir": "runs/particle_source_unit_repair_20260811/m05_16h_90gb_campaign_batch0006_v1/recovery0006_six_to_one_replan/attempts/stage10_seven_family/S3d_O8/instant/eminus/r6_s10_eminus_instant_S3d_O8_bundle0001/attempt01",
+      "declared_errors": [],
+      "declared_events": 25000,
+      "declared_recovery_authority_sha256": "b7bc0cd38aee223f4631ffda7f86894be923a44c5ba7cc1d6fd1c6c3fa9bd45d",
+      "declared_selected_attempt": 1,
+      "declared_status": "PASS",
+      "job_id": "r6_s10_eminus_instant_S3d_O8_bundle0001",
+      "receipt_path": "runs/particle_source_unit_repair_20260811/m05_16h_90gb_campaign_batch0006_v1/recovery0006_six_to_one_replan/job_receipts/stage10_seven_family/r6_s10_eminus_instant_S3d_O8_bundle0001.json"
+    },
+    {
+      "declared_artifacts": {
+        "dat": {
+          "bytes": 1361,
+          "name": "r6_s10_eplus_buildup_Mass_model_511_bundle0001.dat.inc1.dat",
+          "sha256": "fd77bfcd2c86b1ae59cf24b41a442f1e6ceed2c0e1cf749278b46145511cca33"
+        },
+        "log": {
+          "bytes": 1932323,
+          "name": "r6_s10_eplus_buildup_Mass_model_511_bundle0001.log",
+          "sha256": "ba4b674e19b08bd2bf1af495439588e8f253e08ff540d4f570fc838d67393d56"
+        },
+        "sim": {
+          "bytes": 149625154,
+          "name": "r6_s10_eplus_buildup_Mass_model_511_bundle0001.inc1.id1.sim.gz",
+          "sha256": "88a40de726237f88ac59df9127bdaffa8113602a2fee2b8e2af09d6084408d6c"
+        },
+        "source": {
+          "bytes": 8960,
+          "name": "r6_s10_eplus_buildup_Mass_model_511_bundle0001.source",
+          "sha256": "f57d005a2ca609f410a2ce9b8e2246d8952f9716fd55a470921a25ad826d92bd"
+        }
+      },
+      "declared_attempt_dir": "runs/particle_source_unit_repair_20260811/m05_16h_90gb_campaign_batch0006_v1/recovery0006_six_to_one_replan/attempts/stage10_seven_family/Mass_model_511/buildup/eplus/r6_s10_eplus_buildup_Mass_model_511_bundle0001/attempt01",
+      "declared_errors": [],
+      "declared_events": 5000,
+      "declared_recovery_authority_sha256": "b7bc0cd38aee223f4631ffda7f86894be923a44c5ba7cc1d6fd1c6c3fa9bd45d",
+      "declared_selected_attempt": 1,
+      "declared_status": "PASS",
+      "job_id": "r6_s10_eplus_buildup_Mass_model_511_bundle0001",
+      "receipt_path": "runs/particle_source_unit_repair_20260811/m05_16h_90gb_campaign_batch0006_v1/recovery0006_six_to_one_replan/job_receipts/stage10_seven_family/r6_s10_eplus_buildup_Mass_model_511_bundle0001.json"
+    },
+    {
+      "declared_artifacts": {
+        "dat": {
+          "bytes": 773,
+          "name": "r6_s10_gamma_buildup_Mass_model_511_bundle0001.dat.inc1.dat",
+          "sha256": "81a9b91eb0e72b76b78703aae8cf116033f2ef63c67c30af02e30294cd71312c"
+        },
+        "log": {
+          "bytes": 4981471,
+          "name": "r6_s10_gamma_buildup_Mass_model_511_bundle0001.log",
+          "sha256": "8f0592408343b1714fc7d105f63c1ac356e68f5dde77c5068ed40d19a1655ddc"
+        },
+        "sim": {
+          "bytes": 55581427,
+          "name": "r6_s10_gamma_buildup_Mass_model_511_bundle0001.inc1.id1.sim.gz",
+          "sha256": "752c1462257519cdefd978b26bbd1d73016fd7ec7f0b79c3e93d93945da35fee"
+        },
+        "source": {
+          "bytes": 8961,
+          "name": "r6_s10_gamma_buildup_Mass_model_511_bundle0001.source",
+          "sha256": "7e42e2fb7439c50c2ce61c904694256964b080154f69389a900d30211d04cfdb"
+        }
+      },
+      "declared_attempt_dir": "runs/particle_source_unit_repair_20260811/m05_16h_90gb_campaign_batch0006_v1/recovery0006_six_to_one_replan/attempts/stage10_seven_family/Mass_model_511/buildup/gamma/r6_s10_gamma_buildup_Mass_model_511_bundle0001/attempt01",
+      "declared_errors": [],
+      "declared_events": 50000,
+      "declared_recovery_authority_sha256": "b7bc0cd38aee223f4631ffda7f86894be923a44c5ba7cc1d6fd1c6c3fa9bd45d",
+      "declared_selected_attempt": 1,
+      "declared_status": "PASS",
+      "job_id": "r6_s10_gamma_buildup_Mass_model_511_bundle0001",
+      "receipt_path": "runs/particle_source_unit_repair_20260811/m05_16h_90gb_campaign_batch0006_v1/recovery0006_six_to_one_replan/job_receipts/stage10_seven_family/r6_s10_gamma_buildup_Mass_model_511_bundle0001.json"
+    },
+    {
+      "declared_artifacts": {
+        "dat": {
+          "bytes": 260,
+          "name": "r6_s10_gamma_instant_Mass_model_511_bundle0001.dat.inc1.dat",
+          "sha256": "e208b848d9e4f954df510440070b8591f01d190355182c419cccfa04ffc1b708"
+        },
+        "log": {
+          "bytes": 2569948,
+          "name": "r6_s10_gamma_instant_Mass_model_511_bundle0001.log",
+          "sha256": "eb355cb60660b38496a12a50e1319b4532f7cd9dfd4dd546b019b5bc2cc54f1a"
+        },
+        "sim": {
+          "bytes": 31158584,
+          "name": "r6_s10_gamma_instant_Mass_model_511_bundle0001.inc1.id1.sim.gz",
+          "sha256": "40ae9b02eaa1286b0923b33aa7dea39daa729ca060ff81297691f5a73447ba5a"
+        },
+        "source": {
+          "bytes": 8933,
+          "name": "r6_s10_gamma_instant_Mass_model_511_bundle0001.source",
+          "sha256": "809618295501cfbc9f72a21526c03d2a4b7664057d444aeb0a90f6592555e66e"
+        }
+      },
+      "declared_attempt_dir": "runs/particle_source_unit_repair_20260811/m05_16h_90gb_campaign_batch0006_v1/recovery0006_six_to_one_replan/attempts/stage10_seven_family/Mass_model_511/instant/gamma/r6_s10_gamma_instant_Mass_model_511_bundle0001/attempt01",
+      "declared_errors": [],
+      "declared_events": 25000,
+      "declared_recovery_authority_sha256": "b7bc0cd38aee223f4631ffda7f86894be923a44c5ba7cc1d6fd1c6c3fa9bd45d",
+      "declared_selected_attempt": 1,
+      "declared_status": "PASS",
+      "job_id": "r6_s10_gamma_instant_Mass_model_511_bundle0001",
+      "receipt_path": "runs/particle_source_unit_repair_20260811/m05_16h_90gb_campaign_batch0006_v1/recovery0006_six_to_one_replan/job_receipts/stage10_seven_family/r6_s10_gamma_instant_Mass_model_511_bundle0001.json"
+    },
+    {
+      "declared_artifacts": {
+        "dat": {
+          "bytes": 698,
+          "name": "r6_s10_muminus_buildup_Mass_model_511_bundle0001.dat.inc1.dat",
+          "sha256": "af73b807e0baa4482ebdf997a6e63297e1232992974e00b70c6e47d8b344d155"
+        },
+        "log": {
+          "bytes": 484165,
+          "name": "r6_s10_muminus_buildup_Mass_model_511_bundle0001.log",
+          "sha256": "882b4f5cbf68922838554e143c6bddef87a6fef99ef31656a5cedb154afa12e7"
+        },
+        "sim": {
+          "bytes": 7011010,
+          "name": "r6_s10_muminus_buildup_Mass_model_511_bundle0001.inc1.id1.sim.gz",
+          "sha256": "90a834b44fcfd68c92046457359b78336076480317c3cc99a3042559507c5436"
+        },
+        "source": {
+          "bytes": 9264,
+          "name": "r6_s10_muminus_buildup_Mass_model_511_bundle0001.source",
+          "sha256": "94e39ff4a0d9fe48b7a114d70ea26332b77329b61b13bbd05dfcd147373f4a50"
+        }
+      },
+      "declared_attempt_dir": "runs/particle_source_unit_repair_20260811/m05_16h_90gb_campaign_batch0006_v1/recovery0006_six_to_one_replan/attempts/stage10_seven_family/Mass_model_511/buildup/muminus/r6_s10_muminus_buildup_Mass_model_511_bundle0001/attempt01",
+      "declared_errors": [],
+      "declared_events": 1400,
+      "declared_recovery_authority_sha256": "b7bc0cd38aee223f4631ffda7f86894be923a44c5ba7cc1d6fd1c6c3fa9bd45d",
+      "declared_selected_attempt": 1,
+      "declared_status": "PASS",
+      "job_id": "r6_s10_muminus_buildup_Mass_model_511_bundle0001",
+      "receipt_path": "runs/particle_source_unit_repair_20260811/m05_16h_90gb_campaign_batch0006_v1/recovery0006_six_to_one_replan/job_receipts/stage10_seven_family/r6_s10_muminus_buildup_Mass_model_511_bundle0001.json"
+    },
+    {
+      "declared_artifacts": {
+        "dat": {
+          "bytes": 678,
+          "name": "r6_s10_muminus_buildup_S3d_O8_bundle0001.dat.inc1.dat",
+          "sha256": "b70ffb3c1c538d4766837aff159812463d45af538dcaa2d1faf142af7aa18f44"
+        },
+        "log": {
+          "bytes": 737020,
+          "name": "r6_s10_muminus_buildup_S3d_O8_bundle0001.log",
+          "sha256": "2e20f4ceaa868fb75f9192c83d48b1dc7eb43b53be69143d8509d686e6aae927"
+        },
+        "sim": {
+          "bytes": 17885577,
+          "name": "r6_s10_muminus_buildup_S3d_O8_bundle0001.inc1.id1.sim.gz",
+          "sha256": "5b9d766a859fd2b653d6f2aec2b73d6fd5b60eb3e94d9d33ef9de0f0e798392e"
+        },
+        "source": {
+          "bytes": 9199,
+          "name": "r6_s10_muminus_buildup_S3d_O8_bundle0001.source",
+          "sha256": "669f3386c875e9ccab57584cfbd0b1d758f4d69481e27551bbe96dbfeee59d63"
+        }
+      },
+      "declared_attempt_dir": "runs/particle_source_unit_repair_20260811/m05_16h_90gb_campaign_batch0006_v1/recovery0006_six_to_one_replan/attempts/stage10_seven_family/S3d_O8/buildup/muminus/r6_s10_muminus_buildup_S3d_O8_bundle0001/attempt01",
+      "declared_errors": [],
+      "declared_events": 1400,
+      "declared_recovery_authority_sha256": "b7bc0cd38aee223f4631ffda7f86894be923a44c5ba7cc1d6fd1c6c3fa9bd45d",
+      "declared_selected_attempt": 1,
+      "declared_status": "PASS",
+      "job_id": "r6_s10_muminus_buildup_S3d_O8_bundle0001",
+      "receipt_path": "runs/particle_source_unit_repair_20260811/m05_16h_90gb_campaign_batch0006_v1/recovery0006_six_to_one_replan/job_receipts/stage10_seven_family/r6_s10_muminus_buildup_S3d_O8_bundle0001.json"
+    },
+    {
+      "declared_artifacts": {
+        "dat": {
+          "bytes": 259,
+          "name": "r6_s10_muplus_buildup_Mass_model_511_bundle0001.dat.inc1.dat",
+          "sha256": "876dcaf0dcaca4c1c656b3671c6bcb7e31ac161b31c7ccd081ad72bda7f8a76f"
+        },
+        "log": {
+          "bytes": 242611,
+          "name": "r6_s10_muplus_buildup_Mass_model_511_bundle0001.log",
+          "sha256": "224c374bf1c589ec19f822aafb8d3a517917b5f76e2f93aee70951aba7188c1b"
+        },
+        "sim": {
+          "bytes": 2776394,
+          "name": "r6_s10_muplus_buildup_Mass_model_511_bundle0001.inc1.id1.sim.gz",
+          "sha256": "1cc78b6b80db0d51fe49153a8819c299fb3d671898b69259443129a07aab391e"
+        },
+        "source": {
+          "bytes": 9111,
+          "name": "r6_s10_muplus_buildup_Mass_model_511_bundle0001.source",
+          "sha256": "65cf3bd2c9eb2439d6770133d1245919e52c867a3072310c4397931b97735521"
+        }
+      },
+      "declared_attempt_dir": "runs/particle_source_unit_repair_20260811/m05_16h_90gb_campaign_batch0006_v1/recovery0006_six_to_one_replan/attempts/stage10_seven_family/Mass_model_511/buildup/muplus/r6_s10_muplus_buildup_Mass_model_511_bundle0001/attempt01",
+      "declared_errors": [],
+      "declared_events": 562,
+      "declared_recovery_authority_sha256": "b7bc0cd38aee223f4631ffda7f86894be923a44c5ba7cc1d6fd1c6c3fa9bd45d",
+      "declared_selected_attempt": 1,
+      "declared_status": "PASS",
+      "job_id": "r6_s10_muplus_buildup_Mass_model_511_bundle0001",
+      "receipt_path": "runs/particle_source_unit_repair_20260811/m05_16h_90gb_campaign_batch0006_v1/recovery0006_six_to_one_replan/job_receipts/stage10_seven_family/r6_s10_muplus_buildup_Mass_model_511_bundle0001.json"
+    },
+    {
+      "declared_artifacts": {
+        "dat": {
+          "bytes": 259,
+          "name": "r6_s10_muplus_buildup_S3d_O8_bundle0001.dat.inc1.dat",
+          "sha256": "85d253dcf9a8bb6c55465abbc5c862f0f0829cddeb535ab2253f5e3c9ff7ee48"
+        },
+        "log": {
+          "bytes": 309200,
+          "name": "r6_s10_muplus_buildup_S3d_O8_bundle0001.log",
+          "sha256": "fa315c98ba3d0d82d8717d73a80a60f99a927a09108efc2663d0d17e24379d4d"
+        },
+        "sim": {
+          "bytes": 6800484,
+          "name": "r6_s10_muplus_buildup_S3d_O8_bundle0001.inc1.id1.sim.gz",
+          "sha256": "1004e5feabd00c1905a935be2a6539630c26eee2ed05286067c36e3aa9de7947"
+        },
+        "source": {
+          "bytes": 9046,
+          "name": "r6_s10_muplus_buildup_S3d_O8_bundle0001.source",
+          "sha256": "a5559690f5adee6e4afa9e50cfb0105dcebde101d458dd72388c41041c3538fc"
+        }
+      },
+      "declared_attempt_dir": "runs/particle_source_unit_repair_20260811/m05_16h_90gb_campaign_batch0006_v1/recovery0006_six_to_one_replan/attempts/stage10_seven_family/S3d_O8/buildup/muplus/r6_s10_muplus_buildup_S3d_O8_bundle0001/attempt01",
+      "declared_errors": [],
+      "declared_events": 562,
+      "declared_recovery_authority_sha256": "b7bc0cd38aee223f4631ffda7f86894be923a44c5ba7cc1d6fd1c6c3fa9bd45d",
+      "declared_selected_attempt": 1,
+      "declared_status": "PASS",
+      "job_id": "r6_s10_muplus_buildup_S3d_O8_bundle0001",
+      "receipt_path": "runs/particle_source_unit_repair_20260811/m05_16h_90gb_campaign_batch0006_v1/recovery0006_six_to_one_replan/job_receipts/stage10_seven_family/r6_s10_muplus_buildup_S3d_O8_bundle0001.json"
+    },
+    {
+      "declared_artifacts": {
+        "dat": {
+          "bytes": 259,
+          "name": "r6_s10_muplus_instant_Mass_model_511_bundle0001.dat.inc1.dat",
+          "sha256": "166ad46a89ae56e8af76e0abf5c8f19a65c845df817cc82ad8f67b7fdb0673aa"
+        },
+        "log": {
+          "bytes": 239981,
+          "name": "r6_s10_muplus_instant_Mass_model_511_bundle0001.log",
+          "sha256": "7d8acee5c5382f07aac69e046382affa22cacfbce97d2476a1a856bb324d7689"
+        },
+        "sim": {
+          "bytes": 2797061,
+          "name": "r6_s10_muplus_instant_Mass_model_511_bundle0001.inc1.id1.sim.gz",
+          "sha256": "5a824f0dfa3d2af35f664309a58daee9cc974f25094c5282f6fb91e8f83754e0"
+        },
+        "source": {
+          "bytes": 9083,
+          "name": "r6_s10_muplus_instant_Mass_model_511_bundle0001.source",
+          "sha256": "ea55b44d4df44a58f48eee71c7c69d717924b4596036589f157436913f8601e7"
+        }
+      },
+      "declared_attempt_dir": "runs/particle_source_unit_repair_20260811/m05_16h_90gb_campaign_batch0006_v1/recovery0006_six_to_one_replan/attempts/stage10_seven_family/Mass_model_511/instant/muplus/r6_s10_muplus_instant_Mass_model_511_bundle0001/attempt01",
+      "declared_errors": [],
+      "declared_events": 562,
+      "declared_recovery_authority_sha256": "b7bc0cd38aee223f4631ffda7f86894be923a44c5ba7cc1d6fd1c6c3fa9bd45d",
+      "declared_selected_attempt": 1,
+      "declared_status": "PASS",
+      "job_id": "r6_s10_muplus_instant_Mass_model_511_bundle0001",
+      "receipt_path": "runs/particle_source_unit_repair_20260811/m05_16h_90gb_campaign_batch0006_v1/recovery0006_six_to_one_replan/job_receipts/stage10_seven_family/r6_s10_muplus_instant_Mass_model_511_bundle0001.json"
+    },
+    {
+      "declared_artifacts": {
+        "dat": {
+          "bytes": 259,
+          "name": "r6_s10_muplus_instant_S3d_O8_bundle0001.dat.inc1.dat",
+          "sha256": "e0b65503aedec9de99bca2a5726d409f6e21c97223b5e72d11d98e3c4e435e56"
+        },
+        "log": {
+          "bytes": 376244,
+          "name": "r6_s10_muplus_instant_S3d_O8_bundle0001.log",
+          "sha256": "9fb7c693cac9c454dec8b9018594072c2561f8cb58584a2c1bdefbbc66c80124"
+        },
+        "sim": {
+          "bytes": 8584740,
+          "name": "r6_s10_muplus_instant_S3d_O8_bundle0001.inc1.id1.sim.gz",
+          "sha256": "afc23d90c6445d37db86d910fbf744ea860a1d204305299bb4eb440f0b9388e0"
+        },
+        "source": {
+          "bytes": 9018,
+          "name": "r6_s10_muplus_instant_S3d_O8_bundle0001.source",
+          "sha256": "02e7c433a9ffb12662eff2cda74eb89098cc20d0de139dc3707ce34d48be774a"
+        }
+      },
+      "declared_attempt_dir": "runs/particle_source_unit_repair_20260811/m05_16h_90gb_campaign_batch0006_v1/recovery0006_six_to_one_replan/attempts/stage10_seven_family/S3d_O8/instant/muplus/r6_s10_muplus_instant_S3d_O8_bundle0001/attempt01",
+      "declared_errors": [],
+      "declared_events": 562,
+      "declared_recovery_authority_sha256": "b7bc0cd38aee223f4631ffda7f86894be923a44c5ba7cc1d6fd1c6c3fa9bd45d",
+      "declared_selected_attempt": 1,
+      "declared_status": "PASS",
+      "job_id": "r6_s10_muplus_instant_S3d_O8_bundle0001",
+      "receipt_path": "runs/particle_source_unit_repair_20260811/m05_16h_90gb_campaign_batch0006_v1/recovery0006_six_to_one_replan/job_receipts/stage10_seven_family/r6_s10_muplus_instant_S3d_O8_bundle0001.json"
+    },
+    {
+      "declared_artifacts": {
+        "dat": {
+          "bytes": 338,
+          "name": "s10_muplus_buildup_S3d_O8_shard0001.dat.inc1.dat",
+          "sha256": "8957a8a59745bb01f496235656f4586039181b5a6405cd2427509ae46dfc35ea"
+        },
+        "log": {
+          "bytes": 519951,
+          "name": "s10_muplus_buildup_S3d_O8_shard0001.log",
+          "sha256": "b9dd906ac82a1c18f8e436ef25e7c3a7e5b03349bf6e4f9fb1647408f04478bb"
+        },
+        "sim": {
+          "bytes": 12783981,
+          "name": "s10_muplus_buildup_S3d_O8_shard0001.inc1.id1.sim.gz",
+          "sha256": "ba203f6db46c3437da8d38ee6032181e641a232418ef770f1b36014841fe3ead"
+        },
+        "source": {
+          "bytes": 9031,
+          "name": "s10_muplus_buildup_S3d_O8_shard0001.source",
+          "sha256": "2dcd50b0cb824b9b3d7487e8b3643a346134c0bf5c004b703d540ed290474a57"
+        }
+      },
+      "declared_attempt_dir": "runs/particle_source_unit_repair_20260811/m05_16h_90gb_campaign_batch0006_v1/recovery0006_six_to_one_replan/attempts/stage10_seven_family/S3d_O8/buildup/muplus/s10_muplus_buildup_S3d_O8_shard0001/attempt01",
+      "declared_errors": [],
+      "declared_events": 1000,
+      "declared_recovery_authority_sha256": "b7bc0cd38aee223f4631ffda7f86894be923a44c5ba7cc1d6fd1c6c3fa9bd45d",
+      "declared_selected_attempt": 1,
+      "declared_status": "PASS",
+      "job_id": "s10_muplus_buildup_S3d_O8_shard0001",
+      "receipt_path": "runs/particle_source_unit_repair_20260811/m05_16h_90gb_campaign_batch0006_v1/recovery0006_six_to_one_replan/job_receipts/stage10_seven_family/s10_muplus_buildup_S3d_O8_shard0001.json"
+    }
+  ],
+  "schema_version": 1,
+  "status": "INTENT__FREEZE_R6_SCHEDULER_ONLY_AND_DRAIN_EXISTING_WORK"
+}

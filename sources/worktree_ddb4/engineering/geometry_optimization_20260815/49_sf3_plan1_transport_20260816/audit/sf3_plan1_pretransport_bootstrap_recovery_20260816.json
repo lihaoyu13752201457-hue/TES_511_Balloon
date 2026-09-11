@@ -1,0 +1,121 @@
+{
+  "schema_version": 1,
+  "status": "PASS__SF3_PLAN1_PRETRANSPORT_AGGREGATE_BOOTSTRAP_RECOVERY_AUDITED",
+  "recorded_at": "2026-08-16T00:37:42Z",
+  "profile_id": "SF3_PLAN1_APPROX_ONE_THIRD_PHYSICS_SCREEN",
+  "authority_boundary": "OPERATIONAL_RECOVERY_AND_CONTROLLER_REGRESSION_AUDIT_ONLY__NOT_PHYSICS_OUTPUT",
+  "incident": {
+    "activation_step_completed_at": "2026-08-16T00:17:47.672275+00:00",
+    "blocked_next_step": "transport_delayed",
+    "controller_error": "aggregate zero-A15 exclusion identities/reasons differ",
+    "cause": "THE_BACKGROUND_ONLY_MUTABLE_AGGREGATE_PREDATED_STAGE02_AND_DID_NOT_YET_CONTAIN_THE_DYNAMIC_ZERO_A15_EXCLUSION",
+    "stage02_positive_delayed_jobs": 7,
+    "stage02_zero_A15_job": "sf3_delayed_muplus",
+    "expected_zero_A15_exclusion_reason": "ZERO_A15__NO_DELAYED_TRANSPORT__FINITE_UPPER_LIMIT_ONLY"
+  },
+  "metadata_only_recovery": {
+    "entrypoint": "code/run_sf3_plan1.py",
+    "arguments": [
+      "--phase",
+      "status",
+      "--cpu-budget",
+      "4"
+    ],
+    "implementation": "OFFICIAL_RUNNER_STATUS_PHASE_REFRESHED_THE_MUTABLE_RECEIPT_AGGREGATE_FROM_CANONICAL_SMALL_RECEIPTS_AND_THE_PASS_STAGE02_ACTIVATION_AUTHORITY",
+    "executed_after": "2026-08-16T00:17:47.672275+00:00",
+    "executed_before": "2026-08-16T00:22:58.597432+00:00",
+    "exact_execution_time": "NOT_RETAINED__BOUNDED_BY_ACTIVATION_COMPLETION_AND_READY_HEARTBEAT",
+    "mutable_metadata_paths_refreshed": [
+      "audit/sf3_plan1_transport_receipts.json"
+    ],
+    "physics_output_paths_modified": [],
+    "transport_or_analysis_launched": false,
+    "SIM_opened_or_hashed": false,
+    "SIM_metadata_policy": "NO_REOPEN_OR_REHASH__RECEIPT_PATH_SIZE_HEADER_ONLY",
+    "result": {
+      "followup_ready": true,
+      "followup_errors": [],
+      "next_step": "transport_delayed",
+      "effective_planned_jobs": 29,
+      "execution_exclusions": {
+        "sf3_delayed_muplus": "ZERO_A15__NO_DELAYED_TRANSPORT__FINITE_UPPER_LIMIT_ONLY"
+      }
+    }
+  },
+  "controller_bootstrap_fix": {
+    "applied_after_plan1_and_fullstat_controllers_stopped": true,
+    "pretransport_stale_aggregate_allowed_only_when": {
+      "selected_delayed_receipts": [],
+      "execution_exclusions": {}
+    },
+    "transport_delayed_completion_requires": {
+      "selected_positive_receipts_exactly": 7,
+      "zero_A15_exclusion_identity_exactly": [
+        "sf3_delayed_muplus"
+      ],
+      "zero_A15_exclusion_reason_exactly": "ZERO_A15__NO_DELAYED_TRANSPORT__FINITE_UPPER_LIMIT_ONLY"
+    },
+    "wrong_nonempty_exclusion_policy": "BLOCK__AUTHORITY_CONFLICT",
+    "controller_path": "code/run_sf3_plan1_followup.py",
+    "controller_sha256": "1ad85ab6cf2b3722aab2fa52ecf46a7ad720b4d4ea70bd886a5ce3ed807503bb"
+  },
+  "verification": {
+    "py_compile": "PASS",
+    "pure_synthetic_self_test": "PASS__SF3_PLAN1_FOLLOWUP_ADAPTER_PURE_SYNTHETIC_SELF_TEST",
+    "self_test_production_authorities_accessed": false,
+    "self_test_SIM_opened_statted_discovered_or_hashed": false,
+    "production_check_prerequisites": "PASS__SF3_PLAN1_CRASH_SAFE_FOLLOWUP_COMPLETE",
+    "production_check_complete": true,
+    "production_check_errors": []
+  },
+  "final_authorities": {
+    "stage02_activation_validation": {
+      "path": "audit/sf3_activation_validation.json",
+      "sha256": "f68984251694b16909de87b00d5e64c4155b0bc4ff9f75dafe544d3132bf679e"
+    },
+    "stage02_day15_summary": {
+      "path": "outputs/02_activation/day15_summary.json",
+      "sha256": "9579c444b219700ef7fab9dfcce49ab4874aa61e9195d025b044c7ddf7c321cd"
+    },
+    "stage02_manifest": {
+      "path": "outputs/02_activation/manifest.json",
+      "sha256": "8dfd4c4d22b9fd930c7ab2cc3529675719148c38d7afbbd5a90f6c47a7f2844b"
+    },
+    "final_transport_aggregate": {
+      "path": "audit/sf3_plan1_transport_receipts.json",
+      "sha256": "7fa7ead42d433b315e5ae9b1792fd05a2334b11f19ab9cc360cef48bbfd6e389",
+      "status": "PASS__ALL_29_EFFECTIVE_SF3_ONLY_TRANSPORT_JOBS",
+      "validated_jobs": 29,
+      "effective_planned_jobs": 29
+    },
+    "mission_summary": {
+      "path": "outputs/06_mission/summary.json",
+      "sha256": "7354a0ca4d727deebe564fa2b7fd645946c8127d4a900749a24f4b4ba1c131c9"
+    },
+    "mission_manifest": {
+      "path": "outputs/06_mission/manifest.json",
+      "sha256": "f4810cb3712b0cf214a1133751ae4e9e0162f21873697f8f5f2253056373b9fd"
+    },
+    "plan1_final_audit": {
+      "path": "outputs/07_final_audit/final_audit.json",
+      "sha256": "2a21323b424bffc7470da2a59275a574ceabfe9767c62340a658819e87861484",
+      "status": "PASS__SF3_PLAN1_CHAIN_COMPLETE__CENTRAL_FULLSTAT_GATE_RECORDED"
+    },
+    "fullstat_terminal_stop": {
+      "path": "audit/sf3_fullstat_followup_terminal_stop.json",
+      "sha256": "b587896c9146a66345eea3f316a2b17eb460baebc26c0e880816ab0d262e9d5f",
+      "status": "PASS__SF3_FULLSTAT_FOLLOWUP_STOPPED_BY_PLAN1_CENTRAL_GATE"
+    }
+  },
+  "central_fullstat_gate": {
+    "metric": "central F3_SF3/F3_SE3",
+    "operator": "<=",
+    "threshold": 0.75,
+    "observed_central_ratio": 1.9073430853531805,
+    "proxy_ratio_reported_only": 1.0544551084799256,
+    "proxy_controls_gate": false,
+    "decision": "STOP__NO_FULLSTAT_TOPUP",
+    "topup_required": false,
+    "fullstat_transport_or_analysis_launched": false
+  }
+}

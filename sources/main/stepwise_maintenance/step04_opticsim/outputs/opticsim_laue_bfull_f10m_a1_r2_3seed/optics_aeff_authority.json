@@ -1,0 +1,177 @@
+{
+  "design_name": "balloon511_f10m_ge111_511line_a1",
+  "status": "RUN_AVAILABLE_F10M_PHASE0_EMBED_READY",
+  "science_policy": "511-keV line optimized f=10 m Ge(111) Laue lens. This is an embeddable candidate authority; f9m remains the current published headline until downstream Step09/Step07/Step08 are rerun.",
+  "normalization_policy": "A_eff(E) = ring geometric area times B-FULL emergent within-Be focal diffraction efficiency. A1/R2 honest tile-footprint seed aggregate is used for the embeddable EventList profile.",
+  "design_target": {
+    "aeff_511_design_cm2": 20.0,
+    "aeff_tolerance_fraction": 0.07,
+    "tolerance_policy": "A1 is accepted if seed-aggregate A_eff is within the pre-registered [19.4, 21.4] cm2 Phase-0 gate."
+  },
+  "natural_passband_fwhm": {
+    "center_keV": 511.0,
+    "fwhm_keV": 20.012125776358307,
+    "lo_keV": 500.99393711182086,
+    "hi_keV": 521.0060628881791,
+    "relative_fwhm": 0.0391626727521689,
+    "formula": "DeltaE/E = cot(theta_B) * mosaic_FWHM_rad"
+  },
+  "ring_config": "/home/ubuntu/opticsim/opticsim_full/data/laue/ge111_balloon511_f10m_511keV_line_config.csv",
+  "ring_config_repo_copy": "stepwise_maintenance/step04_opticsim/ge111_balloon511_f10m_511keV_line_config.csv",
+  "rocking_curve_map": "stepwise_maintenance/step04_opticsim/ge111_balloon511_f10m_511keV_xop_map.csv",
+  "bfull_run_dir": "stepwise_maintenance/step04_opticsim/outputs/opticsim_laue_bfull_f10m_a1_r2_3seed",
+  "focal_length_mm": 10000.0,
+  "tile_size_mm": 18.0,
+  "mosaic_fwhm_arcsec": 30.0,
+  "energy_rows": [
+    {
+      "ring_id": 0,
+      "energy_keV": 511.0,
+      "geometric_area_cm2": 81.0,
+      "n_tiles": 25,
+      "analytic_reference_efficiency": 0.257481,
+      "emergent_within_be_efficiency": 0.24796,
+      "adopted_efficiency": 0.24796,
+      "aeff_cm2": 20.084760000000003,
+      "within_be_focal_crossings": 37194,
+      "primaries": 150000
+    }
+  ],
+  "aeff_511_cm2": 20.084760000000003,
+  "sampled_line_band_aeff_sum_cm2": 20.084760000000003,
+  "total_geometric_area_cm2": 81.0,
+  "total_tiles": 25,
+  "total_ge_mass_kg": 0.44062999847154005,
+  "bragg_radius_check": {
+    "max_abs_residual_mm": 4.53079465501105e-07,
+    "pass_0p2mm_bfull_gate": true,
+    "per_ring": [
+      {
+        "ring_id": 0,
+        "energy_keV": 511.0,
+        "z_offset_mm": 0.0,
+        "radius_mm": 74.277929,
+        "expected_radius_mm": 74.27792854692053,
+        "abs_residual_mm": 4.53079465501105e-07
+      }
+    ]
+  },
+  "ring_clearance_check": {
+    "method": "within-ring clearance is checked by adjacent tile chord pitch; Phase 1 will rotate boxes tangentially and enable checkOverlaps.",
+    "tile_size_mm": 18.0,
+    "min_azimuthal_edge_gap_mm": 0.6680795717498498,
+    "pass": true
+  },
+  "rocking_curve_map_coverage": {
+    "map_csv": "stepwise_maintenance/step04_opticsim/ge111_balloon511_f10m_511keV_xop_map.csv",
+    "required_ring_ids": [
+      0
+    ],
+    "covered_ring_ids": [
+      0
+    ],
+    "missing_ring_ids": [],
+    "policy": "The 511-keV science ring is required to use the existing external XOP/CRYSTAL curve.",
+    "pass": true
+  },
+  "focal_stats": {
+    "combined_focal_crossings": "stepwise_maintenance/step04_opticsim/outputs/opticsim_laue_bfull_f10m_a1_r2_3seed/focal_crossings.csv",
+    "per_seed": [
+      {
+        "seed": 12345,
+        "source_focal_crossings": "/home/ubuntu/opticsim/opticsim_full/runs/f10m_ge111_511line/a1_R2_tilefoot_seed12345/focal_crossings.csv",
+        "diffracted_rows": 12522,
+        "within_be_rows": 12504,
+        "outside_be_rows": 18,
+        "aeff_cm2": 20.256480000000003,
+        "r50_mm": 7.089393574837358,
+        "r90_mm": 10.285654234035201
+      },
+      {
+        "seed": 24680,
+        "source_focal_crossings": "/home/ubuntu/opticsim/opticsim_full/runs/f10m_ge111_511line/a1_R2_tilefoot_seed24680/focal_crossings.csv",
+        "diffracted_rows": 12505,
+        "within_be_rows": 12485,
+        "outside_be_rows": 20,
+        "aeff_cm2": 20.2257,
+        "r50_mm": 7.165503416434568,
+        "r90_mm": 10.238788954691712
+      },
+      {
+        "seed": 98765,
+        "source_focal_crossings": "/home/ubuntu/opticsim/opticsim_full/runs/f10m_ge111_511line/a1_R2_tilefoot_seed98765/focal_crossings.csv",
+        "diffracted_rows": 12229,
+        "within_be_rows": 12205,
+        "outside_be_rows": 24,
+        "aeff_cm2": 19.772100000000002,
+        "r50_mm": 7.217906499508449,
+        "r90_mm": 10.342580397467533
+      }
+    ],
+    "diffracted_focal_rows": 37256,
+    "within_be_rows": 37194,
+    "outside_be_rows": 62,
+    "within_be_fraction": 0.9983358385226541,
+    "r50_cm": 0.7156475612216279,
+    "r90_cm": 1.0285254697529675,
+    "r95_cm": 1.1063830117891582,
+    "r99_cm": 1.2452743097695802,
+    "r999_cm": 9.36297966974589,
+    "rmax_within_be_cm": 1.553563110869786,
+    "rmax_all_diffracted_cm": 21.09044857948191,
+    "be_radius_cm": 1.898,
+    "pass_r99_within_be": true
+  },
+  "seed_aggregate": {
+    "a1_R2_honest_tile_footprint": {
+      "group": "a1_R2_honest_tile_footprint_offaxis0_0",
+      "mean_aeff_cm2": 20.084760000000003,
+      "mean_emergent_focal_diffraction_fraction": 0.24837333333333333,
+      "mean_emergent_minus_analytic_focal_diffraction": -0.009107886666666667,
+      "mean_r50_mm": 7.157601163593458,
+      "mean_r90_mm": 10.289007862064816,
+      "n_seeds": 3,
+      "offaxis_x_arcmin": 0.0,
+      "offaxis_y_arcmin": 0.0,
+      "pstdev_aeff_cm2": 0.22144082550424163,
+      "run_kind": "R2_honest_tile_footprint",
+      "seeds": [
+        12345,
+        24680,
+        98765
+      ],
+      "variant": "a1"
+    },
+    "a1_R1_legacy_jitter": {
+      "group": "a1_R1_legacy_jitter_offaxis0_0",
+      "mean_aeff_cm2": 20.132279999999998,
+      "mean_emergent_focal_diffraction_fraction": 0.24884666666666666,
+      "mean_emergent_minus_analytic_focal_diffraction": -0.008634553333333335,
+      "mean_r50_mm": 0.8368731263979295,
+      "mean_r90_mm": 2.0504687153570416,
+      "n_seeds": 3,
+      "offaxis_x_arcmin": 0.0,
+      "offaxis_y_arcmin": 0.0,
+      "pstdev_aeff_cm2": 0.1812389958038835,
+      "run_kind": "R1_legacy_jitter",
+      "seeds": [
+        12345,
+        24680,
+        98765
+      ],
+      "variant": "a1"
+    },
+    "authority_json": "stepwise_maintenance/step04_opticsim/optics_aeff_authority_f10m_20260611.json"
+  },
+  "run_summary": {
+    "run_matches_design": true,
+    "n_primaries": 150000,
+    "emergent_focal_diffraction_fraction": 0.24837333333333333,
+    "analytic_reference_focal_diffraction_fraction": 0.257481,
+    "emergent_minus_analytic_focal_diffraction": -0.009107886666666667,
+    "abs_emergent_minus_analytic_focal_diffraction": 0.009107886666666667,
+    "pass_strict_0p01_gate": true,
+    "rocking_curve_backend": "external_per_ring_csv_map",
+    "rocking_curve_map_csv": "stepwise_maintenance/step04_opticsim/ge111_balloon511_f10m_511keV_xop_map.csv"
+  }
+}

@@ -1,0 +1,111 @@
+{
+  "checks": {
+    "detector_events_written_matches_requested": true,
+    "detector_n_input_matches_phase_rows": true,
+    "detector_n_simulated_matches_requested": true,
+    "event_summary_rows_match_requested": true,
+    "phase_rows_equal_fake_all_diffract_n": true,
+    "source_detector_contract_passes": true
+  },
+  "contract": {
+    "n_tables": 5,
+    "ok": true,
+    "results": [
+      {
+        "errors": [],
+        "extra_columns": [
+          "particle_name",
+          "pdg_encoding",
+          "track_id",
+          "parent_id"
+        ],
+        "n_rows": 60,
+        "ok": true,
+        "path": "runs/laue_fake_table_no_double_absorption_regression/all_diffract/phase_space.csv",
+        "table": "phase_space",
+        "warnings": []
+      },
+      {
+        "errors": [],
+        "extra_columns": [],
+        "n_rows": 398,
+        "ok": true,
+        "path": "runs/laue_all_diffract_detector_handoff/hits.csv",
+        "table": "hits",
+        "warnings": []
+      },
+      {
+        "errors": [],
+        "extra_columns": [],
+        "n_rows": 60,
+        "ok": true,
+        "path": "runs/laue_all_diffract_detector_handoff/event_summary.csv",
+        "table": "event_summary",
+        "warnings": []
+      },
+      {
+        "errors": [],
+        "extra_columns": [],
+        "n_rows": 60,
+        "ok": true,
+        "path": "runs/laue_all_diffract_detector_handoff/hits.csv + runs/laue_all_diffract_detector_handoff/event_summary.csv",
+        "table": "detector_crosslinks",
+        "warnings": []
+      },
+      {
+        "errors": [],
+        "extra_columns": [],
+        "n_rows": 60,
+        "ok": true,
+        "path": "runs/laue_fake_table_no_double_absorption_regression/all_diffract/phase_space.csv + runs/laue_all_diffract_detector_handoff/event_summary.csv",
+        "table": "source_detector_event_ids",
+        "warnings": []
+      }
+    ]
+  },
+  "detector_demo": "/tmp/opticsim-build-g4-11.4.0/detector_only_demo",
+  "detector_stdout_tail": [
+    "",
+    "hBrems:  for pi-  XStype:1  SubType=3",
+    "      dE/dx and range tables from 100 eV  to 100 TeV in 84 bins",
+    "      Lambda tables from threshold to 100 TeV, 7 bins/decade, spline: 1",
+    "      ===== EM models for the G4Region  DefaultRegionForTheWorld ======",
+    "               hBrem : Emin=    0 eV  Emax=  100 TeV  ModifiedMephi",
+    "",
+    "hPairProd:  for pi-  XStype:1  SubType=4",
+    "      dE/dx and range tables from 100 eV  to 100 TeV in 84 bins",
+    "      Lambda tables from threshold to 100 TeV, 7 bins/decade, spline: 1",
+    "      Sampling table 20x1001, from 1.11656 GeV to 100 TeV ",
+    "      ===== EM models for the G4Region  DefaultRegionForTheWorld ======",
+    "           hPairProd : Emin=    0 eV  Emax=  100 TeV  ModifiedMephi",
+    "",
+    "CoulombScat:  for pi- XStype:1 SubType=1 BuildTable=1",
+    "      Used Lambda table of pi+",
+    "      ThetaMin(p) < Theta(degree) < 180, pLimit(GeV^1)= 0.139531",
+    "      ===== EM models for the G4Region  DefaultRegionForTheWorld ======",
+    "  eCoulombScattering : Emin=    0 eV  Emax=  100 TeV",
+    "DETECTOR_ONLY_SUMMARY source=runs/laue_fake_table_no_double_absorption_regression/all_diffract/phase_space.csv out=runs/laue_all_diffract_detector_handoff events=60"
+  ],
+  "detector_summary": {
+    "bgo_veto_fraction": 0.0833333,
+    "model": "geant4_emstandard_tes_bgo_minimal_geometry",
+    "n_bgo_veto": 5,
+    "n_events_written": 60,
+    "n_hits": 398,
+    "n_input_photons": 60,
+    "n_simulated": 60,
+    "n_tes_detected": 55,
+    "seed": 20260524,
+    "source_phase_space": "runs/laue_fake_table_no_double_absorption_regression/all_diffract/phase_space.csv",
+    "system": "geant4_detector_only_demo",
+    "tes_detection_fraction": 0.916667,
+    "total_bgo_edep_keV": 2400,
+    "total_tes_edep_keV": 26400,
+    "warning": "Standalone detector-only Geant4 prototype; geometry/source/hit contract scaffold, not yet a validated TES/BGO flight mass model."
+  },
+  "n_phase_rows": 60,
+  "n_requested": 60,
+  "overall": true,
+  "phase_space": "runs/laue_fake_table_no_double_absorption_regression/all_diffract/phase_space.csv",
+  "run_dir": "runs/laue_all_diffract_detector_handoff"
+}

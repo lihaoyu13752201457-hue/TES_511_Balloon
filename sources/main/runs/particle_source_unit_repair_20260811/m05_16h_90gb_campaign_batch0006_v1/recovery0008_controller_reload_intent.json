@@ -1,0 +1,329 @@
+{
+  "authorization": {
+    "absolute_worker_cap": 10,
+    "live_mem_available_floor_bytes": 1610612736,
+    "minimum_target_workers": 6,
+    "no_repeated_artifact_validation_or_hashing": true,
+    "no_transport_input_changes": true,
+    "scheduler_only_change": true
+  },
+  "coordinator": {
+    "comm": "python3",
+    "pgid": 111445,
+    "pid": 111445,
+    "ppid": 8164,
+    "proc_starttime_ticks": 2948555,
+    "sid": 111445,
+    "state": "S"
+  },
+  "coordinator_parent_cgroup": "/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/app.slice/app-org.chromium.Chromium-3007.scope",
+  "created_at": "2026-08-12T21:18:59.290060+00:00",
+  "dedicated_freezer_cgroup": "/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/app.slice/app-org.chromium.Chromium-3007.scope/m05_recovery0007_cutover_111445_2948555",
+  "failed_attempt_declarations_before": [],
+  "initial_descendants": [
+    {
+      "comm": "python3",
+      "pgid": 111445,
+      "pid": 112068,
+      "ppid": 111445,
+      "proc_starttime_ticks": 2956314,
+      "sid": 111445,
+      "state": "S"
+    },
+    {
+      "comm": "cosima",
+      "pgid": 112069,
+      "pid": 112069,
+      "ppid": 112068,
+      "proc_starttime_ticks": 2956322,
+      "sid": 112069,
+      "state": "R"
+    },
+    {
+      "comm": "python3",
+      "pgid": 111445,
+      "pid": 112156,
+      "ppid": 111445,
+      "proc_starttime_ticks": 2958485,
+      "sid": 111445,
+      "state": "S"
+    },
+    {
+      "comm": "cosima",
+      "pgid": 112157,
+      "pid": 112157,
+      "ppid": 112156,
+      "proc_starttime_ticks": 2958495,
+      "sid": 112157,
+      "state": "R"
+    },
+    {
+      "comm": "python3",
+      "pgid": 111445,
+      "pid": 112873,
+      "ppid": 111445,
+      "proc_starttime_ticks": 2966168,
+      "sid": 111445,
+      "state": "S"
+    },
+    {
+      "comm": "cosima",
+      "pgid": 112875,
+      "pid": 112875,
+      "ppid": 112873,
+      "proc_starttime_ticks": 2966177,
+      "sid": 112875,
+      "state": "R"
+    },
+    {
+      "comm": "python3",
+      "pgid": 111445,
+      "pid": 113152,
+      "ppid": 111445,
+      "proc_starttime_ticks": 2968425,
+      "sid": 111445,
+      "state": "S"
+    },
+    {
+      "comm": "cosima",
+      "pgid": 113153,
+      "pid": 113153,
+      "ppid": 113152,
+      "proc_starttime_ticks": 2968432,
+      "sid": 113153,
+      "state": "R"
+    },
+    {
+      "comm": "python3",
+      "pgid": 111445,
+      "pid": 113340,
+      "ppid": 111445,
+      "proc_starttime_ticks": 2969989,
+      "sid": 111445,
+      "state": "S"
+    },
+    {
+      "comm": "cosima",
+      "pgid": 113341,
+      "pid": 113341,
+      "ppid": 113340,
+      "proc_starttime_ticks": 2969997,
+      "sid": 113341,
+      "state": "R"
+    }
+  ],
+  "initial_direct_child_identities": [
+    [
+      112068,
+      2956314
+    ],
+    [
+      112156,
+      2958485
+    ],
+    [
+      112873,
+      2966168
+    ],
+    [
+      113152,
+      2968425
+    ],
+    [
+      113340,
+      2969989
+    ]
+  ],
+  "method": [
+    "move coordinator only to a dedicated cgroup-v2 child and set cgroup.freeze=1",
+    "allow already-forked descendants to finish without signalling them",
+    "require cgroup.events frozen=1 and zero non-z descendants/partials",
+    "SIGKILL cgroup-frozen coordinator",
+    "acquire campaign flock exclusively before write-once completion"
+  ],
+  "partial_attempts_before": [
+    "runs/particle_source_unit_repair_20260811/m05_16h_90gb_campaign_batch0006_v1/recovery0008_current_attempt_disk_admission/attempts/stage20_proton/Mass_model_511/instant/proton/r6_s20_proton_instant_Mass_model_511_bundle0009/.attempt01.partial",
+    "runs/particle_source_unit_repair_20260811/m05_16h_90gb_campaign_batch0006_v1/recovery0008_current_attempt_disk_admission/attempts/stage20_proton/Mass_model_511/instant/proton/r6_s20_proton_instant_Mass_model_511_bundle0010/.attempt01.partial",
+    "runs/particle_source_unit_repair_20260811/m05_16h_90gb_campaign_batch0006_v1/recovery0008_current_attempt_disk_admission/attempts/stage20_proton/Mass_model_511/instant/proton/r6_s20_proton_instant_Mass_model_511_bundle0011/.attempt01.partial",
+    "runs/particle_source_unit_repair_20260811/m05_16h_90gb_campaign_batch0006_v1/recovery0008_current_attempt_disk_admission/attempts/stage20_proton/Mass_model_511/instant/proton/r6_s20_proton_instant_Mass_model_511_bundle0012/.attempt01.partial",
+    "runs/particle_source_unit_repair_20260811/m05_16h_90gb_campaign_batch0006_v1/recovery0008_current_attempt_disk_admission/attempts/stage20_proton/Mass_model_511/instant/proton/r6_s20_proton_instant_Mass_model_511_bundle0013/.attempt01.partial"
+  ],
+  "r6_declarations": {
+    "absolute_worker_cap": 10,
+    "authority_path": "runs/particle_source_unit_repair_20260811/m05_16h_90gb_campaign_batch0006_v1/recovery0008_current_attempt_disk_admission/authority.json",
+    "authority_status": "AUTHORIZED__CURRENT_ATTEMPT_ONLY_DISK_ADMISSION__TRANSPORT_PENDING",
+    "controller_hash_computed_or_required": false,
+    "controller_path": "engineering/particle_source_unit_repair_20260811/m05_16h_90gb_campaign_batch0006_20260812/code/resume_m05_campaign_batch0006_recovery0008_disk_admission.py",
+    "effective_pending_plan_declared_sha256": "c802beb2aa110f462057e4de35e98f9966a7adbdd284bfba0fc1b19349409574",
+    "maximum_exact_attempts": 2,
+    "minimum_target_workers": 6,
+    "note": "declarations copied without computing hashes or reopening gzip artifacts",
+    "recovery_id": "batch0006_recovery0008_current_attempt_disk_admission",
+    "seed_registry_path": "runs/particle_source_unit_repair_20260811/m05_16h_90gb_campaign_batch0006_v1/recovery0008_current_attempt_disk_admission/seed_registry.json"
+  },
+  "r6_final_umbrella_absent_before": true,
+  "receipt_declarations_before": [
+    {
+      "declared_artifacts": {
+        "dat": {
+          "bytes": 258,
+          "name": "r6_s20_proton_instant_Mass_model_511_bundle0004.dat.inc1.dat",
+          "sha256": "7e554a3561dc8ed2164681df657e6cf04119b103060595544dd15d6a424792ab"
+        },
+        "log": {
+          "bytes": 1110367,
+          "name": "r6_s20_proton_instant_Mass_model_511_bundle0004.log",
+          "sha256": "e4f52a474c683538b7c7f10c4bae8438e810ef2c8bc97896d7aaa03615393af0"
+        },
+        "sim": {
+          "bytes": 100368163,
+          "name": "r6_s20_proton_instant_Mass_model_511_bundle0004.inc1.id1.sim.gz",
+          "sha256": "172430ee47246219d827c15c92d499709f0a4a09f3a86d54481b8e8292c2e0fc"
+        },
+        "source": {
+          "bytes": 8368,
+          "name": "r6_s20_proton_instant_Mass_model_511_bundle0004.source",
+          "sha256": "e35da9a29a99712af1f35f0ff6e6627df2c470117a8b4073519e2057d305b15a"
+        }
+      },
+      "declared_attempt_dir": "runs/particle_source_unit_repair_20260811/m05_16h_90gb_campaign_batch0006_v1/recovery0008_current_attempt_disk_admission/attempts/stage20_proton/Mass_model_511/instant/proton/r6_s20_proton_instant_Mass_model_511_bundle0004/attempt01",
+      "declared_errors": [],
+      "declared_events": 2048,
+      "declared_recovery_authority_sha256": "50b697f7471e820b73aaee49113c0bdf488c9e5654aa1e6b96e509ad6ad5cc65",
+      "declared_selected_attempt": 1,
+      "declared_status": "PASS",
+      "job_id": "r6_s20_proton_instant_Mass_model_511_bundle0004",
+      "receipt_path": "runs/particle_source_unit_repair_20260811/m05_16h_90gb_campaign_batch0006_v1/recovery0008_current_attempt_disk_admission/job_receipts/stage20_proton/r6_s20_proton_instant_Mass_model_511_bundle0004.json"
+    },
+    {
+      "declared_artifacts": {
+        "dat": {
+          "bytes": 259,
+          "name": "r6_s20_proton_instant_Mass_model_511_bundle0005.dat.inc1.dat",
+          "sha256": "793b0c2bd4b305696f23f35f5b37771d27c1e3d86ee6d19dab1b4fa81fc859ea"
+        },
+        "log": {
+          "bytes": 1182805,
+          "name": "r6_s20_proton_instant_Mass_model_511_bundle0005.log",
+          "sha256": "d4118bc04efcaae6a28fd01cc455b7ab09d9ec2d323112131f2c44e5a2bc29d3"
+        },
+        "sim": {
+          "bytes": 115415131,
+          "name": "r6_s20_proton_instant_Mass_model_511_bundle0005.inc1.id1.sim.gz",
+          "sha256": "ab21a6109dfea34dce308f2f3db35dce161ff9082b6fb4f16e08535b2370bbaa"
+        },
+        "source": {
+          "bytes": 8368,
+          "name": "r6_s20_proton_instant_Mass_model_511_bundle0005.source",
+          "sha256": "de0af87f2ccc84d8e04ee89fe02b2aaccb57f027aeb789876f10a6472c825493"
+        }
+      },
+      "declared_attempt_dir": "runs/particle_source_unit_repair_20260811/m05_16h_90gb_campaign_batch0006_v1/recovery0008_current_attempt_disk_admission/attempts/stage20_proton/Mass_model_511/instant/proton/r6_s20_proton_instant_Mass_model_511_bundle0005/attempt01",
+      "declared_errors": [],
+      "declared_events": 2048,
+      "declared_recovery_authority_sha256": "50b697f7471e820b73aaee49113c0bdf488c9e5654aa1e6b96e509ad6ad5cc65",
+      "declared_selected_attempt": 1,
+      "declared_status": "PASS",
+      "job_id": "r6_s20_proton_instant_Mass_model_511_bundle0005",
+      "receipt_path": "runs/particle_source_unit_repair_20260811/m05_16h_90gb_campaign_batch0006_v1/recovery0008_current_attempt_disk_admission/job_receipts/stage20_proton/r6_s20_proton_instant_Mass_model_511_bundle0005.json"
+    },
+    {
+      "declared_artifacts": {
+        "dat": {
+          "bytes": 259,
+          "name": "r6_s20_proton_instant_Mass_model_511_bundle0006.dat.inc1.dat",
+          "sha256": "1e34f3bc277bcf1929f1231cd74328cc3251d089cea046f1faac702ef374f197"
+        },
+        "log": {
+          "bytes": 1075909,
+          "name": "r6_s20_proton_instant_Mass_model_511_bundle0006.log",
+          "sha256": "c0c7060e23e32e9d5d8fc77249a4c183c8afb8004b8dd0b058472666b248d235"
+        },
+        "sim": {
+          "bytes": 103673534,
+          "name": "r6_s20_proton_instant_Mass_model_511_bundle0006.inc1.id1.sim.gz",
+          "sha256": "9892f43c2ebb1b6cdfb5e6d95d683515f30a87a2230d1a49f19e5387f4525306"
+        },
+        "source": {
+          "bytes": 8368,
+          "name": "r6_s20_proton_instant_Mass_model_511_bundle0006.source",
+          "sha256": "90c31918315cb32a9b971aba37fe1352bae693a1e311cb8a10bf296c4adae603"
+        }
+      },
+      "declared_attempt_dir": "runs/particle_source_unit_repair_20260811/m05_16h_90gb_campaign_batch0006_v1/recovery0008_current_attempt_disk_admission/attempts/stage20_proton/Mass_model_511/instant/proton/r6_s20_proton_instant_Mass_model_511_bundle0006/attempt01",
+      "declared_errors": [],
+      "declared_events": 2048,
+      "declared_recovery_authority_sha256": "50b697f7471e820b73aaee49113c0bdf488c9e5654aa1e6b96e509ad6ad5cc65",
+      "declared_selected_attempt": 1,
+      "declared_status": "PASS",
+      "job_id": "r6_s20_proton_instant_Mass_model_511_bundle0006",
+      "receipt_path": "runs/particle_source_unit_repair_20260811/m05_16h_90gb_campaign_batch0006_v1/recovery0008_current_attempt_disk_admission/job_receipts/stage20_proton/r6_s20_proton_instant_Mass_model_511_bundle0006.json"
+    },
+    {
+      "declared_artifacts": {
+        "dat": {
+          "bytes": 259,
+          "name": "r6_s20_proton_instant_Mass_model_511_bundle0007.dat.inc1.dat",
+          "sha256": "1d2f8c0f0d7fe5cea5f8bea7e38ac631e13e3dc71071071b37a70e838509a042"
+        },
+        "log": {
+          "bytes": 1059790,
+          "name": "r6_s20_proton_instant_Mass_model_511_bundle0007.log",
+          "sha256": "96ee9987adc6dff6189d68a7e91c979dad1d31c737fcafd8ed60bdd2f46c8601"
+        },
+        "sim": {
+          "bytes": 85641974,
+          "name": "r6_s20_proton_instant_Mass_model_511_bundle0007.inc1.id1.sim.gz",
+          "sha256": "dd90157215af05021247ba34a7901c1f5c59deac2aa4cd78585c6ad12be51ee9"
+        },
+        "source": {
+          "bytes": 8368,
+          "name": "r6_s20_proton_instant_Mass_model_511_bundle0007.source",
+          "sha256": "eafd41a1b1da09124d1f924dde75e160bb17a8b27b805ef7aebbbe24f28c6ee3"
+        }
+      },
+      "declared_attempt_dir": "runs/particle_source_unit_repair_20260811/m05_16h_90gb_campaign_batch0006_v1/recovery0008_current_attempt_disk_admission/attempts/stage20_proton/Mass_model_511/instant/proton/r6_s20_proton_instant_Mass_model_511_bundle0007/attempt01",
+      "declared_errors": [],
+      "declared_events": 2048,
+      "declared_recovery_authority_sha256": "50b697f7471e820b73aaee49113c0bdf488c9e5654aa1e6b96e509ad6ad5cc65",
+      "declared_selected_attempt": 1,
+      "declared_status": "PASS",
+      "job_id": "r6_s20_proton_instant_Mass_model_511_bundle0007",
+      "receipt_path": "runs/particle_source_unit_repair_20260811/m05_16h_90gb_campaign_batch0006_v1/recovery0008_current_attempt_disk_admission/job_receipts/stage20_proton/r6_s20_proton_instant_Mass_model_511_bundle0007.json"
+    },
+    {
+      "declared_artifacts": {
+        "dat": {
+          "bytes": 258,
+          "name": "r6_s20_proton_instant_Mass_model_511_bundle0008.dat.inc1.dat",
+          "sha256": "836fa14d465e928f4bb4f6aaacfb77a2cf8de830faa180f0c1c7ea0a1ca8a8fb"
+        },
+        "log": {
+          "bytes": 1049489,
+          "name": "r6_s20_proton_instant_Mass_model_511_bundle0008.log",
+          "sha256": "1e2320700f5fb9ba5a99f5f8ff8b914859ed69eccaca875bd04044c93e453e5a"
+        },
+        "sim": {
+          "bytes": 85958394,
+          "name": "r6_s20_proton_instant_Mass_model_511_bundle0008.inc1.id1.sim.gz",
+          "sha256": "5c513628db09150e8eff963f2e3cb3aaf7b4337fbea148d8734e47d599ddde2e"
+        },
+        "source": {
+          "bytes": 8368,
+          "name": "r6_s20_proton_instant_Mass_model_511_bundle0008.source",
+          "sha256": "28d45a9d8eb9e0525acdbebecd69f1f02f9f070028f03c44741accdf3ba5f4d6"
+        }
+      },
+      "declared_attempt_dir": "runs/particle_source_unit_repair_20260811/m05_16h_90gb_campaign_batch0006_v1/recovery0008_current_attempt_disk_admission/attempts/stage20_proton/Mass_model_511/instant/proton/r6_s20_proton_instant_Mass_model_511_bundle0008/attempt01",
+      "declared_errors": [],
+      "declared_events": 2048,
+      "declared_recovery_authority_sha256": "50b697f7471e820b73aaee49113c0bdf488c9e5654aa1e6b96e509ad6ad5cc65",
+      "declared_selected_attempt": 1,
+      "declared_status": "PASS",
+      "job_id": "r6_s20_proton_instant_Mass_model_511_bundle0008",
+      "receipt_path": "runs/particle_source_unit_repair_20260811/m05_16h_90gb_campaign_batch0006_v1/recovery0008_current_attempt_disk_admission/job_receipts/stage20_proton/r6_s20_proton_instant_Mass_model_511_bundle0008.json"
+    }
+  ],
+  "schema_version": 1,
+  "status": "INTENT__RECOVERY0008_SAME_NAMESPACE_CONTROLLER_RELOAD_AFTER_CURRENT_WORKERS"
+}

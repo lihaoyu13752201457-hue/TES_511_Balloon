@@ -1,0 +1,11 @@
+file,line,symbol,role,review_focus
+geant4_app/src/laue_multiring_darwin_guan_demo.cc,190,OnlineDarwinMosaicProbabilities,在线计算 p_diff/p_abs/p_trans，不读取 01 概率表。,确认 02 的物理后端不是 01 的 CSV 查表。
+geant4_app/src/laue_multiring_darwin_guan_demo.cc,224,ReflectAcrossPlane,按晶面法线做镜面反射方向计算。,反射几何是否与 Bragg 平面定义一致。
+geant4_app/src/laue_multiring_darwin_guan_demo.cc,230,PerturbDirection,用 mosaic sigma 给衍射方向加小角度散布。,sigma 单位由 arcsec 转 rad。
+geant4_app/src/laue_multiring_darwin_guan_demo.cc,292,LoadRingConfig,与 01 相同的五环几何读取和 Bragg 半径核验。,确保 same-geometry comparison。
+geant4_app/src/laue_multiring_darwin_guan_demo.cc,614,GuanDarwinDynamicalModel,把 Bragg mismatch、晶面法线、理想出射方向和在线 Darwin 概率集中在模型层。,这是 02 与 01 的主要架构和物理后端差异。
+geant4_app/src/laue_multiring_darwin_guan_demo.cc,618,GuanDarwinDynamicalModel::Evaluate,计算 focusPoint、planeNormal、deltaTheta，并调用在线 Darwin-Hamilton mosaic 模型。,deltaTheta 定义是否与 01 等价，概率是否不再查表。
+geant4_app/src/laue_multiring_darwin_guan_demo.cc,644,GuanStyleLaueBraggProcess,Geant4 process adapter，只处理 step 条件、抽样和 secondary。,物理和 Geant4 glue 是否拆开。
+geant4_app/src/laue_multiring_darwin_guan_demo.cc,661,GuanStyleLaueBraggProcess::PostStepDoIt,调用模型 Evaluate 后走 ABSORB/TRANSMIT/DIFFRACT 三分支。,process 是否只做 Geant4 adapter。
+geant4_app/src/laue_multiring_darwin_guan_demo.cc,750,MultiRingPhysicsList::ConstructProcess,把 process 加到 gamma process manager。,这是 app-level discrete process，不是 EM-category patch。
+analysis/compare_geant4_darwin_guan_vs_barhoum.py,23,compare,对 02 和 01 的 summary/per-ring 输出做数值闭合。,mean p_diff delta 和 sampled fraction delta 分开看。

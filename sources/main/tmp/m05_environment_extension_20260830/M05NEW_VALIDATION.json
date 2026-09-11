@@ -1,0 +1,156 @@
+{
+  "schema_version": 2,
+  "status": "HOLD__MODEL_B_OPTICAL_ACCEPTANCE_NOT_MATCHED_TO_MODEL_A",
+  "paper_logic": "SG3B auditable baseline -> background diagnosis -> SH3 OptV3 geometry -> matched feasibility comparison",
+  "publication_hold": {
+    "decision": "HOLD",
+    "reason": "The numerical flux and weighting chain is closed for the simulated geometries, but model B uses a 2.70 cm optical opening and four-bar W frame whereas model A uses the 1.898 cm entrance envelope and a 624-copy W multihole collimator. The current model-B line response is therefore an open-frame complete-design result, not a controlled same-aperture shielding comparison.",
+    "model_b_open_frame_Fmin_3sigma_gaussian_ph_cm2_s": 4.185157715646857e-05,
+    "line_response_ratio_b_over_a_central": 2.957,
+    "required_resolution": "Either publish model B as a complete alternative design including the aperture/collimator change, or build and transport a physically collimation-matched model B before retaining the current controlled-comparison language.",
+    "manuscript_and_release_finalization_allowed": false
+  },
+  "normalization_authority": {
+    "provider": "PARMA dedicated atmospheric annihilation-line parameterization",
+    "line_energy_keV": 510.99895,
+    "day15_full_space_flux_ph_cm2_s": 0.16651547160226118,
+    "angular_bins_equal_mu": 80,
+    "trajectory_nodes": 81,
+    "literature_scope": "Mahoney/Harris references [33,34] establish the existence and physical background of the atmospheric annihilation-line component only; they do not set the numerical normalization.",
+    "physical_PARMA_flux_and_angular_systematics": "EXCLUDED"
+  },
+  "source_closure": {
+    "status": "COMPLETE__HYBRID_W118P3_G0_DELINE__W114P6_G0P15_MONO_81X80",
+    "operation": "broadband total - coarse-bin line contribution + monoenergetic line",
+    "original_broadband_flux_ph_cm2_s": 4.7996615777852,
+    "removed_coarse_line_flux_ph_cm2_s": 0.17644263123359388,
+    "continuum_reference_flux_ph_cm2_s": 4.623218946551606,
+    "hybrid_day15_recomposed_gamma_flux_ph_cm2_s": 4.589076082023869,
+    "hybrid_day15_representation_delta_ph_cm2_s": -0.0022691436007198362,
+    "line_importance_ratio_range_81x80": [0.6538646344950084, 1.6128636607432865],
+    "caveat": "The de-lined broadband template retains the W=118.3/g=0 reference shape and existing continuum trajectory scaling, while the physical mono target uses W=114.6/g=0.15 with node-specific Rc/depth; this is not an all-components regeneration at one identical parameter state.",
+    "path": "engineering/geometry_optimization_20260815/67_m05_mono511_flux_closure_20260823/outputs/00_source_closure/source_closure.json",
+    "sha256": "acfa91b0cfc36b6492e218a9164473cef51f2cca2c47a186d45ec96f5983cbae"
+  },
+  "line_response": {
+    "model_a": {
+      "status": "COMPLETE__MONO_LINE_COMMON_RESPONSE",
+      "incident_photons": 3000000,
+      "detector_positive_events": 1008606,
+      "final_selected_events": 12,
+      "day15_final_rate_cps": 0.007538837736129749,
+      "day15_transport_sigma_cps": 0.0021762749981657096,
+      "day15_ESS": 12.0,
+      "summary_sha256": "72e13caa705025e633a9a24ac67db2eb0587e82c781ec6416c7eba2c32c3e662"
+    },
+    "model_b": {
+      "status": "COMPLETE__MONO_LINE_COMMON_RESPONSE",
+      "incident_photons": 15709417,
+      "detector_positive_events": 650363,
+      "final_selected_events": 186,
+      "day15_final_rate_cps": 0.022292460571900277,
+      "day15_transport_sigma_cps": 0.0016345625147982216,
+      "day15_ESS": 186.0,
+      "summary_sha256": "d6487790c9818f0dde9fef1323e164ae3dc500559381fdfdca6ffd21558de1e2"
+    },
+    "matched_contract": "510.99895 keV, PARMA 80-bin day-15 proposal, model-specific fixed geometry, common detector response, final selection, and mission clock"
+  },
+  "fluxclosed_catalog": {
+    "model_a": {
+      "status": "COMPLETE__POSITIVE_FLUXCLOSED_EVENT_CATALOG",
+      "events": 14880120,
+      "hits": 135950,
+      "categories": 1808,
+      "summary_sha256": "2de6a9520ea4149171b6a80c1df8939dda9385d3aff5125eea27704c6460a50c"
+    },
+    "model_b": {
+      "status": "COMPLETE__POSITIVE_FLUXCLOSED_EVENT_CATALOG",
+      "events": 8709361,
+      "hits": 623747,
+      "categories": 1541,
+      "summary_sha256": "63ee8e7114256fde6c7698bc5931f29aef7d501b8d2f908f341dbe0e32b7625e"
+    },
+    "weight_checks": {
+      "all_weights_nonnegative": true,
+      "continuum_importance_applied_once": true,
+      "sumw2_recorded": true,
+      "effective_sample_size_recorded": true,
+      "gamma_IA_INIT_matching_rate_both_models": 1.0
+    }
+  },
+  "timeline": {
+    "status_both_models": "PASS__M05_FLUXCLOSED_COMMON_TIME_TIMELINE",
+    "anchors": [0, 20, 40, 60, 80],
+    "anchor_days": [0.0, 5.0, 10.0, 15.0, 20.0],
+    "trajectory_nodes": 81,
+    "model_a_summary_sha256": "058b43d8fe73e13d25a82b8aa9d5ea3a800db16439c12bd91e778f8f734f946d",
+    "model_b_summary_sha256": "90e8ebc1d530ee2d863bd13c0ee6f8118dbebb38ed35621c3ca293c109c1d426"
+  },
+  "statistics_validation": {
+    "status": "PASS__FLUXCLOSED_RESULTS_VALIDATED__NO_TOPUP",
+    "global_decision": "NO_TOPUP",
+    "model_a_line_mission_ESS": 11.99999641339194,
+    "model_b_line_mission_ESS": 185.89988254230673,
+    "model_a_line_Fmin_variance_fraction": 0.07226768927347071,
+    "model_b_line_Fmin_variance_fraction": 0.4991417219843593,
+    "model_a_line_sigma_to_rest_sigma": 0.2791005826546323,
+    "model_b_line_sigma_to_rest_sigma": 0.9982849147253015,
+    "thresholds": {
+      "line_Fmin_variance_fraction_max": 0.5,
+      "line_sigma_to_rest_sigma_max": 1.0
+    },
+    "sha256": "453171491f36530ab36e3e2e30b8a3ee9f12d02e803c36b186592445421c6fac"
+  },
+  "figures": {
+    "status": "PASS__M05_FLUXCLOSED_FIGURES_STAGED",
+    "figure_3_policy": "RETAIN_EXISTING_M05NEW_IMAGE; neutral EXPACS/PARMA caption only",
+    "figures_4_to_10": "REFRESHED_FROM_FLUXCLOSED_PACKAGE",
+    "receipt_sha256": "36c232953a128dc72e3bc2202dd61180aae47b89c5b9b50f692dd7ae26e3ad8b"
+  },
+  "publication_values": {
+    "status": "PASS__PUBLICATION_VALUES_FLUXCLOSED_A_B",
+    "receipt_status": "PASS__HASH_RECEIPT__FORMAL_00_TO_04_MATCH_VALIDATION_AUTHORITY",
+    "publication_values_sha256": "35f9b714b854edae43a95f58ac86de7cab4a7d876935b6846ff9acee25b38c5a",
+    "receipt_sha256": "d784ac831779a0a65071e6959d06d957494c87a1a0a26858c8d934d7f8252c64",
+    "model_a": {
+      "day15_background_cps": 0.060595953980508585,
+      "cumulative_background_counts_20d": 99923.14165545377,
+      "signal_kernel_counts_per_unit_flux": 16350529.192505842,
+      "Fmin_3sigma_gaussian": 5.799926385676048e-05,
+      "Fmin_3sigma_gaussian_standard_error": 3.9118488171314315e-06,
+      "Fmin_3sigma_asimov": 5.8090931634870914e-05,
+      "Fmin_3sigma_asimov_standard_error": 3.9118656792848405e-06
+    },
+    "model_b": {
+      "day15_background_cps": 0.03122834776990912,
+      "cumulative_background_counts_20d": 54805.970088911905,
+      "signal_kernel_counts_per_unit_flux": 16781213.415433664,
+      "Fmin_3sigma_gaussian": 4.185157715646857e-05,
+      "Fmin_3sigma_gaussian_standard_error": 1.562885154090927e-06,
+      "Fmin_3sigma_asimov": 4.194086769692741e-05,
+      "Fmin_3sigma_asimov_standard_error": 1.5629100000512787e-06
+    }
+  },
+  "checks": {
+    "flux_conservation_subtract_then_add": true,
+    "PARMA_normalization_and_80_bin_angular_distribution_used": true,
+    "model_a_and_b_common_response_selection_timeline": true,
+    "model_a_and_b_matched_optical_acceptance": false,
+    "five_anchors_and_81_nodes_closed": true,
+    "duty_cycle_and_cumulative_background_closed": true,
+    "Gaussian_and_Asimov_Fmin_and_errors_closed": true,
+    "sumw_sumw2_ESS_and_topup_gate_closed": true,
+    "figures_4_to_10_refreshed": true,
+    "figure_3_retained": true,
+    "structured_release_files_updated": true,
+    "bilingual_tex_final_hashes_recorded": false,
+    "bilingual_pdf_final_hashes_recorded": false
+  },
+  "paper_readiness": {
+    "numerical_data": "CONDITIONAL__CURRENT_OPEN_FRAME_MODEL_B_ONLY",
+    "figures": "HOLD",
+    "structured_release": "HOLD",
+    "bilingual_tex_and_pdf": "HOLD__OPTICAL_ACCEPTANCE_DECISION_REQUIRED",
+    "reason_not_overall_release_pass": "The simulated model-B aperture/collimator differs from model A and contradicts the manuscript's same-aperture controlled-comparison claim."
+  }
+}

@@ -1,0 +1,43 @@
+section,selection,n_rows,mission_counts_20d_baseline_live,fraction_of_section_denominator,Neff,dominant_event_fraction,note
+signal,all EventList rays,37194,,1,,,theta_deg min/median/p95/p99/max=0.393139509/0.425598108/0.437254848/0.441953170/0.459801722; entry faces=['x-']
+signal,x- entry footprint bounding rectangle,37194,,1,,,"x=-3.15 cm; y=[-1.217324810,1.401994618] cm; z=[-6.512156782,-3.928334452] cm"
+delayed_denominator,all official selected delayed,420,88804.862651875927,1,28.686725195,0.0564965011846,
+delayed_denominator,unique traceable ANNI-to-TES direction,418,88775.701125935724,0.999671622419,28.667953344,0.0565150594631,directional denominator for all following traceable selections
+delayed_denominator,multi-ANNI direction UNKNOWN,2,29.161525940196,0.000328377580567,1.359919129,0.843029039472,count pessimistically accepted in the full-D footprint upper bound
+delayed_axis_cone,theta_to_+x_IF <= 0.459802 deg,0,0.000000000000,0,0.000000000,0,
+delayed_axis_cone,theta_to_+x_IF <= 1 deg,0,0.000000000000,0,0.000000000,0,
+delayed_axis_cone,theta_to_+x_IF <= 2 deg,0,0.000000000000,0,0.000000000,0,
+delayed_axis_cone,theta_to_+x_IF <= 3 deg,0,0.000000000000,0,0.000000000,0,
+delayed_axis_cone,theta_to_+x_IF <= 5 deg,0,0.000000000000,0,0.000000000,0,
+delayed_axis_cone,theta_to_+x_IF <= 10 deg,0,0.000000000000,0,0.000000000,0,
+delayed_axis_cone,theta_to_+x_IF <= 15 deg,1,2289.130354085889,0.0257855508326,1.000000000,1,
+delayed_axis_cone,theta_to_+x_IF <= 20 deg,2,2313.583704526990,0.026061001774,1.021362314,0.989430531347,
+delayed_axis_cone,theta_to_+x_IF <= 30 deg,15,2632.522562355683,0.029653638653,1.320400396,0.869557734023,
+delayed_axis_cone,theta_to_+x_IF <= 45 deg,46,3373.575169085555,0.0380011098341,2.160961494,0.678547309413,
+delayed_axis_cone,theta_to_+x_IF <= 60 deg,95,8588.362102625872,0.0967422616065,5.399917662,0.266538639933,
+delayed_axis_cone,theta_to_+x_IF <= 90 deg,159,31093.987990996284,0.35025336434,10.929738227,0.161354146717,
+coordinate_crosscheck,"WorldFrame dot: TES ray vs (+1/sqrt2,0,-1/sqrt2), <=10 deg",0,0.000000000000,0,0.000000000,0,"must equal IF-frame dot against (+1,0,0)"
+coordinate_crosscheck,"INVALID mixed-frame dot: tes_511_IF vs WorldFrame axis, <=10 deg",4,98.336052811594,0.00110769108624,4.000000000,0.25,coordinate-frame error retained only to reproduce the spurious 4-row result
+delayed_TES_envelope_entry_face,x-,20,6868.731990124084,0.0773717571701,3.378051278,0.33327040614,
+delayed_TES_envelope_entry_face,x+,101,16225.866356336806,0.182773733697,7.513131505,0.141079083472,
+delayed_TES_envelope_entry_face,y-,23,682.379509457127,0.00768655725387,17.329727079,0.0779131645355,
+delayed_TES_envelope_entry_face,y+,77,19121.386759082281,0.215389870388,4.544438967,0.26238494578,
+delayed_TES_envelope_entry_face,z-,36,12024.737107255654,0.135450770366,3.896988521,0.403097432103,
+delayed_TES_envelope_entry_face,z+,161,33852.599403679771,0.381327311126,10.580269222,0.14820543605,
+ideal_nearfield_mask,traceable delayed entering x- inside full signal footprint bbox,11,250.427454442761,0.00282090089142,10.375849264,0.0981682030734,observed ideal binary-mask leakage; not a material attenuation prediction
+ideal_nearfield_mask,same selection + all direction-UNKNOWN rows accepted,13,279.588980382957,0.00314835215138,11.720436267,0.0879291207015,pessimistic point estimate on the complete 420-row denominator
+statistics_caveat,zero observed delayed within 10-deg cone,0,0,0.0992230392303,28.667953344,,"95% zero-binomial proxy using Neff; heuristic, not a rigorous weighted confidence interval"
+budget_authority,PA-X1 baseline formal signal gate,37194,27073.008579000001,1,,,baseline S20=1645.387753; PA-X1 has straight-ray geometry only and no signal replay
+budget_authority,STALE_INVALID_FOR_PA-X1: AF1-Al candidate-own gate,0,27341.924742900000,,,,S20=1653.53937791 belongs only to the measured AF1-Al candidate and must not be transferred to PA-X1
+ideal_Cu_shadow_budget,BG-J4_4cm: required uniform rejected-angle Cu chord,0,8705.905803074544,3.14009122296,,,BGO_chord=4.0000 cm; prompt_after_BGO=18367.102775925; D_allowed=8705.905803075; ideal required Cu chord=3.140091223 cm
+ideal_Cu_shadow_budget,BG-J4_4cm: uniform rejected-angle Cu chord 3 cm,420,28005.220470255037,1.03443325807,,,prompt_after_BGO=18367.102775925; delayed=9638.117694330; margin_to_gate=-932.211891255; ideal required chord=3.140091223 cm
+ideal_Cu_shadow_budget,BG-J4_4cm: uniform rejected-angle Cu chord 3.1 cm,420,27329.874087109740,1.0094878819,,,prompt_after_BGO=18367.102775925; delayed=8962.771311184; margin_to_gate=-256.865508110; ideal required chord=3.140091223 cm
+ideal_Cu_shadow_budget,BG-J4_4cm: uniform rejected-angle Cu chord 3.2 cm,420,26703.263221177498,0.986342657236,,,prompt_after_BGO=18367.102775925; delayed=8336.160445252; margin_to_gate=369.745357823; ideal required chord=3.140091223 cm
+ideal_Cu_shadow_budget,BG-J4_4cm: uniform rejected-angle Cu chord 4 cm,420,23071.770570655452,0.852205638813,,,prompt_after_BGO=18367.102775925; delayed=4704.667794730; margin_to_gate=4001.238008345; ideal required chord=3.140091223 cm
+statistics_caveat,BG-J4_4cm: Cu chord if Neff zero-binomial proxy replaces observed open fraction,0,,-0.00131989141134,28.667953344,,no finite Cu chord: heuristic open-fraction upper exceeds the entire delayed allowance
+ideal_Cu_shadow_budget,BG-TAU5_5p8314cm: required uniform rejected-angle Cu chord,0,15993.528324119670,2.30806397159,,,BGO_chord=5.8314 cm; prompt_after_BGO=11079.480254880; D_allowed=15993.528324120; ideal required Cu chord=2.308063972 cm
+ideal_Cu_shadow_budget,BG-TAU5_5p8314cm: uniform rejected-angle Cu chord 2.2 cm,420,28397.783923346411,1.04893343643,,,prompt_after_BGO=11079.480254880; delayed=17318.303668466; margin_to_gate=-1324.775344346; ideal required chord=2.308063972 cm
+ideal_Cu_shadow_budget,BG-TAU5_5p8314cm: uniform rejected-angle Cu chord 2.3 cm,420,27168.206637240197,1.00351634573,,,prompt_after_BGO=11079.480254880; delayed=16088.726382360; margin_to_gate=-95.198058240; ideal required chord=2.308063972 cm
+ideal_Cu_shadow_budget,BG-TAU5_5p8314cm: uniform rejected-angle Cu chord 2.30806 cm,420,27073.008244625893,0.999999987649,,,prompt_after_BGO=11079.480254880; delayed=15993.527989746; margin_to_gate=0.000334374; ideal required chord=2.308063972 cm
+ideal_Cu_shadow_budget,BG-TAU5_5p8314cm: uniform rejected-angle Cu chord 2.4 cm,420,26027.360240181948,0.96137672192,,,prompt_after_BGO=11079.480254880; delayed=14947.879985302; margin_to_gate=1045.648338818; ideal required chord=2.308063972 cm
+statistics_caveat,BG-TAU5_5p8314cm: Cu chord if Neff zero-binomial proxy replaces observed open fraction,0,,0.0897829353732,28.667953344,,heuristic required Cu chord=3.218104607 cm

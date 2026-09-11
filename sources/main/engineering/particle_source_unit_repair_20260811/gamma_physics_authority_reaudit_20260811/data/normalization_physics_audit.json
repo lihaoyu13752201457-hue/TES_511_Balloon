@@ -1,0 +1,384 @@
+{
+  "schema_version": 1,
+  "artifact_type": "corrected_gamma_normalization_and_physics_reaudit",
+  "created_date": "2026-08-11",
+  "status": "PASS_WITH_AUTHORITY_BLOCKERS",
+  "scope": {
+    "particle_family": "gamma",
+    "source_profile": "unit_only_total_gamma",
+    "geometries": [
+      "mass_model_511",
+      "s3d_o8"
+    ],
+    "transport_mode": "prompt_instant",
+    "authority": "SOURCE_NORMALIZATION_AUTHORITY_PLUS_EVENT_LEVEL_DIAGNOSTIC__NOT_STEP05_OR_SENSITIVITY_AUTHORITY"
+  },
+  "executive_conclusions": [
+    "The factor-1000 gamma energy-axis repair is correct at the retained EXPACS/PARMA-to-Cosima contract boundary: raw gamma energy is MeV, while Cosima Spectrum File abscissae are keV.",
+    "The absolute gamma Flux remains 4.7996615777852 cm^-2 s^-1 after the axis conversion. The 20 angular bins already close over 4pi, so no additional 1/(4pi) factor is allowed.",
+    "For a 60 cm FarFieldAreaSource, the physical launch rate is Flux*pi*R^2 = 54282.89358895384 s^-1. A nominal 100000-primary sample therefore represents about 1.8422 s, consistent with the recorded SIM TT values.",
+    "The observed approximately 1e-3 TES-positive fraction is a conditional transport efficiency for any TES deposition per launched broadband primary. It is not a minimum detectable flux or a line sensitivity.",
+    "The apparent 511-keV accumulation is dominated by annihilation secondaries produced by high-energy incident gamma showers. Every strict-window event in this sample is coincident with a large physical active-shield deposit.",
+    "The physical-volume 80-keV veto calculation is deliberately a diagnostic. It cannot replace the authoritative Step05 volume whitelist, timing, detector response, FoV, and event-selection replay."
+  ],
+  "source_unit_contract": {
+    "raw_gamma_energy_unit": "MeV",
+    "raw_angular_differential_flux_unit": "cm^-2 s^-1 MeV^-1 sr^-1",
+    "cosima_spectrum_file_energy_unit": "keV",
+    "cosima_farfield_flux_unit": "cm^-2 s^-1",
+    "axis_transform": "E_keV = 1000 * E_MeV",
+    "density_transform": "p_keV = raw_density / (raw_trapezoidal_integral * 1000)",
+    "corrected_pdf_integral_target": 1.0,
+    "absolute_flux_rule": "Keep each angular-bin .Flux unchanged; Spectrum File is a normalized shape.",
+    "angular_bin_rule": "Each source Flux equals the energy-integrated angular differential intensity multiplied by that bin's solid angle. The 20 equal-mu bins jointly cover 4pi.",
+    "forbidden_extra_factor": "Do not divide the summed source Flux by 4pi a second time.",
+    "assessment": "PASS"
+  },
+  "source_environment": {
+    "latitude_deg": 34.0,
+    "longitude_deg": 100.0,
+    "altitude_km": 38.0,
+    "cutoff_rigidity_GV": 11.6,
+    "solar_modulation_W": 118.3,
+    "date": "2025-08-31",
+    "boundary": "This retained point environment is not yet validated as a flight-path/time/pointing average and is not identical to the 511-CAM paper's residual-atmosphere background model."
+  },
+  "farfield_normalization": {
+    "radius_cm": 60.0,
+    "projected_disk_area_cm2": 11309.733552923255,
+    "total_gamma_flux_cm2_s": 4.7996615777852,
+    "launch_rate_formula": "rate = Flux * pi * R^2",
+    "launch_rate_s-1": 54282.89358895384,
+    "nominal_100000_primary_equivalent_time_s": 1.8422009842958933,
+    "why_not_4piR2": "FarFieldAreaSource normalization uses the projected disk pi*R^2 for each incident direction; the angular source weights already perform the 4pi integration.",
+    "assessment": "PASS"
+  },
+  "energy_band_flux": {
+    "integration_method": "Piecewise-linear trapezoidal integration over the 20 corrected gamma component spectra, followed by summation of their source Flux weights.",
+    "total_flux_cm2_s": 4.7996615777852,
+    "bands": [
+      {
+        "label": "below_480_keV",
+        "range_keV": [
+          0.0,
+          480.0
+        ],
+        "flux_cm2_s": 3.15174955,
+        "fraction_percent": 65.66607872079125,
+        "launch_rate_s-1": 35645.44763604577
+      },
+      {
+        "label": "480_to_550_keV",
+        "range_keV": [
+          480.0,
+          550.0
+        ],
+        "flux_cm2_s": 0.125770568,
+        "fraction_percent": 2.6204049173407915,
+        "launch_rate_s-1": 1422.431612879816
+      },
+      {
+        "label": "strict_W2_subset",
+        "range_keV": [
+          510.58,
+          511.42
+        ],
+        "is_subset_not_additional_band": true,
+        "flux_cm2_s": 0.001481026,
+        "fraction_percent": 0.03085688388645556,
+        "launch_rate_s-1": 16.75000944495172
+      },
+      {
+        "label": "550_to_1022_keV",
+        "range_keV": [
+          550.0,
+          1022.0
+        ],
+        "flux_cm2_s": 0.39760077,
+        "fraction_percent": 8.283933430645597,
+        "launch_rate_s-1": 4496.758769137122
+      },
+      {
+        "label": "1.022_to_10_MeV",
+        "range_keV": [
+          1022.0,
+          10000.0
+        ],
+        "flux_cm2_s": 0.650394416,
+        "fraction_percent": 13.55083906353506,
+        "launch_rate_s-1": 7355.7875492691255
+      },
+      {
+        "label": "10_to_100_MeV",
+        "range_keV": [
+          10000.0,
+          100000.0
+        ],
+        "flux_cm2_s": 0.34857164,
+        "fraction_percent": 7.262421200972427,
+        "launch_rate_s-1": 3942.252372505486
+      },
+      {
+        "label": "100_MeV_to_1_GeV",
+        "range_keV": [
+          100000.0,
+          1000000.0
+        ],
+        "flux_cm2_s": 0.111360387,
+        "fraction_percent": 2.3201716453389443,
+        "launch_rate_s-1": 1259.4563053204188
+      },
+      {
+        "label": "above_1_GeV",
+        "range_keV": [
+          1000000.0,
+          null
+        ],
+        "flux_cm2_s": 0.014214244,
+        "fraction_percent": 0.2961509633468606,
+        "launch_rate_s-1": 160.75931229623805
+      }
+    ],
+    "above_pair_threshold": {
+      "threshold_keV": 1022.0,
+      "flux_cm2_s": 1.124540687,
+      "fraction_percent": 23.42958287319329,
+      "interpretation": "The substantial high-energy tail can pair-produce in passive high-Z material and feed annihilation secondaries into the TES 511-keV window."
+    },
+    "rounding_note": "Displayed band values are rounded from the audit integration; the mutually exclusive bands close to the manifest total within rounding."
+  },
+  "transport_results": {
+    "primary_count_per_geometry": 100000,
+    "tes_positive_definition": "At least one positive TES pixel energy deposition in the prompt gamma SIM diagnostic.",
+    "mass_model_511": {
+      "recorded_TT_s": 1.840462,
+      "tes_positive_events": 101,
+      "conditional_detection_efficiency": 0.00101,
+      "efficiency_wilson95": [
+        0.0008313661880741734,
+        0.0012269693300214486
+      ],
+      "gross_rate_Hz": 54.87752531701279,
+      "gross_rate_poisson_1sigma_Hz": 5.460517859711795,
+      "diffuse_broadband_response_integral_cm2": 11.422830888452488,
+      "raw_480_550_events": 12,
+      "raw_480_550_rate_Hz": 6.520102017862906,
+      "raw_strict_W2_events": 7,
+      "raw_strict_W2_rate_Hz": 3.803392843753362
+    },
+    "s3d_o8": {
+      "recorded_TT_s": 1.851504,
+      "tes_positive_events": 99,
+      "conditional_detection_efficiency": 0.00099,
+      "gross_rate_Hz": 53.47004381302984,
+      "gross_rate_poisson_1sigma_Hz": 5.373941601566186,
+      "diffuse_broadband_response_integral_cm2": 11.196636217394023,
+      "raw_480_550_events": 9,
+      "raw_480_550_rate_Hz": 4.860913073911804,
+      "raw_strict_W2_events": 8,
+      "raw_strict_W2_rate_Hz": 4.320811621254936
+    },
+    "interpretation_boundary": "The response integral equals efficiency*pi*R^2 for the full-4pi broadband source. It is not the focused directional 511-keV effective area."
+  },
+  "physical_active_shield_diagnostic": {
+    "authority": "READ_ONLY_EVENT_LEVEL_DIAGNOSTIC__NOT_FORMAL_STEP05",
+    "threshold_keV": 80.0,
+    "threshold_basis": "Physical scintillator TriggerThreshold entries in the retained geometry .det files.",
+    "mass_model_511_volume_rule": {
+      "type": "prefix_allowlist",
+      "prefixes": [
+        "CsI_Side_Segment_",
+        "CsI_Bottom_Quadrant_",
+        "CsI_TopAnnulus_Segment_"
+      ]
+    },
+    "s3d_o8_volume_rule": {
+      "type": "exact_allowlist",
+      "volumes": [
+        "BGO_S3C_FullWrap_SideShell_WindowCut_40mm",
+        "BGO_S3D_O8_FullWrap_BottomCap_30mm",
+        "BGO_S3D_O8_FullWrap_TopAnnulus_10mm"
+      ]
+    },
+    "results": {
+      "mass_model_511": {
+        "all_TES_positive": {
+          "raw": 101,
+          "shield_coincident_at_or_above_threshold": 89,
+          "diagnostic_survivors": 12,
+          "survivor_rate_Hz": 6.520102017862906,
+          "survivor_rate_poisson_1sigma_Hz": 1.8821913275784854
+        },
+        "480_550_keV": {
+          "raw": 12,
+          "shield_coincident_at_or_above_threshold": 11,
+          "diagnostic_survivors": 1,
+          "survivor_rate_Hz": 0.5433418348219088
+        },
+        "strict_W2": {
+          "raw": 7,
+          "shield_coincident_at_or_above_threshold": 7,
+          "diagnostic_survivors": 0,
+          "minimum_active_shield_deposit_keV_among_raw_W2": 107.319,
+          "zero_count_one_sided_95pct_rate_upper_Hz": 1.6277066701480338
+        }
+      },
+      "s3d_o8": {
+        "all_TES_positive": {
+          "raw": 99,
+          "shield_coincident_at_or_above_threshold": 96,
+          "diagnostic_survivors": 3,
+          "survivor_rate_Hz": 1.6203043579706011,
+          "survivor_rate_poisson_1sigma_Hz": 0.9354831572434503
+        },
+        "480_550_keV": {
+          "raw": 9,
+          "shield_coincident_at_or_above_threshold": 9,
+          "diagnostic_survivors": 0,
+          "zero_count_one_sided_95pct_rate_upper_Hz": 1.6179993527175696
+        },
+        "strict_W2": {
+          "raw": 8,
+          "shield_coincident_at_or_above_threshold": 8,
+          "diagnostic_survivors": 0,
+          "minimum_active_shield_deposit_keV_among_raw_W2": 47571.8,
+          "zero_count_one_sided_95pct_rate_upper_Hz": 1.6179993527175696
+        }
+      }
+    },
+    "formal_step05_mismatch": {
+      "documented_active_veto_authority": "CsI_Active_Shield",
+      "documented_compatibility_names": [
+        "BGO",
+        "ACTIVE_SHIELD",
+        "CEBR3"
+      ],
+      "documented_analysis_threshold_keV": 50.0,
+      "risk": "The semantic Step05 whitelist does not yet demonstrate complete mapping to the retained geometry-specific physical volume names, and the documented analysis threshold differs from the .det threshold used here.",
+      "robust_sample_specific_observation": "All 15 raw strict-W2 events exceed both 50 and 80 keV in the selected physical active shield, so their veto coincidence is insensitive to the 50-versus-80-keV choice in this sample.",
+      "required_remediation": "Freeze and validate a geometry-specific whitelist translation, timing association, threshold convention, and full Step05 cut flow before publishing a post-veto background rate."
+    }
+  },
+  "pair_production_and_511_feeddown": {
+    "strict_W2_total_events": 15,
+    "strict_W2_events_with_annihilation_in_TES_hit_ancestry": 15,
+    "mass_model_511": {
+      "strict_W2_events": 7,
+      "all_annihilation_derived": true,
+      "all_active_shield_coincident": true,
+      "broad_480_550_annihilation_derived_events": 9,
+      "broad_480_550_total_events": 12
+    },
+    "s3d_o8": {
+      "strict_W2_events": 8,
+      "all_annihilation_derived": true,
+      "all_active_shield_coincident": true,
+      "broad_480_550_annihilation_derived_events": 8,
+      "broad_480_550_total_events": 9
+    },
+    "effective_area_warning": "Do not divide output W2 counts by the direct input W2 flux to infer a 511-keV effective area. High-energy off-diagonal feeddown dominates; use a response matrix or a dedicated monoenergetic 511-keV injection."
+  },
+  "gamma_model_boundary": {
+    "retained_table": "EXPACS/PARMA total broadband gamma",
+    "contains_annihilation_component": true,
+    "current_card_has_separate_mono_511_source": false,
+    "current_double_counting": false,
+    "future_rule": "Do not add a standalone mono-511 component to unit_only_total_gamma. A continuum-plus-line model requires a separate line-subtracted, flux-closed, single-environment source package.",
+    "line_shape_limit": "The retained total-gamma table is too coarsely sampled around 511 keV to establish an authoritative 0.84-keV-wide line profile."
+  },
+  "paper_comparison": {
+    "paper": "The 511-CAM Mission: A Pointed 511 keV Gamma-Ray Telescope with a Focal Plane Detector Made of Stacked Transition Edge Sensor Microcalorimeter Arrays",
+    "arxiv_url": "https://arxiv.org/abs/2206.14652",
+    "doi_url": "https://doi.org/10.1117/1.JATIS.9.2.024006",
+    "paper_gross_background_rate_Hz": 60.0,
+    "paper_rate_basis": "Expected cosmic-ray and atmospheric background above 15 keV, scaled from XL-Calibur by detector mass.",
+    "paper_focused_optics_effective_area_cm2": 50.89,
+    "paper_TES_stack_efficiency_including_gaps_fraction": 0.65,
+    "comparison": "The present unvetoed corrected-gamma gross rates of about 53-55 Hz are numerically the same order as 60 Hz, but the populations and selection contracts are different. This is neither a validation nor a refutation of the corrected source.",
+    "legacy_warning": "Agreement of the historical E/1000 pipeline with the paper cannot restore its authority. The old spectrum transported the wrong kinetic-energy distribution, and the paper used a dedicated focused 511-keV signal plus an empirical gross-background estimate."
+  },
+  "sensitivity_boundary": {
+    "why_1e-3_is_not_sensitivity": "It is a Monte Carlo detection fraction for a broad, full-4pi source and an inclusive TES-positive condition.",
+    "required_for_sensitivity": [
+      "dedicated directional or optics-coupled 511-keV signal effective area",
+      "authoritative post-veto narrow-window background",
+      "detector energy-response closure",
+      "exposure and live-time model",
+      "significance convention and confidence target"
+    ]
+  },
+  "statistical_limits": {
+    "equivalent_exposure_s": "approximately 1.84-1.85 per geometry",
+    "gross_TES_positive_relative_poisson_uncertainty": "approximately 10 percent",
+    "post_diagnostic_veto_counts": {
+      "mass_model_511": 12,
+      "s3d_o8": 3
+    },
+    "strict_W2_post_diagnostic_veto_counts": {
+      "mass_model_511": 0,
+      "s3d_o8": 0
+    },
+    "zero_count_limit_method": "One-sided 95 percent Poisson upper mean = -ln(0.05), divided by recorded TT.",
+    "assessment": "The sample is adequate to expose the gross normalization and the shield-coincident annihilation-feeddown mechanism, but it is far too small to establish a narrow-line background or mission sensitivity."
+  },
+  "authority_blockers": [
+    {
+      "severity": "HIGH",
+      "blocker": "No validated geometry-specific Step05 active-volume whitelist and timing replay for the corrected sample."
+    },
+    {
+      "severity": "HIGH",
+      "blocker": "No corrected-keV full prompt-to-activation-to-delayed-to-response closure across all retained particle families."
+    },
+    {
+      "severity": "HIGH",
+      "blocker": "The retained total-gamma table does not provide authoritative fine 511-keV line/continuum decomposition."
+    },
+    {
+      "severity": "HIGH",
+      "blocker": "The retained point EXPACS/PARMA environment is not yet closed to the actual mission trajectory, date, pointing, and atmospheric-depth model."
+    },
+    {
+      "severity": "MEDIUM",
+      "blocker": "Only about 1.85 s of gamma exposure per geometry is available; the narrow-window result is strongly Poisson limited."
+    }
+  ],
+  "evidence": [
+    {
+      "path": "engineering/particle_source_unit_repair_20260811/data/source_contract_manifest.json",
+      "role": "Corrected source unit, flux, geometry, environment, and hash manifest"
+    },
+    {
+      "path": "engineering/particle_source_unit_repair_20260811/data/static_validation.json",
+      "role": "Static corrected-source validation"
+    },
+    {
+      "path": "engineering/particle_source_unit_audit_20260811/report/evidence/MEGALIB_CONTRACT.md",
+      "role": "Local MEGAlib/Cosima Spectrum File and FarField normalization contract evidence"
+    },
+    {
+      "path": "engineering/particle_source_unit_repair_20260811/gamma_tes_spectrum_ab_20260811/data/tes_gamma_axis_ab_summary.json",
+      "role": "100000-primary corrected and legacy-axis TES transfer counts, TT, efficiencies, and rates"
+    },
+    {
+      "path": "engineering/particle_source_unit_repair_20260811/gamma_tes_spectrum_ab_20260811/data/tes_gamma_axis_ab_analysis_validation.json",
+      "role": "Input-hash and output-closure validation for the A/B diagnostic"
+    },
+    {
+      "path": "engineering/particle_source_unit_repair_20260811/gamma_physics_authority_reaudit_20260811/code/audit_corrected_gamma_tes.py",
+      "role": "Inspectible event-level physical-volume, ancestry, and cut-flow audit implementation"
+    },
+    {
+      "path": "outputs/geometry/DEMO2_DR_v3p5_Mass_model_511_stage_diam_300_300_300_350_350_400_20260701_megalib_proxy/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.det",
+      "role": "Mass_model_511 physical detector thresholds and volume names"
+    },
+    {
+      "path": "engineering/geometry_optimization_20260704/43_geoopt_s3d_o8_fallback_20260712/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.det",
+      "role": "S3d-O8 physical detector thresholds and volume names"
+    },
+    {
+      "path": "stepwise_maintenance/step05_veto_time_axis/README.md",
+      "role": "Existing semantic Step05 whitelist and 50-keV analysis-threshold contract"
+    }
+  ]
+}

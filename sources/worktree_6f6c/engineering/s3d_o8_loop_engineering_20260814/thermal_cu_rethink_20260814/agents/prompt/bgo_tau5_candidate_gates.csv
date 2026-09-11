@@ -1,0 +1,14 @@
+stage,gate_id,metric,requirement,failure_action
+geometry,G0,cold plates,Baseline geometry; no performance credit from the allowed 25pct OD or 10pct thickness envelope,KILL if altered outside user boundary
+geometry,G1,existing active channel,All added BGO belongs to the existing BGO detector/readout channel; no new scorer or channel,KILL
+geometry,G2,added high-energy optical depth,min over 4-8 MeV and all non-relief incident rays of Delta_tau_BGO >= ln(5)=1.609438,KILL
+geometry,G3,service relief denominator,Immutable relief rays have an explicit incident denominator and are not hidden inside the covered sample,KILL if relief leakage prevents the rate gate
+geometry,G3a,relief weighted floor,(1-f_relief)*s_covered + f_relief*s_relief <= 0.20 using the full gamma denominator,KILL
+geometry,G3b,BPE ordering,Any unified-candidate BPE is outboard of BGO so an outgoing partner reaches BGO first; claim zero prompt suppression credit for BPE,KILL if BPE precedes BGO on outgoing rays
+geometry,G4,signal sightline,Frozen focused signal rays have zero new BGO and plastic intersections,KILL
+mechanism,P1,active response,Report BGO deposit and >=50keV veto separately from any-interaction probability,KILL if interaction does not veto
+mechanism,P2,secondary production,Report BGO pair secondary neutron and escaping photon contributions,KILL if net prompt survival rises above gate
+confirmation,P3,prompt survival,Exact one-sided 95pct candidate over baseline ratio <=0.20,KILL
+confirmation,P4,normalization,Preserve geometry x mode x family TT and event-weight boundaries,KILL
+engineering,E1,BGO mass payload and structure,Pass payload structural thermal and power/readout checks for the enlarged existing channel,KILL
+delayed,E2,BGO activation and secondary coupling,Full production Bq and W2 per Bq audit does not break the joint mission budget,KILL

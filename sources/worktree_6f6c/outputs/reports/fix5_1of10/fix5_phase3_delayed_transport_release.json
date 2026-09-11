@@ -1,0 +1,56 @@
+{
+  "label": "fix5_1of10",
+  "role": "Orchestrator",
+  "phase": "Phase 3 1/10 exact-position delayed transport release",
+  "generated_at_utc": "2026-06-21T17:25:59Z",
+  "contract_authority": "core_md/fix5_benchmarks.json",
+  "release": {
+    "decision": "RELEASE_1OF10_EXACTPOS_DELAYED_TRANSPORT_ONLY",
+    "scope": [
+      "runs/step02_delay_fix_fix5_1of10/activation_decay_day15_groundstate_fixed_exactpos.source",
+      "runs/step02_delayed_transport_fix5_1of10/DelayedDecayFix5Exactpos.inc1.id1.sim.gz"
+    ],
+    "basis": [
+      "Phase 2 instant and buildup transport verified: 38/38 SIM headers point to fix5 geometry and no baseline geometry.",
+      "Raw and ground-state normalization audits pass with gamma division 12 and non-gamma division 1.",
+      "Ground-state/NUBASE audit passes with zero NUBASE line mismatches and fix5 fixed-source geometry.",
+      "Exact-position source audit passes M=5000 source-level thresholds: manifest flux delta 0, source text relative delta < 1e-6, matched fraction 1.0, ambiguous coordinate fraction 0, missed activity fraction <= 0.01.",
+      "Verifier verdict records delayed source-level PASS but no delayed rate claim."
+    ],
+    "not_released": [
+      "old new_geo_re pass/fail gate",
+      "Step05 selected-rate claim",
+      "Step06--Step08",
+      "full-stat production",
+      "append/merge",
+      "promotion decision"
+    ]
+  },
+  "inputs": {
+    "verification_verdict": "outputs/reports/fix5_1of10/fix5_verification_verdict.json",
+    "transport_summary": "outputs/reports/fix5_1of10/fix5_phase2_transport_summary.json",
+    "groundstate_half_life_audit": "outputs/reports/fix5_1of10/fix5_groundstate_half_life_audit_summary.json",
+    "exactpos_source_manifest": "runs/step02_delay_fix_fix5_1of10/fix5_1of10_exactpos_delayed_source_manifest.json",
+    "exactpos_source_summary": "outputs/reports/fix5_1of10/fix5_delayed_source_exactpos_summary.json"
+  },
+  "command_released": "source /home/ubuntu/MEGAlib_Install/megalib-main/bin/source-megalib.sh && cosima -s 260613 runs/step02_delay_fix_fix5_1of10/activation_decay_day15_groundstate_fixed_exactpos.source",
+  "post_transport_result": {
+    "status": "PASS_FIX5_1OF10_EXACTPOS_DELAYED_TRANSPORT",
+    "transport_sim": "runs/step02_delayed_transport_fix5_1of10/DelayedDecayFix5Exactpos.inc1.id1.sim.gz",
+    "source_manifest": "runs/step02_delay_fix_fix5_1of10/fix5_1of10_exactpos_delayed_source_manifest.json",
+    "summary_artifact": "outputs/reports/fix5_1of10/fix5_delayed_source_exactpos_summary.json",
+    "size_bytes": 82243961,
+    "SE": 100000,
+    "ID": 100000,
+    "TS": 1,
+    "TE_s": 1317.366549,
+    "sim_header_geometry": "/home/ubuntu/TES_511_Balloon/outputs/geometry/DEMO2_DR_v3p5_user_cylmag_redesign_multiholeW_fix5_20260621_megalib_proxy/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup",
+    "sim_header_geometry_status": "PASS_FIX5_NO_BASELINE"
+  },
+  "gate_constraints_after_transport": [
+    "Delayed SIM header must be verified to contain the fix5 .geo.setup before any Step05 use.",
+    "Delayed transport TE/SE/ID/TS must be summarized from the SIM output.",
+    "W/collimator source-level activity is not a selected delayed rate; selected W/collimator impact remains pending Step05 breakdown.",
+    "Old new_geo_re numbers remain historical context only while benchmark_alignment decision is NOT_ALIGNED."
+  ]
+}

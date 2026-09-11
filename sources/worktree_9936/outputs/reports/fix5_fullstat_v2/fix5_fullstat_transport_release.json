@@ -1,0 +1,48 @@
+{
+  "label": "fix5_fullstat_v2",
+  "role": "Orchestrator",
+  "phase": "Clean full-stat prompt and buildup transport release after inconclusive 1/10 screen",
+  "generated_at_utc": "2026-06-21T17:44:15Z",
+  "inputs": {
+    "source_manifest": "outputs/reports/fix5_fullstat_v2/fix5_source_manifest.json",
+    "runner_preflight_manifest": "outputs/reports/fix5_fullstat_v2/fix5_runner_preflight_manifest.json",
+    "benchmark_alignment": "outputs/reports/fix5_fullstat_v2/fix5_benchmark_alignment.json",
+    "verification_verdict": "outputs/reports/fix5_fullstat_v2/fix5_verification_verdict.json",
+    "one_tenth_step05_screen": "outputs/reports/fix5_1of10/fix5_step05_screen_summary.json"
+  },
+  "release": {
+    "decision": "RELEASE_CLEAN_FULLSTAT_INSTANT_AND_BUILDUP_TRANSPORT",
+    "scope": [
+      "runs/step02_instant_fix5_fullstat_v2",
+      "runs/step02_buildup_fix5_fullstat_v2"
+    ],
+    "basis": "1/10 W2 selected count was zero/inconclusive with no hard fail; C2 stop rule says escalate statistics rather than pass/fail.",
+    "not_released": [
+      "old new_geo_re pass/fail gate",
+      "delayed source construction from full-stat buildup",
+      "delayed transport",
+      "Step05--Step08 full-stat closure",
+      "fix5 signal replay",
+      "append/merge"
+    ],
+    "append_merge_policy": "No append/merge. Clean full-stat fix5 transport only."
+  },
+  "commands_released": [
+    "bash -lc 'source /home/ubuntu/MEGAlib_Install/megalib-main/bin/source-megalib.sh >/tmp/fix5_megalib_env.log && python3 code/tools/run_equiv2602_pipeline_NEW_GEO.py --mode instant --source-dir config/megalib_sources_fullsphere20_fix5_tilt45 --outdir runs/step02_instant_fix5_fullstat_v2 --gamma-events 10000000 --gamma-splits 12 --non-gamma-replicas 8 --farfield-radius-cm 60 --workers 8 --keep-sources --allow-heavy-run'",
+    "bash -lc 'source /home/ubuntu/MEGAlib_Install/megalib-main/bin/source-megalib.sh >/tmp/fix5_megalib_env.log && python3 code/tools/run_equiv2602_pipeline_NEW_GEO.py --mode buildup --source-dir config/megalib_sources_fullsphere20_fix5_tilt45 --outdir runs/step02_buildup_fix5_fullstat_v2 --gamma-events 10000000 --gamma-splits 12 --non-gamma-replicas 8 --farfield-radius-cm 60 --workers 8 --keep-sources --allow-heavy-run'"
+  ],
+  "blocking_failures": [],
+  "post_transport_result": {
+    "status": "PASS_FULLSTAT_INSTANT_AND_BUILDUP_TRANSPORT_VERIFIED",
+    "summary_artifact": "outputs/reports/fix5_fullstat_v2/fix5_fullstat_transport_summary.json",
+    "instant_run_dir": "runs/step02_instant_fix5_fullstat_v2",
+    "buildup_run_dir": "runs/step02_buildup_fix5_fullstat_v2",
+    "combined_sim_gz_outputs": 136,
+    "combined_dat_inc1_outputs": 136,
+    "sim_headers_checked": 136,
+    "sim_headers_with_fix5_geometry": 136,
+    "sim_headers_with_forbidden_baseline_geometry": 0,
+    "old_new_geo_re_gate": "BLOCKED_NOT_ALIGNED",
+    "delayed_source_construction": "PENDING_FULLSTAT_FIX5_BUILDUP_ACTIVATION_AUDIT"
+  }
+}

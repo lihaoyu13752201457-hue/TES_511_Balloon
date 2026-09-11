@@ -1,0 +1,109 @@
+{
+  "schema_version": 1,
+  "status": "PLAN_ONLY__NO_TRANSPORT_LAUNCHED",
+  "batch_id": "m05_16h_90gb_campaign_batch0006",
+  "campaign_version": "v1",
+  "created_at": "2026-08-12T00:00:00+08:00",
+  "wall_clock": {
+    "t0": null,
+    "deadline": null,
+    "total_seconds": 57600,
+    "stages": [
+      {"id": "stage00", "name": "mergeable_smoke", "start_s": 0, "stop_launch_s": 5700, "hard_end_s": 7200},
+      {"id": "stage10", "name": "seven_family", "start_s": 7200, "stop_launch_s": 41700, "hard_end_s": 43200},
+      {"id": "stage20", "name": "proton", "start_s": 43200, "stop_launch_s": 55800, "hard_end_s": 57600}
+    ]
+  },
+  "paths": {
+    "engineering_root": "engineering/particle_source_unit_repair_20260811/m05_16h_90gb_campaign_batch0006_20260812",
+    "run_root": "runs/particle_source_unit_repair_20260811/m05_16h_90gb_campaign_batch0006_v1",
+    "old_workspace_policy": "READ_ONLY"
+  },
+  "source_contract": {
+    "path": "engineering/particle_source_unit_repair_20260811/data/source_contract_manifest.json",
+    "sha256": "5424eeca35b20affb153c0e07c31a6582e575f511922bf55f40a5a0f77ab4326",
+    "corrected_kev_only": true,
+    "forbidden_reference_substring": "cosima_spectra_dp_2602units",
+    "standalone_mono511_forbidden": true
+  },
+  "physics": {
+    "hadronic": "QGSP_BIC_HP",
+    "em": "LivermorePol",
+    "cuts": "PIN_TO_CORRECTED_BASELINE",
+    "mid_campaign_physics_change_forbidden": true
+  },
+  "disk": {
+    "requested_campaign_cap_bytes": 90000000000,
+    "filesystem_reserve_bytes": 21474836480,
+    "campaign_cap_formula": "min(90000000000, free_bytes_at_t0 - 21474836480)",
+    "free_bytes_at_t0": null,
+    "effective_campaign_cap_bytes": null,
+    "smoke_hard_cap_bytes": 8000000000,
+    "proton_reservation_until_stage20_bytes": 15000000000,
+    "campaign_emergency_reserve_bytes": 5000000000,
+    "seven_family_active_attempt_cap_bytes": 1500000000,
+    "proton_active_attempt_cap_bytes": 2000000000
+  },
+  "smoke": {
+    "production_contributing": true,
+    "default_arm": "F_RICH_BASELINE",
+    "candidate_arm": "C_COMPACT_ONLY_IF_SEPARATELY_AUTHORIZED",
+    "candidate_authorization_path": null,
+    "global_arm_selection_only": true,
+    "count_duplicate_histories_once": true,
+    "selected_arm_total_events": 55424,
+    "selected_arm_jobs": 100,
+    "matrix_csv": "engineering/particle_source_unit_repair_20260811/m05_16h_90gb_campaign_batch0006_20260812/smoke_matrix.csv",
+    "existing_compact_package_reuse_forbidden": true
+  },
+  "seven_family": {
+    "wall_budget_seconds": 36000,
+    "point_run_phase_hours": 10.0,
+    "point_events": 6001652,
+    "point_rich_sim_bytes": 29669000000,
+    "allocation_csv": "engineering/particle_source_unit_repair_20260811/m05_16h_90gb_campaign_batch0006_20260812/seven_family_allocation.csv",
+    "future_shard_resize_formula": "n_prev * 480 / median(last_3_completed_wall_s)",
+    "resize_factor_min": 0.5,
+    "resize_factor_max": 2.0
+  },
+  "proton": {
+    "wall_budget_seconds": 14400,
+    "checkpoint": "1M_GAMMA_EQUIVALENT_SCREENING",
+    "target_per_geometry_mode": 23400,
+    "prior_mergeable_credit_per_geometry_mode": 23,
+    "planned_selected_smoke_credit_per_geometry_mode": 256,
+    "stage20_target_per_geometry_mode": 23121,
+    "stage20_target_total": 92484,
+    "point_run_phase_hours": 4.014,
+    "point_rich_sim_bytes": 10542700000,
+    "cell_order": ["Mass_model_511__instant", "S3d_O8__instant", "Mass_model_511__buildup", "S3d_O8__buildup"],
+    "initial_sequence_per_cell": [512, 1024, 2048, 2048, 2048, 2048, 2048, 2048, 2048, 2048, 2048, 2048, 1105],
+    "full_spectrum_analogue_required": true,
+    "weighted_six_band_pilot_forbidden_in_this_campaign": true
+  },
+  "scheduler": {
+    "initial_processes": 2,
+    "maximum_processes": 3,
+    "maximum_heavy_o8_processes": 1,
+    "proton_initial_processes": 1,
+    "proton_maximum_processes": 2,
+    "rss_headroom_bytes": 2147483648,
+    "minimum_completed_receipts_before_scale_up": 8
+  },
+  "failure_policy": {
+    "partial_outputs": "QUARANTINE_AND_DO_NOT_COUNT",
+    "retry": "EXACT_SAME_SEED_SOURCE_AND_EVENT_COUNT",
+    "skip_slow_or_large_seed_forbidden": true,
+    "delete_failed_attempt_forbidden": true
+  },
+  "merge": {
+    "pool_across_geometry_forbidden": true,
+    "pool_across_mode_forbidden": true,
+    "pool_across_family_forbidden": true,
+    "prompt_estimator": "sum(selected)/sum(TT) within geometry+mode+family",
+    "buildup_estimator": "sum(RP)/sum(TT) within geometry+mode+family+volume+isotope_state",
+    "zero_rp_tt_required": true,
+    "hardcoded_replica_divisor_forbidden": true
+  },
+  "authority_boundary": "CORRECTED_KEV_MERGEABLE_SCREENING_AND_PARTIAL_PRODUCTION_ONLY"
+}

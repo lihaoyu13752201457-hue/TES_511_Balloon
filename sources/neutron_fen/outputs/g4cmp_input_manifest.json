@@ -1,0 +1,158 @@
+{
+  "csv_schema": {
+    "fields_in_order": [
+      "group",
+      "group_event_index",
+      "group_hit_index",
+      "input_event_key",
+      "synthetic",
+      "synthetic_point_id",
+      "source_event_order",
+      "original_sample_id",
+      "original_job_id",
+      "original_event_id",
+      "candidate",
+      "strict_recoil_event",
+      "layer",
+      "event_si_total_keV",
+      "event_tes_direct_keV",
+      "event_bgo_total_keV",
+      "hit_time_s",
+      "hit_time_ns",
+      "hit_time_relative_ns",
+      "local_x_mm",
+      "local_y_mm",
+      "local_z_mm",
+      "energy_keV",
+      "global_x_cm",
+      "global_y_cm",
+      "global_z_cm",
+      "secondary",
+      "parent",
+      "step_process",
+      "creation_process",
+      "is_si_elastic_recoil",
+      "original_source_csv_row"
+    ],
+    "local_axis_convention": "x is the 0.3-mm thickness axis; y,z are the 36-mm in-plane axes",
+    "row_granularity": "one Si energy-deposition HIT per row",
+    "units": {
+      "energy": "keV",
+      "global_position": "cm in transport world frame; blank for synthetic points",
+      "hit_time_ns_and_relative": "ns",
+      "hit_time_s": "s",
+      "local_position": "mm in slab frame"
+    }
+  },
+  "ordering": {
+    "all86": "source event_order; source hit_order within event",
+    "exact_ABC": "candidate A, then B, then C; source hit_order within event",
+    "point_validation": "energy order 30,140,500,568,1407 keV; center then edge; front,middle,back depth",
+    "strict51": "source event_order; source hit_order within event"
+  },
+  "point_validation_design": {
+    "energies_keV": [
+      30.0,
+      140.0,
+      500.0,
+      568.0,
+      1407.0
+    ],
+    "in_plane_positions_mm": {
+      "center": [
+        0.0,
+        0.0
+      ],
+      "edge": [
+        17.0,
+        0.0
+      ]
+    },
+    "minimum_boundary_clearance_mm": 0.05,
+    "slab_half_extents_mm": [
+      0.15,
+      18.0,
+      18.0
+    ],
+    "template_layer": 0,
+    "template_layer_rationale": "all six snapshotted Si slabs share identical dimensions",
+    "thickness_depths_x_mm": {
+      "back": 0.1,
+      "front": -0.1,
+      "middle": 0.0
+    }
+  },
+  "schema_version": 1,
+  "scope": "Per-Si-HIT energy/time/local-position inputs for the SH3 G4CMP ladder",
+  "self_checks": {
+    "all_event_count_is_86": true,
+    "all_required_checks_pass": true,
+    "all_stage_event_energy_sums_match": true,
+    "exact_candidate_order_is_A_B_C": true,
+    "fixed_order_and_contiguous_group_event_indices": true,
+    "point_coordinates_strictly_inside_slab": true,
+    "point_event_count_is_30": true,
+    "source_json_csv_rowwise_crosscheck_pass": true,
+    "source_sha256_all_match": true,
+    "strict_event_count_is_51": true
+  },
+  "source_inputs": {
+    "outputs/unvetoed_events.csv": {
+      "bytes": 102566,
+      "matches_pinned_sha256": true,
+      "sha256": "bd5c36f9c5e135381d460e09e492fcc4946ccbc8425945c3bd06b4ffc5f47b93"
+    },
+    "outputs/unvetoed_events.json": {
+      "bytes": 339520,
+      "matches_pinned_sha256": true,
+      "sha256": "ad1410863bb46e70061fa0c6f86bf425d4ff6df0a3e513e4beab041cbafd95c7"
+    }
+  },
+  "stages": [
+    {
+      "bytes": 6186,
+      "event_count": 30,
+      "group": "point_validation",
+      "hit_row_count": 30,
+      "path": "outputs/g4cmp_inputs/01_point_validation.csv",
+      "per_event_energy_conservation_pass": true,
+      "sha256": "df71a65486348f372615c8e5dfb9b977fc5bf11fffb6cca5bab0fb407146ae04",
+      "stage_order": 1,
+      "total_injected_si_energy_keV": 15870.0
+    },
+    {
+      "bytes": 14217,
+      "event_count": 3,
+      "group": "exact_ABC",
+      "hit_row_count": 46,
+      "path": "outputs/g4cmp_inputs/02_exact_ABC.csv",
+      "per_event_energy_conservation_pass": true,
+      "sha256": "7e0788f8709b110f3df9f3e04f54949046c6dcfee59f5fc52025735a6ee944d9",
+      "stage_order": 2,
+      "total_injected_si_energy_keV": 1464.4502215
+    },
+    {
+      "bytes": 16127,
+      "event_count": 51,
+      "group": "strict51",
+      "hit_row_count": 54,
+      "path": "outputs/g4cmp_inputs/03_strict51.csv",
+      "per_event_energy_conservation_pass": true,
+      "sha256": "d5a16f1278699ed0c2c5fb83a44580ee64335925c9395cd6e34bfd1d9874cf98",
+      "stage_order": 3,
+      "total_injected_si_energy_keV": 4155.9132641
+    },
+    {
+      "bytes": 99192,
+      "event_count": 86,
+      "group": "all86",
+      "hit_row_count": 327,
+      "path": "outputs/g4cmp_inputs/04_all86.csv",
+      "per_event_energy_conservation_pass": true,
+      "sha256": "173449c8dcd7e6cf014b9dff76b9290e0161f29b3e84da3ed611e89978c499a5",
+      "stage_order": 4,
+      "total_injected_si_energy_keV": 6283.423176657482
+    }
+  ],
+  "status": "PASS__G4CMP_STAGED_INPUTS_PREPARED"
+}

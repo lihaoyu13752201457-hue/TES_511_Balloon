@@ -1,0 +1,28 @@
+#PreTriggerMode              EveryEventWithHits
+DefaultRangeCut 0.005 
+
+Region Spacecraft
+Spacecraft.Volume SCbody
+Spacecraft.RangeCut 1.
+
+Region Pipebody
+Pipebody.Volume PIPbody
+Pipebody.RangeCut 1.
+
+DataChallenge.Source AlbedoPhotons
+AlbedoPhotons.ParticleType	       1
+AlbedoPhotons.Beam FarFieldEarthOccultation true
+AlbedoPhotons.Spectrum  File AlbedoPhotons_Spec_530.0km_0.0deg_12.600cutoff_520.0solarmod_fluxdividedby1000.dat
+AlbedoPhotons.Flux	  0.7568194027630226e-3
+AlbedoPhotons.LightCurve File false AlbedoPhotons_LightCurve.dat
+
+DetectorTimeConstant 0.000002
+
+# 511 atm line. flux from Harris et al. 2003 doi:10.1029/2003JA009958
+# We choose 29.9e-3 ph/cm2/s
+# and scale to our altitude 530km (SMM is at 500) so scaling fac = 500/530
+DataChallenge.Source AlbedoPhotons511
+AlbedoPhotons511.ParticleType	       1
+AlbedoPhotons511.Beam FarFieldEarthOccultation true
+AlbedoPhotons511.Spectrum  Mono 511
+AlbedoPhotons511.Flux	  28.207e-6

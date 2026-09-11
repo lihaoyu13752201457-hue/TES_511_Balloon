@@ -1,0 +1,305 @@
+{
+  "aggregates": [
+    {
+      "fingerprint": "a7ad454c94386360369618e397b306d3e39e10f02ef9933e0933497f9c986421",
+      "included_batch_indices": [
+        0
+      ],
+      "path": "engineering/m04_validation_geometry_handoff_20260810/02_parma_atm511_repair_20260810/transport/campaigns/o8_parma511_line_smoke_1k/aggregate/wave_0000_0000_a7ad454c9438/campaign_aggregate_receipt.json",
+      "primary_gate_status": "DIAGNOSTIC_ONLY_FAIL_LINE_MODULE_RATE_GATE",
+      "sha256": "a641a026a337e764dfdf36ca01badf90c2040648189cd194dd69add5a395ddd6"
+    }
+  ],
+  "authority": {
+    "files": {
+      "engineering/geometry_optimization_20260704/43_geoopt_s3d_o8_fallback_20260712/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.det": {
+        "bytes": 57508,
+        "path": "engineering/geometry_optimization_20260704/43_geoopt_s3d_o8_fallback_20260712/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.det",
+        "sha256": "dd2c1d68cd474f8b0c7489f2cbbfc924eb69beb14d3ce360d9437c319a33d6cb"
+      },
+      "engineering/geometry_optimization_20260704/43_geoopt_s3d_o8_fallback_20260712/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo": {
+        "bytes": 650588,
+        "path": "engineering/geometry_optimization_20260704/43_geoopt_s3d_o8_fallback_20260712/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo",
+        "sha256": "ff4e8402df702501e0112fe377d837a74c39100317146b09e9569b7bd615c37c"
+      },
+      "engineering/geometry_optimization_20260704/43_geoopt_s3d_o8_fallback_20260712/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup": {
+        "bytes": 219,
+        "path": "engineering/geometry_optimization_20260704/43_geoopt_s3d_o8_fallback_20260712/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup",
+        "sha256": "86a9e56e54dc86834dfe2a9b03a5f71373fb40f2ef24e3889fa66f216058fbec"
+      },
+      "engineering/m04_validation_geometry_handoff_20260810/02_parma_atm511_repair_20260810/line/parma511_day15_20bins.csv": {
+        "bytes": 2845,
+        "path": "engineering/m04_validation_geometry_handoff_20260810/02_parma_atm511_repair_20260810/line/parma511_day15_20bins.csv",
+        "sha256": "3e4c73e50f6a5e97c2cd613b9b85a666f27723d7faaa26e105803774936a7ecd"
+      },
+      "engineering/m04_validation_geometry_handoff_20260810/02_parma_atm511_repair_20260810/line/parma511_day15_40bins.csv": {
+        "bytes": 5610,
+        "path": "engineering/m04_validation_geometry_handoff_20260810/02_parma_atm511_repair_20260810/line/parma511_day15_40bins.csv",
+        "sha256": "093175c5b73a72bfba510f23e7bfecb4aa8c93bed19f80a7a5271bccab18daa5"
+      },
+      "engineering/m04_validation_geometry_handoff_20260810/02_parma_atm511_repair_20260810/line/parma511_day15_80bins.csv": {
+        "bytes": 11147,
+        "path": "engineering/m04_validation_geometry_handoff_20260810/02_parma_atm511_repair_20260810/line/parma511_day15_80bins.csv",
+        "sha256": "2f4ae904bf89179fe1709e3a8123ff864f4450e8bcf443389898ea43cd6a5a32"
+      },
+      "old/code/tools/build_v3p5_centerfinger_step05_l1_response.py": {
+        "bytes": 58015,
+        "path": "old/code/tools/build_v3p5_centerfinger_step05_l1_response.py",
+        "sha256": "0c1e69e4a73bd8653e999b1d8d2aff404a37a44457e40f134388c819ad4b91ab"
+      },
+      "stepwise_maintenance/step09_optics_bridge/outputs_f10m_a1_v3p5/step09_optics_bridge_summary.json": {
+        "bytes": 5210,
+        "path": "stepwise_maintenance/step09_optics_bridge/outputs_f10m_a1_v3p5/step09_optics_bridge_summary.json",
+        "sha256": "8d147e21928b4830a215ab034f29379383b4368b4177f8a16a2f45769df73a25"
+      }
+    },
+    "frozen_active_veto_naming_audit": {
+      "active_shield_named_o8_volumes": [
+        "ActiveShield_S3C_BGO_Kapton_BottomCap_0p3mm",
+        "ActiveShield_S3C_BGO_Kapton_SideWrap_WindowCut_0p3mm",
+        "ActiveShield_S3C_BGO_Kapton_TopAnnulus_0p3mm"
+      ],
+      "all_are_passive_kapton_wrappers": true,
+      "blocker": "The frozen predicate counts BGO and the S1/S2B plastic volumes, but also matches any name containing ACTIVE_SHIELD. In O8 that unintentionally includes all three passive Kapton wrapper volumes named ActiveShield_S3C_BGO_Kapton_*. This harness preserves, rather than repairs, that frozen selection.",
+      "predicate_matches_them": true
+    },
+    "grid_rows": {
+      "20": 20,
+      "40": 40,
+      "80": 80
+    },
+    "line_energy_keV": 510.99895,
+    "o8_setup_includes": [
+      "Include DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo",
+      "Include DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.det"
+    ],
+    "physical_flux_ph_cm2_s": 0.16651547160226118,
+    "scope": "atmospheric annihilation mono line only",
+    "status": "PASS_O8_PARMA511_LINE_ONLY_PREFLIGHT"
+  },
+  "batch_status_counts": {
+    "PARSED_AND_RESPONSE_DIAGNOSTIC_COMPLETE": 1
+  },
+  "batches": [
+    {
+      "analysis_started_at_utc": "2026-08-10T14:14:33.467794+00:00",
+      "batch_index": 0,
+      "cosima_command": [
+        "/home/ubuntu/MEGAlib_Install/megalib-main/bin/cosima",
+        "-s",
+        "260810511",
+        "/home/ubuntu/TES_511_Balloon/engineering/m04_validation_geometry_handoff_20260810/02_parma_atm511_repair_20260810/transport/campaigns/o8_parma511_line_smoke_1k/source_cards/O8PARMA511L_o8_parma511_line_smoke_1k_b0000.source"
+      ],
+      "cosima_executable": "/home/ubuntu/MEGAlib_Install/megalib-main/bin/cosima",
+      "cosima_executable_sha256": "3fb7613de58ebb365f2a55c3336e54d2aabea2a4ddb282003a5d25eac6f1c74a",
+      "cosima_runtime_environment": {
+        "cosima": {
+          "bytes": 22808,
+          "path": "/home/ubuntu/MEGAlib_Install/megalib-main/bin/cosima",
+          "sha256": "3fb7613de58ebb365f2a55c3336e54d2aabea2a4ddb282003a5d25eac6f1c74a"
+        },
+        "launch_environment": {
+          "G4ABLADATA": "/home/ubuntu/MEGAlib_Install/megalib-main/external/geant4_v10.02.p03/share/Geant4-10.2.3/data/G4ABLA3.0",
+          "G4ENSDFSTATEDATA": "/home/ubuntu/MEGAlib_Install/megalib-main/external/geant4_v10.02.p03/share/Geant4-10.2.3/data/G4ENSDFSTATE1.2.3",
+          "G4LEDATA": "/home/ubuntu/MEGAlib_Install/megalib-main/external/geant4_v10.02.p03/share/Geant4-10.2.3/data/G4EMLOW6.48",
+          "G4LEVELGAMMADATA": "/home/ubuntu/MEGAlib_Install/megalib-main/external/geant4_v10.02.p03/share/Geant4-10.2.3/data/PhotonEvaporation3.2",
+          "G4NEUTRONHPDATA": "/home/ubuntu/MEGAlib_Install/megalib-main/external/geant4_v10.02.p03/share/Geant4-10.2.3/data/G4NDL4.5",
+          "G4NEUTRONXSDATA": "/home/ubuntu/MEGAlib_Install/megalib-main/external/geant4_v10.02.p03/share/Geant4-10.2.3/data/G4NEUTRONXS1.4",
+          "G4PIIDATA": "/home/ubuntu/MEGAlib_Install/megalib-main/external/geant4_v10.02.p03/share/Geant4-10.2.3/data/G4PII1.3",
+          "G4RADIOACTIVEDATA": "/home/ubuntu/MEGAlib_Install/megalib-main/external/geant4_v10.02.p03/share/Geant4-10.2.3/data/RadioactiveDecay4.3.2",
+          "G4REALSURFACEDATA": "/home/ubuntu/MEGAlib_Install/megalib-main/external/geant4_v10.02.p03/share/Geant4-10.2.3/data/RealSurface1.0",
+          "G4SAIDXSDATA": "/home/ubuntu/MEGAlib_Install/megalib-main/external/geant4_v10.02.p03/share/Geant4-10.2.3/data/G4SAIDDATA1.1",
+          "HOME": "/home/ubuntu",
+          "LANG": "C.UTF-8",
+          "LC_ALL": "C.UTF-8",
+          "LD_LIBRARY_PATH": "/home/ubuntu/MEGAlib_Install/megalib-main/lib:/home/ubuntu/MEGAlib_Install/megalib-main/external/root_v6.36.6/lib:/home/ubuntu/MEGAlib_Install/megalib-main/external/geant4_v10.02.p03/lib",
+          "LOGNAME": "ubuntu",
+          "MEGALIB": "/home/ubuntu/MEGAlib_Install/megalib-main",
+          "PATH": "/home/ubuntu/MEGAlib_Install/megalib-main/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+          "TZ": "UTC",
+          "USER": "ubuntu"
+        },
+        "launch_environment_canonical_sha256": "685ffa106aad847bdedfd1d0c4126f8c9e3fa6708fe44adf981375c29a90afe0",
+        "ld_library_path_components": [
+          "/home/ubuntu/MEGAlib_Install/megalib-main/lib",
+          "/home/ubuntu/MEGAlib_Install/megalib-main/external/root_v6.36.6/lib",
+          "/home/ubuntu/MEGAlib_Install/megalib-main/external/geant4_v10.02.p03/lib"
+        ],
+        "package44_runner": {
+          "path": "engineering/geometry_optimization_20260704/44_s3d_o8_all8_activation_20260713/code/run_s3d_o8_all8_activation.py",
+          "sha256": "942bbcc3b466bd11ec38d8bd9b868762b70a7d895caadf610a85cdbbacc23a9c"
+        },
+        "parent_environment_inherited": false,
+        "rootsys_present": false,
+        "runtime_probe": {
+          "combined_output_bytes": 1699,
+          "combined_output_sha256": "a650590dfd6567979aa89a37fafc1b1b4f547931dc74a0cf81e932866b87353a",
+          "command": [
+            "/home/ubuntu/MEGAlib_Install/megalib-main/bin/cosima",
+            "-h"
+          ],
+          "first_lines": [
+            "",
+            "**************************************************************************",
+            "*                                                                        *",
+            "*                Cosima - the cosmic simulator of MEGAlib                *",
+            "*                                                                        *",
+            "*             This program is part of MEGAlib version 4.02.00            *",
+            "*                (C) by Andreas Zoglauer and contributors                *",
+            "*                                                                        *",
+            "*                      Master reference for MEGAlib:                     *",
+            "*            A. Zoglauer et al., NewAR 50 (7-8), 629-632, 2006           *",
+            "*                                                                        *",
+            "*            For more information about MEGAlib please visit:            *"
+          ],
+          "returncode": 0,
+          "source_card_argument_present": false,
+          "status": "PASS_COSIMA_HELP_RUNTIME_PROBE_NO_SOURCE_TRANSPORT",
+          "transport_launched": false
+        },
+        "status": "PASS_PACKAGE44_EXACT_MINIMAL_COSIMA_ENVIRONMENT"
+      },
+      "events_requested": 1000,
+      "expected_sim": "engineering/m04_validation_geometry_handoff_20260810/02_parma_atm511_repair_20260810/transport/campaigns/o8_parma511_line_smoke_1k/raw/O8PARMA511L_o8_parma511_line_smoke_1k_b0000.inc1.id1.sim.gz",
+      "finished_at_utc": "2026-08-10T14:14:25.387629+00:00",
+      "output_prefix": "engineering/m04_validation_geometry_handoff_20260810/02_parma_atm511_repair_20260810/transport/campaigns/o8_parma511_line_smoke_1k/raw/O8PARMA511L_o8_parma511_line_smoke_1k_b0000",
+      "parse_provenance": "engineering/m04_validation_geometry_handoff_20260810/02_parma_atm511_repair_20260810/transport/campaigns/o8_parma511_line_smoke_1k/parsed/batch_0000/provenance.json",
+      "parse_provenance_sha256": "05e4e6644f56e5b8f582c188055b61a2939e474dc608676830a50d6713ac68e4",
+      "parsed_dir": "engineering/m04_validation_geometry_handoff_20260810/02_parma_atm511_repair_20260810/transport/campaigns/o8_parma511_line_smoke_1k/parsed/batch_0000",
+      "raw_deleted": false,
+      "raw_disposition": "SAFE_TO_DELETE_NOT_DELETED",
+      "response_summary": "engineering/m04_validation_geometry_handoff_20260810/02_parma_atm511_repair_20260810/transport/campaigns/o8_parma511_line_smoke_1k/parsed/batch_0000/response/response_64seed_summary.json",
+      "response_summary_sha256": "fed493844f5304d7a65b71c10cae27242adde24ad5e82d2589636f13b27c9c27",
+      "returncode": 0,
+      "run_name": "O8PARMA511L_o8_parma511_line_smoke_1k_b0000",
+      "sim_bytes": 266143,
+      "source_card": "engineering/m04_validation_geometry_handoff_20260810/02_parma_atm511_repair_20260810/transport/campaigns/o8_parma511_line_smoke_1k/source_cards/O8PARMA511L_o8_parma511_line_smoke_1k_b0000.source",
+      "source_card_sha256": "7977a7d71d164b2d9fea736b2b71b021de09634a1b598f1647c4d3e10a1e22aa",
+      "started_at_utc": "2026-08-10T14:14:11.188432+00:00",
+      "status": "PARSED_AND_RESPONSE_DIAGNOSTIC_COMPLETE",
+      "stdout_log": "engineering/m04_validation_geometry_handoff_20260810/02_parma_atm511_repair_20260810/transport/campaigns/o8_parma511_line_smoke_1k/logs/O8PARMA511L_o8_parma511_line_smoke_1k_b0000.stdout.log.gz",
+      "stdout_log_compression": "gzip-stream",
+      "stdout_log_receipt": {
+        "bytes": 21837,
+        "compression": "gzip",
+        "path": "engineering/m04_validation_geometry_handoff_20260810/02_parma_atm511_repair_20260810/transport/campaigns/o8_parma511_line_smoke_1k/logs/O8PARMA511L_o8_parma511_line_smoke_1k_b0000.stdout.log.gz",
+        "sha256": "86077a0e7571f3df7e144165b1569f802c4d4a9ee9f268ad268a3d5f2168ecb3",
+        "uncompressed_log_retained": false
+      },
+      "transport_seed": 260810511
+    }
+  ],
+  "cosima_runtime_preflight": {
+    "cosima": {
+      "bytes": 22808,
+      "path": "/home/ubuntu/MEGAlib_Install/megalib-main/bin/cosima",
+      "sha256": "3fb7613de58ebb365f2a55c3336e54d2aabea2a4ddb282003a5d25eac6f1c74a"
+    },
+    "launch_environment": {
+      "G4ABLADATA": "/home/ubuntu/MEGAlib_Install/megalib-main/external/geant4_v10.02.p03/share/Geant4-10.2.3/data/G4ABLA3.0",
+      "G4ENSDFSTATEDATA": "/home/ubuntu/MEGAlib_Install/megalib-main/external/geant4_v10.02.p03/share/Geant4-10.2.3/data/G4ENSDFSTATE1.2.3",
+      "G4LEDATA": "/home/ubuntu/MEGAlib_Install/megalib-main/external/geant4_v10.02.p03/share/Geant4-10.2.3/data/G4EMLOW6.48",
+      "G4LEVELGAMMADATA": "/home/ubuntu/MEGAlib_Install/megalib-main/external/geant4_v10.02.p03/share/Geant4-10.2.3/data/PhotonEvaporation3.2",
+      "G4NEUTRONHPDATA": "/home/ubuntu/MEGAlib_Install/megalib-main/external/geant4_v10.02.p03/share/Geant4-10.2.3/data/G4NDL4.5",
+      "G4NEUTRONXSDATA": "/home/ubuntu/MEGAlib_Install/megalib-main/external/geant4_v10.02.p03/share/Geant4-10.2.3/data/G4NEUTRONXS1.4",
+      "G4PIIDATA": "/home/ubuntu/MEGAlib_Install/megalib-main/external/geant4_v10.02.p03/share/Geant4-10.2.3/data/G4PII1.3",
+      "G4RADIOACTIVEDATA": "/home/ubuntu/MEGAlib_Install/megalib-main/external/geant4_v10.02.p03/share/Geant4-10.2.3/data/RadioactiveDecay4.3.2",
+      "G4REALSURFACEDATA": "/home/ubuntu/MEGAlib_Install/megalib-main/external/geant4_v10.02.p03/share/Geant4-10.2.3/data/RealSurface1.0",
+      "G4SAIDXSDATA": "/home/ubuntu/MEGAlib_Install/megalib-main/external/geant4_v10.02.p03/share/Geant4-10.2.3/data/G4SAIDDATA1.1",
+      "HOME": "/home/ubuntu",
+      "LANG": "C.UTF-8",
+      "LC_ALL": "C.UTF-8",
+      "LD_LIBRARY_PATH": "/home/ubuntu/MEGAlib_Install/megalib-main/lib:/home/ubuntu/MEGAlib_Install/megalib-main/external/root_v6.36.6/lib:/home/ubuntu/MEGAlib_Install/megalib-main/external/geant4_v10.02.p03/lib",
+      "LOGNAME": "ubuntu",
+      "MEGALIB": "/home/ubuntu/MEGAlib_Install/megalib-main",
+      "PATH": "/home/ubuntu/MEGAlib_Install/megalib-main/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+      "TZ": "UTC",
+      "USER": "ubuntu"
+    },
+    "launch_environment_canonical_sha256": "685ffa106aad847bdedfd1d0c4126f8c9e3fa6708fe44adf981375c29a90afe0",
+    "ld_library_path_components": [
+      "/home/ubuntu/MEGAlib_Install/megalib-main/lib",
+      "/home/ubuntu/MEGAlib_Install/megalib-main/external/root_v6.36.6/lib",
+      "/home/ubuntu/MEGAlib_Install/megalib-main/external/geant4_v10.02.p03/lib"
+    ],
+    "package44_runner": {
+      "path": "engineering/geometry_optimization_20260704/44_s3d_o8_all8_activation_20260713/code/run_s3d_o8_all8_activation.py",
+      "sha256": "942bbcc3b466bd11ec38d8bd9b868762b70a7d895caadf610a85cdbbacc23a9c"
+    },
+    "parent_environment_inherited": false,
+    "rootsys_present": false,
+    "runtime_probe": {
+      "combined_output_bytes": 1699,
+      "combined_output_sha256": "a650590dfd6567979aa89a37fafc1b1b4f547931dc74a0cf81e932866b87353a",
+      "command": [
+        "/home/ubuntu/MEGAlib_Install/megalib-main/bin/cosima",
+        "-h"
+      ],
+      "first_lines": [
+        "",
+        "**************************************************************************",
+        "*                                                                        *",
+        "*                Cosima - the cosmic simulator of MEGAlib                *",
+        "*                                                                        *",
+        "*             This program is part of MEGAlib version 4.02.00            *",
+        "*                (C) by Andreas Zoglauer and contributors                *",
+        "*                                                                        *",
+        "*                      Master reference for MEGAlib:                     *",
+        "*            A. Zoglauer et al., NewAR 50 (7-8), 629-632, 2006           *",
+        "*                                                                        *",
+        "*            For more information about MEGAlib please visit:            *"
+      ],
+      "returncode": 0,
+      "source_card_argument_present": false,
+      "status": "PASS_COSIMA_HELP_RUNTIME_PROBE_NO_SOURCE_TRANSPORT",
+      "transport_launched": false
+    },
+    "status": "PASS_PACKAGE44_EXACT_MINIMAL_COSIMA_ENVIRONMENT"
+  },
+  "created_at_utc": "2026-08-10T14:13:41.902377+00:00",
+  "execution_gate": {
+    "command": "run-batch",
+    "note": "Preparation is not authorization to launch transport.",
+    "requires_confirmation": "RUN_O8_PARMA511_LINE_ONLY_510.99895",
+    "requires_flag": "--authorize-line-only-cosima"
+  },
+  "intent": {
+    "base_seed": 260810511,
+    "batches": 1,
+    "campaign_id": "o8_parma511_line_smoke_1k",
+    "events_per_batch": 1000,
+    "line_energy_keV": 510.99895,
+    "o8_setup_sha256": "86a9e56e54dc86834dfe2a9b03a5f71373fb40f2ef24e3889fa66f216058fbec",
+    "proposal_csv_sha256": "2f4ae904bf89179fe1709e3a8123ff864f4450e8bcf443389898ea43cd6a5a32",
+    "proposal_grid_bins": 80,
+    "schema": "o8-parma511-line-transport-campaign-v1"
+  },
+  "intent_fingerprint_sha256": "c26768719c15b5cfffcd7aad97086ee8fec96fefbb954ffec3da05944d117c5d",
+  "response_contract": {
+    "active_threshold_keV": 50.0,
+    "default_replicas": 64,
+    "fwhm_keV": 0.42,
+    "primary_atmospheric_seed": 1026071308,
+    "seed_stride": 7919,
+    "sigma_keV": 0.178357578060484,
+    "step05_sha256": "0c1e69e4a73bd8653e999b1d8d2aff404a37a44457e40f134388c819ad4b91ab",
+    "step09_summary_sha256": "8d147e21928b4830a215ab034f29379383b4368b4177f8a16a2f45769df73a25",
+    "tes_threshold_keV": 0.3
+  },
+  "schema": "o8-parma511-line-transport-campaign-v1",
+  "scope_contract": {
+    "excluded": [
+      "broadband photon continuum",
+      "prompt",
+      "delayed or activation",
+      "focused signal",
+      "all other particles",
+      "full-chain recomposition"
+    ],
+    "included": "atmospheric annihilation mono line at 510.99895 keV",
+    "physical_flux_ph_cm2_s": 0.16651547160226118,
+    "physical_source_grid": "PARMA 80 equal-mu bins"
+  },
+  "status": "PREPARED_LINE_ONLY_NO_COSIMA_LAUNCHED",
+  "updated_at_utc": "2026-08-10T14:14:42.014046+00:00"
+}

@@ -1,0 +1,19 @@
+# cosima MC smoke: 511 keV far-field gammas onto the multiband mass-proxy Ge.
+# Proves the support-inclusive geometry runs under Monte Carlo (loads, transports,
+# triggers, writes a .sim). Not a physics result — a smoke.
+
+Version 1
+Geometry /home/ubuntu/opticsim/opticsim_full/designs/f10m_multiband_20260701/mc_smoke_20260701/mb_mc_smoke.setup
+
+PhysicsListEM Livermore
+StoreSimulationInfo all
+Seed 12345
+
+Run Smoke
+Smoke.FileName /home/ubuntu/opticsim/opticsim_full/designs/f10m_multiband_20260701/mc_smoke_20260701/mb_mc_smoke
+Smoke.NTriggers 300
+Smoke.Source S511
+S511.ParticleType 1
+S511.Beam FarFieldPointSource 90 0
+S511.Spectrum Mono 511
+S511.Flux 1000.0

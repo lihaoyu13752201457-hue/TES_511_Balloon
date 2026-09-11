@@ -1,0 +1,321 @@
+{
+  "label": "fix5_fullstat_v2",
+  "role": "Verifier-preflight",
+  "phase": "Full-stat clean transport release preflight",
+  "generated_at_utc": "2026-06-21T17:44:15Z",
+  "contract_authority": "core_md/fix5_benchmarks.json",
+  "overall_status": "PASS_FIX5_PROMOTION",
+  "source_provenance_status": "PASS",
+  "old_new_geo_re_gate_allowed": false,
+  "fullstat_transport_release_allowed": false,
+  "mc_or_transport_started_by_verifier": false,
+  "rows": [
+    {
+      "check": "fullstat_source_cards_geometry",
+      "status": "PASS",
+      "evidence_path": "config/megalib_sources_fullsphere20_fix5_tilt45",
+      "blocking": true,
+      "details": {
+        "source_cards": 8,
+        "contains_fix5_geometry": 8,
+        "contains_forbidden_baseline_geometry": 0
+      }
+    },
+    {
+      "check": "fullstat_job_sources_geometry",
+      "status": "PASS",
+      "evidence_path": "runs/step02_instant_fix5_fullstat_v2/job_sources; runs/step02_buildup_fix5_fullstat_v2/job_sources",
+      "blocking": true,
+      "details": {
+        "job_sources": 136,
+        "contains_fix5_geometry": 136,
+        "contains_forbidden_baseline_geometry": 0
+      }
+    },
+    {
+      "check": "fullstat_run_manifests_prepared",
+      "status": "PASS",
+      "evidence_path": "runs/step02_instant_fix5_fullstat_v2/run_manifest.csv; runs/step02_buildup_fix5_fullstat_v2/run_manifest.csv",
+      "blocking": true,
+      "details": {
+        "instant_jobs": 68,
+        "buildup_jobs": 68,
+        "instant_events": 25210216,
+        "buildup_events": 25210216,
+        "gamma_events": 10000000,
+        "gamma_splits": 12,
+        "non_gamma_replicas": 8
+      }
+    },
+    {
+      "check": "statistics_escalation_basis_from_1of10",
+      "status": "PASS",
+      "evidence_path": "outputs/reports/fix5_1of10/fix5_step05_screen_summary.json",
+      "blocking": true,
+      "details": {
+        "rate_gate_decision": "INCONCLUSIVE_LOW_STAT_ZERO_SELECTED_EVENTS_NOT_FINAL_PASS",
+        "hard_fail_status": "NO_HARD_FAIL_OBSERVED",
+        "promotion_status": "NOT_RELEASED_NOT_CLAIMED"
+      }
+    },
+    {
+      "check": "no_fullstat_mc_outputs_existing_before_clean_release",
+      "status": "PASS",
+      "evidence_path": "runs/step02_instant_fix5_fullstat_v2; runs/step02_buildup_fix5_fullstat_v2",
+      "blocking": true,
+      "details": {
+        "existing_expected_mc_outputs": []
+      }
+    },
+    {
+      "check": "benchmark_alignment_blocks_old_new_geo_re_gate",
+      "status": "NOT_ALIGNED_REPORT_ONLY",
+      "evidence_path": "outputs/reports/fix5_fullstat_v2/fix5_benchmark_alignment.json",
+      "blocking": false,
+      "details": {
+        "decision": "NOT_ALIGNED",
+        "old_new_geo_re_gate_allowed": false
+      }
+    },
+    {
+      "check": "fullstat_instant_transport_summary",
+      "status": "PASS",
+      "evidence_path": "runs/step02_instant_fix5_fullstat_v2/run_summary.json",
+      "blocking": true,
+      "details": {
+        "jobs": 68,
+        "pass_or_skip": 68,
+        "fail": 0,
+        "events_generated": 25210216,
+        "sim_files": 68,
+        "dat_files": 68
+      }
+    },
+    {
+      "check": "fullstat_buildup_transport_summary",
+      "status": "PASS",
+      "evidence_path": "runs/step02_buildup_fix5_fullstat_v2/run_summary.json",
+      "blocking": true,
+      "details": {
+        "jobs": 68,
+        "pass_or_skip": 68,
+        "fail": 0,
+        "events_generated": 25210216,
+        "sim_files": 68,
+        "dat_files": 68
+      }
+    },
+    {
+      "check": "fullstat_sim_header_geometry",
+      "status": "PASS",
+      "evidence_path": "outputs/reports/fix5_fullstat_v2/fix5_fullstat_transport_summary.json",
+      "blocking": true,
+      "details": {
+        "sim_headers_checked": 136,
+        "sim_headers_with_fix5_geometry": 136,
+        "sim_headers_with_forbidden_baseline_geometry": 0,
+        "missing_sim_files": 0,
+        "bad_sim_headers": []
+      }
+    },
+    {
+      "check": "fullstat_delayed_groundstate_half_life_audit",
+      "status": "PASS",
+      "evidence_path": "outputs/reports/fix5_fullstat_v2_exactpos_m50000_s260613/fix5_groundstate_half_life_audit_summary.json",
+      "blocking": true,
+      "details": {
+        "audit_status": "PASS_FIX5_GROUNDSTATE_HALF_LIFE_AUDIT",
+        "problems": [],
+        "corrections_rows": 234,
+        "nubase_line_mismatches": 0,
+        "normalization_status": "PASS",
+        "normalization_problems": [],
+        "fixed_source_geometry": "outputs/geometry/DEMO2_DR_v3p5_user_cylmag_redesign_multiholeW_fix5_20260621_megalib_proxy/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup",
+        "old_total_activity_Bq": 87.48329383240524,
+        "new_total_activity_Bq": 85.44920253876245,
+        "source_blocks_removed": 29,
+        "w_or_collimator_new_activity_Bq": 0.9860798287567217
+      }
+    },
+    {
+      "check": "fullstat_exactpos_sampling_inventory_audit",
+      "status": "PASS",
+      "evidence_path": "outputs/reports/fix5_fullstat_v2_exactpos_m50000_s260613/fix5_delayed_source_exactpos_summary.json",
+      "blocking": true,
+      "details": {
+        "sampling_status": "PASS",
+        "n_decays": 50000,
+        "parsed_pointsource_blocks": 50000,
+        "manifest_flux_relative_delta": 0.0,
+        "source_text_flux_relative_delta": 4.53631512934923e-10,
+        "matched_back_to_exact_table_fraction": 1.0,
+        "ambiguous_coordinate_key_fraction": 0.0,
+        "top20_max_abs_sigma_delta": 1.832744056105356,
+        "problems": []
+      }
+    },
+    {
+      "check": "fullstat_exactpos_delayed_transport_sim_header",
+      "status": "PASS",
+      "evidence_path": "runs/step02_delayed_transport_fix5_fullstat_v2_exactpos_m50000_s260613/DelayedDecayFix5FullstatV2ExactposM50000S260613.inc1.id1.sim.gz",
+      "blocking": true,
+      "details": {
+        "SE": 1000000,
+        "ID": 1000000,
+        "TS": 1,
+        "TE_s": 11649.564832,
+        "size_bytes": 853661355,
+        "geometry": "/home/ubuntu/TES_511_Balloon/outputs/geometry/DEMO2_DR_v3p5_user_cylmag_redesign_multiholeW_fix5_20260621_megalib_proxy/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup",
+        "geometry_ok": true
+      }
+    },
+    {
+      "check": "fullstat_exactpos_aborted_partial_quarantined",
+      "status": "PASS",
+      "evidence_path": "runs/step02_delayed_transport_fix5_fullstat_v2_exactpos_m50000_s260613/aborted_stdout_pty_note.json",
+      "blocking": false,
+      "details": {
+        "aborted_partial_note_exists": true,
+        "final_transport_sim": "runs/step02_delayed_transport_fix5_fullstat_v2_exactpos_m50000_s260613/DelayedDecayFix5FullstatV2ExactposM50000S260613.inc1.id1.sim.gz"
+      }
+    },
+    {
+      "check": "fix5_step05_l1_response",
+      "status": "PASS",
+      "evidence_path": "stepwise_maintenance/step05_veto_time_axis/outputs_fix5_fullstat_v2_exactpos_m50000_s260613_l1/step05_fix5_fullstat_v2_exactpos_m50000_s260613_l1_response_summary.json",
+      "blocking": true,
+      "details": {
+        "status": "PASS_FIX5_STEP05_SIDE_ENTRY_COMPTON_TIME_AXIS_L1_FULLSTAT_V2_EXACTPOS_NOT_PROMOTION",
+        "w2_background_cps": 0.0392162265186315,
+        "prompt_cps": 0.036641023029691425,
+        "delayed_cps": 0.0025752034889400762,
+        "signal_status": "FIX5_FOCUSED_REPLAY_CONSUMED_BY_STEP05"
+      },
+      "updated_at_utc": "2026-06-21T20:14:11Z"
+    },
+    {
+      "check": "fix5_step06_mission_time_axis",
+      "status": "PASS",
+      "evidence_path": "stepwise_maintenance/step06_mission_time_variation/outputs_fix5_fullstat_v2_exactpos_m50000_s260613/step06_fix5_fullstat_v2_exactpos_m50000_s260613_summary.json",
+      "blocking": true,
+      "details": {
+        "status": "PASS_FIX5_STEP06_TIME_AXIS_FIX5_FULLSTAT_V2_EXACTPOS_M50000_S260613_NOT_PROMOTION",
+        "w2_dt_weighted_background_final_cps": 0.03935462874339332
+      },
+      "updated_at_utc": "2026-06-21T20:14:11Z"
+    },
+    {
+      "check": "fix5_step07_source_cases",
+      "status": "PASS_NON_PROMOTION",
+      "evidence_path": "stepwise_maintenance/step07_source_cases/outputs_fix5_fullstat_v2_exactpos_m50000_s260613/source_case_summary.json",
+      "blocking": false,
+      "details": {
+        "status": "PASS_FIX5_STEP07_SOURCE_CASES_FIX5_FULLSTAT_V2_EXACTPOS_M50000_S260613_SIGNAL_REPLAYED_NOT_PROMOTION",
+        "claim_level": "FIX5_L1_SOURCE_CASE_RATE_FOLDING_FIX5_FULLSTAT_V2_EXACTPOS_M50000_S260613_SIGNAL_REPLAYED_NOT_FINAL_PROMOTION"
+      },
+      "updated_at_utc": "2026-06-21T20:14:11Z"
+    },
+    {
+      "check": "fix5_step08_time_dependent_significance",
+      "status": "PASS_NON_PROMOTION",
+      "evidence_path": "stepwise_maintenance/step08_significance/outputs_fix5_fullstat_v2_exactpos_m50000_s260613/step08_fix5_fullstat_v2_exactpos_m50000_s260613_time_dependent_summary.json",
+      "blocking": false,
+      "details": {
+        "status": "PASS_FIX5_STEP08_TIME_DEPENDENT_FIX5_FULLSTAT_V2_EXACTPOS_M50000_S260613_SIGNAL_REPLAYED_NOT_PROMOTION",
+        "claim_level": "FIX5_L1_COUNTING_TIME_DEP_WITH_ANALYTIC_ACCIDENTAL_FIX5_FULLSTAT_V2_EXACTPOS_M50000_S260613_SIGNAL_REPLAYED_NOT_FINAL_PROMOTION",
+        "Z20d": 7.79950030715189,
+        "Z20d_status": "FIX5_SIGNAL_REPLAY_BACKED",
+        "F3_20d_ph_cm2_s": 3.8464002588077305e-05,
+        "F3_20d_status": "FIX5_SIGNAL_REPLAY_BACKED"
+      },
+      "updated_at_utc": "2026-06-21T20:14:11Z"
+    },
+    {
+      "check": "fix5_signal_replay",
+      "status": "PASS",
+      "evidence_path": "stepwise_maintenance/step09_optics_bridge/outputs_fix5_fullstat_v2_exactpos_m50000_s260613/step09_focus_summary.json",
+      "blocking": true,
+      "details": {
+        "required": "Focused signal replay source card and SIM header must use the fix5 .geo.setup before promotion.",
+        "current_step05_signal_status": "FIX5_FOCUSED_REPLAY_CONSUMED_BY_STEP05",
+        "signal_keep_fraction_vs_v3p5": 1.0039868905632376,
+        "signal_replay_complete": true,
+        "step09_signal_replay_sim": "runs/step09_focus_fix5_fullstat_v2_exactpos_m50000_s260613/Opticsim_laue_f10m_a1_fix5_fullstat_v2_exactpos_m50000_s260613.inc1.id1.sim.gz"
+      },
+      "updated_at_utc": "2026-06-21T20:14:11Z"
+    },
+    {
+      "check": "fix5_promotion_decision",
+      "status": "PASS",
+      "evidence_path": "outputs/reports/fix5_fullstat_v2_exactpos_m50000_s260613/fix5_promotion_decision.json",
+      "blocking": true,
+      "details": {
+        "decision": "PASS_FIX5_REPLACES_V3P5",
+        "B_cps": 0.0392162265186315,
+        "B_sigma_cps": 0.005008329321646361,
+        "background_decisive_pass": true,
+        "delayed_red_flag": false,
+        "signal_replay_complete": true,
+        "signal_keep_fraction_vs_v3p5": 1.0039868905632376,
+        "automatic_pass_rule_met": true,
+        "w_activation_cps_status": "SELECTED_W2_RATE_DECOMPOSED"
+      },
+      "updated_at_utc": "2026-06-21T20:14:11Z"
+    },
+    {
+      "check": "fix5_signal_source_card_geometry",
+      "status": "PASS",
+      "evidence_path": "runs/step09_focus_fix5_fullstat_v2_exactpos_m50000_s260613/Opticsim_laue_f10m_a1_fix5_fullstat_v2_exactpos_m50000_s260613.source",
+      "blocking": true,
+      "details": {
+        "contains_fix5_geometry": true,
+        "contains_forbidden_baseline_geometry": false,
+        "expected_sim": "runs/step09_focus_fix5_fullstat_v2_exactpos_m50000_s260613/Opticsim_laue_f10m_a1_fix5_fullstat_v2_exactpos_m50000_s260613.inc1.id1.sim.gz",
+        "triggers": 37194,
+        "eventlist": "stepwise_maintenance/step09_optics_bridge/outputs_f10m_a1_v3p5/eventlists/Opticsim_laue_f10m_a1_v3p5_centerfinger.eventlist.dat"
+      }
+    },
+    {
+      "check": "fix5_signal_transport_sim_header",
+      "status": "PASS",
+      "evidence_path": "runs/step09_focus_fix5_fullstat_v2_exactpos_m50000_s260613/Opticsim_laue_f10m_a1_fix5_fullstat_v2_exactpos_m50000_s260613.inc1.id1.sim.gz",
+      "blocking": true,
+      "details": {
+        "SE": 37194,
+        "ID": 37194,
+        "TS": 1,
+        "TE_s": 3.7e-05,
+        "size_bytes": 24088221,
+        "geometry": "  /home/ubuntu/TES_511_Balloon/outputs/geometry/DEMO2_DR_v3p5_user_cylmag_redesign_multiholeW_fix5_20260621_megalib_proxy/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup",
+        "geometry_ok": true,
+        "problems": []
+      }
+    },
+    {
+      "check": "fix5_w_activation_selected_w2_audit",
+      "status": "PASS",
+      "evidence_path": "outputs/reports/fix5_fullstat_v2_exactpos_m50000_s260613/fix5_w_activation_selected_w2_audit.json",
+      "blocking": true,
+      "details": {
+        "w_activation_cps": 0.0,
+        "w_activation_cps_status": "SELECTED_W2_RATE_DECOMPOSED",
+        "w_activation_selected_events": 0,
+        "w_activation_fraction_of_delayed_selected_rate": 0.0,
+        "w_activation_dominant_component": false
+      },
+      "updated_at_utc": "2026-06-21T20:14:11Z"
+    }
+  ],
+  "phase_fullstat_transport_status": "PASS_FULLSTAT_INSTANT_AND_BUILDUP_TRANSPORT_VERIFIED",
+  "fullstat_transport_summary": "outputs/reports/fix5_fullstat_v2/fix5_fullstat_transport_summary.json",
+  "delayed_source_release_allowed": true,
+  "updated_at_utc": "2026-06-21T20:14:11Z",
+  "phase_fullstat_exactpos_delayed_transport_status": "PASS_FIX5_FULLSTAT_V2_EXACTPOS_M50000_S260613_EXACTPOS_DELAYED_TRANSPORT",
+  "exactpos_delayed_source_summary": "outputs/reports/fix5_fullstat_v2_exactpos_m50000_s260613/fix5_delayed_source_exactpos_summary.json",
+  "exactpos_delayed_transport_release": "outputs/reports/fix5_fullstat_v2_exactpos_m50000_s260613/fix5_fullstat_delayed_transport_release.json",
+  "step05_l1_response_release_allowed": true,
+  "final_rate_claim_allowed": true,
+  "final_promotion_decision_allowed": true,
+  "phase_step05_to_step08_status": "PASS_SIGNAL_REPLAYED_STEP05_TO_STEP08_CHAIN",
+  "promotion_decision_artifact": "outputs/reports/fix5_fullstat_v2_exactpos_m50000_s260613/fix5_promotion_decision.json"
+}

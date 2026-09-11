@@ -1,0 +1,1608 @@
+{
+  "status": "PASS_S3D_O8_STEP05_CORE_ALL8_PROMPT_NEUTRON_DELAYED_MATCHED_SIGNAL_NO_ATM511",
+  "statistics_label": "s3d_o8_fullchain_20260712",
+  "generated_at_utc": "2026-07-12T13:48:49Z",
+  "claim_level": "S3D_O8_CORE_STEP05_ONLY_NOT_FULL_BACKGROUND",
+  "preflight": {
+    "status": "PASS_READY_FOR_O8_STEP05_08",
+    "generated_at_utc": "2026-07-12T13:35:46Z",
+    "deep_SE_ID_audit": true,
+    "geometry_setup": "engineering/geometry_optimization_20260704/43_geoopt_s3d_o8_fallback_20260712/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup",
+    "gates": {
+      "geometry": {
+        "status": "PASS",
+        "problems": [],
+        "missing": [],
+        "authority": {
+          "status": "PASS",
+          "checks": {
+            "manifest_status": "S3D_O8_FALLBACK_GEOMETRY_VALIDATED_COSIMA_OVERLAP_PASS",
+            "static_diff_status": "PASS",
+            "overlap_status": "PASS",
+            "overlap_hash_match": true,
+            "independent_validation_status": "PASS",
+            "generated_geometry_matches": true
+          },
+          "o8_geometry_hashes": {
+            "DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup": "86a9e56e54dc86834dfe2a9b03a5f71373fb40f2ef24e3889fa66f216058fbec",
+            "DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo": "ff4e8402df702501e0112fe377d837a74c39100317146b09e9569b7bd615c37c",
+            "DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.det": "dd2c1d68cd474f8b0c7489f2cbbfc924eb69beb14d3ce360d9437c319a33d6cb",
+            "Intro_DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo": "f4ea834bf385f68a85690e018fd52d692e94e19dd93959e35e6f91efd3dbfd52",
+            "Materials_DEMO2_DR_v3p5.geo": "751cd83f08631085496ee86efa4418e4f001a639b15573554b93e73ff95678bf"
+          },
+          "heavy_control_geometry_hashes": {
+            "DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup": "86a9e56e54dc86834dfe2a9b03a5f71373fb40f2ef24e3889fa66f216058fbec",
+            "DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo": "010fc59398ff2710ef1a4cf95219a506d39e56ac170f36bf722ffa567e279410",
+            "DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.det": "fc01ff4a212880a28ab3d5f76844e522cd8082b4061b223ee6af9302bfc7ac19",
+            "Intro_DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo": "f4ea834bf385f68a85690e018fd52d692e94e19dd93959e35e6f91efd3dbfd52",
+            "Materials_DEMO2_DR_v3p5.geo": "751cd83f08631085496ee86efa4418e4f001a639b15573554b93e73ff95678bf"
+          },
+          "shared_helper": "engineering/geometry_optimization_20260704/42_geoopt_s3d_lightweight_20260712/code/_s3d_replay_common.py",
+          "shared_helper_sha256": "495f6e051028f125932b0687ee47a35eb9afb2f3765522afe77729eb010f86ea"
+        }
+      },
+      "screening_promotion": {
+        "status": "PASS_SCREENING_PROMOTION_GATE",
+        "problems": [],
+        "missing": [],
+        "authority": {
+          "status": "PASS_SCREENING_PROMOTION_GATE",
+          "authority": "engineering/geometry_optimization_20260704/43_geoopt_s3d_o8_fallback_20260712/data/s3d_o8_screening_analysis.json",
+          "authority_exists": true,
+          "authority_sha256": "b4e1c5151358618c04b75d585f08c2c50913fbdd6c709bb9a6a544789046730b",
+          "authority_status": "PASS_O8_SCREENING_PROMOTION_GATES",
+          "expected_status": "PASS_O8_SCREENING_PROMOTION_GATES",
+          "gate_evidence": {
+            "dominant_subset": {
+              "evaluation_status": "PASS",
+              "promotion_gate_pass": true
+            },
+            "signal": {
+              "evaluation_status": "PASS",
+              "promotion_gate_pass": true
+            }
+          },
+          "all_required_gates_evaluated": true,
+          "any_evaluated_gate_failed": false,
+          "decision_so_far": "PASS_ALL_COMPLETED_GATES",
+          "problems": [],
+          "pending": [],
+          "historical_substitution_allowed": false
+        }
+      },
+      "prompt_all8": {
+        "status": "PASS",
+        "problems": [],
+        "missing": [],
+        "expected_jobs": 68,
+        "particle_counts": {
+          "alpha": 8,
+          "eminus": 8,
+          "eplus": 8,
+          "gamma": 12,
+          "muminus": 8,
+          "muplus": 8,
+          "n": 8,
+          "p": 8
+        },
+        "audited_jobs": [
+          {
+            "job_name": "Background_alpha_fullsphere20_rep01_part01",
+            "particle": "alpha",
+            "events": 23933,
+            "generated_particles": 23933,
+            "sim": "runs/geometry_optimization_20260704/s3d_o8_fullstat_prompt_all8_20260712/Background_alpha_fullsphere20_rep01_part01.inc1.id1.sim.gz",
+            "dat": "runs/geometry_optimization_20260704/s3d_o8_fullstat_prompt_all8_20260712/Background_alpha_fullsphere20_rep01_part01.dat.inc1.dat",
+            "source": "runs/geometry_optimization_20260704/s3d_o8_fullstat_prompt_all8_20260712/job_sources/Background_alpha_fullsphere20_rep01_part01.source",
+            "tt_s": 186.018,
+            "geometry": "/home/ubuntu/TES_511_Balloon/engineering/geometry_optimization_20260704/43_geoopt_s3d_o8_fallback_20260712/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup",
+            "seed": 1102950,
+            "status": "PASS"
+          },
+          {
+            "job_name": "Background_alpha_fullsphere20_rep02_part01",
+            "particle": "alpha",
+            "events": 23933,
+            "generated_particles": 23933,
+            "sim": "runs/geometry_optimization_20260704/s3d_o8_fullstat_prompt_all8_20260712/Background_alpha_fullsphere20_rep02_part01.inc1.id1.sim.gz",
+            "dat": "runs/geometry_optimization_20260704/s3d_o8_fullstat_prompt_all8_20260712/Background_alpha_fullsphere20_rep02_part01.dat.inc1.dat",
+            "source": "runs/geometry_optimization_20260704/s3d_o8_fullstat_prompt_all8_20260712/job_sources/Background_alpha_fullsphere20_rep02_part01.source",
+            "tt_s": 185.439,
+            "geometry": "/home/ubuntu/TES_511_Balloon/engineering/geometry_optimization_20260704/43_geoopt_s3d_o8_fallback_20260712/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup",
+            "seed": 1110869,
+            "status": "PASS"
+          },
+          {
+            "job_name": "Background_alpha_fullsphere20_rep03_part01",
+            "particle": "alpha",
+            "events": 23933,
+            "generated_particles": 23933,
+            "sim": "runs/geometry_optimization_20260704/s3d_o8_fullstat_prompt_all8_20260712/Background_alpha_fullsphere20_rep03_part01.inc1.id1.sim.gz",
+            "dat": "runs/geometry_optimization_20260704/s3d_o8_fullstat_prompt_all8_20260712/Background_alpha_fullsphere20_rep03_part01.dat.inc1.dat",
+            "source": "runs/geometry_optimization_20260704/s3d_o8_fullstat_prompt_all8_20260712/job_sources/Background_alpha_fullsphere20_rep03_part01.source",
+            "tt_s": 182.304,
+            "geometry": "/home/ubuntu/TES_511_Balloon/engineering/geometry_optimization_20260704/43_geoopt_s3d_o8_fallback_20260712/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup",
+            "seed": 1118788,
+            "status": "PASS"
+          },
+          {
+            "job_name": "Background_alpha_fullsphere20_rep04_part01",
+            "particle": "alpha",
+            "events": 23933,
+            "generated_particles": 23933,
+            "sim": "runs/geometry_optimization_20260704/s3d_o8_fullstat_prompt_all8_20260712/Background_alpha_fullsphere20_rep04_part01.inc1.id1.sim.gz",
+            "dat": "runs/geometry_optimization_20260704/s3d_o8_fullstat_prompt_all8_20260712/Background_alpha_fullsphere20_rep04_part01.dat.inc1.dat",
+            "source": "runs/geometry_optimization_20260704/s3d_o8_fullstat_prompt_all8_20260712/job_sources/Background_alpha_fullsphere20_rep04_part01.source",
+            "tt_s": 182.976,
+            "geometry": "/home/ubuntu/TES_511_Balloon/engineering/geometry_optimization_20260704/43_geoopt_s3d_o8_fallback_20260712/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup",
+            "seed": 1126707,
+            "status": "PASS"
+          },
+          {
+            "job_name": "Background_alpha_fullsphere20_rep05_part01",
+            "particle": "alpha",
+            "events": 23933,
+            "generated_particles": 23933,
+            "sim": "runs/geometry_optimization_20260704/s3d_o8_fullstat_prompt_all8_20260712/Background_alpha_fullsphere20_rep05_part01.inc1.id1.sim.gz",
+            "dat": "runs/geometry_optimization_20260704/s3d_o8_fullstat_prompt_all8_20260712/Background_alpha_fullsphere20_rep05_part01.dat.inc1.dat",
+            "source": "runs/geometry_optimization_20260704/s3d_o8_fullstat_prompt_all8_20260712/job_sources/Background_alpha_fullsphere20_rep05_part01.source",
+            "tt_s": 182.157,
+            "geometry": "/home/ubuntu/TES_511_Balloon/engineering/geometry_optimization_20260704/43_geoopt_s3d_o8_fallback_20260712/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup",
+            "seed": 1134626,
+            "status": "PASS"
+          },
+          {
+            "job_name": "Background_alpha_fullsphere20_rep06_part01",
+            "particle": "alpha",
+            "events": 23933,
+            "generated_particles": 23933,
+            "sim": "runs/geometry_optimization_20260704/s3d_o8_fullstat_prompt_all8_20260712/Background_alpha_fullsphere20_rep06_part01.inc1.id1.sim.gz",
+            "dat": "runs/geometry_optimization_20260704/s3d_o8_fullstat_prompt_all8_20260712/Background_alpha_fullsphere20_rep06_part01.dat.inc1.dat",
+            "source": "runs/geometry_optimization_20260704/s3d_o8_fullstat_prompt_all8_20260712/job_sources/Background_alpha_fullsphere20_rep06_part01.source",
+            "tt_s": 184.151,
+            "geometry": "/home/ubuntu/TES_511_Balloon/engineering/geometry_optimization_20260704/43_geoopt_s3d_o8_fallback_20260712/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup",
+            "seed": 1142545,
+            "status": "PASS"
+          },
+          {
+            "job_name": "Background_alpha_fullsphere20_rep07_part01",
+            "particle": "alpha",
+            "events": 23933,
+            "generated_particles": 23933,
+            "sim": "runs/geometry_optimization_20260704/s3d_o8_fullstat_prompt_all8_20260712/Background_alpha_fullsphere20_rep07_part01.inc1.id1.sim.gz",
+            "dat": "runs/geometry_optimization_20260704/s3d_o8_fullstat_prompt_all8_20260712/Background_alpha_fullsphere20_rep07_part01.dat.inc1.dat",
+            "source": "runs/geometry_optimization_20260704/s3d_o8_fullstat_prompt_all8_20260712/job_sources/Background_alpha_fullsphere20_rep07_part01.source",
+            "tt_s": 183.549,
+            "geometry": "/home/ubuntu/TES_511_Balloon/engineering/geometry_optimization_20260704/43_geoopt_s3d_o8_fallback_20260712/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup",
+            "seed": 1150464,
+            "status": "PASS"
+          },
+          {
+            "job_name": "Background_alpha_fullsphere20_rep08_part01",
+            "particle": "alpha",
+            "events": 23933,
+            "generated_particles": 23933,
+            "sim": "runs/geometry_optimization_20260704/s3d_o8_fullstat_prompt_all8_20260712/Background_alpha_fullsphere20_rep08_part01.inc1.id1.sim.gz",
+            "dat": "runs/geometry_optimization_20260704/s3d_o8_fullstat_prompt_all8_20260712/Background_alpha_fullsphere20_rep08_part01.dat.inc1.dat",
+            "source": "runs/geometry_optimization_20260704/s3d_o8_fullstat_prompt_all8_20260712/job_sources/Background_alpha_fullsphere20_rep08_part01.source",
+            "tt_s": 186.223,
+            "geometry": "/home/ubuntu/TES_511_Balloon/engineering/geometry_optimization_20260704/43_geoopt_s3d_o8_fallback_20260712/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup",
+            "seed": 1158383,
+            "status": "PASS"
+          },
+          {
+            "job_name": "Background_eminus_fullsphere20_rep01_part01",
+            "particle": "eminus",
+            "events": 414617,
+            "generated_particles": 414617,
+            "sim": "runs/geometry_optimization_20260704/s3d_o8_fullstat_prompt_all8_20260712/Background_eminus_fullsphere20_rep01_part01.inc1.id1.sim.gz",
+            "dat": "runs/geometry_optimization_20260704/s3d_o8_fullstat_prompt_all8_20260712/Background_eminus_fullsphere20_rep01_part01.dat.inc1.dat",
+            "source": "runs/geometry_optimization_20260704/s3d_o8_fullstat_prompt_all8_20260712/job_sources/Background_eminus_fullsphere20_rep01_part01.source",
+            "tt_s": 184.284,
+            "geometry": "/home/ubuntu/TES_511_Balloon/engineering/geometry_optimization_20260704/43_geoopt_s3d_o8_fallback_20260712/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup",
+            "seed": 1166302,
+            "status": "PASS"
+          },
+          {
+            "job_name": "Background_eminus_fullsphere20_rep02_part01",
+            "particle": "eminus",
+            "events": 414617,
+            "generated_particles": 414617,
+            "sim": "runs/geometry_optimization_20260704/s3d_o8_fullstat_prompt_all8_20260712/Background_eminus_fullsphere20_rep02_part01.inc1.id1.sim.gz",
+            "dat": "runs/geometry_optimization_20260704/s3d_o8_fullstat_prompt_all8_20260712/Background_eminus_fullsphere20_rep02_part01.dat.inc1.dat",
+            "source": "runs/geometry_optimization_20260704/s3d_o8_fullstat_prompt_all8_20260712/job_sources/Background_eminus_fullsphere20_rep02_part01.source",
+            "tt_s": 184.266,
+            "geometry": "/home/ubuntu/TES_511_Balloon/engineering/geometry_optimization_20260704/43_geoopt_s3d_o8_fallback_20260712/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup",
+            "seed": 1174221,
+            "status": "PASS"
+          },
+          {
+            "job_name": "Background_eminus_fullsphere20_rep03_part01",
+            "particle": "eminus",
+            "events": 414617,
+            "generated_particles": 414617,
+            "sim": "runs/geometry_optimization_20260704/s3d_o8_fullstat_prompt_all8_20260712/Background_eminus_fullsphere20_rep03_part01.inc1.id1.sim.gz",
+            "dat": "runs/geometry_optimization_20260704/s3d_o8_fullstat_prompt_all8_20260712/Background_eminus_fullsphere20_rep03_part01.dat.inc1.dat",
+            "source": "runs/geometry_optimization_20260704/s3d_o8_fullstat_prompt_all8_20260712/job_sources/Background_eminus_fullsphere20_rep03_part01.source",
+            "tt_s": 183.668,
+            "geometry": "/home/ubuntu/TES_511_Balloon/engineering/geometry_optimization_20260704/43_geoopt_s3d_o8_fallback_20260712/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup",
+            "seed": 1182140,
+            "status": "PASS"
+          },
+          {
+            "job_name": "Background_eminus_fullsphere20_rep04_part01",
+            "particle": "eminus",
+            "events": 414617,
+            "generated_particles": 414617,
+            "sim": "runs/geometry_optimization_20260704/s3d_o8_fullstat_prompt_all8_20260712/Background_eminus_fullsphere20_rep04_part01.inc1.id1.sim.gz",
+            "dat": "runs/geometry_optimization_20260704/s3d_o8_fullstat_prompt_all8_20260712/Background_eminus_fullsphere20_rep04_part01.dat.inc1.dat",
+            "source": "runs/geometry_optimization_20260704/s3d_o8_fullstat_prompt_all8_20260712/job_sources/Background_eminus_fullsphere20_rep04_part01.source",
+            "tt_s": 183.966,
+            "geometry": "/home/ubuntu/TES_511_Balloon/engineering/geometry_optimization_20260704/43_geoopt_s3d_o8_fallback_20260712/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup",
+            "seed": 1190059,
+            "status": "PASS"
+          },
+          {
+            "job_name": "Background_eminus_fullsphere20_rep05_part01",
+            "particle": "eminus",
+            "events": 414617,
+            "generated_particles": 414617,
+            "sim": "runs/geometry_optimization_20260704/s3d_o8_fullstat_prompt_all8_20260712/Background_eminus_fullsphere20_rep05_part01.inc1.id1.sim.gz",
+            "dat": "runs/geometry_optimization_20260704/s3d_o8_fullstat_prompt_all8_20260712/Background_eminus_fullsphere20_rep05_part01.dat.inc1.dat",
+            "source": "runs/geometry_optimization_20260704/s3d_o8_fullstat_prompt_all8_20260712/job_sources/Background_eminus_fullsphere20_rep05_part01.source",
+            "tt_s": 184.353,
+            "geometry": "/home/ubuntu/TES_511_Balloon/engineering/geometry_optimization_20260704/43_geoopt_s3d_o8_fallback_20260712/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup",
+            "seed": 1197978,
+            "status": "PASS"
+          },
+          {
+            "job_name": "Background_eminus_fullsphere20_rep06_part01",
+            "particle": "eminus",
+            "events": 414617,
+            "generated_particles": 414617,
+            "sim": "runs/geometry_optimization_20260704/s3d_o8_fullstat_prompt_all8_20260712/Background_eminus_fullsphere20_rep06_part01.inc1.id1.sim.gz",
+            "dat": "runs/geometry_optimization_20260704/s3d_o8_fullstat_prompt_all8_20260712/Background_eminus_fullsphere20_rep06_part01.dat.inc1.dat",
+            "source": "runs/geometry_optimization_20260704/s3d_o8_fullstat_prompt_all8_20260712/job_sources/Background_eminus_fullsphere20_rep06_part01.source",
+            "tt_s": 183.842,
+            "geometry": "/home/ubuntu/TES_511_Balloon/engineering/geometry_optimization_20260704/43_geoopt_s3d_o8_fallback_20260712/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup",
+            "seed": 1205897,
+            "status": "PASS"
+          },
+          {
+            "job_name": "Background_eminus_fullsphere20_rep07_part01",
+            "particle": "eminus",
+            "events": 414617,
+            "generated_particles": 414617,
+            "sim": "runs/geometry_optimization_20260704/s3d_o8_fullstat_prompt_all8_20260712/Background_eminus_fullsphere20_rep07_part01.inc1.id1.sim.gz",
+            "dat": "runs/geometry_optimization_20260704/s3d_o8_fullstat_prompt_all8_20260712/Background_eminus_fullsphere20_rep07_part01.dat.inc1.dat",
+            "source": "runs/geometry_optimization_20260704/s3d_o8_fullstat_prompt_all8_20260712/job_sources/Background_eminus_fullsphere20_rep07_part01.source",
+            "tt_s": 184.355,
+            "geometry": "/home/ubuntu/TES_511_Balloon/engineering/geometry_optimization_20260704/43_geoopt_s3d_o8_fallback_20260712/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup",
+            "seed": 1213816,
+            "status": "PASS"
+          },
+          {
+            "job_name": "Background_eminus_fullsphere20_rep08_part01",
+            "particle": "eminus",
+            "events": 414617,
+            "generated_particles": 414617,
+            "sim": "runs/geometry_optimization_20260704/s3d_o8_fullstat_prompt_all8_20260712/Background_eminus_fullsphere20_rep08_part01.inc1.id1.sim.gz",
+            "dat": "runs/geometry_optimization_20260704/s3d_o8_fullstat_prompt_all8_20260712/Background_eminus_fullsphere20_rep08_part01.dat.inc1.dat",
+            "source": "runs/geometry_optimization_20260704/s3d_o8_fullstat_prompt_all8_20260712/job_sources/Background_eminus_fullsphere20_rep08_part01.source",
+            "tt_s": 184.538,
+            "geometry": "/home/ubuntu/TES_511_Balloon/engineering/geometry_optimization_20260704/43_geoopt_s3d_o8_fallback_20260712/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup",
+            "seed": 1221735,
+            "status": "PASS"
+          },
+          {
+            "job_name": "Background_eplus_fullsphere20_rep01_part01",
+            "particle": "eplus",
+            "events": 243727,
+            "generated_particles": 243727,
+            "sim": "runs/geometry_optimization_20260704/s3d_o8_fullstat_prompt_all8_20260712/Background_eplus_fullsphere20_rep01_part01.inc1.id1.sim.gz",
+            "dat": "runs/geometry_optimization_20260704/s3d_o8_fullstat_prompt_all8_20260712/Background_eplus_fullsphere20_rep01_part01.dat.inc1.dat",
+            "source": "runs/geometry_optimization_20260704/s3d_o8_fullstat_prompt_all8_20260712/job_sources/Background_eplus_fullsphere20_rep01_part01.source",
+            "tt_s": 184.034,
+            "geometry": "/home/ubuntu/TES_511_Balloon/engineering/geometry_optimization_20260704/43_geoopt_s3d_o8_fallback_20260712/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup",
+            "seed": 1229654,
+            "status": "PASS"
+          },
+          {
+            "job_name": "Background_eplus_fullsphere20_rep02_part01",
+            "particle": "eplus",
+            "events": 243727,
+            "generated_particles": 243727,
+            "sim": "runs/geometry_optimization_20260704/s3d_o8_fullstat_prompt_all8_20260712/Background_eplus_fullsphere20_rep02_part01.inc1.id1.sim.gz",
+            "dat": "runs/geometry_optimization_20260704/s3d_o8_fullstat_prompt_all8_20260712/Background_eplus_fullsphere20_rep02_part01.dat.inc1.dat",
+            "source": "runs/geometry_optimization_20260704/s3d_o8_fullstat_prompt_all8_20260712/job_sources/Background_eplus_fullsphere20_rep02_part01.source",
+            "tt_s": 184.171,
+            "geometry": "/home/ubuntu/TES_511_Balloon/engineering/geometry_optimization_20260704/43_geoopt_s3d_o8_fallback_20260712/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup",
+            "seed": 1237573,
+            "status": "PASS"
+          },
+          {
+            "job_name": "Background_eplus_fullsphere20_rep03_part01",
+            "particle": "eplus",
+            "events": 243727,
+            "generated_particles": 243727,
+            "sim": "runs/geometry_optimization_20260704/s3d_o8_fullstat_prompt_all8_20260712/Background_eplus_fullsphere20_rep03_part01.inc1.id1.sim.gz",
+            "dat": "runs/geometry_optimization_20260704/s3d_o8_fullstat_prompt_all8_20260712/Background_eplus_fullsphere20_rep03_part01.dat.inc1.dat",
+            "source": "runs/geometry_optimization_20260704/s3d_o8_fullstat_prompt_all8_20260712/job_sources/Background_eplus_fullsphere20_rep03_part01.source",
+            "tt_s": 184.293,
+            "geometry": "/home/ubuntu/TES_511_Balloon/engineering/geometry_optimization_20260704/43_geoopt_s3d_o8_fallback_20260712/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup",
+            "seed": 1245492,
+            "status": "PASS"
+          },
+          {
+            "job_name": "Background_eplus_fullsphere20_rep04_part01",
+            "particle": "eplus",
+            "events": 243727,
+            "generated_particles": 243727,
+            "sim": "runs/geometry_optimization_20260704/s3d_o8_fullstat_prompt_all8_20260712/Background_eplus_fullsphere20_rep04_part01.inc1.id1.sim.gz",
+            "dat": "runs/geometry_optimization_20260704/s3d_o8_fullstat_prompt_all8_20260712/Background_eplus_fullsphere20_rep04_part01.dat.inc1.dat",
+            "source": "runs/geometry_optimization_20260704/s3d_o8_fullstat_prompt_all8_20260712/job_sources/Background_eplus_fullsphere20_rep04_part01.source",
+            "tt_s": 184.156,
+            "geometry": "/home/ubuntu/TES_511_Balloon/engineering/geometry_optimization_20260704/43_geoopt_s3d_o8_fallback_20260712/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup",
+            "seed": 1253411,
+            "status": "PASS"
+          },
+          {
+            "job_name": "Background_eplus_fullsphere20_rep05_part01",
+            "particle": "eplus",
+            "events": 243727,
+            "generated_particles": 243727,
+            "sim": "runs/geometry_optimization_20260704/s3d_o8_fullstat_prompt_all8_20260712/Background_eplus_fullsphere20_rep05_part01.inc1.id1.sim.gz",
+            "dat": "runs/geometry_optimization_20260704/s3d_o8_fullstat_prompt_all8_20260712/Background_eplus_fullsphere20_rep05_part01.dat.inc1.dat",
+            "source": "runs/geometry_optimization_20260704/s3d_o8_fullstat_prompt_all8_20260712/job_sources/Background_eplus_fullsphere20_rep05_part01.source",
+            "tt_s": 183.872,
+            "geometry": "/home/ubuntu/TES_511_Balloon/engineering/geometry_optimization_20260704/43_geoopt_s3d_o8_fallback_20260712/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup",
+            "seed": 1261330,
+            "status": "PASS"
+          },
+          {
+            "job_name": "Background_eplus_fullsphere20_rep06_part01",
+            "particle": "eplus",
+            "events": 243727,
+            "generated_particles": 243727,
+            "sim": "runs/geometry_optimization_20260704/s3d_o8_fullstat_prompt_all8_20260712/Background_eplus_fullsphere20_rep06_part01.inc1.id1.sim.gz",
+            "dat": "runs/geometry_optimization_20260704/s3d_o8_fullstat_prompt_all8_20260712/Background_eplus_fullsphere20_rep06_part01.dat.inc1.dat",
+            "source": "runs/geometry_optimization_20260704/s3d_o8_fullstat_prompt_all8_20260712/job_sources/Background_eplus_fullsphere20_rep06_part01.source",
+            "tt_s": 183.966,
+            "geometry": "/home/ubuntu/TES_511_Balloon/engineering/geometry_optimization_20260704/43_geoopt_s3d_o8_fallback_20260712/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup",
+            "seed": 1269249,
+            "status": "PASS"
+          },
+          {
+            "job_name": "Background_eplus_fullsphere20_rep07_part01",
+            "particle": "eplus",
+            "events": 243727,
+            "generated_particles": 243727,
+            "sim": "runs/geometry_optimization_20260704/s3d_o8_fullstat_prompt_all8_20260712/Background_eplus_fullsphere20_rep07_part01.inc1.id1.sim.gz",
+            "dat": "runs/geometry_optimization_20260704/s3d_o8_fullstat_prompt_all8_20260712/Background_eplus_fullsphere20_rep07_part01.dat.inc1.dat",
+            "source": "runs/geometry_optimization_20260704/s3d_o8_fullstat_prompt_all8_20260712/job_sources/Background_eplus_fullsphere20_rep07_part01.source",
+            "tt_s": 184.321,
+            "geometry": "/home/ubuntu/TES_511_Balloon/engineering/geometry_optimization_20260704/43_geoopt_s3d_o8_fallback_20260712/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup",
+            "seed": 1277168,
+            "status": "PASS"
+          },
+          {
+            "job_name": "Background_eplus_fullsphere20_rep08_part01",
+            "particle": "eplus",
+            "events": 243727,
+            "generated_particles": 243727,
+            "sim": "runs/geometry_optimization_20260704/s3d_o8_fullstat_prompt_all8_20260712/Background_eplus_fullsphere20_rep08_part01.inc1.id1.sim.gz",
+            "dat": "runs/geometry_optimization_20260704/s3d_o8_fullstat_prompt_all8_20260712/Background_eplus_fullsphere20_rep08_part01.dat.inc1.dat",
+            "source": "runs/geometry_optimization_20260704/s3d_o8_fullstat_prompt_all8_20260712/job_sources/Background_eplus_fullsphere20_rep08_part01.source",
+            "tt_s": 184.273,
+            "geometry": "/home/ubuntu/TES_511_Balloon/engineering/geometry_optimization_20260704/43_geoopt_s3d_o8_fallback_20260712/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup",
+            "seed": 1285087,
+            "status": "PASS"
+          },
+          {
+            "job_name": "Background_gamma_fullsphere20_rep01_part01",
+            "particle": "gamma",
+            "events": 833334,
+            "generated_particles": 833334,
+            "sim": "runs/geometry_optimization_20260704/s3d_o8_fullstat_prompt_all8_20260712/Background_gamma_fullsphere20_rep01_part01.inc1.id1.sim.gz",
+            "dat": "runs/geometry_optimization_20260704/s3d_o8_fullstat_prompt_all8_20260712/Background_gamma_fullsphere20_rep01_part01.dat.inc1.dat",
+            "source": "runs/geometry_optimization_20260704/s3d_o8_fullstat_prompt_all8_20260712/job_sources/Background_gamma_fullsphere20_rep01_part01.source",
+            "tt_s": 15.3319,
+            "geometry": "/home/ubuntu/TES_511_Balloon/engineering/geometry_optimization_20260704/43_geoopt_s3d_o8_fallback_20260712/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup",
+            "seed": 1007922,
+            "status": "PASS"
+          },
+          {
+            "job_name": "Background_gamma_fullsphere20_rep01_part02",
+            "particle": "gamma",
+            "events": 833334,
+            "generated_particles": 833334,
+            "sim": "runs/geometry_optimization_20260704/s3d_o8_fullstat_prompt_all8_20260712/Background_gamma_fullsphere20_rep01_part02.inc1.id1.sim.gz",
+            "dat": "runs/geometry_optimization_20260704/s3d_o8_fullstat_prompt_all8_20260712/Background_gamma_fullsphere20_rep01_part02.dat.inc1.dat",
+            "source": "runs/geometry_optimization_20260704/s3d_o8_fullstat_prompt_all8_20260712/job_sources/Background_gamma_fullsphere20_rep01_part02.source",
+            "tt_s": 15.3631,
+            "geometry": "/home/ubuntu/TES_511_Balloon/engineering/geometry_optimization_20260704/43_geoopt_s3d_o8_fallback_20260712/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup",
+            "seed": 1015841,
+            "status": "PASS"
+          },
+          {
+            "job_name": "Background_gamma_fullsphere20_rep01_part03",
+            "particle": "gamma",
+            "events": 833334,
+            "generated_particles": 833334,
+            "sim": "runs/geometry_optimization_20260704/s3d_o8_fullstat_prompt_all8_20260712/Background_gamma_fullsphere20_rep01_part03.inc1.id1.sim.gz",
+            "dat": "runs/geometry_optimization_20260704/s3d_o8_fullstat_prompt_all8_20260712/Background_gamma_fullsphere20_rep01_part03.dat.inc1.dat",
+            "source": "runs/geometry_optimization_20260704/s3d_o8_fullstat_prompt_all8_20260712/job_sources/Background_gamma_fullsphere20_rep01_part03.source",
+            "tt_s": 15.3665,
+            "geometry": "/home/ubuntu/TES_511_Balloon/engineering/geometry_optimization_20260704/43_geoopt_s3d_o8_fallback_20260712/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup",
+            "seed": 1023760,
+            "status": "PASS"
+          },
+          {
+            "job_name": "Background_gamma_fullsphere20_rep01_part04",
+            "particle": "gamma",
+            "events": 833334,
+            "generated_particles": 833334,
+            "sim": "runs/geometry_optimization_20260704/s3d_o8_fullstat_prompt_all8_20260712/Background_gamma_fullsphere20_rep01_part04.inc1.id1.sim.gz",
+            "dat": "runs/geometry_optimization_20260704/s3d_o8_fullstat_prompt_all8_20260712/Background_gamma_fullsphere20_rep01_part04.dat.inc1.dat",
+            "source": "runs/geometry_optimization_20260704/s3d_o8_fullstat_prompt_all8_20260712/job_sources/Background_gamma_fullsphere20_rep01_part04.source",
+            "tt_s": 15.3696,
+            "geometry": "/home/ubuntu/TES_511_Balloon/engineering/geometry_optimization_20260704/43_geoopt_s3d_o8_fallback_20260712/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup",
+            "seed": 1031679,
+            "status": "PASS"
+          },
+          {
+            "job_name": "Background_gamma_fullsphere20_rep01_part05",
+            "particle": "gamma",
+            "events": 833333,
+            "generated_particles": 833333,
+            "sim": "runs/geometry_optimization_20260704/s3d_o8_fullstat_prompt_all8_20260712/Background_gamma_fullsphere20_rep01_part05.inc1.id1.sim.gz",
+            "dat": "runs/geometry_optimization_20260704/s3d_o8_fullstat_prompt_all8_20260712/Background_gamma_fullsphere20_rep01_part05.dat.inc1.dat",
+            "source": "runs/geometry_optimization_20260704/s3d_o8_fullstat_prompt_all8_20260712/job_sources/Background_gamma_fullsphere20_rep01_part05.source",
+            "tt_s": 15.3689,
+            "geometry": "/home/ubuntu/TES_511_Balloon/engineering/geometry_optimization_20260704/43_geoopt_s3d_o8_fallback_20260712/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup",
+            "seed": 1039598,
+            "status": "PASS"
+          },
+          {
+            "job_name": "Background_gamma_fullsphere20_rep01_part06",
+            "particle": "gamma",
+            "events": 833333,
+            "generated_particles": 833333,
+            "sim": "runs/geometry_optimization_20260704/s3d_o8_fullstat_prompt_all8_20260712/Background_gamma_fullsphere20_rep01_part06.inc1.id1.sim.gz",
+            "dat": "runs/geometry_optimization_20260704/s3d_o8_fullstat_prompt_all8_20260712/Background_gamma_fullsphere20_rep01_part06.dat.inc1.dat",
+            "source": "runs/geometry_optimization_20260704/s3d_o8_fullstat_prompt_all8_20260712/job_sources/Background_gamma_fullsphere20_rep01_part06.source",
+            "tt_s": 15.3535,
+            "geometry": "/home/ubuntu/TES_511_Balloon/engineering/geometry_optimization_20260704/43_geoopt_s3d_o8_fallback_20260712/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup",
+            "seed": 1047517,
+            "status": "PASS"
+          },
+          {
+            "job_name": "Background_gamma_fullsphere20_rep01_part07",
+            "particle": "gamma",
+            "events": 833333,
+            "generated_particles": 833333,
+            "sim": "runs/geometry_optimization_20260704/s3d_o8_fullstat_prompt_all8_20260712/Background_gamma_fullsphere20_rep01_part07.inc1.id1.sim.gz",
+            "dat": "runs/geometry_optimization_20260704/s3d_o8_fullstat_prompt_all8_20260712/Background_gamma_fullsphere20_rep01_part07.dat.inc1.dat",
+            "source": "runs/geometry_optimization_20260704/s3d_o8_fullstat_prompt_all8_20260712/job_sources/Background_gamma_fullsphere20_rep01_part07.source",
+            "tt_s": 15.3655,
+            "geometry": "/home/ubuntu/TES_511_Balloon/engineering/geometry_optimization_20260704/43_geoopt_s3d_o8_fallback_20260712/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup",
+            "seed": 1055436,
+            "status": "PASS"
+          },
+          {
+            "job_name": "Background_gamma_fullsphere20_rep01_part08",
+            "particle": "gamma",
+            "events": 833333,
+            "generated_particles": 833333,
+            "sim": "runs/geometry_optimization_20260704/s3d_o8_fullstat_prompt_all8_20260712/Background_gamma_fullsphere20_rep01_part08.inc1.id1.sim.gz",
+            "dat": "runs/geometry_optimization_20260704/s3d_o8_fullstat_prompt_all8_20260712/Background_gamma_fullsphere20_rep01_part08.dat.inc1.dat",
+            "source": "runs/geometry_optimization_20260704/s3d_o8_fullstat_prompt_all8_20260712/job_sources/Background_gamma_fullsphere20_rep01_part08.source",
+            "tt_s": 15.3306,
+            "geometry": "/home/ubuntu/TES_511_Balloon/engineering/geometry_optimization_20260704/43_geoopt_s3d_o8_fallback_20260712/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup",
+            "seed": 1063355,
+            "status": "PASS"
+          },
+          {
+            "job_name": "Background_gamma_fullsphere20_rep01_part09",
+            "particle": "gamma",
+            "events": 833333,
+            "generated_particles": 833333,
+            "sim": "runs/geometry_optimization_20260704/s3d_o8_fullstat_prompt_all8_20260712/Background_gamma_fullsphere20_rep01_part09.inc1.id1.sim.gz",
+            "dat": "runs/geometry_optimization_20260704/s3d_o8_fullstat_prompt_all8_20260712/Background_gamma_fullsphere20_rep01_part09.dat.inc1.dat",
+            "source": "runs/geometry_optimization_20260704/s3d_o8_fullstat_prompt_all8_20260712/job_sources/Background_gamma_fullsphere20_rep01_part09.source",
+            "tt_s": 15.378,
+            "geometry": "/home/ubuntu/TES_511_Balloon/engineering/geometry_optimization_20260704/43_geoopt_s3d_o8_fallback_20260712/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup",
+            "seed": 1071274,
+            "status": "PASS"
+          },
+          {
+            "job_name": "Background_gamma_fullsphere20_rep01_part10",
+            "particle": "gamma",
+            "events": 833333,
+            "generated_particles": 833333,
+            "sim": "runs/geometry_optimization_20260704/s3d_o8_fullstat_prompt_all8_20260712/Background_gamma_fullsphere20_rep01_part10.inc1.id1.sim.gz",
+            "dat": "runs/geometry_optimization_20260704/s3d_o8_fullstat_prompt_all8_20260712/Background_gamma_fullsphere20_rep01_part10.dat.inc1.dat",
+            "source": "runs/geometry_optimization_20260704/s3d_o8_fullstat_prompt_all8_20260712/job_sources/Background_gamma_fullsphere20_rep01_part10.source",
+            "tt_s": 15.3438,
+            "geometry": "/home/ubuntu/TES_511_Balloon/engineering/geometry_optimization_20260704/43_geoopt_s3d_o8_fallback_20260712/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup",
+            "seed": 1079193,
+            "status": "PASS"
+          },
+          {
+            "job_name": "Background_gamma_fullsphere20_rep01_part11",
+            "particle": "gamma",
+            "events": 833333,
+            "generated_particles": 833333,
+            "sim": "runs/geometry_optimization_20260704/s3d_o8_fullstat_prompt_all8_20260712/Background_gamma_fullsphere20_rep01_part11.inc1.id1.sim.gz",
+            "dat": "runs/geometry_optimization_20260704/s3d_o8_fullstat_prompt_all8_20260712/Background_gamma_fullsphere20_rep01_part11.dat.inc1.dat",
+            "source": "runs/geometry_optimization_20260704/s3d_o8_fullstat_prompt_all8_20260712/job_sources/Background_gamma_fullsphere20_rep01_part11.source",
+            "tt_s": 15.3441,
+            "geometry": "/home/ubuntu/TES_511_Balloon/engineering/geometry_optimization_20260704/43_geoopt_s3d_o8_fallback_20260712/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup",
+            "seed": 1087112,
+            "status": "PASS"
+          },
+          {
+            "job_name": "Background_gamma_fullsphere20_rep01_part12",
+            "particle": "gamma",
+            "events": 833333,
+            "generated_particles": 833333,
+            "sim": "runs/geometry_optimization_20260704/s3d_o8_fullstat_prompt_all8_20260712/Background_gamma_fullsphere20_rep01_part12.inc1.id1.sim.gz",
+            "dat": "runs/geometry_optimization_20260704/s3d_o8_fullstat_prompt_all8_20260712/Background_gamma_fullsphere20_rep01_part12.dat.inc1.dat",
+            "source": "runs/geometry_optimization_20260704/s3d_o8_fullstat_prompt_all8_20260712/job_sources/Background_gamma_fullsphere20_rep01_part12.source",
+            "tt_s": 15.3552,
+            "geometry": "/home/ubuntu/TES_511_Balloon/engineering/geometry_optimization_20260704/43_geoopt_s3d_o8_fallback_20260712/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup",
+            "seed": 1095031,
+            "status": "PASS"
+          },
+          {
+            "job_name": "Background_muminus_fullsphere20_rep01_part01",
+            "particle": "muminus",
+            "events": 10353,
+            "generated_particles": 10353,
+            "sim": "runs/geometry_optimization_20260704/s3d_o8_fullstat_prompt_all8_20260712/Background_muminus_fullsphere20_rep01_part01.inc1.id1.sim.gz",
+            "dat": "runs/geometry_optimization_20260704/s3d_o8_fullstat_prompt_all8_20260712/Background_muminus_fullsphere20_rep01_part01.dat.inc1.dat",
+            "source": "runs/geometry_optimization_20260704/s3d_o8_fullstat_prompt_all8_20260712/job_sources/Background_muminus_fullsphere20_rep01_part01.source",
+            "tt_s": 185.147,
+            "geometry": "/home/ubuntu/TES_511_Balloon/engineering/geometry_optimization_20260704/43_geoopt_s3d_o8_fallback_20260712/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup",
+            "seed": 1293006,
+            "status": "PASS"
+          },
+          {
+            "job_name": "Background_muminus_fullsphere20_rep02_part01",
+            "particle": "muminus",
+            "events": 10353,
+            "generated_particles": 10353,
+            "sim": "runs/geometry_optimization_20260704/s3d_o8_fullstat_prompt_all8_20260712/Background_muminus_fullsphere20_rep02_part01.inc1.id1.sim.gz",
+            "dat": "runs/geometry_optimization_20260704/s3d_o8_fullstat_prompt_all8_20260712/Background_muminus_fullsphere20_rep02_part01.dat.inc1.dat",
+            "source": "runs/geometry_optimization_20260704/s3d_o8_fullstat_prompt_all8_20260712/job_sources/Background_muminus_fullsphere20_rep02_part01.source",
+            "tt_s": 182.55,
+            "geometry": "/home/ubuntu/TES_511_Balloon/engineering/geometry_optimization_20260704/43_geoopt_s3d_o8_fallback_20260712/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup",
+            "seed": 1300925,
+            "status": "PASS"
+          },
+          {
+            "job_name": "Background_muminus_fullsphere20_rep03_part01",
+            "particle": "muminus",
+            "events": 10353,
+            "generated_particles": 10353,
+            "sim": "runs/geometry_optimization_20260704/s3d_o8_fullstat_prompt_all8_20260712/Background_muminus_fullsphere20_rep03_part01.inc1.id1.sim.gz",
+            "dat": "runs/geometry_optimization_20260704/s3d_o8_fullstat_prompt_all8_20260712/Background_muminus_fullsphere20_rep03_part01.dat.inc1.dat",
+            "source": "runs/geometry_optimization_20260704/s3d_o8_fullstat_prompt_all8_20260712/job_sources/Background_muminus_fullsphere20_rep03_part01.source",
+            "tt_s": 186.277,
+            "geometry": "/home/ubuntu/TES_511_Balloon/engineering/geometry_optimization_20260704/43_geoopt_s3d_o8_fallback_20260712/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup",
+            "seed": 1308844,
+            "status": "PASS"
+          },
+          {
+            "job_name": "Background_muminus_fullsphere20_rep04_part01",
+            "particle": "muminus",
+            "events": 10353,
+            "generated_particles": 10353,
+            "sim": "runs/geometry_optimization_20260704/s3d_o8_fullstat_prompt_all8_20260712/Background_muminus_fullsphere20_rep04_part01.inc1.id1.sim.gz",
+            "dat": "runs/geometry_optimization_20260704/s3d_o8_fullstat_prompt_all8_20260712/Background_muminus_fullsphere20_rep04_part01.dat.inc1.dat",
+            "source": "runs/geometry_optimization_20260704/s3d_o8_fullstat_prompt_all8_20260712/job_sources/Background_muminus_fullsphere20_rep04_part01.source",
+            "tt_s": 183.011,
+            "geometry": "/home/ubuntu/TES_511_Balloon/engineering/geometry_optimization_20260704/43_geoopt_s3d_o8_fallback_20260712/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup",
+            "seed": 1316763,
+            "status": "PASS"
+          },
+          {
+            "job_name": "Background_muminus_fullsphere20_rep05_part01",
+            "particle": "muminus",
+            "events": 10353,
+            "generated_particles": 10353,
+            "sim": "runs/geometry_optimization_20260704/s3d_o8_fullstat_prompt_all8_20260712/Background_muminus_fullsphere20_rep05_part01.inc1.id1.sim.gz",
+            "dat": "runs/geometry_optimization_20260704/s3d_o8_fullstat_prompt_all8_20260712/Background_muminus_fullsphere20_rep05_part01.dat.inc1.dat",
+            "source": "runs/geometry_optimization_20260704/s3d_o8_fullstat_prompt_all8_20260712/job_sources/Background_muminus_fullsphere20_rep05_part01.source",
+            "tt_s": 186.38,
+            "geometry": "/home/ubuntu/TES_511_Balloon/engineering/geometry_optimization_20260704/43_geoopt_s3d_o8_fallback_20260712/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup",
+            "seed": 1324682,
+            "status": "PASS"
+          },
+          {
+            "job_name": "Background_muminus_fullsphere20_rep06_part01",
+            "particle": "muminus",
+            "events": 10353,
+            "generated_particles": 10353,
+            "sim": "runs/geometry_optimization_20260704/s3d_o8_fullstat_prompt_all8_20260712/Background_muminus_fullsphere20_rep06_part01.inc1.id1.sim.gz",
+            "dat": "runs/geometry_optimization_20260704/s3d_o8_fullstat_prompt_all8_20260712/Background_muminus_fullsphere20_rep06_part01.dat.inc1.dat",
+            "source": "runs/geometry_optimization_20260704/s3d_o8_fullstat_prompt_all8_20260712/job_sources/Background_muminus_fullsphere20_rep06_part01.source",
+            "tt_s": 184.618,
+            "geometry": "/home/ubuntu/TES_511_Balloon/engineering/geometry_optimization_20260704/43_geoopt_s3d_o8_fallback_20260712/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup",
+            "seed": 1332601,
+            "status": "PASS"
+          },
+          {
+            "job_name": "Background_muminus_fullsphere20_rep07_part01",
+            "particle": "muminus",
+            "events": 10353,
+            "generated_particles": 10353,
+            "sim": "runs/geometry_optimization_20260704/s3d_o8_fullstat_prompt_all8_20260712/Background_muminus_fullsphere20_rep07_part01.inc1.id1.sim.gz",
+            "dat": "runs/geometry_optimization_20260704/s3d_o8_fullstat_prompt_all8_20260712/Background_muminus_fullsphere20_rep07_part01.dat.inc1.dat",
+            "source": "runs/geometry_optimization_20260704/s3d_o8_fullstat_prompt_all8_20260712/job_sources/Background_muminus_fullsphere20_rep07_part01.source",
+            "tt_s": 186.101,
+            "geometry": "/home/ubuntu/TES_511_Balloon/engineering/geometry_optimization_20260704/43_geoopt_s3d_o8_fallback_20260712/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup",
+            "seed": 1340520,
+            "status": "PASS"
+          },
+          {
+            "job_name": "Background_muminus_fullsphere20_rep08_part01",
+            "particle": "muminus",
+            "events": 10353,
+            "generated_particles": 10353,
+            "sim": "runs/geometry_optimization_20260704/s3d_o8_fullstat_prompt_all8_20260712/Background_muminus_fullsphere20_rep08_part01.inc1.id1.sim.gz",
+            "dat": "runs/geometry_optimization_20260704/s3d_o8_fullstat_prompt_all8_20260712/Background_muminus_fullsphere20_rep08_part01.dat.inc1.dat",
+            "source": "runs/geometry_optimization_20260704/s3d_o8_fullstat_prompt_all8_20260712/job_sources/Background_muminus_fullsphere20_rep08_part01.source",
+            "tt_s": 182.663,
+            "geometry": "/home/ubuntu/TES_511_Balloon/engineering/geometry_optimization_20260704/43_geoopt_s3d_o8_fallback_20260712/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup",
+            "seed": 1348439,
+            "status": "PASS"
+          },
+          {
+            "job_name": "Background_muplus_fullsphere20_rep01_part01",
+            "particle": "muplus",
+            "events": 11605,
+            "generated_particles": 11605,
+            "sim": "runs/geometry_optimization_20260704/s3d_o8_fullstat_prompt_all8_20260712/Background_muplus_fullsphere20_rep01_part01.inc1.id1.sim.gz",
+            "dat": "runs/geometry_optimization_20260704/s3d_o8_fullstat_prompt_all8_20260712/Background_muplus_fullsphere20_rep01_part01.dat.inc1.dat",
+            "source": "runs/geometry_optimization_20260704/s3d_o8_fullstat_prompt_all8_20260712/job_sources/Background_muplus_fullsphere20_rep01_part01.source",
+            "tt_s": 188.296,
+            "geometry": "/home/ubuntu/TES_511_Balloon/engineering/geometry_optimization_20260704/43_geoopt_s3d_o8_fallback_20260712/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup",
+            "seed": 1356358,
+            "status": "PASS"
+          },
+          {
+            "job_name": "Background_muplus_fullsphere20_rep02_part01",
+            "particle": "muplus",
+            "events": 11605,
+            "generated_particles": 11605,
+            "sim": "runs/geometry_optimization_20260704/s3d_o8_fullstat_prompt_all8_20260712/Background_muplus_fullsphere20_rep02_part01.inc1.id1.sim.gz",
+            "dat": "runs/geometry_optimization_20260704/s3d_o8_fullstat_prompt_all8_20260712/Background_muplus_fullsphere20_rep02_part01.dat.inc1.dat",
+            "source": "runs/geometry_optimization_20260704/s3d_o8_fullstat_prompt_all8_20260712/job_sources/Background_muplus_fullsphere20_rep02_part01.source",
+            "tt_s": 181.715,
+            "geometry": "/home/ubuntu/TES_511_Balloon/engineering/geometry_optimization_20260704/43_geoopt_s3d_o8_fallback_20260712/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup",
+            "seed": 1364277,
+            "status": "PASS"
+          },
+          {
+            "job_name": "Background_muplus_fullsphere20_rep03_part01",
+            "particle": "muplus",
+            "events": 11605,
+            "generated_particles": 11605,
+            "sim": "runs/geometry_optimization_20260704/s3d_o8_fullstat_prompt_all8_20260712/Background_muplus_fullsphere20_rep03_part01.inc1.id1.sim.gz",
+            "dat": "runs/geometry_optimization_20260704/s3d_o8_fullstat_prompt_all8_20260712/Background_muplus_fullsphere20_rep03_part01.dat.inc1.dat",
+            "source": "runs/geometry_optimization_20260704/s3d_o8_fullstat_prompt_all8_20260712/job_sources/Background_muplus_fullsphere20_rep03_part01.source",
+            "tt_s": 183.846,
+            "geometry": "/home/ubuntu/TES_511_Balloon/engineering/geometry_optimization_20260704/43_geoopt_s3d_o8_fallback_20260712/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup",
+            "seed": 1372196,
+            "status": "PASS"
+          },
+          {
+            "job_name": "Background_muplus_fullsphere20_rep04_part01",
+            "particle": "muplus",
+            "events": 11605,
+            "generated_particles": 11605,
+            "sim": "runs/geometry_optimization_20260704/s3d_o8_fullstat_prompt_all8_20260712/Background_muplus_fullsphere20_rep04_part01.inc1.id1.sim.gz",
+            "dat": "runs/geometry_optimization_20260704/s3d_o8_fullstat_prompt_all8_20260712/Background_muplus_fullsphere20_rep04_part01.dat.inc1.dat",
+            "source": "runs/geometry_optimization_20260704/s3d_o8_fullstat_prompt_all8_20260712/job_sources/Background_muplus_fullsphere20_rep04_part01.source",
+            "tt_s": 186.883,
+            "geometry": "/home/ubuntu/TES_511_Balloon/engineering/geometry_optimization_20260704/43_geoopt_s3d_o8_fallback_20260712/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup",
+            "seed": 1380115,
+            "status": "PASS"
+          },
+          {
+            "job_name": "Background_muplus_fullsphere20_rep05_part01",
+            "particle": "muplus",
+            "events": 11605,
+            "generated_particles": 11605,
+            "sim": "runs/geometry_optimization_20260704/s3d_o8_fullstat_prompt_all8_20260712/Background_muplus_fullsphere20_rep05_part01.inc1.id1.sim.gz",
+            "dat": "runs/geometry_optimization_20260704/s3d_o8_fullstat_prompt_all8_20260712/Background_muplus_fullsphere20_rep05_part01.dat.inc1.dat",
+            "source": "runs/geometry_optimization_20260704/s3d_o8_fullstat_prompt_all8_20260712/job_sources/Background_muplus_fullsphere20_rep05_part01.source",
+            "tt_s": 185.577,
+            "geometry": "/home/ubuntu/TES_511_Balloon/engineering/geometry_optimization_20260704/43_geoopt_s3d_o8_fallback_20260712/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup",
+            "seed": 1388034,
+            "status": "PASS"
+          },
+          {
+            "job_name": "Background_muplus_fullsphere20_rep06_part01",
+            "particle": "muplus",
+            "events": 11605,
+            "generated_particles": 11605,
+            "sim": "runs/geometry_optimization_20260704/s3d_o8_fullstat_prompt_all8_20260712/Background_muplus_fullsphere20_rep06_part01.inc1.id1.sim.gz",
+            "dat": "runs/geometry_optimization_20260704/s3d_o8_fullstat_prompt_all8_20260712/Background_muplus_fullsphere20_rep06_part01.dat.inc1.dat",
+            "source": "runs/geometry_optimization_20260704/s3d_o8_fullstat_prompt_all8_20260712/job_sources/Background_muplus_fullsphere20_rep06_part01.source",
+            "tt_s": 185.263,
+            "geometry": "/home/ubuntu/TES_511_Balloon/engineering/geometry_optimization_20260704/43_geoopt_s3d_o8_fallback_20260712/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup",
+            "seed": 1395953,
+            "status": "PASS"
+          },
+          {
+            "job_name": "Background_muplus_fullsphere20_rep07_part01",
+            "particle": "muplus",
+            "events": 11605,
+            "generated_particles": 11605,
+            "sim": "runs/geometry_optimization_20260704/s3d_o8_fullstat_prompt_all8_20260712/Background_muplus_fullsphere20_rep07_part01.inc1.id1.sim.gz",
+            "dat": "runs/geometry_optimization_20260704/s3d_o8_fullstat_prompt_all8_20260712/Background_muplus_fullsphere20_rep07_part01.dat.inc1.dat",
+            "source": "runs/geometry_optimization_20260704/s3d_o8_fullstat_prompt_all8_20260712/job_sources/Background_muplus_fullsphere20_rep07_part01.source",
+            "tt_s": 180.625,
+            "geometry": "/home/ubuntu/TES_511_Balloon/engineering/geometry_optimization_20260704/43_geoopt_s3d_o8_fallback_20260712/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup",
+            "seed": 1403872,
+            "status": "PASS"
+          },
+          {
+            "job_name": "Background_muplus_fullsphere20_rep08_part01",
+            "particle": "muplus",
+            "events": 11605,
+            "generated_particles": 11605,
+            "sim": "runs/geometry_optimization_20260704/s3d_o8_fullstat_prompt_all8_20260712/Background_muplus_fullsphere20_rep08_part01.inc1.id1.sim.gz",
+            "dat": "runs/geometry_optimization_20260704/s3d_o8_fullstat_prompt_all8_20260712/Background_muplus_fullsphere20_rep08_part01.dat.inc1.dat",
+            "source": "runs/geometry_optimization_20260704/s3d_o8_fullstat_prompt_all8_20260712/job_sources/Background_muplus_fullsphere20_rep08_part01.source",
+            "tt_s": 183.363,
+            "geometry": "/home/ubuntu/TES_511_Balloon/engineering/geometry_optimization_20260704/43_geoopt_s3d_o8_fallback_20260712/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup",
+            "seed": 1411791,
+            "status": "PASS"
+          },
+          {
+            "job_name": "Background_n_fullsphere20_rep01_part01",
+            "particle": "n",
+            "events": 963066,
+            "generated_particles": 963066,
+            "sim": "runs/geometry_optimization_20260704/s3d_o8_fullstat_prompt_all8_20260712/Background_n_fullsphere20_rep01_part01.inc1.id1.sim.gz",
+            "dat": "runs/geometry_optimization_20260704/s3d_o8_fullstat_prompt_all8_20260712/Background_n_fullsphere20_rep01_part01.dat.inc1.dat",
+            "source": "runs/geometry_optimization_20260704/s3d_o8_fullstat_prompt_all8_20260712/job_sources/Background_n_fullsphere20_rep01_part01.source",
+            "tt_s": 184.168,
+            "geometry": "/home/ubuntu/TES_511_Balloon/engineering/geometry_optimization_20260704/43_geoopt_s3d_o8_fallback_20260712/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup",
+            "seed": 1419710,
+            "status": "PASS"
+          },
+          {
+            "job_name": "Background_n_fullsphere20_rep02_part01",
+            "particle": "n",
+            "events": 963066,
+            "generated_particles": 963066,
+            "sim": "runs/geometry_optimization_20260704/s3d_o8_fullstat_prompt_all8_20260712/Background_n_fullsphere20_rep02_part01.inc1.id1.sim.gz",
+            "dat": "runs/geometry_optimization_20260704/s3d_o8_fullstat_prompt_all8_20260712/Background_n_fullsphere20_rep02_part01.dat.inc1.dat",
+            "source": "runs/geometry_optimization_20260704/s3d_o8_fullstat_prompt_all8_20260712/job_sources/Background_n_fullsphere20_rep02_part01.source",
+            "tt_s": 184.484,
+            "geometry": "/home/ubuntu/TES_511_Balloon/engineering/geometry_optimization_20260704/43_geoopt_s3d_o8_fallback_20260712/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup",
+            "seed": 1427629,
+            "status": "PASS"
+          },
+          {
+            "job_name": "Background_n_fullsphere20_rep03_part01",
+            "particle": "n",
+            "events": 963066,
+            "generated_particles": 963066,
+            "sim": "runs/geometry_optimization_20260704/s3d_o8_fullstat_prompt_all8_20260712/Background_n_fullsphere20_rep03_part01.inc1.id1.sim.gz",
+            "dat": "runs/geometry_optimization_20260704/s3d_o8_fullstat_prompt_all8_20260712/Background_n_fullsphere20_rep03_part01.dat.inc1.dat",
+            "source": "runs/geometry_optimization_20260704/s3d_o8_fullstat_prompt_all8_20260712/job_sources/Background_n_fullsphere20_rep03_part01.source",
+            "tt_s": 184.008,
+            "geometry": "/home/ubuntu/TES_511_Balloon/engineering/geometry_optimization_20260704/43_geoopt_s3d_o8_fallback_20260712/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup",
+            "seed": 1435548,
+            "status": "PASS"
+          },
+          {
+            "job_name": "Background_n_fullsphere20_rep04_part01",
+            "particle": "n",
+            "events": 963066,
+            "generated_particles": 963066,
+            "sim": "runs/geometry_optimization_20260704/s3d_o8_fullstat_prompt_all8_20260712/Background_n_fullsphere20_rep04_part01.inc1.id1.sim.gz",
+            "dat": "runs/geometry_optimization_20260704/s3d_o8_fullstat_prompt_all8_20260712/Background_n_fullsphere20_rep04_part01.dat.inc1.dat",
+            "source": "runs/geometry_optimization_20260704/s3d_o8_fullstat_prompt_all8_20260712/job_sources/Background_n_fullsphere20_rep04_part01.source",
+            "tt_s": 184.067,
+            "geometry": "/home/ubuntu/TES_511_Balloon/engineering/geometry_optimization_20260704/43_geoopt_s3d_o8_fallback_20260712/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup",
+            "seed": 1443467,
+            "status": "PASS"
+          },
+          {
+            "job_name": "Background_n_fullsphere20_rep05_part01",
+            "particle": "n",
+            "events": 963066,
+            "generated_particles": 963066,
+            "sim": "runs/geometry_optimization_20260704/s3d_o8_fullstat_prompt_all8_20260712/Background_n_fullsphere20_rep05_part01.inc1.id1.sim.gz",
+            "dat": "runs/geometry_optimization_20260704/s3d_o8_fullstat_prompt_all8_20260712/Background_n_fullsphere20_rep05_part01.dat.inc1.dat",
+            "source": "runs/geometry_optimization_20260704/s3d_o8_fullstat_prompt_all8_20260712/job_sources/Background_n_fullsphere20_rep05_part01.source",
+            "tt_s": 184.414,
+            "geometry": "/home/ubuntu/TES_511_Balloon/engineering/geometry_optimization_20260704/43_geoopt_s3d_o8_fallback_20260712/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup",
+            "seed": 1451386,
+            "status": "PASS"
+          },
+          {
+            "job_name": "Background_n_fullsphere20_rep06_part01",
+            "particle": "n",
+            "events": 963066,
+            "generated_particles": 963066,
+            "sim": "runs/geometry_optimization_20260704/s3d_o8_fullstat_prompt_all8_20260712/Background_n_fullsphere20_rep06_part01.inc1.id1.sim.gz",
+            "dat": "runs/geometry_optimization_20260704/s3d_o8_fullstat_prompt_all8_20260712/Background_n_fullsphere20_rep06_part01.dat.inc1.dat",
+            "source": "runs/geometry_optimization_20260704/s3d_o8_fullstat_prompt_all8_20260712/job_sources/Background_n_fullsphere20_rep06_part01.source",
+            "tt_s": 184.329,
+            "geometry": "/home/ubuntu/TES_511_Balloon/engineering/geometry_optimization_20260704/43_geoopt_s3d_o8_fallback_20260712/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup",
+            "seed": 1459305,
+            "status": "PASS"
+          },
+          {
+            "job_name": "Background_n_fullsphere20_rep07_part01",
+            "particle": "n",
+            "events": 963066,
+            "generated_particles": 963066,
+            "sim": "runs/geometry_optimization_20260704/s3d_o8_fullstat_prompt_all8_20260712/Background_n_fullsphere20_rep07_part01.inc1.id1.sim.gz",
+            "dat": "runs/geometry_optimization_20260704/s3d_o8_fullstat_prompt_all8_20260712/Background_n_fullsphere20_rep07_part01.dat.inc1.dat",
+            "source": "runs/geometry_optimization_20260704/s3d_o8_fullstat_prompt_all8_20260712/job_sources/Background_n_fullsphere20_rep07_part01.source",
+            "tt_s": 184.375,
+            "geometry": "/home/ubuntu/TES_511_Balloon/engineering/geometry_optimization_20260704/43_geoopt_s3d_o8_fallback_20260712/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup",
+            "seed": 1467224,
+            "status": "PASS"
+          },
+          {
+            "job_name": "Background_n_fullsphere20_rep08_part01",
+            "particle": "n",
+            "events": 963066,
+            "generated_particles": 963066,
+            "sim": "runs/geometry_optimization_20260704/s3d_o8_fullstat_prompt_all8_20260712/Background_n_fullsphere20_rep08_part01.inc1.id1.sim.gz",
+            "dat": "runs/geometry_optimization_20260704/s3d_o8_fullstat_prompt_all8_20260712/Background_n_fullsphere20_rep08_part01.dat.inc1.dat",
+            "source": "runs/geometry_optimization_20260704/s3d_o8_fullstat_prompt_all8_20260712/job_sources/Background_n_fullsphere20_rep08_part01.source",
+            "tt_s": 184.112,
+            "geometry": "/home/ubuntu/TES_511_Balloon/engineering/geometry_optimization_20260704/43_geoopt_s3d_o8_fallback_20260712/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup",
+            "seed": 1475143,
+            "status": "PASS"
+          },
+          {
+            "job_name": "Background_p_fullsphere20_rep01_part01",
+            "particle": "p",
+            "events": 233976,
+            "generated_particles": 233976,
+            "sim": "runs/geometry_optimization_20260704/s3d_o8_fullstat_prompt_all8_20260712/Background_p_fullsphere20_rep01_part01.inc1.id1.sim.gz",
+            "dat": "runs/geometry_optimization_20260704/s3d_o8_fullstat_prompt_all8_20260712/Background_p_fullsphere20_rep01_part01.dat.inc1.dat",
+            "source": "runs/geometry_optimization_20260704/s3d_o8_fullstat_prompt_all8_20260712/job_sources/Background_p_fullsphere20_rep01_part01.source",
+            "tt_s": 184.265,
+            "geometry": "/home/ubuntu/TES_511_Balloon/engineering/geometry_optimization_20260704/43_geoopt_s3d_o8_fallback_20260712/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup",
+            "seed": 1483062,
+            "status": "PASS"
+          },
+          {
+            "job_name": "Background_p_fullsphere20_rep02_part01",
+            "particle": "p",
+            "events": 233976,
+            "generated_particles": 233976,
+            "sim": "runs/geometry_optimization_20260704/s3d_o8_fullstat_prompt_all8_20260712/Background_p_fullsphere20_rep02_part01.inc1.id1.sim.gz",
+            "dat": "runs/geometry_optimization_20260704/s3d_o8_fullstat_prompt_all8_20260712/Background_p_fullsphere20_rep02_part01.dat.inc1.dat",
+            "source": "runs/geometry_optimization_20260704/s3d_o8_fullstat_prompt_all8_20260712/job_sources/Background_p_fullsphere20_rep02_part01.source",
+            "tt_s": 183.929,
+            "geometry": "/home/ubuntu/TES_511_Balloon/engineering/geometry_optimization_20260704/43_geoopt_s3d_o8_fallback_20260712/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup",
+            "seed": 1490981,
+            "status": "PASS"
+          },
+          {
+            "job_name": "Background_p_fullsphere20_rep03_part01",
+            "particle": "p",
+            "events": 233976,
+            "generated_particles": 233976,
+            "sim": "runs/geometry_optimization_20260704/s3d_o8_fullstat_prompt_all8_20260712/Background_p_fullsphere20_rep03_part01.inc1.id1.sim.gz",
+            "dat": "runs/geometry_optimization_20260704/s3d_o8_fullstat_prompt_all8_20260712/Background_p_fullsphere20_rep03_part01.dat.inc1.dat",
+            "source": "runs/geometry_optimization_20260704/s3d_o8_fullstat_prompt_all8_20260712/job_sources/Background_p_fullsphere20_rep03_part01.source",
+            "tt_s": 184.865,
+            "geometry": "/home/ubuntu/TES_511_Balloon/engineering/geometry_optimization_20260704/43_geoopt_s3d_o8_fallback_20260712/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup",
+            "seed": 1498900,
+            "status": "PASS"
+          },
+          {
+            "job_name": "Background_p_fullsphere20_rep04_part01",
+            "particle": "p",
+            "events": 233976,
+            "generated_particles": 233976,
+            "sim": "runs/geometry_optimization_20260704/s3d_o8_fullstat_prompt_all8_20260712/Background_p_fullsphere20_rep04_part01.inc1.id1.sim.gz",
+            "dat": "runs/geometry_optimization_20260704/s3d_o8_fullstat_prompt_all8_20260712/Background_p_fullsphere20_rep04_part01.dat.inc1.dat",
+            "source": "runs/geometry_optimization_20260704/s3d_o8_fullstat_prompt_all8_20260712/job_sources/Background_p_fullsphere20_rep04_part01.source",
+            "tt_s": 184.297,
+            "geometry": "/home/ubuntu/TES_511_Balloon/engineering/geometry_optimization_20260704/43_geoopt_s3d_o8_fallback_20260712/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup",
+            "seed": 1506819,
+            "status": "PASS"
+          },
+          {
+            "job_name": "Background_p_fullsphere20_rep05_part01",
+            "particle": "p",
+            "events": 233976,
+            "generated_particles": 233976,
+            "sim": "runs/geometry_optimization_20260704/s3d_o8_fullstat_prompt_all8_20260712/Background_p_fullsphere20_rep05_part01.inc1.id1.sim.gz",
+            "dat": "runs/geometry_optimization_20260704/s3d_o8_fullstat_prompt_all8_20260712/Background_p_fullsphere20_rep05_part01.dat.inc1.dat",
+            "source": "runs/geometry_optimization_20260704/s3d_o8_fullstat_prompt_all8_20260712/job_sources/Background_p_fullsphere20_rep05_part01.source",
+            "tt_s": 185.174,
+            "geometry": "/home/ubuntu/TES_511_Balloon/engineering/geometry_optimization_20260704/43_geoopt_s3d_o8_fallback_20260712/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup",
+            "seed": 1514738,
+            "status": "PASS"
+          },
+          {
+            "job_name": "Background_p_fullsphere20_rep06_part01",
+            "particle": "p",
+            "events": 233976,
+            "generated_particles": 233976,
+            "sim": "runs/geometry_optimization_20260704/s3d_o8_fullstat_prompt_all8_20260712/Background_p_fullsphere20_rep06_part01.inc1.id1.sim.gz",
+            "dat": "runs/geometry_optimization_20260704/s3d_o8_fullstat_prompt_all8_20260712/Background_p_fullsphere20_rep06_part01.dat.inc1.dat",
+            "source": "runs/geometry_optimization_20260704/s3d_o8_fullstat_prompt_all8_20260712/job_sources/Background_p_fullsphere20_rep06_part01.source",
+            "tt_s": 184.451,
+            "geometry": "/home/ubuntu/TES_511_Balloon/engineering/geometry_optimization_20260704/43_geoopt_s3d_o8_fallback_20260712/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup",
+            "seed": 1522657,
+            "status": "PASS"
+          },
+          {
+            "job_name": "Background_p_fullsphere20_rep07_part01",
+            "particle": "p",
+            "events": 233976,
+            "generated_particles": 233976,
+            "sim": "runs/geometry_optimization_20260704/s3d_o8_fullstat_prompt_all8_20260712/Background_p_fullsphere20_rep07_part01.inc1.id1.sim.gz",
+            "dat": "runs/geometry_optimization_20260704/s3d_o8_fullstat_prompt_all8_20260712/Background_p_fullsphere20_rep07_part01.dat.inc1.dat",
+            "source": "runs/geometry_optimization_20260704/s3d_o8_fullstat_prompt_all8_20260712/job_sources/Background_p_fullsphere20_rep07_part01.source",
+            "tt_s": 184.894,
+            "geometry": "/home/ubuntu/TES_511_Balloon/engineering/geometry_optimization_20260704/43_geoopt_s3d_o8_fallback_20260712/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup",
+            "seed": 1530576,
+            "status": "PASS"
+          },
+          {
+            "job_name": "Background_p_fullsphere20_rep08_part01",
+            "particle": "p",
+            "events": 233976,
+            "generated_particles": 233976,
+            "sim": "runs/geometry_optimization_20260704/s3d_o8_fullstat_prompt_all8_20260712/Background_p_fullsphere20_rep08_part01.inc1.id1.sim.gz",
+            "dat": "runs/geometry_optimization_20260704/s3d_o8_fullstat_prompt_all8_20260712/Background_p_fullsphere20_rep08_part01.dat.inc1.dat",
+            "source": "runs/geometry_optimization_20260704/s3d_o8_fullstat_prompt_all8_20260712/job_sources/Background_p_fullsphere20_rep08_part01.source",
+            "tt_s": 184.719,
+            "geometry": "/home/ubuntu/TES_511_Balloon/engineering/geometry_optimization_20260704/43_geoopt_s3d_o8_fallback_20260712/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup",
+            "seed": 1538495,
+            "status": "PASS"
+          }
+        ],
+        "run_summary": "runs/geometry_optimization_20260704/s3d_o8_fullstat_prompt_all8_20260712/run_summary.csv",
+        "run_summary_sha256": "d661fcbfc14a1f1d6da932a85286a0850faf8d23ec7b774b8f58f6926874d9d3",
+        "normalization": "runs/geometry_optimization_20260704/s3d_o8_fullstat_prompt_all8_20260712/normalization.json",
+        "normalization_rule": "per-family rate = 1 / sum(TT_s); never one common prompt time"
+      },
+      "neutron_delayed": {
+        "status": "PASS",
+        "problems": [],
+        "missing": [],
+        "scope": "neutron-only activation; not a full-particle activation inventory",
+        "exact_summary": "engineering/geometry_optimization_20260704/43_geoopt_s3d_o8_fallback_20260712/fullchain/delayed_source/delayed_source_exactpos_summary.json",
+        "delayed_sim": "runs/geometry_optimization_20260704/step02_delayed_transport_s3d_o8_neutron_delayed_m50000_20260712/DelayedDecayS3dO8NeutronM50000.inc1.id1.sim.gz",
+        "delayed_transport": {
+          "path": "runs/geometry_optimization_20260704/step02_delayed_transport_s3d_o8_neutron_delayed_m50000_20260712/DelayedDecayS3dO8NeutronM50000.inc1.id1.sim.gz",
+          "exists": true,
+          "size_bytes": 910935364,
+          "SE": 1000000,
+          "ID": 1000000,
+          "TS": 1,
+          "TE_s": 32178.402129,
+          "geometry": "  /home/ubuntu/TES_511_Balloon/engineering/geometry_optimization_20260704/43_geoopt_s3d_o8_fallback_20260712/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup",
+          "status": "PASS"
+        },
+        "fixed_total_activity_Bq": 29.23316595493284,
+        "source_text_sum_flux_Bq": 29.233165950000004,
+        "source_flux_abs_delta_Bq": 4.9328363616041315e-09,
+        "groundstate_rows": 242,
+        "nubase": "inputs/nubase/nubase_2020.txt",
+        "nubase_sha256": "1585a5eea86c5e17e90307c7e6e786d060049c4039e392a261ff6db977df9859",
+        "tt_division_rows": [
+          {
+            "tag": "n",
+            "files": 8,
+            "division": 8.0,
+            "is_gamma": false,
+            "gamma_div_mode": "",
+            "tt_count": 8,
+            "tt_files": 8,
+            "tt_line_count": 8,
+            "tt_sum_s": 1473.033,
+            "tt_mean_s": 184.129125,
+            "tt_min_s": 183.913,
+            "tt_max_s": 184.346,
+            "tt_relative_spread": 0.002351610588493226,
+            "rp_raw_total": 61611.0,
+            "rp_scaled_total": 7701.375,
+            "warnings": ""
+          }
+        ],
+        "exact_position_manifest": "runs/geometry_optimization_20260704/step02_delay_exactpos_s3d_o8_neutron_delayed_m50000_20260712/s3d_o8_neutron_delayed_m50000_20260712_exactpos_m50000_s260613_delayed_source_manifest.json",
+        "provenance_contract": {
+          "geometry_setup": "engineering/geometry_optimization_20260704/43_geoopt_s3d_o8_fallback_20260712/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup",
+          "full_prompt_instant": "runs/geometry_optimization_20260704/s3d_o8_fullstat_prompt_all8_20260712",
+          "assembled_neutron_instant": "runs/geometry_optimization_20260704/step02_instant_s3d_o8_neutron_delayed_m50000_20260712",
+          "neutron_buildup": "runs/geometry_optimization_20260704/step02_buildup_s3d_o8_neutron_delayed_m50000_20260712",
+          "nubase": "inputs/nubase/nubase_2020.txt",
+          "nubase_sha256": "1585a5eea86c5e17e90307c7e6e786d060049c4039e392a261ff6db977df9859",
+          "non_gamma_div": 8,
+          "n_sample": 2000000,
+          "raw_triggers": 1000000,
+          "m_pointsource_blocks": 50000,
+          "seed": 260613,
+          "variant": "s3d_o8_side40_bottom30_top10_no_outer_w2_al3"
+        }
+      },
+      "focused_signal": {
+        "status": "PASS",
+        "problems": [],
+        "missing": [],
+        "deep_count_audit": true,
+        "header": {
+          "status": "PRESENT",
+          "exists": true,
+          "geometry": "/home/ubuntu/TES_511_Balloon/engineering/geometry_optimization_20260704/43_geoopt_s3d_o8_fallback_20260712/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup",
+          "seed": 260616,
+          "SE": 37194,
+          "ID": 37194
+        },
+        "eventlist": "stepwise_maintenance/step09_optics_bridge/outputs_f10m_a1_v3p5/eventlists/Opticsim_laue_f10m_a1_v3p5_centerfinger.eventlist.dat",
+        "eventlist_rows": 37194,
+        "eventlist_sha256": "ee538d20d818baab94a5c3ebe01392a3ae9f278a231aa5b8938cdf23870f62b5",
+        "manifest": "engineering/geometry_optimization_20260704/43_geoopt_s3d_o8_fallback_20260712/data/s3d_o8_signal_replay_manifest.json"
+      },
+      "atm511_sidecar": {
+        "status": "PASS",
+        "problems": [],
+        "missing": [],
+        "deep_count_audit": true,
+        "header": {
+          "status": "PRESENT",
+          "exists": true,
+          "geometry": "/home/ubuntu/TES_511_Balloon/engineering/geometry_optimization_20260704/43_geoopt_s3d_o8_fallback_20260712/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup",
+          "seed": 26070917,
+          "SE": 3000000,
+          "ID": 3000000
+        },
+        "observation_time_s": 5143.83,
+        "source_model": {
+          "Lambda_511_g_cm2": 11.5,
+          "Rc_GV": 11.0,
+          "X_ref_g_cm2": 3.6,
+          "albedo_limb_darkening_a": 1.7,
+          "beta": 0.5,
+          "day_mid": 15.0,
+          "depth_g_cm2": 3.4614689720143224,
+          "eta": 0.8,
+          "phi_4pi_ph_cm2_s": 0.051555854113229785,
+          "phi_down_ph_cm2_s": 0.008453067145840553,
+          "phi_ref_ph_cm2_s": 0.1,
+          "phi_up_ph_cm2_s": 0.043102786967389235,
+          "r0": 0.2,
+          "source_model": "PAPER_IMPLEMENTABLE_SEMI_EMPIRICAL_4PI_ATM511_SIDECAR"
+        },
+        "model_scope": "semiempirical atmospheric 511-keV sidecar; not native EXPACS",
+        "manifest": "engineering/geometry_optimization_20260704/43_geoopt_s3d_o8_fallback_20260712/data/s3d_o8_atm511_replay_manifest.json",
+        "analyzer_summary": "engineering/geometry_optimization_20260704/43_geoopt_s3d_o8_fallback_20260712/data/s3d_o8_atm511_replay_summary.json"
+      },
+      "selection_policy": {
+        "status": "PASS",
+        "problems": [],
+        "missing": [],
+        "selection_contract": {
+          "energy_windows_keV": {
+            "w2_510p58_511p42": [
+              510.58,
+              511.42
+            ],
+            "broad_480_550": [
+              480.0,
+              550.0
+            ],
+            "interval_policy": "lower-inclusive, upper-exclusive"
+          },
+          "active_veto_threshold_keV": 50.0,
+          "active_veto_acceptance": "summed matched active energy < 50 keV",
+          "active_veto_volume_rule": "BGO/CsI active scintillator + ActiveShield/CEBR3 + GeoOpt_S2B_CryoShell_Plastic*; W/Al mechanical shell excluded",
+          "side_compton_fov": {
+            "implementation": "old/code/tools/build_v3p5_centerfinger_step05_l1_response.py::side_keep_from_hits",
+            "reject_policy": "keep",
+            "knob0_policy": "frozen current monotonic policy; literal S0/S1-retain rule is not promoted"
+          }
+        },
+        "analysis_veto_threshold_keV": 50.0,
+        "native_BGO_detector_thresholds_keV": [
+          80.0,
+          80.0,
+          80.0
+        ],
+        "scorer_scope": "retained byte-identical 40-mm side scorer plus O8 30-mm bottom and 10-mm top scorers",
+        "systematic_disclosure": "Cosima native BGO detector blocks use 80 keV, while postprocessing sums matched active deposits and applies <50 keV; both settings are frozen across the matched heavy-control/O8 comparison."
+      },
+      "comparison_authorities": {
+        "status": "PASS",
+        "problems": [],
+        "missing": [],
+        "screening_promotion": {
+          "status": "PASS_SCREENING_PROMOTION_GATE",
+          "authority": "engineering/geometry_optimization_20260704/43_geoopt_s3d_o8_fallback_20260712/data/s3d_o8_screening_analysis.json",
+          "authority_exists": true,
+          "authority_sha256": "b4e1c5151358618c04b75d585f08c2c50913fbdd6c709bb9a6a544789046730b",
+          "authority_status": "PASS_O8_SCREENING_PROMOTION_GATES",
+          "expected_status": "PASS_O8_SCREENING_PROMOTION_GATES",
+          "gate_evidence": {
+            "dominant_subset": {
+              "evaluation_status": "PASS",
+              "promotion_gate_pass": true
+            },
+            "signal": {
+              "evaluation_status": "PASS",
+              "promotion_gate_pass": true
+            }
+          },
+          "all_required_gates_evaluated": true,
+          "any_evaluated_gate_failed": false,
+          "decision_so_far": "PASS_ALL_COMPLETED_GATES",
+          "problems": [],
+          "pending": [],
+          "historical_substitution_allowed": false
+        },
+        "heavy_control_authority": "engineering/geometry_optimization_20260704/43_geoopt_s3d_o8_fallback_20260712/data/s3d_o8_screening_analysis.json",
+        "reference_detector_authority": {
+          "step05": "stepwise_maintenance/step05_veto_time_axis/outputs_Mass_model_511_fullstat_v1_l1/step05_Mass_model_511_fullstat_v1_l1_response_summary.json",
+          "step08": "stepwise_maintenance/step08_significance/outputs_Mass_model_511_fullstat_v1/step08_Mass_model_511_fullstat_v1_time_dependent_summary.json"
+        },
+        "manuscript_display_names": {
+          "optimized": "lightweight optimized active-shield configuration",
+          "heavy_control": "otherwise-identical heavy active-shield control",
+          "reference_baseline": "reference detector baseline"
+        },
+        "reference_status": "PASS_REFERENCE_DETECTOR_BASELINE_AUTHORITY"
+      }
+    },
+    "failed_gates": [],
+    "pending_gates": [],
+    "production_launched": false,
+    "postprocess_confirmation_contract": {
+      "flag": "--allow-closure-run",
+      "token": "RUN_O8_STEP05_08_CLOSURE",
+      "both_required": true
+    },
+    "claim_boundary": "PENDING is not zero and is not transport evidence. No Step05-Step08 result summary is created until screening and every production input pass.",
+    "output_scope": "engineering/geometry_optimization_20260704/43_geoopt_s3d_o8_fallback_20260712/fullchain",
+    "shared_algorithm_authority": {
+      "path": "engineering/geometry_optimization_20260704/42_geoopt_s3d_lightweight_20260712/code/run_s3d_step05_08_closure.py",
+      "sha256": "7136ebee4f757db733ed324224af40bbaa6fa66a2ff4519cf214b62c77fada4f",
+      "reuse_boundary": "numerical algorithms only; O8 mutable bindings are declared and audited by this runner"
+    }
+  },
+  "inputs": {
+    "prompt_dir": "runs/geometry_optimization_20260704/s3d_o8_fullstat_prompt_all8_20260712",
+    "delayed_sim": "runs/geometry_optimization_20260704/step02_delayed_transport_s3d_o8_neutron_delayed_m50000_20260712/DelayedDecayS3dO8NeutronM50000.inc1.id1.sim.gz",
+    "science_sim": "runs/geometry_optimization_20260704/s3d_o8_f10m_a1_signal_replay_37194_20260712/Opticsim_laue_f10m_a1_s3d_o8_signal37194.inc1.id1.sim.gz",
+    "signal_manifest": "engineering/geometry_optimization_20260704/43_geoopt_s3d_o8_fallback_20260712/data/s3d_o8_signal_replay_manifest.json"
+  },
+  "normalization": {
+    "prompt_rate_rule": "per-family event rate = 1 / sum(TT_s)",
+    "prompt_normalization_audit": {
+      "status": "PASS",
+      "problems": [],
+      "prompt_dir": "runs/geometry_optimization_20260704/s3d_o8_fullstat_prompt_all8_20260712",
+      "prompt_norm": "runs/geometry_optimization_20260704/s3d_o8_fullstat_prompt_all8_20260712/normalization.json",
+      "normalization_json": {
+        "non_gamma_replicas": 8,
+        "gamma_splits": 12,
+        "gamma_prompt_time_s_with_farfield_area": 184.2200984295893,
+        "non_gamma_combined_norm_factor": null
+      },
+      "rows": [
+        {
+          "tag": "alpha",
+          "files": 8,
+          "tt_files": 8,
+          "tt_line_count": 8,
+          "tt_sum_s": 1472.817,
+          "tt_mean_s": 184.102125,
+          "tt_min_s": 182.157,
+          "tt_max_s": 186.223,
+          "rate_hz_per_event": 0.0006789709787434555,
+          "rate_times_tt_sum": 0.9999999999999999,
+          "expected_files_from_normalization": 8,
+          "warnings": []
+        },
+        {
+          "tag": "eminus",
+          "files": 8,
+          "tt_files": 8,
+          "tt_line_count": 8,
+          "tt_sum_s": 1473.2720000000002,
+          "tt_mean_s": 184.15900000000002,
+          "tt_min_s": 183.668,
+          "tt_max_s": 184.538,
+          "rate_hz_per_event": 0.000678761287800216,
+          "rate_times_tt_sum": 1.0,
+          "expected_files_from_normalization": 8,
+          "warnings": []
+        },
+        {
+          "tag": "eplus",
+          "files": 8,
+          "tt_files": 8,
+          "tt_line_count": 8,
+          "tt_sum_s": 1473.086,
+          "tt_mean_s": 184.13575,
+          "tt_min_s": 183.872,
+          "tt_max_s": 184.321,
+          "rate_hz_per_event": 0.0006788469919610939,
+          "rate_times_tt_sum": 0.9999999999999999,
+          "expected_files_from_normalization": 8,
+          "warnings": []
+        },
+        {
+          "tag": "gamma",
+          "files": 12,
+          "tt_files": 12,
+          "tt_line_count": 12,
+          "tt_sum_s": 184.27069999999998,
+          "tt_mean_s": 15.355891666666665,
+          "tt_min_s": 15.3306,
+          "tt_max_s": 15.378,
+          "rate_hz_per_event": 0.005426798726004732,
+          "rate_times_tt_sum": 1.0,
+          "expected_files_from_normalization": 12,
+          "warnings": []
+        },
+        {
+          "tag": "muminus",
+          "files": 8,
+          "tt_files": 8,
+          "tt_line_count": 8,
+          "tt_sum_s": 1476.7469999999998,
+          "tt_mean_s": 184.59337499999998,
+          "tt_min_s": 182.55,
+          "tt_max_s": 186.38,
+          "rate_hz_per_event": 0.0006771640639865868,
+          "rate_times_tt_sum": 1.0,
+          "expected_files_from_normalization": 8,
+          "warnings": []
+        },
+        {
+          "tag": "muplus",
+          "files": 8,
+          "tt_files": 8,
+          "tt_line_count": 8,
+          "tt_sum_s": 1475.568,
+          "tt_mean_s": 184.446,
+          "tt_min_s": 180.625,
+          "tt_max_s": 188.296,
+          "rate_hz_per_event": 0.0006777051277880789,
+          "rate_times_tt_sum": 0.9999999999999999,
+          "expected_files_from_normalization": 8,
+          "warnings": []
+        },
+        {
+          "tag": "n",
+          "files": 8,
+          "tt_files": 8,
+          "tt_line_count": 8,
+          "tt_sum_s": 1473.957,
+          "tt_mean_s": 184.244625,
+          "tt_min_s": 184.008,
+          "tt_max_s": 184.484,
+          "rate_hz_per_event": 0.0006784458433997735,
+          "rate_times_tt_sum": 1.0,
+          "expected_files_from_normalization": 8,
+          "warnings": []
+        },
+        {
+          "tag": "p",
+          "files": 8,
+          "tt_files": 8,
+          "tt_line_count": 8,
+          "tt_sum_s": 1476.594,
+          "tt_mean_s": 184.57425,
+          "tt_min_s": 183.929,
+          "tt_max_s": 185.174,
+          "rate_hz_per_event": 0.0006772342295851127,
+          "rate_times_tt_sum": 1.0,
+          "expected_files_from_normalization": 8,
+          "warnings": []
+        }
+      ]
+    },
+    "delayed_time_s": 32178.402129,
+    "science_unit_injection_rate_s-1": 1.0,
+    "active_veto_threshold_keV": 50.0,
+    "native_BGO_detector_threshold_keV": 80.0,
+    "reject_policy": "keep",
+    "knob0_policy": "frozen monotonic current policy; no literal S0/S1 event resurrection",
+    "coincidence_window_s": 1e-06
+  },
+  "science_physical_normalization": {
+    "reference_flux_ph_cm2_s": 0.0001,
+    "mission_days_for_direct_expectation": 20.0,
+    "optics_authority": "stepwise_maintenance/step04_opticsim/optics_aeff_authority_f10m_a1.json",
+    "optics_design_name": "balloon511_f10m_ge111_511line_a1",
+    "optics_profile": "f10m_a1_v3p5",
+    "aeff_511_cm2": 20.084760000000003,
+    "aeff_seed_pstdev_cm2": 0.22144082550424163,
+    "atmospheric_transmission": {
+      "ledger": "old/config/science_511_onaxis_source/metadata/science_rate_ledger.csv",
+      "source_id": "science_511_onaxis_v0",
+      "flux_ph_cm2_s": 0.0001,
+      "mainline_A_opt_cm2_in_ledger": 15.29928,
+      "T_atm": 0.7390423888027,
+      "note": "Only scalar T_atm is inherited from this mainline ledger; v3p5/f10m A1 uses the f10m_a1 A_eff authority below. A dedicated 45 deg side-entry LOS atmosphere sidecar is available in old/reports/v3p5_boundary_closure_fullstat_v2_exactpos_20260613/v3p5_boundary_closure_summary.json."
+    },
+    "rate_to_v3p5_injection_plane_s-1": 0.0014843489008928919,
+    "unit_eventlist_injection_rate_s-1": 1.0,
+    "scale_from_unit_eventlist_rate": 0.0014843489008928919
+  },
+  "catalog": {
+    "events_kept": 10044782,
+    "pixel_hits_kept": 65487,
+    "by_stream_events": {
+      "prompt": 9535401,
+      "delayed": 472495,
+      "science": 36886
+    },
+    "by_stream_event_rate_hz": {
+      "prompt": 23733.9974892218,
+      "delayed": 14.68360666591879,
+      "science": 0.9917190944776041
+    }
+  },
+  "windows": {
+    "broad_480_550": {
+      "window_keV": [
+        480.0,
+        550.0
+      ],
+      "by_stream": {
+        "prompt": {
+          "raw_events": 108,
+          "active_veto_pass_events": 17,
+          "side_compton_fov_pass_events": 12,
+          "raw_rate_s-1": 0.07801191817112904,
+          "active_veto_pass_rate_s-1": 0.016283135666085066,
+          "side_compton_fov_pass_rate_s-1": 0.012890505300524881,
+          "active_veto_survival_fraction": 0.20872625680560683,
+          "side_compton_fov_survival_fraction_vs_active": 0.7916476018420431,
+          "side_compton_class_counts": {
+            "keep": 6,
+            "single": 6,
+            "veto": 5
+          }
+        },
+        "delayed": {
+          "raw_events": 176,
+          "active_veto_pass_events": 54,
+          "side_compton_fov_pass_events": 47,
+          "raw_rate_s-1": 0.005469507133835719,
+          "active_veto_pass_rate_s-1": 0.00167814423424505,
+          "side_compton_fov_pass_rate_s-1": 0.0014606070186947656,
+          "active_veto_survival_fraction": 0.30681818181818177,
+          "side_compton_fov_survival_fraction_vs_active": 0.8703703703703703,
+          "side_compton_class_counts": {
+            "keep": 14,
+            "single": 33,
+            "veto": 7
+          }
+        },
+        "science": {
+          "raw_events": 30303,
+          "active_veto_pass_events": 30303,
+          "side_compton_fov_pass_events": 29638,
+          "raw_rate_s-1": 0.8147281819648331,
+          "active_veto_pass_rate_s-1": 0.8147281819648331,
+          "side_compton_fov_pass_rate_s-1": 0.7968489541327132,
+          "active_veto_survival_fraction": 1.0,
+          "side_compton_fov_survival_fraction_vs_active": 0.9780549780553784,
+          "side_compton_class_counts": {
+            "keep": 12035,
+            "single": 17603,
+            "veto": 665
+          }
+        }
+      },
+      "total": {
+        "raw": {
+          "events": 30587,
+          "rate_s-1": 0.8982096072697978
+        },
+        "active_veto_pass": {
+          "events": 30374,
+          "rate_s-1": 0.8326894618651632
+        },
+        "side_compton_fov_pass": {
+          "events": 29697,
+          "rate_s-1": 0.8112000664519328
+        }
+      },
+      "physical_reference_flux": {
+        "reference_flux_ph_cm2_s": 0.0001,
+        "rate_to_v3p5_injection_plane_s-1": 0.0014843489008928919,
+        "prompt_background_cps": 0.012890505300524881,
+        "delayed_background_cps": 0.0014606070186947656,
+        "background_cps": 0.014351112319219646,
+        "signal_cps_at_reference_flux": 0.0011828018692445431,
+        "signal_to_background": 0.08241882879423099,
+        "mission_days": 20.0,
+        "source_counts_20d": 2043.8816300545705,
+        "background_counts_20d": 24798.72208761155,
+        "Z20d_direct_s_over_sqrt_b": 12.978995729375265,
+        "T3_day_constant_rate_direct": 1.0685388725065594,
+        "T5_day_constant_rate_direct": 2.9681635347404423,
+        "flux_3sigma_20d_ph_cm2_s": 2.3114269104890162e-05,
+        "low_stat_final_background_events": 59,
+        "low_stat_background_relative_poisson_sigma_approx": 0.13018891098082389,
+        "low_stat_prompt_final_events": 12,
+        "low_stat_delayed_final_events": 47,
+        "science_unit_rate_final_events": 29638,
+        "claim_note": "Direct expectation only. It uses the current Step05 selected-event rates and does not replace a full Step06-Step08 mission-axis regeneration."
+      }
+    },
+    "w2_510p58_511p42": {
+      "window_keV": [
+        510.58,
+        511.42
+      ],
+      "by_stream": {
+        "prompt": {
+          "raw_events": 44,
+          "active_veto_pass_events": 6,
+          "side_compton_fov_pass_events": 5,
+          "raw_rate_s-1": 0.029848697231495004,
+          "active_veto_pass_rate_s-1": 0.004071878506082602,
+          "side_compton_fov_pass_rate_s-1": 0.003393031514121508,
+          "active_veto_survival_fraction": 0.1364172940112823,
+          "side_compton_fov_survival_fraction_vs_active": 0.833284074918486,
+          "side_compton_class_counts": {
+            "keep": 2,
+            "single": 3,
+            "veto": 1
+          }
+        },
+        "delayed": {
+          "raw_events": 131,
+          "active_veto_pass_events": 35,
+          "side_compton_fov_pass_events": 31,
+          "raw_rate_s-1": 0.004071053605298178,
+          "active_veto_pass_rate_s-1": 0.0010876860777514214,
+          "side_compton_fov_pass_rate_s-1": 0.000963379097436974,
+          "active_veto_survival_fraction": 0.26717557251908397,
+          "side_compton_fov_survival_fraction_vs_active": 0.8857142857142863,
+          "side_compton_class_counts": {
+            "keep": 9,
+            "single": 22,
+            "veto": 4
+          }
+        },
+        "science": {
+          "raw_events": 30252,
+          "active_veto_pass_events": 30252,
+          "side_compton_fov_pass_events": 29598,
+          "raw_rate_s-1": 0.8133569930633974,
+          "active_veto_pass_rate_s-1": 0.8133569930633974,
+          "side_compton_fov_pass_rate_s-1": 0.7957735118570756,
+          "active_veto_survival_fraction": 1.0,
+          "side_compton_fov_survival_fraction_vs_active": 0.9783815946057143,
+          "side_compton_class_counts": {
+            "keep": 12018,
+            "single": 17580,
+            "veto": 654
+          }
+        }
+      },
+      "total": {
+        "raw": {
+          "events": 30427,
+          "rate_s-1": 0.8472767439001906
+        },
+        "active_veto_pass": {
+          "events": 30293,
+          "rate_s-1": 0.8185165576472314
+        },
+        "side_compton_fov_pass": {
+          "events": 29634,
+          "rate_s-1": 0.800129922468634
+        }
+      },
+      "physical_reference_flux": {
+        "reference_flux_ph_cm2_s": 0.0001,
+        "rate_to_v3p5_injection_plane_s-1": 0.0014843489008928919,
+        "prompt_background_cps": 0.003393031514121508,
+        "delayed_background_cps": 0.000963379097436974,
+        "background_cps": 0.004356410611558482,
+        "signal_cps_at_reference_flux": 0.0011812055376847269,
+        "signal_to_background": 0.271141920036357,
+        "mission_days": 20.0,
+        "source_counts_20d": 2041.1231691192081,
+        "background_counts_20d": 7527.877536773056,
+        "Z20d_direct_s_over_sqrt_b": 23.525179172658305,
+        "T3_day_constant_rate_direct": 0.3252420018960158,
+        "T5_day_constant_rate_direct": 0.9034500052667104,
+        "flux_3sigma_20d_ph_cm2_s": 1.2752293948463073e-05,
+        "low_stat_final_background_events": 36,
+        "low_stat_background_relative_poisson_sigma_approx": 0.16666666666666666,
+        "low_stat_prompt_final_events": 5,
+        "low_stat_delayed_final_events": 31,
+        "science_unit_rate_final_events": 29598,
+        "claim_note": "Direct expectation only. It uses the current Step05 selected-event rates and does not replace a full Step06-Step08 mission-axis regeneration."
+      }
+    }
+  },
+  "timeline": {
+    "obs_time_s": 210.52921608443413,
+    "n_event_instances": 5004192,
+    "n_candidates_total": 4886717,
+    "n_candidates_with_tes": 669,
+    "n_mixed_candidates": 175,
+    "windows": {
+      "broad_480_550": {
+        "counts": {
+          "raw": 201,
+          "active_veto_pass": 180,
+          "side_compton_fov_pass": 172
+        },
+        "rates_s-1": {
+          "raw": 0.9547368471622847,
+          "active_veto_pass": 0.8549882213393595,
+          "side_compton_fov_pass": 0.816988744835388
+        },
+        "side_compton_class_counts": {
+          "active_veto": 21,
+          "keep": 69,
+          "single": 103,
+          "veto": 8
+        }
+      },
+      "w2_510p58_511p42": {
+        "counts": {
+          "raw": 189,
+          "active_veto_pass": 179,
+          "side_compton_fov_pass": 171
+        },
+        "rates_s-1": {
+          "raw": 0.8977376324063274,
+          "active_veto_pass": 0.850238286776363,
+          "side_compton_fov_pass": 0.8122388102723915
+        },
+        "side_compton_class_counts": {
+          "active_veto": 10,
+          "keep": 68,
+          "single": 103,
+          "veto": 8
+        }
+      }
+    }
+  },
+  "timeline_draw_summary": {
+    "prompt": {
+      "lambda": 4996699.885955794,
+      "drawn": 5000905,
+      "rate_hz": 23733.9974892218
+    },
+    "delayed": {
+      "lambda": 3091.3282006680543,
+      "drawn": 3071,
+      "rate_hz": 14.68360666591879
+    },
+    "science": {
+      "lambda": 208.78584353633485,
+      "drawn": 216,
+      "rate_hz": 0.9917190944776041
+    }
+  },
+  "timeline_model": {
+    "mode": "ADAPTIVE_BOUNDED_HIGH_RATE_POISSON_DRAW_CORE_STREAMS",
+    "full_obs_time_s": 32178.402129,
+    "timeline_obs_time_s": 210.52921608443413,
+    "full_interval_expected_instances": 764226522.2726768,
+    "max_timeline_draw_lambda": 5000000.0,
+    "scope": "prompt+neutron-delayed+focused-signal diagnostic only; atm511 occupancy is merged analytically below"
+  }
+}

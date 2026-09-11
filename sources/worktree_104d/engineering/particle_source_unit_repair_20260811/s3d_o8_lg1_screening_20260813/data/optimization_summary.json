@@ -1,0 +1,190 @@
+{
+  "schema_version": 1,
+  "status": "SOURCE_DIAGNOSIS_COMPLETE__LG1_FIRST_PASS_SMOKE_COMPLETE__FULL_CHAIN_TARGET_NOT_YET_CLOSED",
+  "generated_date": "2026-08-14",
+  "geometry": "S3d_O8",
+  "window": {
+    "id": "w2_510p58_511p42",
+    "lower_keV": 510.58,
+    "upper_keV": 511.42
+  },
+  "baseline": {
+    "selected_aeff_cm2": 15.041700000000004,
+    "prompt_cps": 0.03384292813088877,
+    "prompt_selected_events": 2,
+    "delayed_cps": 0.054479752227267225,
+    "delayed_selected_events": 420,
+    "total_background_cps": 0.08832268035815599,
+    "flux_3sigma_20d_ph_cm2_s": 0.00006923750509150677,
+    "mission_20d_signal_counts": 1645.387753,
+    "mission_20d_prompt_counts": 55398.979434,
+    "mission_20d_delayed_counts": 88804.862652,
+    "mission_20d_background_counts": 144203.842086,
+    "mission_number_scope": "ANALYTIC_FAMILY_SCALAR_SCENARIO"
+  },
+  "frozen_signal_only_selection": {
+    "policy": "measured W2 + veto50 + Step05 + fixed pixel-center centroid r<=1.35 cm + deepest measured layer<=L3",
+    "selected_aeff_cm2": 13.628520000000004,
+    "signal_retention_vs_baseline_final": 0.9060491832705079,
+    "prompt_cps": 0.016921464065444387,
+    "delayed_cps": 0.0232056739969,
+    "total_background_cps": 0.04012713806234439,
+    "simple_s_over_sqrt_b_scaled_flux_3sigma_20d_ph_cm2_s": 0.00005150775366714872,
+    "mission_family_scalar_flux_3sigma_20d_ph_cm2_s": 0.0000514899369,
+    "mission_20d_signal_counts": 1490.80223,
+    "mission_20d_background_counts": 65469.990346
+  },
+  "readout_upper_bound": {
+    "pair_host_at_1keV": {
+      "selected_aeff_cm2": 13.628520000000004,
+      "prompt_cps": 0.0,
+      "delayed_cps": 0.007583342089821323,
+      "total_background_cps": 0.007583342089821323,
+      "simple_s_over_sqrt_b_scaled_flux_3sigma_20d_ph_cm2_s": 0.00002239153365734679,
+      "mission_family_scalar_flux_3sigma_20d_ph_cm2_s": 0.0000223573862,
+      "mission_20d_background_counts": 12343.536756,
+      "gain_vs_baseline_s_over_sqrt_b": 3.092128755047985,
+      "target_3e_minus_5_crossed": true
+    },
+    "pair_host_threshold_scan": [
+      {
+        "threshold_keV": 1.0,
+        "total_background_cps": 0.007583342089821323,
+        "mission_family_scalar_flux_3sigma_20d_ph_cm2_s": 0.0000223573862,
+        "mission_20d_background_counts": 12343.536756,
+        "target_3e_minus_5_crossed": true
+      },
+      {
+        "threshold_keV": 5.0,
+        "total_background_cps": 0.007583342089821323,
+        "mission_family_scalar_flux_3sigma_20d_ph_cm2_s": 0.0000223573862,
+        "mission_20d_background_counts": 12343.536756,
+        "target_3e_minus_5_crossed": true
+      },
+      {
+        "threshold_keV": 50.0,
+        "total_background_cps": 0.010693573771932826,
+        "mission_family_scalar_flux_3sigma_20d_ph_cm2_s": 0.0000265657195,
+        "mission_20d_background_counts": 17427.726012,
+        "target_3e_minus_5_crossed": true
+      },
+      {
+        "threshold_keV": 80.0,
+        "total_background_cps": 0.0137887861,
+        "mission_family_scalar_flux_3sigma_20d_ph_cm2_s": 0.0000301767241,
+        "mission_20d_background_counts": 22487.529309,
+        "target_3e_minus_5_crossed": false
+      }
+    ],
+    "pair_host_plus_near_tes_cu_at_1keV": {
+      "selected_aeff_cm2": 13.628520000000004,
+      "prompt_cps": 0.0,
+      "delayed_cps": 0.000030038767408752002,
+      "total_background_cps": 0.000030038767408752002,
+      "simple_s_over_sqrt_b_scaled_flux_3sigma_20d_ph_cm2_s": 0.0000014092711807615526,
+      "mission_family_scalar_flux_3sigma_20d_ph_cm2_s": 0.00000140535528,
+      "mission_20d_background_counts": 48.771916,
+      "gain_vs_baseline_s_over_sqrt_b": 49.13000850133875
+    },
+    "interpretation": "Existing CC-HIT energy in named passive host structures is treated as readable veto energy. This is a design upper bound and requires a realizable sensor/material implementation. The 50-to-80 keV transition is controlled by two proton-family delayed events with about 0.003050 cps weight each; the A5 delayed effective sample size is only about 6.37."
+  },
+  "target_budget": {
+    "minimum_flux_3sigma_20d_ph_cm2_s": 0.00003,
+    "minimum_total_background_cps_at_frozen_aeff": 0.013612424248219037,
+    "minimum_20d_background_counts_at_frozen_signal": 22224.912885,
+    "recommended_promotion_aeff_floor_cm2": 13.35,
+    "recommended_promotion_total_background_ceiling_cps": 0.0131,
+    "stretch_flux_3sigma_20d_ph_cm2_s": 0.00002,
+    "stretch_total_background_ceiling_cps": 0.0058
+  },
+  "prompt_origin": {
+    "w2_pre_veto_events": 261,
+    "veto50_survivors": 3,
+    "step05_survivors": 2,
+    "active_zero_energy_survivors": 3,
+    "final_paths": [
+      {
+        "local_event_id": 3883,
+        "primary": "gamma",
+        "primary_energy_keV": 4148.29,
+        "pair_host": "Nb_MagShield_Inner_Cylinder_2mm",
+        "annihilation_region": "MuMetal_MagShield_Outer_Cylinder_2mm",
+        "frozen_selection_pass": false
+      },
+      {
+        "local_event_id": 19932,
+        "primary": "gamma",
+        "primary_energy_keV": 5768.82,
+        "pair_host": "DR_MixingChamber_Cu",
+        "annihilation_region": "DR_MixingChamber_Cu",
+        "frozen_selection_pass": true
+      }
+    ]
+  },
+  "delayed_origin": {
+    "weighted_effective_selected_events": 28.75,
+    "top_incident_families_fraction": {
+      "n": 0.4346,
+      "p": 0.3919,
+      "alpha": 0.0824,
+      "eplus": 0.0703
+    },
+    "cu61_cu62_cu64_rate_cps": 0.03499825913531559,
+    "cu61_cu62_cu64_fraction_of_delayed": 0.6424,
+    "top_source_volumes_rate_cps": {
+      "ColdPlate_MXC_50mK_SD_anchor": 0.0167715,
+      "Nb_MagShield_Inner_Cylinder_2mm": 0.0078086,
+      "MuMetal_MagShield_Outer_Cylinder_2mm": 0.00776545,
+      "Cu_SubstrateSupport_SolidDisk_L0_deepest": 0.00584951,
+      "Cu_50mK_StillLike_Can_bottom_cap_2mm": 0.00401569
+    }
+  },
+  "lg1": {
+    "mass_kg": 0.5630968288446688,
+    "geometry_static_status": "PASS_S3D_O8_LG1_STATIC_GEOMETRY_VALIDATION",
+    "smoke_status": "PASS_LG1_SMOKE_PHYSICS_DIAGNOSTIC_NO_RATE_OR_PROMOTION_AUTHORITY",
+    "transport_jobs": 16,
+    "transport_events": 8192,
+    "aggregate_sim_bytes": 18068437,
+    "focused_first1000": {
+      "baseline_raw_w2": 826,
+      "candidate_raw_w2": 817,
+      "candidate_raw_w2_with_lg1_ge_1keV": 0,
+      "candidate_raw_w2_with_lg1_ge_80keV": 0
+    },
+    "serialized_root_diagnostics": {
+        "4148keV_nb_mumetal": {
+          "candidate_raw_w2_original_six_pass": 5,
+          "lg1_intercepted": 5,
+          "lg1_ge50_given_original_six_pass": {
+            "numerator": 94,
+            "denominator": 301,
+            "fraction": 0.3122923588039867
+          }
+        },
+        "5769keV_mixing_chamber_cu": {
+          "candidate_raw_w2_original_six_pass": 2,
+          "lg1_intercepted": 0,
+          "lg1_ge50_given_original_six_pass": {
+            "numerator": 6,
+            "denominator": 118,
+            "fraction": 0.05084745762711865
+          }
+      },
+      "forced_back_to_back_511": {
+        "candidate_raw_w2_original_six_pass": 1,
+        "lg1_intercepted": 0
+      }
+    },
+        "focused_raw_w2_net_difference_fraction": -0.01089588377723971,
+        "focused_paired_discordance_exact_p_value": 0.63,
+        "conclusion": "Retain side/back local guard concept, but do not promote LG1. The decisive mixing-chamber Cu path requires source-side guard coverage or pair-host mass/readout redesign."
+  },
+  "priorities": [
+    "P0_realize_pair_host_readout_or_reduce_pair_host_coupling",
+    "P1_reduce_near_TES_Cu_activation_and_line_of_sight_coupling",
+    "P2_add_near_TES_Si_anti_co_and_Nb_low_Z_liner_as_complements",
+    "P3_jointly_optimize_guard_energy_timing_threshold_and_frozen_pixel_selection"
+  ],
+  "claim_boundary": "The 3e-5 goal is crossed only by the event-record readout upper-bound estimate. LG1 has passed first-pass physical smoke but has not passed broadband prompt, BUILDUP, inventory, delayed, common-response, accidental-veto, thermal, magnetic, or mission closure."
+}

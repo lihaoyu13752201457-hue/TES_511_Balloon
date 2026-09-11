@@ -1,0 +1,387 @@
+{
+  "catalog": {
+    "detector_catalog_event_rate_cps": 202.5632151502484,
+    "generated_events": 3000000,
+    "kept_events_tes_or_active": 1041813,
+    "observation_time_s": 5143.15,
+    "tes_event_rate_cps": 0.021970971097479173,
+    "tes_events": 113
+  },
+  "claim_boundary": "Semi-empirical S1 atmospheric-511 sidecar transported with the frozen C0 source model; this is not a native EXPACS line component.",
+  "generated_at_utc": "2026-07-12T09:31:00Z",
+  "inputs": {
+    "c0_summary": "engineering/geometry_optimization_20260704/32_s3c_dominant_backgrounds_20260709/s3c_atm511_sidecar_3m_summary.json",
+    "log": "runs/geometry_optimization_20260704/s3d_o9_atm511_sidecar_3m_20260712/cosima_Atm511SidecarS3dO9_3M.log",
+    "manifest": "engineering/geometry_optimization_20260704/42_geoopt_s3d_lightweight_20260712/data/s3d_atm511_replay_manifest.json",
+    "sim": "runs/geometry_optimization_20260704/s3d_o9_atm511_sidecar_3m_20260712/Atm511SidecarS3dO9_3M.inc1.id1.sim.gz",
+    "source": "runs/geometry_optimization_20260704/s3d_o9_atm511_sidecar_3m_20260712/Atm511SidecarS3dO9_3M.source"
+  },
+  "normalization": {
+    "active_veto_threshold_keV": 50.0,
+    "event_rate_weight_cps": 0.00019443337254406348,
+    "observation_time_s": 5143.15,
+    "selection_contract": {
+      "active_veto_acceptance": "summed matched active energy < 50 keV",
+      "active_veto_threshold_keV": 50.0,
+      "active_veto_volume_rule": "BGO/CsI active scintillator + ActiveShield/CEBR3 + GeoOpt_S2B_CryoShell_Plastic*; W/Al mechanical shell excluded",
+      "energy_windows_keV": {
+        "broad_480_550": [
+          480.0,
+          550.0
+        ],
+        "interval_policy": "lower-inclusive, upper-exclusive",
+        "w2_510p58_511p42": [
+          510.58,
+          511.42
+        ]
+      },
+      "side_compton_fov": {
+        "implementation": "old/code/tools/build_v3p5_centerfinger_step05_l1_response.py::side_keep_from_hits",
+        "knob0_policy": "frozen current monotonic policy; literal S0/S1-retain rule is not promoted",
+        "reject_policy": "keep"
+      }
+    }
+  },
+  "relative_to_c0": {
+    "broad_480_550": {
+      "active_veto_pass": {
+        "c0_events": 11,
+        "c0_rate_cps": 0.0021392870339757676,
+        "ratio_counting_95": {
+          "high": 5.481805607036915,
+          "level": 0.95,
+          "low": 1.17821061810552
+        },
+        "s3d_events": 27,
+        "s3d_over_c0": 2.4539488976069674,
+        "s3d_rate_cps": 0.005249701058689714
+      },
+      "raw": {
+        "c0_events": 11,
+        "c0_rate_cps": 0.0021392870339757676,
+        "ratio_counting_95": {
+          "high": 5.481805607036915,
+          "level": 0.95,
+          "low": 1.17821061810552
+        },
+        "s3d_events": 27,
+        "s3d_over_c0": 2.4539488976069674,
+        "s3d_rate_cps": 0.005249701058689714
+      },
+      "side_compton_fov_pass": {
+        "c0_events": 9,
+        "c0_rate_cps": 0.0017503257550710828,
+        "ratio_counting_95": {
+          "high": 7.005088615452636,
+          "level": 0.95,
+          "low": 1.3115053335205493
+        },
+        "s3d_events": 26,
+        "s3d_over_c0": 2.888186768376924,
+        "s3d_rate_cps": 0.00505526768614565
+      }
+    },
+    "w2_510p58_511p42": {
+      "active_veto_pass": {
+        "c0_events": 8,
+        "c0_rate_cps": 0.0015558451156187402,
+        "ratio_counting_95": {
+          "high": 6.269798844853761,
+          "level": 0.95,
+          "low": 0.9925302695951436
+        },
+        "s3d_events": 19,
+        "s3d_over_c0": 2.37442277592526,
+        "s3d_rate_cps": 0.0036942340783372063
+      },
+      "raw": {
+        "c0_events": 8,
+        "c0_rate_cps": 0.0015558451156187402,
+        "ratio_counting_95": {
+          "high": 6.269798844853761,
+          "level": 0.95,
+          "low": 0.9925302695951436
+        },
+        "s3d_events": 19,
+        "s3d_over_c0": 2.37442277592526,
+        "s3d_rate_cps": 0.0036942340783372063
+      },
+      "side_compton_fov_pass": {
+        "c0_events": 6,
+        "c0_rate_cps": 0.001166883836714055,
+        "ratio_counting_95": {
+          "high": 9.22998589923272,
+          "level": 0.95,
+          "low": 1.140533252343829
+        },
+        "s3d_events": 18,
+        "s3d_over_c0": 2.99927087485296,
+        "s3d_rate_cps": 0.0034998007057931426
+      }
+    }
+  },
+  "sim_header": {
+    "ID": 3000000,
+    "SE": 3000000,
+    "count_authority": "full_readable_sim_stream",
+    "exists": true,
+    "geometry": "/home/ubuntu/TES_511_Balloon/engineering/geometry_optimization_20260704/42_geoopt_s3d_lightweight_20260712/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup",
+    "seed": 26070917,
+    "status": "PRESENT"
+  },
+  "source_model": {
+    "Rc_GV": 11.0,
+    "depth_g_cm2": 3.4614689720143224,
+    "phi_4pi_ph_cm2_s": 0.051555854113229785,
+    "source_model": "PAPER_IMPLEMENTABLE_SEMI_EMPIRICAL_4PI_ATM511_SIDECAR"
+  },
+  "status": "PASS_S3D_ATM511_4PI_SIDECAR_REPLAY",
+  "transport": {
+    "ID": 3000000,
+    "SE": 3000000,
+    "count_authority": "full_readable_sim_stream",
+    "events_generated": 3000000,
+    "events_requested": 3000000,
+    "geometry": "engineering/geometry_optimization_20260704/42_geoopt_s3d_lightweight_20260712/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup",
+    "seed": 26070917,
+    "status": "PASS_COMPLETE_READABLE_SIM"
+  },
+  "windows": {
+    "broad_480_550": {
+      "active_rate_cps": 0.005249701058689714,
+      "active_transfer_cps_per_ph_cm2_s_4pi": 0.10182550845069958,
+      "active_veto_pass_events": 27,
+      "event_rate_weight_cps": 0.00019443337254406348,
+      "final_active_veto_keV": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        4.189525,
+        0.0,
+        0.0,
+        4.665093,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        19.91984,
+        0.0,
+        0.0
+      ],
+      "final_energies_keV": [
+        511.00000200000005,
+        510.999956,
+        511.0,
+        510.99998600000004,
+        510.99998000000005,
+        511.0000600000001,
+        510.999999,
+        511.00000000000006,
+        510.999959,
+        506.81054,
+        511.0,
+        510.9999860000001,
+        506.33491,
+        488.579987,
+        486.05226,
+        511.0,
+        511.0,
+        510.99994599999997,
+        511.00004,
+        510.99999,
+        500.40000000000003,
+        507.80479,
+        510.99993,
+        491.0801400000001,
+        487.65560000000005,
+        511.000033
+      ],
+      "final_event_ids": [
+        130585,
+        389849,
+        604443,
+        622990,
+        695501,
+        751547,
+        774004,
+        802398,
+        910361,
+        1044512,
+        1095151,
+        1195784,
+        1247133,
+        1335103,
+        1363503,
+        1427617,
+        1436035,
+        1458571,
+        1794519,
+        1840925,
+        1959617,
+        1981855,
+        2157473,
+        2740185,
+        2757756,
+        2941156
+      ],
+      "final_pix_counts": [
+        1,
+        2,
+        2,
+        1,
+        2,
+        3,
+        2,
+        1,
+        3,
+        3,
+        2,
+        3,
+        2,
+        1,
+        1,
+        1,
+        1,
+        2,
+        1,
+        1,
+        1,
+        2,
+        1,
+        1,
+        1,
+        1
+      ],
+      "final_rate_cps": 0.00505526768614565,
+      "final_relative_poisson_sigma": 0.19611613513818404,
+      "final_transfer_cps_per_ph_cm2_s_4pi": 0.09805419332289589,
+      "raw_events": 27,
+      "raw_rate_cps": 0.005249701058689714,
+      "raw_transfer_cps_per_ph_cm2_s_4pi": 0.10182550845069958,
+      "side_compton_class_counts": {
+        "keep": 12,
+        "single": 14,
+        "veto": 1
+      },
+      "side_compton_fov_pass_events": 26,
+      "window_keV": [
+        480.0,
+        550.0
+      ]
+    },
+    "w2_510p58_511p42": {
+      "active_rate_cps": 0.0036942340783372063,
+      "active_transfer_cps_per_ph_cm2_s_4pi": 0.07165498742827008,
+      "active_veto_pass_events": 19,
+      "event_rate_weight_cps": 0.00019443337254406348,
+      "final_active_veto_keV": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "final_energies_keV": [
+        511.00000200000005,
+        510.999956,
+        511.0,
+        510.99998600000004,
+        510.99998000000005,
+        511.0000600000001,
+        510.999999,
+        511.00000000000006,
+        510.999959,
+        511.0,
+        510.9999860000001,
+        511.0,
+        511.0,
+        510.99994599999997,
+        511.00004,
+        510.99999,
+        510.99993,
+        511.000033
+      ],
+      "final_event_ids": [
+        130585,
+        389849,
+        604443,
+        622990,
+        695501,
+        751547,
+        774004,
+        802398,
+        910361,
+        1095151,
+        1195784,
+        1427617,
+        1436035,
+        1458571,
+        1794519,
+        1840925,
+        2157473,
+        2941156
+      ],
+      "final_pix_counts": [
+        1,
+        2,
+        2,
+        1,
+        2,
+        3,
+        2,
+        1,
+        3,
+        2,
+        3,
+        1,
+        1,
+        2,
+        1,
+        1,
+        1,
+        1
+      ],
+      "final_rate_cps": 0.0034998007057931426,
+      "final_relative_poisson_sigma": 0.23570226039551587,
+      "final_transfer_cps_per_ph_cm2_s_4pi": 0.06788367230046638,
+      "raw_events": 19,
+      "raw_rate_cps": 0.0036942340783372063,
+      "raw_transfer_cps_per_ph_cm2_s_4pi": 0.07165498742827008,
+      "side_compton_class_counts": {
+        "keep": 9,
+        "single": 9,
+        "veto": 1
+      },
+      "side_compton_fov_pass_events": 18,
+      "window_keV": [
+        510.58,
+        511.42
+      ]
+    }
+  }
+}

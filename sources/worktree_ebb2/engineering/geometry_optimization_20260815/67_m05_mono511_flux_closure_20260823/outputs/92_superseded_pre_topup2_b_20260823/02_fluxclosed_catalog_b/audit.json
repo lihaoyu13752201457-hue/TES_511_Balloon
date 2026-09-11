@@ -1,0 +1,132 @@
+{
+  "components": {
+    "atm511": {
+      "component_id": 2,
+      "effective_sample_size": 646560.0000000002,
+      "events": 646560,
+      "sumw2_cps2": 0.009395632539477294,
+      "sumw_cps": 77.9412610542352
+    },
+    "gamma_continuum": {
+      "component_id": 1,
+      "effective_sample_size": 4108388.319529832,
+      "events": 4189660,
+      "sumw2_cps2": 0.9160609592250699,
+      "sumw_cps": 1939.9830269508986
+    },
+    "other": {
+      "component_id": 0,
+      "effective_sample_size": 131815.83241547918,
+      "events": 3869338,
+      "sumw2_cps2": 2.82221809469813,
+      "sumw_cps": 609.9287068261845
+    }
+  },
+  "excluded_mature_prompt_gamma_events": 4189660,
+  "gamma_authority": {
+    "detector_positive_events": 4189660,
+    "jobs": 280,
+    "mature_summary": "DEEPSEEK_CODE/outputs/04_event_catalog_step05_m05_fixed_20260820/summary.json",
+    "pooled_proposal_event_weight_cps": 0.0004828345322678079,
+    "proposal_category_registry": "DEEPSEEK_CODE/outputs/04_event_catalog_step05_m05_fixed_20260820/category_registry.json",
+    "proposal_detector_positive_events": 4189660
+  },
+  "gamma_join": {
+    "boundary_candidates": 389,
+    "boundary_dir_z_tolerance": 5.1e-06,
+    "detector_positive_events": 4189660,
+    "effective_sample_size": 4108388.319529832,
+    "events": 4189660,
+    "jobs": 280,
+    "matched_ia_init_events": 4189660,
+    "matching_rate": 1.0,
+    "maximum_continuum_importance_weight": 1.0,
+    "maximum_event_weight_cps": 0.0004828345322678079,
+    "minimum_continuum_importance_weight": 0.3971350049181206,
+    "minimum_event_weight_cps": 0.00019175049434681435,
+    "sumw2_cps2": 0.9160609592250699,
+    "sumw_cps": 1939.9830269508986
+  },
+  "line": {
+    "catalog": "engineering/geometry_optimization_20260815/67_m05_mono511_flux_closure_20260823/outputs/01_line_response_b60/mono_line_event_catalog.npz",
+    "detector_positive_events": 646560,
+    "event_weight_cps": 0.00012054760742117545,
+    "incident_photons": 15618529,
+    "jobs": 67,
+    "physical_exposure_s": 8295.477789999999,
+    "recovered_response_fields": [],
+    "source_bin80_maximum": 79,
+    "source_bin80_minimum": 0,
+    "summary": "engineering/geometry_optimization_20260815/67_m05_mono511_flux_closure_20260823/outputs/01_line_response_b60/summary.json"
+  },
+  "mature_input": "DEEPSEEK_CODE/outputs/04_event_catalog_step05_m05_fixed_20260820",
+  "mature_status": "PASS__SH3_OPTV3_COMPACT_EVENT_CATALOG__STEP05_EXACT_POSITION_V2",
+  "model": "b",
+  "output_schema": {
+    "added_event_fields": [
+      "event_base_weight_cps",
+      "event_component",
+      "source_bin80",
+      "continuum_importance_weight"
+    ],
+    "event_base_weight_dtype": "float64",
+    "event_component_dtype": "uint8",
+    "event_count": 8705558,
+    "hit_count": 623743,
+    "original_event_fields": [
+      "plastic_keV",
+      "bgo_keV",
+      "measured_total_keV",
+      "broad_flags",
+      "w2_flags",
+      "compton_keep",
+      "hit_start",
+      "hit_count",
+      "event_category"
+    ],
+    "original_hit_fields": [
+      "hit_code",
+      "hit_layer",
+      "hit_energy_keV",
+      "hit_x_cm",
+      "hit_y_cm",
+      "hit_z_cm"
+    ],
+    "source_bin80_dtype": "uint8"
+  },
+  "persistent_init_cache": "engineering/geometry_optimization_20260815/67_m05_mono511_flux_closure_20260823/outputs/02_fluxclosed_init_cache_b",
+  "prompt_gamma_exclusion_policy": "exclude only stream=prompt,family=gamma; retain delayed gamma",
+  "retained_other_events": 3869338,
+  "source_closure": {
+    "basis": "current W=118.3 total grid minus official W=118.3 continuum; only the 566.08-keV node differs; IP LIN in energy and intensity",
+    "bins": "engineering/geometry_optimization_20260815/67_m05_mono511_flux_closure_20260823/outputs/00_source_closure/coarse_line_decomposition_20bins.csv",
+    "bins_sha256": "f2394067e057d9092851244cd5e5076d8b867fe3b05fe1d9b77d8af173aaecf4",
+    "grid_minimum_importance_weight": 0.3971350029339165,
+    "manifest": "engineering/geometry_optimization_20260815/67_m05_mono511_flux_closure_20260823/outputs/00_source_closure/source_closure.json",
+    "manifest_sha256": "acfa91b0cfc36b6492e218a9164473cef51f2cca2c47a186d45ec96f5983cbae",
+    "mono_target": "engineering/geometry_optimization_20260815/67_m05_mono511_flux_closure_20260823/outputs/00_source_closure/mono511_target_81x80.csv",
+    "mono_target_validation": {
+      "day15_identity": {
+        "maximum_importance_ratio": 1.0,
+        "minimum_importance_ratio": 1.0,
+        "proposal_flux_ph_cm2_s": 0.16651547160226118,
+        "target_flux_ph_cm2_s": 0.16651547160226118,
+        "time_bin_id": 60
+      },
+      "maximum_importance_ratio": 1.6128636607432865,
+      "minimum_importance_ratio": 0.6538646344950084,
+      "rows": 6480,
+      "sha256": "92ee53428dceb36f4d6c1eb0b7efd72ad239dd233f25af73618aa654ee6cdd90",
+      "target_state": {
+        "local_geometry_g": 0.15,
+        "solar_modulation_W_MV": 114.6,
+        "trajectory_Rc_depth": "per-node"
+      }
+    },
+    "physical_PARMA_flux_systematic": "EXCLUDED",
+    "schema_version": 2,
+    "state_policy": "hybrid: W118.3/g0 continuum de-line plus W114.6/g0.15 per-node mono target",
+    "status": "COMPLETE__HYBRID_W118P3_G0_DELINE__W114P6_G0P15_MONO_81X80"
+  },
+  "status": "PASS__FLUXCLOSED_CATALOG_AUDIT"
+}

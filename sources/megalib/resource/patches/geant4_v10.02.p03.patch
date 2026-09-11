@@ -1,0 +1,374 @@
+diff -rupN geant4_v10.02.p03/geant4_v10.02.p03-source/source/processes/hadronic/models/inclxx/incl_physics/src/G4INCLNNToMultiPionsChannel.cc geant4_v10.02.p03_patched/geant4_v10.02.p03-source/source/processes/hadronic/models/inclxx/incl_physics/src/G4INCLNNToMultiPionsChannel.cc
+--- geant4_v10.02.p03/geant4_v10.02.p03-source/source/processes/hadronic/models/inclxx/incl_physics/src/G4INCLNNToMultiPionsChannel.cc	2017-01-27 04:24:56
++++ geant4_v10.02.p03_patched/geant4_v10.02.p03-source/source/processes/hadronic/models/inclxx/incl_physics/src/G4INCLNNToMultiPionsChannel.cc	2024-09-24 11:08:46
+@@ -209,7 +209,15 @@ namespace G4INCL {
+             }
+         }
+
+-        std::random_shuffle(isosp,isosp+npion,Random::getAdapter());
++        //std::random_shuffle(isosp,isosp+npion,Random::getAdapter());
++        auto&& r = Random::getAdapter();
++        auto first = isosp;
++        auto last = isosp+npion;
++        for (auto i = last - first - 1; i > 0; --i) {
++            using std::swap;
++            swap(first[i], first[r(i + 1)]);
++        }
++
+         inter2Part(0.5);
+     }
+
+diff -rupN geant4_v10.02.p03/geant4_v10.02.p03-source/source/processes/hadronic/models/inclxx/incl_physics/src/G4INCLPhaseSpaceKopylov.cc geant4_v10.02.p03_patched/geant4_v10.02.p03-source/source/processes/hadronic/models/inclxx/incl_physics/src/G4INCLPhaseSpaceKopylov.cc
+--- geant4_v10.02.p03/geant4_v10.02.p03-source/source/processes/hadronic/models/inclxx/incl_physics/src/G4INCLPhaseSpaceKopylov.cc	2017-01-27 04:24:56
++++ geant4_v10.02.p03_patched/geant4_v10.02.p03-source/source/processes/hadronic/models/inclxx/incl_physics/src/G4INCLPhaseSpaceKopylov.cc	2024-09-24 10:55:25
+@@ -69,7 +69,7 @@ namespace G4INCL {
+     const size_t N = particles.size();
+     masses.resize(N);
+     sumMasses.resize(N);
+-    std::transform(particles.begin(), particles.end(), masses.begin(), std::mem_fun(&Particle::getMass));
++    std::transform(particles.begin(), particles.end(), masses.begin(), std::mem_fn(&Particle::getMass));
+     std::partial_sum(masses.begin(), masses.end(), sumMasses.begin());
+
+     G4double PFragMagCM = 0.0;
+diff -rupN geant4_v10.02.p03/geant4_v10.02.p03-source/source/processes/hadronic/models/inclxx/incl_physics/src/G4INCLPhaseSpaceRauboldLynch.cc geant4_v10.02.p03_patched/geant4_v10.02.p03-source/source/processes/hadronic/models/inclxx/incl_physics/src/G4INCLPhaseSpaceRauboldLynch.cc
+--- geant4_v10.02.p03/geant4_v10.02.p03-source/source/processes/hadronic/models/inclxx/incl_physics/src/G4INCLPhaseSpaceRauboldLynch.cc	2017-01-27 04:24:56
++++ geant4_v10.02.p03_patched/geant4_v10.02.p03-source/source/processes/hadronic/models/inclxx/incl_physics/src/G4INCLPhaseSpaceRauboldLynch.cc	2024-09-24 10:54:24
+@@ -240,7 +240,7 @@ namespace G4INCL {
+     // masses and sum of masses
+     masses.resize(nParticles);
+     sumMasses.resize(nParticles);
+-    std::transform(particles.begin(), particles.end(), masses.begin(), std::mem_fun(&Particle::getMass));
++    std::transform(particles.begin(), particles.end(), masses.begin(), std::mem_fn(&Particle::getMass));
+     std::partial_sum(masses.begin(), masses.end(), sumMasses.begin());
+
+     // sanity check
+diff -rupN geant4_v10.02.p03/geant4_v10.02.p03-source/source/processes/hadronic/models/inclxx/incl_physics/src/G4INCLPiNToMultiPionsChannel.cc geant4_v10.02.p03_patched/geant4_v10.02.p03-source/source/processes/hadronic/models/inclxx/incl_physics/src/G4INCLPiNToMultiPionsChannel.cc
+--- geant4_v10.02.p03/geant4_v10.02.p03-source/source/processes/hadronic/models/inclxx/incl_physics/src/G4INCLPiNToMultiPionsChannel.cc	2017-01-27 04:24:56
++++ geant4_v10.02.p03_patched/geant4_v10.02.p03-source/source/processes/hadronic/models/inclxx/incl_physics/src/G4INCLPiNToMultiPionsChannel.cc	2024-09-24 10:52:09
+@@ -269,7 +269,15 @@ namespace G4INCL {
+             }
+         }
+
+-        std::random_shuffle(isosp,isosp+npion,Random::getAdapter()); // isospin randomly distributed
++        //std::random_shuffle(isosp,isosp+npion,Random::getAdapter()); // isospin randomly distributed
++        auto&& r = Random::getAdapter();
++        auto first = isosp;
++        auto last = isosp+npion;
++        for (auto i = last - first - 1; i > 0; --i) {
++            using std::swap;
++            swap(first[i], first[r(i + 1)]);
++        }
++
+     }
+
+ }
+diff -rupN geant4_v10.02.p03/geant4_v10.02.p03-source/source/processes/hadronic/models/inclxx/incl_physics/src/G4INCLCascade.cc geant4_v10.02.p03_patched/geant4_v10.02.p03-source/source/processes/hadronic/models/inclxx/incl_physics/src/G4INCLCascade.cc
+--- geant4_v10.02.p03/geant4_v10.02.p03-source/source/processes/hadronic/models/inclxx/incl_physics/src/G4INCLCascade.cc	2017-01-27 04:24:56
++++ geant4_v10.02.p03_patched/geant4_v10.02.p03-source/source/processes/hadronic/models/inclxx/incl_physics/src/G4INCLCascade.cc	2024-09-24 10:43:55
+@@ -490,7 +490,15 @@ namespace G4INCL {
+     ParticleList const &initialProjectileComponents = theProjectileRemnant->getParticles();
+     std::vector<Particle *> shuffledComponents(initialProjectileComponents.begin(), initialProjectileComponents.end());
+     // Shuffle the list of potential participants
+-    std::random_shuffle(shuffledComponents.begin(), shuffledComponents.end(), Random::getAdapter());
++    //std::random_shuffle(shuffledComponents.begin(), shuffledComponents.end(), Random::getAdapter());
++    auto&& r = Random::getAdapter();
++    auto first = shuffledComponents.begin();
++    auto last = shuffledComponents.end();
++    for (auto i = last - first - 1; i > 0; --i) {
++      using std::swap;
++      swap(first[i], first[r(i + 1)]);
++    }
++
+
+     G4bool success = true;
+     G4bool atLeastOneNucleonEntering = false;
+diff -rupN geant4_v10.02.p03/geant4_v10.02.p03-source/source/processes/hadronic/models/inclxx/incl_physics/src/G4INCLCDPP.cc geant4_v10.02.p03_patched/geant4_v10.02.p03-source/source/processes/hadronic/models/inclxx/incl_physics/src/G4INCLCDPP.cc
+--- geant4_v10.02.p03/geant4_v10.02.p03-source/source/processes/hadronic/models/inclxx/incl_physics/src/G4INCLCDPP.cc	2017-01-27 04:24:56
++++ geant4_v10.02.p03_patched/geant4_v10.02.p03-source/source/processes/hadronic/models/inclxx/incl_physics/src/G4INCLCDPP.cc	2024-09-24 10:41:28
+@@ -59,8 +59,12 @@ namespace G4INCL {
+     Sk = 0.0;
+     TbelowTf = 0.0;
+
+-    std::for_each(remnantParticles.begin(), remnantParticles.end(), std::bind1st(std::mem_fun(&G4INCL::CDPP::processOneParticle), this));
+-    std::for_each(created.begin(), created.end(), std::bind1st(std::mem_fun(&G4INCL::CDPP::processOneParticle), this));
++    std::for_each(remnantParticles.begin(), remnantParticles.end(),
++                  [this](Particle const * const p){ this->G4INCL::CDPP::processOneParticle(p); }
++                  );
++    std::for_each(created.begin(), created.end(),
++                  [this](Particle const * const p){ this->G4INCL::CDPP::processOneParticle(p); }
++                  );
+
+     const G4double Tinitial = nucleus->getInitialInternalEnergy();
+     const G4double Eblock = TbelowTf - Tinitial - Sk - S;
+diff -rupN geant4_v10.02.p03/geant4_v10.02.p03-source/source/processes/hadronic/models/inclxx/incl_physics/include/G4INCLProjectileRemnant.hh geant4_v10.02.p03_patched/geant4_v10.02.p03-source/source/processes/hadronic/models/inclxx/incl_physics/include/G4INCLProjectileRemnant.hh
+--- geant4_v10.02.p03/geant4_v10.02.p03-source/source/processes/hadronic/models/inclxx/incl_physics/include/G4INCLProjectileRemnant.hh	2017-01-27 04:24:56
++++ geant4_v10.02.p03_patched/geant4_v10.02.p03-source/source/processes/hadronic/models/inclxx/incl_physics/include/G4INCLProjectileRemnant.hh	2024-09-23 19:31:52
+@@ -227,7 +227,14 @@ namespace G4INCL {
+     /// \brief Shuffle the list of stored projectile components
+     ParticleList shuffleStoredComponents() {
+       ParticleList pL = getStoredComponents();
+-      std::random_shuffle(pL.begin(), pL.end(), Random::getAdapter());
++      auto&& r = Random::getAdapter();
++      auto first = pL.begin();
++      auto last = pL.end();
++      //std::iterator_traits<ParticleList>::difference_type diff_t;
++      for (auto i = last - first - 1; i > 0; --i) {
++        using std::swap;
++        swap(first[i], first[r(i + 1)]);
++      }
+       return pL;
+     }
+
+diff -rupN geant4_v10.02.p03/geant4_v10.02.p03-source/source/processes/hadronic/models/inclxx/utils/src/G4INCLInterpolationTable.cc geant4_v10.02.p03_patched/geant4_v10.02.p03-source/source/processes/hadronic/models/inclxx/utils/src/G4INCLInterpolationTable.cc
+--- geant4_v10.02.p03/geant4_v10.02.p03-source/source/processes/hadronic/models/inclxx/utils/src/G4INCLInterpolationTable.cc	2017-01-27 04:24:56
++++ geant4_v10.02.p03_patched/geant4_v10.02.p03-source/source/processes/hadronic/models/inclxx/utils/src/G4INCLInterpolationTable.cc	2024-09-23 16:58:22
+@@ -67,14 +67,14 @@ namespace G4INCL {
+   std::vector<G4double> InterpolationTable::getNodeAbscissae() const {
+     std::vector<G4double> x(nodes.size());
+     std::transform(nodes.begin(), nodes.end(), x.begin(),
+-                   std::mem_fun_ref(&InterpolationNode::getX));
++                   std::mem_fn(&InterpolationNode::getX));
+     return x;
+   }
+
+   std::vector<G4double> InterpolationTable::getNodeValues() const {
+     std::vector<G4double> y(nodes.size());
+     std::transform(nodes.begin(), nodes.end(), y.begin(),
+-                   std::mem_fun_ref(&InterpolationNode::getY));
++                   std::mem_fn(&InterpolationNode::getY));
+     return y;
+   }
+
+diff -rupN geant4_v10.02.p03/geant4_v10.02.p03-source/source/processes/hadronic/models/de_excitation/multifragmentation/src/G4StatMFChannel.cc geant4_v10.02.p03_patched/geant4_v10.02.p03-source/source/processes/hadronic/models/de_excitation/multifragmentation/src/G4StatMFChannel.cc
+--- geant4_v10.02.p03/geant4_v10.02.p03-source/source/processes/hadronic/models/de_excitation/multifragmentation/src/G4StatMFChannel.cc	2017-01-27 04:24:56
++++ geant4_v10.02.p03_patched/geant4_v10.02.p03-source/source/processes/hadronic/models/de_excitation/multifragmentation/src/G4StatMFChannel.cc	2024-09-23 16:40:59
+@@ -43,7 +43,7 @@
+ #include "G4Pow.hh"
+ #include "G4Exp.hh"
+
+-class SumCoulombEnergy : public std::binary_function<G4double,G4double,G4double>
++class SumCoulombEnergy
+ {
+ public:
+   SumCoulombEnergy() : total(0.0) {}
+diff -rupN geant4_v10.02.p03/geant4_v10.02.p03-source/source/processes/hadronic/models/cascade/cascade/src/G4NucleiModel.cc geant4_v10.02.p03_patched/geant4_v10.02.p03-source/source/processes/hadronic/models/cascade/cascade/src/G4NucleiModel.cc
+--- geant4_v10.02.p03/geant4_v10.02.p03-source/source/processes/hadronic/models/cascade/cascade/src/G4NucleiModel.cc	2024-09-23 16:21:30
++++ geant4_v10.02.p03_patched/geant4_v10.02.p03-source/source/processes/hadronic/models/cascade/cascade/src/G4NucleiModel.cc	2024-09-23 16:23:47
+@@ -1264,7 +1264,7 @@ void G4NucleiModel::choosePointAlongTraj(G4CascadParti
+
+   // Normalize CDF to unit integral
+   std::transform(wtlen.begin(), wtlen.end(), wtlen.begin(),
+-		 std::bind2nd(std::divides<G4double>(), wtlen.back()));
++		 std::bind(std::divides<G4double>(), std::placeholders::_1, wtlen.back()));
+
+   if (verboseLevel > 3) {
+     G4cout << " weights";
+
+
+diff -rupN geant4_v10.02.p03/geant4_v10.02.p03-source/source/processes/hadronic/models/de_excitation/multifragmentation/include/G4StatMFMicroCanonical.hh geant4_v10.02.p03_patched/geant4_v10.02.p03-source/source/processes/hadronic/models/de_excitation/multifragmentation/include/G4StatMFMicroCanonical.hh
+--- geant4_v10.02.p03/geant4_v10.02.p03-source/source/processes/hadronic/models/de_excitation/multifragmentation/include/G4StatMFMicroCanonical.hh	2017-01-27 04:24:56
++++ geant4_v10.02.p03_patched/geant4_v10.02.p03-source/source/processes/hadronic/models/de_excitation/multifragmentation/include/G4StatMFMicroCanonical.hh	2024-09-23 16:02:54
+@@ -110,7 +110,7 @@ class G4StatMFMicroCanonical : public G4VStatMFEnsembl
+     }
+   };
+
+-  class SumProbabilities : public std::binary_function<G4double,G4double,G4double>
++  class SumProbabilities
+   {
+   public:
+     SumProbabilities() : total(0.0) {}
+diff -rupN geant4_v10.02.p03/geant4_v10.02.p03-source/source/geometry/management/include/G4SmartVoxelStat.hh geant4_v10.02.p03_patched/geant4_v10.02.p03-source/source/geometry/management/include/G4SmartVoxelStat.hh
+--- geant4_v10.02.p03/geant4_v10.02.p03-source/source/geometry/management/include/G4SmartVoxelStat.hh	2017-01-27 04:24:59
++++ geant4_v10.02.p03_patched/geant4_v10.02.p03-source/source/geometry/management/include/G4SmartVoxelStat.hh	2024-09-23 15:56:26
+@@ -106,8 +106,6 @@ class G4SmartVoxelStat
+     // Functor objects for sorting
+     //
+     struct ByCpu
+-      : public std::binary_function< const G4SmartVoxelStat,
+-                                     const G4SmartVoxelStat, G4bool >
+     {
+       G4bool operator()( const G4SmartVoxelStat &a, const G4SmartVoxelStat &b )
+       {
+@@ -116,8 +114,6 @@ class G4SmartVoxelStat
+     };
+
+     struct ByMemory
+-      : public std::binary_function< const G4SmartVoxelStat,
+-                                     const G4SmartVoxelStat, G4bool >
+     {
+       G4bool operator()( const G4SmartVoxelStat &a, const G4SmartVoxelStat &b )
+       {
+diff -rupN geant4_v10.02.p03/geant4_v10.02.p03-source/source/externals/clhep/src/mixmax.cc geant4_v10.02.p03_patched/geant4_v10.02.p03-source/source/externals/clhep/src/mixmax.cc
+--- geant4_v10.02.p03/geant4_v10.02.p03-source/source/externals/clhep/src/mixmax.cc	2017-01-27 04:24:58
++++ geant4_v10.02.p03_patched/geant4_v10.02.p03-source/source/externals/clhep/src/mixmax.cc	2024-09-23 15:48:28
+@@ -254,7 +254,7 @@ inline myuint fmodmulM61(myuint cum, myuint s, myuint
+
+ inline myuint fmodmulM61(myuint cum, myuint s, myuint a)
+ {
+-    register myuint o,ph,pl,ah,al;
++    myuint o,ph,pl,ah,al;
+     o=(s)*a;
+     ph = ((s)>>32);
+     pl = (s) & MASK32;
+diff -rupN geant4_v10.02.p03/geant4_v10.02.p03-source/cmake/Modules/Geant4LibraryBuildOptions.cmake geant4_v10.02.p03_patched/geant4_v10.02.p03-source/cmake/Modules/Geant4LibraryBuildOptions.cmake
+--- geant4_v10.02.p03/geant4_v10.02.p03-source/cmake/Modules/Geant4LibraryBuildOptions.cmake	2017-01-27 04:25:00
++++ geant4_v10.02.p03_patched/geant4_v10.02.p03-source/cmake/Modules/Geant4LibraryBuildOptions.cmake	2024-09-23 15:35:43
+@@ -76,7 +76,7 @@ enum_option(GEANT4_BUILD_CXXSTD
+ # Mark as advanced because most users will not need it
+ enum_option(GEANT4_BUILD_CXXSTD
+   DOC "C++ Standard to compile against"
+-  VALUES 11 14 c++11 c++14
++  VALUES 11 14 17 c++11 c++14 c++17
+   CASE_INSENSITIVE
+   )
+
+diff -rupN geant4_v10.02.p03/geant4_v10.02.p03-source/cmake/Modules/Geant4InstallData.cmake geant4_v10.02.p03_patched/geant4_v10.02.p03-source/cmake/Modules/Geant4InstallData.cmake
+--- geant4_v10.02.p03/geant4_v10.02.p03-source/cmake/Modules/Geant4InstallData.cmake	2017-01-27 04:25:00.000000000 -0800
++++ geant4_v10.02.p03_patched/geant4_v10.02.p03-source/cmake/Modules/Geant4InstallData.cmake	2023-02-17 10:38:59.000000000 -0800
+@@ -99,7 +99,7 @@
+ # retrieving them globally
+ #-----------------------------------------------------------------------
+ # Geant4 Data Repository
+-set(GEANT4_DATASETS_URL "http://geant4.cern.ch/support/source")
++set(GEANT4_DATASETS_URL "https://cern.ch/geant4-data/datasets")
+
+ # Where to install data in the build tree
+ set(GEANT4_BUILD_FULL_DATADIR ${PROJECT_BINARY_DIR}/data)
+diff -rupN geant4_v10.02.p03/geant4_v10.02.p03-source/source/persistency/ascii/src/G4tgrEvaluator.cc geant4_v10.02.p03_patched/geant4_v10.02.p03-source/source/persistency/ascii/src/G4tgrEvaluator.cc
+--- geant4_v10.02.p03/geant4_v10.02.p03-source/source/persistency/ascii/src/G4tgrEvaluator.cc	2017-01-27 04:25:00.000000000 -0800
++++ geant4_v10.02.p03_patched/geant4_v10.02.p03-source/source/persistency/ascii/src/G4tgrEvaluator.cc	2022-03-18 13:06:28.050991804 -0700
+@@ -23,86 +23,78 @@
+ // * acceptance of all terms of the Geant4 Software license.          *
+ // ********************************************************************
+ //
++// G4tgrEvaluator implementation
+ //
+-// $Id: G4tgrEvaluator.cc 66363 2012-12-18 09:12:54Z gcosmo $
+-//
+-//
+-// class G4tgrEvaluator
+-
+-// History:
+-// - Created.                                 P.Arce, CIEMAT (November 2007)
+-// -------------------------------------------------------------------------
++// Author: P.Arce, CIEMAT (November 2007)
++// --------------------------------------------------------------------
+ 
+ #include "G4tgrEvaluator.hh"
+ 
+ #include <cmath>
+ 
+-// -------------------------------------------------------------------------
++// --------------------------------------------------------------------
+ G4tgrEvaluator::G4tgrEvaluator()
+ {
+   AddCommonFunctions();
+ }
+ 
+-
+-// -------------------------------------------------------------------------
++// --------------------------------------------------------------------
+ G4tgrEvaluator::~G4tgrEvaluator()
+ {
+ }
+ 
+-
+-// -------------------------------------------------------------------------
+-void G4tgrEvaluator::print_error( G4int estatus ) const
++// --------------------------------------------------------------------
++void G4tgrEvaluator::print_error(G4int estatus) const
+ {
+-  switch (estatus)
++  switch(estatus)
+   {
+     case ERROR_SYNTAX_ERROR:
+       G4cerr << "G4tgrEvaluator: syntax error!" << G4endl;
+       return;
+     default:
+-      G4Evaluator::print_error();    
+-    return;
++      G4Evaluator::print_error();
++      return;
+   }
+-} 
+- 
+-G4double fsin( G4double arg ){  return std::sin(arg); }
+-G4double fcos( G4double arg ){  return std::cos(arg); }
+-G4double ftan( G4double arg ){  return std::tan(arg); }
+-G4double fasin( G4double arg ){  return std::asin(arg); }
+-G4double facos( G4double arg ){  return std::acos(arg); }
+-G4double fatan( G4double arg ){  return std::atan(arg); }
+-G4double fatan2( G4double arg1, G4double arg2 ){ return std::atan2(arg1,arg2); }
+-G4double fsinh( G4double arg ){  return std::sinh(arg); }
+-G4double fcosh( G4double arg ){  return std::cosh(arg); }
+-G4double ftanh( G4double arg ){  return std::tanh(arg); }
+-// G4double fasinh( G4double arg ){  return std::asinh(arg); }
+-// G4double facosh( G4double arg ){  return std::acosh(arg); }
+-// G4double fatanh( G4double arg ){  return std::atanh(arg); }
+-G4double fsqrt( G4double arg ){  return std::sqrt(arg); }
+-G4double fexp( G4double arg ){  return std::exp(arg); }
+-G4double flog( G4double arg ){  return std::log(arg); }
+-G4double flog10( G4double arg ){  return std::log10(arg); }
+-G4double fpow( G4double arg1, G4double arg2 ){  return std::pow(arg1,arg2); }
++}
+ 
++G4double fltsin(G4double arg) { return std::sin(arg); }
++G4double fltcos(G4double arg) { return std::cos(arg); }
++G4double flttan(G4double arg) { return std::tan(arg); }
++G4double fltasin(G4double arg) { return std::asin(arg); }
++G4double fltacos(G4double arg) { return std::acos(arg); }
++G4double fltatan(G4double arg) { return std::atan(arg); }
++G4double fltatan2(G4double arg1, G4double arg2) { return std::atan2(arg1, arg2); }
++G4double fltsinh(G4double arg) { return std::sinh(arg); }
++G4double fltcosh(G4double arg) { return std::cosh(arg); }
++G4double flttanh(G4double arg) { return std::tanh(arg); }
++// G4double fltasinh( G4double arg ){  return std::asinh(arg); }
++// G4double fltacosh( G4double arg ){  return std::acosh(arg); }
++// G4double fltatanh( G4double arg ){  return std::atanh(arg); }
++G4double fltsqrt(G4double arg) { return std::sqrt(arg); }
++G4double fltexp(G4double arg) { return std::exp(arg); }
++G4double fltlog(G4double arg) { return std::log(arg); }
++G4double fltlog10(G4double arg) { return std::log10(arg); }
++G4double fltpow(G4double arg1, G4double arg2) { return std::pow(arg1, arg2); }
+ 
+-//--------------------------------------------------------------------
++// --------------------------------------------------------------------
+ void G4tgrEvaluator::AddCommonFunctions()
+ {
+-  setFunction("sin", (*fsin));
+-  setFunction("cos", (*fcos));
+-  setFunction("tan", (*ftan));
+-  setFunction("asin", (*fasin));
+-  setFunction("acos", (*facos));
+-  setFunction("atan", (*fatan));
+-  setFunction("atan2", (*fatan2));
+-  setFunction("sinh", (*fsinh));
+-  setFunction("cosh", (*fcosh));
+-  setFunction("tanh", (*ftanh));
+-//  setFunction("asinh", (*fasinh));
+-//  setFunction("acosh", (*facosh));
+-//  setFunction("atanh", (*fatanh));
+-  setFunction("sqrt", (*fsqrt));
+-  setFunction("exp", (*fexp));
+-  setFunction("log", (*flog));
+-  setFunction("log10", (*flog10));
+-  setFunction("pow", (*fpow));
++  setFunction("sin", (*fltsin));
++  setFunction("cos", (*fltcos));
++  setFunction("tan", (*flttan));
++  setFunction("asin", (*fltasin));
++  setFunction("acos", (*fltacos));
++  setFunction("atan", (*fltatan));
++  setFunction("atan2", (*fltatan2));
++  setFunction("sinh", (*fltsinh));
++  setFunction("cosh", (*fltcosh));
++  setFunction("tanh", (*flttanh));
++  //  setFunction("asinh", (*fltasinh));
++  //  setFunction("acosh", (*fltacosh));
++  //  setFunction("atanh", (*fltatanh));
++  setFunction("sqrt", (*fltsqrt));
++  setFunction("exp", (*fltexp));
++  setFunction("log", (*fltlog));
++  setFunction("log10", (*fltlog10));
++  setFunction("pow", (*fltpow));
+ }

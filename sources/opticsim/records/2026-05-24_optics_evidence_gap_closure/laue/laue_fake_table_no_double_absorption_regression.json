@@ -1,0 +1,137 @@
+{
+  "overall": true,
+  "checks": {
+    "all_absorb_exact": true,
+    "all_transmit_exact": true,
+    "all_diffract_exact": true,
+    "one_boundary_decision_per_event": true
+  },
+  "cases": [
+    {
+      "name": "all_absorb",
+      "out": "runs/laue_fake_table_no_double_absorption_regression/all_absorb",
+      "probabilities": {
+        "p_diff": 0.0,
+        "p_abs": 1.0,
+        "p_trans": 0.0
+      },
+      "summary": {
+        "system": "geant4_laue_multiring_darwin",
+        "model": "multiring_zachariasen_darwin_mosaic_laue_process_v3",
+        "warning": "Table-driven multiring Laue optics using external efficiency data. The recommended table is generated from the Zachariasen/Darwin mosaic-crystal formula and benchmarked against Barriere et al. 2009 Cu/Au cases; material-specific measured Ge 500 keV validation is still a remaining publication-grade step.",
+        "geant4_bottom_code_modified": false,
+        "vector_diagnostics_in_optics_history": true,
+        "plane_normal_diagnostic_model": "table_design_focus_plane_normal; emitted DIFFRACT direction may include separate focal-plane mosaic jitter",
+        "n_primaries": 60,
+        "n_rings": 5,
+        "n_diffracted": 0,
+        "n_absorbed": 60,
+        "n_transmitted": 0,
+        "diffraction_fraction": 0,
+        "absorption_fraction": 1,
+        "transmission_fraction": 0,
+        "spot_d90_cm": 0,
+        "energy_min_keV": 480,
+        "energy_max_keV": 550,
+        "focal_length_mm": 8300,
+        "world_half_xy_mm": 160,
+        "world_half_z_mm": 8500,
+        "ring_config": "data/laue/ge111_480_550keV_multiring_darwin_config.csv",
+        "efficiency_table": "runs/laue_fake_table_no_double_absorption_regression/all_absorb_fake_table.csv",
+        "efficiency_table_rows": 5,
+        "visualization_wrl": "runs/laue_fake_table_no_double_absorption_regression/all_absorb/laue_multiring_scene.wrl"
+      },
+      "stage_counts": {
+        "ABSORB": 60
+      },
+      "history_rows": 60,
+      "phase_rows": 0,
+      "transmitted_rows": 0,
+      "one_row_per_event": true
+    },
+    {
+      "name": "all_transmit",
+      "out": "runs/laue_fake_table_no_double_absorption_regression/all_transmit",
+      "probabilities": {
+        "p_diff": 0.0,
+        "p_abs": 0.0,
+        "p_trans": 1.0
+      },
+      "summary": {
+        "system": "geant4_laue_multiring_darwin",
+        "model": "multiring_zachariasen_darwin_mosaic_laue_process_v3",
+        "warning": "Table-driven multiring Laue optics using external efficiency data. The recommended table is generated from the Zachariasen/Darwin mosaic-crystal formula and benchmarked against Barriere et al. 2009 Cu/Au cases; material-specific measured Ge 500 keV validation is still a remaining publication-grade step.",
+        "geant4_bottom_code_modified": false,
+        "vector_diagnostics_in_optics_history": true,
+        "plane_normal_diagnostic_model": "table_design_focus_plane_normal; emitted DIFFRACT direction may include separate focal-plane mosaic jitter",
+        "n_primaries": 60,
+        "n_rings": 5,
+        "n_diffracted": 0,
+        "n_absorbed": 0,
+        "n_transmitted": 60,
+        "diffraction_fraction": 0,
+        "absorption_fraction": 0,
+        "transmission_fraction": 1,
+        "spot_d90_cm": 0,
+        "energy_min_keV": 480,
+        "energy_max_keV": 550,
+        "focal_length_mm": 8300,
+        "world_half_xy_mm": 160,
+        "world_half_z_mm": 8500,
+        "ring_config": "data/laue/ge111_480_550keV_multiring_darwin_config.csv",
+        "efficiency_table": "runs/laue_fake_table_no_double_absorption_regression/all_transmit_fake_table.csv",
+        "efficiency_table_rows": 5,
+        "visualization_wrl": "runs/laue_fake_table_no_double_absorption_regression/all_transmit/laue_multiring_scene.wrl"
+      },
+      "stage_counts": {
+        "TRANSMIT": 60
+      },
+      "history_rows": 60,
+      "phase_rows": 0,
+      "transmitted_rows": 60,
+      "one_row_per_event": true
+    },
+    {
+      "name": "all_diffract",
+      "out": "runs/laue_fake_table_no_double_absorption_regression/all_diffract",
+      "probabilities": {
+        "p_diff": 1.0,
+        "p_abs": 0.0,
+        "p_trans": 0.0
+      },
+      "summary": {
+        "system": "geant4_laue_multiring_darwin",
+        "model": "multiring_zachariasen_darwin_mosaic_laue_process_v3",
+        "warning": "Table-driven multiring Laue optics using external efficiency data. The recommended table is generated from the Zachariasen/Darwin mosaic-crystal formula and benchmarked against Barriere et al. 2009 Cu/Au cases; material-specific measured Ge 500 keV validation is still a remaining publication-grade step.",
+        "geant4_bottom_code_modified": false,
+        "vector_diagnostics_in_optics_history": true,
+        "plane_normal_diagnostic_model": "table_design_focus_plane_normal; emitted DIFFRACT direction may include separate focal-plane mosaic jitter",
+        "n_primaries": 60,
+        "n_rings": 5,
+        "n_diffracted": 60,
+        "n_absorbed": 0,
+        "n_transmitted": 0,
+        "diffraction_fraction": 1,
+        "absorption_fraction": 0,
+        "transmission_fraction": 0,
+        "spot_d90_cm": 0.218798,
+        "energy_min_keV": 480,
+        "energy_max_keV": 550,
+        "focal_length_mm": 8300,
+        "world_half_xy_mm": 160,
+        "world_half_z_mm": 8500,
+        "ring_config": "data/laue/ge111_480_550keV_multiring_darwin_config.csv",
+        "efficiency_table": "runs/laue_fake_table_no_double_absorption_regression/all_diffract_fake_table.csv",
+        "efficiency_table_rows": 5,
+        "visualization_wrl": "runs/laue_fake_table_no_double_absorption_regression/all_diffract/laue_multiring_scene.wrl"
+      },
+      "stage_counts": {
+        "DIFFRACT": 60
+      },
+      "history_rows": 60,
+      "phase_rows": 60,
+      "transmitted_rows": 0,
+      "one_row_per_event": true
+    }
+  ]
+}

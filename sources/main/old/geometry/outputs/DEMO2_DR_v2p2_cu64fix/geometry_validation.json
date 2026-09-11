@@ -1,0 +1,68 @@
+{
+  "status": "PASS",
+  "checks": {
+    "removed_TES_SampleBox_Cu": true,
+    "replacement_sample_box": {
+      "name": "TES_SampleBox_Cryoperm",
+      "mat": "Cryoperm",
+      "r_in": 3.4,
+      "r_out": 3.7,
+      "z_out_bot": 0.25,
+      "z_in_bot": 0.55,
+      "z_in_top": 8.4,
+      "z_out_top": 8.7,
+      "hole": 1.898,
+      "bottom_hole": 0.4,
+      "moved_from": "Cryoperm_Inner_Mag_Shield",
+      "replaces": "TES_SampleBox_Cu",
+      "basis": "Cu64-fix sample box: Cryoperm material/function from the nearest magnetic-shield box, placed in the former TES_SampleBox_Cu envelope. Bottom has a center hole for a Cu thermal finger.",
+      "window": {
+        "name": "SampleBox_Al_Window",
+        "mat": "Aluminium",
+        "r": 1.898,
+        "thick": 0.0025,
+        "zc": 8.55,
+        "basis": "Very thin Al foil placeholder; nominal only, open-aperture scan recommended."
+      }
+    },
+    "thermal_finger": {
+      "name": "SampleBox_Cu_ThermalFinger_50mK",
+      "mat": "Copper",
+      "r": 0.4,
+      "z0": 0.25,
+      "z1": 0.55,
+      "touches": [
+        "ColdPlate_MXC_50mK_Retained",
+        "TES_SampleBox_Cryoperm"
+      ],
+      "basis": "Short Cu thermal finger through the new sample-box bottom hole; keeps a thermal path to the 50 mK/MXC plate while removing the large Cu box."
+    },
+    "old_Cryoperm_proxy_removed": true,
+    "design_overlap_problem_count": 0,
+    "mass_total_kg": 83.85593954804698,
+    "group_mass_kg": {
+      "active_shield_bottom": 22.37530943631335,
+      "active_shield_side": 37.28774290455704,
+      "active_shield_top": 5.491745439884543,
+      "can": 0.0827022292480749,
+      "cold_plate": 2.703060908083774,
+      "collimator": 0.03642569955651739,
+      "cryostat_passive": 0.43466634498468454,
+      "cryostat_shell": 3.1338853678708007,
+      "detector": 0.25415532,
+      "dr_passive": 1.2519459410377975,
+      "outer_shell": 2.537891648685893,
+      "passive_shield": 6.057870847550797,
+      "sample_box": 0.650656120182254,
+      "service_proxy": 0.28389958402114457,
+      "shield_packaging": 1.2532913772782415,
+      "substrate": 0.006374369405631501,
+      "support_proxy": 0.01217719011643252,
+      "thermal_link": 0.0013511361684558987,
+      "window": 0.0007876831015397088
+    },
+    "active_shield_threshold_keV": 80.0
+  },
+  "problems": [],
+  "note": "Design interval check only. Run Cosima overlap before production Step02."
+}

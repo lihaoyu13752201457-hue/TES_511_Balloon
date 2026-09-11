@@ -1,0 +1,355 @@
+{
+  "figures": [
+    {
+      "data_grain": "20 equal-mu bins in an explicit W118.3 continuum-de-line / W114.6 mono hybrid",
+      "figure": "fig03",
+      "inputs": [
+        {
+          "bytes": 12210,
+          "path": "engineering/geometry_optimization_20260815/67_m05_mono511_flux_closure_20260823/outputs/00_source_closure/source_closure.json",
+          "sha256": "acfa91b0cfc36b6492e218a9164473cef51f2cca2c47a186d45ec96f5983cbae"
+        },
+        {
+          "bytes": 6355,
+          "path": "engineering/geometry_optimization_20260815/67_m05_mono511_flux_closure_20260823/outputs/00_source_closure/coarse_line_decomposition_20bins.csv",
+          "sha256": "f2394067e057d9092851244cd5e5076d8b867fe3b05fe1d9b77d8af173aaecf4"
+        },
+        {
+          "bytes": 32045,
+          "path": "engineering/geometry_optimization_20260815/67_m05_mono511_flux_closure_20260823/outputs/00_source_closure/trajectory_component_scales_81nodes.csv",
+          "sha256": "e72d4707be4fcb4b54ebf304a6dcb61748198326c8858f987264c864cc7f42fa"
+        }
+      ],
+      "outputs": [
+        {
+          "bytes": 28934,
+          "path": "engineering/geometry_optimization_20260815/67_m05_mono511_flux_closure_20260823/outputs/05_figures_staging/fig03_corrected_kev_sources.pdf",
+          "sha256": "e863306df7105d457bb99958ce9f2d786a96baeab7f24601bb8d78dd34936d91"
+        },
+        {
+          "bytes": 169926,
+          "path": "engineering/geometry_optimization_20260815/67_m05_mono511_flux_closure_20260823/outputs/05_figures_staging/fig03_corrected_kev_sources.png",
+          "sha256": "6399b952d242711ff7036f668efb3f1bdc32feb8e7861d3f7558cff484cd10bf"
+        }
+      ],
+      "panels": [
+        "broadband proposal and exactly de-lined continuum by source bin",
+        "removed coarse line, nominal W=114.6 day-15 mono target/proposal, and W=118.3 continuum-state diagnostic"
+      ],
+      "question": "How is the legacy coarse 511-keV feature replaced by an exact continuum plus the physical mono-line?"
+    },
+    {
+      "data_grain": "model x five anchor nodes, W2 final selection",
+      "figure": "fig04",
+      "inputs": [
+        {
+          "bytes": 10961,
+          "path": "engineering/geometry_optimization_20260815/67_m05_mono511_flux_closure_20260823/outputs/03_fluxclosed_timeline_a/anchor_timeline_rates.csv",
+          "sha256": "468ac3e76aa2646a068a6f2e3f510ec2973efa4f682c76f9526228fb14611740"
+        },
+        {
+          "bytes": 11137,
+          "path": "engineering/geometry_optimization_20260815/67_m05_mono511_flux_closure_20260823/outputs/03_fluxclosed_timeline_b/anchor_timeline_rates.csv",
+          "sha256": "9fc8bddf3cd2a59e83b258a79625bd4df174eaa329f7f59b07836ba3b081c83c"
+        }
+      ],
+      "outputs": [
+        {
+          "bytes": 23732,
+          "path": "engineering/geometry_optimization_20260815/67_m05_mono511_flux_closure_20260823/outputs/05_figures_staging/fig04_common_time_normalization.pdf",
+          "sha256": "96981c5143a8d3b088e2cf1531a998634f43fedb77f09f4644abb5ce0a60b428"
+        },
+        {
+          "bytes": 122716,
+          "path": "engineering/geometry_optimization_20260815/67_m05_mono511_flux_closure_20260823/outputs/05_figures_staging/fig04_common_time_normalization.png",
+          "sha256": "1bfd07a673a1bc88997124f9c185c162c2f01e2ee4e7e6ed06ac3160820cf267"
+        }
+      ],
+      "panels": [
+        "direct and grouped-timeline rates",
+        "timeline/direct ratio and conditional signal survival"
+      ],
+      "question": "Do the five common-time anchors preserve direct rates and signal survival for both mass models?"
+    },
+    {
+      "data_grain": "model x stream x component x 0.25-keV measured-energy bin",
+      "figure": "fig05",
+      "inputs": [
+        {
+          "bytes": 835265,
+          "path": "engineering/geometry_optimization_20260815/67_m05_mono511_flux_closure_20260823/outputs/03_fluxclosed_timeline_a/direct_measured_energy_day15_0p25keV.csv",
+          "sha256": "2458a19bf248ad57413fbe546e46edcaa8f0e53fdbb572e5ab4d269955f9828a"
+        },
+        {
+          "bytes": 954018,
+          "path": "engineering/geometry_optimization_20260815/67_m05_mono511_flux_closure_20260823/outputs/03_fluxclosed_timeline_b/direct_measured_energy_day15_0p25keV.csv",
+          "sha256": "cdcf47089fd453cb0668a17dd7a956cb2aa2a9fc5968b5f910849bd3cb51e7b7"
+        }
+      ],
+      "outputs": [
+        {
+          "bytes": 60042,
+          "path": "engineering/geometry_optimization_20260815/67_m05_mono511_flux_closure_20260823/outputs/05_figures_staging/fig05_pre_veto_spectra.pdf",
+          "sha256": "f00acfbcdf8f9824dfe560c5ba8d2186d95bb24ac15a277a601dbad5d281fdb0"
+        },
+        {
+          "bytes": 378184,
+          "path": "engineering/geometry_optimization_20260815/67_m05_mono511_flux_closure_20260823/outputs/05_figures_staging/fig05_pre_veto_spectra.png",
+          "sha256": "49bdc5741eff877b27d46374e445325d1f9d23cf5900133a399285bbb4ba9bbb"
+        }
+      ],
+      "panels": [
+        "mass model A",
+        "mass model B"
+      ],
+      "question": "Which prompt/delayed and continuum/line components form the day-15 pre-veto spectrum?"
+    },
+    {
+      "data_grain": "model B x stage x measured-energy bin or W2 component",
+      "figure": "fig06",
+      "inputs": [
+        {
+          "bytes": 954018,
+          "path": "engineering/geometry_optimization_20260815/67_m05_mono511_flux_closure_20260823/outputs/03_fluxclosed_timeline_b/direct_measured_energy_day15_0p25keV.csv",
+          "sha256": "cdcf47089fd453cb0668a17dd7a956cb2aa2a9fc5968b5f910849bd3cb51e7b7"
+        },
+        {
+          "bytes": 22067,
+          "path": "engineering/geometry_optimization_20260815/67_m05_mono511_flux_closure_20260823/outputs/03_fluxclosed_timeline_b/direct_cutflow_day15.csv",
+          "sha256": "85fecbd1c2ec603d1c428cc0be815a36131322cda00e40619efc6f3411dee46c"
+        },
+        {
+          "bytes": 1240,
+          "path": "engineering/geometry_optimization_20260815/67_m05_mono511_flux_closure_20260823/outputs/01_line_response_b60/mono_line_cutflow.csv",
+          "sha256": "e264f97841eb80ed636293c38da02bbccb69c1a1b3e0b49ab055dc29d3e33986"
+        },
+        {
+          "bytes": 1463,
+          "path": "engineering/geometry_optimization_20260815/67_m05_mono511_flux_closure_20260823/outputs/01_line_response_b60/summary.json",
+          "sha256": "d6487790c9818f0dde9fef1323e164ae3dc500559381fdfdca6ffd21558de1e2"
+        }
+      ],
+      "outputs": [
+        {
+          "bytes": 59902,
+          "path": "engineering/geometry_optimization_20260815/67_m05_mono511_flux_closure_20260823/outputs/05_figures_staging/fig06_bgo_veto_spectrum.pdf",
+          "sha256": "fa706114eb262ca5b046e3e05a4f389eb6d6aafba34c7b4ffb8f282479b48128"
+        },
+        {
+          "bytes": 287202,
+          "path": "engineering/geometry_optimization_20260815/67_m05_mono511_flux_closure_20260823/outputs/05_figures_staging/fig06_bgo_veto_spectrum.png",
+          "sha256": "7655c719765547cb9906daf7dede97d1cedd079bafb812c86a6483e87bcdc0e6"
+        }
+      ],
+      "panels": [
+        "stage spectra",
+        "W2 stacked components and mono-line BGO-blind transport observation"
+      ],
+      "question": "How do active and Compton selections reshape model-B spectra and W2 component rates?"
+    },
+    {
+      "data_grain": "model x window x final-stage hit multiplicity",
+      "figure": "fig07",
+      "inputs": [
+        {
+          "bytes": 22072,
+          "path": "engineering/geometry_optimization_20260815/67_m05_mono511_flux_closure_20260823/outputs/03_fluxclosed_timeline_a/direct_hit_multiplicity_day15.csv",
+          "sha256": "167adf83419e37c82739eb503aaa4e3ae822747b3bb02f2bb268b5ce1b3e79dd"
+        },
+        {
+          "bytes": 24450,
+          "path": "engineering/geometry_optimization_20260815/67_m05_mono511_flux_closure_20260823/outputs/03_fluxclosed_timeline_b/direct_hit_multiplicity_day15.csv",
+          "sha256": "30134af78457bfed81a980fd194ad8bf5c67b8ea92516244f129ede09d8fb7ce"
+        }
+      ],
+      "outputs": [
+        {
+          "bytes": 22650,
+          "path": "engineering/geometry_optimization_20260815/67_m05_mono511_flux_closure_20260823/outputs/05_figures_staging/fig07_hit_multiplicity.pdf",
+          "sha256": "ad01e4ea6e863dc6663d2d1ec09a990a0a6b349aa662fe6a1969228db847452c"
+        },
+        {
+          "bytes": 90099,
+          "path": "engineering/geometry_optimization_20260815/67_m05_mono511_flux_closure_20260823/outputs/05_figures_staging/fig07_hit_multiplicity.png",
+          "sha256": "87409dbdea4ec97541845d80bd61e056e2ed42b68d2c9da3cd6c10c616a23b2e"
+        }
+      ],
+      "panels": [
+        "480--550 keV",
+        "W2: 510.58--511.42 keV"
+      ],
+      "question": "How does selected TES hit multiplicity differ between mass models in the broad and W2 windows?"
+    },
+    {
+      "data_grain": "model x family at day 15; delayed origin group; cold-stage region",
+      "figure": "fig08",
+      "inputs": [
+        {
+          "bytes": 21164,
+          "path": "engineering/geometry_optimization_20260815/67_m05_mono511_flux_closure_20260823/outputs/03_fluxclosed_timeline_a/direct_cutflow_day15.csv",
+          "sha256": "394ed85f6d47a2395f38fdea22d499a2981190fd59a8fc162c2d336358777dfd"
+        },
+        {
+          "bytes": 22067,
+          "path": "engineering/geometry_optimization_20260815/67_m05_mono511_flux_closure_20260823/outputs/03_fluxclosed_timeline_b/direct_cutflow_day15.csv",
+          "sha256": "85fecbd1c2ec603d1c428cc0be815a36131322cda00e40619efc6f3411dee46c"
+        },
+        {
+          "bytes": 10323,
+          "path": "engineering/geometry_optimization_20260815/60_sg3b_time_audit_nuclide_section_20260818/outputs/selected_w2_activation_origin_groups.csv",
+          "sha256": "74e407d8bfff9adef2900712b99438419ab7679f3d2e7daed516e6222d786f6f"
+        },
+        {
+          "bytes": 6150,
+          "path": "engineering/geometry_optimization_20260815/60_sg3b_time_audit_nuclide_section_20260818/outputs/summary.json",
+          "sha256": "095d2a14fbf5c95ef649fbafe208be191c8354b7dd828ffcf41fa0e9f1182804"
+        },
+        {
+          "bytes": 3752,
+          "path": "engineering/geometry_optimization_20260815/63_m05new_sg3b_signal_statistics_20260820/outputs/05_optv3_delayed_origins/optv3_delayed_origin_breakdown.csv",
+          "sha256": "f7ac2b0bac2430965b2447caaf6d04645bdcbafca73cec23849d64cd8e453f81"
+        },
+        {
+          "bytes": 6606,
+          "path": "engineering/geometry_optimization_20260815/63_m05new_sg3b_signal_statistics_20260820/outputs/05_optv3_delayed_origins/summary.json",
+          "sha256": "2c6d322b0cae9a4c6f4020c73e63e620cb5d5a972153c2759e6dbaae0d9d3f50"
+        },
+        {
+          "bytes": 676,
+          "path": "engineering/geometry_optimization_20260815/66_m05new_mxc_bpe_veto_review_20260821/data/cold_stage_origin_share.csv",
+          "sha256": "cd83f61f7e8e28616f327b43c2d7016097defe0a4aa29ea27bf8bc4cb84d0688"
+        }
+      ],
+      "outputs": [
+        {
+          "bytes": 40679,
+          "path": "engineering/geometry_optimization_20260815/67_m05_mono511_flux_closure_20260823/outputs/05_figures_staging/fig08_background_origins.pdf",
+          "sha256": "21bf927adabbe54d21c370c2965fbcdd1b8375ac94a7c30896873a87109a37ee"
+        },
+        {
+          "bytes": 301615,
+          "path": "engineering/geometry_optimization_20260815/67_m05_mono511_flux_closure_20260823/outputs/05_figures_staging/fig08_background_origins.png",
+          "sha256": "74ef44229a2e49ec2732d8a8443406597b2cff1f8975b7a088bf4bccf87ed611"
+        }
+      ],
+      "panels": [
+        "new family comparison",
+        "model-A delayed origins",
+        "model-B delayed origins",
+        "cold-stage region shares"
+      ],
+      "question": "Which transport families and delayed origins remain after the flux-closed final selection?"
+    },
+    {
+      "data_grain": "geometry component; stream x W2 stage; final W2 component",
+      "figure": "fig09",
+      "inputs": [
+        {
+          "bytes": 5376,
+          "path": "engineering/geometry_optimization_20260815/66_m05new_mxc_bpe_veto_review_20260821/data/cross_section_geometry_contract.csv",
+          "sha256": "c796aafc2a8bba8f85fa4088bd3519b54b6f08fa1aa306fb3be28a00074a8840"
+        },
+        {
+          "bytes": 7471,
+          "path": "engineering/geometry_optimization_20260815/sh3/assembly_opt_v3/data/assembly_opt_v3_manifest.json",
+          "sha256": "4019a6e868a810d912590615f9d243544e626a70e12103b5264855c74f5ac716"
+        },
+        {
+          "bytes": 137,
+          "path": "engineering/geometry_optimization_20260815/sh3/assembly_opt_v3/geometry/SH3_Assembly_OptV3.geo.setup",
+          "sha256": "52397889d6ac0d08296549942633ff09216cf1494fedb985127c48120d46eaea"
+        },
+        {
+          "bytes": 22067,
+          "path": "engineering/geometry_optimization_20260815/67_m05_mono511_flux_closure_20260823/outputs/03_fluxclosed_timeline_b/direct_cutflow_day15.csv",
+          "sha256": "85fecbd1c2ec603d1c428cc0be815a36131322cda00e40619efc6f3411dee46c"
+        }
+      ],
+      "outputs": [
+        {
+          "bytes": 49354,
+          "path": "engineering/geometry_optimization_20260815/67_m05_mono511_flux_closure_20260823/outputs/05_figures_staging/fig09_sh3_geometry_background.pdf",
+          "sha256": "70c854c426bcb5bac121d1320fd67257a221bd2a33a0a692b1190e1ba893bcc5"
+        },
+        {
+          "bytes": 152680,
+          "path": "engineering/geometry_optimization_20260815/67_m05_mono511_flux_closure_20260823/outputs/05_figures_staging/fig09_sh3_geometry_background.png",
+          "sha256": "e0507527f6a50b3c248a032160f91b3ba5077fcdb74582f6cc82a8115ed1e102"
+        }
+      ],
+      "panels": [
+        "retained OptV3 geometry section",
+        "prompt/delayed cutflow",
+        "final component composition"
+      ],
+      "question": "How does the OptV3 TES relocation connect to model-B cutflow and final composition?"
+    },
+    {
+      "data_grain": "model x 81 mission nodes",
+      "figure": "fig10",
+      "inputs": [
+        {
+          "bytes": 51594,
+          "path": "engineering/geometry_optimization_20260815/67_m05_mono511_flux_closure_20260823/outputs/03_fluxclosed_timeline_a/mission_timeline_81nodes.csv",
+          "sha256": "a1bff32ad2928b6fee54e3444c3b0fbc8657b2a8429fafc76d8ca8791cb4a502"
+        },
+        {
+          "bytes": 52710,
+          "path": "engineering/geometry_optimization_20260815/67_m05_mono511_flux_closure_20260823/outputs/03_fluxclosed_timeline_b/mission_timeline_81nodes.csv",
+          "sha256": "4b9fa13545adb679b56c91ceb2568ff55985264cf7d63c8dd582c277eaccbafa"
+        },
+        {
+          "bytes": 23200,
+          "path": "engineering/geometry_optimization_20260815/67_m05_mono511_flux_closure_20260823/outputs/03_fluxclosed_timeline_a/summary.json",
+          "sha256": "058b43d8fe73e13d25a82b8aa9d5ea3a800db16439c12bd91e778f8f734f946d"
+        },
+        {
+          "bytes": 22165,
+          "path": "engineering/geometry_optimization_20260815/67_m05_mono511_flux_closure_20260823/outputs/03_fluxclosed_timeline_b/summary.json",
+          "sha256": "90e8ebc1d530ee2d863bd13c0ee6f8118dbebb38ed35621c3ca293c109c1d426"
+        }
+      ],
+      "outputs": [
+        {
+          "bytes": 32745,
+          "path": "engineering/geometry_optimization_20260815/67_m05_mono511_flux_closure_20260823/outputs/05_figures_staging/fig10_mission_performance.pdf",
+          "sha256": "0147e264a500afdd39f58ca28eaf2c7c939e1e681fbaaf46ca0d600969297a95"
+        },
+        {
+          "bytes": 127420,
+          "path": "engineering/geometry_optimization_20260815/67_m05_mono511_flux_closure_20260823/outputs/05_figures_staging/fig10_mission_performance.png",
+          "sha256": "789ec53c5b42fa32bdd77057f512a72f01b1ade2e727d4958abc58065758f455"
+        }
+      ],
+      "panels": [
+        "Gaussian significance at F0=1e-4",
+        "3-sigma Gaussian and Asimov Fmin"
+      ],
+      "question": "How do 81-node significance and Gaussian/Asimov flux thresholds evolve over the mission?"
+    }
+  ],
+  "output_directory": "engineering/geometry_optimization_20260815/67_m05_mono511_flux_closure_20260823/outputs/05_figures_staging",
+  "schema_version": 2,
+  "status": "PASS__M05_FLUXCLOSED_FIGURE_CHART_MAP",
+  "visual_contract": {
+    "claim_boundary": "transport/statistical products only; W118.3 continuum de-line and W114.6 mono target are an explicit hybrid, not one atmosphere; physical PARMA/source-model systematics are EXCLUDED; geometry schematic is not a dose, structural, or hardware-efficiency claim",
+    "non_color_redundancy": "model, stage, stream, and component encodings use dash, marker, or hatch in addition to color",
+    "palette": {
+      "a": "#0072B2",
+      "atm511": "#E69F00",
+      "b": "#D55E00",
+      "combined_active_veto": "#56B4E9",
+      "compton_trajectory_veto": "#D55E00",
+      "delayed": "#CC79A7",
+      "gamma_continuum": "#009E73",
+      "grid": "#D9DEE7",
+      "ink": "#202124",
+      "muted": "#667085",
+      "other": "#7A7A7A",
+      "paper": "#FFFFFF",
+      "pre_veto": "#202124",
+      "prompt": "#0072B2"
+    },
+    "uncertainty_policy": "sqrt(sum w_i^2) is shown only where available; Fig.10 endpoint bars use the recorded propagated statistical 1-sigma; origin panels explicitly omit unavailable intervals"
+  }
+}

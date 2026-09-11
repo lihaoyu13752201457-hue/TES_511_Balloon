@@ -1,0 +1,90 @@
+{
+  "status": "PASS_READ_ONLY_TOP5_DELAYED_AUDIT",
+  "authorities": {
+    "selected_event_ledger": "/home/ubuntu/.codex/worktrees/601e/TES_511_Balloon/engineering/particle_source_unit_repair_20260811/s3d_o8_event_geometry_visualization_20260814/data/delayed_selected_event_ledger.csv",
+    "source_point_ledger": "/home/ubuntu/.codex/worktrees/601e/TES_511_Balloon/engineering/particle_source_unit_repair_20260811/s3d_o8_event_geometry_visualization_20260814/data/delayed_source_point_ledger.csv",
+    "partial_exact_origin_links": "/home/ubuntu/.codex/worktrees/601e/TES_511_Balloon/engineering/particle_source_unit_repair_20260811/s3d_o8_event_geometry_visualization_20260814/data/delayed_partial_production_origin_links.csv",
+    "full_day15_inventory": "/home/ubuntu/.codex/worktrees/104d/TES_511_Balloon/engineering/particle_source_unit_repair_20260811/m05_corrected_reanalysis_20260813/outputs/02_activation/day15_inventory.csv",
+    "raw_SIM_files": [
+      "/home/ubuntu/TES_511_Balloon/runs/particle_source_unit_repair_20260811/m05_paper_closure_topup_batch0007_3h_v1/delayed_phase02/state_aware_exactpos_v1/m05_corrected_delayed_remaining9_v1/transport/S3d_O8/eminus/attempt01/EpsilonFormalPartial_S3d_O8_eminus_M10000_N250000.inc1.id1.sim.gz",
+      "/home/ubuntu/TES_511_Balloon/runs/particle_source_unit_repair_20260811/m05_paper_closure_topup_batch0007_3h_v1/delayed_phase02/state_aware_exactpos_v1/m05_corrected_delayed_remaining9_v1/transport/S3d_O8/eplus/attempt01/EpsilonFormalPartial_S3d_O8_eplus_M10000_N250000.inc1.id1.sim.gz",
+      "/home/ubuntu/TES_511_Balloon/runs/particle_source_unit_repair_20260811/m05_paper_closure_topup_batch0007_3h_v1/delayed_phase02/state_aware_exactpos_v1/m05_corrected_delayed_remaining9_v1/transport/S3d_O8/gamma/attempt01/EpsilonFormalPartial_S3d_O8_gamma_M10000_N250000.inc1.id1.sim.gz",
+      "/home/ubuntu/TES_511_Balloon/runs/particle_source_unit_repair_20260811/m05_paper_closure_topup_batch0007_3h_v1/delayed_phase02/state_aware_exactpos_v1/spectrum_epsilon_formal_partial_recovery0002/transport/S3d_O8/alpha/.attempt01.partial/EpsilonFormalPartial_S3d_O8_alpha_M10000_N250000.inc1.id1.sim.gz",
+      "/home/ubuntu/TES_511_Balloon/runs/particle_source_unit_repair_20260811/m05_paper_closure_topup_batch0007_3h_v1/delayed_phase02/state_aware_exactpos_v1/spectrum_epsilon_formal_partial_recovery0002/transport/S3d_O8/n/.attempt01.partial/EpsilonFormalPartial_S3d_O8_n_M10000_N250000.inc1.id1.sim.gz",
+      "/home/ubuntu/TES_511_Balloon/runs/particle_source_unit_repair_20260811/m05_paper_closure_topup_batch0007_3h_v1/delayed_phase02/state_aware_exactpos_v1/spectrum_epsilon_formal_partial_recovery0002/transport/S3d_O8/p/.attempt01.partial/EpsilonFormalPartial_S3d_O8_p_M10000_N250000.inc1.id1.sim.gz"
+    ]
+  },
+  "top5_volumes": [
+    "ColdPlate_MXC_50mK_SD_anchor",
+    "Nb_MagShield_Inner_Cylinder_2mm",
+    "MuMetal_MagShield_Outer_Cylinder_2mm",
+    "Cu_SubstrateSupport_SolidDisk_L0_deepest",
+    "Cu_50mK_StillLike_Can_bottom_cap_2mm"
+  ],
+  "checks": {
+    "full_inventory_expected_grain_unique": true,
+    "top5_selected_rows": 205,
+    "raw_selected_events_recovered": 205,
+    "all_raw_events_have_direct_source_parent_DECA": true,
+    "all_raw_events_have_TES_CC_deposit": true,
+    "all_top5_events_direct_mobile_decay_signature_eplus_nu_e": true,
+    "all_top5_events_TES_deposit_signature_electron_gamma": true,
+    "all_top5_events_annihilation_gamma_cascade_supported": true,
+    "top5_TES_raw_edep_total_keV_min": 510.9988,
+    "top5_TES_raw_edep_total_keV_max": 510.99903000000006,
+    "strict_TES_boundary_entry_particle_closed": false,
+    "strict_entry_status": "UNKNOWN",
+    "strict_entry_reason": "Raw CC HIT records are deposit samples, not complete Geant4 boundary steps. The depositing particle and direct decay products are auditable proxies."
+  },
+  "semantic_gates": {
+    "incident_family": "FACT: activation inventory incident-primary branch; it may differ from the particle directly creating the isotope",
+    "interacting_particle_creator_process": "FACT only for exact-linked production rows; exact links cover a weighted fraction reported per volume",
+    "transport_primary_energy": "FACT: initial primary energy; not local production-interaction energy",
+    "local_production_interaction_energy": "UNKNOWN: absent from link schema",
+    "direct_decay_products": "FACT from source-parent IA DECA nodes in selected raw SIM",
+    "TES_deposit_particle": "FACT from TP_* CC HIT labels",
+    "TES_boundary_entry_particle": "UNKNOWN"
+  },
+  "output_columns_for_citation": {
+    "volume_table": [
+      "full_inventory_day15_activity_Bq",
+      "w2_linked_cell_day15_activity_Bq",
+      "selected_w2_rate_cps",
+      "selected_w2_share_of_all_delayed",
+      "selected_w2_event_neff",
+      "exact_origin_row_coverage",
+      "exact_origin_w2_rate_coverage"
+    ],
+    "breakdown": [
+      "source_isotope",
+      "incident_family",
+      "inventory_day15_activity_Bq",
+      "selected_w2_rate_cps",
+      "selected_w2_share_within_volume",
+      "selected_w2_event_neff"
+    ],
+    "origin": [
+      "interacting_particle",
+      "creator_process",
+      "production_reaction_descriptor",
+      "transport_primary_energy_MeV",
+      "local_production_reaction_energy"
+    ],
+    "origin_summary": [
+      "source_isotope",
+      "incident_family",
+      "interacting_particle",
+      "creator_process",
+      "exact_linked_selected_w2_rate_cps",
+      "transport_primary_energy_MeV_min",
+      "transport_primary_energy_MeV_max",
+      "local_interacting_particle_energy"
+    ],
+    "decay_TES_proxy": [
+      "direct_source_decay_products_json",
+      "tes_deposit_particle_signature",
+      "tes_raw_edep_by_particle_keV_json",
+      "strict_TES_boundary_entry_particle"
+    ]
+  }
+}

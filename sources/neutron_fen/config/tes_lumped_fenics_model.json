@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "model": "single thermal node per Ta-absorber/TES pixel with nonlinear voltage-biased electrothermal feedback",
+  "temperature": {
+    "Tc_K": 0.1,
+    "Tbath_K": 0.05,
+    "transition_alpha_at_bias": 100.0,
+    "transition_beta": 0.0,
+    "operating_resistance_fraction_Rn": 0.3
+  },
+  "electrical": {
+    "Rn_ohm_assumption": 0.01,
+    "Rshunt_ohm": 0.00031,
+    "series_inductance_H": 1e-06,
+    "parasitic_series_resistance_ohm": 0.0,
+    "bias_rule": "derive I0 and Thevenin voltage from thermal equilibrium at each G"
+  },
+  "thermal": {
+    "Ta_pixel_dimensions_mm": [1.5, 1.5, 3.0],
+    "Ta_density_kg_m3": 16654.0,
+    "Ta_specific_heat_J_kg_K": 5.99e-07,
+    "TES_heat_capacity_J_K": 4e-14,
+    "bath_power_exponent_n": 3.0,
+    "primary_G_at_Tc_W_K": 1e-09,
+    "stable_G_sensitivity_W_K": [5e-10, 1e-09, 2e-09, 5e-09]
+  },
+  "parameter_provenance": {
+    "Ta_dimensions_and_specific_heat": "current read-only M05 manuscript, lines 255-267: /home/ubuntu/.codex/worktrees/ebb2/TES_511_Balloon/core_md/balloon511_ea_latex_drafts/M05NEW/balloon511_ea_draft_en_sg3_sh3_revision_20260830_step01_intro.tex",
+    "Ta_density": "NIST ESTAR material composition for tantalum: https://physics.nist.gov/cgi-bin/Star/compos.pl?matno=073",
+    "TES_C_Tc_alpha_beta_L_Rshunt": "user-supplied in this task",
+    "G_Rn_R0_Tbath_n": "explicit modeling assumptions; Tbath=50 mK is also the current mixing-chamber stage"
+  },
+  "resistance_models": {
+    "primary": "normal_fraction",
+    "normal_fraction": "R/Rn=x/(1+x), x=(T/Tc)^m, m chosen to match alpha at R0",
+    "crosscheck": "linear_temperature_logistic"
+  },
+  "signal": {
+    "reference_energy_keV": 511.0,
+    "roi_keV": [510.58, 511.42],
+    "response_fwhm_keV": 0.42,
+    "candidate_C": "five-replicate mean of actual tuned-C G4CMP sensor-hit energy and arrival time plus direct TES deposits",
+    "candidate_A_B": "energy-matched counterfactual: high-collection G4CMP channel/time pattern rescaled to the eta required for exactly 511 keV"
+  },
+  "scope_limits": [
+    "Ta absorber and TES film are one isothermal lumped node",
+    "each TES pixel is an independent node connected only to its own bath",
+    "no TES-to-Si thermal backflow",
+    "no inter-pixel thermal conductance",
+    "no SQUID/readout transfer function or noise PSD",
+    "constant Ta heat capacity from the current manuscript is used over the pulse excursion"
+  ]
+}

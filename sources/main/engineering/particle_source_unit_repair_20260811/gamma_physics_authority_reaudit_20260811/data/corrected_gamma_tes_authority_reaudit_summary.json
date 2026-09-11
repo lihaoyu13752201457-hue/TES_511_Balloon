@@ -1,0 +1,1014 @@
+{
+  "status": "PASS__CORRECTED_GAMMA_TES_EVENT_LEVEL_REAUDIT",
+  "authority_boundary": "DIAGNOSTIC_CUTFLOW__NOT_FULL_STEP05_OR_RATE_AUTHORITY",
+  "scope": "corrected-keV instant gamma, 100000 primaries per geometry",
+  "response": {
+    "fwhm_keV": 0.42,
+    "sigma_keV": 0.178357578060484,
+    "pixel_threshold_keV": 0.3,
+    "seeds": {
+      "mass_model_511": 2605110102,
+      "s3d_o8": 2605110202
+    },
+    "energy_windows_keV": {
+      "broad": [
+        480.0,
+        550.0
+      ],
+      "W2": [
+        510.58,
+        511.42
+      ]
+    }
+  },
+  "active_shield_contracts": {
+    "mass_model_511": {
+      "kind": "explicit_CsI_whitelist",
+      "allowed_prefixes": [
+        "CsI_Side_Segment_",
+        "CsI_Bottom_Quadrant_",
+        "CsI_TopAnnulus_Segment_"
+      ],
+      "kapton_included": false
+    },
+    "s3d_o8": {
+      "kind": "three_exact_BGO_crystals",
+      "allowed_volumes": [
+        "BGO_S3C_FullWrap_SideShell_WindowCut_40mm",
+        "BGO_S3D_O8_FullWrap_BottomCap_30mm",
+        "BGO_S3D_O8_FullWrap_TopAnnulus_10mm"
+      ],
+      "plastic_volumes": [
+        "GeoOpt_S2B_CryoShell_Plastic_BottomCap_10mm",
+        "GeoOpt_S2B_CryoShell_Plastic_SideSkin_10mm",
+        "GeoOpt_S2B_CryoShell_Plastic_TopCap_10mm"
+      ],
+      "kapton_included": false
+    }
+  },
+  "edge_pixel_definition": {
+    "kind": "diagnostic_proxy_not_authorized_Step05_cut",
+    "definition": "20x20 pixel index with row or column in {0,19}"
+  },
+  "signal_window_ray_definition": {
+    "source": "frozen Step09 side-entry disk",
+    "local_center_cm": [
+      -13.1,
+      0.0,
+      -5.2
+    ],
+    "rotation_y_deg": 45.0,
+    "radius_cm": 1.898
+  },
+  "inputs": {
+    "mass_model_511": [
+      "runs/particle_source_unit_repair_20260811/mass_model_511/instant_seven_family_batch0001_v1/Background_gamma_fullsphere20_rep01_part01.inc1.id1.sim.gz",
+      "runs/particle_source_unit_repair_20260811/mass_model_511/instant_seven_family_batch0001_v1/Background_gamma_fullsphere20_rep01_part02.inc1.id1.sim.gz",
+      "runs/particle_source_unit_repair_20260811/mass_model_511/instant_seven_family_batch0001_v1/Background_gamma_fullsphere20_rep01_part03.inc1.id1.sim.gz",
+      "runs/particle_source_unit_repair_20260811/mass_model_511/instant_seven_family_batch0001_v1/Background_gamma_fullsphere20_rep01_part04.inc1.id1.sim.gz"
+    ],
+    "s3d_o8": [
+      "runs/particle_source_unit_repair_20260811/s3d_o8/instant_seven_family_batch0001_v1/Background_gamma_fullsphere20_rep01_part01.inc1.id1.sim.gz",
+      "runs/particle_source_unit_repair_20260811/s3d_o8/instant_seven_family_batch0001_v1/Background_gamma_fullsphere20_rep01_part02.inc1.id1.sim.gz",
+      "runs/particle_source_unit_repair_20260811/s3d_o8/instant_seven_family_batch0001_v1/Background_gamma_fullsphere20_rep01_part03.inc1.id1.sim.gz",
+      "runs/particle_source_unit_repair_20260811/s3d_o8/instant_seven_family_batch0001_v1/Background_gamma_fullsphere20_rep01_part04.inc1.id1.sim.gz"
+    ]
+  },
+  "primary_counts": {
+    "mass_model_511": 100000,
+    "s3d_o8": 100000
+  },
+  "tes_positive_event_counts": {
+    "mass_model_511": 101,
+    "s3d_o8": 99
+  },
+  "denominators": {
+    "mass_model_511": {
+      "energy": [
+        34565,
+        24912,
+        6187,
+        2586,
+        8179,
+        7568,
+        6075,
+        4146,
+        3182,
+        1541,
+        1059
+      ],
+      "theta": [
+        6372,
+        6720,
+        6752,
+        6867,
+        7086,
+        7396,
+        7779,
+        8028,
+        8572,
+        9574,
+        4717,
+        3939,
+        3420,
+        2896,
+        2423,
+        2155,
+        1782,
+        1529,
+        1107,
+        886
+      ]
+    },
+    "s3d_o8": {
+      "energy": [
+        34532,
+        24890,
+        6195,
+        2599,
+        8080,
+        7657,
+        6187,
+        4104,
+        3104,
+        1609,
+        1043
+      ],
+      "theta": [
+        6405,
+        6665,
+        6737,
+        6812,
+        7194,
+        7414,
+        7574,
+        8058,
+        8727,
+        9718,
+        4662,
+        3895,
+        3309,
+        2877,
+        2530,
+        2047,
+        1807,
+        1423,
+        1200,
+        946
+      ]
+    }
+  },
+  "geometries": {
+    "mass_model_511": {
+      "cutflow": {
+        "tes_positive": {
+          "measured_energy_selection": 101,
+          "raw_pixel_multiplicity": {
+            "1": 67,
+            "2": 15,
+            "3+": 19
+          },
+          "events_with_any_edge_pixel": 31,
+          "active_shield_lt_50_keV": 12,
+          "active_shield_lt_50_keV_and_single_pixel": 10,
+          "active_shield_lt_50_keV_and_no_edge_pixel": 7,
+          "active_shield_lt_50_keV_single_pixel_and_no_edge": 7,
+          "active_shield_lt_70_keV": 12,
+          "active_shield_lt_70_keV_and_single_pixel": 10,
+          "active_shield_lt_70_keV_and_no_edge_pixel": 7,
+          "active_shield_lt_70_keV_single_pixel_and_no_edge": 7,
+          "active_shield_lt_80_keV": 12,
+          "active_shield_lt_80_keV_and_single_pixel": 10,
+          "active_shield_lt_80_keV_and_no_edge_pixel": 7,
+          "active_shield_lt_80_keV_single_pixel_and_no_edge": 7
+        },
+        "broad_480_550": {
+          "measured_energy_selection": 12,
+          "raw_pixel_multiplicity": {
+            "1": 9,
+            "2": 2,
+            "3+": 1
+          },
+          "events_with_any_edge_pixel": 1,
+          "active_shield_lt_50_keV": 1,
+          "active_shield_lt_50_keV_and_single_pixel": 1,
+          "active_shield_lt_50_keV_and_no_edge_pixel": 1,
+          "active_shield_lt_50_keV_single_pixel_and_no_edge": 1,
+          "active_shield_lt_70_keV": 1,
+          "active_shield_lt_70_keV_and_single_pixel": 1,
+          "active_shield_lt_70_keV_and_no_edge_pixel": 1,
+          "active_shield_lt_70_keV_single_pixel_and_no_edge": 1,
+          "active_shield_lt_80_keV": 1,
+          "active_shield_lt_80_keV_and_single_pixel": 1,
+          "active_shield_lt_80_keV_and_no_edge_pixel": 1,
+          "active_shield_lt_80_keV_single_pixel_and_no_edge": 1
+        },
+        "w2_510p58_511p42": {
+          "measured_energy_selection": 7,
+          "raw_pixel_multiplicity": {
+            "1": 6,
+            "2": 1
+          },
+          "events_with_any_edge_pixel": 0,
+          "active_shield_lt_50_keV": 0,
+          "active_shield_lt_50_keV_and_single_pixel": 0,
+          "active_shield_lt_50_keV_and_no_edge_pixel": 0,
+          "active_shield_lt_50_keV_single_pixel_and_no_edge": 0,
+          "active_shield_lt_70_keV": 0,
+          "active_shield_lt_70_keV_and_single_pixel": 0,
+          "active_shield_lt_70_keV_and_no_edge_pixel": 0,
+          "active_shield_lt_70_keV_single_pixel_and_no_edge": 0,
+          "active_shield_lt_80_keV": 0,
+          "active_shield_lt_80_keV_and_single_pixel": 0,
+          "active_shield_lt_80_keV_and_no_edge_pixel": 0,
+          "active_shield_lt_80_keV_single_pixel_and_no_edge": 0
+        }
+      },
+      "initial_energy_driver": [
+        {
+          "bin": "<100 keV",
+          "primaries": 34565,
+          "tes_positive": 0,
+          "tes_positive_fraction": 0.0,
+          "shield50_plastic50_pass": 0
+        },
+        {
+          "bin": "100-300 keV",
+          "primaries": 24912,
+          "tes_positive": 2,
+          "tes_positive_fraction": 8.028259473346178e-05,
+          "shield50_plastic50_pass": 2
+        },
+        {
+          "bin": "300-480 keV",
+          "primaries": 6187,
+          "tes_positive": 1,
+          "tes_positive_fraction": 0.00016162922256343946,
+          "shield50_plastic50_pass": 1
+        },
+        {
+          "bin": "480-550 keV",
+          "primaries": 2586,
+          "tes_positive": 1,
+          "tes_positive_fraction": 0.0003866976024748647,
+          "shield50_plastic50_pass": 1
+        },
+        {
+          "bin": "0.55-1 MeV",
+          "primaries": 8179,
+          "tes_positive": 2,
+          "tes_positive_fraction": 0.00024452867098667317,
+          "shield50_plastic50_pass": 2
+        },
+        {
+          "bin": "1-3 MeV",
+          "primaries": 7568,
+          "tes_positive": 5,
+          "tes_positive_fraction": 0.000660676532769556,
+          "shield50_plastic50_pass": 2
+        },
+        {
+          "bin": "3-10 MeV",
+          "primaries": 6075,
+          "tes_positive": 8,
+          "tes_positive_fraction": 0.0013168724279835392,
+          "shield50_plastic50_pass": 3
+        },
+        {
+          "bin": "10-30 MeV",
+          "primaries": 4146,
+          "tes_positive": 8,
+          "tes_positive_fraction": 0.001929570670525808,
+          "shield50_plastic50_pass": 0
+        },
+        {
+          "bin": "30-100 MeV",
+          "primaries": 3182,
+          "tes_positive": 18,
+          "tes_positive_fraction": 0.0056568196103079825,
+          "shield50_plastic50_pass": 1
+        },
+        {
+          "bin": "100-300 MeV",
+          "primaries": 1541,
+          "tes_positive": 22,
+          "tes_positive_fraction": 0.01427644386761843,
+          "shield50_plastic50_pass": 0
+        },
+        {
+          "bin": ">=300 MeV",
+          "primaries": 1059,
+          "tes_positive": 34,
+          "tes_positive_fraction": 0.03210576015108593,
+          "shield50_plastic50_pass": 0
+        }
+      ],
+      "theta_driver": [
+        {
+          "bin": 0,
+          "theta_deg": [
+            0.0,
+            25.842
+          ],
+          "primaries": 6372,
+          "tes_positive": 3,
+          "tes_positive_fraction": 0.00047080979284369113,
+          "shield50_plastic50_pass": 0
+        },
+        {
+          "bin": 1,
+          "theta_deg": [
+            25.842,
+            36.87
+          ],
+          "primaries": 6720,
+          "tes_positive": 3,
+          "tes_positive_fraction": 0.0004464285714285714,
+          "shield50_plastic50_pass": 1
+        },
+        {
+          "bin": 2,
+          "theta_deg": [
+            36.87,
+            45.573
+          ],
+          "primaries": 6752,
+          "tes_positive": 5,
+          "tes_positive_fraction": 0.000740521327014218,
+          "shield50_plastic50_pass": 1
+        },
+        {
+          "bin": 3,
+          "theta_deg": [
+            45.573,
+            53.13
+          ],
+          "primaries": 6867,
+          "tes_positive": 4,
+          "tes_positive_fraction": 0.000582495995340032,
+          "shield50_plastic50_pass": 2
+        },
+        {
+          "bin": 4,
+          "theta_deg": [
+            53.13,
+            60.0
+          ],
+          "primaries": 7086,
+          "tes_positive": 3,
+          "tes_positive_fraction": 0.0004233700254022015,
+          "shield50_plastic50_pass": 0
+        },
+        {
+          "bin": 5,
+          "theta_deg": [
+            60.0,
+            66.422
+          ],
+          "primaries": 7396,
+          "tes_positive": 6,
+          "tes_positive_fraction": 0.0008112493239588967,
+          "shield50_plastic50_pass": 0
+        },
+        {
+          "bin": 6,
+          "theta_deg": [
+            66.422,
+            72.542
+          ],
+          "primaries": 7779,
+          "tes_positive": 6,
+          "tes_positive_fraction": 0.0007713073659853452,
+          "shield50_plastic50_pass": 0
+        },
+        {
+          "bin": 7,
+          "theta_deg": [
+            72.542,
+            78.463
+          ],
+          "primaries": 8028,
+          "tes_positive": 6,
+          "tes_positive_fraction": 0.0007473841554559044,
+          "shield50_plastic50_pass": 0
+        },
+        {
+          "bin": 8,
+          "theta_deg": [
+            78.463,
+            84.261
+          ],
+          "primaries": 8572,
+          "tes_positive": 7,
+          "tes_positive_fraction": 0.0008166122258516099,
+          "shield50_plastic50_pass": 2
+        },
+        {
+          "bin": 9,
+          "theta_deg": [
+            84.261,
+            90.0
+          ],
+          "primaries": 9574,
+          "tes_positive": 15,
+          "tes_positive_fraction": 0.001566743263003969,
+          "shield50_plastic50_pass": 1
+        },
+        {
+          "bin": 10,
+          "theta_deg": [
+            90.0,
+            95.739
+          ],
+          "primaries": 4717,
+          "tes_positive": 12,
+          "tes_positive_fraction": 0.0025439898240407037,
+          "shield50_plastic50_pass": 3
+        },
+        {
+          "bin": 11,
+          "theta_deg": [
+            95.739,
+            101.537
+          ],
+          "primaries": 3939,
+          "tes_positive": 3,
+          "tes_positive_fraction": 0.0007616146230007616,
+          "shield50_plastic50_pass": 0
+        },
+        {
+          "bin": 12,
+          "theta_deg": [
+            101.537,
+            107.458
+          ],
+          "primaries": 3420,
+          "tes_positive": 6,
+          "tes_positive_fraction": 0.0017543859649122807,
+          "shield50_plastic50_pass": 0
+        },
+        {
+          "bin": 13,
+          "theta_deg": [
+            107.458,
+            113.578
+          ],
+          "primaries": 2896,
+          "tes_positive": 4,
+          "tes_positive_fraction": 0.0013812154696132596,
+          "shield50_plastic50_pass": 0
+        },
+        {
+          "bin": 14,
+          "theta_deg": [
+            113.578,
+            120.0
+          ],
+          "primaries": 2423,
+          "tes_positive": 2,
+          "tes_positive_fraction": 0.0008254230293025176,
+          "shield50_plastic50_pass": 0
+        },
+        {
+          "bin": 15,
+          "theta_deg": [
+            120.0,
+            126.87
+          ],
+          "primaries": 2155,
+          "tes_positive": 3,
+          "tes_positive_fraction": 0.0013921113689095127,
+          "shield50_plastic50_pass": 1
+        },
+        {
+          "bin": 16,
+          "theta_deg": [
+            126.87,
+            134.427
+          ],
+          "primaries": 1782,
+          "tes_positive": 5,
+          "tes_positive_fraction": 0.0028058361391694723,
+          "shield50_plastic50_pass": 1
+        },
+        {
+          "bin": 17,
+          "theta_deg": [
+            134.427,
+            143.13
+          ],
+          "primaries": 1529,
+          "tes_positive": 5,
+          "tes_positive_fraction": 0.0032701111837802484,
+          "shield50_plastic50_pass": 0
+        },
+        {
+          "bin": 18,
+          "theta_deg": [
+            143.13,
+            154.158
+          ],
+          "primaries": 1107,
+          "tes_positive": 0,
+          "tes_positive_fraction": 0.0,
+          "shield50_plastic50_pass": 0
+        },
+        {
+          "bin": 19,
+          "theta_deg": [
+            154.158,
+            180.0
+          ],
+          "primaries": 886,
+          "tes_positive": 3,
+          "tes_positive_fraction": 0.003386004514672686,
+          "shield50_plastic50_pass": 0
+        }
+      ],
+      "direction_hemisphere": {
+        "down": 58,
+        "up": 43
+      },
+      "first_interaction_class": {
+        "side_material": 40,
+        "bottom_material": 22,
+        "top_material": 8,
+        "window_band_material_not_open_aperture": 5,
+        "other_material": 20,
+        "tes_first_recorded_deposit": 6
+      },
+      "first_primary_volume": {
+        "Outer_Al_Mechanical_Shell_detector_bay_side_wall_below_side_port": 3,
+        "CsI_Bottom_Quadrant_01": 6,
+        "CsI_TopAnnulus_Segment_05": 1,
+        "CsI_Side_Segment_03_above_side_port": 2,
+        "CsI_Side_Segment_04_rectcut_window_band": 1,
+        "Shield_60K_Al_side_window_bottom_cap": 1,
+        "CsI_Side_Segment_00": 3,
+        "Nb_MagShield_Inner_Cylinder_2mm": 1,
+        "ColdPlate_CP_100mK_intercept": 3,
+        "CsI_Side_Segment_02": 4,
+        "CsI_Side_Segment_01": 5,
+        "ColdPlate_MXC_50mK_SD_anchor": 5,
+        "Outer_Al_Mechanical_Shell_detector_bay_bottom_cap": 3,
+        "ColdPlate_Still_0p7K": 2,
+        "Cu_50mK_StillLike_Can_side_wall_above_side_port": 1,
+        "CsI_Bottom_Quadrant_02": 6,
+        "NbTi_Bundle_Still_4K": 2,
+        "Shield_60K_Al_side_window_side_wall_above_side_port": 2,
+        "Vacuum_Jacket_Al_266mmClass_side_port_side_wall_above_side_port": 1,
+        "CsI_TopAnnulus_Segment_06": 2,
+        "CsI_TopAnnulus_Segment_07": 2,
+        "Passive_W_Bottom_Plate_detector_bay": 1,
+        "CsI_Side_Segment_07": 5,
+        "Shield_4K_Al_side_window_side_wall_above_side_port": 1,
+        "DR_Continuous_HEX_CuNi_MXC_to_CP": 1,
+        "CsI_Side_Segment_03_below_side_port": 5,
+        "CsI_Side_Segment_06": 3,
+        "TP_L1_00005": 1,
+        "Outer_Al_Mechanical_Shell_detector_bay_top_annulus": 1,
+        "ColdPlate_4K": 2,
+        "TP_L2_00001": 1,
+        "MuMetal_MagShield_Outer_Back_ColdFingerCap_2mm": 1,
+        "CsI_Side_Segment_03_rectcut_window_band": 3,
+        "Still_Shield_Al_side_window_bottom_cap": 1,
+        "MuMetal_MagShield_Outer_Cylinder_2mm": 2,
+        "CsI_Bottom_Quadrant_00": 3,
+        "TP_L3_00077": 1,
+        "CsI_Bottom_Quadrant_03": 1,
+        "CsI_Side_Segment_04_below_side_port": 1,
+        "TP_L5_00171": 1,
+        "CsI_TopAnnulus_Segment_02": 2,
+        "TP_L3_00287": 1,
+        "DR_MXC_Sinter_HEX_AgProxy": 1,
+        "CsI_Side_Segment_05": 2,
+        "TP_L3_00099": 1,
+        "Shield_60K_Al_side_window_side_wall_below_side_port": 1,
+        "Shield_4K_Al_side_window_side_wall_rectcut_window_band": 1,
+        "Vacuum_Jacket_Al_266mmClass_side_port_side_wall_below_side_port": 1
+      },
+      "straight_primary_intersects_signal_window": 0,
+      "direct_primary_track_tes_events": 12,
+      "pair_present_events": 87,
+      "annihilation_present_events": 86,
+      "active_shield_positive_events": 90,
+      "o8_plastic_positive_events": 0,
+      "bpe_positive_events": 0,
+      "ancestry_incomplete_events": 87
+    },
+    "s3d_o8": {
+      "cutflow": {
+        "tes_positive": {
+          "measured_energy_selection": 99,
+          "raw_pixel_multiplicity": {
+            "1": 46,
+            "2": 13,
+            "3+": 40
+          },
+          "events_with_any_edge_pixel": 37,
+          "active_shield_lt_50_keV": 3,
+          "active_shield_lt_50_keV_and_plastic_lt_50_keV": 3,
+          "active_shield_lt_50_keV_and_plastic_lt_50_keV_and_single_pixel": 1,
+          "active_shield_lt_50_keV_and_plastic_lt_50_keV_and_no_edge_pixel": 0,
+          "active_shield_lt_50_keV_and_plastic_lt_50_keV_single_pixel_and_no_edge": 0,
+          "active_shield_lt_70_keV": 3,
+          "active_shield_lt_70_keV_and_plastic_lt_50_keV": 3,
+          "active_shield_lt_70_keV_and_plastic_lt_50_keV_and_single_pixel": 1,
+          "active_shield_lt_70_keV_and_plastic_lt_50_keV_and_no_edge_pixel": 0,
+          "active_shield_lt_70_keV_and_plastic_lt_50_keV_single_pixel_and_no_edge": 0,
+          "active_shield_lt_80_keV": 3,
+          "active_shield_lt_80_keV_and_plastic_lt_50_keV": 3,
+          "active_shield_lt_80_keV_and_plastic_lt_50_keV_and_single_pixel": 1,
+          "active_shield_lt_80_keV_and_plastic_lt_50_keV_and_no_edge_pixel": 0,
+          "active_shield_lt_80_keV_and_plastic_lt_50_keV_single_pixel_and_no_edge": 0
+        },
+        "broad_480_550": {
+          "measured_energy_selection": 9,
+          "raw_pixel_multiplicity": {
+            "1": 7,
+            "2": 1,
+            "3+": 1
+          },
+          "events_with_any_edge_pixel": 3,
+          "active_shield_lt_50_keV": 0,
+          "active_shield_lt_50_keV_and_plastic_lt_50_keV": 0,
+          "active_shield_lt_50_keV_and_plastic_lt_50_keV_and_single_pixel": 0,
+          "active_shield_lt_50_keV_and_plastic_lt_50_keV_and_no_edge_pixel": 0,
+          "active_shield_lt_50_keV_and_plastic_lt_50_keV_single_pixel_and_no_edge": 0,
+          "active_shield_lt_70_keV": 0,
+          "active_shield_lt_70_keV_and_plastic_lt_50_keV": 0,
+          "active_shield_lt_70_keV_and_plastic_lt_50_keV_and_single_pixel": 0,
+          "active_shield_lt_70_keV_and_plastic_lt_50_keV_and_no_edge_pixel": 0,
+          "active_shield_lt_70_keV_and_plastic_lt_50_keV_single_pixel_and_no_edge": 0,
+          "active_shield_lt_80_keV": 0,
+          "active_shield_lt_80_keV_and_plastic_lt_50_keV": 0,
+          "active_shield_lt_80_keV_and_plastic_lt_50_keV_and_single_pixel": 0,
+          "active_shield_lt_80_keV_and_plastic_lt_50_keV_and_no_edge_pixel": 0,
+          "active_shield_lt_80_keV_and_plastic_lt_50_keV_single_pixel_and_no_edge": 0
+        },
+        "w2_510p58_511p42": {
+          "measured_energy_selection": 8,
+          "raw_pixel_multiplicity": {
+            "1": 6,
+            "2": 1,
+            "3+": 1
+          },
+          "events_with_any_edge_pixel": 3,
+          "active_shield_lt_50_keV": 0,
+          "active_shield_lt_50_keV_and_plastic_lt_50_keV": 0,
+          "active_shield_lt_50_keV_and_plastic_lt_50_keV_and_single_pixel": 0,
+          "active_shield_lt_50_keV_and_plastic_lt_50_keV_and_no_edge_pixel": 0,
+          "active_shield_lt_50_keV_and_plastic_lt_50_keV_single_pixel_and_no_edge": 0,
+          "active_shield_lt_70_keV": 0,
+          "active_shield_lt_70_keV_and_plastic_lt_50_keV": 0,
+          "active_shield_lt_70_keV_and_plastic_lt_50_keV_and_single_pixel": 0,
+          "active_shield_lt_70_keV_and_plastic_lt_50_keV_and_no_edge_pixel": 0,
+          "active_shield_lt_70_keV_and_plastic_lt_50_keV_single_pixel_and_no_edge": 0,
+          "active_shield_lt_80_keV": 0,
+          "active_shield_lt_80_keV_and_plastic_lt_50_keV": 0,
+          "active_shield_lt_80_keV_and_plastic_lt_50_keV_and_single_pixel": 0,
+          "active_shield_lt_80_keV_and_plastic_lt_50_keV_and_no_edge_pixel": 0,
+          "active_shield_lt_80_keV_and_plastic_lt_50_keV_single_pixel_and_no_edge": 0
+        }
+      },
+      "initial_energy_driver": [
+        {
+          "bin": "<100 keV",
+          "primaries": 34532,
+          "tes_positive": 0,
+          "tes_positive_fraction": 0.0,
+          "shield50_plastic50_pass": 0
+        },
+        {
+          "bin": "100-300 keV",
+          "primaries": 24890,
+          "tes_positive": 0,
+          "tes_positive_fraction": 0.0,
+          "shield50_plastic50_pass": 0
+        },
+        {
+          "bin": "300-480 keV",
+          "primaries": 6195,
+          "tes_positive": 0,
+          "tes_positive_fraction": 0.0,
+          "shield50_plastic50_pass": 0
+        },
+        {
+          "bin": "480-550 keV",
+          "primaries": 2599,
+          "tes_positive": 0,
+          "tes_positive_fraction": 0.0,
+          "shield50_plastic50_pass": 0
+        },
+        {
+          "bin": "0.55-1 MeV",
+          "primaries": 8080,
+          "tes_positive": 2,
+          "tes_positive_fraction": 0.00024752475247524753,
+          "shield50_plastic50_pass": 0
+        },
+        {
+          "bin": "1-3 MeV",
+          "primaries": 7657,
+          "tes_positive": 2,
+          "tes_positive_fraction": 0.0002611989029646076,
+          "shield50_plastic50_pass": 1
+        },
+        {
+          "bin": "3-10 MeV",
+          "primaries": 6187,
+          "tes_positive": 3,
+          "tes_positive_fraction": 0.00048488766769031843,
+          "shield50_plastic50_pass": 1
+        },
+        {
+          "bin": "10-30 MeV",
+          "primaries": 4104,
+          "tes_positive": 6,
+          "tes_positive_fraction": 0.0014619883040935672,
+          "shield50_plastic50_pass": 1
+        },
+        {
+          "bin": "30-100 MeV",
+          "primaries": 3104,
+          "tes_positive": 10,
+          "tes_positive_fraction": 0.0032216494845360823,
+          "shield50_plastic50_pass": 0
+        },
+        {
+          "bin": "100-300 MeV",
+          "primaries": 1609,
+          "tes_positive": 21,
+          "tes_positive_fraction": 0.01305158483530143,
+          "shield50_plastic50_pass": 0
+        },
+        {
+          "bin": ">=300 MeV",
+          "primaries": 1043,
+          "tes_positive": 55,
+          "tes_positive_fraction": 0.052732502396931925,
+          "shield50_plastic50_pass": 0
+        }
+      ],
+      "theta_driver": [
+        {
+          "bin": 0,
+          "theta_deg": [
+            0.0,
+            25.842
+          ],
+          "primaries": 6405,
+          "tes_positive": 0,
+          "tes_positive_fraction": 0.0,
+          "shield50_plastic50_pass": 0
+        },
+        {
+          "bin": 1,
+          "theta_deg": [
+            25.842,
+            36.87
+          ],
+          "primaries": 6665,
+          "tes_positive": 4,
+          "tes_positive_fraction": 0.0006001500375093774,
+          "shield50_plastic50_pass": 0
+        },
+        {
+          "bin": 2,
+          "theta_deg": [
+            36.87,
+            45.573
+          ],
+          "primaries": 6737,
+          "tes_positive": 3,
+          "tes_positive_fraction": 0.000445302063232893,
+          "shield50_plastic50_pass": 0
+        },
+        {
+          "bin": 3,
+          "theta_deg": [
+            45.573,
+            53.13
+          ],
+          "primaries": 6812,
+          "tes_positive": 2,
+          "tes_positive_fraction": 0.0002935995302407516,
+          "shield50_plastic50_pass": 0
+        },
+        {
+          "bin": 4,
+          "theta_deg": [
+            53.13,
+            60.0
+          ],
+          "primaries": 7194,
+          "tes_positive": 3,
+          "tes_positive_fraction": 0.0004170141784820684,
+          "shield50_plastic50_pass": 0
+        },
+        {
+          "bin": 5,
+          "theta_deg": [
+            60.0,
+            66.422
+          ],
+          "primaries": 7414,
+          "tes_positive": 6,
+          "tes_positive_fraction": 0.0008092797410304828,
+          "shield50_plastic50_pass": 2
+        },
+        {
+          "bin": 6,
+          "theta_deg": [
+            66.422,
+            72.542
+          ],
+          "primaries": 7574,
+          "tes_positive": 4,
+          "tes_positive_fraction": 0.0005281225244256667,
+          "shield50_plastic50_pass": 0
+        },
+        {
+          "bin": 7,
+          "theta_deg": [
+            72.542,
+            78.463
+          ],
+          "primaries": 8058,
+          "tes_positive": 2,
+          "tes_positive_fraction": 0.0002482005460412013,
+          "shield50_plastic50_pass": 0
+        },
+        {
+          "bin": 8,
+          "theta_deg": [
+            78.463,
+            84.261
+          ],
+          "primaries": 8727,
+          "tes_positive": 6,
+          "tes_positive_fraction": 0.0006875214850464077,
+          "shield50_plastic50_pass": 0
+        },
+        {
+          "bin": 9,
+          "theta_deg": [
+            84.261,
+            90.0
+          ],
+          "primaries": 9718,
+          "tes_positive": 15,
+          "tes_positive_fraction": 0.0015435274747890512,
+          "shield50_plastic50_pass": 1
+        },
+        {
+          "bin": 10,
+          "theta_deg": [
+            90.0,
+            95.739
+          ],
+          "primaries": 4662,
+          "tes_positive": 11,
+          "tes_positive_fraction": 0.0023595023595023596,
+          "shield50_plastic50_pass": 0
+        },
+        {
+          "bin": 11,
+          "theta_deg": [
+            95.739,
+            101.537
+          ],
+          "primaries": 3895,
+          "tes_positive": 9,
+          "tes_positive_fraction": 0.0023106546854942235,
+          "shield50_plastic50_pass": 0
+        },
+        {
+          "bin": 12,
+          "theta_deg": [
+            101.537,
+            107.458
+          ],
+          "primaries": 3309,
+          "tes_positive": 6,
+          "tes_positive_fraction": 0.001813236627379873,
+          "shield50_plastic50_pass": 0
+        },
+        {
+          "bin": 13,
+          "theta_deg": [
+            107.458,
+            113.578
+          ],
+          "primaries": 2877,
+          "tes_positive": 4,
+          "tes_positive_fraction": 0.0013903371567605145,
+          "shield50_plastic50_pass": 0
+        },
+        {
+          "bin": 14,
+          "theta_deg": [
+            113.578,
+            120.0
+          ],
+          "primaries": 2530,
+          "tes_positive": 8,
+          "tes_positive_fraction": 0.0031620553359683794,
+          "shield50_plastic50_pass": 0
+        },
+        {
+          "bin": 15,
+          "theta_deg": [
+            120.0,
+            126.87
+          ],
+          "primaries": 2047,
+          "tes_positive": 5,
+          "tes_positive_fraction": 0.002442598925256473,
+          "shield50_plastic50_pass": 0
+        },
+        {
+          "bin": 16,
+          "theta_deg": [
+            126.87,
+            134.427
+          ],
+          "primaries": 1807,
+          "tes_positive": 5,
+          "tes_positive_fraction": 0.002767017155506364,
+          "shield50_plastic50_pass": 0
+        },
+        {
+          "bin": 17,
+          "theta_deg": [
+            134.427,
+            143.13
+          ],
+          "primaries": 1423,
+          "tes_positive": 0,
+          "tes_positive_fraction": 0.0,
+          "shield50_plastic50_pass": 0
+        },
+        {
+          "bin": 18,
+          "theta_deg": [
+            143.13,
+            154.158
+          ],
+          "primaries": 1200,
+          "tes_positive": 3,
+          "tes_positive_fraction": 0.0025,
+          "shield50_plastic50_pass": 0
+        },
+        {
+          "bin": 19,
+          "theta_deg": [
+            154.158,
+            180.0
+          ],
+          "primaries": 946,
+          "tes_positive": 3,
+          "tes_positive_fraction": 0.003171247357293869,
+          "shield50_plastic50_pass": 0
+        }
+      ],
+      "direction_hemisphere": {
+        "up": 54,
+        "down": 45
+      },
+      "first_interaction_class": {
+        "bgo_side_shell_material_with_aperture_cut": 63,
+        "other_material": 4,
+        "side_material": 5,
+        "bottom_material": 16,
+        "service_port_or_pipe_material": 1,
+        "outer_al_side_shell_material_with_aperture_cut": 6,
+        "tes_first_recorded_deposit": 4
+      },
+      "first_primary_volume": {
+        "BGO_S3C_FullWrap_SideShell_WindowCut_40mm": 63,
+        "Nb_MagShield_Inner_Cylinder_2mm": 1,
+        "GeoOpt_S2B_CryoShell_Plastic_SideSkin_10mm": 5,
+        "BGO_S3D_O8_FullWrap_BottomCap_30mm": 16,
+        "Plate_300K_Top_Service_Lid": 1,
+        "Outer_Al_S3C_BGO_Mechanical_SideShell_WindowCut_3mm": 6,
+        "TP_L5_00199": 1,
+        "NbTi_Bundle_4K_60K": 1,
+        "ColdPlate_Still_0p7K": 1,
+        "TP_L0_00218": 1,
+        "TP_L1_00341": 1,
+        "DR_MXC_Sinter_HEX_AgProxy": 1,
+        "TP_L2_00258": 1
+      },
+      "straight_primary_intersects_signal_window": 2,
+      "direct_primary_track_tes_events": 3,
+      "pair_present_events": 96,
+      "annihilation_present_events": 96,
+      "active_shield_positive_events": 96,
+      "o8_plastic_positive_events": 64,
+      "bpe_positive_events": 0,
+      "ancestry_incomplete_events": 93
+    }
+  },
+  "event_table": "engineering/particle_source_unit_repair_20260811/gamma_physics_authority_reaudit_20260811/data/corrected_gamma_tes_positive_events.csv.gz"
+}

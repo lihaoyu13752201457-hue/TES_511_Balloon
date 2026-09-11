@@ -1,0 +1,618 @@
+{
+  "surface": "report",
+  "manifest": {
+    "version": 1,
+    "surface": "report",
+    "title": "Gamma 源谱修复的物理权威复核",
+    "description": "区分 corrected-keV 单位合同、未 veto 的 TES 毛命中、正式本底选择与任务灵敏度。",
+    "generatedAt": "2026-08-11T20:45:00+08:00",
+    "charts": [
+      {
+        "id": "gamma_active_shield_cutflow",
+        "title": "Corrected-keV gamma 事件 cutflow",
+        "subtitle": "每套几何 100,000 个初级 gamma；图中代表性主动屏蔽阈值为 80 keV，严格 W2 为 [510.58, 511.42) keV",
+        "showDescription": true,
+        "intent": "comparison",
+        "question": "未 veto 的 TES-positive 事件在显式物理主动屏蔽门后还剩多少？",
+        "rationale": "分组柱图保留两套几何和六个离散选择阶段的绝对计数；它比归一化谱线更直接地揭示 101/99 的主要来源。",
+        "comparisonContext": {
+          "baseline": "同一几何的 veto 前事件数",
+          "denominator": "每套几何 100,000 个 corrected-keV instant gamma primaries",
+          "grain": "geometry × energy selection × veto state",
+          "normalization": "绝对事件计数；未对各系列归一化",
+          "semanticFamily": "diagnostic cutflow",
+          "unit": "events"
+        },
+        "type": "bar",
+        "dataset": "cutflow_chart",
+        "sourceId": "cutflow_chart_sql",
+        "encodings": {
+          "x": {
+            "field": "category",
+            "type": "ordinal",
+            "label": "选择阶段"
+          },
+          "y": {
+            "field": "event_count",
+            "type": "quantitative",
+            "label": "事件数",
+            "format": "number",
+            "unit": "events"
+          },
+          "color": {
+            "field": "geometry",
+            "type": "nominal",
+            "label": "几何"
+          },
+          "tooltip": [
+            {
+              "field": "selection",
+              "type": "text",
+              "label": "TES 选择"
+            },
+            {
+              "field": "veto_state",
+              "type": "text",
+              "label": "主动屏蔽门"
+            },
+            {
+              "field": "primary_count",
+              "type": "quantitative",
+              "label": "初级粒子数",
+              "format": "number"
+            },
+            {
+              "field": "tt_s",
+              "type": "quantitative",
+              "label": "TT",
+              "format": "number",
+              "unit": "s"
+            },
+            {
+              "field": "rate_hz",
+              "type": "quantitative",
+              "label": "诊断率",
+              "format": "number",
+              "unit": "Hz"
+            }
+          ]
+        },
+        "palette": {
+          "kind": "categorical",
+          "name": "blue-orange"
+        },
+        "labels": {
+          "values": "all"
+        },
+        "legend": {
+          "position": "bottom",
+          "sort": "spec",
+          "title": "几何"
+        },
+        "settings": {
+          "orientation": "vertical",
+          "groupMode": "grouped",
+          "categoryLabelPolicy": "wrap",
+          "showValues": true,
+          "sort": "custom"
+        },
+        "surface": {
+          "surface": "card",
+          "compact": false,
+          "interactiveLegend": true,
+          "showControls": true,
+          "viewMode": "visualization"
+        }
+      }
+    ],
+    "tables": [
+      {
+        "id": "gamma_active_shield_cutflow_exact",
+        "title": "主动屏蔽阈值 cutflow（精确计数）",
+        "subtitle": "corrected-keV instant gamma；每套几何 100,000 primaries；420 eV FWHM、0.3 keV 像素阈值；非正式 Step05",
+        "showDescription": true,
+        "dataset": "cutflow_exact",
+        "sourceId": "cutflow_exact_sql",
+        "defaultSort": {
+          "field": "row_order",
+          "direction": "asc"
+        },
+        "density": "spacious",
+        "columns": [
+          {
+            "field": "row_order",
+            "label": "#",
+            "format": "number"
+          },
+          {
+            "field": "configuration",
+            "label": "几何 | gate | 阈值",
+            "type": "text"
+          },
+          {
+            "field": "any_tes_count",
+            "label": "任意 TES",
+            "format": "number"
+          },
+          {
+            "field": "count_480_550",
+            "label": "480–550 keV",
+            "format": "number"
+          },
+          {
+            "field": "count_w2",
+            "label": "W2",
+            "format": "number"
+          }
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "id": "source_contract",
+        "label": "Corrected source contract manifest",
+        "path": "engineering/particle_source_unit_repair_20260811/data/source_contract_manifest.json"
+      },
+      {
+        "id": "static_validation",
+        "label": "Corrected source static validation",
+        "path": "engineering/particle_source_unit_repair_20260811/data/static_validation.json"
+      },
+      {
+        "id": "gamma_ab_summary",
+        "label": "Gamma TES source-axis A/B summary",
+        "path": "engineering/particle_source_unit_repair_20260811/gamma_tes_spectrum_ab_20260811/data/tes_gamma_axis_ab_summary.json"
+      },
+      {
+        "id": "event_audit_summary",
+        "label": "Corrected gamma TES event-level re-audit summary",
+        "path": "engineering/particle_source_unit_repair_20260811/gamma_physics_authority_reaudit_20260811/data/corrected_gamma_tes_authority_reaudit_summary.json"
+      },
+      {
+        "id": "event_audit_code",
+        "label": "Corrected gamma TES event-level audit implementation",
+        "path": "engineering/particle_source_unit_repair_20260811/gamma_physics_authority_reaudit_20260811/code/audit_corrected_gamma_tes.py"
+      },
+      {
+        "id": "normalization_audit",
+        "label": "Gamma normalization and physics re-audit",
+        "path": "engineering/particle_source_unit_repair_20260811/gamma_physics_authority_reaudit_20260811/data/normalization_physics_audit.json"
+      },
+      {
+        "id": "cutflow_chart_sql",
+        "label": "Reviewed cutflow chart snapshot SQL",
+        "path": "engineering/particle_source_unit_repair_20260811/gamma_physics_authority_reaudit_20260811/data/cutflow_chart_snapshot.sql"
+      },
+      {
+        "id": "cutflow_exact_sql",
+        "label": "Reviewed exact cutflow snapshot SQL",
+        "path": "engineering/particle_source_unit_repair_20260811/gamma_physics_authority_reaudit_20260811/data/cutflow_exact_snapshot.sql"
+      },
+      {
+        "id": "step05_contract",
+        "label": "Existing Step05 veto/time-axis contract",
+        "path": "stepwise_maintenance/step05_veto_time_axis/README.md"
+      },
+      {
+        "id": "paper_arxiv_v3",
+        "label": "The 511-CAM Mission — official arXiv v3",
+        "href": "https://arxiv.org/pdf/2206.14652v3"
+      },
+      {
+        "id": "paper_doi",
+        "label": "The 511-CAM Mission — published JATIS record",
+        "href": "https://doi.org/10.1117/1.JATIS.9.2.024006"
+      }
+    ],
+    "blocks": [
+      {
+        "id": "title",
+        "type": "markdown",
+        "body": "# Gamma 源谱修复的物理权威复核"
+      },
+      {
+        "id": "technical_summary_unit",
+        "type": "markdown",
+        "sourceId": "source_contract",
+        "body": "## 技术结论：单位修复成立，物理权威仍未成立\n\n**能轴修复在软件/单位合同上是对的。** 保留的 EXPACS/PARMA gamma 横轴是 MeV，而 Cosima `Spectrum File` 横轴是 keV；因此非 alpha 粒子必须使用 `E_keV = 1000 × E_MeV`，同时把归一化谱密度按变量变换除以 1000，并保持每个角箱的绝对 `.Flux` 不变。这个结论不应因旧结果看起来更接近论文而回退。"
+      },
+      {
+        "id": "technical_summary_cutflow",
+        "type": "markdown",
+        "sourceId": "event_audit_summary",
+        "body": "**但 101/99 不是最终本底。** 它们是未施加主动屏蔽 veto、FoV/Compton、1 μs 时间关联或正式 Step05 的任意 TES-positive 事件。显式只统计真实 CsI/BGO 主动体积后，Mass_model_511 从 **101 降到 12**，S3d-O8 从 **99 降到 3**；严格 W2 `[510.58, 511.42)` 的 **7 和 8 件都降到 0**。"
+      },
+      {
+        "id": "technical_summary_boundary",
+        "type": "markdown",
+        "sourceId": "normalization_audit",
+        "body": "**所以你的怀疑抓住的是“口径越权”，不是 `×1000` 本身。** 当前 corrected-keV 输入可以继续作为单位正确的源合同，但 corrected 管线仍然**不能**作为窄线本底、最小可识别通量、任务灵敏度或几何晋级的物理权威。旧 `E/1000` 结果与论文看似接近，可能是错误谱与不同选择口径造成的数值补偿，不能作为单位验证。"
+      },
+      {
+        "id": "gross_result",
+        "type": "markdown",
+        "sourceId": "gamma_ab_summary",
+        "body": "## 101/99 是约 1.85 秒内的未 veto 毛命中\n\nMass_model_511 与 S3d-O8 各投掷 100,000 个 corrected-keV gamma，记录的 TT 分别为 **1.840462 s** 和 **1.851504 s**。任意 TES-positive 计数为 **101** 和 **99**，即条件命中分数 `1.01×10⁻³` 与 `0.99×10⁻³`，对应未 veto 毛率 **54.88 Hz** 与 **53.47 Hz**。这一步只回答“投掷一个全空间宽带 gamma 后，是否在 TES 留下正沉积”，没有回答事件能否通过仪器选择。"
+      },
+      {
+        "id": "cutflow_chart_intro",
+        "type": "markdown",
+        "sourceId": "event_audit_summary",
+        "body": "## 主动屏蔽解释了大部分“异常”计数\n\n下面的图保留绝对事件数：先显示任意 TES、480–550 keV 与严格 W2 的 veto 前计数，再用两套几何各自的真实主动闪烁体体积施加同事件 80 keV 诊断门。读图重点不是比较两根 0 柱，而是看到**宽带高能 shower 产生的 TES 沉积大多与主动屏蔽同时亮起**。"
+      },
+      {
+        "id": "cutflow_chart_block",
+        "type": "chart",
+        "chartId": "gamma_active_shield_cutflow"
+      },
+      {
+        "id": "cutflow_table_intro",
+        "type": "markdown",
+        "sourceId": "event_audit_summary",
+        "body": "## 阈值扫描说明 W2 结论在本样本内稳健\n\nO8 的真实 BGO 门在 **50、70、80 keV** 下都留下 **3 / 0 / 0**（任意 TES / 480–550 / W2）；Mass 的显式 CsI 门在三档阈值下都留下 **12 / 1 / 0**。这说明“本样本的 15 个 W2 事件均可被主动屏蔽否决”不依赖 50/70/80 keV 的选择，但**不能**据此跳过正式体积映射、时间关联和响应选择。"
+      },
+      {
+        "id": "cutflow_table_block",
+        "type": "table",
+        "tableId": "gamma_active_shield_cutflow_exact"
+      },
+      {
+        "id": "metric_definitions",
+        "type": "markdown",
+        "sourceId": "normalization_audit",
+        "body": "## 四个分母不能混在一起\n\n- **毛命中分数**：`N(any TES) / N(primary)`，这里约为 `10⁻³`；它是全空间宽带投掷条件下的 Monte Carlo 传输效率。\n- **物理毛率**：`N / TT`；这里约为 53–55 Hz，TT 只有约 1.85 s。\n- **宽带弥散响应积分**：`ε × πR²`，这里约 11 cm²；它不是聚焦、定向、单能 511 keV 的有效面积。\n- **线灵敏度**：还必须知道正式 veto 后的窄窗本底、独立的聚焦信号有效面积、能量响应、曝光/活时间以及显著性约定。\n\n因此把 `101/100000 ≈ 10⁻³` 直接称为“TES 最小可识别通量”在量纲和统计定义上都不成立。"
+      },
+      {
+        "id": "paper_reference",
+        "type": "markdown",
+        "sourceId": "paper_arxiv_v3",
+        "body": "## 511-CAM 论文的 60 Hz 不是最终窄线灵敏度\n\n[官方 arXiv v3](https://arxiv.org/pdf/2206.14652v3) 把约 **60 Hz** 描述为由 XL-Calibur 测量结果按探测器质量缩放得到的 **>15 keV 宇宙线与大气总本底毛率**。同一论文的信号研究使用聚焦的单能 511 keV 近场源，并建模 8 层 Bi TES、1.2 keV 像素阈值以及 70 keV BGO 阈值；发表记录见 [JATIS DOI](https://doi.org/10.1117/1.JATIS.9.2.024006)。"
+      },
+      {
+        "id": "paper_comparison",
+        "type": "markdown",
+        "sourceId": "normalization_audit",
+        "body": "**当前约 54 Hz 既不明显荒谬，也不能验证源谱。** 它是 EXPACS/PARMA gamma-only、任意 TES 正沉积、未正式 veto 的毛率；论文的 60 Hz 是经验缩放的全成分 `>15 keV` 毛率。两者同量级说明 100 个毛命中本身不构成矛盾，但成分、阈值、几何与选择都不同。更不能拿旧 `E/1000` 的最终选择结果去和论文的最终灵敏度图对齐，再反推旧单位正确。"
+      },
+      {
+        "id": "methodology",
+        "type": "markdown",
+        "sourceId": "event_audit_code",
+        "body": "## 事件级复核只重放了明确、可读的诊断条件\n\n审计逐个读取四个 25k gamma SIM shard 的 `IA INIT` 与 `CC HIT`，把 `TP_L0_*` 至 `TP_L5_*` 的同像素沉积在事件内求和，施加确定性 **420 eV FWHM** 高斯响应与 **0.3 keV** post-noise 像素阈值，再形成事件总能量。Mass 只把 `CsI_Side_Segment_*`、`CsI_Bottom_Quadrant_*`、`CsI_TopAnnulus_Segment_*` 视为主动屏蔽；O8 只接受三块精确命名的 BGO 晶体。名字中含 `ActiveShield` 的被动 Kapton 明确排除。W2 采用左闭右开 `[510.58, 511.42)`。"
+      },
+      {
+        "id": "feeddown",
+        "type": "markdown",
+        "sourceId": "normalization_audit",
+        "body": "## W2 里的峰主要是高能回灌，不是直接大气窄线\n\n修复后的 total-gamma 通量中约 **23.43%** 位于 1.022 MeV 成对产生阈值以上。事件审计表明，本样本全部 **15 个**未 veto W2 事件都由高能初级 gamma 的成对产生/湮没次级链贡献，并且都伴随真实主动屏蔽沉积。因而不能用“输出 W2 计数 ÷ 输入 W2 窄窗通量”估计 511 keV 有效面积；需要响应矩阵或独立的单能 511 keV 注入。当前 total-gamma 表已经含宽箱 annihilation bump，也没有另加 mono-511，不存在当前双计数；未来若要 continuum + line，必须先做线扣除和通量闭合。"
+      },
+      {
+        "id": "limitations",
+        "type": "markdown",
+        "sourceId": "normalization_audit",
+        "body": "## 0 个 survivor 仍不等于低本底或高灵敏度\n\n每套几何只有约 **1.85 s**。W2 在诊断 veto 后观察到 0 件时，单侧 95% Poisson 率上限仍约 **1.62 Hz**；这离任务级窄线本底约束很远。当前结果还缺少：几何专属 Step05 主动体积映射与时间重放、正式 detector response/FoV/Compton 选择、八族 corrected-keV prompt→activation→delayed→response 闭合、任务轨迹/大气深度环境闭合，以及足以描述 0.84 keV 窄窗的 line/continuum 模型。"
+      },
+      {
+        "id": "next_steps",
+        "type": "markdown",
+        "body": "## 下一步：先闭合 cut contract，再扩统计\n\n1. **冻结 `×1000` 源合同，不回退旧轴。** 继续用 hash-pinned corrected-keV 源；旧轴只保留诊断对照，永不并入 corrected ledger。\n2. **先在现有 SIM 上完成正式响应重放。** 为 Mass 与 O8 冻结真实主动体积白名单、50/70/80 keV 阈值语义、1 μs 时间关联、plastic veto、单像素/edge、FoV/Compton 与 W2 顺序，并逐步输出 cutflow。\n3. **把信号与本底基准拆开。** 用独立、定向/光学耦合的 mono-511 注入测信号响应；用 corrected broadband gamma 测 off-diagonal feeddown；不要从 broadband W2 反推信号有效面积。\n4. **按目标上限设计下一批统计。** 先规定希望约束的 post-selection W2 率，再由 Poisson 上限反推所需 TT 和 primaries；不要仅按“再跑 100k”决定。\n5. **最后才恢复任务灵敏度。** 完成八族 prompt、活化、delayed 与 detector response 的同源同几何闭合后，再和论文或任务指标比较。"
+      },
+      {
+        "id": "further_questions",
+        "type": "markdown",
+        "body": "## 需要冻结的三项物理选择\n\n- 正式主动屏蔽门究竟采用 Step05 的 50 keV、论文的 70 keV，还是几何 `.det` 的 80 keV？时间关联和端口代理体积如何定义？\n- 背景基准要匹配哪个环境：当前 38 km、固定位置/日期的 EXPACS/PARMA 点条件，还是论文的 3.5 g cm⁻² 残余大气模型与实际飞行轨迹平均？\n- 511 线与 continuum 如何拆分并保持总通量闭合？在该问题解决前，total-gamma 的宽箱 bump 不能承担 0.84 keV 窄线形状权威。"
+      }
+    ]
+  },
+  "snapshot": {
+    "version": 1,
+    "generatedAt": "2026-08-11T20:45:00+08:00",
+    "status": "partial",
+    "datasets": {
+      "cutflow_chart": [
+        {
+          "category_order": 1,
+          "category": "Any TES - before veto",
+          "geometry": "Mass_model_511",
+          "selection": "Any positive measured TES event",
+          "veto_state": "Before active-shield veto",
+          "threshold_keV": null,
+          "primary_count": 100000,
+          "tt_s": 1.840462,
+          "event_count": 101,
+          "rate_hz": 54.87752531701279
+        },
+        {
+          "category_order": 1,
+          "category": "Any TES - before veto",
+          "geometry": "S3d-O8",
+          "selection": "Any positive measured TES event",
+          "veto_state": "Before active-shield veto",
+          "threshold_keV": null,
+          "primary_count": 100000,
+          "tt_s": 1.851504,
+          "event_count": 99,
+          "rate_hz": 53.47004381302984
+        },
+        {
+          "category_order": 2,
+          "category": "Any TES - after veto",
+          "geometry": "Mass_model_511",
+          "selection": "Any positive measured TES event",
+          "veto_state": "Physical active-shield deposit < 80 keV",
+          "threshold_keV": 80,
+          "primary_count": 100000,
+          "tt_s": 1.840462,
+          "event_count": 12,
+          "rate_hz": 6.520102017862906
+        },
+        {
+          "category_order": 2,
+          "category": "Any TES - after veto",
+          "geometry": "S3d-O8",
+          "selection": "Any positive measured TES event",
+          "veto_state": "Physical active-shield deposit < 80 keV",
+          "threshold_keV": 80,
+          "primary_count": 100000,
+          "tt_s": 1.851504,
+          "event_count": 3,
+          "rate_hz": 1.6203043579706011
+        },
+        {
+          "category_order": 3,
+          "category": "480-550 - before veto",
+          "geometry": "Mass_model_511",
+          "selection": "Measured TES energy in [480, 550) keV",
+          "veto_state": "Before active-shield veto",
+          "threshold_keV": null,
+          "primary_count": 100000,
+          "tt_s": 1.840462,
+          "event_count": 12,
+          "rate_hz": 6.520102017862906
+        },
+        {
+          "category_order": 3,
+          "category": "480-550 - before veto",
+          "geometry": "S3d-O8",
+          "selection": "Measured TES energy in [480, 550) keV",
+          "veto_state": "Before active-shield veto",
+          "threshold_keV": null,
+          "primary_count": 100000,
+          "tt_s": 1.851504,
+          "event_count": 9,
+          "rate_hz": 4.860913073911804
+        },
+        {
+          "category_order": 4,
+          "category": "480-550 - after veto",
+          "geometry": "Mass_model_511",
+          "selection": "Measured TES energy in [480, 550) keV",
+          "veto_state": "Physical active-shield deposit < 80 keV",
+          "threshold_keV": 80,
+          "primary_count": 100000,
+          "tt_s": 1.840462,
+          "event_count": 1,
+          "rate_hz": 0.5433418348219088
+        },
+        {
+          "category_order": 4,
+          "category": "480-550 - after veto",
+          "geometry": "S3d-O8",
+          "selection": "Measured TES energy in [480, 550) keV",
+          "veto_state": "Physical active-shield deposit < 80 keV",
+          "threshold_keV": 80,
+          "primary_count": 100000,
+          "tt_s": 1.851504,
+          "event_count": 0,
+          "rate_hz": 0
+        },
+        {
+          "category_order": 5,
+          "category": "W2 - before veto",
+          "geometry": "Mass_model_511",
+          "selection": "Measured TES energy in [510.58, 511.42) keV",
+          "veto_state": "Before active-shield veto",
+          "threshold_keV": null,
+          "primary_count": 100000,
+          "tt_s": 1.840462,
+          "event_count": 7,
+          "rate_hz": 3.803392843753362
+        },
+        {
+          "category_order": 5,
+          "category": "W2 - before veto",
+          "geometry": "S3d-O8",
+          "selection": "Measured TES energy in [510.58, 511.42) keV",
+          "veto_state": "Before active-shield veto",
+          "threshold_keV": null,
+          "primary_count": 100000,
+          "tt_s": 1.851504,
+          "event_count": 8,
+          "rate_hz": 4.320811621254936
+        },
+        {
+          "category_order": 6,
+          "category": "W2 - after veto",
+          "geometry": "Mass_model_511",
+          "selection": "Measured TES energy in [510.58, 511.42) keV",
+          "veto_state": "Physical active-shield deposit < 80 keV",
+          "threshold_keV": 80,
+          "primary_count": 100000,
+          "tt_s": 1.840462,
+          "event_count": 0,
+          "rate_hz": 0
+        },
+        {
+          "category_order": 6,
+          "category": "W2 - after veto",
+          "geometry": "S3d-O8",
+          "selection": "Measured TES energy in [510.58, 511.42) keV",
+          "veto_state": "Physical active-shield deposit < 80 keV",
+          "threshold_keV": 80,
+          "primary_count": 100000,
+          "tt_s": 1.851504,
+          "event_count": 0,
+          "rate_hz": 0
+        }
+      ],
+      "cutflow_exact": [
+        {
+          "row_order": 1,
+          "configuration": "Mass_model_511 | Before veto | -",
+          "geometry": "Mass_model_511",
+          "gate": "Before veto",
+          "active_volume_contract": "No shield gate",
+          "threshold_label": "-",
+          "primary_count": 100000,
+          "tt_s": 1.840462,
+          "any_tes_count": 101,
+          "any_tes_rate_hz": 54.87752531701279,
+          "count_480_550": 12,
+          "count_w2": 7
+        },
+        {
+          "row_order": 2,
+          "configuration": "Mass_model_511 | CsI veto | 80 keV",
+          "geometry": "Mass_model_511",
+          "gate": "CsI veto",
+          "active_volume_contract": "Explicit CsI side/bottom/top-annulus prefixes; Kapton excluded",
+          "threshold_label": "80 keV",
+          "primary_count": 100000,
+          "tt_s": 1.840462,
+          "any_tes_count": 12,
+          "any_tes_rate_hz": 6.520102017862906,
+          "count_480_550": 1,
+          "count_w2": 0
+        },
+        {
+          "row_order": 3,
+          "configuration": "S3d-O8 | Before veto | -",
+          "geometry": "S3d-O8",
+          "gate": "Before veto",
+          "active_volume_contract": "No shield gate",
+          "threshold_label": "-",
+          "primary_count": 100000,
+          "tt_s": 1.851504,
+          "any_tes_count": 99,
+          "any_tes_rate_hz": 53.47004381302984,
+          "count_480_550": 9,
+          "count_w2": 8
+        },
+        {
+          "row_order": 4,
+          "configuration": "S3d-O8 | BGO veto | 50 keV",
+          "geometry": "S3d-O8",
+          "gate": "BGO veto",
+          "active_volume_contract": "Three exact physical BGO crystals; Kapton excluded",
+          "threshold_label": "50 keV",
+          "primary_count": 100000,
+          "tt_s": 1.851504,
+          "any_tes_count": 3,
+          "any_tes_rate_hz": 1.6203043579706011,
+          "count_480_550": 0,
+          "count_w2": 0
+        },
+        {
+          "row_order": 5,
+          "configuration": "S3d-O8 | BGO veto | 70 keV",
+          "geometry": "S3d-O8",
+          "gate": "BGO veto",
+          "active_volume_contract": "Three exact physical BGO crystals; Kapton excluded",
+          "threshold_label": "70 keV",
+          "primary_count": 100000,
+          "tt_s": 1.851504,
+          "any_tes_count": 3,
+          "any_tes_rate_hz": 1.6203043579706011,
+          "count_480_550": 0,
+          "count_w2": 0
+        },
+        {
+          "row_order": 6,
+          "configuration": "S3d-O8 | BGO veto | 80 keV",
+          "geometry": "S3d-O8",
+          "gate": "BGO veto",
+          "active_volume_contract": "Three exact physical BGO crystals; Kapton excluded",
+          "threshold_label": "80 keV",
+          "primary_count": 100000,
+          "tt_s": 1.851504,
+          "any_tes_count": 3,
+          "any_tes_rate_hz": 1.6203043579706011,
+          "count_480_550": 0,
+          "count_w2": 0
+        }
+      ]
+    },
+    "accessIssues": [
+      {
+        "id": "formal_step05_not_closed",
+        "scope": "post-veto narrow-window background",
+        "sourceId": "step05_contract",
+        "message": "The corrected sample does not yet have a validated geometry-specific Step05 active-volume translation, timing association, threshold convention, and full selection replay."
+      },
+      {
+        "id": "full_chain_not_closed",
+        "scope": "mission background and sensitivity",
+        "sourceId": "normalization_audit",
+        "message": "The corrected-keV all-family prompt-to-activation-to-delayed-to-response chain and mission-environment closure are incomplete, so physical background, sensitivity, and geometry-promotion authority remain unavailable."
+      }
+    ]
+  },
+  "sources": [
+    {
+      "id": "source_contract",
+      "label": "Corrected source contract manifest",
+      "path": "engineering/particle_source_unit_repair_20260811/data/source_contract_manifest.json"
+    },
+    {
+      "id": "static_validation",
+      "label": "Corrected source static validation",
+      "path": "engineering/particle_source_unit_repair_20260811/data/static_validation.json"
+    },
+    {
+      "id": "gamma_ab_summary",
+      "label": "Gamma TES source-axis A/B summary",
+      "path": "engineering/particle_source_unit_repair_20260811/gamma_tes_spectrum_ab_20260811/data/tes_gamma_axis_ab_summary.json"
+    },
+    {
+      "id": "event_audit_summary",
+      "label": "Corrected gamma TES event-level re-audit summary",
+      "path": "engineering/particle_source_unit_repair_20260811/gamma_physics_authority_reaudit_20260811/data/corrected_gamma_tes_authority_reaudit_summary.json"
+    },
+    {
+      "id": "event_audit_code",
+      "label": "Corrected gamma TES event-level audit implementation",
+      "path": "engineering/particle_source_unit_repair_20260811/gamma_physics_authority_reaudit_20260811/code/audit_corrected_gamma_tes.py"
+    },
+    {
+      "id": "normalization_audit",
+      "label": "Gamma normalization and physics re-audit",
+      "path": "engineering/particle_source_unit_repair_20260811/gamma_physics_authority_reaudit_20260811/data/normalization_physics_audit.json"
+    },
+    {
+      "id": "cutflow_chart_sql",
+      "label": "Reviewed cutflow chart snapshot SQL",
+      "path": "engineering/particle_source_unit_repair_20260811/gamma_physics_authority_reaudit_20260811/data/cutflow_chart_snapshot.sql"
+    },
+    {
+      "id": "cutflow_exact_sql",
+      "label": "Reviewed exact cutflow snapshot SQL",
+      "path": "engineering/particle_source_unit_repair_20260811/gamma_physics_authority_reaudit_20260811/data/cutflow_exact_snapshot.sql"
+    },
+    {
+      "id": "step05_contract",
+      "label": "Existing Step05 veto/time-axis contract",
+      "path": "stepwise_maintenance/step05_veto_time_axis/README.md"
+    },
+    {
+      "id": "paper_arxiv_v3",
+      "label": "The 511-CAM Mission — official arXiv v3",
+      "href": "https://arxiv.org/pdf/2206.14652v3"
+    },
+    {
+      "id": "paper_doi",
+      "label": "The 511-CAM Mission — published JATIS record",
+      "href": "https://doi.org/10.1117/1.JATIS.9.2.024006"
+    }
+  ],
+  "package_info": {}
+}

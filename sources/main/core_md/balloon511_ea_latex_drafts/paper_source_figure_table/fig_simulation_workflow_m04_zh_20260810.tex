@@ -1,0 +1,195 @@
+\documentclass[12pt,tikz,border=4mm]{standalone}
+
+\usepackage{fontspec}
+\usepackage{xeCJK}
+\usepackage{xcolor}
+\usetikzlibrary{arrows.meta,backgrounds,calc,fit,positioning}
+
+\setsansfont{Noto Sans CJK SC}
+\setCJKsansfont{Noto Sans CJK SC}
+\renewcommand{\familydefault}{\sfdefault}
+
+\definecolor{signal}{HTML}{009E73}
+\definecolor{prompt}{HTML}{0072B2}
+\definecolor{delayed}{HTML}{D55E00}
+\definecolor{shared}{HTML}{4E5D6C}
+\definecolor{ink}{HTML}{1F2933}
+
+\begin{document}
+\begin{tikzpicture}[
+  x=1cm,
+  y=1cm,
+  text=ink,
+  font=\fontsize{12.2pt}{14.2pt}\selectfont,
+  flow/.style={-{Latex[length=2.5mm,width=1.7mm]}, draw=ink!72,
+               line width=0.85pt, rounded corners=2pt},
+  dep/.style={-{Latex[length=2.2mm,width=1.5mm]}, draw=shared!72,
+              line width=0.75pt, densely dashed, rounded corners=2pt},
+  signalbox/.style={rectangle, rounded corners=3pt, draw=signal,
+                   fill=signal!8, line width=0.9pt, align=center,
+                   text width=2.55cm, minimum height=1.08cm, inner sep=4pt},
+  promptbox/.style={rectangle, rounded corners=3pt, draw=prompt,
+                   fill=prompt!8, line width=0.9pt, align=center,
+                   text width=2.95cm, minimum height=1.08cm, inner sep=4pt},
+  delayedbox/.style={rectangle, rounded corners=3pt, draw=delayed,
+                    fill=delayed!8, line width=0.9pt, align=center,
+                    text width=2.75cm, minimum height=1.08cm, inner sep=4pt},
+  modelbox/.style={rectangle, rounded corners=3pt, draw=shared!80,
+                  fill=shared!8, line width=0.85pt, align=center,
+                  text width=2.7cm, minimum height=0.9cm, inner sep=3pt},
+  eventbox/.style={rectangle, rounded corners=3pt, draw=#1,
+                  fill=white, densely dashed, line width=0.9pt, align=center,
+                  text width=2.25cm, minimum height=0.92cm, inner sep=3pt},
+  sharedbox/.style={rectangle, rounded corners=4pt, draw=shared,
+                   fill=shared!7, line width=1.0pt, align=center,
+                   text width=4.65cm, minimum height=1.08cm, inner sep=5pt},
+  outputbox/.style={rectangle, rounded corners=3pt, draw=shared!85,
+                   fill=white, line width=0.9pt, align=center,
+                   text width=2.35cm, minimum height=1.0cm, inner sep=4pt},
+  lanehead/.style={rounded corners=3pt, text=white, align=center,
+                  font=\fontsize{12.2pt}{14pt}\selectfont\bfseries,
+                  minimum width=1.55cm, minimum height=1.0cm, inner sep=4pt},
+  smallnote/.style={font=\fontsize{9.7pt}{11.3pt}\selectfont,
+                   text=ink!82, align=left}
+]
+
+% Title and shared detector-model contract
+\node[font=\fontsize{16pt}{18pt}\selectfont\bfseries, text=ink]
+  at (15.30,1.2) {端到端模拟与分析流程};
+
+\node[modelbox, text width=20.5cm, minimum height=0.76cm] (detmodel)
+  at (15.30,0.15)
+  {\mbox{探测器侧共享完整质量模型：各设计版本的聚焦光子与所有本底源}\\
+   \mbox{均在同一完整探测器--低温系统质量模型中输运}};
+
+% Lane backgrounds
+\begin{scope}[on background layer]
+  \filldraw[rounded corners=5pt, fill=signal!3.5, draw=signal!52, line width=0.8pt]
+    (0.15,-0.65) rectangle (19.20,-3.65);
+  \filldraw[rounded corners=5pt, fill=prompt!3.5, draw=prompt!52, line width=0.8pt]
+    (0.15,-3.95) rectangle (19.20,-8.15);
+  \filldraw[rounded corners=5pt, fill=delayed!3.5, draw=delayed!52, line width=0.8pt]
+    (0.15,-8.45) rectangle (19.20,-14.75);
+  \filldraw[rounded corners=5pt, fill=shared!3.5, draw=shared!52, line width=0.8pt]
+    (19.55,-0.65) rectangle (30.45,-14.75);
+\end{scope}
+
+% Lane labels
+\node[lanehead, fill=signal] at (1.00,-2.15) {聚焦信号};
+\node[lanehead, fill=prompt, minimum height=1.35cm] at (1.00,-6.05)
+  {瞬发外部\\大气本底};
+\node[lanehead, fill=delayed, minimum height=1.35cm] at (1.00,-11.60)
+  {延迟活化\\本底};
+\node[lanehead, fill=shared, minimum height=1.35cm] at (20.55,-1.65)
+  {统一处理\\与输出};
+
+% Focused-signal lane
+\node[signalbox, text width=2.15cm] (src) at (4.00,-1.40)
+  {511 keV\\参考点源};
+\node[modelbox, text width=2.15cm] (optmodel) at (4.00,-2.85)
+  {Laue 光学\\独立质量模型};
+\node[signalbox] (optics) at (7.60,-2.15) {Laue 光学输运};
+\node[signalbox] (phase) at (11.00,-2.15) {焦平面聚焦光子\\相空间};
+\node[signalbox, text width=2.90cm] (dettransport) at (14.30,-2.15) {聚焦光子\\探测器侧输运};
+\node[eventbox=signal] (sigevt) at (17.60,-2.15) {聚焦信号\\事例目录};
+
+\draw[flow] (src.east) -- ++(0.42,0) |- ($(optics.west)+(0,0.28)$);
+\draw[dep] (optmodel.east) -- ++(0.72,0) |- ($(optics.west)+(0,-0.28)$);
+\draw[flow] (optics) -- (phase);
+\draw[flow] (phase) -- (dettransport);
+\draw[flow] (dettransport) -- (sigevt);
+
+% Prompt-background lane: two computational streams inside one physical class
+\node[promptbox, text width=3.25cm] (expacs) at (4.20,-5.00)
+  {EXPACS/PARMA\\大气 $\gamma$ 连续谱与\\瞬发粒子场};
+\node[promptbox, text width=3.05cm] (prompttr) at (8.70,-5.00)
+  {PROMPT\\瞬发直接输运};
+\node[eventbox=prompt] (promptevt) at (17.60,-5.00)
+  {宽带瞬发\\事例目录};
+
+\node[promptbox, text width=3.55cm] (linesrc) at (4.20,-7.05)
+  {基于文献测量值约束的\\大气正电子湮没\\511 keV 线源};
+\node[promptbox, text width=3.15cm] (linetr) at (8.70,-7.05)
+  {大气 511 keV\\独立单能瞬发\\本底输运};
+\node[eventbox=prompt, text width=2.30cm] (lineevt) at (17.60,-7.05)
+  {大气 511 keV\\瞬发光子事例目录};
+
+\draw[flow] (expacs) -- (prompttr);
+\draw[flow] (prompttr) -- (promptevt);
+\draw[flow] (linesrc) -- (linetr);
+\draw[flow] (linetr) -- (lineevt);
+
+% Delayed-activation lane: independent BUILDUP chain
+\node[delayedbox, text width=3.25cm] (expacs2) at (4.20,-9.65)
+  {EXPACS/PARMA\\大气粒子场\\（与瞬发分支相同）};
+\node[delayedbox, text width=3.05cm] (buildup) at (8.70,-9.65)
+  {BUILDUP\\活化产生输运};
+\node[delayedbox, text width=3.15cm] (records) at (12.90,-9.65)
+  {核素产额、材料体积\\与产生位置记录};
+
+\node[delayedbox, text width=3.20cm] (inventory) at (10.00,-11.95)
+  {飞行时间活度积累与\\参考时刻核素清单};
+\node[delayedbox, text width=2.65cm] (dsrc) at (14.00,-11.95)
+  {按产生位置构建\\延迟衰变源};
+\node[delayedbox, text width=2.35cm] (decaytr) at (14.00,-13.55)
+  {延迟衰变输运};
+\node[eventbox=delayed, text width=2.10cm] (delayevt) at (17.60,-13.55)
+  {延迟活化\\事例目录};
+
+\draw[flow] (expacs2) -- (buildup);
+\draw[flow] (buildup) -- (records);
+\coordinate (inventoryRouteA) at ($(records.south)+(0,-0.18)$);
+\coordinate (inventoryRouteB) at ($(inventory.west)+(-0.65,0)$);
+\draw[flow] (records.south) -- (inventoryRouteA)
+  -| (inventoryRouteB) -- (inventory.west);
+\draw[flow] (inventory) -- (dsrc);
+\draw[flow] (dsrc) -- (decaytr);
+\draw[flow] (decaytr) -- (delayevt);
+
+% Event-stream bus and common offline response/selection
+\coordinate (busTop) at (19.35,-2.15);
+\coordinate (busMid) at (19.35,-4.55);
+\coordinate (busBottom) at (19.35,-13.55);
+\draw[draw=shared!72, line width=1.15pt] (busTop) -- (busBottom);
+\draw[flow] (sigevt.east) -- (busTop);
+\draw[flow] (promptevt.east) -- (19.35,-5.00);
+\draw[flow] (lineevt.east) -- (19.35,-7.05);
+\draw[flow] (delayevt.east) -- (busBottom);
+
+\node[sharedbox, text width=5.00cm, minimum height=2.05cm] (selection)
+  at (25.10,-4.55)
+  {探测器响应\\
+   主动 veto\\
+   Compton 拓扑检验};
+\draw[flow] (busMid) -- (selection.west);
+
+\node[sharedbox, text width=4.95cm] (rates) at (25.10,-7.30)
+  {选后信号率与分量本底率};
+\draw[flow] (selection) -- (rates);
+
+% Two analysis branches feed the final geometry-optimization step
+\node[outputbox, text width=2.85cm] (decomp) at (22.45,-9.65)
+  {选后本底来源分解\\[-1pt]
+   \fontsize{9.5pt}{11pt}\selectfont 入射粒子族/母核素/产生体积};
+
+\node[outputbox, text width=2.95cm] (fold) at (27.75,-9.65)
+  {任务时间--轨迹\\解析率折叠};
+\node[outputbox, text width=2.95cm] (performance) at (27.75,-11.75)
+  {累计信号、本底计数\\与未分辨线灵敏度};
+
+\node[sharedbox, text width=5.55cm, minimum height=1.25cm] (geometry)
+  at (25.10,-13.65)
+  {最终方案评价与\\后续屏蔽几何优化约束};
+
+\draw[flow] ($(rates.south)+(-0.95,0)$) -- ++(0,-0.38)
+  -| (decomp.north);
+\draw[flow] ($(rates.south)+(0.95,0)$) -- ++(0,-0.38)
+  -| (fold.north);
+\draw[flow] (fold) -- (performance);
+\draw[flow] (decomp.south)
+  -- ($(geometry.north)+(-2.65,0)$);
+\draw[flow] (performance.south)
+  -- ($(geometry.north)+(2.65,0)$);
+
+\end{tikzpicture}
+\end{document}

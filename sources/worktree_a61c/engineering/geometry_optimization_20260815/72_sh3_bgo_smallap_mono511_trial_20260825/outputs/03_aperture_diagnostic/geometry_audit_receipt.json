@@ -1,0 +1,229 @@
+{
+  "schema_version": 1,
+  "generated_at_utc": "2026-08-25T10:59:54Z",
+  "status": "PASS__SH3_SMALL_APERTURE_GEOMETRY_AND_SURVIVOR_PATHS_AUDITED",
+  "scope": "Read-only audit of the original SH3, the earlier 35 x 35 SH3 W-grid, the active-BGO-small-aperture 25 x 25 SH3 grid used by package 72, and the SG3B comparison geometry. No transport was launched and no existing artifact was overwritten.",
+  "headline_conclusion": "The 3.796 cm active-BGO square aperture was implemented and used correctly, but it is not the dominant acceptance for the surviving monoenergetic 511-keV background. It strongly suppresses the removed outer annulus locally, while most selected events reach the TES through uncollided BGO transmission or zero-energy-loss Rayleigh paths. Therefore the total selected rate is not expected to scale with the gross square-hole area.",
+  "important_semantic_correction": {
+    "statement": "A recorded BGO energy deposit of 0 keV does not mean that the primary trajectory did not cross or interact in BGO.",
+    "mechanisms": [
+      "A 510.99895-keV photon can traverse a finite BGO thickness without a discrete interaction and then deposit its full energy in the TES.",
+      "A photon can undergo Rayleigh elastic scattering in BGO, retain the line energy, leave no BGO energy deposit, and then enter the TES."
+    ],
+    "analysis_implication": "The equality of the W2 pre-veto and active-BGO-veto counts is not evidence that the surviving photons avoided the BGO geometry."
+  },
+  "transport_authority": {
+    "geometry_setup": "/home/ubuntu/.codex/worktrees/a61c/TES_511_Balloon/engineering/geometry_optimization_20260815/72_sh3_bgo_smallap_mono511_trial_20260825/transport_authority/geometry/SH3_Assembly_OptV3_BGO_SmallAp_SG3Grid_60cm.geo.setup",
+    "geometry_setup_sha256": "cbdcf7633ee08417d002a74c10c397df9515eebc32d099b642f1f361f096b1d0",
+    "geometry_geo": "/home/ubuntu/.codex/worktrees/a61c/TES_511_Balloon/engineering/geometry_optimization_20260815/72_sh3_bgo_smallap_mono511_trial_20260825/transport_authority/geometry/SH3_Assembly_OptV3.geo",
+    "geometry_geo_sha256": "ae015378ca7731eb52545f19e2e7e7df2f88f75026b51d7f5f2dc598bcf1e973",
+    "detector_map_sha256": "12d3a6831f3d00da6668f48487e5d83f7a0354419fdec75cfec211b28373cae9",
+    "source_surface": "60 5 0 9 60",
+    "source_card_geometry_directive_verified": true,
+    "sim_header_geometry_verified_by_campaign_validation": true,
+    "campaign_validation": "/home/ubuntu/.codex/worktrees/a61c/TES_511_Balloon/engineering/geometry_optimization_20260815/72_sh3_bgo_smallap_mono511_trial_20260825/transport_trial_5m/TRANSPORT_VALIDATION.json",
+    "geometry_hash_matches_frozen_small_aperture_package": true,
+    "wrong_setup_or_stale_geometry_evidence_found": false
+  },
+  "geometry_authorities": {
+    "original_sh3": {
+      "geo": "/home/ubuntu/.codex/worktrees/ebb2/TES_511_Balloon/engineering/geometry_optimization_20260815/sh3/assembly_opt_v3/geometry/SH3_Assembly_OptV3.geo",
+      "geo_sha256": "a270ab2caf340a34858b448374b3dad955878ebbb9df9169f97d80df46026934",
+      "front_active_bgo_square_full_width_cm": 6.0,
+      "front_active_bgo_square_area_cm2": 36.0,
+      "collimator": "four-bar W perimeter frame"
+    },
+    "earlier_sh3_wgrid": {
+      "geo": "/home/ubuntu/.codex/worktrees/ebb2/TES_511_Balloon/engineering/geometry_optimization_20260815/sh3/assembly_opt_v3_wgrid_20260824/geometry/SH3_Assembly_OptV3.geo",
+      "geo_sha256": "d6392df0d13692b9b238e839296939de6336dcb66c6fe2b1b99b2226281d6daf",
+      "front_active_bgo_square_full_width_cm": 6.0,
+      "grid_envelope_full_width_cm": 5.4,
+      "grid_cells": 1225,
+      "grid_layout": "35 x 35"
+    },
+    "current_sh3_small_aperture": {
+      "geo": "/home/ubuntu/.codex/worktrees/a61c/TES_511_Balloon/engineering/geometry_optimization_20260815/sh3/assembly_opt_v3_bgo_smallap_sg3grid_20260825/geometry/SH3_Assembly_OptV3.geo",
+      "geo_sha256": "ae015378ca7731eb52545f19e2e7e7df2f88f75026b51d7f5f2dc598bcf1e973",
+      "front_active_bgo_square_full_width_cm": 3.796,
+      "front_active_bgo_square_area_cm2": 14.409616,
+      "grid_envelope_full_width_cm": 3.796,
+      "grid_cells": 625,
+      "grid_layout": "25 x 25",
+      "grid_normal_open_area_cm2": 12.158848,
+      "grid_pitch_cm": 0.155,
+      "grid_web_cm": 0.013,
+      "grid_w_depth_cm": 0.798,
+      "overlap_validation_passed": true
+    },
+    "sg3b": {
+      "geo": "/home/ubuntu/.codex/worktrees/4f50/TES_511_Balloon/engineering/geometry_optimization_20260815/55_geoopt_sg3b_bi_halfcylinder_al_harness_20260816/geometry/DEMO2_DR_v3p5_SG3B.geo",
+      "geo_sha256": "5f0482e307bf8701204f1d6df1b74396b7105d853dccb885e4df401146f552d9",
+      "setup_sha256": "49324ca4baebd8e6323b4a478b168dff8798e2bd7f0d0775e2f179769aad0469",
+      "front_square_full_width_cm": 3.796,
+      "grid_cells": 625,
+      "grid_layout": "25 x 25"
+    }
+  },
+  "serial_aperture_and_detector_dimensions": {
+    "tes_layer_transverse_envelope_cm": [3.6, 3.6],
+    "tes_layer_envelope_area_cm2": 12.96,
+    "current_bgo_square_area_cm2": 14.409616,
+    "current_grid_normal_open_area_cm2": 12.158848,
+    "gross_bgo_area_ratio_new_over_old": 0.4002671111111111,
+    "why_gross_area_scaling_is_invalid": [
+      "The new BGO square is still larger than the 3.6 x 3.6 cm TES layer envelope.",
+      "The central 25 x 25 pitch-and-web pattern is the same pattern used by SG3B and is the central subset of the earlier 35 x 35 SH3 grid; the removed peripheral channels do not map one-to-one onto the TES projection.",
+      "At normal incidence the relevant projected acceptance is limited by the TES footprint and grid open fraction, not by the unused 6 x 6 cm outer BGO hole.",
+      "At finite angles, transmission and elastic-scattering paths through BGO and W also survive without an active-veto energy deposit."
+    ],
+    "other_serial_features": {
+      "front_mechanical_al_circular_inner_radius_cm": 2.7,
+      "rear_bgo_cold_port_inner_radius_cm": 0.75,
+      "another_larger_unshielded_front_bypass_found": false,
+      "note": "The 2.7 cm-radius mechanical-Al opening is larger than the active-BGO square but is in series with it; it does not bypass the 3.796 cm BGO cut. The rear 0.75 cm port is a separate reverse-entry path."
+    }
+  },
+  "collimation_lever_arm": {
+    "sh3_grid_center_local_x_cm": -44.7,
+    "sh3_tes_l0_center_local_x_cm": -38.55,
+    "sh3_grid_center_to_tes_l0_center_cm": 6.15,
+    "sh3_grid_downstream_face_to_tes_l0_upstream_face_cm": 5.6,
+    "sg3_grid_center_local_x_cm": -25.9,
+    "sg3_tes_l0_center_local_x_cm": -3.0,
+    "sg3_grid_center_to_tes_l0_center_cm": 22.9,
+    "sg3_grid_downstream_face_to_tes_l0_upstream_face_cm": 22.35,
+    "sg3_over_sh3_center_distance_ratio": 3.723577235772358,
+    "sg3_over_sh3_free_flight_ratio": 3.9910714285714293,
+    "interpretation": "The same 0.798 cm-deep 25 x 25 grid has approximately four times the grid-to-detector angular lever arm in SG3B. The close SH3 grid therefore does not reproduce the SG3B angular acceptance even though the grid pitch, web, square envelope, and TES footprint match."
+  },
+  "bgo_topology_comparison": {
+    "sh3": {
+      "side_shell_inner_radius_cm": 6.7,
+      "side_shell_outer_radius_cm": 10.7,
+      "side_shell_axial_full_length_cm": 13.0,
+      "front_bgo_full_thickness_cm": 4.0,
+      "rear_bgo_full_thickness_cm": 4.0,
+      "description": "Compact BGO cylinder around the TES stack with a front square cut and a rear circular cold-port cut."
+    },
+    "sg3b": {
+      "side_shell_inner_radius_cm": 21.2,
+      "side_shell_outer_radius_cm": 25.2,
+      "side_shell_axial_full_length_cm": 60.3,
+      "description": "Large full-wrap BGO topology plus separate end structures and the same 3.796 cm side-window cut."
+    },
+    "same_shielding_despite_same_nominal_window": false,
+    "interpretation": "Equal TES area and equal nominal square-window size do not make the SH3 and SG3B shielding/acceptance geometries equivalent."
+  },
+  "current_small_aperture_w2_pre_veto_path_audit": {
+    "population": "All 54 events passing the model-B [510.58, 511.42) keV pre-veto window in the 5,000,000-photon package-72 trial",
+    "physical_exposure_s": 2654.3379,
+    "common_event_weight_cps": 0.00037674178558803683,
+    "categories": {
+      "front_3p796cm_square_path": {
+        "events": 12,
+        "rate_cps": 0.004520901427056442
+      },
+      "rear_r0p75cm_cold_port_path": {
+        "events": 1,
+        "rate_cps": 0.00037674178558803683
+      },
+      "straight_path_crossing_bgo_without_discrete_interaction": {
+        "events": 33,
+        "rate_cps": 0.012432478924405215,
+        "by_bgo_region": {
+          "side": 24,
+          "rear": 5,
+          "front": 4
+        }
+      },
+      "pre_tes_rayleigh_in_bgo": {
+        "events": 8,
+        "rate_cps": 0.0030139342847042947,
+        "by_bgo_region": {
+          "side": 5,
+          "rear": 3,
+          "front": 0
+        }
+      }
+    },
+    "events_whose_path_crossed_or_interacted_in_bgo": 41,
+    "fraction_whose_path_crossed_or_interacted_in_bgo": 0.7592592592592593,
+    "front_square_fraction": 0.2222222222222222,
+    "classification_method": "IA INIT and all pre-TES IA records were read from the 21 raw SIM.gz files. World coordinates were transformed to InstrumentFrame local coordinates using the retained +45 degree y rotation. Straight paths were intersected with the exact front, side, and rear BGO solids."
+  },
+  "current_small_aperture_w2_final_path_crosscheck": {
+    "selected_events": 52,
+    "categories": {
+      "front_3p796cm_square_path": 12,
+      "rear_r0p75cm_cold_port_path": 1,
+      "straight_path_crossing_bgo_without_discrete_interaction": 31,
+      "pre_tes_rayleigh_in_bgo": 8
+    },
+    "front_square_exact_w_box_intersection": {
+      "crosses_at_least_one_w_bar_but_has_no_w_interaction": 10,
+      "clear_vacuum_grid_channel": 2
+    },
+    "interpretation": "Even geometric intersection with a W bar is not an absorption guarantee; the selected sample is conditioned on the rare full-energy survivors."
+  },
+  "old_large_aperture_wgrid_to_current_small_aperture_local_effect": {
+    "old_final_selected_events": 151,
+    "old_physical_exposure_s": 8339.8231,
+    "old_path_partition_relative_to_new_square": {
+      "inside_retained_3p796cm_square": 23,
+      "inside_removed_outer_annulus": 21,
+      "all_other_paths": 107
+    },
+    "removed_outer_annulus_old_rate_cps": 0.002518039021714981,
+    "removed_outer_annulus_current_rate_cps": 0.0007534835711760737,
+    "removed_outer_annulus_suppression_fraction": 0.7007657289350137,
+    "removed_outer_annulus_fraction_of_old_final_population": 0.1390728476821192,
+    "interpretation": "The aperture reduction works where it is geometrically supposed to work: the removed annulus falls by about 70%. It cannot drive a 60% total-rate reduction because that annulus supplied only about 14% of the earlier selected population."
+  },
+  "total_rate_comparison": {
+    "earlier_sh3_wgrid_final_rate_cps": 0.018105899632331533,
+    "earlier_sh3_wgrid_mc_sigma_cps": 0.0014734372156460379,
+    "current_small_aperture_final_rate_cps": 0.019590572850577914,
+    "current_small_aperture_mc_sigma_cps": 0.0027167236510950536,
+    "current_minus_earlier_cps": 0.0014846732182463816,
+    "independent_difference_sigma_cps": 0.0030905670393748114,
+    "difference_z": 0.48038861455880766,
+    "current_over_earlier_ratio": 1.081999417228361,
+    "ratio_standard_error": 0.17397422092292852,
+    "statistical_conclusion": "No significant total-rate worsening or improvement is resolved by the present trial. The apparent increase is a 0.48-sigma fluctuation."
+  },
+  "diagnostic_verdict": {
+    "small_aperture_is_present": true,
+    "small_aperture_is_axis_aligned_with_grid_and_tes": true,
+    "boolean_subtraction_dimensions_correct": true,
+    "active_bgo_sensitive_volume_mapping_retained": true,
+    "geometry_implementation_error_found": false,
+    "another_larger_front_opening_bypasses_the_small_bgo_square": false,
+    "gross_aperture_area_controls_total_surviving_line_rate": false,
+    "previous_claim_that_sh3_vs_sg3_line_degradation_is_mainly_due_to_the_large_front_window": "not_supported_and_should_be_withdrawn",
+    "supported_explanation": "The large SH3 front opening contributed a minor removable annulus component, but the dominant difference is not its gross area. The short SH3 grid-to-TES distance, compact shielding topology, uncollided transmission through BGO/W, and zero-energy-loss Rayleigh redirection create surviving paths that an energy-deposit veto and a smaller outer window do not remove.",
+    "next_discriminating_test_if_needed": "For a higher-precision causal decomposition, run matched-statistics tagged transport or forced-interaction/path-length scoring for the retained-square, removed-annulus, side-BGO, and rear-BGO categories. No such extra run is required to reject gross-area proportional scaling."
+  },
+  "evidence": {
+    "current_geometry_lines": {
+      "tes_l0": "SH3_Assembly_OptV3.geo:2475-2489",
+      "bgo_side_front_rear": "SH3_Assembly_OptV3.geo:14346-14378",
+      "front_mechanical_al": "SH3_Assembly_OptV3.geo:14379-14386",
+      "small_grid_envelope_and_position": "SH3_Assembly_OptV3.geo:14425-14450"
+    },
+    "current_detector_map_lines": {
+      "tes_layers": "SH3_Assembly_OptV3.det:4-61",
+      "active_bgo_volumes": "SH3_Assembly_OptV3.det:63-87"
+    },
+    "sg3_geometry_lines": {
+      "tes_l0": "DEMO2_DR_v3p5_SG3B.geo:3-16",
+      "grid_envelope_and_position": "DEMO2_DR_v3p5_SG3B.geo:14058-14080",
+      "full_wrap_bgo_and_square_cut": "DEMO2_DR_v3p5_SG3B.geo:18044-18106"
+    },
+    "run_setup_lines": "SH3_Assembly_OptV3_BGO_SmallAp_SG3Grid_60cm.geo.setup:1-5",
+    "source_card_lines": "bgo_smallap_parma511_trial_shard0003.source:1-21",
+    "cutflow": "/home/ubuntu/.codex/worktrees/a61c/TES_511_Balloon/engineering/geometry_optimization_20260815/72_sh3_bgo_smallap_mono511_trial_20260825/outputs/01_mono_line_response/mono_line_cutflow.csv",
+    "geometry_manifest": "/home/ubuntu/.codex/worktrees/a61c/TES_511_Balloon/engineering/geometry_optimization_20260815/sh3/assembly_opt_v3_bgo_smallap_sg3grid_20260825/data/bgo_smallap_sg3grid_manifest.json",
+    "static_validation": "/home/ubuntu/.codex/worktrees/a61c/TES_511_Balloon/engineering/geometry_optimization_20260815/sh3/assembly_opt_v3_bgo_smallap_sg3grid_20260825/audit/bgo_smallap_sg3grid_static_validation.json",
+    "overlap_validation": "/home/ubuntu/.codex/worktrees/a61c/TES_511_Balloon/engineering/geometry_optimization_20260815/sh3/assembly_opt_v3_bgo_smallap_sg3grid_20260825/audit/bgo_smallap_sg3grid_overlap_validation.json"
+  }
+}

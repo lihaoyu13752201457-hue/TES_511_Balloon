@@ -1,0 +1,18 @@
+--- a/geant4_app/src/laue_multiring_bfull_demo.cc
++++ b/geant4_app/src/laue_multiring_bfull_demo.cc
+@@ -898,6 +898,7 @@ class GuanStyleLaueBraggProcess : public G4VDiscreteProcess {
+   G4double GetMeanFreePath(const G4Track& track, G4double, G4ForceCondition* condition) override {
+     if (condition) *condition = NotForced;
+     if (track.GetDefinition() != G4Gamma::GammaDefinition()) return DBL_MAX;
++    if (track.GetParentID() != 0) return DBL_MAX;
+     const G4VPhysicalVolume* volume = track.GetVolume();
+     if (!NameContains(volume, "LaueCrystal")) return DBL_MAX;
+     const int copyNo = volume ? volume->GetCopyNo() : 0;
+@@ -918,6 +919,7 @@ class GuanStyleLaueBraggProcess : public G4VDiscreteProcess {
+   G4VParticleChange* PostStepDoIt(const G4Track& track, const G4Step& step) override {
+     aParticleChange.Initialize(track);
+     if (track.GetDefinition() != G4Gamma::GammaDefinition()) return &aParticleChange;
++    if (track.GetParentID() != 0) return &aParticleChange;
+     const G4VPhysicalVolume* volume = step.GetPreStepPoint()->GetPhysicalVolume();
+     if (!NameContains(volume, "LaueCrystal")) return &aParticleChange;
+     const int copyNo = volume ? volume->GetCopyNo() : 0;

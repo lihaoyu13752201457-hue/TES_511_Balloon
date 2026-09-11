@@ -1,0 +1,132 @@
+{
+  "active_veto_volume_audit": {
+    "deposited_energy_keV_by_volume": {
+      "ActiveShield_S3C_BGO_Kapton_BottomCap_0p3mm": 258302.0173572715,
+      "ActiveShield_S3C_BGO_Kapton_SideWrap_WindowCut_0p3mm": 1100578.065315498,
+      "ActiveShield_S3C_BGO_Kapton_TopAnnulus_0p3mm": 55574.00106850516,
+      "BGO_S3C_FullWrap_SideShell_WindowCut_40mm": 252239226.73678592,
+      "BGO_S3D_O8_FullWrap_BottomCap_30mm": 78842239.63594562,
+      "BGO_S3D_O8_FullWrap_TopAnnulus_10mm": 10051400.621390862,
+      "GeoOpt_S2B_CryoShell_Plastic_BottomCap_10mm": 9181769.40133206,
+      "GeoOpt_S2B_CryoShell_Plastic_SideSkin_10mm": 35833847.82501257,
+      "GeoOpt_S2B_CryoShell_Plastic_TopCap_10mm": 5689981.470926309,
+      "Outer_Al_S3C_BGO_Mechanical_BottomCap_3mm": 3718381.0187203703,
+      "Outer_Al_S3C_BGO_Mechanical_SideShell_WindowCut_3mm": 14898464.214058451,
+      "Outer_Al_S3C_BGO_Mechanical_TopAnnulus_3mm": 964682.7456251968
+    },
+    "hit_records_by_volume": {
+      "ActiveShield_S3C_BGO_Kapton_BottomCap_0p3mm": 38482,
+      "ActiveShield_S3C_BGO_Kapton_SideWrap_WindowCut_0p3mm": 158909,
+      "ActiveShield_S3C_BGO_Kapton_TopAnnulus_0p3mm": 7788,
+      "BGO_S3C_FullWrap_SideShell_WindowCut_40mm": 5247297,
+      "BGO_S3D_O8_FullWrap_BottomCap_30mm": 1639442,
+      "BGO_S3D_O8_FullWrap_TopAnnulus_10mm": 228112,
+      "GeoOpt_S2B_CryoShell_Plastic_BottomCap_10mm": 450247,
+      "GeoOpt_S2B_CryoShell_Plastic_SideSkin_10mm": 1756060,
+      "GeoOpt_S2B_CryoShell_Plastic_TopCap_10mm": 281358,
+      "Outer_Al_S3C_BGO_Mechanical_BottomCap_3mm": 139422,
+      "Outer_Al_S3C_BGO_Mechanical_SideShell_WindowCut_3mm": 554509,
+      "Outer_Al_S3C_BGO_Mechanical_TopAnnulus_3mm": 36738
+    },
+    "known_o8_active_shield_named_passive_kapton_wrappers": [
+      "ActiveShield_S3C_BGO_Kapton_BottomCap_0p3mm",
+      "ActiveShield_S3C_BGO_Kapton_SideWrap_WindowCut_0p3mm",
+      "ActiveShield_S3C_BGO_Kapton_TopAnnulus_0p3mm"
+    ],
+    "naming_blocker": "The frozen predicate counts BGO and the S1/S2B plastic volumes, but also matches any name containing ACTIVE_SHIELD. In O8 that unintentionally includes all three passive Kapton wrapper volumes named ActiveShield_S3C_BGO_Kapton_*. This harness preserves, rather than repairs, that frozen selection.",
+    "predicate": "CSI_ prefix OR ACTIVE_SHIELD substring OR ACTIVESHIELD substring OR CEBR3 substring OR BGO substring OR S1 plastic prefix OR S2B plastic prefix"
+  },
+  "artifacts": {
+    "engineering/m04_validation_geometry_handoff_20260810/02_parma_atm511_repair_20260810/transport/campaigns/o8_parma511_line_nominal_180m_20260810/parsed/batch_0056/angular_counts.json": {
+      "bytes": 2066,
+      "sha256": "c26ca3abbda749552cd4bc989d87728c773f68c422254edb9acb8ac3e024c8f3"
+    },
+    "engineering/m04_validation_geometry_handoff_20260810/02_parma_atm511_repair_20260810/transport/campaigns/o8_parma511_line_nominal_180m_20260810/parsed/batch_0056/tes_events.csv": {
+      "bytes": 8771,
+      "sha256": "0e8318650956cd464f78d9f595097380ff8667156ff0d05129cbbae0087bfb29"
+    },
+    "engineering/m04_validation_geometry_handoff_20260810/02_parma_atm511_repair_20260810/transport/campaigns/o8_parma511_line_nominal_180m_20260810/parsed/batch_0056/tes_pixel_hits.csv": {
+      "bytes": 8012,
+      "sha256": "90fd00497bb9dc0796f876aa285f09a8c345fe5450bf8cacba5816867de67eea"
+    }
+  },
+  "checks": {
+    "all_init_are_gamma": true,
+    "all_init_energy_matches": true,
+    "angular20_closure": true,
+    "angular40_closure": true,
+    "angular80_closure": true,
+    "footer_te_positive": true,
+    "footer_ts_matches_id_count": true,
+    "footer_ts_matches_init_count": true,
+    "footer_ts_present": true,
+    "header_geometry_is_o8_setup": true,
+    "header_seed_matches_source": true,
+    "requested_events_match_footer_ts": true
+  },
+  "claim_boundary": "A validated compact parse makes the raw SIM eligible for an external retention decision; this harness did not delete it.",
+  "counts": {
+    "active_only_events": 1046418,
+    "generated_id_records": 3000000,
+    "ia_init_records": 3000000,
+    "tes_events": 79,
+    "tes_or_active_events": 1046497,
+    "tes_pixel_hits": 103
+  },
+  "energy_tolerance_keV": 0.001,
+  "expected_energy_keV": 510.99895,
+  "geometry_authority": {
+    "det": {
+      "bytes": 57508,
+      "path": "engineering/geometry_optimization_20260704/43_geoopt_s3d_o8_fallback_20260712/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.det",
+      "sha256": "dd2c1d68cd474f8b0c7489f2cbbfc924eb69beb14d3ce360d9437c319a33d6cb"
+    },
+    "geo": {
+      "bytes": 650588,
+      "path": "engineering/geometry_optimization_20260704/43_geoopt_s3d_o8_fallback_20260712/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo",
+      "sha256": "ff4e8402df702501e0112fe377d837a74c39100317146b09e9569b7bd615c37c"
+    },
+    "setup": {
+      "bytes": 219,
+      "path": "engineering/geometry_optimization_20260704/43_geoopt_s3d_o8_fallback_20260712/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup",
+      "sha256": "86a9e56e54dc86834dfe2a9b03a5f71373fb40f2ef24e3889fa66f216058fbec"
+    }
+  },
+  "init_energy_max_keV": 510.999,
+  "init_energy_min_keV": 510.999,
+  "parsed_at_utc": "2026-08-10T16:52:47.370518+00:00",
+  "parser": {
+    "path": "engineering/m04_validation_geometry_handoff_20260810/02_parma_atm511_repair_20260810/code/o8_parma511_line_transport_harness.py",
+    "sha256": "6c7c921769f99141325cd856b6c476d94ecbbec3a3c8806409ef3caa5faacc37"
+  },
+  "proposal": "parma80_physical_flux",
+  "raw_sim": {
+    "bytes": 809967785,
+    "path": "engineering/m04_validation_geometry_handoff_20260810/02_parma_atm511_repair_20260810/transport/campaigns/o8_parma511_line_nominal_180m_20260810/raw/O8PARMA511L_o8_parma511_line_nominal_180m_20260810_b0056.inc1.id1.sim.gz",
+    "raw_deleted": false,
+    "raw_disposition": "SAFE_TO_DELETE_NOT_DELETED",
+    "sha256": "7d27fe00f179f5833064a39efad7f206dbf68163d4f845b6d6036347b235499f"
+  },
+  "schema": "o8-parma511-line-stream-catalog-v1",
+  "scope": "atmospheric annihilation mono line only",
+  "sim_footer": {
+    "TE_s": 1592.304838,
+    "TS": 3000000
+  },
+  "sim_header": {
+    "beam_type_first": "BeamType FarFieldAreaSource 0 12.8386 0 360",
+    "created": "2026-08-10 16:17:46",
+    "geometry": "/home/ubuntu/TES_511_Balloon/engineering/geometry_optimization_20260704/43_geoopt_s3d_o8_fallback_20260712/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup",
+    "megalib": "4.02.00",
+    "seed": 266675824,
+    "sim_version": "101",
+    "spectral_type_first": "SpectralType Mono 510.999",
+    "start_area_cm2": 11309.7
+  },
+  "source_card": {
+    "path": "engineering/m04_validation_geometry_handoff_20260810/02_parma_atm511_repair_20260810/transport/campaigns/o8_parma511_line_nominal_180m_20260810/source_cards/O8PARMA511L_o8_parma511_line_nominal_180m_20260810_b0056.source",
+    "sha256": "57a5492ecc91c6a965f88de7bac4333d4a884a358a24a94f928a18bcd9f17435"
+  },
+  "status": "PASS_STREAM_PARSE_COMPLETE",
+  "transport_seed": 266675824
+}

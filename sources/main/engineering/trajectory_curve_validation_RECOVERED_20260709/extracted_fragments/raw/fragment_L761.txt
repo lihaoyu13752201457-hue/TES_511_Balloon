@@ -1,0 +1,444 @@
+1	<!DOCTYPE html>
+2	<html lang="zh-CN">
+3	<head>
+4	<meta charset="utf-8">
+5	<title>TES 511 气球项目 · 三项工程进展汇报 (2026-07-02)</title>
+6	<style>
+7	  * { box-sizing: border-box; }
+8	  body { margin:0; background:#fff; color:#1a1a1a;
+9	         font-family:"Noto Sans CJK SC","Microsoft YaHei","PingFang SC",sans-serif; }
+10	  .slide { min-height:100vh; padding:46px 72px 40px; display:none; flex-direction:column; }
+11	  .slide.active { display:flex; }
+12	  h1 { font-size:34px; margin:0 0 6px; }
+13	  h2 { font-size:26px; margin:0 0 4px; }
+14	  .rule { width:64px; height:3px; background:#2c5aa0; margin:10px 0 22px; }
+15	  .tag { font-size:13px; color:#2c5aa0; letter-spacing:1px; margin-bottom:2px; }
+16	  p, li { font-size:16.5px; line-height:1.62; }
+17	  ul { margin:8px 0; padding-left:22px; }
+18	  li { margin:5px 0; }
+19	  b.red { color:#c0392b; } b.green { color:#1e8449; } b.blue { color:#2c5aa0; }
+20	  table { border-collapse:collapse; margin:12px 0; font-size:14.5px; }
+21	  th, td { border:1px solid #d5d8dc; padding:6px 11px; text-align:left; }
+22	  th { background:#f2f4f6; font-weight:600; }
+23	  td.num { text-align:right; font-variant-numeric:tabular-nums; }
+24	  .cols { display:flex; gap:34px; align-items:flex-start; flex:1; }
+25	  .col { flex:1; min-width:0; }
+26	  .figbox { text-align:center; }
+27	  .figbox img { max-width:100%; max-height:62vh; border:1px solid #eee; }
+28	  .figcap { font-size:13px; color:#666; margin-top:6px; }
+29	  .src { margin-top:auto; padding-top:14px; font-size:11.5px; color:#999;
+30	         font-family:Consolas,monospace; border-top:1px dashed #e5e5e5; }
+31	  .kbox { border:1px solid #d5d8dc; border-left:4px solid #2c5aa0; background:#f8fafc;
+32	          padding:10px 16px; margin:10px 0; font-size:16px; }
+33	  .kbox.warn { border-left-color:#c0392b; background:#fdf6f5; }
+34	  .kbox.good { border-left-color:#1e8449; background:#f4faf6; }
+35	  .pager { position:fixed; right:18px; bottom:12px; font-size:13px; color:#888;
+36	           font-family:Consolas,monospace; user-select:none; }
+37	  .navbtn { position:fixed; bottom:10px; font-size:20px; color:#2c5aa0; cursor:pointer;
+38	            padding:2px 12px; user-select:none; }
+39	  #prev { left:18px; } #next { left:70px; }
+40	  .cover { justify-content:center; align-items:flex-start; }
+41	  .cover h1 { font-size:42px; }
+42	  .cover .item { font-size:20px; margin:10px 0; }
+43	  .cover .meta { color:#777; font-size:15px; margin-top:34px; }
+44	  @media print {
+45	    .slide { display:flex !important; page-break-after:always; min-height:auto; }
+46	    .pager,.navbtn { display:none; }
+47	  }
+48	</style>
+49	</head>
+50	<body>
+51	
+52	<!-- S1 封面 -->
+53	<section class="slide cover active">
+54	  <div class="tag">TES 511 keV BALLOON · ENGINEERING REPORT</div>
+55	  <h1>三项工程进展汇报</h1>
+56	  <div class="rule"></div>
+57	  <div class="item">① 任务轨迹解析曲线的直接输运验证与分层修正</div>
+58	  <div class="item">② 大气 511 keV 谱线缺失的发现与瞬发源修正</div>
+59	  <div class="item">③ 自研康普顿拓扑 veto 的 MEGAlib/Revan 交叉验证与重建层第一遍灵敏度</div>
+60	  <div class="meta">2026-07-02 · 数值权威:fix5_fullstat_v2_exactpos_m50000_s260613 · 白底简版(←/→ 翻页)</div>
+61	</section>
+62	
+63	<!-- S2 总览 -->
+64	<section class="slide">
+65	  <div class="tag">总览</div>
+66	  <h2>三项工作的一句话结论</h2>
+67	  <div class="rule"></div>
+68	  <table>
+69	    <tr><th style="width:26%">工作</th><th>结论</th><th style="width:20%">状态</th></tr>
+70	    <tr><td>① 轨迹曲线验证</td>
+71	        <td>旧"单标量"解析曲线被 4 个轨迹点的直接输运<b class="red">证伪</b>(活化残差 16.6%、W2 瞬发 60.7%);
+72	            按<b class="green">粒子族 / 能量×角度 source-response 分层修正后</b>与直接输运一致(活化 1.1%,W2 合并 ~1σ)</td>
+73	        <td>瞬发/活化层已验证;延迟层待全量回放;Step06 补丁为 plan 未晋升</td></tr>
+74	    <tr><td>② 大气 511 线修正</td>
+75	        <td>EXPACS 光子输入在 449.65→566.08 keV 间线性插值、<b class="red">无大气湮灭线</b>;
+76	            以独立单能线源补入后,基准场景本底 +22.4%,
+77	            <b class="blue">F<sub>3σ</sub>(20d):3.85 → 4.26 ×10⁻⁵</b>(+10.6%)</td>
+78	        <td>fix5 权威下已量化;Mass_model_511 全统计后需重权</td></tr>
+79	    <tr><td>③ Revan 交叉验证</td>
+80	        <td>自研 2 点穷举双序 veto <b class="green">设计被证实正确</b>(Revan 自己的选序仅 78.4% 指向源更优);
+81	            重建层第一遍双通道 <b class="blue">Z=8.3–10.0,F<sub>3σ</sub>≈3.0–3.6×10⁻⁵</b>,不劣于计数层</td>
+82	        <td>重建第一遍闭环;似然/系统误差包络未闭</td></tr>
+83	  </table>
+84	  <p>三项合起来回答同一个问题:<b>当前 20 天 3σ 灵敏度(3.85×10⁻⁵ ph cm⁻² s⁻¹)在时间外推、
+85	     输入完整性、事例重建三个方向上是否站得住。</b></p>
+86	  <div class="src">engineering/{trajectory_transport_validation_20260626, ENGINEERING_20260627_CURVE_CHECK, paper_review_p1_p2_p3_data_check_20260702, revan_compton_crosscheck_smoke_20260702, fullrecon_firstpass_20260702}</div>
+87	</section>
+88	
+89	<!-- S3 P1 背景 -->
+90	<section class="slide">
+91	  <div class="tag">① 轨迹曲线验证 · 1/4</div>
+92	  <h2>问题与验证设计:解析曲线能否代替逐时刻输运?</h2>
+93	  <div class="rule"></div>
+94	  <div class="cols">
+95	    <div class="col">
+96	      <p>论文的 20 天结果是<b>率级折叠</b>:只在第 15 天参考点做完整输运,其余时刻用解析曲线
+97	         缩放(高度→大气深度→透过率/瞬发标量/活化标量)。这条曲线若不真,20 天 Z 与 F<sub>3σ</sub> 都失去依据。</p>
+98	      <p>验证办法:在轨迹上另取代表点,做<b>直接输运</b>,与解析预测对比归一化比值
+99	         Q(t) = [R<sub>MC</sub>(t)/R<sub>MC</sub>(REF)] / S<sub>analytic</sub>(t)。</p>
+100	      <table>
+101	        <tr><th>点</th><th>day</th><th>高度 km</th><th>R<sub>c</sub> GV</th><th>作用</th></tr>
+102	        <tr><td>REF</td><td class="num">15.00</td><td class="num">38.75</td><td class="num">11.00</td><td>锚点</td></tr>
+103	        <tr><td>L1</td><td class="num">3.75</td><td class="num">36.25</td><td class="num">10.98</td><td>低点(早)</td></tr>
+104	        <tr><td>L2</td><td class="num">18.75</td><td class="num">36.25</td><td class="num">11.01</td><td>低点(晚)</td></tr>
+105	        <tr><td>H1</td><td class="num">6.25</td><td class="num">41.25</td><td class="num">11.02</td><td>高点</td></tr>
+106	      </table>
+107	      <p>规模:低统计 smoke 先行(另含 M1 点,判定"偏差或统计不足"),随后升级 full4 加权直接输运:
+108	         <b>544 个输运作业,合计 ~1.0×10⁸ 一次粒子</b>,冻结后进入曲线判定。</p>
+109	    </div>
+110	    <div class="col figbox">
+111	      <img src="figs/analytic_curves_with_validation_points.png" alt="validation points on curves">
+112	      <div class="figcap">四个验证点落位在 Step06 三条旧解析曲线(信号透过率 / 瞬发标量 / 活化标量)上</div>
+113	    </div>
+114	  </div>
+115	  <div class="src">trajectory_transport_validation_20260626/{01_points, 09_full_if_required}; FINAL_STATUS.md</div>
+116	</section>
+117	
+118	<!-- S4 P1 发现问题 -->
+119	<section class="slide">
+120	  <div class="tag">① 轨迹曲线验证 · 2/4</div>
+121	  <h2>发现:旧"单标量"曲线被直接输运证伪</h2>
+122	  <div class="rule"></div>
+123	  <div class="cols">
+124	    <div class="col figbox">
+125	      <img src="figs/direct_points_on_analytic_curves.png" alt="direct points vs old curves">
+126	      <div class="figcap">full4 直接输运点(左:瞬发;右:活化产生)没有全部落在旧解析标量曲线上</div>
+127	    </div>
+128	    <div class="col">
+129	      <table>
+130	        <tr><th>观测量</th><th>旧单标量最大残差</th><th>p 值</th><th>判定</th></tr>
+131	        <tr><td>活化产生总量</td><td class="num"><b class="red">16.6%</b></td><td class="num">≈0</td><td>显著偏离</td></tr>
+132	        <tr><td>瞬发 all-TES 选后</td><td class="num"><b class="red">19.5%</b></td><td class="num">4×10⁻¹⁴</td><td>显著偏离</td></tr>
+133	        <tr><td>瞬发 W2 选后</td><td class="num"><b class="red">60.7%</b></td><td class="num">0.025</td><td>显著偏离</td></tr>
+134	      </table>
+135	      <div class="kbox warn">
+136	        根因:<b>一个标量不能同时缩放信号、瞬发本底和活化</b>。
+137	        大气透过率 T<sub>atm,511</sub> 只作用于天体 511 信号;
+138	        本地瞬发与活化跟随的是当地粒子源通量,且各粒子族随高度/刚度的变化率不同。
+139	      </div>
+140	      <p>full4 判定字串:<span style="font-family:Consolas,monospace;font-size:13px">
+141	         FULL4_PROMPT_ACTIVATION_DEVIATES_ANALYTIC_CURVE_PENDING_DELAYED_FULL</span></p>
+142	    </div>
+143	  </div>
+144	  <div class="src">09_full_if_required/full_4point_curve_validation/full4_validation_decision.json; ENGINEERING_20260627_CURVE_CHECK/outputs/09_report</div>
+145	</section>
+146	
+147	<!-- S5 P1 修正 -->
+148	<section class="slide">
+149	  <div class="tag">① 轨迹曲线验证 · 3/4</div>
+150	  <h2>修正:曲线拆五层,标量换成 source-response</h2>
+151	  <div class="rule"></div>
+152	  <div class="cols">
+153	    <div class="col figbox">
+154	      <img src="figs/curve_layer_split.png" alt="five-layer curve split">
+155	      <div class="figcap">修正后的分层结构:signal / prompt_background / activation_production / delayed_inventory / delayed_selected_response 五条曲线各管各的</div>
+156	    </div>
+157	    <div class="col">
+158	      <table>
+159	        <tr><th>观测量</th><th>旧标量</th><th>粒子族 response</th><th>族×能量×角度</th></tr>
+160	        <tr><td>活化产生总量</td><td class="num">16.6%</td><td class="num"><b class="green">1.1%</b></td><td class="num">—</td></tr>
+161	        <tr><td>瞬发 all-TES</td><td class="num">19.5%</td><td class="num"><b class="green">4.4%</b> (p=0.42 一致)</td><td class="num">—</td></tr>
+162	        <tr><td>瞬发 W2</td><td class="num">60.7%</td><td class="num">48.9%(仍不足)</td><td class="num"><b class="green">17.9% (p=0.71 一致)</b></td></tr>
+163	      </table>
+164	      <p>W2 的关键教训:REF 单点细 response 太稀(W2 选后仅 37 个事例,拆到 粒子×角×能 后大量空格),
+165	         直接外推会系统性低估。改用 <b>leave-one-out 合并细 response + 不确定度带</b>后,
+166	         L1/L2/H1 与直接点合并统计回到 ~1σ 内(z = 0.99 / 0.45 / 0.42)。</p>
+167	      <div class="kbox good">修正后的分层曲线在<b>瞬发与活化产生</b>两层与直接输运一致 —— "解析曲线能预测轨迹性能"这句话,现在有 4 个直接输运点背书。</div>
+168	    </div>
+169	  </div>
+170	  <div class="src">ENGINEERING_20260627_CURVE_CHECK/outputs/{04_corrected_curve_predictions, 05_direct_comparison, 09_report/curve_check_report.html}</div>
+171	</section>
+172	
+173	<!-- S6 P1 TES端+边界 -->
+174	<section class="slide">
+175	  <div class="tag">① 轨迹曲线验证 · 4/4</div>
+176	  <h2>落到 TES 端:20 天目标不受影响;仍开口的两件事</h2>
+177	  <div class="rule"></div>
+178	  <div class="cols">
+179	    <div class="col figbox">
+180	      <img src="figs/tes_w2_selected_rate_time_curve.png" alt="TES W2 selected rate curve">
+181	      <div class="figcap">TES 端 W2 选后率时间曲线:空心菱形为 full4 直接点;族 response 与合并细 response 为模型诊断带</div>
+182	    </div>
+183	    <div class="col">
+184	      <ul>
+185	        <li>把 full4 点叠回现有 Step06/Step08 折叠:<b>Z<sub>20d</sub>=7.8、F<sub>3σ</sub>=3.846×10⁻⁵ 复现</b>,
+186	            当前头条数字在验证过的瞬发/活化层内自洽。</li>
+187	        <li><b class="red">未闭 1:</b>延迟选后率曲线层没有逐时刻延迟全量回放,不能宣布"验证完成"——
+188	            这是下一步全统计申请的一部分。</li>
+189	        <li><b class="red">未闭 2:</b>Step06 主线代码补丁仍是 plan
+190	            (code_change_request + 伪代码 + 单测计划,带 no-promotion 边界),尚未晋升;
+191	            论文 §3.4 文字已预留"标量 → 产生向量插值"的公式位,落补丁时同改。</li>
+192	      </ul>
+193	      <div class="kbox">给论文的表述:任务折叠的标量近似已按"分层 + 粒子族 response"修正并经 4 点直接输运验证;延迟层验证与代码晋升作为 limitation 明示。</div>
+194	    </div>
+195	  </div>
+196	  <div class="src">outputs/{07_step06_patch_plan, 10_tes_rate_sensitivity}; tes_w2_cumulative_significance.png</div>
+197	</section>
+198	
+199	<!-- S7 P2 发现 -->
+200	<section class="slide">
+201	  <div class="tag">② 大气 511 keV 线修正 · 1/3</div>
+202	  <h2>发现:瞬发光子输入谱里根本没有大气湮灭线</h2>
+203	  <div class="rule"></div>
+204	  <div class="cols">
+205	    <div class="col figbox">
+206	      <img src="figs/fig_p2_input_gap.png" alt="EXPACS input gap at 511">
+207	      <div class="figcap">EXPACS/PARMA γ 谱是光滑参数化:511 keV 恰好落在 449.65 与 566.08 keV 两个格点之间,按 IP LIN 线性插值</div>
+208	    </div>
+209	    <div class="col">
+210	      <p>0702 物理审查(P2 项)逐文件核对源定义时实锤:
+211	         <b class="red">大气自身的 511 keV 湮灭线不在光子输入里</b>。
+212	         对一台以 511 keV 为唯一科学窗的仪器,这是"招牌本底通道"级别的缺口。</p>
+213	      <ul>
+214	        <li>入射正电子在载荷内湮灭的<b>本地 511</b> 通道一直都在(它是选后瞬发的主项,47/54 事例);</li>
+215	        <li>缺的是<b>天光中现成的 511 线光子</b>:大气簇射中 β⁺/对产生湮灭后,从下半球为主射入载荷。</li>
+216	      </ul>
+217	      <div class="kbox">修正原则:不去改 EXPACS 连续谱插值,而是把大气 511 keV 作为<b>独立单能线源</b>叠加 —— 归一化可单独锚定文献测量,后续换场景只需重加权。</div>
+218	    </div>
+219	  </div>
+220	  <div class="src">expacs_fullsphere_20bin_sources/cosima_spectra_dp_2602units/gamma_bin*.dat; core_md/balloon511_ea_latex_drafts/physics_review_publishability_20260702.md (P2)</div>
+221	</section>
+222	
+223	<!-- S8 P2 实现 -->
+224	<section class="slide">
+225	  <div class="tag">② 大气 511 keV 线修正 · 2/3</div>
+226	  <h2>实现:独立 511 单能线源 · 300 万事例高统计 transfer</h2>
+227	  <div class="rule"></div>
+228	  <div class="cols">
+229	    <div class="col">
+230	      <ul>
+231	        <li>源:511 keV 单能远场线源(下半球入射,单位总通量归一),<b>3,000,000</b> 个一次光子;</li>
+232	        <li>输运与选择:与主链完全相同的 fix5 几何 + W2 窗 + CsI veto + 拓扑选择;</li>
+233	        <li>结果:<b>100 个 W2 选后事例</b>,单位通量传递系数
+234	            <b class="blue">0.376790 cps / (ph cm⁻² s⁻¹)</b> ——
+235	            此后任何大气 511 通量场景都只是乘法,不必重跑输运。</li>
+236	      </ul>
+237	      <table>
+238	        <tr><th>通量场景</th><th>Φ<sub>511</sub> / ph cm⁻²s⁻¹</th><th>新增本底 / cps</th><th>F<sub>3σ</sub>(20d) /10⁻⁵</th></tr>
+239	        <tr><td><b>Harris R<sub>c</sub>=11–13 GV(基准)</b></td><td class="num">0.0233</td><td class="num"><b>0.00878</b></td><td class="num"><b>4.26</b></td></tr>
+240	        <tr><td>亮度应力 3×10⁻³ /sr</td><td class="num">0.0188</td><td class="num">0.00710</td><td class="num">4.18</td></tr>
+241	        <tr><td>亮度应力 6×10⁻³ /sr</td><td class="num">0.0377</td><td class="num">0.01420</td><td class="num">4.49</td></tr>
+242	        <tr><td>亮度应力 1×10⁻² /sr</td><td class="num">0.0628</td><td class="num">0.02367</td><td class="num">4.87</td></tr>
+243	        <tr><td>SMM 500→34 km(仅应力测试)</td><td class="num">4.909</td><td class="num">1.850</td><td class="num">26.7</td></tr>
+244	      </table>
+245	    </div>
+246	    <div class="col">
+247	      <div class="kbox">基准取 Harris et al. 2003 Table 2(SMM 卫星测量,归一到 R<sub>c</sub>&lt;7 GV 后取 11–13 GV 档),未做载荷高度重标;SMM 行为 MEGAlib BackgroundGenerator 式高度缩放的极端应力,只用来划界,不是物理预期。</div>
+248	      <p>本底相对增量(基准):<b>+22.4%</b>;
+249	         但因 Z ∝ 1/√B,阈值只恶化 <b class="blue">+10.6%</b>。</p>
+250	      <p>Poisson 统计:100 个选后事例 → transfer 系数自身 ±10%,远小于通量场景间差异 —— 不确定度由<b>大气 511 通量的文献取值</b>主导,而不是 MC。</p>
+251	    </div>
+252	  </div>
+253	  <div class="src">runs/p2_atm511_unit_20260702/Atm511LowerUnit3M.{source,inc1.id1.sim.gz}; paper_review_p1_p2_p3_data_check_20260702/outputs/p2_atm511_{transfer_summary.json,flux_scenarios.csv}</div>
+254	</section>
+255	
+256	<!-- S9 P2 影响 -->
+257	<section class="slide">
+258	  <div class="tag">② 大气 511 keV 线修正 · 3/3</div>
+259	  <h2>影响:阈值 3.85 → 4.26 ×10⁻⁵,本底组成重排</h2>
+260	  <div class="rule"></div>
+261	  <div class="cols">
+262	    <div class="col figbox">
+263	      <img src="figs/fig_p2_threshold.png" alt="threshold impact and composition">
+264	      <div class="figcap">左:各通量场景下的 F<sub>3σ</sub>(20 d);右:W2 选后本底组成,修正后大气 511 线占 18.3%</div>
+265	    </div>
+266	    <div class="col">
+267	      <ul>
+268	        <li>基准场景:B 0.03922 → 0.04800 cps;<b class="blue">F<sub>3σ</sub> 3.8464 → 4.2552 ×10⁻⁵</b>;</li>
+269	        <li>组成:瞬发 93.4% / 延迟 6.6% → <b>瞬发 76.3% / 延迟 5.4% / 大气线 18.3%</b> ——
+270	            大气 511 线一跃成为第二大本底成分,后续屏蔽/准直优化要把它当独立对象;</li>
+271	        <li>结论仍成立:即便 +10.6%,阈值仍比 IBIS 紧凑源上限(1.6×10⁻⁴)好约 3.8 倍。</li>
+272	      </ul>
+273	      <div class="kbox warn">遗留:① 通量归一未做高度/角分布精修(Harris 无高度重标);② Mass_model_511 新几何全统计链建成后,需在新权威上重跑或重加权本 transfer(已列入该包 TODO 第 6 条)。</div>
+274	    </div>
+275	  </div>
+276	  <div class="src">paper_review_p1_p2_p3_data_check_20260702/outputs/paper_data_sufficiency_summary_20260702.md; Mass_model_511_nearfield_migration_20260701/11_manuscript_support/TODO_AND_RECENT_UPDATES_20260702.md</div>
+277	</section>
+278	
+279	<!-- S10 R 背景 -->
+280	<section class="slide">
+281	  <div class="tag">③ Revan 交叉验证 · 1/4</div>
+282	  <h2>问题:自研康普顿拓扑 veto 需要原生模块背书吗?</h2>
+283	  <div class="rule"></div>
+284	  <div class="cols">
+285	    <div class="col">
+286	      <p>本链的拓扑/视场选择是<b>后处理自研实现</b>:</p>
+287	      <ul>
+288	        <li>2 个像素:<b>穷举两个散射次序</b>,任一次序的康普顿锥与 Be 窗盘相交即保留;</li>
+289	        <li>≥3 个像素:按运动学残差 Q 找最优次序,再做首锥视场检验;</li>
+290	        <li>找不到有效次序的事例<b>保留不判死</b>(不从歧义中赚灵敏度)。</li>
+291	      </ul>
+292	      <p>外部评审(codex)建议用 MEGAlib 原生康普顿模块(Revan)做一次校验。
+293	         原先未做的理由是"吸收体同为 Ta,无需 Klein–Nishina 计算"。</p>
+294	      <div class="kbox">判断:值得做,而且便宜 —— 论文 §5.1 本来就承诺了
+295	        "Revan/Mimrec or equivalent cross-check";全部基于<b>现有 sim 文件</b>,一次 22 秒,不重跑任何输运。</div>
+296	    </div>
+297	    <div class="col">
+298	      <p><b>验证设计(两级)</b></p>
+299	      <table>
+300	        <tr><th>级</th><th>范围</th><th>回答什么</th></tr>
+301	        <tr><td>Smoke</td><td>信号流 37,194 事例</td><td>分类/定序与自研链是否一致;双序穷举是否必要</td></tr>
+302	        <tr><td>Full first-pass</td><td>+ 瞬发全部 68 文件 + 延迟全统计(6.4 GB + 854 MB sim)</td><td>重建层(方向一致性)灵敏度第一遍数值</td></tr>
+303	      </table>
+304	      <p>Revan 4.02,fix5 几何,默认配置 + 两处必要开关
+305	         (<span style="font-family:Consolas,monospace;font-size:13px">CoincidenceAlgorithm=0; UseComptelTypeEvents=true</span>)。</p>
+306	    </div>
+307	  </div>
+308	  <div class="src">engineering/revan_compton_crosscheck_smoke_20260702/README.md</div>
+309	</section>
+310	
+311	<!-- S11 R smoke -->
+312	<section class="slide">
+313	  <div class="tag">③ Revan 交叉验证 · 2/4</div>
+314	  <h2>Smoke 结果:自研设计三点全部站住</h2>
+315	  <div class="rule"></div>
+316	  <div class="cols">
+317	    <div class="col">
+318	      <table>
+319	        <tr><th>检验</th><th>结果</th><th>含义</th></tr>
+320	        <tr><td>2 点"至少一序运动学有效"</td><td class="num"><b class="green">100.0%</b> (10,421/10,421)</td>
+321	            <td>与解析推导一致:511 全吸收必有一序有效 → 保留 2 点事例的前提成立</td></tr>
+322	        <tr><td>Revan 选序 = 指向源更优的次序</td><td class="num"><b class="red">仅 78.4%</b></td>
+323	            <td>次序本质歧义(mm 级杠杆臂)→ <b>穷举双序而非单选,是正确策略</b></td></tr>
+324	        <tr><td>不可定序事例</td><td class="num">0.16%(61/37,065)</td>
+325	            <td>不存在大的"unreconstructed"群体</td></tr>
+326	        <tr><td>窗内单点数(加噪 vs 未加噪)</td><td class="num">17,695 vs 17,663(+0.2%)</td>
+327	            <td>类别级一致</td></tr>
+328	      </table>
+329	      <div class="kbox">论据修正:"同为 Ta 无需 KN"不是正确理由(KN 排序偏好与材料均一无关)。
+330	        正确表述:<b>这是宽松一致性 veto 而非成像;2 点穷举双序不需要概率排序;歧义事例保留;
+331	        该层对头条 Z 的影响 ≤3%</b>。</div>
+332	    </div>
+333	    <div class="col">
+334	      <p><b>顺带的发现与踩坑(都已归档)</b></p>
+335	      <ul>
+336	        <li>窗内康普顿事例 |ARM| 中位数 ≈24°(像素量化 + 毫米杠杆臂)→ 视场 veto 本质宽松,
+337	            与其实测只削 10–14% 本底一致;论文不应把它说成成像;</li>
+338	        <li>稿件 bug(S6):"discard the unreconstructed class → 59.2%/66.8%/0.724"
+339	            实际对应<b>只保留单点事例</b>(59.44%/66.67%/0.728),需改写;</li>
+340	        <li>踩坑 1:回放 sim 的 1 ns 人工时间戳会被默认 1 μs 符合窗合并成巨型事件(37194→38);</li>
+341	        <li>踩坑 2:Revan 默认整类丢弃 2 点无径迹("Comptel 型")事例,须显式打开。</li>
+342	      </ul>
+343	    </div>
+344	  </div>
+345	  <div class="src">revan_compton_crosscheck_smoke_20260702/{smoke_metrics.json, revan_default.cfg, analyze_smoke.py}</div>
+346	</section>
+347	
+348	<!-- S12 R fullrecon -->
+349	<section class="slide">
+350	  <div class="tag">③ Revan 交叉验证 · 3/4</div>
+351	  <h2>重建层第一遍:hit → Revan → 源方向 → 显著度,首次有数</h2>
+352	  <div class="rule"></div>
+353	  <div class="cols">
+354	    <div class="col figbox">
+355	      <img src="figs/fig_revan_arm_channel.png" alt="ARM channel separation and Z">
+356	      <div class="figcap">左:2 像素事例的 |ARM| 累计接受 —— 信号锥指向源(20° 内 70.7%),本底不指向(5/28);右:双通道合并 Z 随锥角的变化</div>
+357	    </div>
+358	    <div class="col">
+359	      <p>TES-only 真值基下与权威链<b>精确对账</b>:信号窗内 30,323、单/多像素 17,663/12,660、
+360	         延迟 54→33、瞬发 60(=52 e⁺+8 n)、窗+veto 总本底 <b>0.043545 cps 五位一致</b>。</p>
+361	      <table>
+362	        <tr><th></th><th>计数层基线</th><th>重建层(θ=20°)</th></tr>
+363	        <tr><td>Z(20 d)</td><td class="num">7.87</td><td class="num"><b class="blue">9.99</b>(带:8.25–12.3)</td></tr>
+364	        <tr><td>F<sub>3σ</sub> /10⁻⁵</td><td class="num">3.85</td><td class="num"><b class="blue">3.0</b>(带:2.4–3.6)</td></tr>
+365	      </table>
+366	      <p>稳健部分:锥内本底即便按 ×2 计,Z<sub>comb</sub>=8.25 仍 ≥ 基线 —— <b>重建不吃灵敏度</b>;
+367	         增益的精确值受本底统计(5 事例)限制,待全统计加跑。</p>
+368	    </div>
+369	  </div>
+370	  <div class="src">fullrecon_firstpass_20260702/{README.md, fullrecon_metrics.json, analyze_fullrecon.py}</div>
+371	</section>
+372	
+373	<!-- S13 R 结论 -->
+374	<section class="slide">
+375	  <div class="tag">③ Revan 交叉验证 · 4/4</div>
+376	  <h2>结论:自研 veto 保留使用;一条对所有后续工作都重要的教训</h2>
+377	  <div class="rule"></div>
+378	  <div class="cols">
+379	    <div class="col">
+380	      <div class="kbox good"><b>自研康普顿拓扑 veto 可以用,不必换成 Revan。</b><br>
+381	        依据:① veto 而非成像,判据宽松、影响有界(≤3%);② 2 点穷举双序被证明优于任何单选次序;
+382	        ③ 类别与保留率经原生工具核验一致;④ 论文承诺的 cross-check 已兑现,并升级出重建层第一遍数值。</div>
+383	      <p><b>Revan 的定位</b>:不替换主链,作为交叉验证证据 + 后续 Mimrec 成像/似然层的入口。</p>
+384	    </div>
+385	    <div class="col">
+386	      <div class="kbox warn"><b>教训(写给所有后续原生工具使用者)</b>:
+387	        本项目代理几何把 Si 衬底、Cu 支撑板、CsI 等结构件都声明为灵敏探测器(为了后处理读能量),
+388	        因此 <b>Revan 的"事件总能"不是谱仪观测量</b> —— 直接用它开窗,延迟流 54→1、e⁺ 族虚增 15×。
+389	        必须限定 TES-only 能量基(或改用只声明 TES 的几何变体)。这也反过来说明:
+390	        自研链当初的 TES-only + CsI 后处理架构,对这套几何是唯一正确的做法。</div>
+391	      <p>仍未闭(如实列出):spatial-spectral likelihood 与 nuisance profiling、
+392	         systematics envelope、最终探测器响应(加噪/像素中心读出)、≥3 像素定序、Mimrec 成像。</p>
+393	    </div>
+394	  </div>
+395	  <div class="src">core_md/balloon511_ea_latex_drafts/physics_review_publishability_20260702.md §4.1–4.2</div>
+396	</section>
+397	
+398	<!-- S14 汇总 -->
+399	<section class="slide">
+400	  <div class="tag">汇总</div>
+401	  <h2>对论文头条数字的合并影响与下一步</h2>
+402	  <div class="rule"></div>
+403	  <table>
+404	    <tr><th>口径</th><th>F<sub>3σ</sub>(20 d) / 10⁻⁵ ph cm⁻² s⁻¹</th><th>状态</th></tr>
+405	    <tr><td>当前论文权威(fix5,计数层,无大气线,窄线源假设)</td><td class="num">3.85</td><td>已锁定(manifest)</td></tr>
+406	    <tr><td>+ 大气 511 线(Harris 基准)</td><td class="num"><b class="red">4.26</b></td><td>fix5 下已量化,建议进论文本底表</td></tr>
+407	    <tr><td>真实源线宽 1.3–5.4 keV,窗重优化(P1 姊妹项)</td><td class="num">3.41–3.97</td><td>已量化:窗随线宽重开后阈值稳</td></tr>
+408	    <tr><td>重建层双通道(方向一致性,第一遍)</td><td class="num"><b class="green">3.0–3.6</b></td><td>不劣于计数层;待本底统计加固</td></tr>
+409	  </table>
+410	  <p>三项工作的净效果:20 天 3σ 灵敏度的<b>三大外推假设(时间、输入、重建)都经受住了检验</b>;
+411	     数值在 3.0–4.3×10⁻⁵ 区间内移动,始终显著优于 IBIS 上限 1.6×10⁻⁴。</p>
+412	  <p><b>下一步(按优先级)</b>:
+413	     ① 延迟曲线层全量回放 + Step06 补丁晋升(需批全统计);
+414	     ② 大气 511 线进论文本底表 + Mass_model_511 权威建成后重权;
+415	     ③ 重建层 ch2 本底统计加跑,S6 稿件语句改写;
+416	     ④ 三项修正合并后在 Mass_model_511 全统计链上重出 Step06–08 头条数字。</p>
+417	  <div class="src">本页各行出处:paper_evidence_manifest_20260623 · p2_atm511_transfer_summary.json · p1_linewidth_sensitivity_summary.json · fullrecon_metrics.json ·(P1/P3 姊妹项:paper_review_p1_p2_p3_data_check_20260702)</div>
+418	</section>
+419	
+420	<div class="navbtn" id="prev" onclick="nav(-1)">‹</div>
+421	<div class="navbtn" id="next" onclick="nav(1)">›</div>
+422	<div class="pager" id="pager"></div>
+423	
+424	<script>
+425	const slides = Array.from(document.querySelectorAll('.slide'));
+426	let cur = 0;
+427	function show(i){
+428	  cur = Math.max(0, Math.min(slides.length-1, i));
+429	  slides.forEach((s,k)=>s.classList.toggle('active', k===cur));
+430	  document.getElementById('pager').textContent = (cur+1) + ' / ' + slides.length;
+431	  window.scrollTo(0,0);
+432	}
+433	function nav(d){ show(cur+d); }
+434	document.addEventListener('keydown', e=>{
+435	  if(['ArrowRight','PageDown',' '].includes(e.key)) { nav(1); e.preventDefault(); }
+436	  else if(['ArrowLeft','PageUp'].includes(e.key)) { nav(-1); e.preventDefault(); }
+437	  else if(e.key==='Home') show(0);
+438	  else if(e.key==='End') show(slides.length-1);
+439	});
+440	show(0);
+441	</script>
+442	</body>
+443	</html>
+444	

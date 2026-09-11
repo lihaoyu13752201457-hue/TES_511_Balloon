@@ -1,0 +1,41 @@
+{
+  "status": "PASS_V3P5_FULLSTAT_SPATIAL_LINE_PROXY",
+  "claim_level": "V3P5_L1_SPATIAL_LINE_FULLSTAT_V2_SIDECAR",
+  "scope": "Detector-coupled v3p5 fullstat W2 focused-spot spatial sidecar. This is a post-processing sidecar and does not replace the current W2 counting authority.",
+  "inputs": {
+    "detector_response": "stepwise_maintenance/step09_optics_bridge/outputs_f10m_a1_v3p5/detector_coupled_focus_response.json",
+    "spatial_csv": "stepwise_maintenance/step09_optics_bridge/outputs_f10m_a1_v3p5/detector_coupled_spatial_line_cuts.csv",
+    "step05_summary": "stepwise_maintenance/step05_veto_time_axis/outputs_v3p5_centerfinger_fullstat_v2_l1/step05_v3p5_centerfinger_l1_response_summary.json",
+    "step06_background_time_variation": "stepwise_maintenance/step06_mission_time_variation/outputs_v3p5_centerfinger_fullstat_v2/background_time_variation.csv",
+    "step08_w2_authority": "stepwise_maintenance/step08_significance/outputs_v3p5_centerfinger_fullstat_v2/step08_v3p5_centerfinger_time_dependent_summary.json"
+  },
+  "checks": {
+    "signal_radius_r90_cm": 1.0516422148529696,
+    "spot_r90_signal_psf_fraction": 0.9000037465815031,
+    "spot_r90_prompt_cps": 0.01896624026612012,
+    "spot_r90_delayed_cps": 0.0042848093085275174,
+    "spot_r90_background_cps": 0.023251049574647638,
+    "spot_r90_signal_cps_at_reference_flux": 0.0009560886853642319,
+    "spot_r90_Z20d_constant_rate": 8.242306621656603,
+    "spot_r90_Z20d_time_dependent": 8.175664736254516,
+    "spot_r90_T3_day_time_dependent": 2.23642521203323,
+    "spot_r90_T5_day_time_dependent": 7.059479951601939,
+    "spot_r90_flux_3sigma_20d_time_dependent_ph_cm2_s": 3.669426397460591e-05,
+    "spot_r90_gain_vs_current_w2_time_dependent": 1.4337703865098739,
+    "best_time_dependent_cut_id": "spot_r90",
+    "best_time_dependent_Z20d": 8.175664736254516,
+    "detector_response_W2_Z20d_constant_rate": 5.168436526441493,
+    "current_w2_authority_Z20d_time_dependent": 5.702213417976891
+  },
+  "outputs": {
+    "summary_json": "stepwise_maintenance/step08_significance/outputs_v3p5_centerfinger_fullstat_v2_spatial/v3p5_spatial_line_proxy_summary.json",
+    "markdown": "stepwise_maintenance/step08_significance/outputs_v3p5_centerfinger_fullstat_v2_spatial/v3p5_spatial_line_proxy.md",
+    "csv": "stepwise_maintenance/step08_significance/outputs_v3p5_centerfinger_fullstat_v2_spatial/v3p5_spatial_line_proxy.csv",
+    "time_dependent_csv": "stepwise_maintenance/step08_significance/outputs_v3p5_centerfinger_fullstat_v2_spatial/v3p5_spatial_line_time_dependent.csv"
+  },
+  "limitations": [
+    "Gaussian TES line-window sidecar; current v3p5 W2 authority remains the hard-window Step05/Step08 counting chain.",
+    "No profile likelihood gain is claimed.",
+    "Delayed source remains the RadialProfileBeam-compressed source."
+  ]
+}

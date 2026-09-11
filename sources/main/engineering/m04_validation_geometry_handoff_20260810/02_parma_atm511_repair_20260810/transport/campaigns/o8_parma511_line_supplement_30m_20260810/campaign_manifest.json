@@ -1,0 +1,333 @@
+{
+  "authority": {
+    "files": {
+      "engineering/geometry_optimization_20260704/43_geoopt_s3d_o8_fallback_20260712/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.det": {
+        "bytes": 57508,
+        "path": "engineering/geometry_optimization_20260704/43_geoopt_s3d_o8_fallback_20260712/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.det",
+        "sha256": "dd2c1d68cd474f8b0c7489f2cbbfc924eb69beb14d3ce360d9437c319a33d6cb"
+      },
+      "engineering/geometry_optimization_20260704/43_geoopt_s3d_o8_fallback_20260712/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo": {
+        "bytes": 650588,
+        "path": "engineering/geometry_optimization_20260704/43_geoopt_s3d_o8_fallback_20260712/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo",
+        "sha256": "ff4e8402df702501e0112fe377d837a74c39100317146b09e9569b7bd615c37c"
+      },
+      "engineering/geometry_optimization_20260704/43_geoopt_s3d_o8_fallback_20260712/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup": {
+        "bytes": 219,
+        "path": "engineering/geometry_optimization_20260704/43_geoopt_s3d_o8_fallback_20260712/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup",
+        "sha256": "86a9e56e54dc86834dfe2a9b03a5f71373fb40f2ef24e3889fa66f216058fbec"
+      },
+      "engineering/m04_validation_geometry_handoff_20260810/02_parma_atm511_repair_20260810/line/parma511_day15_20bins.csv": {
+        "bytes": 2845,
+        "path": "engineering/m04_validation_geometry_handoff_20260810/02_parma_atm511_repair_20260810/line/parma511_day15_20bins.csv",
+        "sha256": "3e4c73e50f6a5e97c2cd613b9b85a666f27723d7faaa26e105803774936a7ecd"
+      },
+      "engineering/m04_validation_geometry_handoff_20260810/02_parma_atm511_repair_20260810/line/parma511_day15_40bins.csv": {
+        "bytes": 5610,
+        "path": "engineering/m04_validation_geometry_handoff_20260810/02_parma_atm511_repair_20260810/line/parma511_day15_40bins.csv",
+        "sha256": "093175c5b73a72bfba510f23e7bfecb4aa8c93bed19f80a7a5271bccab18daa5"
+      },
+      "engineering/m04_validation_geometry_handoff_20260810/02_parma_atm511_repair_20260810/line/parma511_day15_80bins.csv": {
+        "bytes": 11147,
+        "path": "engineering/m04_validation_geometry_handoff_20260810/02_parma_atm511_repair_20260810/line/parma511_day15_80bins.csv",
+        "sha256": "2f4ae904bf89179fe1709e3a8123ff864f4450e8bcf443389898ea43cd6a5a32"
+      },
+      "old/code/tools/build_v3p5_centerfinger_step05_l1_response.py": {
+        "bytes": 58015,
+        "path": "old/code/tools/build_v3p5_centerfinger_step05_l1_response.py",
+        "sha256": "0c1e69e4a73bd8653e999b1d8d2aff404a37a44457e40f134388c819ad4b91ab"
+      },
+      "stepwise_maintenance/step09_optics_bridge/outputs_f10m_a1_v3p5/step09_optics_bridge_summary.json": {
+        "bytes": 5210,
+        "path": "stepwise_maintenance/step09_optics_bridge/outputs_f10m_a1_v3p5/step09_optics_bridge_summary.json",
+        "sha256": "8d147e21928b4830a215ab034f29379383b4368b4177f8a16a2f45769df73a25"
+      }
+    },
+    "frozen_active_veto_naming_audit": {
+      "active_shield_named_o8_volumes": [
+        "ActiveShield_S3C_BGO_Kapton_BottomCap_0p3mm",
+        "ActiveShield_S3C_BGO_Kapton_SideWrap_WindowCut_0p3mm",
+        "ActiveShield_S3C_BGO_Kapton_TopAnnulus_0p3mm"
+      ],
+      "all_are_passive_kapton_wrappers": true,
+      "blocker": "The frozen predicate counts BGO and the S1/S2B plastic volumes, but also matches any name containing ACTIVE_SHIELD. In O8 that unintentionally includes all three passive Kapton wrapper volumes named ActiveShield_S3C_BGO_Kapton_*. This harness preserves, rather than repairs, that frozen selection.",
+      "predicate_matches_them": true
+    },
+    "grid_rows": {
+      "20": 20,
+      "40": 40,
+      "80": 80
+    },
+    "line_energy_keV": 510.99895,
+    "o8_setup_includes": [
+      "Include DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo",
+      "Include DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.det"
+    ],
+    "physical_flux_ph_cm2_s": 0.16651547160226118,
+    "scope": "atmospheric annihilation mono line only",
+    "status": "PASS_O8_PARMA511_LINE_ONLY_PREFLIGHT"
+  },
+  "batches": [
+    {
+      "batch_index": 0,
+      "events_requested": 3000000,
+      "expected_sim": "engineering/m04_validation_geometry_handoff_20260810/02_parma_atm511_repair_20260810/transport/campaigns/o8_parma511_line_supplement_30m_20260810/raw/O8PARMA511L_o8_parma511_line_supplement_30m_20260810_b0000.inc1.id1.sim.gz",
+      "output_prefix": "engineering/m04_validation_geometry_handoff_20260810/02_parma_atm511_repair_20260810/transport/campaigns/o8_parma511_line_supplement_30m_20260810/raw/O8PARMA511L_o8_parma511_line_supplement_30m_20260810_b0000",
+      "parsed_dir": "engineering/m04_validation_geometry_handoff_20260810/02_parma_atm511_repair_20260810/transport/campaigns/o8_parma511_line_supplement_30m_20260810/parsed/batch_0000",
+      "raw_deleted": false,
+      "raw_disposition": "DO_NOT_DELETE_UNTIL_VALIDATED_PARSE",
+      "run_name": "O8PARMA511L_o8_parma511_line_supplement_30m_20260810_b0000",
+      "source_card": "engineering/m04_validation_geometry_handoff_20260810/02_parma_atm511_repair_20260810/transport/campaigns/o8_parma511_line_supplement_30m_20260810/source_cards/O8PARMA511L_o8_parma511_line_supplement_30m_20260810_b0000.source",
+      "source_card_sha256": "1e14fd9252244c8dde5f8cf70a602ec963039025cb994a101201bf65ef990fb9",
+      "status": "PREPARED_NOT_RUN",
+      "stdout_log": "engineering/m04_validation_geometry_handoff_20260810/02_parma_atm511_repair_20260810/transport/campaigns/o8_parma511_line_supplement_30m_20260810/logs/O8PARMA511L_o8_parma511_line_supplement_30m_20260810_b0000.stdout.log.gz",
+      "transport_seed": 270811000
+    },
+    {
+      "batch_index": 1,
+      "events_requested": 3000000,
+      "expected_sim": "engineering/m04_validation_geometry_handoff_20260810/02_parma_atm511_repair_20260810/transport/campaigns/o8_parma511_line_supplement_30m_20260810/raw/O8PARMA511L_o8_parma511_line_supplement_30m_20260810_b0001.inc1.id1.sim.gz",
+      "output_prefix": "engineering/m04_validation_geometry_handoff_20260810/02_parma_atm511_repair_20260810/transport/campaigns/o8_parma511_line_supplement_30m_20260810/raw/O8PARMA511L_o8_parma511_line_supplement_30m_20260810_b0001",
+      "parsed_dir": "engineering/m04_validation_geometry_handoff_20260810/02_parma_atm511_repair_20260810/transport/campaigns/o8_parma511_line_supplement_30m_20260810/parsed/batch_0001",
+      "raw_deleted": false,
+      "raw_disposition": "DO_NOT_DELETE_UNTIL_VALIDATED_PARSE",
+      "run_name": "O8PARMA511L_o8_parma511_line_supplement_30m_20260810_b0001",
+      "source_card": "engineering/m04_validation_geometry_handoff_20260810/02_parma_atm511_repair_20260810/transport/campaigns/o8_parma511_line_supplement_30m_20260810/source_cards/O8PARMA511L_o8_parma511_line_supplement_30m_20260810_b0001.source",
+      "source_card_sha256": "b881a9ebb837946e10cb1fb0602d2ad9d77c79010c03c27fa42c4b6df2d603f7",
+      "status": "PREPARED_NOT_RUN",
+      "stdout_log": "engineering/m04_validation_geometry_handoff_20260810/02_parma_atm511_repair_20260810/transport/campaigns/o8_parma511_line_supplement_30m_20260810/logs/O8PARMA511L_o8_parma511_line_supplement_30m_20260810_b0001.stdout.log.gz",
+      "transport_seed": 270915729
+    },
+    {
+      "batch_index": 2,
+      "events_requested": 3000000,
+      "expected_sim": "engineering/m04_validation_geometry_handoff_20260810/02_parma_atm511_repair_20260810/transport/campaigns/o8_parma511_line_supplement_30m_20260810/raw/O8PARMA511L_o8_parma511_line_supplement_30m_20260810_b0002.inc1.id1.sim.gz",
+      "output_prefix": "engineering/m04_validation_geometry_handoff_20260810/02_parma_atm511_repair_20260810/transport/campaigns/o8_parma511_line_supplement_30m_20260810/raw/O8PARMA511L_o8_parma511_line_supplement_30m_20260810_b0002",
+      "parsed_dir": "engineering/m04_validation_geometry_handoff_20260810/02_parma_atm511_repair_20260810/transport/campaigns/o8_parma511_line_supplement_30m_20260810/parsed/batch_0002",
+      "raw_deleted": false,
+      "raw_disposition": "DO_NOT_DELETE_UNTIL_VALIDATED_PARSE",
+      "run_name": "O8PARMA511L_o8_parma511_line_supplement_30m_20260810_b0002",
+      "source_card": "engineering/m04_validation_geometry_handoff_20260810/02_parma_atm511_repair_20260810/transport/campaigns/o8_parma511_line_supplement_30m_20260810/source_cards/O8PARMA511L_o8_parma511_line_supplement_30m_20260810_b0002.source",
+      "source_card_sha256": "5a7d55a45a9c8490944e1039dd6868d9d0a097be2374f47d097630f6192df965",
+      "status": "PREPARED_NOT_RUN",
+      "stdout_log": "engineering/m04_validation_geometry_handoff_20260810/02_parma_atm511_repair_20260810/transport/campaigns/o8_parma511_line_supplement_30m_20260810/logs/O8PARMA511L_o8_parma511_line_supplement_30m_20260810_b0002.stdout.log.gz",
+      "transport_seed": 271020458
+    },
+    {
+      "batch_index": 3,
+      "events_requested": 3000000,
+      "expected_sim": "engineering/m04_validation_geometry_handoff_20260810/02_parma_atm511_repair_20260810/transport/campaigns/o8_parma511_line_supplement_30m_20260810/raw/O8PARMA511L_o8_parma511_line_supplement_30m_20260810_b0003.inc1.id1.sim.gz",
+      "output_prefix": "engineering/m04_validation_geometry_handoff_20260810/02_parma_atm511_repair_20260810/transport/campaigns/o8_parma511_line_supplement_30m_20260810/raw/O8PARMA511L_o8_parma511_line_supplement_30m_20260810_b0003",
+      "parsed_dir": "engineering/m04_validation_geometry_handoff_20260810/02_parma_atm511_repair_20260810/transport/campaigns/o8_parma511_line_supplement_30m_20260810/parsed/batch_0003",
+      "raw_deleted": false,
+      "raw_disposition": "DO_NOT_DELETE_UNTIL_VALIDATED_PARSE",
+      "run_name": "O8PARMA511L_o8_parma511_line_supplement_30m_20260810_b0003",
+      "source_card": "engineering/m04_validation_geometry_handoff_20260810/02_parma_atm511_repair_20260810/transport/campaigns/o8_parma511_line_supplement_30m_20260810/source_cards/O8PARMA511L_o8_parma511_line_supplement_30m_20260810_b0003.source",
+      "source_card_sha256": "7d91779ecb85784cdb7cf8c5c744c3c84c2177d5db358571da5bb32f6decff64",
+      "status": "PREPARED_NOT_RUN",
+      "stdout_log": "engineering/m04_validation_geometry_handoff_20260810/02_parma_atm511_repair_20260810/transport/campaigns/o8_parma511_line_supplement_30m_20260810/logs/O8PARMA511L_o8_parma511_line_supplement_30m_20260810_b0003.stdout.log.gz",
+      "transport_seed": 271125187
+    },
+    {
+      "batch_index": 4,
+      "events_requested": 3000000,
+      "expected_sim": "engineering/m04_validation_geometry_handoff_20260810/02_parma_atm511_repair_20260810/transport/campaigns/o8_parma511_line_supplement_30m_20260810/raw/O8PARMA511L_o8_parma511_line_supplement_30m_20260810_b0004.inc1.id1.sim.gz",
+      "output_prefix": "engineering/m04_validation_geometry_handoff_20260810/02_parma_atm511_repair_20260810/transport/campaigns/o8_parma511_line_supplement_30m_20260810/raw/O8PARMA511L_o8_parma511_line_supplement_30m_20260810_b0004",
+      "parsed_dir": "engineering/m04_validation_geometry_handoff_20260810/02_parma_atm511_repair_20260810/transport/campaigns/o8_parma511_line_supplement_30m_20260810/parsed/batch_0004",
+      "raw_deleted": false,
+      "raw_disposition": "DO_NOT_DELETE_UNTIL_VALIDATED_PARSE",
+      "run_name": "O8PARMA511L_o8_parma511_line_supplement_30m_20260810_b0004",
+      "source_card": "engineering/m04_validation_geometry_handoff_20260810/02_parma_atm511_repair_20260810/transport/campaigns/o8_parma511_line_supplement_30m_20260810/source_cards/O8PARMA511L_o8_parma511_line_supplement_30m_20260810_b0004.source",
+      "source_card_sha256": "ed389912b39dfd02ca2446e3a1b0e8aefd6a512a0244d42038ff9e8e75735793",
+      "status": "PREPARED_NOT_RUN",
+      "stdout_log": "engineering/m04_validation_geometry_handoff_20260810/02_parma_atm511_repair_20260810/transport/campaigns/o8_parma511_line_supplement_30m_20260810/logs/O8PARMA511L_o8_parma511_line_supplement_30m_20260810_b0004.stdout.log.gz",
+      "transport_seed": 271229916
+    },
+    {
+      "batch_index": 5,
+      "events_requested": 3000000,
+      "expected_sim": "engineering/m04_validation_geometry_handoff_20260810/02_parma_atm511_repair_20260810/transport/campaigns/o8_parma511_line_supplement_30m_20260810/raw/O8PARMA511L_o8_parma511_line_supplement_30m_20260810_b0005.inc1.id1.sim.gz",
+      "output_prefix": "engineering/m04_validation_geometry_handoff_20260810/02_parma_atm511_repair_20260810/transport/campaigns/o8_parma511_line_supplement_30m_20260810/raw/O8PARMA511L_o8_parma511_line_supplement_30m_20260810_b0005",
+      "parsed_dir": "engineering/m04_validation_geometry_handoff_20260810/02_parma_atm511_repair_20260810/transport/campaigns/o8_parma511_line_supplement_30m_20260810/parsed/batch_0005",
+      "raw_deleted": false,
+      "raw_disposition": "DO_NOT_DELETE_UNTIL_VALIDATED_PARSE",
+      "run_name": "O8PARMA511L_o8_parma511_line_supplement_30m_20260810_b0005",
+      "source_card": "engineering/m04_validation_geometry_handoff_20260810/02_parma_atm511_repair_20260810/transport/campaigns/o8_parma511_line_supplement_30m_20260810/source_cards/O8PARMA511L_o8_parma511_line_supplement_30m_20260810_b0005.source",
+      "source_card_sha256": "9f3c4d6ea0e8b37bf388ced4ae4ea944ea796872fadfb48526ba3b860be14e40",
+      "status": "PREPARED_NOT_RUN",
+      "stdout_log": "engineering/m04_validation_geometry_handoff_20260810/02_parma_atm511_repair_20260810/transport/campaigns/o8_parma511_line_supplement_30m_20260810/logs/O8PARMA511L_o8_parma511_line_supplement_30m_20260810_b0005.stdout.log.gz",
+      "transport_seed": 271334645
+    },
+    {
+      "batch_index": 6,
+      "events_requested": 3000000,
+      "expected_sim": "engineering/m04_validation_geometry_handoff_20260810/02_parma_atm511_repair_20260810/transport/campaigns/o8_parma511_line_supplement_30m_20260810/raw/O8PARMA511L_o8_parma511_line_supplement_30m_20260810_b0006.inc1.id1.sim.gz",
+      "output_prefix": "engineering/m04_validation_geometry_handoff_20260810/02_parma_atm511_repair_20260810/transport/campaigns/o8_parma511_line_supplement_30m_20260810/raw/O8PARMA511L_o8_parma511_line_supplement_30m_20260810_b0006",
+      "parsed_dir": "engineering/m04_validation_geometry_handoff_20260810/02_parma_atm511_repair_20260810/transport/campaigns/o8_parma511_line_supplement_30m_20260810/parsed/batch_0006",
+      "raw_deleted": false,
+      "raw_disposition": "DO_NOT_DELETE_UNTIL_VALIDATED_PARSE",
+      "run_name": "O8PARMA511L_o8_parma511_line_supplement_30m_20260810_b0006",
+      "source_card": "engineering/m04_validation_geometry_handoff_20260810/02_parma_atm511_repair_20260810/transport/campaigns/o8_parma511_line_supplement_30m_20260810/source_cards/O8PARMA511L_o8_parma511_line_supplement_30m_20260810_b0006.source",
+      "source_card_sha256": "4187bc86499d74913b759c3aa8d0a8ea6856ac42985be767e04925a10809d8d9",
+      "status": "PREPARED_NOT_RUN",
+      "stdout_log": "engineering/m04_validation_geometry_handoff_20260810/02_parma_atm511_repair_20260810/transport/campaigns/o8_parma511_line_supplement_30m_20260810/logs/O8PARMA511L_o8_parma511_line_supplement_30m_20260810_b0006.stdout.log.gz",
+      "transport_seed": 271439374
+    },
+    {
+      "batch_index": 7,
+      "events_requested": 3000000,
+      "expected_sim": "engineering/m04_validation_geometry_handoff_20260810/02_parma_atm511_repair_20260810/transport/campaigns/o8_parma511_line_supplement_30m_20260810/raw/O8PARMA511L_o8_parma511_line_supplement_30m_20260810_b0007.inc1.id1.sim.gz",
+      "output_prefix": "engineering/m04_validation_geometry_handoff_20260810/02_parma_atm511_repair_20260810/transport/campaigns/o8_parma511_line_supplement_30m_20260810/raw/O8PARMA511L_o8_parma511_line_supplement_30m_20260810_b0007",
+      "parsed_dir": "engineering/m04_validation_geometry_handoff_20260810/02_parma_atm511_repair_20260810/transport/campaigns/o8_parma511_line_supplement_30m_20260810/parsed/batch_0007",
+      "raw_deleted": false,
+      "raw_disposition": "DO_NOT_DELETE_UNTIL_VALIDATED_PARSE",
+      "run_name": "O8PARMA511L_o8_parma511_line_supplement_30m_20260810_b0007",
+      "source_card": "engineering/m04_validation_geometry_handoff_20260810/02_parma_atm511_repair_20260810/transport/campaigns/o8_parma511_line_supplement_30m_20260810/source_cards/O8PARMA511L_o8_parma511_line_supplement_30m_20260810_b0007.source",
+      "source_card_sha256": "4032359c109fb82ae9de936741d40935aecd84c7e070c7fb3a77036b09dfce15",
+      "status": "PREPARED_NOT_RUN",
+      "stdout_log": "engineering/m04_validation_geometry_handoff_20260810/02_parma_atm511_repair_20260810/transport/campaigns/o8_parma511_line_supplement_30m_20260810/logs/O8PARMA511L_o8_parma511_line_supplement_30m_20260810_b0007.stdout.log.gz",
+      "transport_seed": 271544103
+    },
+    {
+      "batch_index": 8,
+      "events_requested": 3000000,
+      "expected_sim": "engineering/m04_validation_geometry_handoff_20260810/02_parma_atm511_repair_20260810/transport/campaigns/o8_parma511_line_supplement_30m_20260810/raw/O8PARMA511L_o8_parma511_line_supplement_30m_20260810_b0008.inc1.id1.sim.gz",
+      "output_prefix": "engineering/m04_validation_geometry_handoff_20260810/02_parma_atm511_repair_20260810/transport/campaigns/o8_parma511_line_supplement_30m_20260810/raw/O8PARMA511L_o8_parma511_line_supplement_30m_20260810_b0008",
+      "parsed_dir": "engineering/m04_validation_geometry_handoff_20260810/02_parma_atm511_repair_20260810/transport/campaigns/o8_parma511_line_supplement_30m_20260810/parsed/batch_0008",
+      "raw_deleted": false,
+      "raw_disposition": "DO_NOT_DELETE_UNTIL_VALIDATED_PARSE",
+      "run_name": "O8PARMA511L_o8_parma511_line_supplement_30m_20260810_b0008",
+      "source_card": "engineering/m04_validation_geometry_handoff_20260810/02_parma_atm511_repair_20260810/transport/campaigns/o8_parma511_line_supplement_30m_20260810/source_cards/O8PARMA511L_o8_parma511_line_supplement_30m_20260810_b0008.source",
+      "source_card_sha256": "2cb310b6674bdad46dbd54edc9a26234e2414d96cad47e67856de83624b5e73d",
+      "status": "PREPARED_NOT_RUN",
+      "stdout_log": "engineering/m04_validation_geometry_handoff_20260810/02_parma_atm511_repair_20260810/transport/campaigns/o8_parma511_line_supplement_30m_20260810/logs/O8PARMA511L_o8_parma511_line_supplement_30m_20260810_b0008.stdout.log.gz",
+      "transport_seed": 271648832
+    },
+    {
+      "batch_index": 9,
+      "events_requested": 3000000,
+      "expected_sim": "engineering/m04_validation_geometry_handoff_20260810/02_parma_atm511_repair_20260810/transport/campaigns/o8_parma511_line_supplement_30m_20260810/raw/O8PARMA511L_o8_parma511_line_supplement_30m_20260810_b0009.inc1.id1.sim.gz",
+      "output_prefix": "engineering/m04_validation_geometry_handoff_20260810/02_parma_atm511_repair_20260810/transport/campaigns/o8_parma511_line_supplement_30m_20260810/raw/O8PARMA511L_o8_parma511_line_supplement_30m_20260810_b0009",
+      "parsed_dir": "engineering/m04_validation_geometry_handoff_20260810/02_parma_atm511_repair_20260810/transport/campaigns/o8_parma511_line_supplement_30m_20260810/parsed/batch_0009",
+      "raw_deleted": false,
+      "raw_disposition": "DO_NOT_DELETE_UNTIL_VALIDATED_PARSE",
+      "run_name": "O8PARMA511L_o8_parma511_line_supplement_30m_20260810_b0009",
+      "source_card": "engineering/m04_validation_geometry_handoff_20260810/02_parma_atm511_repair_20260810/transport/campaigns/o8_parma511_line_supplement_30m_20260810/source_cards/O8PARMA511L_o8_parma511_line_supplement_30m_20260810_b0009.source",
+      "source_card_sha256": "7db9203189483e2f874de4fa32a87cd2e5d55ccdd00a04c0233cff67e08228af",
+      "status": "PREPARED_NOT_RUN",
+      "stdout_log": "engineering/m04_validation_geometry_handoff_20260810/02_parma_atm511_repair_20260810/transport/campaigns/o8_parma511_line_supplement_30m_20260810/logs/O8PARMA511L_o8_parma511_line_supplement_30m_20260810_b0009.stdout.log.gz",
+      "transport_seed": 271753561
+    }
+  ],
+  "cosima_runtime_preflight": {
+    "cosima": {
+      "bytes": 22808,
+      "path": "/home/ubuntu/MEGAlib_Install/megalib-main/bin/cosima",
+      "sha256": "3fb7613de58ebb365f2a55c3336e54d2aabea2a4ddb282003a5d25eac6f1c74a"
+    },
+    "launch_environment": {
+      "G4ABLADATA": "/home/ubuntu/MEGAlib_Install/megalib-main/external/geant4_v10.02.p03/share/Geant4-10.2.3/data/G4ABLA3.0",
+      "G4ENSDFSTATEDATA": "/home/ubuntu/MEGAlib_Install/megalib-main/external/geant4_v10.02.p03/share/Geant4-10.2.3/data/G4ENSDFSTATE1.2.3",
+      "G4LEDATA": "/home/ubuntu/MEGAlib_Install/megalib-main/external/geant4_v10.02.p03/share/Geant4-10.2.3/data/G4EMLOW6.48",
+      "G4LEVELGAMMADATA": "/home/ubuntu/MEGAlib_Install/megalib-main/external/geant4_v10.02.p03/share/Geant4-10.2.3/data/PhotonEvaporation3.2",
+      "G4NEUTRONHPDATA": "/home/ubuntu/MEGAlib_Install/megalib-main/external/geant4_v10.02.p03/share/Geant4-10.2.3/data/G4NDL4.5",
+      "G4NEUTRONXSDATA": "/home/ubuntu/MEGAlib_Install/megalib-main/external/geant4_v10.02.p03/share/Geant4-10.2.3/data/G4NEUTRONXS1.4",
+      "G4PIIDATA": "/home/ubuntu/MEGAlib_Install/megalib-main/external/geant4_v10.02.p03/share/Geant4-10.2.3/data/G4PII1.3",
+      "G4RADIOACTIVEDATA": "/home/ubuntu/MEGAlib_Install/megalib-main/external/geant4_v10.02.p03/share/Geant4-10.2.3/data/RadioactiveDecay4.3.2",
+      "G4REALSURFACEDATA": "/home/ubuntu/MEGAlib_Install/megalib-main/external/geant4_v10.02.p03/share/Geant4-10.2.3/data/RealSurface1.0",
+      "G4SAIDXSDATA": "/home/ubuntu/MEGAlib_Install/megalib-main/external/geant4_v10.02.p03/share/Geant4-10.2.3/data/G4SAIDDATA1.1",
+      "HOME": "/home/ubuntu",
+      "LANG": "C.UTF-8",
+      "LC_ALL": "C.UTF-8",
+      "LD_LIBRARY_PATH": "/home/ubuntu/MEGAlib_Install/megalib-main/lib:/home/ubuntu/MEGAlib_Install/megalib-main/external/root_v6.36.6/lib:/home/ubuntu/MEGAlib_Install/megalib-main/external/geant4_v10.02.p03/lib",
+      "LOGNAME": "ubuntu",
+      "MEGALIB": "/home/ubuntu/MEGAlib_Install/megalib-main",
+      "PATH": "/home/ubuntu/MEGAlib_Install/megalib-main/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+      "TZ": "UTC",
+      "USER": "ubuntu"
+    },
+    "launch_environment_canonical_sha256": "685ffa106aad847bdedfd1d0c4126f8c9e3fa6708fe44adf981375c29a90afe0",
+    "ld_library_path_components": [
+      "/home/ubuntu/MEGAlib_Install/megalib-main/lib",
+      "/home/ubuntu/MEGAlib_Install/megalib-main/external/root_v6.36.6/lib",
+      "/home/ubuntu/MEGAlib_Install/megalib-main/external/geant4_v10.02.p03/lib"
+    ],
+    "package44_runner": {
+      "path": "engineering/geometry_optimization_20260704/44_s3d_o8_all8_activation_20260713/code/run_s3d_o8_all8_activation.py",
+      "sha256": "942bbcc3b466bd11ec38d8bd9b868762b70a7d895caadf610a85cdbbacc23a9c"
+    },
+    "parent_environment_inherited": false,
+    "rootsys_present": false,
+    "runtime_probe": {
+      "combined_output_bytes": 1699,
+      "combined_output_sha256": "a650590dfd6567979aa89a37fafc1b1b4f547931dc74a0cf81e932866b87353a",
+      "command": [
+        "/home/ubuntu/MEGAlib_Install/megalib-main/bin/cosima",
+        "-h"
+      ],
+      "first_lines": [
+        "",
+        "**************************************************************************",
+        "*                                                                        *",
+        "*                Cosima - the cosmic simulator of MEGAlib                *",
+        "*                                                                        *",
+        "*             This program is part of MEGAlib version 4.02.00            *",
+        "*                (C) by Andreas Zoglauer and contributors                *",
+        "*                                                                        *",
+        "*                      Master reference for MEGAlib:                     *",
+        "*            A. Zoglauer et al., NewAR 50 (7-8), 629-632, 2006           *",
+        "*                                                                        *",
+        "*            For more information about MEGAlib please visit:            *"
+      ],
+      "returncode": 0,
+      "source_card_argument_present": false,
+      "status": "PASS_COSIMA_HELP_RUNTIME_PROBE_NO_SOURCE_TRANSPORT",
+      "transport_launched": false
+    },
+    "status": "PASS_PACKAGE44_EXACT_MINIMAL_COSIMA_ENVIRONMENT"
+  },
+  "created_at_utc": "2026-08-10T14:36:12.717822+00:00",
+  "execution_gate": {
+    "command": "run-batch",
+    "note": "Preparation is not authorization to launch transport.",
+    "requires_confirmation": "RUN_O8_PARMA511_LINE_ONLY_510.99895",
+    "requires_flag": "--authorize-line-only-cosima"
+  },
+  "intent": {
+    "base_seed": 270811000,
+    "batches": 10,
+    "campaign_id": "o8_parma511_line_supplement_30m_20260810",
+    "events_per_batch": 3000000,
+    "line_energy_keV": 510.99895,
+    "o8_setup_sha256": "86a9e56e54dc86834dfe2a9b03a5f71373fb40f2ef24e3889fa66f216058fbec",
+    "proposal_csv_sha256": "2f4ae904bf89179fe1709e3a8123ff864f4450e8bcf443389898ea43cd6a5a32",
+    "proposal_grid_bins": 80,
+    "schema": "o8-parma511-line-transport-campaign-v1"
+  },
+  "intent_fingerprint_sha256": "21911420bae4016b3ac16d2c78582b44e833d48ac1d3246b007feeef6afc3ddf",
+  "response_contract": {
+    "active_threshold_keV": 50.0,
+    "default_replicas": 64,
+    "fwhm_keV": 0.42,
+    "primary_atmospheric_seed": 1026071308,
+    "seed_stride": 7919,
+    "sigma_keV": 0.178357578060484,
+    "step05_sha256": "0c1e69e4a73bd8653e999b1d8d2aff404a37a44457e40f134388c819ad4b91ab",
+    "step09_summary_sha256": "8d147e21928b4830a215ab034f29379383b4368b4177f8a16a2f45769df73a25",
+    "tes_threshold_keV": 0.3
+  },
+  "schema": "o8-parma511-line-transport-campaign-v1",
+  "scope_contract": {
+    "excluded": [
+      "broadband photon continuum",
+      "prompt",
+      "delayed or activation",
+      "focused signal",
+      "all other particles",
+      "full-chain recomposition"
+    ],
+    "included": "atmospheric annihilation mono line at 510.99895 keV",
+    "physical_flux_ph_cm2_s": 0.16651547160226118,
+    "physical_source_grid": "PARMA 80 equal-mu bins"
+  },
+  "status": "PREPARED_LINE_ONLY_NO_COSIMA_LAUNCHED"
+}

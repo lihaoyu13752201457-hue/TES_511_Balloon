@@ -1,0 +1,620 @@
+{
+  "claim_boundary": "First-pass geometry/load and event-record smoke only; no physical rate, activation, delayed, response, sensitivity, or geometry-promotion conclusion.",
+  "confirmation_token": "S3D_O8_LG1_SMOKE_V1",
+  "cosima": {
+    "path": "/home/ubuntu/MEGAlib_Install/megalib-main/bin/cosima",
+    "sha256": "3fb7613de58ebb365f2a55c3336e54d2aabea2a4ddb282003a5d25eac6f1c74a"
+  },
+  "created_utc": "2026-08-13T16:17:28.470981+00:00",
+  "dynamic_pass_contract": {
+    "all_jobs": "zero exit, gzip readable through EOF, one EN/TE/TS trailer, exact geometry and seed headers, sequential paired ID fields, exact NEvents and IA INIT multiplicity",
+    "baseline_guard": "zero CC HIT rows under the two LG1 guard UIDs",
+    "candidate_guard": "record exact per-UID CC HIT counts; the successor diagnostic requires at least one LG1 guard CC HIT",
+    "interpretation": "diagnostic record integrity only, never a background or signal rate estimate"
+  },
+  "geometries": {
+    "A_baseline": {
+      "guard_volumes": [],
+      "setup": "/home/ubuntu/.codex/worktrees/104d/TES_511_Balloon/engineering/geometry_optimization_20260704/43_geoopt_s3d_o8_fallback_20260712/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup",
+      "setup_sha256": "86a9e56e54dc86834dfe2a9b03a5f71373fb40f2ef24e3889fa66f216058fbec"
+    },
+    "B_lg1": {
+      "guard_volumes": [
+        "BGO_S3D_O8_LG1_OpticalAxis_OpenWell_Side_5mm",
+        "BGO_S3D_O8_LG1_OpticalAxis_BackAnnulus_3mm"
+      ],
+      "setup": "/home/ubuntu/.codex/worktrees/104d/TES_511_Balloon/engineering/particle_source_unit_repair_20260811/s3d_o8_lg1_screening_20260813/geometry/DEMO2_DR_v3p5_S3d_O8_LG1_screening_20260813.geo.setup",
+      "setup_sha256": "1ff816e1df466318eca1da276adde60126c2b282f5eb0eb7eca67a94b7800e6a"
+    }
+  },
+  "geometry_validation": {
+    "path": "/home/ubuntu/.codex/worktrees/104d/TES_511_Balloon/engineering/particle_source_unit_repair_20260811/s3d_o8_lg1_screening_20260813/data/lg1_geometry_validation.json",
+    "sha256": "255489213c33e8375b49684f5ae41e27575f92d9df17d8b59ee85199aba0d2c7",
+    "status": "PASS_S3D_O8_LG1_STATIC_GEOMETRY_VALIDATION"
+  },
+  "input_files": [
+    {
+      "path": "/home/ubuntu/.codex/worktrees/104d/TES_511_Balloon/engineering/particle_source_unit_repair_20260811/s3d_o8_lg1_screening_20260813/smoke_inputs/eventlists/back_to_back511_successor_4pos_6dir.eventlist.dat",
+      "sha256": "dd88dafa404f70009d6589de0c0bce119957e264f49e72f11d5e149823ccf264",
+      "size_bytes": 5463
+    },
+    {
+      "path": "/home/ubuntu/.codex/worktrees/104d/TES_511_Balloon/engineering/particle_source_unit_repair_20260811/s3d_o8_lg1_screening_20260813/smoke_inputs/eventlists/focused_first1000.eventlist.dat",
+      "sha256": "b90368aa7f4b469639624b89eb5f74b8ce7070a29422bc1605500b41105f9b4d",
+      "size_bytes": 129409
+    },
+    {
+      "path": "/home/ubuntu/.codex/worktrees/104d/TES_511_Balloon/engineering/particle_source_unit_repair_20260811/s3d_o8_lg1_screening_20260813/smoke_inputs/eventlists/gamma_root_4148keV_event3883_512.eventlist.dat",
+      "sha256": "b7747fe720834e1359005ad8962de785c41d51af0f329a3b95c8bcdf0071baca",
+      "size_bytes": 60820
+    },
+    {
+      "path": "/home/ubuntu/.codex/worktrees/104d/TES_511_Balloon/engineering/particle_source_unit_repair_20260811/s3d_o8_lg1_screening_20260813/smoke_inputs/eventlists/gamma_root_5769keV_event19932_512.eventlist.dat",
+      "sha256": "2d3854c34b2bc8c08c2b2aef29fc37d26efaabcdc6183c840bb46a60ceef5282",
+      "size_bytes": 60308
+    },
+    {
+      "path": "/home/ubuntu/.codex/worktrees/104d/TES_511_Balloon/engineering/particle_source_unit_repair_20260811/s3d_o8_lg1_screening_20260813/smoke_inputs/sources/A/back_to_back511_successor__A.source",
+      "sha256": "45066d9e979d9554d45b52f3ccfc3251fb20b2c1ae2ca3aec4a5e0f9e0d633f9",
+      "size_bytes": 1069
+    },
+    {
+      "path": "/home/ubuntu/.codex/worktrees/104d/TES_511_Balloon/engineering/particle_source_unit_repair_20260811/s3d_o8_lg1_screening_20260813/smoke_inputs/sources/A/focused_first1000__A.source",
+      "sha256": "9a6c9517a3f35908f76a84acba6747a95b84f908e3011d40c530a4679b27a980",
+      "size_bytes": 989
+    },
+    {
+      "path": "/home/ubuntu/.codex/worktrees/104d/TES_511_Balloon/engineering/particle_source_unit_repair_20260811/s3d_o8_lg1_screening_20260813/smoke_inputs/sources/A/gamma_root_4148keV_rep01__A.source",
+      "sha256": "5b4cd5e8db2ac871e6f464d163629d9118261abe1a2da6e77b1d7a440c04335b",
+      "size_bytes": 1059
+    },
+    {
+      "path": "/home/ubuntu/.codex/worktrees/104d/TES_511_Balloon/engineering/particle_source_unit_repair_20260811/s3d_o8_lg1_screening_20260813/smoke_inputs/sources/A/gamma_root_4148keV_rep02__A.source",
+      "sha256": "1d6a297f8bcdb0c239c6498a204657a38b6acaa34a5b47fa8e72917ca7d1a29c",
+      "size_bytes": 1059
+    },
+    {
+      "path": "/home/ubuntu/.codex/worktrees/104d/TES_511_Balloon/engineering/particle_source_unit_repair_20260811/s3d_o8_lg1_screening_20260813/smoke_inputs/sources/A/gamma_root_4148keV_rep03__A.source",
+      "sha256": "91b886a94957ae490ea514fa2602c2fc64f1548454a81dd2114c34ce9b0342b7",
+      "size_bytes": 1059
+    },
+    {
+      "path": "/home/ubuntu/.codex/worktrees/104d/TES_511_Balloon/engineering/particle_source_unit_repair_20260811/s3d_o8_lg1_screening_20260813/smoke_inputs/sources/A/gamma_root_5769keV_rep01__A.source",
+      "sha256": "7ba7dacea0111678027731bd0071d785c7e9cd2f8a97f54286e9ec8e045e358e",
+      "size_bytes": 1060
+    },
+    {
+      "path": "/home/ubuntu/.codex/worktrees/104d/TES_511_Balloon/engineering/particle_source_unit_repair_20260811/s3d_o8_lg1_screening_20260813/smoke_inputs/sources/A/gamma_root_5769keV_rep02__A.source",
+      "sha256": "db2c099c81a47bf5faada761ffd2c6569c59c9c1e9bcde30744c0c6a76dc1797",
+      "size_bytes": 1060
+    },
+    {
+      "path": "/home/ubuntu/.codex/worktrees/104d/TES_511_Balloon/engineering/particle_source_unit_repair_20260811/s3d_o8_lg1_screening_20260813/smoke_inputs/sources/A/gamma_root_5769keV_rep03__A.source",
+      "sha256": "c9e20f8a35eb9ad24f8b28c05f624089423aba16a6d33947b8ef8c866c0192fe",
+      "size_bytes": 1060
+    },
+    {
+      "path": "/home/ubuntu/.codex/worktrees/104d/TES_511_Balloon/engineering/particle_source_unit_repair_20260811/s3d_o8_lg1_screening_20260813/smoke_inputs/sources/B/back_to_back511_successor__B.source",
+      "sha256": "d18b80e1fa1f8c42c3f1cc400bd8b744fea92d3a782b7e5d860484bc87b41bf6",
+      "size_bytes": 1064
+    },
+    {
+      "path": "/home/ubuntu/.codex/worktrees/104d/TES_511_Balloon/engineering/particle_source_unit_repair_20260811/s3d_o8_lg1_screening_20260813/smoke_inputs/sources/B/focused_first1000__B.source",
+      "sha256": "3ec115d56801c1fa367d2de73c91581384ed5b106ffa2ccf5bfe053db4508b64",
+      "size_bytes": 984
+    },
+    {
+      "path": "/home/ubuntu/.codex/worktrees/104d/TES_511_Balloon/engineering/particle_source_unit_repair_20260811/s3d_o8_lg1_screening_20260813/smoke_inputs/sources/B/gamma_root_4148keV_rep01__B.source",
+      "sha256": "0cdffeded3bfc8c680cb1e9c6fa0f171a6e6ade3dc2ad169f6bd647f8620692c",
+      "size_bytes": 1054
+    },
+    {
+      "path": "/home/ubuntu/.codex/worktrees/104d/TES_511_Balloon/engineering/particle_source_unit_repair_20260811/s3d_o8_lg1_screening_20260813/smoke_inputs/sources/B/gamma_root_4148keV_rep02__B.source",
+      "sha256": "62f392936b0627bb301f15e0869f93764e03e328a7be2c9e8eb9b653676e2dfb",
+      "size_bytes": 1054
+    },
+    {
+      "path": "/home/ubuntu/.codex/worktrees/104d/TES_511_Balloon/engineering/particle_source_unit_repair_20260811/s3d_o8_lg1_screening_20260813/smoke_inputs/sources/B/gamma_root_4148keV_rep03__B.source",
+      "sha256": "3ae1fe4fd6b9c4f3ad8b6baeba414a10e2159a00eca59a0272b6214a1d803a06",
+      "size_bytes": 1054
+    },
+    {
+      "path": "/home/ubuntu/.codex/worktrees/104d/TES_511_Balloon/engineering/particle_source_unit_repair_20260811/s3d_o8_lg1_screening_20260813/smoke_inputs/sources/B/gamma_root_5769keV_rep01__B.source",
+      "sha256": "d475eef1d989fc35f8ff22b9795db719a73db8e19ab49a88d423d9590b515a45",
+      "size_bytes": 1055
+    },
+    {
+      "path": "/home/ubuntu/.codex/worktrees/104d/TES_511_Balloon/engineering/particle_source_unit_repair_20260811/s3d_o8_lg1_screening_20260813/smoke_inputs/sources/B/gamma_root_5769keV_rep02__B.source",
+      "sha256": "879b6c5276fa29320c02969040cf1d691c90d5cccce0c06e828b9dc02c9d3293",
+      "size_bytes": 1055
+    },
+    {
+      "path": "/home/ubuntu/.codex/worktrees/104d/TES_511_Balloon/engineering/particle_source_unit_repair_20260811/s3d_o8_lg1_screening_20260813/smoke_inputs/sources/B/gamma_root_5769keV_rep03__B.source",
+      "sha256": "592ce384e30ca57fd2decaf9d18a4acc11b2c18e5770cb9e2994b24ccac76a32",
+      "size_bytes": 1055
+    }
+  ],
+  "jobs": [
+    {
+      "cell_id": "focused_first1000",
+      "eventlist": "/home/ubuntu/.codex/worktrees/104d/TES_511_Balloon/engineering/particle_source_unit_repair_20260811/s3d_o8_lg1_screening_20260813/smoke_inputs/eventlists/focused_first1000.eventlist.dat",
+      "expected_init_per_event": 1,
+      "final_attempt_dir": "/home/ubuntu/.codex/worktrees/104d/TES_511_Balloon/runs/particle_source_unit_repair_20260811/s3d_o8_lg1_screening_20260814_v1/focused_first1000__A/attempt01",
+      "geometry_key": "A_baseline",
+      "job_id": "focused_first1000__A",
+      "n_events": 1000,
+      "output_prefix_partial": "/home/ubuntu/.codex/worktrees/104d/TES_511_Balloon/runs/particle_source_unit_repair_20260811/s3d_o8_lg1_screening_20260814_v1/focused_first1000__A/.attempt01.partial/focused_first1000__A",
+      "partial_attempt_dir": "/home/ubuntu/.codex/worktrees/104d/TES_511_Balloon/runs/particle_source_unit_repair_20260811/s3d_o8_lg1_screening_20260814_v1/focused_first1000__A/.attempt01.partial",
+      "require_guard_cc_hit": false,
+      "seed": 2120000003,
+      "source": "/home/ubuntu/.codex/worktrees/104d/TES_511_Balloon/engineering/particle_source_unit_repair_20260811/s3d_o8_lg1_screening_20260813/smoke_inputs/sources/A/focused_first1000__A.source",
+      "source_sha256": "9a6c9517a3f35908f76a84acba6747a95b84f908e3011d40c530a4679b27a980"
+    },
+    {
+      "cell_id": "focused_first1000",
+      "eventlist": "/home/ubuntu/.codex/worktrees/104d/TES_511_Balloon/engineering/particle_source_unit_repair_20260811/s3d_o8_lg1_screening_20260813/smoke_inputs/eventlists/focused_first1000.eventlist.dat",
+      "expected_init_per_event": 1,
+      "final_attempt_dir": "/home/ubuntu/.codex/worktrees/104d/TES_511_Balloon/runs/particle_source_unit_repair_20260811/s3d_o8_lg1_screening_20260814_v1/focused_first1000__B/attempt01",
+      "geometry_key": "B_lg1",
+      "job_id": "focused_first1000__B",
+      "n_events": 1000,
+      "output_prefix_partial": "/home/ubuntu/.codex/worktrees/104d/TES_511_Balloon/runs/particle_source_unit_repair_20260811/s3d_o8_lg1_screening_20260814_v1/focused_first1000__B/.attempt01.partial/focused_first1000__B",
+      "partial_attempt_dir": "/home/ubuntu/.codex/worktrees/104d/TES_511_Balloon/runs/particle_source_unit_repair_20260811/s3d_o8_lg1_screening_20260814_v1/focused_first1000__B/.attempt01.partial",
+      "require_guard_cc_hit": false,
+      "seed": 2120000003,
+      "source": "/home/ubuntu/.codex/worktrees/104d/TES_511_Balloon/engineering/particle_source_unit_repair_20260811/s3d_o8_lg1_screening_20260813/smoke_inputs/sources/B/focused_first1000__B.source",
+      "source_sha256": "3ec115d56801c1fa367d2de73c91581384ed5b106ffa2ccf5bfe053db4508b64"
+    },
+    {
+      "cell_id": "gamma_root_4148keV_rep01",
+      "eventlist": "/home/ubuntu/.codex/worktrees/104d/TES_511_Balloon/engineering/particle_source_unit_repair_20260811/s3d_o8_lg1_screening_20260813/smoke_inputs/eventlists/gamma_root_4148keV_event3883_512.eventlist.dat",
+      "expected_init_per_event": 1,
+      "final_attempt_dir": "/home/ubuntu/.codex/worktrees/104d/TES_511_Balloon/runs/particle_source_unit_repair_20260811/s3d_o8_lg1_screening_20260814_v1/gamma_root_4148keV_rep01__A/attempt01",
+      "geometry_key": "A_baseline",
+      "job_id": "gamma_root_4148keV_rep01__A",
+      "n_events": 512,
+      "output_prefix_partial": "/home/ubuntu/.codex/worktrees/104d/TES_511_Balloon/runs/particle_source_unit_repair_20260811/s3d_o8_lg1_screening_20260814_v1/gamma_root_4148keV_rep01__A/.attempt01.partial/gamma_root_4148keV_rep01__A",
+      "partial_attempt_dir": "/home/ubuntu/.codex/worktrees/104d/TES_511_Balloon/runs/particle_source_unit_repair_20260811/s3d_o8_lg1_screening_20260814_v1/gamma_root_4148keV_rep01__A/.attempt01.partial",
+      "require_guard_cc_hit": false,
+      "seed": 2120007922,
+      "source": "/home/ubuntu/.codex/worktrees/104d/TES_511_Balloon/engineering/particle_source_unit_repair_20260811/s3d_o8_lg1_screening_20260813/smoke_inputs/sources/A/gamma_root_4148keV_rep01__A.source",
+      "source_sha256": "5b4cd5e8db2ac871e6f464d163629d9118261abe1a2da6e77b1d7a440c04335b"
+    },
+    {
+      "cell_id": "gamma_root_4148keV_rep01",
+      "eventlist": "/home/ubuntu/.codex/worktrees/104d/TES_511_Balloon/engineering/particle_source_unit_repair_20260811/s3d_o8_lg1_screening_20260813/smoke_inputs/eventlists/gamma_root_4148keV_event3883_512.eventlist.dat",
+      "expected_init_per_event": 1,
+      "final_attempt_dir": "/home/ubuntu/.codex/worktrees/104d/TES_511_Balloon/runs/particle_source_unit_repair_20260811/s3d_o8_lg1_screening_20260814_v1/gamma_root_4148keV_rep01__B/attempt01",
+      "geometry_key": "B_lg1",
+      "job_id": "gamma_root_4148keV_rep01__B",
+      "n_events": 512,
+      "output_prefix_partial": "/home/ubuntu/.codex/worktrees/104d/TES_511_Balloon/runs/particle_source_unit_repair_20260811/s3d_o8_lg1_screening_20260814_v1/gamma_root_4148keV_rep01__B/.attempt01.partial/gamma_root_4148keV_rep01__B",
+      "partial_attempt_dir": "/home/ubuntu/.codex/worktrees/104d/TES_511_Balloon/runs/particle_source_unit_repair_20260811/s3d_o8_lg1_screening_20260814_v1/gamma_root_4148keV_rep01__B/.attempt01.partial",
+      "require_guard_cc_hit": false,
+      "seed": 2120007922,
+      "source": "/home/ubuntu/.codex/worktrees/104d/TES_511_Balloon/engineering/particle_source_unit_repair_20260811/s3d_o8_lg1_screening_20260813/smoke_inputs/sources/B/gamma_root_4148keV_rep01__B.source",
+      "source_sha256": "0cdffeded3bfc8c680cb1e9c6fa0f171a6e6ade3dc2ad169f6bd647f8620692c"
+    },
+    {
+      "cell_id": "gamma_root_4148keV_rep02",
+      "eventlist": "/home/ubuntu/.codex/worktrees/104d/TES_511_Balloon/engineering/particle_source_unit_repair_20260811/s3d_o8_lg1_screening_20260813/smoke_inputs/eventlists/gamma_root_4148keV_event3883_512.eventlist.dat",
+      "expected_init_per_event": 1,
+      "final_attempt_dir": "/home/ubuntu/.codex/worktrees/104d/TES_511_Balloon/runs/particle_source_unit_repair_20260811/s3d_o8_lg1_screening_20260814_v1/gamma_root_4148keV_rep02__A/attempt01",
+      "geometry_key": "A_baseline",
+      "job_id": "gamma_root_4148keV_rep02__A",
+      "n_events": 512,
+      "output_prefix_partial": "/home/ubuntu/.codex/worktrees/104d/TES_511_Balloon/runs/particle_source_unit_repair_20260811/s3d_o8_lg1_screening_20260814_v1/gamma_root_4148keV_rep02__A/.attempt01.partial/gamma_root_4148keV_rep02__A",
+      "partial_attempt_dir": "/home/ubuntu/.codex/worktrees/104d/TES_511_Balloon/runs/particle_source_unit_repair_20260811/s3d_o8_lg1_screening_20260814_v1/gamma_root_4148keV_rep02__A/.attempt01.partial",
+      "require_guard_cc_hit": false,
+      "seed": 2120015841,
+      "source": "/home/ubuntu/.codex/worktrees/104d/TES_511_Balloon/engineering/particle_source_unit_repair_20260811/s3d_o8_lg1_screening_20260813/smoke_inputs/sources/A/gamma_root_4148keV_rep02__A.source",
+      "source_sha256": "1d6a297f8bcdb0c239c6498a204657a38b6acaa34a5b47fa8e72917ca7d1a29c"
+    },
+    {
+      "cell_id": "gamma_root_4148keV_rep02",
+      "eventlist": "/home/ubuntu/.codex/worktrees/104d/TES_511_Balloon/engineering/particle_source_unit_repair_20260811/s3d_o8_lg1_screening_20260813/smoke_inputs/eventlists/gamma_root_4148keV_event3883_512.eventlist.dat",
+      "expected_init_per_event": 1,
+      "final_attempt_dir": "/home/ubuntu/.codex/worktrees/104d/TES_511_Balloon/runs/particle_source_unit_repair_20260811/s3d_o8_lg1_screening_20260814_v1/gamma_root_4148keV_rep02__B/attempt01",
+      "geometry_key": "B_lg1",
+      "job_id": "gamma_root_4148keV_rep02__B",
+      "n_events": 512,
+      "output_prefix_partial": "/home/ubuntu/.codex/worktrees/104d/TES_511_Balloon/runs/particle_source_unit_repair_20260811/s3d_o8_lg1_screening_20260814_v1/gamma_root_4148keV_rep02__B/.attempt01.partial/gamma_root_4148keV_rep02__B",
+      "partial_attempt_dir": "/home/ubuntu/.codex/worktrees/104d/TES_511_Balloon/runs/particle_source_unit_repair_20260811/s3d_o8_lg1_screening_20260814_v1/gamma_root_4148keV_rep02__B/.attempt01.partial",
+      "require_guard_cc_hit": false,
+      "seed": 2120015841,
+      "source": "/home/ubuntu/.codex/worktrees/104d/TES_511_Balloon/engineering/particle_source_unit_repair_20260811/s3d_o8_lg1_screening_20260813/smoke_inputs/sources/B/gamma_root_4148keV_rep02__B.source",
+      "source_sha256": "62f392936b0627bb301f15e0869f93764e03e328a7be2c9e8eb9b653676e2dfb"
+    },
+    {
+      "cell_id": "gamma_root_4148keV_rep03",
+      "eventlist": "/home/ubuntu/.codex/worktrees/104d/TES_511_Balloon/engineering/particle_source_unit_repair_20260811/s3d_o8_lg1_screening_20260813/smoke_inputs/eventlists/gamma_root_4148keV_event3883_512.eventlist.dat",
+      "expected_init_per_event": 1,
+      "final_attempt_dir": "/home/ubuntu/.codex/worktrees/104d/TES_511_Balloon/runs/particle_source_unit_repair_20260811/s3d_o8_lg1_screening_20260814_v1/gamma_root_4148keV_rep03__A/attempt01",
+      "geometry_key": "A_baseline",
+      "job_id": "gamma_root_4148keV_rep03__A",
+      "n_events": 512,
+      "output_prefix_partial": "/home/ubuntu/.codex/worktrees/104d/TES_511_Balloon/runs/particle_source_unit_repair_20260811/s3d_o8_lg1_screening_20260814_v1/gamma_root_4148keV_rep03__A/.attempt01.partial/gamma_root_4148keV_rep03__A",
+      "partial_attempt_dir": "/home/ubuntu/.codex/worktrees/104d/TES_511_Balloon/runs/particle_source_unit_repair_20260811/s3d_o8_lg1_screening_20260814_v1/gamma_root_4148keV_rep03__A/.attempt01.partial",
+      "require_guard_cc_hit": false,
+      "seed": 2120023760,
+      "source": "/home/ubuntu/.codex/worktrees/104d/TES_511_Balloon/engineering/particle_source_unit_repair_20260811/s3d_o8_lg1_screening_20260813/smoke_inputs/sources/A/gamma_root_4148keV_rep03__A.source",
+      "source_sha256": "91b886a94957ae490ea514fa2602c2fc64f1548454a81dd2114c34ce9b0342b7"
+    },
+    {
+      "cell_id": "gamma_root_4148keV_rep03",
+      "eventlist": "/home/ubuntu/.codex/worktrees/104d/TES_511_Balloon/engineering/particle_source_unit_repair_20260811/s3d_o8_lg1_screening_20260813/smoke_inputs/eventlists/gamma_root_4148keV_event3883_512.eventlist.dat",
+      "expected_init_per_event": 1,
+      "final_attempt_dir": "/home/ubuntu/.codex/worktrees/104d/TES_511_Balloon/runs/particle_source_unit_repair_20260811/s3d_o8_lg1_screening_20260814_v1/gamma_root_4148keV_rep03__B/attempt01",
+      "geometry_key": "B_lg1",
+      "job_id": "gamma_root_4148keV_rep03__B",
+      "n_events": 512,
+      "output_prefix_partial": "/home/ubuntu/.codex/worktrees/104d/TES_511_Balloon/runs/particle_source_unit_repair_20260811/s3d_o8_lg1_screening_20260814_v1/gamma_root_4148keV_rep03__B/.attempt01.partial/gamma_root_4148keV_rep03__B",
+      "partial_attempt_dir": "/home/ubuntu/.codex/worktrees/104d/TES_511_Balloon/runs/particle_source_unit_repair_20260811/s3d_o8_lg1_screening_20260814_v1/gamma_root_4148keV_rep03__B/.attempt01.partial",
+      "require_guard_cc_hit": false,
+      "seed": 2120023760,
+      "source": "/home/ubuntu/.codex/worktrees/104d/TES_511_Balloon/engineering/particle_source_unit_repair_20260811/s3d_o8_lg1_screening_20260813/smoke_inputs/sources/B/gamma_root_4148keV_rep03__B.source",
+      "source_sha256": "3ae1fe4fd6b9c4f3ad8b6baeba414a10e2159a00eca59a0272b6214a1d803a06"
+    },
+    {
+      "cell_id": "gamma_root_5769keV_rep01",
+      "eventlist": "/home/ubuntu/.codex/worktrees/104d/TES_511_Balloon/engineering/particle_source_unit_repair_20260811/s3d_o8_lg1_screening_20260813/smoke_inputs/eventlists/gamma_root_5769keV_event19932_512.eventlist.dat",
+      "expected_init_per_event": 1,
+      "final_attempt_dir": "/home/ubuntu/.codex/worktrees/104d/TES_511_Balloon/runs/particle_source_unit_repair_20260811/s3d_o8_lg1_screening_20260814_v1/gamma_root_5769keV_rep01__A/attempt01",
+      "geometry_key": "A_baseline",
+      "job_id": "gamma_root_5769keV_rep01__A",
+      "n_events": 512,
+      "output_prefix_partial": "/home/ubuntu/.codex/worktrees/104d/TES_511_Balloon/runs/particle_source_unit_repair_20260811/s3d_o8_lg1_screening_20260814_v1/gamma_root_5769keV_rep01__A/.attempt01.partial/gamma_root_5769keV_rep01__A",
+      "partial_attempt_dir": "/home/ubuntu/.codex/worktrees/104d/TES_511_Balloon/runs/particle_source_unit_repair_20260811/s3d_o8_lg1_screening_20260814_v1/gamma_root_5769keV_rep01__A/.attempt01.partial",
+      "require_guard_cc_hit": false,
+      "seed": 2120031679,
+      "source": "/home/ubuntu/.codex/worktrees/104d/TES_511_Balloon/engineering/particle_source_unit_repair_20260811/s3d_o8_lg1_screening_20260813/smoke_inputs/sources/A/gamma_root_5769keV_rep01__A.source",
+      "source_sha256": "7ba7dacea0111678027731bd0071d785c7e9cd2f8a97f54286e9ec8e045e358e"
+    },
+    {
+      "cell_id": "gamma_root_5769keV_rep01",
+      "eventlist": "/home/ubuntu/.codex/worktrees/104d/TES_511_Balloon/engineering/particle_source_unit_repair_20260811/s3d_o8_lg1_screening_20260813/smoke_inputs/eventlists/gamma_root_5769keV_event19932_512.eventlist.dat",
+      "expected_init_per_event": 1,
+      "final_attempt_dir": "/home/ubuntu/.codex/worktrees/104d/TES_511_Balloon/runs/particle_source_unit_repair_20260811/s3d_o8_lg1_screening_20260814_v1/gamma_root_5769keV_rep01__B/attempt01",
+      "geometry_key": "B_lg1",
+      "job_id": "gamma_root_5769keV_rep01__B",
+      "n_events": 512,
+      "output_prefix_partial": "/home/ubuntu/.codex/worktrees/104d/TES_511_Balloon/runs/particle_source_unit_repair_20260811/s3d_o8_lg1_screening_20260814_v1/gamma_root_5769keV_rep01__B/.attempt01.partial/gamma_root_5769keV_rep01__B",
+      "partial_attempt_dir": "/home/ubuntu/.codex/worktrees/104d/TES_511_Balloon/runs/particle_source_unit_repair_20260811/s3d_o8_lg1_screening_20260814_v1/gamma_root_5769keV_rep01__B/.attempt01.partial",
+      "require_guard_cc_hit": false,
+      "seed": 2120031679,
+      "source": "/home/ubuntu/.codex/worktrees/104d/TES_511_Balloon/engineering/particle_source_unit_repair_20260811/s3d_o8_lg1_screening_20260813/smoke_inputs/sources/B/gamma_root_5769keV_rep01__B.source",
+      "source_sha256": "d475eef1d989fc35f8ff22b9795db719a73db8e19ab49a88d423d9590b515a45"
+    },
+    {
+      "cell_id": "gamma_root_5769keV_rep02",
+      "eventlist": "/home/ubuntu/.codex/worktrees/104d/TES_511_Balloon/engineering/particle_source_unit_repair_20260811/s3d_o8_lg1_screening_20260813/smoke_inputs/eventlists/gamma_root_5769keV_event19932_512.eventlist.dat",
+      "expected_init_per_event": 1,
+      "final_attempt_dir": "/home/ubuntu/.codex/worktrees/104d/TES_511_Balloon/runs/particle_source_unit_repair_20260811/s3d_o8_lg1_screening_20260814_v1/gamma_root_5769keV_rep02__A/attempt01",
+      "geometry_key": "A_baseline",
+      "job_id": "gamma_root_5769keV_rep02__A",
+      "n_events": 512,
+      "output_prefix_partial": "/home/ubuntu/.codex/worktrees/104d/TES_511_Balloon/runs/particle_source_unit_repair_20260811/s3d_o8_lg1_screening_20260814_v1/gamma_root_5769keV_rep02__A/.attempt01.partial/gamma_root_5769keV_rep02__A",
+      "partial_attempt_dir": "/home/ubuntu/.codex/worktrees/104d/TES_511_Balloon/runs/particle_source_unit_repair_20260811/s3d_o8_lg1_screening_20260814_v1/gamma_root_5769keV_rep02__A/.attempt01.partial",
+      "require_guard_cc_hit": false,
+      "seed": 2120039598,
+      "source": "/home/ubuntu/.codex/worktrees/104d/TES_511_Balloon/engineering/particle_source_unit_repair_20260811/s3d_o8_lg1_screening_20260813/smoke_inputs/sources/A/gamma_root_5769keV_rep02__A.source",
+      "source_sha256": "db2c099c81a47bf5faada761ffd2c6569c59c9c1e9bcde30744c0c6a76dc1797"
+    },
+    {
+      "cell_id": "gamma_root_5769keV_rep02",
+      "eventlist": "/home/ubuntu/.codex/worktrees/104d/TES_511_Balloon/engineering/particle_source_unit_repair_20260811/s3d_o8_lg1_screening_20260813/smoke_inputs/eventlists/gamma_root_5769keV_event19932_512.eventlist.dat",
+      "expected_init_per_event": 1,
+      "final_attempt_dir": "/home/ubuntu/.codex/worktrees/104d/TES_511_Balloon/runs/particle_source_unit_repair_20260811/s3d_o8_lg1_screening_20260814_v1/gamma_root_5769keV_rep02__B/attempt01",
+      "geometry_key": "B_lg1",
+      "job_id": "gamma_root_5769keV_rep02__B",
+      "n_events": 512,
+      "output_prefix_partial": "/home/ubuntu/.codex/worktrees/104d/TES_511_Balloon/runs/particle_source_unit_repair_20260811/s3d_o8_lg1_screening_20260814_v1/gamma_root_5769keV_rep02__B/.attempt01.partial/gamma_root_5769keV_rep02__B",
+      "partial_attempt_dir": "/home/ubuntu/.codex/worktrees/104d/TES_511_Balloon/runs/particle_source_unit_repair_20260811/s3d_o8_lg1_screening_20260814_v1/gamma_root_5769keV_rep02__B/.attempt01.partial",
+      "require_guard_cc_hit": false,
+      "seed": 2120039598,
+      "source": "/home/ubuntu/.codex/worktrees/104d/TES_511_Balloon/engineering/particle_source_unit_repair_20260811/s3d_o8_lg1_screening_20260813/smoke_inputs/sources/B/gamma_root_5769keV_rep02__B.source",
+      "source_sha256": "879b6c5276fa29320c02969040cf1d691c90d5cccce0c06e828b9dc02c9d3293"
+    },
+    {
+      "cell_id": "gamma_root_5769keV_rep03",
+      "eventlist": "/home/ubuntu/.codex/worktrees/104d/TES_511_Balloon/engineering/particle_source_unit_repair_20260811/s3d_o8_lg1_screening_20260813/smoke_inputs/eventlists/gamma_root_5769keV_event19932_512.eventlist.dat",
+      "expected_init_per_event": 1,
+      "final_attempt_dir": "/home/ubuntu/.codex/worktrees/104d/TES_511_Balloon/runs/particle_source_unit_repair_20260811/s3d_o8_lg1_screening_20260814_v1/gamma_root_5769keV_rep03__A/attempt01",
+      "geometry_key": "A_baseline",
+      "job_id": "gamma_root_5769keV_rep03__A",
+      "n_events": 512,
+      "output_prefix_partial": "/home/ubuntu/.codex/worktrees/104d/TES_511_Balloon/runs/particle_source_unit_repair_20260811/s3d_o8_lg1_screening_20260814_v1/gamma_root_5769keV_rep03__A/.attempt01.partial/gamma_root_5769keV_rep03__A",
+      "partial_attempt_dir": "/home/ubuntu/.codex/worktrees/104d/TES_511_Balloon/runs/particle_source_unit_repair_20260811/s3d_o8_lg1_screening_20260814_v1/gamma_root_5769keV_rep03__A/.attempt01.partial",
+      "require_guard_cc_hit": false,
+      "seed": 2120047517,
+      "source": "/home/ubuntu/.codex/worktrees/104d/TES_511_Balloon/engineering/particle_source_unit_repair_20260811/s3d_o8_lg1_screening_20260813/smoke_inputs/sources/A/gamma_root_5769keV_rep03__A.source",
+      "source_sha256": "c9e20f8a35eb9ad24f8b28c05f624089423aba16a6d33947b8ef8c866c0192fe"
+    },
+    {
+      "cell_id": "gamma_root_5769keV_rep03",
+      "eventlist": "/home/ubuntu/.codex/worktrees/104d/TES_511_Balloon/engineering/particle_source_unit_repair_20260811/s3d_o8_lg1_screening_20260813/smoke_inputs/eventlists/gamma_root_5769keV_event19932_512.eventlist.dat",
+      "expected_init_per_event": 1,
+      "final_attempt_dir": "/home/ubuntu/.codex/worktrees/104d/TES_511_Balloon/runs/particle_source_unit_repair_20260811/s3d_o8_lg1_screening_20260814_v1/gamma_root_5769keV_rep03__B/attempt01",
+      "geometry_key": "B_lg1",
+      "job_id": "gamma_root_5769keV_rep03__B",
+      "n_events": 512,
+      "output_prefix_partial": "/home/ubuntu/.codex/worktrees/104d/TES_511_Balloon/runs/particle_source_unit_repair_20260811/s3d_o8_lg1_screening_20260814_v1/gamma_root_5769keV_rep03__B/.attempt01.partial/gamma_root_5769keV_rep03__B",
+      "partial_attempt_dir": "/home/ubuntu/.codex/worktrees/104d/TES_511_Balloon/runs/particle_source_unit_repair_20260811/s3d_o8_lg1_screening_20260814_v1/gamma_root_5769keV_rep03__B/.attempt01.partial",
+      "require_guard_cc_hit": false,
+      "seed": 2120047517,
+      "source": "/home/ubuntu/.codex/worktrees/104d/TES_511_Balloon/engineering/particle_source_unit_repair_20260811/s3d_o8_lg1_screening_20260813/smoke_inputs/sources/B/gamma_root_5769keV_rep03__B.source",
+      "source_sha256": "592ce384e30ca57fd2decaf9d18a4acc11b2c18e5770cb9e2994b24ccac76a32"
+    },
+    {
+      "cell_id": "back_to_back511_successor",
+      "eventlist": "/home/ubuntu/.codex/worktrees/104d/TES_511_Balloon/engineering/particle_source_unit_repair_20260811/s3d_o8_lg1_screening_20260813/smoke_inputs/eventlists/back_to_back511_successor_4pos_6dir.eventlist.dat",
+      "expected_init_per_event": 2,
+      "final_attempt_dir": "/home/ubuntu/.codex/worktrees/104d/TES_511_Balloon/runs/particle_source_unit_repair_20260811/s3d_o8_lg1_screening_20260814_v1/back_to_back511_successor__A/attempt01",
+      "geometry_key": "A_baseline",
+      "job_id": "back_to_back511_successor__A",
+      "n_events": 24,
+      "output_prefix_partial": "/home/ubuntu/.codex/worktrees/104d/TES_511_Balloon/runs/particle_source_unit_repair_20260811/s3d_o8_lg1_screening_20260814_v1/back_to_back511_successor__A/.attempt01.partial/back_to_back511_successor__A",
+      "partial_attempt_dir": "/home/ubuntu/.codex/worktrees/104d/TES_511_Balloon/runs/particle_source_unit_repair_20260811/s3d_o8_lg1_screening_20260814_v1/back_to_back511_successor__A/.attempt01.partial",
+      "require_guard_cc_hit": false,
+      "seed": 2120055436,
+      "source": "/home/ubuntu/.codex/worktrees/104d/TES_511_Balloon/engineering/particle_source_unit_repair_20260811/s3d_o8_lg1_screening_20260813/smoke_inputs/sources/A/back_to_back511_successor__A.source",
+      "source_sha256": "45066d9e979d9554d45b52f3ccfc3251fb20b2c1ae2ca3aec4a5e0f9e0d633f9"
+    },
+    {
+      "cell_id": "back_to_back511_successor",
+      "eventlist": "/home/ubuntu/.codex/worktrees/104d/TES_511_Balloon/engineering/particle_source_unit_repair_20260811/s3d_o8_lg1_screening_20260813/smoke_inputs/eventlists/back_to_back511_successor_4pos_6dir.eventlist.dat",
+      "expected_init_per_event": 2,
+      "final_attempt_dir": "/home/ubuntu/.codex/worktrees/104d/TES_511_Balloon/runs/particle_source_unit_repair_20260811/s3d_o8_lg1_screening_20260814_v1/back_to_back511_successor__B/attempt01",
+      "geometry_key": "B_lg1",
+      "job_id": "back_to_back511_successor__B",
+      "n_events": 24,
+      "output_prefix_partial": "/home/ubuntu/.codex/worktrees/104d/TES_511_Balloon/runs/particle_source_unit_repair_20260811/s3d_o8_lg1_screening_20260814_v1/back_to_back511_successor__B/.attempt01.partial/back_to_back511_successor__B",
+      "partial_attempt_dir": "/home/ubuntu/.codex/worktrees/104d/TES_511_Balloon/runs/particle_source_unit_repair_20260811/s3d_o8_lg1_screening_20260814_v1/back_to_back511_successor__B/.attempt01.partial",
+      "require_guard_cc_hit": true,
+      "seed": 2120055436,
+      "source": "/home/ubuntu/.codex/worktrees/104d/TES_511_Balloon/engineering/particle_source_unit_repair_20260811/s3d_o8_lg1_screening_20260813/smoke_inputs/sources/B/back_to_back511_successor__B.source",
+      "source_sha256": "d18b80e1fa1f8c42c3f1cc400bd8b744fea92d3a782b7e5d860484bc87b41bf6"
+    }
+  ],
+  "limits": {
+    "aggregate_output_max_bytes": 5000000000,
+    "execution": "serial",
+    "minimum_free_bytes": 21474836480,
+    "per_job_timeout_seconds": 900,
+    "single_sim_max_bytes": 1073741824,
+    "worst_case_wall_seconds": 14400
+  },
+  "run_root": "/home/ubuntu/.codex/worktrees/104d/TES_511_Balloon/runs/particle_source_unit_repair_20260811/s3d_o8_lg1_screening_20260814_v1",
+  "schema_version": 1,
+  "seed_registry": {
+    "excluded_files": [
+      "/home/ubuntu/.codex/worktrees/104d/TES_511_Balloon/engineering/particle_source_unit_repair_20260811/s3d_o8_lg1_screening_20260813/data/smoke_plan.json"
+    ],
+    "excluded_prefixes": [
+      "/home/ubuntu/.codex/worktrees/104d/TES_511_Balloon/engineering/particle_source_unit_repair_20260811/s3d_o8_lg1_screening_20260813/smoke_inputs",
+      "/home/ubuntu/.codex/worktrees/104d/TES_511_Balloon/runs/particle_source_unit_repair_20260811/s3d_o8_lg1_screening_20260814_v1"
+    ],
+    "file_counts": {
+      "json": 4874,
+      "sim_header": 1089,
+      "source": 7468
+    },
+    "pairing_rule": "A/B in one cell share a seed; different cells have distinct seeds",
+    "planned_by_cell": {
+      "back_to_back511_successor": 2120055436,
+      "focused_first1000": 2120000003,
+      "gamma_root_4148keV_rep01": 2120007922,
+      "gamma_root_4148keV_rep02": 2120015841,
+      "gamma_root_4148keV_rep03": 2120023760,
+      "gamma_root_5769keV_rep01": 2120031679,
+      "gamma_root_5769keV_rep02": 2120039598,
+      "gamma_root_5769keV_rep03": 2120047517
+    },
+    "record_count": 14373,
+    "records_sha256": "d2d2fc4d00d9ad93fe1fecab1bffb52cea6f7d7390eaab567efd3e24512dd86b",
+    "scan_roots": [
+      "/home/ubuntu/.codex/worktrees/104d/TES_511_Balloon",
+      "/home/ubuntu/TES_511_Balloon"
+    ],
+    "selection_start": 2120000003,
+    "selection_stride": 7919,
+    "unique_seed_count": 1711
+  },
+  "status": "READY_FOR_EXPLICIT_LAUNCH_NO_TRANSPORT_RUN",
+  "tapes": {
+    "back_to_back511_successor": {
+      "diagnostic_only": true,
+      "directions": [
+        [
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ],
+        [
+          0.7071067811865476,
+          0.7071067811865476,
+          0.0
+        ],
+        [
+          0.7071067811865476,
+          0.0,
+          0.7071067811865476
+        ],
+        [
+          0.0,
+          0.7071067811865476,
+          0.7071067811865476
+        ]
+      ],
+      "expected_init_per_event": 2,
+      "kind": "back_to_back511_successor",
+      "path": "/home/ubuntu/.codex/worktrees/104d/TES_511_Balloon/engineering/particle_source_unit_repair_20260811/s3d_o8_lg1_screening_20260813/smoke_inputs/eventlists/back_to_back511_successor_4pos_6dir.eventlist.dat",
+      "positions": [
+        {
+          "label": "gamma_root_4148keV_event3883_PAIR",
+          "position_cm": [
+            0.59226,
+            -0.25758,
+            -2.10964
+          ],
+          "provenance": "/home/ubuntu/TES_511_Balloon/runs/particle_source_unit_repair_20260811/s3d_o8/instant_gamma_batch0003_v1/shards/shard0032/attempt01/Background_gamma_fullsphere20_batch0003_shard0032.inc1.id1.sim.gz"
+        },
+        {
+          "label": "gamma_root_4148keV_event3883_ANNI",
+          "position_cm": [
+            0.64778,
+            -0.27399,
+            -1.95866
+          ],
+          "provenance": "/home/ubuntu/TES_511_Balloon/runs/particle_source_unit_repair_20260811/s3d_o8/instant_gamma_batch0003_v1/shards/shard0032/attempt01/Background_gamma_fullsphere20_batch0003_shard0032.inc1.id1.sim.gz"
+        },
+        {
+          "label": "gamma_root_5769keV_event19932_PAIR",
+          "position_cm": [
+            -0.23539,
+            0.87593,
+            2.32166
+          ],
+          "provenance": "/home/ubuntu/TES_511_Balloon/runs/particle_source_unit_repair_20260811/m05_16h_90gb_campaign_batch0006_v1/stage10_seven_family/S3d_O8/instant/gamma/shard0014/attempt01/s10_gamma_instant_S3d_O8_shard0014.inc1.id1.sim.gz"
+        },
+        {
+          "label": "gamma_root_5769keV_event19932_ANNI",
+          "position_cm": [
+            -0.23969,
+            0.87711,
+            2.32687
+          ],
+          "provenance": "/home/ubuntu/TES_511_Balloon/runs/particle_source_unit_repair_20260811/m05_16h_90gb_campaign_batch0006_v1/stage10_seven_family/S3d_O8/instant/gamma/shard0014/attempt01/s10_gamma_instant_S3d_O8_shard0014.inc1.id1.sim.gz"
+        }
+      ],
+      "relative_path": "eventlists/back_to_back511_successor_4pos_6dir.eventlist.dat",
+      "root_events": 24,
+      "rows": 48,
+      "sha256": "dd88dafa404f70009d6589de0c0bce119957e264f49e72f11d5e149823ccf264",
+      "successor_rows": 24
+    },
+    "focused_first1000": {
+      "authority_path": "/home/ubuntu/.codex/worktrees/104d/TES_511_Balloon/stepwise_maintenance/step09_optics_bridge/outputs_f10m_a1_v3p5/eventlists/Opticsim_laue_f10m_a1_v3p5_centerfinger.eventlist.dat",
+      "authority_sha256": "ee538d20d818baab94a5c3ebe01392a3ae9f278a231aa5b8938cdf23870f62b5",
+      "expected_init_per_event": 1,
+      "first1000_sha256": "b90368aa7f4b469639624b89eb5f74b8ce7070a29422bc1605500b41105f9b4d",
+      "kind": "focused_first1000",
+      "path": "/home/ubuntu/.codex/worktrees/104d/TES_511_Balloon/engineering/particle_source_unit_repair_20260811/s3d_o8_lg1_screening_20260813/smoke_inputs/eventlists/focused_first1000.eventlist.dat",
+      "relative_path": "eventlists/focused_first1000.eventlist.dat",
+      "root_events": 1000,
+      "rows": 1000,
+      "sha256": "b90368aa7f4b469639624b89eb5f74b8ce7070a29422bc1605500b41105f9b4d",
+      "successor_rows": 0
+    },
+    "gamma_root_4148keV_event3883": {
+      "expected_init_per_event": 1,
+      "kind": "serialized_directional_gamma",
+      "path": "/home/ubuntu/.codex/worktrees/104d/TES_511_Balloon/engineering/particle_source_unit_repair_20260811/s3d_o8_lg1_screening_20260813/smoke_inputs/eventlists/gamma_root_4148keV_event3883_512.eventlist.dat",
+      "relative_path": "eventlists/gamma_root_4148keV_event3883_512.eventlist.dat",
+      "root_events": 512,
+      "rows": 512,
+      "serialized_root": {
+        "annihilation_position_cm": [
+          0.64778,
+          -0.27399,
+          -1.95866
+        ],
+        "annihilation_serialized_lines": [
+          "IA ANNI  6; 2;4;1.680385418468e-09;   0.64778;  -0.27399;  -1.95866;2; 0.00000; 0.00000; 0.00000; 0.00000; 0.00000; 0.00000;     0.000;1; 0.90553;-0.33336; 0.26246; 0.40821; 0.51591;-0.75312;   510.999",
+          "IA ANNI  7; 2;4;1.680385418468e-09;   0.64778;  -0.27399;  -1.95866;2; 0.00000; 0.00000; 0.00000; 0.00000; 0.00000; 0.00000;     0.000;1;-0.90553; 0.33336;-0.26246;-0.40821;-0.51591; 0.75312;   510.999"
+        ],
+        "event_id": 3883,
+        "init": {
+          "direction": [
+            0.76951,
+            0.27145,
+            0.57807
+          ],
+          "energy_keV": 4148.29,
+          "interaction": "INIT",
+          "particle_type": 1,
+          "position_cm": [
+            -37.97275,
+            -13.86146,
+            -31.08029
+          ],
+          "serialized_line": "IA INIT  1; 0;0;0.000000000000e+00; -37.97275; -13.86146; -31.08029;0; 0.00000; 0.00000; 0.00000; 0.00000; 0.00000; 0.00000;     0.000;1; 0.76951; 0.27145; 0.57807; 0.00000; 0.00000; 0.00000;  4148.290"
+        },
+        "key": "gamma_root_4148keV_event3883",
+        "pair_position_cm": [
+          0.59226,
+          -0.25758,
+          -2.10964
+        ],
+        "sim_path": "/home/ubuntu/TES_511_Balloon/runs/particle_source_unit_repair_20260811/s3d_o8/instant_gamma_batch0003_v1/shards/shard0032/attempt01/Background_gamma_fullsphere20_batch0003_shard0032.inc1.id1.sim.gz",
+        "sim_sha256": "ca49d54d77c10a6b70b0fd284b36e58dbbfe9e6271818c47608c2eb1e79b41ee"
+      },
+      "sha256": "b7747fe720834e1359005ad8962de785c41d51af0f329a3b95c8bcdf0071baca",
+      "successor_rows": 0
+    },
+    "gamma_root_5769keV_event19932": {
+      "expected_init_per_event": 1,
+      "kind": "serialized_directional_gamma",
+      "path": "/home/ubuntu/.codex/worktrees/104d/TES_511_Balloon/engineering/particle_source_unit_repair_20260811/s3d_o8_lg1_screening_20260813/smoke_inputs/eventlists/gamma_root_5769keV_event19932_512.eventlist.dat",
+      "relative_path": "eventlists/gamma_root_5769keV_event19932_512.eventlist.dat",
+      "root_events": 512,
+      "rows": 512,
+      "serialized_root": {
+        "annihilation_position_cm": [
+          -0.23969,
+          0.87711,
+          2.32687
+        ],
+        "annihilation_serialized_lines": [
+          "IA ANNI  9; 2;4;2.169109061073e-09;  -0.23969;   0.87711;   2.32687;2; 0.00000; 0.00000; 0.00000; 0.00000; 0.00000; 0.00000;     0.000;1; 0.57982;-0.02969; 0.81420;-0.39105;-0.88684; 0.24615;   510.999",
+          "IA ANNI 10; 2;4;2.169109061073e-09;  -0.23969;   0.87711;   2.32687;2; 0.00000; 0.00000; 0.00000; 0.00000; 0.00000; 0.00000;     0.000;1;-0.57982; 0.02969;-0.81420; 0.39105; 0.88684;-0.24615;   510.999"
+        ],
+        "event_id": 19932,
+        "init": {
+          "direction": [
+            -0.96476,
+            0.26018,
+            0.03927
+          ],
+          "energy_keV": 5768.82,
+          "interaction": "INIT",
+          "particle_type": 1,
+          "position_cm": [
+            62.49008,
+            -16.03987,
+            -0.23171
+          ],
+          "serialized_line": "IA INIT  1; 0;0;0.000000000000e+00;  62.49008; -16.03987;  -0.23171;0; 0.00000; 0.00000; 0.00000; 0.00000; 0.00000; 0.00000;     0.000;1;-0.96476; 0.26018; 0.03927; 0.00000; 0.00000; 0.00000;  5768.820"
+        },
+        "key": "gamma_root_5769keV_event19932",
+        "pair_position_cm": [
+          -0.23539,
+          0.87593,
+          2.32166
+        ],
+        "sim_path": "/home/ubuntu/TES_511_Balloon/runs/particle_source_unit_repair_20260811/m05_16h_90gb_campaign_batch0006_v1/stage10_seven_family/S3d_O8/instant/gamma/shard0014/attempt01/s10_gamma_instant_S3d_O8_shard0014.inc1.id1.sim.gz",
+        "sim_sha256": "075e1f5e0d571e02422f67022d0f55c0f714c0278c61e42116fb51e6332c0aa2"
+      },
+      "sha256": "2d3854c34b2bc8c08c2b2aef29fc37d26efaabcdc6183c840bb46a60ceef5282",
+      "successor_rows": 0
+    }
+  },
+  "totals": {
+    "directional_gamma_jobs": 12,
+    "focused_jobs": 2,
+    "jobs": 16,
+    "paired_cells": 8,
+    "successor_guard_jobs": 2,
+    "transport_events_if_launched": 8192
+  }
+}

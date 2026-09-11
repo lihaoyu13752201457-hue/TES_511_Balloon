@@ -1,0 +1,40 @@
+{
+  "status": "REVIEWED_CHART_MAP",
+  "charts": [
+    {
+      "id": "policy-final-events",
+      "question": "Does frozen Knob0 reduce the final atm511 W2 yield?",
+      "family": "comparison",
+      "type": "horizontal bar",
+      "fields": [
+        "policy",
+        "final_events"
+      ],
+      "takeaway": "Literal Knob0 worsens 6 to 7; monotonic Knob0 stays at 6.",
+      "palette": "single-root blue"
+    },
+    {
+      "id": "w2-strata-current-outcome",
+      "question": "Where do current retained and rejected events sit in the frozen strata?",
+      "family": "composition/comparison",
+      "type": "stacked horizontal bar",
+      "fields": [
+        "stratum",
+        "outcome",
+        "events"
+      ],
+      "takeaway": "One S1 event is already rejected, invalidating the literal keep-all-S1 assumption.",
+      "palette": "blue plus neutral gray; direct labels and stacking provide non-color distinction"
+    }
+  ],
+  "omitted_visuals": [
+    {
+      "candidate": "low-hit-energy histogram",
+      "reason": "Only four active two-hit events fall below 200 keV; an event table is more honest than a histogram."
+    },
+    {
+      "candidate": "lever-arm versus ARM scatter",
+      "reason": "Only five W2 multihit events; the event audit table preserves every point without implying a distribution."
+    }
+  ]
+}

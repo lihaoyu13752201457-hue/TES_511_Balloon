@@ -1,0 +1,293 @@
+{
+  "authority": "STATIC_PREFILTER_ONLY__NOT_NATIVE_GEOMETRY_AUTHORITY",
+  "candidate_geometry_contract": {
+    "InstrumentFrame_rotation_deg": [
+      0.0,
+      45.0,
+      0.0
+    ],
+    "boundary_erosion_for_static_membership_cm": 1e-07,
+    "front": {
+      "outer_radius_cm": 4.495,
+      "square_window_half_width_cm": 1.9,
+      "xprime_interval_cm": [
+        -4.6475,
+        -4.3575
+      ]
+    },
+    "position_in_InstrumentFrame_cm": [
+      0.0,
+      0.0,
+      -5.2
+    ],
+    "rear": {
+      "inner_radius_cm": 1.85,
+      "outer_radius_cm": 4.495,
+      "xprime_interval_cm": [
+        4.305,
+        4.595
+      ]
+    },
+    "side": {
+      "inner_radius_cm": 4.205,
+      "outer_radius_cm": 4.495,
+      "xprime_interval_cm": [
+        -4.3575,
+        4.305
+      ]
+    },
+    "strict_additive_passive_W_pieces": 3,
+    "volume_rotation_deg": [
+      0.0,
+      90.0,
+      0.0
+    ]
+  },
+  "focused_37194_ray_envelope": {
+    "analytical_new_W_chord": {
+      "nonzero_chord_rays": 0,
+      "reasoning": "transverse ray coordinates are linear in x-prime; absolute square coordinates and radial norm are convex, so slab endpoint maxima close the full thickness intervals",
+      "zero_chord_rays": 37194
+    },
+    "coordinate_transform": "instrument = instrument_from_world_rotation @ world",
+    "direction_xprime": {
+      "max": 0.9999764594598858,
+      "min": 0.9999677994276772
+    },
+    "focused_photon_propagation": "+xprime (45 degrees downward in world)",
+    "front_square_window": {
+      "endpoint_minima_cm": [
+        0.5077276392736729,
+        0.5058448648636571
+      ],
+      "half_width_cm": 1.9,
+      "minimum_edge_clearance_cm": 0.5058448648636571,
+      "minimum_edge_clearance_ray_id": 275,
+      "rays_intersecting_new_W": 0,
+      "xprime_interval_cm": [
+        -4.6475,
+        -4.3575
+      ]
+    },
+    "injection_xprime_cm": {
+      "max": -30.000099999999986,
+      "min": -30.00010000000001
+    },
+    "rear_service_aperture": {
+      "aperture_radius_cm": 1.85,
+      "endpoint_maxima_cm": [
+        1.6765531385164762,
+        1.678619669452391
+      ],
+      "maximum_radius_ray_id": 6995,
+      "maximum_ray_radius_cm": 1.678619669452391,
+      "minimum_aperture_clearance_cm": 0.17138033054760915,
+      "rays_intersecting_new_W": 0,
+      "xprime_interval_cm": [
+        4.305,
+        4.595
+      ]
+    },
+    "rows": 37194,
+    "side_sleeve": {
+      "endpoint_maxima_cm": [
+        1.615075656704617,
+        1.6765531385164762
+      ],
+      "inner_radius_cm": 4.205,
+      "maximum_radius_ray_id": 6995,
+      "maximum_ray_radius_cm": 1.6765531385164762,
+      "minimum_inner_radial_clearance_cm": 2.528446861483524,
+      "rays_intersecting_new_W": 0,
+      "xprime_interval_cm": [
+        -4.3575,
+        4.305
+      ]
+    },
+    "sky_facing_minus_xprime_axis_world": [
+      -0.7071067811865476,
+      0.0,
+      0.7071067811865475
+    ],
+    "world_plus_Z_semantics": "sky/up"
+  },
+  "hard_gates_remaining": [
+    {
+      "gate": "Geant4 CheckForOverlaps",
+      "required_sampling": 10000,
+      "required_tolerance_cm": 0.0001,
+      "status": "REQUIRED_NOT_SATISFIED_BY_THIS_STATIC_PREFILTER"
+    },
+    {
+      "gate": "native paired geometry navigator on the identical 37194-ray bank",
+      "required_result": "zero added-W chord for every ray and unchanged inherited material chords",
+      "status": "REQUIRED_NOT_SATISFIED_BY_THIS_STATIC_PREFILTER"
+    }
+  ],
+  "inputs": {
+    "eventlist": {
+      "bytes": 5819305,
+      "path": "/home/ubuntu/.codex/worktrees/c528/TES_511_Balloon/engineering/geometry_optimization_20260815/47_se3_plan1_transport_20260815/config/signal_eventlists/signal_full_envelope_se3.eventlist.dat",
+      "sha256": "a709a6dcbf5eaebda60be7ec419f4c214979d4cb215254134568eccebe27e57e"
+    },
+    "mesh": {
+      "bytes": 1467990,
+      "path": "/home/ubuntu/.codex/worktrees/626c/TES_511_Balloon/engineering/geometry_optimization_20260815/44_geoopt_se3_minimal_20260815/data/se3_geometry_mesh_products.npz",
+      "sha256": "9ef8c6053146d6e055a5915d38de9a1a3eadc3c12ebaaa0bf7dbdf9c91985cb1"
+    },
+    "sf3_geo": {
+      "bytes": 697978,
+      "path": "/home/ubuntu/.codex/worktrees/c528/TES_511_Balloon/engineering/geometry_optimization_20260815/48_geoopt_sf3_windowed_w_nearfield_20260816/geometry/DEMO2_DR_v3p5_SF3.geo",
+      "sha256": "7d2a5ee19d118d8ecb2c095203d7a8c6046e3c0e0020a67ba63d77ba399d8b16"
+    },
+    "sf3_intro": {
+      "bytes": 500,
+      "path": "/home/ubuntu/.codex/worktrees/c528/TES_511_Balloon/engineering/geometry_optimization_20260815/48_geoopt_sf3_windowed_w_nearfield_20260816/geometry/Intro_DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo",
+      "sha256": "f4ea834bf385f68a85690e018fd52d692e94e19dd93959e35e6f91efd3dbfd52"
+    },
+    "validator_script": {
+      "bytes": 27823,
+      "path": "/home/ubuntu/.codex/worktrees/c528/TES_511_Balloon/engineering/geometry_optimization_20260815/48_geoopt_sf3_windowed_w_nearfield_20260816/code/validate_sf3_mesh_clearance.py",
+      "sha256": "d2b8ffc11a2be0c41d0ac1757368b8d3ced45933828459680f36065d0b11f80e"
+    }
+  },
+  "mesh_clearance_prefilter": {
+    "candidate_internal_probe_sampling": {
+      "aabb_candidate_solid_count": 24,
+      "aabb_candidate_solid_names": [
+        "SE3_Al_Shield_Inner_Cylinder_2mm",
+        "Cu_50mK_StillLike_Can_side_wall_below_side_port",
+        "Cu_50mK_StillLike_Can_side_wall_above_side_port",
+        "Cu_50mK_StillLike_Can_side_wall_rectcut_window_band",
+        "SE3_Al_Shield_Inner_Back_ColdFingerCap_2mm",
+        "Still_Shield_Al_side_window_side_wall_below_side_port",
+        "Still_Shield_Al_side_window_side_wall_above_side_port",
+        "Shield_4K_Al_side_window_side_wall_below_side_port",
+        "Shield_4K_Al_side_window_side_wall_above_side_port",
+        "Shield_60K_Al_side_window_side_wall_below_side_port",
+        "Shield_60K_Al_side_window_side_wall_above_side_port",
+        "Vacuum_Jacket_Al_266mmClass_side_port_side_wall_below_side_port",
+        "Vacuum_Jacket_Al_266mmClass_side_port_side_wall_above_side_port",
+        "Still_Shield_Al_side_window_side_wall_rectcut_window_band",
+        "Shield_4K_Al_side_window_side_wall_rectcut_window_band",
+        "Shield_60K_Al_side_window_side_wall_rectcut_window_band",
+        "Vacuum_Jacket_Al_266mmClass_side_port_side_wall_rectcut_window_band",
+        "GeoOpt_S2B_CryoShell_Plastic_SideSkin_10mm",
+        "BGO_S3C_FullWrap_SideShell_WindowCut_40mm",
+        "ActiveShield_S3C_BGO_Kapton_SideWrap_WindowCut_0p3mm",
+        "Outer_Al_S3C_BGO_Mechanical_SideShell_WindowCut_3mm",
+        "NF2_OuterSupport_Al_BaseMountAnnulus",
+        "NF2_OuterSupport_Al_TopMountAnnulus",
+        "GeoOpt_S2B_CryoShell_BPE5_SideShell_20mm"
+      ],
+      "aabb_point_solid_pairs_tested": 32139,
+      "algorithm": "deterministic side/rear polar probes plus front Cartesian grid; AABB broad phase then 3-direction odd/even Moller-Trumbore ray parity",
+      "inside_solid_pairs": [],
+      "majority_vote_threshold": 2,
+      "probe_piece_counts": {
+        "front": 1080,
+        "rear": 768,
+        "side": 960
+      },
+      "probes_inside_any_existing_solid": 0,
+      "ray_directions": [
+        [
+          0.9129840229193973,
+          0.270995257624487,
+          0.30499466264010533
+        ],
+        [
+          0.2170378764144399,
+          0.9411642474930318,
+          0.2590452073333637
+        ],
+        [
+          0.333120778177103,
+          0.18106564819836526,
+          0.9253354949363972
+        ]
+      ],
+      "total_probes": 2808
+    },
+    "existing_surface_sampling": {
+      "algorithm": "per triangle: 3 vertices + 3 edge midpoints + centroid",
+      "boundary_policy": "candidate W open interior eroded by 1e-7 cm",
+      "results": {
+        "any": {
+          "existing_solid_names": [],
+          "samples_inside_candidate": 0
+        },
+        "front": {
+          "existing_solid_names": [],
+          "samples_inside_candidate_piece": 0
+        },
+        "rear": {
+          "existing_solid_names": [],
+          "samples_inside_candidate_piece": 0
+        },
+        "side": {
+          "existing_solid_names": [],
+          "samples_inside_candidate_piece": 0
+        }
+      },
+      "samples_per_triangle": 7,
+      "total_samples": 966126
+    },
+    "mesh_counts": {
+      "solids": 3334,
+      "triangles": 138018,
+      "vertices": 75527
+    },
+    "point_in_solid_positive_controls": [
+      {
+        "inside_votes": [
+          1,
+          1,
+          1
+        ],
+        "instrument_point_cm": [
+          0.0,
+          4.1,
+          -5.2
+        ],
+        "pass": true,
+        "solid_id": 2299,
+        "solid_name": "SE3_Al_Shield_Inner_Cylinder_2mm"
+      },
+      {
+        "inside_votes": [
+          1,
+          1,
+          1
+        ],
+        "instrument_point_cm": [
+          4.2,
+          2.5,
+          -5.2
+        ],
+        "pass": true,
+        "solid_id": 2304,
+        "solid_name": "SE3_Al_Shield_Inner_Back_ColdFingerCap_2mm"
+      },
+      {
+        "inside_votes": [
+          1,
+          1,
+          1
+        ],
+        "instrument_point_cm": [
+          0.0,
+          15.2,
+          -8.0
+        ],
+        "pass": true,
+        "solid_id": 2301,
+        "solid_name": "Cu_50mK_StillLike_Can_side_wall_below_side_port"
+      }
+    ]
+  },
+  "model_identity": "SF3",
+  "parent_identity": "SE3",
+  "status": "PASS__SF3_MESH_CLEARANCE_STATIC_PREFILTER",
+  "transport_SIM_files_opened": 0
+}

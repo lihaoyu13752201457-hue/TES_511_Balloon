@@ -1,0 +1,61 @@
+{
+  "status": "PASS_S3D_O8_STEP06_FULLCHAIN_TIME_AXIS",
+  "generated_at_utc": "2026-07-12T13:48:52Z",
+  "inputs": {
+    "step05_summary": "engineering/geometry_optimization_20260704/43_geoopt_s3d_o8_fallback_20260712/fullchain/step05/step05_s3d_o8_fullchain_l1_response_summary.json",
+    "groundstate_activity_corrections": "runs/geometry_optimization_20260704/step02_delay_fix_s3d_o8_neutron_delayed_m50000_20260712/groundstate_activity_corrections.csv",
+    "atm511_summary": "engineering/geometry_optimization_20260704/43_geoopt_s3d_o8_fallback_20260712/data/s3d_o8_atm511_replay_summary.json"
+  },
+  "normalization": {
+    "reference_flux_ph_cm2_s": 0.0001,
+    "coincidence_window_s": 1e-06,
+    "separate_scales": [
+      "prompt_scale_to_day15",
+      "delayed_activity_scale_to_day15",
+      "science_atm_scale_to_day15",
+      "atm511_phi_4pi_scale_to_day15"
+    ]
+  },
+  "trajectory": {
+    "mission_days": 20.0,
+    "step_day": 0.25,
+    "bins": 81
+  },
+  "activity": {
+    "groundstate_corrections": "runs/geometry_optimization_20260704/step02_delay_fix_s3d_o8_neutron_delayed_m50000_20260712/groundstate_activity_corrections.csv",
+    "rows_used": 242,
+    "rows_skipped": 0,
+    "reference_total_activity_Bq": 29.233165954932538,
+    "day15_index": 60,
+    "day15_mid": 15.0,
+    "activity_scale_min": 0.5069620246659111,
+    "activity_scale_max": 1.0433357888884156
+  },
+  "atmosphere_model": {
+    "depth_ref_g_cm2": 3.4614689720143224,
+    "mu_eff_cm2_g": 0.08736175376550424
+  },
+  "atm511_model": {
+    "source": "semiempirical 4pi sidecar",
+    "day15_phi_4pi_ph_cm2_s": 0.051555854113229785,
+    "mission_scaling": "phi_ref * f_R(Rc) * (depth/X_ref)^eta",
+    "angular_transfer": "fixed at transported day-15 S1 angular distribution; only total phi_4pi is scaled"
+  },
+  "checks": {
+    "w2_day15_background_final_cps": 0.00610607963250202,
+    "w2_day15_background_final_upper95_cps": 0.048064935550823445,
+    "w2_day15_science_final_cps_at_ref_flux": 0.0011812055376847269,
+    "w2_day15_science_final_lower95_cps_at_ref_flux": 0.001175070086974427,
+    "w2_mission_mean_background_final_cps": 0.006259344274821682,
+    "w2_mission_mean_atm511_final_cps": 0.0019423682571525068
+  },
+  "outputs": {
+    "summary_json": "engineering/geometry_optimization_20260704/43_geoopt_s3d_o8_fallback_20260712/fullchain/step06/step06_s3d_o8_fullchain_summary.json",
+    "background_time_variation": "engineering/geometry_optimization_20260704/43_geoopt_s3d_o8_fallback_20260712/fullchain/step06/background_time_variation.csv"
+  },
+  "method_caveats": [
+    "No per-time-bin Cosima replay is performed.",
+    "Atmospheric-line total flux changes with depth/Rc while the transported day-15 angular transfer remains fixed.",
+    "Prompt, delayed activity, science transmission, and atmospheric-line scales are never collapsed into one factor."
+  ]
+}

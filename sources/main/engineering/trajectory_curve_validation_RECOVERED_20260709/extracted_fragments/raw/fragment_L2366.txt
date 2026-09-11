@@ -1,0 +1,62 @@
+=== 搜康普顿 veto 核心函数与几何常量 ===
+engineering/background_anatomy_20260704/build_background_anatomy_r3.py
+engineering/background_anatomy_20260704/build_background_anatomy_r1.py
+engineering/trajectory_transport_validation_20260626/scripts/run_g3_g4_stripped_extraction.py
+engineering/paper_review_p1_p2_p3_data_check_20260702/code/build_p1_p2_data_check.py
+engineering/geometry_optimization_20260704/03_step05_detector_response_20260706/run_geo_opt_step05_response.py
+engineering/ENGINEERING_20260627_CURVE_CHECK/scripts/build_curve_check_outputs.py
+engineering/Mass_model_511_nearfield_migration_20260701/15_p1_p2_p3_replay_20260703/build_mass_model_511_p1_p2_p3_replay.py
+stepwise_maintenance/step09_optics_bridge/code/build_step09_optics_bridge.py
+stepwise_maintenance/step09_optics_bridge/code/build_detector_coupled_focus_response.py
+stepwise_maintenance/step07_source_cases/code/build_step07_source_cases.py
+stepwise_maintenance/step04_opticsim/code/build_step04_opticsim_audit.py
+old/stepwise_maintenance/step01_geo/source_snapshots/GenerateGeo_ADR_v4c_mkflange.py
+old/code/tools/make_day15_report_ADR.py
+old/code/tools/build_route_b_diffuse_supplement_20260602.py
+old/code/tools/make_complete_day15_report_ADR.py
+old/code/tools/build_v3p5_centerfinger_step05_l1_response.py
+old/code/tools/validate_new_geo_re.py
+old/code/geometry/GenerateGeo_ADR_v4c_mkflange.py
+old/reports/prompt511_entry_audit_20260617/build_prompt511_material_ledger.py
+
+=== build_detector_coupled_focus_response.py 里是否有像素细分 ===
+2:"""Build detector-coupled response for the focused Step09 EventList run.
+4:This consumes the full, non-smoke Cosima output from the Step09 focused
+9:* W1/W2 non-X-ray background after raw/scintillator/Compton/both selections;
+37:STEP_DIR = ROOT / "stepwise_maintenance" / "step09_optics_bridge"
+45:SPECTRUM_CSV = OUT / "non_xray_background_spectrum_480_550.csv"
+49:STEP09_SUMMARY = OUT / "step09_optics_bridge_summary.json"
+53:FOCUSED_SIM = ROOT / "runs" / "step09_optics_bridge" / "Opticsim_laue_new_geo_re.inc1.id1.sim.gz"
+60:SECONDS_PER_DAY = 86400.0
+61:SPECTRUM_EMIN = 480.0
+72:    global OPTICS_AUTHORITY, STEP09_SUMMARY, STEP06_SUMMARY, DAY15_SUMMARY, BACKGROUND_CATALOG, FOCUSED_SIM
+91:    SPECTRUM_CSV = OUT / "non_xray_background_spectrum_480_550.csv"
+95:        STEP09_SUMMARY = ROOT / "Bgo_sample" / "step09_focus_summary.json"
+118:        FOCUSED_SIM = ROOT / "runs" / "step09_bgo_sample_focus" / "Opticsim_laue_f10m_a1_bgo_sample.inc1.id1.sim.gz"
+121:        STEP09_SUMMARY = OUT / "step09_optics_bridge_summary.json"
+144:        FOCUSED_SIM = ROOT / "runs" / "step09_optics_bridge" / "Opticsim_laue_f10m_a1_v3p5_centerfinger.inc1.id1.sim.gz"
+161:    return json.loads(path.read_text(encoding="utf-8", errors="ignore"))
+166:    path.write_text(json.dumps(obj, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+177:    with path.open("w", encoding="utf-8", newline="") as handle:
+211:def configure_spatial_frame(step09: dict[str, Any]) -> None:
+214:    bridge = step09.get("bridge") or step09.get("base_bridge", {})
+221:            "be_radius_cm": float(bridge.get("be_radius_cm", 1.898)),
+265:        return gzip.open(path, "rt", encoding="utf-8", errors="ignore")
+266:    return path.open("r", encoding="utf-8", errors="ignore")
+278:            complete.append_event(cat, "science_focus", "step09_eventlist", str(path), int(cur_id), rate_hz_per_event, bgo_total, pix)
+393:    compton_pass = False
+395:        compton_pass, _cls = classify_tes(cat, idx, reject_policy)
+399:        "compton_fov": has_tes and compton_pass,
+400:        "both": has_tes and bgo_pass and compton_pass,
+433:                "compton_fov": flags["compton_fov"],
+454:            for stage in ("raw", "scintillator", "compton_fov", "both"):
+633:    q68 = weighted_percentile(radii, weights, 0.68)
+634:    q90 = weighted_percentile(radii, weights, 0.90)
+635:    q95 = weighted_percentile(radii, weights, 0.95)
+636:    q99 = weighted_percentile(radii, weights, 0.99)
+640:        ("spot_r68", q68),
+641:        ("spot_r90", q90),
+642:        ("spot_r95", q95),
+643:        ("spot_r99", q99),
+645:        ("full_aperture_1p8", 1.8),
+671:    robust_rows = [row for row in rows if row["cut_id"] not in {"spot_rmax", "full_aperture_1p8"}]

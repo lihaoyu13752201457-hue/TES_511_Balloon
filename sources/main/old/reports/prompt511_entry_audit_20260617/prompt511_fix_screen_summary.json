@@ -1,0 +1,94 @@
+{
+  "baseline_prompt_eplus_cps": 0.05433774850180638,
+  "n_events": 80,
+  "method": "analytic geometric attenuation screen (NOT MC); suppression = UPPER BOUND",
+  "excludes": [
+    "shield self-emission 511 add-back",
+    "Compton refill",
+    "signal-cone clipping",
+    "delayed activation"
+  ],
+  "window_class_counts": {
+    "non_window_no_window_disk_intersection": 77,
+    "inner_window_or_foil_only": 2,
+    "strict_outer_filter_and_be_window": 1
+  },
+  "side_line_transmission": {
+    "current_side_axis_centerline": {
+      "areal_density_g_cm2": 3.62,
+      "transmission_511": 0.7379
+    },
+    "old_same_side_axis_centerline": {
+      "areal_density_g_cm2": 80.71,
+      "transmission_511": 0.00109
+    },
+    "current_side_axis_window_only": {
+      "areal_density_g_cm2": 0.06,
+      "transmission_511": 0.99468
+    },
+    "old_corresponding_outer_to_inner": {
+      "areal_density_g_cm2": 48.34,
+      "transmission_511": 0.0164
+    }
+  },
+  "candidateA_window_plane_baffle": {
+    "r_clear=1.90_t=1": {
+      "residual_cps": 0.03941,
+      "frac": 0.725,
+      "suppression_x": 1.38
+    },
+    "r_clear=1.90_t=2": {
+      "residual_cps": 0.03818,
+      "frac": 0.703,
+      "suppression_x": 1.42
+    },
+    "r_clear=1.90_t=3": {
+      "residual_cps": 0.03805,
+      "frac": 0.7,
+      "suppression_x": 1.43
+    },
+    "r_clear=2.50_t=1": {
+      "residual_cps": 0.03941,
+      "frac": 0.725,
+      "suppression_x": 1.38
+    },
+    "r_clear=2.50_t=2": {
+      "residual_cps": 0.03818,
+      "frac": 0.703,
+      "suppression_x": 1.42
+    },
+    "r_clear=2.50_t=3": {
+      "residual_cps": 0.03805,
+      "frac": 0.7,
+      "suppression_x": 1.43
+    }
+  },
+  "candidateA_note": {
+    "events_crossing_window_plane": 34,
+    "events_total": 80,
+    "reason_ineffective": "most leak does not cross the window plane"
+  },
+  "candidateB_wall_liner_port_open": {
+    "r=[4,6]_gap[160,200]": {
+      "residual_cps": 0.01094,
+      "frac": 0.201,
+      "suppression_x": 4.97,
+      "events_hitting_liner": 66
+    },
+    "r=[5,7]_gap[160,200]": {
+      "residual_cps": 0.01449,
+      "frac": 0.267,
+      "suppression_x": 3.75,
+      "events_hitting_liner": 62
+    },
+    "r=[5,8]_gap[160,200]": {
+      "residual_cps": 0.01385,
+      "frac": 0.255,
+      "suppression_x": 3.92,
+      "events_hitting_liner": 63
+    }
+  },
+  "irreducible_port_sector_cps": 0.00815,
+  "irreducible_port_sector_frac": 0.15,
+  "irreducible_note": "enters through the open signal port sector; simple passive shielding cannot remove it without coupling to the signal port. Treat as a side-port design residual/constraint; do not promote focal-spot ROI as the prompt-suppression strategy."
+}

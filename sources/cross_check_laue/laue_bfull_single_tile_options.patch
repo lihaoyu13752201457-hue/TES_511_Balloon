@@ -1,0 +1,80 @@
+--- a/geant4_app/src/laue_multiring_bfull_demo.cc	2026-05-29 08:30:48.846735268 +0800
++++ b/geant4_app/src/laue_multiring_bfull_demo.cc	2026-05-29 08:43:55.267192294 +0800
+@@ -75,6 +75,8 @@
+   double offAxisYArcmin = 0.0;
+   double mosaicFwhmArcsec = 30.0;
+   double crystalliteThicknessUm = 5.0;
++  int onlyRingId = -1;
++  int onlyTileId = -1;
+ };
+ 
+ struct WrlSegment {
+@@ -424,10 +426,15 @@
+       opt.mosaicFwhmArcsec = std::atof(requireValue(arg));
+     } else if (arg == "--crystallite-um") {
+       opt.crystalliteThicknessUm = std::atof(requireValue(arg));
++    } else if (arg == "--only-ring-id") {
++      opt.onlyRingId = std::atoi(requireValue(arg));
++    } else if (arg == "--only-tile-id") {
++      opt.onlyTileId = std::atoi(requireValue(arg));
+     } else if (arg == "--help" || arg == "-h") {
+       std::cout << "Usage: " << argv[0] << " --n N --ring-config rings.csv --efficiency-table table.csv --out DIR"
+                 << " [--offaxis-x-arcmin X] [--offaxis-y-arcmin Y]"
+-                << " [--mosaic-fwhm-arcsec FWHM] [--crystallite-um UM]\n";
++                << " [--mosaic-fwhm-arcsec FWHM] [--crystallite-um UM]"
++                << " [--only-ring-id ID] [--only-tile-id ID]\n";
+       std::exit(0);
+     } else {
+       throw std::runtime_error("unknown option: " + arg);
+@@ -436,6 +443,9 @@
+   if (opt.nEvents <= 0 || opt.focalLengthMm <= 0.0 || opt.mosaicFwhmArcsec <= 0.0 || opt.crystalliteThicknessUm <= 0.0) {
+     throw std::runtime_error("invalid multiring demo options");
+   }
++  if (opt.onlyTileId >= 0 && opt.onlyRingId < 0) {
++    throw std::runtime_error("--only-tile-id requires --only-ring-id");
++  }
+   return opt;
+ }
+ 
+@@ -666,6 +676,8 @@
+     summary << "  \"plane_normal_diagnostic_model\": \"bfull_fixed_tile_plane_normal_em_competing; emitted DIFFRACT direction is reflected across a perturbed fixed tile plane normal\",\n";
+     summary << "  \"mosaic_fwhm_arcsec\": " << opt_.mosaicFwhmArcsec << ",\n";
+     summary << "  \"crystallite_thickness_um\": " << opt_.crystalliteThicknessUm << ",\n";
++    summary << "  \"only_ring_id\": " << opt_.onlyRingId << ",\n";
++    summary << "  \"only_tile_id\": " << opt_.onlyTileId << ",\n";
+     summary << "  \"n_primaries\": " << opt_.nEvents << ",\n";
+     summary << "  \"custom_laue_only_branch_counters\": true,\n";
+     summary << "  \"standard_em_losses_are_not_written_to_optics_history\": true,\n";
+@@ -1029,9 +1041,29 @@
+   }
+   ~MultiRingPrimaryGenerator() override { delete gun_; }
+   void GeneratePrimaries(G4Event* event) override {
+-    const auto ringAndTile = RingAndTileForEvent(rings_, event->GetEventID());
+-    const RingSpec& ring = *ringAndTile.first;
+-    const int tile = ringAndTile.second;
++    const int eventId = event->GetEventID();
++    const RingSpec* ringPtr = 0;
++    int tile = 0;
++    if (opt_.onlyRingId >= 0) {
++      for (const auto& candidate : rings_) {
++        if (candidate.ringId == opt_.onlyRingId) {
++          ringPtr = &candidate;
++          break;
++        }
++      }
++      if (ringPtr == 0) throw std::runtime_error("--only-ring-id does not match ring config");
++      if (opt_.onlyTileId >= 0) {
++        if (opt_.onlyTileId >= ringPtr->nTiles) throw std::runtime_error("--only-tile-id is outside selected ring");
++        tile = opt_.onlyTileId;
++      } else {
++        tile = eventId % ringPtr->nTiles;
++      }
++    } else {
++      const auto ringAndTile = RingAndTileForEvent(rings_, eventId);
++      ringPtr = ringAndTile.first;
++      tile = ringAndTile.second;
++    }
++    const RingSpec& ring = *ringPtr;
+     const double phi = 2.0 * kPi * static_cast<double>(tile) / static_cast<double>(ring.nTiles);
+     const double dx = (G4UniformRand() - 0.5) * opt_.sourceJitterMm;
+     const double dy = (G4UniformRand() - 0.5) * opt_.sourceJitterMm;

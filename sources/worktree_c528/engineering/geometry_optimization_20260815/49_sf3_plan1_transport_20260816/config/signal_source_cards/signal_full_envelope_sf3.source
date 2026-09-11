@@ -1,0 +1,18 @@
+# SF3 Plan-1 fresh full-envelope focused-signal replay.
+# Direct reuse of the frozen 37,194-ray SE3 full-envelope bank; no resampling.
+
+Version 1
+Geometry /home/ubuntu/.codex/worktrees/c528/TES_511_Balloon/engineering/geometry_optimization_20260815/48_geoopt_sf3_windowed_w_nearfield_20260816/geometry/DEMO2_DR_v3p5_SF3.geo.setup
+PhysicsListEM LivermorePol
+PhysicsListHD qgsp-bic-hp
+StoreSimulationInfo all
+DiscretizeHits true
+DetectorTimeConstant 1e-9
+Seed 185838081
+
+Run signal_full_envelope_sf3
+signal_full_envelope_sf3.FileName /home/ubuntu/.codex/worktrees/c528/TES_511_Balloon/runs/geometry_optimization_20260816/sf3_plan1_one_third_transport_v1/jobs/signal_full_envelope_sf3/active/signal_full_envelope_sf3
+signal_full_envelope_sf3.Triggers 37194
+signal_full_envelope_sf3.Source signal_full_envelope_sf3_EventList
+
+signal_full_envelope_sf3_EventList.EventList /home/ubuntu/.codex/worktrees/c528/TES_511_Balloon/engineering/geometry_optimization_20260815/47_se3_plan1_transport_20260815/config/signal_eventlists/signal_full_envelope_se3.eventlist.dat

@@ -1,0 +1,62 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,top=2.4cm,bottom=2.5cm,left=2.0cm,right=2.0cm]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage[UTF8]{ctex}
+\usepackage{fontspec}
+\setmainfont{TeX Gyre Termes}
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage[section]{placeins}
+\usepackage{float}
+\usepackage{xcolor}
+\usepackage{caption}
+\captionsetup{font=small,labelfont=bf}
+\usepackage{titlesec}
+\titleformat{\section}{\normalfont\large\bfseries}{\thesection}{0.6em}{}
+\titleformat{\subsection}{\normalfont\normalsize\bfseries}{\thesubsection}{0.5em}{}
+\titlespacing*{\section}{0pt}{1.3ex plus .2ex minus .2ex}{0.6ex}
+\titlespacing*{\subsection}{0pt}{1.0ex plus .2ex minus .2ex}{0.5ex}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small\itshape M05 Section 4 standalone review}
+\fancyhead[R]{\small\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+\usepackage{cite}
+\usepackage{hyperref}
+\hypersetup{hidelinks}
+\setlength{\emergencystretch}{3em}
+\renewcommand{\topfraction}{0.92}
+\renewcommand{\bottomfraction}{0.8}
+\renewcommand{\textfraction}{0.07}
+\renewcommand{\floatpagefraction}{0.75}
+\newcommand{\keV}{\,\mathrm{keV}}
+\newcommand{\phcms}{\,\mathrm{ph\,cm^{-2}\,s^{-1}}}
+\newcommand{\cps}{\,\mathrm{s^{-1}}}
+
+% External method/figure references as they appear in the complete manuscript.
+\makeatletter
+\@namedef{r@fig:workflow}{{2}{1}{}{fig:workflow}{}}
+\@namedef{r@subsec:detector_response_zh}{{3.5}{1}{}{subsec:detector_response_zh}{}}
+\@namedef{r@sec:mission_time_fold}{{3.8}{1}{}{sec:mission_time_fold}{}}
+\makeatother
+
+\begin{document}
+\setcounter{section}{3}
+\begin{center}
+{\Large\bfseries M05 第 4 节独立审阅稿}\par
+\vspace{0.35em}
+{\small 质量模型 A（SG3）与质量模型 B（SH3）；V2 正式共轴统计}\par
+\end{center}
+\vspace{0.5em}
+\noindent\rule{\textwidth}{0.4pt}
+
+\input{M05_SECTION4_ZH_STANDALONE_DRAFT_20260828.tex}
+
+\begin{thebibliography}{9}
+\bibitem{Tian2026DIXE}
+R. Tian, J. Mao, J. Liu, H. Jin, W. Cui,
+Simulation of non-X-ray background for the DIffuse X-ray Explorer (DIXE) mission,
+Experimental Astronomy 61 (2026), doi:10.1007/s10686-026-10053-z.
+\end{thebibliography}
+\end{document}

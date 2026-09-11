@@ -1,0 +1,283 @@
+{
+  "status": "PASS_OFFLINE_LINE_TERM_DEDUP__ZERO_W511_DELTA__LEGACY_PROMPT_GAMMA_AXIS_SCIENCE_BLOCKER",
+  "audit_date": "2026-08-10",
+  "scope": {
+    "simulation_launched": false,
+    "cosima_launched": false,
+    "transport_launched": false,
+    "continuum_transport_launched": false,
+    "retained_products_modified": false,
+    "operation": "read-only SIM/catalog lineage audit and offline source-event importance weighting",
+    "continuum_transport_required": false,
+    "continuum_transport_recommended": false,
+    "other_particle_modules_changed": false
+  },
+  "decision": {
+    "old_broadband_gamma_line_term_is_offline_identifiable": true,
+    "catalog_rows_can_be_joined_exactly_to_sim_records": true,
+    "primary_values_are_bit_exact_to_internal_mc_state": false,
+    "primary_values_are_available_at_sim_print_precision": true,
+    "explicit_source_angular_bin_id_is_present": false,
+    "source_bin_is_unique_from_printed_direction_for_all_events": false,
+    "source_bin_is_unique_from_printed_direction_fraction": 0.9999022,
+    "broad_480_550_rate_delta_cps": 0.0,
+    "w2_510p58_511p42_rate_delta_cps": 0.0,
+    "entire_legacy_prompt_gamma_energy_axis_is_a_scientific_blocker": true,
+    "scientific_blocker": "The complete retained O8 prompt-photon DP abscissa is 1000 times lower than the correct raw-EXPACS MeV-to-Cosima-keV conversion. This affects the whole legacy prompt-gamma module, not only the annihilation-line bump.",
+    "line_dedup_resolves_entire_axis_blocker": false,
+    "this_audit_authorizes_continuum_or_other_module_reruns": false,
+    "nominal_action": "Apply the line-dedup weights to the retained broadband-gamma module offline, remove the legacy atmospheric-511 sidecar from the composition, and add the corrected independent PARMA mono-line module. Reuse every other retained module unchanged."
+  },
+  "retained_inputs": {
+    "source_card": "engineering/geometry_optimization_20260704/43_geoopt_s3d_o8_fallback_20260712/config/full_prompt_all8/source_cards/Background_gamma_fullsphere20.source",
+    "source_card_sha256": "eec96f3d779a6db79852077d274837b8547e7db2d1596e5607962c1b9efaf260",
+    "run_directory": "runs/geometry_optimization_20260704/s3d_o8_fullstat_prompt_all8_20260712",
+    "sim_glob": "Background_gamma_fullsphere20_rep01_part*.inc1.id1.sim.gz",
+    "sim_files": 12,
+    "run_manifest": "runs/geometry_optimization_20260704/s3d_o8_fullstat_prompt_all8_20260712/run_manifest.csv",
+    "normalization": "runs/geometry_optimization_20260704/s3d_o8_fullstat_prompt_all8_20260712/normalization.json",
+    "event_catalog": "engineering/geometry_optimization_20260704/43_geoopt_s3d_o8_fallback_20260712/fullchain/step05/work/event_catalog.pkl",
+    "event_catalog_size_bytes": 505464443,
+    "response_summary": "engineering/geometry_optimization_20260704/43_geoopt_s3d_o8_fallback_20260712/fullchain/step05/step05_s3d_o8_fullchain_l1_response_summary.json",
+    "response_summary_sha256": "ee2559b92509ca719930351145451c5b6056a9650e50633f5575b4fc2fb13fe7",
+    "all_sim_headers_geometry": "/home/ubuntu/TES_511_Balloon/engineering/geometry_optimization_20260704/43_geoopt_s3d_o8_fallback_20260712/geometry/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup",
+    "all_sim_headers_spectral_type": "FileDifferentialFlux",
+    "sim_header_geometry_files_matching": 12
+  },
+  "old_spectrum_provenance": {
+    "manifest": "expacs_fullsphere_20bin_sources/manifest.csv",
+    "manifest_sha256": "d7e8c3d19640f2d3af41423e3e8de8f8f77bf26a93a7dcf48dc528e71b0186dc",
+    "extraction_log": "expacs_fullsphere_20bin_sources/extraction_log.csv",
+    "extraction_log_sha256": "fed6e8a72a09398463edebfa60b13756919288d28a639e596f219d0381cb74a2",
+    "raw_table_example": "expacs_fullsphere_20bin_sources/raw_expacs/spectrum_gamma_bin00_theta18.19_BHNo.dat",
+    "raw_table_example_sha256": "29807cb6783e092ba40d742577f6cb5e92d863e99305cc21e0dbeeb4e7eea008",
+    "correct_keV_dp_example": "expacs_fullsphere_20bin_sources/cosima_spectra_dp/gamma_bin00_theta18.19_pdf.dat",
+    "correct_keV_dp_example_sha256": "d3e2edfa71756d7896683abb313bfc24f3c0a7f68b7b4e2b26525f499ec37cd2",
+    "retained_o8_dp_example": "expacs_fullsphere_20bin_sources/cosima_spectra_dp_2602units/gamma_bin00_theta18.19_pdf.dat",
+    "retained_o8_dp_example_sha256": "7ef2e1b76d860e53df4ae1d4b0384924bbb03448229ab5fb1b63b46e0d7348aa",
+    "raw_to_pdf_generator_found_in_repository": false,
+    "numerical_generation_relation": "The PDF ordinates equal raw differential flux divided by the per-angle energy integral and by 1000 for per-keV normalization. The retained _2602units files preserve those ordinates but divide the already-correct keV abscissae by another factor of 1000.",
+    "correct_dp_x_values_keV_near_line": [449.65, 566.08, 712.64],
+    "retained_o8_dp_x_values_interpreted_by_cosima_as_keV": [0.44965, 0.56608, 0.71264],
+    "whole_axis_scale_relative_to_correct_cosima_keV": 0.001,
+    "whole_axis_error_factor": 1000.0,
+    "whole_legacy_prompt_gamma_module_science_status": "BLOCKED_FOR_ABSOLUTE_CONTINUUM_FIDELITY__RETAINED_ONLY_AS_USER_DIRECTED_LEGACY_MODULE",
+    "cosima_energy_unit_evidence": {
+      "set_energy_source": "/home/ubuntu/MEGAlib_Install/megalib-main/src/cosima/src/MCSource.cc",
+      "set_energy_lines": "1909-1931",
+      "operation": "m_EnergyFunction.ScaleX(keV)",
+      "sampling_source": "/home/ubuntu/MEGAlib_Install/megalib-main/src/global/misc/src/MFunction.cxx",
+      "sampling_lines": "791-813",
+      "sampling_operation": "GetRandom integrates the supplied function and samples its cumulative integral"
+    },
+    "actual_transported_line_interpolation_support_keV": [0.44965, 0.71264],
+    "actual_transported_line_peak_node_keV": 0.56608,
+    "no_old_broad_line_bump_is_present_near_511_keV_in_the_retained_sim": true,
+    "sim_primary_energy_scan": {
+      "records": 10000000,
+      "minimum_printed_keV": 0.011,
+      "maximum_printed_keV": 845989.75,
+      "events_below_1_keV": 7639501,
+      "events_480_to_550_keV": 8502,
+      "events_510_to_512_keV": 236
+    }
+  },
+  "official_parma_reproduction_of_raw_wide_bin": {
+    "functions": [
+      "getSpecCpp(33,...)",
+      "getSpecAngFinalCpp(6,...)",
+      "get511fluxCpp(...)"
+    ],
+    "source": "engineering/m04_validation_geometry_handoff_20260810/02_parma_atm511_repair_20260810/vendor/parma_cpp_official_20260810/subroutines.cpp",
+    "reconstructed_legacy_condition": {
+      "W": 118.3,
+      "Rc_GV": 11.6,
+      "depth_g_cm2": 3.84535,
+      "g": 0.0,
+      "note": "The depth is the value that reproduces the archived raw rows; the manifest records altitude 38 km rather than this derived depth."
+    },
+    "line_integrated_flux_ph_cm2_s": 0.17378292793520006,
+    "line_bin_width_MeV": 0.12977,
+    "bin00_mu_mid": 0.95,
+    "bin00_rows_per_MeV_cm2_s_sr": {
+      "raw_0p44965": 0.010419978329,
+      "parma_continuum_0p44965": 0.01041997889227613,
+      "raw_total_0p56608": 0.011532694788,
+      "parma_continuum_0p56608": 0.004580036911073746,
+      "reconstructed_total_0p56608": 0.011532701111418363,
+      "raw_0p71264": 0.0020369489033,
+      "parma_continuum_0p71264": 0.0020369488921434262
+    },
+    "line_node_total_reconstruction_relative_difference": 5.483036253917106e-7,
+    "old_total_gamma_flux_ph_cm2_s": 4.7996615777852,
+    "line_bump_integral_under_retained_linear_interpolation_ph_cm2_s": 0.1764426312277671,
+    "deduped_continuum_flux_ph_cm2_s": 4.623218946557433,
+    "deduped_to_old_flux_ratio": 0.9632385266402083
+  },
+  "lineage_and_schema": {
+    "catalog_parser_source": "old/code/tools/make_complete_day15_report_ADR.py",
+    "catalog_parser_lines": "189-208, 211-237, 240-287, 333-352",
+    "catalog_fields": [
+      "stream",
+      "tag",
+      "source_file",
+      "local_id",
+      "rate_hz",
+      "tes_total_keV",
+      "bgo_total_keV",
+      "pix_start",
+      "pix_count",
+      "pix_uid",
+      "pix_layer",
+      "pix_e",
+      "pix_x",
+      "pix_y",
+      "pix_z",
+      "n_generated_events_seen",
+      "n_kept_events"
+    ],
+    "catalog_event_rows": 10044782,
+    "catalog_prompt_gamma_rows": 3635995,
+    "catalog_has_primary_initial_energy": false,
+    "catalog_has_primary_initial_direction": false,
+    "catalog_has_source_bin_id": false,
+    "catalog_to_sim_join_key": ["source_file", "local_id"],
+    "join_key_is_unique_within_retained_catalog": true,
+    "sim_event_id_record": "ID <local_id> <trigger_id>",
+    "sim_primary_record": "IA INIT",
+    "ia_init_direction_field_indices_after_semicolon_split": [16, 17, 18],
+    "ia_init_initial_energy_field_index_after_semicolon_split": 22,
+    "initial_energy_print_resolution_keV": 0.001,
+    "direction_cosine_print_resolution": 0.00001,
+    "explicit_source_name_or_id_in_each_sim_event": false,
+    "source_mu_from_sim": "mu_source=-IA_INIT.dir_z",
+    "source_theta_from_sim": "theta_source=acos(-IA_INIT.dir_z)",
+    "source_bin20_from_sim": "floor((1+IA_INIT.dir_z)*10), clipped to [0,19]",
+    "direction_inferred_vs_cosima_log": {
+      "events": 10000000,
+      "printed_boundary_candidates": 978,
+      "unambiguous_events": 9999022,
+      "unambiguous_fraction": 0.9999022,
+      "maximum_absolute_per_bin_count_difference": 59
+    },
+    "line_support_direction_inference": {
+      "events": 858044,
+      "printed_boundary_candidates": 85,
+      "unambiguous_events": 857959,
+      "maximum_adjacent_bin_weight_difference_for_boundary_candidates": 0.013636482165674257,
+      "mean_adjacent_bin_weight_difference_for_boundary_candidates": 0.0021984387833337274
+    }
+  },
+  "importance_weight": {
+    "recommended_unnormalized_formula": "w_i(E0)=J_cont_i(E0)/J_old_total_i(E0)",
+    "equivalent_normalized_pdf_formula": "w_i(E0)=(F_cont_i/F_old_i)*(p_cont_i(E0)/p_old_i(E0))",
+    "warning": "Using only the ratio of separately normalized PDFs omits F_cont_i/F_old_i and therefore does not remove the line normalization.",
+    "construction": "For each angular bin, copy the retained old-total tabulation, replace only the 0.56608-keV node by the official PARMA continuum value, and use the same linear interpolation. Set w=1 outside [0.44965,0.71264] keV.",
+    "theoretical_minimum_at_line_node": 0.39713500293582904,
+    "minimum_observed_on_printed_sim_energies": 0.3973439723950444,
+    "maximum_observed_strictly_inside_support": 0.9979948456938047,
+    "weight_outside_support": 1.0,
+    "zero_weight_risk": false,
+    "negative_weight_risk_for_ratio_form": false,
+    "denominator_zero_risk_on_support": false,
+    "do_not_use": "Do not implement the correction as 1-L/T using independently rounded or mismatched tables; that form can become negative when L>T numerically."
+  },
+  "affected_events": {
+    "generated_prompt_gamma_events": 10000000,
+    "old_observation_time_s": 184.2707,
+    "retained_step05_event_rate_cps_per_generated_gamma": 0.005426798726004732,
+    "events_on_line_interpolation_support": 858044,
+    "events_on_line_interpolation_support_fraction": 0.0858044,
+    "equivalent_events_after_weight": 490243.3443304642,
+    "equivalent_events_removed": 367800.6556695358,
+    "finite_mc_removed_generation_rate_cps": 1995.980129611142,
+    "analytic_expected_removed_generation_rate_cps": 1994.9711679497523,
+    "sum_weight_squared_on_support": 300806.930753108,
+    "by_inferred_source_bin": [
+      {"bin": 0, "events": 2903, "equivalent_removed": 1177.2502065484218},
+      {"bin": 1, "events": 4840, "equivalent_removed": 1997.2440772009045},
+      {"bin": 2, "events": 7072, "equivalent_removed": 2938.1873154899376},
+      {"bin": 3, "events": 9130, "equivalent_removed": 3834.6062589290605},
+      {"bin": 4, "events": 11849, "equivalent_removed": 5007.927198633156},
+      {"bin": 5, "events": 14672, "equivalent_removed": 6219.793245686975},
+      {"bin": 6, "events": 18169, "equivalent_removed": 7743.757829218641},
+      {"bin": 7, "events": 22310, "equivalent_removed": 9531.919602803648},
+      {"bin": 8, "events": 27855, "equivalent_removed": 11912.097407255404},
+      {"bin": 9, "events": 37508, "equivalent_removed": 16056.752102089173},
+      {"bin": 10, "events": 82961, "equivalent_removed": 35767.44800313186},
+      {"bin": 11, "events": 79136, "equivalent_removed": 34119.90158829537},
+      {"bin": 12, "events": 76046, "equivalent_removed": 32788.168642692595},
+      {"bin": 13, "events": 73062, "equivalent_removed": 31430.291218936953},
+      {"bin": 14, "events": 70392, "equivalent_removed": 30249.565950561824},
+      {"bin": 15, "events": 68181, "equivalent_removed": 29273.970758473908},
+      {"bin": 16, "events": 66520, "equivalent_removed": 28529.02983016207},
+      {"bin": 17, "events": 63633, "equivalent_removed": 27205.30989248353},
+      {"bin": 18, "events": 62150, "equivalent_removed": 26525.23758394125},
+      {"bin": 19, "events": 59655, "equivalent_removed": 25492.19695700117}
+    ],
+    "step05_catalog": {
+      "affected_rows": 317048,
+      "old_rate_sum_cps": 1720.5556824823498,
+      "deduped_rate_sum_cps": 982.7111773065852,
+      "removed_rate_sum_cps": 737.844505175763,
+      "tes_nonzero_rows": 0,
+      "active_volume_nonzero_rows": 317048,
+      "interpretation": "All retained affected rows are sub-keV active-volume-only records and have no TES deposit."
+    },
+    "selected_windows": {
+      "broad_480_550": {
+        "affected_rows": 0,
+        "rate_delta_cps": 0.0,
+        "retained_old_final_gamma_events": 1,
+        "retained_old_final_gamma_rate_cps": 0.005426798726004732,
+        "retained_event": {
+          "source_file": "runs/geometry_optimization_20260704/s3d_o8_fullstat_prompt_all8_20260712/Background_gamma_fullsphere20_rep01_part12.inc1.id1.sim.gz",
+          "local_id": 432618,
+          "initial_energy_keV": 570.076,
+          "initial_direction": [0.37215, -0.3764, -0.84842],
+          "tes_total_keV": 494.54719,
+          "in_line_interpolation_support": false
+        }
+      },
+      "w2_510p58_511p42": {
+        "affected_rows": 0,
+        "rate_delta_cps": 0.0,
+        "retained_old_raw_gamma_events": 0,
+        "retained_old_active_gamma_events": 0,
+        "retained_old_final_gamma_events": 0,
+        "retained_old_final_gamma_rate_cps": 0.0,
+        "retained_old_gamma_upper95_cps": 0.020018806321970537
+      }
+    }
+  },
+  "modular_recomposition": {
+    "definitions": {
+      "R_rest": "All retained modules except broadband prompt gamma and the legacy atmospheric-511 sidecar.",
+      "R_gamma_old": "Retained broadband prompt-gamma selected rate.",
+      "Delta_R_gamma_line": "sum_e a_e(W)*r_e*(1-w_i(E0_e)) over retained broadband-gamma catalog events.",
+      "R_gamma_dedup": "R_gamma_old-Delta_R_gamma_line.",
+      "R_511_corrected": "Corrected independent PARMA mono-line module selected rate."
+    },
+    "from_components": "R_corrected(W)=R_rest(W)+R_gamma_dedup(W)+R_511_corrected(W)",
+    "from_retained_old_total": "R_corrected(W)=R_total_old(W)-R_legacy_atm511_sidecar(W)-Delta_R_gamma_line(W)+R_511_corrected(W)",
+    "event_selection_indicator": "a_e(W) includes the requested energy window, active-veto policy, and topology/FoV selection.",
+    "broad_and_w2_simplification": "Delta_R_gamma_line(W)=0 for both Broad480-550 and W2, so only the independent atmospheric mono-line module is replaced in those windows.",
+    "unchanged_modules": [
+      "prompt alpha",
+      "prompt electron",
+      "prompt positron",
+      "prompt muons",
+      "prompt neutron",
+      "delayed/activation",
+      "science signal",
+      "detector response and selections"
+    ]
+  },
+  "limitations": [
+    "The catalog itself omits primary energy, primary direction, and source-bin ID; raw SIM files are required for the offline join.",
+    "Source-bin recovery is not bit-exact for the 978 events whose five-decimal printed direction lies on a bin boundary; only 85 of those lie on the line-term support, and Broad/W2 remain unaffected regardless of the tie rule.",
+    "The archived raw-to-PDF generator was not located; the numerical mapping is closed by the raw table, manifest, extraction log, both DP variants, official PARMA functions, and actual SIM primary energies.",
+    "The factor-1000 abscissa error is a pre-existing scientific blocker for the entire legacy prompt-photon module, not merely for the 511-line node.",
+    "This audit removes the misplaced duplicated line term only. It neither resolves the whole-axis blocker nor authorizes, requests, triggers, or recommends a continuum or other-module transport run."
+  ]
+}

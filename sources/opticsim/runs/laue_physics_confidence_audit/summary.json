@@ -1,0 +1,192 @@
+{
+  "barriere": {
+    "benchmark_source": "Barriere et al. 2009 J. Appl. Cryst. Tables 2 and 4",
+    "max_abs_diff_eff_error": 0.008929881047187116,
+    "max_abs_reflectivity_error": 0.015810219569136585,
+    "n_cases": 6,
+    "ok": true
+  },
+  "bragg_audit": {
+    "max_abs_deflection_minus_2theta_B_rad": 1.4286800791123155e-06,
+    "max_abs_plane_minus_theta_B_rad": 7.143400476529796e-07,
+    "max_abs_theta_geom_minus_theta_B_rad": 7.143400314610707e-07,
+    "max_tangential_overlap_margin_mm": -4.1994322868859095,
+    "min_radial_clearance_mm": 0.5566180000000045,
+    "n_rings": 5,
+    "n_tiles_checked": 360,
+    "ok": true
+  },
+  "exact_same_lens_experiment_required_now": false,
+  "geometry_audit": [
+    {
+      "energy_keV": 480.0,
+      "radius_abs_error_mm": 0.011858786127575627,
+      "radius_calc_mm": 65.63246821387243,
+      "radius_config_mm": 65.644327,
+      "ring_id": 0,
+      "theta_B_rad": 0.003953680740257215,
+      "thickness_mm": 9.452263
+    },
+    {
+      "energy_keV": 500.0,
+      "radius_abs_error_mm": 0.011384342545362358,
+      "radius_calc_mm": 63.00705365745464,
+      "radius_config_mm": 63.018438,
+      "ring_id": 1,
+      "theta_B_rad": 0.0037955327353941808,
+      "thickness_mm": 9.947306
+    },
+    {
+      "energy_keV": 511.0,
+      "radius_abs_error_mm": 0.011139306055959253,
+      "radius_calc_mm": 61.65068069394404,
+      "radius_config_mm": 61.66182,
+      "ring_id": 2,
+      "theta_B_rad": 0.003713828128443618,
+      "thickness_mm": 10.218801
+    },
+    {
+      "energy_keV": 530.0,
+      "radius_abs_error_mm": 0.010739640664120031,
+      "radius_calc_mm": 59.44047535933588,
+      "radius_config_mm": 59.451215,
+      "ring_id": 3,
+      "theta_B_rad": 0.003580690314069568,
+      "thickness_mm": 10.686285
+    },
+    {
+      "energy_keV": 550.0,
+      "radius_abs_error_mm": 0.010349132825659524,
+      "radius_calc_mm": 57.27892486717434,
+      "radius_config_mm": 57.289274,
+      "ring_id": 4,
+      "theta_B_rad": 0.0034504828670649072,
+      "thickness_mm": 11.17625
+    }
+  ],
+  "headline_performance_is_fully_publication_closed": false,
+  "kohnle": {
+    "benchmark_source": "A. Kohnle, A Gamma-Ray Lens for Nuclear Astrophysics, PhD thesis, Universite Paul Sabatier, 1998, section 8.3.1",
+    "endpoint_max_abs_error": 0.013488488646812957,
+    "local_source_pdf": "records/laue_external_sources/Diss_Kohnle_98.pdf",
+    "n_cases": 7,
+    "ok": true,
+    "published_ge111_context": {
+      "crystal_setup": "two 3-mm Ge(111) crystals at APS, energies 200-500 keV",
+      "measured_double_to_single_ratio_range": "0.27-0.31 before absorption correction; 0.31-0.36 after absorption correction",
+      "mosaic_width_fit": "first crystal 5 arcsec FWHM, second crystal 3 arcsec FWHM",
+      "published_peak_efficiency_range": "0.37 at 200 keV rising to 0.43 at 500 keV for monochromatic zero-divergence photons"
+    }
+  },
+  "main_reason": "Formula-driven and benchmarked against adjacent literature; exact same-lens experimental closure is not required for the current review stage, while material/alignment uncertainties remain future systematics.",
+  "main_run": {
+    "absorption_fraction": 0.35894,
+    "diffraction_fraction": 0.24638,
+    "efficiency_table": "data/laue/Ge111_480_550keV_darwin_mosaic_table.csv",
+    "efficiency_table_rows": 405,
+    "energy_max_keV": 550,
+    "energy_min_keV": 480,
+    "focal_length_mm": 8300,
+    "geant4_bottom_code_modified": false,
+    "model": "multiring_zachariasen_darwin_mosaic_laue_process_v3",
+    "n_absorbed": 35894,
+    "n_diffracted": 24638,
+    "n_primaries": 100000,
+    "n_rings": 5,
+    "n_transmitted": 39468,
+    "ring_config": "data/laue/ge111_480_550keV_multiring_darwin_config.csv",
+    "spot_d90_cm": 0.220582,
+    "system": "geant4_laue_multiring_darwin",
+    "transmission_fraction": 0.39468,
+    "visualization_wrl": "runs/geant4_laue_multiring_darwin/laue_multiring_scene.wrl",
+    "warning": "Table-driven multiring Laue optics using external efficiency data. The recommended table is generated from the Zachariasen/Darwin mosaic-crystal formula and benchmarked against Barriere et al. 2009 Cu/Au cases; material-specific measured Ge 500 keV validation is still a remaining publication-grade step."
+  },
+  "main_run_path": "runs/geant4_laue_multiring_darwin/summary.json",
+  "pytte": {
+    "cases": [
+      {
+        "bragg_angle_deg": 0.2174891527207829,
+        "darwin_absorption_transmission": 0.6458150786042794,
+        "darwin_mosaic_peak_no_abs": 0.38760087043319663,
+        "darwin_mosaic_peak_with_abs": 0.250318486605902,
+        "energy_keV": 500.0,
+        "geometry": "laue",
+        "polarization": "sigma",
+        "pytte_center_diffraction": 0.7767593272821447,
+        "pytte_center_flux_sum": 0.9996776127813118,
+        "pytte_center_forward": 0.22291828549916715,
+        "pytte_peak_diffraction": 0.7767593272821447,
+        "scan_max_urad": 5.0,
+        "scan_min_urad": -5.0,
+        "thickness_mm": 10.0,
+        "tool": "PyTTE 1.0",
+        "warning_count": 0
+      },
+      {
+        "bragg_angle_deg": 0.2174891527207829,
+        "darwin_absorption_transmission": 0.6458150786042794,
+        "darwin_mosaic_peak_no_abs": 0.38760087043319663,
+        "darwin_mosaic_peak_with_abs": 0.250318486605902,
+        "energy_keV": 500.0,
+        "geometry": "laue",
+        "polarization": "pi",
+        "pytte_center_diffraction": 0.7767503043351884,
+        "pytte_center_flux_sum": 0.9996776039874898,
+        "pytte_center_forward": 0.22292729965230138,
+        "pytte_peak_diffraction": 0.7767503043351884,
+        "scan_max_urad": 5.0,
+        "scan_min_urad": -5.0,
+        "thickness_mm": 10.0,
+        "tool": "PyTTE 1.0",
+        "warning_count": 0
+      },
+      {
+        "bragg_angle_deg": 0.21280736837219377,
+        "darwin_absorption_transmission": 0.6491387435105324,
+        "darwin_mosaic_peak_no_abs": 0.38022307503470487,
+        "darwin_mosaic_peak_with_abs": 0.2468175291817392,
+        "energy_keV": 511.0,
+        "geometry": "laue",
+        "polarization": "sigma",
+        "pytte_center_diffraction": 0.7765922864986927,
+        "pytte_center_flux_sum": 0.9996890333578867,
+        "pytte_center_forward": 0.22309674685919398,
+        "pytte_peak_diffraction": 0.7765922864986927,
+        "scan_max_urad": 5.0,
+        "scan_min_urad": -5.0,
+        "thickness_mm": 10.0,
+        "tool": "PyTTE 1.0",
+        "warning_count": 0
+      },
+      {
+        "bragg_angle_deg": 0.21280736837219377,
+        "darwin_absorption_transmission": 0.6491387435105324,
+        "darwin_mosaic_peak_no_abs": 0.38022307503470487,
+        "darwin_mosaic_peak_with_abs": 0.2468175291817392,
+        "energy_keV": 511.0,
+        "geometry": "laue",
+        "polarization": "pi",
+        "pytte_center_diffraction": 0.7765836624928931,
+        "pytte_center_flux_sum": 0.9996890251513701,
+        "pytte_center_forward": 0.22310536265847697,
+        "pytte_peak_diffraction": 0.7765836624928931,
+        "scan_max_urad": 5.0,
+        "scan_min_urad": -5.0,
+        "thickness_mm": 10.0,
+        "tool": "PyTTE 1.0",
+        "warning_count": 0
+      }
+    ],
+    "interpretation": "PyTTE is an independent perfect-crystal Takagi-Taupin check. It is not a mosaic-crystal replacement table; it checks that a perfect Ge(111) Laue crystal has a higher peak diffracted branch than the mosaic Darwin table and near-conserved diffraction+forward flux in this setup.",
+    "max_warning_count": 0,
+    "n_cases": 4,
+    "ok": true
+  },
+  "source_links": {
+    "barriere_arxiv": "https://arxiv.org/abs/0907.0458",
+    "barriere_pdf_seen": "https://www.issp.ac.ru/lsc/files/Gamma-ray%20Laue%20lens_2009.pdf",
+    "pytte_method_paper": "https://journals.iucr.org/m/issues/2021/01/00/hf5943/",
+    "pytte_pypi": "https://pypi.org/project/pyTTE/"
+  },
+  "status": "AUDIT_COMPLETE_HIGH_CONFIDENCE_FOR_CURRENT_STAGE"
+}

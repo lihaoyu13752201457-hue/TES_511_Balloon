@@ -1,0 +1,76 @@
+{
+  "schema_version": 1,
+  "status": "READY__PREFLIGHT_REQUIRED__NO_TRANSPORT",
+  "profile_id": "M05_SG3_SH3_PROMPT_STATISTICS_INTEGRATION_20260828_V1",
+  "source_package": "engineering/geometry_optimization_20260815/67_m05new_zero_prompt_statistics_20260823",
+  "legacy_external_prefix": "/mnt/data",
+  "readonly_external_mount": "/media/ubuntu/903261CE3261BA3C",
+  "forbidden_task_id": "01a02314-a50b-78d2-bb8c-b43ffa350704",
+  "offline_veto_threshold_keV": 50.0,
+  "weight_policy": "DEFERRED__UNIFIED_OLD_PLUS_NEW_EXPOSURE",
+  "models": {
+    "sg3": {
+      "candidate": "SG3B",
+      "setup_stratum": "main",
+      "expected_receipt_pass_jobs": 11,
+      "expected_events": 409223,
+      "families": {
+        "alpha": 2,
+        "eminus": 2,
+        "muminus": 1,
+        "muplus": 6
+      },
+      "external_root": "/mnt/data/TES_Balloon_511_data/SG3/m05new_zero_prompt_supplement_20260823_v1",
+      "bundle_root": "engineering/geometry_optimization_20260815/67_m05new_zero_prompt_statistics_20260823/bundles/sg3",
+      "parser": "engineering/geometry_optimization_20260815/62_sg3b_mature_poisson_timeline_20260818/code/build_event_catalog.py",
+      "parser_sha256": "5f156bd7d5be0d846e194bf77775025143b3107019755877c9c865217eb3c4be",
+      "response_config": "engineering/geometry_optimization_20260815/58_sg3b_m05_common_time_response_20260817/analysis_inputs.json",
+      "response_config_sha256": "82cc89c92652a7b9df68d837d74a2a884f073017590a8b0d5c7769b19adca5da",
+      "expected_setup_sha256": "49324ca4baebd8e6323b4a478b168dff8798e2bd7f0d0775e2f179769aad0469",
+      "base_lineage": [
+        {
+          "path": "engineering/geometry_optimization_20260815/62_sg3b_mature_poisson_timeline_20260818/outputs/01_event_catalog/summary.json",
+          "jobs_key": "jobs",
+          "seed_key": "seed"
+        },
+        {
+          "path": "engineering/geometry_optimization_20260815/63_m05new_sg3b_signal_statistics_20260820/outputs/03_expanded_catalog/summary.json",
+          "jobs_key": "supplemental_jobs",
+          "seed_key": "source_seed"
+        }
+      ]
+    },
+    "sh3": {
+      "candidate": "SH3_OptV3_60cm",
+      "setup_stratum": "main",
+      "expected_receipt_pass_jobs": 310,
+      "expected_events": 13958244,
+      "expected_sim_bytes": 83382547476,
+      "families": {
+        "alpha": 47,
+        "eminus": 13,
+        "eplus": 47,
+        "muminus": 8,
+        "muplus": 33,
+        "n": 48,
+        "p": 114
+      },
+      "external_root": "/mnt/data/TES_Balloon_511_data/SH3/m05new_zero_prompt_supplement_20260823_v1",
+      "bundle_root": "engineering/geometry_optimization_20260815/67_m05new_zero_prompt_statistics_20260823/bundles/sh3",
+      "parser": "DEEPSEEK_CODE/modified/build_event_catalog_sh3_step05.py",
+      "parser_sha256": "f6d968e8804ed3b64e127786da9c376502d2c7bb85405a7949a8c1c4bb80b401",
+      "step05": "DEEPSEEK_CODE/modified/step05_side_compton.py",
+      "step05_sha256": "c6d98aedbd08500d15d9e65062df76c20de9b13464378c7a09d3860ea2dc5622",
+      "response_config": "DEEPSEEK_CODE/modified/analysis_inputs_optv3_B.json",
+      "response_config_sha256": "e2780f3ff5fa85f45403661ac939eaa94331daa6dfa79fe62a062229bce84d53",
+      "expected_setup_sha256": "36e44e7bc1af3f3ae296e5f3e82ac0388d7ff28182e2897a30abfca6616b5768",
+      "base_lineage": [
+        {
+          "path": "DEEPSEEK_CODE/outputs/04_event_catalog_step05_m05_fixed_20260820/summary.json",
+          "jobs_key": "jobs",
+          "seed_key": "seed"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,176 @@
+{
+  "surface": "report",
+  "manifest": {
+    "version": 1,
+    "surface": "report",
+    "title": "为什么 SE3 的有效面积看起来更小",
+    "description": "SE3 full-envelope 信号与旧 S3d post-Be 条件信号的口径诊断。",
+    "generatedAt": "2026-08-15T15:34:20Z",
+    "cards": [],
+    "charts": [
+      {
+        "id": "se3_cutflow_chart",
+        "title": "SE3 full-envelope signal cutflow",
+        "subtitle": "37,194 rays; strictly ordered stages",
+        "type": "bar",
+        "dataset": "se3_cutflow",
+        "sourceId": "se3_cutflow_snapshot",
+        "valueFormat": "number",
+        "layout": "full",
+        "surface": {"compact": true, "viewMode": "visualization"},
+        "encodings": {
+          "x": {"field": "stage", "type": "nominal", "label": "Stage"},
+          "y": {"field": "selected_events", "type": "quantitative", "label": "Retained events"},
+          "tooltip": [
+            {"field": "retention", "type": "quantitative", "label": "Retention", "format": "percent"}
+          ]
+        }
+      }
+    ],
+    "tables": [],
+    "sources": [
+      {
+        "id": "se3_cutflow_snapshot",
+        "label": "SE3 signal cutflow snapshot",
+        "path": "se3_cutflow_snapshot.csv"
+      },
+      {
+        "id": "first_interaction_failure_snapshot",
+        "label": "SE3 first-interaction failure snapshot",
+        "path": "first_interaction_failure_snapshot.csv"
+      },
+      {
+        "id": "scope_reconciliation",
+        "label": "SE3 versus frozen S3d signal-scope reconciliation",
+        "path": "scope_reconciliation.csv"
+      },
+      {
+        "id": "se3_navigation_audit",
+        "label": "Full-envelope native navigation audit",
+        "path": "navigation_scope_snapshot.json"
+      },
+      {
+        "id": "s3d_scope_audit",
+        "label": "Frozen S3d signal-scope audit",
+        "path": "s3d_signal_scope_snapshot.json"
+      }
+    ],
+    "blocks": [
+      {
+        "id": "title",
+        "type": "markdown",
+        "body": "# 为什么 SE3 的有效面积看起来更小"
+      },
+      {
+        "id": "technical_summary",
+        "type": "markdown",
+        "body": "## 技术结论\n\n**当前结果没有证明 SE3 的本征信号效率比 S3d-O8 差。** SE3 的 11.69478 cm² 是从整个外包络之外注入后的绝对 full-envelope 有效面积；旧 S3d 的 15.0417 cm² 是从 post-Be 平面开始的条件有效面积。二者都按 `Aeff = 20.08476 × selected / 37194` 计算，但分子覆盖的传输路径不同。直接相除得到的表面 −22.25% 混入了注入面改变，不能归因为 SE3 几何退化。"
+      },
+      {
+        "id": "cutflow_finding",
+        "type": "markdown",
+        "sourceId": "se3_cutflow_snapshot",
+        "body": "## 最大损失发生在 TES 之前，而不是 veto\n\nSE3 从 37,194 条光线开始，9,640 条在 TES 没有沉积；余下事件经过 detector response 后，又有 5,546 条落在 W2 之外。BGO/plastic 50 keV veto 在 W2 样本中没有新增损失，Step05 只再损失 351 条。因此，把低 Aeff 解释为 veto 或 BPE port 误杀并不符合 cutflow。"
+      },
+      {"id": "cutflow_chart_block", "type": "chart", "chartId": "se3_cutflow_chart"},
+      {
+        "id": "combined_evidence",
+        "type": "markdown",
+        "body": "## 上游传输，而非 SE3 端口，是当前可见的主因\n\nW 准直器首次相互作用造成 4,848 个失败，plastic 造成 3,343 个；二者均位于旧 post-Be 注入面上游。导航同时证明 37,194/37,194 条光线的 SE3 BPE chord 为 0，focused-port 最小净余量 0.556732 cm。"
+      },
+      {
+        "id": "methods_limits",
+        "type": "markdown",
+        "body": "## 方法与限制\n\n单位是一条冻结 ray ID；不重采样。旧 S3d 从 x′=−13.1 cm 开始，SE3 从 x′=−30.0001 cm 开始。诊断只读已发布 CSV/JSON，未重开或哈希 SIM。缺少 matched S3d full-envelope 结果，因此 −22.25% 不能归因几何。"
+      },
+      {
+        "id": "next_steps",
+        "type": "markdown",
+        "body": "## 最小补充实验\n\n只需一个 37,194-trigger 的 S3d full-envelope 信号对照；无需重跑 S3d 宇宙线背景、activation 或 delayed。得到它后即可把公平 Aeff 与已冻结背景一起代入 F3。"
+      }
+    ]
+  },
+  "snapshot": {
+    "version": 1,
+    "generatedAt": "2026-08-15T15:34:20Z",
+    "status": "ready",
+    "datasets": {
+      "se3_cutflow": [
+        {"stage_order": 1, "stage": "Input", "selected_events": 37194, "retention": 1.0, "incremental_loss": 0, "trials": 37194},
+        {"stage_order": 2, "stage": "TES > 0", "selected_events": 27554, "retention": 0.7408184115717589, "incremental_loss": 9640, "trials": 37194},
+        {"stage_order": 3, "stage": "Measured W2", "selected_events": 22008, "retention": 0.5917083400548475, "incremental_loss": 5546, "trials": 37194},
+        {"stage_order": 4, "stage": "Veto50", "selected_events": 22008, "retention": 0.5917083400548475, "incremental_loss": 0, "trials": 37194},
+        {"stage_order": 5, "stage": "Step05", "selected_events": 21657, "retention": 0.582271334086143, "incremental_loss": 351, "trials": 37194}
+      ],
+      "first_interaction_failures": [
+        {"rank": 1, "first_interaction": "TES", "total_events": 25808, "pass_events": 20490, "failed_events": 5318, "share_of_all_failures": 0.3422797193795456},
+        {"rank": 2, "first_interaction": "W collimator", "total_events": 4848, "pass_events": 0, "failed_events": 4848, "share_of_all_failures": 0.3122867992533951},
+        {"rank": 3, "first_interaction": "Plastic", "total_events": 3344, "pass_events": 1, "failed_events": 3343, "share_of_all_failures": 0.2151638025358821},
+        {"rank": 4, "first_interaction": "No resolved IA", "total_events": 2038, "pass_events": 1166, "failed_events": 872, "share_of_all_failures": 0.05612409087983523},
+        {"rank": 5, "first_interaction": "BGO", "total_events": 355, "pass_events": 0, "failed_events": 355, "share_of_all_failures": 0.022848683787089},
+        {"rank": 6, "first_interaction": "Aluminium", "total_events": 289, "pass_events": 0, "failed_events": 289, "share_of_all_failures": 0.01860140310227199},
+        {"rank": 7, "first_interaction": "Copper", "total_events": 259, "pass_events": 0, "failed_events": 259, "share_of_all_failures": 0.01666988479114372},
+        {"rank": 8, "first_interaction": "Silicon", "total_events": 189, "pass_events": 0, "failed_events": 189, "share_of_all_failures": 0.01216451052326704},
+        {"rank": 9, "first_interaction": "Be", "total_events": 64, "pass_events": 0, "failed_events": 64, "share_of_all_failures": 0.004119198043380318}
+      ],
+      "scope_comparison": [
+        {"geometry": "S3d_O8", "signal_scope": "POST_BE_CONDITIONAL", "injection_plane_xprime_cm": -13.1, "trials": 37194, "selected_events": 27855, "acceptance": 0.7489111146959186, "selected_aeff_cm2": 15.0417, "comparison_eligible": "No", "upstream_transmission_included": "No"},
+        {"geometry": "SE3", "signal_scope": "FULL_ENVELOPE", "injection_plane_xprime_cm": -30.0001, "trials": 37194, "selected_events": 21657, "acceptance": 0.582271334086143, "selected_aeff_cm2": 11.69478, "comparison_eligible": "No", "upstream_transmission_included": "Yes"}
+      ]
+    },
+    "accessIssues": []
+  },
+  "sources": [
+    {
+      "id": "se3_cutflow_snapshot",
+      "label": "SE3 signal cutflow snapshot",
+      "path": "se3_cutflow_snapshot.csv",
+      "query": {
+        "engine": "duckdb",
+        "language": "sql",
+        "sql": "SELECT * FROM read_csv_auto('se3_cutflow_snapshot.csv') ORDER BY stage_order",
+        "description": "Single-pass aggregation of the published 37,194-row signal_ray_diagnostics.csv into strictly ordered cutflow stages.",
+        "executed_at": "2026-08-15T15:34:20Z",
+        "filters": ["geometry=SE3", "signal_scope=FULL_ENVELOPE_SE3_ONLY"],
+        "metric_definitions": ["Aeff = 20.08476 cm2 × selected_events / 37194", "W2 = measured energy in [510.58, 511.42) keV"]
+      }
+    },
+    {
+      "id": "first_interaction_failure_snapshot",
+      "label": "SE3 first-interaction failure snapshot",
+      "path": "first_interaction_failure_snapshot.csv",
+      "query": {
+        "engine": "duckdb",
+        "language": "sql",
+        "sql": "SELECT * FROM read_csv_auto('first_interaction_failure_snapshot.csv') ORDER BY rank",
+        "description": "Aggregation of final pass/fail by first-interaction material and volume from the published ray diagnostics.",
+        "executed_at": "2026-08-15T15:34:20Z",
+        "filters": ["37194 unique ray IDs", "W material recovered only when volume starts W_Multihole_Collimator_"],
+        "metric_definitions": ["share_of_all_failures = failed_events / 15537"]
+      }
+    },
+    {
+      "id": "scope_reconciliation",
+      "label": "SE3 versus frozen S3d signal-scope reconciliation",
+      "path": "scope_reconciliation.csv",
+      "query": {
+        "engine": "duckdb",
+        "language": "sql",
+        "sql": "SELECT * FROM read_csv_auto('scope_reconciliation.csv')",
+        "description": "Reconciles final W2+Step05 rows from fresh SE3 full-envelope and frozen S3d post-Be authorities without treating them as a valid geometry ratio.",
+        "executed_at": "2026-08-15T15:34:20Z",
+        "metric_definitions": ["apparent relative gap = 1 - 21657/27855 = 22.2509%; invalid for geometry attribution because injection planes differ"]
+      }
+    },
+    {
+      "id": "se3_navigation_audit",
+      "label": "Full-envelope native navigation audit",
+      "path": "navigation_scope_snapshot.json"
+    },
+    {
+      "id": "s3d_scope_audit",
+      "label": "Frozen S3d signal-scope audit",
+      "path": "s3d_signal_scope_snapshot.json"
+    }
+  ]
+}

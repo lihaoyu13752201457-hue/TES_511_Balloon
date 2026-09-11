@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "status": "PASS__SOURCE_INPUT_PROXY__NOT_TRANSPORT_AUTHORITY",
+  "authority_boundary": "prompt incident source comparison only; not transport, activation, delayed response, detector background, sensitivity, or geometry-promotion authority",
+  "errors": [],
+  "warnings": [
+    "REDMoon uses a 2019 solar-minimum Apollo-17 soil proxy, not a final lunar south-pole/base-site model.",
+    "The lunar total gamma curve splices a 2pi cosmic-sky proxy onto REDMoon regolith-up gamma; directional components remain separate in the tables.",
+    "The 450-600 keV band is an annihilation-region proxy, not a narrow-line flux ratio.",
+    "All products are prompt incident-source comparisons; activation, delayed decay, detector response, and sensitivity are outside authority."
+  ],
+  "metrics": {
+    "redmoon_component_rows": {
+      "gcr_proton_reference": 21,
+      "secondary_proton": 134,
+      "secondary_neutron": 1091,
+      "secondary_gamma": 509,
+      "secondary_electron_positron": 129
+    },
+    "lunar_450_600keV_flux_cm2_s": 5.291190363972564,
+    "figures": {
+      "three_environment_prompt_components.png": {
+        "width": 3532,
+        "height": 1371,
+        "rgb_std": 37.713661729087896
+      },
+      "gamma_balloon_leo_lunar_comparison.png": {
+        "width": 2732,
+        "height": 1806,
+        "rgb_std": 33.175528969759135
+      }
+    },
+    "integrated_gamma_flux_cm2_s_100keV_10MeV": {
+      "balloon": 2.6627285489439507,
+      "leo": 1.940457167371874,
+      "lunar_regolith": 51.831749654384424,
+      "lunar_sky": 0.8921599323290782,
+      "lunar_total": 52.7239095867135
+    }
+  },
+  "output_sha256": {
+    "outputs/tables/lunar_prompt_components.csv": "2a5555de9ae40c26a660bd18f123fa2120ccd52d74ebc8f82d8cf132bb8edcb4",
+    "outputs/tables/three_environment_gamma_spectra.csv": "d556d92f5d341eebdfb7416f4749dbe8482f12587d93dedfef885bfd6d869e62",
+    "outputs/tables/gamma_band_integrals.csv": "252ffdf0d33dbd32066721d439975f7e1939fe37f0bd4d91aac16d7bc466e096",
+    "outputs/tables/line_components.csv": "3339d1789ad24a6788c68280eccb4658b65f58708af8750f314cc7859421665e",
+    "outputs/figures/three_environment_prompt_components.png": "4bfb2de6ca84a2a013e4d4bd5d817dcac79b711bdc758a746a3b7bb0d57d0b1b",
+    "outputs/figures/three_environment_prompt_components.pdf": "25aa30743e7dee1441573f32fcc14c90c7af41dedc4a8ea538b73019cd3c22d9",
+    "outputs/figures/gamma_balloon_leo_lunar_comparison.png": "bf8b117bac9f633a8d98499f0dcebeb6943b775176c36e4bfa92826d00c8d81a",
+    "outputs/figures/gamma_balloon_leo_lunar_comparison.pdf": "ed3e4b27072895488b3788f07197e6a46b82747acb4befa0996af027853b3d08",
+    "outputs/summary.json": "9667a527ef2639a08275a79849e3d118389a74b2e8e4de4fb56264005c68e622"
+  }
+}

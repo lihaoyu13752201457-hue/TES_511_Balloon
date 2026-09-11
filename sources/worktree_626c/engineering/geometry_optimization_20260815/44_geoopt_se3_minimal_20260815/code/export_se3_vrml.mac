@@ -1,0 +1,37 @@
+# Geometry-only SE3 export.  No /run/beamOn command is issued.
+# Run from this code directory.  Set G4VRMLFILE_DEST_DIR to an empty temporary
+# directory (with a trailing slash) before starting Cosima.  Optional
+# G4VRML_PV_PICKABLE=1 retains placement names in Anchor nodes; the parser also
+# accepts the native non-pickable form because every SOLID comment is named.
+/vis/scene/create
+/vis/open VRML2FILE
+/vis/viewer/set/autoRefresh false
+/vis/viewer/set/culling global true
+/vis/viewer/set/culling invisible true
+/vis/viewer/set/culling coveredDaughters false
+/vis/viewer/set/lineSegmentsPerCircle 100
+
+# Request the flight side view: camera on world -Y, world +Z screen-up/sky.
+# Geant4 10.02's VRML2FILE backend ignores these two camera commands.  The raw
+# output (including its backend-owned +Z Viewpoint) is retained byte-for-byte;
+# parser products and figures independently apply the audited world -Y/+Z view.
+/vis/viewer/set/viewpointVector 0 -1 0
+/vis/viewer/set/upVector 0 0 1
+
+# Vacuum holes are physical daughters, not Boolean subtractions from the plate
+# display mesh.  Cosima names each Geant4 logical volume ``<VolumeName>Log``.
+# Force the five template logical volumes visible and limit only their curved
+# tessellation to 24 facets; every physical Copy then remains ledger-auditable.
+/vis/geometry/set/visibility SE3_HoleTemplate_MXC_50mKLog 0 true
+/vis/geometry/set/forceLineSegmentsPerCircle SE3_HoleTemplate_MXC_50mKLog 0 24
+/vis/geometry/set/visibility SE3_HoleTemplate_CP_100mKLog 0 true
+/vis/geometry/set/forceLineSegmentsPerCircle SE3_HoleTemplate_CP_100mKLog 0 24
+/vis/geometry/set/visibility SE3_HoleTemplate_Still_0p7KLog 0 true
+/vis/geometry/set/forceLineSegmentsPerCircle SE3_HoleTemplate_Still_0p7KLog 0 24
+/vis/geometry/set/visibility SE3_HoleTemplate_4KLog 0 true
+/vis/geometry/set/forceLineSegmentsPerCircle SE3_HoleTemplate_4KLog 0 24
+/vis/geometry/set/visibility SE3_HoleTemplate_60KLog 0 true
+/vis/geometry/set/forceLineSegmentsPerCircle SE3_HoleTemplate_60KLog 0 24
+
+/vis/drawVolume
+/vis/viewer/flush
