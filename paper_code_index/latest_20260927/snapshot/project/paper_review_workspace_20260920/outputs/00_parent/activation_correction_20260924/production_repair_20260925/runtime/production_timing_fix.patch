@@ -1,0 +1,12 @@
+--- a/src/cosima/src/MCSteppingAction.cc
++++ b/src/cosima/src/MCSteppingAction.cc
+@@ -937,7 +937,8 @@
+         double TimeDelay = 0.0;
+         if (GeneratedSecondaries > 0) {
+           //cout<<"TrackG:"<<Track->GetGlobalTime()/second<<"sec vs.  SecG:"<<(*fpSteppingManager->GetSecondary())[0]->GetGlobalTime()/second<<"sec."<<endl;
+-          TimeDelay = (*fpSteppingManager->GetSecondary())[0]->GetGlobalTime() - Step->GetPreStepPoint()->GetGlobalTime();
++          const size_t FirstNewSecondary = fpSteppingManager->GetSecondary()->size() - GeneratedSecondaries;
++          TimeDelay = (*fpSteppingManager->GetSecondary())[FirstNewSecondary]->GetGlobalTime() - Step->GetPreStepPoint()->GetGlobalTime();
+         }
+         //cout<<"TimeDelay: "<<TimeDelay/second<<"s max: "<<MaxTimeDelay/second<<"s"<<endl;
+ 

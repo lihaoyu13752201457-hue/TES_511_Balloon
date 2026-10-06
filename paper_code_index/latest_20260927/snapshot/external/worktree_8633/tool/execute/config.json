@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "profile_id": "SG3B_PLAN1_BACKGROUND_20260816_V1",
+  "candidate": "SG3B",
+  "allowed_stages": ["background"],
+  "source_policy": "corrected_keV_background",
+  "preflight_pass_status": "PASS__SG3B_BACKGROUND_TRANSPORT_PREFLIGHT",
+  "source_manifest_pass_status": "PASS__SG3B_CORRECTED_BACKGROUND_SOURCES",
+  "seed_registry_pass_status": "PASS__FRESH_GLOBALLY_DISJOINT_SEEDS",
+  "geometry_setup": "/home/ubuntu/.codex/worktrees/4f50/TES_511_Balloon/engineering/geometry_optimization_20260815/55_geoopt_sg3b_bi_halfcylinder_al_harness_20260816/geometry/DEMO2_DR_v3p5_SG3B.geo.setup",
+  "geometry_audits": [
+    "/home/ubuntu/.codex/worktrees/4f50/TES_511_Balloon/engineering/geometry_optimization_20260815/55_geoopt_sg3b_bi_halfcylinder_al_harness_20260816/audit/sg3b_geometry_validation.json",
+    "/home/ubuntu/.codex/worktrees/4f50/TES_511_Balloon/engineering/geometry_optimization_20260815/55_geoopt_sg3b_bi_halfcylinder_al_harness_20260816/audit/sg3b_overlap_validation.json"
+  ],
+  "source_contract": "/home/ubuntu/.codex/worktrees/104d/TES_511_Balloon/engineering/particle_source_unit_repair_20260811/data/source_contract_manifest.json",
+  "m05_analysis_inputs": "/home/ubuntu/.codex/worktrees/104d/TES_511_Balloon/engineering/particle_source_unit_repair_20260811/m05_corrected_reanalysis_20260813/analysis_inputs.json",
+  "base_source_root": "/home/ubuntu/.codex/worktrees/104d/TES_511_Balloon/engineering/particle_source_unit_repair_20260811/config/source_cards/s3d_o8",
+  "statistics_template_csv": "/home/ubuntu/.codex/worktrees/ddb4/TES_511_Balloon/engineering/geometry_optimization_20260815/49_sf3_plan1_transport_20260816/data/sf3_plan1_job_plan.csv",
+  "seed_registry_csvs": [
+    "/home/ubuntu/.codex/worktrees/c528/TES_511_Balloon/engineering/geometry_optimization_20260815/47_se3_plan1_transport_20260815/data/se3_plan1_seed_registry.csv",
+    "/home/ubuntu/.codex/worktrees/ddb4/TES_511_Balloon/engineering/geometry_optimization_20260815/49_sf3_plan1_transport_20260816/data/sf3_plan1_seed_registry.csv"
+  ],
+  "authority_roots": [
+    "/home/ubuntu/TES_511_Balloon",
+    "/home/ubuntu/.codex/worktrees/104d/TES_511_Balloon"
+  ],
+  "cosima": "/home/ubuntu/MEGAlib_Install/megalib-main/bin/cosima",
+  "megalib_environment": "/home/ubuntu/MEGAlib_Install/megalib-main/bin/source-megalib.sh",
+  "cosima_workdir": "/home/ubuntu/.codex/worktrees/104d/TES_511_Balloon",
+  "generated_root": "/home/ubuntu/.codex/worktrees/8633/TES_511_Balloon/tool/execute/generated",
+  "run_root": "/home/ubuntu/.codex/worktrees/8633/TES_511_Balloon/runs/geometry_optimization_20260816/sg3b_plan1_background_v1",
+  "workers": 4,
+  "max_workers": 5,
+  "max_attempts": 2,
+  "max_attempts_by_job": {
+    "sg3b_instant_n_shard0001": 3,
+    "sg3b_instant_eminus_shard0001": 3,
+    "sg3b_instant_eplus_shard0001": 3,
+    "sg3b_buildup_alpha_shard0001": 3
+  },
+  "canary_job_id": "sg3b_instant_gamma_shard0001",
+  "start_free_bytes": 30000000000,
+  "dynamic_reserve_bytes": 8589934592,
+  "launch_mem_available_bytes": 1073741824,
+  "runtime_mem_floor_bytes": 1073741824,
+  "launch_swap_free_bytes": 8589934592,
+  "runtime_swap_floor_bytes": 1073741824,
+  "launch_worker_reservation_bytes": 1610612736,
+  "aggregate_worker_rss_ceiling_bytes": 0,
+  "launch_memory_full_psi_avg10_max": 10.0,
+  "runtime_memory_full_psi_avg10_max": 25.0,
+  "poll_seconds": 2.0,
+  "progress_interval_seconds": 2.0,
+  "expected_jobs": 21,
+  "expected_instant_histories": 1280693,
+  "expected_buildup_histories": 1015492,
+  "corrected_token": "engineering/particle_source_unit_repair_20260811/spectra/correct_keV_total/",
+  "forbidden_legacy_token": "cosima_spectra_dp_2602units",
+  "gamma_profile": "unit_only_total_gamma",
+  "additive_mono511": false
+}
